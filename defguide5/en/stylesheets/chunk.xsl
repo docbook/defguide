@@ -25,36 +25,45 @@
 
 <!-- ==================================================================== -->
 
-<xsl:template match="bookinfo/copyright" mode="titlepage.mode">
-  <p class="copyright">
-    <a href="{concat('dbcpyright',$html.ext)}">Copyright</a>
-    <xsl:text> &#xA9; </xsl:text>
-    <xsl:for-each select="year">
-      <xsl:if test="position() &gt; 1">, </xsl:if>
-      <xsl:apply-templates select="." mode="titlepage.mode"/>
-    </xsl:for-each>
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select="holder" mode="titlepage.mode"/>
-  </p>
-  <br clear="all"/>
-  <xsl:call-template name="write.chunk">
-    <xsl:with-param name="filename">
-      <xsl:call-template name="make-relative-filename">
-        <xsl:with-param name="base.dir" select="$base.dir"/>
-        <xsl:with-param name="base.name" select="concat('dbcpyright',$html.ext)"/>
-      </xsl:call-template>
-    </xsl:with-param>
-    <xsl:with-param name="content">
-      <xsl:apply-templates select="/book" mode="dbcpyright-mode"/>
-    </xsl:with-param>
-  </xsl:call-template>
+<xsl:template match="info/copyright" mode="titlepage.mode">
+  <xsl:choose>
+    <xsl:when test="not(preceding-sibling::copyright)">
+      <a href="{concat('dbcpyright',$html.ext)}">Copyright</a>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>Copyright</xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
+
+  <xsl:text> &#xA9; </xsl:text>
+  <xsl:for-each select="year">
+    <xsl:if test="position() &gt; 1">, </xsl:if>
+    <xsl:apply-templates select="." mode="titlepage.mode"/>
+  </xsl:for-each>
+  <xsl:text> </xsl:text>
+  <xsl:apply-templates select="holder" mode="titlepage.mode"/>
+  <xsl:text> </xsl:text>
+
+  <xsl:if test="not(preceding-sibling::copyright)">
+    <xsl:call-template name="write.chunk">
+      <xsl:with-param name="filename">
+	<xsl:call-template name="make-relative-filename">
+	  <xsl:with-param name="base.dir" select="$base.dir"/>
+	  <xsl:with-param name="base.name" select="concat('dbcpyright',$html.ext)"/>
+	</xsl:call-template>
+      </xsl:with-param>
+      <xsl:with-param name="content">
+	<xsl:apply-templates select="/book" mode="dbcpyright-mode"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="book" mode="dbcpyright-mode">
   <html>
     <xsl:call-template name="html.head"/>
     <body>
-      <xsl:apply-templates select="bookinfo/legalnotice"
+      <xsl:apply-templates select="info/legalnotice"
                            mode="titlepage.mode"/>
     </body>
   </html>
@@ -531,19 +540,12 @@
           <td align="right">
             <i>DocBook: The Definitive Guide</i>
             <xsl:text> </xsl:text>
-            <xsl:value-of select="/book/bookinfo/releaseinfo"/>
+            <xsl:value-of select="/book/info/releaseinfo"/>
             <xsl:text> </xsl:text>
             <span class="alpha-version">
               <xsl:text>(</xsl:text>
               <a>
-                <xsl:choose>
-                  <xsl:when test="$output.type = 'unexpanded'">
-                    <xsl:attribute name="href">co01-x.html</xsl:attribute>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:attribute name="href">co01.html</xsl:attribute>
-                  </xsl:otherwise>
-                </xsl:choose>
+		<xsl:attribute name="href">co01.html</xsl:attribute>
                 <em>Alpha</em>
               </a>
               <xsl:text>)</xsl:text>

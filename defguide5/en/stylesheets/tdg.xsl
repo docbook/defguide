@@ -15,7 +15,6 @@
 <xsl:param name="ng-release" select="'Bourbon'"/>
 
 <xsl:param name="output.media" select="'online'"/>
-<xsl:param name="output.type" select="'expanded'"/>
 <xsl:param name="html.stylesheet">defguide.css</xsl:param>
 <xsl:param name="toc.section.depth" select="1"/>
 <xsl:param name="callout.graphics.path" select="'figures/callouts/'"/>
@@ -64,15 +63,9 @@ set       nop
   <xsl:param name="node" select="."/>
   <div class="copyrightfooter">
     <p>
-      <xsl:choose>
-        <xsl:when test="$output.type = 'unexpanded'">
-          <a href="dbcpyright-x.html">Copyright</a>
-        </xsl:when>
-        <xsl:otherwise>
-          <a href="dbcpyright.html">Copyright</a>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:text> &#xA9; 1999, 2000, 2001, 2002, 2003 </xsl:text>
+      <a href="dbcpyright.html">Copyright</a>
+      <xsl:text> &#xA9; 2004 Norman Walsh. </xsl:text>
+      <xsl:text>Portions Copright © 1999-2003 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>
     </p>
@@ -393,41 +386,6 @@ set       nop
       <xsl:apply-templates select="$entry/*"/>
     </xsl:when>
     <xsl:when test="@role = 'petitle'">
-      <xsl:if test="$output.type = 'unexpanded'">
-        <xsl:variable name="attrrows" select="../row[@role='pe']"/>
-        <h3>
-          <xsl:apply-templates select="$entry/*"/>
-        </h3>
-
-        <p>
-          <xsl:text>The following parameter entities contain </xsl:text>
-          <xsl:value-of select="ancestor::refentry/refnamediv/refname"/>
-          <xsl:text>:</xsl:text>
-        </p>
-
-        <table border="1" width="100%" summary="Attributes">
-          <tr>
-            <xsl:apply-templates select="entry[1]">
-              <xsl:with-param name="spans">
-                <xsl:call-template name="blank.spans">
-                  <xsl:with-param name="cols" select="3"/>
-                </xsl:call-template>
-              </xsl:with-param>
-            </xsl:apply-templates>
-          </tr>
-          <xsl:for-each select="$attrrows">
-            <tr>
-              <xsl:apply-templates select="entry[1]">
-                <xsl:with-param name="spans">
-                  <xsl:call-template name="blank.spans">
-                    <xsl:with-param name="cols" select="3"/>
-                  </xsl:call-template>
-                </xsl:with-param>
-              </xsl:apply-templates>
-            </tr>
-          </xsl:for-each>
-        </table>
-      </xsl:if>
     </xsl:when>
     <xsl:when test="@role = 'pe'">
       <!-- nop -->
@@ -572,7 +530,7 @@ set       nop
   <xsl:variable name="version" select="info/releaseinfo[1]"/>
   <xsl:variable name="date" select="info/pubdate[1]"/>
   <xsl:variable name="legalnotice" select="info/legalnotice[1]"/>
-  <xsl:variable name="copyright" select="info/copyright[1]"/>
+  <xsl:variable name="copyright" select="info/copyright"/>
 
   <p class="titlepage-block">
     <span class="authorgroup">
@@ -617,7 +575,11 @@ set       nop
       <xsl:value-of select="substring($timeString, 25, 4)"/>
     </span>
   </p>
-  <xsl:apply-templates select="$copyright" mode="titlepage.mode"/>
+
+  <p class="copyright">
+    <xsl:apply-templates select="$copyright" mode="titlepage.mode"/>
+  </p>
+  <br clear="all"/>
 </xsl:template>
 
 <xsl:template match="authorgroup/author" mode="titleblock">
