@@ -25,17 +25,28 @@
 <sgmltag>Production</sgmltag> that represents a portion of the
 grammar.</para>
 
-
 &nonterminal.parents.gen;
+
 </refsect1>
+
 <refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+
 <variablelist>
 <varlistentry><term>def</term>
 <listitem>
-<para revision="EBNF">FIXME:</para>
+<para revision="EBNF">The <sgmltag class="attribute">def</sgmltag> attribute
+contains a URI reference that points to a <sgmltag>production</sgmltag> where
+the <sgmltag>nonterminal</sgmltag> is defined.</para>
+
+<para>Note that this <emphasis>is not</emphasis>
+an IDREF, it is a URI reference (as, for example, are
+<sgmltag class="attribute">href</sgmltag> attributes on HTML
+<sgmltag>a</sgmltag> elements). This is necessary because references to
+non-terminals might need to cross document boundaries.</para>
 </listitem>
 </varlistentry>
 </variablelist>
+
 </refsect1>
 </refentry>
 
