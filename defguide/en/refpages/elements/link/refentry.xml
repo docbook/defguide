@@ -28,12 +28,20 @@ text from another element.
 &format.inline;
 </para>
 <para>
-If the <sgmltag>Link</sgmltag> element specifies an
-<sgmltag class='attribute'>EndTerm</sgmltag>, and then the
+If the <sgmltag>Link</sgmltag> element has content,
+then that content is processed for output
+as the &ldquo;hot&rdquo; text.
+If the <sgmltag>Link</sgmltag> element has content
+and an
+<sgmltag class='attribute'>EndTerm</sgmltag> attribute, then the
+content is used and the
+<sgmltag class='attribute'>EndTerm</sgmltag> is ignored.
+If the <sgmltag>Link</sgmltag> element has an
+<sgmltag class='attribute'>EndTerm</sgmltag> attribute and
+no content, then the
 content of the element pointed to by <sgmltag class='attribute'>EndTerm</sgmltag>
 should be repeated at the location of the <sgmltag>Link</sgmltag> and used
-as the &ldquo;hot&rdquo; text <emphasis>instead</emphasis> of the <sgmltag>Link</sgmltag>
-content, which should be suppressed.
+as the &ldquo;hot&rdquo; text.
 </para>
 <para>
 Linking elements must not be nested within other linking
