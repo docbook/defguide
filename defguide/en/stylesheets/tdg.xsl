@@ -13,7 +13,8 @@
 <xsl:include href="html-titlepage.xsl"/>
 <xsl:include href="dbv5.xsl"/>
 
-<xsl:param name="include.docbook5" select="0"/>
+<xsl:param name="docbookng" select="0"/>
+<xsl:param name="ng-release" select="'Bourbon'"/>
 
 <xsl:param name="output.media" select="'online'"/>
 <xsl:param name="output.type" select="'expanded'"/>
@@ -86,7 +87,7 @@ set       nop
           <a href="dbcpyright.html">Copyright</a>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:text> &#xA9; 1999, 2000, 2001, 2002 </xsl:text>
+      <xsl:text> &#xA9; 1999, 2000, 2001, 2002, 2003 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>
     </p>
@@ -314,11 +315,11 @@ set       nop
     <xsl:when test="@role='elemsynop'">
       <xsl:apply-templates select=".//row" mode="elemsynop"/>
 
-      <xsl:if test="$include.docbook5 != 0">
+      <xsl:if test="$docbookng != 0">
 	<xsl:variable name="element" select="ancestor::refentry/refnamediv/refname"/>
 	
-	<div class="relaxngv5-synopsis">
-	  <h3>Experimental DocBook V5 RELAX NG Content Model</h3>
+	<div class="docbookng-synopsis">
+	  <h3>DocBook NG “<xsl:value-of select="$ng-release"/>” Content Model</h3>
 	  <xsl:choose>
 	    <xsl:when test="$db5doc//rng:define[rng:element[@name=$element]]">
 	      <xsl:call-template name="rng-element">
@@ -326,7 +327,7 @@ set       nop
 	      </xsl:call-template>
 	    </xsl:when>
 	    <xsl:otherwise>
-	      <xsl:message>Not in V5: <xsl:value-of select="$element"/></xsl:message>
+	      <xsl:message>Not in NG: <xsl:value-of select="$element"/></xsl:message>
 	      <p>This element does not occur.</p>
 	    </xsl:otherwise>
 	  </xsl:choose>

@@ -3,12 +3,13 @@
 		xmlns:set="http://exslt.org/sets"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
 		xmlns:s="http://www.ascc.net/xml/schematron"
-                exclude-result-prefixes="rng set s"
+                xmlns:doc="http://nwalsh.com/xmlns/schema-doc/"
+                exclude-result-prefixes="rng set s doc"
                 version="1.0">
 
   <xsl:strip-space elements="rng:*"/>
 
-  <xsl:variable name="db5doc" select="document('build/lib/db5doc.xml',.)/rng:grammar"/>
+  <xsl:variable name="db5doc" select="document('build/lib/docbook-rng.xml',.)/rng:grammar"/>
 
   <xsl:key name="defs" match="rng:define" use="@name"/>
   <xsl:key name="elemdefs" match="rng:define[rng:element]" use="rng:element/@name"/>
@@ -20,7 +21,11 @@
 	<xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:apply-templates select="$db5doc//rng:define[rng:element[@name=$element]]"/>
+	<xsl:for-each select="$db5doc//rng:define[rng:element[@name=$element]]">
+	  <xsl:apply-templates select=".">
+	    <xsl:with-param name="elemNum" select="position()"/>
+	  </xsl:apply-templates>
+	</xsl:for-each>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -39,8 +44,19 @@
   </xsl:template>
 
   <xsl:template match="rng:define[rng:element]" priority="2">
-    <div class="define">
-      <xsl:apply-templates/>
+    <xsl:param name="elemNum" select="1"/>
+
+    <div>
+      <xsl:attribute name="class">
+	<xsl:choose>
+	  <xsl:when test="$elemNum = 1">define-first</xsl:when>
+	  <xsl:otherwise>define-next</xsl:otherwise>
+	</xsl:choose>
+      </xsl:attribute>
+
+      <xsl:apply-templates>
+	<xsl:with-param name="elemNum" select="$elemNum"/>
+      </xsl:apply-templates>
     </div>
   </xsl:template>
 
@@ -67,6 +83,7 @@
   </xsl:template>
 
   <xsl:template match="rng:element">
+    <xsl:param name="elemNum" select="1"/>
     <xsl:variable name="xdefs" select="key('elemdefs', @name)"/>
 
     <div class="element">
@@ -80,8 +97,8 @@
 
       <ul>
 	<xsl:choose>
-	  <xsl:when test="rng:content-model">
-	    <xsl:apply-templates select="rng:content-model/*"/>
+	  <xsl:when test="doc:content-model">
+	    <xsl:apply-templates select="doc:content-model/*"/>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:apply-templates/>
@@ -89,68 +106,73 @@
 	</xsl:choose>
       </ul>
 
-      <xsl:apply-templates select="rng:attributes"/>
-      <xsl:apply-templates select="rng:rules"/>
+      <xsl:apply-templates select="doc:attributes"/>
+      <xsl:apply-templates select="doc:rules"/>
     </div>
   </xsl:template>
 
-  <xsl:template match="rng:attributes">
+  <xsl:template match="doc:attributes">
+    <xsl:variable name="attributes" select=".//rng:attribute"/>
+
     <xsl:variable name="cmnAttr"
-		  select="rng:optional[rng:ref[@name='id.attribute']]
-		          |rng:optional[rng:ref[@name='xml.lang.attribute']]
-			  |rng:optional[rng:ref[@name='xml.base.attribute']]
-			  |rng:optional[rng:ref[@name='remap.attribute']]
-			  |rng:optional[rng:ref[@name='xreflabel.attribute']]
-			  |rng:optional[rng:ref[@name='revisionflag.attribute']]
-			  |rng:optional[rng:ref[@name='arch.attribute']]
-			  |rng:optional[rng:ref[@name='condition.attribute']]
-			  |rng:optional[rng:ref[@name='conformance.attribute']]
-			  |rng:optional[rng:ref[@name='os.attribute']]
-			  |rng:optional[rng:ref[@name='revision.attribute']]
-			  |rng:optional[rng:ref[@name='security.attribute']]
-			  |rng:optional[rng:ref[@name='userlevel.attribute']]
-			  |rng:optional[rng:ref[@name='vendor.attribute']]
-			  |rng:optional[rng:ref[@name='role.attribute']]"/>
+		  select="$attributes[@name='id' and parent::rng:optional]
+		          |$attributes[@name='xml:lang']
+			  |$attributes[@name='xml:base']
+			  |$attributes[@name='remap']
+			  |$attributes[@name='xreflabel']
+			  |$attributes[@name='revisionflag']
+			  |$attributes[@name='arch']
+			  |$attributes[@name='condition']
+			  |$attributes[@name='conformance']
+			  |$attributes[@name='os']
+			  |$attributes[@name='revision']
+			  |$attributes[@name='security']
+			  |$attributes[@name='userlevel']
+			  |$attributes[@name='vendor']
+			  |$attributes[@name='role']
+			  |$attributes[@name='version']"/>
 
     <xsl:variable name="cmnAttrIdReq"
-		  select="rng:ref[@name='id.attribute']
-		          |rng:optional[rng:ref[@name='xml.lang.attribute']]
-			  |rng:optional[rng:ref[@name='xml.base.attribute']]
-			  |rng:optional[rng:ref[@name='remap.attribute']]
-			  |rng:optional[rng:ref[@name='xreflabel.attribute']]
-			  |rng:optional[rng:ref[@name='revisionflag.attribute']]
-			  |rng:optional[rng:ref[@name='arch.attribute']]
-			  |rng:optional[rng:ref[@name='condition.attribute']]
-			  |rng:optional[rng:ref[@name='conformance.attribute']]
-			  |rng:optional[rng:ref[@name='os.attribute']]
-			  |rng:optional[rng:ref[@name='revision.attribute']]
-			  |rng:optional[rng:ref[@name='security.attribute']]
-			  |rng:optional[rng:ref[@name='userlevel.attribute']]
-			  |rng:optional[rng:ref[@name='vendor.attribute']]
-			  |rng:optional[rng:ref[@name='role.attribute']]"/>
+		  select="$attributes[@name='id' and not(parent::rng:optional)]
+		          |$attributes[@name='xml:lang']
+			  |$attributes[@name='xml:base']
+			  |$attributes[@name='remap']
+			  |$attributes[@name='xreflabel']
+			  |$attributes[@name='revisionflag']
+			  |$attributes[@name='arch']
+			  |$attributes[@name='condition']
+			  |$attributes[@name='conformance']
+			  |$attributes[@name='os']
+			  |$attributes[@name='revision']
+			  |$attributes[@name='security']
+			  |$attributes[@name='userlevel']
+			  |$attributes[@name='vendor']
+			  |$attributes[@name='role']
+			  |$attributes[@name='version']"/>
 
     <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
     <xsl:variable name="cmnLinkAttr"
-		  select="rng:optional[rng:choice[rng:ref[@name='linkend.attribute']
-                                                and rng:ref[@name='href.attribute']]]"/>
+		  select="$attributes[@name='href' and $attributes[@name='linkend']]
+		          |$attributes[@name='linkend' and $attributes[@name='href']]"/>
 
     <xsl:variable name="otherAttr"
-		  select="set:difference(*,$cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+		  select="set:difference($attributes,
+		                         $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
-    <h4>Experimental DocBook V5 RELAX NG Attributes</h4>
+    <h4>DocBook NG “<xsl:value-of select="$ng-release"/>” Attributes</h4>
 
     <xsl:choose>
-      <xsl:when test="count($cmnAttr) = 15 and $cmnLinkAttr">
+      <xsl:when test="count($cmnAttr) = 16 and $cmnLinkAttr">
 	<p>Common attributes and common linking attributes.</p>
       </xsl:when>
-      <xsl:when test="count($cmnAttrIdReq) = 15 and $cmnLinkAttr">
+      <xsl:when test="count($cmnAttrIdReq) = 16 and $cmnLinkAttr">
 	<p>Common attributes (ID required) and common linking atttributes.</p>
       </xsl:when>
-      <xsl:when test="count($cmnAttr) = 15">
+      <xsl:when test="count($cmnAttr) = 16">
 	<p>Common attributes.</p>
       </xsl:when>
-      <xsl:when test="count($cmnAttrIdReq) = 15">
+      <xsl:when test="count($cmnAttrIdReq) = 16">
 	<p>Common attributes (ID required).</p>
       </xsl:when>
       <xsl:when test="$cmnLinkAttr">
@@ -158,32 +180,35 @@
       </xsl:when>
     </xsl:choose>
 
-    <xsl:if test="count($cmnAttrEither) != 15 or count($otherAttr) &gt; 0">
+    <xsl:if test="count($cmnAttrEither) != 16 or count($otherAttr) &gt; 0">
       <p>
 	<xsl:choose>
-	  <xsl:when test="count($cmnAttr) = 15 
+	  <xsl:when test="count($cmnAttr) = 16 
 		          or count($cmnAttrIdReq) = 15
 		  	  or $cmnLinkAttr">
-	    <em>Additional attributes:</em>
+	    <xsl:text>Additional attributes:</xsl:text>
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <em>Attributes:</em>
+	    <xsl:text>Attributes:</xsl:text>
 	  </xsl:otherwise>
 	</xsl:choose>
 	<xsl:text> (Required attributes, if any, are </xsl:text>
 	<b>bold</b>
 	<xsl:text>)</xsl:text>
       </p>
-	
+
       <ul>
-	<xsl:choose>
-	  <xsl:when test="count($cmnAttrEither) = 15">
-	    <xsl:apply-templates select="$otherAttr" mode="attributes"/>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:apply-templates mode="attributes"/>
-	  </xsl:otherwise>
-	</xsl:choose>
+	<xsl:for-each select="rng:interleave/*|*[not(self::rng:interleave)]">
+	  <xsl:sort select="descendant-or-self::rng:attribute/@name"/>
+	  <!-- don't bother with common attributes -->
+	  <xsl:variable name="name" select="descendant-or-self::rng:attribute/@name"/>
+	  <xsl:choose>
+	    <xsl:when test="$cmnAttrEither[@name=$name]|$cmnLinkAttr[@name=$name]"/>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="." mode="attributes"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:for-each>
       </ul>
     </xsl:if>
   </xsl:template>
@@ -218,6 +243,15 @@
 	  <em>All of:</em>
 	</xsl:otherwise>
       </xsl:choose>
+      <ul>
+	<xsl:apply-templates mode="attributes"/>
+      </ul>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="rng:group" mode="attributes">
+    <li>
+      <em>Each of:</em>
       <ul>
 	<xsl:apply-templates mode="attributes"/>
       </ul>
@@ -293,8 +327,8 @@
     </li>
   </xsl:template>
 
-  <xsl:template match="rng:rules">
-    <h4>Experimental DocBook V5 RELAX NG Additional Rules</h4>
+  <xsl:template match="doc:rules">
+    <h4>DocBook NG “<xsl:value-of select="$ng-release"/>” Additional Constraints</h4>
 
     <ul>
       <xsl:for-each select=".//s:assert">
