@@ -12,7 +12,7 @@ ifeq ($(SOURCE),unexbook.xml)
   STYLEOPT=output.type=unexpanded
 else
   STYLEOPT=
-fi
+endif
 
 all: chunks index
 
