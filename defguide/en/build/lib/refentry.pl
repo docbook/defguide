@@ -19,7 +19,7 @@ $config{'unexpanded-entity-dir'} = 'paraments';
 $config{'notation-index'} = 'notations';
 
 $option{'base-id'} = 'dbre';
-$option{'base-dir'} = "$libdir/../../gentextX";
+$option{'base-dir'} = "$libdir/../../refpages";
 $option{'seealso'} = 1;
 
 my %entity_classes = ();
