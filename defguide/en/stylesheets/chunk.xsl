@@ -31,7 +31,7 @@
     <xsl:text> &#xA9; </xsl:text>
     <xsl:for-each select="year">
       <xsl:if test="position() &gt; 1">, </xsl:if>
-      <xsl:apply-templates select="titlepage.mode"/>
+      <xsl:apply-templates select="." mode="titlepage.mode"/>
     </xsl:for-each>
     <xsl:text> </xsl:text>
     <xsl:apply-templates select="holder" mode="titlepage.mode"/>

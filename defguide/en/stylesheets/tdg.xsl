@@ -40,7 +40,7 @@
   <xsl:param name="node" select="."/>
   <p>
     <a href="dbcpyright.html">Copyright</a>
-    <xsl:text>&#xA9; 1999, 2000, 2001 </xsl:text>
+    <xsl:text>&#xA9; 1999, 2000, 2001, 2002 </xsl:text>
     <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
     <xsl:text> All rights reserved.</xsl:text>
   </p>
