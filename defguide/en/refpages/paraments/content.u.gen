@@ -12,9 +12,9 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>((%divcomponent.mix;)+, 
-	(sect1*|(%refentry.class;)*|simplesect*|section*))
-	| (sect1+|(%refentry.class;)+|simplesect+|section</synopsis></entry>
+><synopsis>((%divcomponent.mix;)+,
+	(sect1*|(%refentry.class;)*|simplesect*|(%section.class;)*))
+	| (sect1+|(%refentry.class;)+|simplesect+|(%section.class;</synopsis></entry>
 </row>
 <row rowsep='0' role='cmtitle'>
 <entry namest='c1' nameend='c3' align='left'
@@ -45,9 +45,9 @@
 		
 		|indexterm         |beginpage
                 
-		)+, 
-	(sect1*|(refentry )*|simplesect*|section*))
-	| (sect1+|(refentry )+|simplesect+|section</synopsis></entry>
+		)+,
+	(sect1*|(refentry )*|simplesect*|(section )*))
+	| (sect1+|(refentry )+|simplesect+|(section</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>
 <entry namest='c1' nameend='c3' align='left'
@@ -338,8 +338,8 @@
 <entry colsep='0'><sgmltag>refsect3</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>refsection</sgmltag></entry>
 <entry colsep='0'><sgmltag>refsynopsisdiv</sgmltag></entry>
-<entry colsep='0'></entry>
 <entry colsep='0'></entry>
 </row>
 </tbody>

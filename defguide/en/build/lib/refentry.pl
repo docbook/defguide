@@ -35,6 +35,20 @@ my %revision = ('productionset' => 'EBNF',
 		'productionrecap' => 'EBNF',
 		'constraintdef' => 'EBNF',
 
+		'bibliocoverage' => '4.2',
+		'biblioid' => '4.2',
+		'bibliorelation' => '4.2',
+		'bibliosource' => '4.2',
+		'blockinfo' => '4.2',
+		'citebiblioid' => '4.2',
+		'coref' => '4.2',
+		'errortext' => '4.2',
+		'personblurb' => '4.2',
+		'personname' => '4.2',
+		'refsection' => '4.2',
+		'refsectioninfo' => '4.2',
+		'textdata' => '4.2',
+
 		'appendixinfo' => '4.0',
 		'articleinfo' => '4.0',
 		'bibliographyinfo' => '4.0',
@@ -271,9 +285,9 @@ sub formatElement {
 	$node = $node->getNextSibling();
     }
 
-    #$html .= &formatElementHeader($count);
+    $html .= &formatElementHeader($count);
 
-    #$html .= &formatElementTitle($count);
+    $html .= &formatElementTitle($count);
 
     if ($option{'synopsis'}) {
 	if ($expanded eq 'expanded') {
@@ -283,15 +297,15 @@ sub formatElement {
 	}
     }
 
-    #$html .= &formatElementDescription($count) if $option{'description'};
+    $html .= &formatElementDescription($count) if $option{'description'};
 
-    #$html .= &formatElementAttrDescription($count) if $option{'attributes'};
+    $html .= &formatElementAttrDescription($count) if $option{'attributes'};
 
     $html .= &formatElementSeeAlso($count) if $option{'seealso'};
 
     $html .= &formatElementExample($count) if $option{'examples'};
 
-    #$html .= &formatElementFooter($count);
+    $html .= &formatElementFooter($count);
 }
 
 sub formatElementHeader {
@@ -300,7 +314,66 @@ sub formatElementHeader {
     my $name      = $elements[$count];
     my $element   = $elements{$name};
 
-    # nop;
+    my $pub = "-//OASIS//DTD DocBook XML V4.2//EN";
+    my $sys = "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd";
+
+    my $dir = $option{'base-dir'} . "/elements/$name";
+    if (! -d $dir) {
+	mkdir($dir, 0755);
+    }
+
+    my $filename = "reference.e.xml";
+
+    my $rpub = "-//O'Reilly//ENTITIES DocBook RefPurposes V2.0//EN";
+    my $rsys = "../../../entities/refpurps.ent";
+
+    $html = "";
+    $html .= "<!DOCTYPE reference PUBLIC \"$pub\"\n";
+    $html .= "          \"$sys\" [\n";
+    $html .= "<!ENTITY % refpurps.ent PUBLIC \"$rpub\" \"$rsys\">\n";
+    $html .= "%refpurps.ent;\n";
+    $html .= "<!ENTITY % entities.ent SYSTEM \"entities.e.ent\">\n";
+    $html .= "%entities.ent;\n";
+    $html .= "<!ENTITY refentry.xml SYSTEM \"refentry.xml\">\n";
+    $html .= "]>\n";
+    $html .= "<reference><title>$name Refentry</title>\n";
+    $html .= "&refentry.xml;\n";
+    $html .= "</reference>\n";
+
+    if (! -f "$dir/$filename") {
+	open (F, ">$dir/$filename");
+	print F $html;
+	close (F);
+    }
+
+    $filename = "reference.u.xml";
+
+    $html = "";
+    $html .= "<!DOCTYPE reference PUBLIC \"$pub\"\n";
+    $html .= "          \"$sys\" [\n";
+    $html .= "<!ENTITY % refpurps.ent PUBLIC \"$rpub\" \"$rsys\">\n";
+    $html .= "%refpurps.ent;\n";
+    $html .= "<!ENTITY % entities.ent SYSTEM \"entities.u.ent\">\n";
+    $html .= "%entities.ent;\n";
+    $html .= "<!ENTITY refentry.xml SYSTEM \"refentry.xml\">\n";
+    $html .= "]>\n";
+    $html .= "<reference><title>$name Refentry</title>\n";
+    $html .= "&refentry.xml;\n";
+    $html .= "</reference>\n";
+
+    if (! -f "$dir/$filename") {
+	open (F, ">$dir/$filename");
+	print F $html;
+	close (F);
+    }
+
+    $html = "";
+    $html .= "<refentry id=\"$name.element\"";
+    $html .= " revision='" . $revision{$name} . "'" if $revision{$name};
+    $html .= ">\n";
+    $html .= "<?dbhtml filename=\"$name.html\"?>\n\n";
+
+    return $html;
 }
 
 sub formatElementTitle {
@@ -309,7 +382,24 @@ sub formatElementTitle {
     my $element = $elements{$name};
     my $html = "";
 
-    # nop;
+    $html .= "<refmeta>\n";
+    $html .= "<indexterm><primary>elements</primary>\n";
+    $html .= "<secondary>" . $element->getAttribute('name') . "</secondary></indexterm>\n";
+
+    $html .= "<refentrytitle>";
+    $html .= $element->getAttribute('name');
+    $html .= "</refentrytitle>\n";
+    $html .= "<refmiscinfo>Element</refmiscinfo>\n";
+    $html .= "</refmeta>\n";
+
+    $html .= "<refnamediv>\n";
+    $html .= "<refname>" . $element->getAttribute('name') . "</refname>\n";
+    $html .= "<refpurpose>";
+    $html .= &elementRefpurpose($count);
+    $html .= "</refpurpose>\n";
+    $html .= "</refnamediv>\n\n";
+
+    return $html;
 }
 
 sub formatElementSynopsis {
@@ -722,7 +812,20 @@ sub formatElementDescription {
     my $desc    = &elementDescription($count);
     my $html    = "";
 
-    # nop
+    $html = "<refsect1 condition='ref.description'><title>Description</title>
+
+<para></para>
+
+<refsect2><title>Processing expectations</title>
+<para></para>
+</refsect2>\n\n";
+
+    $html .= &formatParents($count);
+    $html .= &formatChildren($count);
+
+    $html .= "\n</refsect1>\n\n";
+
+    return $html;
 }
 
 sub formatParents {
@@ -901,7 +1004,39 @@ sub formatElementAttrDescription {
 		   'security' => 0,
 		   'condition' => 0);
 
-    # nop;
+    # Check for DocBook common attributes
+
+    if (defined($attlist)) {
+	my $attelem = $attlist->getElementsByTagName("attribute");
+
+	for (my $count = 0; $count < $attelem->getLength(); $count++) {
+	    my $attr = $attelem->item($count);
+	    my $name = $attr->getAttribute('name');
+	    $attrs{$name} = 1 if !defined($cmnatt{lc($name)});
+	}
+    }
+
+    return $html if !%attrs;
+
+    $html .= "<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>\n";
+
+    $html .= "<variablelist>\n";
+
+    foreach $attr (sort keys %attrs) {
+	my $desc = "attr." . lc($attr) . ".$name";
+
+	$html .= "<varlistentry><term>$attr</term>\n";
+	$html .= "<listitem>\n";
+	$html .= "&$desc;\n";
+	$html .= "</listitem>\n";
+	$html .= "</varlistentry>\n";
+    }
+
+    $html .= "</variablelist>\n";
+
+    $html .= "</refsect1>\n";
+
+    return $html;
 }
 
 my %SeeAlso = ();
@@ -981,7 +1116,13 @@ sub formatElementSeeAlso {
 	} else {
 	    # unexpanded is exactly the same
 	}
+
+	$html = "<refsect1 condition='ref.elem.seealso'><title>See Also</title>\n";
+	$html .= "&$name.seealso.gen;\n";
+	$html .= "</refsect1>\n";
     }
+
+    return $html;
 }
 
 sub formatElementExample {
@@ -1082,13 +1223,36 @@ sub formatElementExample {
 
 	$excount++;
     }
+
+    $excount -= 2; # yes, two. because of the way that loop works.
+
+    my $html = "";
+
+    if ($excount > 0) {
+	$html .= "\n<refsect1 condition='ref.examples'><title>Examples</title>\n\n";
+	for (my $count = 1; $count <= $excount; $count++) {
+	    $html .= "<informalexample role='example-source'>\n";
+	    $html .= "<programlisting>&$name.example.$count.txt;</programlisting>\n";
+	    $html .= "</informalexample>\n\n";
+
+	    $html .= "<anchor id='ex.os.$name.$count' role='HACK-ex.out.start'/>\n";
+	    $html .= "&$name.example.$count.gen;\n";
+	    $html .= "<anchor id='ex.oe.$name.$count' role='HACK-ex.out.end'/>\n\n";
+
+	    $html .= "</refsect1>\n\n";
+	}
+    }
+
+    return $html;
 }
 
 sub formatElementFooter {
     my $count = shift;
     my $html = "";
 
-    # nop;
+    $html .= "</refentry>\n\n";
+
+    return $html;
 }
 
 # ----------------------------------------------------------------------
@@ -2206,10 +2370,12 @@ sub writeElement {
 	mkdir($dir, 0755);
     }
 
-# DON'T REWRITE THIS FILE ANYMORE!
-#    open (F, ">$dir/refentry" . $fileext);
-#    print F $html;
-#    close (F);
+    # DON'T OVERWRITE THIS FILE ANYMORE!
+    if (! -f "$dir/refentry$fileext") {
+	open (F, ">$dir/refentry$fileext");
+	print F $html;
+	close (F);
+    }
 
     open (F, ">$dir/entities.e.ent");
     print F "<!ENTITY $name.synopsis.gen SYSTEM \"synopsis.e.gen\">\n"

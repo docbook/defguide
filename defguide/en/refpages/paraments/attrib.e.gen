@@ -1,3 +1,57 @@
+<refsect2 id="bibliorelation.type.attrib.parament"><title>%bibliorelation.type.attrib;</title>
+<informaltable frame='all' role='elemsynop'>
+<tgroup cols='3'>
+<colspec colnum='1' colname='c1'/>
+<colspec colnum='2' colname='c2'/>
+<colspec colnum='3' colname='c3'/>
+<tbody>
+<row rowsep='0' role='vle-cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity
+</emphasis></entry>
+</row>
+<row rowsep='1' role='attrheader'>
+<entry role='th'><para><emphasis role='bold'>Name</emphasis></para></entry>
+<entry role='th'><para><emphasis role='bold'>Type</emphasis></para></entry>
+<entry role='th'><para><emphasis role='bold'>Default</emphasis></para></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>type</entry>
+<entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>isversionof</member>
+<member>hasversion</member>
+<member>isreplacedby</member>
+<member>replaces</member>
+<member>isrequiredby</member>
+<member>requires</member>
+<member>ispartof</member>
+<member>haspart</member>
+<member>isreferencedby</member>
+<member>references</member>
+<member>isformatof</member>
+<member>hasformat</member>
+<member>othertype</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>othertype</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row rowsep='0' role='vle-petitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>%bibliorelation.type.attrib; appears in:</emphasis></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>bibliorelation</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</refsect2>
+
 <refsect2 id="common.table.attribs.parament"><title>%common.table.attribs;</title>
 <informaltable frame='all' role='elemsynop'>
 <tgroup cols='3'>
@@ -143,7 +197,17 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row role='attr'>
+<entry align='left' valign='top'>contentwidth</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
 <entry align='left' valign='top'>depth</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>contentdepth</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -152,6 +216,14 @@
 <entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>left</member>
 <member>right</member>
 <member>center</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>valign</entry>
+<entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>top</member>
+<member>middle</member>
+<member>bottom</member>
 </simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -264,42 +336,42 @@
 </row>
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>co</sgmltag></entry>
+<entry colsep='0'><sgmltag>coref</sgmltag></entry>
 <entry colsep='0'><sgmltag>equation</sgmltag></entry>
-<entry colsep='0'><sgmltag>example</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>example</sgmltag></entry>
 <entry colsep='0'><sgmltag>figure</sgmltag></entry>
 <entry colsep='0'><sgmltag>footnote</sgmltag></entry>
-<entry colsep='0'><sgmltag>footnoteref</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>footnoteref</sgmltag></entry>
 <entry colsep='0'><sgmltag>funcsynopsis</sgmltag></entry>
 <entry colsep='0'><sgmltag>informalfigure</sgmltag></entry>
-<entry colsep='0'><sgmltag>lot</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>lot</sgmltag></entry>
 <entry colsep='0'><sgmltag>part</sgmltag></entry>
 <entry colsep='0'><sgmltag>partintro</sgmltag></entry>
-<entry colsep='0'><sgmltag>reference</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>reference</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect1</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect2</sgmltag></entry>
-<entry colsep='0'><sgmltag>sect3</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>sect3</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect4</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect5</sgmltag></entry>
-<entry colsep='0'><sgmltag>section</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>section</sgmltag></entry>
 <entry colsep='0'><sgmltag>synopsis</sgmltag></entry>
 <entry colsep='0'><sgmltag>tocback</sgmltag></entry>
-<entry colsep='0'><sgmltag>tocchap</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>tocchap</sgmltag></entry>
 <entry colsep='0'><sgmltag>tocfront</sgmltag></entry>
-<entry colsep='0'></entry>
 <entry colsep='0'></entry>
 </row>
 </tbody>
@@ -434,13 +506,13 @@
 ><emphasis role='bold'>%linkendreq.attrib; appears in:</emphasis></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>coref</sgmltag></entry>
 <entry colsep='0'><sgmltag>footnoteref</sgmltag></entry>
 <entry colsep='0'><sgmltag>link</sgmltag></entry>
-<entry colsep='0'><sgmltag>synopfragmentref</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>synopfragmentref</sgmltag></entry>
 <entry colsep='0'><sgmltag>xref</sgmltag></entry>
-<entry colsep='0'></entry>
 <entry colsep='0'></entry>
 </row>
 </tbody>
@@ -673,7 +745,12 @@
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>audiodata</sgmltag></entry>
 <entry colsep='0'><sgmltag>imagedata</sgmltag></entry>
+<entry colsep='0'><sgmltag>textdata</sgmltag></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>videodata</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>
@@ -943,17 +1020,22 @@
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>refsect2</sgmltag></entry>
 <entry colsep='0'><sgmltag>refsect3</sgmltag></entry>
-<entry colsep='0'><sgmltag>sect1</sgmltag></entry>
+<entry colsep='0'><sgmltag>refsection</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>sect1</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect2</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect3</sgmltag></entry>
-<entry colsep='0'><sgmltag>sect4</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>sect4</sgmltag></entry>
 <entry colsep='0'><sgmltag>sect5</sgmltag></entry>
 <entry colsep='0'><sgmltag>section</sgmltag></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>set</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>

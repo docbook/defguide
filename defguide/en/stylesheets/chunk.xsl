@@ -28,8 +28,11 @@
 <xsl:template match="bookinfo/copyright" mode="titlepage.mode">
   <p class="copyright">
     <a href="{concat('dbcpyright',$html.ext)}">Copyright</a>
-    <xsl:text> (C) </xsl:text>
-    <xsl:apply-templates select="year" mode="titlepage.mode"/>
+    <xsl:text> &#xA9; </xsl:text>
+    <xsl:for-each select="year">
+      <xsl:if test="position() &gt; 1">, </xsl:if>
+      <xsl:apply-templates select="titlepage.mode"/>
+    </xsl:for-each>
     <xsl:text> </xsl:text>
     <xsl:apply-templates select="holder" mode="titlepage.mode"/>
   </p>

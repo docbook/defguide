@@ -54,6 +54,9 @@
       <xsl:when test="@revision='5.0'">
         <img src="figures/rev_5.0.png" alt="[5.0]"/>
       </xsl:when>
+      <xsl:when test="@revision='4.2'">
+        <img src="figures/rev_4.2.png" alt="[4.2]"/>
+      </xsl:when>
       <xsl:when test="@revision='4.0'">
         <img src="figures/rev_4.0.png" alt="[4.0]"/>
       </xsl:when>

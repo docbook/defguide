@@ -185,7 +185,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//DTD DocBook XML CALS Table Model V4.1.2//EN
+><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//DTD DocBook CALS Table Model V4.2CR1//EN
 </para><para><emphasis role='bold'>System identifier</emphasis>: calstblx.dtd
 </para></entry>
 </row>
@@ -220,12 +220,12 @@
 ><synopsis>#PCDATA
 		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
 		|firstterm|foreignphrase|glossterm|footnote|phrase
-		|quote|trademark|wordasword 
+		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
                 |ooclass|oointerface|ooexception
                 |command|computeroutput
-		|database|email|envar|errorcode|errorname|errortype|filename
+		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
 		|keycode|keycombo|keysym|literal|constant|markup|medialabel
@@ -505,7 +505,8 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>((%formalobject.title.content;), (%ndxterm.class;)*,
+><synopsis>(blockinfo?, (%formalobject.title.content;), (%ndxterm.class;)*,
+	  textobject*,
           (graphic+|mediaobject+|tgroup</synopsis></entry>
 </row>
 <row rowsep='0' role='cmtitle'>
@@ -515,7 +516,8 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>((title, titleabbrev?), (indexterm )*,
+><synopsis>(blockinfo?, (title, titleabbrev?), (indexterm )*,
+	  textobject*,
           (graphic+|mediaobject+|tgroup</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>
