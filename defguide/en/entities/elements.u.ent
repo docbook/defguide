@@ -1,0 +1,775 @@
+<!ENTITY % abbrev.element.ent SYSTEM "../refpages/elements/abbrev/entities.u.ent">
+<!ENTITY % abstract.element.ent SYSTEM "../refpages/elements/abstract/entities.u.ent">
+<!ENTITY % accel.element.ent SYSTEM "../refpages/elements/accel/entities.u.ent">
+<!ENTITY % ackno.element.ent SYSTEM "../refpages/elements/ackno/entities.u.ent">
+<!ENTITY % acronym.element.ent SYSTEM "../refpages/elements/acronym/entities.u.ent">
+<!ENTITY % action.element.ent SYSTEM "../refpages/elements/action/entities.u.ent">
+<!ENTITY % address.element.ent SYSTEM "../refpages/elements/address/entities.u.ent">
+<!ENTITY % affiliation.element.ent SYSTEM "../refpages/elements/affiliation/entities.u.ent">
+<!ENTITY % alt.element.ent SYSTEM "../refpages/elements/alt/entities.u.ent">
+<!ENTITY % anchor.element.ent SYSTEM "../refpages/elements/anchor/entities.u.ent">
+<!ENTITY % answer.element.ent SYSTEM "../refpages/elements/answer/entities.u.ent">
+<!ENTITY % appendix.element.ent SYSTEM "../refpages/elements/appendix/entities.u.ent">
+<!ENTITY % appendixinfo.element.ent SYSTEM "../refpages/elements/appendixinfo/entities.u.ent">
+<!ENTITY % application.element.ent SYSTEM "../refpages/elements/application/entities.u.ent">
+<!ENTITY % area.element.ent SYSTEM "../refpages/elements/area/entities.u.ent">
+<!ENTITY % areaset.element.ent SYSTEM "../refpages/elements/areaset/entities.u.ent">
+<!ENTITY % areaspec.element.ent SYSTEM "../refpages/elements/areaspec/entities.u.ent">
+<!ENTITY % arg.element.ent SYSTEM "../refpages/elements/arg/entities.u.ent">
+<!ENTITY % article.element.ent SYSTEM "../refpages/elements/article/entities.u.ent">
+<!ENTITY % articleinfo.element.ent SYSTEM "../refpages/elements/articleinfo/entities.u.ent">
+<!ENTITY % artpagenums.element.ent SYSTEM "../refpages/elements/artpagenums/entities.u.ent">
+<!ENTITY % attribution.element.ent SYSTEM "../refpages/elements/attribution/entities.u.ent">
+<!ENTITY % audiodata.element.ent SYSTEM "../refpages/elements/audiodata/entities.u.ent">
+<!ENTITY % audioobject.element.ent SYSTEM "../refpages/elements/audioobject/entities.u.ent">
+<!ENTITY % author.element.ent SYSTEM "../refpages/elements/author/entities.u.ent">
+<!ENTITY % authorblurb.element.ent SYSTEM "../refpages/elements/authorblurb/entities.u.ent">
+<!ENTITY % authorgroup.element.ent SYSTEM "../refpages/elements/authorgroup/entities.u.ent">
+<!ENTITY % authorinitials.element.ent SYSTEM "../refpages/elements/authorinitials/entities.u.ent">
+<!ENTITY % beginpage.element.ent SYSTEM "../refpages/elements/beginpage/entities.u.ent">
+<!ENTITY % bibliodiv.element.ent SYSTEM "../refpages/elements/bibliodiv/entities.u.ent">
+<!ENTITY % biblioentry.element.ent SYSTEM "../refpages/elements/biblioentry/entities.u.ent">
+<!ENTITY % bibliography.element.ent SYSTEM "../refpages/elements/bibliography/entities.u.ent">
+<!ENTITY % bibliographyinfo.element.ent SYSTEM "../refpages/elements/bibliographyinfo/entities.u.ent">
+<!ENTITY % bibliomisc.element.ent SYSTEM "../refpages/elements/bibliomisc/entities.u.ent">
+<!ENTITY % bibliomixed.element.ent SYSTEM "../refpages/elements/bibliomixed/entities.u.ent">
+<!ENTITY % bibliomset.element.ent SYSTEM "../refpages/elements/bibliomset/entities.u.ent">
+<!ENTITY % biblioset.element.ent SYSTEM "../refpages/elements/biblioset/entities.u.ent">
+<!ENTITY % blockquote.element.ent SYSTEM "../refpages/elements/blockquote/entities.u.ent">
+<!ENTITY % book.element.ent SYSTEM "../refpages/elements/book/entities.u.ent">
+<!ENTITY % bookinfo.element.ent SYSTEM "../refpages/elements/bookinfo/entities.u.ent">
+<!ENTITY % bridgehead.element.ent SYSTEM "../refpages/elements/bridgehead/entities.u.ent">
+<!ENTITY % callout.element.ent SYSTEM "../refpages/elements/callout/entities.u.ent">
+<!ENTITY % calloutlist.element.ent SYSTEM "../refpages/elements/calloutlist/entities.u.ent">
+<!ENTITY % caption.element.ent SYSTEM "../refpages/elements/caption/entities.u.ent">
+<!ENTITY % caution.element.ent SYSTEM "../refpages/elements/caution/entities.u.ent">
+<!ENTITY % chapter.element.ent SYSTEM "../refpages/elements/chapter/entities.u.ent">
+<!ENTITY % chapterinfo.element.ent SYSTEM "../refpages/elements/chapterinfo/entities.u.ent">
+<!ENTITY % citation.element.ent SYSTEM "../refpages/elements/citation/entities.u.ent">
+<!ENTITY % citerefentry.element.ent SYSTEM "../refpages/elements/citerefentry/entities.u.ent">
+<!ENTITY % citetitle.element.ent SYSTEM "../refpages/elements/citetitle/entities.u.ent">
+<!ENTITY % city.element.ent SYSTEM "../refpages/elements/city/entities.u.ent">
+<!ENTITY % classname.element.ent SYSTEM "../refpages/elements/classname/entities.u.ent">
+<!ENTITY % classsynopsis.element.ent SYSTEM "../refpages/elements/classsynopsis/entities.u.ent">
+<!ENTITY % classsynopsisinfo.element.ent SYSTEM "../refpages/elements/classsynopsisinfo/entities.u.ent">
+<!ENTITY % cmdsynopsis.element.ent SYSTEM "../refpages/elements/cmdsynopsis/entities.u.ent">
+<!ENTITY % co.element.ent SYSTEM "../refpages/elements/co/entities.u.ent">
+<!ENTITY % collab.element.ent SYSTEM "../refpages/elements/collab/entities.u.ent">
+<!ENTITY % collabname.element.ent SYSTEM "../refpages/elements/collabname/entities.u.ent">
+<!ENTITY % colophon.element.ent SYSTEM "../refpages/elements/colophon/entities.u.ent">
+<!ENTITY % colspec.element.ent SYSTEM "../refpages/elements/colspec/entities.u.ent">
+<!ENTITY % command.element.ent SYSTEM "../refpages/elements/command/entities.u.ent">
+<!ENTITY % computeroutput.element.ent SYSTEM "../refpages/elements/computeroutput/entities.u.ent">
+<!ENTITY % confdates.element.ent SYSTEM "../refpages/elements/confdates/entities.u.ent">
+<!ENTITY % confgroup.element.ent SYSTEM "../refpages/elements/confgroup/entities.u.ent">
+<!ENTITY % confnum.element.ent SYSTEM "../refpages/elements/confnum/entities.u.ent">
+<!ENTITY % confsponsor.element.ent SYSTEM "../refpages/elements/confsponsor/entities.u.ent">
+<!ENTITY % conftitle.element.ent SYSTEM "../refpages/elements/conftitle/entities.u.ent">
+<!ENTITY % constant.element.ent SYSTEM "../refpages/elements/constant/entities.u.ent">
+<!ENTITY % constraint.element.ent SYSTEM "../refpages/elements/constraint/entities.u.ent">
+<!ENTITY % constraintdef.element.ent SYSTEM "../refpages/elements/constraintdef/entities.u.ent">
+<!ENTITY % constructorsynopsis.element.ent SYSTEM "../refpages/elements/constructorsynopsis/entities.u.ent">
+<!ENTITY % contractnum.element.ent SYSTEM "../refpages/elements/contractnum/entities.u.ent">
+<!ENTITY % contractsponsor.element.ent SYSTEM "../refpages/elements/contractsponsor/entities.u.ent">
+<!ENTITY % contrib.element.ent SYSTEM "../refpages/elements/contrib/entities.u.ent">
+<!ENTITY % copyright.element.ent SYSTEM "../refpages/elements/copyright/entities.u.ent">
+<!ENTITY % corpauthor.element.ent SYSTEM "../refpages/elements/corpauthor/entities.u.ent">
+<!ENTITY % corpname.element.ent SYSTEM "../refpages/elements/corpname/entities.u.ent">
+<!ENTITY % country.element.ent SYSTEM "../refpages/elements/country/entities.u.ent">
+<!ENTITY % database.element.ent SYSTEM "../refpages/elements/database/entities.u.ent">
+<!ENTITY % date.element.ent SYSTEM "../refpages/elements/date/entities.u.ent">
+<!ENTITY % dedication.element.ent SYSTEM "../refpages/elements/dedication/entities.u.ent">
+<!ENTITY % destructorsynopsis.element.ent SYSTEM "../refpages/elements/destructorsynopsis/entities.u.ent">
+<!ENTITY % edition.element.ent SYSTEM "../refpages/elements/edition/entities.u.ent">
+<!ENTITY % editor.element.ent SYSTEM "../refpages/elements/editor/entities.u.ent">
+<!ENTITY % email.element.ent SYSTEM "../refpages/elements/email/entities.u.ent">
+<!ENTITY % emphasis.element.ent SYSTEM "../refpages/elements/emphasis/entities.u.ent">
+<!ENTITY % entry.element.ent SYSTEM "../refpages/elements/entry/entities.u.ent">
+<!ENTITY % entrytbl.element.ent SYSTEM "../refpages/elements/entrytbl/entities.u.ent">
+<!ENTITY % envar.element.ent SYSTEM "../refpages/elements/envar/entities.u.ent">
+<!ENTITY % epigraph.element.ent SYSTEM "../refpages/elements/epigraph/entities.u.ent">
+<!ENTITY % equation.element.ent SYSTEM "../refpages/elements/equation/entities.u.ent">
+<!ENTITY % errorcode.element.ent SYSTEM "../refpages/elements/errorcode/entities.u.ent">
+<!ENTITY % errorname.element.ent SYSTEM "../refpages/elements/errorname/entities.u.ent">
+<!ENTITY % errortype.element.ent SYSTEM "../refpages/elements/errortype/entities.u.ent">
+<!ENTITY % example.element.ent SYSTEM "../refpages/elements/example/entities.u.ent">
+<!ENTITY % exceptionname.element.ent SYSTEM "../refpages/elements/exceptionname/entities.u.ent">
+<!ENTITY % fax.element.ent SYSTEM "../refpages/elements/fax/entities.u.ent">
+<!ENTITY % fieldsynopsis.element.ent SYSTEM "../refpages/elements/fieldsynopsis/entities.u.ent">
+<!ENTITY % figure.element.ent SYSTEM "../refpages/elements/figure/entities.u.ent">
+<!ENTITY % filename.element.ent SYSTEM "../refpages/elements/filename/entities.u.ent">
+<!ENTITY % firstname.element.ent SYSTEM "../refpages/elements/firstname/entities.u.ent">
+<!ENTITY % firstterm.element.ent SYSTEM "../refpages/elements/firstterm/entities.u.ent">
+<!ENTITY % footnote.element.ent SYSTEM "../refpages/elements/footnote/entities.u.ent">
+<!ENTITY % footnoteref.element.ent SYSTEM "../refpages/elements/footnoteref/entities.u.ent">
+<!ENTITY % foreignphrase.element.ent SYSTEM "../refpages/elements/foreignphrase/entities.u.ent">
+<!ENTITY % formalpara.element.ent SYSTEM "../refpages/elements/formalpara/entities.u.ent">
+<!ENTITY % funcdef.element.ent SYSTEM "../refpages/elements/funcdef/entities.u.ent">
+<!ENTITY % funcparams.element.ent SYSTEM "../refpages/elements/funcparams/entities.u.ent">
+<!ENTITY % funcprototype.element.ent SYSTEM "../refpages/elements/funcprototype/entities.u.ent">
+<!ENTITY % funcsynopsis.element.ent SYSTEM "../refpages/elements/funcsynopsis/entities.u.ent">
+<!ENTITY % funcsynopsisinfo.element.ent SYSTEM "../refpages/elements/funcsynopsisinfo/entities.u.ent">
+<!ENTITY % function.element.ent SYSTEM "../refpages/elements/function/entities.u.ent">
+<!ENTITY % glossary.element.ent SYSTEM "../refpages/elements/glossary/entities.u.ent">
+<!ENTITY % glossaryinfo.element.ent SYSTEM "../refpages/elements/glossaryinfo/entities.u.ent">
+<!ENTITY % glossdef.element.ent SYSTEM "../refpages/elements/glossdef/entities.u.ent">
+<!ENTITY % glossdiv.element.ent SYSTEM "../refpages/elements/glossdiv/entities.u.ent">
+<!ENTITY % glossentry.element.ent SYSTEM "../refpages/elements/glossentry/entities.u.ent">
+<!ENTITY % glosslist.element.ent SYSTEM "../refpages/elements/glosslist/entities.u.ent">
+<!ENTITY % glosssee.element.ent SYSTEM "../refpages/elements/glosssee/entities.u.ent">
+<!ENTITY % glossseealso.element.ent SYSTEM "../refpages/elements/glossseealso/entities.u.ent">
+<!ENTITY % glossterm.element.ent SYSTEM "../refpages/elements/glossterm/entities.u.ent">
+<!ENTITY % graphic.element.ent SYSTEM "../refpages/elements/graphic/entities.u.ent">
+<!ENTITY % graphicco.element.ent SYSTEM "../refpages/elements/graphicco/entities.u.ent">
+<!ENTITY % group.element.ent SYSTEM "../refpages/elements/group/entities.u.ent">
+<!ENTITY % guibutton.element.ent SYSTEM "../refpages/elements/guibutton/entities.u.ent">
+<!ENTITY % guiicon.element.ent SYSTEM "../refpages/elements/guiicon/entities.u.ent">
+<!ENTITY % guilabel.element.ent SYSTEM "../refpages/elements/guilabel/entities.u.ent">
+<!ENTITY % guimenu.element.ent SYSTEM "../refpages/elements/guimenu/entities.u.ent">
+<!ENTITY % guimenuitem.element.ent SYSTEM "../refpages/elements/guimenuitem/entities.u.ent">
+<!ENTITY % guisubmenu.element.ent SYSTEM "../refpages/elements/guisubmenu/entities.u.ent">
+<!ENTITY % hardware.element.ent SYSTEM "../refpages/elements/hardware/entities.u.ent">
+<!ENTITY % highlights.element.ent SYSTEM "../refpages/elements/highlights/entities.u.ent">
+<!ENTITY % holder.element.ent SYSTEM "../refpages/elements/holder/entities.u.ent">
+<!ENTITY % honorific.element.ent SYSTEM "../refpages/elements/honorific/entities.u.ent">
+<!ENTITY % imagedata.element.ent SYSTEM "../refpages/elements/imagedata/entities.u.ent">
+<!ENTITY % imageobject.element.ent SYSTEM "../refpages/elements/imageobject/entities.u.ent">
+<!ENTITY % imageobjectco.element.ent SYSTEM "../refpages/elements/imageobjectco/entities.u.ent">
+<!ENTITY % important.element.ent SYSTEM "../refpages/elements/important/entities.u.ent">
+<!ENTITY % index.element.ent SYSTEM "../refpages/elements/index/entities.u.ent">
+<!ENTITY % indexdiv.element.ent SYSTEM "../refpages/elements/indexdiv/entities.u.ent">
+<!ENTITY % indexentry.element.ent SYSTEM "../refpages/elements/indexentry/entities.u.ent">
+<!ENTITY % indexinfo.element.ent SYSTEM "../refpages/elements/indexinfo/entities.u.ent">
+<!ENTITY % indexterm.element.ent SYSTEM "../refpages/elements/indexterm/entities.u.ent">
+<!ENTITY % informalequation.element.ent SYSTEM "../refpages/elements/informalequation/entities.u.ent">
+<!ENTITY % informalexample.element.ent SYSTEM "../refpages/elements/informalexample/entities.u.ent">
+<!ENTITY % informalfigure.element.ent SYSTEM "../refpages/elements/informalfigure/entities.u.ent">
+<!ENTITY % informaltable.element.ent SYSTEM "../refpages/elements/informaltable/entities.u.ent">
+<!ENTITY % initializer.element.ent SYSTEM "../refpages/elements/initializer/entities.u.ent">
+<!ENTITY % inlineequation.element.ent SYSTEM "../refpages/elements/inlineequation/entities.u.ent">
+<!ENTITY % inlinegraphic.element.ent SYSTEM "../refpages/elements/inlinegraphic/entities.u.ent">
+<!ENTITY % inlinemediaobject.element.ent SYSTEM "../refpages/elements/inlinemediaobject/entities.u.ent">
+<!ENTITY % interface.element.ent SYSTEM "../refpages/elements/interface/entities.u.ent">
+<!ENTITY % interfacename.element.ent SYSTEM "../refpages/elements/interfacename/entities.u.ent">
+<!ENTITY % invpartnumber.element.ent SYSTEM "../refpages/elements/invpartnumber/entities.u.ent">
+<!ENTITY % isbn.element.ent SYSTEM "../refpages/elements/isbn/entities.u.ent">
+<!ENTITY % issn.element.ent SYSTEM "../refpages/elements/issn/entities.u.ent">
+<!ENTITY % issuenum.element.ent SYSTEM "../refpages/elements/issuenum/entities.u.ent">
+<!ENTITY % itemizedlist.element.ent SYSTEM "../refpages/elements/itemizedlist/entities.u.ent">
+<!ENTITY % itermset.element.ent SYSTEM "../refpages/elements/itermset/entities.u.ent">
+<!ENTITY % jobtitle.element.ent SYSTEM "../refpages/elements/jobtitle/entities.u.ent">
+<!ENTITY % keycap.element.ent SYSTEM "../refpages/elements/keycap/entities.u.ent">
+<!ENTITY % keycode.element.ent SYSTEM "../refpages/elements/keycode/entities.u.ent">
+<!ENTITY % keycombo.element.ent SYSTEM "../refpages/elements/keycombo/entities.u.ent">
+<!ENTITY % keysym.element.ent SYSTEM "../refpages/elements/keysym/entities.u.ent">
+<!ENTITY % keyword.element.ent SYSTEM "../refpages/elements/keyword/entities.u.ent">
+<!ENTITY % keywordset.element.ent SYSTEM "../refpages/elements/keywordset/entities.u.ent">
+<!ENTITY % label.element.ent SYSTEM "../refpages/elements/label/entities.u.ent">
+<!ENTITY % legalnotice.element.ent SYSTEM "../refpages/elements/legalnotice/entities.u.ent">
+<!ENTITY % lhs.element.ent SYSTEM "../refpages/elements/lhs/entities.u.ent">
+<!ENTITY % lineage.element.ent SYSTEM "../refpages/elements/lineage/entities.u.ent">
+<!ENTITY % lineannotation.element.ent SYSTEM "../refpages/elements/lineannotation/entities.u.ent">
+<!ENTITY % link.element.ent SYSTEM "../refpages/elements/link/entities.u.ent">
+<!ENTITY % listitem.element.ent SYSTEM "../refpages/elements/listitem/entities.u.ent">
+<!ENTITY % literal.element.ent SYSTEM "../refpages/elements/literal/entities.u.ent">
+<!ENTITY % literallayout.element.ent SYSTEM "../refpages/elements/literallayout/entities.u.ent">
+<!ENTITY % lot.element.ent SYSTEM "../refpages/elements/lot/entities.u.ent">
+<!ENTITY % lotentry.element.ent SYSTEM "../refpages/elements/lotentry/entities.u.ent">
+<!ENTITY % manvolnum.element.ent SYSTEM "../refpages/elements/manvolnum/entities.u.ent">
+<!ENTITY % markup.element.ent SYSTEM "../refpages/elements/markup/entities.u.ent">
+<!ENTITY % medialabel.element.ent SYSTEM "../refpages/elements/medialabel/entities.u.ent">
+<!ENTITY % mediaobject.element.ent SYSTEM "../refpages/elements/mediaobject/entities.u.ent">
+<!ENTITY % mediaobjectco.element.ent SYSTEM "../refpages/elements/mediaobjectco/entities.u.ent">
+<!ENTITY % member.element.ent SYSTEM "../refpages/elements/member/entities.u.ent">
+<!ENTITY % menuchoice.element.ent SYSTEM "../refpages/elements/menuchoice/entities.u.ent">
+<!ENTITY % methodname.element.ent SYSTEM "../refpages/elements/methodname/entities.u.ent">
+<!ENTITY % methodparam.element.ent SYSTEM "../refpages/elements/methodparam/entities.u.ent">
+<!ENTITY % methodsynopsis.element.ent SYSTEM "../refpages/elements/methodsynopsis/entities.u.ent">
+<!ENTITY % modespec.element.ent SYSTEM "../refpages/elements/modespec/entities.u.ent">
+<!ENTITY % modifier.element.ent SYSTEM "../refpages/elements/modifier/entities.u.ent">
+<!ENTITY % mousebutton.element.ent SYSTEM "../refpages/elements/mousebutton/entities.u.ent">
+<!ENTITY % msg.element.ent SYSTEM "../refpages/elements/msg/entities.u.ent">
+<!ENTITY % msgaud.element.ent SYSTEM "../refpages/elements/msgaud/entities.u.ent">
+<!ENTITY % msgentry.element.ent SYSTEM "../refpages/elements/msgentry/entities.u.ent">
+<!ENTITY % msgexplan.element.ent SYSTEM "../refpages/elements/msgexplan/entities.u.ent">
+<!ENTITY % msginfo.element.ent SYSTEM "../refpages/elements/msginfo/entities.u.ent">
+<!ENTITY % msglevel.element.ent SYSTEM "../refpages/elements/msglevel/entities.u.ent">
+<!ENTITY % msgmain.element.ent SYSTEM "../refpages/elements/msgmain/entities.u.ent">
+<!ENTITY % msgorig.element.ent SYSTEM "../refpages/elements/msgorig/entities.u.ent">
+<!ENTITY % msgrel.element.ent SYSTEM "../refpages/elements/msgrel/entities.u.ent">
+<!ENTITY % msgset.element.ent SYSTEM "../refpages/elements/msgset/entities.u.ent">
+<!ENTITY % msgsub.element.ent SYSTEM "../refpages/elements/msgsub/entities.u.ent">
+<!ENTITY % msgtext.element.ent SYSTEM "../refpages/elements/msgtext/entities.u.ent">
+<!ENTITY % nonterminal.element.ent SYSTEM "../refpages/elements/nonterminal/entities.u.ent">
+<!ENTITY % note.element.ent SYSTEM "../refpages/elements/note/entities.u.ent">
+<!ENTITY % objectinfo.element.ent SYSTEM "../refpages/elements/objectinfo/entities.u.ent">
+<!ENTITY % olink.element.ent SYSTEM "../refpages/elements/olink/entities.u.ent">
+<!ENTITY % ooclass.element.ent SYSTEM "../refpages/elements/ooclass/entities.u.ent">
+<!ENTITY % ooexception.element.ent SYSTEM "../refpages/elements/ooexception/entities.u.ent">
+<!ENTITY % oointerface.element.ent SYSTEM "../refpages/elements/oointerface/entities.u.ent">
+<!ENTITY % option.element.ent SYSTEM "../refpages/elements/option/entities.u.ent">
+<!ENTITY % optional.element.ent SYSTEM "../refpages/elements/optional/entities.u.ent">
+<!ENTITY % orderedlist.element.ent SYSTEM "../refpages/elements/orderedlist/entities.u.ent">
+<!ENTITY % orgdiv.element.ent SYSTEM "../refpages/elements/orgdiv/entities.u.ent">
+<!ENTITY % orgname.element.ent SYSTEM "../refpages/elements/orgname/entities.u.ent">
+<!ENTITY % otheraddr.element.ent SYSTEM "../refpages/elements/otheraddr/entities.u.ent">
+<!ENTITY % othercredit.element.ent SYSTEM "../refpages/elements/othercredit/entities.u.ent">
+<!ENTITY % othername.element.ent SYSTEM "../refpages/elements/othername/entities.u.ent">
+<!ENTITY % pagenums.element.ent SYSTEM "../refpages/elements/pagenums/entities.u.ent">
+<!ENTITY % para.element.ent SYSTEM "../refpages/elements/para/entities.u.ent">
+<!ENTITY % paramdef.element.ent SYSTEM "../refpages/elements/paramdef/entities.u.ent">
+<!ENTITY % parameter.element.ent SYSTEM "../refpages/elements/parameter/entities.u.ent">
+<!ENTITY % part.element.ent SYSTEM "../refpages/elements/part/entities.u.ent">
+<!ENTITY % partinfo.element.ent SYSTEM "../refpages/elements/partinfo/entities.u.ent">
+<!ENTITY % partintro.element.ent SYSTEM "../refpages/elements/partintro/entities.u.ent">
+<!ENTITY % phone.element.ent SYSTEM "../refpages/elements/phone/entities.u.ent">
+<!ENTITY % phrase.element.ent SYSTEM "../refpages/elements/phrase/entities.u.ent">
+<!ENTITY % pob.element.ent SYSTEM "../refpages/elements/pob/entities.u.ent">
+<!ENTITY % postcode.element.ent SYSTEM "../refpages/elements/postcode/entities.u.ent">
+<!ENTITY % preface.element.ent SYSTEM "../refpages/elements/preface/entities.u.ent">
+<!ENTITY % prefaceinfo.element.ent SYSTEM "../refpages/elements/prefaceinfo/entities.u.ent">
+<!ENTITY % primary.element.ent SYSTEM "../refpages/elements/primary/entities.u.ent">
+<!ENTITY % primaryie.element.ent SYSTEM "../refpages/elements/primaryie/entities.u.ent">
+<!ENTITY % printhistory.element.ent SYSTEM "../refpages/elements/printhistory/entities.u.ent">
+<!ENTITY % procedure.element.ent SYSTEM "../refpages/elements/procedure/entities.u.ent">
+<!ENTITY % production.element.ent SYSTEM "../refpages/elements/production/entities.u.ent">
+<!ENTITY % productionrecap.element.ent SYSTEM "../refpages/elements/productionrecap/entities.u.ent">
+<!ENTITY % productionset.element.ent SYSTEM "../refpages/elements/productionset/entities.u.ent">
+<!ENTITY % productname.element.ent SYSTEM "../refpages/elements/productname/entities.u.ent">
+<!ENTITY % productnumber.element.ent SYSTEM "../refpages/elements/productnumber/entities.u.ent">
+<!ENTITY % programlisting.element.ent SYSTEM "../refpages/elements/programlisting/entities.u.ent">
+<!ENTITY % programlistingco.element.ent SYSTEM "../refpages/elements/programlistingco/entities.u.ent">
+<!ENTITY % prompt.element.ent SYSTEM "../refpages/elements/prompt/entities.u.ent">
+<!ENTITY % property.element.ent SYSTEM "../refpages/elements/property/entities.u.ent">
+<!ENTITY % pubdate.element.ent SYSTEM "../refpages/elements/pubdate/entities.u.ent">
+<!ENTITY % publisher.element.ent SYSTEM "../refpages/elements/publisher/entities.u.ent">
+<!ENTITY % publishername.element.ent SYSTEM "../refpages/elements/publishername/entities.u.ent">
+<!ENTITY % pubsnumber.element.ent SYSTEM "../refpages/elements/pubsnumber/entities.u.ent">
+<!ENTITY % qandadiv.element.ent SYSTEM "../refpages/elements/qandadiv/entities.u.ent">
+<!ENTITY % qandaentry.element.ent SYSTEM "../refpages/elements/qandaentry/entities.u.ent">
+<!ENTITY % qandaset.element.ent SYSTEM "../refpages/elements/qandaset/entities.u.ent">
+<!ENTITY % question.element.ent SYSTEM "../refpages/elements/question/entities.u.ent">
+<!ENTITY % quote.element.ent SYSTEM "../refpages/elements/quote/entities.u.ent">
+<!ENTITY % refclass.element.ent SYSTEM "../refpages/elements/refclass/entities.u.ent">
+<!ENTITY % refdescriptor.element.ent SYSTEM "../refpages/elements/refdescriptor/entities.u.ent">
+<!ENTITY % refentry.element.ent SYSTEM "../refpages/elements/refentry/entities.u.ent">
+<!ENTITY % refentryinfo.element.ent SYSTEM "../refpages/elements/refentryinfo/entities.u.ent">
+<!ENTITY % refentrytitle.element.ent SYSTEM "../refpages/elements/refentrytitle/entities.u.ent">
+<!ENTITY % reference.element.ent SYSTEM "../refpages/elements/reference/entities.u.ent">
+<!ENTITY % referenceinfo.element.ent SYSTEM "../refpages/elements/referenceinfo/entities.u.ent">
+<!ENTITY % refmeta.element.ent SYSTEM "../refpages/elements/refmeta/entities.u.ent">
+<!ENTITY % refmiscinfo.element.ent SYSTEM "../refpages/elements/refmiscinfo/entities.u.ent">
+<!ENTITY % refname.element.ent SYSTEM "../refpages/elements/refname/entities.u.ent">
+<!ENTITY % refnamediv.element.ent SYSTEM "../refpages/elements/refnamediv/entities.u.ent">
+<!ENTITY % refpurpose.element.ent SYSTEM "../refpages/elements/refpurpose/entities.u.ent">
+<!ENTITY % refsect1.element.ent SYSTEM "../refpages/elements/refsect1/entities.u.ent">
+<!ENTITY % refsect1info.element.ent SYSTEM "../refpages/elements/refsect1info/entities.u.ent">
+<!ENTITY % refsect2.element.ent SYSTEM "../refpages/elements/refsect2/entities.u.ent">
+<!ENTITY % refsect2info.element.ent SYSTEM "../refpages/elements/refsect2info/entities.u.ent">
+<!ENTITY % refsect3.element.ent SYSTEM "../refpages/elements/refsect3/entities.u.ent">
+<!ENTITY % refsect3info.element.ent SYSTEM "../refpages/elements/refsect3info/entities.u.ent">
+<!ENTITY % refsynopsisdiv.element.ent SYSTEM "../refpages/elements/refsynopsisdiv/entities.u.ent">
+<!ENTITY % refsynopsisdivinfo.element.ent SYSTEM "../refpages/elements/refsynopsisdivinfo/entities.u.ent">
+<!ENTITY % releaseinfo.element.ent SYSTEM "../refpages/elements/releaseinfo/entities.u.ent">
+<!ENTITY % remark.element.ent SYSTEM "../refpages/elements/remark/entities.u.ent">
+<!ENTITY % replaceable.element.ent SYSTEM "../refpages/elements/replaceable/entities.u.ent">
+<!ENTITY % returnvalue.element.ent SYSTEM "../refpages/elements/returnvalue/entities.u.ent">
+<!ENTITY % revdescription.element.ent SYSTEM "../refpages/elements/revdescription/entities.u.ent">
+<!ENTITY % revhistory.element.ent SYSTEM "../refpages/elements/revhistory/entities.u.ent">
+<!ENTITY % revision.element.ent SYSTEM "../refpages/elements/revision/entities.u.ent">
+<!ENTITY % revnumber.element.ent SYSTEM "../refpages/elements/revnumber/entities.u.ent">
+<!ENTITY % revremark.element.ent SYSTEM "../refpages/elements/revremark/entities.u.ent">
+<!ENTITY % rhs.element.ent SYSTEM "../refpages/elements/rhs/entities.u.ent">
+<!ENTITY % row.element.ent SYSTEM "../refpages/elements/row/entities.u.ent">
+<!ENTITY % sbr.element.ent SYSTEM "../refpages/elements/sbr/entities.u.ent">
+<!ENTITY % screen.element.ent SYSTEM "../refpages/elements/screen/entities.u.ent">
+<!ENTITY % screenco.element.ent SYSTEM "../refpages/elements/screenco/entities.u.ent">
+<!ENTITY % screeninfo.element.ent SYSTEM "../refpages/elements/screeninfo/entities.u.ent">
+<!ENTITY % screenshot.element.ent SYSTEM "../refpages/elements/screenshot/entities.u.ent">
+<!ENTITY % secondary.element.ent SYSTEM "../refpages/elements/secondary/entities.u.ent">
+<!ENTITY % secondaryie.element.ent SYSTEM "../refpages/elements/secondaryie/entities.u.ent">
+<!ENTITY % sect1.element.ent SYSTEM "../refpages/elements/sect1/entities.u.ent">
+<!ENTITY % sect1info.element.ent SYSTEM "../refpages/elements/sect1info/entities.u.ent">
+<!ENTITY % sect2.element.ent SYSTEM "../refpages/elements/sect2/entities.u.ent">
+<!ENTITY % sect2info.element.ent SYSTEM "../refpages/elements/sect2info/entities.u.ent">
+<!ENTITY % sect3.element.ent SYSTEM "../refpages/elements/sect3/entities.u.ent">
+<!ENTITY % sect3info.element.ent SYSTEM "../refpages/elements/sect3info/entities.u.ent">
+<!ENTITY % sect4.element.ent SYSTEM "../refpages/elements/sect4/entities.u.ent">
+<!ENTITY % sect4info.element.ent SYSTEM "../refpages/elements/sect4info/entities.u.ent">
+<!ENTITY % sect5.element.ent SYSTEM "../refpages/elements/sect5/entities.u.ent">
+<!ENTITY % sect5info.element.ent SYSTEM "../refpages/elements/sect5info/entities.u.ent">
+<!ENTITY % section.element.ent SYSTEM "../refpages/elements/section/entities.u.ent">
+<!ENTITY % sectioninfo.element.ent SYSTEM "../refpages/elements/sectioninfo/entities.u.ent">
+<!ENTITY % see.element.ent SYSTEM "../refpages/elements/see/entities.u.ent">
+<!ENTITY % seealso.element.ent SYSTEM "../refpages/elements/seealso/entities.u.ent">
+<!ENTITY % seealsoie.element.ent SYSTEM "../refpages/elements/seealsoie/entities.u.ent">
+<!ENTITY % seeie.element.ent SYSTEM "../refpages/elements/seeie/entities.u.ent">
+<!ENTITY % seg.element.ent SYSTEM "../refpages/elements/seg/entities.u.ent">
+<!ENTITY % seglistitem.element.ent SYSTEM "../refpages/elements/seglistitem/entities.u.ent">
+<!ENTITY % segmentedlist.element.ent SYSTEM "../refpages/elements/segmentedlist/entities.u.ent">
+<!ENTITY % segtitle.element.ent SYSTEM "../refpages/elements/segtitle/entities.u.ent">
+<!ENTITY % seriesvolnums.element.ent SYSTEM "../refpages/elements/seriesvolnums/entities.u.ent">
+<!ENTITY % set.element.ent SYSTEM "../refpages/elements/set/entities.u.ent">
+<!ENTITY % setindex.element.ent SYSTEM "../refpages/elements/setindex/entities.u.ent">
+<!ENTITY % setindexinfo.element.ent SYSTEM "../refpages/elements/setindexinfo/entities.u.ent">
+<!ENTITY % setinfo.element.ent SYSTEM "../refpages/elements/setinfo/entities.u.ent">
+<!ENTITY % sgmltag.element.ent SYSTEM "../refpages/elements/sgmltag/entities.u.ent">
+<!ENTITY % shortaffil.element.ent SYSTEM "../refpages/elements/shortaffil/entities.u.ent">
+<!ENTITY % shortcut.element.ent SYSTEM "../refpages/elements/shortcut/entities.u.ent">
+<!ENTITY % sidebar.element.ent SYSTEM "../refpages/elements/sidebar/entities.u.ent">
+<!ENTITY % sidebarinfo.element.ent SYSTEM "../refpages/elements/sidebarinfo/entities.u.ent">
+<!ENTITY % simpara.element.ent SYSTEM "../refpages/elements/simpara/entities.u.ent">
+<!ENTITY % simplelist.element.ent SYSTEM "../refpages/elements/simplelist/entities.u.ent">
+<!ENTITY % simplemsgentry.element.ent SYSTEM "../refpages/elements/simplemsgentry/entities.u.ent">
+<!ENTITY % simplesect.element.ent SYSTEM "../refpages/elements/simplesect/entities.u.ent">
+<!ENTITY % spanspec.element.ent SYSTEM "../refpages/elements/spanspec/entities.u.ent">
+<!ENTITY % state.element.ent SYSTEM "../refpages/elements/state/entities.u.ent">
+<!ENTITY % step.element.ent SYSTEM "../refpages/elements/step/entities.u.ent">
+<!ENTITY % street.element.ent SYSTEM "../refpages/elements/street/entities.u.ent">
+<!ENTITY % structfield.element.ent SYSTEM "../refpages/elements/structfield/entities.u.ent">
+<!ENTITY % structname.element.ent SYSTEM "../refpages/elements/structname/entities.u.ent">
+<!ENTITY % subject.element.ent SYSTEM "../refpages/elements/subject/entities.u.ent">
+<!ENTITY % subjectset.element.ent SYSTEM "../refpages/elements/subjectset/entities.u.ent">
+<!ENTITY % subjectterm.element.ent SYSTEM "../refpages/elements/subjectterm/entities.u.ent">
+<!ENTITY % subscript.element.ent SYSTEM "../refpages/elements/subscript/entities.u.ent">
+<!ENTITY % substeps.element.ent SYSTEM "../refpages/elements/substeps/entities.u.ent">
+<!ENTITY % subtitle.element.ent SYSTEM "../refpages/elements/subtitle/entities.u.ent">
+<!ENTITY % superscript.element.ent SYSTEM "../refpages/elements/superscript/entities.u.ent">
+<!ENTITY % surname.element.ent SYSTEM "../refpages/elements/surname/entities.u.ent">
+<!ENTITY % symbol.element.ent SYSTEM "../refpages/elements/symbol/entities.u.ent">
+<!ENTITY % synopfragment.element.ent SYSTEM "../refpages/elements/synopfragment/entities.u.ent">
+<!ENTITY % synopfragmentref.element.ent SYSTEM "../refpages/elements/synopfragmentref/entities.u.ent">
+<!ENTITY % synopsis.element.ent SYSTEM "../refpages/elements/synopsis/entities.u.ent">
+<!ENTITY % systemitem.element.ent SYSTEM "../refpages/elements/systemitem/entities.u.ent">
+<!ENTITY % table.element.ent SYSTEM "../refpages/elements/table/entities.u.ent">
+<!ENTITY % tbody.element.ent SYSTEM "../refpages/elements/tbody/entities.u.ent">
+<!ENTITY % term.element.ent SYSTEM "../refpages/elements/term/entities.u.ent">
+<!ENTITY % tertiary.element.ent SYSTEM "../refpages/elements/tertiary/entities.u.ent">
+<!ENTITY % tertiaryie.element.ent SYSTEM "../refpages/elements/tertiaryie/entities.u.ent">
+<!ENTITY % textobject.element.ent SYSTEM "../refpages/elements/textobject/entities.u.ent">
+<!ENTITY % tfoot.element.ent SYSTEM "../refpages/elements/tfoot/entities.u.ent">
+<!ENTITY % tgroup.element.ent SYSTEM "../refpages/elements/tgroup/entities.u.ent">
+<!ENTITY % thead.element.ent SYSTEM "../refpages/elements/thead/entities.u.ent">
+<!ENTITY % tip.element.ent SYSTEM "../refpages/elements/tip/entities.u.ent">
+<!ENTITY % title.element.ent SYSTEM "../refpages/elements/title/entities.u.ent">
+<!ENTITY % titleabbrev.element.ent SYSTEM "../refpages/elements/titleabbrev/entities.u.ent">
+<!ENTITY % toc.element.ent SYSTEM "../refpages/elements/toc/entities.u.ent">
+<!ENTITY % tocback.element.ent SYSTEM "../refpages/elements/tocback/entities.u.ent">
+<!ENTITY % tocchap.element.ent SYSTEM "../refpages/elements/tocchap/entities.u.ent">
+<!ENTITY % tocentry.element.ent SYSTEM "../refpages/elements/tocentry/entities.u.ent">
+<!ENTITY % tocfront.element.ent SYSTEM "../refpages/elements/tocfront/entities.u.ent">
+<!ENTITY % toclevel1.element.ent SYSTEM "../refpages/elements/toclevel1/entities.u.ent">
+<!ENTITY % toclevel2.element.ent SYSTEM "../refpages/elements/toclevel2/entities.u.ent">
+<!ENTITY % toclevel3.element.ent SYSTEM "../refpages/elements/toclevel3/entities.u.ent">
+<!ENTITY % toclevel4.element.ent SYSTEM "../refpages/elements/toclevel4/entities.u.ent">
+<!ENTITY % toclevel5.element.ent SYSTEM "../refpages/elements/toclevel5/entities.u.ent">
+<!ENTITY % tocpart.element.ent SYSTEM "../refpages/elements/tocpart/entities.u.ent">
+<!ENTITY % token.element.ent SYSTEM "../refpages/elements/token/entities.u.ent">
+<!ENTITY % trademark.element.ent SYSTEM "../refpages/elements/trademark/entities.u.ent">
+<!ENTITY % type.element.ent SYSTEM "../refpages/elements/type/entities.u.ent">
+<!ENTITY % ulink.element.ent SYSTEM "../refpages/elements/ulink/entities.u.ent">
+<!ENTITY % userinput.element.ent SYSTEM "../refpages/elements/userinput/entities.u.ent">
+<!ENTITY % varargs.element.ent SYSTEM "../refpages/elements/varargs/entities.u.ent">
+<!ENTITY % variablelist.element.ent SYSTEM "../refpages/elements/variablelist/entities.u.ent">
+<!ENTITY % varlistentry.element.ent SYSTEM "../refpages/elements/varlistentry/entities.u.ent">
+<!ENTITY % varname.element.ent SYSTEM "../refpages/elements/varname/entities.u.ent">
+<!ENTITY % videodata.element.ent SYSTEM "../refpages/elements/videodata/entities.u.ent">
+<!ENTITY % videoobject.element.ent SYSTEM "../refpages/elements/videoobject/entities.u.ent">
+<!ENTITY % void.element.ent SYSTEM "../refpages/elements/void/entities.u.ent">
+<!ENTITY % volumenum.element.ent SYSTEM "../refpages/elements/volumenum/entities.u.ent">
+<!ENTITY % warning.element.ent SYSTEM "../refpages/elements/warning/entities.u.ent">
+<!ENTITY % wordasword.element.ent SYSTEM "../refpages/elements/wordasword/entities.u.ent">
+<!ENTITY % xref.element.ent SYSTEM "../refpages/elements/xref/entities.u.ent">
+<!ENTITY % year.element.ent SYSTEM "../refpages/elements/year/entities.u.ent">
+
+<!ENTITY % html-form.element.ent SYSTEM "../refpages/elements/html-form/entities.u.ent">
+<!ENTITY % mml-math.element.ent SYSTEM "../refpages/elements/mml-math/entities.u.ent">
+<!ENTITY % svg-svg.element.ent SYSTEM "../refpages/elements/svg-svg/entities.u.ent">
+
+%abbrev.element.ent;
+%abstract.element.ent;
+%accel.element.ent;
+%ackno.element.ent;
+%acronym.element.ent;
+%action.element.ent;
+%address.element.ent;
+%affiliation.element.ent;
+%alt.element.ent;
+%anchor.element.ent;
+%answer.element.ent;
+%appendix.element.ent;
+%appendixinfo.element.ent;
+%application.element.ent;
+%area.element.ent;
+%areaset.element.ent;
+%areaspec.element.ent;
+%arg.element.ent;
+%article.element.ent;
+%articleinfo.element.ent;
+%artpagenums.element.ent;
+%attribution.element.ent;
+%audiodata.element.ent;
+%audioobject.element.ent;
+%author.element.ent;
+%authorblurb.element.ent;
+%authorgroup.element.ent;
+%authorinitials.element.ent;
+%beginpage.element.ent;
+%bibliodiv.element.ent;
+%biblioentry.element.ent;
+%bibliography.element.ent;
+%bibliographyinfo.element.ent;
+%bibliomisc.element.ent;
+%bibliomixed.element.ent;
+%bibliomset.element.ent;
+%biblioset.element.ent;
+%blockquote.element.ent;
+%book.element.ent;
+%bookinfo.element.ent;
+%bridgehead.element.ent;
+%callout.element.ent;
+%calloutlist.element.ent;
+%caption.element.ent;
+%caution.element.ent;
+%chapter.element.ent;
+%chapterinfo.element.ent;
+%citation.element.ent;
+%citerefentry.element.ent;
+%citetitle.element.ent;
+%city.element.ent;
+%classname.element.ent;
+%classsynopsis.element.ent;
+%classsynopsisinfo.element.ent;
+%cmdsynopsis.element.ent;
+%co.element.ent;
+%collab.element.ent;
+%collabname.element.ent;
+%colophon.element.ent;
+%colspec.element.ent;
+%command.element.ent;
+%computeroutput.element.ent;
+%confdates.element.ent;
+%confgroup.element.ent;
+%confnum.element.ent;
+%confsponsor.element.ent;
+%conftitle.element.ent;
+%constant.element.ent;
+%constraint.element.ent;
+%constraintdef.element.ent;
+%constructorsynopsis.element.ent;
+%contractnum.element.ent;
+%contractsponsor.element.ent;
+%contrib.element.ent;
+%copyright.element.ent;
+%corpauthor.element.ent;
+%corpname.element.ent;
+%country.element.ent;
+%database.element.ent;
+%date.element.ent;
+%dedication.element.ent;
+%destructorsynopsis.element.ent;
+%edition.element.ent;
+%editor.element.ent;
+%email.element.ent;
+%emphasis.element.ent;
+%entry.element.ent;
+%entrytbl.element.ent;
+%envar.element.ent;
+%epigraph.element.ent;
+%equation.element.ent;
+%errorcode.element.ent;
+%errorname.element.ent;
+%errortype.element.ent;
+%example.element.ent;
+%exceptionname.element.ent;
+%fax.element.ent;
+%fieldsynopsis.element.ent;
+%figure.element.ent;
+%filename.element.ent;
+%firstname.element.ent;
+%firstterm.element.ent;
+%footnote.element.ent;
+%footnoteref.element.ent;
+%foreignphrase.element.ent;
+%formalpara.element.ent;
+%funcdef.element.ent;
+%funcparams.element.ent;
+%funcprototype.element.ent;
+%funcsynopsis.element.ent;
+%funcsynopsisinfo.element.ent;
+%function.element.ent;
+%glossary.element.ent;
+%glossaryinfo.element.ent;
+%glossdef.element.ent;
+%glossdiv.element.ent;
+%glossentry.element.ent;
+%glosslist.element.ent;
+%glosssee.element.ent;
+%glossseealso.element.ent;
+%glossterm.element.ent;
+%graphic.element.ent;
+%graphicco.element.ent;
+%group.element.ent;
+%guibutton.element.ent;
+%guiicon.element.ent;
+%guilabel.element.ent;
+%guimenu.element.ent;
+%guimenuitem.element.ent;
+%guisubmenu.element.ent;
+%hardware.element.ent;
+%highlights.element.ent;
+%holder.element.ent;
+%honorific.element.ent;
+%imagedata.element.ent;
+%imageobject.element.ent;
+%imageobjectco.element.ent;
+%important.element.ent;
+%index.element.ent;
+%indexdiv.element.ent;
+%indexentry.element.ent;
+%indexinfo.element.ent;
+%indexterm.element.ent;
+%informalequation.element.ent;
+%informalexample.element.ent;
+%informalfigure.element.ent;
+%informaltable.element.ent;
+%initializer.element.ent;
+%inlineequation.element.ent;
+%inlinegraphic.element.ent;
+%inlinemediaobject.element.ent;
+%interface.element.ent;
+%interfacename.element.ent;
+%invpartnumber.element.ent;
+%isbn.element.ent;
+%issn.element.ent;
+%issuenum.element.ent;
+%itemizedlist.element.ent;
+%itermset.element.ent;
+%jobtitle.element.ent;
+%keycap.element.ent;
+%keycode.element.ent;
+%keycombo.element.ent;
+%keysym.element.ent;
+%keyword.element.ent;
+%keywordset.element.ent;
+%label.element.ent;
+%legalnotice.element.ent;
+%lhs.element.ent;
+%lineage.element.ent;
+%lineannotation.element.ent;
+%link.element.ent;
+%listitem.element.ent;
+%literal.element.ent;
+%literallayout.element.ent;
+%lot.element.ent;
+%lotentry.element.ent;
+%manvolnum.element.ent;
+%markup.element.ent;
+%medialabel.element.ent;
+%mediaobject.element.ent;
+%mediaobjectco.element.ent;
+%member.element.ent;
+%menuchoice.element.ent;
+%methodname.element.ent;
+%methodparam.element.ent;
+%methodsynopsis.element.ent;
+%modespec.element.ent;
+%modifier.element.ent;
+%mousebutton.element.ent;
+%msg.element.ent;
+%msgaud.element.ent;
+%msgentry.element.ent;
+%msgexplan.element.ent;
+%msginfo.element.ent;
+%msglevel.element.ent;
+%msgmain.element.ent;
+%msgorig.element.ent;
+%msgrel.element.ent;
+%msgset.element.ent;
+%msgsub.element.ent;
+%msgtext.element.ent;
+%nonterminal.element.ent;
+%note.element.ent;
+%objectinfo.element.ent;
+%olink.element.ent;
+%ooclass.element.ent;
+%ooexception.element.ent;
+%oointerface.element.ent;
+%option.element.ent;
+%optional.element.ent;
+%orderedlist.element.ent;
+%orgdiv.element.ent;
+%orgname.element.ent;
+%otheraddr.element.ent;
+%othercredit.element.ent;
+%othername.element.ent;
+%pagenums.element.ent;
+%para.element.ent;
+%paramdef.element.ent;
+%parameter.element.ent;
+%part.element.ent;
+%partinfo.element.ent;
+%partintro.element.ent;
+%phone.element.ent;
+%phrase.element.ent;
+%pob.element.ent;
+%postcode.element.ent;
+%preface.element.ent;
+%prefaceinfo.element.ent;
+%primary.element.ent;
+%primaryie.element.ent;
+%printhistory.element.ent;
+%procedure.element.ent;
+%production.element.ent;
+%productionrecap.element.ent;
+%productionset.element.ent;
+%productname.element.ent;
+%productnumber.element.ent;
+%programlisting.element.ent;
+%programlistingco.element.ent;
+%prompt.element.ent;
+%property.element.ent;
+%pubdate.element.ent;
+%publisher.element.ent;
+%publishername.element.ent;
+%pubsnumber.element.ent;
+%qandadiv.element.ent;
+%qandaentry.element.ent;
+%qandaset.element.ent;
+%question.element.ent;
+%quote.element.ent;
+%refclass.element.ent;
+%refdescriptor.element.ent;
+%refentry.element.ent;
+%refentryinfo.element.ent;
+%refentrytitle.element.ent;
+%reference.element.ent;
+%referenceinfo.element.ent;
+%refmeta.element.ent;
+%refmiscinfo.element.ent;
+%refname.element.ent;
+%refnamediv.element.ent;
+%refpurpose.element.ent;
+%refsect1.element.ent;
+%refsect1info.element.ent;
+%refsect2.element.ent;
+%refsect2info.element.ent;
+%refsect3.element.ent;
+%refsect3info.element.ent;
+%refsynopsisdiv.element.ent;
+%refsynopsisdivinfo.element.ent;
+%releaseinfo.element.ent;
+%remark.element.ent;
+%replaceable.element.ent;
+%returnvalue.element.ent;
+%revdescription.element.ent;
+%revhistory.element.ent;
+%revision.element.ent;
+%revnumber.element.ent;
+%revremark.element.ent;
+%rhs.element.ent;
+%row.element.ent;
+%sbr.element.ent;
+%screen.element.ent;
+%screenco.element.ent;
+%screeninfo.element.ent;
+%screenshot.element.ent;
+%secondary.element.ent;
+%secondaryie.element.ent;
+%sect1.element.ent;
+%sect1info.element.ent;
+%sect2.element.ent;
+%sect2info.element.ent;
+%sect3.element.ent;
+%sect3info.element.ent;
+%sect4.element.ent;
+%sect4info.element.ent;
+%sect5.element.ent;
+%sect5info.element.ent;
+%section.element.ent;
+%sectioninfo.element.ent;
+%see.element.ent;
+%seealso.element.ent;
+%seealsoie.element.ent;
+%seeie.element.ent;
+%seg.element.ent;
+%seglistitem.element.ent;
+%segmentedlist.element.ent;
+%segtitle.element.ent;
+%seriesvolnums.element.ent;
+%set.element.ent;
+%setindex.element.ent;
+%setindexinfo.element.ent;
+%setinfo.element.ent;
+%sgmltag.element.ent;
+%shortaffil.element.ent;
+%shortcut.element.ent;
+%sidebar.element.ent;
+%sidebarinfo.element.ent;
+%simpara.element.ent;
+%simplelist.element.ent;
+%simplemsgentry.element.ent;
+%simplesect.element.ent;
+%spanspec.element.ent;
+%state.element.ent;
+%step.element.ent;
+%street.element.ent;
+%structfield.element.ent;
+%structname.element.ent;
+%subject.element.ent;
+%subjectset.element.ent;
+%subjectterm.element.ent;
+%subscript.element.ent;
+%substeps.element.ent;
+%subtitle.element.ent;
+%superscript.element.ent;
+%surname.element.ent;
+%symbol.element.ent;
+%synopfragment.element.ent;
+%synopfragmentref.element.ent;
+%synopsis.element.ent;
+%systemitem.element.ent;
+%table.element.ent;
+%tbody.element.ent;
+%term.element.ent;
+%tertiary.element.ent;
+%tertiaryie.element.ent;
+%textobject.element.ent;
+%tfoot.element.ent;
+%tgroup.element.ent;
+%thead.element.ent;
+%tip.element.ent;
+%title.element.ent;
+%titleabbrev.element.ent;
+%toc.element.ent;
+%tocback.element.ent;
+%tocchap.element.ent;
+%tocentry.element.ent;
+%tocfront.element.ent;
+%toclevel1.element.ent;
+%toclevel2.element.ent;
+%toclevel3.element.ent;
+%toclevel4.element.ent;
+%toclevel5.element.ent;
+%tocpart.element.ent;
+%token.element.ent;
+%trademark.element.ent;
+%type.element.ent;
+%ulink.element.ent;
+%userinput.element.ent;
+%varargs.element.ent;
+%variablelist.element.ent;
+%varlistentry.element.ent;
+%varname.element.ent;
+%videodata.element.ent;
+%videoobject.element.ent;
+%void.element.ent;
+%volumenum.element.ent;
+%warning.element.ent;
+%wordasword.element.ent;
+%xref.element.ent;
+%year.element.ent;
+
+%html-form.element.ent;
+%mml-math.element.ent;
+%svg-svg.element.ent;

@@ -1,0 +1,59 @@
+<refentry id="lot.element">
+<?dbhtml filename="lot.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>lot</secondary></indexterm>
+<refentrytitle>lot</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>lot</refname>
+<refpurpose>&lot.purpose;</refpurpose>
+</refnamediv>
+
+&lot.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>LoT</sgmltag> is a <emphasis>list of titles</emphasis>.  It can be used
+to generate lists of <sgmltag>Figure</sgmltag>s, <sgmltag>Table</sgmltag>s,
+<sgmltag>Example</sgmltag>s, or <sgmltag>Equation</sgmltag>s.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; A list of titles in a <sgmltag>Book</sgmltag> usually
+introduces a forced page break.
+</para>
+<para>
+Most often, lists of titles are generated automatically
+by the presentation system and never have to be represented explicitly
+in the document source.
+</para>
+</refsect2>
+
+&lot.parents.gen;
+&lot.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying number or string
+that may be used in presentation.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&lot.example.1.txt;</programlisting>
+</informalexample>
+
+</refsect1>
+</refentry>
+

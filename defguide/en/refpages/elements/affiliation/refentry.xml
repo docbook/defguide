@@ -1,0 +1,54 @@
+<refentry id="affiliation.element">
+<?dbhtml filename="affiliation.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>affiliation</secondary></indexterm>
+<refentrytitle>affiliation</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>affiliation</refname>
+<refpurpose>&affiliation.purpose;</refpurpose>
+</refnamediv>
+
+&affiliation.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The institutional affiliation of an author, contributor, or other
+individual.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.context; &format.csuppress;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary></indexterm>
+In DocBook <acronym>V4.0</acronym>, <sgmltag>Affiliation</sgmltag> will be removed
+from some of the places in which it now occurs. Instead of
+appearing inside <sgmltag>Author</sgmltag>, for
+example, a new wrapper element will be created to hold
+<sgmltag>Author</sgmltag>, <sgmltag>AuthorBlurb</sgmltag>, and
+<sgmltag>Affiliation</sgmltag>.
+</para>
+</refsect2>
+
+
+&affiliation.parents.gen;
+&affiliation.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&affiliation.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&affiliation.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

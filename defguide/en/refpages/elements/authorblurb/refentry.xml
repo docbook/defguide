@@ -1,0 +1,54 @@
+<refentry id="authorblurb.element">
+<?dbhtml filename="authorblurb.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>authorblurb</secondary></indexterm>
+<refentrytitle>authorblurb</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>authorblurb</refname>
+<refpurpose>&authorblurb.purpose;</refpurpose>
+</refnamediv>
+
+&authorblurb.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A short description of an author.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; &format.csuppress;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+In DocBook <acronym>V4.0</acronym>, <sgmltag>AuthorBlurb</sgmltag> will be removed
+from some of the places in which it now occurs. Instead of
+appearing inside <sgmltag>Author</sgmltag>, for
+example, a new wrapper element will be created to hold
+<sgmltag>Author</sgmltag>, <sgmltag>AuthorBlurb</sgmltag>, and
+<sgmltag>Affiliation</sgmltag>.
+</para>
+</refsect2>
+
+
+&authorblurb.parents.gen;
+&authorblurb.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&authorblurb.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&authorblurb.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,111 @@
+<refentry id="refentry.element">
+<?dbhtml filename="refentry.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>refentry</secondary></indexterm>
+<refentrytitle>refentry</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refentry</refname>
+<refpurpose>&refentry.purpose;</refpurpose>
+</refnamediv>
+
+&refentry.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>RefEntry</sgmltag> is a reference page.  In &UNIX; parlance this has
+historically been called a &ldquo;man page&rdquo; (short for manual page).
+</para>
+
+<para>
+<sgmltag>RefEntry</sgmltag> is an appropriate wrapper for any small unit of
+reference documentation describing a single topic.  Canonical examples
+are programming language functions and user commands 
+(one <sgmltag>RefEntry</sgmltag> per function or command).<footnote><para>
+You're reading a <sgmltag>RefEntry</sgmltag> right now.</para></footnote>
+</para>
+
+<para>
+On some projects, the structure of reference pages may be rigorously 
+defined right down to the number, order, and title of individual sections
+(some or all of which may be required).
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; It is not uncommon for <sgmltag>RefEntry</sgmltag>s to introduce
+a forced page break in print media.
+</para>
+<para>
+Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <sgmltag>RefEntry</sgmltag>.
+</para>
+<para>
+Common presentational features, such as titles and running
+heads, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsect2>
+
+
+
+&refentry.parents.gen;
+&refentry.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>RefEntry</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+A typical reference page for a command:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&refentry.example.1.txt;</programlisting>
+</informalexample>
+
+<para>
+A typical reference page for a function:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&refentry.example.2.txt;</programlisting>
+</informalexample>
+
+<para>
+A reference page for a data structure:
+</para>
+
+
+<informalexample role="example-source">
+<programlisting>&refentry.example.3.txt;</programlisting>
+</informalexample>
+
+<para>For additional examples, see also
+&refentry.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

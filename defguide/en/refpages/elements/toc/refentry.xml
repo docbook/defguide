@@ -1,0 +1,69 @@
+<refentry id="toc.element">
+<?dbhtml filename="toc.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>toc</secondary></indexterm>
+<refentrytitle>toc</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc</refname>
+<refpurpose>&toc.purpose;</refpurpose>
+</refnamediv>
+
+&toc.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>ToC</sgmltag> element defines a <emphasis>table of
+contents</emphasis> in a document.
+</para>
+
+<para>
+The general structure of elements in a <sgmltag>ToC</sgmltag> is analogous to the
+structure of the document described.  For example, a <sgmltag>ToC</sgmltag> for
+a <sgmltag>Book</sgmltag> might contain <sgmltag>TocFront</sgmltag> elements for the
+front-matter of the book, <sgmltag>TocChap</sgmltag> elements for the body of the
+book, and <sgmltag>TocBack</sgmltag> elements for the back matter.  Inside each
+of these are additional elements reflecting the structure of each
+component.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+In real life, <sgmltag>ToC</sgmltag>s are usually generated automatically
+by the presentation system and never have to be represented explicitly
+in the document source.
+</para>
+</refsect2>
+
+
+
+&toc.parents.gen;
+&toc.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>pagenum</term>
+<listitem>
+<para>
+<sgmltag class="attribute">PageNum</sgmltag> indicates the page on which this 
+Table of Contents appears in the printed document
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&toc.example.1.txt;</programlisting>
+</informalexample>
+
+</refsect1>
+</refentry>
+

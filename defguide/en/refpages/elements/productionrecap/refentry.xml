@@ -1,0 +1,52 @@
+<refentry id="productionrecap.element" revision='EBNF'>
+<?dbhtml filename="productionrecap.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>productionrecap</secondary></indexterm>
+<refentrytitle>productionrecap</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>productionrecap</refname>
+<refpurpose>&productionrecap.purpose;</refpurpose>
+</refnamediv>
+
+&productionrecap.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>This element is only available if you are using the
+<link linkend="ebnf.module">EBNF Module</link>.</para>
+
+<para>A <sgmltag>ProductionRecap</sgmltag> is a cross reference to
+a <sgmltag>Production</sgmltag>.</para>
+
+<refsect2><title>Processing expectations</title>
+<para>A <sgmltag>ProductionRecap</sgmltag> is rendered exactly like
+the production to which it refers. The purpose of the
+<sgmltag>ProductionRecap</sgmltag> element is to allow a
+<sgmltag>ProductionSet</sgmltag> to contain copies of
+<sgmltag>Production</sgmltag>s defined elsewhere. This frequently
+makes it easier for readers to understand.
+</para>
+</refsect2>
+
+
+&productionrecap.parents.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>linkend</term>
+<listitem>
+<para revision="EBNF">FIXME:</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&productionrecap.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,58 @@
+<refentry id="caution.element">
+<?dbhtml filename="caution.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>caution</secondary></indexterm>
+<refentrytitle>caution</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>caution</refname>
+<refpurpose>&caution.purpose;</refpurpose>
+</refnamediv>
+
+&caution.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Caution</sgmltag> is an admonition, usually set off
+from the main text.
+</para>
+
+<para>
+In some types of documentation, the semantics of admonitions are clearly
+defined (<sgmltag>Caution</sgmltag> might imply the possibility of harm to
+equipment whereas <sgmltag>Warning</sgmltag> might imply harm to a person)
+However, DocBook makes no such assertions.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Often outputs the generated text <quote>Caution</quote>
+or some other visible indication of the type of admonition,
+especially if a <sgmltag>Title</sgmltag> is not present.  Sometimes
+outputs a graphical icon or other symbol as well.
+</para>
+</refsect2>
+
+
+&caution.parents.gen;
+&caution.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&caution.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&caution.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.caution.1" role="HACK-ex.out.start"/>
+&caution.example.1.gen;
+<anchor id="ex.oe.caution.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

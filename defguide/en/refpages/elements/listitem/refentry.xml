@@ -1,0 +1,63 @@
+<refentry id="listitem.element">
+<?dbhtml filename="listitem.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>listitem</secondary></indexterm>
+<refentrytitle>listitem</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>listitem</refname>
+<refpurpose>&listitem.purpose;</refpurpose>
+</refnamediv>
+
+&listitem.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>ListItem</sgmltag> element is a wrapper around an item in a list.
+In an <sgmltag>ItemizedList</sgmltag> or an <sgmltag>OrderedList</sgmltag>, the
+<sgmltag>ListItem</sgmltag> surrounds the entire list item.
+In a <sgmltag>VariableList</sgmltag>, <sgmltag>ListItem</sgmltag> surrounds the 
+<quote>definition</quote> part of the list item.
+</para>
+
+<refsect2 id="dbreproc.listitem"><title>Processing expectations</title>
+<para>
+&format.block; List items usually generate the appropriate mark
+(a number or bullet) and appear indented, next to the mark.  In a
+<sgmltag>VariableList</sgmltag>, the presentation may be influenced by
+the length of the <sgmltag>Term</sgmltag> or <sgmltag>Term</sgmltag>s that precede
+the list item and by attributes on the list itself.
+</para>
+</refsect2>
+
+
+
+&listitem.parents.gen;
+&listitem.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>override</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Override</sgmltag> specifies the keyword for the type
+of mark to be used on <emphasis>this</emphasis> <sgmltag>ListItem</sgmltag> instead of
+the mark currently in use for the list.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&listitem.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&listitem.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

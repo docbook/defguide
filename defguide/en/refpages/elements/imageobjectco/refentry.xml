@@ -1,0 +1,78 @@
+<refentry id="imageobjectco.element" revision='3.1'>
+<?dbhtml filename="imageobjectco.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>imageobjectco</secondary></indexterm>
+<refentrytitle>imageobjectco</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>imageobjectco</refname>
+<refpurpose>&imageobjectco.purpose;</refpurpose>
+</refnamediv>
+
+&imageobjectco.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Callout</sgmltag>s, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently <quote>hot,</quote> and clicking on
+them navigates to the corresponding annotation.
+</para>
+<para>
+A <sgmltag>ImageObjectCO</sgmltag> is a wrapper around an <sgmltag>AreaSpec</sgmltag> and
+an <sgmltag>ImageObject</sgmltag>.  An <sgmltag>AreaSpec</sgmltag> identifies the locations
+(coordinates)
+on the image where the <sgmltag>Callout</sgmltag>s occur.
+The <sgmltag>ImageObjectCO</sgmltag> may also contain the list of annotations in
+a <sgmltag>CalloutList</sgmltag>, although the <sgmltag>CalloutList</sgmltag> may also
+occur outside of the wrapper, elsewhere in the document.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; It may not be rendered at all, depending on its placement
+within the <sgmltag>MediaObject</sgmltag> that contains it and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <sgmltag>MediaObject</sgmltag>.
+</para>
+<para>
+The mandatory processing expectations of a <sgmltag>ImageObjectCO</sgmltag> are
+minimal: a system is expected to render the image, if possible, and the
+callout list, if present.
+</para>
+<para>
+In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks on the image and
+the annotations.  For example, an &HTML; presentation system might use the
+coordinate information to construct a client-side image map.
+Some processing systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information.
+But this level of sophistication is not mandatory.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V5.0</acronym></secondary>
+</indexterm>
+In DocBook <acronym>V5.0</acronym>, <sgmltag>ImageObjectCO</sgmltag> will be discarded. In its
+place, use <sgmltag>MediaObjectCO</sgmltag>.
+</para>
+</refsect2>
+
+
+&imageobjectco.parents.gen;
+&imageobjectco.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&imageobjectco.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&imageobjectco.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

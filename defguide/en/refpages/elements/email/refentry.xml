@@ -1,0 +1,51 @@
+<refentry id="email.element">
+<?dbhtml filename="email.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>email</secondary></indexterm>
+<refentrytitle>email</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>email</refname>
+<refpurpose>&email.purpose;</refpurpose>
+</refnamediv>
+
+&email.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Inline markup identifying an email address.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline;  <sgmltag>Email</sgmltag> may generate surrounding punctuation,
+such as angle brackets.  This is an interchange issue. See
+<xref linkend="app-interchange"/>.
+</para>
+<para>
+In some processing environments, <sgmltag>Email</sgmltag> may automatically generate
+a hypertext link (a <literal>mailto:</literal> <acronym>URL</acronym>).
+</para>
+<para>
+In an <sgmltag>Address</sgmltag>,
+this element may inherit the verbatim qualities of an address.
+</para>
+</refsect2>
+
+
+&email.parents.gen;
+&email.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&email.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&email.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,64 @@
+&lt;!DOCTYPE cmdsynopsis PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;cmdsynopsis&gt;
+  &lt;command&gt;cccp&lt;/command&gt;
+  &lt;arg&gt;-$&lt;/arg&gt;
+  &lt;arg&gt;-C&lt;/arg&gt;
+  &lt;arg rep='repeat'&gt;-D&lt;replaceable&gt;name&lt;/replaceable&gt;
+       &lt;arg&gt;=&lt;replaceable&gt;definition&lt;/replaceable&gt;&lt;/arg&gt;&lt;/arg&gt;
+  &lt;arg&gt;-dD&lt;/arg&gt;
+  &lt;arg&gt;-dM&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg rep='repeat'&gt;-I &lt;replaceable&gt;directory&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;arg&gt;-H&lt;/arg&gt;
+  &lt;arg&gt;-I-&lt;/arg&gt;
+  &lt;arg rep='repeat'&gt;-imacros &lt;replaceable&gt;file&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg rep='repeat'&gt;-include &lt;replaceable&gt;file&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;group&gt;
+    &lt;synopfragmentref linkend="langs"&gt;languages&lt;/synopfragmentref&gt;
+  &lt;/group&gt;
+  &lt;arg&gt;-lint&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;group&gt;
+    &lt;arg&gt;-M&lt;/arg&gt;
+    &lt;arg&gt;-MD&lt;/arg&gt;
+    &lt;arg&gt;-MM&lt;/arg&gt;
+    &lt;arg&gt;-MMD&lt;/arg&gt;
+  &lt;/group&gt;
+  &lt;arg&gt;-nostdinc&lt;/arg&gt;
+  &lt;arg&gt;-P&lt;/arg&gt;
+  &lt;arg&gt;-pedantic&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg&gt;-pedantic-errors&lt;/arg&gt;
+  &lt;arg&gt;-trigraphs&lt;/arg&gt;
+  &lt;arg&gt;-U&lt;replaceable&gt;name&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg&gt;-undef&lt;/arg&gt;
+  &lt;arg choice="plain"&gt;&lt;synopfragmentref linkend="warn"&gt;warnings
+    &lt;/synopfragmentref&gt;&lt;/arg&gt;
+  &lt;group choice='req'&gt;
+    &lt;arg&gt;&lt;replaceable&gt;infile&lt;/replaceable&gt;&lt;/arg&gt;
+    &lt;arg&gt;-&lt;/arg&gt;
+  &lt;/group&gt;
+  &lt;group choice='req'&gt;
+    &lt;arg&gt;&lt;replaceable&gt;outfile&lt;/replaceable&gt;&lt;/arg&gt;
+    &lt;arg&gt;-&lt;/arg&gt;
+  &lt;/group&gt;
+
+  &lt;synopfragment id="langs"&gt;
+    &lt;group choice="plain"&gt;
+      &lt;arg&gt;-lang-c&lt;/arg&gt;
+      &lt;arg&gt;-lang-c++&lt;/arg&gt;
+      &lt;arg&gt;-lang-objc&lt;/arg&gt;
+    &lt;/group&gt;
+  &lt;/synopfragment&gt;
+
+  &lt;synopfragment id="warn"&gt;
+    &lt;arg&gt;-Wtrigraphs&lt;/arg&gt;
+    &lt;arg&gt;-Wcomment&lt;/arg&gt;
+    &lt;arg&gt;-Wall&lt;/arg&gt;
+    &lt;arg&gt;-Wtraditional&lt;/arg&gt;
+  &lt;/synopfragment&gt;
+
+&lt;/cmdsynopsis&gt;

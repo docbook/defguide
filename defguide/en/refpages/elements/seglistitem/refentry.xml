@@ -1,0 +1,56 @@
+<refentry id="seglistitem.element">
+<?dbhtml filename="seglistitem.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>seglistitem</secondary></indexterm>
+<refentrytitle>seglistitem</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>seglistitem</refname>
+<refpurpose>&seglistitem.purpose;</refpurpose>
+</refnamediv>
+
+&seglistitem.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para> 
+A <sgmltag>SegmentedList</sgmltag> consists of a set of headings
+(<sgmltag>SegTitle</sgmltag>s) and a list of parallel sets of elements.
+Each set of elements is stored in a <sgmltag>SegListItem</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+Segmented lists can be formatted in a number of ways.  Two popular
+formats are tabular and as a list of repeated headings and elements.
+In a tabular presentation, each <sgmltag>SegListItem</sgmltag> is a row in
+the table.  In the list presentation, each <sgmltag>SegListItem</sgmltag>
+contains a block of heading/element pairs.
+</para>
+<para>
+DocBook cannot detect errors caused by too many or too few <sgmltag>Seg</sgmltag>s
+in a <sgmltag>SegListItem</sgmltag>. You will have to rely on external processes
+to find those errors.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&seglistitem.parents.gen;
+&seglistitem.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&seglistitem.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

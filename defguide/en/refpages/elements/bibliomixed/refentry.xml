@@ -1,0 +1,80 @@
+<refentry id="bibliomixed.element">
+<?dbhtml filename="bibliomixed.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>bibliomixed</secondary></indexterm>
+<refentrytitle>bibliomixed</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>bibliomixed</refname>
+<refpurpose>&bibliomixed.purpose;</refpurpose>
+</refnamediv>
+
+&bibliomixed.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>BiblioMixed</sgmltag> is an entry in a <sgmltag>Bibliography</sgmltag>. The
+contents of <sgmltag>BiblioMixed</sgmltag> includes all necessary punctuation
+for formatting.  Presentation systems usually display all of the elements
+in a <sgmltag>BiblioMixed</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+
+<para>
+<sgmltag>BiblioMixed</sgmltag> entries are <quote>cooked.</quote> In
+addition to named fields, they can contain interspersed <literal>#PCDATA</literal>
+to provide punctuation and other formatting information.
+</para>
+
+<para>
+The processing
+system is generally expected to present each and every element in the entry,
+and all interspersed <literal>#PCDATA</literal>, in the order in which it 
+occurs.
+</para>
+
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+<sgmltag>AuthorBlurb</sgmltag> and <sgmltag>Affiliation</sgmltag> will be removed
+from the inline content of <sgmltag>BiblioEntry</sgmltag> in DocBook <acronym>V4.0</acronym>.
+A new wrapper element will be created to associate this information with
+authors, editors, and other contributors.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V5.0</acronym></secondary>
+</indexterm>
+<sgmltag>BiblioSet</sgmltag> will be removed from the content model of
+<sgmltag>BiblioMixed</sgmltag>.  Allowing a <quote>raw</quote> container inside
+a <quote>cooked</quote> one confuses processing expectations.
+</para>
+</refsect2>
+
+
+
+&bibliomixed.parents.gen;
+&bibliomixed.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&bibliomixed.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&bibliomixed.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

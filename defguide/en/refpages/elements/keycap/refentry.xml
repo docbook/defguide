@@ -1,0 +1,75 @@
+<refentry id="keycap.element">
+<?dbhtml filename="keycap.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>keycap</secondary></indexterm>
+<refentrytitle>keycap</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>keycap</refname>
+<refpurpose>&keycap.purpose;</refpurpose>
+</refnamediv>
+
+&keycap.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>KeyCap</sgmltag> identifies the text printed on a physical key
+on a computer keyboard.  This is distinct from any scan code
+that it may generate (<sgmltag>KeyCode</sgmltag>), or any symbolic name
+(<sgmltag>KeySym</sgmltag>) that might exist for the key.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+In DocBook <acronym>V4.0</acronym>, the content model of <sgmltag>KeyCap</sgmltag> will be
+constrained to <literal>(#PCDATA | Replaceable |
+InlineGraphic)</literal>.
+</para>
+</refsect2>
+
+
+&keycap.parents.gen;
+&keycap.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>Keycap</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&keycap.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&keycap.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.keycap.1" role="HACK-ex.out.start"/>
+&keycap.example.1.gen;
+<anchor id="ex.oe.keycap.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&keycap.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,44 @@
+<refentry id="msgmain.element">
+<?dbhtml filename="msgmain.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>msgmain</secondary></indexterm>
+<refentrytitle>msgmain</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>msgmain</refname>
+<refpurpose>&msgmain.purpose;</refpurpose>
+</refnamediv>
+
+&msgmain.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Every <sgmltag>Msg</sgmltag> must have one primary message.  This is stored in
+the <sgmltag>MsgMain</sgmltag>. The primary message is distinguished from
+any number of submessages (<sgmltag>MsgSub</sgmltag>) or related
+messages (<sgmltag>MsgRel</sgmltag>) that a <sgmltag>Msg</sgmltag> might have.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+On the whole, the semantics of <sgmltag>MsgSet</sgmltag>
+are not clearly defined.
+</para>
+</refsect2>
+
+&msgmain.parents.gen;
+&msgmain.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&msgmain.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,60 @@
+<refentry id="glossary.element">
+<?dbhtml filename="glossary.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>glossary</secondary></indexterm>
+<refentrytitle>glossary</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>glossary</refname>
+<refpurpose>&glossary.purpose;</refpurpose>
+</refnamediv>
+
+&glossary.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Glossary</sgmltag> contains a collection of terms and brief descriptions
+or definitions of those terms.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; A <sgmltag>Glossary</sgmltag> in a <sgmltag>Book</sgmltag>
+frequently causes a forced page break in print media.
+</para>
+</refsect2>
+
+
+&glossary.parents.gen;
+&glossary.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Glossary</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&glossary.example.1.txt;</programlisting>
+</informalexample>
+
+</refsect1>
+</refentry>
+

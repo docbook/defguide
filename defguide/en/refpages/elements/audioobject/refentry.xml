@@ -1,0 +1,52 @@
+<refentry id="audioobject.element" revision='3.1'>
+<?dbhtml filename="audioobject.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>audioobject</secondary></indexterm>
+<refentrytitle>audioobject</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>audioobject</refname>
+<refpurpose>&audioobject.purpose;</refpurpose>
+</refnamediv>
+
+&audioobject.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>AudioObject</sgmltag> is a wrapper for <sgmltag>AudioData</sgmltag>.
+</para>
+
+<refsect2 id="dbreproc.audioobject"><title>Processing expectations</title>
+<para>
+Its content is rendered aurally or not at all.  It might not be
+rendered, depending on its placement within a
+<sgmltag>MediaObject</sgmltag> or <sgmltag>InlineMediaObject</sgmltag> and the
+constraints on the publishing system.  For a more detailed
+description of the semantics involved, see
+<sgmltag>MediaObject</sgmltag>.
+</para>
+</refsect2> 
+
+
+&audioobject.parents.gen;
+&audioobject.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&audioobject.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&audioobject.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.audioobject.1" role="HACK-ex.out.start"/>
+&audioobject.example.1.gen;
+<anchor id="ex.oe.audioobject.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

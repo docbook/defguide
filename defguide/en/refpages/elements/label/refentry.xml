@@ -1,0 +1,43 @@
+<refentry id="label.element">
+<?dbhtml filename="label.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>label</secondary></indexterm>
+<refentrytitle>label</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>label</refname>
+<refpurpose>&label.purpose;</refpurpose>
+</refnamediv>
+
+&label.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>Label</sgmltag> on a <sgmltag>Question</sgmltag> or
+<sgmltag>Answer</sgmltag> identifies the
+label that is to be used when formatting the question or answer.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+If the <sgmltag class='attribute'>DefaultLabel</sgmltag> attribute on the
+nearest ancestor <sgmltag>QandASet</sgmltag> is not
+<literal>Label</literal>, then the 
+<sgmltag class='attribute'>Label</sgmltag> attribute is
+ignored.
+</para>
+<para>
+Otherwise, the value of the <sgmltag class='attribute'>Label</sgmltag> attribute
+is used as the label for the <sgmltag>Question</sgmltag> or <sgmltag>Answer</sgmltag>.
+</para>
+</refsect2>
+
+
+&label.parents.gen;
+&label.children.gen;
+</refsect1>
+</refentry>
+

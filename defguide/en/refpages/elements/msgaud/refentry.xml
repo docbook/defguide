@@ -1,0 +1,56 @@
+<refentry id="msgaud.element">
+<?dbhtml filename="msgaud.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>msgaud</secondary></indexterm>
+<refentrytitle>msgaud</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>msgaud</refname>
+<refpurpose>&msgaud.purpose;</refpurpose>
+</refnamediv>
+
+&msgaud.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>MsgAud</sgmltag> is part of the additional information associated with
+a message in a <sgmltag>MsgSet</sgmltag>.  It identifies the audience
+to which a particular <sgmltag>Msg</sgmltag> is relevant.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.context; &format.csuppress;
+</para>
+<para>
+DocBook doesn't specify anything about how a particular audience
+might be identified, or how different audiences are
+distinguished.
+</para>
+<para>
+On the whole, the semantics of <sgmltag>MsgSet</sgmltag>
+are not clearly defined.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&msgaud.parents.gen;
+&msgaud.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&msgaud.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

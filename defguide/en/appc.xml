@@ -1,0 +1,538 @@
+<appendix id="app-versions">
+<?dbhtml filename="appc.html"?>
+<appendixinfo>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</appendixinfo>
+<title>DocBook Versions</title>
+<para>
+<indexterm id="versionsDocBookappc" class="startofrange"><primary>DocBook DTD</primary>
+  <secondary>versions</secondary></indexterm>
+<indexterm id="DocBookversionsappc" class="startofrange"><primary>versions</primary>
+  <secondary>DocBook DTD</secondary></indexterm>
+<indexterm><primary>OASIS</primary>
+  <secondary>DocBook Technical Committee</secondary></indexterm>
+<indexterm><primary>DocBook Technical Committee (OASIS)</primary></indexterm>
+<indexterm><primary>TC</primary><see>DocBook Technical Committee (OASIS)</see></indexterm>
+
+The <acronym>OASIS</acronym> DocBook Technical Committee (<acronym>TC</acronym>) is committed to the continued
+evolution of DocBook.  As new needs are expressed by the DocBook-user
+community, the committee will adapt DocBook so it
+continues to meet the needs of its users.
+</para>
+
+<para>
+<indexterm><primary>compatibility, DocBook versions</primary></indexterm>
+The <acronym>TC</acronym> observes a very cautious policy regarding changes to the &DTD;.
+Backward-incompatible changes can only be introduced:
+<itemizedlist>
+<listitem>
+<para>
+<indexterm><primary>major releases, DocBook DTD</primary></indexterm>
+
+In major releases (4.0, 5.0, 6.0, and so on)
+</para>
+</listitem>
+<listitem>
+<para>
+<indexterm><primary>comments</primary>
+  <secondary>DocBook DTD, changes to</secondary></indexterm>
+
+Only if the change was described in comments in the &DTD; in the
+previous major release
+</para>
+</listitem>
+</itemizedlist>
+<indexterm><primary>point-releases (DocBook DTD), compatibility</primary></indexterm>
+
+Changes made at point-releases are always backward-compatible to the
+previous major release. This policy assures that DocBook users always
+have time to prepare for any coming changes.
+</para>
+
+<para>This appendix describes the changes planned for
+DocBook.</para>
+
+<sect1 id="v31"><title>DocBook V3.1</title>
+<para>DocBook <acronym>V3.1</acronym>, released in February 1999,
+introduced a number of new elements:
+<indexterm><primary>elements</primary>
+  <secondary>new (DocBook V3.1)</secondary></indexterm>
+<indexterm><primary>MediaObject elements</primary></indexterm>
+<indexterm><primary>VideoObject element</primary></indexterm>
+<indexterm><primary>AudioObject element</primary></indexterm>
+<indexterm><primary>ImageObject element</primary></indexterm>
+<indexterm><primary>TextObject element</primary></indexterm>
+
+</para>
+<variablelist>
+<varlistentry><term><sgmltag>MediaObject</sgmltag></term>
+<listitem><para>
+<sgmltag>MediaObject</sgmltag> is a wrapper around
+<sgmltag>VideoObject</sgmltag>, <sgmltag>AudioObject</sgmltag>,
+<sgmltag>ImageObject</sgmltag>, and <sgmltag>TextObject</sgmltag>.  The
+purpose of <sgmltag>MediaObject</sgmltag> is twofold: first, it introduces
+new element types to include video and audio content; second, it
+provides the option of alternative representations, including text, for
+objects in a document.  <sgmltag>MediaObject</sgmltag>s also allow
+<sgmltag>Caption</sgmltag>s that may be longer than a simple title.
+</para>
+<para>
+<indexterm><primary>InlineMediaObject element</primary></indexterm>
+<indexterm><primary>MediaObjectCO element</primary></indexterm>
+<indexterm><primary>Callout (MediaObject)</primary></indexterm>
+
+Parallel to <sgmltag>MediaObject</sgmltag> are <sgmltag>InlineMediaObject</sgmltag>,
+an inline version, and <sgmltag>MediaObjectCO</sgmltag>, a media object
+with <sgmltag>Callout</sgmltag>s.
+</para>
+<para>
+<indexterm><primary>Graphic element</primary>
+  <secondary>removal (v5.0)</secondary></indexterm>
+<indexterm><primary>InlineGraphic element</primary>
+  <secondary>removal (v5.0)</secondary></indexterm>
+For now, media objects and graphics exist together
+in version 5.0. <sgmltag>Graphic</sgmltag> and <sgmltag>InlineGraphic</sgmltag> will
+be removed from DocBook.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><sgmltag>InformalFigure</sgmltag></term>
+<listitem><para>
+<indexterm><primary>InformalFigure element</primary></indexterm>
+
+A figure wrapper without a title. This element was added
+largely for symmetry.
+</para></listitem>
+</varlistentry>
+
+<varlistentry><term><sgmltag>Colophon</sgmltag></term>
+<listitem><para>
+<indexterm><primary>colophon element</primary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>Colophon</secondary></indexterm>
+
+An end-of-the-book <sgmltag>Colophon</sgmltag>.
+</para></listitem>
+</varlistentry>
+
+<varlistentry><term><sgmltag>Section</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>Section element</primary></indexterm>
+<sgmltag>Section</sgmltag> is a recursive section.  It exists
+parallel to, and must be used as an alternative to,
+<sgmltag>Sect1</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><sgmltag>QandASet</sgmltag></term>
+<listitem><para>
+<indexterm><primary>QandASet element</primary></indexterm>
+
+A set of questions and answers.
+</para></listitem>
+</varlistentry>
+
+<varlistentry><term><sgmltag>Constant</sgmltag></term>
+<listitem><para>
+<indexterm><primary>Constant element</primary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>Constant</secondary></indexterm>
+<indexterm><primary>Class attribute</primary>
+  <secondary>constant element</secondary></indexterm>
+
+The <sgmltag>Constant</sgmltag> inline is for identifying
+constants.  It has a <sgmltag class='attribute'>Class</sgmltag> attribute for
+identifying &ldquo;limits&rdquo; as a specific kind of constant.
+</para></listitem>
+</varlistentry>
+
+<varlistentry><term><sgmltag>VarName</sgmltag></term>
+<listitem><para>
+<indexterm><primary>VarName element</primary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>VarName</secondary></indexterm>
+<indexterm><primary>names</primary>
+  <secondary>variable (VarName element)</secondary></indexterm>
+
+Many authors have requested a tag for identifying
+variable names.  Most often <sgmltag>Literal</sgmltag> (with or without a role)
+has been chosen as a compromise, but you can't question the utility of identifying variable
+names, so <sgmltag>VarName</sgmltag> was added.
+</para>
+<para>A tag for identifying variable values does not seem as necessary.
+For immutable values, a specific tag other than <sgmltag>Literal</sgmltag>
+seems unnecessary, and <sgmltag>Replaceable</sgmltag> exists for values that
+are supposed to be filled in by the user.
+</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="v41"><title>DocBook V4.1 and DocBook &XML; V4.1.2</title>
+<para>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>versions</secondary>
+    <tertiary>V4.1</tertiary></indexterm>
+<indexterm><primary>versions</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>V4.1</tertiary></indexterm>
+<indexterm><primary>DocBook XML DTD</primary>
+  <secondary>versions</secondary>
+    <tertiary>V4.1.2</tertiary></indexterm>
+<indexterm><primary>versions</primary>
+  <secondary>DocBook XML DTD</secondary>
+    <tertiary>V4.1.2</tertiary></indexterm>
+DocBook <acronym>V4.1</acronym> and DocBook &XML; <acronym>V4.1.2</acronym>
+became an OASIS Standard in
+February 2001.</para>
+
+<para>FIXME: Update this section!</para>
+
+<para>DocBook <acronym>V4</acronym> introduced
+a number of backward-incompatible
+changes.</para>
+<para>The policy of the DocBook <acronym>TC</acronym> is that backward-incompatible changes
+can only be introduced in a full version release.  They must also be described
+in comments in the &DTD; at least one full version earlier.  In other words,
+all the planned version 4.0 incompatibilities were announced with version 3.0.
+</para>
+<para>
+Backward-incompatible changes to DocBook that are planned for version 4.0:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<indexterm><primary>DocInfo element</primary>
+  <secondary>changes V4.0</secondary></indexterm>
+<indexterm><primary>ChapterInfo element (V4.0)</primary></indexterm>
+<indexterm><primary>AppendixInfo element (V4.0)</primary></indexterm>
+<indexterm><primary>ArtHeader element</primary>
+  <secondary>V4.0</secondary></indexterm>
+<indexterm><primary>ArticleInfo element (V4.0)</primary></indexterm>
+<indexterm><primary>SeriesInfo element, changes V4.0</primary></indexterm>
+<indexterm><primary>BiblioSet element</primary></indexterm>
+<indexterm><primary>BookBiblio element, changes V4.0</primary></indexterm>
+<indexterm><primary>BookInfo element</primary>
+  <secondary>changes, v4.0</secondary></indexterm>
+
+The <sgmltag>DocInfo</sgmltag> element will be split out into <sgmltag>ChapterInfo</sgmltag>, <sgmltag>AppendixInfo</sgmltag>,
+  and so on. <sgmltag>ArtHeader</sgmltag> will be renamed to <sgmltag>ArticleInfo</sgmltag>.  <sgmltag>SeriesInfo</sgmltag> may be
+  discarded because it has become a special case of <sgmltag>BiblioSet</sgmltag>.
+  <sgmltag>BookBiblio</sgmltag> will be discarded in favor of a new, more inclusive,
+  structure for <sgmltag>BookInfo</sgmltag> (and for <sgmltag>ArticleInfo</sgmltag>, whose earlier <sgmltag>ArtHeader</sgmltag>
+  form contained <sgmltag>BookBiblio</sgmltag>).
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>article.class entity, removing (V4.0)</primary></indexterm>
+<indexterm><primary>Book element</primary>
+  <secondary>article.class entity, removing (V4.0)</secondary></indexterm>
+
+The <sgmltag class='paramentity'>article.class</sgmltag> entity may be removed from the <sgmltag>Book</sgmltag> content model,
+  and made part of a new top-level document hierarchy.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>nav.class entity, changes V4.0</primary></indexterm>
+<indexterm><primary>ToC</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+
+The <sgmltag class='paramentity'>nav.class</sgmltag> entity, which appears in several divisions, will allow
+  <sgmltag>ToCchap</sgmltag> instead of <sgmltag>ToC</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>MsgText element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>tech.char.class parameter entity</primary>
+  <secondary>redefining</secondary></indexterm>
+<sgmltag>MsgText</sgmltag> will be moved from <sgmltag class='paramentity'>tech.char.class</sgmltag> to a more appropriate
+  parameter entity.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>smallcptr.char.mix parameter entity, changes V4.0</primary></indexterm>
+<indexterm><primary>Action element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Command element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Database element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Filename element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Hardware element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Interface element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>KeyCap element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Literal element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Option element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Parameter element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Property element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>SystemItem element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+
+The following elements will have their content constrained to the
+  <sgmltag class='paramentity'>smallcptr.char.mix</sgmltag> mixture: <sgmltag>Action</sgmltag>, <sgmltag>Command</sgmltag>, <sgmltag>Database</sgmltag>, <sgmltag>Filename</sgmltag>,
+  <sgmltag>Hardware</sgmltag>, <sgmltag>Interface</sgmltag>, <sgmltag>KeyCap</sgmltag>, <sgmltag>Literal</sgmltag>, <sgmltag>Option</sgmltag>, <sgmltag>Parameter</sgmltag>, <sgmltag>Property</sgmltag>, and
+  <sgmltag>SystemItem</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>AuthorBlurb element, changes V4.0</primary></indexterm>
+<indexterm><primary>person.ident.mix parameter entity, changes V4.0</primary></indexterm>
+<indexterm><primary>Author element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Affiliation element, changes V4.0</primary></indexterm>
+
+<sgmltag>AuthorBlurb</sgmltag> and <sgmltag>Affiliation</sgmltag> will be removed from <sgmltag class='paramentity'>person.ident.mix</sgmltag>
+  and a new wrapper element will be created to allow association of those two
+  elements with <sgmltag>Author</sgmltag> name information.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Epigraph element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>BlockQuote element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+
+<sgmltag>Epigraph</sgmltag> will not be appearing in <sgmltag>BlockQuote</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Comment element, changes V4.0</primary></indexterm>
+<indexterm><primary>Remark element, changes V4.0</primary></indexterm>
+
+<sgmltag>Comment</sgmltag> will be renamed to <sgmltag>Remark</sgmltag> and will be excluded from itself.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>GlossTerm element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Glossary element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+
+<sgmltag>GlossTerm</sgmltag> will be excluded from itself, and may be split into an
+  element that appears in a <sgmltag>Glossary</sgmltag> and an element that can appear in
+  the main text.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Subject attribute, changes V4.0</primary></indexterm>
+<indexterm><primary>GlossDef element, changes V4.0</primary></indexterm>
+<indexterm><primary>Keyword attribute (V4.0)</primary></indexterm>
+
+The <sgmltag class='attribute'>Subject</sgmltag> attribute on <sgmltag>GlossDef</sgmltag> will be renamed <sgmltag class='attribute'>Keyword</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>SetTitle elements (V4.0)</primary></indexterm>
+<indexterm><primary>SegmentedList element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+
+Two <sgmltag>SegTitle</sgmltag> elements will be required in <sgmltag>SegmentedList</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Graphic element</primary></indexterm>
+<indexterm><primary>InlineGraphic element</primary></indexterm>
+<indexterm><primary>empty elements</primary>
+  <secondary>Graphic and InlineGraphic, V4.0</secondary></indexterm>
+<indexterm><primary>EntityRef attribute (graphics), V4.0</primary></indexterm>
+<indexterm><primary>graphics</primary>
+  <secondary>embedded, storing outside SGML source</secondary></indexterm>
+
+<sgmltag>Graphic</sgmltag> and <sgmltag>InlineGraphic</sgmltag> will be declared EMPTY.  This change will
+  require that end tags be removed and that any embedded graphic content
+  be stored outside the &SGML; source and pointed to from an <sgmltag class='attribute'>Entityref</sgmltag> or
+  <sgmltag class='attribute'>Fileref</sgmltag> attribute.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>OptMult attribute value (Choice), V4.0</primary></indexterm>
+<indexterm><primary>ReqMult attribute value (Choice), V4.0</primary></indexterm>
+<indexterm><primary>Choice attribute, changes V4.0</primary></indexterm>
+<indexterm><primary>Group element, changes V4.0</primary></indexterm>
+<indexterm><primary>Rep attribute, changes V4.0</primary></indexterm>
+
+The <literal>OptMult</literal> and <literal>ReqMult</literal> values for the <sgmltag class='attribute'>Choice</sgmltag> attribute on <sgmltag>Group</sgmltag>
+  will be removed.  Use the <sgmltag class='attribute'>Rep</sgmltag> attribute instead to indicate that the
+  choice is repeatable.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>FuncSynopsis element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>FuncDef element, changes V4.0</primary></indexterm>
+<indexterm><primary>FuncPrototype element, changes V4.0</primary></indexterm>
+<indexterm><primary>FuncSynopsisInfo element (V4.0)</primary></indexterm>
+
+The content model group inside <sgmltag>FuncSynopsis</sgmltag> starting with <sgmltag>FuncDef</sgmltag>
+  will not be available; you will have to use <sgmltag>FuncPrototype</sgmltag>.  Also, you
+  will be able to have a mixture of <sgmltag>FuncPrototypes</sgmltag> and <sgmltag>FuncSynopsisInfos</sgmltag>
+  (this is not backward-incompatible all by itself).
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>EnvironVar element (V4.0)</primary></indexterm>
+<indexterm><primary>Prompt element</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>Class attribute</primary>
+  <secondary>changes, V4.0</secondary></indexterm>
+<indexterm><primary>SysItem element (V4.0)</primary></indexterm>
+<indexterm><primary>EnVar element</primary>
+  <secondary>V4.0</secondary></indexterm>
+
+The <literal>EnvironVar</literal> and <literal>Prompt</literal> values for the <sgmltag class='attribute'>Class</sgmltag> attribute on <sgmltag>SystemItem</sgmltag>
+  will be eliminated; use the <sgmltag>EnVar</sgmltag> and <sgmltag>Prompt</sgmltag> elements instead.
+</para></listitem>
+</itemizedlist>
+</sect1>
+<sect1 id="v5"><title>DocBook 5.0</title>
+<para>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>versions</secondary>
+    <tertiary>V5.0</tertiary></indexterm>
+<indexterm><primary>versions</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>V5.0</tertiary></indexterm>
+<indexterm><primary>XML</primary>
+  <secondary>DocBook version compliant with</secondary></indexterm>
+
+DocBook <acronym>v5.0</acronym> will also introduce backward-incompatible changes.</para>
+<para>These changes will be announced in version 4.0, although several
+were announced with version 3.1 as well.
+</para>
+<para>
+Backward-incompatible changes to DocBook that are planned for version 4.0:
+</para>
+<itemizedlist>
+<listitem><para>
+DocBook 5.0 will be <acronym>XML</acronym> compliant. This will introduce a lot of changes.
+</para></listitem>
+<listitem><para>
+The <sgmltag class='attribute'>Coords</sgmltag> attribute will be removed from <sgmltag>AreaSet</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<sgmltag>ArtHeader</sgmltag> will be dropped from <sgmltag>BiblioEntry</sgmltag>.
+<indexterm><primary>BiblioEntry element</primary>
+  <secondary>V5.0</secondary></indexterm>
+<indexterm><primary>ArtHeader element</primary>
+  <secondary>V5.0</secondary></indexterm>
+
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Contents attribute (V5.0)</primary></indexterm>
+<indexterm><primary>BookInfo element</primary>
+  <secondary>V5.0</secondary></indexterm>
+<indexterm><primary>SetInfo element (V5.0)</primary></indexterm>
+
+The <sgmltag class='attribute'>Contents</sgmltag> attribute will be removed from <sgmltag>BookInfo</sgmltag> and <sgmltag>SetInfo</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>indexdivcomponent.mix parameter entity (V5.0)</primary></indexterm>
+<indexterm><primary>Index element</primary>
+  <secondary>V5.0, changes</secondary></indexterm>
+<indexterm><primary>SetIndex element (V5.0)</primary></indexterm>
+
+The <sgmltag class='paramentity'>indexdivcomponent.mix</sgmltag> entity will be restricted.
+Numbered figures and other elements inappropriate for an
+<sgmltag>Index</sgmltag> or <sgmltag>SetIndex</sgmltag> will be removed.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>RevHistory element (V5.0)</primary></indexterm>
+<indexterm><primary>GlossTerm element</primary>
+  <secondary>V5.0, changes</secondary></indexterm>
+
+<sgmltag>RevHistory</sgmltag> will be removed from <sgmltag>GlossTerm</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Constant Class, removing (V5.0)</primary></indexterm>
+<indexterm><primary>SystemItem element</primary>
+  <secondary>Constant Class, removing (V5.0)</secondary></indexterm>
+
+The <literal>Constant</literal> <sgmltag class='attribute'>Class</sgmltag>
+will be removed from <sgmltag>SystemItem</sgmltag>.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>Graphic element</primary>
+  <secondary>V5.0, changes</secondary></indexterm>
+<indexterm><primary>InlineGraphic element</primary>
+  <secondary>changes, V5.0</secondary></indexterm>
+
+<sgmltag>Graphic</sgmltag> and <sgmltag>InlineGraphic</sgmltag> will be removed.
+</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="docbkxml"><title>DocBk &XML;</title>
+
+<para>FIXME: update this section</para>
+
+<para>
+<indexterm><primary>DocBk XML DTD</primary></indexterm>
+The DocBk &XML; &DTD; is an &XML; version of DocBook produced by
+Norman Walsh. It is a faithful translation of DocBook, as described
+in <xref linkend="s-docbookxml"/>.
+</para>
+
+<para>
+<indexterm><primary>DocBook Technical Committee (OASIS)</primary>
+  <secondary>DocBk XML DTD</secondary></indexterm>
+<indexterm><primary>XML</primary>
+  <secondary>DocBk XML DTD</secondary></indexterm>
+
+Although it has not been officially adopted by the DocBook
+Technical Committee, the <acronym>TC</acronym> does have concrete plans to produce
+an official &XML; version of DocBook in version 5.0. This is likely to be based
+on the DocBk &XML; &DTD;, or very closely resemble it.
+</para>
+
+<para>
+The DocBk &XML; &DTD; is supplied on the <link linkend="app-cdrom"><acronym>CD-ROM</acronym></link>.
+It is also available from 
+<ulink url="http://nwalsh.com/docbook/xml/">http://nwalsh.com/docbook/xml/</ulink>.
+<indexterm startref="DocBookversionsappc" class="endofrange"/>
+<indexterm startref="versionsDocBookappc" class="endofrange"/>
+</para>
+</sect1>
+
+<sect1 id="ebnf.module"><title>EBNF Module</title>
+<para>FIXME: write this section</para>
+</sect1>
+
+<sect1 id="htmlforms.module"><title>HTML Forms Module</title>
+<para>FIXME: write this section</para>
+</sect1>
+
+<sect1 id="mathml.module"><title>MathML Module</title>
+<para>FIXME: write this section</para>
+</sect1>
+
+<sect1 id="svg.module"><title>SVG Module</title>
+<para>FIXME: write this section</para>
+</sect1>
+
+</appendix>
+
+<!--
+Local Variables:
+mode:sgml
+sgml-parent-document: ("book.sgm" "appendix")
+End:
+-->

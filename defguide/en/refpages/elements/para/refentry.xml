@@ -1,0 +1,95 @@
+<refentry id="para.element">
+<?dbhtml filename="para.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>para</secondary></indexterm>
+<refentrytitle>para</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>para</refname>
+<refpurpose>&para.purpose;</refpurpose>
+</refnamediv>
+
+&para.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Para</sgmltag> is a paragraph.  Paragraphs in DocBook may contain 
+almost all inlines and most block elements. Sectioning and higher-level
+structural elements are excluded. DocBook offers two variants of paragraph:
+<sgmltag>SimPara</sgmltag>, which cannot contain block elements, and
+<sgmltag>FormalPara</sgmltag>, which has a title.
+</para>
+
+<para>
+Some processing systems may find the presence of block elements in a
+paragraph difficult to handle.
+On the other hand, it is frequently
+most logical, from a structural point of view, to include block elements,
+especially informal block elements, in the paragraphs that describe their
+content. There is no easy answer to this problem.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&para.parents.gen;
+&para.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&para.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+Ordinary paragraphs can contain most block elements:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&para.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.para.1" role="HACK-ex.out.start"/>
+&para.example.1.gen;
+<anchor id="ex.oe.para.1" role="HACK-ex.out.end"/>
+
+<para>
+Formal paragraphs include a title:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&para.example.2.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.para.2" role="HACK-ex.out.start"/>
+&para.example.2.gen;
+<anchor id="ex.oe.para.2" role="HACK-ex.out.end"/>
+
+<para>
+Simple paragraphs may not contain block elements:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&para.example.3.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.para.3" role="HACK-ex.out.start"/>
+&para.example.3.gen;
+<anchor id="ex.oe.para.3" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,64 @@
+<refentry id="refentrytitle.element">
+<?dbhtml filename="refentrytitle.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>refentrytitle</secondary></indexterm>
+<refentrytitle>refentrytitle</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refentrytitle</refname>
+<refpurpose>&refentrytitle.purpose;</refpurpose>
+</refnamediv>
+
+&refentrytitle.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>RefEntryTitle</sgmltag> is the title of a reference page.
+It is frequently the same as the first
+<sgmltag>RefName</sgmltag> or the <sgmltag>RefDescriptor</sgmltag>, although it
+may also be a longer, more general title.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <sgmltag>RefEntry</sgmltag>.
+</para>
+<para>
+Common presentational features, such as titles and running
+heads, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&refentrytitle.parents.gen;
+&refentrytitle.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&refentrytitle.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&refentrytitle.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

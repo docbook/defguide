@@ -1,0 +1,78 @@
+<refentry id="funcsynopsisinfo.element">
+<?dbhtml filename="funcsynopsisinfo.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>funcsynopsisinfo</secondary></indexterm>
+<refentrytitle>funcsynopsisinfo</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>funcsynopsisinfo</refname>
+<refpurpose>&funcsynopsisinfo.purpose;</refpurpose>
+</refnamediv>
+
+&funcsynopsisinfo.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Supplementary information in a <sgmltag>FuncSynopsis</sgmltag>.
+See <sgmltag>FuncSynopsis</sgmltag>.
+</para>
+
+<para>
+Unlike the other info elements, <sgmltag>FuncSynopsisInfo</sgmltag>
+is not a container for meta-information.  Instead <sgmltag>FuncSynopsisInfo</sgmltag>
+is a verbatim environment for adding additional information to a
+function synopsis.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&pexp.linespecific;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&funcsynopsisinfo.parents.gen;
+&funcsynopsisinfo.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>format</term>
+<listitem>
+<para>
+The <sgmltag class="attribute">Format</sgmltag> attribute applies the 
+<literal>linespecific</literal> notation to all <sgmltag>FuncSynopsisInfo</sgmltag>s.
+All white space and line breaks must be preserved.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linenumbering</term>
+<listitem>
+<para revision="4.0">Line numbering indicates whether or not the lines
+of a <sgmltag>FuncSynopsisInfo</sgmltag> are to be automatically numbered. The details
+of numbering (every line or only selected lines, on the left or right, etc.)
+are left up to the processing application. Be aware that not all processors
+are capable of numbering lines.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&funcsynopsisinfo.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&funcsynopsisinfo.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

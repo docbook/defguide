@@ -1,0 +1,70 @@
+<refentry id="guilabel.element">
+<?dbhtml filename="guilabel.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>guilabel</secondary></indexterm>
+<refentrytitle>guilabel</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>guilabel</refname>
+<refpurpose>&guilabel.purpose;</refpurpose>
+</refnamediv>
+
+&guilabel.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>GUILabel</sgmltag> identifies text that appears as a label in a 
+graphical user interface.
+</para>
+
+<para>
+What constitutes a label may vary from application to
+application.  In general, any text that appears in a
+<acronym>GUI</acronym> may be considered a label, for
+example a message in a dialog box or a window title.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+
+&guilabel.parents.gen;
+&guilabel.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>GUILabel</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&guilabel.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&guilabel.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.guilabel.1" role="HACK-ex.out.start"/>
+&guilabel.example.1.gen;
+<anchor id="ex.oe.guilabel.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&guilabel.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,81 @@
+<refentry id="appendix.element">
+<?dbhtml filename="appendix.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>appendix</secondary></indexterm>
+<refentrytitle>appendix</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>appendix</refname>
+<refpurpose>&appendix.purpose;</refpurpose>
+</refnamediv>
+
+&appendix.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Appendixes usually occur at the end of a document.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Usually introduces a forced page break and often
+starts on the next recto page.  Sometimes restarts page
+numbering. Typically, appendixes are lettered rather than
+numbered, and appear in the table of contents.
+</para>
+</refsect2>
+
+
+&appendix.parents.gen;
+&appendix.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes. The second <sgmltag>Appendix</sgmltag> might be 
+labeled <quote>B</quote>, for example.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Appendix</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&appendix.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&appendix.example.1.txt;</programlisting>
+</informalexample>
+
+<para>For additional examples, see also
+&appendix.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

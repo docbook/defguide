@@ -1,0 +1,71 @@
+<refentry id="replaceable.element">
+<?dbhtml filename="replaceable.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>replaceable</secondary></indexterm>
+<refentrytitle>replaceable</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>replaceable</refname>
+<refpurpose>&replaceable.purpose;</refpurpose>
+</refnamediv>
+
+&replaceable.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Replaceable</sgmltag> is used to mark text that describes
+<emphasis>what</emphasis> a user is supposed to enter, but not the
+<emphasis>actual text</emphasis> that they are supposed to enter.
+</para>
+<para>
+It is used to identify a class of object
+in the document, in which the user is expected to replace the text that
+identifies the class
+with some specific instance of that class.  A canonical example is
+<screen>
+<![CDATA[
+<replaceable>filename</replaceable>
+]]>
+</screen>
+in which the user is expected to provide the name of some specific file
+to replace the text <quote>filename.</quote>
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; Usually, the text is given special typographic treatment,
+such as italics, as a clue to the user that this is replaceable text.
+Often the font used is described in a <quote>conventions</quote> section at
+the beginning of the document.
+</para>
+</refsect2>
+
+
+&replaceable.parents.gen;
+&replaceable.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Class</sgmltag> identifies the type of the replaceable
+information.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&replaceable.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&replaceable.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

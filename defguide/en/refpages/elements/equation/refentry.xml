@@ -1,0 +1,90 @@
+<refentry id="equation.element">
+<?dbhtml filename="equation.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>equation</secondary></indexterm>
+<refentrytitle>equation</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>equation</refname>
+<refpurpose>&equation.purpose;</refpurpose>
+</refnamediv>
+
+&equation.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>An <sgmltag>Equation</sgmltag> is a formal mathematical equation
+(with an optional rather than required title).
+</para>
+
+<para>If the MathML Module is used, <sgmltag>Equation</sgmltag> can
+also contain the <sgmltag>mml:math</sgmltag> element.</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; For an inline equation, use <sgmltag>InlineEquation</sgmltag>.
+</para>
+
+<para>Processing systems that number equations or build a table of
+equations at the beginning of a document may have difficulty correctly
+formatting documents that contain both <sgmltag>Equation</sgmltag>s
+with <sgmltag>Title</sgmltag>s and <sgmltag>Equation</sgmltag>s
+without <sgmltag>Title</sgmltag>s.  You are advised to use
+<sgmltag>InformalEquation</sgmltag> for equations without titles.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para><indexterm>
+<primary>DocBook DTD</primary><secondary>Changes for
+<acronym>V5.0</acronym></secondary>
+</indexterm>In some future version of DocBook, probably
+<acronym>V5.0</acronym>, even though the change has not yet been
+announced, the <sgmltag>Title</sgmltag> on <sgmltag>Equation</sgmltag>
+will be required.  For equations without titles, use
+<sgmltag>InformalEquation</sgmltag>.
+</para>
+</refsect2>
+
+
+&equation.parents.gen;
+&equation.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&equation.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&equation.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.equation.1" role="HACK-ex.out.start"/>
+&equation.example.1.gen;
+<anchor id="ex.oe.equation.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&equation.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

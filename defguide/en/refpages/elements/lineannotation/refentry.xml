@@ -1,0 +1,68 @@
+<refentry id="lineannotation.element">
+<?dbhtml filename="lineannotation.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>lineannotation</secondary></indexterm>
+<refentrytitle>lineannotation</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>lineannotation</refname>
+<refpurpose>&lineannotation.purpose;</refpurpose>
+</refnamediv>
+
+&lineannotation.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>LineAnnotation</sgmltag> is an author or editor's comment on a line
+in one of the verbatim environments. These are annotations added by
+the documentor, not part of the original listing.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; In verbatim environments like <sgmltag>ProgramListing</sgmltag>,
+which are often presented in a fixed width font, they may get special
+typographic treatment, such as italics.
+</para>
+<para>
+If several <sgmltag>LineAnnotations</sgmltag> occur in the same listing, they
+may be aligned horizontally.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&lineannotation.parents.gen;
+&lineannotation.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&lineannotation.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+The following example, from the description of <sgmltag>Entry</sgmltag>, shows
+how <sgmltag>LineAnnotation</sgmltag> can be used to annotate a
+<sgmltag>Screen</sgmltag> listing:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&lineannotation.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.lineannotation.1" role="HACK-ex.out.start"/>
+&lineannotation.example.1.gen;
+<anchor id="ex.oe.lineannotation.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,78 @@
+<refentry id="optional.element">
+<?dbhtml filename="optional.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>optional</secondary></indexterm>
+<refentrytitle>optional</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>optional</refname>
+<refpurpose>&optional.purpose;</refpurpose>
+</refnamediv>
+
+&optional.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>Optional</sgmltag> element indicates that a specified argument,
+option, or other text is optional. The precise meaning of
+<quote>optional</quote> varies according to the application or process
+begin documented.
+</para>
+
+<refsect2 id="dbreproc.optional"><title>Processing expectations</title>
+<para>
+&format.inline;
+</para>
+<para>
+Optional arguments in a <sgmltag>Synopsis</sgmltag> are usually given special
+typographic treatment, often they are surrounded by square brackets. The
+<sgmltag>Optional</sgmltag> tag is expected to <emphasis>generate</emphasis> the brackets.
+</para>
+<para>
+Outside a <sgmltag>Synopsis</sgmltag>, the typographic treatment of
+<sgmltag>Optional</sgmltag> is application-specific.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&optional.parents.gen;
+&optional.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&optional.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+The &UNIX; <command>ls</command> command could be documented as follows:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&optional.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.optional.1" role="HACK-ex.out.start"/>
+&optional.example.1.gen;
+<anchor id="ex.oe.optional.1" role="HACK-ex.out.end"/>
+
+<para>
+which might generate the following output:
+<screen>
+ls [ -abcCdfFgilLmnopqrRstux1 ] 
+   [names]
+</screen>
+</para>
+
+</refsect1>
+</refentry>
+

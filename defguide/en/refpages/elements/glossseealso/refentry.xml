@@ -1,0 +1,69 @@
+<refentry id="glossseealso.element">
+<?dbhtml filename="glossseealso.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>glossseealso</secondary></indexterm>
+<refentrytitle>glossseealso</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>glossseealso</refname>
+<refpurpose>&glossseealso.purpose;</refpurpose>
+</refnamediv>
+
+&glossseealso.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>GlossSeeAlso</sgmltag> directs the reader to another <sgmltag>GlossEntry</sgmltag>
+for additional information. It is presented in addition to the 
+<sgmltag>GlossDef</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+Formatted as a displayed block, in the same style as the
+<sgmltag>GlossDef</sgmltag>.
+</para>
+<para>
+<sgmltag>GlossSeeAlso</sgmltag> elements are expected to generate the necessary
+cross-reference text, usually <quote>See also</quote> in English, as well as
+any necessary punctuation.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&glossseealso.parents.gen;
+&glossseealso.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>otherterm</term>
+<listitem>
+<para>
+<sgmltag class="attribute">OtherTerm</sgmltag> points to the <sgmltag>GlossEntry</sgmltag>
+being cross-referenced. (Go see <emphasis>that</emphasis>
+one, too.)
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&glossseealso.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&glossseealso.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,56 @@
+<refentry id="refsect2info.element">
+<?dbhtml filename="refsect2info.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>refsect2info</secondary></indexterm>
+<refentrytitle>refsect2info</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refsect2info</refname>
+<refpurpose>&refsect2info.purpose;</refpurpose>
+</refnamediv>
+
+&refsect2info.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Like the other &ldquo;info&rdquo; elements, <sgmltag>RefSect2Info</sgmltag> contains
+meta-information about the section of the document in which it occurs.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.suppress; Many of the elements in this wrapper may be
+used in presentation, but they are not generally printed as part
+of the formatting of the wrapper. The wrapper merely serves to identify
+where they occur.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+<sgmltag>AuthorBlurb</sgmltag> and <sgmltag>Affiliation</sgmltag> will be removed
+from the inline content of <sgmltag>RefSect2Info</sgmltag> in DocBook <acronym>V4.0</acronym>.
+A new wrapper element will be created to associate this information with
+authors, editors, and other contributors.
+</para>
+</refsect2>
+
+
+&refsect2info.parents.gen;
+&refsect2info.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+See <sgmltag>RefSect1Info</sgmltag> in <sgmltag>RefEntry</sgmltag> for an
+analogous example.
+</para>
+
+</refsect1>
+</refentry>
+

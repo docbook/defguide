@@ -1,0 +1,195 @@
+<refentry id="indexterm.element">
+<?dbhtml filename="indexterm.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>indexterm</secondary></indexterm>
+<refentrytitle>indexterm</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>indexterm</refname>
+<refpurpose>&indexterm.purpose;</refpurpose>
+</refnamediv>
+
+&indexterm.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>IndexTerm</sgmltag>s identify text that is to be placed in the
+index.  In the simplest case, the placement of the
+<sgmltag>IndexTerm</sgmltag> in the document identifies the location of
+the term in the text.  In other words, the <sgmltag>IndexTerm</sgmltag>
+is placed in the flow of the document at the point where the
+<sgmltag>IndexEntry</sgmltag> in the <sgmltag>Index</sgmltag> should point.  In
+other cases, attributes on <sgmltag>IndexTerm</sgmltag> are used to
+identify the location of the term in the text.
+</para>
+
+<para>
+<sgmltag>IndexTerm</sgmltag>s mark either a single point in the document
+or a range.  A single point is marked with an <sgmltag>IndexTerm</sgmltag>
+placed in the text at the point of reference.
+There are two ways to identify a range of text:
+
+<itemizedlist>
+<listitem>
+<para>
+Place an <sgmltag>IndexTerm</sgmltag> at the beginning of the range with
+<sgmltag class='attribute'>Class</sgmltag> set to <literal>StartOfRange</literal> and
+give this term an <sgmltag class='attribute'>ID</sgmltag>.
+Place another <sgmltag>IndexTerm</sgmltag> at the end of the range with
+<sgmltag class='attribute'>StartRef</sgmltag> pointing to the 
+<sgmltag class='attribute'>ID</sgmltag> of the starting <sgmltag>IndexTerm</sgmltag>.
+This second <sgmltag>IndexTerm</sgmltag> must be empty.
+</para>
+<para>
+The advantage of this method is that the range can span unbalanced element
+boundries.
+</para>
+</listitem>
+<listitem>
+<para>
+Place the <sgmltag>IndexTerm</sgmltag> anywhere you like and point to the
+element that contains the range of text you wish to index with the
+<sgmltag class='attribute'>Zone</sgmltag> attribute on the <sgmltag>IndexTerm</sgmltag>.
+Note that <sgmltag class='attribute'>Zone</sgmltag> is defined as 
+<literal>IDREFS</literal> so a single <sgmltag>IndexTerm</sgmltag> can point to
+multiple ranges.
+</para>
+<para>
+The advantage of this method is that <sgmltag>IndexTerm</sgmltag>s can be 
+collected together or even stored totally outside the flow of the
+document (in the meta for example).
+</para>
+</listitem>
+</itemizedlist>
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+<sgmltag>IndexTerm</sgmltag>s are suppressed in the primary text flow, although they
+contribute to the population of an index and serve as anchors for
+cross references.
+Under no
+circumstances is the actual content of <sgmltag>IndexTerm</sgmltag>
+rendered in the primary flow.
+</para>
+
+<para>
+It is possible to construct index terms that are difficult to parse at
+best and totally illogical at worst.  Consider the following:
+
+<screen>
+<![CDATA[
+<indexterm class='startofrange' zone="id1 id2">...</indexterm>
+]]>
+</screen>
+</para>
+
+<para>
+There is no way that this can fit into the semantics of an
+<sgmltag>IndexTerm</sgmltag>.  Although it claims to be the start of a range,
+it does not have an 
+<sgmltag class='attribute'>ID</sgmltag> for the end-of-range
+<sgmltag>IndexTerm</sgmltag> to point back to.
+In addition, it includes zoned terms, and mixing the two
+different methods for indicating a range in the same <sgmltag>IndexTerm</sgmltag>
+is probably a bad idea.
+</para>
+</refsect2>
+
+
+&indexterm.parents.gen;
+&indexterm.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Class</sgmltag> identifies the type of
+<sgmltag>IndexTerm</sgmltag>. If <sgmltag class="attribute">StartRef</sgmltag> is supplied,
+the default for <sgmltag class="attribute">Class</sgmltag> is <literal>EndOfRange</literal>,
+otherwise it is <literal>Singular</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>pagenum</term>
+<listitem>
+<para>
+<sgmltag class="attribute">PageNum</sgmltag> indicates the page on which this
+index term occurs in some version of the printed document.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>scope</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Scope</sgmltag> identifies in which indexes the 
+<sgmltag>IndexTerm</sgmltag> should appear. <literal>Global</literal> means the index
+for the whole collection of documents, <literal>Local</literal> means the index
+for this document only, and <literal>All</literal> means both indexes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>significance</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Significance</sgmltag> specifies whether or not
+this <sgmltag>IndexTerm</sgmltag> is considered the most important location
+for information about the terms being indexed. Generally,
+<literal>Preferred</literal> <sgmltag>IndexTerm</sgmltag>s get special typographic
+treatment in the <sgmltag>Index</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>startref</term>
+<listitem>
+<para>
+The use of <sgmltag class="attribute">StartRef</sgmltag> implies a spanning index
+entry. <sgmltag class="attribute">StartRef</sgmltag> is used on the term that
+defines the end of the span and points to the term which defines the
+beginning.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>zone</term>
+<listitem>
+<para>
+The use of <sgmltag class="attribute">Zone</sgmltag> implies a spanning index
+entry. <sgmltag class="attribute">Zone</sgmltag> holds the &AT.ID;s of the elements
+to which it applies. The <sgmltag>IndexTerm</sgmltag> applies to the contents
+of the entire element(s) to which it points. If <sgmltag class="attribute">Zone</sgmltag> is used, the phyiscal placement of the <sgmltag>IndexTerm</sgmltag> in the flow
+of the document <emphasis>is irrelavant</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&indexterm.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&indexterm.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.indexterm.1" role="HACK-ex.out.start"/>
+&indexterm.example.1.gen;
+<anchor id="ex.oe.indexterm.1" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&indexterm.example.2.txt;</programlisting>
+</informalexample>
+
+<informalexample role="example-source">
+<programlisting>&indexterm.example.3.txt;</programlisting>
+</informalexample>
+
+<para>For additional examples, see also
+&indexterm.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

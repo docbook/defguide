@@ -1,0 +1,64 @@
+<refentry id="methodparam.element" revision='4.0'>
+<?dbhtml filename="methodparam.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>methodparam</secondary></indexterm>
+<refentrytitle>methodparam</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>methodparam</refname>
+<refpurpose>&methodparam.purpose;</refpurpose>
+</refnamediv>
+
+&methodparam.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+In the syntax summary of a <sgmltag>ConstructorSynopsis</sgmltag>,
+<sgmltag>DestructorSynopsis</sgmltag>, or
+<sgmltag>MethodSynopsis</sgmltag>,
+<sgmltag>MethodParam</sgmltag> provides the description of a parameter to the
+method.  Typically, this includes the data type of the parameter
+and its name, but may also include an initial value and other modifiers.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; For a complete description of the processing expectations,
+see <sgmltag>ClassSynopsis</sgmltag>.
+</para>
+</refsect2>
+
+
+
+&methodparam.parents.gen;
+&methodparam.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>choice</term>
+<listitem>
+<para revision="4.0">
+<sgmltag class="attribute">Choice</sgmltag> indicates whether the
+<sgmltag>MethodParam</sgmltag>
+is required (<literal>Req</literal> or <literal>Plain</literal>) or
+optional (<literal>Opt</literal>). Arguments identified as
+<literal>Plain</literal> are required, but are shown without additional
+decoration.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>rep</term>
+<listitem>
+<para revision="4.0">
+A <sgmltag class="attribute">Rep</sgmltag> value of
+<literal>Repeat</literal> indicates that the
+<sgmltag>MethodParam</sgmltag> is reapeatable.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,60 @@
+<refentry id="author.element">
+<?dbhtml filename="author.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>author</secondary></indexterm>
+<refentrytitle>author</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>author</refname>
+<refpurpose>&author.purpose;</refpurpose>
+</refnamediv>
+
+&author.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>Author</sgmltag> element holds information about the author
+of the document in which it occurs; it is meta-information
+about the current document or document section, not a reference to the
+author of an external document.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.context; &format.csuppress;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+<sgmltag>AuthorBlurb</sgmltag> and <sgmltag>Affiliation</sgmltag> will be removed
+from the inline content of <sgmltag>Author</sgmltag> in DocBook <acronym>V4.0</acronym>.
+A new wrapper element will be created to hold 
+<sgmltag>Author</sgmltag>, <sgmltag>AuthorBlurb</sgmltag>,
+and <sgmltag>Affiliation</sgmltag>.
+</para>
+</refsect2>
+
+
+&author.parents.gen;
+&author.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&author.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&author.example.1.txt;</programlisting>
+</informalexample>
+
+<para>For additional examples, see also
+&author.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

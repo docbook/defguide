@@ -1,0 +1,129 @@
+<refentry id="programlisting.element">
+<?dbhtml filename="programlisting.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>programlisting</secondary></indexterm>
+<refentrytitle>programlisting</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>programlisting</refname>
+<refpurpose>&programlisting.purpose;</refpurpose>
+</refnamediv>
+
+&programlisting.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>ProgramListing</sgmltag> is a verbatim environment for program source or
+source fragment listings.  <sgmltag>ProgramListing</sgmltag>s are often placed
+in <sgmltag>Example</sgmltag>s or <sgmltag>Figure</sgmltag>s so that they can be
+cross-referenced from the text.
+</para>
+
+<refsect2><title>Processing Expectations</title>
+<para>
+&format.block; &pexp.linespecific; <sgmltag>ProgramListing</sgmltag>s are usually
+displayed in a fixed width font.
+</para>
+
+<para>
+Other markup within a <sgmltag>ProgramListing</sgmltag> is recognized.
+Contrast
+this with systems like &LaTeX;, in which verbatim environments disable
+markup recognition.  If you want to disable markup recognition, you
+must use a <glossterm>&CDATA; section</glossterm>:
+
+<programlisting>
+<![CDATA[
+<programlisting>
+<![CDATA[
+This is a programlisting so white       space and line
+breaks are significant.  But it is also a CDATA
+section so <emphasis>tags</emphasis> and &entities;
+are not recognized.  The only markup that is recognized
+is the end-of-section marker, which is two
+"]"'s in a row followed by a >.
+]]>
+]]&gt;
+<![CDATA[
+</programlisting>
+]]>
+</programlisting>
+</para>
+
+<para>
+Two markup tags have
+special significance in <sgmltag>ProgramListing</sgmltag>s: <sgmltag>CO</sgmltag>
+and <sgmltag>LineAnnotation</sgmltag>.
+A <sgmltag>CO</sgmltag> identifies the location of a <sgmltag>Callout</sgmltag>.
+A <sgmltag>LineAnnotation</sgmltag> is a comment, added by the 
+<emphasis>documentor</emphasis>&mdash;not the programmer.
+</para>
+</refsect2>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&pexp.linespecific;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>The <literal>xml:space</literal> attribute is automatically
+provided in the XML DTD.
+</para>
+</refsect2>
+
+
+&programlisting.parents.gen;
+&programlisting.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>format</term>
+<listitem>
+<para>
+The <sgmltag class="attribute">Format</sgmltag> attribute applies the 
+<literal>linespecific</literal> notation to all <sgmltag>ProgramListing</sgmltag>s.
+All white space and line breaks must be preserved.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linenumbering</term>
+<listitem>
+<para revision="4.0">Line numbering indicates whether or not the lines
+of a <sgmltag>ProgramListing</sgmltag> are to be automatically numbered. The details
+of numbering (every line or only selected lines, on the left or right, etc.)
+are left up to the processing application. Be aware that not all processors
+are capable of numbering lines.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>width</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Width</sgmltag> specifies the width (in characters)
+of the longest line in this <sgmltag>ProgramListing</sgmltag> (formatters may use
+this value to determine scaling or rotation).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&programlisting.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&programlisting.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,58 @@
+<refentry id="refmiscinfo.element">
+<?dbhtml filename="refmiscinfo.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>refmiscinfo</secondary></indexterm>
+<refentrytitle>refmiscinfo</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refmiscinfo</refname>
+<refpurpose>&refmiscinfo.purpose;</refpurpose>
+</refnamediv>
+
+&refmiscinfo.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>RefMiscInfo</sgmltag> is an escape hatch for additional meta-information
+about a reference page. It may hold copyright information,
+release or revision information, descriptive text for use in a print
+header or footer, or any other information not explicitly provided for
+in <sgmltag>RefMeta</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.context;
+</para>
+</refsect2>
+
+
+&refmiscinfo.parents.gen;
+&refmiscinfo.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Class</sgmltag> on <sgmltag>RefMiscInfo</sgmltag> can be used
+to indicate the nature of the miscellaneous information being added to
+<sgmltag>RefMeta</sgmltag>. Naming this attribute <quote>class</quote> is a violation of
+DocBook semantics (where <sgmltag class='attribute'>Class</sgmltag> attributes
+have delimited value sets), it should really be called 
+<sgmltag class='attribute'>Type</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&refmiscinfo.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

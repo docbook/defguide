@@ -1,0 +1,90 @@
+<refentry id="itemizedlist.element">
+<?dbhtml filename="itemizedlist.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>itemizedlist</secondary></indexterm>
+<refentrytitle>itemizedlist</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>itemizedlist</refname>
+<refpurpose>&itemizedlist.purpose;</refpurpose>
+</refnamediv>
+
+&itemizedlist.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+In an <sgmltag>ItemizedList</sgmltag>, each member of the list is
+marked with a bullet, dash, or other symbol.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+DocBook specifies neither the initial mark nor the sequence of marks
+to be used in nested lists.  If explicit control is desired, the
+<sgmltag class='attribute'>Mark</sgmltag> attribute should be used.  The
+values of the <sgmltag class='attribute'>Mark</sgmltag> attribute are expected
+to be keywords, not representations (numerical character references,
+entities, and so on.) of the actual mark.
+</para>
+<para>
+In order to enforce a standard set of marks at your organization,
+it may be useful to construct a customization layer that limits
+the values of the <sgmltag class='attribute'>Mark</sgmltag> attribute to
+an enumerated list.  See <xref linkend="app-customizing"/>.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>Introductory material may appear before the first list item.
+</para>
+</refsect2>
+
+
+&itemizedlist.parents.gen;
+&itemizedlist.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>mark</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Mark</sgmltag> contains a keyword indicating the type
+of mark to be used on items in this <sgmltag>ItemizedList</sgmltag>. DocBook does 
+not provide a fixed list of appropriate keywords.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>spacing</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Spacing</sgmltag> indicates whether or not the
+vertical space in the list should be minimized.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&itemizedlist.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&itemizedlist.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.itemizedlist.1" role="HACK-ex.out.start"/>
+&itemizedlist.example.1.gen;
+<anchor id="ex.oe.itemizedlist.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&itemizedlist.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

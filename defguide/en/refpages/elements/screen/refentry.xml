@@ -1,0 +1,102 @@
+<refentry id="screen.element">
+<?dbhtml filename="screen.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>screen</secondary></indexterm>
+<refentrytitle>screen</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>screen</refname>
+<refpurpose>&screen.purpose;</refpurpose>
+</refnamediv>
+
+&screen.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Screen</sgmltag> is a verbatim environment for displaying text that
+the user might see on a computer terminal.  It is often used to display
+the results of a command.
+</para>
+
+<para>
+Having less specific semantic overtones, <sgmltag>Screen</sgmltag> is
+often used wherever a verbatim presentation is desired, but the
+semantic of <sgmltag>ProgramListing</sgmltag> is inappropriate.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&pexp.linespecific; <sgmltag>Screen</sgmltag>s are usually
+displayed in a fixed width font.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>The <literal>xml:space</literal> attribute is automatically
+provided in the XML DTD.
+</para>
+</refsect2>
+
+
+&screen.parents.gen;
+&screen.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>format</term>
+<listitem>
+<para>
+The <sgmltag class="attribute">Format</sgmltag> attribute applies the 
+<literal>linespecific</literal> notation to all <sgmltag>Screen</sgmltag>s.
+All white space and line breaks must be preserved.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linenumbering</term>
+<listitem>
+<para revision="4.0">Line numbering indicates whether or not the lines
+of a <sgmltag>Screen</sgmltag> are to be automatically numbered. The details
+of numbering (every line or only selected lines, on the left or right, etc.)
+are left up to the processing application. Be aware that not all processors
+are capable of numbering lines.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>width</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Width</sgmltag> specifies the width (in characters)
+of the longest line in this <sgmltag>Screen</sgmltag> (formatters may use
+this value to determine scaling or rotation).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&screen.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&screen.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.screen.1" role="HACK-ex.out.start"/>
+&screen.example.1.gen;
+<anchor id="ex.oe.screen.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&screen.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

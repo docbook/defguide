@@ -1,0 +1,53 @@
+<refentry id="question.element" revision='3.1'>
+<?dbhtml filename="question.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>question</secondary></indexterm>
+<refentrytitle>question</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>question</refname>
+<refpurpose>&question.purpose;</refpurpose>
+</refnamediv>
+
+&question.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Question</sgmltag> in a <sgmltag>QandAEntry</sgmltag> poses a question or
+states a problem that is addressed by the following <sgmltag>Answer</sgmltag>(s).
+<sgmltag>Answer</sgmltag>s are optional (some questions
+have no answers) and may be repeated (some questions have more than
+one answer).
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+<sgmltag>Question</sgmltag>s are frequently introduced with a label, such as
+<quote>Q:</quote>. Several attributes control the generation of the label
+text.
+</para>
+<para>
+If the <sgmltag class='attribute'>DefaultLabel</sgmltag> attribute on the
+nearest ancestor <sgmltag>QandASet</sgmltag> is not
+<quote><literal>label</literal>,</quote> then the 
+<sgmltag class='attribute'>Label</sgmltag> attribute on <sgmltag>Question</sgmltag> is
+ignored.
+Otherwise, the value of the <sgmltag class='attribute'>Label</sgmltag> attribute
+is used as the label for the <sgmltag>Question</sgmltag>.
+</para>
+</refsect2>
+
+
+&question.parents.gen;
+&question.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&question.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

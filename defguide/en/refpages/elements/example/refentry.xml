@@ -1,0 +1,85 @@
+<refentry id="example.element">
+<?dbhtml filename="example.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>example</secondary></indexterm>
+<refentrytitle>example</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>example</refname>
+<refpurpose>&example.purpose;</refpurpose>
+</refnamediv>
+
+&example.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Example</sgmltag> is a formal example with a title. Examples often
+contain <sgmltag>ProgramListing</sgmltag>s or other large, block elements.
+Frequently they are given <acronym>ID</acronym>s and referenced from the text with
+<sgmltag>XRef</sgmltag> or <sgmltag>Link</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; DocBook does not
+specify the location of the example within the final displayed
+flow of text; it may float or remain where it is located.
+</para>
+<para>
+A list of examples may be generated at the beginning of a
+document.
+</para>
+</refsect2>
+
+
+&example.parents.gen;
+&example.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>width</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Width</sgmltag> specifies the width (in characters)
+of the longest line in this <sgmltag>Example</sgmltag> (formatters may use
+this value to determine scaling or rotation).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&example.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&example.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.example.1" role="HACK-ex.out.start"/>
+&example.example.1.gen;
+<anchor id="ex.oe.example.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&example.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

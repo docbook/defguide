@@ -1,0 +1,135 @@
+<refentry id="simplelist.element">
+<?dbhtml filename="simplelist.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>simplelist</secondary></indexterm>
+<refentrytitle>simplelist</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>simplelist</refname>
+<refpurpose>&simplelist.purpose;</refpurpose>
+</refnamediv>
+
+&simplelist.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>SimpleList</sgmltag> is a list of words or phrases. It offers a
+convenient alternative to the other list elements for inline content.
+</para>
+
+<refsect2 id="dbreproc.simplelist"><title>Processing expectations</title>
+<para>
+Ironically, the processing expectations of a
+<sgmltag>SimpleList</sgmltag> are quite complex.
+</para>
+
+<para>
+The presentation of a <sgmltag>SimpleList</sgmltag> is controlled by the
+<sgmltag class='attribute'>Type</sgmltag> attribute, which has three possible
+values:
+
+<variablelist>
+<varlistentry><term><literal>Inline</literal></term>
+  <listitem>
+  <para>
+    Indicates that the <sgmltag>Member</sgmltag>s of the list should be
+    rendered as a comma separated, inline list.
+  </para>
+  </listitem>
+</varlistentry>
+
+<varlistentry><term><literal>Horiz</literal></term>
+  <listitem>
+  <para>
+    Indicates that the <sgmltag>Member</sgmltag>s of the list should be
+    rendered in a tabular fashion with members running across the 
+    rows.
+  </para>
+  </listitem>
+</varlistentry>
+
+<varlistentry><term><literal>Vert</literal></term>
+  <listitem>
+  <para>
+    Indicates that the <sgmltag>Member</sgmltag>s of the list should be
+    rendered in a tabular fashion with members running down the
+    columns.  This is the default.
+  </para>
+  </listitem>
+</varlistentry>
+</variablelist>
+</para>
+
+<para>
+In both of the tabular cases, the number of columns in the table is
+controlled by the <sgmltag class='attribute'>Columns</sgmltag> attribute.
+</para>
+</refsect2>
+
+
+
+
+
+&simplelist.parents.gen;
+&simplelist.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>columns</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Columns</sgmltag> specifies the number of columns to 
+be used in the presentation of a <sgmltag>SimpleList</sgmltag> with a 
+<sgmltag class="attribute">Type</sgmltag> of <literal>Vert</literal> or <literal>Horiz</literal>.
+If <sgmltag class="attribute">Columns</sgmltag> is unspecified, <literal>1</literal>
+is assumed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>type</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Type</sgmltag> specifies how the <sgmltag>Member</sgmltag>s 
+of the <sgmltag>SimpleList</sgmltag> are to be formatted. (This attribute
+would better fit DocBook semantics if it were named
+<quote><sgmltag class='attribute'>Class</sgmltag></quote>).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&simplelist.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&simplelist.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.simplelist.1" role="HACK-ex.out.start"/>
+&simplelist.example.1.gen;
+<anchor id="ex.oe.simplelist.1" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&simplelist.example.2.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.simplelist.2" role="HACK-ex.out.start"/>
+&simplelist.example.2.gen;
+<anchor id="ex.oe.simplelist.2" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&simplelist.example.3.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.simplelist.3" role="HACK-ex.out.start"/>
+&simplelist.example.3.gen;
+<anchor id="ex.oe.simplelist.3" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,69 @@
+<refentry id="areaspec.element">
+<?dbhtml filename="areaspec.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>areaspec</secondary></indexterm>
+<refentrytitle>areaspec</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>areaspec</refname>
+<refpurpose>&areaspec.purpose;</refpurpose>
+</refnamediv>
+
+&areaspec.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+An <sgmltag>AreaSpec</sgmltag> holds a collection of regions and/or region sets in a
+graphic, program listing, or screen that are associated with
+<sgmltag>Callout</sgmltag> descriptions.  See <sgmltag>Area</sgmltag> for a description
+of the attributes.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.suppress; This element provides data for processing but it
+is not expected to be rendered directly.
+</para>
+</refsect2>
+
+
+&areaspec.parents.gen;
+&areaspec.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>otherunits</term>
+<listitem>
+<para>
+If none of the <sgmltag class="attribute">Units</sgmltag> are applicable, set
+<sgmltag class="attribute">Units</sgmltag> to <literal>Other</literal> and set 
+<sgmltag class="attribute">OtherUnits</sgmltag> to some application-specific
+description of the desired units.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>units</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Units</sgmltag> indicate how the specified
+<sgmltag class="attribute">Coords</sgmltag> are to be interpreted. The default
+units vary according to the type of callout specified; <literal>CALSPair</literal>
+for graphics and <literal>LineColumn</literal> for line-oriented elements.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&areaspec.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&areaspec.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

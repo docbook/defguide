@@ -1,0 +1,66 @@
+<refentry id="mousebutton.element">
+<?dbhtml filename="mousebutton.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>mousebutton</secondary></indexterm>
+<refentrytitle>mousebutton</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>mousebutton</refname>
+<refpurpose>&mousebutton.purpose;</refpurpose>
+</refnamediv>
+
+&mousebutton.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>MouseButton</sgmltag> element identifies the conventional name
+of a mouse button.  Because mouse buttons are not physically labelled,
+the name is just that, a convention.  Adding explicit markup for the
+naming of mouse buttons allow easier translation from one convention
+to another and might allow an online system to adapt to right- or left-handed usage.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+
+&mousebutton.parents.gen;
+&mousebutton.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>MouseButton</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&mousebutton.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&mousebutton.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.mousebutton.1" role="HACK-ex.out.start"/>
+&mousebutton.example.1.gen;
+<anchor id="ex.oe.mousebutton.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&mousebutton.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,110 @@
+<refentry id="xref.element">
+<?dbhtml filename="xref.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>xref</secondary></indexterm>
+<refentrytitle>xref</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>xref</refname>
+<refpurpose>&xref.purpose;</refpurpose>
+</refnamediv>
+
+&xref.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>XRef</sgmltag> element forms a cross-reference from the location
+of the <sgmltag>XRef</sgmltag> to the element to which it points.  Unlike
+<sgmltag>Link</sgmltag> and the other cross-referencing elements, <sgmltag>XRef</sgmltag>
+is empty. The processing system has to generate appropriate cross-reference
+text for the reader.
+</para>
+
+<refsect2 id="dbreproc.xref"><title>Processing expectations</title>
+<para>
+If the <sgmltag class='attribute'>Endterm</sgmltag> attribute is specified, the
+content of the element pointed to by <sgmltag class='attribute'>Endterm</sgmltag>
+must be used as the text of the cross-reference, otherwise it is up to
+the application to generate appropriate cross reference text from the
+element pointed to by <sgmltag class='attribute'>Linkend</sgmltag>.
+</para>
+
+<para>
+If the object <emphasis>pointed to</emphasis> has a specified 
+<sgmltag class='attribute'>XRefLabel</sgmltag>, that should be used as the
+cross-reference text.
+</para>
+</refsect2>
+
+
+&xref.parents.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>endterm</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Endterm</sgmltag> points to the element whose content
+is to be used as the text of the link.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linkend</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Linkend</sgmltag> points to the target of the cross reference.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&xref.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+Consider the following example:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&xref.example.1.txt;</programlisting>
+</informalexample>
+
+<para>
+One reasonable rendering for the content of the first chapter of
+this book is the following:
+</para>
+
+<para>
+This paragraph demonstrates several features of
+<sgmltag>XRef</sgmltag>.
+</para>
+
+<itemizedlist>
+<listitem><para>A straight link generates the
+cross-reference text: Chapter 2, <quote>The Second Chapter</quote>
+</para></listitem>
+<listitem><para>A link to an element with an
+<sgmltag class="attribute">XRefLabel</sgmltag>:
+Chapter the Third.
+</para></listitem>
+<listitem><para>A link with an
+<sgmltag class="attribute">EndTerm</sgmltag>:
+Chapter 4.
+</para></listitem>
+</itemizedlist>
+
+<para>
+Of course, in an online system, these references would also
+be links to the appropriate chapters.
+</para>
+
+<para>For additional examples, see also
+&xref.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,64 @@
+<refentry id="classsynopsisinfo.element" revision='4.0'>
+<?dbhtml filename="classsynopsisinfo.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>classsynopsisinfo</secondary></indexterm>
+<refentrytitle>classsynopsisinfo</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>classsynopsisinfo</refname>
+<refpurpose>&classsynopsisinfo.purpose;</refpurpose>
+</refnamediv>
+
+&classsynopsisinfo.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Supplementary information in a <sgmltag>ClassSynopsis</sgmltag>.
+See <sgmltag>ClassSynopsis</sgmltag>.
+</para>
+
+<para>
+Unlike the other info elements, <sgmltag>ClassSynopsisInfo</sgmltag>
+is not a container for meta-information. Instead
+<sgmltag>ClassSynopsisInfo</sgmltag>
+is a verbatim environment for adding additional information to a
+class synopsis.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&pexp.linespecific;
+</para>
+</refsect2>
+
+
+&classsynopsisinfo.parents.gen;
+&classsynopsisinfo.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>format</term>
+<listitem>
+<para revision="4.0">
+The <sgmltag class="attribute">Format</sgmltag> attribute applies the 
+<literal>linespecific</literal> notation to all <sgmltag>ClassSynopsisInfo</sgmltag>s.
+All white space and line breaks must be preserved.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linenumbering</term>
+<listitem>
+<para revision="4.0">Line numbering indicates whether or not the lines
+of a <sgmltag>ClassSynopsisInfo</sgmltag> are to be automatically numbered. The details
+of numbering (every line or only selected lines, on the left or right, etc.)
+are left up to the processing application. Be aware that not all processors
+are capable of numbering lines.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+</refentry>
+

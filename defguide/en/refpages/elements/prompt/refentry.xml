@@ -1,0 +1,72 @@
+<refentry id="prompt.element">
+<?dbhtml filename="prompt.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>prompt</secondary></indexterm>
+<refentrytitle>prompt</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>prompt</refname>
+<refpurpose>&prompt.purpose;</refpurpose>
+</refnamediv>
+
+&prompt.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Prompt</sgmltag> is a character or character string marking
+the beginning of an input field.  <sgmltag>Prompt</sgmltag>s are
+generally associated with command-line interfaces and not
+graphical user interfaces (<acronym>GUI</acronym>s).  In <acronym>GUI</acronym>s, <sgmltag>GUILabel</sgmltag> is usually more appropriate.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<sgmltag>Prompt</sgmltag> was added in DocBook V3.0.  It duplicates the
+semantics of <sgmltag class='starttag'>systemitem class="prompt"</sgmltag>.
+The <literal>prompt</literal> attribute will be removed from 
+<sgmltag>SystemItem</sgmltag> in the future.
+</para>
+</refsect2>
+
+
+&prompt.parents.gen;
+&prompt.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>Prompt</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&prompt.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&prompt.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.prompt.1" role="HACK-ex.out.start"/>
+&prompt.example.1.gen;
+<anchor id="ex.oe.prompt.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

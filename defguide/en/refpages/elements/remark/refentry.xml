@@ -1,0 +1,66 @@
+<refentry id="remark.element" revision='4.0'>
+<?dbhtml filename="remark.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>remark</secondary></indexterm>
+<refentrytitle>remark</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>remark</refname>
+<refpurpose>&remark.purpose;</refpurpose>
+</refnamediv>
+
+&remark.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>Remark</sgmltag> element is designed to hold remarks, for
+example, editorial comments, that are useful while the document is
+in the draft stage, but are not intended for final publication.
+</para>
+
+<para>
+Remarks are available almost anywhere and have a particularly broad
+content model.  Your processing system may or may not support either the use
+of comments everywhere they are allowed or the full generality of
+the <sgmltag>Remark</sgmltag> content model.
+</para>
+
+<para>Prior to version 4.0 of DocBook, this element was named
+<sgmltag>Comment</sgmltag>.</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.context; Remarks are often printed only in draft
+versions of a document and suppressed otherwise.  This may be
+controlled by the <sgmltag class='attribute'>Status</sgmltag> attribute
+of an ancestor element (for example, <sgmltag>Chapter</sgmltag>), or by
+external processes, such as selecting an alternate stylesheet
+when publishing.
+</para>
+<para>
+<sgmltag>Remark</sgmltag>s must not be nested within other <sgmltag>Remark</sgmltag>s.
+Because DocBook is harmonizing towards &XML;, this restriction cannot be
+enforced by the &DTD;. The processing of nested comments is undefined.
+</para>
+</refsect2>
+
+
+&remark.parents.gen;
+&remark.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&remark.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.remark.1" role="HACK-ex.out.start"/>
+&remark.example.1.gen;
+<anchor id="ex.oe.remark.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,68 @@
+<refentry id="preface.element">
+<?dbhtml filename="preface.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>preface</secondary></indexterm>
+<refentrytitle>preface</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>preface</refname>
+<refpurpose>&preface.purpose;</refpurpose>
+</refnamediv>
+
+&preface.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Preface</sgmltag> is a preface or forward in a <sgmltag>Book</sgmltag>.  The
+<sgmltag>Preface</sgmltag> element may appear more than once and should be
+used for all introductory chapter-like material.  For example, a
+<sgmltag>Book</sgmltag> might have both a <emphasis>Foreward</emphasis> and an
+<emphasis>Introduction</emphasis>.  Both should be tagged as
+<sgmltag>Preface</sgmltag>s in DocBook.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Usually introduces a forced page break and often
+starts on the next recto page. It is common for the page numbers
+in prefaces to be displayed as roman numerals rather than arabic
+numerals. <sgmltag>Preface</sgmltag>s are usually listed in the Table
+of Contents.
+</para>
+</refsect2>
+
+
+&preface.parents.gen;
+&preface.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Preface</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&preface.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&preface.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

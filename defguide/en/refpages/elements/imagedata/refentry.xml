@@ -1,0 +1,127 @@
+<refentry id="imagedata.element" revision='3.1'>
+<?dbhtml filename="imagedata.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>imagedata</secondary></indexterm>
+<refentrytitle>imagedata</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>imagedata</refname>
+<refpurpose>&imagedata.purpose;</refpurpose>
+</refnamediv>
+
+&imagedata.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+This element points to an external entity containing graphical
+image data.
+</para>
+
+<refsect2 id="dbreproc.imagedata"><title>Processing expectations</title>
+<para>
+&format.context; Render the image.
+</para>
+<para>
+There are two ways to provide content for <sgmltag>ImageData</sgmltag>:
+<sgmltag class='attribute'>EntityRef</sgmltag> or <sgmltag
+class='attribute'>FileRef</sgmltag>.  It is best to use only one of these
+methods, however, if multiple sources are provided, 
+<sgmltag class='attribute'>EntityRef</sgmltag> will be used in favor of 
+<sgmltag class='attribute'>FileRef</sgmltag>.
+</para>
+</refsect2> 
+
+
+&imagedata.parents.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>align</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Align</sgmltag> specifies the horizontal alignment
+of the image data on the page or within the element that frames it.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>depth</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Depth</sgmltag> specifies the desired depth (vertical
+distance, at least in horizontal writing systems) of the
+image data.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>entityref</term>
+<listitem>
+<para>
+<sgmltag class="attribute">EntityRef</sgmltag> identifies the general entity
+which points to the content of the image data.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>fileref</term>
+<listitem>
+<para>
+<sgmltag class="attribute">FileRef</sgmltag> specifies the name of the file
+which contains the content of the image data.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>format</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Format</sgmltag> identifies the format of the image
+data. The <sgmltag class="attribute">Format</sgmltag> must be a defined
+notation.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>scale</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Scale</sgmltag> specifies integer representing a 
+percentage scaling factor (retaining the relative dimensions of the 
+original image data). If unspecified, the value 100 (100&percnt;) is assumed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>scalefit</term>
+<listitem>
+<para>
+If <sgmltag class="attribute">ScaleFit</sgmltag> has the value 1 (true), then
+the image data is to be scaled (uniformly) to the specified width or depth.
+The default value of 0 (false) indicates that the image will not be
+scaled to fit (although it may still be scaled by the
+<sgmltag class="attribute">Scale</sgmltag> attribute).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>srccredit</term>
+<listitem>
+<para>
+<sgmltag class="attribute">SrcCredit</sgmltag> contains details about the source 
+of the image data.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>width</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Width</sgmltag> indicates the width of the graphic.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&imagedata.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

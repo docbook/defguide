@@ -1,0 +1,65 @@
+<refentry id="classsynopsis.element" revision='4.0'>
+<?dbhtml filename="classsynopsis.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>classsynopsis</secondary></indexterm>
+<refentrytitle>classsynopsis</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>classsynopsis</refname>
+<refpurpose>&classsynopsis.purpose;</refpurpose>
+</refnamediv>
+
+&classsynopsis.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>ClassSynopsis</sgmltag> contains the syntax summary of a
+class (generally speaking, a class in the object-oriented programming
+language sense).
+</para>
+
+<para>
+This is one of the few places where DocBook attempts to model as well
+as describe. Unlike <sgmltag>FuncSynopsis</sgmltag> which was designed
+with C language function prototypes in mind, the content model of
+<sgmltag>ClassSynopsis</sgmltag> was designed to capture a wide range
+of object-oriented language semantics.</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+For the most part, the processing application is expected to
+generate all of the parenthesis, semicolons, commas,
+and so on. required in the rendered synopsis.  The exception to this
+rule is that the spacing and other punctuation inside a
+parameter that is a pointer to a function must be provided in
+the source markup.
+</para>
+</refsect2>
+
+
+&classsynopsis.parents.gen;
+&classsynopsis.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para revision="4.0">The <sgmltag class="attribute">Class</sgmltag>
+attribute identifies the whether this is the synopsis of a class
+or an interface.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>language</term>
+<listitem>
+<para revision="4.0">Identifies the language (Java, C++, Perl, etc.)
+of the class for which this is a synopsis allows stylesheets to select
+an appropriate rendering.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,607 @@
+<chapter id="ch-parse">
+<?dbhtml filename="ch03.html"?>
+<chapterinfo>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</chapterinfo>
+<title>Parsing DocBook Documents</title>
+<para>
+<indexterm id="parsDocch4" class="startofrange"><primary>parsing</primary>
+  <secondary>DocBook documents</secondary></indexterm>
+<indexterm id="docDTDparsch4" class="startofrange"><primary>DocBook DTD</primary>
+  <secondary>parsing documents</secondary></indexterm>
+
+A key feature of &SGML; and &XML; markup is that you
+<emphasis>validate</emphasis> it.  The DocBook &DTD; is a precise description
+of valid nesting, the order of elements, and their content.  All
+DocBook documents must conform to this description or they are not
+DocBook documents (by definition).
+</para>
+<para>
+<indexterm><primary>parsers</primary>
+  <secondary>validating</secondary></indexterm>
+<indexterm><primary>validation</primary>
+  <secondary>parsers</secondary></indexterm>
+
+A <firstterm>validating parser</firstterm> is a program that can read
+the &DTD; and a particular document and determine whether the exact
+nesting and order of elements in the document is valid according to
+the &DTD;.
+</para>
+<para>
+<indexterm><primary>text editors</primary>
+  <secondary>unstructured, parsing and</secondary></indexterm>
+
+If you are not using a structured editor that can enforce the markup
+as you type, validation with an external parser is a particularly
+important step in the document creation process.  You cannot expect
+to get rational results from subsequent processing (such as document
+publishing) if your documents are not valid.
+</para>
+<para>
+<indexterm><primary>SP nsgmls parser</primary><see>nsgmls parser</see></indexterm>
+The most popular free &SGML; parser is <acronym>SP</acronym> by James Clark,
+available at <ulink url="http://www.jclark.com/">http://www.jclark.com/</ulink>.
+</para>
+<para>
+<indexterm><primary>nsgmls parser</primary></indexterm>
+<indexterm><primary>parsers</primary>
+  <secondary>free</secondary></indexterm>
+<indexterm><primary>XML</primary>
+  <secondary>parsers, free</secondary></indexterm>
+<indexterm><primary>xp parser</primary></indexterm>
+
+<acronym>SP</acronym> includes <command>nsgmls</command>, a fast command-line
+parser. In the world of free validating &XML; parsers,
+James
+Clark's <command>xp</command> is a popular choice.
+</para>
+<note>
+<para>
+<indexterm><primary>parsers</primary>
+  <secondary>non-validating</secondary></indexterm>
+
+Not all &XML; parsers are validating, and although a
+non-validating parser may have many uses, it cannot ensure that your
+documents are valid according to the &DTD;.</para>
+</note>
+<sect1 id="ch03-validate"><title>Validating Your Documents</title>
+<para>
+The exact way in which the parser is executed varies according to
+the parser in use, naturally.  For information about your particular
+parser, consult the documentation that came with it.
+</para>
+
+<sect2><title>Using nsgmls</title>
+<para>
+<indexterm><primary>nsgmls parser</primary>
+  <secondary>SGML documents, validating</secondary></indexterm>
+
+The <command>nsgmls</command> command from <acronym>SP</acronym> is a
+validating &SGML; parser.  The options used in the example below
+suppress the normal output (<option>-s</option>), except for error messages,
+print the version number (<option>-v</option>), and specify the catalog file
+that should be used to map public identifiers to system
+identifiers. Printing the version number guarantees that you always
+get <emphasis>some</emphasis> output, so that you know the command ran
+successfully:
+</para>
+<screen>
+[n:\dbtdg] nsgmls -sv -c \share\sgml\catalog test.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+</screen>
+<para>
+<indexterm><primary>error messages</primary>
+  <secondary>nsgmls parser</secondary></indexterm>
+<indexterm><primary>options</primary>
+  <secondary>error messages (parser), directing to file</secondary></indexterm>
+
+Because no error messages were printed, we know our document is valid.
+If you're working with a document that you discover has many errors,
+the <option>-f</option> option offers a handy way to direct the errors to a file
+so they don't all scroll off your screen.
+</para>
+<para>
+<indexterm><primary>nsgmls parser</primary>
+  <secondary>XML documents, validating</secondary></indexterm>
+<indexterm><primary>declarations</primary>
+  <secondary>nsgmls parser</secondary></indexterm>
+<indexterm><primary>xml.dcl declaration (nsgmls parser)</primary></indexterm>
+<indexterm><primary>XML</primary>
+  <secondary>nsgmls parser</secondary></indexterm>
+
+If you want to validate an &XML; document with <acronym>SP</acronym>,
+you must make sure that <acronym>SP</acronym> uses the correct
+declaration.  An &XML; declaration called <filename>xml.dcl</filename> is
+included with <acronym>SP</acronym>.
+</para>
+
+<para>
+The easiest way to make sure that <acronym>SP</acronym> uses <filename>xml.dcl</filename> is to
+include the declaration explicitly on the command line when you run
+<command>nsgmls</command> (or Jade, or other <acronym>SP</acronym> tools):
+</para>
+<screen>
+[n:\dbtdg] nsgmls -sv -c \share\sgml\catalog m:\jade\xml.dcl test.xml
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+</screen>
+</sect2>
+
+<sect2><title>Using xp</title>
+<para>
+<indexterm><primary>xp parser</primary></indexterm>
+<indexterm><primary>Time program (xp parser)</primary></indexterm>
+
+The <application>xp</application> distribution includes several sample programs.
+One of these programs, <command>Time</command>, performs a validating parse
+of the document and prints the amount of time required to parse the
+&DTD; and the document.  This program makes an excellent validity
+checker:
+</para>
+<screen>
+java com.jclark.xml.apps.Time examples\simple.xml
+6.639
+</screen>
+<para>
+The result states that it took 6.639 seconds to parse the &DTD; and
+the document.  This indicates that the document is valid.  If the
+document is invalid, additional error messages are displayed.
+</para>
+</sect2>
+</sect1>
+<sect1 id="ch03-parseerr"><title>Understanding Parse Errors</title>
+<para>
+<indexterm id="errorparsech4" class="startofrange"><primary>errors</primary>
+  <secondary>parsing</secondary></indexterm>
+
+<indexterm><primary>parsing</primary>
+  <secondary>errors</secondary></indexterm>
+<indexterm><primary>error messages</primary>
+  <secondary>parsers</secondary></indexterm>
+
+Every parser produces slightly different error messages, but most
+indicate exactly (at least technically)<footnote>
+<para>
+It is often the case that you can correct an error in the document in
+several ways.  The parser suggests one possible fix, but this is not
+always the right fix.  For example, the parser may suggest that you
+can correct out of context data by adding another element, when in
+fact it's &ldquo;obvious&rdquo; to human eyes that the problem is a
+missing end tag.
+</para>
+</footnote> what is wrong and where the error occurred.  With a little
+experience, this information is all you'll need to quickly identify
+what's wrong.
+</para>
+<para>
+
+<indexterm><primary>Jade</primary>
+  <secondary>SP parser, using</secondary></indexterm>
+
+In the rest of this section, we'll look at a number of common errors
+and the messages they produce in <acronym>SP</acronym>.  We've
+chosen <acronym>SP</acronym> for the rest of these examples because
+that is the same parser used by Jade, which we'll be discussing
+further in <xref linkend="ch-publish"/>.
+</para>
+<sect2><title>&DTD; Cannot Be Found</title>
+<para>
+<indexterm><primary>cannot be found errors</primary></indexterm>
+<indexterm><primary>DTDs</primary>
+  <secondary>cannot be found errors</secondary></indexterm>
+<indexterm><primary>public identifiers</primary>
+  <secondary>errors</secondary></indexterm>
+
+The telltale sign that SP could not find the &DTD;, or some module of
+the &DTD;, is the error message: "cannot generate system identifier
+for public text &hellip;".  Generally, the errors that occur after
+this are spurious; if SP couldn't find some part of the &DTD;,
+it's likely to think that <emphasis>everything</emphasis> is wrong.
+</para>
+<para>
+Careful examination of the following document will show that we've
+introduced a simple typographic error into the public identifier (the
+word <quote>DocBook</quote> is misspelled with a lowercase <quote>b</quote>):
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/nodtd.sgm"/>
+</programlisting>
+<para>
+SP responds dramatically to this error:
+</para>
+<screen>
+hermes:/documents/books/tdg/examples/errs$ nsgmls -sv -c cat1 /usr/lib/sgml/declaration/xml.dcl nodtd.sgm
+nsgmls:I: SP version "1.3.4"
+nsgmls:nodtd.sgm:2:76:E: could not resolve host "www.oasis-open.org" (try again later)
+nsgmls:nodtd.sgm:2:76:E: DTD did not contain element declaration for document type name
+nsgmls:nodtd.sgm:3:8:E: element "chapter" undefined
+nsgmls:nodtd.sgm:3:15:E: element "title" undefined
+nsgmls:nodtd.sgm:4:5:E: element "para" undefined
+nsgmls:nodtd.sgm:10:5:E: element "para" undefined
+nsgmls:nodtd.sgm:11:15:E: there is no attribute "role"
+nsgmls:nodtd.sgm:11:21:E: element "emphasis" undefined
+nsgmls:nodtd.sgm:12:9:E: element "emphasis" undefined
+nsgmls:nodtd.sgm:12:24:E: element "emphasis" undefined
+nsgmls:nodtd.sgm:13:18:E: element "superscript" undefined
+nsgmls:nodtd.sgm:14:16:E: element "subscript" undefined
+nsgmls:nodtd.sgm:16:5:E: element "para" undefined
+</screen>
+<para>
+<indexterm><primary>catalog files</primary>
+  <secondary>errors</secondary></indexterm>
+
+Other things to look for, if you haven't misspelled the public
+identifier, are typos in the catalog or failure to specify a catalog
+that resolves the public identifier that can't be found.
+</para>
+</sect2>
+<sect2><title><acronym>ISO</acronym> Entity Set Missing</title>
+<para>
+
+<indexterm><primary>entity sets</primary>
+  <secondary>missing</secondary></indexterm>
+
+A missing entity set is another example of either a misspelled public
+identifier, or a missing catalog or catalog entry.
+</para>
+<para>
+In this case, there's nothing wrong with the document, but the catalog
+that's been specified is missing the public identifiers for the
+<acronym>ISO</acronym> entity sets:
+</para>
+<screen>
+[n:\dbtdg]nsgmls -sv -c examples\errs\cat2 examples\simple.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:53:65:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Arrow Relations//EN"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:54:8:E: reference to entity "ISOamsa" for which no system identifier could be generated
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:52:0: entity was defined here
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:60:66:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Binary Operators//EN"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:61:8:E: reference to entity "ISOamsb" for which no system identifier could be generated
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:59:0: entity was defined here
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:67:60:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Delimiters//EN"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:68:8:E: reference to entity "ISOamsc" for which no system identifier could be generated
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:66:0: entity was defined here
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:74:67:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Negated Relations//EN"
+...
+</screen>
+<para>
+<indexterm><primary>entity sets</primary>
+  <secondary>locating</secondary></indexterm>
+
+The <acronym>ISO</acronym> entity sets are required by the DocBook
+&DTD;, but they are not distributed with it.  That's because they
+aren't maintained by <acronym>OASIS</acronym>.<footnote>
+<para>
+If you need to locate the entity sets, consult <ulink url="http://www.oasis-open.org/cover/topics.html#entities">http://www.oasis-open.org/cover/topics.html#entities</ulink>.
+</para>
+</footnote>
+</para>
+</sect2>
+<sect2><title>Character Data Not Allowed Here</title>
+<para>
+<indexterm><primary>error messages</primary>
+  <secondary>character data out of context</secondary></indexterm>
+<indexterm><primary>characters</primary>
+  <secondary>errors (out of context)</secondary></indexterm>
+<indexterm><primary>start tags</primary>
+  <secondary>errors</secondary></indexterm>
+
+Out of context character data is frequently caused by a missing start
+tag, but sometimes it's just the result of typing in the wrong place!
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/badpcdata.sgm"/>
+</programlisting>
+<screen>
+[n:\dbtdg] nsgmls -sv -c \share\sgml\catalog examples\errs\badpcdata.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badpcdata.sgm:9:0:E: character data is not allowed here
+</screen>
+<para>
+<indexterm><primary>Chapter element</primary>
+  <secondary>errors, character data</secondary></indexterm>
+
+<sgmltag>Chapter</sgmltag>s aren't allowed to contain character data
+directly. Here, a wrapper element, such as <sgmltag>Para</sgmltag>, is
+missing around the sentence between the first two paragraphs.
+</para>
+</sect2>
+<sect2><title>Misspelled Start Tag</title>
+<para>
+<indexterm><primary>start tags</primary>
+  <secondary>errors</secondary>
+    <tertiary>misspelling</tertiary></indexterm>
+
+If you spell it wrong, the parser gets confused.
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/misspell.sgm"/>
+</programlisting>
+<screen>
+[n:\documents\books\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\misspe
+ll.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:9:5:E: element "PAAR" undefined
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:14:6:E: end tag for element "PARA" which is not open
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:21:9:E: end tag for "PAAR" omitted, but OMITTAG NO was specified
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:9:0: start tag was here
+</screen>
+<para>
+Luckily, these are pretty easy to spot, unless you accidentally spell
+the name of another element.  In that case, your error might appear to
+be out of context.
+</para>
+</sect2>
+<sect2><title>Misspelled End Tag</title>
+<para>
+<indexterm><primary>end tags</primary>
+  <secondary>errors, misspelling</secondary></indexterm>
+
+Spelling the end tag wrong is just as confusing.
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/misspell2.sgm"/>
+</programlisting>
+<screen>
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\misspell2.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:2:35:E: end tag for element "TITEL" which is not open
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:3:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT" start-tag
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:9:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT" start-tag
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:15:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT" start-tag
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:21:9:E: end tag for "TITLE" omitted, but OMITTAG NO was specified
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:2:9: start tag was here
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:21:9:E: end tag for "CHAPTER" which is not finished
+</screen>
+<para>
+These are pretty easy to spot as well, but look at how confused the
+parser became.  From the parser's point of view, failure to close the
+open <sgmltag>Title</sgmltag> element means that all the following elements
+appear out of context.
+</para>
+</sect2>
+<sect2><title>Out of Context Start Tag</title>
+<para>
+<indexterm><primary>start tags</primary>
+  <secondary>errors</secondary>
+    <tertiary>out of context</tertiary></indexterm>
+<indexterm><primary>tags</primary>
+  <secondary>context errors</secondary></indexterm>
+
+Sometimes the problem isn't spelling, but placing a tag in the wrong
+context.  When this happens, the parser tries to figure out what it
+can add to your document to make it valid.  Then it proceeds as if it
+had seen what was added in order to recover from the error seen, which
+can cause future errors.
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/badstarttag.sgm"/>
+</programlisting>
+<screen>
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badstarttag.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badstarttag.sgm:9:12:E: document type does not allow element "TITLE" here; missing one of "CALLOUTLIST", "SEGMENTEDLIST", "VARIABLELIST", "CAUTION", "IMPORTANT", "NOTE", "TIP", "WARNING", "BLOCKQUOTE", "EQUATION", "EXAMPLE", "FIGURE", "TABLE" start-tag
+</screen>
+<para>
+<indexterm><primary>titles</primary>
+  <secondary>formal elements</secondary>
+    <tertiary>errors</tertiary></indexterm>
+<indexterm><primary>paragraphs</primary>
+  <secondary>titles</secondary></indexterm>
+
+In this example, we probably wanted a <sgmltag>FormalPara</sgmltag>, so that
+we could have a title on the paragraph.  But note that the parser
+didn't suggest this alternative.  The parser only tries to add
+additional elements, rather than rename elements that it's already
+seen.
+</para>
+</sect2>
+<sect2><title>Missing End Tag</title>
+<para>
+<indexterm><primary>end tags</primary>
+  <secondary>missing, errors</secondary></indexterm>
+
+Leaving out an end tag is a lot like an out of context start tag.  In
+fact, they're really the same error.  The problem is never caused by
+the missing end tag per se, rather it's caused by the fact that
+something following it is now out of context.
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/noendtag.sgm"/>
+</programlisting>
+<screen>
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\noendtag.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:14:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT", "CAUTION", "IMPORTANT", "NOTE", "TIP", "WARNING", "BLOCKQUOTE", "INFORMALEXAMPLE" start-tag
+m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:20:9:E: end tag for "PARA" omitted, but OMITTAG NO was specified
+m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:9:0: start tag was here
+</screen>
+<para>
+In this case, the parser figured out that the best thing it could do
+is end the paragraph.
+</para>
+</sect2>
+<sect2><title>Bad Entity Reference</title>
+<para>
+<indexterm><primary>entities</primary>
+  <secondary>errors, spelling</secondary></indexterm>
+
+If you spell an entity name wrong, the parser will catch it.
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/badent.sgm"/>
+</programlisting>
+<screen>
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badent.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badent.sgm:10:26:E: general entity "xyzzy" not defined and no default entity
+</screen>
+<para>
+More often than not, you'll see this when you misspell a character
+entity name.  For example, this happens when you type
+<literal>&amp;ldqou;</literal> instead of
+<literal>&amp;ldquo;</literal>.
+</para>
+</sect2>
+<sect2><title>Invalid 8-Bit Character</title>
+<para>
+<indexterm><primary>characters</primary>
+  <secondary>character sets</secondary>
+    <tertiary>Unicode character set (SGML errors)</tertiary></indexterm>
+<indexterm><primary>8-bit characters, errors (SGML)</primary></indexterm>
+<indexterm><primary>errors</primary>
+  <secondary>8-bit characters (SGML)</secondary></indexterm>
+
+In &XML;, the entire range of Unicode characters is available to you,
+but in &SGML;, the declaration indicates what characters are valid.
+The distributed DocBook declaration doesn't allow a bunch of fairly
+common 8-bit characters.
+</para>
+<programlisting>
+<inlinegraphic format="linespecific" fileref="examples/errs/badchar.sgm"/>
+</programlisting>
+<screen>
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badchar.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badchar.sgm:11:0:E: non SGML character number 147
+m:\jade\nsgmls.exe:examples\errs\badchar.sgm:11:5:E: non SGML character number 148
+</screen>
+<para>
+<indexterm><primary>declarations</primary>
+  <secondary>character sets, errors</secondary></indexterm>
+<indexterm><primary>entities</primary>
+  <secondary>characters</secondary>
+    <tertiary>errors</tertiary></indexterm>
+
+In this example, the Windows code page values for
+curly left and right quotes have been used, but they aren't in the
+declared character set.  Fix this by converting them to character
+entities.
+</para>
+<para>
+<indexterm><primary>interchange partners</primary></indexterm>
+
+You can also fix them by changing the declaration, but if you do that,
+make sure all your interchange partners are aware of, and have a copy of,
+the modified declaration. See <xref linkend="app-interchange"/>.
+<indexterm startref="errorparsech4" class="endofrange"/>
+<indexterm startref="parsDocch4" class="endofrange"/>
+<indexterm startref="docDTDparsch4" class="endofrange"/>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id="ch03-otherschema"><title>Considering Other Schema Languages</title>
+
+<para>Historically, &DTD;s were the only way to describe the valid
+stricture of SGML and XML documents, but that is no longer the case.
+At the time of this writing (January, 2001), DocBook is experimentally
+available in three other schema languages:</para>
+
+<variablelist>
+<varlistentry>
+<term><ulink url="http://www.w3.org/XML/Schema">XML Schema</ulink></term>
+<listitem>
+<para>The schema language being defined by the
+<ulink url="http://www.w3.org/">W3C</ulink> as the successor to &DTD;s
+for describing the structure of &XML;. XML Schema are likely to become
+a <ulink url="http://www.w3.org/">W3C</ulink> Recommendation in 2001.
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><ulink url="http://www.xml.gr.jp/relax/">RELAX</ulink></term>
+<listitem>
+<para>RELAX, the Regular Language description for XML) is a less
+complex alternative to XML Schemas. The RELAX Core module is defined by
+ISO in <citetitle>ISO/IEC DTR 22250-1, Document Description and
+Processing Languages -- Regular Language Description for XML (RELAX)
+-- Part 1: RELAX Core, 2000</citetitle>. The RELAX Namespaces module
+is currently under development.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><ulink url="http://www.thaiopensource.com/trex/">TREX</ulink></term>
+<listitem>
+<para>TREX, Tree Regular Expressions for XML, is another less complex
+alternative to XML Schemas. It is concise, powerful, and datatype
+neutral.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<sect2><title>Parsing and Validation</title>
+
+<para>Before we look closer at these new schema languages, there's one
+significant difference between &DTD;s and all of them that we should
+get out of the way: &XML; parsers (which may understand &DTD;s) build an
+&XML; information set out of a stream of characters, all of these other
+schema languages begin with an information set and perform validation
+on it.</para>
+
+<para>What I mean by that is that an &XML; parser reads a stream of
+bytes:
+
+<screen>"&lt;" "?" "x" "m" "l" " " "v" "e" ...
+"&lt;" "!" "D" "O" "C" "T" "Y" "P" "E" " " "b" "o" "o" "k" ...
+"&lt;" "b" "o" "o" "k" " " "i" "d" "=" "'" "f" "o" "o" "'" ">"
+...
+"&lt;" "/" "b" "o" "o" "k" ">"</screen>
+
+interprets them as a stream of characters (which may change the
+interpretation of some sequences of bytes) and constructs some
+representation of the &XML; document. This representation is the set
+of all the &XML; information items encountered: the information
+set of the document. The <ulink url="http://www.w3.org/">W3C</ulink>
+<ulink url="http://www.w3.org/XML/">XML Core Working Group</ulink>
+is in the process of defining what an
+<ulink url="http://www.w3.org/TR/xml-infoset">&XML; Information Set</ulink>
+contains.</para>
+
+<para>The other schema languages are defined not in terms of the sequence
+of characters in the file but in terms of the information set of the
+&XML; document. They have to work this way because the
+<ulink url="http://www.w3.org/TR/REC-xml">&XML; Recommendation</ulink>
+says what an &XML; document is and they all want to work on top of
+&XML;.</para>
+
+<para>So what, you might ask? Well, it turns out that this has at least
+one very significant implication: there's no way for these languages to
+provide support for entity declarations.</para>
+
+<para>An entity, like <quote><literal>&amp;ora;</literal></quote>
+as a shortcut for <quote>O'Reilly &amp; Associates</quote> or
+<quote><literal>&amp;eacute;</literal></quote> as a mnemonic for
+<quote>&eacute;</quote>, is a feature of the character stream seen by
+the &XML; parser, it doesn't exist in the information set of valid
+&XML; documents. More importantly, this means that even if the schema
+language had a syntax for declaring entities, it wouldn't help the &XML;
+parser that needs to know the definitions long before the schema language
+processor comes into play.</para>
+
+<para>There are a couple of other &XML; features that are impacted,
+though not necessarily as significantly: notations and default
+attribute values.  One use for notations is on external entity
+declarations, and as we've already seen, the schema language is too
+late to be useful for anything entity related. Default attribute values
+are also problematic since you would like them to be in the information
+set produced by the parser so that the schema language sees them.</para>
+
+</sect2>
+
+<sect2><title>A Coarse Comparison of Three &XML; Schema Languages</title>
+
+
+<para>FIXME: write a short synopsis of how these languages compare.</para>
+
+</sect2>
+
+</sect1>
+</chapter>
+
+<!--
+Local Variables:
+mode:sgml
+sgml-parent-document: ("book.sgm" "chapter")
+End:
+-->

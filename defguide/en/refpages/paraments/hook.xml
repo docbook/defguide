@@ -1,0 +1,39 @@
+<refentry id="pe-hook">
+<?dbhtml filename="pe-hook.html"??>
+
+<refmeta>
+<indexterm><primary>Parameter Entities</primary>
+<secondary><sgmltag class="paramentity">*.hook</sgmltag></secondary></indexterm>
+<refentrytitle><sgmltag class="paramentity">*.hook</sgmltag> Parameter Entities</refentrytitle>
+</refmeta>
+
+<refnamediv>
+<refname><sgmltag class="paramentity">*.hook</sgmltag> Parameter Entities</refname>
+<refpurpose>Control access to additional modules
+</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><title>Synopsis</title>
+<para>
+The hook parameter entities<indexterm><primary>Parameter Entities</primary>
+<secondary>Hooks</secondary>
+</indexterm>
+provide a mechanism for including additional modules (EBNF, MathML,
+HTML Forms, etc.).
+Each of these hooks exists so that the module can insert additional content
+in appropriate places without interfering with the normal user-level
+customization provided by the local.* entities.
+</para>
+</refsynopsisdiv>
+
+<refsect1><title>Description</title>
+
+<para>The following sections identify all of the hook parameter entities
+in DocBook.
+</para>
+
+&parament.hook.gen;
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,207 @@
+<appendix id="app-interchange">
+<?dbhtml filename="appf.html"?>
+<appendixinfo>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</appendixinfo>
+<title>Interchanging DocBook Documents</title>
+<indexterm id="DocBookinterchangeappf" class='startofrange'><primary>DocBook DTD</primary>
+  <secondary>documents</secondary>
+    <tertiary>interchanging</tertiary></indexterm>
+<indexterm id="questionappf" class="startofrange"><primary>questionnaire, DocBook document interchange issues</primary></indexterm>
+
+<para>
+One of the early factors that motivated the development of the DocBook
+&DTD; was the desire for companies to interchange documents.  In particular,
+&UNIX; vendors wanted to be able to interchange common &UNIX; documentation.
+</para>
+
+<para>
+A great deal of effort went into making sure that DocBook could handle
+most (probably all) of the documents that were likely to be exchanged.
+This avoids the guaranteed interchange problem of &DTD; extension.
+</para>
+
+<para>However, simply using DocBook or a subset of it is not
+enough to ensure successful interchange. If you send someone
+your DocBook files, you must also tell the recipient about the
+markup your documents use and any of your additional markup
+conventions and processing expectations that impose constraints
+on processing.
+</para>
+
+<para>
+This appendix provides a sample interchange questionnaire to
+help draw your attention to those areas that might be problematic.
+</para>
+
+<para>For maximum portability, delivered DocBook documents
+should be accompanied by a filled-out interchange
+questionnaire. Because each situation is unique, you may need to
+supply additional information (such as layout specifications) in
+order to deliver a complete package.</para>
+
+<bridgehead>DocBook and &SGML; Usage</bridgehead>
+
+<orderedlist>
+<listitem><para>What version of the &DTD; are you using?</para>
+</listitem><listitem><para>Did you use any markup features of the &DTD; that
+have been flagged as obsolete (to be removed at the next major version
+of DocBook)? If so, which ones?</para>
+</listitem><listitem><para>Did you extend DocBook in any way, inside or outside
+the provided customization mechanisms? How? All extensions must be negotiated
+with the recipient.</para>
+</listitem><listitem><para>Did you remove markup from DocBook to create a
+subset? If you used a subset of DocBook, supply the subset you used. (Note
+that even the removal of references to <acronym>ISO</acronym> entity sets creates a subset.)
+</para>
+</listitem><listitem><para>Did you use the supplied &SGML; declaration or another
+one? If you used another one, provide it.</para>
+</listitem><listitem><para>Did you use the supplied catalog or another one,
+or none at all? If you used a catalog other than the one supplied, provide
+it.</para>
+</listitem><listitem><para>If your documents bear no document type declaration,
+and you parsed them with a document declaration (with or without an internal
+subset), supply it.</para>
+</listitem><listitem><para>Did you add <literal>NOTATION</literal> declarations?
+If so, what are they? List all data content notations used in your documents.
+</para>
+</listitem><listitem><para>Did you use the <literal>SUBDOC</literal> feature?
+If so, how did you manage the name spaces of their <acronym>ID</acronym>s, if you managed
+them at all?</para>
+</listitem><listitem><para>Did you use character sets other than <acronym>ISO</acronym> 8859-1
+(Latin 1)? If so, which ones? How did you use them?</para>
+</listitem><listitem><para>Did you declare and use character entities and
+other general entities besides the <acronym>ISO</acronym> entity sets? If so, supply the entity
+declarations and the desired appearance of the additional character entities.
+</para>
+</listitem><listitem><para>Are your document files normalized to include all
+markup explicitly?</para>
+</listitem><listitem><para>Are you supplying a document fragment? If so, have
+you provided any necessary auxiliary information (such as meta-information)
+for the fragment? Are there any attribute values that haven't been specified
+that you expect to inherit from a parent that isn't present?</para>
+</listitem></orderedlist>
+
+<bridgehead>Processing Requirements and Markup Interpretation</bridgehead>
+
+<orderedlist continuation="continues"><listitem><para>What formatting that you applied do you
+require your interchange partner to apply? For example,
+where and how must text be generated in order for the documents to make sense?
+</para>
+</listitem><listitem><para>Did you supply your stylesheet and
+information regarding its format and version?</para>
+</listitem><listitem><para>How did you create tables of contents,
+lists of titles, and indexes? Are they stored in DocBook form? If so,
+did you generate them (and according to what rules) or create them by
+hand?</para> </listitem><listitem><para>If you used the <sgmltag
+class="attribute">Lang</sgmltag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the <sgmltag
+class="attribute">Remap</sgmltag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the <sgmltag
+class="attribute">Role</sgmltag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the effectivity
+attributes, which did you use, why, and to what effect?</para>
+</listitem><listitem><para>What values did you give to the <sgmltag
+class="attribute">Label</sgmltag> attribute and how are they to be
+interpreted for rendering?</para> </listitem><listitem><para>What
+values did you give to the <sgmltag class="attribute">Mark</sgmltag>
+and <sgmltag class="attribute">Override</sgmltag> attributes for lists
+and how are they to be interpreted for rendering?</para>
+</listitem><listitem><para>Did you use the <sgmltag
+class="attribute">Renderas</sgmltag> attribute on sections and/or
+<sgmltag>BridgeHead</sgmltag>s?</para>
+</listitem><listitem><para>Did you supply all keyword values you used for
+attributes whose declared values are not enumerated tokens, along with
+the expected processing for the occurrence of each keyword?</para>
+</listitem><listitem><para>Did you use markup to control width, size,
+and/or positioning settings (such as <quote>fold-out</quote> or
+<quote>centered</quote>) for graphics, line specific regions, and
+tables? If so, how?</para> </listitem><listitem><para>For rendering of
+<sgmltag>Sidebar</sgmltag>s, must these appear in the flow of the text
+where they appear in your files, or may they float?</para>
+</listitem>
+<listitem><para>Did you use <sgmltag>Callout</sgmltag>s? If so, what are the
+processing expectations for callout marks?
+</para>
+</listitem>
+<listitem><para>Did you use <sgmltag>ItemizedList</sgmltag>s? If so, what are the
+processing expectations for the marks on list items and nested lists?
+</para>
+</listitem>
+<listitem><para>For <sgmltag>Graphic</sgmltag> and <sgmltag>InlineGraphic</sgmltag>, what method(s) did
+you use for providing graphic data: element content, <sgmltag class="attribute">Fileref</sgmltag> attribute, or
+<sgmltag class="attribute">Entityref</sgmltag> attribute?</para>
+</listitem>
+<listitem><para>For <sgmltag>MediaObject</sgmltag> and <sgmltag>InlineMediaObject</sgmltag>,
+what method(s) did
+you use for selecting between alternative presentations?</para>
+</listitem><listitem><para>How did you specify column widths in tables? Did
+you use vertical spans? Did you use horizontal spans?</para>
+</listitem><listitem><para>Did you use <sgmltag>EntryTbl</sgmltag>s?
+</para>
+</listitem><listitem><para>If you used the <sgmltag class="attribute">Type</sgmltag> attribute on the link elements,
+why, and to what effect?</para>
+</listitem><listitem><para>If you used <sgmltag>XRef</sgmltag>, do your interchange
+partners need additional information about the semantic of the link?
+Have you provided it, perhaps with <sgmltag class="attribute">Role</sgmltag>?</para>
+</listitem><listitem><para>Did you use the <sgmltag class="attribute">Subject</sgmltag> attribute on <sgmltag>GlossDef</sgmltag>?
+If so, did you use a thesaurus of terms? If so, what is it?</para>
+</listitem><listitem><para>If you used the <sgmltag class="attribute">Class</sgmltag> attribute on <sgmltag>RefMiscInfo</sgmltag>,
+why and to what effect?</para>
+</listitem><listitem><para>If you used <sgmltag>ULink</sgmltag> and provided <acronym>URL</acronym>s that are queries,
+what back-end processing is required to resolve those queries?</para>
+</listitem>
+<listitem><para><sgmltag class="attribute">FileRef</sgmltag> or 
+<sgmltag class="attribute">EntityRef</sgmltag> is supplied on every
+<sgmltag>Graphic</sgmltag>,
+<sgmltag>InlineGraphic</sgmltag>,
+<sgmltag>AudioData</sgmltag>, 
+<sgmltag>ImageData</sgmltag>, and
+<sgmltag>VideoData</sgmltag> element.  If one is not present, what is the expectation?
+</para>
+</listitem>
+<listitem><para>If your <sgmltag>Bibliography</sgmltag>s or
+<sgmltag>Glossary</sgmltag>s have special processing expectations,
+such as the ability to display only those entries that are cited,
+have you described them?
+</para>
+</listitem>
+
+<listitem><para>If your <sgmltag>Bibliography</sgmltag>s contain
+<sgmltag>BiblioEntry</sgmltag>s, what are the processing expectations?
+Which fields are selected for display?
+What punctuation is added, and where?
+</para>
+</listitem>
+
+<listitem><para>Do <sgmltag>GlossTerm</sgmltag>s or other elements have
+implicit linking relationships that must be obeyed or handled in
+presentation?
+</para>
+</listitem>
+<listitem><para>Did you use any processing instructions? Why and what for?
+Are they in entities?
+</para>
+</listitem>
+<listitem><para>What copyfitting have you already done, and for what outputs?
+</para>
+</listitem>
+</orderedlist>
+<bridgehead>Miscellaneous</bridgehead>
+<orderedlist continuation="continues"><listitem><para>Have you checked your
+files for viruses?</para>
+</listitem><listitem><para>If you used <sgmltag>BridgeHead</sgmltag>, have you joined a recovery
+support group?</para>
+</listitem></orderedlist>
+<indexterm startref="questionappf" class='endofrange'/>
+<indexterm startref="DocBookinterchangeappf" class='endofrange'/>
+
+</appendix>
+
+<!--
+Local Variables:
+mode:sgml
+sgml-parent-document: ("book.sgm" "appendix")
+End:
+-->

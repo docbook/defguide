@@ -1,0 +1,99 @@
+<refentry id="synopfragmentref.element">
+<?dbhtml filename="synopfragmentref.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>synopfragmentref</secondary></indexterm>
+<refentrytitle>synopfragmentref</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>synopfragmentref</refname>
+<refpurpose>&synopfragmentref.purpose;</refpurpose>
+</refnamediv>
+
+&synopfragmentref.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A complex <sgmltag>CmdSynopsis</sgmltag> can be made more manageable
+with <sgmltag>SynopFragment</sgmltag>s.  Rather than attempting to
+present the entire synopsis in one large
+piece, parts of the synopsis can be extracted out and presented
+elsewhere. 
+</para>
+<para>
+At the point where each piece was extracted, insert a
+<sgmltag>SynopFragmentRef</sgmltag> that points to the fragment. The
+content of the <sgmltag>SynopFragmentRef</sgmltag> will be presented inline.
+</para>
+<para>
+The extracted pieces are placed in <sgmltag>SynopFragment</sgmltag>s
+at the end of the <sgmltag>CmdSynopsis</sgmltag>.
+</para>
+<note>
+<para>
+The content model of <sgmltag>SynopFragmentRef</sgmltag> is unique in
+the &SGML; version of DocBook because it contains <literal>RCDATA</literal>
+declared content. What this means is that all markup inside a
+<sgmltag>SynopFragmentRef</sgmltag> is ignored, except for entity references.
+</para>
+<para>
+How, you might ask, is this different from a content model that
+includes only <literal>#PCDATA</literal>?  The difference is only
+apparent when you consider inclusions.  Recall that an inclusion
+provides a list of elements that can occur <emphasis>anywhere</emphasis>
+inside an element.  So, for example, the fact that
+<sgmltag>Chapter</sgmltag> lists <sgmltag>IndexTerm</sgmltag> as an inclusion
+means that <sgmltag>IndexTerm</sgmltag> can legally occur inside of a
+<sgmltag>SynopFragmentRef</sgmltag> that's nested inside a chapter,
+even if the content model of <sgmltag>SynopFragmentRef</sgmltag> does
+not explicitly allow <sgmltag>IndexTerm</sgmltag>s. Making the content
+<literal>RCDATA</literal> ensures that the markup will not be recognized,
+even if it's allowed by inclusion. A neat trick.
+</para>
+<para>
+&XML; does not support <literal>RCDATA</literal>.
+</para>
+</note>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; 
+</para>
+<para>
+The presentation system is responsible for generating text that
+makes the reader aware of the link. This can be done with
+numbered bullets, or any other appropriate mechanism.
+</para>
+<para>
+Online systems have additional flexibility. They may generate
+hot links between the references and the fragments, for example,
+or place the fragments in pop-up windows.
+</para>
+</refsect2>
+
+
+&synopfragmentref.parents.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>linkend</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Linkend</sgmltag> points to the <sgmltag>SynopFragment</sgmltag> referenced.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&synopfragmentref.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&synopfragmentref.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

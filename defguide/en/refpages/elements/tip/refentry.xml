@@ -1,0 +1,58 @@
+<refentry id="tip.element">
+<?dbhtml filename="tip.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>tip</secondary></indexterm>
+<refentrytitle>tip</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>tip</refname>
+<refpurpose>&tip.purpose;</refpurpose>
+</refnamediv>
+
+&tip.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Tip</sgmltag> is an admonition set off
+from the main text.
+</para>
+
+<para>
+In some types of documentation, the semantics of admonitions are clearly
+defined (<sgmltag>Caution</sgmltag> might imply the possibility of harm to
+equipment whereas <sgmltag>Warning</sgmltag> might imply harm to a person),
+but DocBook makes no such assertions.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Often outputs the generated text <quote>Tip</quote>
+or some other visible indication of the type of admonition,
+especially if a <sgmltag>Title</sgmltag> is not present.  Sometimes
+outputs a graphical icon or other symbol as well.
+</para>
+</refsect2>
+
+
+&tip.parents.gen;
+&tip.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&tip.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&tip.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.tip.1" role="HACK-ex.out.start"/>
+&tip.example.1.gen;
+<anchor id="ex.oe.tip.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

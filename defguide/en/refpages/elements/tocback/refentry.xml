@@ -1,0 +1,84 @@
+<refentry id="tocback.element">
+<?dbhtml filename="tocback.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>tocback</secondary></indexterm>
+<refentrytitle>tocback</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>tocback</refname>
+<refpurpose>&tocback.purpose;</refpurpose>
+</refnamediv>
+
+&tocback.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>ToCback</sgmltag> element is a chapter-level <sgmltag>ToC</sgmltag> element
+for back matter (<sgmltag>Bibliography</sgmltag>s, <sgmltag>Index</sgmltag>s, and so on).
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+In real life, <sgmltag>ToC</sgmltag>s are usually generated automatically
+by the presentation system and never have to be represented explicitly
+in the document source.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&tocback.parents.gen;
+&tocback.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linkend</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Linkend</sgmltag> points to the associated back matter element.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>pagenum</term>
+<listitem>
+<para>
+<sgmltag class="attribute">PageNum</sgmltag> indicates the page on which the
+element of backmatter appears in some version of the printed document.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&tocback.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,79 @@
+<refentry id="audiodata.element" revision='3.1'>
+<?dbhtml filename="audiodata.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>audiodata</secondary></indexterm>
+<refentrytitle>audiodata</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>audiodata</refname>
+<refpurpose>&audiodata.purpose;</refpurpose>
+</refnamediv>
+
+&audiodata.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+This empty element points to external audio data.
+</para>
+
+<refsect2 id="dbreproc.audiodata"><title>Processing expectations</title>
+<para>
+There are two ways to provide content for <sgmltag>AudioData</sgmltag>:
+<sgmltag class='attribute'>EntityRef</sgmltag> or <sgmltag
+class='attribute'>FileRef</sgmltag>.  It is best to use only one of these
+methods. However, if multiple sources are provided, 
+<sgmltag class='attribute'>EntityRef</sgmltag> will be used in favor of 
+<sgmltag class='attribute'>FileRef</sgmltag>.
+</para>
+</refsect2> 
+
+
+&audiodata.parents.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>entityref</term>
+<listitem>
+<para>
+<sgmltag class="attribute">EntityRef</sgmltag> identifies the general entity
+which points to the content of the audio data.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>fileref</term>
+<listitem>
+<para>
+<sgmltag class="attribute">FileRef</sgmltag> specifies the name of the file
+which contains the content of the audio data.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>format</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Format</sgmltag> identifies the format of the audio
+data. The <sgmltag class="attribute">Format</sgmltag> must be a defined
+notation.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>srccredit</term>
+<listitem>
+<para>
+<sgmltag class="attribute">SrcCredit</sgmltag> contains details about the source 
+of the audio data.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&audiodata.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

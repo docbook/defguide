@@ -1,0 +1,95 @@
+<refentry id="ulink.element">
+<?dbhtml filename="ulink.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>ulink</secondary></indexterm>
+<refentrytitle>ulink</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>ulink</refname>
+<refpurpose>&ulink.purpose;</refpurpose>
+</refnamediv>
+
+&ulink.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>ULink</sgmltag> element forms the equivalent of an &HTML; anchor
+(<sgmltag class='starttag'>A HREF="..."</sgmltag>)
+for cross reference by a Uniform Resource Locator (<acronym>URL</acronym>). 
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; When rendered online, it is natural to make the content
+of the <sgmltag>ULink</sgmltag> element an active link. When rendered in print
+media, the <acronym>URL</acronym> might be ignored, printed after the
+text of the link, or printed as a footnote.
+</para>
+
+<para>When the content of the <sgmltag>ULink</sgmltag> element is empty, i.e., for
+either of the following cases:
+<literal>&lt;ulink url="..."/></literal> and
+<literal>&lt;ulink url="...">&lt;/ulink></literal>, the content
+of the <sgmltag class="attribute">url</sgmltag> attribute should be
+rendered as the text of the link.</para>
+
+<para>
+Linking elements must not be nested within other linking
+elements (including themselves). Because DocBook is harmonizing
+towards &XML;, this restriction cannot easily be enforced by the &DTD;. The
+processing of nested linking elements is undefined.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&ulink.parents.gen;
+&ulink.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>type</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Type</sgmltag> is available for application-specific
+customization of the linking behavior.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>url</term>
+<listitem>
+<para>
+<sgmltag class="attribute">URL</sgmltag> specifies the Uniform Resource Locator 
+that is the target of the <sgmltag>ULink</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&ulink.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&ulink.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.ulink.1" role="HACK-ex.out.start"/>
+&ulink.example.1.gen;
+<anchor id="ex.oe.ulink.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&ulink.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

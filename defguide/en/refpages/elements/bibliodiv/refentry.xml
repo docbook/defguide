@@ -1,0 +1,68 @@
+<refentry id="bibliodiv.element">
+<?dbhtml filename="bibliodiv.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>bibliodiv</secondary></indexterm>
+<refentrytitle>bibliodiv</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>bibliodiv</refname>
+<refpurpose>&bibliodiv.purpose;</refpurpose>
+</refnamediv>
+
+&bibliodiv.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>BiblioDiv</sgmltag> is a section of a <sgmltag>Bibliography</sgmltag>. A
+bibliography might be divided into sections in order to group
+different types of sources together, like books, journal articles, web
+sites, and so on.
+</para>
+
+<para>A bibliography may
+contain any number of <sgmltag>BiblioEntry</sgmltag> or <sgmltag>BiblioMixed</sgmltag>
+elements or any number
+of <sgmltag>BiblioDiv</sgmltag>s, but it cannot
+contain a mixture of both at the same level. 
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Some systems may display only those entries within a 
+<sgmltag>BiblioDiv</sgmltag> that are cited in the containing document.
+This may be an interchange issue. See <xref linkend="app-interchange"/>.
+</para>
+</refsect2>
+
+
+&bibliodiv.parents.gen;
+&bibliodiv.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>BiblioDiv</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&bibliodiv.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,100 @@
+<refentry id="inlinemediaobject.element" revision='3.1'>
+<?dbhtml filename="inlinemediaobject.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>inlinemediaobject</secondary></indexterm>
+<refentrytitle>inlinemediaobject</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>inlinemediaobject</refname>
+<refpurpose>&inlinemediaobject.purpose;</refpurpose>
+</refnamediv>
+
+&inlinemediaobject.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>InlineMediaObject</sgmltag> contains a set of alternative
+&ldquo;graphical objects.&rdquo; In DocBook V3.1, three types of
+external graphical objects are defined: <sgmltag>VideoObject</sgmltag>s,
+<sgmltag>AudioObject</sgmltag>s, and <sgmltag>ImageObject</sgmltag>s. Additional
+textual descriptions may be provided with <sgmltag>TextObject</sgmltag>s.
+</para>
+
+<refsect2 id="dbreproc.inlinemediaobject"><title>Processing expectations</title>
+<para>
+&format.inline;
+</para>
+<para>
+The primary purpose of the <sgmltag>InlineMediaObject</sgmltag> is to provide
+a wrapper around a set of alternative presentations of the same
+information.
+</para>
+<para>
+If possible, the processing system should use the content of the
+first object within the <sgmltag>InlineMediaObject</sgmltag>.  If the first
+object cannot be used, the remaining objects should be
+considered in the order that they occur.  A processor should use
+the first object that it can, although it is free to choose any
+of the remaining objects if the primary one cannot be used.
+</para>
+<para>
+Under no circumstances should more than one object in an
+<sgmltag>InlineMediaObject</sgmltag> be used or presented at the same time.
+</para>
+<para>
+For example, an <sgmltag>InlineMediaObject</sgmltag> might contain a high
+resolution image, a low resolution image, and
+a text description. For print publishing, the high resolution image is used;
+for online systems, either the high or low resolution image is used,
+possibly including the text description as an online alternative.
+In a text-only environment, the text description is used.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V5.0</acronym></secondary>
+</indexterm>
+In DocBook V5.0, <sgmltag>InlineMediaObject</sgmltag> will replace
+<sgmltag>InlineGraphic</sgmltag>.
+</para>
+</refsect2>
+
+
+
+
+&inlinemediaobject.parents.gen;
+&inlinemediaobject.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&inlinemediaobject.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+In the following example, the <sgmltag>InlineEquation</sgmltag> uses
+<sgmltag>InlineMediaObject</sgmltag> to provide to alternate renderings
+for the equation. One is a graphic, the other is a text representation.
+</para>
+
+<para>
+For display purposes, both in print and in the online presentation,
+the graphic is selected. If you were generating content for some
+other medium, a text only browser or a cell phone, for example, only
+the text representation might be selected.
+</para>
+
+<informalexample role="example-source">
+<programlisting>&inlinemediaobject.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.inlinemediaobject.1" role="HACK-ex.out.start"/>
+&inlinemediaobject.example.1.gen;
+<anchor id="ex.oe.inlinemediaobject.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

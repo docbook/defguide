@@ -1,0 +1,98 @@
+<refentry id="bibliography.element">
+<?dbhtml filename="bibliography.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>bibliography</secondary></indexterm>
+<refentrytitle>bibliography</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>bibliography</refname>
+<refpurpose>&bibliography.purpose;</refpurpose>
+</refnamediv>
+
+&bibliography.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A bibliography. A DocBook bibliography may contain some preferatory matter,
+but its main content is a set of bibliography entries (either 
+<sgmltag>BiblioEntry</sgmltag> or <sgmltag>BiblioMixed</sgmltag>).  These may occur
+inside <sgmltag>BiblioDiv</sgmltag>s, instead of appearing directly in the
+<sgmltag>Bibliograpy</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; A <sgmltag>Bibliography</sgmltag> in a <sgmltag>Book</sgmltag>
+frequently causes a forced page break in print media.
+</para>
+<para>
+Some systems may display only those entries within a 
+<sgmltag>Bibliography</sgmltag> that are cited in the containing document.
+This may be an interchange issue. See <xref linkend="app-interchange"/>.
+</para>
+<para>
+The two styles of bibliography entry have quite different processing
+expectations.  <sgmltag>BiblioEntry</sgmltag>s are <quote>raw;</quote> they contain
+a database-like collection of named fields.  <sgmltag>BiblioMixed</sgmltag>
+entries are <quote>cooked;</quote> the fields occur in the order in which
+they will be presented and additional punctuation may be sprinkled
+between the fields.
+</para>
+<para>
+See 
+<sgmltag>BiblioEntry</sgmltag> and <sgmltag>BiblioMixed</sgmltag> for further discussion.
+</para>
+</refsect2>
+
+
+&bibliography.parents.gen;
+&bibliography.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Bibliography</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+The entries in a <sgmltag>Bibliography</sgmltag> come in two
+general forms, &ldquo;raw&rdquo; and &ldquo;cooked&rdquo;.  A
+raw entry is a database-like collection of named fields:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&bibliography.example.1.txt;</programlisting>
+</informalexample>
+
+<para>
+A cooked entry is formatted, including additional
+<glossterm>&PCDATA;</glossterm>, so that it is easy to render.
+</para>
+
+<informalexample role="example-source">
+<programlisting>&bibliography.example.2.txt;</programlisting>
+</informalexample>
+
+<!-- what about pagenums? -->
+
+
+</refsect1>
+</refentry>
+

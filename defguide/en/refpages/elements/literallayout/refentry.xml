@@ -1,0 +1,124 @@
+<refentry id="literallayout.element">
+<?dbhtml filename="literallayout.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>literallayout</secondary></indexterm>
+<refentrytitle>literallayout</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>literallayout</refname>
+<refpurpose>&literallayout.purpose;</refpurpose>
+</refnamediv>
+
+&literallayout.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>LiteralLayout</sgmltag> is a verbatim environment. Unlike the other
+verbatim environments, it does not have strong semantic overtones and
+may not imply a font change.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&pexp.linespecific;
+</para>
+
+<para>
+Unlike 
+<sgmltag>ProgramListing</sgmltag> and <sgmltag>Screen</sgmltag>, which usually
+imply a font change, <sgmltag>LiteralLayout</sgmltag> does not.
+How spaces are to be represented faithfully in a proportional
+font is not addressed by DocBook.
+</para>
+
+<para>
+In DocBook <acronym>V3.1</acronym>, the <sgmltag class='attribute'>Class</sgmltag> attribute
+was added to give users control over the font used in
+<sgmltag>LiteralLayout</sgmltag>s.  If the <sgmltag
+class='attribute'>Class</sgmltag> attribute is specified and its value is
+<literal>Monospaced</literal>, then the <sgmltag>LiteralLayout</sgmltag>
+will be presented in a monospaced font, probably the same one
+used for other verbatim environments.  The default value for
+<sgmltag class='attribute'>Class</sgmltag> is <literal>Normal</literal>, meaning
+that no font change will occur.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>The <literal>xml:space</literal> attribute is automatically
+provided in the XML DTD.
+</para>
+</refsect2>
+
+
+&literallayout.parents.gen;
+&literallayout.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Class</sgmltag> distinguishes between literal layout
+environments that are presented in a monospaced font and literal layout
+environments that have no implicit font change.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>format</term>
+<listitem>
+<para>
+The <sgmltag class="attribute">Format</sgmltag> attribute applies the 
+<literal>linespecific</literal> notation to all <sgmltag>LiteralLayout</sgmltag>s.
+All white space and line breaks must be preserved.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linenumbering</term>
+<listitem>
+<para revision="4.0">Line numbering indicates whether or not the lines
+of a <sgmltag>LiteralLayout</sgmltag> are to be automatically numbered. The details
+of numbering (every line or only selected lines, on the left or right, etc.)
+are left up to the processing application. Be aware that not all processors
+are capable of numbering lines.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>width</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Width</sgmltag> specifies the width (in characters)
+of the longest line in this <sgmltag>LiteralLayout</sgmltag> (formatters may use
+this value to determine scaling or rotation).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&literallayout.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&literallayout.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.literallayout.1" role="HACK-ex.out.start"/>
+&literallayout.example.1.gen;
+<anchor id="ex.oe.literallayout.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&literallayout.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,53 @@
+<refentry id="sbr.element">
+<?dbhtml filename="sbr.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>sbr</secondary></indexterm>
+<refentrytitle>sbr</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>sbr</refname>
+<refpurpose>&sbr.purpose;</refpurpose>
+</refnamediv>
+
+&sbr.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+For the most part, DocBook attempts to describe document
+structure rather than presentation.  However, in some complex
+environments, it is possible to demonstrate that there is no
+reasonable set of processing expectations that can guarantee
+correct formatting.
+</para>
+<para>
+<sgmltag>CmdSynopsis</sgmltag> is one of those environments.  Within a long
+synopsis, it may be necessary to specify the location of a line break
+explicitly.
+</para>
+<para>
+The <sgmltag>SBR</sgmltag> element indicates the position of such a
+line break in a <sgmltag>CmdSynopsis</sgmltag>. It is purely
+presentational.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+<sgmltag>SBR</sgmltag> causes a line break.
+</para>
+</refsect2>
+
+&sbr.parents.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&sbr.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&sbr.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

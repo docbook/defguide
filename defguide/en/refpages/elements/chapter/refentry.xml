@@ -1,0 +1,81 @@
+<refentry id="chapter.element">
+<?dbhtml filename="chapter.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>chapter</secondary></indexterm>
+<refentrytitle>chapter</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>chapter</refname>
+<refpurpose>&chapter.purpose;</refpurpose>
+</refnamediv>
+
+&chapter.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Chapter</sgmltag> is a chapter of a <sgmltag>Book</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Usually introduces a forced page break and often
+starts on the next recto page. The first chapter of a document
+usually restarts page numbering. Typically, chapters are
+numbered and presented in the table of contents.
+</para>
+</refsect2>
+
+
+&chapter.parents.gen;
+&chapter.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes. The fourth <sgmltag>Chapter</sgmltag> in a 
+<sgmltag>Book</sgmltag> might be labeled <quote>4</quote>, for example.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Chapter</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&chapter.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&chapter.example.1.txt;</programlisting>
+</informalexample>
+
+<para>For additional examples, see also
+&chapter.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

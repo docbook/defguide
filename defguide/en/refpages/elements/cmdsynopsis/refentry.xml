@@ -1,0 +1,171 @@
+<refentry id="cmdsynopsis.element">
+<?dbhtml filename="cmdsynopsis.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>cmdsynopsis</secondary></indexterm>
+<refentrytitle>cmdsynopsis</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>cmdsynopsis</refname>
+<refpurpose>&cmdsynopsis.purpose;</refpurpose>
+</refnamediv>
+
+&cmdsynopsis.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>CmdSynopsis</sgmltag> summarizes the options and parameters of
+a command started from a text prompt.  This is usually a program started
+from the <acronym>DOS</acronym>, Windows, or &UNIX; shell prompt.
+</para>
+
+<para>
+<sgmltag>CmdSynopsis</sgmltag> operates under the following general model:
+commands have arguments, that may be grouped; arguments and groups may
+be required or optional and may be repeated.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+The processing expectations of <sgmltag>CmdSynopsis</sgmltag> are fairly
+complex.
+</para>
+<itemizedlist>
+<listitem><para>
+Arguments are generally identified with a prefix character.
+</para>
+<para>
+In the &UNIX; world, this character is almost
+universally the dash or hyphen although plus signs and double dashes
+have become more common in recent years.
+</para>
+<para>
+In the <acronym>DOS</acronym>/Windows world, forward slashes are somewhat more common than
+dashes.
+</para>
+<para>
+The DocBook processing expectations on this point are intentionally
+vague.  In some environments it may be most convenient to
+generate these characters automatically, in other environments
+it may be more convenient to insert them literally in the
+content.
+</para>
+<para>
+Whichever processing model you choose, note that this will be an
+interchange issue if you share documents with other users (see
+<xref linkend="app-interchange"/>).
+</para></listitem>
+<listitem><para>
+Brackets are used to distinguish between optional, required, or
+plain arguments.  Usually square brackets are placed around
+optional arguments, <literal>[-g]</literal>, and curly brackets are placed around
+required arguments, <literal>{-g}</literal>.  Plain arguments are required, but are
+not decorated with brackets.
+</para></listitem>
+<listitem><para>
+Repeatable arguments are followed by an ellipsis.
+</para></listitem>
+<listitem><para>
+Multiple arguments within a group are considered exclusive and are
+separated by vertical bars.
+</para></listitem>
+<listitem><para>
+Groups, like arguments, may be optional, required, or plain and may or
+may not repeat.  The same brackets and ellipses that are used to
+indicate these characteristics on arguments are used on groups.
+</para></listitem>
+<listitem><para>
+Arguments and groups may nest more-or-less arbitrarily.
+</para></listitem>
+<listitem><para>
+&format.block; The processing system is free to introduce line breaks
+where required, but the <sgmltag>SBR</sgmltag> element may be introduced
+by the author to provide an explicit break location.
+</para></listitem>
+</itemizedlist>
+</refsect2>
+
+
+
+&cmdsynopsis.parents.gen;
+&cmdsynopsis.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>cmdlength</term>
+<listitem>
+<para>
+<sgmltag class="attribute">CmdLength</sgmltag> indicates displayed length of
+the command; this information may be used to intelligently indent
+command synopses which extend beyond one line.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying number or string
+that may be used in presentation.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>sepchar</term>
+<listitem>
+<para>
+<sgmltag class="attribute">SepChar</sgmltag> specifies the character (a space
+by default) that should separate the <sgmltag>Command</sgmltag> and its 
+top-level arguments.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&cmdsynopsis.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&cmdsynopsis.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.cmdsynopsis.1" role="HACK-ex.out.start"/>
+&cmdsynopsis.example.1.gen;
+<anchor id="ex.oe.cmdsynopsis.1" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&cmdsynopsis.example.2.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.cmdsynopsis.2" role="HACK-ex.out.start"/>
+&cmdsynopsis.example.2.gen;
+<anchor id="ex.oe.cmdsynopsis.2" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&cmdsynopsis.example.3.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.cmdsynopsis.3" role="HACK-ex.out.start"/>
+&cmdsynopsis.example.3.gen;
+<anchor id="ex.oe.cmdsynopsis.3" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&cmdsynopsis.example.4.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.cmdsynopsis.4" role="HACK-ex.out.start"/>
+&cmdsynopsis.example.4.gen;
+<anchor id="ex.oe.cmdsynopsis.4" role="HACK-ex.out.end"/>
+
+<para>
+Note the use of <sgmltag>SBR</sgmltag> in this example to force line breaks
+at reasonable places in the synopsis.
+</para>
+
+<para>For additional examples, see also
+&cmdsynopsis.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

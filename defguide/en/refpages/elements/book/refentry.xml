@@ -1,0 +1,97 @@
+<refentry id="book.element">
+<?dbhtml filename="book.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>book</secondary></indexterm>
+<refentrytitle>book</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>book</refname>
+<refpurpose>&book.purpose;</refpurpose>
+</refnamediv>
+
+&book.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A complete book. This is probably the most common document starting 
+point in DocBook documents.  The content model of <sgmltag>Book</sgmltag> was
+made dramatically less restrictive in DocBook <acronym>V3.1</acronym>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Generally causes a forced page break, restarts
+page numbering, and may generate additional front and back
+matter (tables of contents and indexes, for example) automatically.
+In a <sgmltag>Set</sgmltag>, <sgmltag>Book</sgmltag> almost always begins on the
+next available recto page.
+</para>
+<para>
+The input order of major components is taken to be the desired output 
+order.
+</para>
+</refsect2>
+
+
+
+&book.parents.gen;
+&book.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>fpi</term>
+<listitem>
+<para>
+<sgmltag class="attribute">FPI</sgmltag> holds the Formal Public Identifier for 
+the <sgmltag>Book</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes. The third <sgmltag>Book</sgmltag> in a 
+<sgmltag>Set</sgmltag> might be labeled <quote>Volume III</quote>, for example.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Book</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&book.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&book.example.1.txt;</programlisting>
+</informalexample>
+
+<para>For additional examples, see also
+&book.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

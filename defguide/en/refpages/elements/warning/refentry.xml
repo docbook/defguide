@@ -1,0 +1,60 @@
+<refentry id="warning.element">
+<?dbhtml filename="warning.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>warning</secondary></indexterm>
+<refentrytitle>warning</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>warning</refname>
+<refpurpose>&warning.purpose;</refpurpose>
+</refnamediv>
+
+&warning.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Warning</sgmltag> is an admonition, usually set off
+from the main text.
+</para>
+
+<para>
+In some types of documentation, the semantics of admonitions are clearly
+defined (<sgmltag>Caution</sgmltag> might imply the possibility of harm to
+equipment whereas <sgmltag>Warning</sgmltag> might imply harm to a person),
+but DocBook makes no such assertions.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Often outputs the generated text <quote>Warning</quote>
+or some other visible indication of the type of admonition,
+especially if a <sgmltag>Title</sgmltag> is not present.  Sometimes
+outputs a graphical icon or other symbol as well.
+</para>
+</refsect2>
+
+
+&warning.parents.gen;
+&warning.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&warning.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&warning.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.warning.1" role="HACK-ex.out.start"/>
+&warning.example.1.gen;
+<anchor id="ex.oe.warning.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&warning.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

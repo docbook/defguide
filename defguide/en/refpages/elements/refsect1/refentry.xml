@@ -1,0 +1,96 @@
+<refentry id="refsect1.element">
+<?dbhtml filename="refsect1.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>refsect1</secondary></indexterm>
+<refentrytitle>refsect1</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refsect1</refname>
+<refpurpose>&refsect1.purpose;</refpurpose>
+</refnamediv>
+
+&refsect1.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Reference pages have their own hierarchical structure. A
+<sgmltag>RefSect1</sgmltag> is a major division in a
+<sgmltag>RefEntry</sgmltag>, analagous to a <sgmltag>Sect1</sgmltag> elsewhere
+in the document.
+</para>
+
+<para>
+The value of a separate hierarchical structure is that it allows
+the content model of sections in reference pages to be
+customized differently than the content model of sections
+outside.  For example, because of this split, it was easy to add
+a recursive sectioning element (<sgmltag>Section</sgmltag>) as a peer
+to <sgmltag>Sect1</sgmltag> in DocBook <acronym>V3.1</acronym> without introducing it to
+<sgmltag>RefEntry</sgmltag>s, in which it would not be desirable.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+In some environments, the name, number, and order of major divisions
+in a reference page is strictly defined by house style.  For example,
+one style requires that the first major section after the synopsis
+be the <quote>Description,</quote> which it must have as its title.
+</para>
+<para>
+In those cases, it may be useful to replace <sgmltag>RefSect1</sgmltag> in
+the content model with a set of named sections (following the pattern
+of <sgmltag>RefNameDiv</sgmltag> and <sgmltag>RefSynopsisDiv</sgmltag>).
+</para>
+<para>
+Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <sgmltag>RefEntry</sgmltag>.
+</para>
+<para>
+Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsect2>
+
+
+&refsect1.parents.gen;
+&refsect1.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>RefSect1</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&refsect1.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&refsect1.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,56 @@
+<refentry id="objectinfo.element" revision='3.1'>
+<?dbhtml filename="objectinfo.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>objectinfo</secondary></indexterm>
+<refentrytitle>objectinfo</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>objectinfo</refname>
+<refpurpose>&objectinfo.purpose;</refpurpose>
+</refnamediv>
+
+&objectinfo.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>ObjectInfo</sgmltag> element is a wrapper for the
+meta-information about a video, audio, image, or text object.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.suppress; Many of the elements in this wrapper may be
+used in presentation, but they are not generally printed as part
+of the formatting of the wrapper. The wrapper merely serves to identify
+where they occur.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+<sgmltag>AuthorBlurb</sgmltag> and <sgmltag>Affiliation</sgmltag> will be removed
+from the inline content of <sgmltag>DivisionInfo</sgmltag> in DocBook <acronym>V4.0</acronym>.
+A new wrapper element will be created to associate this information with
+authors, editors, and other contributors.
+</para>
+</refsect2>
+
+
+&objectinfo.parents.gen;
+&objectinfo.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&objectinfo.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&objectinfo.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

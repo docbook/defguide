@@ -1,0 +1,90 @@
+<refentry id="parameter.element">
+<?dbhtml filename="parameter.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>parameter</secondary></indexterm>
+<refentrytitle>parameter</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>parameter</refname>
+<refpurpose>&parameter.purpose;</refpurpose>
+</refnamediv>
+
+&parameter.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Parameter</sgmltag> identifies something passed from one part of a 
+computer system to another.  In this regard <sgmltag>Parameter</sgmltag> is
+fairly generic, but it may have a more constrained semantic in some
+contexts (for example in a <sgmltag>ParamDef</sgmltag>).
+</para>
+
+<para>
+In an document that describes more than one kind of parameter,
+for example, parameters to functions and commands, the
+<sgmltag class='attribute'>Class</sgmltag> attribute can be used to distinguish
+between them, if necessary.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+In DocBook <acronym>V4.0</acronym>, the content model of <sgmltag>Parameter</sgmltag> will
+be constrained to <literal>(#PCDATA | Replaceable |
+InlineGraphic)</literal>.
+</para>
+</refsect2>
+
+
+&parameter.parents.gen;
+&parameter.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Class</sgmltag> indicates the type of
+<sgmltag>Parameter</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>Parameter</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&parameter.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&parameter.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.parameter.1" role="HACK-ex.out.start"/>
+&parameter.example.1.gen;
+<anchor id="ex.oe.parameter.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&parameter.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,69 @@
+<refentry id="errorcode.element">
+<?dbhtml filename="errorcode.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>errorcode</secondary></indexterm>
+<refentrytitle>errorcode</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>errorcode</refname>
+<refpurpose>&errorcode.purpose;</refpurpose>
+</refnamediv>
+
+&errorcode.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+An error code. Error codes are often numeric, but in some environments
+they may be symbolic constants.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+
+&errorcode.parents.gen;
+&errorcode.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>ErrorCode</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&errorcode.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&errorcode.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.errorcode.1" role="HACK-ex.out.start"/>
+&errorcode.example.1.gen;
+<anchor id="ex.oe.errorcode.1" role="HACK-ex.out.end"/>
+
+<informalexample role="example-source">
+<programlisting>&errorcode.example.2.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.errorcode.2" role="HACK-ex.out.start"/>
+&errorcode.example.2.gen;
+<anchor id="ex.oe.errorcode.2" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,72 @@
+<refentry id="interface.element">
+<?dbhtml filename="interface.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>interface</secondary></indexterm>
+<refentrytitle>interface</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>interface</refname>
+<refpurpose>&interface.purpose;</refpurpose>
+</refnamediv>
+
+&interface.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+An <sgmltag>Interface</sgmltag> identifies some part of a graphical user
+interface.  This element became obsolete in DocBook V3.0 with the
+introduction of 
+<sgmltag>GUIButton</sgmltag>,
+<sgmltag>GUIIcon</sgmltag>,
+<sgmltag>GUILabel</sgmltag>,
+<sgmltag>GUIMenu</sgmltag>,
+<sgmltag>GUIMenuItem</sgmltag>, and
+<sgmltag>GUISubMenu</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+In DocBook <acronym>V4.0</acronym>, the <sgmltag class='attribute'>Class</sgmltag> attribute will be dropped from
+<sgmltag>Interface</sgmltag>.  Use one of the GUI* tags
+instead or subclass locally with the <sgmltag
+class='attribute'>Role</sgmltag> attribute.
+</para>
+<para>
+The content model of <sgmltag>Interface</sgmltag> will also be constrained to
+<literal>(#PCDATA | Replaceable | InlineGraphic)</literal>.
+</para>
+</refsect2>
+
+
+&interface.parents.gen;
+&interface.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>Interface</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&interface.seealso.gen;
+</refsect1>
+</refentry>
+

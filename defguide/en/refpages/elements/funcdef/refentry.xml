@@ -1,0 +1,65 @@
+<refentry id="funcdef.element">
+<?dbhtml filename="funcdef.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>funcdef</secondary></indexterm>
+<refentrytitle>funcdef</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>funcdef</refname>
+<refpurpose>&funcdef.purpose;</refpurpose>
+</refnamediv>
+
+&funcdef.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>FuncDef</sgmltag> contains the name of a programming language function,
+and its return type.
+</para>
+<para>
+Within the <sgmltag>FuncDef</sgmltag>, the function name is identified with 
+<sgmltag>Function</sgmltag>, and the rest of the content is assumed to be the
+return type.
+</para>
+<para>
+In the following definition, <function>max</function> is the name of the 
+function and <type>int</type> is the return type:
+<screen>
+<![CDATA[
+<funcdef>int <function>max</function></funcdef>
+]]>
+</screen>
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; For a complete description of the processing expecations,
+see <sgmltag>FuncSynopsis</sgmltag>.
+</para>
+</refsect2>
+
+
+&funcdef.parents.gen;
+&funcdef.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&funcdef.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&funcdef.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.funcdef.1" role="HACK-ex.out.start"/>
+&funcdef.example.1.gen;
+<anchor id="ex.oe.funcdef.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&funcdef.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

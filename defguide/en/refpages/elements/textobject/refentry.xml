@@ -1,0 +1,68 @@
+<refentry id="textobject.element" revision='3.1'>
+<?dbhtml filename="textobject.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>textobject</secondary></indexterm>
+<refentrytitle>textobject</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>textobject</refname>
+<refpurpose>&textobject.purpose;</refpurpose>
+</refnamediv>
+
+&textobject.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>TextObject</sgmltag> is a wrapper containing a textual description
+of a media object, and its associated meta-information.
+<sgmltag>TextObject</sgmltag>s are only allowed in <sgmltag>MediaObject</sgmltag>s as
+a fall-back option, they cannot be the primary content.
+</para>
+
+<para>
+There are two different forms of <sgmltag>TextObject</sgmltag>, and it is
+not unreasonable for a media object to contain both of them.
+</para>
+
+<para>
+In the first form, the content of a <sgmltag>TextObject</sgmltag> is
+simply a <sgmltag>Phrase</sgmltag>. This form is a mechanism for
+providing a simple <quote>alt text</quote> for a media object. The
+phrase might be used, for example, as the value of the
+<sgmltag class='attribute'>ALT</sgmltag> attribute on an &HTML; <sgmltag>IMG</sgmltag>,
+with the primary content of the image coming from one of the other
+objects in the media object.
+</para>
+
+<para>
+In the second form, the content of <sgmltag>TextObject</sgmltag> is a longer,
+prose description.  This form could be used when rendering to devices
+that are incapable of displaying any of the other alternatives.
+</para>
+
+<refsect2 id="dbreproc.textobject"><title>Processing expectations</title>
+<para>
+&format.context; It might not be rendered at all, depending on its placement
+within a <sgmltag>MediaObject</sgmltag> or <sgmltag>InlineMediaObject</sgmltag> and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <sgmltag>MediaObject</sgmltag>.
+</para>
+</refsect2> 
+
+
+&textobject.parents.gen;
+&textobject.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&textobject.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&textobject.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

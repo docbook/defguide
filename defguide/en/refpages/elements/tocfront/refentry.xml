@@ -1,0 +1,85 @@
+<refentry id="tocfront.element">
+<?dbhtml filename="tocfront.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>tocfront</secondary></indexterm>
+<refentrytitle>tocfront</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>tocfront</refname>
+<refpurpose>&tocfront.purpose;</refpurpose>
+</refnamediv>
+
+&tocfront.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>ToCfront</sgmltag> element is a chapter-level <sgmltag>ToC</sgmltag> element
+for front matter such as <sgmltag>Preface</sgmltag>s.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+In real life, <sgmltag>ToC</sgmltag>s are usually generated automatically
+by the presentation system and never have to be represented explicitly
+in the document source.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&tocfront.parents.gen;
+&tocfront.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying number or string
+that may be used in presentation.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>linkend</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Linkend</sgmltag> points to the associated front matter element.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>pagenum</term>
+<listitem>
+<para>
+<sgmltag class="attribute">PageNum</sgmltag> indicates the page on which the
+element of frontmatter appears in som version of the printed document.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&tocfront.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

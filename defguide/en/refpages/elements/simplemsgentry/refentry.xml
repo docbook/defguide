@@ -1,0 +1,64 @@
+<refentry id="simplemsgentry.element" revision='4.0'>
+<?dbhtml filename="simplemsgentry.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>simplemsgentry</secondary></indexterm>
+<refentrytitle>simplemsgentry</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>simplemsgentry</refname>
+<refpurpose>&simplemsgentry.purpose;</refpurpose>
+</refnamediv>
+
+&simplemsgentry.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>SimpleMsgEntry</sgmltag> is a simpler alternative to
+<sgmltag>MsgEntry</sgmltag>.  In a <sgmltag>MsgSet</sgmltag>, each
+<sgmltag>SimpleMsgEntry</sgmltag> contains the text of a message
+and its explanation.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>
+In DocBook V5.0, more than one <sgmltag>MsgExplan</sgmltag> will be
+allowed.
+</para>
+</refsect2>
+
+
+&simplemsgentry.parents.gen;
+&simplemsgentry.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>audience</term>
+<listitem>
+<para>Identifies the audience to which this message
+is relevant.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>level</term>
+<listitem>
+<para>Identifies the level of importance or severity of this
+message.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>origin</term>
+<listitem>
+<para>Indicates the origin of this message.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+</refentry>
+

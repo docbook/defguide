@@ -1,0 +1,109 @@
+<refentry id="callout.element">
+<?dbhtml filename="callout.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>callout</secondary></indexterm>
+<refentrytitle>callout</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout</refname>
+<refpurpose>&callout.purpose;</refpurpose>
+</refnamediv>
+
+&callout.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <quote>callout</quote> is a visual device for associating annotations with
+an image, program listing, or similar figure. Each location is identified
+with a mark, and the annotation is identified with the same mark. This
+is somewhat analagous to the notion of footnotes in print.
+</para>
+
+<para>
+An example will help illustrate the concept. In the following example,
+the synopsis for the <command>mv</command> command is annotated with two marks.
+Note the location of the old and new filenames.
+</para>
+
+<screen>
+mv <co id="co-oldname"/><replaceable>oldfile</replaceable> <co id="co-newname"/><replaceable>newfile</replaceable>
+</screen>
+
+<para>
+Somewhere else in the document, usually close by, a <sgmltag>CalloutList</sgmltag>
+provides a description for each of the callouts:
+</para>
+
+<calloutlist>
+<callout arearefs="co-oldname"><para>The old filename. The <command>mv</command>
+command renames the file currently called <replaceable>oldfile</replaceable>, which
+must exist when <command>mv</command> is executed.
+</para></callout>
+<callout arearefs="co-newname"><para>The new filename. The <command>mv</command>
+command changes the name of the old file to <replaceable>newfile</replaceable>. If
+<replaceable>newfile</replaceable> exists when <command>mv</command> is executed, it will
+be replaced by the old file.
+</para></callout>
+</calloutlist>
+
+<para>
+Each <sgmltag>Callout</sgmltag> contains an annotation for an individual
+callout or a group of callouts. The <sgmltag>Callout</sgmltag> points to the
+areas that it annotates with <acronym>ID</acronym> references.
+The areas are identified by coordinates in an an <sgmltag>Area</sgmltag> or
+<sgmltag>AreaSet</sgmltag>, or by an explicit <sgmltag>CO</sgmltag> element.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+<sgmltag>CallOut</sgmltag>s usually generate text that points the reader to
+the appropriate area on the object being augmented. Often, these are
+numbered bullets or other distinct visual icons. The same icons should
+be used in both places. In other words, whatever identifies the callouts
+on the object should generate the same icons on the respective
+callouts.
+</para>
+<para>
+In online environments, it may also be possible to establish a linking
+relationship between the two elements.
+</para>
+<para>
+The processing expectations of <sgmltag>Callout</sgmltag>s are likely
+to deserve special consideration for interchange.  See <xref
+linkend="app-interchange"/>.  This is especially true if your
+interchange partners are producing documentation in a medium
+that has restricted visual presentation features, such as aural
+media or Braille.
+</para>
+</refsect2>
+
+
+&callout.parents.gen;
+&callout.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>arearefs</term>
+<listitem>
+<para>
+<sgmltag class="attribute">AreaRefs</sgmltag> must point to one or more
+<sgmltag>Area</sgmltag>s or <sgmltag>AreaSet</sgmltag>s. These, in turn, identify the
+portions of the object described by this <sgmltag>Callout</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&callout.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

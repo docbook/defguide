@@ -1,0 +1,1603 @@
+<chapter id="app-customizing">
+<?dbhtml filename="ch05.html"?>
+<chapterinfo>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</chapterinfo>
+<title>Customizing DocBook</title> 
+<para>
+<indexterm id="customDocBookch05" class="startofrange"><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary></indexterm>
+<indexterm id="DocBookcustomch05" class="startofrange"><primary>DocBook DTD</primary>
+  <secondary>customizing</secondary></indexterm>
+
+For the applications you have in mind, DocBook &ldquo;out of the
+box&rdquo; may not be exactly what you need. Perhaps you need
+additional inline elements or perhaps you want to remove elements that
+you never want your authors to use. By design, DocBook makes this sort
+of customization easy.
+</para>
+<para>
+<indexterm><primary>attributes</primary>
+  <secondary>DocBook DTD, customizing</secondary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>DocBook DTD, customizing</secondary></indexterm>
+
+This chapter explains how to make your own <firstterm>customization
+layer</firstterm>. You might do this in order to:
+<itemizedlist>
+<listitem><para>Add new elements</para></listitem>
+<listitem><para>Remove elements</para></listitem>
+<listitem><para>Change the structure of existing elements</para></listitem>
+<listitem><para>Add new attributes</para></listitem>
+<listitem><para>Remove attributes</para></listitem>
+<listitem><para>Broaden the range of values allowed in an attribute</para></listitem>
+<listitem><para>Narrow the range of values in an attribute to a specific list or a fixed value</para></listitem>
+</itemizedlist>
+</para>
+<para>
+<indexterm><primary>extensions, DocBook DTD</primary></indexterm>
+<indexterm><primary>environment</primary>
+  <secondary>DocBook extensions, affecting</secondary></indexterm>
+
+You can use customization layers to extend DocBook or subset
+it. Creating a &DTD; that is a strict subset of DocBook means that all
+of your instances are still completely valid DocBook instances, which
+may be important to your tools and stylesheets, and to other people
+with whom you share documents.  An <firstterm>extension</firstterm> adds new
+structures, or changes the &DTD; in a way that is not compatible with
+DocBook. Extensions can be very useful, but might have a great impact
+on your environment.
+</para>
+<para>
+Customization layers can be as small as restricting an attribute value
+or as large as adding an entirely different hierarchy on top of the
+inline elements.
+</para>
+<sect1 id="ch05-shouldi"><title>Should You Do This?</title>
+<para>
+<indexterm><primary>stylesheets</primary>
+  <secondary>DTD extension, effects</secondary></indexterm>
+
+Changing a &DTD; can have a wide-ranging impact on the tools and
+stylesheets that you use. It can have an impact on your authors and on
+your legacy documents.  This is especially true if you make an
+extension. If you rely on your support staff to install and maintain
+your authoring and publishing tools, check with them before you invest
+a lot of time modifying the &DTD;. There may be additional issues that
+are outside your immediate control. Proceed with caution.
+</para>
+<para>
+That said, DocBook is designed to be easy to modify. This chapter
+assumes that you are comfortable with &SGML;/&XML; &DTD; syntax, but
+the examples presented should be a good springboard to learning the
+syntax if it's not already familiar to you.
+</para>
+</sect1>
+<sect1 id="s-notdocbook"><title>If You Change DocBook, It's Not DocBook Anymore!</title>
+<para>
+<indexterm>
+  <primary>public identifiers</primary>
+  <secondary>DocBook DTD</secondary>
+  <tertiary>altering</tertiary>
+</indexterm>The DocBook &DTD; is usually referenced by its public identifier:
+</para>
+<screen>  -//OASIS//DTD DocBook V3.1//EN</screen>
+<para>
+Previous versions of DocBook, V3.0 and the V2 variants, used the owner
+identifier Davenport, rather than OASIS.
+</para>
+<para>
+If you make any changes to the structure of the &DTD;, it is
+imperative that you alter the public identifier that you use for the
+&DTD; and the modules you changed.  The license agreement under which
+DocBook is distributed gives you complete freedom to change, modify,
+reuse, and generally hack the &DTD; in any way you want, except that
+you must not call your alterations <quote>DocBook.</quote>
+</para>
+<para>
+<indexterm><primary>owner-identifiers</primary>
+  <secondary>changing (DocBook customization)</secondary></indexterm>
+<indexterm><primary>description, changing (DocBook customization)</primary></indexterm>
+
+You should change both the owner identifier and the description. The
+original DocBook formal public identifiers use the following syntax:
+<screen>
+-//OASIS//<replaceable>text-class</replaceable> DocBook <replaceable>description</replaceable> V<replaceable>version</replaceable>//EN
+</screen>
+</para>
+<para>
+Your own formal public identifiers should use the following syntax in
+order to record their DocBook derivation:
+<screen>
+-//<replaceable>your-owner-ID</replaceable>//<replaceable>text-class</replaceable> DocBook V<replaceable>version</replaceable>-Based <optional>Subset|Extension|Variant</optional> <replaceable>your-descrip-and-version</replaceable>//<replaceable>lang</replaceable>
+</screen>
+</para>
+<para>For example:
+<screen>
+-//O'Reilly//DTD DocBook V3.0-Based Subset V1.1//EN
+</screen>
+</para>
+<para>
+<indexterm><primary>subsets (DocBook DTD)</primary></indexterm>
+If your &DTD; is a proper subset, you can advertise this status by
+using the <literal>Subset</literal> keyword in the description. If
+your &DTD; contains any markup model extensions, you can advertise
+this status by using the <literal>Extension</literal> keyword. If
+you'd rather not characterize your variant specifically as a subset or
+an extension, you can leave out this field entirely, or, if you
+prefer, use the <literal>Variant</literal> keyword.
+</para>
+<para>
+<indexterm><primary>dbgenent.mod file</primary></indexterm>
+<indexterm><primary>public identifiers</primary>
+  <secondary>dbgenent.mod file, changing</secondary></indexterm>
+
+There is only one file that you may change without changing the public
+identifier: <filename>dbgenent.mod</filename>. And you can add only
+entity and notation declarations to that file. (You can add anything
+you want, naturally, but if you add anything other than entity and
+notation declarations, you must change the public identifier!)
+</para>
+</sect1>
+<sect1 id="ch05-layers"><title>Customization Layers</title>
+<para>
+<indexterm id="customlayerch05" class='startofrange'><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>customization layers</tertiary></indexterm>
+<indexterm id="layerscustomch05" class="startofrange"><primary>layers, customization (DocBook DTD)</primary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>customization layers</secondary></indexterm>
+<indexterm><primary>declarations</primary>
+  <secondary>SGML and XML DTDs</secondary></indexterm>
+
+&SGML; and &XML; &DTD;s are really just collections of
+declarations. These declarations are stored in one or more files. A
+complete &DTD; is formed by combining these files together
+logically. Parameter entities are used for this purpose. Consider the
+following fragment:
+</para>
+<screen>
+&lt;!ENTITY % dbpool SYSTEM "dbpool.mod"> <co id="cl-dbpooldcl"/>
+&lt;!ENTITY % dbhier SYSTEM "dbhier.mod"> <co id="cl-dbhierdcl"/>
+%dbpool;                               <co id="cl-dbpooluse"/>
+%dbhier;                               <co id="cl-dbhieruse"/>
+</screen>
+<calloutlist>
+<callout arearefs="cl-dbpooldcl"><para>This line declares the
+parameter entity <literal>dbpool</literal> and associates it with the
+file <filename> dbpool.mod</filename>.</para>
+</callout>
+<callout arearefs="cl-dbhierdcl"><para>This line declares the
+parameter entity <literal>dbhier</literal> and associates it with the
+file <filename> dbhier.mod</filename>.</para>
+</callout>
+<callout arearefs="cl-dbpooluse"><para>This line references <literal>
+dbpool</literal>, which loads the file <filename>dbpool.mod</filename>
+and inserts its content here.</para>
+</callout>
+<callout arearefs="cl-dbhieruse"><para>Similarly, this line loads
+<filename> dbhier.mod</filename>.</para> </callout></calloutlist>
+<para>
+<indexterm><primary>parsing</primary>
+  <secondary>DTDs, entity declarations (repeated)</secondary></indexterm>
+
+It is an important feature of &DTD; parsing that entity
+declarations can be repeated. If an entity is declared more than once,
+then the <emphasis> first</emphasis> declaration is used. Given this
+fragment:
+</para>
+<screen>
+&lt;!ENTITY foo "Lenny">
+&lt;!ENTITY foo "Norm">
+</screen>
+<para>
+The replacement text for <sgmltag class="genentity">foo</sgmltag> is
+&ldquo;Lenny.&rdquo;
+</para>
+<para>
+<indexterm><primary>modules</primary>
+  <secondary>DTDs, customizing</secondary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>DTD modules, referencing</secondary></indexterm>
+
+These two notions, that you can break a &DTD; into modules referenced
+with parameter entities and that the first entity declaration is the
+one that counts, are used to build &ldquo;customization layers.&rdquo;
+With customization layers you can write a &DTD; that references some
+or all of DocBook, but adds your own modifications. Modifying the
+&DTD; this way means that you never have to edit the DocBook modules
+directly, which is a tremendous boon to maintaining your modules. When
+the next release of DocBook comes out, you usually only have to make
+changes to your customization layer and your modification will be back
+in sync with the new version.
+</para>
+<para>
+Customization layers work particularly well in DocBook because the
+base &DTD; makes extensive use of parameter entities that can be
+redefined.
+</para>
+</sect1>
+<sect1 id="s-dbstruct"><title>Understanding DocBook Structure</title>
+<para>
+DocBook is a large and, at first glance, fairly complex &DTD;. Much of
+the apparent complexity is caused by the prolific use of parameter
+entities.  This was an intentional choice on the part of the
+maintainers, who traded <quote>raw readability</quote> for customizability.
+This section provides a general overview of the structure of the
+&DTD;. After you understand it, DocBook will probably seem much less
+complicated.
+</para>
+<sect2 id="db-modules"><title>DocBook Modules</title>
+<para>
+<indexterm><primary>modules</primary>
+  <secondary>DocBook</secondary></indexterm>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>modules</secondary></indexterm>
+
+DocBook is composed of seven primary modules. These modules decompose
+the &DTD; into large, related chunks. Most modifications are
+restricted to a single chunk.
+</para>
+<para>
+<xref linkend="fg-docbook-flowchart"/> shows the module structure of
+DocBook as a flowchart.
+</para>
+<figure id="fg-docbook-flowchart">
+<title>Structure of the DocBook &DTD;</title>
+<graphic fileref="modules.figure"></graphic>
+</figure>
+<para>
+The modules are:
+</para>
+<variablelist>
+<varlistentry><term><filename>docbook.dtd</filename></term>
+<listitem>
+<para>
+<indexterm><primary>driver files</primary></indexterm>
+
+The main driver file. This module declares and references the
+other top-level modules.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>dbhier.mod</filename></term>
+<listitem>
+<para>
+<indexterm><primary>dbhier.mod file</primary></indexterm>
+<indexterm><primary>hierarchical structure</primary>
+  <secondary>DocBook DTD</secondary></indexterm>
+
+The hierarchy. This module declares the elements that provide
+the hierarchical structure of DocBook (sets, books, chapters,
+articles, and so on).
+</para>
+<para>Changes to this module alter the top-level structure of the
+&DTD;. If you want to write a DocBook-derived &DTD; with a different
+structure (something other than a book), but with the same paragraph
+and inline-level elements, you make most of your changes in this
+module.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>dbpool.mod</filename></term>
+<listitem>
+<para>
+<indexterm><primary>dbpool.mod file</primary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>dbpool.mod file, declaring</secondary></indexterm>
+<indexterm><primary>inline elements</primary>
+  <secondary>changing (dbpool.mod file)</secondary></indexterm>
+
+The information pool. This module declares the elements that
+describe content (inline elements, bibliographic data, block quotes,
+sidebars, and so on) but are not part of the large-scale hierarchy of
+a document. You can incorporate these elements into an entirely
+different element hierarchy.
+</para>
+<para>The most common reason for changing this module is to add or
+remove inline elements.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>dbnotn.mod</filename></term>
+<listitem>
+<para>
+<indexterm><primary>dbnotn.mod file</primary></indexterm>
+<indexterm><primary>notation declarations (DocBook)</primary></indexterm>
+
+The notation declarations. This module declares the notations
+used by DocBook.
+</para>
+<para>This module can be changed to add or remove notations.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>dbcent.mod</filename></term>
+<listitem>
+<para>
+<indexterm><primary>dbcent.mod file</primary></indexterm>
+<indexterm><primary>characters</primary>
+  <secondary>entities</secondary>
+    <tertiary>declaration</tertiary></indexterm>
+<indexterm><primary>entities</primary>
+  <secondary>characters</secondary>
+    <tertiary>declaration</tertiary></indexterm>
+<indexterm><primary>declarations</primary>
+  <secondary>entities</secondary>
+    <tertiary>entity sets</tertiary></indexterm>
+
+The character entities. This module declares and references the
+<acronym>ISO</acronym> entity sets used by DocBook.
+</para>
+<para>Changes to this module can add or remove entity sets.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>dbgenent.mod</filename></term>
+<listitem>
+<para>
+<indexterm><primary>dbgenent.mod file</primary></indexterm>
+<indexterm><primary>entities</primary>
+  <secondary>general</secondary>
+    <tertiary>customizing</tertiary></indexterm>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>general entities, customizing</secondary></indexterm>
+<indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>general entities</tertiary></indexterm>
+<indexterm><primary>general entities</primary>
+  <secondary>customizing</secondary></indexterm>
+
+The general entities. This is a place where you can customize
+the general entities available in DocBook instances.
+</para>
+<para>This is the place to add, for example, boiler plate text, logos
+for institutional identity, or additional notations understood by your
+local processing system.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>cals-tbl.dtd</filename></term>
+<listitem>
+<para>
+<indexterm><primary>cals-tbl.dtd file</primary></indexterm>
+<indexterm><primary>CALS; Table Model. CALS</primary></indexterm>
+<indexterm><primary>table models</primary></indexterm>
+
+The &CALS; Table Model. &CALS; is an initiative by the United
+States Department of Defense to standardize the document types used
+across branches of the military. The &CALS; table model, published in
+<acronym>MIL-HDBK-28001</acronym>, was for a long time the most widely
+supported &SGML; table model (one might now argue that the &HTML;
+table model is more widely supported by some definitions of
+&ldquo;widely supported&rdquo;). In any event, it is the table model
+used by DocBook.
+</para>
+<para>
+<indexterm><primary>OASIS</primary>
+  <secondary>table model</secondary></indexterm>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>table model</secondary></indexterm>
+
+DocBook predates the publication of the <ulink url="http://www.oasis-open.org/html/a503.htm">
+<acronym>OASIS</acronym> Technical Resolution <acronym>TR</acronym>
+9503:1995</ulink>, which defines an industry standard exchange table
+model and thus incorporates the <emphasis>full</emphasis> &CALS; Table
+Model.
+</para>
+<para>
+<indexterm><primary>parameter entities</primary>
+  <secondary>table model (CALS), modifying</secondary></indexterm>
+
+Most changes to the &CALS; table model can be accomplished by
+modifying parameter entities in <filename>dbpool.mod</filename>;
+changing this &DTD; fragment is strongly discouraged. If you want to
+use a different table model, remove this one and add your own.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>*.gml</filename></term>
+<listitem>
+<para>
+<indexterm><primary sortas="gml ISO standard character entity sets">*.gml (ISO standard character entity sets)</primary></indexterm>
+<indexterm><primary>ISO standards</primary>
+  <secondary>entity sets</secondary>
+    <tertiary>characters</tertiary></indexterm>
+The <acronym>ISO</acronym> standard character entity sets.
+These entity sets are not actually part of the official DocBook
+distribution, but are referenced by default.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+There are some additional modules, initially undefined, that can be
+inserted at several places for &ldquo;redeclaration.&rdquo; This is
+described in more detail in <xref linkend="s2-remvadmon"/>.&rdquo;
+</para>
+</sect2>
+<sect2 id="dbparam"><title>DocBook Parameterization</title>
+<para>
+<indexterm><primary>parameter entities</primary>
+  <secondary>customization layers</secondary></indexterm>
+
+Customization layers are possible because DocBook has been extensively
+parameterized so that it is possible to make any changes that might be
+desired without ever editing the actual distributed modules. The
+parameter entities come in several flavors:
+</para>
+<variablelist>
+<varlistentry><term><sgmltag class="paramentity">*.class</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary sortas="class parameter entities">*.class parameter entities</primary></indexterm>
+<indexterm><primary>classes</primary>
+  <secondary>elements</secondary></indexterm>
+
+Classes group elements of a similar type: for example all the
+lists are in the <sgmltag class="paramentity">list.class</sgmltag>.
+</para>
+<para>If you want to add a new kind of something (a new kind of list
+or a new kind of verbatim environment, for example), you generally
+want to add the name of the new element to the appropriate class.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">*.mix</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary sortas="mix mixture classes">.mix parameter entities</primary></indexterm>
+<indexterm><primary>classes</primary>
+  <secondary>mixtures</secondary></indexterm>
+
+Mixtures are collections of classes that appear in content
+models. For example, the content model of the
+<sgmltag>Example</sgmltag> element includes <sgmltag class="paramentity">example.mix</sgmltag>. Not every element's content
+model is a single mixture, but elements in the same class tend to have
+the same mixture in their content model.
+</para>
+<para>If you want to change the content model of some class of
+elements (lists or admonitions, perhaps), you generally want to change
+the definition of the appropriate mixture.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">*.module</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>parameter entities</primary>
+  <secondary>*.module</secondary></indexterm>
+
+<indexterm><primary sortas="module files">*.module parameter entities</primary></indexterm>
+<indexterm><primary>marked sections</primary>
+  <secondary>parameter entities, controlling</secondary></indexterm>
+
+The <sgmltag class="paramentity">*.module</sgmltag> parameter
+entities control <link linkend="s-ms">marked sections</link> around
+individual elements and their attribute lists.  For example, the
+element and attribute declarations for <sgmltag>Abbrev</sgmltag> occur
+within a marked section delimited by <sgmltag class="paramentity">abbrev.module</sgmltag>.
+</para>
+<para>
+If you want to remove or redefine an element or its attribute
+list, you generally want to change its module marked section to
+<literal>IGNORE</literal> and possibly add a new definition for it in
+your customization layer.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">*.element</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary sortas="element parameter entity">*.element parameter entities</primary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>*.element</secondary></indexterm>
+The <sgmltag class="paramentity">*.element</sgmltag> parameter
+entities were introduced in DocBook <acronym>V3.1</acronym>; they
+control marked sections around individual element declarations.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">*.attlist</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>parameter entities</primary>
+  <secondary>*.attlist</secondary></indexterm>
+<indexterm><primary sortas="attlist parameter entities">*.attlist parameter entities</primary></indexterm>
+<indexterm><primary>attributes</primary>
+  <secondary>parameter entities, controlling</secondary></indexterm>
+
+The <sgmltag class="paramentity">*.attlist</sgmltag> parameter
+entities were introduced in DocBook <acronym>V3.1</acronym>; they
+control marked sections around individual attribute list declarations.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">*.inclusion</sgmltag></term>
+<term><sgmltag class="paramentity">*.exclusion</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>elements</primary>
+  <secondary>declarations</secondary>
+    <tertiary>parameter entities, controlling</tertiary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>*.inclusion</secondary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>*.exclusion</secondary></indexterm>
+<indexterm><primary sortas="inclusion parameter entity">*.inclusion parameter entities</primary></indexterm>
+<indexterm><primary sortas="exclusion parameter entity">*.exclusion parameter entities</primary></indexterm>
+
+These parameter entities control the inclusion and exclusion
+markup in element declarations.
+</para>
+<para>Changing these declarations allows you to make global changes to
+the inclusions and exclusions in the &DTD;.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">local.*</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>local parameter entities</primary></indexterm>
+
+The <sgmltag class="paramentity">local.*</sgmltag> parameter
+entities are a local extension mechanism.  You can add markup to most
+entity declarations simply by declaring the appropriate local
+parameter entity.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+</sect1>
+<sect1 id="ch05-genstruct"><title>The General Structure of<?lb?>Customization Layers</title>
+<para>
+<indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>structure (customization layers)</tertiary></indexterm>
+Although customization layers vary in complexity, most of them 
+have the same general structure as other customization layers of
+similar complexity.
+</para>
+<para>
+In the most common case, you probably want to include the entire &DTD;, but you
+want to make some small changes.  These customization layers tend
+to look like this:
+</para>
+<screenco>
+<areaspec>
+<area id="gs-o1" coords="1 1" units="linecolumn"/>
+<area id="gs-d1" coords="3 1" units="linecolumn"/>
+<area id="gs-n1" coords="6 1" units="linecolumn"/>
+</areaspec>
+<screen>
+ <replaceable>Overrides of Entity Declarations Here</replaceable>
+
+ &lt;!ENTITY % orig-docbook "-//OASIS//DTD DocBook V3.1//EN">
+ %orig-docbook;
+
+ <replaceable>New/Modified Element and Attribute Declarations Here</replaceable>
+</screen>
+<calloutlist>
+<callout arearefs="gs-o1"><para>
+Declare new values for parameter entities
+(<sgmltag class='paramentity'>local.*</sgmltag>,
+<sgmltag class='paramentity'>*.element</sgmltag>, 
+<sgmltag class='paramentity'>*.attlist</sgmltag>)
+that you wish to modify.
+</para></callout>
+<callout arearefs="gs-d1"><para>
+Include the entire DocBook &DTD; by parameter entity reference.
+<indexterm><primary>parameter entities</primary>
+  <secondary>DocBook DTD, including by reference</secondary></indexterm>
+
+</para></callout>
+<callout arearefs="gs-n1"><para>
+Add new element and attribute declarations for any elements that you
+added to the &DTD;.
+<indexterm><primary>elements</primary>
+  <secondary>declarations</secondary>
+    <tertiary>adding for new</tertiary></indexterm>
+<indexterm><primary>attributes</primary>
+  <secondary>declarations</secondary>
+    <tertiary>adding for new</tertiary></indexterm>
+</para></callout>
+</calloutlist>
+</screenco>
+<para>
+<indexterm><primary>modules</primary>
+  <secondary>DocBook customization</secondary></indexterm>
+
+In slightly more complex customization layers, the changes that you
+want to make are influenced by the interactions between modules. In
+these cases, rather than including the whole &DTD; at once, you
+include each of the modules separately, perhaps with entity or element
+declarations between them:
+</para>
+<screen>
+<replaceable>Overrides of Most Entity Declarations Here</replaceable>
+
+&lt;!ENTITY % orig-pool "-//OASIS//ELEMENTS DocBook Information Pool V3.1//EN">
+%orig-pool;
+
+<replaceable>Overrides of Document Hierarchy Entities Here</replaceable>
+
+&lt;!ENTITY % orig-hier "-//OASIS//ELEMENTS DocBook Document Hierarchy V3.1//EN">
+%orig-hier;
+
+<replaceable>New/Modified Element and Attribute Declarations Here</replaceable>
+
+&lt;!ENTITY % orig-notn "-//OASIS//ENTITIES DocBook Notations V3.1//EN">
+%orig-notn;
+
+&lt;!ENTITY % orig-cent "-//OASIS//ENTITIES DocBook Character Entities V3.1//EN">
+%orig-cent;
+
+&lt;!ENTITY % orig-gen  "-//OASIS//ENTITIES DocBook Additional General Entities V3.1//EN">
+%orig-gen;
+</screen>
+<para>
+<indexterm><primary>one-off customizations</primary></indexterm>
+
+Finally, it's worth noting that in the rare case in which you
+need certain kinds of very simple, <quote>one-off</quote>
+customizations, you can do them in the document subset:
+</para>
+<screen>
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<replaceable>Overrides of Entity Declarations Here</replaceable>
+<replaceable>New/Modified Element and Attribute Declarations Here</replaceable>
+]>
+&lt;book>...&lt;/book>
+</screen>
+</sect1>
+<sect1 id="ch05-write"><title>Writing, Testing, and Using a Customization Layer</title>
+<para>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>customizing</secondary>
+    <tertiary>customization layers, writing, testing, and using</tertiary></indexterm>
+<indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>writing, testing and using customization layers</tertiary></indexterm>
+The procedure for creating, testing, and using a customization layer
+is always about the same. In this section, we'll go through the
+process in some detail. The rest of the sections in this chapter
+describe a range of useful customization layers.
+</para>
+<sect2><title>Deciding What to Change</title>
+<para>
+If you're considering writing a customization layer, there must be
+something that you want to change. Perhaps you want to add an element
+or attribute, remove one, or change some other aspect of the &DTD;.
+</para>
+<para>
+<indexterm><primary>inline elements</primary>
+  <secondary>adding</secondary></indexterm>
+
+Adding an element, particularly an inline element, is one possibility.
+If you're writing documentation about an object-oriented system, you
+may have noticed that DocBook provides <sgmltag>ClassName</sgmltag> but not
+<sgmltag>MethodName</sgmltag>. Suppose you want to add
+<sgmltag>MethodName</sgmltag>?
+</para>
+</sect2>
+<sect2><title>Deciding How to Change a Customization Layer</title>
+<para>
+<indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>changing customization layers</tertiary></indexterm>
+Figuring out what to change may be the hardest part of the process.
+The organization of the parameter entities is quite logical, and,
+bearing in mind the organization described in <xref linkend="s-dbstruct"/>,&rdquo; finding something similar usually
+provides a good model for new changes.
+</para>
+
+<para condition="online">
+<indexterm><primary>parameter entities</primary>
+  <secondary>reference (online)</secondary></indexterm>
+
+Two online resources may be useful. First, the 
+<link linkend="ref-parement">parameter entity reference section</link> of the
+online book provides more detail than the print version. Second, there
+is an alternate version of the book online that shows all of the element
+content models in terms of the parameter entities that define them, 
+rather than the <quote>flattened</quote> versions shown here.
+</para>
+
+<para condition="online">
+<indexterm><primary>elements</primary>
+  <secondary>content models (online reference)</secondary></indexterm>
+One resource that may be useful is the alternate version of this
+book that shows all of the element content models in
+terms of the parameter entities which define them, rather than
+the <quote>flattened</quote> versions shown here. The alternate version
+is on the <acronym>CD-ROM</acronym> and online at the book web site:
+<ulink url="http://docbook.org/">http://docbook.org/</ulink>.
+</para>
+
+<para>
+<sgmltag>MethodName</sgmltag> is similar to <sgmltag>ClassName</sgmltag>, so
+<sgmltag>ClassName</sgmltag> is probably a good model.  <sgmltag>ClassName</sgmltag>
+is an inline element, not a hierarchy element, so it's in
+<filename>dbpool.mod</filename>. Searching for <quote>classname</quote> in
+<filename>dbpool.mod</filename> reveals:
+</para>
+<screen>
+&lt;!ENTITY % local.tech.char.class "">
+&lt;!ENTITY % tech.char.class
+        "Action|Application|<emphasis role="bold">ClassName</emphasis>|Command|ComputerOutput
+        |Database|Email|EnVar|ErrorCode|ErrorName|ErrorType|Filename
+        |Function|GUIButton|GUIIcon|GUILabel|GUIMenu|GUIMenuItem
+        |GUISubmenu|Hardware|Interface|InterfaceDefinition|KeyCap
+        |KeyCode|KeyCombo|KeySym|Literal|Constant|Markup|MediaLabel
+        |MenuChoice|MouseButton|MsgText|Option|Optional|Parameter
+        |Prompt|Property|Replaceable|ReturnValue|SGMLTag|StructField
+        |StructName|Symbol|SystemItem|Token|Type|UserInput|VarName
+        %local.tech.char.class;">
+</screen>
+<para>
+Searching further reveals the element and attribute declarations for
+<sgmltag>ClassName</sgmltag>.
+</para>
+<para>
+<indexterm><primary>local.tech.char.class parameter entity</primary></indexterm>
+<indexterm><primary>tech.char.class parameter entity</primary></indexterm>
+It would seem (and, in fact, it is the case) that adding
+<sgmltag>MethodName</sgmltag> can be accomplished by adding it to the local
+extension mechanism for <sgmltag class="paramentity">tech.char.class</sgmltag>, namely <sgmltag class="paramentity">local.tech.char.class</sgmltag>, and adding element and
+attribute declarations for it. A customization layer that does this
+can be seen in <xref linkend="ex-addmethodname"/>.
+<indexterm><primary>MethodName, adding with customization layer</primary></indexterm>
+
+</para>
+<example id="ex-addmethodname">
+<title>Adding MethodName with a Customization Layer</title>
+<programlisting>
+&lt;!ENTITY % local.tech.char.class "|MethodName">     <co id="add.methname.1"/>
+
+&lt;!-- load DocBook -->                               <co id="add.methname.2"/>
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+
+&lt;!ELEMENT MethodName - - ((%smallcptr.char.mix;)+)  <co id="add.methname.3"/>>
+&lt;!ATTLIST MethodName                                <co id="add.methname.4"/>
+        %common.attrib;
+        %classname.role.attrib;
+        %local.classname.attrib;
+>
+</programlisting>
+<calloutlist>
+<callout arearefs="add.methname.1"><para>Declare the appropriate
+parameter entity (these are described in <xref linkend="dbparam"/>&rdquo;).
+The declaration in your customization layer is encountered first, so
+it overrides the definition in the DocBook &DTD; (all the local
+classes are defined as empty in the &DTD;).</para>
+</callout>
+<callout arearefs="add.methname.2"><para>Use a parameter entity to
+load the entire DocBook &DTD;.</para>
+</callout>
+<callout arearefs="add.methname.3"><para>Add an element declaration
+for the new element. The content model for this element is taken
+directly from the content model of <sgmltag>ClassName</sgmltag>.</para>
+</callout>
+<callout arearefs="add.methname.4"><para>Add an attribute list
+declaration for the new element. These are the same attributes as
+<sgmltag>ClassName</sgmltag>.
+</para>
+</callout></calloutlist>
+</example>
+</sect2>
+<sect2><title>Using Your Customization Layer</title>
+<para>
+<indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>writing, testing, and using customization layers</tertiary></indexterm>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>customizing</secondary>
+    <tertiary>using customization layer</tertiary></indexterm>
+
+In order to use the new customization layer, you must save it in a
+file, for example <filename>mydocbk.dtd</filename>, and then you must use the
+new &DTD; in your document.
+</para>
+<para>
+The simplest way to use the new &DTD; is to point to it with a system
+identifier:
+<indexterm><primary>Java Math class</primary></indexterm>
+<indexterm><primary>absolute value (numbers), computing</primary></indexterm>
+</para>
+<screen>
+<![CDATA[
+<!DOCTYPE chapter SYSTEM "/path/to/mydocbk.dtd">
+<chapter><title>My Chapter</title>
+<para>
+The Java <classname>Math</classname> class provides a 
+<methodname>abs</methodname> method to compute absolute value of a number.
+</para>
+</chapter>
+]]>
+</screen>
+<para>
+<indexterm><primary>public identifiers</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>customization layer</tertiary></indexterm>
+If you plan to use your customization layer in many documents, or
+exchange it with interchange partners, consider giving your &DTD; its
+own public identifier, as described in <xref linkend="s-notdocbook"/>&rdquo;
+</para>
+<para>
+<indexterm><primary>catalog files</primary>
+  <secondary>public identifier, adding</secondary></indexterm>
+
+In order to use the new public identifier, you must add it to your
+catalog:
+<screen>
+PUBLIC "-//Your Organization//DTD DocBook V3.1-Based Extension V1.0//EN"
+       "/share/sgml/mydocbk.dtd"
+</screen>
+and use that public identifier in your documents:
+</para>
+<screen>
+<![CDATA[
+<!DOCTYPE chapter 
+  PUBLIC "-//Your Organization//DTD DocBook V3.1-Based Extension V1.0//EN">
+<chapter><title>My Chapter</title>
+<para>
+The Java <classname>Math</classname> class provides a 
+<methodname>abs</methodname> method to compute absolute value of a number.
+</para>
+</chapter>
+]]>
+</screen>
+<para>
+<indexterm><primary>XML</primary>
+  <secondary>system identifiers</secondary>
+    <tertiary>URI requirements</tertiary></indexterm>
+<indexterm><primary>URI</primary>
+  <secondary>XML system identifiers</secondary></indexterm>
+If you're using &XML;, remember that you must provide a system
+identifier that satisfies the requirements of a Uniform Resource
+Identifier (<acronym>URI</acronym>).
+</para>
+</sect2>
+</sect1>
+<sect1 id="cust.test"><title>Testing Your Work</title>
+<para>
+<indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>writing, testing, and using customization layers</tertiary></indexterm>
+<indexterm><primary>testing</primary>
+  <secondary>customization layers (DocBook DTD)</secondary></indexterm>
+<indexterm><primary>validation</primary>
+  <secondary>customization layers</secondary></indexterm>
+
+&DTD;s, by their nature, contain many complex, interrelated elements.
+Whenever you make a change to the &DTD;, it's always wise to use a
+validating parser to double-check your work. A parser like
+<command>nsgmls</command> from James Clark's
+<application><acronym>SP</acronym></application> can identify elements
+(attributes, parameter entities) that are declared but unused, as well
+as ones that are used but undeclared.
+</para>
+<para>
+
+A comprehensive test can be accomplished with
+<command>nsgmls</command> using the <option>-wall</option>
+option. Create a simple test document and run:
+</para>
+<screen>
+nsgmls <co id="nsgmls.opt.1"/>-sv <co id="nsgmls.opt.2"/>-wall test.sgm
+</screen>
+<calloutlist>
+<callout arearefs="nsgmls.opt.1"><para>
+
+<indexterm><primary>suppressing output (parser)</primary></indexterm>
+<indexterm><primary>versions</primary>
+  <secondary>nsgmls parser, printing number</secondary></indexterm>
+
+The <option>-s</option> option
+tells <command>nsgmls</command> to suppress its normal output (it will
+still show errors, if there are any). The <option>-v</option> option
+tells <command>nsgmls</command> to print its version number; this
+ensures that you always get <emphasis>some</emphasis> output, even if
+there are no errors.</para>
+</callout>
+<callout arearefs="nsgmls.opt.2"><para>
+<indexterm><primary>errors</primary>
+  <secondary>listing, comprehensive</secondary></indexterm>
+<indexterm><primary>warnings, listing</primary></indexterm>
+<indexterm><primary>nsgmls parser</primary>
+  <secondary>warning types</secondary></indexterm>
+
+The <option>-wall</option>
+option tells <command>nsgmls</command> to provide a comprehensive list
+of all errors and warnings.  You can use less verbose, and more
+specific options instead; for example, <option>-wundefined</option> to
+flag undefined elements or <option>-wunused-param</option> to warn you
+about unused parameter entities. The <command>nsgmls</command>
+documentation provides a complete list of warning types.</para>
+</callout>
+</calloutlist>
+<sect2><title>DocBook <acronym>V3.1</acronym> Warnings</title>
+<para>
+<indexterm><primary>DocBook DTD</primary>
+  <secondary>warnings</secondary></indexterm>
+If you run the preceding command over DocBook <acronym>V3.1</acronym>,
+you'll discover one warning generated by the &DTD;:
+</para>
+<screen>
+nsgmls:I: SP version "1.3"
+nsgmls:cals-tbl.dtd:314:37:W: content model is mixed but does not allow #PCDATA everywhere
+</screen>
+<para>
+<indexterm><primary>Entry element</primary></indexterm>
+
+This is not truly an error in the &DTD;, and can safely be ignored.
+The warning is caused by <quote>pernicious mixed content</quote> in
+the content model of DocBook's <sgmltag>Entry</sgmltag> element.  See
+the <sgmltag>Entry</sgmltag> reference page for a complete discussion.
+</para>
+</sect2>
+</sect1>
+<sect1 id="ch05-remvelem"><title>Removing Elements</title>
+<para>
+<indexterm><primary>elements</primary>
+  <secondary>removing</secondary></indexterm>
+
+DocBook has a large number of elements. In some authoring
+environments, it may be useful or necessary to remove some of these
+elements.
+</para>
+<sect2><title>Removing MsgSet</title>
+<para>
+<indexterm><primary>MsgSet element</primary>
+  <secondary>removing</secondary></indexterm>
+<sgmltag>MsgSet</sgmltag> is a favorite target. It has a complex
+internal structure designed for describing interrelated error
+messages, especially on systems that may exhibit messages from several
+different components. Many technical documents can do without it, and
+removing it leaves one less complexity to explain to your authors.
+</para>
+<para>
+<xref linkend="ex.remvmsgset"/> shows a customization layer that removes the
+<sgmltag>MsgSet</sgmltag> element from DocBook:
+</para>
+<example id="ex.remvmsgset">
+<title>Removing MsgSet</title>
+<programlisting>
+&lt;!ENTITY % compound.class "Procedure|SideBar"> <co id="rmv.msgset.1"/>
+&lt;!ENTITY % msgset.content.module "IGNORE">     <co id="rmv.msgset.2"/>
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+</programlisting>
+<calloutlist>
+<callout arearefs="rmv.msgset.1"><para>Remove
+<sgmltag>MsgSet</sgmltag> from the <sgmltag class="paramentity">compound.class</sgmltag>. This is the only place
+in the &DTD; where <sgmltag>MsgSet</sgmltag> is referenced.</para>
+</callout>
+<callout arearefs="rmv.msgset.2"><para>Exclude the definition of
+<sgmltag> MsgSet</sgmltag> and all of its subelements from the
+&DTD;.</para>
+</callout>
+</calloutlist>
+</example>
+</sect2>
+<sect2><title>Removing Computer Inlines</title>
+<para>
+<indexterm><primary>inline elements</primary>
+  <secondary>computer inlines, removing</secondary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>tech.char.class, redefining</secondary></indexterm>
+<indexterm><primary>tech.char.class parameter entity</primary>
+  <secondary>redefining</secondary></indexterm>
+
+DocBook contains a large number of computer inlines. The DocBook
+inlines define a domain-specific vocabulary.  If you're working in
+another domain, many of them may be unnecessary. You can remove a
+bunch of them by redefining the <sgmltag class="paramentity">tech.char.class</sgmltag> parameter entity and
+then excluding the declarations for the elements removed. The initial
+definition of <sgmltag class="paramentity">tech.char.class</sgmltag> is:
+</para>
+<screen>
+&lt;!ENTITY % tech.char.class
+    "Action|Application|ClassName|Command|ComputerOutput
+    |Database|Email|EnVar|ErrorCode|ErrorName|ErrorType|Filename
+    |Function|GUIButton|GUIIcon|GUILabel|GUIMenu|GUIMenuItem
+    |GUISubmenu|Hardware|Interface|InterfaceDefinition|KeyCap
+    |KeyCode|KeyCombo|KeySym|Literal|Markup|MediaLabel|MenuChoice
+    |MouseButton|MsgText|Option|Optional|Parameter|Prompt|Property
+    |Replaceable|ReturnValue|SGMLTag|StructField|StructName
+    |Symbol|SystemItem|Token|Type|UserInput
+    %local.tech.char.class;">
+</screen>
+<para>
+When examining this list, it seems that you can delete all of the
+inlines except, perhaps, <sgmltag>Application</sgmltag>,
+<sgmltag>Command</sgmltag>, <sgmltag>Email</sgmltag>,
+<sgmltag>Filename</sgmltag>, <sgmltag>Literal</sgmltag>,
+<sgmltag>Replaceable</sgmltag>, <sgmltag> Symbol</sgmltag>, and
+<sgmltag>SystemItem</sgmltag>. The following customization layer
+removes them.
+</para>
+<example>
+<title>Removing Computer Inlines</title>
+<programlisting>
+&lt;!ENTITY % tech.char.class
+        "Application|Command|Email|Filename|Literal
+        |Replaceable|Symbol|SystemItem">
+&lt;!ENTITY % action.module "IGNORE">
+&lt;!ENTITY % classname.module "IGNORE">
+&lt;!ENTITY % computeroutput.module "IGNORE">
+&lt;!ENTITY % database.module "IGNORE">
+&lt;!ENTITY % envar.module "IGNORE">
+&lt;!ENTITY % errorcode.module "IGNORE">
+&lt;!ENTITY % errorname.module "IGNORE">
+&lt;!ENTITY % errortype.module "IGNORE">
+&lt;!--&lt;!ENTITY % function.module "IGNORE">-->
+&lt;!ENTITY % guibutton.module "IGNORE">
+&lt;!ENTITY % guiicon.module "IGNORE">
+&lt;!ENTITY % guilabel.module "IGNORE">
+&lt;!ENTITY % guimenu.module "IGNORE">
+&lt;!ENTITY % guimenuitem.module "IGNORE">
+&lt;!ENTITY % guisubmenu.module "IGNORE">
+&lt;!ENTITY % hardware.module "IGNORE">
+&lt;!ENTITY % interface.module "IGNORE">
+&lt;!ENTITY % interfacedefinition.module "IGNORE">
+&lt;!--&lt;!ENTITY % keycap.module "IGNORE">-->
+&lt;!ENTITY % keycode.module "IGNORE">
+&lt;!--&lt;!ENTITY % keycombo.module "IGNORE">-->
+&lt;!--&lt;!ENTITY % keysym.module "IGNORE">-->
+&lt;!ENTITY % markup.module "IGNORE">
+&lt;!ENTITY % medialabel.module "IGNORE">
+&lt;!ENTITY % menuchoice.module "IGNORE">
+&lt;!--&lt;!ENTITY % mousebutton.module "IGNORE">-->
+&lt;!--&lt;!ENTITY % msgtext.module "IGNORE">-->
+&lt;!--&lt;!ENTITY % option.module "IGNORE">-->
+&lt;!--&lt;!ENTITY % optional.module "IGNORE">-->
+&lt;!--&lt;!ENTITY % parameter.module "IGNORE">-->
+&lt;!ENTITY % prompt.module "IGNORE">
+&lt;!ENTITY % property.module "IGNORE">
+&lt;!ENTITY % returnvalue.module "IGNORE">
+&lt;!ENTITY % sgmltag.module "IGNORE">
+&lt;!ENTITY % structfield.module "IGNORE">
+&lt;!ENTITY % structname.module "IGNORE">
+&lt;!ENTITY % token.module "IGNORE">
+&lt;!ENTITY % type.module "IGNORE">
+&lt;!ENTITY % userinput.module "IGNORE">
+&lt;!-- load DocBook --> 
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+</programlisting>
+</example>
+<para>
+Initially we removed several more elements from <sgmltag class="paramentity">tech.char.class</sgmltag> (<sgmltag class="paramentity">function.module</sgmltag>, <sgmltag class="paramentity">keycap.module</sgmltag>), but using the testing procedure
+described in <xref linkend="cust.test"/>,&rdquo; we discovered that
+these elements are used in other content models.  Because they are
+used in other content modules, they cannot simply be removed from the
+&DTD; by deleting them from <sgmltag class="paramentity">
+tech.char.class</sgmltag>.  Even though they can't be deleted
+outright, we've taken them out of most inline contexts.
+</para>
+<para>
+<indexterm><primary>synopses</primary>
+  <secondary>synopsis elements, removing</secondary></indexterm>
+<indexterm><primary>FuncSynopsis element</primary>
+  <secondary>removing</secondary></indexterm>
+<indexterm><primary>CmdSynopsis element</primary>
+  <secondary>removing</secondary></indexterm>
+It's likely that a customization layer that removed this many
+technical inlines would also remove some larger technical structures
+(<sgmltag>MsgSet</sgmltag>, <sgmltag>FuncSynopsis</sgmltag>), which
+allows you to remove additional elements from the &DTD;.
+</para>
+</sect2>
+<sect2>
+<title>Removing Synopsis Elements</title>
+<para>
+Another possibility is removing the complex Synopsis elements. The
+customization layer in <xref linkend="ex.remvcmdsyn"/> removes
+<sgmltag>CmdSynopsis</sgmltag> and <sgmltag>FuncSynopsis</sgmltag>.
+</para>
+<example id="ex.remvcmdsyn">
+<title>Removing CmdSynopsis and FuncSynopsis</title>
+<programlisting>
+&lt;!ENTITY % synop.class "Synopsis">
+&lt;!-- Instead of "Synopsis|CmdSynopsis|FuncSynopsis %local.synop.class;" -->
+
+&lt;!ENTITY % funcsynopsis.content.module "IGNORE">
+&lt;!ENTITY % cmdsynsynopsis.content.module "IGNORE">
+
+&lt;!-- load DocBook --> 
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+</programlisting>
+</example>
+<para>
+<indexterm><primary>parameter entities</primary>
+  <secondary>empty</secondary></indexterm>
+
+Completely removing all Synopsis elements would require a more
+extensive customization. You can't make any of the <sgmltag class="paramentity">*.class</sgmltag> parameter entities completely empty
+without changing all of the parameter entities that use them. See
+<xref linkend="sect.remv.synop.class"/>.&rdquo;
+</para>
+</sect2>
+<sect2>
+<title>Removing Sectioning Elements</title>
+<para>
+<indexterm><primary>sections</primary>
+  <secondary>elements, removing</secondary></indexterm>
+
+Perhaps you want to restrict your authors to only three levels of
+sectioning.  To do that, you must remove the <sgmltag>Sect4</sgmltag>
+and <sgmltag>Sect5 </sgmltag> elements, as shown in <xref linkend="ex.remvsect4"/>.
+</para>
+<example id="ex.remvsect4">
+<title>Removing <sgmltag>Sect4</sgmltag> and <sgmltag>Sect5</sgmltag> Elements
+</title>
+<programlisting><ulink url="examples/remv.sect4.dtd" role="embed"></ulink></programlisting>
+</example>
+<para>
+In order to completely remove an element that isn't in the information
+pool, it is usually necessary to redefine the elements that include
+it. In this case, because we're removing the <sgmltag>Sect4</sgmltag>
+element, we must redefine the <sgmltag>Sect3</sgmltag> element that
+uses it.
+</para>
+</sect2>
+<sect2 id="s2-remvadmon"><title>Removing Admonitions from Table Entries</title>
+<para>
+<indexterm><primary>modules</primary>
+  <secondary>redeclarations</secondary></indexterm>
+<indexterm><primary>redeclarations</primary>
+  <secondary>modules</secondary></indexterm>
+
+All of the customization layers that we've examined so far have been
+fairly straightforward. This section describes a much more complex
+customization layer. Back in <xref linkend="db-modules"/>&rdquo; we
+mentioned that several additional modules existed for
+&ldquo;redeclaration.&rdquo; The customization layer developed in this
+section cannot be written without them.
+</para>
+<para>
+<indexterm><primary>admonitions</primary>
+  <secondary>removing from table entries</secondary></indexterm>
+<indexterm><primary>table entries, removing admonitions</primary></indexterm>
+
+The goal is to remove admonitions (<sgmltag>Warning</sgmltag>,
+<sgmltag>Caution</sgmltag>, <sgmltag>Note</sgmltag>) from table
+entries.
+</para>
+<para>
+<xref linkend="ex.remvadmon.1"/> is a straightforward, and incorrect, attempt.
+<example id="ex.remvadmon.1">
+<title>Removing Admonitions (First Attempt: Incorrect)</title>
+<programlisting role="ERROR">
+&lt;!-- THIS CUSTOMIZATION LAYER CONTAINS ERRORS -->
+&lt;!ENTITY % tabentry.mix
+        "%list.class;
+        |%linespecific.class;
+        |%para.class;        |Graphic
+        %local.tabentry.mix;">
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+</programlisting>
+</example>
+Because the parameter entity <sgmltag class="paramentity">tabentry.mix</sgmltag> defines the mixture of elements
+allowed in table entries, you should remove admonitions.
+<indexterm><primary>parameter entities</primary>
+  <secondary>tabentry.mix (removing admonitions)</secondary></indexterm>
+<indexterm><primary>tabentry.mix element, editing</primary></indexterm>
+
+</para>
+<para>
+If you attempt to parse this &DTD;, you'll find that the declaration
+of <sgmltag class="paramentity">tabentry.mix</sgmltag> contains errors. While
+you can redefine parameter entities, you cannot make reference to
+entities that have not been defined yet, so the use of <sgmltag class="paramentity">list.class</sgmltag>, <sgmltag class="paramentity">linespecific.class</sgmltag>, and so on, aren't allowed.
+</para>
+<para>
+Your second attempt might look like <xref linkend="ex.remvadmon.2"/>.
+<example id="ex.remvadmon.2">
+<title>Removing Admonitions (Second Attempt: Incorrect)</title>
+<programlisting role="ERROR">
+&lt;!-- THIS CUSTOMIZATION LAYER DOESN'T WORK -->
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+&lt;!ENTITY % tabentry.mix
+        "%list.class;
+        |%linespecific.class;
+        |%para.class;        |Graphic
+        %local.tabentry.mix;">
+</programlisting>
+</example>
+Declaring <sgmltag class="paramentity">tabentry.mix</sgmltag> after the &DTD;
+has been loaded removes the errors.
+</para>
+<para>
+This example contains no errors, but it also doesn't have any effect.
+Remember, only the first entity declaration counts, so the declaration
+of <sgmltag class="paramentity">tabentry.mix</sgmltag> in
+<filename>dbpool.mod</filename> is the one used, not your
+redeclaration.
+</para>
+<para>
+<indexterm><primary>placeholders, redeclarations</primary></indexterm>
+<indexterm><primary>redeclarations</primary>
+  <secondary>placeholders</secondary></indexterm>
+
+The only way to fix this problem is to make use of one of the redeclaration
+placeholders in DocBook.
+</para>
+<para>
+Redeclaration placeholders are spots in which you can insert
+definitions into the middle of the &DTD;. There are four redeclaration
+placeholders in DocBook:
+<indexterm><primary>%rdbmods parameter entity</primary></indexterm>
+
+<variablelist>
+<varlistentry><term><sgmltag class="paramentity">rdbmods</sgmltag></term>
+<listitem>
+<para>Inserted in <filename>docbook.dtd</filename>, between
+<filename>dbpool.mod</filename> and
+<filename>dbhier.mod</filename>. This placeholder is controlled by the
+<sgmltag class="paramentity">intermod.redecl.module</sgmltag> marked
+section.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">rdbpool</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>%rdbpool.mod parameter entity</primary></indexterm>
+
+Inserted in the middle of <filename>dbpool.mod</filename>,
+between the <sgmltag class="paramentity">*.class</sgmltag> and <sgmltag class="paramentity">*.mix</sgmltag> entity declarations. This placeholder is
+controlled by the <sgmltag class="paramentity">dbpool.redecl.module</sgmltag>
+marked section.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">rdbhier</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>%rdbhier parameter entity</primary></indexterm>
+
+Inserted in the middle of <filename>dbhier.mod</filename>,
+between the <sgmltag class="paramentity">*.class</sgmltag> and <sgmltag class="paramentity">*.mix</sgmltag> entity declarations. This placeholder is
+controlled by the <sgmltag class="paramentity">dbhier.redecl.module</sgmltag> marked
+section.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="paramentity">rdbhier2</sgmltag></term>
+<listitem>
+<para>Also inserted into <filename>dbhier.mod</filename>, after the
+<sgmltag class="paramentity">*.mix</sgmltag> entity declarations. This
+placeholder is controlled by the <sgmltag class="paramentity">dbhier.redecl2.module</sgmltag> marked
+section.</para>
+</listitem>
+</varlistentry>
+</variablelist></para>
+<para>Use the redeclaration placeholder that it occurs nearest to, but
+before the entity that you want to redeclare. In our case, this is
+<sgmltag class="paramentity">rdbpool</sgmltag>, as seen in <xref linkend="ex.remvadmon.3"/>.
+<example id="ex.remvadmon.3">
+<title>Removing Admonitions (Third Attempt: Correct, if confusing)</title>
+<programlisting>
+&lt;!ENTITY % dbpool.redecl.module "INCLUDE">
+&lt;!ENTITY % rdbpool
+'&lt;!ENTITY % local.tabentry.mix "">
+&lt;!ENTITY % tabentry.mix
+        "&amp;#37;list.class;
+        |&amp;#37;linespecific.class;
+        |&amp;#37;para.class;        |Graphic
+        &amp;#37;local.tabentry.mix;">'>
+
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+</programlisting>
+</example>
+</para>
+<para>
+<indexterm><primary>escape sequences (parameter entities)</primary></indexterm>
+
+<xref linkend="ex.remvadmon.3"/> uses numeric character entity
+references to escape the <literal>%</literal> signs in the entity
+declarations and nests an entity declaration in another parameter
+entity. All of this is perfectly legal, but a bit confusing.  A
+clearer solution, and the only practical solution if you're doing
+anything more than a single redeclaration, is to place the new
+declarations in another file and include them in your customization
+layer by reference, like this:
+</para>
+<example id="ex.remvadmon.4">
+<title>Removing Admonitions (Fourth Attempt: Correct)</title>
+<para>In your customization layer:</para>
+<programlisting>
+
+&lt;!ENTITY % dbpool.redecl.module "INCLUDE">
+&lt;!ENTITY % rdbpool SYSTEM "rdbpool.mod">
+
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+
+</programlisting>
+<para>In <filename>rdbpool.mod</filename>:</para>
+<programlisting>&lt;!ENTITY % local.tabentry.mix "">
+&lt;!ENTITY % tabentry.mix
+        "%list.class;
+        |%linespecific.class;
+        |%para.class;        |Graphic
+        %local.tabentry.mix;"></programlisting>
+</example>
+</sect2>
+<sect2 id="sect.remv.synop.class">
+<title>Removing an Entire Class</title>
+<para>
+<indexterm><primary>classes</primary>
+  <secondary>removing entire class</secondary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>removing</secondary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>empty classes, redefining for</secondary></indexterm>
+
+Perhaps the modification that you want to make is to completely remove
+an entire class of elements. (If you have no need for synopsis
+elements of any sort, why not remove them?) In order to remove an
+entire class of elements, you must not only redefine the class as
+empty, but you must also redefine all of the parameter entities that
+use that class. The customization layer below completely removes the
+<sgmltag class="paramentity"> synop.class</sgmltag> from DocBook. It
+requires a customization layer, shown in <xref linkend="ex.remvclass"/>, that includes both a redeclaration module in
+<filename>dbpool.mod</filename> and a redeclaration module in
+<filename>dbhier.mod</filename>.
+<indexterm><primary>%synop.class, removing</primary></indexterm>
+</para>
+<example id="ex.remvclass">
+<title>Removing <sgmltag class="paramentity">synop.class</sgmltag></title>
+<para>In the customization layer:</para>
+<programlisting><inlinegraphic fileref="examples/remv.synop.class.dtd" format="linespecific"></inlinegraphic></programlisting>
+<para>In <filename>remv.synop.class.rdbpool.mod</filename>:</para>
+<programlisting><inlinegraphic fileref="examples/remv.synop.class.rdbpool.mod"></inlinegraphic></programlisting>
+<para>In <filename>remv.synop.class.rdbhier.mod</filename>:</para>
+<programlisting><inlinegraphic fileref="examples/remv.synop.class.rdbhier.mod"></inlinegraphic><?Pub Caret?></programlisting>
+</example>
+</sect2>
+</sect1>
+<sect1 id="ch05-remvattr">
+<title>Removing Attributes</title>
+<para>Just as there may be more elements than you need, there may be more
+attributes.</para>
+<sect2>
+<title>Removing an Attribute</title>
+<para>
+<indexterm><primary>attributes</primary>
+  <secondary>removing</secondary></indexterm>
+<indexterm><primary>RenderAs attribute, removing</primary></indexterm>
+
+Suppose you want to remove the <sgmltag class="attribute">RenderAs</sgmltag> attribute from the
+<sgmltag>Sect1</sgmltag> element. <sgmltag class="attribute">RenderAs</sgmltag> allows the author to
+&ldquo;cheat&rdquo; in the presentation of hierarchy by specifying
+that the stylesheet should render a <sgmltag>Sect1</sgmltag> as
+something else: a <sgmltag>Sect3</sgmltag>, perhaps. <xref linkend="ex.remvrendas"/> details the removal of <sgmltag class="attribute">RenderAs</sgmltag>.
+</para>
+<example id="ex.remvrendas">
+<title>Removing RenderAs from Sect1</title>
+<programlisting>
+&lt;!ENTITY % sect1.module "IGNORE">                <co id="remvattr.1"/>
+
+&lt;!-- load DocBook -->                            <co id="remvattr.2"/>
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+
+&lt;!ENTITY % local.sect1.attrib "">                <co id="remvattr.3"/>
+&lt;!ENTITY % sect1.role.attrib "%role.attrib;">    <co id="remvattr.4"/>
+&lt;!ELEMENT Sect1 - O (Sect1Info?, (%sect.title.content;), (%nav.class;)*,  <co id="remvattr.5"/>
+        (((%divcomponent.mix;)+, 
+        ((%refentry.class;)* | Sect2* | SimpleSect*))
+        | (%refentry.class;)+ | Sect2+ | SimpleSect+), (%nav.class;)*)
+        +(%ubiq.mix;)>
+&lt;!ATTLIST Sect1                                  <co id="remvattr.6"/>
+        %label.attrib;
+        %status.attrib;
+        %common.attrib;
+        %sect1.role.attrib;
+        %local.sect1.attrib;
+>
+</programlisting>
+</example>
+<calloutlist>
+<callout arearefs="remvattr.1"><para>Turn off the
+<sgmltag>Sect1</sgmltag> module so that the element and attribute
+declarations in the &DTD; will be ignored.
+</para>
+</callout>
+<callout arearefs="remvattr.2"><para>Include the DocBook &DTD;.</para>
+</callout>
+<callout arearefs="remvattr.3"><para>By keeping the local attribute
+declaration, we leave open the possibility of a simple customization
+layer on top of our customization layer.</para>
+</callout>
+<callout arearefs="remvattr.4"><para>Similarly, we keep the
+parameterized definition of the <sgmltag class="attribute">Role</sgmltag>
+attribute.</para>
+</callout>
+<callout arearefs="remvattr.5"><para>We're changing the attribute
+list, not the element, so we've simply copied the
+<sgmltag>Sect1</sgmltag> element declaration from the DocBook
+&DTD;.</para>
+</callout>
+<callout arearefs="remvattr.6"><para>Finally, we declare the attribute
+list, leaving out the <sgmltag class="attribute">RenderAs</sgmltag>.</para>
+</callout>
+</calloutlist>
+</sect2>
+<sect2><title>Subsetting the Common Attributes</title>
+<para>
+<indexterm><primary>attributes</primary>
+  <secondary>common</secondary>
+    <tertiary>subsetting</tertiary></indexterm>
+<indexterm><primary>subsetting common attributes</primary></indexterm>
+
+DocBook defines eleven common attributes; these attributes appear on
+<emphasis>every</emphasis> element. Depending on how you're
+processing your documents, removing some of them can both simplify the
+authoring task and improve processing speed.
+</para>
+<para>Some obvious candidates are:</para>
+<variablelist>
+<varlistentry><term>Effectivity attributes (<sgmltag class="attribute">Arch
+</sgmltag>, <sgmltag class="attribute">OS</sgmltag>,...)</term>
+<listitem>
+<para>
+<indexterm><primary>effectivity attributes, removing</primary></indexterm>
+
+If you're not using all of the effectivity attributes in your
+documents, you can get rid of up to seven attributes in one fell
+swoop.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="attribute">Lang</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>Lang attribute</primary>
+  <secondary>removing</secondary></indexterm>
+
+If you're not producing multilingual documents, you can remove
+<sgmltag class="attribute">Lang</sgmltag>.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="attribute">Remap</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>Remap attribute</primary>
+  <secondary>removing</secondary></indexterm>
+The <sgmltag class="attribute">Remap</sgmltag> attribute is
+designed to hold the name of a semantically equivalent construct from
+a previous markup scheme (for example, a Microsoft Word style template
+name, if you're converting from Word).  If you're authoring from
+scratch, or not preserving previous constructs with <sgmltag class="attribute">Remap</sgmltag>, you can get rid of it.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="attribute">XrefLabel</sgmltag></term>
+<listitem>
+<para>
+<indexterm><primary>XrefLabel attribute</primary>
+  <secondary>removing</secondary></indexterm>
+If your processing system isn't using <sgmltag class="attribute">XrefLabel</sgmltag>, it's a candidate as
+well.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+The customization layer in <xref linkend="ex.remvcommon"/> reduces the
+common attributes to just <sgmltag class="attribute">ID</sgmltag> and
+<sgmltag class="attribute">Lang</sgmltag>.
+</para>
+<example id="ex.remvcommon">
+<title>Removing Common Attributes</title>
+<programlisting>&lt;!ENTITY % common.attrib
+"ID   ID    #IMPLIED
+ Lang CDATA #IMPLIED"
+>
+&lt;!ENTITY % idreq.common.attrib
+"ID   ID    #REQUIRED
+ Lang CDATA #IMPLIED"
+>
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;</programlisting>
+</example>
+<para>
+<indexterm><primary>common.attrib parameter entity</primary></indexterm>
+<indexterm><primary>idreq.common.attrib parameter entity</primary></indexterm>
+
+By definition, whatever attributes you define in the <sgmltag class="paramentity">common.attrib</sgmltag> and <sgmltag class="paramentity">idreq.common.attrib</sgmltag> parameter entities
+are the common attributes. In <filename>dbpool.mod </filename>, these
+parameter entities are defined in terms of other parameter entities,
+but there's no way to preserve that structure in your customization
+layer.
+</para>
+</sect2>
+</sect1>
+<sect1 id="ch05-addelem"><title>Adding Elements: Adding a Sect6</title>
+<para>
+<indexterm><primary>elements</primary>
+  <secondary>adding</secondary></indexterm>
+
+Adding a structural (as opposed to information pool) element generally
+requires adding its name to a class and then providing the appropriate
+definitions. <xref linkend="ex.addsect6"/> extends DocBook by adding a
+<sgmltag>Sect6</sgmltag> element.
+</para>
+<example id="ex.addsect6">
+<title>Adding a Sect6 Element</title>
+<programlisting>&lt;!ENTITY % sect5.module "IGNORE">
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;
+&lt;!-- Add Sect6 to content model of Sect5 -->
+&lt;!ENTITY % sect5.role.attrib "%role.attrib;">
+&lt;!ELEMENT Sect5 - O (Sect5Info?, (%sect.title.content;), (%nav.class;)*,
+        (((%divcomponent.mix;)+, 
+                ((%refentry.class;)* | Sect6* | SimpleSect*))
+        | (%refentry.class;)+ | Sect6+ | SimpleSect+), (%nav.class;)*)>
+&lt;!ATTLIST Sect5
+        %label.attrib;
+        %status.attrib;
+        %common.attrib;
+        %sect5.role.attrib;
+>
+&lt;!ENTITY % sect6.role.attrib "%role.attrib;">
+&lt;!ELEMENT Sect6 - O (Sect6Info?, (%sect.title.content;), (%nav.class;)*,
+        (((%divcomponent.mix;)+, ((%refentry.class;)* | SimpleSect*))
+        | (%refentry.class;)+ | SimpleSect+), (%nav.class;)*)>
+&lt;!ATTLIST Sect6
+        %label.attrib;
+        %status.attrib;
+        %common.attrib;
+        %sect6.role.attrib;
+></programlisting>
+</example>
+<para>
+Here we've redefined <sgmltag>Sect5</sgmltag> to include
+<sgmltag>Sect6</sgmltag> and provided a declaration for
+<sgmltag>Sect6</sgmltag>. Note that we didn't bother to provide
+<sgmltag class="attribute">RenderAs</sgmltag> attributes in our
+redefinitions. To properly support <sgmltag>Sect6</sgmltag>, you might
+want to redefine all of the sectioning elements so that <literal>
+Sect6</literal> is a legal attribute value for <sgmltag class="attribute">RenderAs</sgmltag>.
+</para>
+</sect1>
+<sect1 id="ch05-classrole"><title>Other Modifications: Classifying a Role</title>
+<para>
+<indexterm><primary>Role attribute</primary>
+  <secondary>changing on Procedure (example)</secondary></indexterm>
+
+The <sgmltag class="attribute">Role</sgmltag> attribute, found on almost
+all of the elements in DocBook, is a <literal>CDATA</literal> attribute that
+can be used to subclass an element. In some applications, it may be useful
+to modify the definition of <sgmltag class="attribute">Role</sgmltag> so that
+authors must choose one of a specific set of possible values.</para>
+<para>In <xref linkend="ex.changerole"/>, <sgmltag class="attribute">Role</sgmltag> on the <sgmltag>Procedure</sgmltag> element
+is constrained to the values <literal>Required</literal> or <literal>
+Optional</literal>.</para>
+<example id="ex.changerole">
+<title>Changing Role on Procedure</title>
+<programlisting>&lt;!ENTITY % procedure.role.attrib "Role (Required|Optional) #IMPLIED">
+&lt;!-- load DocBook -->
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;<indexterm startref="DocBookcustomch05" class="endofrange"/><indexterm startref="customDocBookch05" class="endofrange"/></programlisting>
+</example>
+</sect1>
+</chapter>
+
+<!--
+Local Variables:
+mode:sgml
+sgml-parent-document: ("book.sgm" "chapter")
+End:
+-->

@@ -1,0 +1,52 @@
+<refentry id="msg.element">
+<?dbhtml filename="msg.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>msg</secondary></indexterm>
+<refentrytitle>msg</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>msg</refname>
+<refpurpose>&msg.purpose;</refpurpose>
+</refnamediv>
+
+&msg.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+In a <sgmltag>MsgSet</sgmltag>, each <sgmltag>MsgEntry</sgmltag> contains at least
+one <sgmltag>Msg</sgmltag>.  A <sgmltag>Msg</sgmltag> consists of a main message
+(<sgmltag>MsgMain</sgmltag>), 
+and optionally one or more submessages (<sgmltag>MsgSub</sgmltag>) 
+or related messages (<sgmltag>MsgRel</sgmltag>).
+</para>
+<para>
+Additional information or explanation for the message is contained
+in the siblings of <sgmltag>Msg</sgmltag> within the <sgmltag>MsgEntry</sgmltag>.
+</para>
+
+<para>See <sgmltag>MsgSet</sgmltag>.</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; &format.csuppress; 
+</para>
+<para>
+On the whole, the semantics of <sgmltag>MsgSet</sgmltag>
+are not clearly defined.
+</para>
+</refsect2>
+
+
+&msg.parents.gen;
+&msg.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&msg.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

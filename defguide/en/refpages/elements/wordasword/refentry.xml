@@ -1,0 +1,61 @@
+<refentry id="wordasword.element">
+<?dbhtml filename="wordasword.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>wordasword</secondary></indexterm>
+<refentrytitle>wordasword</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>wordasword</refname>
+<refpurpose>&wordasword.purpose;</refpurpose>
+</refnamediv>
+
+&wordasword.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A lot of technical documentation contains words that have
+overloaded meanings.  Sometimes it is useful to be able to use a
+word without invoking its technical meaning.  The
+<sgmltag>WordAsWord</sgmltag> element identifies a word or phrase that
+might otherwise be interpreted in some specific way, and asserts
+that it should be interpreted simply as a word.
+</para>
+
+<para>
+It is unlikely that the presentation of this element will be able
+to help readers understand the variation in meaning; good writing
+will have to achieve that goal.
+The real value of <sgmltag>WordAsWord</sgmltag> lies in the fact
+that full-text searching and indexing tools can use it to avoid
+false-positives.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline;
+</para>
+</refsect2>
+
+
+&wordasword.parents.gen;
+&wordasword.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&wordasword.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&wordasword.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.wordasword.1" role="HACK-ex.out.start"/>
+&wordasword.example.1.gen;
+<anchor id="ex.oe.wordasword.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,50 @@
+<refentry id="itermset.element">
+<?dbhtml filename="itermset.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>itermset</secondary></indexterm>
+<refentrytitle>itermset</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>itermset</refname>
+<refpurpose>&itermset.purpose;</refpurpose>
+</refnamediv>
+
+&itermset.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+When <sgmltag>IndexTerm</sgmltag>s use the <sgmltag class='attribute'>Zone</sgmltag>
+attribute to point to index ranges, it may be handy to hoist them
+out of the flow and put them in the document meta-information.
+</para>
+<para>
+The <sgmltag>ITermSet</sgmltag> element, which occurs in the DocBook containers
+for meta-information, is one place to put them.  <sgmltag>ITermSet</sgmltag> is
+simply a wrapper around a group of <sgmltag>IndexTerm</sgmltag>s.
+</para>
+<refsect2><title>Processing expectations</title>
+<para>
+&format.suppress;
+</para>
+<para>
+Although more than one <sgmltag>ITermSet</sgmltag> may appear in the
+meta-information for a document, neither a relationship nor a specific
+facility for constructing a relationship is defined.
+</para>
+</refsect2>
+
+
+
+&itermset.parents.gen;
+&itermset.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&itermset.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,72 @@
+<refentry id="synopfragment.element">
+<?dbhtml filename="synopfragment.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>synopfragment</secondary></indexterm>
+<refentrytitle>synopfragment</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>synopfragment</refname>
+<refpurpose>&synopfragment.purpose;</refpurpose>
+</refnamediv>
+
+&synopfragment.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A complex <sgmltag>CmdSynopsis</sgmltag> can be made more manageable
+with <sgmltag>SynopFragment</sgmltag>s.  Rather than attempting to
+present the entire synopsis in one large
+piece, parts of the synopsis can be extracted out and presented
+elsewhere. These extracted pieces are placed in <sgmltag>SynopFragment</sgmltag>s
+at the end of the <sgmltag>CmdSynopsis</sgmltag>.
+</para>
+
+<para>
+At the point in which each piece was extracted, insert a
+<sgmltag>SynopFragmentRef</sgmltag> that points to the fragment. The
+content of the reference element will be presented inline.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; 
+</para>
+<para>
+The presentation system is responsible for generating text that
+makes the reader aware of the link. This can be done with
+numbered bullets, or any other appropriate mechanism. Whatever
+mark is generated for the reference must also be generated for
+the fragment.
+</para>
+<para>
+Online systems have additional flexibility. They may generate
+hot links between the references and the fragments, for example,
+or place the fragments in pop-up windows.
+</para>
+</refsect2>
+
+
+&synopfragment.parents.gen;
+&synopfragment.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&synopfragment.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&synopfragment.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.synopfragment.1" role="HACK-ex.out.start"/>
+&synopfragment.example.1.gen;
+<anchor id="ex.oe.synopfragment.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&synopfragment.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

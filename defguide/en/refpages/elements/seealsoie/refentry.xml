@@ -1,0 +1,73 @@
+<refentry id="seealsoie.element">
+<?dbhtml filename="seealsoie.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>seealsoie</secondary></indexterm>
+<refentrytitle>seealsoie</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>seealsoie</refname>
+<refpurpose>&seealsoie.purpose;</refpurpose>
+</refnamediv>
+
+&seealsoie.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>SeeAlsoIE</sgmltag> identifies a <quote>See also</quote> cross-reference 
+in an <sgmltag>IndexEntry</sgmltag>.  <sgmltag>IndexEntry</sgmltag>s
+occur in an <sgmltag>Index</sgmltag>, not in the flow of the text. They are
+part of a formatted index, not markers for indexing.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; <sgmltag>IndexEntry</sgmltag>s that include a <sgmltag>SeeAlsoIE</sgmltag>
+should be formatted normally, with the <quote>See also</quote> indented below
+the term.
+</para>
+<para>
+<sgmltag>SeeAlsoIE</sgmltag> is usually expected to generate the text
+<quote>See Also</quote>.
+</para>
+<para>
+The <sgmltag class='attribute'>Linkends</sgmltag> attribute should point other
+<sgmltag>IndexEntry</sgmltag>s in the same <sgmltag>Index</sgmltag>. Online systems
+may use them to form hypertext links.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&seealsoie.parents.gen;
+&seealsoie.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>linkends</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Linkends</sgmltag> points to a the related <sgmltag>IndexEntry</sgmltag>s.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&seealsoie.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&seealsoie.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

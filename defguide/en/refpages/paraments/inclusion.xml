@@ -1,0 +1,39 @@
+<refentry id="pe-inclusion">
+<?dbhtml filename="pe-inclusion.html"?>
+
+<refmeta>
+<indexterm><primary>Parameter Entities</primary>
+<secondary><sgmltag class="paramentity">*.inclusion</sgmltag></secondary></indexterm>
+<refentrytitle><sgmltag class="paramentity">*.inclusion</sgmltag> Parameter Entities</refentrytitle>
+</refmeta>
+
+<refnamediv>
+<refname><sgmltag class="paramentity">*.inclusion</sgmltag> Parameter Entities</refname>
+<refpurpose>Control SGML inclusions
+</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><title>Synopsis</title>
+<para>
+Used to control the inclusion declarations on elements with inclusions.
+</para>
+</refsynopsisdiv>
+
+<refsect1><title>Description</title>
+
+<para>
+The <sgmltag class="paramentity">*.inclusion</sgmltag> parameter entities
+parameterize element inclusions.
+You can selectively include or remove elements from the inclusion
+by changing the appropriate parameter entity.  For example, if you remove
+<sgmltag>BeginPage</sgmltag> from the 
+<sgmltag class="paramentity">ubiq.inclusion</sgmltag> parameter entity, it
+is no longer included everywhere in DocBook.
+</para>
+
+<para>In the XML version of DocBook V4, there are no inclusion entities
+because inclusions are not part of XML.</para>
+
+</refsect1>
+
+</refentry>

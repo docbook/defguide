@@ -1,0 +1,84 @@
+<refentry id="reference.element">
+<?dbhtml filename="reference.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>reference</secondary></indexterm>
+<refentrytitle>reference</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>reference</refname>
+<refpurpose>&reference.purpose;</refpurpose>
+</refnamediv>
+
+&reference.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>A <sgmltag>Reference</sgmltag> is a collection of
+<sgmltag>RefEntry</sgmltag>s.  In a <sgmltag>Book</sgmltag>, a
+<sgmltag>Reference</sgmltag> can occur at either the <sgmltag>Part</sgmltag>
+or <sgmltag>Chapter</sgmltag> level.
+</para>
+
+<para>
+Reference pages are usually bound together by topic; in traditional
+&UNIX; documentation they are most frequently bound into volumes.  See
+<sgmltag>ManVolNum</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; <sgmltag>References</sgmltag>s often introduce a forced
+page break and may start on the next recto page.  Frequently,
+they also produce a separator page, on which may be printed the
+content of the <sgmltag>PartIntro</sgmltag>.
+</para>
+</refsect2>
+
+
+
+&reference.parents.gen;
+&reference.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying string for presentation purposes.
+</para>
+<para>
+Generally, an explicit <sgmltag class='attribute'>Label</sgmltag> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <sgmltag class='attribute'>Label</sgmltag> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>status</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Status</sgmltag> identifies the editorial or publication 
+status of the <sgmltag>Reference</sgmltag>.
+</para>
+<para>
+Publication status might be used to control formatting (for example,
+printing a <quote>draft</quote> watermark on drafts) or processing (perhaps
+a document with a status of <quote>final</quote> should not include any
+components that are not final).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&reference.example.1.txt;</programlisting>
+</informalexample>
+
+</refsect1>
+</refentry>
+

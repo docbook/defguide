@@ -1,0 +1,66 @@
+<refentry id="option.element">
+<?dbhtml filename="option.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>option</secondary></indexterm>
+<refentrytitle>option</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>option</refname>
+<refpurpose>&option.purpose;</refpurpose>
+</refnamediv>
+
+&option.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Option</sgmltag> identifies an optional argument to a software command.
+</para>
+
+<refsect2 id="dbreproc.option"><title>Processing expectations</title>
+<para>
+&format.inline;
+</para>
+<para>
+DocBook does not specify whether or not a symbol (such as
+<literal>-</literal> or <literal>/</literal>) is generated before the content
+of <sgmltag>Option</sgmltag>, or what that symbol might be.  Generating
+the text may or may not be desirable, but in either case, it is
+an interchange issue. See <xref linkend="app-interchange"/>.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+The content model of <sgmltag>Option</sgmltag> will be constrained to
+<literal>(#PCDATA | Replaceable | InlineGraphic)</literal> in 
+DocBook <acronym>V4.0</acronym>.
+</para>
+</refsect2>
+
+
+&option.parents.gen;
+&option.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&option.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&option.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.option.1" role="HACK-ex.out.start"/>
+&option.example.1.gen;
+<anchor id="ex.oe.option.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&option.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

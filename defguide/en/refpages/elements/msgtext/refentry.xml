@@ -1,0 +1,54 @@
+<refentry id="msgtext.element">
+<?dbhtml filename="msgtext.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>msgtext</secondary></indexterm>
+<refentrytitle>msgtext</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>msgtext</refname>
+<refpurpose>&msgtext.purpose;</refpurpose>
+</refnamediv>
+
+&msgtext.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+The <sgmltag>MsgText</sgmltag> is the actual content of the message in a
+<sgmltag>MsgMain</sgmltag>, <sgmltag>MsgSub</sgmltag>, or <sgmltag>MsgRel</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.context;
+</para>
+<para>
+On the whole, the semantics of <sgmltag>MsgSet</sgmltag>
+are not clearly defined.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+<sgmltag>MsgText</sgmltag> is currently one of the general, technical inlines
+by accident.  In DocBook <acronym>V4.0</acronym>, it will be limited to use within a 
+<sgmltag>MsgSet</sgmltag>.
+</para>
+</refsect2>
+
+
+
+&msgtext.parents.gen;
+&msgtext.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&msgtext.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

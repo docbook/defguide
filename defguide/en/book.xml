@@ -1,0 +1,21 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook EBNF Module V1.0//EN"
+               "/sourceforge/docbook/docbook/ebnf/dbebnf.dtd" [
+
+<!-- Build the expanded version by default -->
+<!ENTITY % unexpanded "IGNORE">
+
+<!-- Local declaration to avoid hitting the web for the DTD. -->
+<!ENTITY % docbook PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                   "/sourceforge/docbook/docbook/xml/docbookx.dtd">
+
+<!-- source in the book content and other entities -->
+<!ENTITY % content SYSTEM "entities/content.ent">
+%content;
+]>
+
+<book id="docbook">
+<?dbhtml filename="docbook.html"?>
+&bookinfo;
+&bookbody;
+</book>
+

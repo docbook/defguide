@@ -1,0 +1,59 @@
+<refentry id="substeps.element">
+<?dbhtml filename="substeps.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>substeps</secondary></indexterm>
+<refentrytitle>substeps</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>substeps</refname>
+<refpurpose>&substeps.purpose;</refpurpose>
+</refnamediv>
+
+&substeps.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>Procedure</sgmltag> describes a sequence of
+<sgmltag>Step</sgmltag>s that a reader is expected to perform.  If a
+finer level of granularity is required for some steps, you can
+use <sgmltag>SubSteps</sgmltag> to embed substeps within a
+<sgmltag>Step</sgmltag>.
+</para>
+<para>
+<sgmltag>SubSteps</sgmltag> contain <sgmltag>Step</sgmltag>s, so substeps can
+be nested to any depth.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; <sgmltag>SubStep</sgmltag>s are almost always numbered.
+</para>
+</refsect2>
+
+
+&substeps.parents.gen;
+&substeps.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>performance</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Performance</sgmltag> specifies whether 
+particular set of <sgmltag>Substep</sgmltag> in a <sgmltag>Procedure</sgmltag> must 
+be performed or is optional.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&substeps.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,53 @@
+&lt;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;refentry id="printf"&gt;
+
+&lt;refmeta&gt;
+&lt;refentrytitle&gt;printf&lt;/refentrytitle&gt;
+&lt;manvolnum&gt;3S&lt;/manvolnum&gt;
+&lt;/refmeta&gt;
+
+&lt;refnamediv&gt;
+&lt;refname&gt;printf&lt;/refname&gt;
+&lt;refname&gt;fprintf&lt;/refname&gt;
+&lt;refname&gt;sprintf&lt;/refname&gt;
+&lt;refpurpose&gt;print formatted output&lt;/refpurpose&gt;
+&lt;/refnamediv&gt;
+
+&lt;refsynopsisdiv&gt;
+
+&lt;funcsynopsis&gt;
+&lt;funcsynopsisinfo&gt;
+#include &amp;lt;stdio.h&amp;gt;
+&lt;/funcsynopsisinfo&gt;
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;...&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;int &lt;function&gt;fprintf&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;paramdef&gt;FILE *&lt;parameter&gt;strm&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;...&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;int &lt;function&gt;sprintf&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;paramdef&gt;char *&lt;parameter&gt;s&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;...&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+&lt;/funcsynopsis&gt;
+
+&lt;/refsynopsisdiv&gt;
+
+&lt;refsect1&gt;&lt;title&gt;Description&lt;/title&gt;
+&lt;para&gt;
+&lt;function&gt;printf&lt;/function&gt; places output on the standard
+output stream stdout.
+&lt;/para&gt;
+&lt;para&gt;&amp;hellip;&lt;/para&gt;
+&lt;/refsect1&gt;
+&lt;/refentry&gt;

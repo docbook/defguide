@@ -1,0 +1,183 @@
+<refentry id="funcsynopsis.element">
+<?dbhtml filename="funcsynopsis.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>funcsynopsis</secondary></indexterm>
+<refentrytitle>funcsynopsis</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>funcsynopsis</refname>
+<refpurpose>&funcsynopsis.purpose;</refpurpose>
+</refnamediv>
+
+&funcsynopsis.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>FuncSynopsis</sgmltag> contains the syntax summary of a function prototype
+or a set of function prototypes.  The content model of this element
+was designed specifically to capture the semantics of most C-language
+function prototypes (for use in &UNIX; reference pages).
+</para>
+
+<para>
+This is one of the few places where DocBook attempts to model as well
+as describe.  Using <sgmltag>FuncSynopsis</sgmltag> for languages that are
+unrelated to C may prove difficult.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+For the most part, the processing application is expected to
+generate all of the parenthesis, semicolons, commas,
+and so on. required in the rendered synopsis.  The exception to this
+rule is that the spacing and other punctuation inside a
+parameter that is a pointer to a function must be provided in
+the source markup.
+</para>
+
+<para>
+With sufficient author cooperation, it should be possible to markup
+a function synopsis with enough clarity so that a processing system can
+generate either <acronym>K&amp;R</acronym>-style or <acronym>ANSI</acronym>-style renderings.
+</para>
+
+<refsect3><title>A Note on the Use of <sgmltag>VarArgs</sgmltag></title>
+<para>
+The content model of <sgmltag>FuncPrototype</sgmltag> is such that you
+cannot use <sgmltag>VarArgs</sgmltag> in a function prototype in which the
+first few parameters to the function are given explicitly before
+the variable arguments (generally rendered as an ellipsis).
+</para>
+
+<para>
+In other words, the following synopsis cannot be rendered with
+<sgmltag>VarArgs</sgmltag>:
+
+<synopsis>
+int printf(char *format, ...)
+</synopsis>
+</para>
+
+<para>
+Instead, you can enclose the ellipsis in a final <sgmltag>Parameter</sgmltag>,
+like this:
+
+<screen>
+<![CDATA[
+<funcsynopsis>
+<funcprototype><funcdef>int <function>printf</function></funcdef>
+<paramdef>
+  <parameter>char *format</parameter>
+  <parameter>...</parameter>
+</paramdef>
+</funcprototype>
+</funcsynopsis>
+]]>
+</screen>
+</para>
+</refsect3>
+
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
+</indexterm>
+In DocBook <acronym>V4.0</acronym>, the content model fragment beginning with
+<sgmltag>FuncDef</sgmltag> will be removed from the content
+model of <sgmltag>FuncSynopsis</sgmltag>.  Instead
+<sgmltag>FuncSynopsis</sgmltag> will become a mixture of
+<sgmltag>FuncSynopsisInfo</sgmltag>s and <sgmltag>FuncPrototype</sgmltag>s.
+</para>
+</refsect2>
+
+<refsect2><title>&FutureChanges;</title>
+<para>
+Future versions of DocBook may provide additional environments for
+describing the syntax summaries of functions in other programming
+languages.
+</para>
+</refsect2>
+
+
+&funcsynopsis.parents.gen;
+&funcsynopsis.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>label</term>
+<listitem>
+<para>
+<sgmltag class='attribute'>Label</sgmltag> specifies an identifying number or string
+that may be used in presentation.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&funcsynopsis.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>
+The function <function>max</function> returns the larger of two integers:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&funcsynopsis.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.funcsynopsis.1" role="HACK-ex.out.start"/>
+&funcsynopsis.example.1.gen;
+<anchor id="ex.oe.funcsynopsis.1" role="HACK-ex.out.end"/>
+
+<para>
+One can imagine a more flexible <function>max</function> function that takes
+any number of integer arguments and returns the largest integer in 
+the list:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&funcsynopsis.example.2.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.funcsynopsis.2" role="HACK-ex.out.start"/>
+&funcsynopsis.example.2.gen;
+<anchor id="ex.oe.funcsynopsis.2" role="HACK-ex.out.end"/>
+
+<para>
+The <function>rand</function> function takes no arguments and returns a 
+pseudorandom integer between 0 and 2<superscript>31</superscript>-1:
+</para>
+
+<informalexample role="example-source">
+<programlisting>&funcsynopsis.example.3.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.funcsynopsis.3" role="HACK-ex.out.start"/>
+&funcsynopsis.example.3.gen;
+<anchor id="ex.oe.funcsynopsis.3" role="HACK-ex.out.end"/>
+
+<para>
+The <function>qsort</function> function takes several arguments, including
+a pointer to a function (the function that should perform the
+comparison between two elements in order to sort them).
+</para>
+
+<informalexample role="example-source">
+<programlisting>&funcsynopsis.example.4.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.funcsynopsis.4" role="HACK-ex.out.start"/>
+&funcsynopsis.example.4.gen;
+<anchor id="ex.oe.funcsynopsis.4" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&funcsynopsis.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

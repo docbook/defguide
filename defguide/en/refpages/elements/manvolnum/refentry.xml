@@ -1,0 +1,63 @@
+<refentry id="manvolnum.element">
+<?dbhtml filename="manvolnum.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>manvolnum</secondary></indexterm>
+<refentrytitle>manvolnum</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>manvolnum</refname>
+<refpurpose>&manvolnum.purpose;</refpurpose>
+</refnamediv>
+
+&manvolnum.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+In a DocBook reference page, the <sgmltag>ManVolNum</sgmltag> holds
+the number of the volume in which the <sgmltag>RefEntry</sgmltag> belongs.
+</para>
+<para>
+The notion of a volume number is historical.  &UNIX; manual pages (<quote>man
+pages</quote>), for which <sgmltag>RefEntry</sgmltag> was devised, were typically
+stored in three ring binders.  Each bound manual was a volume in a set
+and contained information about a particular class of things.  For
+example, volume 1 was for user commands, and volume 8 was for administrator
+commands.
+</para>
+<para>
+Volume numbers need not be strictly numerical; volume
+<quote>l</quote> frequently held manual pages for local
+additions to the system, and the X Window System manual pages
+had an <quote>x</quote> in the volume number: for example,
+1x.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+The content of <sgmltag>ManVolNum</sgmltag> is usually printed in parentheses
+after the element title or citation.
+</para>
+</refsect2>
+
+
+&manvolnum.parents.gen;
+&manvolnum.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&manvolnum.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.manvolnum.1" role="HACK-ex.out.start"/>
+&manvolnum.example.1.gen;
+<anchor id="ex.oe.manvolnum.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&manvolnum.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

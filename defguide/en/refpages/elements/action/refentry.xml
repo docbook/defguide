@@ -1,0 +1,67 @@
+<refentry id="action.element">
+<?dbhtml filename="action.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>action</secondary></indexterm>
+<refentrytitle>action</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>action</refname>
+<refpurpose>&action.purpose;</refpurpose>
+</refnamediv>
+
+&action.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+Actions are usually associated with <acronym>GUI</acronym>s.  An event might be movement or
+clicking of the mouse, a change in focus, or any number of other
+occurrences.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; &pexp.moreinfo;
+</para>
+</refsect2>
+
+<refsect2 role="fu" revision="4.0"><title>&FutureChanges;</title>
+<para>
+The content model of <sgmltag>Action</sgmltag> will be constrained to
+<literal>(#PCDATA | Replaceable | InlineGraphic)</literal> in
+DocBook <acronym>V4.0</acronym>.
+</para>
+</refsect2>
+
+
+&action.parents.gen;
+&action.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>moreinfo</term>
+<listitem>
+<para>
+If <sgmltag class='attribute'>MoreInfo</sgmltag> is set to <literal>RefEntry</literal>,
+it implies that a <sgmltag>RefEntry</sgmltag> exists which further describes the
+<sgmltag>Action</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&action.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.action.1" role="HACK-ex.out.start"/>
+&action.example.1.gen;
+<anchor id="ex.oe.action.1" role="HACK-ex.out.end"/>
+
+</refsect1>
+</refentry>
+

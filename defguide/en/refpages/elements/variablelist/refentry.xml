@@ -1,0 +1,76 @@
+<refentry id="variablelist.element">
+<?dbhtml filename="variablelist.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>variablelist</secondary></indexterm>
+<refentrytitle>variablelist</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>variablelist</refname>
+<refpurpose>&variablelist.purpose;</refpurpose>
+</refnamediv>
+
+&variablelist.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+A <sgmltag>VariableList</sgmltag> is a list consisting of <sgmltag>Term</sgmltag>s and
+their definitions or descriptions.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block;
+</para>
+<para>
+There are many ways to deal with the problems presented in
+formatting a variable list with long <sgmltag>Term</sgmltag>s. DocBook
+does not mandate any particular presentation. The 
+<sgmltag class='attribute'>TermLength</sgmltag> attribute may influence
+the presentation of <sgmltag>Term</sgmltag>s.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
+<para>Introductory material may appear before the first list item.
+</para>
+</refsect2>
+
+
+&variablelist.parents.gen;
+&variablelist.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>termlength</term>
+<listitem>
+<para>
+<sgmltag class="attribute">TermLength</sgmltag> indicates a length beyond
+which the presentation engine may consider the <sgmltag>Term</sgmltag>(s) too
+long and select an alternate presentation of the <sgmltag>Term</sgmltag>(s)
+and/or, the associated <sgmltag>ListItem</sgmltag>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&variablelist.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&variablelist.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.variablelist.1" role="HACK-ex.out.start"/>
+&variablelist.example.1.gen;
+<anchor id="ex.oe.variablelist.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&variablelist.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

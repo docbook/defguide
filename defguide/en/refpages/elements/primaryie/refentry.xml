@@ -1,0 +1,69 @@
+<refentry id="primaryie.element">
+<?dbhtml filename="primaryie.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>primaryie</secondary></indexterm>
+<refentrytitle>primaryie</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>primaryie</refname>
+<refpurpose>&primaryie.purpose;</refpurpose>
+</refnamediv>
+
+&primaryie.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>PrimaryIE</sgmltag> identifies the most significant word or
+words in an <sgmltag>IndexEntry</sgmltag>.  <sgmltag>IndexEntry</sgmltag>s
+occur in an <sgmltag>Index</sgmltag>, not in the flow of the text. They are
+part of a formatted index, not markers for indexing.
+</para>
+<para>
+If a document includes both <sgmltag>IndexTerm</sgmltag>s and <sgmltag>IndexEntry</sgmltag>s,
+the <sgmltag>IndexEntry</sgmltag>s are usually constructed from the
+<sgmltag>IndexTerm</sgmltag>s by some external process.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; The <sgmltag>PrimaryIE</sgmltag> starts a new entry in the
+<sgmltag>Index</sgmltag>.
+</para>
+</refsect2>
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+<!--do not index this occurance-->
+&fu.interfacedefinition;
+</para>
+</refsect2>
+
+
+&primaryie.parents.gen;
+&primaryie.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>linkends</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Linkends</sgmltag>, if used, points to the <sgmltag>IndexTerm</sgmltag>s indexed
+by this entry.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&primaryie.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&primaryie.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

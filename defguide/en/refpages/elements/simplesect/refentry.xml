@@ -1,0 +1,73 @@
+<refentry id="simplesect.element">
+<?dbhtml filename="simplesect.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>simplesect</secondary></indexterm>
+<refentrytitle>simplesect</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>simplesect</refname>
+<refpurpose>&simplesect.purpose;</refpurpose>
+</refnamediv>
+
+&simplesect.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>SimpleSect</sgmltag> is one of the top-level sectioning elements in
+a component. There are three types of sectioning elements in
+DocBook:
+</para>
+
+<itemizedlist>
+<listitem><para>
+Explicitly numbered sections, <sgmltag>Sect1</sgmltag>&hellip;<sgmltag>Sect5</sgmltag>,
+which must be properly nested and can only be five levels deep.
+</para></listitem>
+<listitem><para>
+Recursive <sgmltag>Section</sgmltag>s, which are alternative to the numbered
+sections and have unbounded depth.
+</para></listitem>
+<listitem><para>
+<sgmltag>SimpleSect</sgmltag>s, which are terminal.  <sgmltag>SimpleSect</sgmltag>s can
+occur as the <quote>leaf</quote> sections in either recursive sections or any
+of the numbered sections, or directly in components.
+</para></listitem>
+</itemizedlist>
+
+<para>
+<sgmltag>SimpleSect</sgmltag>s may be more convenient than numbered
+sections in some authoring environments because they can be
+moved around in the document hierarchy without renaming.
+</para>
+
+<para>
+None of the sectioning elements is allowed to <quote>float</quote> in
+a component. You can place paragraphs and other block elements
+before a section, but you cannot place anything after it.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; Sometimes sections are numbered.
+</para>
+</refsect2>
+
+
+&simplesect.parents.gen;
+&simplesect.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&simplesect.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&simplesect.example.1.txt;</programlisting>
+</informalexample>
+
+</refsect1>
+</refentry>
+

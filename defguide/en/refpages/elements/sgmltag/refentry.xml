@@ -1,0 +1,70 @@
+<refentry id="sgmltag.element">
+<?dbhtml filename="sgmltag.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>sgmltag</secondary></indexterm>
+<refentrytitle>sgmltag</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>sgmltag</refname>
+<refpurpose>&sgmltag.purpose;</refpurpose>
+</refnamediv>
+
+&sgmltag.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+An <sgmltag>SGMLTag</sgmltag> identifies an &SGML; markup construct.
+The utility of this element is almost
+wholly constrained to books about &SGML;.
+</para>
+
+<para>
+<sgmltag>SGMLTag</sgmltag> is sufficient for most &XML; constructs, which
+are identical to the corresponding &SGML; constructs, it but does
+not have any provisions for handling the special features of &XML;
+markup. A future version of DocBook will address this issue,
+probably by adding new <sgmltag class="attribute">Class</sgmltag>
+values.  In the 
+meantime, you may get by by assigning a <sgmltag class='attribute'>Role</sgmltag>
+attribute for &XML;.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.inline; <sgmltag>SGMLTag</sgmltag> generates all the necessary punctuation
+before and after the construct it identifies.  For example, it generates
+both the leading ampersand and the trailing semicolon when the
+<sgmltag class='attribute'>Class</sgmltag> is <literal>genentity</literal>.
+</para>
+</refsect2>
+
+
+
+&sgmltag.parents.gen;
+&sgmltag.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
+<variablelist>
+<varlistentry><term>class</term>
+<listitem>
+<para>
+<sgmltag class="attribute">Class</sgmltag> identifies the specific &SGML; construct
+represented.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&sgmltag.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&sgmltag.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,40 @@
+<refentry id="production.element" revision='EBNF'>
+<?dbhtml filename="production.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>production</secondary></indexterm>
+<refentrytitle>production</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>production</refname>
+<refpurpose>&production.purpose;</refpurpose>
+</refnamediv>
+
+&production.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>This element is only available if you are using the
+<link linkend="ebnf.module">EBNF Module</link>.</para>
+
+<para>A <sgmltag>Production</sgmltag> is single production in an
+<glossterm>Extended Backus-Naur Form</glossterm> (EBNF) grammar.</para>
+
+<para>Individual productions have two parts, a left hand side
+(<sgmltag>lhs</sgmltag>) and a right hand side
+(<sgmltag>rhs</sgmltag>). Each <sgmltag>NonTerminal</sgmltag>
+on the left hand side is defined in terms of other
+non-terminals and literals on the right hand side.</para>
+
+
+&production.parents.gen;
+&production.children.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<para>For examples, see
+&production.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+

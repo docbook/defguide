@@ -1,0 +1,93 @@
+<refentry id="segmentedlist.element">
+<?dbhtml filename="segmentedlist.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>segmentedlist</secondary></indexterm>
+<refentrytitle>segmentedlist</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>segmentedlist</refname>
+<refpurpose>&segmentedlist.purpose;</refpurpose>
+</refnamediv>
+
+&segmentedlist.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para> 
+A <sgmltag>SegmentedList</sgmltag> consists of a set of headings
+(<sgmltag>SegTitle</sgmltag>s) and a list of parallel sets of elements.
+Every <sgmltag>SegListItem</sgmltag> contains a set of elements that
+have a one-to-one correspondence with the headings.  Each of these
+elements is contained in a <sgmltag>Seg</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+Segmented lists can be formatted in a number of ways.  Two popular
+formats are tabular and as a list of repeated headings and elements.
+In a tabular presentation, the <sgmltag>SegmentedList</sgmltag> is the table.
+In the list presentation, the <sgmltag>SegmentedList</sgmltag> surrounds the
+entire list of blocks of heading/element pairs.
+</para>
+</refsect2> 
+
+<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
+<para>
+In DocBook <acronym>V4.0</acronym>, at least two <sgmltag>SegTitle</sgmltag>s will be required.
+</para>
+</refsect2>
+
+
+&segmentedlist.parents.gen;
+&segmentedlist.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&segmentedlist.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&segmentedlist.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.segmentedlist.1" role="HACK-ex.out.start"/>
+&segmentedlist.example.1.gen;
+<anchor id="ex.oe.segmentedlist.1" role="HACK-ex.out.end"/>
+
+<para>
+Alternatively:
+</para>
+
+<table frame='none'>
+<title>State Capitals</title>
+<tgroup cols='2'>
+<thead>
+<row>
+<entry>State</entry>
+<entry>Capital</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>Alabama</entry>
+<entry>???</entry>
+</row>
+<row>
+<entry>Alaska</entry>
+<entry>Anchorage</entry>
+</row>
+<row>
+<entry>Arkansas</entry>
+<entry>Little Rock</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para>&hellip;</para>
+
+</refsect1>
+</refentry>
+

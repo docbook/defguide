@@ -1,0 +1,92 @@
+<refentry id="screenco.element">
+<?dbhtml filename="screenco.html"?>
+
+<refmeta>
+<indexterm><primary>elements</primary>
+<secondary>screenco</secondary></indexterm>
+<refentrytitle>screenco</refentrytitle>
+<refmiscinfo>Element</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>screenco</refname>
+<refpurpose>&screenco.purpose;</refpurpose>
+</refnamediv>
+
+&screenco.synopsis.gen;
+<refsect1 condition='ref.description'><title>Description</title>
+
+<para>
+<sgmltag>Callout</sgmltag>s, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently <quote>hot,</quote> and clicking on
+them navigates to the corresponding annotation.
+</para>
+<para>
+A <sgmltag>ScreenCO</sgmltag> is a wrapper around an <sgmltag>AreaSpec</sgmltag> and
+a <sgmltag>Screen</sgmltag>.  An <sgmltag>AreaSpec</sgmltag> identifies the locations
+(coordinates)
+in the <sgmltag>Screen</sgmltag> where the callouts occur.
+The <sgmltag>ScreenCO</sgmltag> may also contain the list of annotations in
+a <sgmltag>CalloutList</sgmltag>, although the <sgmltag>CalloutList</sgmltag> may also
+occur outside of the wrapper, elsewhere in the document.
+</para>
+
+<para>
+It is also possible to embed <sgmltag>CO</sgmltag> elements directly in the
+verbatim text, in order to avoid the overhead of calculating the
+correct coordinates.  If you decide to follow this route, use a 
+<sgmltag>Screen</sgmltag> and a <sgmltag>CalloutList</sgmltag> without the
+<sgmltag>ScreenCO</sgmltag> wrapper.  A <sgmltag>ScreenCO</sgmltag>
+must specify at least one coordinate.
+</para>
+
+<para>
+For a complete description of callouts, see <sgmltag>Callout</sgmltag>.
+</para>
+
+<refsect2><title>Processing expectations</title>
+<para>
+&format.block; &pexp.linespecific;
+</para>
+<para>
+The mandatory processing expectations of a <sgmltag>ScreenCO</sgmltag> are
+minimal: a system is expected to render the program listing and the
+callout list, if present.
+</para>
+<para>
+If explicit <sgmltag>CO</sgmltag> elements are embedded in a
+<sgmltag>Screen</sgmltag>, they must generate appropriate
+callout marks.
+</para>
+<para>
+In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks in the program listing and
+the annotations.
+Some systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information,
+but this level of sophistication is not mandatory.
+</para>
+</refsect2>
+
+
+
+&screenco.parents.gen;
+&screenco.children.gen;
+</refsect1>
+<refsect1 condition='ref.elem.seealso'><title>See Also</title>
+&screenco.seealso.gen;
+</refsect1>
+<refsect1><title>Examples</title>
+
+<informalexample role="example-source">
+<programlisting>&screenco.example.1.txt;</programlisting>
+</informalexample>
+
+<anchor id="ex.os.screenco.1" role="HACK-ex.out.start"/>
+&screenco.example.1.gen;
+<anchor id="ex.oe.screenco.1" role="HACK-ex.out.end"/>
+
+<para>For additional examples, see also
+&screenco.example.seealso.gen;.</para>
+</refsect1>
+</refentry>
+
