@@ -28,4 +28,69 @@
 
 <!-- ==================================================================== -->
 
+<t:titlepage element="chapter" wrapper="div" class="titlepage">
+  <t:titlepage-content side="recto">
+    <title/>
+    <subtitle/>
+    <corpauthor/>
+    <authorgroup/>
+    <author/>
+    <othercredit/>
+    <releaseinfo/>
+    <copyright/>
+    <legalnotice/>
+    <pubdate/>
+    <revision/>
+    <revhistory/>
+    <abstract/>
+  </t:titlepage-content>
+
+  <t:titlepage-content side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+    <hr class="component-separator"/>
+  </t:titlepage-separator>
+
+  <t:titlepage-before side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+<t:titlepage element="refentry" wrapper="div" class="titlepage">
+  <t:titlepage-content side="recto">
+    <title force="1"
+	   named-template="refentry.title"
+	   param:node="ancestor-or-self::refentry[1]"/>
+    <corpauthor/>
+    <authorgroup/>
+    <author/>
+    <othercredit/>
+    <releaseinfo/>
+    <copyright/>
+    <legalnotice/>
+    <pubdate/>
+    <revision/>
+    <revhistory/>
+    <abstract/>
+  </t:titlepage-content>
+
+  <t:titlepage-content side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator/>
+
+  <t:titlepage-before side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
 </t:templates>

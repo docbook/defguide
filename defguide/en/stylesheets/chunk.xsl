@@ -447,6 +447,115 @@
 
   <xsl:if test="$suppress.navigation = '0'">
     <div class="navheader">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%"
+             summary="Navigation table">
+        <tr>
+          <td align="left">
+            <xsl:text>&#160;</xsl:text>
+            <a>
+              <xsl:attribute name="title">
+                <xsl:apply-templates select="$home" mode="object.title.markup.textonly"/>
+              </xsl:attribute>
+              <xsl:attribute name="href">
+                <xsl:call-template name="href.target">
+                  <xsl:with-param name="object" select="$home"/>
+                </xsl:call-template>
+              </xsl:attribute>
+
+              <img src="figures/nav-home.png" alt="Home" border="0"/>
+            </a>
+            <xsl:text>&#160;</xsl:text>
+
+            <xsl:choose>
+              <xsl:when test="count($prev)>0">
+                <a>
+                  <xsl:attribute name="title">
+                    <xsl:apply-templates select="$prev" mode="object.title.markup.textonly"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="href">
+                    <xsl:call-template name="href.target">
+                      <xsl:with-param name="object" select="$prev"/>
+                    </xsl:call-template>
+                  </xsl:attribute>
+
+                  <img src="figures/nav-prev.png" alt="Prev" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>
+                <img src="figures/nav-xprev.png" alt="Prev" border="0"/>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>&#160;</xsl:text>
+
+            <xsl:choose>
+              <xsl:when test="count($up)>0">
+                <a>
+                  <xsl:attribute name="title">
+                    <xsl:apply-templates select="$up" mode="object.title.markup.textonly"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="href">
+                    <xsl:call-template name="href.target">
+                      <xsl:with-param name="object" select="$up"/>
+                    </xsl:call-template>
+                  </xsl:attribute>
+
+                  <img src="figures/nav-up.png" alt="Up" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>
+                <img src="figures/nav-xup.png" alt="Up" border="0"/>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>&#160;</xsl:text>
+
+            <xsl:choose>
+              <xsl:when test="count($next)>0">
+                <a>
+                  <xsl:attribute name="title">
+                    <xsl:apply-templates select="$next" mode="object.title.markup.textonly"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="href">
+                    <xsl:call-template name="href.target">
+                      <xsl:with-param name="object" select="$next"/>
+                    </xsl:call-template>
+                  </xsl:attribute>
+
+                  <img src="figures/nav-next.png" alt="Next" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>
+                <img src="figures/nav-xnext.png" alt="Next" border="0"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </td>
+          <td align="right">
+            <i>DocBook: The Definitive Guide</i>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="/book/bookinfo/releaseinfo"/>
+            <xsl:text> </xsl:text>
+            <span class="alpha-version">
+              <xsl:text>(</xsl:text>
+              <a href="co01.html">
+                <em>Alpha</em>
+              </a>
+              <xsl:text>)</xsl:text>
+            </span>
+            <xsl:text> </xsl:text>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="X.header.navigation">
+  <xsl:param name="prev" select="/foo"/>
+  <xsl:param name="next" select="/foo"/>
+  <xsl:variable name="home" select="/*[1]"/>
+  <xsl:variable name="up" select="parent::*"/>
+
+  <xsl:if test="$suppress.navigation = '0'">
+    <div class="navheader">
       <table width="100%">
         <tr>
           <th colspan="3" align="center">
@@ -506,7 +615,7 @@
   <xsl:if test="$suppress.navigation = '0'">
     <div class="navfooter">
       <hr/>
-      <table width="100%">
+      <table width="100%" summary="Navigation table">
         <tr>
           <td width="40%" align="left">
             <xsl:if test="count($prev)>0">

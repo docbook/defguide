@@ -16,6 +16,31 @@
 <xsl:param name="callout.graphics.path" select="'figures/callouts/'"/>
 <xsl:param name="refentry.generate.name" select="0"/>
 <xsl:param name="refentry.generate.title" select="0"/>
+<xsl:param name="refentry.separator" select="0"/>
+
+<xsl:param name="generate.toc">
+/appendix nop
+/article  nop
+book      toc,figure,table,example,equation
+/chapter  nop
+part      nop
+/preface  nop
+qandadiv  nop
+qandaset  nop
+reference nop
+/section  nop
+set       nop
+</xsl:param>
+
+<xsl:param name="local.l10n.xml" select="document('')"/>
+<l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
+  <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="en">
+   <l:context name="title-numbered">
+      <l:template name="appendix" text="%t"/>
+      <l:template name="chapter" text="%t"/>
+    </l:context>
+  </l:l10n>
+</l:i18n>
 
 <xsl:template match="processing-instruction('lb')">
   <br/>
@@ -24,6 +49,7 @@
 <xsl:template name="user.header.content">
   <xsl:param name="node" select="."/>
 
+<!-- now in navigation
   <xsl:if test="$node != /book/colophon">
     <p class="alpha-version">
       <xsl:text>This is an </xsl:text>
@@ -34,46 +60,92 @@
       <xsl:text> of this book.</xsl:text>
     </p>
   </xsl:if>
+-->
 </xsl:template>
 
 <xsl:template name="user.footer.navigation">
   <xsl:param name="node" select="."/>
-  <p>
-    <a href="dbcpyright.html">Copyright</a>
-    <xsl:text>&#xA9; 1999, 2000, 2001, 2002 </xsl:text>
-    <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
-    <xsl:text> All rights reserved.</xsl:text>
-  </p>
+  <div class="copyrightfooter">
+    <p>
+      <a href="dbcpyright.html">Copyright</a>
+      <xsl:text> &#xA9; 1999, 2000, 2001, 2002 </xsl:text>
+      <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
+      <xsl:text> All rights reserved.</xsl:text>
+    </p>
+  </div>
 </xsl:template>
 
 <xsl:template name="revision.graphic">
   <xsl:param name="large" select="'0'"/>
+  <xsl:param name="align" select="''"/>
 
   <xsl:if test="@revision">
     <xsl:choose>
       <xsl:when test="@revision='5.0'">
-        <img src="figures/rev_5.0.png" alt="[5.0]"/>
+        <img src="figures/rev_5.0.png" alt="[5.0]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:when test="@revision='4.2'">
-        <img src="figures/rev_4.2.png" alt="[4.2]"/>
+        <img src="figures/rev_4.2.png" alt="[4.2]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:when test="@revision='4.0'">
-        <img src="figures/rev_4.0.png" alt="[4.0]"/>
+        <img src="figures/rev_4.0.png" alt="[4.0]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:when test="@revision='3.1'">
         <!-- nop; 3.1 isn't interesting anymore -->
       </xsl:when>
       <xsl:when test="@revision='EBNF'">
-        <img src="figures/rev_ebnf.png" alt="[EBNF]"/>
+        <img src="figures/rev_ebnf.png" alt="[EBNF]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:when test="@revision='SVG'">
-        <img src="figures/rev_svg.png" alt="[SVG]"/>
+        <img src="figures/rev_svg.png" alt="[SVG]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:when test="@revision='MathML'">
-        <img src="figures/rev_mathml.png" alt="[MathML]"/>
+        <img src="figures/rev_mathml.png" alt="[MathML]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:when test="@revision='HTMLForms'">
-        <img src="figures/rev_htmlforms.png" alt="[HTML Forms]"/>
+        <img src="figures/rev_htmlforms.png" alt="[HTML Forms]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message>
@@ -87,7 +159,7 @@
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="refentry">
+<xsl:template match="X.refentry">
   <xsl:variable name="refmeta" select=".//refmeta"/>
   <xsl:variable name="refentrytitle" select="$refmeta//refentrytitle"/>
   <xsl:variable name="refnamediv" select=".//refnamediv"/>
@@ -113,12 +185,40 @@
       </a>
       <xsl:call-template name="revision.graphic">
         <xsl:with-param name="large" select="'1'"/>
+        <xsl:with-param name="align" select="'right'"/>
       </xsl:call-template>
       <xsl:copy-of select="$title"/>
     </h1>
     <xsl:apply-templates/>
     <xsl:call-template name="process.footnotes"/>
   </div>
+</xsl:template>
+
+<xsl:template name="refentry.title">
+  <xsl:param name="node" select="."/>
+  <xsl:variable name="refmeta" select="$node//refmeta"/>
+  <xsl:variable name="refentrytitle" select="$refmeta//refentrytitle"/>
+  <xsl:variable name="refnamediv" select="$node//refnamediv"/>
+  <xsl:variable name="refname" select="$refnamediv//refname"/>
+  <xsl:variable name="title">
+    <xsl:choose>
+      <xsl:when test="$refentrytitle">
+        <xsl:apply-templates select="$refentrytitle[1]" mode="title"/>
+      </xsl:when>
+      <xsl:when test="$refname">
+        <xsl:apply-templates select="$refname[1]" mode="title"/>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <h1 class="title">
+    <xsl:call-template name="revision.graphic">
+      <xsl:with-param name="large" select="'1'"/>
+      <xsl:with-param name="align" select="'right'"/>
+    </xsl:call-template>
+    <xsl:copy-of select="$title"/>
+  </h1>
 </xsl:template>
 
 <xsl:template match="para">
@@ -571,4 +671,29 @@
 
 <!-- ============================================================ -->
 
+<xsl:template name="component.title">
+  <xsl:param name="node" select="."/>
+
+  <xsl:call-template name="anchor">
+    <xsl:with-param name="node" select="$node"/>
+    <xsl:with-param name="conditional" select="0"/>
+  </xsl:call-template>
+
+  <div class="component-title">
+    <h1 class="label">
+      <xsl:apply-templates select="$node" mode="label.markup">
+        <xsl:with-param name="allow-anchors" select="1"/>
+      </xsl:apply-templates>
+    </h1>
+    <h1 class="title">
+      <xsl:apply-templates select="$node" mode="object.title.markup">
+        <xsl:with-param name="allow-anchors" select="1"/>
+      </xsl:apply-templates>
+    </h1>
+  </div>
+</xsl:template>
+
+<!-- ============================================================ -->
+
 </xsl:stylesheet>
+
