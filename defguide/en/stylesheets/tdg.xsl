@@ -14,6 +14,8 @@
 <xsl:param name="html.stylesheet">docbook.css</xsl:param>
 <xsl:param name="toc.section.depth" select="1"/>
 <xsl:param name="callout.graphics.path" select="'figures/callouts/'"/>
+<xsl:param name="refentry.generate.name" select="0"/>
+<xsl:param name="refentry.generate.title" select="0"/>
 
 <xsl:template match="processing-instruction('lb')">
   <br/>
@@ -229,11 +231,23 @@
       <xsl:variable name="attrrows" select="../row[@role='attr']"/>
       <table border="1" width="100%" summary="Attributes">
         <tr>
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="entry[1]">
+            <xsl:with-param name="spans">
+              <xsl:call-template name="blank.spans">
+                <xsl:with-param name="cols" select="3"/>
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:apply-templates>
         </tr>
         <xsl:for-each select="$attrrows">
           <tr>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="entry[1]">
+              <xsl:with-param name="spans">
+                <xsl:call-template name="blank.spans">
+                  <xsl:with-param name="cols" select="3"/>
+                </xsl:call-template>
+              </xsl:with-param>
+            </xsl:apply-templates>
           </tr>
         </xsl:for-each>
       </table>
@@ -264,11 +278,23 @@
 
         <table border="1" width="100%" summary="Attributes">
           <tr>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="entry[1]">
+              <xsl:with-param name="spans">
+                <xsl:call-template name="blank.spans">
+                  <xsl:with-param name="cols" select="3"/>
+                </xsl:call-template>
+              </xsl:with-param>
+            </xsl:apply-templates>
           </tr>
           <xsl:for-each select="$attrrows">
             <tr>
-              <xsl:apply-templates/>
+              <xsl:apply-templates select="entry[1]">
+                <xsl:with-param name="spans">
+                  <xsl:call-template name="blank.spans">
+                    <xsl:with-param name="cols" select="3"/>
+                  </xsl:call-template>
+                </xsl:with-param>
+              </xsl:apply-templates>
             </tr>
           </xsl:for-each>
         </table>
@@ -293,11 +319,23 @@
       </p>
       <table border="0" width="100%" summary="Attributes">
         <tr>
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="entry[1]">
+            <xsl:with-param name="spans">
+              <xsl:call-template name="blank.spans">
+                <xsl:with-param name="cols" select="3"/>
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:apply-templates>
         </tr>
         <xsl:for-each select="$attrrows">
           <tr>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="entry[1]">
+              <xsl:with-param name="spans">
+                <xsl:call-template name="blank.spans">
+                  <xsl:with-param name="cols" select="3"/>
+                </xsl:call-template>
+              </xsl:with-param>
+            </xsl:apply-templates>
           </tr>
         </xsl:for-each>
       </table>
@@ -309,11 +347,23 @@
       </p>
       <table border="0" width="100%" summary="Attributes">
         <tr>
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="entry[1]">
+            <xsl:with-param name="spans">
+              <xsl:call-template name="blank.spans">
+                <xsl:with-param name="cols" select="3"/>
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:apply-templates>
         </tr>
         <xsl:for-each select="$attrrows">
           <tr>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="entry[1]">
+              <xsl:with-param name="spans">
+                <xsl:call-template name="blank.spans">
+                  <xsl:with-param name="cols" select="3"/>
+                </xsl:call-template>
+              </xsl:with-param>
+            </xsl:apply-templates>
           </tr>
         </xsl:for-each>
       </table>
@@ -325,11 +375,23 @@
       </p>
       <table border="0" width="100%" summary="Attributes">
         <tr>
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="entry[1]">
+            <xsl:with-param name="spans">
+              <xsl:call-template name="blank.spans">
+                <xsl:with-param name="cols" select="3"/>
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:apply-templates>
         </tr>
         <xsl:for-each select="$attrrows">
           <tr>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="entry[1]">
+              <xsl:with-param name="spans">
+                <xsl:call-template name="blank.spans">
+                  <xsl:with-param name="cols" select="3"/>
+                </xsl:call-template>
+              </xsl:with-param>
+            </xsl:apply-templates>
           </tr>
         </xsl:for-each>
       </table>
@@ -381,8 +443,7 @@
     <span class="date">
       <!-- rcsdate = "$Date$" -->
       <!-- timeString = "dow mon dd hh:mm:ss TZN yyyy" -->
-      <!--xsl:variable name="timeString" select="cvs:localTime($date/text())"/-->
-      <xsl:variable name="timeString" select="FOO"/>
+      <xsl:variable name="timeString" select="cvs:localTime($date/text())"/>
       <xsl:text>Updated: </xsl:text>
       <xsl:value-of select="substring($timeString, 1, 3)"/>
       <xsl:text>, </xsl:text>
@@ -453,7 +514,7 @@
     <xsl:call-template name="revision.graphic">
       <xsl:with-param name="large" select="'1'"/>
     </xsl:call-template>
-    <xsl:if test="annotate.toc != 0">
+    <xsl:if test="$annotate.toc != 0">
       <xsl:text> - </xsl:text>
       <xsl:value-of select="refnamediv/refpurpose"/>
     </xsl:if>
@@ -474,8 +535,8 @@
 
   <xsl:choose>
     <xsl:when test="$class = 'element'
-                    and count(id(concat('dbre.elem.',.))) &gt; 0">
-      <xsl:variable name="targets" select="id(concat('dbre.elem.',.))"/>
+                    and count(id(concat(.,'.element'))) &gt; 0">
+      <xsl:variable name="targets" select="id(concat(.,'.element'))"/>
       <xsl:variable name="target" select="$targets[1]"/>
       <a>
         <xsl:attribute name="href">
@@ -487,8 +548,8 @@
       </a>
     </xsl:when>
     <xsl:when test="$class = 'paramentity'
-                    and count(id(concat('dbre.pent.',.))) &gt; 0">
-      <xsl:variable name="targets" select="id(concat('dbre.pent.',.))"/>
+                    and count(id(concat(.,'.parament'))) &gt; 0">
+      <xsl:variable name="targets" select="id(concat(.,'.parament'))"/>
       <xsl:variable name="target" select="$targets[1]"/>
       <a>
         <xsl:attribute name="href">
