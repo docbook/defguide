@@ -10,6 +10,8 @@ BASEDIR=../html/
 ROOTID=
 FORESULT=chunk.fo
 
+FMGO=-N
+
 ifeq ($(SOURCE),tdgex.xml)
   STYLEOPT=output.type=unexpanded
   HTMLEXT=-x.html
@@ -35,21 +37,24 @@ all: chunks
 test:
 	xjparse $(SOURCE)
 
-tdg.xml:
-	xsltproc book.xml stylesheets/identity.xsl $@
+tdg.xml: bookinfo.xml
+	xsltproc --output $@ stylesheets/identity.xsl book.xml
 
-tdgex.xml:
-	xsltproc unexbook.xml stylesheets/identity.xsl $@
+tdgex.xml: bookinfo.xml
+	xsltproc --output $@ stylesheets/identity.xsl unexbook.xml
+
+bookinfo.xml: VERSION.xml
+	$(XSLT) $< $< $@
 
 chunks: $(SSTITLEPG)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
 
 chunk: $(SSTITLEPG)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
 
 index: $(SSTITLEPG)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
 
 stylesheets/html-titlepage.xsl: stylesheets/html-titlepage.xml
 	$(XSLT) $< ../../xsl/template/titlepage.xsl $@
@@ -73,3 +78,7 @@ tdg.pdf: tdg.fo
 
 clean:
 	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml
+
+freshmeat:
+	$(XSLT) VERSION.xml VERSION.xml /tmp/fm-docbook-tdg freshmeat=1
+	grep -v "<?xml" /tmp/fm-docbook-tdg | freshmeat-submit $(FMGO)
