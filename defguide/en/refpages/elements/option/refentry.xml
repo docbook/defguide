@@ -19,8 +19,10 @@
 &option.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para>
-<sgmltag>Option</sgmltag> identifies an optional argument to a software command.
+<para><sgmltag>Option</sgmltag> identifies an argument to a software
+command or instruction. Options may or may not be required. The
+<sgmltag>optional</sgmltag> element can be used to explicitly identify
+options that are not required.
 </para>
 
 <refsect2 id="dbreproc.option"><title>Processing expectations</title>
@@ -35,17 +37,6 @@ the text may or may not be desirable, but in either case, it is
 an interchange issue. See <xref linkend="app-interchange"/>.
 </para>
 </refsect2> 
-
-<refsect2 role='fu' revision="4.0"><title>&FutureChanges;</title>
-<para>
-<indexterm><primary>DocBook DTD</primary><secondary>Changes for <acronym>V4.0</acronym></secondary>
-</indexterm>
-The content model of <sgmltag>Option</sgmltag> will be constrained to
-<literal>(#PCDATA | Replaceable | InlineGraphic)</literal> in 
-DocBook <acronym>V4.0</acronym>.
-</para>
-</refsect2>
-
 
 &option.parents.gen;
 &option.children.gen;

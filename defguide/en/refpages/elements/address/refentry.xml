@@ -49,11 +49,22 @@ provided in the XML DTD.
 </refsect1>
 <refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
 <variablelist>
+<varlistentry><term>continuation</term>
+<listitem>
+<para revision="4.3">If <sgmltag class="attribute">continuation</sgmltag> is specified,
+it indicates how line numbering should begin relative to the
+immediately preceding <sgmltag>address</sgmltag>.
+<literal>Restarts</literal>, the default, indicates that numbering should begin
+again at 1. <literal>Continues</literal> indicates that numbering should begin
+where the preceding element left off.
+</para>
+</listitem>
+</varlistentry>
 <varlistentry><term>format</term>
 <listitem>
 <para>
-The <sgmltag class="attribute">Format</sgmltag> attribute applies the 
-<literal>linespecific</literal> notation to all <sgmltag>Address</sgmltag>es.
+The <sgmltag class="attribute">format</sgmltag> attribute applies the 
+<literal>linespecific</literal> notation to all <sgmltag>address</sgmltag>es.
 All white space and line breaks must be preserved.
 </para>
 </listitem>
