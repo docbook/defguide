@@ -630,18 +630,6 @@ set       nop
   </xsl:variable>
 
   <xsl:choose>
-    <xsl:when test="$class = 'element' and count(key('id', $elemidval)) &gt; 0">
-      <xsl:variable name="target" select="key('id', $elemidval)[1]"/>
-      <a>
-        <xsl:attribute name="href">
-          <xsl:call-template name="href.target">
-            <xsl:with-param name="object" select="$target"/>
-          </xsl:call-template>
-        </xsl:attribute>
-        <xsl:apply-imports/>
-      </a>
-    </xsl:when>
-
     <xsl:when test="$class = 'element'
 		    and following-sibling::text()
 		    and starts-with(following-sibling::text(), '&#160;(')">
@@ -667,6 +655,18 @@ set       nop
 	  <xsl:apply-imports/>
 	</xsl:otherwise>
       </xsl:choose>
+    </xsl:when>
+
+    <xsl:when test="$class = 'element' and count(key('id', $elemidval)) &gt; 0">
+      <xsl:variable name="target" select="key('id', $elemidval)[1]"/>
+      <a>
+        <xsl:attribute name="href">
+          <xsl:call-template name="href.target">
+            <xsl:with-param name="object" select="$target"/>
+          </xsl:call-template>
+        </xsl:attribute>
+        <xsl:apply-imports/>
+      </a>
     </xsl:when>
 
     <xsl:otherwise>
