@@ -11,8 +11,8 @@
 <indexterm id="DocBookcustomch05" class="startofrange"><primary>DocBook DTD</primary>
   <secondary>customizing</secondary></indexterm>
 
-For the applications you have in mind, DocBook &ldquo;out of the
-box&rdquo; may not be exactly what you need. Perhaps you need
+For the applications you have in mind, DocBook <quote>out of the
+box</quote> may not be exactly what you need. Perhaps you need
 additional inline elements or perhaps you want to remove elements that
 you never want your authors to use. By design, DocBook makes this sort
 of customization easy.
@@ -193,7 +193,7 @@ fragment:
 </screen>
 <para>
 The replacement text for <sgmltag class="genentity">foo</sgmltag> is
-&ldquo;Lenny.&rdquo;
+<quote>Lenny.</quote>
 </para>
 <para>
 <indexterm><primary>modules</primary>
@@ -203,7 +203,7 @@ The replacement text for <sgmltag class="genentity">foo</sgmltag> is
 
 These two notions, that you can break a &DTD; into modules referenced
 with parameter entities and that the first entity declaration is the
-one that counts, are used to build &ldquo;customization layers.&rdquo;
+one that counts, are used to build <quote>customization layers.</quote>
 With customization layers you can write a &DTD; that references some
 or all of DocBook, but adds your own modifications. Modifying the
 &DTD; this way means that you never have to edit the DocBook modules
@@ -371,7 +371,7 @@ across branches of the military. The &CALS; table model, published in
 <acronym>MIL-HDBK-28001</acronym>, was for a long time the most widely
 supported &SGML; table model (one might now argue that the &HTML;
 table model is more widely supported by some definitions of
-&ldquo;widely supported&rdquo;). In any event, it is the table model
+<quote>widely supported</quote>). In any event, it is the table model
 used by DocBook.
 </para>
 <para>
@@ -413,8 +413,8 @@ distribution, but are referenced by default.
 </variablelist>
 <para>
 There are some additional modules, initially undefined, that can be
-inserted at several places for &ldquo;redeclaration.&rdquo; This is
-described in more detail in <xref linkend="s2-remvadmon"/>.&rdquo;
+inserted at several places for <quote>redeclaration.</quote> This is
+described in more detail in <xref linkend="s2-remvadmon"/>.
 </para>
 </sect2>
 <sect2 id="dbparam"><title>DocBook Parameterization</title>
@@ -689,7 +689,7 @@ may have noticed that DocBook provides <sgmltag>ClassName</sgmltag> but not
     <tertiary>changing customization layers</tertiary></indexterm>
 Figuring out what to change may be the hardest part of the process.
 The organization of the parameter entities is quite logical, and,
-bearing in mind the organization described in <xref linkend="s-dbstruct"/>,&rdquo; finding something similar usually
+bearing in mind the organization described in <xref linkend="s-dbstruct"/>, finding something similar usually
 provides a good model for new changes.
 </para>
 
@@ -769,7 +769,7 @@ can be seen in <xref linkend="ex-addmethodname"/>.
 </programlisting>
 <calloutlist>
 <callout arearefs="add.methname.1"><para>Declare the appropriate
-parameter entity (these are described in <xref linkend="dbparam"/>&rdquo;).
+parameter entity (these are described in <xref linkend="dbparam"/>).
 The declaration in your customization layer is encountered first, so
 it overrides the definition in the DocBook &DTD; (all the local
 classes are defined as empty in the &DTD;).</para>
@@ -824,7 +824,7 @@ The Java <classname>Math</classname> class provides a
     <tertiary>customization layer</tertiary></indexterm>
 If you plan to use your customization layer in many documents, or
 exchange it with interchange partners, consider giving your &DTD; its
-own public identifier, as described in <xref linkend="s-notdocbook"/>&rdquo;
+own public identifier, as described in <xref linkend="s-notdocbook"/>
 </para>
 <para>
 <indexterm><primary>catalog files</primary>
@@ -1023,57 +1023,57 @@ removes them.
 </para>
 <example>
 <title>Removing Computer Inlines</title>
-<programlisting>
-&lt;!ENTITY % tech.char.class
+<programlisting><![CDATA[
+<!ENTITY % tech.char.class
         "Application|Command|Email|Filename|Literal
         |Replaceable|Symbol|SystemItem">
-&lt;!ENTITY % action.module "IGNORE">
-&lt;!ENTITY % classname.module "IGNORE">
-&lt;!ENTITY % computeroutput.module "IGNORE">
-&lt;!ENTITY % database.module "IGNORE">
-&lt;!ENTITY % envar.module "IGNORE">
-&lt;!ENTITY % errorcode.module "IGNORE">
-&lt;!ENTITY % errorname.module "IGNORE">
-&lt;!ENTITY % errortype.module "IGNORE">
-&lt;!--&lt;!ENTITY % function.module "IGNORE">-->
-&lt;!ENTITY % guibutton.module "IGNORE">
-&lt;!ENTITY % guiicon.module "IGNORE">
-&lt;!ENTITY % guilabel.module "IGNORE">
-&lt;!ENTITY % guimenu.module "IGNORE">
-&lt;!ENTITY % guimenuitem.module "IGNORE">
-&lt;!ENTITY % guisubmenu.module "IGNORE">
-&lt;!ENTITY % hardware.module "IGNORE">
-&lt;!ENTITY % interface.module "IGNORE">
-&lt;!ENTITY % interfacedefinition.module "IGNORE">
-&lt;!--&lt;!ENTITY % keycap.module "IGNORE">-->
-&lt;!ENTITY % keycode.module "IGNORE">
-&lt;!--&lt;!ENTITY % keycombo.module "IGNORE">-->
-&lt;!--&lt;!ENTITY % keysym.module "IGNORE">-->
-&lt;!ENTITY % markup.module "IGNORE">
-&lt;!ENTITY % medialabel.module "IGNORE">
-&lt;!ENTITY % menuchoice.module "IGNORE">
-&lt;!--&lt;!ENTITY % mousebutton.module "IGNORE">-->
-&lt;!--&lt;!ENTITY % msgtext.module "IGNORE">-->
-&lt;!--&lt;!ENTITY % option.module "IGNORE">-->
-&lt;!--&lt;!ENTITY % optional.module "IGNORE">-->
-&lt;!--&lt;!ENTITY % parameter.module "IGNORE">-->
-&lt;!ENTITY % prompt.module "IGNORE">
-&lt;!ENTITY % property.module "IGNORE">
-&lt;!ENTITY % returnvalue.module "IGNORE">
-&lt;!ENTITY % sgmltag.module "IGNORE">
-&lt;!ENTITY % structfield.module "IGNORE">
-&lt;!ENTITY % structname.module "IGNORE">
-&lt;!ENTITY % token.module "IGNORE">
-&lt;!ENTITY % type.module "IGNORE">
-&lt;!ENTITY % userinput.module "IGNORE">
-&lt;!-- load DocBook --> 
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<!ENTITY % action.module "IGNORE">
+<!ENTITY % classname.module "IGNORE">
+<!ENTITY % computeroutput.module "IGNORE">
+<!ENTITY % database.module "IGNORE">
+<!ENTITY % envar.module "IGNORE">
+<!ENTITY % errorcode.module "IGNORE">
+<!ENTITY % errorname.module "IGNORE">
+<!ENTITY % errortype.module "IGNORE">
+<!--<!ENTITY % function.module "IGNORE">-->
+<!ENTITY % guibutton.module "IGNORE">
+<!ENTITY % guiicon.module "IGNORE">
+<!ENTITY % guilabel.module "IGNORE">
+<!ENTITY % guimenu.module "IGNORE">
+<!ENTITY % guimenuitem.module "IGNORE">
+<!ENTITY % guisubmenu.module "IGNORE">
+<!ENTITY % hardware.module "IGNORE">
+<!ENTITY % interface.module "IGNORE">
+<!ENTITY % interfacedefinition.module "IGNORE">
+<!--<!ENTITY % keycap.module "IGNORE">-->
+<!ENTITY % keycode.module "IGNORE">
+<!--<!ENTITY % keycombo.module "IGNORE">-->
+<!--<!ENTITY % keysym.module "IGNORE">-->
+<!ENTITY % markup.module "IGNORE">
+<!ENTITY % medialabel.module "IGNORE">
+<!ENTITY % menuchoice.module "IGNORE">
+<!--<!ENTITY % mousebutton.module "IGNORE">-->
+<!--<!ENTITY % msgtext.module "IGNORE">-->
+<!--<!ENTITY % option.module "IGNORE">-->
+<!--<!ENTITY % optional.module "IGNORE">-->
+<!--<!ENTITY % parameter.module "IGNORE">-->
+<!ENTITY % prompt.module "IGNORE">
+<!ENTITY % property.module "IGNORE">
+<!ENTITY % returnvalue.module "IGNORE">
+<!ENTITY % sgmltag.module "IGNORE">
+<!ENTITY % structfield.module "IGNORE">
+<!ENTITY % structname.module "IGNORE">
+<!ENTITY % token.module "IGNORE">
+<!ENTITY % type.module "IGNORE">
+<!ENTITY % userinput.module "IGNORE">
+<!-- load DocBook --> 
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
-</programlisting>
+]]></programlisting>
 </example>
 <para>
 Initially we removed several more elements from <sgmltag class="paramentity">tech.char.class</sgmltag> (<sgmltag class="paramentity">function.module</sgmltag>, <sgmltag class="paramentity">keycap.module</sgmltag>), but using the testing procedure
-described in <xref linkend="cust.test"/>,&rdquo; we discovered that
+described in <xref linkend="cust.test"/>, we discovered that
 these elements are used in other content models.  Because they are
 used in other content modules, they cannot simply be removed from the
 &DTD; by deleting them from <sgmltag class="paramentity">
@@ -1102,17 +1102,17 @@ customization layer in <xref linkend="ex.remvcmdsyn"/> removes
 </para>
 <example id="ex.remvcmdsyn">
 <title>Removing CmdSynopsis and FuncSynopsis</title>
-<programlisting>
-&lt;!ENTITY % synop.class "Synopsis">
-&lt;!-- Instead of "Synopsis|CmdSynopsis|FuncSynopsis %local.synop.class;" -->
+<programlisting><![CDATA[
+<!ENTITY % synop.class "Synopsis">
+<!-- Instead of "Synopsis|CmdSynopsis|FuncSynopsis %local.synop.class;" -->
 
-&lt;!ENTITY % funcsynopsis.content.module "IGNORE">
-&lt;!ENTITY % cmdsynsynopsis.content.module "IGNORE">
+<!ENTITY % funcsynopsis.content.module "IGNORE">
+<!ENTITY % cmdsynsynopsis.content.module "IGNORE">
 
-&lt;!-- load DocBook --> 
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<!-- load DocBook --> 
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
-</programlisting>
+]]></programlisting>
 </example>
 <para>
 <indexterm><primary>parameter entities</primary>
@@ -1121,7 +1121,7 @@ customization layer in <xref linkend="ex.remvcmdsyn"/> removes
 Completely removing all Synopsis elements would require a more
 extensive customization. You can't make any of the <sgmltag class="paramentity">*.class</sgmltag> parameter entities completely empty
 without changing all of the parameter entities that use them. See
-<xref linkend="sect.remv.synop.class"/>.&rdquo;
+<xref linkend="sect.remv.synop.class"/>.
 </para>
 </sect2>
 <sect2>
@@ -1156,9 +1156,9 @@ uses it.
 
 All of the customization layers that we've examined so far have been
 fairly straightforward. This section describes a much more complex
-customization layer. Back in <xref linkend="db-modules"/>&rdquo; we
+customization layer. Back in <xref linkend="db-modules"/> we
 mentioned that several additional modules existed for
-&ldquo;redeclaration.&rdquo; The customization layer developed in this
+<quote>redeclaration.</quote> The customization layer developed in this
 section cannot be written without them.
 </para>
 <para>
@@ -1174,17 +1174,17 @@ entries.
 <xref linkend="ex.remvadmon.1"/> is a straightforward, and incorrect, attempt.
 <example id="ex.remvadmon.1">
 <title>Removing Admonitions (First Attempt: Incorrect)</title>
-<programlisting role="ERROR">
-&lt;!-- THIS CUSTOMIZATION LAYER CONTAINS ERRORS -->
-&lt;!ENTITY % tabentry.mix
+<programlisting role="ERROR"><![CDATA[
+<!-- THIS CUSTOMIZATION LAYER CONTAINS ERRORS -->
+<!ENTITY % tabentry.mix
         "%list.class;
         |%linespecific.class;
         |%para.class;        |Graphic
         %local.tabentry.mix;">
-&lt;!-- load DocBook -->
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<!-- load DocBook -->
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
-</programlisting>
+]]></programlisting>
 </example>
 Because the parameter entity <sgmltag class="paramentity">tabentry.mix</sgmltag> defines the mixture of elements
 allowed in table entries, you should remove admonitions.
@@ -1203,17 +1203,17 @@ entities that have not been defined yet, so the use of <sgmltag class="paramenti
 Your second attempt might look like <xref linkend="ex.remvadmon.2"/>.
 <example id="ex.remvadmon.2">
 <title>Removing Admonitions (Second Attempt: Incorrect)</title>
-<programlisting role="ERROR">
-&lt;!-- THIS CUSTOMIZATION LAYER DOESN'T WORK -->
-&lt;!-- load DocBook -->
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<programlisting role="ERROR"><![CDATA[
+<!-- THIS CUSTOMIZATION LAYER DOESN'T WORK -->
+<!-- load DocBook -->
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
-&lt;!ENTITY % tabentry.mix
+<!ENTITY % tabentry.mix
         "%list.class;
         |%linespecific.class;
         |%para.class;        |Graphic
         %local.tabentry.mix;">
-</programlisting>
+]]></programlisting>
 </example>
 Declaring <sgmltag class="paramentity">tabentry.mix</sgmltag> after the &DTD;
 has been loaded removes the errors.
@@ -1285,20 +1285,20 @@ before the entity that you want to redeclare. In our case, this is
 <sgmltag class="paramentity">rdbpool</sgmltag>, as seen in <xref linkend="ex.remvadmon.3"/>.
 <example id="ex.remvadmon.3">
 <title>Removing Admonitions (Third Attempt: Correct, if confusing)</title>
-<programlisting>
-&lt;!ENTITY % dbpool.redecl.module "INCLUDE">
-&lt;!ENTITY % rdbpool
-'&lt;!ENTITY % local.tabentry.mix "">
-&lt;!ENTITY % tabentry.mix
-        "&amp;#37;list.class;
-        |&amp;#37;linespecific.class;
-        |&amp;#37;para.class;        |Graphic
-        &amp;#37;local.tabentry.mix;">'>
+<programlisting><![CDATA[
+<!ENTITY % dbpool.redecl.module "INCLUDE">
+<!ENTITY % rdbpool
+'<!ENTITY % local.tabentry.mix "">
+<!ENTITY % tabentry.mix
+        "&#37;list.class;
+        |&#37;linespecific.class;
+        |&#37;para.class;        |Graphic
+        &#37;local.tabentry.mix;">'>
 
-&lt;!-- load DocBook -->
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<!-- load DocBook -->
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
-</programlisting>
+]]></programlisting>
 </example>
 </para>
 <para>
@@ -1316,23 +1316,23 @@ layer by reference, like this:
 <example id="ex.remvadmon.4">
 <title>Removing Admonitions (Fourth Attempt: Correct)</title>
 <para>In your customization layer:</para>
-<programlisting>
+<programlisting><![CDATA[
 
-&lt;!ENTITY % dbpool.redecl.module "INCLUDE">
-&lt;!ENTITY % rdbpool SYSTEM "rdbpool.mod">
+<!ENTITY % dbpool.redecl.module "INCLUDE">
+<!ENTITY % rdbpool SYSTEM "rdbpool.mod">
 
-&lt;!-- load DocBook -->
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<!-- load DocBook -->
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
 
-</programlisting>
+]]></programlisting>
 <para>In <filename>rdbpool.mod</filename>:</para>
-<programlisting>&lt;!ENTITY % local.tabentry.mix "">
-&lt;!ENTITY % tabentry.mix
+<programlisting><![CDATA[<!ENTITY % local.tabentry.mix "">
+<!ENTITY % tabentry.mix
         "%list.class;
         |%linespecific.class;
         |%para.class;        |Graphic
-        %local.tabentry.mix;"></programlisting>
+        %local.tabentry.mix;">]]></programlisting>
 </example>
 </sect2>
 <sect2 id="sect.remv.synop.class">
@@ -1381,7 +1381,7 @@ attributes.</para>
 
 Suppose you want to remove the <sgmltag class="attribute">RenderAs</sgmltag> attribute from the
 <sgmltag>Sect1</sgmltag> element. <sgmltag class="attribute">RenderAs</sgmltag> allows the author to
-&ldquo;cheat&rdquo; in the presentation of hierarchy by specifying
+<quote>cheat</quote> in the presentation of hierarchy by specifying
 that the stylesheet should render a <sgmltag>Sect1</sgmltag> as
 something else: a <sgmltag>Sect3</sgmltag>, perhaps. <xref linkend="ex.remvrendas"/> details the removal of <sgmltag class="attribute">RenderAs</sgmltag>.
 </para>
@@ -1500,17 +1500,17 @@ common attributes to just <sgmltag class="attribute">ID</sgmltag> and
 </para>
 <example id="ex.remvcommon">
 <title>Removing Common Attributes</title>
-<programlisting>&lt;!ENTITY % common.attrib
+<programlisting><![CDATA[<!ENTITY % common.attrib
 "ID   ID    #IMPLIED
  Lang CDATA #IMPLIED"
 >
-&lt;!ENTITY % idreq.common.attrib
+<!ENTITY % idreq.common.attrib
 "ID   ID    #REQUIRED
  Lang CDATA #IMPLIED"
 >
-&lt;!-- load DocBook -->
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
-%DocBookDTD;</programlisting>
+<!-- load DocBook -->
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;]]></programlisting>
 </example>
 <para>
 <indexterm><primary>common.attrib parameter entity</primary></indexterm>
@@ -1536,31 +1536,31 @@ definitions. <xref linkend="ex.addsect6"/> extends DocBook by adding a
 </para>
 <example id="ex.addsect6">
 <title>Adding a Sect6 Element</title>
-<programlisting>&lt;!ENTITY % sect5.module "IGNORE">
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<programlisting><![CDATA[<!ENTITY % sect5.module "IGNORE">
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 %DocBookDTD;
-&lt;!-- Add Sect6 to content model of Sect5 -->
-&lt;!ENTITY % sect5.role.attrib "%role.attrib;">
-&lt;!ELEMENT Sect5 - O (Sect5Info?, (%sect.title.content;), (%nav.class;)*,
+<!-- Add Sect6 to content model of Sect5 -->
+<!ENTITY % sect5.role.attrib "%role.attrib;">
+<!ELEMENT Sect5 - O (Sect5Info?, (%sect.title.content;), (%nav.class;)*,
         (((%divcomponent.mix;)+, 
                 ((%refentry.class;)* | Sect6* | SimpleSect*))
         | (%refentry.class;)+ | Sect6+ | SimpleSect+), (%nav.class;)*)>
-&lt;!ATTLIST Sect5
+<!ATTLIST Sect5
         %label.attrib;
         %status.attrib;
         %common.attrib;
         %sect5.role.attrib;
 >
-&lt;!ENTITY % sect6.role.attrib "%role.attrib;">
-&lt;!ELEMENT Sect6 - O (Sect6Info?, (%sect.title.content;), (%nav.class;)*,
+<!ENTITY % sect6.role.attrib "%role.attrib;">
+<!ELEMENT Sect6 - O (Sect6Info?, (%sect.title.content;), (%nav.class;)*,
         (((%divcomponent.mix;)+, ((%refentry.class;)* | SimpleSect*))
         | (%refentry.class;)+ | SimpleSect+), (%nav.class;)*)>
-&lt;!ATTLIST Sect6
+<!ATTLIST Sect6
         %label.attrib;
         %status.attrib;
         %common.attrib;
         %sect6.role.attrib;
-></programlisting>
+>]]></programlisting>
 </example>
 <para>
 Here we've redefined <sgmltag>Sect5</sgmltag> to include
@@ -1587,17 +1587,17 @@ is constrained to the values <literal>Required</literal> or <literal>
 Optional</literal>.</para>
 <example id="ex.changerole">
 <title>Changing Role on Procedure</title>
-<programlisting>&lt;!ENTITY % procedure.role.attrib "Role (Required|Optional) #IMPLIED">
-&lt;!-- load DocBook -->
-&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
-%DocBookDTD;<indexterm startref="DocBookcustomch05" class="endofrange"/><indexterm startref="customDocBookch05" class="endofrange"/></programlisting>
+<programlisting><![CDATA[<!ENTITY % procedure.role.attrib "Role (Required|Optional) #IMPLIED">
+<!-- load DocBook -->
+<!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+%DocBookDTD;]]><indexterm startref="DocBookcustomch05" class="endofrange"/><indexterm startref="customDocBookch05" class="endofrange"/></programlisting>
 </example>
 </sect1>
 </chapter>
 
 <!--
 Local Variables:
-mode:sgml
-sgml-parent-document: ("book.sgm" "chapter")
+mode: xml
+sgml-parent-document: ("book.xml" "chapter")
 End:
 -->
