@@ -184,7 +184,9 @@ document. In DocBook, a top-level section is <sgmltag class="starttag">sect1</sg
 named <emphasis>My First-Level Header</emphasis> would be identified
 like this:
 </para>
+
 <screen>&lt;sect1>&lt;title>My First-Level Header&lt;/title> </screen>
+
 <para>Note the following features of this markup:</para>
 <variablelist>
 <varlistentry>
@@ -238,10 +240,10 @@ their semantic content. For example, if a particular word is the name
 of a file, then the tags around it should specify that it is a
 filename:
 </para>
-<screen>
-Many mail programs read configuration information from the
-users <sgmltag class="starttag">filename</sgmltag>.mailrc<sgmltag class="endtag">filename</sgmltag> file.
-</screen>
+
+<screen>Many mail programs read configuration information from the
+users <sgmltag class="starttag">filename</sgmltag>.mailrc<sgmltag class="endtag">filename</sgmltag> file.</screen>
+
 <para>
 <indexterm><primary>stylesheets</primary>
   <secondary>SGML documents, specifying appearance</secondary></indexterm>
@@ -308,8 +310,7 @@ second-level section.
 <colspec colname="COLSPEC1" colwidth="2.50in"/>
 <tbody>
 <row>
-<entry colname="COLSPEC0"><para>This is valid:</para><screen>
-&lt;sect1>&lt;title>...&lt;/title>
+<entry colname="COLSPEC0" valign="top"><para>This is valid:</para><screen>&lt;sect1>&lt;title>...&lt;/title>
   &lt;sect2>&lt;title>...&lt;/title>
     &lt;sect3>&lt;title>...&lt;/title>
       ...
@@ -317,8 +318,7 @@ second-level section.
   &lt;/sect2>
 &lt;/sect1>
 </screen></entry>
-<entry colname="COLSPEC1"><para>This is not:</para><screen>
-&lt;sect1>&lt;title>...&lt;/title>
+<entry colname="COLSPEC1" valign="top"><para>This is not:</para><screen>&lt;sect1>&lt;title>...&lt;/title>
   &lt;sect3>&lt;title>...&lt;/title>
     ...
   &lt;/sect3>
@@ -536,7 +536,9 @@ contain attributes. A <sgmltag class="starttag">sect1</sgmltag>
 element with an <sgmltag class="attribute">id</sgmltag> attribute
 looks like this:
 </para>
+
 <screen>&lt;sect1 id="<replaceable>idvalue</replaceable>"&gt;</screen>
+
 <para>
 <indexterm><primary>namespaces</primary>
   <secondary>XML tags</secondary></indexterm>
@@ -640,11 +642,9 @@ referring to its name. For example, if your document frequently refers
 to, say, &ldquo;O'Reilly &amp; Associates,&rdquo; you might declare it
 as an entity:
 </para>
-<screen>
-<![CDATA[
-<!ENTITY ora "O'Reilly &amp; Associates">
-]]>
-</screen>
+
+<screen><![CDATA[<!ENTITY ora "O'Reilly &amp; Associates">]]></screen>
+
 <para>
 Then, instead of typing it out each time, you can insert it as needed
 in your document with the entity reference <sgmltag class="genentity">ora</sgmltag>, simply to save time. Note that this
@@ -682,26 +682,24 @@ might break your document into four chapters and store them in
 separate files. At the top of your document, you would include entity
 declarations to reference the four files:
 </para>
-<screen>
-<![CDATA[
-<!ENTITY ch01 SYSTEM "ch01.sgm">
+
+<screen><![CDATA[<!ENTITY ch01 SYSTEM "ch01.sgm">
 <!ENTITY ch02 SYSTEM "ch02.sgm">
 <!ENTITY ch03 SYSTEM "ch03.sgm">
-<!ENTITY ch04 SYSTEM "ch04.sgm">
-]]>
-</screen>
+<!ENTITY ch04 SYSTEM "ch04.sgm">]]></screen>
+
 <para>
 Your <sgmltag>Book</sgmltag> now consists simply of references to the
 entities:
 </para>
-<screen>
-&lt;book&gt;
+
+<screen>&lt;book&gt;
 &amp;ch01;
 &amp;ch02;
 &amp;ch03;
 &amp;ch04;
-&lt;/book&gt;
-</screen>
+&lt;/book&gt;</screen>
+
 <para>
 <indexterm><primary>unparsed entities</primary></indexterm>
 <indexterm><primary>notations (unparsed entities)</primary></indexterm>
@@ -713,11 +711,9 @@ that's in the entity using a notation (these are called unparsed
 entities). For example, the following declaration declares the entity
 <literal>tree</literal> as an encapsulated PostScript image:
 </para>
-<screen>
-<![CDATA[
-<!ENTITY tree SYSTEM "tree.eps" NDATA EPS>
-]]>
-</screen>
+
+<screen><![CDATA[<!ENTITY tree SYSTEM "tree.eps" NDATA EPS>]]></screen>
+
 <para>
 <indexterm><primary>elements</primary>
   <secondary>entity attributes</secondary></indexterm>
@@ -725,11 +721,9 @@ entities). For example, the following declaration declares the entity
 Entities declared this way cannot be inserted directly into your
 document. Instead, they must be used as entity attributes to elements:
 </para>
-<screen>
-<![CDATA[
-<graphic entityref="tree"></graphic>
-]]>
-</screen>
+
+<screen><![CDATA[<graphic entityref="tree"></graphic>]]></screen>
+
 <para>
 Conversely, you cannot use entities declared without a notation as the
 value of an entity attribute.
@@ -898,31 +892,27 @@ except for the closing characters <literal>]]&gt;</literal>.
 In &SGML;, these keywords can be parameter entities. For example, you
 might declare the following parameter entity in your document:
 </para>
-<screen>
-<![CDATA[
-<!ENTITY % draft "INCLUDE">
-]]>
-</screen>
+
+<screen><![CDATA[<!ENTITY % draft "INCLUDE">]]></screen>
+
 <para>
 Then you could put the sections of the document that are only applicable
 in a draft within marked sections:
 </para>
-<screen>
-&lt;![%draft;[
+
+<screen>&lt;![%draft;[
 &lt;para>
 This paragraph only appears in the draft version.
 &lt;/para>
-]]&gt;
-</screen>
+]]&gt;</screen>
+
 <para>
 When you're ready to print the final version, simply change the 
 <literal>draft</literal> parameter entity declaration:
 </para>
-<screen>
-<![CDATA[
-<!ENTITY % draft "IGNORE">
-]]>
-</screen>
+
+<screen><![CDATA[<!ENTITY % draft "IGNORE">]]></screen>
+
 <para>
 and publish the document. None of the draft sections will appear.
 <indexterm startref="SGMLbasicconceptch01" class="endofrange"/>
@@ -980,7 +970,7 @@ responsible for DocBook's maintenance. DocBook
 <acronym>V1.2.2</acronym> was published simultaneously. The founding
 sponsors of this incarnation of Davenport include the following
 people:
-<itemizedlist>
+<itemizedlist spacing="compact">
 <listitem><para>Jon Bosak, Novell</para></listitem>
 <listitem><para>Dale Dougherty, O'Reilly &amp; Associates</para></listitem>
 <listitem><para>Ralph Ferris, Fujitsu <acronym>OSSI</acronym></para></listitem>
