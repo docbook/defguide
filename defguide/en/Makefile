@@ -10,8 +10,10 @@ ROOTID=
 
 ifeq ($(SOURCE),unexbook.xml)
   STYLEOPT=output.type=unexpanded
+  HTMLEXT=-x.html
 else
   STYLEOPT=
+  HTMLEXT=.html
 endif
 
 all: chunks index
@@ -20,13 +22,13 @@ test:
 	xjparse $(SOURCE)
 
 chunks: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) $(STYLEOPT)
+	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 
 chunk: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) rootid=$(ROOTID) $(STYLEOPT)
+	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=$(ROOTID) $(STYLEOPT)
 
 index: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) rootid=index
+	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
 
 stylesheets/html-titlepage.xsl: stylesheets/html-titlepage.xml
 	$(XSLT) $< ../../xsl/template/titlepage.xsl $@
