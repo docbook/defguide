@@ -165,41 +165,6 @@ set       nop
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="X.refentry">
-  <xsl:variable name="refmeta" select=".//refmeta"/>
-  <xsl:variable name="refentrytitle" select="$refmeta//refentrytitle"/>
-  <xsl:variable name="refnamediv" select=".//refnamediv"/>
-  <xsl:variable name="refname" select="$refnamediv//refname"/>
-  <xsl:variable name="title">
-    <xsl:choose>
-      <xsl:when test="$refentrytitle">
-        <xsl:apply-templates select="$refentrytitle[1]" mode="title"/>
-      </xsl:when>
-      <xsl:when test="$refname">
-        <xsl:apply-templates select="$refname[1]" mode="title"/>
-      </xsl:when>
-      <xsl:otherwise></xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-
-  <div class="{name(.)}">
-    <h1 class="title">
-      <a>
-        <xsl:attribute name="name">
-          <xsl:call-template name="object.id"/>
-        </xsl:attribute>
-      </a>
-      <xsl:call-template name="revision.graphic">
-        <xsl:with-param name="large" select="'1'"/>
-        <xsl:with-param name="align" select="'right'"/>
-      </xsl:call-template>
-      <xsl:copy-of select="$title"/>
-    </h1>
-    <xsl:apply-templates/>
-    <xsl:call-template name="process.footnotes"/>
-  </div>
-</xsl:template>
-
 <xsl:template name="refentry.title">
   <xsl:param name="node" select="."/>
   <xsl:variable name="refmeta" select="$node//refmeta"/>

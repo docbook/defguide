@@ -443,6 +443,27 @@
         </xsl:attribute>
       </link>
     </xsl:if>
+
+    <xsl:if test=".//annotation">
+      <script type="text/javascript" src="/script/AnchorPosition.js"/>
+      <script type="text/javascript" src="/script/PopupWindow.js"/>
+      <script type="text/javascript">
+	<xsl:text>&#10;// Create PopupWindow objects</xsl:text>
+	<xsl:for-each select=".//annotation">
+	  <xsl:text>&#10;var popup_</xsl:text>
+	  <xsl:value-of select="generate-id(.)"/>
+	  <xsl:text> = new PopupWindow("popup-</xsl:text>
+	  <xsl:value-of select="generate-id(.)"/>
+	  <xsl:text>");&#10;</xsl:text>
+	  <xsl:text>popup_</xsl:text>
+	  <xsl:value-of select="generate-id(.)"/>
+	  <xsl:text>.offsetY = 15;&#10;</xsl:text>
+	  <xsl:text>popup_</xsl:text>
+	  <xsl:value-of select="generate-id(.)"/>
+	  <xsl:text>.autoHide();&#10;</xsl:text>
+	</xsl:for-each>
+      </script>
+    </xsl:if>
   </head>
 </xsl:template>
 
@@ -554,62 +575,6 @@
           </td>
         </tr>
       </table>
-    </div>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template name="X.header.navigation">
-  <xsl:param name="prev" select="/foo"/>
-  <xsl:param name="next" select="/foo"/>
-  <xsl:variable name="home" select="/*[1]"/>
-  <xsl:variable name="up" select="parent::*"/>
-
-  <xsl:if test="$suppress.navigation = '0' and $suppress.header.navigation = '0'">
-    <div class="navheader">
-      <table width="100%">
-        <tr>
-          <th colspan="3" align="center">
-            <xsl:apply-templates select="." mode="object.title.markup.textonly"/>
-          </th>
-        </tr>
-        <tr>
-          <td width="20%" align="left">
-            <xsl:if test="count($prev)>0">
-              <a>
-                <xsl:attribute name="href">
-                  <xsl:call-template name="href.target">
-                    <xsl:with-param name="object" select="$prev"/>
-                  </xsl:call-template>
-                </xsl:attribute>
-                <xsl:call-template name="gentext.nav.prev"/>
-              </a>
-            </xsl:if>
-            <xsl:text>&#160;</xsl:text>
-          </td>
-          <th width="60%" align="center">
-            <xsl:choose>
-              <xsl:when test="count($up) > 0 and $up != $home">
-                <xsl:apply-templates select="$up" mode="object.title.markup.textonly"/>
-              </xsl:when>
-              <xsl:otherwise>&#160;</xsl:otherwise>
-            </xsl:choose>
-          </th>
-          <td width="20%" align="right">
-            <xsl:text>&#160;</xsl:text>
-            <xsl:if test="count($next)>0">
-              <a>
-                <xsl:attribute name="href">
-                  <xsl:call-template name="href.target">
-                    <xsl:with-param name="object" select="$next"/>
-                  </xsl:call-template>
-                </xsl:attribute>
-                <xsl:call-template name="gentext.nav.next"/>
-              </a>
-            </xsl:if>
-          </td>
-        </tr>
-      </table>
-      <hr/>
     </div>
   </xsl:if>
 </xsl:template>
@@ -936,8 +901,82 @@
 
         <xsl:call-template name="user.footer.navigation"/>
       </xsl:if>
+
+      <xsl:if test=".//annotation">
+	<div class="annotation-list">
+	  <div class="annotation-nocss">
+	    <p>The following annotations are from this page. You are seeing
+	    them here because your browser doesn’t support the user-interface
+	    techniques used to make them appear as ‘popups’ on modern browsers.
+	    </p>
+	  </div>
+
+	  <xsl:apply-templates select=".//annotation"
+			       mode="annotation-popup"/>
+	</div>
+      </xsl:if>
     </body>
   </html>
+</xsl:template>
+
+<xsl:template match="annotation">
+  <xsl:variable name="title">
+    <xsl:text>[Annotation #</xsl:text>
+    <xsl:number count="annotation" level="any" format="1"/>
+    <xsl:text>]</xsl:text>
+  </xsl:variable>
+
+  <a href="#annot-{generate-id(.)}" title="{$title}"
+     name="anch-{generate-id(.)}" id="anch-{generate-id(.)}">
+    <xsl:attribute name="onClick">
+      <xsl:text>popup_</xsl:text>
+      <xsl:value-of select="generate-id(.)"/>
+      <xsl:text>.showPopup('anch-</xsl:text>
+      <xsl:value-of select="generate-id(.)"/>
+      <xsl:text>'); return false;</xsl:text>
+    </xsl:attribute>
+    <img src="/graphics/annot.png" border="0" alt="{$title}"/>
+  </a>
+</xsl:template>
+
+<xsl:template match="annotation" mode="annotation-popup">
+  <div class="annotation-nocss">
+    <p>
+      <a name="annot-{generate-id(.)}"/>
+      <xsl:text>Annotation #</xsl:text>
+      <xsl:number count="annotation[@class='block']" level="any" format="1"/>
+      <xsl:text>:</xsl:text>
+    </p>
+  </div>
+
+  <div id="popup-{generate-id(.)}" class="annotation-popup">
+    <xsl:if test="string-length(.) &gt; 300">
+      <xsl:attribute name="style">width:400px</xsl:attribute>
+    </xsl:if>
+
+    <xsl:call-template name="annotation-title"/>
+    <div class="annotation-body">
+      <xsl:apply-templates select="*[local-name(.) != 'title']"/>
+    </div>
+    <div class="annotation-close">
+      <a href="#" onclick="popup_{generate-id(.)}.hidePopup();return false;">
+	<img src="/graphics/close.png" alt="X" border="0"/>
+      </a>
+    </div>
+  </div>
+</xsl:template>
+
+<xsl:template name="annotation-title">
+  <div class="annotation-title">
+    <xsl:choose>
+      <xsl:when test="title">
+	<xsl:apply-templates select="title/node()"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:text>Annotation</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </div>
 </xsl:template>
 
 <!-- ==================================================================== -->

@@ -69,6 +69,22 @@
   </xsl:element>
 </xsl:template>
 
+<xsl:template match="db:refpurpose">
+  <xsl:element name="{name(.)}">
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+    <xsl:text>&#160;</xsl:text>
+    <annotation>
+      <para>
+	<xsl:value-of select="/db:refentry/db:info/db:releaseinfo"/>
+      </para>
+      <para>
+	<xsl:value-of select="/db:refentry/db:info/db:pubdate"/>
+      </para>
+    </annotation>
+  </xsl:element>
+</xsl:template>
+
 <xsl:template match="processing-instruction('tdg-refentrytitle')">
   <xsl:value-of select="$element"/>
   <xsl:if test="count($rng/key('elemdef', $element)) &gt; 1">
@@ -150,7 +166,7 @@
   <xsl:variable name="children"
 		select="$elem/doc:content-model//rng:ref"/>
 
-  <xsl:if test="$children">
+  <xsl:if test="false() and $children">
     <refsection condition="ref.desc.children">
       <title>Children</title>
       <para>
