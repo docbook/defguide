@@ -141,4 +141,90 @@
   </h1>
 </xsl:template>
 
+<!-- CHM should be selfcontained, we must use local copies of glyphs images -->
+<xsl:template name="mediaobject.filename">
+  <xsl:param name="object"></xsl:param>
+
+  <xsl:variable name="data" select="$object/videodata
+                                    |$object/imagedata
+                                    |$object/audiodata
+                                    |$object"/>
+
+  <xsl:variable name="filename2">
+    <xsl:choose>
+      <xsl:when test="$data[@fileref]">
+        <xsl:value-of select="$data/@fileref"/>
+      </xsl:when>
+      <xsl:when test="$data[@entityref]">
+        <xsl:value-of select="unparsed-entity-uri($data/@entityref)"/>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="filename">
+    <xsl:choose>
+      <xsl:when test="starts-with($filename2, 'http://www.oasis-open.org/docbook/xmlcharent/')">
+        <xsl:value-of select="substring-after($filename2, 'http://www.oasis-open.org/docbook/xmlcharent/')"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$filename2"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="real.ext">
+    <xsl:call-template name="filename-extension">
+      <xsl:with-param name="filename" select="$filename"/>
+    </xsl:call-template>
+  </xsl:variable>
+
+  <xsl:variable name="ext">
+    <xsl:choose>
+      <xsl:when test="$real.ext != ''">
+        <xsl:value-of select="$real.ext"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$graphic.default.extension"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="graphic.ext">
+    <xsl:call-template name="is.graphic.extension">
+      <xsl:with-param name="ext" select="$ext"/>
+    </xsl:call-template>
+  </xsl:variable>
+
+  <xsl:choose>
+    <xsl:when test="$real.ext = ''">
+      <xsl:choose>
+        <xsl:when test="$ext != ''">
+          <xsl:value-of select="$filename"/>
+          <xsl:text>.</xsl:text>
+          <xsl:value-of select="$ext"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$filename"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
+    <xsl:when test="not($graphic.ext)">
+      <xsl:choose>
+        <xsl:when test="$graphic.default.extension != ''">
+          <xsl:value-of select="$filename"/>
+          <xsl:text>.</xsl:text>
+          <xsl:value-of select="$graphic.default.extension"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$filename"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$filename"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
 </xsl:stylesheet>
