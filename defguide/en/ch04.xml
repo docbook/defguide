@@ -142,14 +142,14 @@ languages. In each case, the stylesheet fragment shown contains the
 rules that reasonably formatted the following paragraph:
 </para>
 <screen>
-&lt;para>
+<![CDATA[<para>
 This is an example paragraph. It should be presented in a
-reasonable body font. &lt;emphasis>Emphasized&lt;/emphasis> words
+reasonable body font. <emphasis>Emphasized</emphasis> words
 should be printed in italics. A single level of 
-&lt;emphasis>Nested &lt;emphasis>emphasis&lt;/emphasis> should also
-be supported.&lt;/emphasis>
-&lt;/para>
-</screen>
+<emphasis>Nested <emphasis>emphasis</emphasis> should also
+be supported.</emphasis>
+</para>
+]]></screen>
 <section>
 <title><acronym>FOSI</acronym> stylesheet</title>
 <para>
@@ -179,7 +179,7 @@ A sample <acronym>FOSI</acronym> fragment is shown in <xref linkend="ex-fosi"/>.
   <secondary>DSSSL stylesheets</secondary></indexterm>
 
 <acronym>DSSSL</acronym> stylesheets are written in a Scheme-like
-language (see &ldquo;Scheme&rdquo; later in this chapter). It is the
+language (see <xref linkend="scheme"/> later in this chapter). It is the
 <function>element</function> function that controls the presentation of
 individual elements. See the example in <xref linkend="ex-dsssl"/>.
 </para>
@@ -255,7 +255,7 @@ Semantics and Specification Language</citetitle>. It is defined by
 general information about <acronym>DSSSL</acronym>, see <ulink url="http://www.jclark.com/dsssl/">the <acronym>DSSSL</acronym>
 Page</ulink>.
 </para>
-<section><title>Scheme</title>
+<section id="scheme"><title>Scheme</title>
 <para>
 <indexterm><primary>Scheme language</primary>
   <secondary>syntax</secondary></indexterm>
@@ -271,7 +271,7 @@ regular syntax. Every expression looks like this:
 </screen>
 <indexterm><primary>syntax</primary>
   <secondary>Scheme language</secondary></indexterm>
-This is called &ldquo;prefix&rdquo; syntax because the operator comes
+This is called <quote>prefix</quote> syntax because the operator comes
 before its arguments.</para> <para>In Scheme, the expression that
 subtracts 2 from 3, is <literal>(- 3 2)</literal>. And <literal>(+ (-
 3 2) (* 2 4))</literal> is 9. While the prefix syntax and the
@@ -350,7 +350,7 @@ means that you can change the &DTD; used by stylesheets within the
 bounds of the architecture. A complete discussion of document
 architectures is beyond the scope of this book, but we'll show you one
 way to take advantage of them in your <acronym>DSSSL</acronym>
-stylesheets in <xref linkend="dsssl.arch"/>&ldquo; later in the
+stylesheets in <xref linkend="dsssl.arch"/> later in the
 chapter.
 </para>
 </section>
@@ -409,7 +409,7 @@ cover only a few of the most common.
 Element expressions, which define the rules for formatting particular
 elements, make up the bulk of most <acronym>DSSSL</acronym>
 stylesheets. A simple element rule can be seen in <xref linkend="ex.d.simple"/>. This rule says that a <sgmltag> para</sgmltag>
-element should be formatted by making a paragraph (see <xref linkend="dsssl.expr.make"/>&ldquo;).
+element should be formatted by making a paragraph (see <xref linkend="dsssl.expr.make"/>).
 </para>
 <example id="ex.d.simple">
 <title>A Simple <acronym>DSSSL</acronym> Rule</title>
@@ -435,7 +435,7 @@ If several rules apply, the most specific rule is used.
 </para>
 <para>
 When a rule is used, the node in the source tree that was matched
-becomes the &ldquo;current node&rdquo; while that element expression
+becomes the <quote>current node</quote> while that element expression
 is being processed.
 </para>
 </section>
@@ -445,15 +445,15 @@ is being processed.
 <indexterm><primary>content</primary>
   <secondary>flow objects (DSSSL)</secondary></indexterm>
 
-A make expression specifies the characteristics of a &ldquo;flow
-object.&rdquo; Flow objects are abstract representations of content
+A make expression specifies the characteristics of a <quote>flow
+object.</quote> Flow objects are abstract representations of content
 (paragraphs, rules, tables, and so on). The expression:
 <screen>
 (make paragraph
   font-size: 12pt
   line-spacing: 14pt ...)
 </screen>
-specifies that the content that goes &ldquo;here&rdquo; is to be
+specifies that the content that goes <quote>here</quote> is to be
 placed into a paragraph flow object with a font-size of 12pt and a
 line-spacing of 14pt (all of the unspecified characteristics of the
 flow object are defaulted in the appropriate way).
@@ -463,7 +463,7 @@ They're called flow objects because <acronym>DSSSL</acronym>, in its
 full generality, allows you to specify the characteristics of a
 sequence of flow objects and a set of areas on the physical page where
 you can place content. The content of the flow objects is then
-&ldquo;poured on to&rdquo; (or flows in to) the areas on the page(s).
+<quote>poured on to</quote> (or flows in to) the areas on the page(s).
 </para>
 <para>
 <indexterm><primary>sosofo (DSSSL)</primary></indexterm>
@@ -475,7 +475,7 @@ constructing the flow objects, but they really only specify the
 is apparent in one of the most common and initially confusing pieces
 of <acronym>DSSSL</acronym> jargon: the
 <firstterm>sosofo</firstterm>. Sosofo stands for a
-&ldquo;specification of a sequence of flow objects.&rdquo; All this
+<quote>specification of a sequence of flow objects.</quote> All this
 means is that processing a document may result in a nested set of 
 <literal>make</literal> expressions (in other words, the paragraph may contain a table that
 contains rows that contain cells that contain paragraphs, and so on).
@@ -939,7 +939,7 @@ associated with the first condition that is true is evaluated.
 
 Any expression that returns <literal>#f</literal> is false; all other
 expressions are true. This can be somewhat counterintuitive.  In many
-programming languages, it's common to assume that &ldquo;empty&rdquo;
+programming languages, it's common to assume that <quote>empty</quote>
 things are false (0 is false, a null pointer is false, an empty set is
 false, for example.) In <acronym>DSSSL</acronym>, this isn't the case;
 note, for example, that an empty node list is not
@@ -968,7 +968,7 @@ expression is:
 <indexterm><primary>variables (DSSSL)</primary>
   <secondary>let expressions</secondary></indexterm>
 In a <literal>let</literal>; expression, all of the variables are
-defined &ldquo;simultaneously.&rdquo; The expression that defines
+defined <quote>simultaneously.</quote> The expression that defines
 <replaceable> var2</replaceable> cannot contain any references to any
 other variables defined in the same <literal>let</literal>
 expression. A <literal>let*</literal> expression allows variables to
@@ -1004,7 +1004,7 @@ the last expression in the body, so this function returns true if the
 <indexterm><primary>tail recursion (DSSSL)</primary></indexterm>
 
 <acronym>DSSSL</acronym> doesn't have any construct that resembles the
-&ldquo;for loop&rdquo; that occurs in most imperative languages like C
+<quote>for loop</quote> that occurs in most imperative languages like C
 and Java. Instead, <acronym>DSSSL</acronym> employs a common trick in
 functional languages for implementing a loop: tail recursion.
 </para>
@@ -1043,7 +1043,7 @@ test in it.</para>
 it was a function name.</para>
 </callout>
 <callout arearefs="dl6">
-<para>The arguments to this &ldquo;function&rdquo; are the values that
+<para>The arguments to this <quote>function</quote> are the values that
 you want the local variables declared in <xref linkend="dl2"/> to have
 in the next iteration.</para>
 </callout>
@@ -1057,7 +1057,7 @@ in the next iteration.</para>
     <tertiary>style specifications</tertiary></indexterm>
 <xref linkend="dsssl.stylesheet"/> is a style sheet that contains a
 style specification. Stylesheets may consist of multiple
-specifications, as we'll see in <xref linkend="dsssl.twostylesheets"/>.&ldquo;
+specifications, as we'll see in <xref linkend="dsssl.twostylesheets"/>.
 </para>
 <para>
 The actual <acronym>DSSSL</acronym> code goes in the style
@@ -1104,7 +1104,7 @@ This construction rule applies equally to <sgmltag>Chapter</sgmltag> titles,
 that you'd want all of these titles to be presented in the same way,
 so a more robust stylesheet would have to arrange the processing of
 titles with more context.  This might be achieved in the way that
-nested <sgmltag>Emphasis</sgmltag> elements are handled in <xref linkend="dsssl.nestedemph"/>&rdquo;.
+nested <sgmltag>Emphasis</sgmltag> elements are handled in <xref linkend="dsssl.nestedemph"/>.
 </para>
 </section>
 <section><title>Processing paragraphs</title>
@@ -1201,7 +1201,7 @@ resulting <literal>sosofo</literal> is passed to the function.
 <para>
 <indexterm><primary>inherited characteristics, calculating new values with</primary></indexterm>
 
-It is possible to use the &ldquo;current&rdquo; value of an inherited
+It is possible to use the <quote>current</quote> value of an inherited
 characteristic to calculate a new value.  Using this technique,
 superscripts and subscripts will be presented at 80 percent of the
 current font size.
@@ -1221,7 +1221,7 @@ current font size.
   <secondary>DSSSL stylsheets, customizing</secondary></indexterm>
 
 The best way to customize the stylesheets is to write your own
-&ldquo;driver&rdquo; file; this is a stylesheet that contains your
+<quote>driver</quote> file; this is a stylesheet that contains your
 local modifications and then includes the appropriate stylesheet from
 the standard distribution by reference.  This allows you to make local
 changes and extensions without modifying the distributed files, which
@@ -1231,21 +1231,21 @@ makes upgrading to the next release much simpler.
 <para>
 A basic driver file looks like this:
 <screen>
-&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
-&lt;!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL>
+<![CDATA[<!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+<!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL>
 ]>
 
-&lt;style-sheet>
-&lt;style-specification use="docbook">
-&lt;style-specification-body>
+<style-sheet>
+<style-specification use="docbook">
+<style-specification-body>
 
 ;; your changes go here...
 
-&lt;/style-specification-body>
-&lt;/style-specification>
-&lt;external-specification id="docbook" document="dbstyle">
-&lt;/style-sheet>
-</screen>
+</style-specification-body>
+</style-specification>
+<external-specification id="docbook" document="dbstyle">
+</style-sheet>
+]]></screen>
 </para>
 <para>
 <indexterm><primary>public identifiers</primary>
@@ -1357,11 +1357,11 @@ Language codes should conform to <acronym>IETF</acronym>
 <indexterm><primary>French language chapter, example</primary></indexterm>
 
 The following chapter uses text generated in French:
-<screen>
-&lt;chapter lang="fr">&lt;title>B&ecirc;tises&lt;/title>
-&lt;para>Pierre qui roule n'amasse pas de mousse.&lt;/para>
-&lt;/chapter>
-</screen>
+<screen><![CDATA[
+<chapter lang="fr"><title>B]]>&ecirc;<![CDATA[tises</title>
+<para>Pierre qui roule n'amasse pas de mousse.</para>
+</chapter>
+]]></screen>
 </para>
 
 <table id="tbl.lang">
@@ -1536,22 +1536,22 @@ language with a <link linkend="dsssl.driver">driver</link>.
 In the driver, define the default language. <xref linkend="tbl.lang"/>
 summarizes the language codes for the supported languages. The
 following driver makes German the default language:
-<screen>
-&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
-&lt;!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL>
+<screen><![CDATA[
+<!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+<!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL>
 ]>
 
-&lt;style-sheet>
-&lt;style-specification use="docbook">
-&lt;style-specification-body>
+<style-sheet>
+<style-specification use="docbook">
+<style-specification-body>
 
 (define %default-language% "dege")
 
-&lt;/style-specification-body>
-&lt;/style-specification>
-&lt;external-specification id="docbook" document="dbstyle">
-&lt;/style-sheet>
-</screen>
+</style-specification-body>
+</style-specification>
+<external-specification id="docbook" document="dbstyle">
+</style-sheet>
+]]></screen>
 </para>
 <para>
 <indexterm><primary>%gentext-language%</primary></indexterm>
@@ -1581,18 +1581,18 @@ will generate the text associated with a cross reference using the
 language of the target, not the current language. Consider the
 following book:
 </para>
-<screen>
-&lt;book>&lt;title>A Test Book&lt;/title>
-&lt;preface>
-&lt;para>There are three chapters in this book: &lt;xref linkend=c1>, 
-&lt;xref linkend=c2>, and &lt;xref linkend=c3>.
-&lt;/para>
-&lt;/preface>
-&lt;chapter lang=usen>&lt;title>English&lt;/title> ... &lt;/chapter>
-&lt;chapter lang=fr>&lt;title>French&lt;/title> ... &lt;/chapter>
-&lt;chapter lang=dege>&lt;title>Deutsch&lt;/title> ... &lt;/chapter>
-&lt;/book>
-</screen>
+<screen><![CDATA[
+<book><title>A Test Book</title>
+<preface>
+<para>There are three chapters in this book: <xref linkend="c1">, 
+<xref linkend="c2">, and <xref linkend="c3">.
+</para>
+</preface>
+<chapter lang="usen"><title>English</title> ... </chapter>
+<chapter lang="fr"><title>French</title> ... </chapter>
+<chapter lang="dege"><title>Deutsch</title> ... </chapter>
+</book>
+]]></screen>
 <para>
 The standard stylesheets render the Preface as something like this:
 </para>
@@ -1623,7 +1623,7 @@ Kapitel 3.</para>
   <secondary>stylesheets</secondary></indexterm>
 
 A <acronym>DSSSL</acronym> stylesheet consists of one or more
-&ldquo;style specifications.&rdquo; Using more than one style
+<quote>style specifications.</quote> Using more than one style
 specification allows you to build a single stylesheet file that can
 format with either the print or &SGML; backends.  <xref linkend="ex-twostyles"/> shows a stylesheet with two style
 specifications.
@@ -1764,22 +1764,22 @@ how this works.  The application reads the content of the letter,
 extracts the address and return address elements from the source, and
 uses them to generate an envelope:
 </para>
-<screen>&lt;?xml version='1.0'>
-&lt;!DOCTYPE letter "/share/sgml/letter/letter.dtd" [
-&lt;!ENTITY myaddress "/share/sgml/entities/myaddress.xml">
+<screen><![CDATA[<?xml version='1.0'>
+<!DOCTYPE letter "/share/sgml/letter/letter.dtd" [
+<!ENTITY myaddress "/share/sgml/entities/myaddress.xml">
 ]>
-&lt;letter>
-&lt;returnaddress>&amp;myaddress;&lt;/returnaddress>
-&lt;address>
-&lt;name>Leonard Muellner&lt;/name>
-&lt;company>O'Reilly &amp;amp; Associates&lt;/company>
-&lt;street>90 Sherman Street&lt;/street>
-&lt;city>Cambridge&lt;/city>&lt;state>MA&lt;/state>&lt;zip>02140&lt;/zip>
-&lt;/address>
-&lt;body>
-&lt;salutation>Hi Lenny&lt;/salutation>
+<letter>
+<returnaddress>&myaddress;</returnaddress>
+<address>
+<name>Leonard Muellner</name>
+<company>O'Reilly &amp; Associates</company>
+<street>90 Sherman Street</street>
+<city>Cambridge</city><state>MA</state><zip>02140</zip>
+</address>
+<body>
+<salutation>Hi Lenny</salutation>
 ...
-&lt;/body></screen>
+</body>]]></screen>
 <para>
 The processor extracts the <sgmltag>Returnaddress</sgmltag> and
 <sgmltag role="nolink">Address</sgmltag> elements and their children
@@ -2033,7 +2033,7 @@ The complete annotated stylesheet &DTD;, and an example of the
      <term>Extensible Stylesheet Language (XSL)</term>
      <listitem>
       <para>A language for expressing stylesheets written
-       in XML. It includes the formatting object language, but
+       in &XML;. It includes the formatting object language, but
        refers to separate documents for the transformation
        language and the path language.</para>
   </listitem>
@@ -2041,22 +2041,22 @@ The complete annotated stylesheet &DTD;, and an example of the
   <varlistentry>
    <term>XSL Transformation (XSLT)</term>
    <listitem>
-    <para>The part of XSL for transforming XML documents
-       into other XML documents, HTML, or text. It can be used to
+    <para>The part of XSL for transforming &XML; documents
+       into other &XML; documents, HTML, or text. It can be used to
        rearrange the content and generate new content.</para>
   </listitem>
  </varlistentry>
  <varlistentry>
   <term>XML Path Language (XPath)</term>
   <listitem>
-   <para>A language for addressing parts of an XML
+   <para>A language for addressing parts of an &XML;
        document. It is used to find the parts of your document to
        apply different styles to. All XSL processors use this
        component.</para>
  </listitem>
 </varlistentry>
 </variablelist></para>
-<para>To publish HTML from your XML documents, you just
+<para>To publish HTML from your &XML; documents, you just
    need an XSLT engine. To get to print, you need an XSLT
    engine to produce formatting objects (FO), which then must
    be processed with a formatting object processor to produce
@@ -2080,7 +2080,7 @@ java  com.jclark.xsl.sax.Driver <replaceable>filename.xml</replaceable> <replace
    formatting object stylesheet, XT will produce a formatting
    object file. Then you can convert that to PDF using FOP, a
    formatting object processor available for free from the
-   Apache XML Project (
+   Apache &XML; Project (
    <ulink url="http://xml.apache.org">http://xml.apache.org</ulink>).
    Here is an example of that two stage processing:</para>
 <screen>CLASSPATH=xt.jar:xp.jar:sax.jar:fop.jar
@@ -2104,7 +2104,7 @@ java  org.apache.fop.apps.CommandLine <replaceable>output.fo</replaceable> <repl
      <ulink url="http://users.iclway.co.uk/mhkay/saxon">http://users.iclway.co.uk/mhkay/saxon</ulink>)</para>
 </listitem>
 <listitem>
-<para>Xalan, written in Java, from the Apache XML
+<para>Xalan, written in Java, from the Apache &XML;
      Project (
      <ulink url="http://xml.apache.org">http://xml.apache.org</ulink>)</para>
 </listitem>
@@ -2124,7 +2124,7 @@ java  org.apache.fop.apps.CommandLine <replaceable>output.fo</replaceable> <repl
  formatting language. The XSLT transformation part lets you
  scan through a document's structure and rearrange its
  content any way you like. You can write out the content
- using a different set of XML tags, and generate text as
+ using a different set of &XML; tags, and generate text as
  needed. For example, you can scan through a document to
  locate all headings and then insert a generated table of
  contents at the beginning of the document, at the same time
@@ -2133,71 +2133,71 @@ java  org.apache.fop.apps.CommandLine <replaceable>output.fo</replaceable> <repl
  controls to all components of your output. With a good
  formatting backend, it is capable of producing high quality
  printed pages.</para>
-<para>An XSL stylesheet is written using XML syntax, and is
- itself a well-formed XML document. That makes the basic
- syntax familiar, and enables an XML processor to check for
+<para>An XSL stylesheet is written using &XML; syntax, and is
+ itself a well-formed &XML; document. That makes the basic
+ syntax familiar, and enables an &XML; processor to check for
  basic syntax errors. The stylesheet instructions use
  special element names, which typically begin with
- <literal>xsl:</literal> to distinguish them from any XML
+ <sgmltag role="namespace">xsl:</sgmltag> to distinguish them from any &XML;
  tags you want to appear in the output. The XSL namespace is
  identified at the top of the stylesheet file. As with other
- XML, any XSL elements that are not empty will require a
+ &XML;, any XSL elements that are not empty will require a
  closing tag. And some XSL elements have specific attributes
  that control their behavior. It helps to keep a good XSL
  reference book handy.</para>
 <para>Here is an example of a simple XSL stylesheet applied
- to a simple XML file to generate HTML output.</para>
+ to a simple &XML; file to generate HTML output.</para>
 <example>
-<title>Simple XML file</title>
-<programlisting>&lt;?xml version="1.0"?&gt;
-&lt;document&gt;
-&lt;title&gt;Using a mouse&lt;/title&gt;
-&lt;para&gt;It's easy to use a mouse. Just roll it
-around and click the buttons.&lt;/para&gt;
-&lt;/document&gt;</programlisting>
+<title>Simple &XML; file</title>
+<programlisting><![CDATA[<?xml version="1.0"?>
+<document>
+<title>Using a mouse</title>
+<para>It's easy to use a mouse. Just roll it
+around and click the buttons.</para>
+</document>]]></programlisting>
 </example>
 <example>
 <title>Simple XSL stylesheet</title>
-<programlisting>&lt;?xml version='1.0'?&gt;
-&lt;xsl:stylesheet
-          xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'&gt;
-&lt;xsl:output method="html"/&gt;
+<programlisting><![CDATA[<?xml version='1.0'?>
+<xsl:stylesheet
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
+<xsl:output method="html"/>
 
-&lt;xsl:template match="document"&gt;
-  &lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;
-    &lt;xsl:value-of select="./title"/&gt;
-  &lt;/TITLE&gt;
-  &lt;/HEAD&gt;
-  &lt;BODY&gt;
-    &lt;xsl:apply-templates/&gt;
-  &lt;/BODY&gt;
-  &lt;/HTML&gt;
-&lt;/xsl:template&gt;
+<xsl:template match="document">
+  <HTML><HEAD><TITLE>
+    <xsl:value-of select="./title"/>
+  </TITLE>
+  </HEAD>
+  <BODY>
+    <xsl:apply-templates/>
+  </BODY>
+  </HTML>
+</xsl:template>
 
-&lt;xsl:template match="title"&gt;
-  &lt;H1&gt;&lt;xsl:apply-templates/&gt;&lt;/H1&gt;
-&lt;/xsl:template&gt;
+<xsl:template match="title">
+  <H1><xsl:apply-templates/></H1>
+</xsl:template>
 
-&lt;xsl:template match="para"&gt;
-  &lt;P&gt;&lt;xsl:apply-templates/&gt;&lt;/P&gt;
-&lt;/xsl:template&gt;
+<xsl:template match="para">
+  <P><xsl:apply-templates/></P>
+</xsl:template>
 
-&lt;/xsl:stylesheet&gt;
-</programlisting>
+</xsl:stylesheet>
+]]></programlisting>
 </example>
 <example>
 <title>HTML output</title>
-<programlisting>&lt;HTML&gt;
-&lt;HEAD&gt;
-&lt;TITLE&gt;Using a mouse&lt;/TITLE&gt;
-&lt;/HEAD&gt;
-&lt;BODY&gt;
-&lt;H1&gt;Using a mouse&lt;/H1&gt;
-&lt;P&gt;It's easy to use a mouse. Just roll it
-around and click the buttons.&lt;/P&gt;
-&lt;/BODY&gt;
-&lt;/HTML&gt;
-</programlisting>
+<programlisting><![CDATA[<HTML>
+<HEAD>
+<TITLE>Using a mouse</TITLE>
+</HEAD>
+<BODY>
+<H1>Using a mouse</H1>
+<P>It's easy to use a mouse. Just roll it
+around and click the buttons.</P>
+</BODY>
+</HTML>
+]]></programlisting>
 </example>
 </section>
 <section>
@@ -2215,52 +2215,52 @@ handling just one element at a time, and keeps a stylesheet
 modular. The power of XSL comes from processing the
 templates recursively. That is, each template handles the
 processing of its own element, and then calls other
-templates to process its children, and so on. Since an XML
+templates to process its children, and so on. Since an &XML;
 document is always a single root element at the top level
 that contains all of the nested descendent elements, the
 XSL templates also start at the top and work their way down
 through the hierarchy of elements.</para>
 <para>Take the
-DocBook <literal>&lt;para&gt;</literal> paragraph element as
+DocBook <sgmltag class="element">&lt;para&gt;</sgmltag> paragraph element as
 an example. To convert this to HTML, you want to wrap the
 paragraph content with the HTML
-tags <literal>&lt;p&gt;</literal> and <literal>&lt;/p&gt;</literal>.
-But a DocBook <literal>&lt;para&gt;</literal>  can contain
+tags <sgmltag class="starttag">&lt;p&gt;</sgmltag> and <sgmltag class="endtag">&lt;/p&gt;</sgmltag>.
+But a DocBook <sgmltag class="element">&lt;para&gt;</sgmltag>  can contain
 any number of in-line DocBook elements marking up the text.
 Fortunately, you can let other templates take care of those
 elements, so your XSL template
-for <literal>&lt;para&gt;</literal> can be quite
+for <sgmltag class="element">&lt;para&gt;</sgmltag> can be quite
 simple:</para>
-<programlisting>&lt;xsl:template match="para"&gt;
-  &lt;p&gt;
-    &lt;xsl:apply-templates/&gt;
-  &lt;/p&gt;
-&lt;/xsl:template&gt;
-</programlisting>
-<para>The <literal>&lt;xsl:template&gt;</literal> element
+<programlisting><![CDATA[<xsl:template match="para">
+  <p>
+    <xsl:apply-templates/>
+  </p>
+</xsl:template>
+]]></programlisting>
+<para>The <sgmltag class="element">&lt;xsl:template&gt;</sgmltag> element
 starts a new template, and
-its <literal>match</literal> attribute indicates where to
+its <sgmltag class="attribute">match</sgmltag> attribute indicates where to
 apply the template, in this case to
-any <literal>&lt;para&gt;</literal> elements. The template
-says to output a literal <literal>&lt;p&gt;</literal> string
+any <sgmltag class="element">&lt;para&gt;</sgmltag> elements. The template
+says to output a literal <sgmltag class="starttag">&lt;p&gt;</sgmltag> string
 and then execute
-the <literal>&lt;xsl:apply-templates/&gt;</literal> instruction.
+the <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag> instruction.
 This tells the XSL processor to look among all the
 templates in the stylesheet for any that should be applied
 to the content of the paragraph. If each template in the
 stylesheet includes
-an <literal>&lt;xsl:apply-templates/&gt;</literal> instruction,
+an <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag> instruction,
 then all descendents will eventually be processed. When it
 is through recursively applying templates to the paragraph
-content, it outputs the <literal>&lt;/p&gt;</literal> closing
+content, it outputs the <sgmltag class="endtag">&lt;/p&gt;</sgmltag> closing
 tag.</para>
 <section>
 <title>Context is important</title>
 <para>Since you aren't writing a linear procedure to
 process your document, the context of where and how to
 apply each modular template is important.
-The <literal>match</literal> attribute
-of <literal>&lt;xsl:template&gt;</literal> provides that
+The <sgmltag class="attribute">match</sgmltag> attribute
+of <sgmltag class="element">&lt;xsl:template&gt;</sgmltag> provides that
 context for most templates. There is an entire expression
 language, XPath, for identifying what parts of your
 document should be handled by each template. The simplest
@@ -2268,33 +2268,33 @@ context is just an element name, as in the example above.
 But you can also specify elements as children of other
 elements, elements with certain attribute values, the first
 or last elements in a sequence, and so on. Here is how the
-DocBook <literal>&lt;formalpara&gt;</literal> element is
+DocBook <sgmltag class="element">&lt;formalpara&gt;</sgmltag> element is
 handled:</para>
-<programlisting>&lt;xsl:template match="formalpara"&gt;
-  &lt;p&gt;
-    &lt;xsl:apply-templates/&gt;
-  &lt;/p&gt;
-&lt;/xsl:template&gt;
+<programlisting><![CDATA[<xsl:template match="formalpara">
+  <p>
+    <xsl:apply-templates/>
+  </p>
+</xsl:template>
 
-&lt;xsl:template match="formalpara/title"&gt;
-  &lt;b&gt;&lt;xsl:apply-templates/&gt;&lt;/b&gt;
-  &lt;xsl:text&gt; &lt;/xsl:text&gt;
-&lt;/xsl:template&gt;
+<xsl:template match="formalpara/title">
+  <b><xsl:apply-templates/></b>
+  <xsl:text> </xsl:text>
+</xsl:template>
 
-&lt;xsl:template match="formalpara/para"&gt;
-  &lt;xsl:apply-templates/&gt;
-&lt;/xsl:template&gt;
-</programlisting>
+<xsl:template match="formalpara/para">
+  <xsl:apply-templates/>
+</xsl:template>
+]]></programlisting>
 <para>There are three templates defined, one for
-the <literal>&lt;formalpara&gt;</literal> element itself,
- and one for each of its children elements. The <literal>match</literal> attribute
+the <sgmltag class="element">&lt;formalpara&gt;</sgmltag> element itself,
+ and one for each of its children elements. The <sgmltag class="attribute">match</sgmltag> attribute
 value <literal>formalpara/title</literal>    in the second
 template is an XPath expression indicating
-a <literal>&lt;title&gt;</literal> element that is an
+a <sgmltag class="element">&lt;title&gt;</sgmltag> element that is an
 immediate child of
-a <literal>&lt;formalpara&gt;</literal> element. This
+a <sgmltag class="element">&lt;formalpara&gt;</sgmltag> element. This
 distinguishes such titles from
-other <literal>&lt;title&gt;</literal> elements used in
+other <sgmltag class="element">&lt;title&gt;</sgmltag> elements used in
 DocBook. XPath expressions are the key to controlling how
 your templates are applied.</para>
 <para>In general, the XSL processor has internal rules that
@@ -2304,53 +2304,53 @@ but also provides a fallback mechanism to a less specific
 template when you don't supply the full context for every
 combination of elements. This feature is illustrated by the
 third template, for <literal>formalpara/para</literal>. By
-including this template, the stylesheet processes a <literal>&lt;para&gt;</literal> within <literal>&lt;formalpara&gt;</literal> in
-a special way, in this case by not outputting the HTML <literal>&lt;p&gt;</literal> tags already output by its parent. If this template had not been included, then the processor would have fallen back to the template
-specified by <literal>match="para"</literal> described
-above, which would have output a second set of <literal>&lt;p&gt;</literal> tags.</para>
+including this template, the stylesheet processes a <sgmltag class="element">&lt;para&gt;</sgmltag> within <sgmltag class="element">&lt;formalpara&gt;</sgmltag> in
+a special way, in this case by not outputting the HTML <sgmltag class="element">&lt;p&gt;</sgmltag> tags already output by its parent. If this template had not been included, then the processor would have fallen back to the template
+specified by <sgmltag class="attribute">match="para"</sgmltag> described
+above, which would have output a second set of <sgmltag class="element">&lt;p&gt;</sgmltag> tags.</para>
 <para>You can also control template context with
 XSL <emphasis>modes</emphasis>, which are used extensively
 in the DocBook stylesheets. Modes let you process the same
 input more than once in different ways.
-A <literal>mode</literal> attribute in
-an <literal>&lt;xsl:template&gt;</literal> definition adds a
+A <sgmltag class="attribute">mode</sgmltag> attribute in
+an <sgmltag class="element">&lt;xsl:template&gt;</sgmltag> definition adds a
 specific mode name to that template. When the same mode
 name is used
-in <literal>&lt;xsl:apply-templates/&gt;</literal>, it acts
+in <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag>, it acts
 as a filter to narrow the selection of templates to only
 those selected by
-the <literal>match</literal> expression <emphasis>and</emphasis> that
+the <sgmltag class="attribute">match</sgmltag> expression <emphasis>and</emphasis> that
 have that mode name. This lets you define two different
 templates for the same element match that are applied under
 different contexts. For example, there are two templates
 defined for
-DocBook <literal>&lt;listitem&gt;</literal>  elements:</para>
-<programlisting>&lt;xsl:template match="listitem"&gt;
-  &lt;li&gt;&lt;xsl:apply-templates/&gt;&lt;/li&gt;
-&lt;/xsl:template&gt;
+DocBook <sgmltag class="element">&lt;listitem&gt;</sgmltag>  elements:</para>
+<programlisting><![CDATA[<xsl:template match="listitem">
+  <li><xsl:apply-templates/></li>
+</xsl:template>
 
-&lt;xsl:template match="listitem" mode="xref"&gt;
-  &lt;xsl:number format="1"/&gt;
-&lt;/xsl:template&gt;
-</programlisting>
+<xsl:template match="listitem" mode="xref">
+  <xsl:number format="1"/>
+</xsl:template>
+]]></programlisting>
 <para>The first template is for the normal list item
 context where you want to output the
-HTML <literal>&lt;li&gt;</literal> tags. The second template
-is called with <literal>&lt;xsl:apply-templates
-select="$target" mode="xref"/&gt;</literal> in the context
-of processing <literal>&lt;xref&gt;</literal> elements. In
-this case the <literal>select</literal> attribute locates
+HTML <sgmltag class="element">&lt;li&gt;</sgmltag> tags. The second template
+is called with <sgmltag class="element">&lt;xsl:apply-templates
+select="$target" mode="xref"/&gt;</sgmltag> in the context
+of processing <sgmltag class="element">&lt;xref&gt;</sgmltag> elements. In
+this case the <sgmltag class="attribute">select</sgmltag> attribute locates
 the ID of the specific list item and
-the <literal>mode</literal> attribute selects the second
+the <sgmltag class="attribute">mode</sgmltag> attribute selects the second
 template, whose effect is to output its item number when it
 is in an ordered list. Because there are many such special
 needs when
-processing <literal>&lt;xref&gt;</literal> elements, it is
+processing <sgmltag class="element">&lt;xref&gt;</sgmltag> elements, it is
 convenient to define a mode name <literal>xref</literal> to
 handle them all. Keep in mind that mode settings
 do <emphasis>not</emphasis> automatically get passed down to
 other templates
-through <literal>&lt;xsl:apply-templates/&gt;</literal>.</para>
+through <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag>.</para>
 </section>
 <section>
 <title>Programming features</title>
@@ -2358,26 +2358,26 @@ through <literal>&lt;xsl:apply-templates/&gt;</literal>.</para>
 features of traditional programming languages. Here are
 some examples from the DocBook stylesheets. </para>
 <programlisting><lineannotation>Assign a value to a variable:</lineannotation>
-&lt;xsl:variable name="refelem" select="name($target)"/&gt;
-
+<![CDATA[<xsl:variable name="refelem" select="name($target)"/>
+]]>
 <lineannotation>If statement:</lineannotation>
-&lt;xsl:if test="$show.comments"&gt;
-    &lt;i&gt;&lt;xsl:call-template name="inline.charseq"/&gt;&lt;/i&gt;
-&lt;/xsl:if&gt;
-
+<![CDATA[<xsl:if test="$show.comments">
+    <i><xsl:call-template name="inline.charseq"/></i>
+</xsl:if>
+]]>
 <lineannotation>Case statement:</lineannotation>
-&lt;xsl:choose&gt;
-    &lt;xsl:when test="@columns"&gt;
-        &lt;xsl:value-of select="@columns"/&gt;
-    &lt;/xsl:when&gt;
-    &lt;xsl:otherwise&gt;1&lt;/xsl:otherwise&gt;
-&lt;/xsl:choose&gt;
-
+<![CDATA[<xsl:choose>
+    <xsl:when test="@columns">
+        <xsl:value-of select="@columns"/>
+    </xsl:when>
+    <xsl:otherwise>1</xsl:otherwise>
+</xsl:choose>
+]]>
 <lineannotation>Call a template by name like a subroutine, passing parameter values and accepting a return value:</lineannotation>
-&lt;xsl:call-template name="xref.xreflabel"&gt;
-   &lt;xsl:with-param name="target" select="$target"/&gt;
-&lt;/xsl:call-template&gt;
-</programlisting>
+<![CDATA[<xsl:call-template name="xref.xreflabel">
+   <xsl:with-param name="target" select="$target"/>
+</xsl:call-template>
+]]></programlisting>
 <para>However, you can't always use these constructs as you
 do in other programming languages. Variables in particular
 have very different behavior.</para>
@@ -2385,30 +2385,30 @@ have very different behavior.</para>
 <title>Using variables and parameters</title>
 <para>XSL provides two elements that let you assign a value
 to a
-name: <literal>&lt;xsl:variable&gt;</literal> and <literal>&lt;xsl:param&gt;</literal>.
+name: <sgmltag class="element">&lt;xsl:variable&gt;</sgmltag> and <sgmltag class="element">&lt;xsl:param&gt;</sgmltag>.
 These share the same name space and syntax for assigning
 names and values. Both can be referred to using
 the <literal>$name</literal> syntax. The main difference
 between these two elements is that a param's value acts as
 a default value that can be overridden when a template is
 called using
-a <literal>&lt;xsl:with-param&gt;</literal> element as in the
+a <sgmltag class="element">&lt;xsl:with-param&gt;</sgmltag> element as in the
 last example above.</para>
 <para>Here are two examples from DocBook:</para>
-<programlisting>&lt;xsl:param name="cols"&gt;1&lt;/xsl:param&gt;
-&lt;xsl:variable name="segnum" select="position()"/&gt;
-</programlisting>
+<programlisting><![CDATA[<xsl:param name="cols">1</xsl:param>
+<xsl:variable name="segnum" select="position()"/>
+]]></programlisting>
 <para>In both elements, the name of the parameter or
 variable is specified with
-the <literal>name</literal> attribute. So the name of
-the <literal>param</literal> here
-is <literal>cols</literal> and the name of
-the <literal>variable</literal> is <literal>segnum</literal>.
+the <sgmltag class="attribute">name</sgmltag> attribute. So the name of
+the <sgmltag class="element">param</sgmltag> here
+is <sgmltag class="attvalue">cols</sgmltag> and the name of
+the <sgmltag class="element">variable</sgmltag> is <sgmltag class="attvalue">segnum</sgmltag>.
 The value of either can be supplied in two ways. The value
 of the first example is the text node "1" and is supplied
 as the content of the element. The value of the second
 example is supplied as the result of the expression in
-its <literal>select</literal> attribute, and the element
+its <sgmltag class="attribute">select</sgmltag> attribute, and the element
 itself has no content.</para>
 <para>The feature of XSL variables that is odd to new users
 is that once you assign a value to a variable, you cannot
@@ -2434,7 +2434,7 @@ variable.</para>
 only within their permitted scope, which is defined as all
 following siblings and their descendants. To understand
 such a scope, you have to remember that XSL instructions
-are true XML elements that are embedded in an XML family
+are true &XML; elements that are embedded in an &XML; family
 hierarchy of XSL elements, often referred to as parents,
 children, siblings, ancestors and descendants. Taking the
 family analogy a step further, think of a variable
@@ -2453,40 +2453,40 @@ stylesheets, it helps to indent nested XSL elements. Here
 is an edited snippet from the DocBook stylesheet
 file <filename>pi.xsl</filename> that illustrates different
 scopes for two variables:</para>
-<programlisting>
- 1 &lt;xsl:template name="dbhtml-attribute"&gt;
+<programlisting><![CDATA[
+ 1 <xsl:template name="dbhtml-attribute">
  2 ...
- 3    &lt;xsl:choose&gt;
- 4       &lt;xsl:when test="$count&gt;count($pis)"&gt;
- 5          &lt;!-- not found --&gt;
- 6       &lt;/xsl:when&gt;
- 7       &lt;xsl:otherwise&gt;
- 8          &lt;xsl:variable name="pi"&gt;
- 9             &lt;xsl:value-of select="$pis[$count]"/&gt;
-10          &lt;/xsl:variable&gt;
-11          &lt;xsl:choose&gt;
-12             &lt;xsl:when test="contains($pi,concat($attribute, '='))"&gt;
-13                &lt;xsl:variable name="rest" select="substring-after($pi,concat($attribute,'='))"/&gt;
-14                &lt;xsl:variable name="quote" select="substring($rest,1,1)"/&gt;
-15                &lt;xsl:value-of select="substring-before(substring($rest,2),$quote)"/&gt;
-16             &lt;/xsl:when&gt;
-17             &lt;xsl:otherwise&gt;
+ 3    <xsl:choose>
+ 4       <xsl:when test="$count>count($pis)">
+ 5          <!-- not found -->
+ 6       </xsl:when>
+ 7       <xsl:otherwise>
+ 8          <xsl:variable name="pi">
+ 9             <xsl:value-of select="$pis[$count]"/>
+10          </xsl:variable>
+11          <xsl:choose>
+12             <xsl:when test="contains($pi,concat($attribute, '='))">
+13                <xsl:variable name="rest" select="substring-after($pi,concat($attribute,'='))"/>
+14                <xsl:variable name="quote" select="substring($rest,1,1)"/>
+15                <xsl:value-of select="substring-before(substring($rest,2),$quote)"/>
+16             </xsl:when>
+17             <xsl:otherwise>
 18             ...
-19             &lt;/xsl:otherwise&gt;
-20          &lt;/xsl:choose&gt;
-21       &lt;/xsl:otherwise&gt;
-22    &lt;/xsl:choose&gt;
-23 &lt;/xsl:template&gt;
+19             </xsl:otherwise>
+20          </xsl:choose>
+21       </xsl:otherwise>
+22    </xsl:choose>
+23 </xsl:template>
 
-</programlisting>
-<para>The scope of the variable <literal>pi</literal> begins
+]]></programlisting>
+<para>The scope of the variable <varname>pi</varname> begins
 on line 8 where it is defined in this template, and ends on
-line 20 when its last sibling ends.<footnote><para>Technically, the scope extends to the end tag of the parent of the <literal>&lt;xsl:variable&gt;</literal> element. That is effectively the last sibling.</para></footnote>     The scope of the
-variable <literal>rest</literal> begins on line 13 and ends
+line 20 when its last sibling ends.<footnote><para>Technically, the scope extends to the end tag of the parent of the <sgmltag class="element">&lt;xsl:variable&gt;</sgmltag> element. That is effectively the last sibling.</para></footnote>     The scope of the
+variable <varname>rest</varname> begins on line 13 and ends
 on line 15. Fortunately, line 15 outputs an expression
 using the value before it goes out of scope.</para>
 <para>What happens when
-an <literal>&lt;xsl:apply-templates/&gt;</literal> element
+an <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag> element
 is used within the scope of a local variable? Do the
 templates that are applied to the document children get the
 variable? The answer is no. The templates that are applied
@@ -2495,34 +2495,34 @@ exist elsewhere in the stylesheet and are not following
 siblings or their descendants. </para>
 <para>To pass a value to another template, you pass a
 parameter using
-the <literal>&lt;xsl:with-param&gt;</literal> element. This
+the <sgmltag class="element">&lt;xsl:with-param&gt;</sgmltag> element. This
 parameter passing is usually done with calls to a specific
 named template
-using <literal>&lt;xsl:call-template&gt;</literal>, although
+using <sgmltag class="element">&lt;xsl:call-template&gt;</sgmltag>, although
 it works
-with <literal>&lt;xsl:apply-templates&gt;</literal> too.
+with <sgmltag class="element">&lt;xsl:apply-templates&gt;</sgmltag> too.
 That's because the called template must be expecting the
 parameter by defining it using
-a <literal>&lt;xsl:param&gt;</literal> element with the same
+a <sgmltag class="element">&lt;xsl:param&gt;</sgmltag> element with the same
 parameter name. Any passed parameters whose names are not
 defined in the called template are ignored.</para>
 <para>Here is an example of parameter passing
 from <filename>docbook.xsl</filename>:</para>
-<programlisting>&lt;xsl:call-template name="head.content"&gt;
-   &lt;xsl:with-param name="node" select="$doc"/&gt;
-&lt;/xsl:call-template&gt;
-</programlisting>
+<programlisting><![CDATA[<xsl:call-template name="head.content">
+   <xsl:with-param name="node" select="$doc"/>
+</xsl:call-template>
+]]></programlisting>
 <para>Here a template
 named <literal>head.content</literal> is being called and
-passed a parameter named <literal>node</literal> whose
-content is the value of the <literal>$doc</literal> variable
+passed a parameter named <parameter>node</parameter> whose
+content is the value of the <varname>$doc</varname> variable
 in the current context. The top of that template looks like
 this:</para>
-<programlisting>&lt;xsl:template name="head.content"&gt;
-   &lt;xsl:param name="node" select="."/&gt;
-</programlisting>
+<programlisting><![CDATA[<xsl:template name="head.content">
+   <xsl:param name="node" select="."/>
+]]></programlisting>
 <para>The template is expecting the parameter because it
-has a <literal>&lt;xsl:param&gt;</literal> defined with the
+has a <sgmltag class="element">&lt;xsl:param&gt;</sgmltag> defined with the
 same name. The value in this definition is the default
 value. This would be the parameter value used in the
 template if the template was called without passing that
@@ -2531,43 +2531,43 @@ parameter.</para>
 </section>
 <section>
 <title>Generating HTML output.</title>
-<para>You generate HTML from your DocBook XML files by
+<para>You generate HTML from your DocBook &XML; files by
 applying the HTML version of the stylesheets. This is done
 by using the HTML driver
 file <filename>docbook/html/docbook.xsl</filename> as your
 stylesheet. That is the master stylesheet file that
-uses <literal>&lt;xsl:include&gt;</literal> to pull in the
+uses <sgmltag class="element">&lt;xsl:include&gt;</sgmltag> to pull in the
 component files it needs to assemble a complete stylesheet
 for producing HTML. </para>
 <para>The way the DocBook stylesheet generates HTML is to
 apply templates that output a mix of text content and HTML
 elements. Starting at the top level in the main
 file <filename>docbook.xsl</filename>:</para>
-<programlisting>&lt;xsl:template match="/"&gt;
-  &lt;xsl:variable name="doc" select="*[1]"/&gt;
-  &lt;html&gt;
-  &lt;head&gt;
-    &lt;xsl:call-template name="head.content"&gt;
-      &lt;xsl:with-param name="node" select="$doc"/&gt;
-    &lt;/xsl:call-template&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;xsl:apply-templates/&gt;
-  &lt;/body&gt;
-  &lt;/html&gt;
-&lt;/xsl:template&gt;
-</programlisting>
+<programlisting><![CDATA[<xsl:template match="/">
+  <xsl:variable name="doc" select="*[1]"/>
+  <html>
+  <head>
+    <xsl:call-template name="head.content">
+      <xsl:with-param name="node" select="$doc"/>
+    </xsl:call-template>
+  </head>
+  <body>
+    <xsl:apply-templates/>
+  </body>
+  </html>
+</xsl:template>
+]]></programlisting>
 <para>This template matches the root element of your input
 document, and starts the process of recursively applying
 templates. It first defines a variable
-named <literal>doc</literal> and then outputs two literal
-HTML elements <literal>&lt;html&gt;</literal> and <literal>&lt;head&gt;</literal>.
+named <varname>doc</varname> and then outputs two literal
+HTML elements <sgmltag class="element">&lt;html&gt;</sgmltag> and <sgmltag class="element">&lt;head&gt;</sgmltag>.
 Then it calls a named
 template <literal>head.content</literal> to process the
-content of the HTML <literal>&lt;head&gt;</literal>, closes
-the <literal>&lt;head&gt;</literal> and starts
-the <literal>&lt;body&gt;</literal>. There it
-uses <literal>&lt;xsl:apply-templates/&gt;</literal> to
+content of the HTML <sgmltag class="element">&lt;head&gt;</sgmltag>, closes
+the <sgmltag class="element">&lt;head&gt;</sgmltag> and starts
+the <sgmltag class="element">&lt;body&gt;</sgmltag>. There it
+uses <sgmltag class="emptytag">&lt;xsl:apply-templates/&gt;</sgmltag> to
 recursively process the entire input document. Then it just
 closes out the HTML file.</para>
 <para>Simple HTML elements can generated as literal
@@ -2577,44 +2577,44 @@ select the element name and possibly add attributes and
 their values. Here is a fragment
 from <filename>sections.xsl</filename> that shows how a
 heading tag is generated using
-the <literal>&lt;xsl:element&gt;</literal> and <literal>&lt;xsl:attribute&gt;</literal> elements:</para>
-<programlisting>
- 1 &lt;xsl:element name="h{$level}"&gt;
- 2   &lt;xsl:attribute name="class"&gt;title&lt;/xsl:attribute&gt;
- 3   &lt;xsl:if test="$level&lt;3"&gt;
- 4     &lt;xsl:attribute name="style"&gt;clear: all&lt;/xsl:attribute&gt;
- 5   &lt;/xsl:if&gt;
- 6   &lt;a&gt;
- 7     &lt;xsl:attribute name="name"&gt;
- 8       &lt;xsl:call-template name="object.id"/&gt;
- 9     &lt;/xsl:attribute&gt;
-10     &lt;b&gt;&lt;xsl:copy-of select="$title"/&gt;&lt;/b&gt;
-11   &lt;/a&gt;
-12 &lt;/xsl:element&gt;
-</programlisting>
+the <sgmltag class="element">&lt;xsl:element&gt;</sgmltag> and <sgmltag class="element">&lt;xsl:attribute&gt;</sgmltag> elements:</para>
+<programlisting><![CDATA[
+ 1 <xsl:element name="h{$level}">
+ 2   <xsl:attribute name="class">title</xsl:attribute>
+ 3   <xsl:if test="$level<3">
+ 4     <xsl:attribute name="style">clear: all</xsl:attribute>
+ 5   </xsl:if>
+ 6   <a>
+ 7     <xsl:attribute name="name">
+ 8       <xsl:call-template name="object.id"/>
+ 9     </xsl:attribute>
+10     <b><xsl:copy-of select="$title"/></b>
+11   </a>
+12 </xsl:element>
+]]></programlisting>
 <para>This whole example is generating a single HTML
 heading element. Line 1 begins the HTML element definition
 by identifying the name of the element. In this case, the
 name is an expression that includes the
-variable <literal>$level</literal> passed as a parameter to
+variable <parameter>$level</parameter> passed as a parameter to
 this template. Thus a single template can
-generate <literal>&lt;h1&gt;</literal>, <literal>&lt;h2&gt;</literal>,
+generate <sgmltag class="element">&lt;h1&gt;</sgmltag>, <sgmltag class="element">&lt;h2&gt;</sgmltag>,
 etc. depending on the context in which it is called. Line 2
-defines a <literal>class="title"</literal> attribute that is
+defines a <sgmltag class="attribute">class="title"</sgmltag> attribute that is
 added to this element. Lines 3 to 5 add
-a <literal>style="clear all"</literal> attribute, but only
+a <sgmltag class="attribute">style="clear all"</sgmltag> attribute, but only
 if the heading level is less than 3. Line 6 opens
-an <literal>&lt;a&gt;</literal> anchor element. Although this
+an <sgmltag class="element">&lt;a&gt;</sgmltag> anchor element. Although this
 looks like a literal output string, it is actually modified
 by lines 7 to 9 that insert
-the <literal>name</literal> attribute into
-the <literal>&lt;a&gt;</literal> element. This illustrates
+the <sgmltag class="attribute">name</sgmltag> attribute into
+the <sgmltag class="element">&lt;a&gt;</sgmltag> element. This illustrates
 that XSL is managing output elements as active element
 nodes, not just text strings. Line 10 outputs the text of
 the heading title, also passed as a parameter to the
 template, enclosed in HTML boldface tags. Line 11 closes
 the anchor tag with the
-literal <literal>&lt;/a&gt;</literal> syntax, while line 12
+literal <sgmltag class="endtag">&lt;/a&gt;</sgmltag> syntax, while line 12
 closes the heading tag by closing the element definition.
 Since the actual element name is a variable, it couldn't
 use the literal syntax.</para>
@@ -2624,10 +2624,10 @@ ordinary text of your input document gets to the output. In
 the file <filename>docbook.xsl</filename> you will find
 this template that handles any text not processed by any
 other template:</para>
-<programlisting>&lt;xsl:template match="text()"&gt;
-  &lt;xsl:value-of select="."/&gt;
-&lt;/xsl:template&gt;
-</programlisting>
+<programlisting><![CDATA[<xsl:template match="text()">
+  <xsl:value-of select="."/>
+</xsl:template>
+]]></programlisting>
 <para>This template's body consists of the "value" of the text node,
 which is just its text. In general, all XSL processors have
 some built-in templates to handle any content for which
@@ -2637,44 +2637,44 @@ the stylesheet.</para>
 </section>
 <section>
 <title>Generating formatting objects.</title>
-<para>You generate formatting objects from your DocBook XML
+<para>You generate formatting objects from your DocBook &XML;
 files by applying the fo version of the stylesheets. This
 is done by using the fo driver
 file <filename>docbook/fo/docbook.xsl</filename> as your
 stylesheet. That is the master stylesheet file that
-uses <literal>&lt;xsl:include&gt;</literal> to pull in the
+uses <sgmltag class="element">&lt;xsl:include&gt;</sgmltag> to pull in the
 component files it needs to assemble a complete stylesheet
 for producing formatting objects. Generating a formatting
 objects file is only half the process of producing typeset
 output. You also need a formatting object processor such as
-the Apache XML Project's FOP as described in an earlier
+the Apache &XML; Project's FOP as described in an earlier
 section.</para>
 <para>The DocBook fo stylesheet works in a similar manner
 to the HTML stylesheet. Instead of outputting HTML tags, it
 outputs text marked up
-with <literal>&lt;fo:<replaceable>something</replaceable>&gt;</literal> tags.
+with <sgmltag class="element">&lt;fo:<replaceable>something</replaceable>&gt;</sgmltag> tags.
 For example, to indicate that some text should be kept
 in-line and typeset with a monospace font, it might look
 like this:</para>
-<programlisting>&lt;fo:inline-sequence font-family="monospace"&gt;/usr/man&lt;/fo:inline-sequence&gt;</programlisting>
+<programlisting><![CDATA[<fo:inline-sequence font-family="monospace">/usr/man</fo:inline-sequence>]]></programlisting>
 <para>The templates
 in <filename>docbook/fo/inline.xsl</filename>      that produce
 this output for a
-DocBook   <literal>&lt;filename&gt;</literal>     element look
+DocBook   <sgmltag class="element">&lt;filename&gt;</sgmltag>     element look
 like this:</para>
-<programlisting>&lt;xsl:template match="filename"&gt;
-  &lt;xsl:call-template name="inline.monoseq"/&gt;
-&lt;/xsl:template&gt;
+<programlisting><![CDATA[<xsl:template match="filename">
+  <xsl:call-template name="inline.monoseq"/>
+</xsl:template>
 
-&lt;xsl:template name="inline.monoseq"&gt;
-  &lt;xsl:param name="content"&gt;
-    &lt;xsl:apply-templates/&gt;
-  &lt;/xsl:param&gt;
-  &lt;fo:inline-sequence font-family="monospace"&gt;
-    &lt;xsl:copy-of select="$content"/&gt;
-  &lt;/fo:inline-sequence&gt;
-&lt;/xsl:template&gt;
-</programlisting>
+<xsl:template name="inline.monoseq">
+  <xsl:param name="content">
+    <xsl:apply-templates/>
+  </xsl:param>
+  <fo:inline-sequence font-family="monospace">
+    <xsl:copy-of select="$content"/>
+  </fo:inline-sequence>
+</xsl:template>
+]]></programlisting>
 <para>There are dozens of fo tags and attributes specified
 in the XSL standard. It is beyond the scope of this
 document to cover how all of them are used in the DocBook
@@ -2722,20 +2722,20 @@ are distributed among four directories:</para>
 <para>The driver files for each of HTML and FO stylesheets
 are <filename>html/docbook.xsl</filename> and <filename>fo/docbook.xsl</filename>,
 respectively. A driver file consists mostly of a bunch
-of <literal>&lt;xsl:include&gt;</literal> instructions to
+of <sgmltag class="element">&lt;xsl:include&gt;</sgmltag> instructions to
 pull in the component templates, and then defines some
 top-level templates. For example:</para>
-<programlisting>&lt;xsl:include href="../VERSION"/&gt;
-&lt;xsl:include href="../lib/lib.xsl"/&gt;
-&lt;xsl:include href="../common/l10n.xsl"/&gt;
-&lt;xsl:include href="../common/common.xsl"/&gt;
-&lt;xsl:include href="autotoc.xsl"/&gt;
-&lt;xsl:include href="lists.xsl"/&gt;
-&lt;xsl:include href="callout.xsl"/&gt;
+<programlisting><![CDATA[<xsl:include href="../VERSION"/>
+<xsl:include href="../lib/lib.xsl"/>
+<xsl:include href="../common/l10n.xsl"/>
+<xsl:include href="../common/common.xsl"/>
+<xsl:include href="autotoc.xsl"/>
+<xsl:include href="lists.xsl"/>
+<xsl:include href="callout.xsl"/>
 ...
-&lt;xsl:include href="param.xsl"/&gt;
-&lt;xsl:include href="pi.xsl"/&gt;
-</programlisting>
+<xsl:include href="param.xsl"/>
+<xsl:include href="pi.xsl"/>
+]]></programlisting>
 <para>The first four modules are shared with the FO
 stylesheet and are referenced using relative pathnames to
 the common directories. Then the long list of component
@@ -2743,12 +2743,12 @@ stylesheets starts. Pathnames in include statements are
 always taken to be relative to the including file. Each
 included file must be a valid XSL stylesheet, which means
 its root element must
-be <literal>&lt;xsl:stylesheet&gt;</literal>.</para>
+be <sgmltag class="element">&lt;xsl:stylesheet&gt;</sgmltag>.</para>
 <section>
 <title>Stylesheet inclusion vs. importing</title>
 <para>XSL actually provides two inclusion
-mechanisms: <literal>&lt;xsl:include&gt;</literal> and <literal>&lt;xsl:import&gt;</literal>.
-Of the two, <literal>&lt;xsl:include&gt;</literal> is
+mechanisms: <sgmltag class="element">&lt;xsl:include&gt;</sgmltag> and <sgmltag class="element">&lt;xsl:import&gt;</sgmltag>.
+Of the two, <sgmltag class="element">&lt;xsl:include&gt;</sgmltag> is
 the simpler. It treats the included content as if it were
 actually typed into the file at that point, and doesn't
 give it any more or less precedence relative to the
@@ -2756,7 +2756,7 @@ surrounding text. It is best used when assembling
 dissimilar templates that don't overlap what they match.
 The DocBook driver files use this instruction to assemble a
 set of modules into a stylesheet.</para>
-<para>In contrast, <literal>&lt;xsl:import&gt;</literal> lets
+<para>In contrast, <sgmltag class="element">&lt;xsl:import&gt;</sgmltag> lets
 you manage the precedence of templates and variables. It is
 the preferred mode of customizing another stylesheet because
 it lets you override definitions in the distributed
@@ -2771,7 +2771,7 @@ variables in the imported stylesheet. Think of the imported stylesheet elements 
 <note>
 <para>Customizing a DocBook XSL stylesheet is the opposite
 of customizing a DocBook DTD. When you customize a DocBook
-DTD, the rules of XML and SGML dictate that
+DTD, the rules of &XML; and &SGML; dictate that
 the <emphasis>first</emphasis> of any duplicate declarations
 wins. Any subsequent declarations of the same element or
 entity are ignored. The architecture of the DTD provides
@@ -2788,9 +2788,9 @@ stylesheet. </para>
 </section>
 <section>
 <title>Customizing
-with <literal>&lt;xsl:import&gt;</literal></title>
+with <sgmltag class="element">&lt;xsl:import&gt;</sgmltag></title>
 <para>There is currently one example of customizing
-with <literal>&lt;xsl:import&gt;</literal> in the HTML
+with <sgmltag class="element">&lt;xsl:import&gt;</sgmltag> in the HTML
 version of the DocBook stylesheets.
 The <filename>xtchunk.xsl</filename> stylesheet modifies the
 HTML processing to output many smaller HTML files rather
@@ -2798,10 +2798,10 @@ than a single large file per input document. It uses XSL
 extensions defined only in the XSL
 processor <command>XT</command>. In the driver
 file <filename>xtchunk.xsl</filename>, the first instruction
-is <literal>&lt;xsl:import
-href="docbook.xsl"/&gt;</literal>. That instruction imports
+is <sgmltag class="element">&lt;xsl:import
+href="docbook.xsl"/&gt;</sgmltag>. That instruction imports
 the original driver file, which in turn uses
-many <literal>&lt;xsl:include&gt;</literal> instructions to
+many <sgmltag class="element">&lt;xsl:include&gt;</sgmltag> instructions to
 include all the modules. That single import instruction
 gives the new stylesheet the complete set of DocBook
 templates to start with.</para>
@@ -2810,32 +2810,32 @@ import, <filename>xtchunk.xsl</filename> redefines some of
 the templates and adds some new ones. Here is one example
 of a redefined template:</para>
 <programlisting><lineannotation>Original template in autotoc.xsl</lineannotation>
-&lt;xsl:template name="href.target"&gt;
-  &lt;xsl:param name="object" select="."/&gt;
-  &lt;xsl:text&gt;#&lt;/xsl:text&gt;
-  &lt;xsl:call-template name="object.id"&gt;
-    &lt;xsl:with-param name="object" select="$object"/&gt;
-  &lt;/xsl:call-template&gt;
-&lt;/xsl:template&gt;
+<![CDATA[<xsl:template name="href.target">
+  <xsl:param name="object" select="."/>
+  <xsl:text>#</xsl:text>
+  <xsl:call-template name="object.id">
+    <xsl:with-param name="object" select="$object"/>
+  </xsl:call-template>
+</xsl:template>]]>
 
 <lineannotation>New template in xtchunk.xsl</lineannotation>
-&lt;xsl:template name="href.target"&gt;
-  &lt;xsl:param name="object" select="."/&gt;
-  &lt;xsl:variable name="ischunk"&gt;
-    &lt;xsl:call-template name="chunk"&gt;
-      &lt;xsl:with-param name="node" select="$object"/&gt;
-    &lt;/xsl:call-template&gt;
-  &lt;/xsl:variable&gt;
+<![CDATA[<xsl:template name="href.target">
+  <xsl:param name="object" select="."/>
+  <xsl:variable name="ischunk">
+    <xsl:call-template name="chunk">
+      <xsl:with-param name="node" select="$object"/>
+    </xsl:call-template>
+  </xsl:variable>
 
-  &lt;xsl:apply-templates mode="chunk-filename" select="$object"/&gt;
+  <xsl:apply-templates mode="chunk-filename" select="$object"/>
 
-  &lt;xsl:if test="$ischunk='0'"&gt;
-    &lt;xsl:text&gt;#&lt;/xsl:text&gt;
-    &lt;xsl:call-template name="object.id"&gt;
-      &lt;xsl:with-param name="object" select="$object"/&gt;
-    &lt;/xsl:call-template&gt;
-  &lt;/xsl:if&gt;
-&lt;/xsl:template&gt;
+  <xsl:if test="$ischunk='0'">
+    <xsl:text>#</xsl:text>
+    <xsl:call-template name="object.id">
+      <xsl:with-param name="object" select="$object"/>
+    </xsl:call-template>
+  </xsl:if>
+</xsl:template>]]>
 </programlisting>
 <para>The new template handles the more complex processing
 of HREFs when the output is split into many HTML files.
@@ -2849,14 +2849,14 @@ the new one outputs <literal><replaceable>filename</replaceable>#<replaceable>ob
 however. The DocBook stylesheets are parameterized using
 XSL variables rather than hard-coded values for many of the
 formatting features. Since
-the <literal>&lt;xsl:import&gt;</literal> mechanism also
+the <sgmltag class="element">&lt;xsl:import&gt;</sgmltag> mechanism also
 lets you redefine global variables, this gives you an easy
 way to customize many features of the DocBook
 stylesheets. Over time, more features will be parameterized to permit customization. If you find hardcoded values in the stylesheets that would be useful to customize, please let the maintainer know.</para>
 <para>Near the end of the list of includes in the main
 DocBook driver file is the
-instruction <literal>&lt;xsl:include
-href="param.xsl"/&gt;</literal>.
+instruction <sgmltag class="element">&lt;xsl:include
+href="param.xsl"/&gt;</sgmltag>.
 The <filename>param.xsl</filename> file is the most
 important module for customizing a DocBook XSL stylesheet.
 This module contains no templates, only definitions of
@@ -2872,22 +2872,22 @@ stylesheet and adds your own new variable definitions. Here
 is an example of a complete custom stylesheet that changes
 the depth of sections listed in the table of contents from
 two to three:</para>
-<programlisting>&lt;?xml version='1.0'?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<programlisting><![CDATA[<?xml version='1.0'?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version='1.0'
                 xmlns="http://www.w3.org/TR/xhtml1/transitional"
-                exclude-result-prefixes="#default"&gt;
+                exclude-result-prefixes="#default">
 
-&lt;xsl:import href="docbook.xsl"/&gt;
+<xsl:import href="docbook.xsl"/>
 
-&lt;xsl:variable name="toc.section.depth"&gt;3&lt;/xsl:variable&gt;
-&lt;!-- Add other variable definitions here --&gt;
+<xsl:variable name="toc.section.depth">3</xsl:variable>
+<!-- Add other variable definitions here -->
 
-&lt;/xsl:stylesheet&gt;
-</programlisting>
+</xsl:stylesheet>
+]]></programlisting>
 <para>Following the opening stylesheet element are the
 import instruction and one variable definition. The
-variable <literal>toc.section.depth</literal> was defined
+variable <varname>toc.section.depth</varname> was defined
 in <filename>param.xsl</filename> with value "2", and here
 it is defined as "3". Since the importing stylesheet takes
 precedence, this new value is used. Thus documents
@@ -2912,8 +2912,8 @@ containing a collection of templates for processing lists,
 for example, and put them in a file
 named <filename>mylists.xsl</filename>. Then your importing
 stylesheet can pull in your list templates with
-a <literal>&lt;xsl:include
-href="mylists.xsl"/&gt;</literal> instruction. Since your
+a <sgmltag class="element">&lt;xsl:include
+href="mylists.xsl"/&gt;</sgmltag> instruction. Since your
 included template definitions appear after the main import
 instruction, your templates will take precedence.</para>
 <para>You'll need to make sure your new templates are
@@ -2930,7 +2930,7 @@ complete coverage.</para>
 </listitem>
 <listitem>
 <para>Include the same set
-of <literal>&lt;xsl:param&gt;</literal> elements in each
+of <sgmltag class="element">&lt;xsl:param&gt;</sgmltag> elements in each
 template to interface properly with any calling templates,
 although you can set different values for your
 parameters.</para>
@@ -2945,10 +2945,10 @@ return a value should return the same data type.</para>
 <title>Writing your own driver</title>
 <para>Another approach to customizing the stylesheets is to
 write your own driver file. Instead of
-using <literal>&lt;xsl:import
-href="docbook.xsl"/&gt;</literal>, you copy that file to a
+using <sgmltag class="element">&lt;xsl:import
+href="docbook.xsl"/&gt;</sgmltag>, you copy that file to a
 new name and rewrite any of
-the <literal>&lt;xsl:include/&gt;</literal> instructions to
+the <sgmltag class="element">&lt;xsl:include/&gt;</sgmltag> instructions to
 assemble a custom collection of stylesheet modules. One
 reason to do this is to speed up processing by reducing the
 size of the stylesheet. If you are using a customized
@@ -2962,48 +2962,48 @@ stylesheet.</para>
 localizing generated text, that is, printing any generated
 text in a language other than the default English. In
 general, the stylesheets will switch to the language
-identified by a <literal>lang</literal> attribute when
+identified by a <sgmltag class="attribute">lang</sgmltag> attribute when
 processing elements in your documents. If your documents
-use the <literal>lang</literal> attribute, then you don't
+use the <sgmltag class="attribute">lang</sgmltag> attribute, then you don't
 need to customize the stylesheets at all for
 localization.</para>
 <para>As far as the stylesheets go,
-a <literal>lang</literal> attribute is inherited by the
+a <sgmltag class="attribute">lang</sgmltag> attribute is inherited by the
 descendents of a document element. The stylesheet searches
-for a <literal>lang</literal> attribute using this XPath
+for a <sgmltag class="attribute">lang</sgmltag> attribute using this XPath
 expression:</para>
-<programlisting>&lt;xsl:variable name="lang-attr"
+<programlisting><![CDATA[<xsl:variable name="lang-attr"
          select="($target/ancestor-or-self::*/@lang
-                  |$target/ancestor-or-self::*/@xml:lang)[last()]"/&gt;</programlisting>
+                  |$target/ancestor-or-self::*/@xml:lang)[last()]"/>]]></programlisting>
 
 <para>This locates the attribute on the current element or
 its most recent ancestor. Thus
-a <literal>lang</literal> attribute is in effect for an
+a <sgmltag class="attribute">lang</sgmltag> attribute is in effect for an
 element and all of its descendents, unless it is reset in
 one of those descendents. If you define it in only your
 document root element, then it applies to the whole
 document:</para>
-<programlisting>&lt;?xml version="1.0"?&gt;
-&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.0//EN" "docbook.dtd"&gt;
-&lt;book lang="fr"&gt;
+<programlisting><![CDATA[<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.0//EN" "docbook.dtd">
+<book lang="fr">
 ...
-&lt;/book&gt;</programlisting>
+</book>]]></programlisting>
 <para>When text is being generated, the stylesheet checks
-the most recent <literal>lang</literal> attribute and looks
+the most recent <sgmltag class="attribute">lang</sgmltag> attribute and looks
 up the generated text strings for that language in a
-localization XML file. These are located in
+localization &XML; file. These are located in
 the <filename>common</filename> directory of the
 stylesheets, one file per language. Here is the top of the
 file <filename>fr.xml</filename>:</para>
-<programlisting>&lt;localization language="fr"&gt;
+<programlisting><![CDATA[<localization language="fr">
 
-&lt;gentext key="abstract"                 text="R&amp;#x00E9;sum&amp;#x00E9;"/&gt;
-&lt;gentext key="answer"                   text="R:"/&gt;
-&lt;gentext key="appendix"                 text="Annexe"/&gt;
-&lt;gentext key="article"                  text="Article"/&gt;
-&lt;gentext key="bibliography"             text="Bibliographie"/&gt;
+<gentext key="abstract"                 text="R]]>&amp;#x00E9;sum&amp;#x00E9;<![CDATA["/>
+<gentext key="answer"                   text="R:"/>
+<gentext key="appendix"                 text="Annexe"/>
+<gentext key="article"                  text="Article"/>
+<gentext key="bibliography"             text="Bibliographie"/>
 ...
-</programlisting>
+]]></programlisting>
 <para>The stylesheet templates use the gentext key names,
 and then the stylesheet looks up the associated text value
 when the document is processed with that lang setting. The
@@ -3012,18 +3012,18 @@ the <filename>.xml</filename> suffix) lists the filenames of
 all the supported languages.</para>
 <para>You can also create a custom stylesheet that sets the
 language. That might be useful if your documents don't make
-appropriate use of the <literal>lang</literal> attribute.
+appropriate use of the <sgmltag class="attribute">lang</sgmltag> attribute.
 The module <filename>l10n.xsl</filename> defines two global
 variables that can be overridden with an importing
 stylesheet as described above. Here are their default
 definitions:</para>
-<programlisting>&lt;xsl:variable name="l10n.gentext.language"&gt;&lt;/xsl:variable&gt;
-&lt;xsl:variable name="l10n.gentext.default.language"&gt;en&lt;/xsl:variable&gt;
-</programlisting>
+<programlisting><![CDATA[<xsl:variable name="l10n.gentext.language"></xsl:variable>
+<xsl:variable name="l10n.gentext.default.language">en</xsl:variable>
+]]></programlisting>
 <para>The first one sets the language for all elements,
-regardless of an element's <literal>lang</literal> attribute
+regardless of an element's <sgmltag class="attribute">lang</sgmltag> attribute
 value. The second just sets a default language for any
-elements that haven't got a <literal>lang</literal> setting
+elements that haven't got a <sgmltag class="attribute">lang</sgmltag> setting
 of their own (or their ancestors).</para>
 </section>
 </section>
@@ -3032,7 +3032,7 @@ of their own (or their ancestors).</para>
 
 <!--
 Local Variables:
-mode:sgml
-sgml-parent-document: ("book.sgm" "chapter")
+mode: xml
+sgml-parent-document: ("book.xml" "chapter")
 End:
 -->
