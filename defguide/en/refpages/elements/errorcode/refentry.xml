@@ -15,9 +15,17 @@
 &errorcode.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para>
-An error code. Error codes are often numeric, but in some environments
+<para>An error code. Error codes are often numeric, but in some environments
 they may be symbolic constants.
+</para>
+
+<para>DocBook provides four elements for identifying the parts of an error message:
+<sgmltag>ErrorCode</sgmltag>, for the alphanumeric error code (e.g., <quote>-2</quote>);
+<sgmltag>ErrorName</sgmltag>, for the symbolic name of the error
+(e.g., <quote>ENOENT</quote>);
+<sgmltag>ErrorText</sgmltag>, for the text of the error message (e.g., <quote>file
+not found</quote>); and
+<sgmltag>ErrorType</sgmltag>, for the error type (e.g., <quote>recoverable</quote>).
 </para>
 
 <refsect2><title>Processing expectations</title>
@@ -25,7 +33,6 @@ they may be symbolic constants.
 &format.inline; &pexp.moreinfo;
 </para>
 </refsect2>
-
 
 &errorcode.parents.gen;
 &errorcode.children.gen;

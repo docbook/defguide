@@ -1,25 +1,23 @@
-<refentry id="errortype.element">
-<?dbhtml filename="errortype.html"?>
+<refentry id="errortext.element">
+<?dbhtml filename="errortext.html"?>
 
 <refmeta>
 <indexterm><primary>elements</primary>
-<secondary>errortype</secondary></indexterm>
-<refentrytitle>errortype</refentrytitle>
+<secondary>errortext</secondary></indexterm>
+<refentrytitle>errortext</refentrytitle>
 <refmiscinfo>Element</refmiscinfo>
 </refmeta>
 <refnamediv>
-<refname>errortype</refname>
-<refpurpose>&errortype.purpose;</refpurpose>
+<refname>errortext</refname>
+<refpurpose>&errortext.purpose;</refpurpose>
 </refnamediv>
 
-&errortype.synopsis.gen;
-
+&errortext.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para>The <sgmltag>ErrorType</sgmltag> element identifies a class of error.  The
-exact classifications are naturally going to vary by system, but
-<quote>recoverable</quote> and <quote>fatal</quote> are two possibilities.
-</para>
+<para><sgmltag>ErrorText</sgmltag> holds the text of an error message. Usually this
+is a short message associated with an <sgmltag>ErrorCode</sgmltag> or
+<sgmltag>ErrorName</sgmltag> that is intended to be understood by the user.</para>
 
 <para>DocBook provides four elements for identifying the parts of an error message:
 <sgmltag>ErrorCode</sgmltag>, for the alphanumeric error code (e.g., <quote>-2</quote>);
@@ -30,6 +28,12 @@ not found</quote>); and
 <sgmltag>ErrorType</sgmltag>, for the error type (e.g., <quote>recoverable</quote>).
 </para>
 
+<para>Prior to DocBook V4.2, the <sgmltag>ErrorName</sgmltag> element was the
+recommended element for error <emphasis>messages</emphasis>. However, this left no
+element for symoblic names, so the <sgmltag>ErrorText</sgmltag> element was added
+and the semantics of the error elements adjusted slightly.
+</para>
+
 <refsect2><title>Processing expectations</title>
 <para>
 &format.inline;
@@ -37,16 +41,16 @@ not found</quote>); and
 </refsect2>
 
 
-&errortype.parents.gen;
-&errortype.children.gen;
+&errortext.parents.gen;
+&errortext.children.gen;
 </refsect1>
 <refsect1 condition='ref.elem.seealso'><title>See Also</title>
-&errortype.seealso.gen;
+&errortext.seealso.gen;
 </refsect1>
 <refsect1><title>Examples</title>
 
 <para>For examples, see
-&errortype.example.seealso.gen;.</para>
+&errortext.example.seealso.gen;.</para>
 </refsect1>
 </refentry>
 
