@@ -67,7 +67,14 @@ set       nop
   <xsl:param name="node" select="."/>
   <div class="copyrightfooter">
     <p>
-      <a href="dbcpyright.html">Copyright</a>
+      <xsl:choose>
+        <xsl:when test="$output.type = 'unexpanded'">
+          <a href="dbcpyright-x.html">Copyright</a>
+        </xsl:when>
+        <xsl:otherwise>
+          <a href="dbcpyright.html">Copyright</a>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:text> &#xA9; 1999, 2000, 2001, 2002 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>

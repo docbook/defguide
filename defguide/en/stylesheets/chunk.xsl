@@ -535,7 +535,15 @@
             <xsl:text> </xsl:text>
             <span class="alpha-version">
               <xsl:text>(</xsl:text>
-              <a href="co01.html">
+              <a>
+                <xsl:choose>
+                  <xsl:when test="$output.type = 'unexpanded'">
+                    <xsl:attribute name="href">co01-x.html</xsl:attribute>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:attribute name="href">co01.html</xsl:attribute>
+                  </xsl:otherwise>
+                </xsl:choose>
                 <em>Alpha</em>
               </a>
               <xsl:text>)</xsl:text>
