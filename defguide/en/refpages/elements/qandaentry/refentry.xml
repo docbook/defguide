@@ -15,11 +15,16 @@
 &qandaentry.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para>
-A <sgmltag>QandAEntry</sgmltag> is an entry in a <sgmltag>QandASet</sgmltag>.
-Each <sgmltag>QandAEntry</sgmltag> defines a <sgmltag>Question</sgmltag> and (possibly)
-its <sgmltag>Answer</sgmltag> or <sgmltag>Answer</sgmltag>s.
+<para>A <sgmltag>QandAEntry</sgmltag> is an entry in a
+<sgmltag>QandASet</sgmltag>. Each <sgmltag>QandAEntry</sgmltag>
+defines a <sgmltag>Question</sgmltag> and (possibly) its
+<sgmltag>Answer</sgmltag> or <sgmltag>Answer</sgmltag>s.
 </para>
+
+<para>Since V4.2, the preferred way to associate a revision history with
+a <sgmltag>QandAEntry</sgmltag> is in the <sgmltag>BlockInfo</sgmltag>.
+The use of <sgmltag>RevHistory</sgmltag> directly in <sgmltag>QandAEntry</sgmltag>
+is deprecated.</para>
 
 <refsect2><title>Processing expectations</title>
 <para>
