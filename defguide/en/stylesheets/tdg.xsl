@@ -687,10 +687,21 @@ set       nop
     </xsl:choose>
   </xsl:variable>
 
+  <xsl:variable name="elemidval">
+    <xsl:value-of select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                      'abcdefghijklmnopqrstuvwxyz')"/>
+    <xsl:text>.element</xsl:text>
+  </xsl:variable>
+
+  <xsl:variable name="peidval">
+    <xsl:value-of select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                      'abcdefghijklmnopqrstuvwxyz')"/>
+    <xsl:text>.parament</xsl:text>
+  </xsl:variable>
+
   <xsl:choose>
-    <xsl:when test="$class = 'element'
-                    and count(id(concat(.,'.element'))) &gt; 0">
-      <xsl:variable name="targets" select="id(concat(.,'.element'))"/>
+    <xsl:when test="$class = 'element' and count(id($elemidval)) &gt; 0">
+      <xsl:variable name="targets" select="id($elemidval)"/>
       <xsl:variable name="target" select="$targets[1]"/>
       <a>
         <xsl:attribute name="href">
@@ -701,9 +712,8 @@ set       nop
         <xsl:apply-imports/>
       </a>
     </xsl:when>
-    <xsl:when test="$class = 'paramentity'
-                    and count(id(concat(.,'.parament'))) &gt; 0">
-      <xsl:variable name="targets" select="id(concat(.,'.parament'))"/>
+    <xsl:when test="$class = 'paramentity' and count(id($peidval)) &gt; 0">
+      <xsl:variable name="targets" select="id($peidval)"/>
       <xsl:variable name="target" select="$targets[1]"/>
       <a>
         <xsl:attribute name="href">
