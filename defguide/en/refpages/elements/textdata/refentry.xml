@@ -15,11 +15,30 @@
 &textdata.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para>FIXME: TBD.</para>
+<para>This element points to an external entity containing text
+to be inserted.
+</para>
 
-<refsect2><title>Processing expectations</title>
-<para>FIXME: TBD.</para>
-</refsect2>
+<note>
+<para>Any markup in the text identified with <sgmltag>textdata</sgmltag>
+will be escaped. In other words, this element is for inserting things
+like program listings, not parts of an XML document. To break a document
+into separate physical files, use entities.</para>
+</note>
+
+<refsect2 id="dbreproc.textdata"><title>Processing expectations</title>
+<para>
+&format.context; Insert the text.
+</para>
+<para>
+There are two ways to provide content for <sgmltag>textdata</sgmltag>:
+<sgmltag class='attribute'>entityref</sgmltag> or <sgmltag
+class='attribute'>fileref</sgmltag>.  It is best to use only one of these
+methods, however, if multiple sources are provided, 
+<sgmltag class='attribute'>entityref</sgmltag> will be used in favor of 
+<sgmltag class='attribute'>fileref</sgmltag>.
+</para>
+</refsect2> 
 
 &textdata.parents.gen;
 
@@ -29,7 +48,11 @@
 <variablelist>
 <varlistentry><term>encoding</term>
 <listitem>
-<para>FIXME: TBD.</para>
+<para>Identifies the encoding of the text in the external file.
+Recommended best practice suggests that character encodings
+<ulink url="ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets">registered
+(as charsets)</ulink> with the Internet Assigned Numbers Authority
+be referred to using their registered names.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term>entityref</term>
