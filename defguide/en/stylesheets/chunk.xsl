@@ -627,6 +627,105 @@
           <td width="40%" align="left">
             <xsl:if test="count($prev)>0">
               <a>
+                <xsl:attribute name="title">
+                  <xsl:apply-templates select="$prev" mode="object.title.markup.textonly"/>
+                </xsl:attribute>
+                <xsl:attribute name="href">
+                  <xsl:call-template name="href.target">
+                    <xsl:with-param name="object" select="$prev"/>
+                  </xsl:call-template>
+                </xsl:attribute>
+
+                <img src="figures/nav-prev.png" alt="Prev" border="0"/>
+              </a>
+            </xsl:if>
+            <xsl:text>&#160;</xsl:text>
+          </td>
+          <td width="20%" align="center">
+            <xsl:choose>
+              <xsl:when test="$home != .">
+                <a>
+                  <xsl:attribute name="title">
+                    <xsl:apply-templates select="$home" mode="object.title.markup.textonly"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="href">
+                    <xsl:call-template name="href.target">
+                      <xsl:with-param name="object" select="$home"/>
+                    </xsl:call-template>
+                  </xsl:attribute>
+
+                  <img src="figures/nav-home.png" alt="Home" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>&#160;</xsl:otherwise>
+            </xsl:choose>
+          </td>
+          <td width="40%" align="right">
+            <xsl:text>&#160;</xsl:text>
+            <xsl:if test="count($next)>0">
+              <a>
+                <xsl:attribute name="title">
+                  <xsl:apply-templates select="$next" mode="object.title.markup.textonly"/>
+                </xsl:attribute>
+                <xsl:attribute name="href">
+                  <xsl:call-template name="href.target">
+                    <xsl:with-param name="object" select="$next"/>
+                  </xsl:call-template>
+                </xsl:attribute>
+
+                <img src="figures/nav-next.png" alt="Next" border="0"/>
+              </a>
+            </xsl:if>
+          </td>
+        </tr>
+
+        <tr>
+          <td width="40%" align="left">
+            <xsl:apply-templates select="$prev" mode="object.title.markup.textonly"/>
+            <xsl:text>&#160;</xsl:text>
+          </td>
+          <td width="20%" align="center">
+            <xsl:choose>
+              <xsl:when test="count($up)>0">
+                <a>
+                  <xsl:attribute name="title">
+                    <xsl:apply-templates select="$up" mode="object.title.markup.textonly"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="href">
+                    <xsl:call-template name="href.target">
+                      <xsl:with-param name="object" select="$up"/>
+                    </xsl:call-template>
+                  </xsl:attribute>
+
+                  <img src="figures/nav-up.png" alt="Up" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>&#160;</xsl:otherwise>
+            </xsl:choose>
+          </td>
+          <td width="40%" align="right">
+            <xsl:text>&#160;</xsl:text>
+            <xsl:apply-templates select="$next" mode="object.title.markup.textonly"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="X.footer.navigation">
+  <xsl:param name="prev" select="/foo"/>
+  <xsl:param name="next" select="/foo"/>
+  <xsl:variable name="home" select="/*[1]"/>
+  <xsl:variable name="up" select="parent::*"/>
+
+  <xsl:if test="$suppress.navigation = '0' and $suppress.footer.navigation = '0'">
+    <div class="navfooter">
+      <table width="100%" summary="Navigation table">
+        <tr>
+          <td width="40%" align="left">
+            <xsl:if test="count($prev)>0">
+              <a>
                 <xsl:attribute name="href">
                   <xsl:call-template name="href.target">
                     <xsl:with-param name="object" select="$prev"/>
