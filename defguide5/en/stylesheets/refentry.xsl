@@ -242,6 +242,116 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template match="processing-instruction('tdg-attributes')">
+  <xsl:variable name="elem" select="$rng/key('define', $pattern)/rng:element"/>
+  <xsl:variable name="attributes"
+		select="$elem/doc:attributes//rng:attribute"/>
+
+  <xsl:variable name="cmnAttr"
+		select="$attributes[@name='xml:id' and parent::rng:optional]
+			|$attributes[@name='xml:lang']
+			|$attributes[@name='xml:base']
+			|$attributes[@name='remap']
+			|$attributes[@name='xreflabel']
+			|$attributes[@name='revisionflag']
+			|$attributes[@name='arch']
+			|$attributes[@name='condition']
+			|$attributes[@name='conformance']
+			|$attributes[@name='os']
+			|$attributes[@name='revision']
+			|$attributes[@name='security']
+			|$attributes[@name='userlevel']
+			|$attributes[@name='vendor']
+			|$attributes[@name='wordsize']
+			|$attributes[@name='role']
+			|$attributes[@name='version']"/>
+
+  <xsl:variable name="cmnAttrIdReq"
+		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
+			|$attributes[@name='xml:lang']
+			|$attributes[@name='xml:base']
+			|$attributes[@name='remap']
+			|$attributes[@name='xreflabel']
+			|$attributes[@name='revisionflag']
+			|$attributes[@name='arch']
+			|$attributes[@name='condition']
+			|$attributes[@name='conformance']
+			|$attributes[@name='os']
+			|$attributes[@name='revision']
+			|$attributes[@name='security']
+			|$attributes[@name='userlevel']
+			|$attributes[@name='vendor']
+			|$attributes[@name='wordsize']
+			|$attributes[@name='role']
+			|$attributes[@name='version']"/>
+
+  <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
+
+  <xsl:variable name="cmnLinkAttr"
+		select="$attributes[@name='linkend']
+                        |$attributes[@name='xlink:href']
+                        |$attributes[@name='xlink:type']
+                        |$attributes[@name='xlink:role']
+                        |$attributes[@name='xlink:arcrole']
+                        |$attributes[@name='xlink:title']
+                        |$attributes[@name='xlink:show']
+                        |$attributes[@name='xlink:actuate']"/>
+
+  <xsl:variable name="otherAttr"
+		select="set:difference($attributes,
+			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+
+  <xsl:if test="count($cmnAttrEither) != 17 or count($otherAttr) &gt; 0">
+    <refsection>
+      <title>Attributes</title>
+
+      <xsl:choose>
+	<xsl:when test="count($cmnAttr) = 17 and count($cmnLinkAttr) = 8">
+	  <para>Common attributes and common linking attributes.</para>
+	</xsl:when>
+	<xsl:when test="count($cmnAttrIdReq) = 17 and count($cmnLinkAttr) = 8">
+	  <para>Common attributes (ID required) and common linking atttributes.</para>
+	</xsl:when>
+	<xsl:when test="count($cmnAttr) = 17">
+	  <para>Common attributes.</para>
+	</xsl:when>
+	<xsl:when test="count($cmnAttrIdReq) = 17">
+	  <para>Common attributes (ID required).</para>
+	</xsl:when>
+	<xsl:when test="count($cmnLinkAttr) = 8">
+	  <para>Common linking attributes.</para>
+	</xsl:when>
+      </xsl:choose>
+
+      <variablelist>
+	<xsl:for-each select="$elem/doc:attributes/rng:interleave/*
+			      |$elem/doc:attributes/*[not(self::rng:interleave)]">
+	  <xsl:sort select="descendant-or-self::rng:attribute[1]/@name"/>
+	  <!-- don't bother with common attributes -->
+	  <xsl:variable name="name"
+			select="descendant-or-self::rng:attribute/@name"/>
+	  <xsl:choose>
+	    <xsl:when test="$cmnAttrEither[@name=$name]
+			    |$cmnLinkAttr[@name=$name]"/>
+	    <xsl:otherwise>
+	      <varlistentry>
+		<term>
+		  <xsl:value-of select=".//rng:attribute[1]/@name"/>
+		</term>
+		<listitem>
+		  <para>
+		    <xsl:text>FIXME:</xsl:text>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:for-each>
+      </variablelist>
+    </refsection>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template match="processing-instruction('tdg-seealso')">
   <xsl:variable name="xdefs" select="$rng/key('elemdef', $element)"/>
   <xsl:variable name="seealsolist">
@@ -309,6 +419,12 @@
 	<xsl:when test="contains(., 'format.suppress')">
 	  <xsl:text>Suppressed.</xsl:text>
 	</xsl:when>
+	<xsl:when test="contains(., 'calssemantics')">This element is
+expected to obey the semantics of the
+<link linkend='calsdtd'><citetitle>CALS Table Model
+Document Type Definition</citetitle></link>, as specified by <citetitle>
+<ulink url='http://www.oasis-open.org/html/a502.htm'>OASIS
+Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
 	<xsl:otherwise>
 	  <xsl:message>
 	    <xsl:text>Unrecognized tdg PI: </xsl:text>
