@@ -12,7 +12,9 @@
 <row condition='ref.synopsis' rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>orderedlist ::=
-((<sgmltag class="paramentity">formalobject.title.content</sgmltag>)?,
+(<sgmltag>blockinfo</sgmltag>?,
+ (<sgmltag class="paramentity">formalobject.title.content</sgmltag>)?,
+ (<sgmltag class="paramentity">listpreamble.mix</sgmltag>)*,
  <sgmltag>listitem</sgmltag>+)</synopsis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep='0' role='attrtitle'>
@@ -27,18 +29,6 @@
 ><emphasis role='bold'>Type</emphasis></para></entry>
 <entry role='th'><para
 ><emphasis role='bold'>Default</emphasis></para></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>numeration</entry>
-<entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
-</para><simplelist>
-<member>arabic</member>
-<member>loweralpha</member>
-<member>lowerroman</member>
-<member>upperalpha</member>
-<member>upperroman</member>
-</simplelist></entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
 <entry align='left' valign='top'>inheritnum</entry>
@@ -58,7 +48,7 @@
 </simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
-<row condition='ref.rsdiv.attr' rowsep="1" role="attr">
+<row condition='ref.rsdiv.attr' role="attr">
 <entry align='left' valign='top'>continuation</entry>
 <entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
 </para><simplelist>
@@ -66,6 +56,18 @@
 <member>restarts</member>
 </simplelist></entry>
 <entry align='left' valign='top'>"restarts"</entry>
+</row>
+<row condition='ref.rsdiv.attr' rowsep="1" role="attr">
+<entry align='left' valign='top'>numeration</entry>
+<entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
+</para><simplelist>
+<member>arabic</member>
+<member>loweralpha</member>
+<member>lowerroman</member>
+<member>upperalpha</member>
+<member>upperroman</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.pe' rowsep='0' role='petitle'>
 <entry namest='c1' nameend='c3' align='left'

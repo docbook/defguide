@@ -12,8 +12,10 @@
 <row condition='ref.synopsis' rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>table ::=
-(((<sgmltag>title</sgmltag>,<sgmltag>titleabbrev</sgmltag>?),
+((<sgmltag>blockinfo</sgmltag>?,
+  (<sgmltag>title</sgmltag>,<sgmltag>titleabbrev</sgmltag>?),
   (<sgmltag>indexterm</sgmltag>)*,
+  <sgmltag>textobject</sgmltag>*,
   (<sgmltag>graphic</sgmltag>+|<sgmltag>mediaobject</sgmltag>+|<sgmltag>tgroup</sgmltag>+)))</synopsis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep='0' role='attrtitle'>
@@ -30,17 +32,7 @@
 ><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>label</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>pgwide</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>rowsep</entry>
+<entry align='left' valign='top'>tocentry</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -50,12 +42,26 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>colsep</entry>
+<entry align='left' valign='top'>tabstyle</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>tabstyle</entry>
+<entry align='left' valign='top'>orient</entry>
+<entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
+</para><simplelist>
+<member>land</member>
+<member>port</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>label</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>colsep</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -73,16 +79,12 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>orient</entry>
-<entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
-</para><simplelist>
-<member>land</member>
-<member>port</member>
-</simplelist></entry>
+<entry align='left' valign='top'>pgwide</entry>
+<entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep="1" role="attr">
-<entry align='left' valign='top'>tocentry</entry>
+<entry align='left' valign='top'>rowsep</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>

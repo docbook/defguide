@@ -12,7 +12,8 @@
 <row condition='ref.synopsis' rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>informaltable ::=
-(<sgmltag>graphic</sgmltag>+|<sgmltag>mediaobject</sgmltag>+|<sgmltag>tgroup</sgmltag>+)</synopsis></entry>
+(<sgmltag>blockinfo</sgmltag>?,<sgmltag>textobject</sgmltag>*,
+ (<sgmltag>graphic</sgmltag>+|<sgmltag>mediaobject</sgmltag>+|<sgmltag>tgroup</sgmltag>+))</synopsis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep='0' role='attrtitle'>
 <entry colsep='0'
@@ -28,17 +29,7 @@
 ><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>pgwide</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>label</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>rowsep</entry>
+<entry align='left' valign='top'>tocentry</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -48,12 +39,26 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>colsep</entry>
+<entry align='left' valign='top'>tabstyle</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>tabstyle</entry>
+<entry align='left' valign='top'>orient</entry>
+<entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
+</para><simplelist>
+<member>land</member>
+<member>port</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>label</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>colsep</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -71,16 +76,12 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>orient</entry>
-<entry align='left' valign='top'><para><emphasis>Enumeration:</emphasis>
-</para><simplelist>
-<member>land</member>
-<member>port</member>
-</simplelist></entry>
+<entry align='left' valign='top'>pgwide</entry>
+<entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep="1" role="attr">
-<entry align='left' valign='top'>tocentry</entry>
+<entry align='left' valign='top'>rowsep</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -105,13 +106,18 @@
 </row>
 <row condition='ref.rsdiv.pe' rowsep='0' role='pe'>
 <entry colsep='0'><sgmltag class='paramentity'>informal.class</sgmltag></entry>
+<entry colsep='0'><sgmltag class='paramentity'>listpreamble.mix</sgmltag></entry>
 <entry colsep='0'><sgmltag class='paramentity'>para.mix</sgmltag></entry>
-<entry colsep='0'><sgmltag class='paramentity'>qandaset.mix</sgmltag></entry>
 </row>
 <row condition='ref.rsdiv.pe' rowsep='0' role='pe'>
+<entry colsep='0'><sgmltag class='paramentity'>qandaset.mix</sgmltag></entry>
 <entry colsep='0'><sgmltag class='paramentity'>refcomponent.mix</sgmltag></entry>
 <entry colsep='0'><sgmltag class='paramentity'>revdescription.mix</sgmltag></entry>
+</row>
+<row condition='ref.rsdiv.pe' rowsep='0' role='pe'>
 <entry colsep='0'><sgmltag class='paramentity'>sidebar.mix</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>

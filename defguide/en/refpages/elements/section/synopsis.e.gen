@@ -27,9 +27,11 @@
     <sgmltag>constraintdef</sgmltag>|<sgmltag>anchor</sgmltag>|<sgmltag>bridgehead</sgmltag>|<sgmltag>remark</sgmltag>|<sgmltag>highlights</sgmltag>|<sgmltag>abstract</sgmltag>|
     <sgmltag>authorblurb</sgmltag>|<sgmltag>epigraph</sgmltag>|<sgmltag>indexterm</sgmltag>|<sgmltag>beginpage</sgmltag>)+,
    ((<sgmltag>refentry</sgmltag>)*|
-    <sgmltag>section</sgmltag>*))|
+    (<sgmltag>section</sgmltag>)*|
+    <sgmltag>simplesect</sgmltag>*))|
   (<sgmltag>refentry</sgmltag>)+|
-  <sgmltag>section</sgmltag>+),
+  (<sgmltag>section</sgmltag>)+|
+  <sgmltag>simplesect</sgmltag>+),
  (<sgmltag>toc</sgmltag>|<sgmltag>lot</sgmltag>|<sgmltag>index</sgmltag>|<sgmltag>glossary</sgmltag>|<sgmltag>bibliography</sgmltag>)*)</synopsis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep='0' role='attrtitle'>
@@ -46,12 +48,12 @@
 ><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>label</entry>
+<entry align='left' valign='top'>status</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep="1" role="attr">
-<entry align='left' valign='top'>status</entry>
+<entry align='left' valign='top'>label</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -61,7 +63,7 @@
 </row>
 <row condition='ref.rsdiv.pe' rowsep='0' role='pe'>
 <entry colsep='0'><sgmltag class='paramentity'>bookcomponent.content</sgmltag></entry>
-<entry colsep='0'></entry>
+<entry colsep='0'><sgmltag class='paramentity'>section.class</sgmltag></entry>
 <entry colsep='0'></entry>
 </row>
 </tbody>

@@ -27,10 +27,12 @@
     <sgmltag>authorblurb</sgmltag>|<sgmltag>epigraph</sgmltag>|<sgmltag>indexterm</sgmltag>|<sgmltag>beginpage</sgmltag>)+,
    (<sgmltag>sect1</sgmltag>*|
     (<sgmltag>refentry</sgmltag>)*|
-    <sgmltag>simplesect</sgmltag>*|<sgmltag>section</sgmltag>*))|
+    <sgmltag>simplesect</sgmltag>*|
+    (<sgmltag>section</sgmltag>)*))|
   (<sgmltag>sect1</sgmltag>+|
    (<sgmltag>refentry</sgmltag>)+|
-   <sgmltag>simplesect</sgmltag>+|<sgmltag>section</sgmltag>+)),
+   <sgmltag>simplesect</sgmltag>+|
+   (<sgmltag>section</sgmltag>)+)),
  ((<sgmltag>toc</sgmltag>|<sgmltag>lot</sgmltag>|<sgmltag>index</sgmltag>|<sgmltag>glossary</sgmltag>|<sgmltag>bibliography</sgmltag>)|
   (<sgmltag>appendix</sgmltag>)|
   <sgmltag>ackno</sgmltag>)*)</synopsis></entry>
@@ -49,13 +51,13 @@
 ><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>status</entry>
-<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'>parentbook</entry>
+<entry align='left' valign='top'>IDREF</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>parentbook</entry>
-<entry align='left' valign='top'>IDREF</entry>
+<entry align='left' valign='top'>status</entry>
+<entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep="1" role="attr">
