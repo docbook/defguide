@@ -7,6 +7,23 @@ my $VERSION = "SF DocBook 1.0";
 my $PUBLIC_ID   = "-//OASIS//DTD DocBook XML V4.1.2//EN";
 my $SYSTEM_ID   = "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd";
 
+my $prefix = "";
+
+my @common_attributes  = ('id',
+			  'role',
+			  'lang',
+			  'remap',
+			  'xreflabel',
+			  'revisionflag',
+			  'arch',
+			  'conformance',
+			  'os',
+			  'revision',
+			  'userlevel',
+			  'vendor',
+			  'security',
+			  'condition');
+
 $fileext    = ".xml";
 $libdir     = "/sourceforge/docbook/defguide/en/build/lib";
 
@@ -479,7 +496,8 @@ sub formatElementSynopsis {
 	$filename .= ".u";
     }
 
-    open (SYNOP, ">$dir/$filename.gen") || die "Can't open: $dir/$filename.gen: $!";
+    open (SYNOP, ">$dir/$prefix$filename.gen")
+	|| die "Can't open: $dir/$prefix$filename.gen: $!";
     print SYNOP $html;
     close (SYNOP);
 
@@ -543,24 +561,15 @@ sub formatAttributeList {
     my $element = $elements{$name};
     my $attlist = $attlists{$name};
     my %attrs   = ();
-    my %cmnatt  = ('id' => 0,
-		   'role' => 0,
-		   'lang' => 0,
-		   'remap'=> 0,
-		   'xreflabel' => 0,
-		   'revisionflag' => 0,
-		   'arch' => 0,
-		   'conformance' => 0,
-		   'os' => 0,
-		   'revision' => 0,
-		   'userlevel' => 0,
-		   'vendor' => 0,
-		   'security' => 0,
-		   'condition' => 0);
+    my %cmnatt  = ();
     my $common  = 1;
     my $uncommon = 0;
 
     # Check for DocBook common attributes
+
+    foreach my $attr (@common_attributes) {
+	$cmnatts{$1} = 0;
+    }
 
     if (defined($attlist)) {
 	my $attelem = $attlist->getElementsByTagName("attribute");
@@ -870,7 +879,8 @@ sub formatParents {
 
 	my $filename = "parents";
 	if ($expanded eq 'expanded') {
-	    open (PAR, ">$dir/$filename.gen") || die "Can't open: $dir/$filename.gen: $!";
+	    open (PAR, ">$dir/$prefix$filename.gen")
+		|| die "Can't open: $dir/$prefix$filename.gen: $!";
 	    print PAR $html;
 	    close (PAR);
 	} else {
@@ -980,7 +990,8 @@ sub formatChildren {
 
 	my $filename = "children";
 	if ($expanded eq 'expanded') {
-	    open (CHD, ">$dir/$filename.gen") || die "Can't open: $dir/$filename.gen: $!";
+	    open (CHD, ">$dir/$prefix$filename.gen")
+		|| die "Can't open: $dir/$prefix$filename.gen: $!";
 	    print CHD $html;
 	    close (CHD);
 	} else {
@@ -1120,7 +1131,8 @@ sub formatElementSeeAlso {
 
 	my $filename = "seealso";
 	if ($expanded eq 'expanded') {
-	    open (SEE, ">$dir/$filename.gen") || die "Can't open: $dir/$filename.gen: $!";
+	    open (SEE, ">$dir/$prefix$filename.gen")
+		|| die "Can't open: $dir/$prefix$filename.gen: $!";
 	    print SEE $html;
 	    close (SEE);
 	} else {
@@ -2387,13 +2399,13 @@ sub writeElement {
 	close (F);
     }
 
-    open (F, ">$dir/entities.e.ent");
-    print F "<!ENTITY $name.synopsis.gen SYSTEM \"synopsis.e.gen\">\n"
-	if -f "$dir/synopsis.e.gen";
+    open (F, ">$dir/$prefixentities.e.ent");
+    print F "<!ENTITY $name.synopsis.gen SYSTEM \"${prefix}synopsis.e.gen\">\n"
+	if -f "$dir/${prefix}synopsis.e.gen";
 
     foreach my $f ("children", "parents", "seealso", "example.seealso") {
-	print F "<!ENTITY $name.$f.gen SYSTEM \"$f.gen\">\n"
-	    if -f "$dir/$f.gen";
+	print F "<!ENTITY $name.$f.gen SYSTEM \"$prefix$f.gen\">\n"
+	    if -f "$dir/$prefix$f.gen";
     }
 
     for (my $count = 1; -f "$dir/example.$count.gen"; $count++) {
@@ -2406,13 +2418,13 @@ sub writeElement {
 
     close (F);
 
-    open (F, ">$dir/entities.u.ent");
+    open (F, ">$dir/${prefix}entities.u.ent");
     print F "<!ENTITY $name.synopsis.gen SYSTEM \"synopsis.u.gen\">\n"
-	if -f "$dir/synopsis.u.gen";
+	if -f "$dir/${prefix}synopsis.u.gen";
 
     foreach my $f ("children", "parents", "seealso", "example.seealso") {
-	print F "<!ENTITY $name.$f.gen SYSTEM \"$f.gen\">\n"
-	    if -f "$dir/$f.gen";
+	print F "<!ENTITY $name.$f.gen SYSTEM \"$prefix$f.gen\">\n"
+	    if -f "$dir/$prefix$f.gen";
     }
 
     for (my $count = 1; -f "$dir/example.$count.gen"; $count++) {
