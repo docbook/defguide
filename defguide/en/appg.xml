@@ -1,6 +1,9 @@
 <appendix id='quickref'>
 <?dbhtml filename="quickref.html"?>
-<title>DocBook <acronym>V3.1</acronym> Quick Reference</title>
+<title>DocBook Quick Reference</title>
+
+<section><title>DocBook <acronym>V3.1</acronym></title>
+
 <informaltable>
 <tgroup cols="2">
 <colspec colnum="1" colwidth="1.25in"/>
@@ -362,11 +365,233 @@
 </tbody>
 </tgroup>
 </informaltable>
+
+</section>
+
+<section><title>DocBook <acronym>V4.1.2</acronym></title>
+
+<para>All of the elements in DocBook V3.1 <emphasis>except</emphasis>
+<simplelist type="inline">
+<member><sgmltag>ArtHeader</sgmltag></member>
+<member><sgmltag>BookBiblio</sgmltag></member>
+<member><sgmltag>Comment</sgmltag></member>
+<member><sgmltag>DocInfo</sgmltag></member>
+<member><sgmltag>InterfaceDefinition</sgmltag></member>
+<member><sgmltag>SeriesInfo</sgmltag></member>
+</simplelist> plus the following additional elements:</para>
+
+<informaltable>
+<tgroup cols="2">
+<colspec colnum="1" colwidth="1.25in"/>
+<colspec colnum="2" colwidth="3.75in"/>
+<thead>
+<row><entry>Element</entry><entry>Brief Description</entry></row>
+</thead>
+<tbody>
+<row>
+  <entry><sgmltag>appendixinfo</sgmltag></entry>
+  <entry>&appendixinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>articleinfo</sgmltag></entry>
+  <entry>&articleinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>bibliographyinfo</sgmltag></entry>
+  <entry>&bibliographyinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>chapterinfo</sgmltag></entry>
+  <entry>&chapterinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>classsynopsis</sgmltag></entry>
+  <entry>&classsynopsis.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>classsynopsisinfo</sgmltag></entry>
+  <entry>&classsynopsisinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>constructorsynopsis</sgmltag></entry>
+  <entry>&constructorsynopsis.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>destructorsynopsis</sgmltag></entry>
+  <entry>&destructorsynopsis.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>exceptionname</sgmltag></entry>
+  <entry>&exceptionname.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>fieldsynopsis</sgmltag></entry>
+  <entry>&fieldsynopsis.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>glossaryinfo</sgmltag></entry>
+  <entry>&glossaryinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>indexinfo</sgmltag></entry>
+  <entry>&indexinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>initializer</sgmltag></entry>
+  <entry>&initializer.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>interfacename</sgmltag></entry>
+  <entry>&interfacename.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>methodname</sgmltag></entry>
+  <entry>&methodname.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>methodparam</sgmltag></entry>
+  <entry>&methodparam.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>methodsynopsis</sgmltag></entry>
+  <entry>&methodsynopsis.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>modifier</sgmltag></entry>
+  <entry>&modifier.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>ooclass</sgmltag></entry>
+  <entry>&ooclass.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>ooexception</sgmltag></entry>
+  <entry>&ooexception.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>oointerface</sgmltag></entry>
+  <entry>&oointerface.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>partinfo</sgmltag></entry>
+  <entry>&partinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>prefaceinfo</sgmltag></entry>
+  <entry>&prefaceinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>refentryinfo</sgmltag></entry>
+  <entry>&refentryinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>referenceinfo</sgmltag></entry>
+  <entry>&referenceinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>remark</sgmltag></entry>
+  <entry>&remark.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>revdescription</sgmltag></entry>
+  <entry>&revdescription.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>setindexinfo</sgmltag></entry>
+  <entry>&setindexinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>sidebarinfo</sgmltag></entry>
+  <entry>&sidebarinfo.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>simplemsgentry</sgmltag></entry>
+  <entry>&simplemsgentry.purpose;</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+</section>
+<section><title>DocBook <acronym>EBNF</acronym> Module V1.0</title>
+
+<para>The following elements in addition to the elements in the version
+of DocBook to which this module is added:</para>
+
+<informaltable>
+<tgroup cols="2">
+<colspec colnum="1" colwidth="1.25in"/>
+<colspec colnum="2" colwidth="3.75in"/>
+<thead>
+<row><entry>Element</entry><entry>Brief Description</entry></row>
+</thead>
+<tbody>
+<row>
+  <entry><sgmltag>constraint</sgmltag></entry>
+  <entry>&constraint.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>constraintdef</sgmltag></entry>
+  <entry>&constraintdef.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>lhs</sgmltag></entry>
+  <entry>&lhs.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>nonterminal</sgmltag></entry>
+  <entry>&nonterminal.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>production</sgmltag></entry>
+  <entry>&production.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>productionrecap</sgmltag></entry>
+  <entry>&productionrecap.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>productionset</sgmltag></entry>
+  <entry>&productionset.purpose;</entry>
+</row>
+<row>
+  <entry><sgmltag>rhs</sgmltag></entry>
+  <entry>&rhs.purpose;</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+</section>
+<section><title>DocBook HTML Forms Module V1.0</title>
+
+<para>The <link linkend="htmlforms.module">HTML Forms Module</link> adds
+the HTML <sgmltag>Form</sgmltag> element and related elements.
+</para>
+
+</section>
+
+<section><title>DocBook MathML Module V1.0</title>
+
+<para>The <link linkend="mathml.module">MathML Module</link> adds
+the elements from the MathML namespace.
+</para>
+
+</section>
+
+<section><title>DocBook SVG Module V1.0</title>
+
+<para>The <link linkend="svg.module">SVG Module</link> adds
+the elements from the SVG namespace.
+</para>
+
+</section>
+
 </appendix>
 
 <!--
 Local Variables:
 mode:sgml
-sgml-parent-document: ("book.sgm" "appendix")
+sgml-parent-document: ("book.xml" "appendix")
 End:
 -->
