@@ -67,6 +67,7 @@
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>label		CDATA		#IMPLIED
+	
 	id		ID		#IMPLIED
 	lang		CDATA		#IMPLIED
 	remap		CDATA		#IMPLIED
@@ -84,7 +85,26 @@
 	userlevel	CDATA		#IMPLIED
 	vendor		CDATA		#IMPLIED
 	
+	dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED
+	xml:base	CDATA		#IMPLIED
 	
+	class       CDATA          #IMPLIED
+	style       CDATA          #IMPLIED
+	title       CDATA         #IMPLIED
+	xml:lang    NMTOKEN        #IMPLIED
+	onclick     CDATA       #IMPLIED
+  ondblclick  CDATA       #IMPLIED
+  onmousedown CDATA       #IMPLIED
+  onmouseup   CDATA       #IMPLIED
+  onmouseover CDATA       #IMPLIED
+  onmousemove CDATA       #IMPLIED
+  onmouseout  CDATA       #IMPLIED
+  onkeypress  CDATA       #IMPLIED
+  onkeydown   CDATA       #IMPLIED
+  onkeyup     CDATA       #IMPLIED
 	role		CDATA		#IMPLIED</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>
@@ -121,6 +141,37 @@
 <row role='attr'>
 <entry align='left' valign='top'>condition</entry>
 <entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</refsect2>
+
+<refsect2 id="dir.attrib.parament"><title>%dir.attrib;</title>
+<informaltable frame='all' role='elemsynop'>
+<tgroup cols='3'>
+<colspec colnum='1' colname='c1'/>
+<colspec colnum='2' colname='c2'/>
+<colspec colnum='3' colname='c3'/>
+<tbody>
+<row rowsep='0' role='vle-cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity
+</emphasis></entry>
+</row>
+<row rowsep='1' role='attrheader'>
+<entry role='th'><para><emphasis role='bold'>Name</emphasis></para></entry>
+<entry role='th'><para><emphasis role='bold'>Type</emphasis></para></entry>
+<entry role='th'><para><emphasis role='bold'>Default</emphasis></para></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>dir</entry>
+<entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>ltr</member>
+<member>rtl</member>
+<member>lro</member>
+<member>rlo</member>
+</simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 </tbody>
@@ -183,6 +234,8 @@
 <member>WMF</member>
 <member>WPG</member>
 <member>SVG</member>
+<member>PDF</member>
+<member>SWF</member>
 <member>linespecific</member>
 </simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
@@ -410,6 +463,23 @@
 </simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
+<row role='attr'>
+<entry align='left' valign='top'>continuation</entry>
+<entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>continues</member>
+<member>restarts</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>startinglinenumber</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>language</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
 <row rowsep='0' role='vle-petitle'>
 <entry namest='c1' nameend='c3' align='left'
 ><emphasis role='bold'>%linespecific.attrib; appears in:</emphasis></entry>
@@ -629,47 +699,52 @@
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>action</sgmltag></entry>
 <entry colsep='0'><sgmltag>application</sgmltag></entry>
-<entry colsep='0'><sgmltag>command</sgmltag></entry>
+<entry colsep='0'><sgmltag>code</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>command</sgmltag></entry>
 <entry colsep='0'><sgmltag>computeroutput</sgmltag></entry>
 <entry colsep='0'><sgmltag>database</sgmltag></entry>
-<entry colsep='0'><sgmltag>errorcode</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>errorcode</sgmltag></entry>
 <entry colsep='0'><sgmltag>filename</sgmltag></entry>
 <entry colsep='0'><sgmltag>function</sgmltag></entry>
-<entry colsep='0'><sgmltag>guibutton</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>guibutton</sgmltag></entry>
 <entry colsep='0'><sgmltag>guiicon</sgmltag></entry>
 <entry colsep='0'><sgmltag>guilabel</sgmltag></entry>
-<entry colsep='0'><sgmltag>guimenu</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>guimenu</sgmltag></entry>
 <entry colsep='0'><sgmltag>guimenuitem</sgmltag></entry>
 <entry colsep='0'><sgmltag>guisubmenu</sgmltag></entry>
-<entry colsep='0'><sgmltag>hardware</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>hardware</sgmltag></entry>
 <entry colsep='0'><sgmltag>interface</sgmltag></entry>
 <entry colsep='0'><sgmltag>keycap</sgmltag></entry>
-<entry colsep='0'><sgmltag>keycombo</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>keycombo</sgmltag></entry>
 <entry colsep='0'><sgmltag>literal</sgmltag></entry>
 <entry colsep='0'><sgmltag>menuchoice</sgmltag></entry>
-<entry colsep='0'><sgmltag>mousebutton</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>mousebutton</sgmltag></entry>
 <entry colsep='0'><sgmltag>parameter</sgmltag></entry>
 <entry colsep='0'><sgmltag>prompt</sgmltag></entry>
-<entry colsep='0'><sgmltag>property</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>property</sgmltag></entry>
 <entry colsep='0'><sgmltag>shortcut</sgmltag></entry>
 <entry colsep='0'><sgmltag>systemitem</sgmltag></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>userinput</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>
@@ -731,6 +806,8 @@
 <member>WMF</member>
 <member>WPG</member>
 <member>SVG</member>
+<member>PDF</member>
+<member>SWF</member>
 <member>linespecific</member>
 </simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
@@ -1079,6 +1156,33 @@
 <entry colsep='0'><sgmltag>programlisting</sgmltag></entry>
 <entry colsep='0'><sgmltag>screen</sgmltag></entry>
 <entry colsep='0'></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</refsect2>
+
+<refsect2 id="xml-base.attrib.parament"><title>%xml-base.attrib;</title>
+<informaltable frame='all' role='elemsynop'>
+<tgroup cols='3'>
+<colspec colnum='1' colname='c1'/>
+<colspec colnum='2' colname='c2'/>
+<colspec colnum='3' colname='c3'/>
+<tbody>
+<row rowsep='0' role='vle-cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity
+</emphasis></entry>
+</row>
+<row rowsep='1' role='attrheader'>
+<entry role='th'><para><emphasis role='bold'>Name</emphasis></para></entry>
+<entry role='th'><para><emphasis role='bold'>Type</emphasis></para></entry>
+<entry role='th'><para><emphasis role='bold'>Default</emphasis></para></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>xml:base</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 </tbody>
 </tgroup>

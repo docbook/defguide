@@ -300,7 +300,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>msgset|procedure|sidebar|qandaset
+><synopsis>msgset|procedure|sidebar|qandaset|task
                  %ebnf.block.hook;
                  %local.compound.class;</synopsis></entry>
 </row>
@@ -311,7 +311,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>msgset|procedure|sidebar|qandaset
+><synopsis>msgset|procedure|sidebar|qandaset|task
                  |productionset|constraintdef</synopsis></entry>
 </row>
 </tbody>
@@ -364,7 +364,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>author|authorinitials|corpauthor|modespec|othercredit
+><synopsis>author|authorinitials|corpauthor|corpcredit|modespec|othercredit
 		|productname|productnumber|revhistory
 		%local.docinfo.char.class;</synopsis></entry>
 </row>
@@ -375,7 +375,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>author|authorinitials|corpauthor|modespec|othercredit
+><synopsis>author|authorinitials|corpauthor|corpcredit|modespec|othercredit
 		|productname|productnumber|revhistory</synopsis></entry>
 </row>
 </tbody>
@@ -428,7 +428,7 @@
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>abbrev|acronym|citation|citerefentry|citetitle|emphasis
-		|firstterm|foreignphrase|glossterm|footnote|phrase
+		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname %local.gen.char.class;</synopsis></entry>
 </row>
 <row rowsep='0' role='cmtitle'>
@@ -439,7 +439,7 @@
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>abbrev|acronym|citation|citerefentry|citetitle|emphasis
-		|firstterm|foreignphrase|glossterm|footnote|phrase
+		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname</synopsis></entry>
 </row>
 </tbody>
@@ -546,7 +546,7 @@
 		 | subjectset | keywordset | itermset | abbrev|abstract|address|artpagenums|author
 		|authorgroup|authorinitials|bibliomisc|biblioset
 		|collab|confgroup|contractnum|contractsponsor
-		|copyright|corpauthor|corpname|date|edition
+		|copyright|corpauthor|corpname|corpcredit|date|edition
 		|editor|invpartnumber|isbn|issn|issuenum|orgname
 		|biblioid|citebiblioid|bibliosource|bibliorelation|bibliocoverage
 		|othercredit|pagenums|printhistory|productname
@@ -928,7 +928,7 @@
 </row>
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>refmeta</sgmltag></entry>
-<entry colsep='0'></entry>
+<entry colsep='0'><sgmltag>task</sgmltag></entry>
 <entry colsep='0'></entry>
 </row>
 </tbody>
@@ -954,7 +954,7 @@
 		| EPS | EQN | FAX | GIF | GIF87a | GIF89a
 		| JPG | JPEG | IGES | PCX
 		| PIC | PNG | PS | SGML | TBL | TEX | TIFF | WMF | WPG
-                | SVG
+                | SVG | PDF | SWF
 		| linespecific
 		%local.notation.class;</synopsis></entry>
 </row>
@@ -969,7 +969,7 @@
 		| EPS | EQN | FAX | GIF | GIF87a | GIF89a
 		| JPG | JPEG | IGES | PCX
 		| PIC | PNG | PS | SGML | TBL | TEX | TIFF | WMF | WPG
-                | SVG
+                | SVG | PDF | SWF
 		| linespecific</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>
@@ -1219,10 +1219,10 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 %ebnf.inline.hook;
 		%local.tech.char.class;</synopsis></entry>
 </row>
@@ -1240,10 +1240,10 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>

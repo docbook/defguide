@@ -81,7 +81,7 @@
 ><synopsis>abbrev|abstract|address|artpagenums|author
 		|authorgroup|authorinitials|bibliomisc|biblioset
 		|collab|confgroup|contractnum|contractsponsor
-		|copyright|corpauthor|corpname|date|edition
+		|copyright|corpauthor|corpname|corpcredit|date|edition
 		|editor|invpartnumber|isbn|issn|issuenum|orgname
 		|biblioid|citebiblioid|bibliosource|bibliorelation|bibliocoverage
 		|othercredit|pagenums|printhistory|productname
@@ -102,7 +102,7 @@
 ><synopsis>abbrev|abstract|address|artpagenums|author
 		|authorgroup|authorinitials|bibliomisc|biblioset
 		|collab|confgroup|contractnum|contractsponsor
-		|copyright|corpauthor|corpname|date|edition
+		|copyright|corpauthor|corpname|corpcredit|date|edition
 		|editor|invpartnumber|isbn|issn|issuenum|orgname
 		|biblioid|citebiblioid|bibliosource|bibliorelation|bibliocoverage
 		|othercredit|pagenums|printhistory|productname
@@ -175,7 +175,7 @@
 		|informalexample
                 |informalfigure
                 |informaltable 
-		|equation|example|figure|table 		|msgset|procedure|sidebar|qandaset
+		|equation|example|figure|table 		|msgset|procedure|sidebar|qandaset|task
                  |productionset|constraintdef
                  
 		|anchor|bridgehead|remark|highlights
@@ -209,6 +209,11 @@
 </row>
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>step</sgmltag></entry>
+<entry colsep='0'><sgmltag>taskprerequisites</sgmltag></entry>
+<entry colsep='0'><sgmltag>taskrelated</sgmltag></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>tasksummary</sgmltag></entry>
 <entry colsep='0'></entry>
 <entry colsep='0'></entry>
 </row>
@@ -253,10 +258,10 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal
 		
 		|anchor 
@@ -270,36 +275,36 @@
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>action</sgmltag></entry>
 <entry colsep='0'><sgmltag>classsynopsisinfo</sgmltag></entry>
-<entry colsep='0'><sgmltag>command</sgmltag></entry>
+<entry colsep='0'><sgmltag>code</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>command</sgmltag></entry>
 <entry colsep='0'><sgmltag>computeroutput</sgmltag></entry>
 <entry colsep='0'><sgmltag>database</sgmltag></entry>
-<entry colsep='0'><sgmltag>filename</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>filename</sgmltag></entry>
 <entry colsep='0'><sgmltag>funcparams</sgmltag></entry>
 <entry colsep='0'><sgmltag>funcsynopsisinfo</sgmltag></entry>
-<entry colsep='0'><sgmltag>function</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>function</sgmltag></entry>
 <entry colsep='0'><sgmltag>hardware</sgmltag></entry>
 <entry colsep='0'><sgmltag>interfacename</sgmltag></entry>
-<entry colsep='0'><sgmltag>keycap</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>keycap</sgmltag></entry>
 <entry colsep='0'><sgmltag>literal</sgmltag></entry>
 <entry colsep='0'><sgmltag>option</sgmltag></entry>
-<entry colsep='0'><sgmltag>optional</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>optional</sgmltag></entry>
 <entry colsep='0'><sgmltag>parameter</sgmltag></entry>
 <entry colsep='0'><sgmltag>property</sgmltag></entry>
-<entry colsep='0'><sgmltag>systemitem</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>systemitem</sgmltag></entry>
 <entry colsep='0'><sgmltag>userinput</sgmltag></entry>
-<entry colsep='0'></entry>
 <entry colsep='0'></entry>
 </row>
 </tbody>
@@ -351,7 +356,7 @@
 		|informalexample
                 |informalfigure
                 |informaltable 
-		|equation|example|figure|table 		|msgset|procedure|sidebar|qandaset
+		|equation|example|figure|table 		|msgset|procedure|sidebar|qandaset|task
                  |productionset|constraintdef
                  
 		|anchor|bridgehead|remark|highlights
@@ -454,69 +459,74 @@
 <entry colsep='0'><sgmltag>corpauthor</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>corpcredit</sgmltag></entry>
 <entry colsep='0'><sgmltag>corpname</sgmltag></entry>
 <entry colsep='0'><sgmltag>country</sgmltag></entry>
-<entry colsep='0'><sgmltag>date</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>date</sgmltag></entry>
 <entry colsep='0'><sgmltag>edition</sgmltag></entry>
 <entry colsep='0'><sgmltag>email</sgmltag></entry>
-<entry colsep='0'><sgmltag>fax</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>fax</sgmltag></entry>
 <entry colsep='0'><sgmltag>firstname</sgmltag></entry>
 <entry colsep='0'><sgmltag>holder</sgmltag></entry>
-<entry colsep='0'><sgmltag>honorific</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>honorific</sgmltag></entry>
 <entry colsep='0'><sgmltag>invpartnumber</sgmltag></entry>
 <entry colsep='0'><sgmltag>isbn</sgmltag></entry>
-<entry colsep='0'><sgmltag>issn</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>issn</sgmltag></entry>
 <entry colsep='0'><sgmltag>issuenum</sgmltag></entry>
 <entry colsep='0'><sgmltag>jobtitle</sgmltag></entry>
-<entry colsep='0'><sgmltag>lineage</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>lineage</sgmltag></entry>
 <entry colsep='0'><sgmltag>modespec</sgmltag></entry>
 <entry colsep='0'><sgmltag>orgdiv</sgmltag></entry>
-<entry colsep='0'><sgmltag>orgname</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>orgname</sgmltag></entry>
 <entry colsep='0'><sgmltag>otheraddr</sgmltag></entry>
 <entry colsep='0'><sgmltag>othername</sgmltag></entry>
-<entry colsep='0'><sgmltag>pagenums</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>pagenums</sgmltag></entry>
 <entry colsep='0'><sgmltag>phone</sgmltag></entry>
 <entry colsep='0'><sgmltag>pob</sgmltag></entry>
-<entry colsep='0'><sgmltag>postcode</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>postcode</sgmltag></entry>
 <entry colsep='0'><sgmltag>productnumber</sgmltag></entry>
 <entry colsep='0'><sgmltag>pubdate</sgmltag></entry>
-<entry colsep='0'><sgmltag>publishername</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>publishername</sgmltag></entry>
 <entry colsep='0'><sgmltag>pubsnumber</sgmltag></entry>
 <entry colsep='0'><sgmltag>refmiscinfo</sgmltag></entry>
-<entry colsep='0'><sgmltag>releaseinfo</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>releaseinfo</sgmltag></entry>
 <entry colsep='0'><sgmltag>revnumber</sgmltag></entry>
 <entry colsep='0'><sgmltag>revremark</sgmltag></entry>
-<entry colsep='0'><sgmltag>seriesvolnums</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>seriesvolnums</sgmltag></entry>
 <entry colsep='0'><sgmltag>shortaffil</sgmltag></entry>
 <entry colsep='0'><sgmltag>state</sgmltag></entry>
-<entry colsep='0'><sgmltag>street</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>street</sgmltag></entry>
 <entry colsep='0'><sgmltag>surname</sgmltag></entry>
 <entry colsep='0'><sgmltag>volumenum</sgmltag></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>year</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>
@@ -1032,7 +1042,7 @@
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>#PCDATA
 		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
-		|firstterm|foreignphrase|glossterm|footnote|phrase
+		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
@@ -1041,13 +1051,13 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal
 		
-		|anchor 	|author|authorinitials|corpauthor|modespec|othercredit
+		|anchor 	|author|authorinitials|corpauthor|corpcredit|modespec|othercredit
 		|productname|productnumber|revhistory
 		
 		|remark|subscript|superscript 	|inlinegraphic|inlinemediaobject</synopsis></entry>
@@ -1114,7 +1124,7 @@
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>#PCDATA
 		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
-		|firstterm|foreignphrase|glossterm|footnote|phrase
+		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
@@ -1123,13 +1133,13 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal
 		
-		|anchor 	|author|authorinitials|corpauthor|modespec|othercredit
+		|anchor 	|author|authorinitials|corpauthor|corpcredit|modespec|othercredit
 		|productname|productnumber|revhistory
 		
 		|remark|subscript|superscript 	|inlinegraphic|inlinemediaobject|inlineequation 
@@ -1192,17 +1202,17 @@
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>simpara</sgmltag></entry>
 <entry colsep='0'><sgmltag>synopsis</sgmltag></entry>
-<entry colsep='0'><sgmltag>term</sgmltag></entry>
+<entry colsep='0'><sgmltag>td</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>term</sgmltag></entry>
+<entry colsep='0'><sgmltag>th</sgmltag></entry>
 <entry colsep='0'><sgmltag>tocback</sgmltag></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>tocentry</sgmltag></entry>
 <entry colsep='0'><sgmltag>tocfront</sgmltag></entry>
-</row>
-<row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>ulink</sgmltag></entry>
-<entry colsep='0'></entry>
-<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>
@@ -1502,7 +1512,7 @@
 		|informalexample
                 |informalfigure
                 |informaltable 
-		|equation|example|figure|table 		|msgset|procedure|sidebar|qandaset
+		|equation|example|figure|table 		|msgset|procedure|sidebar|qandaset|task
                  |productionset|constraintdef
                  
 		|anchor|bridgehead|remark|highlights
@@ -1560,7 +1570,7 @@
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>#PCDATA
 		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
-		|firstterm|foreignphrase|glossterm|footnote|phrase
+		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
@@ -1569,13 +1579,13 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal
 		
-		|anchor 	|author|authorinitials|corpauthor|modespec|othercredit
+		|anchor 	|author|authorinitials|corpauthor|corpcredit|modespec|othercredit
 		|productname|productnumber|revhistory
 		
 		|remark|subscript|superscript 
@@ -1628,10 +1638,10 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>
@@ -1865,8 +1875,8 @@
 </row>
 <row rowsep='0' role='vle-pe'>
 <entry colsep='0'><sgmltag>type</sgmltag></entry>
+<entry colsep='0'><sgmltag>uri</sgmltag></entry>
 <entry colsep='0'><sgmltag>varname</sgmltag></entry>
-<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>
@@ -1950,7 +1960,7 @@
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>#PCDATA
 		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
-		|firstterm|foreignphrase|glossterm|footnote|phrase
+		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
@@ -1959,13 +1969,13 @@
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
 		|guisubmenu|hardware|interface|keycap
-		|keycode|keycombo|keysym|literal|constant|markup|medialabel
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
 		|menuchoice|mousebutton|option|optional|parameter
 		|prompt|property|replaceable|returnvalue|sgmltag|structfield
-		|structname|symbol|systemitem|token|type|userinput|varname
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
                 |nonterminal
 		
-		|anchor 	|author|authorinitials|corpauthor|modespec|othercredit
+		|anchor 	|author|authorinitials|corpauthor|corpcredit|modespec|othercredit
 		|productname|productnumber|revhistory
 		
 		|remark|subscript|superscript 	|inlinegraphic|inlinemediaobject|inlineequation 
