@@ -60,9 +60,52 @@ The rule to the right of the last column in the table is controlled by the
 </varlistentry>
 <varlistentry><term>frame</term>
 <listitem>
-<para>
-<sgmltag class="attribute">Frame</sgmltag> specifies how the table is to be framed.
+<para><sgmltag class="attribute">Frame</sgmltag> specifies how the table is to be framed:
 </para>
+
+<informaltable>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Value</entry><entry>Meaning</entry>
+</row>
+</thead>
+<tbody>
+<row>
+  <entry><sgmltag class="attvalue">all</sgmltag></entry>
+  <entry><para>Frame all four sides of the table. In some environments with limited
+control over table border formatting, such as HTML, this may imply additional borders.
+</para></entry>
+</row>
+<row>
+  <entry><sgmltag class="attvalue">bottom</sgmltag></entry>
+  <entry><para>Frame only the bottom of the table.</para></entry>
+</row>
+<row>
+  <entry><sgmltag class="attvalue">none</sgmltag></entry>
+  <entry><para>Place no border on the table. In some environments with limited
+control over table border formatting, such as HTML, this may disable other borders as
+well.</para></entry>
+</row>
+<row>
+  <entry><sgmltag class="attvalue">sides</sgmltag></entry>
+  <entry><para>Frame the left and right sides of the table.</para></entry>
+</row>
+<row>
+  <entry><sgmltag class="attvalue">top</sgmltag></entry>
+  <entry><para>Frame the top of the table.</para></entry>
+</row>
+<row>
+  <entry><sgmltag class="attvalue">topbot</sgmltag></entry>
+  <entry><para>Frame the top and bottom of the table.</para></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>There is no way to obtain a border on only the starting edge
+(left, in left-to-right writing systems) of the table.</para>
+
 </listitem>
 </varlistentry>
 <varlistentry><term>label</term>
