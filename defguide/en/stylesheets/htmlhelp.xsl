@@ -75,28 +75,38 @@
       <xsl:text disable-output-escaping="yes">"&gt;
     &lt;/OBJECT&gt;</xsl:text>
   </xsl:if>
-  <xsl:if test="refentry">
-    <xsl:text disable-output-escaping="yes">&lt;UL&gt;</xsl:text>
-    <xsl:for-each select="refentry">
-      <xsl:variable name="letter" select="substring(refnamediv/refname,1,1)"/>     
-      <xsl:if test="position()=1 or
-                    substring(preceding-sibling::refentry[1]/refnamediv/refname,1,1)!=$letter">
-        <xsl:text disable-output-escaping="yes">&lt;LI&gt; &lt;OBJECT type="text/sitemap"&gt;
-        &lt;param name="Name" value="</xsl:text>
-        <xsl:value-of select="translate($letter,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-        <xsl:text disable-output-escaping="yes">"&gt;
-        <!--
-        &lt;param name="Local" value="</xsl:text>
-        <xsl:call-template name="href.target.with.base.dir"/>
-        <xsl:text disable-output-escaping="yes">"&gt; -->
-        &lt;/OBJECT&gt;</xsl:text>
-        <xsl:text disable-output-escaping="yes">&lt;UL&gt;</xsl:text>
-        <xsl:apply-templates select="../refentry[substring(refnamediv/refname,1,1)=$letter]" mode="hhc"/>
-        <xsl:text disable-output-escaping="yes">&lt;/UL&gt;</xsl:text>
-      </xsl:if>
-    </xsl:for-each>
-    <xsl:text disable-output-escaping="yes">&lt;/UL&gt;</xsl:text>
-  </xsl:if>
+  <xsl:choose>
+    <xsl:when test="refentry/refmeta[refmiscinfo = 'Element']">
+      <xsl:text disable-output-escaping="yes">&lt;UL&gt;</xsl:text>
+      <xsl:for-each select="refentry">
+        <xsl:variable name="letter" select="substring(refnamediv/refname,1,1)"/>     
+        <xsl:if test="position()=1 or
+                      substring(preceding-sibling::refentry[1]/refnamediv/refname,1,1)!=$letter">
+          <xsl:text disable-output-escaping="yes">&lt;LI&gt; &lt;OBJECT type="text/sitemap"&gt;
+          &lt;param name="Name" value="</xsl:text>
+          <xsl:value-of select="translate($letter,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+          <xsl:text disable-output-escaping="yes">"&gt;
+          <!--
+               &lt;param name="Local" value="</xsl:text>
+               <xsl:call-template name="href.target.with.base.dir"/>
+               <xsl:text disable-output-escaping="yes">"&gt; 
+               -->
+          &lt;/OBJECT&gt;</xsl:text>
+          <xsl:text disable-output-escaping="yes">&lt;UL&gt;</xsl:text>
+          <xsl:apply-templates select="../refentry[substring(refnamediv/refname,1,1)=$letter]" mode="hhc"/>
+          <xsl:text disable-output-escaping="yes">&lt;/UL&gt;</xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:text disable-output-escaping="yes">&lt;/UL&gt;</xsl:text>
+    </xsl:when>
+    <xsl:when test="refentry">
+      <xsl:text disable-output-escaping="yes">&lt;UL&gt;</xsl:text>
+      <xsl:apply-templates
+        select="refentry"
+        mode="hhc"/>
+      <xsl:text disable-output-escaping="yes">&lt;/UL&gt;</xsl:text>
+    </xsl:when>
+  </xsl:choose>
 </xsl:template>
 
 <!-- All elements from reference go automatically to index -->
