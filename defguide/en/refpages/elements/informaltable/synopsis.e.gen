@@ -12,8 +12,9 @@
 <row condition='ref.synopsis' rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>informaltable ::=
-(<sgmltag>blockinfo</sgmltag>?,<sgmltag>textobject</sgmltag>*,
- ((<sgmltag>graphic</sgmltag>+|<sgmltag>mediaobject</sgmltag>+|<sgmltag>tgroup</sgmltag>+)|
+(<sgmltag>blockinfo</sgmltag>?,
+ ((<sgmltag>textobject</sgmltag>*,
+   (<sgmltag>graphic</sgmltag>+|<sgmltag>mediaobject</sgmltag>+|<sgmltag>tgroup</sgmltag>+))|
   ((<sgmltag>col</sgmltag>*|<sgmltag>colgroup</sgmltag>*),
    <sgmltag>thead</sgmltag>?,<sgmltag>tfoot</sgmltag>?,
    (<sgmltag>tbody</sgmltag>+|<sgmltag>tr</sgmltag>+))))</synopsis></entry>
@@ -32,7 +33,27 @@
 ><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>cellpadding</entry>
+<entry align='left' valign='top'>rowsep</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>ondblclick</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onkeydown</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onkeyup</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onmouseup</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -42,17 +63,59 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onmousemove</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>tabstyle</entry>
-<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'>align</entry>
+<entry align='left' valign='top'><simplelist role='enum'>
+<member>center</member>
+<member>left</member>
+<member>right</member>
+</simplelist></entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
 <entry align='left' valign='top'>pgwide</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>orient</entry>
+<entry align='left' valign='top'><simplelist role='enum'>
+<member>land</member>
+<member>port</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onkeypress</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onmousedown</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onclick</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>title</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>class</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>label</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>width</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -78,85 +141,6 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>align</entry>
-<entry align='left' valign='top'><simplelist role='enum'>
-<member>center</member>
-<member>left</member>
-<member>right</member>
-</simplelist></entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>colsep</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>title</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onmouseout</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onclick</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>rowsep</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>summary</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>tocentry</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onmouseup</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>shortentry</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>ondblclick</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>class</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>label</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>bgcolor</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>cellspacing</entry>
-<entry align='left' valign='top'>CDATA</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
 <entry align='left' valign='top'>rules</entry>
 <entry align='left' valign='top'><simplelist role='enum'>
 <member>all</member>
@@ -168,22 +152,32 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>width</entry>
+<entry align='left' valign='top'>bgcolor</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>xml:lang</entry>
-<entry align='left' valign='top'>NMTOKEN</entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onkeydown</entry>
+<entry align='left' valign='top'>summary</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onkeyup</entry>
+<entry align='left' valign='top'>tabstyle</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>cellspacing</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>colsep</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>shortentry</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
@@ -193,25 +187,32 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onmousemove</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>onmouseout</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>xml:lang</entry>
+<entry align='left' valign='top'>NMTOKEN</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
 <entry align='left' valign='top'>border</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>orient</entry>
-<entry align='left' valign='top'><simplelist role='enum'>
-<member>land</member>
-<member>port</member>
-</simplelist></entry>
-<entry align='left' valign='top'><emphasis>None</emphasis></entry>
-</row>
-<row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>onmousedown</entry>
+<entry align='left' valign='top'>cellpadding</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep="1" role="attr">
-<entry align='left' valign='top'>onkeypress</entry>
+<entry align='left' valign='top'>tocentry</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
