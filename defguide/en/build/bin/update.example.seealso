@@ -49,20 +49,24 @@ while (my $dname = readdir(LDIR)) {
     my $dir = "$LIBDIR/$dname";
     next if -f $dir;
 
+    open (F, ">$LIBDIR/$dname/example.seealso.gen");
     if ($examples{$dname}) {
-	open (F, ">$LIBDIR/$dname/example.seealso.gen");
+	if (-f "$LIBDIR/$dname/example.1.xml") {
+	    print F "<para>For additional examples, see also\n";
+	} else {
+	    print F "<para>For examples, see\n";
+	}
 	print F "<simplelist type=\"inline\">\n";
 	foreach my $elem (sort keys %{$examples{$dname}}) {
 	    print F "  <member><sgmltag>$elem</sgmltag></member>\n";
 	}
-	print F "</simplelist>\n";
-	close (F);
+	print F "</simplelist>.\n";
+	print F "</para>\n";
     } else {
-	if (-f "$LIBDIR/$dname/example.seealso.gen") {
-	    unlink "$LIBDIR/$dname/example.seealso.gen";
-	    warn "Removed bogus example.seealso for $dname\n";
-	}
+	print F "<!-- no examples to see also -->\n";
     }
+    close (F);
+
 }
 closedir (LDIR);
 
@@ -70,10 +74,10 @@ opendir (LDIR, $LIBDIR);
 while (my $dname = readdir(LDIR)) {
     next if $dname =~ /^\.+$/;
     next if $dname eq 'CVS';
+    next if $examples{$dname};
     my $dir = "$LIBDIR/$dname";
     next if -f $dir;
     next if -f "$dir/example.1.xml";
-    next if -f "$dir/example.seealso.gen";
 
     print "No examples: $dname\n";
 }

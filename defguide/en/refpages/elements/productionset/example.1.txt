@@ -1,5 +1,7 @@
-&lt;!DOCTYPE productionset PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+&lt;!DOCTYPE simplesect PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;simplesect&gt;&lt;title&gt;EBNF Grammar&lt;/title&gt;
+
 &lt;productionset&gt;&lt;title&gt;Arithemetic Expressions&lt;/title&gt;
 &lt;production id="ebnf.expression"&gt;
   &lt;lhs&gt;Expression&lt;/lhs&gt;
@@ -36,3 +38,10 @@
   &lt;rhs&gt;[0-9]+&lt;/rhs&gt;
 &lt;/production&gt;
 &lt;/productionset&gt;
+
+&lt;constraintdef id="div0"&gt;
+&lt;title&gt;Division by Zero&lt;/title&gt;
+&lt;para&gt;Division by zero is an error.&lt;/para&gt;
+&lt;/constraintdef&gt;
+&lt;/simplesect&gt;
+
