@@ -629,6 +629,21 @@ set       nop
                                       'abcdefghijklmnopqrstuvwxyz')"/>
   </xsl:variable>
 
+<!--
+  <xsl:message>
+    <xsl:text>check: </xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$class"/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="following-sibling::text()"/>
+    <xsl:text> </xsl:text>
+    <xsl:if test="starts-with(following-sibling::text(), '&#160;(')">
+      <xsl:text>1</xsl:text>
+    </xsl:if>
+  </xsl:message>
+-->
+
   <xsl:choose>
     <xsl:when test="$class = 'element'
 		    and following-sibling::text()
@@ -639,6 +654,10 @@ set       nop
 		    select="substring-before(substring-after($ftext,'('),')')"/>
       <xsl:variable name="target"
 		    select="key('id', concat('element.',$pattern))[1]"/>
+
+<!--
+      <xsl:message>pattern: <xsl:value-of select="$pattern"/></xsl:message>
+-->
 
       <xsl:choose>
 	<xsl:when test="$target">
