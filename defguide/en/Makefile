@@ -2,6 +2,7 @@ include ../../cvstools/Makefile.incl
 
 SSTITLEPG=stylesheets/html-titlepage.xsl
 SSCHUNK=stylesheets/chunk.xsl
+SSFO=stylesheets/tdgfo.xsl
 
 SOURCE=book.xml
 MEMORY=100000000
@@ -16,6 +17,12 @@ else
   HTMLEXT=.html
 endif
 
+ifeq ($(ROOTID),)
+  ROOTIDPARAM=
+else
+  ROOTIDPARAM=rootid=$(ROOTID)
+endif
+
 all: chunks index
 
 test:
@@ -25,10 +32,19 @@ chunks: $(SSTITLEPG)
 	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 
 chunk: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=$(ROOTID) $(STYLEOPT)
+	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
 
 index: $(SSTITLEPG)
 	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
 
 stylesheets/html-titlepage.xsl: stylesheets/html-titlepage.xml
 	$(XSLT) $< ../../xsl/template/titlepage.xsl $@
+
+book.fo: book.xml
+	$(XSLT) -m $(MEMORY) $< $(SSFO) $@ $(ROOTIDPARAM) $(STYLEOPT)
+
+book.pdf: book.fo
+	xep $< $@
+
+clean:
+	rm -f book.{html,fo,pdf}
