@@ -614,7 +614,6 @@
 
   <xsl:if test="$suppress.navigation = '0'">
     <div class="navfooter">
-      <hr/>
       <table width="100%" summary="Navigation table">
         <tr>
           <td width="40%" align="left">
