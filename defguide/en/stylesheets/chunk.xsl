@@ -27,7 +27,7 @@
 
 <xsl:template match="bookinfo/copyright" mode="titlepage.mode">
   <p class="copyright">
-    <a href="dbcpyright.html">Copyright</a>
+    <a href="{concat('dbcpyright',$html.ext)}">Copyright</a>
     <xsl:text> (C) </xsl:text>
     <xsl:apply-templates select="year" mode="titlepage.mode"/>
     <xsl:text> </xsl:text>
@@ -38,7 +38,7 @@
     <xsl:with-param name="filename">
       <xsl:call-template name="make-relative-filename">
         <xsl:with-param name="base.dir" select="$base.dir"/>
-        <xsl:with-param name="base.name" select="'dbcpyright.html'"/>
+        <xsl:with-param name="base.name" select="concat('dbcpyright',$html.ext)"/>
       </xsl:call-template>
     </xsl:with-param>
     <xsl:with-param name="content">
@@ -134,7 +134,17 @@
         <xsl:value-of select="$dir"/>
         <xsl:text>/</xsl:text>
       </xsl:if>
-      <xsl:value-of select="$filename"/>
+
+      <xsl:choose>
+        <!-- hack hack hack -->
+        <xsl:when test="$html.ext != '.html'">
+          <xsl:value-of select="substring-before($filename, '.html')"/>
+          <xsl:value-of select="$html.ext"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$filename"/>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:when>
 
     <xsl:when test="local-name(.)='set'">
