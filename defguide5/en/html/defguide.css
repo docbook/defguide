@@ -152,3 +152,45 @@ tbody,thead,tfoot,
 tr,td {
   border-color: #8F8F8F;
 }
+
+/* ======================================================================
+   Annotations
+*/
+
+div.annotation-list  { visibility: hidden;
+                     }
+
+div.annotation-nocss { position: absolute;
+                       visibility: hidden;
+                     }
+
+div.annotation-popup { position: absolute;
+                       z-index: 4;
+                       background-color: white;
+                       visibility: hidden;
+                       padding: 0px;
+                       margin: 2px;
+                       border: solid black 1px;
+                       width: 200px
+                     }
+
+div.annotation-title { padding: 1px;
+                       background-color: #afcfcf;
+                       font-weight: bold;
+                       border-bottom-color: black;
+                       border-bottom-style: solid;
+                       border-bottom-width: 1px;
+                     }
+
+div.annotation-body  { padding: 2px;
+                     }
+
+div.annotation-body p { margin-top: 0px;
+                        padding-top: 0px;
+                      }
+
+div.annotation-close { position: absolute;
+                       top: 2px;
+                       right: 2px;
+                     }
+
