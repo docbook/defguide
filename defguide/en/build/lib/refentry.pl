@@ -141,6 +141,7 @@ END {
     opendir (DIR, $path);
     while (my $name = readdir(DIR)) {
 	my $file = "$path/$name";
+	next if $name !~ /\.gen$/;
 	next if -d $file;
 	open (F, $file);
 	read (F, $_, -s $file);
