@@ -23,9 +23,10 @@
     <sgmltag>methodsynopsis</sgmltag>|<sgmltag>formalpara</sgmltag>|<sgmltag>para</sgmltag>|<sgmltag>simpara</sgmltag>|<sgmltag>address</sgmltag>|<sgmltag>blockquote</sgmltag>|
     <sgmltag>graphic</sgmltag>|<sgmltag>graphicco</sgmltag>|<sgmltag>mediaobject</sgmltag>|<sgmltag>mediaobjectco</sgmltag>|<sgmltag>informalequation</sgmltag>|
     <sgmltag>informalexample</sgmltag>|<sgmltag>informalfigure</sgmltag>|<sgmltag>informaltable</sgmltag>|<sgmltag>equation</sgmltag>|<sgmltag>example</sgmltag>|
-    <sgmltag>figure</sgmltag>|<sgmltag>table</sgmltag>|<sgmltag>msgset</sgmltag>|<sgmltag>procedure</sgmltag>|<sgmltag>sidebar</sgmltag>|<sgmltag>qandaset</sgmltag>|<sgmltag>productionset</sgmltag>|
-    <sgmltag>constraintdef</sgmltag>|<sgmltag>anchor</sgmltag>|<sgmltag>bridgehead</sgmltag>|<sgmltag>remark</sgmltag>|<sgmltag>highlights</sgmltag>|<sgmltag>abstract</sgmltag>|
-    <sgmltag>authorblurb</sgmltag>|<sgmltag>epigraph</sgmltag>|<sgmltag>indexterm</sgmltag>|<sgmltag>beginpage</sgmltag>)+,
+    <sgmltag>figure</sgmltag>|<sgmltag>table</sgmltag>|<sgmltag>msgset</sgmltag>|<sgmltag>procedure</sgmltag>|<sgmltag>sidebar</sgmltag>|<sgmltag>qandaset</sgmltag>|<sgmltag>task</sgmltag>|
+    <sgmltag>productionset</sgmltag>|<sgmltag>constraintdef</sgmltag>|<sgmltag>anchor</sgmltag>|<sgmltag>bridgehead</sgmltag>|<sgmltag>remark</sgmltag>|
+    <sgmltag>highlights</sgmltag>|<sgmltag>abstract</sgmltag>|<sgmltag>authorblurb</sgmltag>|<sgmltag>epigraph</sgmltag>|<sgmltag>indexterm</sgmltag>|<sgmltag>beginpage</sgmltag>)+,
+   
    ((<sgmltag>refentry</sgmltag>)*|
     <sgmltag>sect2</sgmltag>*|<sgmltag>simplesect</sgmltag>*))|
   (<sgmltag>refentry</sgmltag>)+|
@@ -56,12 +57,12 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' role="attr">
-<entry align='left' valign='top'>status</entry>
+<entry align='left' valign='top'>label</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.attr' rowsep="1" role="attr">
-<entry align='left' valign='top'>label</entry>
+<entry align='left' valign='top'>status</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
