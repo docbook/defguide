@@ -4,9 +4,11 @@
                 exclude-result-prefixes="cvs"
                 version="1.0">
 
+<!-- $Id$ -->
+
 <!-- this stylesheet somewhat dangerously does its own profiling -->
 
-<xsl:import href="../../../xsl/html/docbook.xsl"/>
+<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
 
 <xsl:param name="output.media" select="'online'"/>
@@ -17,13 +19,14 @@
 <xsl:param name="refentry.generate.name" select="0"/>
 <xsl:param name="refentry.generate.title" select="0"/>
 <xsl:param name="refentry.separator" select="0"/>
+<xsl:param name="table.borders.with.css" select="1"/>
 
 <xsl:param name="generate.toc">
 /appendix nop
 /article  nop
 book      toc,figure,table,example,equation
 /chapter  nop
-part      nop
+part      toc
 /preface  nop
 qandadiv  nop
 qandaset  nop
@@ -44,6 +47,10 @@ set       nop
 
 <xsl:template match="processing-instruction('lb')">
   <br/>
+</xsl:template>
+
+<xsl:template match="processing-instruction('lb')" mode="no.anchor.mode">
+  <xsl:text> </xsl:text>
 </xsl:template>
 
 <xsl:template name="user.header.content">
@@ -339,18 +346,11 @@ set       nop
     </xsl:when>
     <xsl:when test="@role = 'attrheader'">
       <xsl:variable name="attrrows" select="../row[@role='attr']"/>
-      <table border="1" width="100%" summary="Attributes">
-        <tr>
-          <xsl:apply-templates select="entry[1]">
-            <xsl:with-param name="spans">
-              <xsl:call-template name="blank.spans">
-                <xsl:with-param name="cols" select="3"/>
-              </xsl:call-template>
-            </xsl:with-param>
-          </xsl:apply-templates>
-        </tr>
-        <xsl:for-each select="$attrrows">
-          <tr>
+      <table border="0" width="100%" cellpadding="2"
+             style="border-collapse: collapse; border-left: 0.5pt solid;"
+             summary="Attributes">
+        <thead>
+          <tr style="border-bottom: 0.5pt solid;">
             <xsl:apply-templates select="entry[1]">
               <xsl:with-param name="spans">
                 <xsl:call-template name="blank.spans">
@@ -359,7 +359,20 @@ set       nop
               </xsl:with-param>
             </xsl:apply-templates>
           </tr>
-        </xsl:for-each>
+        </thead>
+        <tbody>
+          <xsl:for-each select="$attrrows">
+            <tr>
+              <xsl:apply-templates select="entry[1]">
+                <xsl:with-param name="spans">
+                  <xsl:call-template name="blank.spans">
+                    <xsl:with-param name="cols" select="3"/>
+                  </xsl:call-template>
+                </xsl:with-param>
+              </xsl:apply-templates>
+            </tr>
+          </xsl:for-each>
+        </tbody>
       </table>
     </xsl:when>
     <xsl:when test="@role = 'attr'">
@@ -512,6 +525,37 @@ set       nop
       </p>
     </xsl:when>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="entry/simplelist[@role='enum' or @role='notationenum']">
+  <!-- with no type specified, the default is 'vert' -->
+  <xsl:call-template name="anchor"/>
+  <table class="simplelist" border="0" summary="Simple list">
+    <tr>
+      <td>
+        <i>
+          <xsl:choose>
+            <xsl:when test="@role = 'enum'">
+              <xsl:text>Enumeration:</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>Enumerated notation:</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </i>
+      </td>
+    </tr>
+    <xsl:call-template name="simplelist.vert">
+      <xsl:with-param name="cols">
+	<xsl:choose>
+	  <xsl:when test="@columns">
+	    <xsl:value-of select="@columns"/>
+	  </xsl:when>
+	  <xsl:otherwise>1</xsl:otherwise>
+	</xsl:choose>
+      </xsl:with-param>
+    </xsl:call-template>
+  </table>
 </xsl:template>
 
 <!-- ============================================================ -->
