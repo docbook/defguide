@@ -6,7 +6,7 @@
 
 <!-- this stylesheet somewhat dangerously does its own profiling -->
 
-<xsl:import href="/sourceforge/docbook/xsl/html/docbook.xsl"/>
+<xsl:import href="../../../xsl/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
 
 <xsl:param name="output.media" select="'online'"/>
