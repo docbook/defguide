@@ -602,10 +602,10 @@ sub formatAttributeList {
 	$html .= "</entry>\n";
     } elsif ($common) {
 	$html .= "<entry namest='c2' nameend='c3'>";
-	$html .= "<phrase role=\"common.attributes\">";
-	$html .= "Common attributes";
-	$html .= "</phrase>";
-#	$html .= "<link linkend=\"$baseid.x.common\">Common attributes</link>";
+#	$html .= "<phrase role=\"common.attributes\">";
+#	$html .= "Common attributes";
+#	$html .= "</phrase>";
+	$html .= "<link linkend=\"common.attributes\">Common attributes</link>";
 	$html .= "</entry>\n";
     } else {
 	$html .= "<entry namest='c2' nameend='c3'></entry>\n";
@@ -709,13 +709,23 @@ sub formatValues {
     }
 
     $html .= "<entry align='left' valign='top'>";
-    if ($enum eq 'notation') {
-	$html .= "<para><emphasis>Enumerated notation:</emphasis>\n</para>";
-    } else {
-	$html .= "<para><emphasis>Enumeration:</emphasis>\n</para>";
-    }
 
-    $html .= "<simplelist>\n";
+#    if ($enum eq 'notation') {
+#	$html .= "<para><emphasis>Enumerated notation:</emphasis>\n</para>";
+#    } else {
+#	$html .= "<para><emphasis>Enumeration:</emphasis>\n</para>";
+#    }
+#
+#    $html .= "<simplelist>\n";
+
+    $html .= "<simplelist";
+    if ($enum eq 'notation') {
+	$html .= " role='notationenum'";
+    } else {
+	$html .= " role='enum'";
+    }
+    $html .= ">\n";
+
     foreach my $val (sort { uc($a) cmp uc($b) }
 		     split(/\s+/, $attr->getAttribute('value'))) {
 	$html .= "<member>$val</member>\n";
