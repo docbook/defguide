@@ -30,7 +30,7 @@ else
   MEMORYOPT=-m $(MEMORY)
 endif
 
-all: chunks index
+all: chunks
 
 test:
 	xjparse $(SOURCE)
