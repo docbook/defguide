@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:cvs="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.CVS"
-                exclude-result-prefixes="cvs"
+                exclude-result-prefixes="cvs rng"
                 version="1.0">
 
 <!-- $Id$ -->
@@ -10,6 +11,9 @@
 
 <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
+<xsl:include href="dbv5.xsl"/>
+
+<xsl:param name="include.docbook5" select="0"/>
 
 <xsl:param name="output.media" select="'online'"/>
 <xsl:param name="output.type" select="'expanded'"/>
@@ -309,11 +313,31 @@ set       nop
   <xsl:choose>
     <xsl:when test="@role='elemsynop'">
       <xsl:apply-templates select=".//row" mode="elemsynop"/>
+
+      <xsl:if test="$include.docbook5 != 0">
+	<xsl:variable name="element" select="ancestor::refentry/refnamediv/refname"/>
+	
+	<div class="relaxngv5-synopsis">
+	  <h3>Experimental DocBook V5 RELAX NG Content Model</h3>
+	  <xsl:choose>
+	    <xsl:when test="$db5doc//rng:define[rng:element[@name=$element]]">
+	      <xsl:call-template name="rng-element">
+		<xsl:with-param name="element" select="$element"/>
+	      </xsl:call-template>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:message>Not in V5: <xsl:value-of select="$element"/></xsl:message>
+	      <p>This element does not occur.</p>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</div>
+      </xsl:if>
     </xsl:when>
     <xsl:otherwise>
       <xsl:apply-imports/>
     </xsl:otherwise>
   </xsl:choose>
+ 
 </xsl:template>
 
 <xsl:template match="row" mode="elemsynop">
@@ -356,10 +380,10 @@ set       nop
     <xsl:when test="@role = 'attrheader'">
       <xsl:variable name="attrrows" select="../row[@role='attr']"/>
       <table border="0" width="100%" cellpadding="2"
-             style="border-collapse: collapse; border-left: 0.5pt solid;"
+             style="border-collapse: collapse; border-left: 0.5pt solid black; border-right: 0.5pt solid black; border-bottom: 0.5pt solid black;"
              summary="Attributes">
         <thead>
-          <tr style="border-bottom: 0.5pt solid;">
+          <tr>
             <xsl:apply-templates select="entry[1]">
               <xsl:with-param name="spans">
                 <xsl:call-template name="blank.spans">
