@@ -1,0 +1,197 @@
+<appendix id="changelog">
+<title>ChangeLog</title>
+
+<para>This appendix details the changes made between versions.</para>
+
+<section><title>Changes since version 2.0.7 (2002-06-17)</title>
+
+<programlisting><![CDATA[Changes to en/*
+
+  | 2002-12-29  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* ch00.xml, ch01.xml, ch05.xml: Patches from jrdaily
+  | 
+  | 	* ch04.xml: Patches from jrdaily: I'm attaching yet another
+  | 	  revision of the patch. Updated changelog: * Use CDATA
+  | 	  sections in screen and programlisting blocks containing
+  | 	  sample SGML and XML code. * Put quotes around attribute
+  | 	  values in one sample block. Some of the attributes are
+  | 	  attached to <xref> tags; so far as I know, there is no way
+  | 	  to represent an <xref> that is legal in both DocBook SGML
+  | 	  and XML, so I left them SGML-compliant (without a closing
+  | 	  /). * Replace XML with &XML; when not in index terms, and
+  | 	  SGML with &SGML;. This only affects latter parts of the
+  | 	  chapter; older portions already use those entities. *
+  | 	  Replace <literal> with tags such as sgmltag, varname, and
+  | 	  parameter. * Update the Emacs comments at the end of the
+  | 	  document. * Replace &ldquo;/&rdquo; pairs with <quote> tags.
+  | 	  * Eliminate &ldquo;/&rdquo; entities used following an
+  | 	  <xref>; this may be an outdated stylesheet workaround. *
+  | 	  Replace a quoted reference to a section with an <xref>
+  | 	  (Scheme).
+  | 
+  | 	* ch04.xml: Fix typo
+  | 
+  | 2002-09-21  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* ch02.xml: Fixed SGML minimization bug; not that it'll matter
+  | 	  in 2e, I suppose
+  | 
+  | 2002-06-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* ch02.xml: Add ID to Making an Index section
+  | 
+
+Changes to en/stylesheets/*
+
+  | 2002-12-29  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* tdg.xsl: Improve linking
+  | 
+
+Changes to en/build/lib/*
+
+  | 2002-12-29  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.pl: Attempt to support run-time prefix for output
+  | 	  files. This will allow multiple versions of the book to be
+  | 	  built. (This may not work yet)
+  | 
+  | 	* seealso: Fixed category title
+  | 
+
+Changes to en/refpages/elements/bookinfo/*
+
+  | 2002-09-25  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Defguide bug #613988: fix bug in copyright
+  | 	  holders
+  | 
+
+Changes to en/refpages/elements/callout/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Corrected typos and thinkos reported by Robert
+  | 	  P. J. Day
+  | 
+
+Changes to en/refpages/elements/co/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: New file.
+  | 
+
+Changes to en/refpages/elements/emphasis/*
+
+  | 2002-08-06  <dcramer@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Changed Emphasis in refentrytitle to emphasis
+  | 	  to make it consistent with other refentrytitles
+  | 
+
+Changes to en/refpages/elements/equation/*
+
+  | 2002-09-21  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Try spelling Theorem correctly
+  | 
+
+Changes to en/refpages/elements/errorcode/*
+
+  | 2002-12-28  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Fix errorname usage
+  | 
+
+Changes to en/refpages/elements/figure/*
+
+  | 2002-09-21  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Use mediaobject instead of graphic
+  | 
+
+Changes to en/refpages/elements/funcparams/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Fix typo
+  | 
+
+Changes to en/refpages/elements/imagedata/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Add an ID so we can xref to a section
+  | 
+  | 2002-09-21  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Specify scalefit=0 on example
+  | 
+
+Changes to en/refpages/elements/index/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Corrected typos and thinkos reported by Robert
+  | 	  P. J. Day
+  | 
+
+Changes to en/refpages/elements/nonterminal/*
+
+  | 2002-12-29  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Fix tracker #599968, clarify semantics of def
+  | 	  attribute
+  | 
+
+Changes to en/refpages/elements/olink/*
+
+  | 2002-07-17  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Fix typo in entity declaration
+  | 
+
+Changes to en/refpages/elements/qandaset/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Corrected typos and thinkos reported by Robert
+  | 	  P. J. Day
+  | 
+
+Changes to en/refpages/elements/screenco/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Corrected typos and thinkos reported by
+  | 	  Robert P. J. Day
+  | 
+
+Changes to en/refpages/elements/simplemsgentry/*
+
+  | 2002-12-28  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Remove reference to a future change that's
+  | 	  already been made
+  | 
+
+Changes to en/refpages/elements/synopsis/*
+
+  | 2002-11-26  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Corrected typos and thinkos reported by
+  | 	  Robert P. J. Day
+  | 
+
+Changes to en/refpages/elements/xref/*
+
+  | 2002-12-28  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: Clarify processing expectations
+  | ]]></programlisting>
+
+</section>
+
+</appendix>
