@@ -17,7 +17,7 @@
 <fm:project>
   <fm:Project>DocBook</fm:Project>
   <fm:Branch>The Definitive Guide (5.0)</fm:Branch>
-  <fm:Version>0.0.1</fm:Version>
+  <fm:Version>0.0.1+</fm:Version>
   <fm:Release-Focus>
   <!-- Initial freshmeat announcement -->
   Documentation
@@ -39,11 +39,6 @@
 
 <xsl:template name="bookinfo">
   <info xmlns:xlink="http://www.w3.org/1999/xlink">
-    <mediaobject role="online">
-      <imageobject>
-	<imagedata fileref="figures/cover.png" align="left"/>
-      </imageobject>
-    </mediaobject>
     <title>DocBook 5.0</title>
     <subtitle>The Definitive Guide</subtitle>
     <authorgroup>
@@ -132,6 +127,12 @@ information contained herein.
 <year>2003</year>
 <holder>O'Reilly &amp; Associates, Inc. All rights reserved.</holder>
 </copyright>
+
+<mediaobject role="online">
+  <imageobject>
+	<imagedata fileref="figures/cover.png" align="left"/>
+  </imageobject>
+</mediaobject>
 </info>
 </xsl:template>
 
