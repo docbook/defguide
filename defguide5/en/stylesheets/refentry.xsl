@@ -69,22 +69,6 @@
   </xsl:element>
 </xsl:template>
 
-<xsl:template match="db:refpurpose">
-  <xsl:element name="{name(.)}">
-    <xsl:copy-of select="@*"/>
-    <xsl:apply-templates/>
-    <xsl:text>&#160;</xsl:text>
-    <annotation>
-      <para>
-	<xsl:value-of select="/db:refentry/db:info/db:releaseinfo"/>
-      </para>
-      <para>
-	<xsl:value-of select="/db:refentry/db:info/db:pubdate"/>
-      </para>
-    </annotation>
-  </xsl:element>
-</xsl:template>
-
 <xsl:template match="processing-instruction('tdg-refentrytitle')">
   <xsl:value-of select="$element"/>
   <xsl:if test="count($rng/key('elemdef', $element)) &gt; 1">
@@ -149,9 +133,20 @@
 	  <xsl:for-each-group select="$names" group-by="db:member">
 	    <xsl:sort select="current-grouping-key()" data-type="text"/>
 	    <member>
-	      <tag>
-		<xsl:value-of select="current-grouping-key()"/>
-	      </tag>
+	      <xsl:choose>
+		<xsl:when test="contains(current-grouping-key(),' ')">
+		  <tag>
+		    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
+		  </tag>
+		  <xsl:text>&#160;</xsl:text>
+		  <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+		</xsl:when>
+		<xsl:otherwise>
+		  <tag>
+		    <xsl:value-of select="current-grouping-key()"/>
+		  </tag>
+		</xsl:otherwise>
+	      </xsl:choose>
 	    </member>
 	  </xsl:for-each-group>
 	</simplelist>
@@ -166,7 +161,7 @@
   <xsl:variable name="children"
 		select="$elem/doc:content-model//rng:ref"/>
 
-  <xsl:if test="false() and $children">
+  <xsl:if test="$children">
     <refsection condition="ref.desc.children">
       <title>Children</title>
       <para>
@@ -206,9 +201,20 @@
 	  <xsl:for-each-group select="$names" group-by="db:member">
 	    <xsl:sort select="current-grouping-key()" data-type="text"/>
 	    <member>
-	      <tag>
-		<xsl:value-of select="current-grouping-key()"/>
-	      </tag>
+	      <xsl:choose>
+		<xsl:when test="contains(current-grouping-key(),' ')">
+		  <tag>
+		    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
+		  </tag>
+		  <xsl:text>&#160;</xsl:text>
+		  <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+		</xsl:when>
+		<xsl:otherwise>
+		  <tag>
+		    <xsl:value-of select="current-grouping-key()"/>
+		  </tag>
+		</xsl:otherwise>
+	      </xsl:choose>
 	    </member>
 	  </xsl:for-each-group>
 
@@ -246,7 +252,7 @@
 	      <xsl:value-of select="current-grouping-key()"/>
 	    </tag>
 	    <xsl:if test="@pattern">
-	      <xsl:text> (</xsl:text>
+	      <xsl:text>&#160;(</xsl:text>
 	      <xsl:value-of select="@pattern"/>
 	      <xsl:text>)</xsl:text>
 	    </xsl:if>
@@ -314,6 +320,17 @@
 
 <xsl:template match="rng:define[rng:element]" priority="2">
   <refsynopsisdiv>
+    <title>
+      <xsl:text>Synopsis&#160;</xsl:text>
+      <annotation>
+	<para>
+	  <xsl:value-of select="/db:refentry/db:info/db:releaseinfo"/>
+	</para>
+	<para>
+	  <xsl:value-of select="/db:refentry/db:info/db:pubdate"/>
+	</para>
+      </annotation>
+    </title>
     <xsl:apply-templates/>
   </refsynopsisdiv>
 </xsl:template>
@@ -668,7 +685,7 @@
     </xsl:choose>
 
     <xsl:if test="count($xdefs) &gt; 1">
-      <xsl:text> (</xsl:text>
+      <xsl:text>&#160;(</xsl:text>
       <xsl:value-of select="@name"/>
       <xsl:text>)</xsl:text>
     </xsl:if>

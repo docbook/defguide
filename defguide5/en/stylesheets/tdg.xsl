@@ -624,21 +624,14 @@ set       nop
   </xsl:variable>
 
   <xsl:variable name="elemidval">
+    <xsl:text>element.db.</xsl:text>
     <xsl:value-of select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                                       'abcdefghijklmnopqrstuvwxyz')"/>
-    <xsl:text>.element</xsl:text>
-  </xsl:variable>
-
-  <xsl:variable name="peidval">
-    <xsl:value-of select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                                      'abcdefghijklmnopqrstuvwxyz')"/>
-    <xsl:text>.parament</xsl:text>
   </xsl:variable>
 
   <xsl:choose>
     <xsl:when test="$class = 'element' and count(key('id', $elemidval)) &gt; 0">
-      <xsl:variable name="targets" select="key('id', $elemidval)"/>
-      <xsl:variable name="target" select="$targets[1]"/>
+      <xsl:variable name="target" select="key('id', $elemidval)[1]"/>
       <a>
         <xsl:attribute name="href">
           <xsl:call-template name="href.target">
@@ -648,18 +641,34 @@ set       nop
         <xsl:apply-imports/>
       </a>
     </xsl:when>
-    <xsl:when test="$class = 'paramentity' and count(key('id', $peidval)) &gt; 0">
-      <xsl:variable name="targets" select="key('id', $peidval)"/>
-      <xsl:variable name="target" select="$targets[1]"/>
-      <a>
-        <xsl:attribute name="href">
-          <xsl:call-template name="href.target">
-            <xsl:with-param name="object" select="$target"/>
-          </xsl:call-template>
-        </xsl:attribute>
-        <xsl:apply-imports/>
-      </a>
+
+    <xsl:when test="$class = 'element'
+		    and following-sibling::text()
+		    and starts-with(following-sibling::text(), '&#160;(')">
+      <!-- handle <tag>phrase</tag> (db._phrase) -->
+      <xsl:variable name="ftext" select="following-sibling::text()[1]"/>
+      <xsl:variable name="pattern"
+		    select="substring-before(substring-after($ftext,'('),')')"/>
+      <xsl:variable name="target"
+		    select="key('id', concat('element.',$pattern))[1]"/>
+
+      <xsl:choose>
+	<xsl:when test="$target">
+	  <a>
+	    <xsl:attribute name="href">
+	      <xsl:call-template name="href.target">
+		<xsl:with-param name="object" select="$target"/>
+	      </xsl:call-template>
+	    </xsl:attribute>
+	    <xsl:apply-imports/>
+	  </a>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-imports/>
+	</xsl:otherwise>
+      </xsl:choose>
     </xsl:when>
+
     <xsl:otherwise>
       <xsl:apply-imports/>
     </xsl:otherwise>
