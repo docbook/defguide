@@ -87,9 +87,9 @@ media or Braille.
 </para>
 </refsect2>
 
-
 &callout.parents.gen;
 &callout.children.gen;
+
 </refsect1>
 <refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
 <variablelist>
@@ -97,7 +97,14 @@ media or Braille.
 <listitem>
 <para>
 <sgmltag class="attribute">AreaRefs</sgmltag> must point to one or more
-<sgmltag>Area</sgmltag>s or <sgmltag>AreaSet</sgmltag>s. These, in turn, identify the
+callouts. Callouts can be identified with
+<sgmltag>Area</sgmltag> or <sgmltag>AreaSet</sgmltag> elements in a
+<sgmltag>GraphicCO</sgmltag>,
+<sgmltag>MediaObjectCO</sgmltag>,
+<sgmltag>ProgramListingCO</sgmltag>, or
+<sgmltag>ScreenCO</sgmltag> element or with a simple
+<sgmltag>CO</sgmltag> element in a number of other environments.
+These callouts identify the
 portions of the object described by this <sgmltag>Callout</sgmltag>.
 </para>
 </listitem>

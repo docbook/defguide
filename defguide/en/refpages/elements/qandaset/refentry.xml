@@ -44,11 +44,9 @@ attribute has a significant influence on the presentation of
 </para>
 </refsect2>
 
-
-
-
 &qandaset.parents.gen;
 &qandaset.children.gen;
+
 </refsect1>
 <refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
 <variablelist>
@@ -56,7 +54,7 @@ attribute has a significant influence on the presentation of
 <listitem>
 <para><sgmltag class="attribute">DefaultLabel</sgmltag> identifies the
 default label that should be used for <sgmltag>Question</sgmltag>s and
-<sgmltag>Answer</sgmltag>s:
+<sgmltag>Answer</sgmltag>s:</para>
 
 <variablelist>
 <varlistentry><term><literal>qanda</literal></term>
@@ -81,15 +79,16 @@ No distinguishing label precedes <sgmltag>Question</sgmltag>s or
 </para></listitem>
 </varlistentry>
 </variablelist>
-</para>
-<para>
-If no value is specified, the implied presentation may be any one of these,
-as defined by the stylesheet.
+
+<para>If no value is specified, the implied presentation may be any one of these,
+as defined by the stylesheet. Note that each question and answer can explicitly
+define a label, regardless of the default label specified.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 </refsect1>
+
 <refsect1><title>Examples</title>
 
 <informalexample role="example-source">
