@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# source the paths
+. `dirname $0`/bash.paths
+
+perl $SFDTDPARSE/dtdparse \
+  --catalog $BUILDLIB/catalog \
+  --title "DocBook XML V4.2b1 DTD EBNF Module V1.0" \
+  --decl /usr/lib/sgml/declaration/xml.dcl \
+  --public-id "-//OASIS//DTD DocBook EBNF Module VV4.2b1.1//EN" \
+  --output $BUILDLIB/$XMLDTD \
+  $SFDOCBOOK/docbook/ebnf/dbebnf-4.2b1.dtd
+
+#perl /sourceforge/dtdparse/dtdparse \
+#  --catalog lib/catalog \
+#  --title "DocBook XML V4.1.2 DTD EBNF Module V1.0" \
+#  --decl /usr/lib/sgml/declaration/xml.dcl \
+#  --public-id "-//OASIS//DTD DocBook EBNF Module V1.0//EN" \
+#  --output ebnf.dtd.xml /sourceforge/docbook/docbook/ebnf/dbebnf.dtd
+
+#perl /projects/src/dtdparse/dtdparse.pl \
+#  --title "DocBook XML V4.1.2 DTD" \
+#  --decl /usr/lib/sgml/declaration/xml.dcl \
+#  --public-id "-//OASIS//DTD DocBook XML V4.1.2//EN" \
+#  --output docbookx.dtd.xml /share/doctypes/docbook/xml/docbookx.dtd
+
+#perl /projects/src/dtdparse/dtdparse.pl \
+#  --title "DocBook XML V4.1 DTD" \
+#  --decl /share/doctypes/docbook/docbook.dcl \
+#  --public-id "-//OASIS//DTD DocBook V4.1//EN" \
+#  --catalog /share/doctypes/catalog \
+#  --output docbook.dtd.xml /share/doctypes/docbook/docbook.dtd

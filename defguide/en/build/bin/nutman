@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# source the paths
+. `dirname $0`/bash.paths
+
+perl $SFDTDPARSE/dtdformat \
+  --refentry \
+  --include-sdata \
+  --include-charent \
+  --include-ms \
+  --library $BUILDLIB/refentry.pl \
+  --verbose $BUILDLIB/$XMLDTD
+
