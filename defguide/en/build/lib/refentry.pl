@@ -9,7 +9,9 @@ my $SYSTEM_ID   = "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd";
 
 my $prefix = "";
 
-my @common_attributes  = ('id',
+my @common_attributes  = ('xml:base',
+			  'dir',
+			  'id',
 			  'role',
 			  'lang',
 			  'remap',
@@ -568,7 +570,8 @@ sub formatAttributeList {
     # Check for DocBook common attributes
 
     foreach my $attr (@common_attributes) {
-	$cmnatts{$1} = 0;
+	$cmnatt{$attr} = 0;
+#	print "Common: $attr\n";
     }
 
     if (defined($attlist)) {
@@ -577,6 +580,7 @@ sub formatAttributeList {
 	for (my $count = 0; $count < $attelem->getLength(); $count++) {
 	    my $attr = $attelem->item($count);
 	    my $name = $attr->getAttribute('name');
+#	    print "Attr: $name\n";
 	    $attrs{$name} = 1;
 	    if (exists $cmnatt{lc($name)}) {
 		$cmnatt{lc($name)} = 1;
@@ -586,12 +590,22 @@ sub formatAttributeList {
 	}
 
 	foreach my $attr (keys %cmnatt) {
-	    $common = 0 if $cmnatt{$attr} == 0;
+	    if ($cmnatt{$attr} == 0) {
+#		print "not common: $attr\n";
+		$common = 0;
+	    }
 	}
+
+#	print "Common? $common\n";
 
 	if ($common) {
 	    foreach my $attr (keys %attrs) {
-		delete $attrs{$attr} if exists $cmnatt{lc($attr)};
+		if (exists $cmnatt{lc($attr)}) {
+#		    print "Del: $attr\n";
+		    delete $attrs{$attr};
+		} else {
+#		    print "Keep: $attr\n";
+		}
 	    }
 	}
     }
@@ -2399,7 +2413,7 @@ sub writeElement {
 	close (F);
     }
 
-    open (F, ">$dir/$prefixentities.e.ent");
+    open (F, ">$dir/${prefix}entities.e.ent");
     print F "<!ENTITY $name.synopsis.gen SYSTEM \"${prefix}synopsis.e.gen\">\n"
 	if -f "$dir/${prefix}synopsis.e.gen";
 
