@@ -1363,69 +1363,71 @@ The following chapter uses text generated in French:
 &lt;/chapter>
 </screen>
 </para>
+
 <table id="tbl.lang">
 <title>DocBook Stylesheet Language Codes</title>
 <tgroup cols="2">
-<colspec colname="COLSPEC0" colwidth="2in"/>
+<?dbhtml cellpadding="2px"?>
+<colspec colname="COLSPEC0" colwidth="2in" colsep="1"/>
 <colspec colname="COLSPEC1"/>
 <thead>
-<row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1" align="left" char="">Language Code</entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1" align="left" char="">Language</entry>
+<row rowsep="1">
+<entry colname="COLSPEC0" rowsep="1" align="left" char="">Language Code</entry>
+<entry colname="COLSPEC1" rowsep="1" align="left" char="">Language</entry>
 </row>
 </thead>
 <tbody>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>da</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Danish</entry>
+<entry colname="COLSPEC0"><literal>da</literal></entry>
+<entry colname="COLSPEC1">Danish</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>de</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">German</entry>
+<entry colname="COLSPEC0"><literal>de</literal></entry>
+<entry colname="COLSPEC1">German</entry>
+h</row>
+<row>
+<entry colname="COLSPEC0"><literal>en</literal></entry>
+<entry colname="COLSPEC1">English</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>en</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">English</entry>
+<entry colname="COLSPEC0"><literal>es</literal></entry>
+<entry colname="COLSPEC1">Spanish</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>es</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Spanish</entry>
+<entry colname="COLSPEC0"><literal>fi</literal></entry>
+<entry colname="COLSPEC1">Finnish</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>fi</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Finnish</entry>
+<entry colname="COLSPEC0"><literal>fr</literal></entry>
+<entry colname="COLSPEC1">French</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>fr</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">French</entry>
+<entry colname="COLSPEC0"><literal>it</literal></entry>
+<entry colname="COLSPEC1">Italian</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>it</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Italian</entry>
+<entry colname="COLSPEC0"><literal>nl</literal></entry>
+<entry colname="COLSPEC1">Dutch</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>nl</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Dutch</entry>
+<entry colname="COLSPEC0"><literal>no</literal></entry>
+<entry colname="COLSPEC1">Norwegian</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>no</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Norwegian</entry>
+<entry colname="COLSPEC0"><literal>pl</literal></entry>
+<entry colname="COLSPEC1">Polish</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>pl</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Polish</entry>
+<entry colname="COLSPEC0"><literal>pt</literal></entry>
+<entry colname="COLSPEC1">Portuguese</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>pt</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Portuguese</entry>
+<entry colname="COLSPEC0"><literal>ru</literal></entry>
+<entry colname="COLSPEC1">Russian</entry>
 </row>
 <row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>ru</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Russian</entry>
-</row>
-<row>
-<entry colname="COLSPEC0" colsep="1" rowsep="1"><literal>sv</literal></entry>
-<entry colname="COLSPEC1" colsep="1" rowsep="1">Swedish</entry>
+<entry colname="COLSPEC0"><literal>sv</literal></entry>
+<entry colname="COLSPEC1">Swedish</entry>
 </row>
 </tbody>
 </tgroup>
@@ -1808,10 +1810,16 @@ parameters.</quote>
 You can summarize this information in a table to help keep track of
 it:
 </para>
+
 <informaltable>
-<tgroup cols='5'>
+<tgroup cols='5' colsep="1">
+<colspec/>
+<colspec align="center"/>
+<colspec/>
+<colspec/>
+<colspec align="center"/>
 <thead>
-<row>
+<row rowsep="1">
   <entry>Desired Output</entry>
   <entry>Backend</entry>
   <entry>Style specification</entry>
