@@ -8,6 +8,7 @@ SOURCE=book.xml
 MEMORY=100000000
 BASEDIR=html/
 ROOTID=
+FORESULT=chunk.fo
 
 ifeq ($(SOURCE),unexbook.xml)
   STYLEOPT=output.type=unexpanded
@@ -47,14 +48,10 @@ stylesheets/html-titlepage.xsl: stylesheets/html-titlepage.xml
 	$(XSLT) $< ../../xsl/template/titlepage.xsl $@
 
 fochunk:
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) chunk.fo $(ROOTIDPARAM) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) $(FORESULT) $(ROOTIDPARAM) $(STYLEOPT)
 
-c.fo: c.xml
-	$(XSLT) $< $(SSFO) $@ $(STYLEOPT)
-
-c.pdf: c.fo
+%.pdf: %.fo
 	xep $<
-	rm -f $<
 
 book.fo: book.xml
 	$(XSLT) $(MEMORYOPT) $< $(SSFO) $@ $(ROOTIDPARAM) $(STYLEOPT)
