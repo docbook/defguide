@@ -23,25 +23,41 @@ else
   ROOTIDPARAM=rootid=$(ROOTID)
 endif
 
+ifeq ($(XSLT),xsltproc)
+  MEMORYOPT=
+else
+  MEMORYOPT=-m $(MEMORY)
+endif
+
 all: chunks index
 
 test:
 	xjparse $(SOURCE)
 
 chunks: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 
 chunk: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
 
 index: $(SSTITLEPG)
-	$(XSLT) -m $(MEMORY) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
 
 stylesheets/html-titlepage.xsl: stylesheets/html-titlepage.xml
 	$(XSLT) $< ../../xsl/template/titlepage.xsl $@
 
+fochunk:
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) chunk.fo $(ROOTIDPARAM) $(STYLEOPT)
+
+c.fo: c.xml
+	$(XSLT) $< $(SSFO) $@ $(STYLEOPT)
+
+c.pdf: c.fo
+	xep $<
+	rm -f $<
+
 book.fo: book.xml
-	$(XSLT) -m $(MEMORY) $< $(SSFO) $@ $(ROOTIDPARAM) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $< $(SSFO) $@ $(ROOTIDPARAM) $(STYLEOPT)
 
 book.pdf: book.fo
 	xep $< $@
