@@ -10,6 +10,8 @@ BASEDIR=../html/
 ROOTID=
 FORESULT=chunk.fo
 
+DIFFVER=
+
 FMGO=-N
 
 ifeq ($(SOURCE),tdgex.xml)
@@ -37,10 +39,10 @@ all: chunks
 test:
 	xjparse $(SOURCE)
 
-tdg.xml: bookinfo.xml
+tdg.xml: bookinfo.xml WhatsNew
 	xsltproc --output $@ stylesheets/identity.xsl book.xml
 
-tdgex.xml: bookinfo.xml
+tdgex.xml: bookinfo.xml WhatsNew
 	xsltproc --output $@ stylesheets/identity.xsl unexbook.xml
 
 bookinfo.xml: VERSION.xml
@@ -82,3 +84,11 @@ clean:
 freshmeat:
 	$(XSLT) VERSION.xml VERSION.xml /tmp/fm-docbook-tdg freshmeat=1
 	grep -v "<?xml" /tmp/fm-docbook-tdg | freshmeat-submit $(FMGO)
+
+WhatsNew:
+	$(CVS2LOG) -w
+ifeq ($(DIFFVER),)
+	$(MERGELOGS) > $@
+else
+	$(MERGELOGS) -v $(DIFFVER) > $@
+endif
