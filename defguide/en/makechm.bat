@@ -4,10 +4,10 @@ REM Sorry for MS-DOS batch file, but you probably never will be able to produce 
 REM Script expects that saxon command is able to run Saxon processor and that your copy 
 REM of HTML Help Workshop is installed in common place
 
-saxon book.xml stylesheets/htmlhelp.xsl
+call saxon book.xml stylesheets/htmlhelp.xsl
 %HHC% htmlhelp.hhp
 
-saxon book.xml stylesheets/htmlhelp.xsl "output.type=unexpanded"
+call saxon book.xml stylesheets/htmlhelp.xsl "output.type=unexpanded"
 %HHC% htmlhelp.hhp
 
 
