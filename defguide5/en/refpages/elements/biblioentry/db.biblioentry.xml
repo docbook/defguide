@@ -1,0 +1,62 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>biblioentry</refmiscinfo>
+  <refmiscinfo role='pattern'>db.biblioentry</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>BiblioEntry</tag> is an entry in a <tag>Bibliography</tag>.
+The contents of <tag>BiblioEntry</tag> is a <quote>database</quote>
+of named fields. Presentation systems frequently suppress some elements
+in a <tag>BiblioEntry</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+</para>
+
+<para><tag>BiblioEntry</tag>s are <quote>raw.</quote> They contain a
+database-like collection of named fields. It is the responsibility of
+the processing system to select elements from within a 
+<tag>BiblioEntry</tag>, present them in the correct order, and add
+all punctuation.
+</para>
+
+<para>There is no expectation that a system will present all of the fields
+in a <tag>BiblioEntry</tag> or that they will be displayed in the order
+in which they occur.
+</para>
+
+<para>Correct formatting of <tag>BiblioEntry</tag>s is an interchange
+issue. See <xref linkend="app-interchange"/>.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

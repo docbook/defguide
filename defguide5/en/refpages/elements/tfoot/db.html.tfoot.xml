@@ -1,0 +1,57 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>tfoot</refmiscinfo>
+  <refmiscinfo role='pattern'>db.html.tfoot</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>TFoot</tag> wrapper identifies the <tag>Row</tag>s of a
+table that form the foot of the table, as distinct from the header
+(<tag>THead</tag>) and body (<tag>TBody</tag>) rows.
+</para>
+<para>Footer rows are always rendered at the end of the table, despite thier
+logical placement near the beginning.
+</para>
+
+<refsection xml:id="dbreproc.html.tfoot"><title>Processing expectations</title>
+<para><?tdg gentext='calssemantics'?>
+Footer rows are often presented in an alternate typographic
+style, such as boldface.
+</para>
+<para>In paged media, if a table spans across multiple pages, footer
+rows are printed on the bottom of each page.
+</para>
+<para>In our experience, relatively few formatters handle footer rows
+correctly.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,53 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>imageobject</refmiscinfo>
+  <refmiscinfo role='pattern'>db.imageobject</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>An <tag>ImageObject</tag> is a wrapper containing
+<tag>ImageData</tag> and its associated meta-information.
+</para>
+
+<para>If the SVG Module is used, <tag>ImageObject</tag> can
+also contain the <tag>svg:svg</tag> element.</para>
+
+<refsection xml:id="dbreproc.imageobject"><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+It might not be rendered at all, depending on its
+placement within a <tag>MediaObject</tag> or
+<tag>InlineMediaObject</tag> and the constraints on the
+publishing system.  For a more detailed description of the semantics
+involved, see <tag>MediaObject</tag>.
+</para>
+</refsection> 
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,79 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>title</refmiscinfo>
+  <refmiscinfo role='pattern'>db.title</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>Title</tag> is widely used in DocBook. It identifies the
+titles of documents and parts of documents, and is the required
+caption on formal objects.  It is also allowed as an optional
+title or caption on many additional block elements.
+</para>
+
+<refsection xml:id="dbreproc.title"><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+Titles are often repeated in several locations,
+for example, at the location where the object occurs, in the
+<emphasis>table of contents</emphasis>, and in running headers and
+footers.
+</para>
+<para>DocBook does not offer any mechanism for indicating where a line
+break should occur in long titles.  Titles are often repeated
+and no single line break is likely to be correct in all of the
+places where a title is used. Instead, you will have to rely on
+your processing system to provide a mechanism, such as a
+processing instruction, for identifing the location of forced
+line breaks.
+</para>
+
+<para>There are some contexts in which a <tag>Title</tag> can appear more than
+once.  For example, it may appear in both <tag>Book</tag> and
+<tag>BookInfo</tag>:
+
+<screen>
+&lt;book>&lt;title>Some Book Title&lt;/title>
+&lt;bookinfo>
+  &lt;title>Some Book Title&lt;/title>
+  &lt;author>&lt;firstname>Some&lt;/firstname>&lt;surname>Author&lt;/surname>
+    &lt;/author>
+&lt;/bookinfo>
+…
+</screen>
+</para>
+
+<para>In these contexts, if the <tag>Title</tag> occurs more than once,
+<emphasis>the same</emphasis> title must be used in both places.
+It is an error to use different titles, although DocBook has
+no way to detect the error.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

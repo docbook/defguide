@@ -1,0 +1,86 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>link</refmiscinfo>
+  <refmiscinfo role='pattern'>db.link</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>link</tag> is a general purpose hypertext element.
+Usually, <tag>link</tag> surrounds the text that should be made
+“hot,” (unlike <tag>xref</tag> which must generate the text) but
+the <tag class='attribute'>endterm</tag> attribute can be used to copy
+text from another element.
+</para>
+
+<para>The <tag>link</tag> can have <emphasis>either</emphasis> a
+<tag class="attribute">linkend</tag> attribute <emphasis>or</emphasis>
+a <tag class="attribute">xlink:href</tag> attribute. If it has an
+<tag class="attribute">xlink:href</tag> attribute,
+<tag>link</tag> is the equivalent of an
+<acronym>HTML</acronym> anchor
+(<tag class='starttag'>html:a href="..."</tag>)
+for cross reference with a Uniform Resource Identifier
+(<acronym>URI</acronym>). 
+</para>
+
+<refsection xml:id="dbreproc.link">
+<title>Processing expectations with <tag class="attribute">linkend</tag></title>
+<para><?tdg gentext='format.inline'?></para>
+
+<para>If the <tag>link</tag> element has content, then that content is
+processed for output as the “hot” text. If the <tag>link</tag> element
+has content and an <tag class='attribute'>endterm</tag> attribute,
+then the content is used and the <tag class='attribute'>endterm</tag>
+is ignored. If the <tag>link</tag> element has an
+<tag class='attribute'>endterm</tag> attribute and no content, then the
+content of the element pointed to by
+<tag class='attribute'>endterm</tag> should be repeated at the location of
+the <tag>link</tag> and used as the “hot” text.
+</para>
+</refsection>
+
+<refsection>
+<title>Processing expectations with <tag class="attribute">xlink:href</tag>
+</title>
+
+<para><?tdg gentext='format.inline'?></para>
+
+<para>When rendered online, it is natural to make the content
+of the <tag>link</tag> element an active link. When rendered in print
+media, the <acronym>URI</acronym> might be ignored, printed after the
+text of the link, or printed as a footnote.
+</para>
+
+<para>When the content of the <tag>link</tag> element is empty,
+the content of the <tag class="attribute">xlink:href</tag> attribute should
+be rendered as the text of the link.</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

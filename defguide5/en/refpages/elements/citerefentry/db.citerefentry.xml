@@ -1,0 +1,51 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>citerefentry</refmiscinfo>
+  <refmiscinfo role='pattern'>db.citerefentry</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>This element is a citation to a <tag>RefEntry</tag>.  It must include
+a <tag>RefEntryTitle</tag> that should exactly match the title of a 
+<tag>RefEntry</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para>This element implicitly links to the <tag>RefEntry</tag> with the
+same <tag>RefEntryTitle</tag> (in the same volume, as defined by
+<tag>ManVolNum</tag>).
+</para>
+<para><?tdg gentext='format.inline'?>
+Usually the <tag>ManVolNum</tag> is put in parentheses.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

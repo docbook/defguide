@@ -1,0 +1,52 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>orderedlist</refmiscinfo>
+  <refmiscinfo role='pattern'>db.orderedlist</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>In an <tag>OrderedList</tag>, each member of the list is marked with
+a numeral, letter, or other sequential symbol (such as roman numerals).
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+</para>
+<para>If no value is specified for <tag class='attribute'>Numeration</tag>,
+Arabic numerals (1, 2, 3, …) are to be used.
+</para>
+<para>In nested lists, DocBook does not specify the sequence of numerations.
+</para>
+<para>Note that the attributes of <tag>OrderedList</tag> have a significant
+influence on the processing expectations.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

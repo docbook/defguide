@@ -1,0 +1,63 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refpurpose</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refpurpose</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>RefPurpose</tag> is a concise summary of the topic of the
+reference page.  A <tag>RefPurpose</tag> is usually limited to a single,
+short sentence.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+See <tag>RefNameDiv</tag>.
+</para>
+<para>In a large <tag>Reference</tag>, <tag>RefName</tag>s and
+<tag>RefPurpose</tag>s are sometimes used to construct a permuted
+index. A permuted index is a keyword-in-context concordance of lines,
+like the short definitions in this element reference; the keyword
+cycles alphabetically through the words of the (definition) lines.
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

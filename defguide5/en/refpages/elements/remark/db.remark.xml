@@ -1,0 +1,65 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>remark</refmiscinfo>
+  <refmiscinfo role='pattern'>db.remark</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>Remark</tag> element is designed to hold remarks, for
+example, editorial comments, that are useful while the document is
+in the draft stage, but are not intended for final publication.
+</para>
+
+<para>Remarks are available almost anywhere and have a particularly broad
+content model.  Your processing system may or may not support either the use
+of comments everywhere they are allowed or the full generality of
+the <tag>Remark</tag> content model.
+</para>
+
+<para>Prior to version 4.0 of DocBook, this element was named
+<tag>Comment</tag>.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+Remarks are often printed only in draft
+versions of a document and suppressed otherwise.  This may be
+controlled by the <tag class='attribute'>Status</tag> attribute
+of an ancestor element (for example, <tag>Chapter</tag>), or by
+external processes, such as selecting an alternate stylesheet
+when publishing.
+</para>
+<para><tag>Remark</tag>s must not be nested within other <tag>Remark</tag>s.
+Because DocBook is harmonizing towards <acronym>XML</acronym>, this restriction cannot be
+enforced by the <acronym>DTD</acronym>. The processing of nested comments is undefined.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

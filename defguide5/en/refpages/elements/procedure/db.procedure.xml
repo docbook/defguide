@@ -1,0 +1,61 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>procedure</refmiscinfo>
+  <refmiscinfo role='pattern'>db.procedure</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>Procedure</tag> encapsulates a task composed of
+<tag>Step</tag>s (and possibly, <tag>SubSteps</tag>).
+Procedures are usually performed sequentially, unless individual
+<tag>Step</tag>s direct the reader explicitly.
+</para>
+
+<para>Often it is important to assure that certain conditions exist
+before a procedure is performed, and that the outcome of the procedure
+matches the expected results. DocBook does not provide explicit
+semantic markup for these pre- and post-conditions. Instead, they must
+be described as steps (check the pre-conditions in the first step and
+the results in the last step), or described outside the body of the
+procedure.
+</para>
+
+<para>The <tag>task</tag> element, added to DocBook in V4.3, provides
+some of this infrastructure.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

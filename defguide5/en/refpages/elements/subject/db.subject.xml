@@ -1,0 +1,70 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>subject</refmiscinfo>
+  <refmiscinfo role='pattern'>db.subject</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <quote>subject</quote> categorizes or describes the topic of a
+document, or section of a document. In DocBook, a <tag>Subject</tag>
+is defined by the <tag>SubjectTerm</tag>s that it contains.
+</para>
+<para>Subject terms should be drawn from a controlled vocabulary, such
+as the <emphasis>Library of Congress Subject Headings</emphasis>. If an outside
+vocabulary is not appropriate, a local or institutional subject set
+should be created.
+</para>
+<para>The advantage of a controlled vocabulary is that it places the document
+into a known subject space. Searching the subject space with a particular
+subject term will find <emphasis>all</emphasis> of the documents that claim
+to have that subject. There's no need to worry about terms that are
+synonymous with the search item, or homophones of the search term.
+</para>
+<para>All of the <tag>SubjectTerm</tag>s in a <tag>Subject</tag> should
+describe the same subject, and be from the <emphasis>same controlled
+vocabulary</emphasis>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+Subjects are rarely displayed to a reader. Usually, they
+are reserved for searching and retrieval purposes.
+</para>
+<para>Unlike <tag>Keyword</tag>s, which may be chosen freely, 
+subject terms should come from a controlled vocabulary.
+</para>
+<para>In order to assure that typographic or other errors are not introduced
+into the subject terms, they should be compared against the controlled
+vocabulary by an external process.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

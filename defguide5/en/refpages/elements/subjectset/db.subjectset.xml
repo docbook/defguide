@@ -1,0 +1,59 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>subjectset</refmiscinfo>
+  <refmiscinfo role='pattern'>db.subjectset</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>SubjectSet</tag> is a container for a set of
+<tag>Subject</tag>s.  All of the <tag>Subject</tag>s within a
+<tag>SubjectSet</tag> should come from the <emphasis>same</emphasis>
+controlled vocabulary.
+</para>
+<para>A document can be described using terms from more than one controlled
+vocabulary.  In order to do this, you should use the
+<tag class='attribute'>Scheme</tag> attribute to distinguish between
+controlled vocabularies.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+Subjects are rarely displayed to a reader. Usually, they
+are reserved for searching and retrieval purposes.
+</para>
+<para>DocBook does not specify a relationship between <tag>SubjectSet</tag>s
+in different parts of a document or between a <tag>SubjectSet</tag> and
+the <tag>SubjectSet</tag>s of enclosing parts of the document.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,48 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>production</refmiscinfo>
+  <refmiscinfo role='pattern'>db.production</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>This element is only available if you are using the
+<link linkend="ebnf.module">EBNF Module</link>.</para>
+
+<para>A <tag>Production</tag> is single production in an
+<glossterm>Extended Backus-Naur Form</glossterm> (EBNF) grammar.</para>
+
+<para>Individual productions have two parts, a left hand side
+(<tag>lhs</tag>) and a right hand side
+(<tag>rhs</tag>). Each <tag>NonTerminal</tag>
+on the left hand side is defined in terms of other
+non-terminals and literals on the right hand side.</para>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

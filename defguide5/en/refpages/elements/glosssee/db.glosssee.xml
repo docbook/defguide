@@ -1,0 +1,50 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>glosssee</refmiscinfo>
+  <refmiscinfo role='pattern'>db.glosssee</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>GlossSee</tag> directs the reader to another <tag>GlossEntry</tag>
+instead of this one.  A <quote>See</quote>
+cross-reference occurs in place of the definition.
+</para>
+
+<refsection><title>Processing Expectations</title>
+<para>Formatted as a displayed block, in the same style as a
+<tag>GlossDef</tag>.
+</para>
+<para><tag>GlossSee</tag> elements are expected to generate the necessary
+cross-reference text, usually <quote>See</quote> in English, as well as
+any necessary punctuation.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

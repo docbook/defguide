@@ -1,0 +1,112 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>productionset</refmiscinfo>
+  <refmiscinfo role='pattern'>db.productionset</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>This element is only available if you are using the
+<link linkend="ebnf.module">EBNF Module</link>.</para>
+
+<para>A <tag>ProductionSet</tag> is a collection of
+<glossterm>Extended Backus-Naur Form</glossterm> (EBNF)
+<tag>Production</tag>s.</para>
+
+<para>EBNF is a notation for describing the grammar of context-free
+languages. Even if you aren't conversant in the programming language
+concepts of context-free languages and grammars, it's not really
+as hard to understand as it sounds.</para>
+
+<para>A set of EBNF productions describes the legal arrangements of
+tokens in a language. Consider arithmetic expressions as a simple
+example.</para>
+
+<para>The expression
+<quote><literal>3 + 4</literal></quote>
+is valid and so is
+<quote><literal>3 + 4 - 5</literal></quote>, but
+<quote><literal>3 - + - 4</literal></quote> is not, nor is
+<quote><literal>3 + 4 6</literal></quote>. We can use EBNF to
+describe all the possible legal arrangements:</para>
+
+<productionset><title>Arithemetic Expressions</title>
+<production xml:id="ebnf.expression">
+  <lhs>Expression</lhs>
+  <rhs><nonterminal def="ebnf.arith">ArithExpression</nonterminal> |
+       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
+  <lineannotation>Does this grammar actually get precedence right?
+  </lineannotation>
+  </rhs>
+</production>
+<production xml:id="ebnf.arith">
+  <lhs>ArithExpression</lhs>
+  <rhs><nonterminal def="ebnf.expression">Expression</nonterminal>
+       '+'
+       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="ebnf.expression">Expression</nonterminal>
+       '-'
+       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
+  </rhs>
+</production>
+<production xml:id="ebnf.mult">
+  <lhs>MultExpression</lhs>
+  <rhs><nonterminal def="ebnf.mult">MultExpression</nonterminal>
+       '*'
+       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
+       '/'
+       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="ebnf.number">Number</nonterminal>
+  </rhs>
+  <constraint linkend="div0"/>
+</production>
+<production xml:id="ebnf.number">
+  <lhs>Number</lhs>
+  <rhs>[0-9]+</rhs>
+</production>
+</productionset>
+
+<constraintdef xml:id="div0" role="Err">
+<title>Division by Zero</title>
+<para>Division by zero is an error. Constraints, such as this one,
+are used to express conditions that cannot be expressed in the grammar.</para>
+</constraintdef>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+The detailed processing expecations with respect to
+individual productions, left-hand sides, and right-hand sides are quite
+complex.
+</para>
+<para><tag>Production</tag>s should be numbered.</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

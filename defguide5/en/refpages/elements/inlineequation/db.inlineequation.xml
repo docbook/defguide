@@ -1,0 +1,48 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>inlineequation</refmiscinfo>
+  <refmiscinfo role='pattern'>db.inlineequation</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>InlineEquation</tag>s are expressions (usually mathematical) that
+occur in the text flow.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+</para>
+<para><tag>InlineEquation</tag> should not contain <tag>Graphic</tag>.
+Instead, it should contain <tag>InlineGraphic</tag>.  Within an
+<tag>InlineEquation</tag>, <tag>Graphic</tag> should be rendered inline.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,389 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>imagedata</refmiscinfo>
+  <refmiscinfo role='pattern'>db.imagedata</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>This element points to an external entity containing graphical
+image data.
+</para>
+
+<refsection xml:id="dbreproc.imagedata"><title>Processing expectations</title>
+
+<para>Render the image. <?tdg gentext='format.context'?>
+</para>
+
+<para>There are two ways to provide content for <tag>ImageData</tag>:
+<tag class='attribute'>EntityRef</tag> or <tag
+class='attribute'>FileRef</tag>.  It is best to use only one of these
+methods, however, if multiple sources are provided, 
+<tag class='attribute'>EntityRef</tag> will be used in favor of 
+<tag class='attribute'>FileRef</tag>.
+</para>
+
+<para><tag>ImageData</tag> provides a selection of attributes
+that can be used to control how the image is rendered. These
+attributes define two rectangles, the <glossterm>viewport
+area</glossterm> and the <glossterm>content area</glossterm>, and how
+these rectangles are related to each other. The <glossterm>intrinsic
+size</glossterm> of the image is a third rectangle that sometimes
+influences the way an image is rendered.
+</para>
+
+<para>It is important to understand the distinction between these
+three areas. When rendering an image, the viewport area defines the
+space reserved in the flow of content for the image. If a
+6in&#xa0;x&#160;4in viewport area is specified, that's how much space will be
+reserved for the image, independent of the actual size of the rendered
+image. The content area defines the actual size of the rendered image,
+independent of the intrinsic size of the image. The intrinisic size of
+the image is its actual, real size.
+</para>
+
+<para>DocBook provides three mutually exclusive mechanisms for specifying
+the content area of an image: it can be specified directly, it can be specified
+by selecting a scale factor, or it can be specified to be the same size
+as the viewport area.</para>
+
+<para>Finally, DocBook provides two attributes,
+<tag class="attribute">align</tag> and
+<tag class="attribute">valign</tag> to specify the alignment of
+the content area within the viewport area.</para>
+
+<para>DocBook provides no mechanism for specifying how an image should be
+rendered if the content area exceeds the viewport area in either or both
+dimensions. Implementations are free to perform clipping, allow the image
+to overflow, and/or generate errors.</para>
+
+<refsection>
+<title>Units of Measure</title>
+
+<para>The size of the viewport area and the content area are defined
+in terms of lengths (width and depth).</para>
+
+<para>Lengths must be expressed as a decimal value followed
+immediately by an optional unit of measure or a percentage. Six and one eight inches,
+for example, must be expressed as <quote>6.125in</quote>. It is an error to
+put a space or other punctuation between the decimal value and the
+unit of measure.</para>
+
+<para>The following units of measure may be used:</para>
+
+<simplelist columns="2" type="horiz">
+<member><literal>pt</literal></member><member>Points (1/72 of an inch)</member>
+<member><literal>cm</literal></member><member>Centimeters</member>
+<member><literal>mm</literal></member><member>Millimeters</member>
+<member><literal>in</literal></member><member>Inches</member>
+<member><literal>pc</literal></member><member>Picas (1/6 of an inch)</member>
+<member><literal>px</literal></member><member>Pixels</member>
+<member><literal>em</literal></member><member>Ems</member>
+</simplelist>
+
+<para>If no unit of measure is provided, <literal>px</literal> is
+assumed. Note that pixels have no universally accepted absolute size
+and ems are relative units of measure. Implementations may define
+pixel sizes differently and stylesheets may or may not be able to
+determine the current font size in order to correctly calculate the
+absolute size of an em. It is best to avoid these units of
+measure.</para>
+
+<para>Percetages are expressed as a decimal value followed immediately by
+a <literal>%</literal> sign.</para>
+</refsection>
+
+<refsection xml:id="viewport.area">
+<title>Specifying the Viewport Area</title>
+
+<para>The viewport area is specified by the <tag
+class="attribute">width</tag> and <tag
+class="attribute">depth</tag> attributes.</para>
+
+<para>If neither width nor depth is specified, an implementation is
+free to choose defaults. These defaults may be influenced by context.
+For example, when rendering an inline graphic, the viewport area often
+defaults to the size of the content area. For block graphics, the
+width often defaults to the column width while the depth defaults to
+the depth of the content area.</para>
+
+<para>If only one of width or depth is specified, an implementation is
+free to choose a default for the other dimension.</para>
+
+<para>Viewport area dimensions expressed as a percentage are a percentage
+of the available area. For example, a width of <literal>50%</literal>
+when an implementation is rendering in a column 6in wide is equivalent
+to specifying a width of 3in.</para>
+
+<para>Percentages must be used with care. Some media are unbounded in one
+or more directions (for example, web pages are generally unbounded in depth).
+Specifying a percentage of an unbounded dimension is undefined. Implementations
+may choose arbitrary defaults or may generate errors.</para>
+</refsection>
+
+<refsection>
+<title>Specifing the Content Area</title>
+
+<para>The content area is specified by the <tag
+class="attribute">contentwidth</tag> and <tag
+class="attribute">contentdepth</tag> attributes.</para>
+
+<para>If neither content width nor content depth is specified, an
+implementation is expected to render the image at its intrinsic size
+(unless scaling or scaling to fit is requested).
+If only one of content width or content depth is specified, an
+implementation is expected to choose a default for the other dimension
+such that the image is scaled proportionally. For example, if an image
+has an intrinsic size of one square inch and the content width is
+specified as <literal>2in</literal>, the content depth must default to
+<literal>2in</literal>.</para>
+
+<para>Content area dimensions expressed as a percentage are a percentage
+of the intrinsic size of the image.</para>
+
+<para>Percentages must be used with care. Some implementations may be
+unable to determine the intrinsic size of an image and will therefore
+be forced to make compromises. Implementations may choose arbitrary
+values or may generate errors if the intrinsic size cannot be obtained.</para>
+</refsection>
+
+<refsection>
+<title>Scaling</title>
+
+<para>There are two ways that scaling can be specified, with the
+<tag class="attribute">scale</tag> attribute or with the
+<tag class="attribute">scalefit</tag> attribute.</para>
+
+<para>If scale is specified, it must be a positive integer. It
+is always interpreted to be a percentage value where
+<quote><literal>100</literal></quote> represents 100%.</para>
+
+<para>The legal values of <tag
+class="attribute">scalefit</tag> are <literal>0</literal> (false)
+or <literal>1</literal> (true). If scaling to fit is requested, the
+content area is scaled until <emphasis>either</emphasis> the content
+width is the same as the viewport width (and the content depth is less
+than or equal to the viewport depth) <emphasis>or</emphasis> the
+content depth is the same as the viewport depth (and the content width
+is less than or equal to the viewport width), whichever comes first.
+In other words, scaling to fit never causes anamorphic scaling, it
+simply scales the image as large as possible without overflowing the
+bounds of the viewport area.
+</para>
+
+<para>Specification of content area, scaling, and scaling to fit are
+mutually exclusive. If a content area (<tag
+class="attribute">contentwidth</tag>, <tag
+class="attribute">contentdepth</tag>, or both) is specified,
+<emphasis>both</emphasis> scaling and scaling to fit are ignored. If
+the content area is not specified and both scaling and scaling to fit
+are specified, <tag class="attribute">scalefit</tag> is
+ignored.</para>
+
+<para>In order to achieve a level of backwards compatibility with previous
+versions of DocBook (which did not have attributes for specifying a content
+area) while maintaining coherent semantics, the default value of
+<tag class="attribute">scalefit</tag> depends on other attributes:</para>
+
+<informaltable>
+<tgroup cols="3" align="center">
+<thead>
+<row>
+<entry>Viewport area</entry>
+<entry>Content area</entry>
+<entry><tag class="attribute">scalefit</tag> default</entry>
+</row>
+</thead>
+<tbody>
+<row>
+  <entry>unspecified</entry>
+  <entry>unspecified</entry>
+  <entry>irrelevant</entry>
+</row>
+<row>
+  <entry>specified</entry>
+  <entry>unspecified</entry>
+  <entry>1</entry>
+</row>
+<row>
+  <entry>unspecified</entry>
+  <entry>specified</entry>
+  <entry>0</entry>
+</row>
+<row>
+  <entry>specified</entry>
+  <entry>specified</entry>
+  <entry>0</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>If a viewport area is specified (and neither a content area nor scaling
+is specified) and <tag class="attribute">scalefit</tag> is explicitly
+<quote><literal>0</literal></quote>, the viewport area specification must
+be ignored.</para>
+
+</refsection>
+
+<refsection>
+<title>Alignment</title>
+
+<para>Two alignment attributes are provided,
+<tag class="attribute">align</tag> and
+<tag class="attribute">valign</tag>.</para>
+
+<para>If specified, <tag class="attribute">align</tag> indicates how
+the content area should be aligned horizontally within the viewport area. If
+not specified, implementations are free to choose any default value.</para>
+
+<para>If specified, <tag class="attribute">valign</tag> indicates how
+the content area should be aligned vertically within the viewport area. If
+not specified, implementations are free to choose any default value.</para>
+</refsection>
+
+<refsection>
+<title>Examples</title>
+
+<para>If nothing is specified about the size of an image, it is rendered in
+a content area that is the same as its intrinsic size in a viewport area that
+is implementation defined:</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png"/&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-6.png"/>
+</imageobject>
+<textobject><phrase>An image at its intrinsic size</phrase></textobject>
+</mediaobject>
+</informalfigure>
+
+<para>If a viewport area is specified, the image is rendered in a content
+area that is the same as its intrinsic size in the specified viewport area:
+</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png" width="6in" depth="5.5in" scalefit="0"/&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-7.png"/>
+</imageobject>
+<textobject><phrase>An image at its intrinsic size in a viewport</phrase></textobject>
+</mediaobject>
+</informalfigure>
+
+<para>If a content area is specified, the image is scaled (possibly
+anamorphically) to that size and rendered in a viewport area that is
+implementation defined:
+</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png" contentwidth="4in" contentdepth="3in"/&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-5.png"/>
+</imageobject>
+<textobject><phrase>An image at a specified content size</phrase></textobject>
+</mediaobject>
+</informalfigure>
+
+<para>If a scaling factor is specified, the intrinsic size is scaled
+uniformly by that amount to obtain the content area which is rendered
+in a viewport area that is implementation defined:
+</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png" scale="300"/&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-4.png"/>
+</imageobject>
+<textobject><phrase>An image scaled</phrase></textobject>
+</mediaobject>
+</informalfigure>
+
+<para>If a viewport area is specified and scaling to fit is requested,
+the intrinsic size is scaled (uniformly) as large as possible without
+extending beyond the bounds of the viewport area which is rendered as
+specified.
+</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png" width="6in" depth="5.5in"/&gt;
+&lt;!-- note that scalefit="1" is the default in this case --&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-3.png"/>
+</imageobject>
+<textobject><phrase>An image scaled to fit</phrase></textobject>
+</mediaobject>
+</informalfigure>
+
+<para>If the viewport area and content area are specified, the image
+is scaled (possibly anamorphically) to the content area size and rendered in
+the specified viewport area:
+</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png" width="6in" depth="5.5in"
+           contentwidth="4in" contentdepth="3in"/&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-2.png"/>
+</imageobject>
+<textobject><phrase>An image at a specified size in a specified viewport</phrase></textobject>
+</mediaobject>
+</informalfigure>
+
+<para>If the viewport area and a scaling factor are specified, the
+intrinsic size is scaled uniformly by the scaling factor amount to obtain the
+content area which is rendered in the specified viewport area:
+</para>
+
+<informalfigure>
+<screen>&lt;imagedata fileref="image.png" width="6in" depth="5.5in" scale="300"/&gt;</screen>
+
+<mediaobject>
+<imageobject>
+<imagedata fileref="../../../figures/graphic-attr-1.png"/>
+</imageobject>
+<textobject><phrase>An image scaled in a specified viewport</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</refsection>
+</refsection> 
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

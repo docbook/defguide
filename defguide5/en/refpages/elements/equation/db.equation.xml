@@ -1,0 +1,56 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>equation</refmiscinfo>
+  <refmiscinfo role='pattern'>db.equation</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>An <tag>Equation</tag> is a formal mathematical equation
+(with an optional rather than required title).
+</para>
+
+<para>If the MathML Module is used, <tag>Equation</tag> can
+also contain the <tag>mml:math</tag> element.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+For an inline equation, use <tag>InlineEquation</tag>.
+</para>
+
+<para>Processing systems that number equations or build a table of
+equations at the beginning of a document may have difficulty correctly
+formatting documents that contain both <tag>Equation</tag>s
+with <tag>Title</tag>s and <tag>Equation</tag>s
+without <tag>Title</tag>s.  You are advised to use
+<tag>InformalEquation</tag> for equations without titles.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,58 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>copyright</refmiscinfo>
+  <refmiscinfo role='pattern'>db.copyright</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>Copyright</tag> element holds information about the 
+date(s) and holder(s) of a document copyright.  If an extended 
+block of text describing the copyright or other legal status
+is required, use <tag>LegalNotice</tag>.
+</para>
+
+<para>The <tag>Copyright</tag> element is confined to meta-information.
+For copyright statements in running text, see <tag>Trademark</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+<?tdg gentext='format.csuppress'?>
+</para>
+<para>A displayed copyright notice usually includes the copyright
+symbol, ©, as generated text and is formatted with commas
+separating multiple years. Additional generated text, such as the
+legend
+<quote>All rights reserved,</quote> may also be generated.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,62 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>qandaset</refmiscinfo>
+  <refmiscinfo role='pattern'>db.qandaset</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>QandASet</tag> is a list consisting of
+<tag>Question</tag>s and <tag>Answer</tag>s.
+<tag>QandASet</tag>s can be divided into sections.
+</para>
+
+<para>Every entry in a <tag>QandASet</tag> must contain a
+<tag>Question</tag>, but <tag>Answer</tag>s are
+optional (some questions have no answers), and may be repeated (some
+questions have more than one answer).
+</para>
+
+<para>Common uses for <tag>QandASet</tag>s include reader
+questionnaires and lists of <quote>Frequently Asked Questions</quote>
+(<acronym>FAQ</acronym>s). For the purpose of an
+<acronym>FAQ</acronym>, DocBook <acronym>V3.1</acronym> added the
+<literal>FAQ</literal> class to <tag>Article</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+The <tag class='attribute'>DefaultLabel</tag>
+attribute has a significant influence on the presentation of
+<tag>Question</tag>s and <tag>Answer</tag>s.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

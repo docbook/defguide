@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/docbook-ng" version="gin" xml:id="app-customizing">
+<?dbhtml filename="ch05.html"?>
+<title>Customizing DocBook</title>
+<info>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</info>
+ 
+<para>
+<indexterm xml:id="customDocBookch05" class="startofrange" significance="normal"><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary></indexterm>
+<indexterm xml:id="DocBookcustomch05" class="startofrange" significance="normal"><primary>DocBook DTD</primary>
+  <secondary>customizing</secondary></indexterm>
+
+For the applications you have in mind, DocBook <quote>out of the
+box</quote> may not be exactly what you need. Perhaps you need
+additional inline elements or perhaps you want to remove elements that
+you never want your authors to use. By design, DocBook makes this sort
+of customization easy.
+</para>
+<para>
+<indexterm significance="normal"><primary>attributes</primary>
+  <secondary>DocBook DTD, customizing</secondary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>DocBook DTD, customizing</secondary></indexterm>
+
+This chapter explains how to make your own <firstterm>customization
+layer</firstterm>. You might do this in order to:
+<itemizedlist>
+<listitem><para>Add new elements</para></listitem>
+<listitem><para>Remove elements</para></listitem>
+<listitem><para>Change the structure of existing elements</para></listitem>
+<listitem><para>Add new attributes</para></listitem>
+<listitem><para>Remove attributes</para></listitem>
+<listitem><para>Broaden the range of values allowed in an attribute</para></listitem>
+<listitem><para>Narrow the range of values in an attribute to a specific list or a fixed value</para></listitem>
+</itemizedlist>
+</para>
+<para>
+<indexterm significance="normal"><primary>extensions, DocBook DTD</primary></indexterm>
+<indexterm significance="normal"><primary>environment</primary>
+  <secondary>DocBook extensions, affecting</secondary></indexterm>
+
+You can use customization layers to extend DocBook or subset
+it. Creating a <acronym>DTD</acronym> that is a strict subset of DocBook means that all
+of your instances are still completely valid DocBook instances, which
+may be important to your tools and stylesheets, and to other people
+with whom you share documents.  An <firstterm>extension</firstterm> adds new
+structures, or changes the <acronym>DTD</acronym> in a way that is not compatible with
+DocBook. Extensions can be very useful, but might have a great impact
+on your environment.
+</para>
+<para>
+Customization layers can be as small as restricting an attribute value
+or as large as adding an entirely different hierarchy on top of the
+inline elements.
+</para>
+<section xml:id="ch05-shouldi"><info><title>Should You Do This?</title></info>
+<para>
+<indexterm significance="normal"><primary>stylesheets</primary>
+  <secondary>DTD extension, effects</secondary></indexterm>
+
+Changing a <acronym>DTD</acronym> can have a wide-ranging impact on the tools and
+stylesheets that you use. It can have an impact on your authors and on
+your legacy documents.  This is especially true if you make an
+extension. If you rely on your support staff to install and maintain
+your authoring and publishing tools, check with them before you invest
+a lot of time modifying the <acronym>DTD</acronym>. There may be additional issues that
+are outside your immediate control. Proceed with caution.
+</para>
+<para>
+That said, DocBook is designed to be easy to modify. This chapter
+assumes that you are comfortable with <acronym>SGML</acronym>/<acronym>XML</acronym> <acronym>DTD</acronym> syntax, but
+the examples presented should be a good springboard to learning the
+syntax if it's not already familiar to you.
+</para>
+</section>
+<section xml:id="s-notdocbook"><info><title>If You Change DocBook, It's Not DocBook Anymore!</title></info>
+<para>
+<indexterm significance="normal">
+  <primary>public identifiers</primary>
+  <secondary>DocBook DTD</secondary>
+  <tertiary>altering</tertiary>
+</indexterm>The DocBook <acronym>DTD</acronym> is usually referenced by its public identifier:
+</para>
+<screen>  -//OASIS//DTD DocBook V3.1//EN</screen>
+<para>
+Previous versions of DocBook, V3.0 and the V2 variants, used the owner
+identifier Davenport, rather than OASIS.
+</para>
+<para>
+If you make any changes to the structure of the <acronym>DTD</acronym>, it is
+imperative that you alter the public identifier that you use for the
+<acronym>DTD</acronym> and the modules you changed.  The license agreement under which
+DocBook is distributed gives you complete freedom to change, modify,
+reuse, and generally hack the <acronym>DTD</acronym> in any way you want, except that
+you must not call your alterations <quote>DocBook.</quote>
+</para>
+<para>
+<indexterm significance="normal"><primary>owner-identifiers</primary>
+  <secondary>changing (DocBook customization)</secondary></indexterm>
+<indexterm significance="normal"><primary>description, changing (DocBook customization)</primary></indexterm>
+
+You should change both the owner identifier and the description. The
+original DocBook formal public identifiers use the following syntax:
+<screen>
+-//OASIS//<replaceable>text-class</replaceable> DocBook <replaceable>description</replaceable> V<replaceable>version</replaceable>//EN
+</screen>
+</para>
+<para>
+Your own formal public identifiers should use the following syntax in
+order to record their DocBook derivation:
+<screen>
+-//<replaceable>your-owner-ID</replaceable>//<replaceable>text-class</replaceable> DocBook V<replaceable>version</replaceable>-Based <optional>Subset|Extension|Variant</optional> <replaceable>your-descrip-and-version</replaceable>//<replaceable>lang</replaceable>
+</screen>
+</para>
+<para>For example:
+<screen>
+-//O'Reilly//DTD DocBook V3.0-Based Subset V1.1//EN
+</screen>
+</para>
+<para>
+<indexterm significance="normal"><primary>subsets (DocBook DTD)</primary></indexterm>
+If your <acronym>DTD</acronym> is a proper subset, you can advertise this status by
+using the <literal>Subset</literal> keyword in the description. If
+your <acronym>DTD</acronym> contains any markup model extensions, you can advertise
+this status by using the <literal>Extension</literal> keyword. If
+you'd rather not characterize your variant specifically as a subset or
+an extension, you can leave out this field entirely, or, if you
+prefer, use the <literal>Variant</literal> keyword.
+</para>
+<para>
+<indexterm significance="normal"><primary>dbgenent.mod file</primary></indexterm>
+<indexterm significance="normal"><primary>public identifiers</primary>
+  <secondary>dbgenent.mod file, changing</secondary></indexterm>
+
+There is only one file that you may change without changing the public
+identifier: <filename>dbgenent.mod</filename>. And you can add only
+entity and notation declarations to that file. (You can add anything
+you want, naturally, but if you add anything other than entity and
+notation declarations, you must change the public identifier!)
+</para>
+</section>
+
+<section xml:id="ch05-layers">
+<info>
+  <title>Customization Layers</title>
+</info>
+
+<para>FIXME: discuss customizing DocBook V5.0</para>
+</section>
+</chapter>

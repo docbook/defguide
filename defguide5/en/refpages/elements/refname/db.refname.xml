@@ -1,0 +1,64 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refname</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refname</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>RefEntry</tag>s are small units of reference documentation
+describing a single topic. The <tag>RefName</tag> identifies
+the topic.  Often this is the name of the command or function
+that the reference page describes.
+</para>
+<para>Some reference pages describe a whole family of very closely related
+commands or functions.  In this case, a <tag>RefEntry</tag> will
+have multiple <tag>RefName</tag>s, one for each command or function.
+When a <tag>RefEntry</tag> has several <tag>RefName</tag>s, it is
+likely to have a <tag>RefDescriptor</tag> that identifies the 
+whole family of functions.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,50 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>synopsis</refmiscinfo>
+  <refmiscinfo role='pattern'>db.synopsis</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>Synopsis</tag> is a verbatim environment for displaying command,
+function, and other syntax summaries.
+</para>
+
+<para>Unlike <tag>CmdSynopsis</tag> and <tag>FuncSynopsis</tag> which have a
+complex interior structure,
+<tag>Synopsis</tag> is simply a verbatim environment.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='pexp.linespecific'?> <tag>Synopsis</tag> elements are usually
+displayed in a fixed width font.
+</para>
+</refsection> 
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,59 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>tag</refmiscinfo>
+  <refmiscinfo role='pattern'>db.tag</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>An <tag>SGMLTag</tag> identifies an <acronym>SGML</acronym> markup construct.
+The utility of this element is almost
+wholly constrained to books about <acronym>SGML</acronym>.
+</para>
+
+<para><tag>SGMLTag</tag> is sufficient for most <acronym>XML</acronym> constructs, which
+are identical to the corresponding <acronym>SGML</acronym> constructs, it but does
+not have any provisions for handling the special features of <acronym>XML</acronym>
+markup. A future version of DocBook will address this issue,
+probably by adding new <tag class="attribute">Class</tag>
+values.  In the 
+meantime, you may get by by assigning a <tag class='attribute'>Role</tag>
+attribute for <acronym>XML</acronym>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+<tag>SGMLTag</tag> generates all the necessary punctuation
+before and after the construct it identifies.  For example, it generates
+both the leading ampersand and the trailing semicolon when the
+<tag class='attribute'>Class</tag> is <literal>genentity</literal>.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

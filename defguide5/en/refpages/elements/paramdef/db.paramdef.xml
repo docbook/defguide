@@ -1,0 +1,76 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>paramdef</refmiscinfo>
+  <refmiscinfo role='pattern'>db.paramdef</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>In the syntax summary for a function in a programming language,
+<tag>ParamDef</tag> provides the description of a parameter to the
+function.  Typically, this includes the data type of the parameter
+and its name.  For parameters that are pointers to functions, it also
+includes a summary of the nested parameters.
+</para>
+
+<para>Within the <tag>ParamDef</tag>, the parameter name is identified with 
+<tag>Parameter</tag>, and the rest of the content is assumed to be the
+data type.
+</para>
+
+<para>In the following definition, <parameter>str</parameter> is the name of the 
+parameter and <type>char *</type> is its type:
+<screen>
+<![CDATA[
+<paramdef>char *<parameter>str</parameter></paramdef>
+]]>
+</screen>
+</para>
+
+<para>Sometimes a data type requires punctuation on both sides of the
+parameter.  For example, the <parameter>a</parameter> parameter in this
+definition is an array of 
+<type>char *</type>:
+<screen>
+<![CDATA[
+<paramdef>char *<parameter>a</parameter>[]</paramdef>
+]]>
+</screen>
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+For a complete description of the processing expectations,
+see <tag>FuncSynopsis</tag>.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

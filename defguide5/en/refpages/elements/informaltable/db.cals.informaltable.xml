@@ -1,0 +1,53 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>informaltable</refmiscinfo>
+  <refmiscinfo role='pattern'>db.cals.informaltable</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>An <tag>InformalTable</tag> element identifies an informal
+table (one without a <tag>Title</tag>).  DocBook uses the <acronym>CALS</acronym>
+table model, which describes tables geometrically using rows,
+columns, and cells.
+</para>
+<para>Tables may include column headers and footers, but there is no
+provision for row headers.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?></para>
+<note>
+<para>It is an error to supply a <tag>title</tag> in the
+<tag>blockinfo</tag> for an informal table.</para>
+</note>
+<para><?tdg gentext='calssemantics'?></para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,51 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>constructorsynopsis</refmiscinfo>
+  <refmiscinfo role='pattern'>db.constructorsynopsis</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>ConstructorSynopsis</tag> contains the syntax summary
+of a constructor in an object-oriented programming language. Unlike a
+<tag>MethodSynopsis</tag>, which it closely resembles, it may
+not identify a return type and the <tag>MethodName</tag> is
+optional (in some languages, constructor names can be generated
+automatically).
+</para>
+
+<refsection><title>Processing expectations</title>
+<para>For the most part, the processing application is expected to
+generate all of the parenthesis, semicolons, commas,
+and so on. required in the rendered synopsis.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

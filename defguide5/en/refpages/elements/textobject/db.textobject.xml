@@ -1,0 +1,69 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>textobject</refmiscinfo>
+  <refmiscinfo role='pattern'>db.textobject</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>TextObject</tag> is a wrapper containing a textual description
+of a media object, and its associated meta-information.
+<tag>TextObject</tag>s are only allowed in <tag>MediaObject</tag>s as
+a fall-back option, they cannot be the primary content.
+</para>
+
+<para>There are two different forms of <tag>TextObject</tag>, and it is
+not unreasonable for a media object to contain both of them.
+</para>
+
+<para>In the first form, the content of a <tag>TextObject</tag> is
+simply a <tag>Phrase</tag>. This form is a mechanism for providing a
+simple <quote>alt text</quote> for a media object. The phrase might be
+used, for example, as the value of the
+<tag class='attribute'>ALT</tag> attribute on an <acronym>HTML</acronym>
+<tag>IMG</tag>, with the primary content of the image coming from one
+of the other objects in the media object.
+</para>
+
+<para>In the second form, the content of <tag>TextObject</tag> is a longer,
+prose description.  This form could be used when rendering to devices
+that are incapable of displaying any of the other alternatives.
+</para>
+
+<refsection xml:id="dbreproc.textobject"><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+It might not be rendered at all, depending on its placement
+within a <tag>MediaObject</tag> or <tag>InlineMediaObject</tag> and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <tag>MediaObject</tag>.
+</para>
+</refsection> 
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

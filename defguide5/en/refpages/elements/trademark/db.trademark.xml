@@ -1,0 +1,59 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>trademark</refmiscinfo>
+  <refmiscinfo role='pattern'>db.trademark</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>Trademark</tag> identifies a legal trademark.
+</para>
+
+<para>One of the values of the <tag class='attribute'>Class</tag>
+attribute on <tag>Trademark</tag> is <literal>Copyright</literal>.
+DocBook also has a <tag>Copyright</tag> element, but it is
+confined to meta-information.  A copyright in running text is
+best represented as <tag class='starttag'>trademark
+class=copyright</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+</para>
+
+<para>In addition to <tag>Trademark</tag>, two of the values of the
+<tag class='attribute'>Class</tag> attribute on
+<tag>ProductName</tag> make assertions about trademarks;
+presumably the same markup is intended for both
+<tag>Trademark</tag> and <tag>ProductName</tag> when they make
+assertions about trademarks.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,70 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refentry</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refentry</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>RefEntry</tag> is a reference page.  In <acronym>UNIX</acronym> parlance this has
+historically been called a “man page” (short for manual page).
+</para>
+
+<para><tag>RefEntry</tag> is an appropriate wrapper for any small unit of
+reference documentation describing a single topic.  Canonical examples
+are programming language functions and user commands 
+(one <tag>RefEntry</tag> per function or command).<footnote><para>You're reading a <tag>RefEntry</tag> right now.</para></footnote>
+</para>
+
+<para>On some projects, the structure of reference pages may be rigorously 
+defined right down to the number, order, and title of individual sections
+(some or all of which may be required).
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+It is not uncommon for <tag>RefEntry</tag>s to introduce
+a forced page break in print media.
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+heads, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

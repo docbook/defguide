@@ -1,0 +1,697 @@
+<partintro xmlns='http://docbook.org/docbook-ng'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<para><indexterm xml:id="elementsref" class='startofrange'>
+<primary>elements</primary>
+<secondary>reference</secondary>
+</indexterm>This reference describes every element in the DocBook
+schema.</para>
+
+<sect1>
+<title>Organization of Reference Pages</title>
+
+<para>The description of each element in this reference is divided
+into the following sections:</para>
+<variablelist>
+
+<varlistentry><term>Synopsis</term>
+<listitem>
+<para><indexterm><primary>elements</primary>
+  <secondary>reference</secondary>
+    <tertiary>synopses</tertiary></indexterm><indexterm>
+<primary>synopses</primary>
+  <secondary>elements (reference pages)</secondary>
+</indexterm><indexterm><primary>content models</primary>
+  <secondary>elements, reference</secondary>
+</indexterm>Provides a quick synopsis of the element. The content of
+the synopsis varies according to the nature of the element
+described, but may include any or all of the following
+sections:</para>
+<variablelist>
+<varlistentry><term>Content Model</term>
+<listitem>
+<para>Describes the content model of the element, the mixture of things
+that it can contain. See <xref linkend="s2-cmintro"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Attributes</term>
+<listitem>
+<para><indexterm><primary>attributes</primary>
+  <secondary>elements, referencing</secondary>
+</indexterm>Provides a synopsis of the attributes on the element. For
+brevity, common attributes are described only once,
+<link linkend="common.attributes">in this introduction</link>.
+Likewise, common linking attributes are
+<link linkend="common.linking.attributes">described once</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Additional Constraints</term>
+<listitem>
+<para>Provides a synopsis of any additional constraints on the element.
+These constraints are expressed using Schematron in the RELAX NG
+grammar.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Description</term>
+<listitem>
+<para><indexterm><primary>elements</primary>
+  <secondary>description, semantics</secondary></indexterm>
+<indexterm><primary>semantics (elements), describing</primary>
+</indexterm>Describes the semantics of the element.</para>
+
+<variablelist>
+<varlistentry><term>Processing expectations</term>
+<listitem>
+<para><indexterm><primary>formatting</primary>
+  <secondary>elements</secondary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>attributes</secondary>
+    <tertiary>processing expectations, affecting</tertiary>
+</indexterm>Summarizes specific formatting expectations of the
+element. Many processing expectations are influenced by attribute
+values. Be sure to consult the description of element attributes as
+well.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Future changes</term>
+<listitem>
+<para>
+<indexterm><primary>DocBook</primary>
+  <secondary>changes, future versions</secondary></indexterm>
+<indexterm><primary>compatibility, DocBook versions</primary></indexterm>
+<indexterm><primary>versions</primary>
+  <secondary>DocBook</secondary>
+    <tertiary>future changes</tertiary>
+</indexterm>Identifies changes that are scheduled for future versions
+of the schema. These changes are highlighted because they involve some
+backward-incompatability that may make currently valid DocBook
+documents no longer valid under the new version.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Attributes</term>
+<listitem>
+<para>
+<indexterm><primary>attributes</primary>
+<secondary>semantics</secondary>
+</indexterm>Describes the semantics of each attribute.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>See Also</term>
+<listitem>
+<para>Lists similar or related elements.
+<indexterm><primary>cross references</primary>
+  <secondary>elements</secondary></indexterm>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Examples</term>
+<listitem>
+
+<para><indexterm><primary>elements</primary>
+  <secondary>proper usage, examples</secondary>
+</indexterm>Provides examples of proper usage for the element.
+Generally, the smallest example required to reasonably demonstrate the
+element is used. In many cases, a formatted version of the example is
+also shown.
+</para>
+
+<para>All of the examples printed in the book are valid according to the
+RELAX NG grammar.
+</para>
+
+<para>Formatted examples are indicated using a vertical bar.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<sect2 xml:id="s2-cmintro">
+<title>Understanding Content Models</title>
+
+<para><indexterm><primary>content models</primary>
+  <secondary>overview</secondary>
+</indexterm>Each element synopsis begins with a description of its
+content model. Content models are the way that grammars describe the
+name, number, and order of other elements that may be used inside an
+element. This description is presented as a series of nested lists.
+The rules of RELAX NG are considerably more powerful than the rules of
+<acronym>DTD</acronym>s and I've seen no obvious way to expose them.
+Suggestions welcome.</para>
+
+<para>Each level of list is introduced by a description of how elements
+are selected from it:</para>
+
+<variablelist>
+<varlistentry>
+<term>One of:</term>
+<listitem>
+<para>Exactly one selection must be taken from the list.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Optionally one of:</term>
+<listitem>
+<para>Like “one of” but may be omitted entirely.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sequence of:</term>
+<listitem>
+<para>One selection must be made for each member of the list and those
+selections must be presented in the order they appear in the list.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Optional sequence of:</term>
+<listitem>
+<para>Like “sequence of” but may be omitted entirely.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Zero or more of:</term>
+<listitem>
+<para>Any number of selections, including none, can be made from the list.
+Selections can be made in any order, without restriction on order or number
+of occurrences.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>One or more of:</term>
+<listitem>
+<para>Any number of selections can be made from the list.
+Selections can be made in any order, without restriction on order or number
+of occurrences except that at least one must be selected.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Optional one or more of:</term>
+<listitem>
+<para>Like “one or more of” but may be omitted entirely.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Interleave of:</term>
+<listitem>
+<para>All of the members of the list must be selected exactly once, but
+they can be selected in any order.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Optional interleave of:</term>
+<listitem>
+<para>Like “interleave of” but may be omitted entirely.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>Individual elements in the list may be followed by an occurrence
+indicator. If the indicator is “?” the element is optional. Note that this
+can have an effect on the meaning of the list as a whole. For example,
+a sequence that consists of only optional elements may have none. This
+differs, in subtle and unimportant ways, from an optional sequence.</para>
+
+<sect3><title>Content models and validity</title>
+<para><indexterm><primary>parsers</primary>
+  <secondary>content models, matching to elements</secondary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>parsing</secondary>
+</indexterm>A parser uses the content models to determine if a given
+document is valid. In order for a document to be valid, the content of
+every element in the document must <quote>match</quote> the content
+model for that element.
+</para>
+
+<para>In practical terms, match means that it must be possible to
+expand the content model until it exactly matches the sequence of
+elements in the document.
+</para>
+
+<para>For example, consider the content model of the
+<tag>epigraph</tag> element:</para>
+
+<itemizedlist spacing="compact" role="element-synopsis">
+  <listitem>
+    <para>Sequence of:</para>
+    <itemizedlist spacing="compact" role="element-synopsis">
+      <listitem>
+        <para><tag>info</tag>? (db.titleforbidden.info)</para>
+      </listitem>
+      <listitem>
+        <para><tag>attribution</tag>?</para>
+      </listitem>
+      <listitem>
+	<para>One or more of:</para>
+	<itemizedlist spacing="compact" role="element-synopsis">
+	  <listitem><para><tag>anchor</tag></para></listitem>
+	  <listitem><para><tag>formalpara</tag></para></listitem>
+	  <listitem><para><tag>literallayout</tag></para></listitem>
+	  <listitem><para><tag>para</tag></para></listitem>
+	  <listitem><para><tag>simpara</tag></para></listitem>
+	</itemizedlist>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+</itemizedlist>
+
+<screen><![CDATA[<epigraph>
+<para>Some text</para>
+</epigraph>]]></screen>
+
+<para>It is valid because the following expansion of the content model exactly
+matches the actual content: choose zero occurrences of <tag>info</tag>,
+zero occurrences of <tag>attribution</tag>, choose the alternative
+<tag>para</tag> from the choice, and choose to let the “one or more” match once.
+</para>
+
+<para>By the same token, this example is not valid because there is no 
+expansion of the content model that can match it:
+</para>
+
+<screen><![CDATA[<epigraph>
+<para>Some text</para>
+<attribution>John Doe</attribution>
+</epigraph>]]></screen>
+
+</sect3>
+</sect2>
+</sect1>
+
+<sect1 xml:id="common.attributes">
+<title>Common Attributes</title>
+<para>
+<indexterm><primary>attributes</primary>
+  <secondary>common</secondary></indexterm>
+<indexterm><primary>common attributes</primary>
+</indexterm>The following attributes occur on all elements. They are
+summarized here once for brevity and to make the additional attributes
+that occur on many elements stand out.</para>
+
+<informaltable pgwide="1">
+<tgroup cols="3" colsep="1" rowsep="1">
+<colspec colnum="1" colname="C1"/>
+<colspec colnum="2" colname="C2"/>
+<colspec colnum="3" colname="C3"/>
+<spanspec namest="C1" nameend="C3" spanname="C1C3"/>
+<thead>
+<row>
+<entry><para>Name</para></entry><entry>Type</entry><entry>Default</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry><tag class="attribute">arch</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">condition</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">conformance</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">os</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">remap</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">revision</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry valign="top"><tag class="attribute">revisionflag</tag></entry>
+<entry><simplelist>
+<member><emphasis>Enumeration:</emphasis></member>
+<member>changed</member>
+<member>added</member>
+<member>deleted</member>
+<member>off</member>
+</simplelist></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">role</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">security</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">userlevel</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">vendor</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">version</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">wordsize</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xreflabel</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xml:base</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xml:id</tag></entry>
+<entry>ID</entry>
+<entry><para><emphasis>None/Required</emphasis><footnote><para>On a
+few elements, the <tag class="attribute">xml:id</tag>
+attribute is required, but on most it is not.</para></footnote>
+</para></entry>
+</row>
+<row>
+<entry><tag class="attribute">xml:lang</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>FIXME: correct the following list</para>
+
+<variablelist>
+<varlistentry><term><tag class="attribute">Arch</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Arch attribute</primary></indexterm>
+<indexterm><primary>architecture</primary>
+  <secondary>computer or chip</secondary></indexterm>
+<indexterm><primary>computer architecture (elements)</primary></indexterm>
+<indexterm><primary>chip architecture (elements)</primary></indexterm>
+
+<tag class="attribute">Arch</tag> designates the
+computer or chip architecture to which the element applies.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Condition</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Condition attribute</primary></indexterm>
+
+<tag class="attribute">Condition</tag> is a general-purpose
+effectivity attribute with no specified semantics. Many DocBook users
+observed that in order to add an effectivity condition that was unique
+to their environment required <quote>abusing</quote> the semantics of
+one of the existing attributes, or adding their own, making their
+customization <link linkend="s-notdocbook">an extension rather than a
+subset</link>.</para>
+
+<para>The <tag class="attribute">Condition</tag> attribute
+provides a standard place for application-specific effectivity.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Conformance</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Conformance attribute</primary></indexterm>
+
+<tag class="attribute">Conformance</tag> indicates
+standards conformance characteristics of the item contained in the
+element. These characteristics are application-specific.  DocBook
+provides no defaults.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">ID</tag></term>
+<listitem>
+<para>
+<indexterm><primary>ID attribute</primary></indexterm>
+
+<tag class="attribute">ID</tag> is an identifying string
+for the element.  It must be unique at least within the document and
+must begin with a letter.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Lang</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Lang attribute</primary></indexterm>
+<indexterm><primary>country codes</primary></indexterm>
+<indexterm><primary>languages</primary>
+  <secondary>codes</secondary></indexterm>
+<indexterm><primary>ISO standards</primary>
+  <secondary>language codes</secondary></indexterm>
+<indexterm><primary>ISO standards</primary>
+  <secondary>country codes</secondary></indexterm>
+
+<tag class="attribute">Lang</tag> should be a language
+code drawn from <acronym>ISO</acronym> 639 (perhaps extended with a
+country code drawn from <acronym>ISO</acronym> 3166, as
+<literal>en-US</literal>).  Use it when you need to signal your
+application to change hyphenation and other display
+characteristics.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">OS</tag></term>
+<listitem>
+<para>
+<indexterm><primary>OS attribute</primary></indexterm>
+<indexterm><primary>operating systems</primary>
+  <secondary>elements</secondary></indexterm>
+
+<tag class="attribute">OS</tag> indicates the operating
+system to which the element is applicable.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Remap</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Remap attribute</primary></indexterm>
+<indexterm><primary>markup</primary>
+  <secondary>previous schemes, identifying</secondary></indexterm>
+
+<tag class="attribute">Remap</tag> contains an element
+name or similar semantic identifier assigned to the content in a
+previous markup scheme.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Role</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Role attribute</primary></indexterm>
+<indexterm><primary>elements</primary>
+  <secondary>classifying or subclassifying</secondary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>Role attribute</secondary></indexterm>
+
+<tag class="attribute">Role</tag> contains a string used
+to classify or subclassify an element.</para>
+<para>While Role is a common attribute in the sense that it occurs on
+almost all elements, it is not part of either of the common attributes
+parameter entities (<tag class="paramentity">common.attrib</tag> or <tag class="paramentity">idreq.common.attrib</tag>).  It is
+parameterized differently because it is useful to be able to subclass
+<tag class="attribute">Role</tag> independently on different
+elements.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Revision</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Revision attribute</primary></indexterm>
+
+<tag class="attribute">Revision</tag> indicates the
+editorial revision to which the element belongs.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">RevisionFlag</tag></term>
+<listitem>
+<para>
+<indexterm><primary>RevisionFlag attribute</primary></indexterm>
+<indexterm><primary>versions</primary>
+  <secondary>revision control, documents</secondary></indexterm>
+
+<tag class="attribute">RevisionFlag</tag> indicates the
+revision status of element; the default is that the element hasn't
+been revised.  <tag class="attribute">RevisionFlag</tag> is
+intended only for simple revision management: to track the entire
+history of a document use a proper revision control system.  Use
+<tag class="attribute">RevisionFlag</tag> for indicating
+changes from one version to the next, no more.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Security</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Security attribute</primary></indexterm>
+
+<tag class="attribute">Security</tag> identifies something about
+the security level associated with the element to which it applies.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">UserLevel</tag></term>
+<listitem>
+<para>
+<indexterm><primary>UserLevel attribute</primary></indexterm>
+<indexterm><primary>experience levels (users)</primary></indexterm>
+
+<tag class="attribute">UserLevel</tag> indicates the
+level of user experience to which element applies.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">Vendor</tag></term>
+<listitem>
+<para>
+<indexterm><primary>Vendor attribute</primary></indexterm>
+<indexterm><primary>computer vendors</primary></indexterm>
+
+<tag class="attribute">Vendor</tag> indicates the
+computer vendor to which the element applies.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">XrefLabel</tag></term>
+<listitem>
+<para>
+<indexterm><primary>XrefLabel attribute</primary></indexterm>
+<indexterm><primary>cross references</primary>
+  <secondary>XrefLabel attribute</secondary></indexterm>
+<tag class="attribute">XrefLabel</tag> holds text to be
+used when a cross reference (<tag>XRef</tag>) is made to the
+element.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 xml:id="common.linking.attributes">
+<title>Common Linking Attributes</title>
+<para>
+<indexterm><primary>attributes</primary>
+  <secondary>common linking</secondary></indexterm>
+<indexterm><primary>common linking attributes</primary>
+</indexterm>The following attributes occur on all elements that can
+be the start of a link. They are
+summarized here once for brevity and to make the additional attributes
+that occur on many elements stand out.</para>
+
+<informaltable pgwide="1">
+<tgroup cols="3" colsep="1" rowsep="1">
+<colspec colnum="1" colname="C1"/>
+<colspec colnum="2" colname="C2"/>
+<colspec colnum="3" colname="C3"/>
+<spanspec namest="C1" nameend="C3" spanname="C1C3"/>
+<thead>
+<row>
+<entry><para>Name</para></entry><entry>Type</entry><entry>Default</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry><tag class="attribute">linkend</tag></entry>
+<entry>IDREF</entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:href</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:type</tag></entry>
+<entry>“simple”</entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:role</tag></entry>
+<entry>anyURI</entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:arcrole</tag></entry>
+<entry>anyURI</entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:title</tag></entry>
+<entry><emphasis>text</emphasis></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:show</tag></entry>
+<entry><simplelist>
+<member><emphasis>Enumeration:</emphasis></member>
+<member>new</member>
+<member>replace</member>
+<member>embed</member>
+<member>other</member>
+</simplelist></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+<row>
+<entry><tag class="attribute">xlink:actuate</tag></entry>
+<entry><simplelist>
+<member><emphasis>Enumeration:</emphasis></member>
+<member>onLoad</member>
+<member>onRequest</member>
+<member>other</member>
+<member>none</member>
+</simplelist></entry>
+<entry><emphasis>None</emphasis></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>FIXME: add a description list</para>
+</sect1>
+
+</partintro>
+

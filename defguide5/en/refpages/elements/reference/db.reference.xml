@@ -1,0 +1,55 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>reference</refmiscinfo>
+  <refmiscinfo role='pattern'>db.reference</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>Reference</tag> is a collection of
+<tag>RefEntry</tag>s.  In a <tag>Book</tag>, a
+<tag>Reference</tag> can occur at either the <tag>Part</tag>
+or <tag>Chapter</tag> level.
+</para>
+
+<para>Reference pages are usually bound together by topic; in traditional
+<acronym>UNIX</acronym> documentation they are most frequently bound into volumes.  See
+<tag>ManVolNum</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+<tag>References</tag>s often introduce a forced
+page break and may start on the next recto page.  Frequently,
+they also produce a separator page, on which may be printed the
+content of the <tag>PartIntro</tag>.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

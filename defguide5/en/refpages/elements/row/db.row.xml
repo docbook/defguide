@@ -1,0 +1,89 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>row</refmiscinfo>
+  <refmiscinfo role='pattern'>db.row</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>Row</tag> is a row in a table.  It contains all of the cells
+(<tag>Entry</tag>s or <tag>EntryTbl</tag>s)
+that appear in that row.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='calssemantics'?>
+</para>
+
+<para>Within a <tag>Row</tag>, cells are arranged horizontally from
+the start of the row to the end.  Cells can, but are not
+required to, specify the column in which they occur, so it is
+possible for a row to contain fewer cells than there are columns
+in the table. This introduces missing cells, which are assumed
+to be empty. These missing cells can occur anywhere in the row.
+</para>
+
+<para>Once a cell has been allocated to a column, subsequent cells may not
+fill preceding columns.  In other words, while three cells can specify
+that they occur in columns 1, 3, and 5, they cannot specify that they
+occur in columns 1, 5, and 3.  Once a column is passed, you can never
+go back.
+</para>
+
+<para>If cells do not specify the column in which they occur, they are
+placed in the next available column.  Calculation of the next
+available column is complicated by horizontal and vertical
+spanning.  Cells from preceding rows can have a vertical span
+that causes them to extend into the current row, thus occupying space in
+the current row.  These logically occupied cells are skipped
+when looking for the next available column. Similarly, if a cell
+has a horizontal span, it logically occupies the columns that
+follow it. Cells can simultaneously span rows and columns.
+</para>
+
+<para>Each of the following conditions is an error:
+
+<itemizedlist>
+<listitem><para>A cell spans beyond the boundries of the table.
+</para></listitem>
+
+<listitem><para>A row contains more cells than there are columns
+in the table.
+</para></listitem>
+
+<listitem><para>The arrangement of cells in a row forces one or
+more cells past the last column of the table.
+</para></listitem>
+</itemizedlist>
+</para>
+
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,81 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>programlistingco</refmiscinfo>
+  <refmiscinfo role='pattern'>db.programlistingco</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>Callouts, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently <quote>hot,</quote> and clicking on
+them sends you to the corresponding annotation.
+</para>
+<para>A <tag>ProgramListingCO</tag> is a wrapper around an <tag>AreaSpec</tag> and
+a <tag>ProgramListing</tag>.  An <tag>AreaSpec</tag> identifies the locations
+(coordinates)
+in the <tag>ProgramListing</tag> where the callouts occur.
+The <tag>ProgramListingCO</tag> may also contain the list of annotations in
+a <tag>CalloutList</tag>, although the <tag>CalloutList</tag> may also
+occur outside of the wrapper, elsewhere in the document.
+</para>
+
+<para>It is also possible to embed <tag>CO</tag> elements directly in the
+verbatim text, in order to avoid having to calculate the
+correct coordinates.  If you decided to go this route, use a 
+<tag>ProgramListing</tag> and a <tag>CalloutList</tag> without the
+<tag>ProgramListingCO</tag> wrapper.  A <tag>ProgramListingCO</tag>
+must specify at least one coordinate.
+</para>
+
+<para>For a complete description of callouts, see <tag>Callout</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+<?tdg gentext='pexp.linespecific'?>
+</para>
+<para>The mandatory processing expectations of a <tag>ProgramListingCO</tag> are
+minimal: a system is expected to render the program listing and the
+callout list, if present.
+</para>
+<para>If explicit <tag>CO</tag> elements are embedded in a
+<tag>ProgramListing</tag>, they must generate appropriate
+callout marks.
+</para>
+<para>In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks in the program listing and
+the annotations.
+Some systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information,
+but this level of sophistication is not mandatory.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

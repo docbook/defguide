@@ -1,0 +1,72 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>sect1</refmiscinfo>
+  <refmiscinfo role='pattern'>db.sect1</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>Sect1</tag> is one of the top-level sectioning elements in
+a component.  There are three types of sectioning elements in
+DocBook:
+</para>
+
+<itemizedlist>
+<listitem><para>Explicitly numbered sections, <tag>Sect1</tag>…<tag>Sect5</tag>,
+which must be properly nested and can only be five levels deep.
+</para></listitem>
+<listitem><para>Recursive <tag>Section</tag>s, which are alternative to the numbered
+sections and have unbounded depth.
+</para></listitem>
+<listitem><para><tag>SimpleSect</tag>s, which are terminal.  <tag>SimpleSect</tag>s can
+occur as the <quote>leaf</quote> sections in either recursive sections or any
+of the numbered sections, or directly in components.
+</para></listitem>
+</itemizedlist>
+
+<para>None of the sectioning elements is allowed to <quote>float</quote> in
+a component. You can place paragraphs and other block elements
+before a section, but you cannot place anything after it.
+</para>
+
+<para>This means that you cannot have content in the <tag>Sect1</tag>
+after the end of a <tag>Sect2</tag>.  This is consistent with
+the DocBook book model, because in a printed book it is usually
+impossible for a reader to detect the end of the enclosed
+second level section and, therefore, all content after a second
+level section appears in that section.
+</para>
+
+<refsection><title>Processing Expectations</title>
+<para><?tdg gentext='format.block'?>
+Sometimes sections are numbered.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

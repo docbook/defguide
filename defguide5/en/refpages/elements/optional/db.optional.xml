@@ -1,0 +1,53 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>optional</refmiscinfo>
+  <refmiscinfo role='pattern'>db.optional</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>Optional</tag> element indicates that a specified argument,
+option, or other text is optional. The precise meaning of
+<quote>optional</quote> varies according to the application or process
+begin documented.
+</para>
+
+<refsection xml:id="dbreproc.optional"><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+</para>
+<para>Optional arguments in a <tag>Synopsis</tag> are usually given special
+typographic treatment, often they are surrounded by square brackets. The
+<tag>Optional</tag> tag is expected to <emphasis>generate</emphasis> the brackets.
+</para>
+<para>Outside a <tag>Synopsis</tag>, the typographic treatment of
+<tag>Optional</tag> is application-specific.
+</para>
+</refsection> 
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

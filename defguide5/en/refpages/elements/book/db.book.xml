@@ -1,0 +1,55 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>book</refmiscinfo>
+  <refmiscinfo role='pattern'>db.book</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A complete book. This is probably the most common document starting 
+point in DocBook documents.  The content model of <tag>Book</tag> was
+made dramatically less restrictive in DocBook <acronym>V3.1</acronym>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+Generally causes a forced page break, restarts
+page numbering, and may generate additional front and back
+matter (tables of contents and indexes, for example) automatically.
+In a <tag>Set</tag>, <tag>Book</tag> almost always begins on the
+next available recto page.
+</para>
+<para>The input order of major components is taken to be the desired output 
+order.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,19 @@
+.SUFFIXES: .gen
+
+%.gen : %.xml ../../../tools/lib/docbook-rng.xml ../../../stylesheets/refentry.xsl
+	xmllint --xinclude $< > ,$@
+	saxon -8b ,$@ ../../../stylesheets/refentry.xsl $@
+	@rm -f ,$@
+
+%.html : %.gen ../../../stylesheets/tdg.xsl
+	saxon $< ../../../stylesheets/tdg.xsl $@
+
+depends:
+	@echo -n "all: " > .depends
+	@for f in db.*.xml; do \
+		echo -n `basename $$f .xml`.gen >> .depends; \
+		echo -n " " >> .depends; \
+	done
+	@echo " " >> .depends
+	@echo " " >> .depends
+

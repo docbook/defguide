@@ -1,0 +1,60 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>phrase</refmiscinfo>
+  <refmiscinfo role='pattern'>db.phrase</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>phrase</tag> element in DocBook has no specific semantic.
+It is provided as a wrapper around a selection of words smaller than a
+paragraph so that it is possible to provide an
+<tag class='attribute'>xml:id</tag> or other attributes for them.
+</para>
+
+<para>For example, if you are making note of changes to a document using one
+of the effectivity attributes, you might use <tag>phrase</tag> to 
+mark up specific sentences with revisions.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition='ref.examples'>
+<title>Examples</title>
+
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.phrase.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml"/>
+<anchor xml:id="ex.oe.phrase.1" role="HACK-ex.out.end"/>
+
+</refsection>
+
+</refentry>

@@ -1,0 +1,66 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refsynopsisdiv</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refsynopsisdiv</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>RefSynopsisDiv</tag> contains a syntactic synopsis of 
+the function or command described by the <tag>RefEntry</tag>.  When
+<tag>RefEntry</tag>s are used to describe other sorts of things, 
+<tag>RefSynopsisDiv</tag> should be used for whatever succinct, synopsis
+information seems appropriate.<footnote><para>In this book, each element of the
+<acronym>DTD</acronym> is described on a reference page,
+and the <tag>RefSynopsisDiv</tag> is used for
+the synopsis at the beginning of each entry.</para></footnote>
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+<tag>RefSynopsisDiv</tag> usually generates a
+section heading, in the same typographic style as a
+<tag>RefSect1</tag> <tag>Title</tag>, called <quote>Synopsis.</quote>
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

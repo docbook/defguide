@@ -1,0 +1,68 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>funcparams</refmiscinfo>
+  <refmiscinfo role='pattern'>db.funcparams</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>In some programming languages (like C), it is possible for a
+function to have a pointer to another
+function as one of its parameters.  In the syntax summary for such a function, the
+<tag>FuncParams</tag> element provides a wrapper for the
+function pointer.
+</para>
+
+<para>For example, the following prototype describes the function
+<function>sort</function>, which takes two parameters. The first
+parameter, <parameter>arr</parameter>, is an array of integers. The second
+parameter is a pointer to a function, <function>comp</function> that returns
+an <type>int</type>. The <function>comp</function> function takes two parameters,
+both of type <type>int *</type>:
+
+<screen>
+<![CDATA[
+<funcprototype>
+  <funcdef>void <function>sort</function></funcdef>
+    <paramdef>int *<parameter>arr</parameter>[]</paramdef>
+    <paramdef>int <parameter>(* comp)</parameter>
+      <funcparams>int *, int *</funcparams></paramdef>
+</funcprototype>
+]]>
+</screen>
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+For a complete description of the processing expecations,
+see <tag>FuncSynopsis</tag>.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

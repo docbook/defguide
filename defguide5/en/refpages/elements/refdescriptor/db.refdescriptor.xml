@@ -1,0 +1,71 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refdescriptor</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refdescriptor</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>Reference pages (<tag>RefEntry</tag>s) are usually identified
+by a short, succinct topic name, such as the name of a function
+or command.  The <tag>RefName</tag> (or one of the
+<tag>RefName</tag>s, in the case of a reference page that has
+several) is generally used as the topic name.  When none of the
+<tag>RefName</tag>s is appropriate, <tag>RefDescriptor</tag>
+is used to specify the topic name.
+</para>
+
+<para><tag>RefDescriptor</tag> is unnecessary when an appropriate
+<tag>RefName</tag> can be selected automatically.  At least one
+<tag>RefName</tag> is required, so <tag>RefDescriptor</tag> cannot
+be used in place of a name, only in addition to it.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+heads, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+<para>If a <tag>RefDescriptor</tag> is present, it should be used
+for the short topic name.  This name usually appears in the running
+header along with the <tag>ManVolNum</tag> in print media.
+It may also appear in tables of contents and the index.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,56 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>quote</refmiscinfo>
+  <refmiscinfo role='pattern'>db.quote</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>Quote</tag> surrounds an inline quotation. Using an
+element for quotations is sometimes more convenient than
+entering the quotation marks directly, and makes it possible for
+a presentation system to alter the format of the quotation
+marks.
+</para>
+<para>Block quotations are properly identified as
+<tag>BlockQuote</tag>s.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+The <tag>Quote</tag> element is expected to generate
+the proper quotation marks.  These may be influenced by the 
+<tag class='attribute'>Lang</tag> attribute on an ancestor element.
+For example,
+a quote in French might use «guillments» instead of
+English “quote marks.”
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

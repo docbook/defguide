@@ -1,0 +1,52 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>indexentry</refmiscinfo>
+  <refmiscinfo role='pattern'>db.indexentry</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>An <tag>IndexEntry</tag> wraps all of the index terms associated with
+a particular primary index term.  This includes an arbitrary list of
+<link linkend="element.db.secondaryie">secondary</link> and 
+<link linkend="element.db.tertiaryie">tertiary</link> elements as well as 
+<link linkend="element.db.seeie">See</link> and
+<link linkend="element.db.seealsoie">SeeAlso</link> elements.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+
+A rendered index usually places secondary items under primary items
+and tertiary items under secondary.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

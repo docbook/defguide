@@ -1,0 +1,52 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>colspec</refmiscinfo>
+  <refmiscinfo role='pattern'>db.colspec</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The attributes of this empty element specify the presentation characteristics
+of entries in a column of a table.
+</para>
+
+<para>Each <tag>ColSpec</tag> refers to a single column.  Columns are numbered
+sequentially from left to right in the table.  If the 
+<tag class='attribute'>ColNum</tag> attribute is not specified, the
+<tag>ColSpec</tag> is for the next column after the preceeding
+<tag>ColSpec</tag> or column 1 if it is the first <tag>ColSpec</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.suppress'?>
+<?tdg gentext='calssemantics'?>
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

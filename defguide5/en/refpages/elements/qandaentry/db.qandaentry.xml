@@ -1,0 +1,56 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>qandaentry</refmiscinfo>
+  <refmiscinfo role='pattern'>db.qandaentry</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>QandAEntry</tag> is an entry in a
+<tag>QandASet</tag>. Each <tag>QandAEntry</tag>
+defines a <tag>Question</tag> and (possibly) its
+<tag>Answer</tag> or <tag>Answer</tag>s.
+</para>
+
+<para>Since V4.2, the preferred way to associate a revision history with
+a <tag>QandAEntry</tag> is in the <tag>BlockInfo</tag>.
+The use of <tag>RevHistory</tag> directly in <tag>QandAEntry</tag>
+is deprecated.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+<tag>Question</tag>s are usually presented before the 
+<tag>Answer</tag>s, and often the <tag>Answer</tag>s are indented
+to make the questions stand out.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

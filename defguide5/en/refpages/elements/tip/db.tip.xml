@@ -1,0 +1,55 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>tip</refmiscinfo>
+  <refmiscinfo role='pattern'>db.tip</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>Tip</tag> is an admonition set off
+from the main text.
+</para>
+
+<para>In some types of documentation, the semantics of admonitions are clearly
+defined (<tag>Caution</tag> might imply the possibility of harm to
+equipment whereas <tag>Warning</tag> might imply harm to a person),
+but DocBook makes no such assertions.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+Often outputs the generated text <quote>Tip</quote>
+or some other visible indication of the type of admonition,
+especially if a <tag>Title</tag> is not present.  Sometimes
+outputs a graphical icon or other symbol as well.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

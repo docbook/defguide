@@ -1,0 +1,96 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>cmdsynopsis</refmiscinfo>
+  <refmiscinfo role='pattern'>db.cmdsynopsis</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>CmdSynopsis</tag> summarizes the options and parameters of
+a command started from a text prompt.  This is usually a program started
+from the <acronym>DOS</acronym>, Windows, or <acronym>UNIX</acronym> shell prompt.
+</para>
+
+<para><tag>CmdSynopsis</tag> operates under the following general model:
+commands have arguments, that may be grouped; arguments and groups may
+be required or optional and may be repeated.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para>The processing expectations of <tag>CmdSynopsis</tag> are fairly
+complex.
+</para>
+<itemizedlist>
+<listitem><para>Arguments are generally identified with a prefix character.
+</para>
+<para>In the <acronym>UNIX</acronym> world, this character is almost
+universally the dash or hyphen although plus signs and double dashes
+have become more common in recent years.
+</para>
+<para>In the <acronym>DOS</acronym>/Windows world, forward slashes are somewhat more common than
+dashes.
+</para>
+<para>The DocBook processing expectations on this point are intentionally
+vague.  In some environments it may be most convenient to
+generate these characters automatically, in other environments
+it may be more convenient to insert them literally in the
+content.
+</para>
+<para>Whichever processing model you choose, note that this will be an
+interchange issue if you share documents with other users (see
+<xref linkend="app-interchange"/>).
+</para></listitem>
+<listitem><para>Brackets are used to distinguish between optional, required, or
+plain arguments.  Usually square brackets are placed around
+optional arguments, <literal>[-g]</literal>, and curly brackets are placed around
+required arguments, <literal>{-g}</literal>.  Plain arguments are required, but are
+not decorated with brackets.
+</para></listitem>
+<listitem><para>Repeatable arguments are followed by an ellipsis.
+</para></listitem>
+<listitem><para>Multiple arguments within a group are considered exclusive and are
+separated by vertical bars.
+</para></listitem>
+<listitem><para>Groups, like arguments, may be optional, required, or plain and may or
+may not repeat.  The same brackets and ellipses that are used to
+indicate these characteristics on arguments are used on groups.
+</para></listitem>
+<listitem><para>Arguments and groups may nest more-or-less arbitrarily.
+</para></listitem>
+<listitem><para><?tdg gentext='format.block'?>
+The processing system is free to introduce line breaks
+where required, but the <tag>SBR</tag> element may be introduced
+by the author to provide an explicit break location.
+</para></listitem>
+</itemizedlist>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

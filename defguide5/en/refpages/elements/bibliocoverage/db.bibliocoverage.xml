@@ -1,0 +1,77 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>bibliocoverage</refmiscinfo>
+  <refmiscinfo role='pattern'>db.bibliocoverage</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>bibliocoverage</tag> element satisfies coverage
+element of the <link xlink:href="http://dublincore.org/">Dublin Core
+Metadata Initiative</link>.</para>
+
+<para>The Dublin Core defines coverage as <quote>the
+extent or scope of the content of the resource.</quote> It goes on
+to say:</para>
+
+<blockquote>
+<para>Coverage will typically include spatial location (a place name
+or geographic coordinates), temporal period (a period label,
+date, or date range) or jurisdiction (such as a named
+administrative entity).
+</para>
+<para>Recommended best practice is to select a value from a
+controlled vocabulary (for example, the
+<link xlink:href="http://www.getty.edu/research/tools/vocabulary/tgn/">Thesaurus of Geographic
+Names</link> [TGN]) and that, where appropriate, named places or time
+periods be used in preference to numeric identifiers such as
+sets of coordinates or date ranges.
+</para>
+</blockquote>
+
+<para>DocBook 4.2 added <tag>bibliocoverage</tag>,
+<tag>bibliorelation</tag>, and
+<tag>bibliosource</tag> to make the DocBook meta-information wrappers
+a complete superset of the Dublin Core.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+<?tdg gentext='format.csuppress'?>
+</para>
+
+<para>This element is used for both spatial and temporal coverage, but the intent
+is that only one is specified at a time. In other words, on any given instance
+of the <tag>bibliocoverage</tag> element, specify either
+a <tag class="attribute">spatial</tag> or a 
+<tag class="attribute">temporal</tag> encoding, but not both.</para>
+
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,52 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>glosslist</refmiscinfo>
+  <refmiscinfo role='pattern'>db.glosslist</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+<para>While <tag>Glossary</tag>s are usually limited to component or section
+boundaries, appearing at the end of a <tag>Book</tag> or <tag>Chapter</tag>,
+for instance, <tag>GlossList</tag>s can appear anywhere that the other
+list types are allowed.
+</para>
+
+<para>Using a <tag>GlossList</tag> in running text, instead of a
+<tag>VariableList</tag>, for example, maintains the semantic
+distinction of a Glossary. This distinction may be necessary if you
+want to automatically point to the members of the list with
+<tag>GlossTerm</tag>s in the body of the text.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

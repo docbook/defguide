@@ -1,0 +1,76 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refsect1</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refsect1</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>Reference pages have their own hierarchical structure. A
+<tag>RefSect1</tag> is a major division in a
+<tag>RefEntry</tag>, analagous to a <tag>Sect1</tag> elsewhere
+in the document.
+</para>
+
+<para>The value of a separate hierarchical structure is that it allows
+the content model of sections in reference pages to be
+customized differently than the content model of sections
+outside.  For example, because of this split, it was easy to add
+a recursive sectioning element (<tag>Section</tag>) as a peer
+to <tag>Sect1</tag> in DocBook <acronym>V3.1</acronym> without introducing it to
+<tag>RefEntry</tag>s, in which it would not be desirable.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+</para>
+<para>In some environments, the name, number, and order of major divisions
+in a reference page is strictly defined by house style.  For example,
+one style requires that the first major section after the synopsis
+be the <quote>Description,</quote> which it must have as its title.
+</para>
+<para>In those cases, it may be useful to replace <tag>RefSect1</tag> in
+the content model with a set of named sections (following the pattern
+of <tag>RefNameDiv</tag> and <tag>RefSynopsisDiv</tag>).
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

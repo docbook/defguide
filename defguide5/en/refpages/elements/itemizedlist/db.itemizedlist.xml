@@ -1,0 +1,56 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>itemizedlist</refmiscinfo>
+  <refmiscinfo role='pattern'>db.itemizedlist</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>In an <tag>ItemizedList</tag>, each member of the list is
+marked with a bullet, dash, or other symbol.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+</para>
+<para>DocBook specifies neither the initial mark nor the sequence of marks
+to be used in nested lists.  If explicit control is desired, the
+<tag class='attribute'>Mark</tag> attribute should be used.  The
+values of the <tag class='attribute'>Mark</tag> attribute are expected
+to be keywords, not representations (numerical character references,
+entities, and so on.) of the actual mark.
+</para>
+<para>In order to enforce a standard set of marks at your organization,
+it may be useful to construct a customization layer that limits
+the values of the <tag class='attribute'>Mark</tag> attribute to
+an enumerated list.  See <xref linkend="app-customizing"/>.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

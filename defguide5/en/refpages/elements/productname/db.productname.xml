@@ -1,0 +1,75 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>productname</refmiscinfo>
+  <refmiscinfo role='pattern'>db.productname</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>ProductName</tag> is the formal name of any product. Identifying
+a product this way may be useful if you need to provide explicit disclaimers
+about product names or information.
+</para>
+
+<para>For example, the copyright statement on this book includes the following general
+notice:
+
+<blockquote>
+<para>Some of the designations used by manufacturers and sellers to distinguish
+their products are claimed as trademarks. Where those designations appear
+in this book, and O'Reilly &amp; Associates, Inc., was aware of the trademark
+claim, the designations have been printed in caps or initial caps.</para>
+</blockquote>
+
+or words to that effect. If every product name in this book had
+been diligently coded as a <tag>ProductName</tag>, we could
+have automatically generated a complete list of all the product
+names and mentioned them explicitly in the notice.
+</para>
+
+<para>In running prose, the distinction between an <tag>Application</tag> and a
+<tag>ProductName</tag> may be very subjective.
+</para>
+
+<refsection xml:id="dbreproc.productname"><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+</para>
+<para>Two of the values of the <tag class='attribute'>Class</tag>
+attribute on <tag>ProductName</tag>, <literal>Trade</literal> and
+<literal>Registered</literal>, make assertions about
+trademarks. DocBook also has a <tag>TradeMark</tag> element;
+presumably the same markup is intended regardless of which one is
+used.
+</para>
+<para>The <literal>Service</literal> and <tag>Copyright</tag> values should
+also generate the anticipated marks, if appropriate.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

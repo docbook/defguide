@@ -1,0 +1,54 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>set</refmiscinfo>
+  <refmiscinfo role='pattern'>db.set</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>Set</tag> is a collection of <tag>Book</tag>s. Placing multiple
+<tag>Book</tag>s in a <tag>Set</tag>, as opposed to publishing each
+of them separately, has the advantage that ID/IDREF links can then
+be used across all books.
+</para>
+<para><tag>Set</tag> is the very top of the DocBook structural hierarchy.
+There's nothing that contains a <tag>Set</tag>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+A <tag>Set</tag> may generate additional front and back
+matter (tables of contents and <tag>SetIndex</tag>s, for example) around
+the <tag>Book</tag>s it contains.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,54 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>revhistory</refmiscinfo>
+  <refmiscinfo role='pattern'>db.revhistory</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>RevHistory</tag> is a structure for documenting a
+history of changes, specifically, a history of changes to the document
+or section in which it occurs.
+</para>
+
+<para>DocBook does not mandate an order for <tag>revision</tag>s:
+ascending order by date, descending order by date, and orders based on
+some other criteria are all equally acceptable.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+A tabular or list presentation is most common.
+</para>
+
+<para>The order of <tag>revision</tag>s within a
+<tag>revhistory</tag> (ascending or descending date order, for example)
+is not mandated by DocBook</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

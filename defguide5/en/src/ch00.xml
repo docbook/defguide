@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preface xmlns="http://docbook.org/docbook-ng" version="gin" xml:id="preface">
+<?dbhtml filename="ch00.html"?>
+<info>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<para>DocBook provides a system for writing structured documents using
+<acronym>XML</acronym>. It is particularly well-suited to books and
+papers about computer hardware and software, though it is by no means
+limited to them. DocBook is an XML schema. Because it is a large and robust
+schema, and because its main structures correspond to
+the general notion of what constitutes a book, DocBook has been
+adopted by a large and growing community of authors. DocBook is
+supported <quote>out of the box</quote> by a number of commercial
+tools, and support for it is rapidly growing in a number of free
+software environments. In short, DocBook is an easy-to-understand and
+widely used schema. Dozens of organizations use
+DocBook for millions of pages of documentation, in various print and
+online formats, worldwide.
+</para>
+
+<para>FIXME: UPDATE THIS, AND THE REST OF THE BOOK, FOR 5.0</para>
+
+<section xml:id="pref-whyread"><info><title>Why Read This Book?</title></info>
+
+<para>
+This book is designed to be the clear, concise, normative reference to
+the DocBook <acronym>DTD</acronym>. This book is the official documentation for the
+DocBook <acronym>DTD</acronym>.
+</para>
+<para>
+We hope to answer, definitively, all the questions you might
+have about all the elements and entities in DocBook.  In
+particular, we cover the following subjects:</para>
+<itemizedlist>
+<listitem><para>The general nature of DocBook. With over 300 elements,
+DocBook can be a bit overwhelming at first. We quickly get you up to
+speed on how the pieces fit together.</para>
+</listitem>
+<listitem><para>How to write DocBook documents. Where should you start
+and what should you do?</para>
+</listitem>
+<listitem><para>Parsing and validation. After you've written a
+document, how can you tell if it really conforms to the DocBook
+<acronym>DTD</acronym>?</para>
+</listitem>
+<listitem><para>How to publish DocBook documents. After you've written
+one, what do you do with it? We provide a guide to using some popular
+free tools to publish DocBook documents both in print and on the
+Web.</para>
+</listitem>
+<listitem><para>Customizing the <acronym>DTD</acronym>. Many individuals and
+corporations have standardized on the DocBook <acronym>DTD</acronym>. Whether your
+subject matter is computer software documentation or not,
+we explain how you can write a <quote>customization layer</quote> to
+tailor DocBook explicitly for your information.</para>
+</listitem>
+<listitem><para>Understanding all of the elements. Each element is
+extensively documented, including the intended semantics and the
+purpose of all its attributes. An example of proper usage is given
+for every element. The parameter entities and character entities are
+also described.
+</para>
+</listitem>
+<listitem><para>Stylesheets. Several standard stylesheet
+languages are briefly described.</para>
+</listitem>
+<listitem><para><acronym>XML</acronym> compatability. We outline all of the points that
+you'll need to consider
+as you or your organization contemplate <acronym>XML</acronym> for authoring, publishing, or
+both.</para>
+</listitem>
+<listitem><para>Additional resources and a
+<acronym>CD-ROM</acronym>. Finally, we direct you to other places you
+can go for all the latest info, and offer a complete set of online
+documentation on the <acronym>CD-ROM</acronym>.</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="pref-bookaud"><info><title>This Book's Audience</title></info>
+
+<para>
+We expect that most readers will have some familiarity with <acronym>SGML</acronym> or
+<acronym>XML</acronym>. Even if your experience goes no farther than writing a few
+<acronym>HTML</acronym> pages, you're probably in good shape.  Although we provide an
+introduction to <acronym>SGML</acronym>, <acronym>XML</acronym>, and structured markup, this book may
+not suffice as your only tutorial about <acronym>SGML</acronym> and <acronym>XML</acronym>. This
+depends, naturally, on your needs and experience.  For a list of some
+other good resources, consult <xref linkend="app-resources"/>.
+</para>
+<para>
+Some sections of this book describe tools and applications. For
+the most part, these are Microsoft Windows or <acronym>UNIX</acronym> applications,
+although there's nothing about DocBook that makes it unsuitable for the
+Mac or <acronym>VM/CMS</acronym> or any other operating system of your
+choice.
+</para>
+</section>
+
+<section xml:id="pref-organization"><info><title>Organization of This Book</title></info>
+
+<para>This book is divided into three parts. <citetitle>Part I: Introduction
+</citetitle> is an introduction to structured markup and DocBook:</para>
+<variablelist>
+<varlistentry><term><xref linkend="ch-gssgml"/></term>
+<listitem>
+<para>A quick introduction to structured markup.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="ch-create"/></term>
+<listitem>
+<para>How to make DocBook documents.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="ch-parse"/></term>
+<listitem>
+<para>Parsing and validating DocBook documents.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="ch-publish"/></term>
+<listitem>
+<para>How to publish DocBook documents.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="app-customizing"/></term>
+<listitem>
+<para>How to customize DocBook.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para condition="refpages"><citetitle>Part II: Reference</citetitle>
+<phrase condition="online">
+is a complete reference to every element and parameter entity in
+the DocBook V4.1.2 <acronym>DTD</acronym>.
+</phrase>
+<phrase condition="print">
+is a complete reference to every element in the DocBook
+V4.1.2 <acronym>DTD</acronym> and provides a concise summary of the
+parameter entities. For a detailed reference to the parameter
+entities, consult the online version available either on
+<xref linkend="app-cdrom"/> or the
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/">web site</link>.
+</phrase>
+</para>
+
+<variablelist condition="refpages">
+<varlistentry><term><xref linkend="ref-element"/></term>
+<listitem>
+<para>A reference guide to the DocBook elements.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para><citetitle>Part III: Appendixes</citetitle> discusses other resources:
+</para>
+<variablelist>
+<varlistentry><term><xref linkend="app-install"/></term>
+<listitem>
+<para>How to install DocBook, Jade, and the stylesheets.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="app-xml"/></term>
+<listitem>
+<para>DocBook as <acronym>XML</acronym>.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="app-versions"/></term>
+<listitem>
+<para>A guide to DocBook versions, including a summary of the features
+expected in future releases.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="app-resources"/></term>
+<listitem>
+<para>Other resources.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="app-cdrom"/></term>
+<listitem>
+<para>What's on the <acronym>CD</acronym>?</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="app-interchange"/></term>
+<listitem>
+<para>An interchange checklist. Things to consider when you're sharing
+DocBook documents with others.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><xref linkend="quickref"/></term>
+<listitem>
+<para>A Quick Reference to the elements in DocBook.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>At the end of this book you'll find a <xref linkend="glossary"/> and an
+<!-- YES, THIS IS DUPLICATED ONCE WITH THE LINK AND ONCE WITHOUT: -->
+<phrase condition="online"><xref linkend="index"/>.</phrase>
+<phrase condition="print">Index.</phrase>
+</para>
+</section>
+
+<section xml:id="pref-conventions"><info><title>Conventions Used in This Book</title></info>
+
+
+<itemizedlist>
+<listitem><para>
+<tag>Garamond Book</tag> is used for element and
+attribute names.
+</para></listitem>
+<listitem><para>
+<literal>Constant Willison</literal>
+is used for program examples, attribute value
+literals, start- and end-tags, and source code example text.
+</para></listitem>
+<listitem><para>
+<replaceable>Constant Willison Oblique</replaceable> is used for
+<quote>replaceable</quote> text or variables.  Replaceable text is text
+that describes something you're supposed to type, like a
+<replaceable>filename</replaceable>, in which the word
+<quote>filename</quote> is a placeholder for the actual filename.</para>
+</listitem>
+<listitem><para>
+<filename>Garamond Italic</filename> is used for filenames and (in the print version
+of the book) <acronym>URL</acronym>s.
+</para></listitem>
+<listitem condition="print"><para>
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/"><acronym>URL</acronym>s</link> are
+presented in parentheses after the name of the resource they describe
+in the print version of the book.
+</para></listitem>
+</itemizedlist>
+</section>
+<section xml:id="pref-getbook"><info><title>Getting This Book</title></info>
+<para>
+If you want to hold this book in your hand and flip through its pages,
+you have to buy it as you would any other book. You can also get this
+book in electronic form, as a DocBook <acronym>SGML</acronym> document, and in <acronym>HTML</acronym>,
+either on the <acronym>CD</acronym> that accompanies the bound book or
+from this book's web site:
+<uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/">http://docbook.org/</uri>.
+</para>
+</section>
+
+<section xml:id="pref-getexamples"><info><title>Getting Examples from This Book</title></info>
+
+<para>
+All of the examples are included on the <acronym>CD-ROM</acronym> and
+online at the book's web site.  You can get the most up-to-date
+information about this book from the web site: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/">http://docbook.org/</link>.</para>
+</section>
+
+<section xml:id="pref-getdocbook"><info><title>Getting DocBook</title></info>
+
+<para>FIXME: TBD</para>
+
+</section>
+
+<section xml:id="pref-req-comments"><info><title>Request for Comments</title></info>
+
+<para>
+Please help us improve future editions of this book by reporting any
+errors, inaccuracies, bugs, misleading or confusing statements, and
+plain old typos that you find. An online errata list is maintained at
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/tdg/errata.html">http://docbook.org/tdg/errata.html</link>.
+Email your bug reports and comments to us at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mailto:bookcomments@docbook.org" role="online">bookcomments@docbook.org</link>.</para>
+</section>
+<section xml:id="pref-acknorm"><info><title>Acknowledgements from Norm</title></info>
+
+<para>This book has been in the works for a long
+time. It could not have been completed without the help and
+encouragement of a lot of people, most especially my wife,
+Deborah, who supported me through the long hours and the late
+nights.
+</para>
+<para>
+I also want to thank Lenny for collaborating with me and developing
+real prose out of my rough outlines, cryptic email messages, and
+scribbled notes.</para>
+<para>
+A number of people contributed technical feedback as this book
+was being written, in particular Terry Allen and Eve Maler. I
+owe most of what I know about <acronym>SGML</acronym> to them, and to the other
+members of the Davenport Group who answered all my questions so
+many years ago, especially Jon Bosak, Eduardo Guttentag, and
+Murray Maloney. Paul Prescod, Mark Galassi, and Dave Pawson also
+provided invaluable feedback on the technical review draft. It's
+a better book because of them.
+</para>
+</section>
+<section xml:id="pref-acklen"><info><title>Acknowledgements from Lenny</title></info>
+
+<para>My gratitude goes back to Dale Dougherty and Terry Allen, who
+long ago encouraged me and the production department at O'Reilly to learn
+<acronym>SGML</acronym>; and to Lar Kaufman, who also made large contributions to my 
+knowledge and appreciation of <acronym>SGML</acronym>. But my greatest debt of thanks goes to 
+Norm for all that he patiently taught me about DocBook, and for his
+supreme graciousness in keeping me a part of this project. 
+</para>
+</section>
+<section xml:id="pref-ackboth"><info><title>Acknowledgements from Norm and Lenny</title></info>
+
+<para>
+Thanks finally to the great people at O'Reilly who encouraged us to
+write it (Frank Willison and Sheryl Avruch), agreed to edit it
+(Frank), helped design it (Alicia Cech, who worked on the interior
+design, and Edie Freeman, who designed the cover), proofed and
+produced it (Chris Maden, Madeline Newell, and David Futato), and
+indexed it (Ellen Troutman).
+</para>
+</section>
+</preface>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appendix xmlns="http://docbook.org/docbook-ng" version="gin" xml:id="app-interchange">
+<?dbhtml filename="appf.html"?>
+<info>
+  <title>Interchanging DocBook Documents</title>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<indexterm xml:id="DocBookinterchangeappf" class="startofrange" significance="normal"><primary>DocBook DTD</primary>
+  <secondary>documents</secondary>
+    <tertiary>interchanging</tertiary></indexterm>
+<indexterm xml:id="questionappf" class="startofrange" significance="normal"><primary>questionnaire, DocBook document interchange issues</primary></indexterm>
+
+<para>
+One of the early factors that motivated the development of the DocBook
+<acronym>DTD</acronym> was the desire for companies to interchange documents.  In particular,
+<acronym>UNIX</acronym> vendors wanted to be able to interchange common <acronym>UNIX</acronym> documentation.
+</para>
+
+<para>
+A great deal of effort went into making sure that DocBook could handle
+most (probably all) of the documents that were likely to be exchanged.
+This avoids the guaranteed interchange problem of <acronym>DTD</acronym> extension.
+</para>
+
+<para>However, simply using DocBook or a subset of it is not
+enough to ensure successful interchange. If you send someone
+your DocBook files, you must also tell the recipient about the
+markup your documents use and any of your additional markup
+conventions and processing expectations that impose constraints
+on processing.
+</para>
+
+<para>
+This appendix provides a sample interchange questionnaire to
+help draw your attention to those areas that might be problematic.
+</para>
+
+<para>For maximum portability, delivered DocBook documents
+should be accompanied by a filled-out interchange
+questionnaire. Because each situation is unique, you may need to
+supply additional information (such as layout specifications) in
+order to deliver a complete package.</para>
+
+<bridgehead>DocBook and <acronym>SGML</acronym> Usage</bridgehead>
+
+<orderedlist inheritnum="ignore" continuation="restarts">
+<listitem><para>What version of the <acronym>DTD</acronym> are you using?</para>
+</listitem><listitem><para>Did you use any markup features of the <acronym>DTD</acronym> that
+have been flagged as obsolete (to be removed at the next major version
+of DocBook)? If so, which ones?</para>
+</listitem><listitem><para>Did you extend DocBook in any way, inside or outside
+the provided customization mechanisms? How? All extensions must be negotiated
+with the recipient.</para>
+</listitem><listitem><para>Did you remove markup from DocBook to create a
+subset? If you used a subset of DocBook, supply the subset you used. (Note
+that even the removal of references to <acronym>ISO</acronym> entity sets creates a subset.)
+</para>
+</listitem><listitem><para>Did you use the supplied <acronym>SGML</acronym> declaration or another
+one? If you used another one, provide it.</para>
+</listitem><listitem><para>Did you use the supplied catalog or another one,
+or none at all? If you used a catalog other than the one supplied, provide
+it.</para>
+</listitem><listitem><para>If your documents bear no document type declaration,
+and you parsed them with a document declaration (with or without an internal
+subset), supply it.</para>
+</listitem><listitem><para>Did you add <literal>NOTATION</literal> declarations?
+If so, what are they? List all data content notations used in your documents.
+</para>
+</listitem><listitem><para>Did you use the <literal>SUBDOC</literal> feature?
+If so, how did you manage the name spaces of their <acronym>ID</acronym>s, if you managed
+them at all?</para>
+</listitem><listitem><para>Did you use character sets other than <acronym>ISO</acronym> 8859-1
+(Latin 1)? If so, which ones? How did you use them?</para>
+</listitem><listitem><para>Did you declare and use character entities and
+other general entities besides the <acronym>ISO</acronym> entity sets? If so, supply the entity
+declarations and the desired appearance of the additional character entities.
+</para>
+</listitem><listitem><para>Are your document files normalized to include all
+markup explicitly?</para>
+</listitem><listitem><para>Are you supplying a document fragment? If so, have
+you provided any necessary auxiliary information (such as meta-information)
+for the fragment? Are there any attribute values that haven't been specified
+that you expect to inherit from a parent that isn't present?</para>
+</listitem></orderedlist>
+
+<bridgehead>Processing Requirements and Markup Interpretation</bridgehead>
+
+<orderedlist continuation="continues" inheritnum="ignore"><listitem><para>What formatting that you applied do you
+require your interchange partner to apply? For example,
+where and how must text be generated in order for the documents to make sense?
+</para>
+</listitem><listitem><para>Did you supply your stylesheet and
+information regarding its format and version?</para>
+</listitem><listitem><para>How did you create tables of contents,
+lists of titles, and indexes? Are they stored in DocBook form? If so,
+did you generate them (and according to what rules) or create them by
+hand?</para> </listitem><listitem><para>If you used the <tag class="attribute">Lang</tag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">Remap</tag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">Role</tag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the effectivity
+attributes, which did you use, why, and to what effect?</para>
+</listitem><listitem><para>What values did you give to the <tag class="attribute">Label</tag> attribute and how are they to be
+interpreted for rendering?</para> </listitem><listitem><para>What
+values did you give to the <tag class="attribute">Mark</tag>
+and <tag class="attribute">Override</tag> attributes for lists
+and how are they to be interpreted for rendering?</para>
+</listitem><listitem><para>Did you use the <tag class="attribute">Renderas</tag> attribute on sections and/or
+<tag>BridgeHead</tag>s?</para>
+</listitem><listitem><para>Did you supply all keyword values you used for
+attributes whose declared values are not enumerated tokens, along with
+the expected processing for the occurrence of each keyword?</para>
+</listitem><listitem><para>Did you use markup to control width, size,
+and/or positioning settings (such as <quote>fold-out</quote> or
+<quote>centered</quote>) for graphics, line specific regions, and
+tables? If so, how?</para> </listitem><listitem><para>For rendering of
+<tag>Sidebar</tag>s, must these appear in the flow of the text
+where they appear in your files, or may they float?</para>
+</listitem>
+<listitem><para>Did you use <tag>Callout</tag>s? If so, what are the
+processing expectations for callout marks?
+</para>
+</listitem>
+<listitem><para>Did you use <tag>ItemizedList</tag>s? If so, what are the
+processing expectations for the marks on list items and nested lists?
+</para>
+</listitem>
+<listitem><para>For <tag>Graphic</tag> and <tag>InlineGraphic</tag>, what method(s) did
+you use for providing graphic data: element content, <tag class="attribute">Fileref</tag> attribute, or
+<tag class="attribute">Entityref</tag> attribute?</para>
+</listitem>
+<listitem><para>For <tag>MediaObject</tag> and <tag>InlineMediaObject</tag>,
+what method(s) did
+you use for selecting between alternative presentations?</para>
+</listitem><listitem><para>How did you specify column widths in tables? Did
+you use vertical spans? Did you use horizontal spans?</para>
+</listitem><listitem><para>Did you use <tag>EntryTbl</tag>s?
+</para>
+</listitem><listitem><para>If you used the <tag class="attribute">Type</tag> attribute on the link elements,
+why, and to what effect?</para>
+</listitem><listitem><para>If you used <tag>XRef</tag>, do your interchange
+partners need additional information about the semantic of the link?
+Have you provided it, perhaps with <tag class="attribute">Role</tag>?</para>
+</listitem><listitem><para>Did you use the <tag class="attribute">Subject</tag> attribute on <tag>GlossDef</tag>?
+If so, did you use a thesaurus of terms? If so, what is it?</para>
+</listitem><listitem><para>If you used the <tag class="attribute">Class</tag> attribute on <tag>RefMiscInfo</tag>,
+why and to what effect?</para>
+</listitem><listitem><para>If you used <tag>ULink</tag> and provided <acronym>URL</acronym>s that are queries,
+what back-end processing is required to resolve those queries?</para>
+</listitem>
+<listitem><para><tag class="attribute">FileRef</tag> or 
+<tag class="attribute">EntityRef</tag> is supplied on every
+<tag>Graphic</tag>,
+<tag>InlineGraphic</tag>,
+<tag>AudioData</tag>, 
+<tag>ImageData</tag>, and
+<tag>VideoData</tag> element.  If one is not present, what is the expectation?
+</para>
+</listitem>
+<listitem><para>If your <tag>Bibliography</tag>s or
+<tag>Glossary</tag>s have special processing expectations,
+such as the ability to display only those entries that are cited,
+have you described them?
+</para>
+</listitem>
+
+<listitem><para>If your <tag>Bibliography</tag>s contain
+<tag>BiblioEntry</tag>s, what are the processing expectations?
+Which fields are selected for display?
+What punctuation is added, and where?
+</para>
+</listitem>
+
+<listitem><para>Do <tag>GlossTerm</tag>s or other elements have
+implicit linking relationships that must be obeyed or handled in
+presentation?
+</para>
+</listitem>
+<listitem><para>Did you use any processing instructions? Why and what for?
+Are they in entities?
+</para>
+</listitem>
+<listitem><para>What copyfitting have you already done, and for what outputs?
+</para>
+</listitem>
+<listitem><para>Are the <tag>Revision</tag>s in your
+<tag>RevHistory</tag>s sorted in any particular way?
+</para>
+</listitem>
+</orderedlist>
+<bridgehead>Miscellaneous</bridgehead>
+<orderedlist continuation="continues" inheritnum="ignore"><listitem><para>Have you checked your
+files for viruses?</para>
+</listitem><listitem><para>If you used <tag>BridgeHead</tag>, have you joined a recovery
+support group?</para>
+</listitem></orderedlist>
+<indexterm startref="questionappf" class="endofrange"/>
+<indexterm startref="DocBookinterchangeappf" class="endofrange"/>
+
+</appendix>

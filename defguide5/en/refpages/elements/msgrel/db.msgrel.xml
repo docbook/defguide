@@ -1,0 +1,56 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>msgrel</refmiscinfo>
+  <refmiscinfo role='pattern'>db.msgrel</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>Every <tag>Msg</tag> has one primary message (<tag>MsgMain</tag>).
+It may also have any number of related messages, stored in
+<tag>MsgRel</tag> elements within the same <tag>Msg</tag>.
+</para>
+<para>Related messages are usually messages that appear elsewhere in
+response to the same event (or set of events) that triggered
+the main message. For example, if a network client
+produces a failure or warning message, a related message might
+appear on the server console.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+<?tdg gentext='format.csuppress'?>
+</para>
+<para>On the whole, the semantics of <tag>MsgSet</tag>
+are not clearly defined.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

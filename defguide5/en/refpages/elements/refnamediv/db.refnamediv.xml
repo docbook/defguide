@@ -1,0 +1,75 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>refnamediv</refmiscinfo>
+  <refmiscinfo role='pattern'>db.refnamediv</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>RefNameDiv</tag> is the first mandatory section in a
+<tag>RefEntry</tag>.  It is a peer to
+<tag>RefSynopsisDiv</tag> and <tag>RefSect1</tag>.
+</para>
+<para>The elements in <tag>RefNameDiv</tag> identify the topic of the
+reference page (<tag>RefDescriptor</tag> or <tag>RefName</tag>), provide a
+concise summary (<tag>RefPurpose</tag>), and classify the
+page (<tag>RefClass</tag>).
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+<tag>RefNameDiv</tag> usually generates a
+section heading, in the same typographic style as a
+<tag>RefSect1</tag> <tag>Title</tag>, called <quote>Name.</quote>
+</para>
+<para>The content of this section is traditionally the <tag>RefDescriptor</tag>
+or <tag>RefName</tag>, and the <tag>RefPurpose</tag>, separated by an
+em dash.
+</para>
+<para>The <tag>RefClass</tag> may be presented, or it may be suppressed and used
+only to select a group of reference pages to process.  You might use the value of <tag>RefClass</tag> to print all the reference pages
+appropriate to <productname>Solaris</productname>
+<acronym>UNIX</acronym>, for example.
+</para>
+<para>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <tag>RefEntry</tag>.
+</para>
+<para>Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</para>
+</refsection>
+
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

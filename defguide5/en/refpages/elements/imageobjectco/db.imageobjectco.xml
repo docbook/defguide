@@ -1,0 +1,69 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>imageobjectco</refmiscinfo>
+  <refmiscinfo role='pattern'>db.imageobjectco</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>Callout</tag>s, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently <quote>hot,</quote> and clicking on
+them navigates to the corresponding annotation.
+</para>
+<para>A <tag>ImageObjectCO</tag> is a wrapper around an <tag>AreaSpec</tag> and
+an <tag>ImageObject</tag>.  An <tag>AreaSpec</tag> identifies the locations
+(coordinates)
+on the image where the <tag>Callout</tag>s occur.
+The <tag>ImageObjectCO</tag> may also contain the list of annotations in
+a <tag>CalloutList</tag>, although the <tag>CalloutList</tag> may also
+occur outside of the wrapper, elsewhere in the document.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+It may not be rendered at all, depending on its placement
+within the <tag>MediaObject</tag> that contains it and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <tag>MediaObject</tag>.
+</para>
+<para>The mandatory processing expectations of a <tag>ImageObjectCO</tag> are
+minimal: a system is expected to render the image, if possible, and the
+callout list, if present.
+</para>
+<para>In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks on the image and
+the annotations.  For example, an <acronym>HTML</acronym> presentation system might use the
+coordinate information to construct a client-side image map.
+Some processing systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information.
+But this level of sophistication is not mandatory.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,59 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>otheraddr</refmiscinfo>
+  <refmiscinfo role='pattern'>db.otheraddr</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>Within an <tag>Address</tag>, <tag>OtherAddr</tag> is a wrapper for
+parts of an address other than <tag>Street</tag>, <tag>POB</tag>,
+<tag>Postcode</tag>, <tag>City</tag>, <tag>State</tag>,
+<tag>Country</tag>, <tag>Phone</tag>, <tag>Fax</tag>, and
+<tag>Email</tag>, all of which have elements specific to their
+content.
+</para>
+
+<para>In early versions of DocBook, <tag>Address</tag> was not allowed to
+contain character data (it was a database-like collection of fields).
+In that context, a wrapper was necessary for any random pieces of information
+that might be required for an address.
+With the introduction of character data directly in the <tag>Address</tag> 
+element, <tag>OtherAddr</tag> may have lost most of its
+<foreignphrase>raison d'être</foreignphrase>.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+This element may inherit the verbatim qualities of an <tag>Address</tag>.
+</para>
+</refsection>
+
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

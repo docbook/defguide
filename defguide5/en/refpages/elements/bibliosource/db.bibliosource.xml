@@ -1,0 +1,58 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>bibliosource</refmiscinfo>
+  <refmiscinfo role='pattern'>db.bibliosource</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>bibliosource</tag> element satisfies the source
+element of the <link xlink:href="http://dublincore.org/">Dublin Core
+Metadata Initiative</link>.</para>
+
+<para>The Dublin Core defines source as <quote>a reference to a
+resource from which the present resource is derived.</quote>
+It goes on to note that <quote>the present resource may be derived
+from the source resource in whole or in part. Recommended best
+practice is to reference the resource by means of a string or number
+conforming to a formal identification system.</quote>
+</para>
+
+<para>DocBook 4.2 added <tag>bibliocoverage</tag>,
+<tag>bibliorelation</tag>, and
+<tag>bibliosource</tag> to make the DocBook meta-information wrappers
+a complete superset of the Dublin Core.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+<?tdg gentext='format.csuppress'?>
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glossary xmlns="http://docbook.org/docbook-ng" version="gin" xml:id="glossary">
+<?dbhtml filename="dbgloss.html"??>
+<info><title>Glossary</title>
+<pubdate>$Date$</pubdate>
+<releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<glossentry xml:id="gloss-attribute"><glossterm>attribute</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>attributes</primary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>attributes</secondary></indexterm>
+
+Attributes augment the element on which they appear; they also
+provide additional information about the element.
+</para>
+<para>
+<indexterm significance="normal"><primary>start tags</primary>
+  <secondary>attribute ID, containing</secondary></indexterm>
+
+Attributes appear as name-value pairs in the element's start-tag.
+For example, to assign the value <literal>hostname</literal> to the
+<tag class="attribute">Role</tag> attribute of <tag>SystemItem</tag>,
+you would use the mark up:
+<tag class="starttag">systemitem role="hostname"</tag>.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-callout"><glossterm>callout</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>callouts</primary></indexterm>
+A pointer, verbal or graphical or both, to a 
+<emphasis>component</emphasis> of an illustration 
+or a text object.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-cooked"><glossterm>cooked</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>cooked data</primary></indexterm>
+<indexterm significance="normal"><primary>appearance</primary>
+  <secondary>cooked data</secondary></indexterm>
+
+<quote>Cooked</quote> data, as distinct from <quote>raw,</quote> is a collection
+of elements and character data that's ready for presentation. The processor
+is not expected to rearrange, select, or suppress any of the elements, but
+simply present them as specified.
+</para>
+<glossseealso>Raw</glossseealso>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-dtd"><glossterm>document type declaration
+(<acronym>DTD</acronym>)</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>document type declaration</primary></indexterm>
+<indexterm significance="normal"><primary>declarations</primary>
+  <secondary>document type declaration</secondary></indexterm>
+
+A set of declarations that defines the names of the elements 
+and their attributes, and that specifies rules for their combination
+or sequence.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-dsssl"><glossterm><acronym>DSSSL</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>DSSSL</primary></indexterm>
+<indexterm significance="normal"><primary>stylesheets</primary>
+  <secondary>languages</secondary>
+    <tertiary>DSSSL</tertiary></indexterm>
+
+Document Style Semantics and Specification Language
+(<acronym>ISO</acronym>/<acronym>IEC</acronym> 10179:1996). An international standard stylesheet language
+for <acronym>SGML</acronym>/<acronym>XML</acronym> documents.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-element"><glossterm>element</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>elements</primary></indexterm>
+<indexterm significance="normal"><primary>hierarchical structure</primary>
+  <secondary>elements, defining</secondary></indexterm>
+<indexterm significance="normal"><primary>empty elements</primary></indexterm>
+<indexterm significance="normal"><primary>start tags</primary>
+  <secondary>empty element</secondary></indexterm>
+
+Elements define the hierarchical structure of a document.
+Most elements have start and end tags and contain some part of the
+document content. Empty elements have only a start tag and have no content. 
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-entity"><glossterm>entity</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>entities</primary></indexterm>
+<indexterm significance="normal"><primary>data entities</primary></indexterm>
+
+A name assigned (by means of a declaration) to some chunk of 
+data so it can be referred to by that name; the data can be 
+of various kinds (a special character or a chapter or a set of
+declarations in a <acronym>DTD</acronym>, for instance), and the way in which it is referred 
+to depends on the type of data and where it is being referenced: 
+<acronym>SGML</acronym> has parameter, general, external, internal, and data entities.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-excl"><glossterm>exclusion</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>exclusions</primary></indexterm>
+<indexterm significance="normal"><primary>DTDs</primary>
+  <secondary>exclusions</secondary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>exclusions</secondary></indexterm>
+
+An exclusion is used in a <acronym>DTD</acronym> to indicate that, within the element on 
+which the exclusion occurs, the excluded elements are not valid anywhere
+within the content of the element.
+</para>
+<para>
+<indexterm significance="normal"><primary>Footnote element</primary>
+  <secondary>exclusions</secondary></indexterm>
+<indexterm significance="normal"><primary>nesting</primary>
+  <secondary>footnotes</secondary></indexterm>
+
+For example, in DocBook, <tag>Footnote</tag> excludes <tag>Footnote</tag>.
+This means that footnotes cannot nest, even though <tag>Footnote</tag>
+contains <tag>Para</tag>, and <tag>Footnote</tag> occurs in the proper
+content model of <tag>Para</tag>.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-extentity"><glossterm>external entity</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>external general entities</primary></indexterm>
+<indexterm significance="normal"><primary>general entities</primary>
+  <secondary>external</secondary></indexterm>
+<indexterm significance="normal"><primary>references</primary>
+  <secondary>external documents</secondary></indexterm>
+<indexterm significance="normal"><primary>documents</primary>
+  <secondary>external, references to</secondary></indexterm>
+
+An external entity is a general entity that refers to another
+document. External entities are often used to incorporate 
+parsable text documents, like legal notices or chapters, into larger
+units, like chapters or books.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-extsub"><glossterm>external subset</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>external subset</primary></indexterm>
+<indexterm significance="normal"><primary>document type declaration</primary>
+  <secondary>external subset</secondary></indexterm>
+<indexterm significance="normal"><primary>public identifiers</primary>
+  <secondary>external subset</secondary></indexterm>
+<indexterm significance="normal"><primary>system identifiers</primary>
+  <secondary>external subset</secondary></indexterm>
+<indexterm significance="normal"><primary>declarations</primary>
+  <secondary>document type declaration</secondary></indexterm>
+
+
+Element, attribute, and other declarations that compose
+(part of) a document type definition that are stored in an
+external entity, and referenced from a document's document type
+declaration using a public or system identifier.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-float"><glossterm>float</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>float</primary></indexterm>
+<indexterm significance="normal"><primary>text</primary>
+  <secondary>float</secondary></indexterm>
+
+Text objects like sidebars, figures, tables, and graphics are said
+to float when their actual place in the document is not fixed. For presentation
+on a printed page, for instance, a graphic may float to the top of the next page if it
+is too tall to fit on the page in which it actually falls, in the sequence of words and the sequence of
+other like objects in a document.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-fpi"><glossterm>formal public identifier</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>FPI</primary></indexterm>
+<indexterm significance="normal"><primary>public identifiers</primary>
+  <secondary>formal</secondary></indexterm>
+A public identifier that conforms to the specification of formal
+public identifers in <acronym>ISO</acronym> 8879.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-fosi"><glossterm><acronym>FOSI</acronym></glossterm>
+<glossdef>
+<para>
+
+<indexterm significance="normal"><primary>FOSI stylesheets</primary></indexterm>
+
+Formatting Output Specification Instance, an <acronym>SGML</acronym> document that 
+specifies the appearance or presentation of another <acronym>SGML</acronym> document in 
+accordance 
+with the Output Specification <acronym>DTD</acronym> defined by <acronym>MIL-STD-28001C</acronym>.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-gentity"><glossterm>general entity</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>general entities</primary></indexterm>
+<indexterm significance="normal"><primary>entities</primary>
+  <secondary>general</secondary></indexterm>
+<indexterm significance="normal"><primary>special characters, encoding as entities</primary></indexterm>
+<indexterm significance="normal"><primary>internal general entities</primary></indexterm>
+
+An entity referenced by a name that starts with an 
+ampersand (&amp;) and ends with a semicolon. Most of the
+time general entities are used in <acronym>SGML</acronym> documents, not in the <acronym>DTD</acronym>. 
+There are two types, external and internal entities, and they 
+refer either to special characters or to text objects 
+like commonly repeated phrases or names or chapters.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-gi"><glossterm><acronym>GI</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>generic identifiers (GI)</primary></indexterm>
+<indexterm significance="normal"><primary>GI (generic identifiers)</primary></indexterm>
+<indexterm significance="normal"><primary>identifiers, generic</primary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>generic identifiers</secondary></indexterm>
+<indexterm significance="normal"><primary>names</primary>
+  <secondary>elements (generic identifiers)</secondary></indexterm>
+
+Generic identifier, proper term for the actual name of an element;
+<literal>Para</literal> is the generic identifier of the <tag class="element">para</tag> element.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-incl"><glossterm>inclusion</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>inclusions</primary></indexterm>
+<indexterm significance="normal"><primary>DTDs</primary>
+  <secondary>inclusions</secondary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>inclusions</secondary></indexterm>
+<indexterm significance="normal"><primary>nesting</primary>
+  <secondary>elements</secondary></indexterm>
+
+An inclusion is used in a <acronym>DTD</acronym> to indicate that, within the element on 
+which the inclusion occurs, the included elements are valid anywhere
+within the content of the element.
+</para>
+<para>
+For example, in DocBook, <tag>Chapter</tag> includes <tag>IndexTerm</tag>.
+This means that <tag>IndexTerm</tag>s can occur anywhere inside chapters,
+even inside elements that do not have <tag>IndexTerm</tag>s in their
+proper content models.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-intentity"><glossterm>internal entity</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>internal general entities</primary></indexterm>
+<indexterm significance="normal"><primary>general entities</primary>
+  <secondary>internal</secondary></indexterm>
+<indexterm significance="normal"><primary>entities</primary>
+  <secondary>general</secondary></indexterm>
+
+A general entity that references a piece of text (including
+its markup and even other internal entities), usually as a
+keyboard shortcut.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-intsub"><glossterm>internal subset</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>internal subset</primary></indexterm>
+<indexterm significance="normal"><primary>document type declaration</primary>
+  <secondary>internal subset</secondary></indexterm>
+<indexterm significance="normal"><primary>declarations</primary>
+  <secondary>document type declaration</secondary></indexterm>
+
+Element, attribute, and other declarations that compose
+(part of) a document type definition that are stored in a document,
+within the document type declaration.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-metainfo"><glossterm>meta-information</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>meta-information</primary></indexterm>
+<indexterm significance="normal"><primary>documents</primary>
+  <secondary>meta-information</secondary></indexterm>
+
+Meta-information is information about a document, such as the 
+specification of its author or its date of composition, as opposed 
+to the content of a document itself.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-pentity"><glossterm>parameter entity</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>parameter entities</primary></indexterm>
+<indexterm significance="normal"><primary>DocBook DTD</primary>
+  <secondary>customizing</secondary>
+    <tertiary>parameter entities</tertiary></indexterm>
+<indexterm significance="normal"><primary>customization (DocBook DTD)</primary>
+  <secondary>parameter entities, using</secondary></indexterm>
+<indexterm significance="normal"><primary>marked sections</primary>
+  <secondary>parameter entities, controlling</secondary></indexterm>
+
+An entity usually referenced in the <acronym>DTD</acronym> by a name that 
+starts with a percent sign (%) and ends with a semicolon. 
+In DocBook, parameter entities are mainly used to facilitate 
+customization of the <acronym>DTD</acronym>, but they can also be used to control
+marked sections of a document.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-pi"><glossterm>processing instruction</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>processing instructions</primary></indexterm>
+
+An essentially arbitrary string preceded by a question mark and
+delimited by angle brackets that is intended to convey
+information to an application that processes an <acronym>SGML</acronym> instance.
+For example, the processing instruction <literal>&lt;?linebreak&gt;</literal>
+might cause the formatter to introduce a line break at the position where
+the processing instruction occurs.
+</para>
+<para>
+<indexterm significance="normal"><primary>XML</primary>
+  <secondary>processing instructions</secondary></indexterm>
+<indexterm significance="normal"><primary>PI</primary><see>processing instructions</see></indexterm>
+
+In <acronym>XML</acronym> documents, processing instructions should have the form:
+<screen>
+&lt;?<replaceable>pitarget</replaceable> param1="value1" param2="value2"?&gt;
+</screen>
+</para>
+<para>
+The <replaceable>pitarget</replaceable> should be a name that the processing application
+will recognize. Additional information in the <acronym>PI</acronym> should be added using
+<quote>attribute syntax.</quote>
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-pubid"><glossterm>public identifier</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>public identifiers</primary></indexterm>
+<indexterm significance="normal"><primary>external general entities</primary>
+  <secondary>public identifiers</secondary></indexterm>
+<indexterm significance="normal"><primary>SGML</primary>
+  <secondary>public identifiers</secondary></indexterm>
+<indexterm significance="normal"><primary>XML</primary>
+  <secondary>public identifiers</secondary></indexterm>
+<indexterm significance="normal"><primary>DTDs</primary>
+  <secondary>public identifiers</secondary></indexterm>
+
+An abstract identifier for an <acronym>SGML</acronym> or <acronym>XML</acronym> document, <acronym>DTD</acronym>, or 
+external entity.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-raw"><glossterm>raw</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>raw data</primary></indexterm>
+<indexterm significance="normal"><primary>appearance</primary>
+  <secondary>raw data</secondary></indexterm>
+<indexterm significance="normal"><primary>raw data</primary><seealso>cooked data</seealso></indexterm>
+<indexterm significance="normal"><primary>cooked data</primary><seealso>raw data</seealso></indexterm>
+
+<quote>Raw</quote> data is just a collection of elements, with no additional
+punctation or information about presentation. To continue the cooking
+metaphor, raw data is just a set of ingredients. It's up to the processor
+to select appropriate elements, arrange them for display, and add
+required presentational information.
+</para>
+<glossseealso>Cooked</glossseealso>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-sgml"><glossterm><acronym>SGML</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>SGML</primary></indexterm>
+<indexterm significance="normal"><primary>ISO standards</primary>
+  <secondary>SGML</secondary></indexterm>
+
+Standard Generalized Markup Language, an international standard (<acronym>ISO</acronym> 8879) that specifies 
+the rules for the creation of platform-independent markup languages for electronic texts.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-stylesheet"><glossterm>stylesheet</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>stylesheets</primary></indexterm>
+<indexterm significance="normal"><primary>appearance</primary>
+  <secondary>stylesheets</secondary></indexterm>
+
+A file that specifies the presentation or appearance of a document;
+there are several standards for such stylesheets, including
+<acronym>CSS</acronym>, <acronym>FOSI</acronym>s, <acronym>DSSSL</acronym>, and, most recently, <acronym>XSL</acronym>. Vendors often have proprietary
+stylesheet formats as well.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-sysid"><glossterm>system identifier</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>system identifiers</primary>
+  <secondary>SGML</secondary></indexterm>
+<indexterm significance="normal"><primary>SGML</primary>
+  <secondary>system identifiers</secondary></indexterm>
+
+In <acronym>SGML</acronym>, a local, system-dependent identifier for a document,
+<acronym>DTD</acronym>, or external entity. Usually a filename on the local system.</para>
+<para>
+<indexterm significance="normal"><primary>system identifiers</primary>
+  <secondary>XML</secondary></indexterm>
+<indexterm significance="normal"><primary>URI</primary>
+  <secondary>XML system identifiers</secondary></indexterm>
+<indexterm significance="normal"><primary>XML</primary>
+  <secondary>system identifiers</secondary></indexterm>
+
+In <acronym>XML</acronym>, a system identifer is required to be a <acronym>URI</acronym>.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-tag"><glossterm>tag</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>tags</primary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>tags</secondary></indexterm>
+<indexterm significance="normal"><primary>angle brackets</primary>
+  <secondary>SGML tags</secondary></indexterm>
+<indexterm significance="normal"><primary>SGML</primary>
+  <secondary>tags</secondary></indexterm>
+
+An <acronym>SGML</acronym> element name enclosed in angle brackets
+(&lt;&gt;), used to mark up the semantics or structure of a
+document. <tag class="starttag">Para</tag> is a tag in DocBook
+used to mark the beginning of a paragraph.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-uri"><glossterm><acronym>URI</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>URI</primary></indexterm>
+<indexterm significance="normal"><primary>Internet names and addresses</primary></indexterm>
+<indexterm significance="normal"><primary>addresses, Internet syntax</primary></indexterm>
+<indexterm significance="normal"><primary>names</primary>
+  <secondary>Internet, syntax</secondary></indexterm>
+
+Uniform Resource Identifier, the <acronym>W3C</acronym>'s codification of the name and 
+address syntax of present and future objects on the Internet. In its most basic 
+form, a <acronym>URI</acronym> consists of a scheme name (such as file, http, ftp, news, mailto, 
+gopher) followed by a colon, followed by a path whose nature is determined 
+by the scheme that precedes it (see <acronym>RFC</acronym> 1630). 
+</para>
+<para>
+<indexterm significance="normal"><primary>URN</primary></indexterm>
+<indexterm significance="normal"><primary>URL</primary></indexterm>
+
+<acronym>URI</acronym> is the umbrella term for <acronym>URN</acronym>s, <acronym>URL</acronym>s, and all other Uniform Resource
+Identifiers.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-url"><glossterm><acronym>URL</acronym></glossterm>
+<glossdef>
+<para>Uniform Resource Locator, a name and address for an existing object
+accessible over the Internet. <literal>http://www.docbook.org</literal>
+is an example of a <acronym>URL</acronym> (see <acronym>RFC</acronym> 1738).</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-urn"><glossterm><acronym>URN</acronym></glossterm>
+<glossdef>
+<para>Uniform Resource Name, the result of an evolving attempt to
+define a name and address syntax for <emphasis>persistent</emphasis>
+objects accessible over the Internet; <literal>urn:foo:a123,456</literal>
+is a legal <acronym>URN</acronym> consisting of three colon-separated fields: 
+<literal>urn</literal> 
+followed by a namespace identifier, followed by a namespace specifier
+(see <acronym>RFC</acronym> 1737 and <acronym>RFC</acronym> 2141 for details).</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-w3c"><glossterm><acronym>W3C</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>W3C (World Wide Web Consortium)</primary></indexterm>
+<indexterm significance="normal"><primary>World Wide Web Consortium (W3C)</primary></indexterm>
+
+The World Wide Web Consortium (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/">http://www.w3.org/</link>).</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-wrapper"><glossterm>wrapper</glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>wrappers</primary></indexterm>
+<indexterm significance="normal"><primary>meta-information</primary>
+  <secondary>wrappers</secondary></indexterm>
+<indexterm significance="normal"><primary>elements</primary>
+  <secondary>wrappers</secondary></indexterm>
+
+Some elements, such as <tag>Chapter</tag>, have important semantic
+significance.  Other elements serve no obvious purpose except to contain
+a number of other elements. For example, <tag>BookInfo</tag> has no
+important semantics; it merely serves as a container for the meta-information
+about a book.  Elements that are just containers are sometimes called
+<quote>wrappers.</quote> 
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-xml"><glossterm><acronym>XML</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>XML</primary></indexterm>
+<indexterm significance="normal"><primary>SGML</primary>
+  <secondary>XML and</secondary></indexterm>
+<indexterm significance="normal"><primary>Extensible Markup Language</primary><see>XML</see></indexterm>
+
+The <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/REC-xml">Extensible Markup Language</link>, a subset of <acronym>SGML</acronym> 
+designed specifically for use over the Web.</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-xsl"><glossterm><acronym>XSL</acronym></glossterm>
+<glossdef>
+<para>
+<indexterm significance="normal"><primary>XSL</primary></indexterm>
+<indexterm significance="normal"><primary>XML</primary>
+  <secondary>XSL stylesheets</secondary></indexterm>
+<acronym>XML</acronym> Style Language, an evolving language for stylesheets 
+to be attached to <acronym>XML</acronym> documents. The stylesheet is itself an <acronym>XML</acronym>
+document.</para>
+</glossdef>
+</glossentry>
+</glossary>

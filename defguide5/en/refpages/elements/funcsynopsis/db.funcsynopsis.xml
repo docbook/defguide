@@ -1,0 +1,95 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>funcsynopsis</refmiscinfo>
+  <refmiscinfo role='pattern'>db.funcsynopsis</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>A <tag>FuncSynopsis</tag> contains the syntax summary of a function prototype
+or a set of function prototypes.  The content model of this element
+was designed specifically to capture the semantics of most C-language
+function prototypes (for use in <acronym>UNIX</acronym> reference pages).
+</para>
+
+<para>This is one of the few places where DocBook attempts to model as well
+as describe.  Using <tag>FuncSynopsis</tag> for languages that are
+unrelated to C may prove difficult.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para>For the most part, the processing application is expected to
+generate all of the parenthesis, semicolons, commas,
+and so on. required in the rendered synopsis.  The exception to this
+rule is that the spacing and other punctuation inside a
+parameter that is a pointer to a function must be provided in
+the source markup.
+</para>
+
+<para>With sufficient author cooperation, it should be possible to markup
+a function synopsis with enough clarity so that a processing system can
+generate either <acronym>K&amp;R</acronym>-style or <acronym>ANSI</acronym>-style renderings.
+</para>
+
+<refsection><title>A Note on the Use of <tag>VarArgs</tag></title>
+<para>The content model of <tag>FuncPrototype</tag> is such that you
+cannot use <tag>VarArgs</tag> in a function prototype in which the
+first few parameters to the function are given explicitly before
+the variable arguments (generally rendered as an ellipsis).
+</para>
+
+<para>In other words, the following synopsis cannot be rendered with
+<tag>VarArgs</tag>:
+
+<synopsis>
+int printf(char *format, ...)
+</synopsis>
+</para>
+
+<para>Instead, you can enclose the ellipsis in a final <tag>Parameter</tag>,
+like this:
+
+<screen>
+<![CDATA[
+<funcsynopsis>
+<funcprototype><funcdef>int <function>printf</function></funcdef>
+<paramdef>
+  <parameter>char *format</parameter>
+  <parameter>...</parameter>
+</paramdef>
+</funcprototype>
+</funcsynopsis>
+]]>
+</screen>
+</para>
+</refsection>
+
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

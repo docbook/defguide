@@ -1,0 +1,64 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>glossterm</refmiscinfo>
+  <refmiscinfo role='pattern'>db.glossterm</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para><tag>GlossTerm</tag> identifies a term that appears in a
+<tag>Glossary</tag> or <tag>GlossList</tag>.  This element
+occurs in two very different places: it is both an inline, and a
+structure element of a <tag>GlossEntry</tag>.  As an inline, it
+identifies a term defined in a glossary, and may point to it.
+Within a <tag>GlossEntry</tag>, it identifies the term defined
+by that particular entry.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para>As an inline, <tag>GlossTerm</tag>s frequently get special typographic
+treatment, such as italics. In an online environment, they may also
+form a link (explicitly or implicitly) to the corresponding definition
+in a glossary.
+</para>
+
+<para><tag>GlossTerm</tag>s must not be nested within other
+<tag>GlossTerm</tag>s. Because DocBook is harmonizing towards
+<acronym>XML</acronym>, this restriction is difficult to enforce with the
+<acronym>DTD</acronym>. The processing of nested <tag>GlossTerm</tag>s is
+undefined.
+</para>
+
+<para>As part of a <tag>GlossEntry</tag>, <tag>GlossTerm</tag>s are usually
+set as block and separated from the definition.
+</para>
+
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,71 @@
+<refentry xmlns='http://docbook.org/docbook-ng'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>mediaobject</refmiscinfo>
+  <refmiscinfo role='pattern'>db.mediaobject</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>This element contains a set of alternative
+“media objects.” In DocBook V3.1, three types of
+external objects are defined: <tag>VideoObject</tag>s,
+<tag>AudioObject</tag>s, and <tag>ImageObject</tag>s. Additional
+textual descriptions may be provided with <tag>TextObject</tag>s.
+</para>
+
+<refsection xml:id="dbreproc.mediaobject"><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+</para>
+
+<para>The primary purpose of the <tag>MediaObject</tag> is to provide
+a wrapper around a set of alternative presentations of the same
+information.
+</para>
+<para>If possible, the processing system should use the content of the
+first object within the <tag>MediaObject</tag>.  If the first
+object cannot be used, the remaining objects should be
+considered in the order that they occur.  A processor should use
+the first object that it can, although it is free to choose any
+of the remaining objects if the primary one cannot be used.
+</para>
+<para>Under no circumstances should more than one object in a
+<tag>MediaObject</tag> be used or presented at the same time.
+</para>
+<para>For example, a <tag>MediaObject</tag> might contain a video, a high
+resolution image, a low resolution image, a long text description, and
+a short text description.  In a “high end” online system,
+the video is used.  For print publishing, the high resolution image is used.
+For other online systems, either the high or low resolution image is used,
+possibly including the short text description as the online alternative.
+In a text-only environment, either the long or short text descriptions are
+used.
+</para>
+</refsection>
+
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>
