@@ -19,9 +19,8 @@ battle. After you've composed your document, you'll want to publish
 it. Publishing, for our purposes, means either print or web
 publishing. For &SGML; and &XML; documents, this is usually
 accomplished with some kind of <glossterm>stylesheet</glossterm>.  In
-the (not too distant) future, you may be able to publish an &XML;
-document on the Web by simply putting it online with a stylesheet, but
-for now you'll probably have to translate your document into &HTML;.
+some environments, it is now possible to publish an &XML;
+document on the Web simply by putting it online with a stylesheet.
 </para>
 <para>
 <indexterm><primary>Jade</primary>
@@ -41,6 +40,17 @@ which originated with the Linux Documentation Project.
 <para>
 For a brief survey of other tools, see <xref linkend="app-resources"/>.
 </para>
+
+<section><title>The MIME Type for DocBook</title>
+<para>When published on the web, documents must be identified with a MIME type.
+The MIME type for SGML DocBook documents published directly on the web
+is “<literal>application/sgml</literal>”.
+The most appropriate MIME type for XML DocBook documents published directly on
+the web is currently
+“<literal>application/xml</literal>”, however the DocBook Technical Committee
+may choose to register a more specific MIME type in the future.</para>
+</section>
+
 <section><title>A Survey of Stylesheet Languages</title>
 <para>
 <indexterm><primary>stylesheets</primary>
