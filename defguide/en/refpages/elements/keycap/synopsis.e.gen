@@ -17,10 +17,10 @@
  <sgmltag>command</sgmltag>|<sgmltag>computeroutput</sgmltag>|<sgmltag>database</sgmltag>|<sgmltag>email</sgmltag>|<sgmltag>envar</sgmltag>|<sgmltag>errorcode</sgmltag>|<sgmltag>errorname</sgmltag>|
  <sgmltag>errortype</sgmltag>|<sgmltag>errortext</sgmltag>|<sgmltag>filename</sgmltag>|<sgmltag>function</sgmltag>|<sgmltag>guibutton</sgmltag>|<sgmltag>guiicon</sgmltag>|<sgmltag>guilabel</sgmltag>|
  <sgmltag>guimenu</sgmltag>|<sgmltag>guimenuitem</sgmltag>|<sgmltag>guisubmenu</sgmltag>|<sgmltag>hardware</sgmltag>|<sgmltag>interface</sgmltag>|<sgmltag>keycap</sgmltag>|<sgmltag>keycode</sgmltag>|
- <sgmltag>keycombo</sgmltag>|<sgmltag>keysym</sgmltag>|<sgmltag>literal</sgmltag>|<sgmltag>constant</sgmltag>|<sgmltag>markup</sgmltag>|<sgmltag>medialabel</sgmltag>|<sgmltag>menuchoice</sgmltag>|
- <sgmltag>mousebutton</sgmltag>|<sgmltag>option</sgmltag>|<sgmltag>optional</sgmltag>|<sgmltag>parameter</sgmltag>|<sgmltag>prompt</sgmltag>|<sgmltag>property</sgmltag>|
+ <sgmltag>keycombo</sgmltag>|<sgmltag>keysym</sgmltag>|<sgmltag>literal</sgmltag>|<sgmltag>code</sgmltag>|<sgmltag>constant</sgmltag>|<sgmltag>markup</sgmltag>|<sgmltag>medialabel</sgmltag>|
+ <sgmltag>menuchoice</sgmltag>|<sgmltag>mousebutton</sgmltag>|<sgmltag>option</sgmltag>|<sgmltag>optional</sgmltag>|<sgmltag>parameter</sgmltag>|<sgmltag>prompt</sgmltag>|<sgmltag>property</sgmltag>|
  <sgmltag>replaceable</sgmltag>|<sgmltag>returnvalue</sgmltag>|<sgmltag>sgmltag</sgmltag>|<sgmltag>structfield</sgmltag>|<sgmltag>structname</sgmltag>|<sgmltag>symbol</sgmltag>|
- <sgmltag>systemitem</sgmltag>|<sgmltag>token</sgmltag>|<sgmltag>type</sgmltag>|<sgmltag>userinput</sgmltag>|<sgmltag>varname</sgmltag>|<sgmltag>nonterminal</sgmltag>|<sgmltag>anchor</sgmltag>|
+ <sgmltag>systemitem</sgmltag>|<sgmltag>uri</sgmltag>|<sgmltag>token</sgmltag>|<sgmltag>type</sgmltag>|<sgmltag>userinput</sgmltag>|<sgmltag>varname</sgmltag>|<sgmltag>nonterminal</sgmltag>|<sgmltag>anchor</sgmltag>|
  <sgmltag>remark</sgmltag>|<sgmltag>subscript</sgmltag>|<sgmltag>superscript</sgmltag>|<sgmltag>inlinegraphic</sgmltag>|<sgmltag>inlinemediaobject</sgmltag>|
  <sgmltag>indexterm</sgmltag>|<sgmltag>beginpage</sgmltag>)*</synopsis></entry>
 </row>
@@ -37,13 +37,46 @@
 <entry role='th'><para
 ><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
-<row condition='ref.rsdiv.attr' rowsep="1" role="attr">
+<row condition='ref.rsdiv.attr' role="attr">
 <entry align='left' valign='top'>moreinfo</entry>
 <entry align='left' valign='top'><simplelist role='enum'>
 <member>none</member>
 <member>refentry</member>
 </simplelist></entry>
 <entry align='left' valign='top'>"none"</entry>
+</row>
+<row condition='ref.rsdiv.attr' role="attr">
+<entry align='left' valign='top'>otherfunction</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row condition='ref.rsdiv.attr' rowsep="1" role="attr">
+<entry align='left' valign='top'>function</entry>
+<entry align='left' valign='top'><simplelist role='enum'>
+<member>alt</member>
+<member>backspace</member>
+<member>command</member>
+<member>control</member>
+<member>delete</member>
+<member>down</member>
+<member>end</member>
+<member>enter</member>
+<member>escape</member>
+<member>home</member>
+<member>insert</member>
+<member>left</member>
+<member>meta</member>
+<member>option</member>
+<member>other</member>
+<member>pagedown</member>
+<member>pageup</member>
+<member>right</member>
+<member>shift</member>
+<member>space</member>
+<member>tab</member>
+<member>up</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row condition='ref.rsdiv.pe' rowsep='0' role='petitle'>
 <entry namest='c1' nameend='c3' align='left'
