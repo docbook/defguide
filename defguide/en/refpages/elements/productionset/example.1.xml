@@ -5,31 +5,31 @@
 <productionset><title>Arithemetic Expressions</title>
 <production id="ebnf.expression">
   <lhs>Expression</lhs>
-  <rhs><nonterminal def="ebnf.arith">ArithExpression</nonterminal> |
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
+  <rhs><nonterminal def="#ebnf.arith">ArithExpression</nonterminal> |
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal>
   <lineannotation>Does this grammar actually get precedence right?
   </lineannotation>
   </rhs>
 </production>
 <production id="ebnf.arith">
   <lhs>ArithExpression</lhs>
-  <rhs><nonterminal def="ebnf.expression">Expression</nonterminal>
+  <rhs><nonterminal def="#ebnf.expression">Expression</nonterminal>
        '+'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
-       <nonterminal def="ebnf.expression">Expression</nonterminal>
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="#ebnf.expression">Expression</nonterminal>
        '-'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal>
   </rhs>
 </production>
 <production id="ebnf.mult">
   <lhs>MultExpression</lhs>
-  <rhs><nonterminal def="ebnf.mult">MultExpression</nonterminal>
+  <rhs><nonterminal def="#ebnf.mult">MultExpression</nonterminal>
        '*'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal>
        '/'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
-       <nonterminal def="ebnf.number">Number</nonterminal>
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="#ebnf.number">Number</nonterminal>
   </rhs>
   <constraint linkend="div0"/>
 </production>
