@@ -88,7 +88,9 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-refsynopsisdiv')">
-  <xsl:apply-templates select="$rng" mode="synopsis"/>
+  <xsl:apply-templates select="$rng" mode="synopsis">
+    <xsl:with-param name="info" select="/db:refentry/db:info"/>
+  </xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-parents')">
@@ -314,22 +316,30 @@
 <!-- ============================================================ -->
 
 <xsl:template match="/" mode="synopsis">
+  <xsl:param name="info"/>
   <xsl:variable name="def" select="key('define', $pattern)"/>
-  <xsl:apply-templates select="$def"/>
+  <xsl:apply-templates select="$def">
+    <xsl:with-param name="info" select="$info"/>
+  </xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="rng:define[rng:element]" priority="2">
+  <xsl:param name="info"/>
+
   <refsynopsisdiv>
     <title>
       <xsl:text>Synopsis&#160;</xsl:text>
-      <annotation>
-	<para>
-	  <xsl:value-of select="/db:refentry/db:info/db:releaseinfo"/>
-	</para>
-	<para>
-	  <xsl:value-of select="/db:refentry/db:info/db:pubdate"/>
-	</para>
-      </annotation>
+
+      <xsl:if test="$info/db:releaseinfo or $info/db:pubdate">
+	<annotation>
+	  <para>
+	    <xsl:value-of select="$info/db:releaseinfo"/>
+	  </para>
+	  <para>
+	    <xsl:value-of select="$info/db:pubdate"/>
+	  </para>
+	</annotation>
+      </xsl:if>
     </title>
     <xsl:apply-templates/>
   </refsynopsisdiv>
