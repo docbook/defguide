@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/docbook-ng" version="gin" xml:id="ch-create">
+<chapter xmlns="http://docbook.org/docbook-ng" 
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 version="gin"
+	 xml:id="ch-create">
 <?dbhtml filename="ch02.html"?>
 <title>Creating DocBook Documents</title>
 <info>
@@ -7,16 +10,10 @@
   <releaseinfo>$Revision$</releaseinfo>
 </info>
 
-<para>
-<indexterm xml:id="DocBookDocch02" class="startofrange" significance="normal">
-  <primary>DocBook DTD</primary>
-  <secondary>documents</secondary>
-  <tertiary>creating in SGML</tertiary>
-</indexterm>
-<indexterm xml:id="documentsDocBookch02" class="startofrange" significance="normal">
-  <primary>documents</primary>
-  <secondary>creating</secondary>
-  <tertiary>DocBook</tertiary>
+<para><indexterm xml:id="documentsDocBookch02" class="startofrange">
+<primary>documents</primary>
+<secondary>creating</secondary>
+<tertiary>DocBook</tertiary>
 </indexterm>This chapter explains in concrete, practical terms how to
 make DocBook documents. It's an overview of all the kinds of markup
 that are possible in DocBook documents. It explains how to create
@@ -26,782 +23,354 @@ basic information to actually start writing. The information here is
 intentionally skeletal; you can find “the details” in the
 reference section of this book.
 </para>
-<para>
-Before we can examine DocBook markup, we have to take a look at what
-an <acronym>SGML</acronym> or <acronym>XML</acronym> system requires.
-</para>
-<section xml:id="ch02-makesgml"><info><title>Making an <acronym>SGML</acronym> Document</title></info>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>documents, creating</secondary></indexterm>
 
-<indexterm significance="normal"><primary>prologue</primary>
-  <secondary>SGML documents</secondary></indexterm>
-<acronym>SGML</acronym> requires that your document have a specific prologue. The
-following sections describe the features of the prologue.
-</para>
-<section><info><title>An <acronym>SGML</acronym> Declaration</title></info>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>declarations</secondary></indexterm>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>SGML documents</secondary></indexterm>
+<section xml:id="ch02-makexml">
+<info>
+<title>Making an <acronym>XML</acronym> Document</title>
+</info>
 
-<acronym>SGML</acronym> documents begin with an optional <acronym>SGML</acronym> Declaration. The
-declaration can precede the document instance, but generally it is
-stored in a separate file that is associated with the <acronym>DTD</acronym>. The
-<acronym>SGML</acronym> Declaration is a grab bag of <acronym>SGML</acronym> defaults. DocBook includes
-an <acronym>SGML</acronym> Declaration that is appropriate for most DocBook documents,
-so we won't go into a lot of detail here about the <acronym>SGML</acronym> Declaration.
-</para>
-<para>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>delimiters (characters)</secondary></indexterm>
-<indexterm significance="normal"><primary>tags</primary>
-  <secondary>names</secondary>
-    <tertiary>SGML declaration</tertiary></indexterm>
-<indexterm significance="normal"><primary>attributes</primary>
-  <secondary>names</secondary></indexterm>
-<indexterm significance="normal"><primary>characters</primary>
-  <secondary>SGML declaration</secondary></indexterm>
-<indexterm significance="normal"><primary>minimization</primary>
-  <secondary>markup</secondary></indexterm>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>minimization</secondary></indexterm>
-
-In brief, the <acronym>SGML</acronym> Declaration describes, among other things, what
-characters are markup delimiters (the default is angle brackets), what
-characters can compose tag and attribute names (usually the
-alphabetical and numeric characters plus the dash and the period),
-what characters can legally occur within your document, how long
-<acronym>SGML</acronym> “names” and “numbers” can be, what sort
-of minimizations (abbreviation of markup) are allowed, and so
-on. Changing the <acronym>SGML</acronym> Declaration is rarely necessary, and because
-many tools only partially support changes to the declaration, changing
-it is best avoided, if possible.
-</para>
-<para>
-<indexterm significance="normal"><primary>tutorial, SGML Declaration</primary></indexterm>
-
-Wayne Wholer has written an excellent tutorial on the <acronym>SGML</acronym>
-Declaration; if you're interested in more details, see <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/cover/wlw11.html">http://www.oasis-open.org/cover/wlw11.html</link>.
-</para>
-</section>
-<section><info><title>A Document Type Declaration</title></info>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>document type declaration</secondary></indexterm>
-<indexterm significance="normal"><primary>document type declaration</primary>
-  <secondary>SGML documents</secondary></indexterm>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>document type declaration</secondary></indexterm>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>document type declaration</secondary>
-    <tertiary>SGML</tertiary></indexterm>
-
-All <acronym>SGML</acronym> documents must begin with a document type declaration. This
-identifies the <acronym>DTD</acronym> that will be used by the document and what the
-root element of the document will be. A typical doctype declaration
-for a DocBook document looks like this:
-</para>
-<screen>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;</screen>
-<para>
-<indexterm significance="normal"><primary>root element</primary>
-  <secondary>document type declaration</secondary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>root element</secondary></indexterm>
-This declaration indicates that the <firstterm>root element</firstterm>,
-which is the first element in the hierarchical structure of the
-document, will be <tag class="starttag">book</tag> and that
-the <acronym>DTD</acronym> used will be the one identified by the public identifier
-<literal>-//OASIS//DTD DocBook V3.1//EN</literal>. See <xref linkend="ch.create.pubids"/>” later in this chapter.
-</para>
-</section>
-<section><info><title>An Internal Subset</title></info>
-
-<para>
-<indexterm significance="normal"><primary>internal subset</primary>
-  <secondary>SGML document declarations</secondary></indexterm>
-
-It's also possible to provide additional declarations in a document
-by placing them in the document type declaration:</para>
-<screen>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
-&lt;!ENTITY nwalsh "Norman Walsh"&gt;
-&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
-&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
-]&gt;</screen>
-
-<para>
-<indexterm significance="normal"><primary>external subset</primary>
-  <secondary>SGML document declarations</secondary></indexterm>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>SGML</secondary></indexterm>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>SGML</secondary></indexterm>
-
-These declarations form what is known as the
-<firstterm>internal subset</firstterm>. The declarations stored in the
-file referenced by the public or system identifier in the 
-<literal>DOCTYPE</literal> declaration is called the <firstterm>external
-subset</firstterm> and it is technically optional.
-It is legal to put the <acronym>DTD</acronym> in the internal
-subset and to have no external subset, but for a <acronym>DTD</acronym> as large
-as DocBook that wouldn't make much sense.
-</para>
-
-<note><info/>
-<para>
-<indexterm significance="normal"><primary>parsing</primary>
-  <secondary>order</secondary></indexterm>
-The internal subset is parsed <emphasis>first</emphasis>
-and, if multiple declarations for an entity occur, the first
-declaration is used.  Declarations in the internal subset
-override declarations in the external subset.</para>
-</note>
-</section>
-<section><info><title>The Document (or Root) Element</title></info>
-
-<para>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>root element</secondary></indexterm>
-<indexterm significance="normal"><primary>root element</primary>
-  <secondary>placement</secondary></indexterm>
-
-Although comments and processing instructions may occur between the
-document type declaration and the root element, the root element usually
-immediately follows the document type declaration:</para>
-<screen>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
-&lt;!ENTITY nwalsh "Norman Walsh"&gt;
-&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
-&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
-]&gt;
-&lt;book&gt;
-&amp;chap1;
-&amp;chap2;
-&lt;/book&gt;</screen>
-<para>You cannot place the root element of
-the document in an external entity.</para>
-</section>
-<section xml:id="ch02-typexml"><info><title>Typing an <acronym>SGML</acronym> Document</title></info>
-<para>
-<indexterm significance="normal"><primary>Emacs text editor</primary></indexterm>
-<indexterm significance="normal"><primary>vi text editor</primary></indexterm>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>text editors, entering through</secondary></indexterm>
-<indexterm significance="normal"><primary>text editors</primary>
-  <secondary>SGML, entering</secondary></indexterm>
-
-If you are entering <acronym>SGML</acronym> using a text editor such as
-<application>Emacs</application> or <application>vi</application>, there are a few things to
-keep in mind.<footnote>
-<para>
-Many of these things are influenced by the <acronym>SGML</acronym> declaration in use.
-For the purpose of this discussion, we assume you are using the
-standard DocBook declaration.
-</para>
-</footnote>
-Using a structured text editor designed for <acronym>SGML</acronym> hides most of these
-issues.
-</para>
-<itemizedlist>
-<listitem><para>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>case sensitivity (DocBook)</secondary></indexterm>
-<indexterm significance="normal"><primary>case sensitivity</primary>
-  <secondary>elements (DocBook)</secondary></indexterm>
-<indexterm significance="normal"><primary>attributes</primary>
-  <secondary>case sensitivity (DocBook)</secondary></indexterm>
-<indexterm significance="normal"><primary>case sensitivity</primary>
-  <secondary>attributes (DocBook)</secondary></indexterm>
-
-DocBook element and attribute names are not case-sensitive.  There's
-no difference between <tag class="starttag">Para</tag> and <tag class="starttag">pArA</tag>.  Entity names are case-sensitive, however.
-</para>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>XML/SGML compatibility</secondary>
-    <tertiary>case sensitivity</tertiary></indexterm>
-
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>SGML/XML compatibility</secondary>
-    <tertiary>case sensitivity, attributes and elements</tertiary></indexterm>
-<indexterm significance="normal"><primary>compatibility, SGML/XML conversion</primary>
-  <secondary>case sensitivity, attribute and element names</secondary></indexterm>
-If you are interested in future <acronym>XML</acronym> compatibility, input all
-element and attribute names strictly in lowercase.
-</para>
-</listitem>
-<listitem><para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>XML/SGML compatibility</secondary>
-    <tertiary>quotes, attribute values</tertiary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>SGML/XML compatibility</secondary>
-    <tertiary>quotes, attribute values</tertiary></indexterm>
-<indexterm significance="normal"><primary>quotes</primary>
-  <secondary>attribute values</secondary>
-    <tertiary>spaces and punctuation characters</tertiary></indexterm>
-<indexterm significance="normal"><primary>attributes</primary>
-  <secondary>values</secondary>
-    <tertiary>quoting</tertiary></indexterm>
-<indexterm significance="normal"><primary>spaces, quoting (attribute values)</primary></indexterm>
-<indexterm significance="normal"><primary>punctuation characters, quoting (attribue values)</primary></indexterm>
-
-If attribute values contain spaces or punctuation characters, you must
-quote them. You are not required to quote attribute values if they
-consist of a single word or number, although it is not wrong to do so.
-</para>
-<para>
-<indexterm significance="normal"><primary>straight single quotes (attribute values)</primary></indexterm>
-<indexterm significance="normal"><primary>straight double quotes (attribute values)</primary></indexterm>
-<indexterm significance="normal"><primary>curly quotes (attribute values)</primary></indexterm>
-When quoting attribute values, you can use either a straight single
-quote ('), or a straight double quote (").  Don't use the
-“curly” quotes (“ and ”) in your editing tool.
-</para>
-<para>
-<indexterm significance="normal"><primary>compatibility, SGML/XML conversion</primary>
-  <secondary>attribute values, quoting</secondary></indexterm>
-If you are interested in future <acronym>XML</acronym> compatibility, always
-quote all attribute values.
-</para>
-</listitem>
-<listitem><para>
-
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>XML/SGML compatibility</secondary>
-    <tertiary>empty tags</tertiary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>SGML/XML compatibility</secondary>
-    <tertiary>empty tags</tertiary></indexterm>
-<indexterm significance="normal"><primary>compatibility, SGML/XML conversion</primary>
-  <secondary>empty tags</secondary></indexterm>
-<indexterm significance="normal"><primary>tags</primary>
-  <secondary>empty</secondary></indexterm>
-<indexterm significance="normal"><primary>empty tags</primary></indexterm>
-Several forms of markup minimization are allowed, including empty
-tags. Instead of typing the entire end tag for an element, you can
-type simply <literal>&lt;/&gt;</literal>. For example:
-</para>
-<screen>
-
-&lt;para&gt;
-This is &lt;emphasis&gt;important&lt;/&gt;: never stick the tines of a fork
-in an electrical outlet.
-&lt;/para&gt;
-
-</screen>
-<para>
-You can use this technique for any and every tag, but it will make
-your documents very hard to understand and difficult to debug if you 
-introduce errors.  It is best to use this technique
-only for inline elements containing a short string of text.
-</para>
-<para>
-<indexterm significance="normal"><primary>start tags</primary>
-  <secondary>empty, using (SGML documents)</secondary></indexterm>
-<indexterm significance="normal"><primary>parsing</primary>
-  <secondary>empty start tags, problems with</secondary></indexterm>
-Empty start tags are also possible, but may be even more confusing.
-For the record, if you encounter an empty start tag, the <acronym>SGML</acronym> parser uses
-the element that ended last:
-</para>
-<screen>
-
-&lt;para&gt;
-This is &lt;emphasis&gt;important&lt;/emphasis&gt;.  So is &lt;&gt;this&lt;/emphasis&gt;.
-&lt;/para&gt;
-
-</screen>
-<para>
-Both <quote>important</quote> and <quote>this</quote> are emphasized.
-</para>
-<para>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>minimization</secondary>
-    <tertiary>SGML/XML conversion problems</tertiary></indexterm>
-<indexterm significance="normal"><primary>minimization</primary>
-  <secondary>markup</secondary>
-    <tertiary>SGML/XML conversion problems</tertiary></indexterm>
-If you are interested in future <acronym>XML</acronym> compatibility, don't use any
-of these tricks.
-</para>
-</listitem>
-<listitem>
-<para>
-The null end tag (net) minimization feature allows constructions like this:
-</para>
-<screen>
-
-&lt;para&gt;
-This is &lt;emphasis/important/: never stick the tines of a fork
-in an electrical outlet.
-&lt;/para&gt;
-
-</screen>
-<para>
-<indexterm significance="normal"><primary>start tags</primary>
-  <secondary>minimization</secondary></indexterm>
-If, instead of ending a start tag with <literal>&gt;</literal>, you end
-it with a slash, then the next occurrence of a slash ends the element.
-</para>
-<para>
-<indexterm significance="normal"><primary>minimization</primary>
-  <secondary>markup</secondary>
-    <tertiary>net tag minimization</tertiary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>SGML/XML compatibility</secondary>
-    <tertiary>net tag minimization</tertiary></indexterm>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>XML/SGML compatibility</secondary>
-    <tertiary>net tag minimization</tertiary></indexterm>
-
-If you are interested in future <acronym>XML</acronym> compatibility, don't use
-net tag minimization either.
-</para>
-</listitem>
-</itemizedlist>
-<para>
-If you are willing to modify both the declaration and the <acronym>DTD</acronym>, even more
-dramatic minimizations are possible, including completely omitted tags
-and <quote>shortcut</quote> markup.
-</para>
-
-<note><info><title>Removing Minimizations</title></info>
-<para>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>minimization</secondary>
-    <tertiary>removing</tertiary></indexterm>
-<indexterm significance="normal"><primary>minimization</primary>
-  <secondary>removing</secondary></indexterm>
-
-Although we've made a point of reminding you about which of these
-minimization features are not valid in <acronym>XML</acronym>, that's not really a
-sufficient reason to avoid using them.  (The fact that many of the
-minimization features can lead to confusing, difficult-to-author
-documents might be.)
-</para>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>XML/SGML compatibility</secondary>
-    <tertiary>markup minimizations, removing</tertiary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>SGML/XML compatibility</secondary>
-    <tertiary>markup minimizations, removing</tertiary></indexterm>
-<indexterm significance="normal"><primary>sgmlnorm (SGML to XML conversion)</primary></indexterm>
-If you want to convert one of these documents to <acronym>XML</acronym> at some point
-in the future, you can run it through a program like
-<command>sgmlnorm</command>, which will remove all the minimizations and
-insert the correct, verbose markup.  The <command>sgmlnorm</command> program
-is part of the <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.jclark.com/">SP and Jade
-distributions</link>, which are on <xref linkend="app-cdrom"/>.
-</para>
-</note>
-
-</section>
-</section>
-<section xml:id="ch02-makexml"><info><title>Making an <acronym>XML</acronym> Document</title></info>
-
-<para>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>DocBook documents, creating</secondary></indexterm>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
+<para><indexterm>
+  <primary>XML</primary>
+  <secondary>DocBook documents, creating</secondary>
+</indexterm><indexterm>
+  <primary>DocBook DTD</primary>
   <secondary>documents</secondary>
-    <tertiary>creating in XML</tertiary></indexterm>
-<indexterm significance="normal"><primary>documents</primary>
+  <tertiary>creating in XML</tertiary>
+</indexterm><indexterm>
+  <primary>documents</primary>
   <secondary>creating</secondary>
-    <tertiary>in XML (DocBook)</tertiary></indexterm>
+  <tertiary>in XML (DocBook)</tertiary>
+</indexterm><indexterm>
+  <primary>prologue</primary>
+  <secondary>XML documents</secondary>
+</indexterm>An <acronym>XML</acronym> consists of an optional
+XML Declaration, an optional Document Type Declaration, which includes
+an optional Internal Subset, and a Document (or Root) Element.
+If you're used to using a DTD, many of these will be familiar to you.
+If you're using the RELAX NG version of DocBook, many of your documents
+will omit the Document Type Declaration.</para>
 
-In order to create DocBook documents in <acronym>XML</acronym>, you'll need an <acronym>XML</acronym>
-version of DocBook. We've included one on the <acronym>CD</acronym>, but it hasn't
-been officially adopted by the <acronym>OASIS</acronym> DocBook Technical Committee yet.
-If you're interested in the technical details, <xref linkend="app-xml"/>, describes the specific differences between
-<acronym>SGML</acronym> and <acronym>XML</acronym> versions of DocBook.
-</para>
-<para>
-<indexterm significance="normal"><primary>prologue</primary>
-  <secondary>XML documents</secondary></indexterm>
+<section>
+<info>
+  <title>An <acronym>XML</acronym> Declaration</title>
+</info>
 
-<acronym>XML</acronym>, like <acronym>SGML</acronym>, requires a specific prologue in your document.
-The following sections describe the features of the <acronym>XML</acronym> prologue.
-</para>
-<section><info><title>An <acronym>XML</acronym> Declaration</title></info>
-
-<para>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>XML</secondary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>declarations</secondary></indexterm>
-<indexterm significance="normal"><primary>versions</primary>
-  <secondary>XML, identifying</secondary></indexterm>
-<acronym>XML</acronym> documents should begin with an <acronym>XML</acronym> declaration. Unlike the
-<acronym>SGML</acronym> declaration, which is a grab bag of features, the <acronym>XML</acronym>
-declaration identifies a few simple aspects of the document:</para>
-<screen>&lt;?xml version="1.0" standalone="no"?&gt;</screen>
-<para>Identifying the version of <acronym>XML</acronym> ensures that future changes to
-the <acronym>XML</acronym> specification will not alter the semantics of this
-document. The standalone declaration simply makes explicit the fact
-that this document cannot “stand alone,” and that it
-relies on an external <acronym>DTD</acronym>. The complete details of the <acronym>XML</acronym>
-declaration are described in the <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/REC-xml"><acronym>XML</acronym> specification</link>.
-</para>
-</section>
-<section><info><title>A Document Type Declaration</title></info>
-
-<para>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>document type declaration</secondary>
-    <tertiary>XML</tertiary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>document type declaration</secondary></indexterm>
-<indexterm significance="normal"><primary>document type declaration</primary>
-  <secondary>XML documents</secondary></indexterm>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
+<para><indexterm>
+  <primary>declarations</primary>
   <secondary>XML</secondary>
-    <tertiary>document type declaration</tertiary></indexterm>
-Strictly speaking, <acronym>XML</acronym> documents don't require a
-<acronym>DTD</acronym>. Realistically, DocBook <acronym>XML</acronym> documents will have one.
+</indexterm><indexterm>
+  <primary>XML</primary>
+  <secondary>declarations</secondary>
+</indexterm><indexterm>
+  <primary>versions</primary>
+  <secondary>XML, identifying</secondary>
+</indexterm><acronym>XML</acronym> documents often begin with an
+<acronym>XML</acronym> declaration that identifies a few simple aspects of
+the document:</para>
+<screen>&lt;?xml version="1.0" encoding="utf-8"?&gt;</screen>
+
+<para>Identifying the version of <acronym>XML</acronym> ensures that
+future changes to the <acronym>XML</acronym> specification will not
+alter the semantics of this document. The encoding declaration
+tells the processor what character encoding your document uses.
+It must match the actual encoding that you use. The
+complete details of the <acronym>XML</acronym> declaration are
+described in the <link xmlns:xlink="http://www.w3.org/1999/xlink"
+xlink:href="http://www.w3.org/TR/REC-xml"><acronym>XML</acronym>
+specification</link>.
 </para>
-<para>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>root element</secondary></indexterm>
-<indexterm significance="normal"><primary>root element</primary>
-  <secondary>document type declaration</secondary></indexterm>
-The document type declaration identifies the <acronym>DTD</acronym> that will be used
-by the document and what the root element of the document will be. A
-typical doctype declaration for a DocBook document looks like
-this:
+
+<para>If your document uses XML 1.0 and an encoding of either <literal
+role="encoding">utf-8</literal> or <literal
+role="encoding">utf-16</literal>, the XML Declaration is not required.
+But it is never wrong to include it.</para>
+</section>
+
+<section>
+<info>
+  <title>A Document Type Declaration</title>
+</info>
+
+<para><indexterm>
+  <primary>declarations</primary>
+  <secondary>document type declaration</secondary>
+  <tertiary>XML</tertiary>
+</indexterm><indexterm>
+  <primary>XML</primary>
+  <secondary>document type declaration</secondary>
+</indexterm><indexterm>
+  <primary>document type declaration</primary>
+  <secondary>XML documents</secondary>
+</indexterm><indexterm>
+  <primary>DocBook DTD</primary>
+  <secondary>XML</secondary>
+  <tertiary>document type declaration</tertiary>
+</indexterm><acronym>XML</acronym> documents don't
+require a <acronym>DTD</acronym> and if you are using RELAX NG, often
+they will not include one. Historically, DocBook
+<acronym>XML</acronym> documents have almost always had one.
 </para>
+
+<para><indexterm>
+  <primary>elements</primary>
+  <secondary>root element</secondary>
+</indexterm><indexterm>
+  <primary>root element</primary>
+  <secondary>document type declaration</secondary>
+</indexterm>The document type declaration identifies the
+<acronym>DTD</acronym> that will be used by the document and what the
+root element of the document will be. A typical doctype declaration
+for a DocBook V4.4 document looks like this:
+</para>
+
 <screen>&lt;?xml version='1.0'?&gt;
-&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4//EN"
-                         "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd"&gt;
-</screen>
-<para>
-<indexterm significance="normal"><primary>external declarations (XML)</primary></indexterm>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>XML documents</secondary></indexterm>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>XML</secondary></indexterm>
-This declaration indicates that the root element will be <tag class="starttag">book</tag> and that the <acronym>DTD</acronym> used will be the
-one indentified by the public identifier <literal>-//Norman Walsh//DTD
-DocBk XML V3.1.4//EN</literal>. External declarations in <acronym>XML</acronym> must
-include a system identifier (the public identifier is optional). In
-this example, the <acronym>DTD</acronym> is stored on a web server.
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+               "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"&gt;</screen>
+
+<para><indexterm>
+  <primary>external declarations (XML)</primary>
+</indexterm><indexterm>
+  <primary>public identifiers</primary>
+  <secondary>XML documents</secondary>
+</indexterm><indexterm>
+  <primary>system identifiers</primary>
+  <secondary>XML</secondary>
+</indexterm>This declaration indicates that the root element will be
+<tag>book</tag> and that the <acronym>DTD</acronym>
+used will be DocBook V4.4. External
+declarations in <acronym>XML</acronym> must include a system
+identifier (the public identifier is optional). In this example, the
+<acronym>DTD</acronym> is stored on a web server.
+<indexterm>
+  <primary>URI</primary>
+  <secondary>XML system identifiers</secondary>
+</indexterm>System identifiers in <acronym>XML</acronym> must be
+<acronym>URI</acronym>s. Many systems may accept filenames and
+interpret them locally as <literal>file:</literal>
+<acronym>URL</acronym>s, but it's always correct to fully qualify
+them.
 </para>
-<para>
-<indexterm significance="normal"><primary>URI</primary>
-  <secondary>XML system identifiers</secondary></indexterm>
-System identifiers in <acronym>XML</acronym> must be <acronym>URI</acronym>s. Many
-systems may accept filenames and interpret them locally as
-<literal>file:</literal> <acronym>URL</acronym>s, but it's always
-correct to fully qualify them.
-</para>
+
+<para>DocBook V5.0 documents can be validated with a DTD:</para>
+
+<screen>&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0//EN"
+               "http://www.oasis-open.org/docbook/xml/5.0/docbook.dtd"&gt;</screen>
+
+<para>But the limited constraints that can be expressed in DTDs mean
+that the resulting document may or may not <emphasis>really</emphasis>
+be valid DocBook V5.0. The normative schema for DocBook V5.0 is
+the RELAX NG Grammar with its Schematron annotations.</para>
+
 </section>
 <section><info><title>An Internal Subset</title></info>
 
-<para>
-<indexterm significance="normal"><primary>declarations</primary>
+<para><indexterm>
+  <primary>declarations</primary>
   <secondary>document type declaration</secondary>
-    <tertiary>XML</tertiary></indexterm>
-<indexterm significance="normal"><primary>document type declaration</primary>
-  <secondary>internal subset</secondary></indexterm>
-<indexterm significance="normal"><primary>internal subset</primary>
-  <secondary>XML document type declarations</secondary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
+  <tertiary>XML</tertiary>
+</indexterm><indexterm>
+  <primary>document type declaration</primary>
+  <secondary>internal subset</secondary>
+</indexterm><indexterm>
+  <primary>internal subset</primary>
+  <secondary>XML document type declarations</secondary>
+</indexterm><indexterm>
+  <primary>XML</primary>
   <secondary>document type declarations</secondary>
-    <tertiary>internal subset</tertiary></indexterm>
-It's also possible to provide additional declarations in a document by
-placing them in the document type declaration:
+  <tertiary>internal subset</tertiary>
+</indexterm>It's also possible to provide additional declarations in a
+document by placing them inside the document type declaration:
 </para>
+
 <screen>&lt;?xml version='1.0'?&gt;
-&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4/EN"
-                         "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd" [
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0/EN"
+               "http://www.oasis-open.org/docbook/xml/5.0/docbook.dtd" [
 &lt;!ENTITY nwalsh "Norman Walsh"&gt;
 &lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
 &lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
 ]&gt;</screen>
-<para>
-These declarations form what is known as the internal subset. The
-declarations stored in the file referenced by the public or system
-identifier in the <literal>DOCTYPE</literal> declaration is called the
-external subset, which is technically optional.  It is legal to put
-the <acronym>DTD</acronym> in the internal subset and to have no external subset, but
-for a <acronym>DTD</acronym> as large as DocBook, that would make very little sense.
-</para>
-<note><info/>
-<para>
-<indexterm significance="normal"><primary>parsing</primary>
-  <secondary>order</secondary>
-    <tertiary>XML document declarations</tertiary></indexterm>
 
-The internal subset is parsed <emphasis>first</emphasis> in <acronym>XML</acronym> and,
-if multiple declarations for an entity occur, the first declaration is used.
-Declarations in the internal subset override declarations in the external
-subset.</para>
+<para>These declarations form what is known as the internal subset.
+The declarations stored in the file referenced by the public or system
+identifier in the <literal>DOCTYPE</literal> declaration is called the
+external subset, which is technically optional. It is legal to put the
+<acronym>DTD</acronym> in the internal subset and to have no external
+subset, which often makes sense documents that will be validated with
+RELAX NG:</para>
+
+<screen>&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book [
+&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+&lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
+&lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
+]&gt;</screen>
+
+<note>
+<para><indexterm>
+  <primary>parsing</primary>
+  <secondary>order</secondary>
+  <tertiary>XML document declarations</tertiary>
+</indexterm>The internal subset is parsed <emphasis>first</emphasis>
+in <acronym>XML</acronym> and, if multiple declarations for an entity
+occur, the first declaration is used. Declarations in the internal
+subset override declarations in the external subset.</para>
 </note>
 </section>
+
 <section><info><title>The Document (or Root) Element</title></info>
 
-<para>
-<indexterm significance="normal"><primary>root element</primary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>root element</secondary></indexterm>
-Although comments and processing instructions may occur between the
-document type declaration and the root element, the root element usually
-immediately follows the document type declaration:</para>
+<para><indexterm>
+  <primary>root element</primary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>root element</secondary>
+</indexterm>All <acronym>XML</acronym> documents must have exactly one
+root element, although it may have sibling comments and processing
+instructions. If the document has a document type declaration, the
+root element usually immediately follows it:</para>
+
 <screen>&lt;?xml version='1.0'?&gt;
-&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4//EN"
-                         "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd" [
+&lt;!DOCTYPE book [
 &lt;!ENTITY nwalsh "Norman Walsh"&gt;
 &lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
 &lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
 ]&gt;
-&lt;book&gt;...&lt;/book&gt;</screen>
+&lt;book&gt;…&lt;/book&gt;</screen>
+
 <para>The important point is that the root element must be physically
-present immediately
-after the document type declaration. You cannot place the root element of
-the document in an external entity.</para>
+present immediately after the document type declaration. You cannot
+place the root element of the document in an external entity.</para>
 </section>
 
-<section><info><title>Typing an <acronym>XML</acronym> Document</title></info>
-<para>
-<indexterm significance="normal"><primary>text editors</primary></indexterm>
+<section>
+<info>
+  <title>Typing an <acronym>XML</acronym> Document</title>
+</info>
 
-If you are entering <acronym>SGML</acronym> using a text editor such as <application>Emacs</application>
-or <application>vi</application>, there are a few things to keep in mind.
-Using a structured text editor designed for
-<acronym>XML</acronym> hides most of these issues.
-</para>
+<para><indexterm>
+  <primary>text editors</primary>
+
+</indexterm>If you are entering <acronym>XML</acronym> using a text
+editor such as <application>Emacs</application> or
+<application>vi</application>, there are a few things to keep in mind.
+Using a structured text editor designed for <acronym>XML</acronym>
+hides most of these issues.</para>
+
 <itemizedlist>
-<listitem><para>
-<indexterm significance="normal"><primary>case sensitivity</primary>
-  <secondary>markup</secondary></indexterm>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>case sensitivity</secondary></indexterm>
-<indexterm significance="normal"><primary>compatibility, SGML/XML conversion</primary>
-  <secondary>XML markup, case-sensitivity</secondary></indexterm>
-
-In <acronym>XML</acronym>, all markup is case-sensitive.  In the <acronym>XML</acronym> version of DocBook,
-you must always type all element,
-attribute, and entity names in lowercase.
-</para>
-</listitem>
-<listitem><para>
-You are required to quote all attribute values in <acronym>XML</acronym>.
-</para>
-<para>
-<indexterm significance="normal"><primary>quotes</primary>
-  <secondary>attribute values</secondary></indexterm>
-
-When quoting attribute values, you can use either a straight single
-quote ('), or a straight double quote (").  Don't use the
-“curly” quotes (“ and ”) in your editing tool.
-</para>
-</listitem>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>empty elements</primary>
-  <secondary>markup syntax</secondary></indexterm>
-
-Empty elements in <acronym>XML</acronym> are marked with a distinctive syntax:
-<literal>&lt;xref/&gt;</literal>.
+<para><indexterm>
+  <primary>case sensitivity</primary>
+  <secondary>markup</secondary>
+</indexterm><indexterm>
+  <primary>markup</primary>
+  <secondary>case sensitivity</secondary>
+</indexterm><indexterm>
+  <primary>compatibility, SGML/XML conversion</primary>
+  <secondary>XML markup, case-sensitivity</secondary>
+</indexterm>In <acronym>XML</acronym>, all markup is case-sensitive.
+In DocBook, you must always type
+all element, attribute, and entity names in lowercase.
 </para>
 </listitem>
+
 <listitem>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>question marks (?), processing instructions</secondary></indexterm>
-<para>Processing instructions in <acronym>XML</acronym> begin and end with a question mark:
-<literal>&lt;?pitarget data?&gt;</literal>.
+<para>You are required to quote all attribute values in <acronym>XML</acronym>.
+</para>
+
+<para><indexterm>
+  <primary>quotes</primary>
+  <secondary>attribute values</secondary>
+</indexterm>When quoting attribute values, you can use either a
+straight single quote ('), or a straight double quote ("). Don't use
+the “curly” quotes (“ and ”) in your editing tool.
 </para>
 </listitem>
-<listitem><para>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>interoperability, SGML and XML</secondary></indexterm>
 
-<acronym>XML</acronym> was designed to be served, received, and processed over the
-Web. Two of its most important design principles are ease of
-implementation and interoperability with both <acronym>SGML</acronym> and <acronym>HTML</acronym>.
+<listitem>
+<para><indexterm>
+  <primary>empty elements</primary>
+  <secondary>markup syntax</secondary>
+</indexterm>Empty elements in <acronym>XML</acronym> are marked with a
+distinctive syntax: <literal>&lt;xref/&gt;</literal>.
 </para>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>XML/SGML compatibility</secondary>
-    <tertiary>markup minimization, problems</tertiary></indexterm>
+</listitem>
 
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>markup minimization</secondary><see>XML/SGML compatibility</see></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>markup minimization</secondary><see>SGML/XML compatibility</see></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>SGML/XML compatibility</secondary>
-    <tertiary>markup minization, problems</tertiary></indexterm>
-
-The markup minimization features in <acronym>SGML</acronym> documents make it more
-difficult to process, and harder to write a parser to interpret it; these
-minimization features also run counter to the <acronym>XML</acronym> design principles
-named above. As a result, <acronym>XML</acronym> does not support them.
-</para>
-<para>
-Luckily, a good authoring environment can offer all of the features of
-markup minimization without interfering with the interoperability of
-documents.  And because <acronym>XML</acronym> tools are easier to write, it's likely
-that good, inexpensive <acronym>XML</acronym> authoring environments will be available
-eventually.
+<listitem>
+<para><indexterm>
+  <primary>XML</primary>
+  <secondary>question marks (?), processing instructions</secondary>
+</indexterm>Processing instructions in <acronym>XML</acronym> begin
+and end with a question mark: <literal>&lt;?pitarget
+data?&gt;</literal>.
 </para>
 </listitem>
 </itemizedlist>
 </section>
-<section><info><title><acronym>XML</acronym> and <acronym>SGML</acronym> Markup Considerations in This Book</title></info>
-
-<para>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>markup considerations, SGML vs. XML</secondary></indexterm>
-
-Conceptually, almost everything in this book applies equally to <acronym>SGML</acronym>
-and <acronym>XML</acronym>.  But because DocBook V3.1 is an <acronym>SGML</acronym> <acronym>DTD</acronym>, we naturally
-tend to use <acronym>SGML</acronym> conventions in our writing.  If you're primarily
-interested in <acronym>XML</acronym>, there are just a few small details to keep in
-mind.
-</para>
-<itemizedlist>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>case sensitivity</primary>
-  <secondary>XML vs. SGML</secondary></indexterm>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>case sensitivity</secondary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>case sensitivity (XML)</secondary></indexterm>
-<acronym>XML</acronym> is case-sensitive, while the <acronym>SGML</acronym> version of DocBook is
-not. In this book, we've chosen to present the element names using
-mixed case (<tag>Book</tag>, <tag>indexterm</tag>,
-<tag>XRef</tag>, and so on), but in the DocBook <acronym>XML</acronym> <acronym>DTD</acronym>,
-all element, attribute, and entity names are strictly
-lowercase.</para>
-</listitem>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>empty elements</primary>
-  <secondary>start tags, XML vs. SGML</secondary></indexterm>
-<indexterm significance="normal"><primary>start tags</primary>
-  <secondary>empty element</secondary></indexterm>
-Empty element start tags in <acronym>XML</acronym> are marked with a distinctive
-syntax: <literal>&lt;xref/&gt;</literal>.  In <acronym>SGML</acronym>, the trailing slash
-is not present, so some of our examples need slight revisions to be
-valid <acronym>XML</acronym> elements.
-</para>
-</listitem>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>question marks (?), processing instructions (XML)</primary></indexterm>
-<indexterm significance="normal"><primary>processing instructions</primary>
-  <secondary>XML documents</secondary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>processing instructions</secondary></indexterm>
-
-Processing instructions in <acronym>XML</acronym> begin and end with a question
-mark: <literal>&lt;?pitarget data?&gt;</literal>.  In <acronym>SGML</acronym>, the
-trailing question mark is not present, so some of our examples need
-slight revisions to be valid <acronym>XML</acronym> elements.
-</para>
-</listitem>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>XML</secondary>
-    <tertiary>URI requirement</tertiary></indexterm>
-<indexterm significance="normal"><primary>Uniform Resource Indicators</primary><see>URI</see></indexterm>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>DocBook DTD</secondary>
-    <tertiary>examples</tertiary></indexterm>
-Generally we use public identifiers in examples, but whenever system
-identifiers are used, don't forget that <acronym>XML</acronym> system identifiers must
-be Uniform Resource Indicators (<acronym>URI</acronym>s), in which
-<acronym>SGML</acronym> system identifiers are usually simple filenames.
-</para>
-</listitem>
-</itemizedlist>
-<para>
-For a more detailed discussion of DocBook and <acronym>XML</acronym>, see
-<xref linkend="app-xml"/>.
-</para>
 </section>
-</section>
-<section xml:id="s-pid-sid-catalogs"><info><title>Public Identifiers, System Identifiers, and Catalog Files</title></info>
 
-<para>
-<indexterm significance="normal"><primary>files</primary>
-  <secondary>external, referencing</secondary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>external file references, id</secondary></indexterm>
+<section xml:id="s-pid-sid-catalogs">
+<info>
+  <title>Public Identifiers, System Identifiers, and Catalog Files</title>
+</info>
 
-When a <acronym>DTD</acronym> or other external file is referenced from a document, the
-reference can be specified in three ways: using a <firstterm>public
-identifier</firstterm>, a <firstterm>system identifier</firstterm>, or
-both. In <acronym>XML</acronym>, the system identifier is <emphasis>generally</emphasis> 
-required and the public identifier is optional. In <acronym>SGML</acronym>, neither is 
-required, but at least one must be present.<footnote>
-<para>
-This is not absolutely true. <acronym>SGML</acronym> allows for the possibility that
-the reference could be implied by the application, but this is very
-rarely the case.
+<para><indexterm>
+  <primary>files</primary>
+  <secondary>external, referencing</secondary>
+</indexterm><indexterm>
+  <primary>XML</primary>
+  <secondary>external file references, id</secondary>
+</indexterm>When a <acronym>DTD</acronym> or other external file is
+referenced from a document, the reference can be specified in three
+ways: using a <firstterm>public identifier</firstterm>, a
+<firstterm>system identifier</firstterm>, or both. In
+<acronym>XML</acronym>, the system identifier is required and the
+public identifier is optional.
 </para>
-</footnote>
-</para>
-<para>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>names, requirements</secondary></indexterm>
-A public identifier is a globally unique, abstract
-name, such as the following, which is the official public identifier
-for DocBook <acronym>V3.1</acronym>:
-<screen>-//OASIS//DTD DocBook V3.1//EN</screen>
-</para>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>system identifiers</secondary></indexterm>
-<indexterm significance="normal"><primary>URI</primary>
-  <secondary>XML system identifiers</secondary></indexterm>
-<indexterm significance="normal"><primary>URL</primary>
-  <secondary>SGML system identifers, similarity to</secondary></indexterm>
-<indexterm significance="normal"><primary>Uniform Resource Locator</primary><see>URL</see></indexterm>
-<indexterm significance="normal"><primary>Uniform Resource Names</primary><see>URN</see></indexterm>
-<indexterm significance="normal"><primary>URN</primary>
-  <secondary>XML system identifiers, future</secondary></indexterm>
-The introduction of <acronym>XML</acronym> has added some small complications to system
-identifiers.  In <acronym>SGML</acronym>, a system identifier generally points to a
-single, local version of a file using local system conventions. In
-<acronym>XML</acronym>, it must point with a Uniform Resource Indicator
-(<acronym>URI</acronym>). The most common <acronym>URI</acronym>
-today is the Uniform Resource Locator (<acronym>URL</acronym>), which
-is familiar to anyone who browses the Web.  <acronym>URL</acronym>s
-are a lot like <acronym>SGML</acronym> system identifiers, because they generally point
-to a single version of a file on a particular machine.  In the future,
-Uniform Resource Names (<acronym>URN</acronym>), another form of
-<acronym>URI</acronym>, will allow <acronym>XML</acronym> system identifiers to have
-the abstract characteristics of public identifiers.
-</para>
-<para>
-<indexterm significance="normal"><primary>SGML</primary>
+
+<para><indexterm>
+  <primary>public identifiers</primary>
+  <secondary>names, requirements</secondary>
+</indexterm>A public identifier is a globally unique, abstract name,
+such as the following, which is the official public identifier for
+DocBook <acronym>V5.0</acronym>:</para>
+
+<screen>-//OASIS//DTD DocBook V5.0//EN</screen>
+
+<para><indexterm>
+  <primary>SGML</primary>
   <secondary>system identifiers</secondary>
-    <tertiary>example</tertiary></indexterm>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>SGML</secondary>
-    <tertiary>example</tertiary></indexterm>
+</indexterm><indexterm>
+  <primary>URI</primary>
+  <secondary>XML system identifiers</secondary>
+</indexterm><indexterm>
+  <primary>URL</primary>
+  <secondary>SGML system identifers, similarity to</secondary>
+</indexterm><indexterm>
+  <primary>Uniform Resource Locator</primary>
+  <see>URL</see>
+</indexterm><indexterm>
+  <primary>Uniform Resource Names</primary>
+  <see>URN</see>
+</indexterm><indexterm>
+  <primary>URN</primary>
+  <secondary>XML system identifiers, future</secondary>
+</indexterm>In <acronym>XML</acronym> the system identifier
+must be a Uniform Resource Indicator (<acronym>URI</acronym>).
+The most common <acronym>URI</acronym> today is the Uniform Resource
+Locator (<acronym>URL</acronym>), which is familiar to anyone who
+browses the Web.
+</para>
 
-The following filename is an example of an <acronym>SGML</acronym> system identifier:
-<screen>/usr/local/sgml/docbook/3.1/docbook.dtd
-</screen>
-An equivalent <acronym>XML</acronym> system identifier might be:
-<screen>file:///usr/local/sgml/docbook/3.1/docbook.dtd
-</screen>
+<para>The advantage of using a public identifier is that it makes
+your documents more portable. For any system on which DocBook is
+installed, the public identifier will resolve to the appropriate local
+version of the <acronym>DTD</acronym> (if public identifiers can be
+resolved at all).
 </para>
-<para>
-The advantage of using the public identifier is that it makes your
-documents more portable. For any system on which DocBook is installed,
-the public identifier will resolve to the appropriate local version of
-the <acronym>DTD</acronym> (if public identifiers can be resolved at all).
-</para>
-<para>
-Public identifiers have two disadvantages:
+
+<para>Public identifiers have two disadvantages:</para>
+
 <itemizedlist>
 <listitem>
 <para>Because <acronym>XML</acronym> does not require them, and because system
@@ -810,655 +379,397 @@ adequate support for public identifiers. To work with these systems
 you must use system identifiers.</para>
 </listitem>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>resolution, mapping to system identifiers</secondary></indexterm>
-<indexterm significance="normal"><primary>OASIS</primary>
-  <secondary>public identifiers, resolution mechanism</secondary></indexterm>
-
-Public identifiers aren't magical. They're simply a method of
-indirection. For them to work, there must be a resolution mechanism
-for public identifiers. Luckily, several years ago, <acronym>SGML</acronym> Open (now
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/"><acronym>OASIS</acronym></link>)
-described a standard mechanism for mapping public identifiers to
+<para><indexterm>
+  <primary>public identifiers</primary>
+  <secondary>resolution, mapping to system identifiers</secondary>
+</indexterm><indexterm>
+  <primary>OASIS</primary>
+  <secondary>public identifiers, resolution mechanism</secondary>
+</indexterm>Public identifiers aren't magic. They're simply a method
+of indirection. For them to work, there must be a resolution mechanism
+for public identifiers. Luckily, there are standards that define
+mechanisms for mapping public identifiers to
 system identifers using catalog files.</para>
-<para>
-See <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/html/a401.htm"><acronym>OASIS</acronym>
-Technical Resolution 9401:1997 (Amendment 2 to <acronym>TR</acronym>
-9401).</link>
+
+<para>See
+<link xlink:href="http://www.oasis-open.org/html/a401.htm"
+><acronym>OASIS</acronym> Technical Resolution 9401:1997 (Amendment 2 to
+<acronym>TR</acronym> 9401).</link> or FIXME: link to XML Catalogs.
 </para>
 </listitem>
-</itemizedlist></para>
-<section xml:id="ch.create.pubids"><info><title>Public Identifiers</title></info>
+</itemizedlist>
 
-<para>
-<indexterm significance="normal"><primary>uniqueness</primary>
-  <secondary>public identifiers</secondary></indexterm>
-An important characteristic of public identifiers is that they are
-<emphasis>globally unique</emphasis>. Referring to a document with a
-public identifier should mean that the identifier will resolve to the
-same actual document on any system even though the location of that
-document on each system may vary.  As a rule, you should never reuse
-public identifiers, and a published revision should have a new public
-identifier. Not following these rules defeats one purpose of the
-public identifier.
-</para>
-<para>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>syntax, examples</secondary></indexterm>
-A public identifier can be any string of upper- and lowercase letters,
-digits, any of the following symbols: “'”,
-“(“, “)”, “+”, “,”,
-“-”, “.”, “/”, “:”,
-“=”, “?”, and white space, including line
-breaks.
-</para>
-<section><info><title>Formal public identifiers</title></info>
+<section xml:id="ch.create.pubids">
+<info>
+  <title>Public Identifiers</title>
+</info>
 
-<para>
-<indexterm significance="normal"><primary>ISO standards</primary>
-  <secondary>formal public identifiers</secondary></indexterm>
-<indexterm significance="normal"><primary>formal public identifier</primary><see>FPI</see></indexterm>
-<indexterm significance="normal"><primary>FPI</primary>
-  <secondary>format, standard</secondary></indexterm>
-Most public identifiers conform to the <acronym>ISO</acronym> 8879
-standard that defines <firstterm>formal public
-identifiers</firstterm>. Formal public identifiers, frequently referred
-to as <acronym>FPI</acronym>, have a prescribed format that can ensure
-uniqueness:<footnote>
-<para>
-Essentially, it can ensure that two different owners won't
-accidentally tread on each other.  Nothing can prevent a given owner
+<para><indexterm>
+  <primary>uniqueness</primary>
+  <secondary>public identifiers</secondary>
+</indexterm>An important characteristic of public identifiers is that
+they are <emphasis>globally unique</emphasis>. Referring to a document
+with a public identifier should mean that the identifier will resolve
+to the same actual document on any system even though the location of
+that document on each system may vary. As a rule, you should never
+reuse public identifiers, and a published revision should have a new
+public identifier. Not following these rules defeats one purpose of
+the public identifier.
+</para>
+
+<para><indexterm>
+  <primary>public identifiers</primary>
+  <secondary>syntax, examples</secondary>
+</indexterm>A public identifier can be any string of upper- and
+lowercase letters, digits, any of the following symbols: “'”, “(“,
+“)”, “+”, “,”, “-”, “.”, “/”, “:”, “=”, “?”, and white space,
+including line breaks.
+</para>
+
+<section>
+<info>
+  <title>Formal public identifiers</title>
+</info>
+
+<para><indexterm>
+  <primary>ISO standards</primary>
+  <secondary>formal public identifiers</secondary>
+</indexterm><indexterm>
+  <primary>formal public identifier</primary>
+  <see>FPI</see>
+</indexterm><indexterm>
+  <primary>FPI</primary>
+  <secondary>format, standard</secondary>
+</indexterm>Most public identifiers conform to the
+<acronym>ISO</acronym> 8879 standard that defines <firstterm>formal
+public identifiers</firstterm>. Formal public identifiers, frequently
+referred to as <acronym>FPI</acronym>, have a prescribed format that
+can ensure uniqueness:<footnote>
+<para>Essentially, it can ensure that two different owners won't
+accidentally tread on each other. Nothing can prevent a given owner
 from reusing public identifiers, except maybe common sense.
 </para>
-</footnote>
-</para>
+</footnote></para>
+
 <screen><replaceable>prefix</replaceable>//<replaceable>owner-identifier</replaceable>//<replaceable>
 text-class</replaceable> <replaceable>text-description</replaceable>//<replaceable>
 language</replaceable>//<replaceable>display-version</replaceable></screen>
-<para>
-Here are descriptions of the identifiers in this string:
+
+<para>Here are descriptions of the identifiers in this string:</para>
+
 <variablelist>
 <varlistentry>
 <term><replaceable>prefix</replaceable></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>prefix (registered and unregistered public identifiers)</primary></indexterm>
-<indexterm significance="normal"><primary>registered public identifiers</primary></indexterm>
-<indexterm significance="normal"><primary>unregistered public identifiers</primary></indexterm>
-<indexterm significance="normal"><primary>ISO standards</primary>
-  <secondary>formal public identifiers</secondary></indexterm>
-The <replaceable>prefix</replaceable> is either a
-“<literal>+</literal>” or a “<literal>-</literal>”
-Registered public identifiers begin with
-“<literal>+</literal>”; unregistered identifiers begin
-with “<literal>-</literal>”.</para>
-<para>
-(<acronym>ISO</acronym> standards sometimes use a third form beginning
-with <literal>ISO</literal> and the standard number, but this form is
-only available to <acronym>ISO</acronym>.)
+
+<para><indexterm>
+  <primary>prefix (registered and unregistered public identifiers)</primary>
+</indexterm><indexterm>
+  <primary>registered public identifiers</primary>
+</indexterm><indexterm>
+  <primary>unregistered public identifiers</primary>
+</indexterm><indexterm>
+  <primary>ISO standards</primary>
+  <secondary>formal public identifiers</secondary>
+</indexterm>The <replaceable>prefix</replaceable> is either a
+“<literal>+</literal>” or a “<literal>-</literal>” Registered public
+identifiers begin with “<literal>+</literal>”; unregistered
+identifiers begin with “<literal>-</literal>”.</para>
+
+<para>(<acronym>ISO</acronym> standards sometimes use a third form
+beginning with <literal>ISO</literal> and the standard number, but
+this form is only available to <acronym>ISO</acronym>.)
 </para>
-<para>
-<indexterm significance="normal"><primary>owner-identifiers</primary>
+
+<para><indexterm>
+  <primary>owner-identifiers</primary>
   <secondary>registered public identifers</secondary>
-    <tertiary>uniqueness, guaranteeing</tertiary></indexterm>
-
-The purpose of registration is to guarantee a unique owner-identifier.
-There are few authorities with the power to issue registered public
-identifiers, so in practice unregistered identifiers are more common.
+  <tertiary>uniqueness, guaranteeing</tertiary>
+</indexterm>The purpose of registration is to guarantee a unique
+owner-identifier. There are few authorities with the power to issue
+registered public identifiers, so in practice unregistered identifiers
+are more common.
 </para>
-<para>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>registered, assigning authority</secondary></indexterm>
-<indexterm significance="normal"><primary>Graphics Communication Association (GCA)</primary>
-  <secondary>registered public identifiers, assigning</secondary></indexterm>
-<indexterm significance="normal"><primary>GCA (Graphics Communication Association)</primary></indexterm>
-<indexterm significance="normal"><primary>Graphics Communication Association (GCA)</primary></indexterm>
 
-The <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.gca.org/">Graphics Communication
+<para><indexterm>
+  <primary>public identifiers</primary>
+  <secondary>registered, assigning authority</secondary>
+</indexterm><indexterm>
+  <primary>Graphics Communication Association (GCA)</primary>
+  <secondary>registered public identifiers, assigning</secondary>
+</indexterm><indexterm>
+  <primary>GCA (Graphics Communication Association)</primary>
+</indexterm><indexterm>
+  <primary>Graphics Communication Association (GCA)</primary>
+</indexterm>The <link xlink:href="http://www.gca.org/">Graphics Communication
 Association</link> (<acronym>GCA</acronym>) can assign registered
-public identifiers.  They do this by issuing the applicant a unique
+public identifiers. They do this by issuing the applicant a unique
 string and declaring the format of the owner identifier. For example,
-the Davenport Group was issued the string “A00002” and
-could have published DocBook using an <acronym>FPI</acronym> of the
-following form:
-<screen>
-+//ISO/IEC 9070/RA::A00002//<replaceable>...</replaceable>
-</screen>
-</para>
-<para>
-<indexterm significance="normal"><primary>Internet domain names format (registered public identifiers)</primary></indexterm>
-Another way to use a registered public identifier is to use the format
-reserved for internet domain names.  For example, O'Reilly can issue
-documents using an <acronym>FPI</acronym> of the following form:
-<screen>
-+//IDN oreilly.com//<replaceable>...</replaceable>
-</screen>
-</para>
-<para>
-As of DocBook V3.1, the <acronym>OASIS</acronym> Technical Committee
-responsible for DocBook has elected to use the unregistered owner
-identifier, <literal>OASIS</literal>, thus its prefix is
-<literal>-</literal>.
-<screen>
--//OASIS//<replaceable>...</replaceable>
-</screen>
-</para>
+the Davenport Group was issued the string “A00002” and could have
+published DocBook using an <acronym>FPI</acronym> of the following
+form:</para>
+
+<screen>+//ISO/IEC 9070/RA::A00002//<replaceable>...</replaceable></screen>
+
+<para><indexterm>
+  <primary>Internet domain names format (registered public identifiers)</primary>
+</indexterm>Another way to use a registered public identifier is to
+use the format reserved for internet domain names. For example,
+O'Reilly can issue documents using an <acronym>FPI</acronym> of the
+following form:</para>
+
+<screen>+//IDN oreilly.com//<replaceable>...</replaceable></screen>
+
+<para>As of DocBook V3.1, the <acronym>OASIS</acronym> Technical
+Committee responsible for DocBook has elected to use the unregistered
+owner identifier, <literal>OASIS</literal>, thus its prefix is
+<literal>-</literal>.</para>
+
+<screen>-//OASIS//<replaceable>...</replaceable></screen>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><replaceable>owner-identifier</replaceable></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>names</primary>
-  <secondary>individuals as owner-identifiers</secondary></indexterm>
-Identifies the person or organization that owns the identifier.
-Registration guarantees a unique owner identifier. Short of
-registration, some effort should be made to ensure that the owner
+<para><indexterm>
+  <primary>names</primary>
+  <secondary>individuals as owner-identifiers</secondary>
+</indexterm>Identifies the person or organization that owns the
+identifier. Registration guarantees a unique owner identifier. Short
+of registration, some effort should be made to ensure that the owner
 identifier is globally unique. A company name, for example, is a
 reasonable choice as are Internet domain names. It's also not uncommon
 to see the names of individuals used as the owner-identifier, although
 clearly this may introduce collisions over time.
 </para>
-<para>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>owner-identifier, version 3.1</secondary></indexterm>
 
-The owner-identifier for DocBook V3.1 is
-<literal>OASIS</literal>.  Earlier versions used the owner-identifier
+<para><indexterm>
+  <primary>DocBook DTD</primary>
+  <secondary>owner-identifier, version 3.1</secondary>
+</indexterm>The owner-identifier for DocBook V3.1 is
+<literal>OASIS</literal>. Earlier versions used the owner-identifier
 <literal>Davenport</literal>.
 </para>
 </listitem>
+
 </varlistentry>
 <varlistentry>
 <term><replaceable>text-class</replaceable></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>text</primary>
-  <secondary>text class</secondary></indexterm>
-<indexterm significance="normal"><primary>DOCUMENT text class</primary></indexterm>
-<indexterm significance="normal"><primary>DTDs</primary>
-  <secondary>text class</secondary></indexterm>
-<indexterm significance="normal"><primary>ELEMENTS text class</primary></indexterm>
-<indexterm significance="normal"><primary>ENTITIES text class</primary></indexterm>
-<indexterm significance="normal"><primary>NONSGML text class</primary></indexterm>
-
-The text class identifies the kind of document that is
-associated with this public identifier. Common text classes
-are
-  <variablelist>
-  <varlistentry>
-  <term>DOCUMENT</term>
-  <listitem>
-  <para>An <acronym>SGML</acronym> or <acronym>XML</acronym> document.</para>
-  </listitem>
-  </varlistentry>
-  <varlistentry>
-  <term>DTD</term>
-  <listitem>
-  <para>A <acronym>DTD</acronym> or part of a <acronym>DTD</acronym>.</para>
-  </listitem>
-  </varlistentry>
-  <varlistentry>
-  <term>ELEMENTS</term>
-  <listitem>
-  <para>A collection of element declarations.</para>
-  </listitem>
-  </varlistentry>
-  <varlistentry>
-  <term>ENTITIES</term>
-  <listitem>
-  <para>A collection of entity declarations.</para>
-  </listitem>
-  </varlistentry>
-  <varlistentry>
-  <term>NONSGML</term>
-  <listitem>
-  <para>Data that is not in <acronym>SGML</acronym> or <acronym>XML</acronym>.</para>
-  </listitem>
-  </varlistentry>
-  </variablelist>
+<indexterm>
+  <primary>text</primary>
+  <secondary>text class</secondary></indexterm><indexterm>
+  <primary>DOCUMENT text class</primary>
+</indexterm><indexterm>
+  <primary>DTDs</primary>
+  <secondary>text class</secondary></indexterm><indexterm>
+  <primary>ELEMENTS text class</primary>
+</indexterm><indexterm>
+  <primary>ENTITIES text class</primary>
+</indexterm><indexterm>
+  <primary>NONSGML text class</primary>
+</indexterm>The text class identifies the kind of document that is
+associated with this public identifier. Common text classes are
 </para>
-<para>
-DocBook is a <acronym>DTD</acronym>, thus its text class is DTD.
+
+<variablelist>
+<varlistentry>
+<term>DOCUMENT</term>
+<listitem>
+<para>An <acronym>SGML</acronym> or <acronym>XML</acronym> document.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DTD</term>
+<listitem>
+<para>A <acronym>DTD</acronym> or part of a <acronym>DTD</acronym>.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ELEMENTS</term>
+<listitem>
+<para>A collection of element declarations.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ENTITIES</term>
+<listitem>
+<para>A collection of entity declarations.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NONSGML</term>
+<listitem>
+<para>Data that is not in <acronym>SGML</acronym> or
+<acronym>XML</acronym>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>DocBook is a <acronym>DTD</acronym>, thus its text class is DTD.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><replaceable>text-description</replaceable></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>text</primary>
-  <secondary>text description</secondary></indexterm>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>text description</secondary></indexterm>
+<para><indexterm>
+  <primary>text</primary>
+  <secondary>text description</secondary>
+</indexterm><indexterm>
+  <primary>DocBook DTD</primary>
+  <secondary>text description</secondary>
+</indexterm>This field provides a description of the document. The
+text description is free-form, but cannot include the string //.
+</para>
 
-This field provides a description of the document. The text description is
-free-form, but cannot include the string //.
+<para>The text description of DocBook is <literal>DocBook V5.0</literal>.
 </para>
-<para>
-The text description of DocBook is <literal>DocBook V3.1</literal>.
+
+<para><indexterm>
+  <primary>proprietary DTDs, unavailable public texts</primary>
+</indexterm><indexterm>
+  <primary>DTDs</primary>
+  <secondary>proprietary</secondary>
+</indexterm>In the uncommon case of unavailable public texts
+(<acronym>FPI</acronym>s for proprietary <acronym>DTD</acronym>s, for
+example), there are a few other options available (technically in
+front of or in place of the text description), but they're rarely
+used.<footnote>
+<para>See Appendix A of <xref linkend="maler96"/>, for more details.
 </para>
-<para>
-<indexterm significance="normal"><primary>proprietary DTDs, unavailable public texts</primary></indexterm>
-<indexterm significance="normal"><primary>DTDs</primary>
-  <secondary>proprietary</secondary></indexterm>
-In the uncommon case of unavailable public texts
-(<acronym>FPI</acronym>s for proprietary <acronym>DTD</acronym>s, for example), there
-are a few other options available (technically in front of or in place
-of the text description), but they're rarely used.
-<footnote>
-<para>
-See Appendix A of <xref linkend="maler96"/>, for more details.
-</para>
-</footnote>
-</para>
+</footnote></para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><replaceable>language</replaceable></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>languages</primary>
-  <secondary>document texts</secondary></indexterm>
-<indexterm significance="normal"><primary>ISO standards</primary>
-  <secondary>language codes</secondary></indexterm>
-
-Indicates the language in which the document is written. It is
-recommended that the <acronym>ISO</acronym> standard two-letter
+<para><indexterm>
+  <primary>languages</primary>
+  <secondary>document texts</secondary>
+</indexterm><indexterm>
+  <primary>ISO standards</primary>
+  <secondary>language codes</secondary>
+</indexterm>Indicates the language in which the document is written.
+It is recommended that the <acronym>ISO</acronym> standard two-letter
 language codes be used if possible.
 </para>
-<para>
-DocBook is an English-language <acronym>DTD</acronym>, thus its language is
-<literal>EN</literal>.
+
+<para>DocBook is an English-language <acronym>DTD</acronym>, thus its
+language is <literal>EN</literal>.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><replaceable>display-version</replaceable></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>display version</primary></indexterm>
-
-This field, which is not frequently used, distinguishes between
-public texts that are the same except for the display device or system
-to which they apply.
+<para><indexterm>
+  <primary>display version</primary>
+</indexterm>This field, which is not frequently used, distinguishes
+between public texts that are the same except for the display device
+or system to which they apply.
 </para>
-<para>
-<indexterm significance="normal"><primary>FPI</primary>
-  <secondary>ISO Latin 1 character set, examples</secondary></indexterm>
 
-For example, the <acronym>FPI</acronym> for the <acronym>ISO</acronym>
-Latin 1 character set is:
-<screen>-//ISO 8879-1986//ENTITIES Added Latin 1//EN</screen>
+<para><indexterm>
+  <primary>FPI</primary>
+  <secondary>ISO Latin 1 character set, examples</secondary>
+</indexterm>For example, the <acronym>FPI</acronym> for the
+<acronym>ISO</acronym> Latin 1 character set is: <screen>-//ISO
+8879-1986//ENTITIES Added Latin 1//EN</screen>
 </para>
-<para>
-A reasonable <acronym>FPI</acronym> for an <acronym>XML</acronym> version of this
-character set is:
+
+<para>A reasonable <acronym>FPI</acronym> for an
+<acronym>XML</acronym> version of this character set is:</para>
+
 <screen>-//ISO 8879-1986//ENTITIES Added Latin 1//EN//XML</screen>
-</para>
+
 </listitem>
 </varlistentry>
 </variablelist>
-</para>
+
 </section>
 </section>
+
 <section><info><title>System Identifiers</title></info>
 
-<para>
-<indexterm significance="normal"><primary>system identifiers</primary></indexterm>
-<indexterm significance="normal"><primary>URI</primary>
-  <secondary>XML system identifiers</secondary></indexterm>
-System identifiers are usually filenames on the local system. In
-<acronym>SGML</acronym>, there's no constraint on what they can be. Anything that your
-<acronym>SGML</acronym> processing system recognizes is allowed. In <acronym>XML</acronym>, system
-identifiers must be <acronym>URI</acronym>s (Uniform Resource
-Identifiers).
+<para><indexterm>
+  <primary>system identifiers</primary>
+</indexterm><indexterm>
+  <primary>URI</primary>
+  <secondary>XML system identifiers</secondary>
+</indexterm>System identifiers are usually filenames on the local
+system. In <acronym>SGML</acronym>, there's no constraint on what they
+can be. Anything that your <acronym>SGML</acronym> processing system
+recognizes is allowed. In <acronym>XML</acronym>, system identifiers
+must be <acronym>URI</acronym>s (Uniform Resource Identifiers).
 </para>
-<para>
-The use of <acronym>URI</acronym>s as system identifiers introduces
-the possibility that a system identifier can be a
+
+<para>The use of <acronym>URI</acronym>s as system identifiers
+introduces the possibility that a system identifier can be a
 <acronym>URN</acronym>. This allows the system identifier to benefit
 from the same global uniqueness benefit as the public identifier. It
-seems likely that <acronym>XML</acronym> system identifiers will eventually move in
-this direction.
+seems likely that <acronym>XML</acronym> system identifiers will
+eventually move in this direction.
 </para>
 </section>
-<section xml:id="s-catalog-files"><info><title>Catalog Files</title></info>
 
-<para>
-<indexterm significance="normal"><primary>catalog files</primary>
-  <secondary>pubic identifiers, resolving to system</secondary></indexterm>
+<section xml:id="s-catalog-files">
+<info>
+  <title>Catalog Files</title>
+</info>
 
-<firstterm>Catalog files</firstterm> are the standard mechanism for
-resolving public identifiers into system identifiers. Some resolution
-mechanism is necessary because DocBook refers to its component modules
-with public identifiers, and those must be mapped to actual files on
-the system before any piece of software can actually load them.
-</para>
-<para>
-<indexterm significance="normal"><primary>OASIS</primary>
-  <secondary>catalog file format</secondary></indexterm>
-<indexterm significance="normal"><primary>keywords</primary>
-  <secondary>catalog files</secondary></indexterm>
+<para><indexterm>
+  <primary>catalog files</primary>
+  <secondary>pubic identifiers, resolving to system</secondary>
+</indexterm><firstterm>XML Catalogs</firstterm> are the standard
+mechanism for resolving public identifiers into system identifiers.
+Some systems also use SGML Open Catalogs.</para>
 
-The catalog file format was defined in 1994 by <acronym>SGML</acronym> Open (now
-<acronym>OASIS</acronym>). The formal specification is contained in
-<acronym>OASIS</acronym> Technical Resolution 9401:1997.
-</para>
-<para>
-Informally, a catalog is a text file that contains a number of
-keyword/value pairs. The most frequently used keywords are
-<literal>PUBLIC</literal>, <literal>SYSTEM</literal>,
-<literal>SGMLDECL</literal>, <literal>DTDDECL</literal>,
-<literal>CATALOG</literal>, <literal>OVERRIDE</literal>,
-<literal>DELEGATE</literal>, and <literal>DOCTYPE</literal>.
-</para>
-<variablelist>
-<varlistentry><term><literal>PUBLIC</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>PUBLIC keyword</primary></indexterm>
+<para>FIXME: Rewrite this section in terms of XML Catalogs.</para>
 
-The <literal>PUBLIC</literal> keyword maps public identifiers to
-system identifiers:</para>
-<screen>
-PUBLIC "-//OASIS//DTD DocBook V3.1//EN" "docbook/3.1/docbook.dtd"
-</screen>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>SYSTEM</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>SYSTEM keyword</primary></indexterm>
-
-The <literal>SYSTEM</literal> keyword maps system identifiers to
-system identifiers:</para>
-<screen>
-SYSTEM "http://nwalsh.com/docbook/xml/1.3/db3xml.dtd"
-    "docbook/xml/1.3/db3xml.dtd"
-</screen>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>SGMLDECL</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>SGMLDECL keyword</primary></indexterm>
-
-The <literal>SGMLDECL</literal> keyword identifies the system
-identifier of the <acronym>SGML</acronym> Declaration that should be used:</para>
-<screen>
-SGMLDECL "docbook/3.1/docbook.dcl"
-</screen>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>DTDDECL</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>DTDDECL</primary></indexterm>
-
-Like <literal>SGMLDECL</literal>, <literal>DTDDECL</literal>
-identifies the <acronym>SGML</acronym> Declaration that should be
-used. <literal>DTDDECL</literal> associates a declaration with a
-particular public identifier for a <acronym>DTD</acronym>:
-</para>
-<screen>DTDDECL "-//OASIS//DTD DocBook V3.1//EN" "docbook/3.1/docbook.dcl"
-</screen>
-<para>Unfortunately, it is not supported by the free tools that are
-available. The practical benefit of <literal>DTDDECL</literal> can
-usually be achieved, albeit in a slightly cumbersome way, with
-multiple catalog files.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>CATALOG</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>CATALOG keyword</primary></indexterm>
-
-The <literal>CATALOG</literal> keyword allows one catalog to
-include the content of another.  This can make maintenance somewhat
-easier and allows a system to directly use the catalog files included
-in <acronym>DTD</acronym> distributions. For example, the DocBook distribution includes
-a catalog file. Rather than copying each of the declarations in that
-catalog into your system catalog, you can simply include the contents
-of the DocBook catalog:
-</para>
-<screen>CATALOG "docbook/3.1/catalog"</screen>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>OVERRIDE</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>OVERRIDE keyword</primary></indexterm>
-
-The <literal>OVERRIDE</literal> keyword indicates whether or not
-public identifiers override system identifiers. If a given declaration
-includes both a system identifer and a public identifier, most systems
-attempt to process the document referenced by the system identifier,
-and consequently ignore the public identifier. Specifying
-<screen>OVERRIDE YES</screen> in the catalog informs the processing
-system that resolution should be attempted first with the public
-identifier.</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>DELEGATE</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>DELEGATE keyword</primary></indexterm>
-
-The <literal>DELEGATE</literal> keyword allows you to specify
-that some set of public identifiers should be resolved by another
-catalog. Unlike the <literal>CATALOG</literal> keyword, which loads
-the referenced catalog, <literal>DELEGATE</literal> does nothing until
-an attempt is made to resolve a public identifier.</para> <para>The
-<literal>DELEGATE</literal> entry specifies a partial public
-identifier and an alternate catalog:
-<screen>DELEGATE "-//OASIS" "/usr/sgml/oasis/catalog"</screen>
-</para>
-<para>
-<indexterm significance="normal"><primary>initial substring matches (public identifiers)</primary></indexterm>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>partial (initial substring matches)</secondary></indexterm>
-
-Partial public identifers are simply initial substring
-matches. Given the preceding entry, if an attempt is made to match any
-public identifier that begins with the string
-<literal>-//OASIS</literal>, the alternate catalog
-<filename>/usr/sgml/oasis/catalog</filename> will be used instead
-of the current catalog.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>DOCTYPE</literal></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>DOCTYPE keyword</primary></indexterm>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>default, specifying</secondary></indexterm>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>system identifier, default (SGML)</secondary></indexterm>
-
-The <literal>DOCTYPE</literal> keyword allows you to specify a default
-system identifier.  If an <acronym>SGML</acronym> document begins with a
-<literal>DOCTYPE</literal> declaration that specifies neither a public
-identifier nor a system identifier (or is missing a
-<literal>DOCTYPE</literal> declaration altogether), the
-<literal>DOCTYPE</literal> declaration may provide a default:
-</para>
-<screen>
-DOCTYPE BOOK n:/share/sgml/docbook/3.1/docbook.dtd
-</screen>
-</listitem>
-</varlistentry>
-</variablelist>
-<para>
-<indexterm significance="normal"><primary>catalog files</primary>
-  <secondary>sample</secondary></indexterm>
-A small fragment of an actual catalog file is shown in <xref linkend="ex-catalog"/>.
-</para>
-<example xml:id="ex-catalog"><info><title>A Sample Catalog</title></info>
-<programlistingco>
-<areaspec>
-<area xml:id="cat-comment" coords="1 60" units="linecolumn"/>
-<area xml:id="cat-override" coords="4 60" units="linecolumn"/>
-<area xml:id="cat-sgmldecl" coords="6 60" units="linecolumn"/>
-<area xml:id="cat-doctype" coords="8 60" units="linecolumn"/>
-<area xml:id="cat-public" coords="10 60" units="linecolumn"/>
-<area xml:id="cat-system" coords="13 60" units="linecolumn"/>
-</areaspec>
-<programlisting>
--- Comments are delimited by pairs of double-hyphens,
-   as in SGML and XML comments. --
-
-OVERRIDE YES
-
-SGMLDECL "n:/share/sgml/docbook/3.1/docbook.dcl"
-
-DOCTYPE  BOOK  n:/share/sgml/docbook/3.1/docbook.dtd
-
-PUBLIC "-//OASIS//DTD DocBook V3.1//EN" 
-  n:/share/sgml/docbook/3.1/docbook.dtd
-
-SYSTEM "http://nwalsh.com/docbook/xml/1.3/db3xml.dtd"
-  n:/share/sgml/Norman_Walsh/db3xml/db3xml.dtd
-</programlisting>
-</programlistingco>
-</example>
-
-<calloutlist>
-<callout arearefs="cat-comment"><para>
-<indexterm significance="normal"><primary>comments</primary>
-  <secondary>catalog files</secondary></indexterm>
-Catalog files may also include comments.
-</para></callout>
-<callout arearefs="cat-override"><para>
-This catalog specifies that public identifiers should be used in favor
-of system identifiers, if both are present.
-</para></callout>
-<callout arearefs="cat-sgmldecl"><para>
-The default declaration specified by this catalog is the DocBook 
-declaration.
-</para></callout>
-<callout arearefs="cat-doctype"><para>
-Given an explicit (or implied) <acronym>SGML</acronym> <literal>DOCTYPE</literal> of
-<screen>
-
-&lt;!DOCTYPE BOOK SYSTEM&gt;
-
-</screen>
-use <filename>n:/share/sgml/docbook/3.1/docbook.dtd</filename> as the default
-system identifier.  Note that this can only apply to <acronym>SGML</acronym> documents
-because the DOCTYPE declaration above is not a valid <acronym>XML</acronym> element.
-</para></callout>
-<callout arearefs="cat-public"><para>
-Map the <acronym>OASIS</acronym> public identifer to the local copy of
-the DocBook <acronym>V3.1</acronym> <acronym>DTD</acronym>.
-</para></callout>
-<callout arearefs="cat-system"><para>
-Map a system identifer for the <acronym>XML</acronym> version of DocBook to a local
-version.
-</para></callout>
-</calloutlist>
-<para>A few notes:</para>
-<itemizedlist>
-<listitem><para>It's not uncommon to have several catalog files. See below,
-<xref linkend="s-loc-cat"/>”.</para>
-</listitem>
-<listitem><para>
-<indexterm significance="normal"><primary>quotes</primary>
-  <secondary>public and system identifiers</secondary></indexterm>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>quotes</secondary></indexterm>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>quotes</secondary></indexterm>
-
-Like attributes on elements you can quote, the public
-identifier and system identifier are surrounded by either single or double
-quotes.</para>
-</listitem>
-<listitem><para>
-<indexterm significance="normal"><primary>whitespace</primary>
-  <secondary>catalog files</secondary></indexterm>
-<indexterm significance="normal"><primary>catalog files</primary>
-  <secondary>whitespace</secondary></indexterm>
-
-White space in the catalog file is generally
-irrelevant. You can use spaces, tabs, or new lines between keywords
-and their arguments.</para>
-</listitem>
-<listitem><para>
-<indexterm significance="normal"><primary>relative system identifiers</primary></indexterm>
-
-When a relative system identifier is used, it is
-considered to be relative to the location of the catalog file, not the
-document being processed.</para>
-</listitem>
-</itemizedlist>
-<section xml:id="s-loc-cat"><info><title>Locating catalog files</title></info>
-
-<para>
-<indexterm significance="normal"><primary>catalog files</primary>
-  <secondary>locating</secondary></indexterm>
-<indexterm significance="normal"><primary>locating catalog files</primary></indexterm>
-<indexterm significance="normal"><primary>files</primary>
-  <secondary>catalog</secondary></indexterm>
-
-Catalog files go a long way towards making documents more portable by
-introducing a level of indirection. A problem still remains, however:
-how does a processor locate the appropriate catalog file(s)?
-<acronym>OASIS</acronym> outlines a complete interchange packaging
-scheme, but for most applications the answer is simply that the
-processor looks for a file called <filename>catalog</filename> or
-<filename>CATALOG</filename>.
-</para>
-<para>
-<indexterm significance="normal"><primary>directories, specifying (catalog file location)</primary></indexterm>
-
-Some applications allow you to specify a list of directories that
-should be examined for catalog files. Other tools allow you to specify
-the actual files.
-</para>
-<para>
-Note that even if a list of directories or catalog files is provided,
-applications may still load catalog files that occur in directories in
-which other documents are found. For example, <acronym>SP</acronym>
-and Jade always load the catalog file that occurs in the directory in
-which a <acronym>DTD</acronym> or document resides, even if that directory is not on
-the catalog file list.
-</para>
 </section>
 </section>
-</section>
-<section xml:id="ch02-physdiv"><info><title>Physical Divisions: Breaking a Document into Physical Chunks</title></info>
 
-<para>
-<indexterm significance="normal"><primary>documents</primary>
-  <secondary>dividing</secondary></indexterm>
-<indexterm significance="normal"><primary>divisions</primary>
-  <secondary>documents (DocBook)</secondary></indexterm>
-The rest of this chapter describes how you can break documents into
-logical chunks, such as books, chapters, sections, and so on. Before
-we begin, and while the subject of the internal subset is fresh in
-your mind, let's take a quick look at how to break documents into
-separate physical chunks.
+<section xml:id="ch02-physdiv">
+<info>
+<title>Physical Divisions: Breaking a Document into Physical Chunks</title>
+</info>
+
+<para><indexterm>
+  <primary>documents</primary>
+  <secondary>dividing</secondary>
+</indexterm><indexterm>
+  <primary>divisions</primary>
+  <secondary>documents (DocBook)</secondary>
+</indexterm>The rest of this chapter describes how you can break
+documents into logical chunks, such as books, chapters, sections, and
+so on. Before we begin, and while the subject of the internal subset
+is fresh in your mind, let's take a quick look at how to break
+documents into separate physical chunks.
 </para>
-<para>
-Actually, we've already told you how to do it. If you recall, in the
-preceding sections we had declarations of the form:
-<screen>&lt;!ENTITY <replaceable>name</replaceable> SYSTEM "<replaceable>filename</replaceable>"&gt;
-</screen>
-<indexterm significance="normal"><primary>entities</primary>
-  <secondary>inserting files</secondary></indexterm>
 
-If you refer to the entity <replaceable>name</replaceable> in your
-document after this declaration, the system will insert the contents
-of the file <replaceable>filename</replaceable> into your document at that
-point.  So, if you've got a book that consists of three chapters and
-two appendixes, you might create a file called
+<para>Actually, we've already told you how to do it. If you recall, in
+the preceding sections we had declarations of the form:</para>
+
+<screen>&lt;!ENTITY <replaceable>name</replaceable> SYSTEM "<replaceable>filename</replaceable>"&gt;</screen>
+
+<para><indexterm>
+  <primary>entities</primary>
+  <secondary>inserting files</secondary>
+</indexterm>If you refer to the entity <replaceable>name</replaceable>
+in your document after this declaration, the system will insert the
+contents of the file <replaceable>filename</replaceable> into your
+document at that point. So, if you've got a book that consists of
+three chapters and two appendixes, you might create a file called
 <filename>book.sgm</filename>, which looks like this:
 </para>
-<screen>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+
+<screen>&lt;!DOCTYPE book [
 &lt;!ENTITY chap1 SYSTEM "chap1.sgm"&gt;
 &lt;!ENTITY chap2 SYSTEM "chap2.sgm"&gt;
 &lt;!ENTITY chap3 SYSTEM "chap3.sgm"&gt;
@@ -1473,47 +784,51 @@ two appendixes, you might create a file called
 &amp;appb;
 &lt;/book&gt;
 </screen>
-<para>
-<indexterm significance="normal"><primary>declarations</primary>
-  <secondary>document type declaration</secondary></indexterm>
-<indexterm significance="normal"><primary>document type declaration</primary>
-  <secondary>divisions of documents</secondary></indexterm>
 
-You can then write the chapters and appendixes conveniently in
-separate files.  Note that these files do not and must not have
-document type declarations.
+<para><indexterm>
+  <primary>declarations</primary>
+  <secondary>document type declaration</secondary>
+</indexterm><indexterm>
+  <primary>document type declaration</primary>
+  <secondary>divisions of documents</secondary>
+</indexterm>You can then write the chapters and appendixes
+conveniently in separate files. Note that these files do not and must
+not have document type declarations.
 </para>
-<para>
-For example, Chapter 1 might begin like this:
-</para>
-<screen>
 
+<para>For example, Chapter 1 might begin like this:
+</para>
+
+<screen>&lt;chapter id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
+&lt;para&gt;My first paragraph.&lt;/para&gt;
+…</screen>
+
+<para>But it should not begin with its own document type declaration:
+</para>
+
+<screen>&lt;!DOCTYPE chapter&gt;
 &lt;chapter id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
 &lt;para&gt;My first paragraph.&lt;/para&gt;
-...
+…</screen>
 
-</screen>
-<para>
-But it should not begin with its own document type declaration:
-</para>
-<screen>
-
-&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
-&lt;chapter id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
-&lt;para&gt;My first paragraph.&lt;/para&gt;
-...
-
-</screen>
+<para>It is also possible to construct documents from physical chunks
+using XInclude. FIXME: say more about xinclude.</para>
 </section>
-<section xml:id="ch02-logdiv"><info><title>Logical Divisions: The Categories of Elements in DocBook</title></info>
 
-<para>
-<indexterm significance="normal"><primary>divisions</primary>
-  <secondary>elements, categories of (DocBook)</secondary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>categories, DocBook divisions</secondary></indexterm>
+<section xml:id="ch02-logdiv">
+<info>
+  <title>Logical Divisions: The Categories of Elements in DocBook</title>
+</info>
 
-DocBook elements can be divided broadly into these categories:
+<para><indexterm>
+  <primary>divisions</primary>
+  <secondary>elements, categories of (DocBook)</secondary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>categories, DocBook divisions</secondary>
+</indexterm>DocBook elements can be divided broadly into these
+categories:</para>
+
 <simplelist type="vert">
 <member>Sets</member>
 <member>Books</member>
@@ -1524,10 +839,9 @@ DocBook elements can be divided broadly into these categories:
 <member>Block elements</member>
 <member>Inline elements</member>
 </simplelist>
-</para>
-<para>
-In the rest of this section, we'll describe briefly the elements that
-make up these categories.  This section is designed to give you an
+
+<para>In the rest of this section, we'll describe briefly the elements
+that make up these categories. This section is designed to give you an
 overview. It is not an exhaustive list of every element in DocBook.
 </para>
 <para>
@@ -1538,418 +852,504 @@ question.
 <section><info><title>Sets</title></info>
 
 <para>
-<indexterm significance="normal"><primary>Sets</primary></indexterm>
+<indexterm>
+  <primary>Sets</primary>
+</indexterm>
 
-A <tag>Set</tag> contains two or more
-<tag>Book</tag>s.  It's the hierarchical top of DocBook. You
-use the <tag>Set</tag> tag, for example, for a series of books
+A <tag>set</tag> contains two or more
+<tag>book</tag>s.  It's the hierarchical top of DocBook. You
+use the <tag>set</tag> tag, for example, for a series of books
 on a single subject that you want to access and maintain as a single
 unit, such as the manuals for an airplane engine or the documentation
 for a programming language.
 </para>
 </section>
+
 <section><info><title>Books</title></info>
 
-<para>
-<indexterm significance="normal"><primary>customizing</primary>
+<para><indexterm>
+  <primary>customizing</primary>
   <secondary>DocBook DTD</secondary>
-    <tertiary>book organization</tertiary></indexterm>
-<indexterm significance="normal"><primary>Book element</primary>
-  <secondary>elements, ordering</secondary></indexterm>
-A <tag>Book</tag> is probably the most common top-level
+    <tertiary>book organization</tertiary>
+</indexterm><indexterm>
+  <primary>Book element</primary>
+  <secondary>elements, ordering</secondary>
+</indexterm>A <tag>book</tag> is probably the most common top-level
 element in a document. The DocBook definition of a book is very loose
 and general. Given the variety of books authored with DocBook and the
 number of different conventions for book organization used in
 countries around the world, attempting to impose a strict ordering of
-elements can make the content model extremely complex.  But DocBook
-gives you free reign.  It's very reasonable to use a local
-<xref linkend="app-customizing"/> to impose a more
-strict ordering for your applications.
+elements can make the content model extremely complex. But DocBook
+gives you free reign. It's very reasonable to use a local <xref
+linkend="app-customizing"/> to impose a more strict ordering for your
+applications.
 </para>
-<para>
-<tag>Book</tag>s consist of a mixture of the following elements:
+
+<para>A <tag>book</tag> consists of a mixture of the following elements:
 </para>
+
 <variablelist>
 <varlistentry><term>Dedication</term>
 <listitem>
-<para><tag>Dedication</tag> pages almost always occur at the front of
-a book.
-<indexterm significance="normal"><primary>Dedication element</primary></indexterm>
-
-</para>
+<para>The <tag>dedication</tag> pages almost always occur at the front of
+a book.<indexterm>
+  <primary>Dedication element</primary>
+</indexterm></para>
 </listitem>
 </varlistentry>
+
 <varlistentry><term>Navigational Components</term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>navigation, component-level elements</primary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>components, navigation</secondary></indexterm>
-<indexterm significance="normal"><primary>ToC</primary></indexterm>
-<indexterm significance="normal"><primary>LoT</primary></indexterm>
-<indexterm significance="normal"><primary>Lists of Titles</primary><see>LoT</see></indexterm>
-<indexterm significance="normal"><primary>Index element</primary></indexterm>
-<indexterm significance="normal"><primary>tables of contents</primary><seealso>ToC</seealso></indexterm>
-There are a few component-level elements designed for
-navigation: <tag>ToC</tag>, for Tables of Contents;
-<tag>LoT</tag>, for Lists of Titles (for lists of figures,
-tables, examples, and so on); and <tag>Index</tag>, for
-indexes.</para>
+<para><indexterm>
+  <primary>navigation, component-level elements</primary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>components, navigation</secondary>
+</indexterm><indexterm>
+  <primary>ToC</primary>
+</indexterm><indexterm>
+  <primary>Index element</primary>
+</indexterm><indexterm>
+  <primary>tables of contents</primary>
+  <seealso>ToC</seealso>
+</indexterm>There are a couple of component-level elements designed for
+navigation: <tag>toc</tag>, for Tables of Contents and Lists of Titles
+(for lists of figures, tables, examples, and so
+on); and <tag>index</tag>, for indexes.</para>
 </listitem>
 </varlistentry>
+
 <varlistentry><term>Divisions</term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>divisions</primary>
-  <secondary>Book</secondary></indexterm>
-<indexterm significance="normal"><primary>Part element</primary></indexterm>
-<indexterm significance="normal"><primary>Reference element</primary></indexterm>
-<indexterm significance="normal"><primary>RefEntry element</primary></indexterm>
-<indexterm significance="normal"><primary>components</primary></indexterm>
-
-Divisions are the first hierarchical level below <tag>Book</tag>.
-They contain <tag>Part</tag>s and <tag>Reference</tag>s.
-<tag>Part</tag>s, in turn, contain components.
-<tag>Reference</tag>s contain <tag>RefEntry</tag>s.  These are
+<para><indexterm>
+  <primary>divisions</primary>
+  <secondary>Book</secondary>
+</indexterm><indexterm>
+  <primary>Part element</primary>
+</indexterm><indexterm>
+  <primary>Reference element</primary>
+</indexterm><indexterm>
+  <primary>RefEntry element</primary>
+</indexterm><indexterm>
+  <primary>components</primary>
+</indexterm>Divisions are the first hierarchical level below
+<tag>book</tag>. They contain <tag>part</tag>s and
+<tag>reference</tag>s. A <tag>part</tag>, in turn, contains components.
+A <tag>reference</tag> contains <tag>refentry</tag>s. These are
 discussed more thoroughly in <xref linkend="making-refentry"/>”.
 </para>
-<para>
-Books can contain components directly and are not required to contain
-divisions.
+
+<para>Books can contain components directly and are not required to
+contain divisions.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry><term>Components</term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>Chapter element</primary>
-  <secondary>components, similarity to</secondary></indexterm>
+<para><indexterm>
+  <primary>Chapter element</primary>
+  <secondary>components, similarity to</secondary>
 
-These are the chapter-like elements of a <tag>Book</tag>.
+</indexterm>These are the chapter-like elements of a <tag>book</tag>.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Components</title></info>
 
-<para>
-<indexterm significance="normal"><primary>books</primary>
-  <secondary>components</secondary></indexterm>
-<indexterm significance="normal"><primary>Part element</primary></indexterm>
+<section>
+<info>
+<title>Components</title>
+</info>
 
-<indexterm significance="normal"><primary>Preface element</primary></indexterm>
-<indexterm significance="normal"><primary>Chapter element</primary></indexterm>
-<indexterm significance="normal"><primary>Appendix element</primary></indexterm>
-<indexterm significance="normal"><primary>Glossary element</primary></indexterm>
-<indexterm significance="normal"><primary>Bibliography element</primary></indexterm>
-<indexterm significance="normal"><primary>Article element</primary></indexterm>
-<indexterm significance="normal"><primary>block elements</primary></indexterm>
-<indexterm significance="normal"><primary>sections</primary>
-  <secondary>elements</secondary></indexterm>
-Components are the chapter-like elements of a <tag>Book</tag> or
-<tag>Part</tag>: <tag>Preface</tag>,
-<tag>Chapter</tag>, <tag>Appendix</tag>,
-<tag>Glossary</tag>, and
-<tag>Bibliography</tag>. <tag>Article</tag>s can also
-occur at the component level. We describe <tag>Article</tag>s
-in more detail in the section titled <xref linkend="making-article"/>”.  Components generally
+<para><indexterm>
+  <primary>books</primary>
+  <secondary>components</secondary>
+</indexterm><indexterm>
+  <primary>Part element</primary>
+</indexterm><indexterm>
+  <primary>Preface element</primary>
+</indexterm><indexterm>
+  <primary>Chapter element</primary>
+</indexterm><indexterm>
+  <primary>Appendix element</primary>
+</indexterm><indexterm>
+  <primary>Glossary element</primary>
+</indexterm><indexterm>
+  <primary>Bibliography element</primary>
+</indexterm><indexterm>
+  <primary>Article element</primary>
+</indexterm><indexterm>
+  <primary>block elements</primary>
+</indexterm><indexterm>
+  <primary>sections</primary>
+  <secondary>elements</secondary>
+</indexterm>Components are the chapter-like elements of a
+<tag>book</tag> or <tag>part</tag>: <tag>preface</tag>,
+<tag>chapter</tag>, <tag>appendix</tag>, <tag>glossary</tag>, and
+<tag>bibliography</tag>. An <tag>article</tag> can also occur at the
+component level. We describe <tag>article</tag>s in more detail in the
+section titled <xref linkend="making-article"/>”. Components generally
 contain block elements and/or sections, and some can contain
-navigational components and <tag>RefEntry</tag>s.
+navigational components and <tag>refentry</tag>s.
 </para>
 </section>
+
 <section><info><title>Sections</title></info>
 
-<para>
-<indexterm significance="normal"><primary>nesting</primary>
-  <secondary>section elements</secondary></indexterm>
-<indexterm significance="normal"><primary>numbered sections, levels</primary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>sections</secondary></indexterm>
+<para><indexterm>
+  <primary>nesting</primary>
+  <secondary>section elements</secondary>
+</indexterm><indexterm>
+  <primary>numbered sections, levels</primary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>sections</secondary>
+</indexterm>There are several flavors of sectioning elements in
+DocBook:</para>
 
-There are several flavors of sectioning elements in DocBook:</para>
 <variablelist>
-<varlistentry><term><tag>Sect1</tag>…<tag>Sect5</tag> elements</term>
+<varlistentry><term><tag>sect1</tag>…<tag>sect5</tag> elements</term>
 <listitem>
-<para>The <tag>Sect1</tag>…<tag>Sect5</tag>
+<para>The <tag>sect1</tag>…<tag>sect5</tag>
 elements are the most common sectioning elements. They can occur in
 most component-level elements. These numbered section elements must be
-properly nested (<tag>Sect2</tag>s can only occur inside
-<tag>Sect1</tag>s, <tag>Sect3</tag>s can only occur inside
-<tag>Sect2</tag>s, and so on).  There are five levels of numbered
+properly nested (<tag>sect2</tag>s can only occur inside
+<tag>sect1</tag>s, <tag>sect3</tag>s can only occur inside
+<tag>sect2</tag>s, and so on).  There are five levels of numbered
 sections.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>Section</tag> element</term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>Section element</primary></indexterm>
 
-The <tag>Section</tag> element, introduced in DocBook V3.1, is
-an alternative to numbered sections.  <tag>Section</tag>s are
-recursive, meaning that you can nest them to any depth desired.
+<varlistentry><term><tag>section</tag> element</term>
+<listitem>
+<para><indexterm>
+  <primary>Section element</primary>
+</indexterm>The <tag>section</tag> element is an alternative to
+numbered sections. The <tag>section</tag> elements are recursive,
+meaning that you can nest them to any depth desired.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>SimpleSect</tag> element</term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>SimpleSect element</primary></indexterm>
 
-In addition to numbered sections, there's the
-<tag>SimpleSect</tag> element.  It is a terminal section that
-can occur at any level, but it cannot have any other sectioning
-element nested within it.</para>
+<varlistentry><term><tag>simplesect</tag> element</term>
+<listitem>
+<para><indexterm>
+  <primary>SimpleSect element</primary>
+</indexterm>In addition to numbered sections, there's the
+<tag>simplesect</tag> element. It is a terminal section that can occur
+at any level, but it cannot have any other sectioning element nested
+within it.</para>
+<para>The distinguishing feature of <tag>simplesect</tag> is that it
+does not occur in the Table of Contents.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>BridgeHead</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>BridgeHead element</primary></indexterm>
 
-A <tag>BridgeHead</tag> provides a section title without
+<varlistentry><term><tag>bridgehead</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>BridgeHead element</primary>
+</indexterm>A <tag>bridgehead</tag> provides a section title without
 any containing section.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>RefSect1</tag>…<tag>RefSect3</tag> elements</term>
+
+<varlistentry><term><tag>refsect1</tag>…<tag>refsect3</tag> elements</term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>RefEntry element</primary></indexterm>
-These elements, which occur only in <tag>RefEntry</tag>s, are
-analogous to the numbered section elements in components.  There are
-only three levels of numbered section elements in a
-<tag>RefEntry</tag>.</para>
+<para><indexterm>
+  <primary>RefEntry element</primary>
+
+</indexterm>These elements, which occur only in <tag>refentry</tag>s,
+are analogous to the numbered section elements in components. There
+are only three levels of numbered section elements in a
+<tag>refentry</tag>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>GlossDiv</tag>, <tag>BiblioDiv</tag>, and 
-<tag>IndexDiv</tag></term>
+
+<varlistentry><term><tag>glossdiv</tag>, <tag>bibliodiv</tag>, and 
+<tag>indexdiv</tag></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>GlossDiv element</primary></indexterm>
-<indexterm significance="normal"><primary>BiblioDiv element</primary></indexterm>
-
-<indexterm significance="normal"><primary>Glossary element</primary></indexterm>
-<indexterm significance="normal"><primary>Bibliography element</primary></indexterm>
-<indexterm significance="normal"><primary>Index element</primary></indexterm>
-
-<tag>Glossary</tag>s, <tag>Bibliography</tag>s,
-and <tag>Index</tag>es can be broken into top-level
+<para><indexterm>
+  <primary>glossdiv element</primary>
+</indexterm><indexterm>
+  <primary>bibliodiv element</primary>
+</indexterm><indexterm>
+  <primary>glossary element</primary>
+</indexterm><indexterm>
+  <primary>bibliography element</primary>
+</indexterm><indexterm>
+  <primary>index element</primary>
+</indexterm>The <tag>glossary</tag>, <tag>bibliography</tag>,
+and <tag>index</tag> elements can be broken into top-level
 divisions, but not sections.  Unlike sections, these elements do not
 nest.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 </section>
+
 <section><info><title>Meta-Information</title></info>
-<para>
-<indexterm significance="normal"><primary>meta-information</primary>
-  <secondary>elements, section-level and above</secondary></indexterm>
-<indexterm significance="normal"><primary>wrappers</primary>
-  <secondary>meta-information, elements</secondary></indexterm>
-All of the elements at the section level and above include a wrapper
-for meta-information about the content.  See, for example,
-<tag>BookInfo</tag>.
+<para><indexterm>
+  <primary>meta-information</primary>
+  <secondary>elements</secondary>
+</indexterm><indexterm>
+  <primary>wrappers</primary>
+  <secondary>meta-information</secondary>
+</indexterm>All of the elements at the section level and above, and
+many block elements further down, include a wrapper
+for meta-information about the content.  That element is named
+<tag>info</tag>. In earlier versions of DocBook, there were many
+similarly named elements for this purpose, <literal>bookinfo</literal>,
+<literal>chapterinfo</literal>, etc. In DocBook V5.0, there is only one.
 </para>
-<para>
-<indexterm significance="normal"><primary>Author element</primary></indexterm>
-<indexterm significance="normal"><primary>Title element</primary></indexterm>
-<indexterm significance="normal"><primary>Publisher element</primary></indexterm>
-<indexterm significance="normal"><primary>revision histories</primary></indexterm>
-<indexterm significance="normal"><primary>keywords</primary>
-  <secondary>keyword sets (meta-information)</secondary></indexterm>
-<indexterm significance="normal"><primary>indexes</primary>
-  <secondary>metainformation</secondary></indexterm>
-The meta-information wrapper is designed to contain bibliographic
-information about the content (<tag>Author</tag>, <tag>Title</tag>,
-<tag>Publisher</tag>, and so on) as well as other meta-information
-such as revision histories, keyword sets, and index terms.
+
+<para><indexterm>
+  <primary>Author element</primary>
+</indexterm><indexterm>
+  <primary>Title element</primary>
+</indexterm><indexterm>
+  <primary>Publisher element</primary>
+</indexterm><indexterm>
+  <primary>revision histories</primary>
+</indexterm><indexterm>
+  <primary>keywords</primary>
+  <secondary>keyword sets (meta-information)</secondary>
+</indexterm><indexterm>
+  <primary>indexes</primary>
+  <secondary>metainformation</secondary>
+</indexterm>The meta-information wrapper is designed to contain
+bibliographic information about the content (<tag>author</tag>,
+<tag>title</tag>, <tag>publisher</tag>, and so on) as well as other
+meta-information such as revision histories, keyword sets, and index
+terms.
 </para>
 </section>
+
 <section><info><title>Block Elements</title></info>
 
-<para>
-<indexterm significance="normal"><primary>block elements</primary></indexterm>
-<indexterm significance="normal"><primary>paragraphs</primary>
-  <secondary>paragraph-level elements</secondary></indexterm>
-<indexterm significance="normal"><primary>lists</primary></indexterm>
-<indexterm significance="normal"><primary>examples</primary></indexterm>
-<indexterm significance="normal"><primary>figures</primary></indexterm>
-<indexterm significance="normal"><primary>tables</primary></indexterm>
-<indexterm significance="normal"><primary>synopses</primary></indexterm>
-<indexterm significance="normal"><primary>admonitions</primary></indexterm>
-<indexterm significance="normal"><primary>line-specific environments</primary></indexterm>
-
-The block elements occur immediately below the component and
-sectioning elements. These are the (roughly) paragraph-level elements
-in DocBook. They can be divided into a number of categories: lists,
-admonitions, line-specific environments, synopses of several sorts,
-tables, figures, examples, and a dozen or more miscellaneous elements.
+<para><indexterm>
+  <primary>block elements</primary>
+</indexterm><indexterm>
+  <primary>paragraphs</primary>
+  <secondary>paragraph-level elements</secondary>
+</indexterm><indexterm>
+  <primary>lists</primary>
+</indexterm><indexterm>
+  <primary>examples</primary>
+</indexterm><indexterm>
+  <primary>figures</primary>
+</indexterm><indexterm>
+  <primary>tables</primary>
+</indexterm><indexterm>
+  <primary>synopses</primary>
+</indexterm><indexterm>
+  <primary>admonitions</primary>
+</indexterm><indexterm>
+  <primary>line-specific environments</primary>
+</indexterm>The block elements occur immediately below the component
+and sectioning elements. These are the (roughly) paragraph-level
+elements in DocBook. They can be divided into a number of categories:
+lists, admonitions, line-specific environments, synopses of several
+sorts, tables, figures, examples, and a dozen or more miscellaneous
+elements.
 </para>
+
 <sidebar>
-<para>
-<indexterm significance="normal"><primary>block elements</primary>
-  <secondary>inline elements vs.</secondary></indexterm>
-<indexterm significance="normal"><primary>inline elements</primary>
-  <secondary>block elements vs.</secondary></indexterm>
-
-At the paragraph-level, it's convenient to divide elements into two
-classes, <firstterm>block</firstterm> and <firstterm>inline</firstterm>.
-From a structural point of view, this distinction is based loosely on
-their relative size, but it's easiest to describe the difference in
-terms of their presentation.
+<para><indexterm>
+  <primary>block elements</primary>
+  <secondary>inline elements vs.</secondary>
+</indexterm><indexterm>
+  <primary>inline elements</primary>
+  <secondary>block elements vs.</secondary>
+</indexterm>At the paragraph-level, it's convenient to divide elements
+into two classes, <firstterm>block</firstterm> and
+<firstterm>inline</firstterm>. From a structural point of view, this
+distinction is based loosely on their relative size, but it's easiest
+to describe the difference in terms of their presentation.
 </para>
-<para>
-<indexterm significance="normal"><primary>sidebars</primary></indexterm>
-<indexterm significance="normal"><primary>block quotations</primary></indexterm>
-<indexterm significance="normal"><primary>quotations (block)</primary></indexterm>
-Block elements are usually presented with a paragraph (or larger)
-break before and after them.  Most can contain other block elements,
-and many can contain character data and inline elements. Paragraphs,
-lists, sidebars, tables, and block quotations are all common examples
-of block elements.
+<para><indexterm>
+  <primary>sidebars</primary>
+</indexterm><indexterm>
+  <primary>block quotations</primary>
+</indexterm><indexterm>
+  <primary>quotations (block)</primary>
+</indexterm>Block elements are usually presented with a paragraph (or
+larger) break before and after them. Most can contain other block
+elements, and many can contain character data and inline elements.
+Paragraphs, lists, sidebars, tables, and block quotations are all
+common examples of block elements.
 </para>
-<para>
-<indexterm significance="normal"><primary>fonts</primary>
-  <secondary>changes (inline elements)</secondary></indexterm>
-<indexterm significance="normal"><primary>characters</primary>
-  <secondary>inline elements</secondary></indexterm>
-<indexterm significance="normal"><primary>cross references</primary></indexterm>
-<indexterm significance="normal"><primary>filenames</primary></indexterm>
-<indexterm significance="normal"><primary>commands</primary></indexterm>
-<indexterm significance="normal"><primary>options</primary></indexterm>
-<indexterm significance="normal"><primary>subscripts and superscripts</primary></indexterm>
-<indexterm significance="normal"><primary>glossaries</primary>
-  <secondary>glossary terms</secondary></indexterm>
-Inline elements are generally represented without any obvious breaks.
-The most common distinguishing mark of inline elements is a font
-change, but inline elements may present no visual distinction at all.
-Inline elements contain character data and possibly other inline
-elements, but they never contain block elements.  Inline elements are
-used to mark up data such as cross references, filenames, commands,
-options, subscripts and superscripts, and glossary terms.
+<para><indexterm>
+  <primary>fonts</primary>
+  <secondary>changes (inline elements)</secondary>
+</indexterm><indexterm>
+  <primary>characters</primary>
+  <secondary>inline elements</secondary>
+</indexterm><indexterm>
+  <primary>cross references</primary>
+</indexterm><indexterm>
+  <primary>filenames</primary>
+</indexterm><indexterm>
+  <primary>commands</primary>
+</indexterm><indexterm>
+  <primary>options</primary>
+</indexterm><indexterm>
+  <primary>subscripts and superscripts</primary>
+</indexterm><indexterm>
+  <primary>glossaries</primary>
+  <secondary>glossary terms</secondary>
+</indexterm>Inline elements are generally represented without any
+obvious breaks. The most common distinguishing mark of inline elements
+is a font change, but inline elements may present no visual
+distinction at all. Inline elements contain character data and
+possibly other inline elements, but they never contain block elements.
+Inline elements are used to mark up data such as cross references,
+filenames, commands, options, subscripts and superscripts, and
+glossary terms.
 </para>
 </sidebar>
+
 <section><info><title>Lists</title></info>
-<para>
-<indexterm significance="normal"><primary>lists</primary>
-  <secondary>elements</secondary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>lists</secondary></indexterm>
-
-There are seven list elements in DocBook:</para>
+<para><indexterm>
+  <primary>lists</primary>
+  <secondary>elements</secondary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>lists</secondary>
+</indexterm>There are eight list elements in DocBook:</para>
 <variablelist>
+
 <varlistentry>
-<term><tag>CalloutList</tag></term>
+<term><tag>calloutlist</tag></term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>CallOut element</primary></indexterm>
-<indexterm significance="normal"><primary>CalloutList element</primary></indexterm>
-
-A list of <tag>CallOut</tag>s and their descriptions.
-<tag>CallOut</tag>s are
-marks, frequently numbered and  typically on a graphic or verbatim environment,
-that are described in a <tag>CalloutList</tag>, outside the element
-in which they occur.</para>
+<para><indexterm>
+  <primary>CallOut element</primary>
+</indexterm><indexterm>
+  <primary>CalloutList element</primary>
+</indexterm>A list of <tag>callout</tag>s and their descriptions.
+The <tag>callout</tag>s are marks, frequently numbered and typically on a
+graphic or verbatim environment, that are described in a
+<tag>calloutlist</tag>, outside the element in which they
+occur.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>GlossList</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>GlossList element</primary></indexterm>
 
-A list of glossary terms and their definitions.</para>
+<varlistentry><term><tag>bibliolist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>BiblioList element</primary>
+</indexterm>A list of bibliography entries.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>ItemizedList</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>ItemizedList element</primary></indexterm>
 
-An unordered (bulleted) list. There are attributes to control
-the marks used.</para>
+<varlistentry><term><tag>glosslist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>GlossList element</primary>
+</indexterm>A list of glossary terms and their definitions.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>OrderedList</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>OrderedList element</primary></indexterm>
 
-A numbered list. There are attributes to control the type of
-enumeration.</para>
+<varlistentry><term><tag>itemizedlist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>ItemizedList element</primary>
+</indexterm>An unordered (bulleted) list. There are attributes to
+control the marks used.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>SegmentedList</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>SegmentedList element</primary></indexterm>
 
-A repeating set of named items. For example, a list of states
-and their capitals might be represented as a
-<tag>SegmentedList</tag>.</para>
+<varlistentry><term><tag>orderedlist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>OrderedList element</primary>
+</indexterm>A numbered list. There are attributes to control the type
+of enumeration.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>SimpleList</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>SimpleList element</primary></indexterm>
 
-An unadorned list of items. <tag>SimpleList</tag>s can
-be inline or arranged in columns.</para>
+<varlistentry><term><tag>segmentedlist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>SegmentedList element</primary>
+</indexterm>A repeating set of named items. For example, a list of
+states and their capitals might be represented as a
+<tag>segmentedlist</tag>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag>VariableList</tag></term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>VariableList element</primary></indexterm>
 
-A list of terms and definitions or descriptions. (This list of
-list types is a <tag>VariableList</tag>.)</para>
+<varlistentry><term><tag>simplelist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>SimpleList element</primary>
+</indexterm>An unadorned list of items. <tag>SimpleList</tag>s can be
+inline or arranged in columns.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><tag>variablelist</tag></term>
+<listitem>
+<para><indexterm>
+  <primary>VariableList element</primary>
+</indexterm>A list of terms and definitions or descriptions. (This
+list of list types is a <tag>VariableList</tag>.)</para>
 </listitem>
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Admonitions</title></info>
-<para>
-<indexterm significance="normal"><primary>admonitions</primary>
-  <secondary>DocBook types</secondary></indexterm>
-<indexterm significance="normal"><primary>Caution element</primary></indexterm>
-<indexterm significance="normal"><primary>Important element</primary></indexterm>
-<indexterm significance="normal"><primary>Note element</primary></indexterm>
-<indexterm significance="normal"><primary>Tip element</primary></indexterm>
-<indexterm significance="normal"><primary>Warning element</primary></indexterm>
 
-There are five types of admonitions in DocBook:
-<tag>Caution</tag>, <tag>Important</tag>,
-<tag>Note</tag>, <tag>Tip</tag>, and
-<tag>Warning</tag>.
+<section><info><title>Admonitions</title></info>
+
+<para><indexterm>
+  <primary>admonitions</primary>
+  <secondary>DocBook types</secondary>
+</indexterm><indexterm>
+  <primary>Caution element</primary>
+</indexterm><indexterm>
+  <primary>Important element</primary>
+</indexterm><indexterm>
+  <primary>Note element</primary>
+</indexterm><indexterm>
+  <primary>Tip element</primary>
+</indexterm><indexterm>
+  <primary>Warning element</primary>
+</indexterm>There are five types of admonitions in DocBook:
+<tag>caution</tag>, <tag>important</tag>, <tag>note</tag>,
+<tag>tip</tag>, and <tag>warning</tag>.
 </para>
-<para>
-All of the admonitions have the same structure: an optional <tag>
-Title</tag> followed by paragraph-level elements. The DocBook
-<acronym>DTD</acronym> does not impose any specific semantics on the individual
-admonitions. For example, DocBook does not mandate that
-<tag>Warning</tag>s be reserved for cases where bodily harm
-can result.
+
+<para>All of the admonitions have the same structure: an optional
+<tag>title</tag> followed by paragraph-level elements. DocBook does
+not impose any specific semantics on the individual admonitions. For
+example, DocBook does not mandate that <tag>warning</tag>s be reserved
+for cases where bodily harm can result.
 </para>
 </section>
-<section><info><title>Line-specific environments</title></info>
-<para>
-<indexterm significance="normal"><primary>line-specific environments</primary></indexterm>
-<indexterm significance="normal"><primary>whitespace</primary>
-  <secondary>preserving in source text</secondary></indexterm>
-<indexterm significance="normal"><primary>line breaks, preserving</primary></indexterm>
 
-These environments preserve whitespace and line breaks in the source
-text. DocBook does not provide the equivalent of <acronym>HTML</acronym>'s
-<tag>BR</tag> tag, so there's no way to interject a line break
-into normal running text.
+<section>
+<info><title>Line-specific environments</title></info>
+
+<para><indexterm>
+  <primary>line-specific environments</primary>
+</indexterm><indexterm>
+  <primary>whitespace</primary>
+  <secondary>preserving in source text</secondary>
+</indexterm><indexterm>
+  <primary>line breaks, preserving</primary>
+</indexterm>These environments preserve whitespace and line breaks in
+the source text. DocBook does not provide the equivalent of
+<acronym>HTML</acronym>'s <tag>BR</tag> tag, so there's no way to
+interject a line break into normal running text.
 </para>
 <variablelist>
 <varlistentry>
 <term><tag>Address</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>Address element</primary></indexterm>
+<indexterm>
+  <primary>Address element</primary>
+</indexterm>
 
 The <tag>Address</tag> element is intended for postal
 addresses.  In addition to being line-specific, <tag>Address</tag>
@@ -1961,7 +1361,9 @@ addresses.</para>
 <term><tag>LiteralLayout</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>LiteralLayout element</primary></indexterm>
+<indexterm>
+  <primary>LiteralLayout element</primary>
+</indexterm>
 
 A <tag>LiteralLayout</tag> does not have any semantic
 association beyond the preservation of whitespace and line breaks.  In
@@ -1975,9 +1377,12 @@ font, a change of fonts is not necessarily implied by <tag>LiteralLayout
 <term><tag>ProgramListing</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>ProgramListing element</primary></indexterm>
-<indexterm significance="normal"><primary>fonts</primary>
-  <secondary>fixed-width, programs and code</secondary></indexterm>
+<indexterm>
+  <primary>ProgramListing element</primary>
+</indexterm><indexterm>
+  <primary>fonts</primary>
+  <secondary>fixed-width, programs and code</secondary>
+</indexterm>
 
 A <tag>ProgramListing</tag> is a verbatim environment, usually
 presented in Courier or some other fixed-width font, for program
@@ -1988,8 +1393,11 @@ sources, code fragments, and similar listings.</para>
 <term><tag>Screen</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>Screen element</primary></indexterm>
-<indexterm significance="normal"><primary>text screen-captures </primary></indexterm>
+<indexterm>
+  <primary>Screen element</primary>
+</indexterm><indexterm>
+  <primary>text screen-captures </primary>
+</indexterm>
 
 A <tag>Screen</tag> is a verbatim or literal environment
 for text screen-captures, other fragments of an
@@ -2002,7 +1410,9 @@ text.</para>
 <term><tag>ScreenShot</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>ScreenShot element</primary></indexterm>
+<indexterm>
+  <primary>ScreenShot element</primary>
+</indexterm>
 
 <tag>ScreenShot</tag> is actually a wrapper for a
 <tag>Graphic</tag> intended for screen shots of a
@@ -2013,7 +1423,9 @@ text.</para>
 <term><tag>Synopsis</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>Synopsis element</primary></indexterm>
+<indexterm>
+  <primary>Synopsis element</primary>
+</indexterm>
 
 A <tag>Synopsis</tag> is a verbatim environment for command
 and function synopsis.</para>
@@ -2023,16 +1435,26 @@ and function synopsis.</para>
 </section>
 <section><info><title>Examples, figures, and tables</title></info>
 <para>
-<indexterm significance="normal"><primary>block elements</primary>
-  <secondary>formal and informal elements</secondary></indexterm>
-<indexterm significance="normal"><primary>formal elements</primary></indexterm>
-<indexterm significance="normal"><primary>informal elements</primary></indexterm>
-<indexterm significance="normal"><primary>Example element</primary></indexterm>
-<indexterm significance="normal"><primary>Figure element</primary></indexterm>
-<indexterm significance="normal"><primary>Table element</primary></indexterm>
-<indexterm significance="normal"><primary>InformalExample element</primary></indexterm>
-<indexterm significance="normal"><primary>InformalExample element</primary></indexterm>
-<indexterm significance="normal"><primary>InformalTable element</primary></indexterm>
+<indexterm>
+  <primary>block elements</primary>
+  <secondary>formal and informal elements</secondary>
+</indexterm><indexterm>
+  <primary>formal elements</primary>
+</indexterm><indexterm>
+  <primary>informal elements</primary>
+</indexterm><indexterm>
+  <primary>Example element</primary>
+</indexterm><indexterm>
+  <primary>Figure element</primary>
+</indexterm><indexterm>
+  <primary>Table element</primary>
+</indexterm><indexterm>
+  <primary>InformalExample element</primary>
+</indexterm><indexterm>
+  <primary>InformalExample element</primary>
+</indexterm><indexterm>
+  <primary>InformalTable element</primary>
+</indexterm>
 
 Examples, Figures, and Tables are common block-level elements:
 <tag>Example</tag>, <tag>InformalExample</tag>,
@@ -2040,8 +1462,10 @@ Examples, Figures, and Tables are common block-level elements:
 <tag>Table</tag>, and <tag>InformalTable</tag>.
 </para>
 <para>
-<indexterm significance="normal"><primary>titles</primary>
-  <secondary>formal elements</secondary></indexterm>
+<indexterm>
+  <primary>titles</primary>
+  <secondary>formal elements</secondary>
+</indexterm>
 
 The distinction between formal and informal elements is that formal
 elements have titles while informal ones do not. The
@@ -2053,7 +1477,9 @@ unwrapped, at the location where the informal figure was desired.
 </section>
 <section><info><title>Paragraphs</title></info>
 <para>
-<indexterm significance="normal"><primary>Para element</primary></indexterm>
+<indexterm>
+  <primary>Para element</primary>
+</indexterm>
 
 There are three paragraph elements: <tag>Para</tag>, <tag>
 SimPara</tag> (simple paragraphs may not contain other block-level
@@ -2063,10 +1489,14 @@ titles).
 </section>
 <section><info><title>Equations</title></info>
 <para>
-<indexterm significance="normal"><primary>Equation element</primary></indexterm>
-<indexterm significance="normal"><primary>titles</primary>
-  <secondary>equation elements</secondary></indexterm>
-<indexterm significance="normal"><primary>InlineEquation element</primary></indexterm>
+<indexterm>
+  <primary>Equation element</primary>
+</indexterm><indexterm>
+  <primary>titles</primary>
+  <secondary>equation elements</secondary>
+</indexterm><indexterm>
+  <primary>InlineEquation element</primary>
+</indexterm>
 There are two block-equation elements, <tag>Equation</tag> and
 <tag>InformalEquation</tag> (for inline equations, use
 <tag>InlineEquation</tag>).
@@ -2081,12 +1511,18 @@ lack titles.
 </section>
 <section><info><title>Graphics</title></info>
 <para>
-<indexterm significance="normal"><primary>graphics</primary></indexterm>
-<indexterm significance="normal"><primary>Figure element</primary></indexterm>
-<indexterm significance="normal"><primary>ScreenShot element</primary></indexterm>
-<indexterm significance="normal"><primary>block elements</primary>
-  <secondary>Graphic</secondary></indexterm>
-<indexterm significance="normal"><primary>InlineGraphic element</primary></indexterm>
+<indexterm>
+  <primary>graphics</primary>
+</indexterm><indexterm>
+  <primary>Figure element</primary>
+</indexterm><indexterm>
+  <primary>ScreenShot element</primary>
+</indexterm><indexterm>
+  <primary>block elements</primary>
+  <secondary>Graphic</secondary>
+</indexterm><indexterm>
+  <primary>InlineGraphic element</primary>
+</indexterm>
 
 Graphics occur most frequently in <tag>Figure</tag>s and
 <tag>ScreenShot</tag>s, but they can also occur without a
@@ -2095,8 +1531,11 @@ element, even if it appears to occur inline. For graphics that you
 want to be represented inline, use <tag>InlineGraphic</tag>.
 </para>
 <para>
-<indexterm significance="normal"><primary>MediaObject elements</primary></indexterm>
-<indexterm significance="normal"><primary>InlineMediaObject element</primary></indexterm>
+<indexterm>
+  <primary>MediaObject elements</primary>
+</indexterm><indexterm>
+  <primary>InlineMediaObject element</primary>
+</indexterm>
 
 DocBook <acronym>V3.1</acronym> introduced a new element to contain
 graphics and other media types: <tag>MediaObject</tag> and its inline
@@ -2108,11 +1547,17 @@ select the most appropriate object.
 </section>
 <section><info><title>Questions and answers</title></info>
 <para>
-<indexterm significance="normal"><primary>QandASet element</primary></indexterm>
-<indexterm significance="normal"><primary>FAQ element</primary></indexterm>
-<indexterm significance="normal"><primary>frequently asked questions (FAQ)</primary></indexterm>
-<indexterm significance="normal"><primary>Question element</primary></indexterm>
-<indexterm significance="normal"><primary>Answer element</primary></indexterm>
+<indexterm>
+  <primary>QandASet element</primary>
+</indexterm><indexterm>
+  <primary>FAQ element</primary>
+</indexterm><indexterm>
+  <primary>frequently asked questions (FAQ)</primary>
+</indexterm><indexterm>
+  <primary>Question element</primary>
+</indexterm><indexterm>
+  <primary>Answer element</primary>
+</indexterm>
 
 DocBook <acronym>V3.1</acronym> introduced the <tag>QandASet</tag>
 element, which is suitable for <acronym>FAQ</acronym>s (Frequently
@@ -2128,8 +1573,11 @@ The following block elements are also available:
 <varlistentry>
 <term><tag>BlockQuote</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>BlockQuote element</primary></indexterm>
-<indexterm significance="normal"><primary>Attribution element</primary></indexterm>
+<indexterm>
+  <primary>BlockQuote element</primary>
+</indexterm><indexterm>
+  <primary>Attribution element</primary>
+</indexterm>
 
 A block quotation.  Block quotations may have
 <tag>Attribution</tag>s.</para></listitem>
@@ -2137,11 +1585,16 @@ A block quotation.  Block quotations may have
 <varlistentry>
 <term><tag>CmdSynopsis</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>CmdSynopsis element</primary></indexterm>
-<indexterm significance="normal"><primary>parameters (commands), markup</primary></indexterm>
-<indexterm significance="normal"><primary>options</primary>
-  <secondary>commands, marking up</secondary></indexterm>
-<indexterm significance="normal"><primary>commands</primary></indexterm>
+<indexterm>
+  <primary>CmdSynopsis element</primary>
+</indexterm><indexterm>
+  <primary>parameters (commands), markup</primary>
+</indexterm><indexterm>
+  <primary>options</primary>
+  <secondary>commands, marking up</secondary>
+</indexterm><indexterm>
+  <primary>commands</primary>
+</indexterm>
 
 An environment for marking up all the parameters and options of a command.
 </para></listitem>
@@ -2149,7 +1602,9 @@ An environment for marking up all the parameters and options of a command.
 <varlistentry>
 <term><tag>Epigraph</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>Epigraph element</primary></indexterm>
+<indexterm>
+  <primary>Epigraph element</primary>
+</indexterm>
 
 A short introduction, typically a quotation, at the beginning of a document.
 <tag>Epigraph</tag>s may have <tag>Attribution</tag>s.
@@ -2158,8 +1613,11 @@ A short introduction, typically a quotation, at the beginning of a document.
 <varlistentry>
 <term><tag>FuncSynopsis</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>FuncSynopsis element</primary></indexterm>
-<indexterm significance="normal"><primary>MsgSet element</primary></indexterm>
+<indexterm>
+  <primary>FuncSynopsis element</primary>
+</indexterm><indexterm>
+  <primary>MsgSet element</primary>
+</indexterm>
 
 An environment for marking up the return value and arguments of a function.
 </para></listitem>
@@ -2167,7 +1625,9 @@ An environment for marking up the return value and arguments of a function.
 <varlistentry>
 <term><tag>Highlights</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>Highlights element</primary></indexterm>
+<indexterm>
+  <primary>Highlights element</primary>
+</indexterm>
 
 A summary of the main points discussed in a book component (chapter,
 section, and so on).
@@ -2176,17 +1636,23 @@ section, and so on).
 <varlistentry>
 <term><tag>MsgSet</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>error messages</primary>
-  <secondary>sets of related</secondary></indexterm>
+<indexterm>
+  <primary>error messages</primary>
+  <secondary>sets of related</secondary>
+</indexterm>
 
 A set of related error messages.</para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Procedure</tag></term>
 <listitem><para>
-<indexterm significance="normal"><primary>Procedure element</primary></indexterm>
-<indexterm significance="normal"><primary>Step element</primary></indexterm>
-<indexterm significance="normal"><primary>SubStep element</primary></indexterm>
+<indexterm>
+  <primary>Procedure element</primary>
+</indexterm><indexterm>
+  <primary>Step element</primary>
+</indexterm><indexterm>
+  <primary>SubStep element</primary>
+</indexterm>
 
 A procedure.  Procedures contain <tag>Step</tag>s, which
 may contain <tag>SubStep</tag>s.</para></listitem>
@@ -2200,9 +1666,12 @@ may contain <tag>SubStep</tag>s.</para></listitem>
 </section>
 <section><info><title>Inline Elements</title></info>
 <para>
-<indexterm significance="normal"><primary>inline elements</primary></indexterm>
-<indexterm significance="normal"><primary>text</primary>
-  <secondary>inline elements</secondary></indexterm>
+<indexterm>
+  <primary>inline elements</primary>
+</indexterm><indexterm>
+  <primary>text</primary>
+  <secondary>inline elements</secondary>
+</indexterm>
 
 Users of DocBook are provided with a surfeit of inline elements.
 Inline elements are used to mark up running text.  In published
@@ -2232,8 +1701,11 @@ entirely new categories.
 </para>
 <section><info><title>Traditional publishing inlines</title></info>
 <para>
-<indexterm significance="normal"><primary>general writing (traditional publishing inlines)</primary></indexterm>
-<indexterm significance="normal"><primary>traditional publishing, inline elements</primary></indexterm>
+<indexterm>
+  <primary>general writing (traditional publishing inlines)</primary>
+</indexterm><indexterm>
+  <primary>traditional publishing, inline elements</primary>
+</indexterm>
 
 These inlines identify things that commonly occur in general writing:
 </para>
@@ -2241,18 +1713,24 @@ These inlines identify things that commonly occur in general writing:
 <varlistentry>
 <term><tag>Abbrev</tag></term>
 <listitem><para>.
-<indexterm significance="normal"><primary>Abbrev element</primary></indexterm>
+<indexterm>
+  <primary>Abbrev element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Acronym</tag></term>
 <listitem><para>.
-<indexterm significance="normal"><primary>Acronym element</primary></indexterm>
+<indexterm>
+  <primary>Acronym element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Emphasis</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Emphasis element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Emphasis element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
@@ -2262,34 +1740,48 @@ These inlines identify things that commonly occur in general writing:
 element identifies the location of the first reference to the
 footnote. Additional references to the same footnote can be inserted with
 <tag>FootnoteRef</tag>.
-<indexterm significance="normal"><primary>FootnoteRef element</primary></indexterm>
-<indexterm significance="normal"><primary>Footnote element</primary></indexterm>
+<indexterm>
+  <primary>FootnoteRef element</primary>
+</indexterm><indexterm>
+  <primary>Footnote element</primary>
+</indexterm>
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Phrase</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Phrase element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Phrase element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Quote</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Quote element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Quote element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Trademark</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Trademark element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Trademark element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
 </section>
 <section><info><title>Cross references</title></info>
 <para>
-<indexterm significance="normal"><primary>cross references</primary></indexterm>
-<indexterm significance="normal"><primary>Link element</primary></indexterm>
-<indexterm significance="normal"><primary>GlossTerm element</primary></indexterm>
-<indexterm significance="normal"><primary>LinkEnd attribute</primary></indexterm>
+<indexterm>
+  <primary>cross references</primary>
+</indexterm><indexterm>
+  <primary>Link element</primary>
+</indexterm><indexterm>
+  <primary>GlossTerm element</primary>
+</indexterm><indexterm>
+  <primary>LinkEnd attribute</primary>
+</indexterm>
 
 The cross reference inlines identify both explicit cross references,
 such as <tag>Link</tag>, and implicit cross references like
@@ -2300,119 +1792,165 @@ attribute.
 <variablelist>
 <varlistentry>
 <term><tag>Anchor</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Anchor element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Anchor element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Citation</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Citation element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Citation element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>CiteRefEntry</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>CiteRefEntry element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>CiteRefEntry element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>CiteTitle</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>CiteTitle element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>CiteTitle element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>FirstTerm</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>FirstTerm element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>FirstTerm element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>GlossTerm</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>GlossTerm element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>GlossTerm element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Link</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Link element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Link element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>OLink</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>OLink element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>OLink element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ULink</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>ULink element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>ULink element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>XRef</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>XRef element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>XRef element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
 </section>
 <section><info><title>Markup</title></info>
 <para>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>elements</secondary></indexterm>
+<indexterm>
+  <primary>markup</primary>
+  <secondary>elements</secondary>
+</indexterm>
 
 These inlines are used to mark up text for special presentation:
 </para>
 <variablelist>
 <varlistentry>
 <term><tag>ForeignPhrase</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>ForeignPhrase element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>ForeignPhrase element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>WordAsWord</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>WordAsWord element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>WordAsWord element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ComputerOutput</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>ComputerOutput element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>ComputerOutput element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Literal</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Literal element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Literal element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Markup</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Markup element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Markup element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Prompt</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Prompt element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Prompt element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Replaceable</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Replaceable element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Replaceable element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>SGMLTag</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>SGMLTag element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>SGMLTag element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>UserInput</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>UserInput element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>UserInput element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
 </section>
 <section><info><title>Mathematics</title></info>
 <para>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>mathematics</secondary></indexterm>
-<indexterm significance="normal"><primary>mathematics (DocBook)</primary></indexterm>
-<indexterm significance="normal"><primary>equations (elements)</primary></indexterm>
-<indexterm significance="normal"><primary>MathML, incorporating</primary></indexterm>
-<indexterm significance="normal"><primary>namespaces</primary></indexterm>
+<indexterm>
+  <primary>elements</primary>
+  <secondary>mathematics</secondary>
+</indexterm><indexterm>
+  <primary>mathematics (DocBook)</primary>
+</indexterm><indexterm>
+  <primary>equations (elements)</primary>
+</indexterm><indexterm>
+  <primary>MathML, incorporating</primary>
+</indexterm><indexterm>
+  <primary>namespaces</primary>
+</indexterm>
 DocBook does not define a complete set of elements for representing
 equations.  No one has ever pressed the DocBook maintainers to add
 this functionality, and the prevailing opinion is that incorporating
@@ -2423,17 +1961,23 @@ the best long-term solution.
 <variablelist>
 <varlistentry>
 <term><tag>InlineEquation</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>InlineEquation element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>InlineEquation element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Subscript</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Subscript element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Subscript element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Superscript</tag></term>
-<listitem><para>.<indexterm significance="normal"><primary>Superscript element</primary></indexterm>
+<listitem><para>.<indexterm>
+  <primary>Superscript element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
@@ -2441,25 +1985,34 @@ the best long-term solution.
 <section><info><title>User interfaces</title></info>
 <para>
 These elements describe aspects of a user interface:
-<indexterm significance="normal"><primary>user interfaces, describing (elements)</primary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>user interfaces, describing</secondary></indexterm>
+<indexterm>
+  <primary>user interfaces, describing (elements)</primary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>user interfaces, describing</secondary>
+</indexterm>
 
 </para>
 <variablelist>
 <varlistentry>
 <term><tag>Accel</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Accel element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Accel element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>GUIButton</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>GuIButton element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>GuIButton element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>GUIIcon</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>GUIIcon element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>GUIIcon element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
@@ -2468,181 +2021,251 @@ These elements describe aspects of a user interface:
 </varlistentry>
 <varlistentry>
 <term><tag>GUIMenu</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>GUIMenu element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>GUIMenu element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>GUIMenuItem</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>GUIMenuItem element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>GUIMenuItem element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>GUISubmenu</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>GUISubmenu element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>GUISubmenu element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>KeyCap</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>KeyCap element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>KeyCap element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>KeyCode</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>KeyCode class</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>KeyCode class</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>KeyCombo</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>KeyCombo element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>KeyCombo element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>KeySym</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>KeySym element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>KeySym element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>MenuChoice</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>MenuChoice element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>MenuChoice element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>MouseButton</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>MouseButton element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>MouseButton element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Shortcut</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Shortcut element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Shortcut element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
 </section>
 <section><info><title>Programming languages and constructs</title></info>
 <para>
-<indexterm significance="normal"><primary>programming languages (elements)</primary></indexterm>
-<indexterm significance="normal"><primary>constructs (programming), elements</primary></indexterm>
-<indexterm significance="normal"><primary>inline elements</primary>
-  <secondary>programming languages and constructs</secondary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>programming languages and constructs</secondary></indexterm>
-<indexterm significance="normal"><primary>inline elements</primary>
-  <secondary>technical</secondary></indexterm>
+<indexterm>
+  <primary>programming languages (elements)</primary>
+</indexterm><indexterm>
+  <primary>constructs (programming), elements</primary>
+</indexterm><indexterm>
+  <primary>inline elements</primary>
+  <secondary>programming languages and constructs</secondary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>programming languages and constructs</secondary>
+</indexterm><indexterm>
+  <primary>inline elements</primary>
+  <secondary>technical</secondary>
+</indexterm>
 
 Many of the technical inlines in DocBook are related to programming.
 </para>
 <variablelist>
 <varlistentry>
 <term><tag>Action</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Action element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Action element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ClassName</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>ClassName element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>ClassName element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Constant</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Constant element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Constant element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ErrorCode</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>ErrorCode element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>ErrorCode element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ErrorName</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>ErrorName element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>ErrorName element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ErrorType</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>ErrorType element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>ErrorType element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Function</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Function element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Function element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Interface</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Interface element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Interface element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>InterfaceDefinition</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>InterfaceDefinition element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>InterfaceDefinition element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Literal</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Literal element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Literal element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>MsgText</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>MsgText element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>MsgText element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Parameter</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Parameter element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Parameter element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Property</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Property element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Property element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Replaceable</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Replaceable element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Replaceable element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>ReturnValue</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>ReturnValue element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>ReturnValue element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>StructField</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>StructField element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>StructField element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>StructName</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>StructName element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>StructName element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Symbol</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Symbol element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Symbol element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Token</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Token element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Token element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Type</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Type element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Type element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>VarName</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>VarName element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>VarName element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
 </section>
 <section><info><title>Operating systems</title></info>
 <para>
-<indexterm significance="normal"><primary>operating systems</primary>
-  <secondary>inline elements</secondary></indexterm>
+<indexterm>
+  <primary>operating systems</primary>
+  <secondary>inline elements</secondary>
+</indexterm>
 
 These inlines identify parts of an operating system, or an
 operating environment:
@@ -2650,133 +2273,184 @@ operating environment:
 <variablelist>
 <varlistentry>
 <term><tag>Application</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Application element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Application element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Command</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Command element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Command element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>EnVar</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>EnVar element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>EnVar element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Filename</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Filename element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Filename element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>MediaLabel</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>MediaLabel element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>MediaLabel element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>MsgText</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>MsgText element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>MsgText element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Option</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Option element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Option element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Parameter</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Parameter element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Parameter element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Prompt</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Prompt element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Prompt element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>SystemItem</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>SystemItem element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>SystemItem element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
 </section>
 <section><info><title>General purpose</title></info>
 <para>
-<indexterm significance="normal"><primary>general-purpose technical inline elements</primary></indexterm>
-<indexterm significance="normal"><primary>inline elements</primary>
-  <secondary>technical (general-purpose)</secondary></indexterm>
+<indexterm>
+  <primary>general-purpose technical inline elements</primary>
+</indexterm><indexterm>
+  <primary>inline elements</primary>
+  <secondary>technical (general-purpose)</secondary>
+</indexterm>
 
 There are also a number of general-purpose technical inlines.
 </para>
 <variablelist>
 <varlistentry>
 <term><tag>Application</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Application element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Application element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Database</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Database element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Database element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Email</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Email element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Email element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Filename</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Filename element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Filename element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Hardware</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Hardware element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Hardware element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>InlineGraphic</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>InlineGraphic element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>InlineGraphic element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Literal</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Literal element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Literal element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>MediaLabel</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>MediaLabel element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>MediaLabel element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Option</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Option element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Option element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Optional</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Optional element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Optional element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Replaceable</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Replaceable element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Replaceable element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Symbol</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Symbol element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Symbol element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Token</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Token element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Token element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Type</tag></term>
-     <listitem><para>.<indexterm significance="normal"><primary>Type element</primary></indexterm>
+     <listitem><para>.<indexterm>
+  <primary>Type element</primary>
+</indexterm>
 </para></listitem>
 </varlistentry>
 </variablelist>
@@ -2785,12 +2459,16 @@ There are also a number of general-purpose technical inlines.
 </section>
 <section xml:id="ch02-makebook"><info><title>Making a DocBook Book</title></info>
 <para>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>Book, making</secondary></indexterm>
-<indexterm significance="normal"><primary>books</primary>
-  <secondary>DocBook, making</secondary></indexterm>
-<indexterm significance="normal"><primary>meta-information</primary>
-  <secondary>DocBook Book</secondary></indexterm>
+<indexterm>
+  <primary>DocBook DTD</primary>
+  <secondary>Book, making</secondary>
+</indexterm><indexterm>
+  <primary>books</primary>
+  <secondary>DocBook, making</secondary>
+</indexterm><indexterm>
+  <primary>meta-information</primary>
+  <secondary>DocBook Book</secondary>
+</indexterm>
 
 A typical <tag>Book</tag>, in English at least, consists of 
 some meta-information in a <tag>BookInfo</tag>
@@ -2805,14 +2483,15 @@ contain <tag>Bibliography</tag>s,
 <para>
 <xref linkend="ex-typicalbook"/> shows the structure of a typical book.
 Additional content is required where the ellipses occur.
-<indexterm significance="normal"><primary>books</primary>
-  <secondary>typical structure</secondary></indexterm>
+<indexterm>
+  <primary>books</primary>
+  <secondary>typical structure</secondary>
+</indexterm>
 
 </para>
 <example xml:id="ex-typicalbook"><info><title>A Typical Book</title></info>
 
-<programlisting>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
-&lt;book&gt;
+<programlisting>&lt;book&gt;
 &lt;bookinfo&gt;
   &lt;title&gt;My First Book&lt;/title&gt;
   &lt;author&gt;&lt;firstname&gt;Jane&lt;/firstname&gt;&lt;surname&gt;Doe&lt;/surname&gt;&lt;/author&gt;
@@ -2830,12 +2509,16 @@ Additional content is required where the ellipses occur.
 </section>
 <section xml:id="ch02-makechap"><info><title>Making a Chapter</title></info>
 <para>
-<indexterm significance="normal"><primary>Chapter element</primary>
-  <secondary>typical chapter, structure</secondary></indexterm>
-<indexterm significance="normal"><primary>Preface element</primary>
-  <secondary>typical structure</secondary></indexterm>
-<indexterm significance="normal"><primary>Appendix element</primary>
-  <secondary>typical structure</secondary></indexterm>
+<indexterm>
+  <primary>Chapter element</primary>
+  <secondary>typical chapter, structure</secondary>
+</indexterm><indexterm>
+  <primary>Preface element</primary>
+  <secondary>typical structure</secondary>
+</indexterm><indexterm>
+  <primary>Appendix element</primary>
+  <secondary>typical structure</secondary>
+</indexterm>
 
 <tag>Chapter</tag>s, <tag>Preface</tag>s, and
 <tag>Appendix</tag>es all have a similar structure. They
@@ -2847,8 +2530,7 @@ section level, as shown in <xref linkend="ex-typicalchap"/>.
 </para>
 <example xml:id="ex-typicalchap"><info><title>A Typical Chapter</title></info>
 
-<programlisting>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
-&lt;chapter&gt;&lt;title&gt;My Chapter&lt;/title&gt;
+<programlisting>&lt;chapter&gt;&lt;title&gt;My Chapter&lt;/title&gt;
 &lt;para&gt; ... &lt;/para&gt;
 &lt;sect1&gt;&lt;title&gt;First Section&lt;/title&gt;
 &lt;para&gt; ... &lt;/para&gt;
@@ -2861,14 +2543,20 @@ section level, as shown in <xref linkend="ex-typicalchap"/>.
 <section xml:id="making-article"><info><title>Making an Article</title></info>
 
 <para>
-<indexterm significance="normal"><primary>articles</primary>
-  <secondary>creating</secondary></indexterm>
-<indexterm significance="normal"><primary>elements</primary>
-  <secondary>component-level</secondary></indexterm>
-<indexterm significance="normal"><primary>components</primary>
-  <secondary>elements</secondary></indexterm>
-<indexterm significance="normal"><primary>journal articles</primary></indexterm>
-<indexterm significance="normal"><primary>white papers, creating</primary></indexterm>
+<indexterm>
+  <primary>articles</primary>
+  <secondary>creating</secondary>
+</indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>component-level</secondary>
+</indexterm><indexterm>
+  <primary>components</primary>
+  <secondary>elements</secondary>
+</indexterm><indexterm>
+  <primary>journal articles</primary>
+</indexterm><indexterm>
+  <primary>white papers, creating</primary>
+</indexterm>
 
 For documents smaller than a book, such as: journal articles, white
 papers, or technical notes, <tag>Article</tag> is frequently
@@ -2884,8 +2572,7 @@ shown in <xref linkend="ex-typicalart"/>
 </para>
 <example xml:id="ex-typicalart"><info><title>A Typical Article</title></info>
 
-<programlisting>&lt;!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
-&lt;article&gt;
+<programlisting>&lt;article&gt;
 &lt;artheader&gt;
   &lt;title&gt;My Article&lt;/title&gt;
   &lt;author&gt;&lt;honorific&gt;Dr&lt;/honorific&gt;&lt;firstname&gt;Emilio&lt;/firstname&gt;
@@ -2902,12 +2589,17 @@ shown in <xref linkend="ex-typicalart"/>
 </section>
 <section xml:id="making-refentry"><info><title>Making a Reference Page</title></info>
 <para>
-<indexterm significance="normal"><primary>reference pages</primary>
-  <secondary>creating</secondary></indexterm>
-<indexterm significance="normal"><primary>manual page, creating</primary></indexterm>
-<indexterm significance="normal"><primary>UNIX</primary>
-  <secondary>manpage</secondary></indexterm>
-<indexterm significance="normal"><primary>manpage (UNIX)</primary></indexterm>
+<indexterm>
+  <primary>reference pages</primary>
+  <secondary>creating</secondary>
+</indexterm><indexterm>
+  <primary>manual page, creating</primary>
+</indexterm><indexterm>
+  <primary>UNIX</primary>
+  <secondary>manpage</secondary>
+</indexterm><indexterm>
+  <primary>manpage (UNIX)</primary>
+</indexterm>
 
 The reference page or manual page in DocBook was inspired by, and in
 fact designed to reproduce, the common <acronym>UNIX</acronym> “manpage”
@@ -2920,10 +2612,14 @@ specifies that reference pages have a strict sequence of parts, even
 though several of them are actually optional.
 </para>
 <para>
-<indexterm significance="normal"><primary>RefEntry element</primary>
-  <secondary>elements, obligatory</secondary></indexterm>
-<indexterm significance="normal"><primary>RefNameDiv element</primary></indexterm>
-<indexterm significance="normal"><primary>RefSect1 element</primary></indexterm>
+<indexterm>
+  <primary>RefEntry element</primary>
+  <secondary>elements, obligatory</secondary>
+</indexterm><indexterm>
+  <primary>RefNameDiv element</primary>
+</indexterm><indexterm>
+  <primary>RefSect1 element</primary>
+</indexterm>
 
 Of the following sequence of elements that may appear in a <tag class="element">RefEntry</tag>, only two are obligatory: <tag class="element">RefNameDiv</tag> and <tag class="element">RefSect1</tag>.
 <variablelist>
@@ -2931,10 +2627,13 @@ Of the following sequence of elements that may appear in a <tag class="element">
 <term><tag class="element">DocInfo</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>DocInfo element</primary>
-  <secondary>reference page, meta-information</secondary></indexterm>
-<indexterm significance="normal"><primary>meta-information</primary>
-  <secondary>reference page</secondary></indexterm>
+<indexterm>
+  <primary>DocInfo element</primary>
+  <secondary>reference page, meta-information</secondary>
+</indexterm><indexterm>
+  <primary>meta-information</primary>
+  <secondary>reference page</secondary>
+</indexterm>
 
 The <tag class="element">DocInfo</tag> element contains
 meta-information about the reference page (which should not be
@@ -2948,14 +2647,21 @@ history, or other such information.</para>
 <term><tag class="element">RefMeta</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>RefMeta element</primary></indexterm>
-<indexterm significance="normal"><primary>titles</primary>
-  <secondary>reference pages</secondary></indexterm>
-<indexterm significance="normal"><primary>volume number (reference page)</primary></indexterm>
-<indexterm significance="normal"><primary>ManVolNum</primary></indexterm>
-<indexterm significance="normal"><primary>UNIX</primary>
-  <secondary>ManVolNum</secondary></indexterm>
-<indexterm significance="normal"><primary>uname command and uname function, distinguishing</primary></indexterm>
+<indexterm>
+  <primary>RefMeta element</primary>
+</indexterm><indexterm>
+  <primary>titles</primary>
+  <secondary>reference pages</secondary>
+</indexterm><indexterm>
+  <primary>volume number (reference page)</primary>
+</indexterm><indexterm>
+  <primary>ManVolNum</primary>
+</indexterm><indexterm>
+  <primary>UNIX</primary>
+  <secondary>ManVolNum</secondary>
+</indexterm><indexterm>
+  <primary>uname command and uname function, distinguishing</primary>
+</indexterm>
 
 <tag class="element">RefMeta</tag> contains a title for
 the reference page (which may be inferred if the
@@ -2970,8 +2676,11 @@ distinguish between the <command>uname</command> command,
 volume 3.
 </para>
 <para>
-<indexterm significance="normal"><primary>RefMiscInfo element</primary></indexterm>
-<indexterm significance="normal"><primary>miscellaneous information, reference pages</primary></indexterm>
+<indexterm>
+  <primary>RefMiscInfo element</primary>
+</indexterm><indexterm>
+  <primary>miscellaneous information, reference pages</primary>
+</indexterm>
 
 Additional information of this sort such as conformance or
 vendor information specific to the particular environment you are
@@ -2983,14 +2692,22 @@ working in, may be stored in <tag>RefMiscInfo</tag>.
 <term><tag class="element">RefNameDiv</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>RefNameDiv element</primary></indexterm>
-<indexterm significance="normal"><primary>RefDescriptor element</primary></indexterm>
-<indexterm significance="normal"><primary>RefName element</primary></indexterm>
-<indexterm significance="normal"><primary>RefPurpose element</primary></indexterm>
-<indexterm significance="normal"><primary>purpose (reference pages)</primary></indexterm>
-<indexterm significance="normal"><primary>RefClass element</primary></indexterm>
-<indexterm significance="normal"><primary>operating systems</primary>
-  <secondary>configurations, software support</secondary></indexterm>
+<indexterm>
+  <primary>RefNameDiv element</primary>
+</indexterm><indexterm>
+  <primary>RefDescriptor element</primary>
+</indexterm><indexterm>
+  <primary>RefName element</primary>
+</indexterm><indexterm>
+  <primary>RefPurpose element</primary>
+</indexterm><indexterm>
+  <primary>purpose (reference pages)</primary>
+</indexterm><indexterm>
+  <primary>RefClass element</primary>
+</indexterm><indexterm>
+  <primary>operating systems</primary>
+  <secondary>configurations, software support</secondary>
+</indexterm>
 
 The first obligatory element is <tag class="element">RefNameDiv</tag>, which is a wrapper for
 information about whatever you're documenting, rather than the
@@ -3003,9 +2720,12 @@ operating system configurations that the software element in question
 supports.
 </para>
 <para>
-<indexterm significance="normal"><primary>titles</primary>
-  <secondary>reference pages</secondary></indexterm>
-<indexterm significance="normal"><primary>RefEntryTitle element</primary></indexterm>
+<indexterm>
+  <primary>titles</primary>
+  <secondary>reference pages</secondary>
+</indexterm><indexterm>
+  <primary>RefEntryTitle element</primary>
+</indexterm>
 
 If no <tag>RefEntryTitle</tag> is given in the
 <tag>RefMeta</tag>, the title of the reference page is the
@@ -3018,14 +2738,20 @@ If no <tag>RefEntryTitle</tag> is given in the
 <term><tag class="element">RefSynopsisDiv</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>RefSynopsisDiv element</primary></indexterm>
-<indexterm significance="normal"><primary>synopses</primary>
-  <secondary>reference topics</secondary></indexterm>
-<indexterm significance="normal"><primary>commands</primary>
-  <secondary>syntax summary</secondary></indexterm>
-<indexterm significance="normal"><primary>functions</primary>
-  <secondary>function prototype</secondary></indexterm>
-<indexterm significance="normal"><primary>Title element</primary></indexterm>
+<indexterm>
+  <primary>RefSynopsisDiv element</primary>
+</indexterm><indexterm>
+  <primary>synopses</primary>
+  <secondary>reference topics</secondary>
+</indexterm><indexterm>
+  <primary>commands</primary>
+  <secondary>syntax summary</secondary>
+</indexterm><indexterm>
+  <primary>functions</primary>
+  <secondary>function prototype</secondary>
+</indexterm><indexterm>
+  <primary>Title element</primary>
+</indexterm>
 
 A <tag class="element">RefSynopsisDiv</tag> is intended
 to provide a quick synopsis of the topic covered by the reference
@@ -3043,9 +2769,12 @@ given. In traditional <acronym>UNIX</acronym> documentation, its title is always
 <term><tag>RefSect1</tag>…<tag>RefSect3</tag></term>
 <listitem>
 <para>
-<indexterm significance="normal"><primary>sections</primary>
-  <secondary>RefEntry, levels</secondary></indexterm>
-<indexterm significance="normal"><primary>RefSect1…RefSect3</primary></indexterm>
+<indexterm>
+  <primary>sections</primary>
+  <secondary>RefEntry, levels</secondary>
+</indexterm><indexterm>
+  <primary>RefSect1…RefSect3</primary>
+</indexterm>
 
 Within <tag>RefEntry</tag>s, there are only three levels
 of sectioning elements: <tag>RefSect1</tag>,
@@ -3057,8 +2786,10 @@ of sectioning elements: <tag>RefSect1</tag>,
 <para>
 <xref linkend="ex-samprefpage"/> shows the beginning of a <tag class="element">RefEntry</tag> that illustrates one possible
 reference page:
-<indexterm significance="normal"><primary>reference pages</primary>
-  <secondary>sample page</secondary></indexterm>
+<indexterm>
+  <primary>reference pages</primary>
+  <secondary>sample page</secondary>
+</indexterm>
 </para>
 <example xml:id="ex-samprefpage"><info><title>A Sample Reference Page</title></info>
 
@@ -3123,14 +2854,20 @@ output stream stdout.
 </section>
 <section xml:id="ch02-makefrontback"><info><title>Making Front- and Backmatter</title></info>
 <para>
-<indexterm significance="normal"><primary>frontmatter, books and articles</primary></indexterm>
-<indexterm significance="normal"><primary>backmatter, books and articles</primary></indexterm>
-<indexterm significance="normal"><primary>indexes</primary>
-  <secondary>creating, books and articles</secondary></indexterm>
-<indexterm significance="normal"><primary>glossaries</primary>
-  <secondary>creating</secondary></indexterm>
-<indexterm significance="normal"><primary>tables of contents</primary>
-  <secondary>creating, books and articles</secondary></indexterm>
+<indexterm>
+  <primary>frontmatter, books and articles</primary>
+</indexterm><indexterm>
+  <primary>backmatter, books and articles</primary>
+</indexterm><indexterm>
+  <primary>indexes</primary>
+  <secondary>creating, books and articles</secondary>
+</indexterm><indexterm>
+  <primary>glossaries</primary>
+  <secondary>creating</secondary>
+</indexterm><indexterm>
+  <primary>tables of contents</primary>
+  <secondary>creating, books and articles</secondary>
+</indexterm>
 
 DocBook contains markup for the usual variety of front- and backmatter
 necessary for books and articles: indexes, glossaries, bibliographies,
@@ -3140,8 +2877,10 @@ processor, but you can create them by hand, and in either case, store
 them in DocBook.
 </para>
 <para>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>backmatter, books and articles</secondary></indexterm>
+<indexterm>
+  <primary>markup</primary>
+  <secondary>backmatter, books and articles</secondary>
+</indexterm>
 
 Some forms of backmatter, like indexes and glossaries, usually require
 additional markup <emphasis>in the document</emphasis> to make
@@ -3161,8 +2900,10 @@ contents in DocBook, please consult the reference page for
 </para>
 <section xml:id="makeindex"><info><title>Making an Index</title></info>
 <para>
-<indexterm significance="normal"><primary>indexes</primary>
-  <secondary>marking index terms</secondary></indexterm>
+<indexterm>
+  <primary>indexes</primary>
+  <secondary>marking index terms</secondary>
+</indexterm>
 In some highly-structured documents such as reference manuals, you can
 automate the whole process of generating an index successfully without
 altering or adding to the original source. You can design a processing
@@ -3177,8 +2918,11 @@ index.
 </para>
 <section><info><title>Marking index terms</title></info>
 <para>
-<indexterm significance="normal"><primary>singular index markers</primary></indexterm>
-<indexterm significance="normal"><primary>ranges, index entries</primary></indexterm>
+<indexterm>
+  <primary>singular index markers</primary>
+</indexterm><indexterm>
+  <primary>ranges, index entries</primary>
+</indexterm>
 
 Docbook distinguishes two kinds of index markers: those that are
 singular and result in a single page entry in the index itself, and
@@ -3194,9 +2938,13 @@ The tiger&lt;indexterm&gt;
 is a very large cat indeed.
 &lt;/para&gt;
 </screen> 
-<indexterm significance="normal"><primary>primary level index entries</primary></indexterm>
-<indexterm significance="normal"><primary>secondary level index entries</primary></indexterm>
-<indexterm significance="normal"><primary>tertiary level index entries</primary></indexterm>
+<indexterm>
+  <primary>primary level index entries</primary>
+</indexterm><indexterm>
+  <primary>secondary level index entries</primary>
+</indexterm><indexterm>
+  <primary>tertiary level index entries</primary>
+</indexterm>
 This index term has two levels, <tag>primary</tag> and
 <tag>secondary</tag>.  They correspond to an increasing amount
 of indented text in the resultant index. DocBook allows for three
@@ -3204,8 +2952,11 @@ levels of index terms, with the third labeled
 <tag>tertiary</tag>.
 </para>
 <para>
-<indexterm significance="normal"><primary>starting index terms (ranges)</primary></indexterm>
-<indexterm significance="normal"><primary>ending index terms (ranges)</primary></indexterm>
+<indexterm>
+  <primary>starting index terms (ranges)</primary>
+</indexterm><indexterm>
+  <primary>ending index terms (ranges)</primary>
+</indexterm>
 
 There are two ways that you can index a range of text. The first is to
 put index marks at both the beginning and end of the discussion.  The
@@ -3229,10 +2980,13 @@ leopards.
 &lt;/para&gt;
 </screen>
 <para>
-<indexterm significance="normal"><primary>ID attribute</primary>
-  <secondary>index entries, ranges</secondary></indexterm>
-<indexterm significance="normal"><primary>Class attribute</primary>
-  <secondary>index entries, ranges</secondary></indexterm>
+<indexterm>
+  <primary>ID attribute</primary>
+  <secondary>index entries, ranges</secondary>
+</indexterm><indexterm>
+  <primary>Class attribute</primary>
+  <secondary>index entries, ranges</secondary>
+</indexterm>
 
 Note that the mark at the start of the range identifies itself as the
 start of a range with the <tag class="attribute">Class</tag>
@@ -3240,9 +2994,12 @@ attribute, and provides an <tag class="attribute">ID</tag>.
 The mark at the end of the range points back to the start.
 </para>
 <para>
-<indexterm significance="normal"><primary>IndexTerm element</primary>
-  <secondary>Zone attribute</secondary></indexterm>
-<indexterm significance="normal"><primary>Zone attribute (indexterm)</primary></indexterm>
+<indexterm>
+  <primary>IndexTerm element</primary>
+  <secondary>Zone attribute</secondary>
+</indexterm><indexterm>
+  <primary>Zone attribute (indexterm)</primary>
+</indexterm>
 
 Another way to mark up a range of text is to specify that the entire
 content of an element, such as a chapter or section, is the complete
@@ -3272,7 +3029,9 @@ tag anywhere in your document to index that range of text:
 </screen> 
 </para>
 <para>
-<indexterm significance="normal"><primary>see and see also index entries</primary></indexterm>
+<indexterm>
+  <primary>see and see also index entries</primary>
+</indexterm>
 DocBook also contains markup for index hits that point to other index
 hits (of the same type such as "See Cats, big" or "See also
 Lions"). See the reference pages for <tag>See</tag> and
@@ -3281,8 +3040,10 @@ Lions"). See the reference pages for <tag>See</tag> and
 </section>
 <section><info><title>Printing an index</title></info>
 <para>
-<indexterm significance="normal"><primary>indexes</primary>
-  <secondary>printing</secondary></indexterm>
+<indexterm>
+  <primary>indexes</primary>
+  <secondary>printing</secondary>
+</indexterm>
 
 After you have added the appropriate markup to your document, an
 external application can use this information to build an index. The
@@ -3291,17 +3052,18 @@ the concepts appear. It's usually the document formatter that builds
 the index.  In this case, it may never be instantiated in DocBook.
 </para>
 <para>
-<indexterm significance="normal"><primary>indexes</primary>
-  <secondary>index marked up in DocBook (example)</secondary></indexterm>
+<indexterm>
+  <primary>indexes</primary>
+  <secondary>index marked up in DocBook (example)</secondary>
+</indexterm>
 
 However, there are applications that can produce an index marked up in
 DocBook.  The following example includes some one- and two-level
 <tag class="element">IndexEntry</tag> elements (which
 correspond to the primary and secondary levels in the
 <tag>indexterm</tag>s themselves) that begin with the letter D:
-<screen>
-&lt;!DOCTYPE index PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
-&lt;index&gt;&lt;title&gt;Index&lt;/title&gt;
+
+<screen>&lt;index&gt;&lt;title&gt;Index&lt;/title&gt;
 &lt;indexdiv&gt;&lt;title&gt;D&lt;/title&gt;
 &lt;indexentry&gt;
   &lt;primaryie&gt;database (bibliographic), 253, 255&lt;/primaryie&gt;
@@ -3323,8 +3085,10 @@ correspond to the primary and secondary levels in the
 </section>
 <section><info><title>Making a Glossary</title></info>
 <para>
-<indexterm significance="normal"><primary>glossaries</primary>
-  <secondary>creating</secondary></indexterm>
+<indexterm>
+  <primary>glossaries</primary>
+  <secondary>creating</secondary>
+</indexterm>
 
 <tag>Glossary</tag>s, like <tag>Bibliography</tag>s, are often
 constructed by hand.  However, some applications are capable of
@@ -3333,15 +3097,21 @@ If all of your terms are defined in some glossary database, it may
 even be possible to construct the complete glossary automatically.
 </para>
 <para>
-<indexterm significance="normal"><primary>markup</primary>
-  <secondary>glossaries</secondary></indexterm>
-<indexterm significance="normal"><primary>GlossTerm element</primary></indexterm>
-<indexterm significance="normal"><primary>LinkEnd attribute</primary>
-  <secondary>GlossTerm tag</secondary></indexterm>
-<indexterm significance="normal"><primary>ID attribute</primary>
-  <secondary>glossary entries</secondary></indexterm>
-<indexterm significance="normal"><primary>links</primary>
-  <secondary>glossary terms (text) to glossary entries</secondary></indexterm>
+<indexterm>
+  <primary>markup</primary>
+  <secondary>glossaries</secondary>
+</indexterm><indexterm>
+  <primary>GlossTerm element</primary>
+</indexterm><indexterm>
+  <primary>LinkEnd attribute</primary>
+  <secondary>GlossTerm tag</secondary>
+</indexterm><indexterm>
+  <primary>ID attribute</primary>
+  <secondary>glossary entries</secondary>
+</indexterm><indexterm>
+  <primary>links</primary>
+  <secondary>glossary terms (text) to glossary entries</secondary>
+</indexterm>
 
 To enable automatic glossary generation, or simply automatic linking
 from glossary terms in the text to glossary entries, you must add
@@ -3364,14 +3134,15 @@ For instance, if you have this markup in your document:
 &lt;glossterm linkend="xml"&gt;Extensible Markup Language&lt;/glossterm&gt; is a new standard… 
 </screen>
 <para>
-<indexterm significance="normal"><primary>glossaries</primary>
-  <secondary>example</secondary></indexterm>
+<indexterm>
+  <primary>glossaries</primary>
+  <secondary>example</secondary>
+</indexterm>
 
 your glossary might look like this:
 </para>
-<screen>
-&lt;!DOCTYPE glossary PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
-&lt;glossary&gt;&lt;title&gt;Example Glossary&lt;/title&gt;
+
+<screen>&lt;glossary&gt;&lt;title&gt;Example Glossary&lt;/title&gt;
 ⋮
 &lt;glossdiv&gt;&lt;title&gt;E&lt;/title&gt;
 
@@ -3399,12 +3170,17 @@ online form of the glossary in this book.
 </section>
 <section><info><title>Making a Bibliography</title></info>
 <para>
-<indexterm significance="normal"><primary>bibliographies, creating</primary></indexterm>
-<indexterm significance="normal"><primary>raw data</primary>
-  <secondary>bibliographies</secondary></indexterm>
-<indexterm significance="normal"><primary>cooked data</primary>
-  <secondary>bibliographies</secondary></indexterm>
-<indexterm significance="normal"><primary>BiblioEntry element</primary></indexterm>
+<indexterm>
+  <primary>bibliographies, creating</primary>
+</indexterm><indexterm>
+  <primary>raw data</primary>
+  <secondary>bibliographies</secondary>
+</indexterm><indexterm>
+  <primary>cooked data</primary>
+  <secondary>bibliographies</secondary>
+</indexterm><indexterm>
+  <primary>BiblioEntry element</primary>
+</indexterm>
 
 There are two ways to set up a bibliography in DocBook: you can have
 the data <emphasis>raw</emphasis> or
@@ -3448,7 +3224,9 @@ format the bibliographical data, and it is unlikely that all the
 information provided will actually be output.
 </para>
 <para>
-<indexterm significance="normal"><primary>Bibliomixed element</primary></indexterm>
+<indexterm>
+  <primary>Bibliomixed element</primary>
+</indexterm>
 
 All the “cooked” data in a <tag class="element">Bibliomixed</tag> entry in a bibliography, on the
 other hand, is intended to be presented to the reader in the form and
