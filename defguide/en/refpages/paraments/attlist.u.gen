@@ -1438,6 +1438,94 @@
 </informaltable>
 </refsect2>
 
+<refsect2 id="caption.attlist.content.parament"><title>%caption.attlist.content;</title>
+<informaltable frame='all' role='elemsynop'>
+<tgroup cols='3'>
+<colspec colnum='1' colname='c1'/>
+<colspec colnum='2' colname='c2'/>
+<colspec colnum='3' colname='c3'/>
+<tbody>
+<row rowsep='0' role='vle-cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity
+</emphasis></entry>
+</row>
+<row rowsep='1' role='cmsynop'>
+<entry namest='c1' nameend='c3' align='left'
+><synopsis>
+	%lang.attrib;
+	%remap.attrib;
+	%xreflabel.attrib;
+	%revisionflag.attrib;
+	%effectivity.attrib;
+	%dir.attrib;
+	%xml-base.attrib;
+	%local.common.attrib;
+		%caption.role.attrib;
+		%attrs;
+		align	(top|bottom|left|right)	#IMPLIED
+		%local.caption.attrib;</synopsis></entry>
+</row>
+<row rowsep='0' role='cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity (Expanded)
+</emphasis></entry>
+</row>
+<row rowsep='1' role='cmsynop'>
+<entry namest='c1' nameend='c3' align='left'
+><synopsis>
+	lang		CDATA		#IMPLIED
+	remap		CDATA		#IMPLIED
+	xreflabel	CDATA		#IMPLIED
+	revisionflag	(changed
+			|added
+			|deleted
+			|off)		#IMPLIED
+	arch		CDATA		#IMPLIED
+        condition	CDATA		#IMPLIED
+	conformance	NMTOKENS	#IMPLIED
+	os		CDATA		#IMPLIED
+	revision	CDATA		#IMPLIED
+        security	CDATA		#IMPLIED
+	userlevel	CDATA		#IMPLIED
+	vendor		CDATA		#IMPLIED
+	
+	dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED
+	xml:base	CDATA		#IMPLIED
+	
+		role		CDATA		#IMPLIED
+		id          ID             #IMPLIED
+  class       CDATA          #IMPLIED
+  style       CDATA          #IMPLIED
+  title       CDATA         #IMPLIED xml:lang    NMTOKEN        #IMPLIED onclick     CDATA       #IMPLIED
+  ondblclick  CDATA       #IMPLIED
+  onmousedown CDATA       #IMPLIED
+  onmouseup   CDATA       #IMPLIED
+  onmouseover CDATA       #IMPLIED
+  onmousemove CDATA       #IMPLIED
+  onmouseout  CDATA       #IMPLIED
+  onkeypress  CDATA       #IMPLIED
+  onkeydown   CDATA       #IMPLIED
+  onkeyup     CDATA       #IMPLIED
+		align	(top|bottom|left|right)	#IMPLIED</synopsis></entry>
+</row>
+<row rowsep='0' role='vle-petitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>%caption.attlist.content; appears in:</emphasis></entry>
+</row>
+<row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>caption</sgmltag></entry>
+<entry colsep='0'></entry>
+<entry colsep='0'></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</refsect2>
+
 <refsect2 id="caption.attlist.parament"><title>%caption.attlist;</title>
 <informaltable frame='all' role='elemsynop'>
 <tgroup cols='3'>
