@@ -940,28 +940,6 @@
 
 <!-- ==================================================================== -->
 
-<xsl:template match="/">
-  <xsl:choose>
-    <xsl:when test="$rootid != ''">
-      <xsl:choose>
-        <xsl:when test="count(id($rootid)) = 0">
-          <xsl:message terminate="yes">
-            <xsl:text>ID '</xsl:text>
-            <xsl:value-of select="$rootid"/>
-            <xsl:text>' not found in document.</xsl:text>
-          </xsl:message>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="id($rootid)"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:apply-templates/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
 <xsl:template match="/set|/book|/part|/preface|/chapter|/appendix
                      |/article|/reference|/refentry
                      |/glossary|/bibliography|/colophon
