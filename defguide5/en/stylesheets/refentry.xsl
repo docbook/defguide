@@ -55,6 +55,21 @@
       <xsl:text>.html"</xsl:text>
     </xsl:processing-instruction>
     <xsl:apply-templates/>
+
+    <xsl:if test="db:info/db:releaseinfo or db:info/db:pubdate">
+      <refsection>
+	<title>ChangeLog</title>
+	<para>
+	  <xsl:text>This </xsl:text>
+	  <emphasis>alpha</emphasis>
+	  <xsl:text> reference page is </xsl:text>
+	  <xsl:value-of select="db:info/db:releaseinfo"/>
+	  <xsl:text> published </xsl:text>
+	  <xsl:value-of select="db:info/db:pubdate"/>
+	  <xsl:text>.</xsl:text>
+	</para>
+      </refsection>
+    </xsl:if>
   </xsl:element>
 </xsl:template>
 
@@ -329,17 +344,6 @@
   <refsynopsisdiv>
     <title>
       <xsl:text>Synopsis&#160;</xsl:text>
-
-      <xsl:if test="$info/db:releaseinfo or $info/db:pubdate">
-	<annotation>
-	  <para>
-	    <xsl:value-of select="$info/db:releaseinfo"/>
-	  </para>
-	  <para>
-	    <xsl:value-of select="$info/db:pubdate"/>
-	  </para>
-	</annotation>
-      </xsl:if>
     </title>
     <xsl:apply-templates/>
   </refsynopsisdiv>
