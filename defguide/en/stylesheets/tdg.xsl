@@ -11,7 +11,7 @@
 
 <xsl:param name="output.media" select="'online'"/>
 <xsl:param name="output.type" select="'expanded'"/>
-<xsl:param name="html.stylesheet">docbook.css</xsl:param>
+<xsl:param name="html.stylesheet">defguide.css</xsl:param>
 <xsl:param name="toc.section.depth" select="1"/>
 <xsl:param name="callout.graphics.path" select="'figures/callouts/'"/>
 <xsl:param name="refentry.generate.name" select="0"/>
@@ -52,25 +52,25 @@
   <xsl:if test="@revision">
     <xsl:choose>
       <xsl:when test="@revision='5.0'">
-        <img src="figures/rev_5.0.gif" alt="[5.0]" align="absbottom"/>
+        <img src="figures/rev_5.0.png" alt="[5.0]"/>
       </xsl:when>
       <xsl:when test="@revision='4.0'">
-        <img src="figures/rev_4.0.gif" alt="[4.0]" align="absbottom"/>
+        <img src="figures/rev_4.0.png" alt="[4.0]"/>
       </xsl:when>
       <xsl:when test="@revision='3.1'">
         <!-- nop; 3.1 isn't interesting anymore -->
       </xsl:when>
       <xsl:when test="@revision='EBNF'">
-        <img src="figures/rev_ebnf.gif" alt="[EBNF]" align="absbottom"/>
+        <img src="figures/rev_ebnf.png" alt="[EBNF]"/>
       </xsl:when>
       <xsl:when test="@revision='SVG'">
-        <img src="figures/rev_svg.gif" alt="[SVG]" align="absbottom"/>
+        <img src="figures/rev_svg.png" alt="[SVG]"/>
       </xsl:when>
       <xsl:when test="@revision='MathML'">
-        <img src="figures/rev_mathml.gif" alt="[MathML]" align="absbottom"/>
+        <img src="figures/rev_mathml.png" alt="[MathML]"/>
       </xsl:when>
       <xsl:when test="@revision='HTMLForms'">
-        <img src="figures/rev_htmlforms.gif" alt="[HTML Forms]" align="absbottom"/>
+        <img src="figures/rev_htmlforms.png" alt="[HTML Forms]"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message>
@@ -460,7 +460,7 @@
 <xsl:template match="authorgroup/author" mode="titleblock">
   <xsl:if test="position() &gt; 1 and last() &gt; 2">,</xsl:if>
   <xsl:if test="position() &gt; 1 and position() = last()"> and</xsl:if>
-  <xsl:if test="position() &gt; 1"> </xsl:if>
+  <xsl:if test="position() &gt; 1">&#160;</xsl:if>
   <xsl:apply-templates select="."/>
 </xsl:template>
 
