@@ -35,6 +35,9 @@ all: chunks index
 test:
 	xjparse $(SOURCE)
 
+tdg.xml:
+	xsltproc $(SOURCE) /home/ndw/stylesheets/identity.xsl $@
+
 chunks: $(SSTITLEPG)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
