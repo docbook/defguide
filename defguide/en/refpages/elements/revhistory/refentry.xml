@@ -15,11 +15,14 @@
 &revhistory.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para>
-<sgmltag>RevHistory</sgmltag> is a structure for documenting a history of changes,
-specifically, a history of changes to the document or section in which it
-occurs.
+<para><sgmltag>RevHistory</sgmltag> is a structure for documenting a
+history of changes, specifically, a history of changes to the document
+or section in which it occurs.
 </para>
+
+<para>DocBook does not mandate an order for <sgmltag>revision</sgmltag>s:
+ascending order by date, descending order by date, and orders based on
+some other criteria are all equally acceptable.</para>
 
 <refsect2><title>Processing expectations</title>
 <para>
@@ -28,30 +31,31 @@ occurs.
 </refsect2>
 
 <refsect2 role='fu' revision="5.0"><title>&FutureChanges;</title>
-<para>
-Due to a parameterization oversight in the &DTD;, <sgmltag>RevHistory</sgmltag>
-is allowed in some outlandish places.  Still, it is not an inline, so it
-should not be used inside <sgmltag>LineAnnotation</sgmltag>s, <sgmltag>Link</sgmltag>s,
-or <sgmltag>Quote</sgmltag>s. (Not to mention the truly outlandish places like
-<sgmltag>Title</sgmltag> and <sgmltag>SeeAlso</sgmltag>!)
+
+<para>Due to a parameterization oversight in the &DTD;,
+<sgmltag>RevHistory</sgmltag> is allowed in some outlandish places.
+Still, it is not an inline, so it should not be used inside
+<sgmltag>LineAnnotation</sgmltag>s, <sgmltag>Link</sgmltag>s, or
+<sgmltag>Quote</sgmltag>s. (Not to mention the truly outlandish places
+like <sgmltag>Title</sgmltag> and <sgmltag>SeeAlso</sgmltag>!)
+</para>
+<para>In a future version of DocBook, <sgmltag>RevHistory</sgmltag>
+will be removed from these inline contexts.
 </para>
 <para>
-In a future version of DocBook, <sgmltag>RevHistory</sgmltag> will be removed
-from these inline contexts.
+The original intent for <sgmltag>RevHistory</sgmltag> was simply to
+document the history of changes to the document that contains it.  In
+keeping with this meaning, you are advised to limit its use to places
+where bibliographic meta-information is allowed (the
+<quote>info</quote> elements).
 </para>
 <para>
-The original intent for <sgmltag>RevHistory</sgmltag> was simply to document the
-history of changes to the document that contains it.  In keeping with this
-meaning, you are advised to limit its use to places where bibliographic
-meta-information is allowed (the <quote>info</quote> elements).
-</para>
-<para>
-One can argue that <sgmltag>RevHistory</sgmltag> has broader applicability for
-documenting changes to other systems as well, and in light of this, it may
-become available in more contexts, but that has not yet been decided.
+One can argue that <sgmltag>RevHistory</sgmltag> has broader
+applicability for documenting changes to other systems as well, and in
+light of this, it may become available in more contexts, but that has
+not yet been decided.
 </para>
 </refsect2>
-
 
 &revhistory.parents.gen;
 &revhistory.children.gen;
