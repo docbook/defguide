@@ -23,15 +23,12 @@ label that is to be used when formatting the question or answer.
 
 <refsect2><title>Processing expectations</title>
 <para>
-If the <sgmltag class='attribute'>DefaultLabel</sgmltag> attribute on the
-nearest ancestor <sgmltag>QandASet</sgmltag> is not
-<literal>Label</literal>, then the 
-<sgmltag class='attribute'>Label</sgmltag> attribute is
-ignored.
-</para>
-<para>
-Otherwise, the value of the <sgmltag class='attribute'>Label</sgmltag> attribute
-is used as the label for the <sgmltag>Question</sgmltag> or <sgmltag>Answer</sgmltag>.
+The value of the <sgmltag class='attribute'>Label</sgmltag> attribute
+is used as the label for the <sgmltag>Question</sgmltag> or
+<sgmltag>Answer</sgmltag>. A processing application might, for
+example, format the label as a heading preceding the question or
+answer contents, or it might format it as a run-in heading in the
+first paragraph of the question or answer.
 </para>
 </refsect2>
 
