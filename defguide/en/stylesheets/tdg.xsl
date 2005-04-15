@@ -109,6 +109,15 @@ set       nop
           </xsl:if>
         </img>
       </xsl:when>
+      <xsl:when test="@revision='4.4'">
+        <img src="figures/rev_4.4.png" alt="[4.4]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
       <xsl:when test="@revision='4.3'">
         <img src="figures/rev_4.3.png" alt="[4.3]">
           <xsl:if test="$align != ''">
