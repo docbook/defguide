@@ -10,6 +10,7 @@ my $SYSTEM_ID   = "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd";
 my $prefix = "";
 
 my @common_attributes  = ('xml:base',
+			  'wordsize',
 			  'dir',
 			  'id',
 			  'role',
