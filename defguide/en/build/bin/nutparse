@@ -5,11 +5,11 @@
 
 perl $SFDTDPARSE/dtdparse \
   --catalog $BUILDLIB/catalog \
-  --title "DocBook XML V4.3CR2 DTD EBNF Module V1.0" \
-  --decl /usr/lib/sgml/declaration/xml.dcl \
-  --public-id "-//OASIS//DTD DocBook V4.3CR2 EBNF Module V1.0//EN" \
+  --title "DocBook XML V4.4 DTD EBNF Module V1.0" \
+  --decl /usr/share/xml/declaration/xml.dcl \
+  --public-id "-//OASIS//DTD DocBook V4.4 EBNF Module V1.0//EN" \
   --output $BUILDLIB/$XMLDTD \
-  $SFDOCBOOK/docbook/ebnf/dbebnf-4.3CR2.dtd
+  $SFDOCBOOK/docbook/ebnf/dbebnf.dtd
 
 #perl $SFDTDPARSE/dtdparse \
 #  --catalog $BUILDLIB/catalog \
