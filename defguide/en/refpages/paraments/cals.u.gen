@@ -12,7 +12,10 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>%label.attrib;</synopsis></entry>
+><synopsis>
+		floatstyle	CDATA			#IMPLIED
+		rowheader	(firstcol|norowheader)	#IMPLIED
+                %label.attrib;</synopsis></entry>
 </row>
 <row rowsep='0' role='cmtitle'>
 <entry namest='c1' nameend='c3' align='left'
@@ -21,7 +24,10 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>label		CDATA		#IMPLIED</synopsis></entry>
+><synopsis>
+		floatstyle	CDATA			#IMPLIED
+		rowheader	(firstcol|norowheader)	#IMPLIED
+                label		CDATA		#IMPLIED</synopsis></entry>
 </row>
 <row rowsep='0' role='vle-petitle'>
 <entry namest='c1' nameend='c3' align='left'
@@ -157,6 +163,7 @@
         security	CDATA		#IMPLIED
 	userlevel	CDATA		#IMPLIED
 	vendor		CDATA		#IMPLIED
+	wordsize	CDATA		#IMPLIED
 	
 	dir		(ltr
 			|rtl
@@ -221,6 +228,7 @@
 ><synopsis>%list.class;		|%admon.class;
 		|%linespecific.class;
 		|%para.class;		|graphic|mediaobject
+		%forms.hook;
 		%local.tabentry.mix;</synopsis></entry>
 </row>
 <row rowsep='0' role='cmtitle'>
@@ -230,7 +238,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>calloutlist|glosslist|itemizedlist|orderedlist|segmentedlist
+><synopsis>calloutlist|glosslist|bibliolist|itemizedlist|orderedlist|segmentedlist
 		|simplelist|variablelist 		|caution|important|note|tip|warning 
 		|literallayout|programlisting|programlistingco|screen
 		|screenco|screenshot 
@@ -263,7 +271,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//DTD DocBook CALS Table Model V4.3CR2//EN
+><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//DTD DocBook CALS Table Model V4.4//EN
 </para><para><emphasis role='bold'>System identifier</emphasis>: calstblx.dtd
 </para></entry>
 </row>
@@ -296,12 +304,13 @@
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>#PCDATA
-		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
 		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
                 |ooclass|oointerface|ooexception
+                |package
                 |command|computeroutput
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
@@ -323,7 +332,7 @@
                  |methodsynopsis  
 		|indexterm         |beginpage
                 
-		 | calloutlist|glosslist|itemizedlist|orderedlist|segmentedlist
+		 | calloutlist|glosslist|bibliolist|itemizedlist|orderedlist|segmentedlist
 		|simplelist|variablelist 		|caution|important|note|tip|warning 
 		|literallayout|programlisting|programlistingco|screen
 		|screenco|screenshot 
@@ -543,7 +552,7 @@
     summary     CDATA          #IMPLIED
     width       CDATA        #IMPLIED
     border      CDATA        #IMPLIED
-    rules       (none | groups | rows | cols | all)      #IMPLIED
+    rules       CDATA		#IMPLIED
     cellspacing CDATA        #IMPLIED
     cellpadding CDATA        #IMPLIED
     align       (left|center|right)   #IMPLIED
@@ -565,7 +574,7 @@
     summary     CDATA          #IMPLIED
     width       CDATA        #IMPLIED
     border      CDATA        #IMPLIED
-    rules       (none | groups | rows | cols | all)      #IMPLIED
+    rules       CDATA		#IMPLIED
     cellspacing CDATA        #IMPLIED
     cellpadding CDATA        #IMPLIED
     align       (left|center|right)   #IMPLIED

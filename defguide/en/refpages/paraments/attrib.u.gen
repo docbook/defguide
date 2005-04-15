@@ -89,7 +89,10 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>label		CDATA		#IMPLIED
+><synopsis>
+		floatstyle	CDATA			#IMPLIED
+		rowheader	(firstcol|norowheader)	#IMPLIED
+                label		CDATA		#IMPLIED
 	
 	id		ID		#IMPLIED
 	lang		CDATA		#IMPLIED
@@ -107,6 +110,7 @@
         security	CDATA		#IMPLIED
 	userlevel	CDATA		#IMPLIED
 	vendor		CDATA		#IMPLIED
+	wordsize	CDATA		#IMPLIED
 	
 	dir		(ltr
 			|rtl
@@ -444,6 +448,7 @@
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>format		NOTATION
 			(linespecific)	'linespecific'
+         %xml-space.attrib;
          linenumbering	(numbered|unnumbered) 	#IMPLIED
          continuation	(continues|restarts)	#IMPLIED
          startinglinenumber	CDATA		#IMPLIED
@@ -458,6 +463,7 @@
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>format		NOTATION
 			(linespecific)	'linespecific'
+         xml:space	(preserve)		#IMPLIED
          linenumbering	(numbered|unnumbered) 	#IMPLIED
          continuation	(continues|restarts)	#IMPLIED
          startinglinenumber	CDATA		#IMPLIED
@@ -566,14 +572,14 @@
 ><emphasis role='bold'>%linkendreq.attrib; appears in:</emphasis></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>biblioref</sgmltag></entry>
 <entry colsep='0'><sgmltag>coref</sgmltag></entry>
 <entry colsep='0'><sgmltag>footnoteref</sgmltag></entry>
-<entry colsep='0'><sgmltag>link</sgmltag></entry>
 </row>
 <row rowsep='0' role='vle-pe'>
+<entry colsep='0'><sgmltag>link</sgmltag></entry>
 <entry colsep='0'><sgmltag>synopfragmentref</sgmltag></entry>
 <entry colsep='0'><sgmltag>xref</sgmltag></entry>
-<entry colsep='0'></entry>
 </row>
 </tbody>
 </tgroup>
@@ -1173,6 +1179,36 @@
 </informaltable>
 </refsect2>
 
+<refsect2 id="wordsize.attrib.parament"><title>%wordsize.attrib;</title>
+<informaltable frame='all' role='elemsynop'>
+<tgroup cols='3'>
+<colspec colnum='1' colname='c1'/>
+<colspec colnum='2' colname='c2'/>
+<colspec colnum='3' colname='c3'/>
+<tbody>
+<row rowsep='0' role='vle-cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity
+</emphasis></entry>
+</row>
+<row rowsep='1' role='cmsynop'>
+<entry namest='c1' nameend='c3' align='left'
+><synopsis>wordsize	CDATA		#IMPLIED</synopsis></entry>
+</row>
+<row rowsep='0' role='cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity (Expanded)
+</emphasis></entry>
+</row>
+<row rowsep='1' role='cmsynop'>
+<entry namest='c1' nameend='c3' align='left'
+><synopsis>wordsize	CDATA		#IMPLIED</synopsis></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</refsect2>
+
 <refsect2 id="xml-base.attrib.parament"><title>%xml-base.attrib;</title>
 <informaltable frame='all' role='elemsynop'>
 <tgroup cols='3'>
@@ -1197,6 +1233,36 @@
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>xml:base	CDATA		#IMPLIED</synopsis></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</refsect2>
+
+<refsect2 id="xml-space.attrib.parament"><title>%xml-space.attrib;</title>
+<informaltable frame='all' role='elemsynop'>
+<tgroup cols='3'>
+<colspec colnum='1' colname='c1'/>
+<colspec colnum='2' colname='c2'/>
+<colspec colnum='3' colname='c3'/>
+<tbody>
+<row rowsep='0' role='vle-cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity
+</emphasis></entry>
+</row>
+<row rowsep='1' role='cmsynop'>
+<entry namest='c1' nameend='c3' align='left'
+><synopsis>xml:space	(preserve)		#IMPLIED</synopsis></entry>
+</row>
+<row rowsep='0' role='cmtitle'>
+<entry namest='c1' nameend='c3' align='left'
+><emphasis role='bold'>Parameter Entity (Expanded)
+</emphasis></entry>
+</row>
+<row rowsep='1' role='cmsynop'>
+<entry namest='c1' nameend='c3' align='left'
+><synopsis>xml:space	(preserve)		#IMPLIED</synopsis></entry>
 </row>
 </tbody>
 </tgroup>

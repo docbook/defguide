@@ -1,4 +1,4 @@
-<refentry id="package.element">
+<refentry id="package.element" revision="4.4">
 <?dbhtml filename="package.html"?>
 
 <refmeta>
@@ -15,10 +15,17 @@
 &package.synopsis.gen;
 <refsect1 condition='ref.description'><title>Description</title>
 
-<para></para>
+<para>The <sgmltag>package</sgmltag> element identifies things that
+are, conceptually, “packages”. Examples include packages in the Java
+language sense, <package>org.apache.xml.resolver</package>, and
+packages in the software distribution sense,
+<package role="debian">docbook-4.3-1.1.deb</package>.</para>
+<para>The term “package” means different things in different contexts
+and DocBook does not attempt to prescribe any particular meaning.</para>
 
 <refsect2><title>Processing expectations</title>
-<para></para>
+<para>&format.inline;
+</para>
 </refsect2>
 
 &package.parents.gen;
@@ -26,24 +33,5 @@
 
 </refsect1>
 
-<refsect1 condition='ref.elem.attrdesc'><title>Attributes</title>
-<variablelist>
-<varlistentry><term>dir</term>
-<listitem>
-&attr.dir.package;
-</listitem>
-</varlistentry>
-<varlistentry><term>wordsize</term>
-<listitem>
-&attr.wordsize.package;
-</listitem>
-</varlistentry>
-<varlistentry><term>xml:base</term>
-<listitem>
-&attr.xml:base.package;
-</listitem>
-</varlistentry>
-</variablelist>
-</refsect1>
 </refentry>
 

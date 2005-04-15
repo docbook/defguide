@@ -16,6 +16,18 @@
 <entry role='th'><para><emphasis role='bold'>Default</emphasis></para></entry>
 </row>
 <row role='attr'>
+<entry align='left' valign='top'>floatstyle</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
+<entry align='left' valign='top'>rowheader</entry>
+<entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>firstcol</member>
+<member>norowheader</member>
+</simplelist></entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
 <entry align='left' valign='top'>label</entry>
 <entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
@@ -174,6 +186,11 @@
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row role='attr'>
+<entry align='left' valign='top'>wordsize</entry>
+<entry align='left' valign='top'>CDATA</entry>
+<entry align='left' valign='top'><emphasis>None</emphasis></entry>
+</row>
+<row role='attr'>
 <entry align='left' valign='top'>dir</entry>
 <entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>ltr</member>
 <member>rtl</member>
@@ -300,7 +317,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>calloutlist|glosslist|itemizedlist|orderedlist|segmentedlist
+><synopsis>calloutlist|glosslist|bibliolist|itemizedlist|orderedlist|segmentedlist
 		|simplelist|variablelist 		|caution|important|note|tip|warning 
 		|literallayout|programlisting|programlistingco|screen
 		|screenco|screenshot 
@@ -333,7 +350,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//DTD DocBook CALS Table Model V4.3CR2//EN
+><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//DTD DocBook CALS Table Model V4.4//EN
 </para><para><emphasis role='bold'>System identifier</emphasis>: calstblx.dtd
 </para></entry>
 </row>
@@ -357,12 +374,13 @@
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
 ><synopsis>#PCDATA
-		|footnoteref|xref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
 		|firstterm|foreignphrase|glossterm|footnote|phrase|orgname
 		|quote|trademark|wordasword|personname 
 		|link|olink|ulink 	|action|application
                 |classname|methodname|interfacename|exceptionname
                 |ooclass|oointerface|ooexception
+                |package
                 |command|computeroutput
 		|database|email|envar|errorcode|errorname|errortype|errortext|filename
 		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
@@ -384,7 +402,7 @@
                  |methodsynopsis  
 		|indexterm         |beginpage
                 
-		 | calloutlist|glosslist|itemizedlist|orderedlist|segmentedlist
+		 | calloutlist|glosslist|bibliolist|itemizedlist|orderedlist|segmentedlist
 		|simplelist|variablelist 		|caution|important|note|tip|warning 
 		|literallayout|programlisting|programlistingco|screen
 		|screenco|screenshot 
@@ -597,12 +615,7 @@
 </row>
 <row role='attr'>
 <entry align='left' valign='top'>rules</entry>
-<entry align='left' valign='top'><para><emphasis>Enumerated:</emphasis></para><simplelist><member>none</member>
-<member>groups</member>
-<member>rows</member>
-<member>cols</member>
-<member>all</member>
-</simplelist></entry>
+<entry align='left' valign='top'>CDATA</entry>
 <entry align='left' valign='top'><emphasis>None</emphasis></entry>
 </row>
 <row role='attr'>
