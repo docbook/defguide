@@ -5,7 +5,7 @@
                 version="1.0">
 
   <xsl:output method="xml" indent="no"
-              doctype-system="../../docbook/ebnf/dbebnf.dtd"/>
+              doctype-system="schema/tdg.dtd"/>
 
   <xsl:preserve-space elements="*"/>
 
