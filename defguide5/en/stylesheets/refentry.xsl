@@ -3,12 +3,13 @@
 		xmlns='http://docbook.org/docbook-ng'
 		xmlns:s="http://www.ascc.net/xml/schematron"
 		xmlns:set="http://exslt.org/sets"
+		xmlns:exsl="http://exslt.org/common"
 		xmlns:db='http://docbook.org/docbook-ng'
 		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
 		xmlns:xlink="http://www.w3.org/1999/xlink"
 		xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
-		exclude-result-prefixes="db rng xlink doc s set dbx"
+		exclude-result-prefixes="db rng xlink doc s set dbx exsl"
                 version="2.0">
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
@@ -19,7 +20,7 @@
 <xsl:key name="elemdef" match="rng:define" use="rng:element/@name"/>
 
 <xsl:variable name="rngfile"
-	      select="'/sourceforge/docbook/docbook/relaxng/docbook-rng.xml'"/>
+	      select="'/sourceforge/docbook/docbook/relaxng/docbook/docbook-rng.xml'"/>
 
 <xsl:variable name="rng" select="document($rngfile,.)"/>
 
@@ -323,25 +324,46 @@
 	</xsl:when>
       </xsl:choose>
 
-      <variablelist>
-	<xsl:for-each select="$elem/doc:attributes/rng:interleave/*
-			      |$elem/doc:attributes/*[not(self::rng:interleave)]">
-	  <xsl:sort select="descendant-or-self::rng:attribute[1]/@name"/>
-	  <!-- don't bother with common attributes -->
-	  <xsl:variable name="name"
-			select="descendant-or-self::rng:attribute/@name"/>
+      <xsl:variable name="allAttrNS">
+	<xsl:for-each select="$elem/doc:attributes//rng:attribute">
+	  <!-- In the case where there are two patterns for the same -->
+	  <!-- attribute, this odd sort clause forces the one with the -->
+	  <!-- dbx:description to be last -->
+	  <xsl:sort select="concat(@name, '.', string(count(dbx:description)))"/>
+	  <xsl:variable name="name" select="@name"/>
 	  <xsl:choose>
 	    <xsl:when test="$cmnAttrEither[@name=$name]
 			    |$cmnLinkAttr[@name=$name]"/>
 	    <xsl:otherwise>
+	      <xsl:copy-of select="."/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:for-each>
+      </xsl:variable>
+	  
+      <variablelist>
+	<xsl:for-each select="exsl:node-set($allAttrNS)/rng:attribute">
+	  <xsl:variable name="name" select="@name"/>
+	  <xsl:choose>
+	    <!-- ignore this one if there's a following because -->
+	    <!-- it might have a description -->
+	    <xsl:when test="following-sibling::*[@name = $name]"/>
+	    <xsl:otherwise>
 	      <varlistentry>
 		<term>
-		  <xsl:value-of select=".//rng:attribute[1]/@name"/>
+		  <xsl:value-of select="$name"/>
 		</term>
 		<listitem>
-		  <para>
-		    <xsl:text>FIXME:</xsl:text>
-		  </para>
+		  <xsl:choose>
+		    <xsl:when test="dbx:description">
+		      <xsl:copy-of select="dbx:description/*"/>
+		    </xsl:when>
+		    <xsl:otherwise>
+		      <para>
+			<xsl:text>FIXME:</xsl:text>
+		      </para>
+		    </xsl:otherwise>
+		  </xsl:choose>
 		</listitem>
 	      </varlistentry>
 	    </xsl:otherwise>
@@ -616,16 +638,14 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
 	    <xsl:text>Attributes:</xsl:text>
 	  </xsl:otherwise>
 	</xsl:choose>
-	<xsl:text> (Required attributes, if any, are </xsl:text>
-	<emphasis role="bold">bold</emphasis>
-	<xsl:text>)</xsl:text>
       </para>
 
       <itemizedlist spacing='compact' role="element-synopsis">
 	<xsl:for-each select="rng:interleave/*|*[not(self::rng:interleave)]">
 	  <xsl:sort select="descendant-or-self::rng:attribute[1]/@name"/>
 	  <!-- don't bother with common attributes -->
-	  <xsl:variable name="name" select="descendant-or-self::rng:attribute/@name"/>
+	  <xsl:variable name="name"
+			select="descendant-or-self::rng:attribute/@name"/>
 	  <xsl:choose>
 	    <xsl:when test="$cmnAttrEither[@name=$name]|$cmnLinkAttr[@name=$name]"/>
 	    <xsl:otherwise>
@@ -634,6 +654,14 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
 	  </xsl:choose>
 	</xsl:for-each>
       </itemizedlist>
+
+      <xsl:if test=".//rng:attribute[not(ancestor::rng:optional)]">
+	<para>
+	  <xsl:text>Required attributes are show in </xsl:text>
+	  <emphasis role="bold">bold</emphasis>
+	  <xsl:text>.</xsl:text>
+	</para>
+      </xsl:if>
     </xsl:if>
   </refsection>
 </xsl:template>
@@ -692,6 +720,7 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
   </listitem>
 </xsl:template>
 
+<!--
 <xsl:template match="rng:ref" mode="attributes">
   <xsl:variable name="attrs" select="key('define', @name)/rng:attribute"/>
 
@@ -724,9 +753,13 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+-->
 
 <xsl:template match="rng:attribute" mode="attributes">
-  <xsl:param name="optional" select="parent::rng:optional"/>
+  <xsl:param name="optional"
+	     select="parent::rng:optional
+		     or parent::rng:choice/parent::rng:optional
+		     or parent::rng:interleave/parent::rng:choice/parent::rng:optional"/>
   <xsl:param name="choice" select="ancestor::rng:choice"/>
 
   <listitem>
