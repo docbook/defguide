@@ -20,7 +20,7 @@
 <xsl:key name="elemdef" match="rng:define" use="rng:element/@name"/>
 
 <xsl:variable name="rngfile"
-	      select="'/sourceforge/docbook/docbook/relaxng/docbook/docbook-rng.xml'"/>
+	      select="'/sourceforge/docbook/defguide5/en/tools/lib/docbook-rng.xml'"/>
 
 <xsl:variable name="rng" select="document($rngfile,.)"/>
 
