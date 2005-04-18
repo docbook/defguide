@@ -23,7 +23,7 @@
 <title>Description</title>
 
 
-<para>The <tag>EntryTbl</tag> element allows for a single level of nesting
+<para>The <tag>entrytbl</tag> element allows for a single level of nesting
 within <acronym>CALS</acronym> tables.
 </para>
 
@@ -32,6 +32,12 @@ within <acronym>CALS</acronym> tables.
 may not include themselves, thus limiting nesting to a single
 level.
 </para>
+
+<note>
+<para>An <tag>entrytbl</tag> can span horizontally (across columns)
+but it cannot span across rows. Whether this is by accident or design
+is unclear, but it has always been that way in CALS.</para>
+</note>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='calssemantics'?></para>
