@@ -5,6 +5,7 @@ depends:
 	$(MAKE) -c elements depends
 
 ref-elements.xml:
+	rm -f ref-elements.xml
 	echo "<reference xml:id='ref-element' xmlns='http://docbook.org/docbook-ng' xmlns:xi='http://www.w3.org/2001/XInclude'>" > $@
 	echo "<title>DocBook Element Reference</title>" >> $@
 	echo "<?dbhtml filename='ref-elements.html'?>" >> $@

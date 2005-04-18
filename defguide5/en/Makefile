@@ -30,16 +30,19 @@ endif
 
 all: chunks
 
+up-to-date:
+	$(MAKE) -C refpages
+
 test: tdg.xml
 	jing /sourceforge/docbook/docbook/relaxng/docbook.rng $<
 
-tdg.xml: bookinfo.xml WhatsNew
+tdg.xml: bookinfo.xml WhatsNew refpages/ref-elements.xml
 	xmllint --xinclude book.xml > $@
 
 bookinfo.xml: VERSION.xml
 	$(XSLT) $< $< $@
 
-chunks: $(SSTITLEPG)
+chunks: tdg.xml $(SSTITLEPG)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
 
