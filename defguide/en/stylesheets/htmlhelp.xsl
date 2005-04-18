@@ -23,7 +23,7 @@
   </xsl:choose>
 </xsl:variable>
 <xsl:param name="html.ext" select="concat($x,'.html')"/>
-<xsl:param name="htmlhelp.encoding" select="'iso-8859-1'"/>
+<xsl:param name="htmlhelp.encoding" select="'windows-1252'"/>
 <xsl:param name="chunker.output.encoding" select="'iso-8859-1'"/>
 <xsl:param name="saxon.character.representation" select="'native'"/>
 <xsl:param name="suppress.navigation" select="0"/>
@@ -48,7 +48,7 @@
   <xsl:text>DocBook: The Definitive Guide</xsl:text>
   <xsl:if test="$output.type='unexpanded'"><xsl:text> (unexpanded)</xsl:text></xsl:if>
 </xsl:param>
-<xsl:param name="htmlhelp.chm" select="concat('tdg-en-',substring-after(/book/bookinfo/releaseinfo,' '),$x,'.chm')"/>
+<xsl:param name="htmlhelp.chm" select="concat('tdg-en-',/book/bookinfo/releaseinfo,$x,'.chm')"/>
 
 <!-- Group element reference by first letter -->
 <xsl:template match="reference"

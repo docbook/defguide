@@ -6,11 +6,12 @@ REM of HTML Help Workshop is installed in common place
 
 xcopy /s /y /i figures\100dpi htmlhelp\figures
 xcopy /s /y /i ..\glyphs\100dpi htmlhelp\glyphs\100dpi
+xcopy /i /y html\defguide.css htmlhelp\defguide.css
 
-call saxonx book.xml stylesheets/htmlhelp.xsl
+call saxon tdg.xml stylesheets/htmlhelp.xsl
 %HHC% htmlhelp.hhp
 
-call saxonx unexbook.xml stylesheets/htmlhelp.xsl "output.type=unexpanded"
+call saxon tdgex.xml stylesheets/htmlhelp.xsl "output.type=unexpanded"
 %HHC% htmlhelp.hhp
 
 
