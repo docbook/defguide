@@ -8,11 +8,326 @@
 
 <para>This appendix details the changes made between versions.</para>
 
+<section><title>Version 2.0.12: Changes since version 2.0.10 (2004-05-19)</title>
+
+<para>I forgot to update the <citetitle>ChangeLog</citetitle> for
+version 2.0.11. That's the difference between 2.0.11 and 2.0.12.
+This change log is slightly abbreviated; there were hundreds of uninteresting
+changes to generated files.</para>
+
+<programlisting><![CDATA[Changes to en/*
+
+  | 2005-04-18  Jirka Kosek <kosek@users.sourceforge.net>
+  | 
+  | 	* makechm.bat: Updates to HTML Help processing
+  | 
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* VERSION.xml: Version 2.0.11 Released
+  | 
+  | 	* ch02.xml: Fixed example
+  | 
+  | 	* unexbook.xml: Point at right DTD
+  | 
+
+Changes to en/entities/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* elements.e.ent, elements.ent, elements.u.ent, refpurps.ent:
+  | 	  Added DocBook V4.4 entities
+  | 
+
+Changes to en/refpages/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* references.xml: Updated
+  | 
+
+Changes to en/schema/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* calstblx.dtd, catalog.xml, dbcentx.mod, dbebnf.dtd,
+  | 	  dbgenent.mod, dbhierx.mod, dbnotnx.mod, dbpoolx.mod,
+  | 	  docbook.cat, docbookx.dtd, htmltblx.mod, soextblx.dtd,
+  | 	  tdg.dtd: Updated to DocBook V4.4
+  | 
+
+Changes to en/stylesheets/*
+
+  | 2005-04-18  Jirka Kosek <kosek@users.sourceforge.net>
+  | 
+  | 	* htmlhelp.xsl: Updates to HTML Help processing
+  | 
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* identity.xsl: Point to correct doctype
+  | 
+  | 	* tdg.xsl: Support revision=4.4
+  | 
+
+Changes to en/build/bin/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* bash.paths, nutparse: Updated for V4.4
+  | 
+
+Changes to en/build/lib/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* .cvsignore, alphalist.xsl, parament.classes: Updated for
+  | 	  V4.4
+  | 
+  | 	* refentry.pl: Updated
+  | 
+
+Changes to en/figures/100dpi/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* rev_4.4.png: New file.
+  | 
+
+Changes to en/figures/300dpi/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* fermat.png: Fixed equation
+  | 
+  | 	* rev_4.4.png: New file.
+  | 
+
+Changes to en/refpages/paraments/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* attlist.e.gen, attlist.u.gen, attrib.e.gen, attrib.u.gen,
+  | 	  cals.e.gen, cals.u.gen, class.e.gen, class.u.gen,
+  | 	  common.e.gen, common.u.gen, content.e.gen, content.u.gen,
+  | 	  db.e.gen, db.u.gen, element.e.gen, element.u.gen,
+  | 	  htmltables.e.gen, htmltables.u.gen, iso.e.gen, iso.u.gen,
+  | 	  lattrib.e.gen, lattrib.u.gen, mix.e.gen, mix.u.gen,
+  | 	  module.e.gen, module.u.gen, role.e.gen, role.u.gen: Updated
+  | 
+
+[...]
+
+Changes to en/refpages/elements/bibliolist/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* children.gen, entities.e.ent, entities.u.ent, parents.gen,
+  | 	  refentry.xml, reference.e.xml, reference.u.xml,
+  | 	  synopsis.e.gen, synopsis.u.gen: New file.
+  | 
+  | 	* refentry.xml, synopsis.e.gen, synopsis.u.gen: Updated
+  | 
+
+Changes to en/refpages/elements/biblioref/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* entities.e.ent, entities.u.ent, parents.gen, refentry.xml,
+  | 	  reference.e.xml, reference.u.xml, synopsis.e.gen,
+  | 	  synopsis.u.gen: New file.
+  | 
+  | 	* refentry.xml, synopsis.e.gen, synopsis.u.gen: Updated
+  | 
+
+Changes to en/refpages/elements/package/*
+
+  | 2005-04-15  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* children.gen, entities.e.ent, entities.u.ent, parents.gen,
+  | 	  refentry.xml, reference.e.xml, reference.u.xml,
+  | 	  synopsis.e.gen, synopsis.u.gen: New file.
+  | 
+  | 	* refentry.xml, synopsis.e.gen, synopsis.u.gen: Updated]]></programlisting>
+</section>
+
 <section><title>Version 2.0.10: Changes since version 2.0.9 (2003-12-31)</title>
 
-<programlisting><textobject>
-<textdata fileref="WhatsNew"/>
-</textobject></programlisting>
+<programlisting><![CDATA[Changes to en/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* appi.xml: Fix the 2.0.9 changelog, add 2.0.10 changelog
+  | 
+  | 	* book.xml: Make a local copy of the reference schema
+  | 
+  | 	* ch04.xml: Added section on MIME type
+  | 
+
+Changes to en/stylesheets/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* dbv5.xsl, tdg.xsl: Hacking for V5/NG presentation
+  | 
+  | 	* html-titlepage.xml: Make attributes namespace-qualified per
+  | 	  some change I made to the template system
+  | 
+
+Changes to en/schema/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* calstblx.dtd, catalog.xml, dbcentx.mod, dbebnf.dtd,
+  | 	  dbgenent.mod, dbhierx.mod, dbnotnx.mod, dbpoolx.mod,
+  | 	  docbook.cat, docbookx.dtd, htmltblx.mod, soextblx.dtd,
+  | 	  tdg.dtd: New file.
+  | 
+
+Changes to en/build/bin/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* attrcheck: New file.
+  | 
+
+Changes to en/build/lib/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* docbook-rng.xml: New file.
+  | 
+
+Changes to en/refpages/elements/address/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/code/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/col/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/colgroup/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/corpcredit/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/mediaobjectco/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* example.1.xml: Fixed misleading URI
+  | 
+
+Changes to en/refpages/elements/option/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/orderedlist/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/procedure/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/stepalternatives/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/task/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/taskprerequisites/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/taskrelated/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/tasksummary/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/td/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/th/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/tr/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/ulink/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3
+  | 
+
+Changes to en/refpages/elements/uri/*
+
+  | 2004-05-19  Norman Walsh <nwalsh@users.sourceforge.net>
+  | 
+  | 	* refentry.xml: First pass at some updates for V4.3]]>
+</programlisting>
 </section>
 
 <section><title>Version 2.0.9: Changes since version 2.0.8 (2003-01-01)</title>
