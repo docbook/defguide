@@ -633,8 +633,8 @@ set       nop
       <xsl:when test="count(key('id', concat('element.db.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.', $lcname)"/>
       </xsl:when>
-      <xsl:when test="count(key('id', concat('db.html.', $lcname))) &gt; 0">
-	<xsl:value-of select="concat('db.html.', $lcname)"/>
+      <xsl:when test="count(key('id', concat('element.db.html.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('element.db.html.', $lcname)"/>
       </xsl:when>
       <xsl:otherwise>
 	<xsl:value-of select="concat('element.db.', $lcname)"/>
@@ -660,7 +660,7 @@ set       nop
   <xsl:choose>
     <xsl:when test="$class = 'element'
 		    and following-sibling::text()
-		    and starts-with(following-sibling::text(), '&#160;(')">
+		    and contains(following-sibling::text(), '&#160;(')">
       <!-- handle <tag>phrase</tag> (db._phrase) -->
       <xsl:variable name="ftext" select="following-sibling::text()[1]"/>
       <xsl:variable name="pattern"
