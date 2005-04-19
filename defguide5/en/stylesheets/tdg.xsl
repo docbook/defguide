@@ -624,8 +624,8 @@ set       nop
   </xsl:variable>
 
   <xsl:variable name="lcname"
-		select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-			            'abcdefghijklmnopqrstuvwxyz')"/>
+		select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ:',
+			            'abcdefghijklmnopqrstuvwxyz.')"/>
 
   <xsl:variable name="elemidval">
     <!-- check for HTML -->
