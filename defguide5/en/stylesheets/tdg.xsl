@@ -623,10 +623,23 @@ set       nop
     </xsl:choose>
   </xsl:variable>
 
+  <xsl:variable name="lcname"
+		select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+			            'abcdefghijklmnopqrstuvwxyz')"/>
+
   <xsl:variable name="elemidval">
-    <xsl:text>element.db.</xsl:text>
-    <xsl:value-of select="translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                                      'abcdefghijklmnopqrstuvwxyz')"/>
+    <!-- check for HTML -->
+    <xsl:choose>
+      <xsl:when test="count(key('id', concat('element.db.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('element.db.', $lcname)"/>
+      </xsl:when>
+      <xsl:when test="count(key('id', concat('db.html.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('db.html.', $lcname)"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:value-of select="concat('element.db.', $lcname)"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:variable>
 
 <!--
@@ -686,6 +699,14 @@ set       nop
         </xsl:attribute>
         <xsl:apply-imports/>
       </a>
+    </xsl:when>
+
+    <xsl:when test="$class = 'element'">
+      <xsl:message>
+	<xsl:text>Failed to find </xsl:text>
+	<xsl:value-of select="$elemidval"/>
+      </xsl:message>
+      <xsl:apply-imports/>
     </xsl:when>
 
     <xsl:otherwise>
