@@ -16,4 +16,13 @@ depends:
 	done
 	@echo " " >> .depends
 	@echo " " >> .depends
-
+	@if [ `ls -1 example.*.xml 2>/dev/null | wc -l` != 0 ]; then \
+		for f in db.*.xml; do \
+			echo -n `basename $$f .xml`.gen ": " >> .depends; \
+			for g in example.*.xml; do \
+				echo -n "$$g " >> .depends; \
+			done; \
+		done; \
+		echo " " >> .depends; \
+		echo " " >> .depends; \
+	fi
