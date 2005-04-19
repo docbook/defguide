@@ -2,7 +2,7 @@ all: ref-elements.xml
 	$(MAKE) -C elements
 
 depends:
-	$(MAKE) -c elements depends
+	$(MAKE) -C elements depends
 
 ref-elements.xml:
 	rm -f ref-elements.xml
