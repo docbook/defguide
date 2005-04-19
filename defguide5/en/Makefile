@@ -36,7 +36,7 @@ up-to-date:
 test: tdg.xml
 	jing /sourceforge/docbook/docbook/relaxng/docbook.rng $<
 
-tdg.xml: bookinfo.xml WhatsNew refpages/ref-elements.xml
+tdg.xml: book.xml bookinfo.xml WhatsNew refpages/ref-elements.xml
 	xmllint --xinclude book.xml > $@
 
 bookinfo.xml: VERSION.xml
