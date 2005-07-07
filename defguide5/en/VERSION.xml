@@ -5,7 +5,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fm="http://freshmeat.net/projects/freshmeat-submit/"
 		xmlns:sf="http://sourceforge.net/"
-		xmlns='http://docbook.org/docbook-ng'
+		xmlns='http://docbook.org/ns/docbook'
 		exclude-result-prefixes="fm sf"
                 version='1.0'>
 
@@ -34,7 +34,7 @@
   <fm:Changelog-URL>http://docbook.org/tdg/en/html/appi.html</fm:Changelog-URL>
   <fm:CVS-URL>http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/docbook/defguide/</fm:CVS-URL>
   <fm:Mailing-List-URL>http://lists.oasis-open.org/archives/docbook/</fm:Mailing-List-URL>
-  <fm:Changes>Updated for DocBook NG: The “Kahlúa” Release</fm:Changes>
+  <fm:Changes>Updated for DocBook NG: The “Mezcal” Release</fm:Changes>
 </fm:project>
 
 <xsl:template name="bookinfo">
@@ -74,6 +74,7 @@
     </printhistory>
     <releaseinfo>
       <xsl:value-of select="$VERSION"/>
+      <xsl:text> for DocBook NG: The “Kahlúa” Release</xsl:text>
     </releaseinfo>
     <pubdate>$Date$</pubdate>
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-		xmlns='http://docbook.org/docbook-ng'
+		xmlns='http://docbook.org/ns/docbook'
 		xmlns:s="http://www.ascc.net/xml/schematron"
 		xmlns:set="http://exslt.org/sets"
 		xmlns:exsl="http://exslt.org/common"
-		xmlns:db='http://docbook.org/docbook-ng'
+		xmlns:db='http://docbook.org/ns/docbook'
 		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
 		xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -20,7 +20,7 @@
 <xsl:key name="elemdef" match="rng:define" use="rng:element/@name"/>
 
 <xsl:variable name="rngfile"
-	      select="'/sourceforge/docbook/defguide5/en/tools/lib/docbook-rng.xml'"/>
+	      select="'/sourceforge/docbook/defguide5/en/tools/lib/defguide.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile,.)"/>
 

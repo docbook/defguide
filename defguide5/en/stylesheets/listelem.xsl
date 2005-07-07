@@ -3,7 +3,7 @@
 		xmlns='http://docbook.org/docbook-ng'
 		xmlns:s="http://www.ascc.net/xml/schematron"
 		xmlns:set="http://exslt.org/sets"
-		xmlns:db='http://docbook.org/docbook-ng'
+		xmlns:db='http://docbook.org/ns/docbook'
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
 		xmlns:xlink="http://www.w3.org/1999/xlink"
 		xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
