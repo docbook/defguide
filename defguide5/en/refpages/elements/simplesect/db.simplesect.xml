@@ -22,41 +22,40 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para><tag>SimpleSect</tag> is one of the top-level sectioning elements in
-a component. There are three types of sectioning elements in
-DocBook:
+<para><tag>SimpleSect</tag> is one of the top-level sectioning
+elements in a component. There are three types of sectioning elements
+in DocBook:
 </para>
 
 <itemizedlist>
-<listitem><para>Explicitly numbered sections, <tag>Sect1</tag>…<tag>Sect5</tag>,
-which must be properly nested and can only be five levels deep.
-</para></listitem>
-<listitem><para>Recursive <tag>Section</tag>s, which are alternative to the numbered
-sections and have unbounded depth.
-</para></listitem>
-<listitem><para><tag>SimpleSect</tag>s, which are terminal.  <tag>SimpleSect</tag>s can
-occur as the <quote>leaf</quote> sections in either recursive sections or any
-of the numbered sections, or directly in components.
-</para></listitem>
-</itemizedlist>
+<listitem><para>Explicitly numbered sections,
+<tag>Sect1</tag>…<tag>Sect5</tag>, which must be properly nested and
+can only be five levels deep. </para></listitem>
 
-<para><tag>SimpleSect</tag>s may be more convenient than numbered
-sections in some authoring environments because they can be
-moved around in the document hierarchy without renaming.
-</para>
+<listitem><para>Recursive <tag>Section</tag>s, which are alternative
+to the numbered sections and have unbounded depth. </para></listitem>
+
+<listitem><para><tag>SimpleSect</tag>s, which are terminal.
+<tag>SimpleSect</tag>s can occur as the <quote>leaf</quote> sections
+in either recursive sections or any of the numbered sections, or
+directly in components.</para></listitem>
+</itemizedlist>
 
 <para>None of the sectioning elements is allowed to <quote>float</quote> in
 a component. You can place paragraphs and other block elements
 before a section, but you cannot place anything after it.
 </para>
 
+<para>The important semantic distinction of <tag>SimpleSect</tag> elements
+is that they never appear in the <citetitle>Table of Contents</citetitle>.
+</para>
+
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-Sometimes sections are numbered.
+<tag>SimpleSect</tag> elements never
+appear in the <citetitle>Table of Contents</citetitle>.
 </para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>
@@ -66,6 +65,14 @@ Sometimes sections are numbered.
 
 <?tdg-seealso?>
 
-<!-- FIXME: add examples -->
+<refsection condition='ref.examples'>
+<title>Examples</title>
+
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.abbrev.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.abbrev.1" role="HACK-ex.out.end"/>
+</refsection>
 
 </refentry>
