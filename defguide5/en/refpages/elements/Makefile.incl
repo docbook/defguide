@@ -1,6 +1,6 @@
 .SUFFIXES: .gen
 
-%.gen : %.xml ../../../tools/lib/docbook-rng.xml ../../../stylesheets/refentry.xsl
+%.gen : %.xml ../../../tools/lib/defguide.rnd ../../../stylesheets/refentry.xsl
 	xmllint --xinclude $< > ,$@
 	saxon -8b ,$@ ../../../stylesheets/refentry.xsl $@
 	@rm -f ,$@
@@ -22,6 +22,8 @@ depends:
 			for g in example.*.xml; do \
 				echo -n "$$g " >> .depends; \
 			done; \
+			echo " " >> .depends; \
+			echo " " >> .depends; \
 		done; \
 		echo " " >> .depends; \
 		echo " " >> .depends; \
