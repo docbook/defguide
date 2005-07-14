@@ -9,7 +9,9 @@
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
 		xmlns:xlink="http://www.w3.org/1999/xlink"
 		xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
-		exclude-result-prefixes="db rng xlink doc s set dbx exsl"
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+		exclude-result-prefixes="db rng xlink doc s set dbx exsl html a"
                 version="2.0">
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
@@ -265,7 +267,8 @@
 			|$attributes[@name='vendor']
 			|$attributes[@name='wordsize']
 			|$attributes[@name='role']
-			|$attributes[@name='version']"/>
+			|$attributes[@name='version']
+			|$attributes[@name='annotations']"/>
 
   <xsl:variable name="cmnAttrIdReq"
 		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
@@ -284,7 +287,8 @@
 			|$attributes[@name='vendor']
 			|$attributes[@name='wordsize']
 			|$attributes[@name='role']
-			|$attributes[@name='version']"/>
+			|$attributes[@name='version']
+			|$attributes[@name='annotations']"/>
 
   <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
@@ -302,21 +306,21 @@
 		select="set:difference($attributes,
 			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
-  <xsl:if test="count($cmnAttrEither) != 17 or count($otherAttr) &gt; 0">
+  <xsl:if test="count($cmnAttrEither) != 18 or count($otherAttr) &gt; 0">
     <refsection>
       <title>Attributes</title>
 
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 17 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = 18 and count($cmnLinkAttr) = 8">
 	  <para>Common attributes and common linking attributes.</para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 17 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = 18 and count($cmnLinkAttr) = 8">
 	  <para>Common attributes (ID required) and common linking atttributes.</para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 17">
+	<xsl:when test="count($cmnAttr) = 18">
 	  <para>Common attributes.</para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 17">
+	<xsl:when test="count($cmnAttrIdReq) = 18">
 	  <para>Common attributes (ID required).</para>
 	</xsl:when>
 	<xsl:when test="count($cmnLinkAttr) = 8">
@@ -350,11 +354,16 @@
 	    <xsl:when test="following-sibling::*[@name = $name]"/>
 	    <xsl:otherwise>
 	      <varlistentry>
-		<term>
+		<term role="attname">
 		  <xsl:value-of select="$name"/>
 		</term>
 		<listitem>
 		  <xsl:choose>
+		    <xsl:when test="db:refpurpose">
+		      <para>
+			<xsl:value-of select="db:refpurpose"/>
+		      </para>
+		    </xsl:when>
 		    <xsl:when test="dbx:description">
 		      <xsl:copy-of select="dbx:description/*"/>
 		    </xsl:when>
@@ -364,6 +373,79 @@
 		      </para>
 		    </xsl:otherwise>
 		  </xsl:choose>
+
+		  <xsl:if test="rng:choice|rng:value">
+		    <informaltable frame="none">
+		      <tgroup cols="2">
+			<colspec colname="c1" align="left" valign="top"
+				 colwidth="1.25in"/>
+			<colspec colname="c2" align="left" valign="top"/>
+			<thead>
+			  <row>
+			    <entry namest="c1" nameend="c2">
+			      <para>Enumerated values:</para>
+			    </entry>
+			  </row>
+			</thead>
+			<tbody>
+			  <xsl:for-each select=".//rng:value">
+			    <xsl:variable name="doc"
+					  select="following-sibling::*[1]"/>
+			    <row>
+			      <entry>
+				<quote>
+				  <xsl:value-of select="."/>
+				</quote>
+			      </entry>
+			      <entry>
+				<para>
+				  <xsl:choose>
+				    <xsl:when test="$doc/self::a:documentation">
+				      <xsl:value-of select="$doc"/>
+				    </xsl:when>
+				    <xsl:otherwise>
+				      <xsl:text>FIXME:</xsl:text>
+				    </xsl:otherwise>
+				  </xsl:choose>
+				</para>
+			      </entry>
+			    </row>
+			  </xsl:for-each>
+			</tbody>
+		      </tgroup>
+		    </informaltable>
+		  </xsl:if>
+
+<!--
+		  <xsl:if test="rng:choice|rng:value">
+		    <para>Enumerated values:</para>
+		    <variablelist>
+		      <xsl:for-each select=".//rng:value">
+			<xsl:variable name="doc"
+				      select="following-sibling::*[1]"/>
+			<varlistentry>
+			  <term role="attvalue">
+			    <quote>
+			      <xsl:value-of select="."/>
+			    </quote>
+			  </term>
+			  <listitem>
+			    <para>
+			      <xsl:choose>
+				<xsl:when test="$doc/self::a:documentation">
+				  <xsl:value-of select="$doc"/>
+				</xsl:when>
+				<xsl:otherwise>
+				  <xsl:text>FIXME:</xsl:text>
+				</xsl:otherwise>
+			      </xsl:choose>
+			    </para>
+			  </listitem>
+			</varlistentry>
+		      </xsl:for-each>
+		    </variablelist>
+		  </xsl:if>
+-->
 		</listitem>
 	      </varlistentry>
 	    </xsl:otherwise>
@@ -569,7 +651,8 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
 			|$attributes[@name='vendor']
 			|$attributes[@name='wordsize']
 			|$attributes[@name='role']
-			|$attributes[@name='version']"/>
+			|$attributes[@name='version']
+			|$attributes[@name='annotations']"/>
 
   <xsl:variable name="cmnAttrIdReq"
 		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
@@ -588,7 +671,8 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
 			|$attributes[@name='vendor']
 			|$attributes[@name='wordsize']
 			|$attributes[@name='role']
-			|$attributes[@name='version']"/>
+			|$attributes[@name='version']
+			|$attributes[@name='annotations']"/>
 
   <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
@@ -610,16 +694,16 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
     <title>Attributes</title>
 
     <xsl:choose>
-      <xsl:when test="count($cmnAttr) = 17 and count($cmnLinkAttr) = 8">
+      <xsl:when test="count($cmnAttr) = 18 and count($cmnLinkAttr) = 8">
 	<para>Common attributes and common linking attributes.</para>
       </xsl:when>
-      <xsl:when test="count($cmnAttrIdReq) = 17 and count($cmnLinkAttr) = 8">
+      <xsl:when test="count($cmnAttrIdReq) = 18 and count($cmnLinkAttr) = 8">
 	<para>Common attributes (ID required) and common linking atttributes.</para>
       </xsl:when>
-      <xsl:when test="count($cmnAttr) = 17">
+      <xsl:when test="count($cmnAttr) = 18">
 	<para>Common attributes.</para>
       </xsl:when>
-      <xsl:when test="count($cmnAttrIdReq) = 17">
+      <xsl:when test="count($cmnAttrIdReq) = 18">
 	<para>Common attributes (ID required).</para>
       </xsl:when>
       <xsl:when test="count($cmnLinkAttr) = 8">
@@ -627,11 +711,11 @@ Technical Memorandum TM 9502:1995</ulink></citetitle>.</xsl:when>
       </xsl:when>
     </xsl:choose>
 
-    <xsl:if test="count($cmnAttrEither) != 17 or count($otherAttr) &gt; 0">
+    <xsl:if test="count($cmnAttrEither) != 18 or count($otherAttr) &gt; 0">
       <para>
 	<xsl:choose>
-	  <xsl:when test="count($cmnAttr) = 17 
-		          or count($cmnAttrIdReq) = 17">
+	  <xsl:when test="count($cmnAttr) = 18 
+		          or count($cmnAttrIdReq) = 18">
 	    <xsl:text>Additional attributes:</xsl:text>
 	  </xsl:when>
 	  <xsl:otherwise>
