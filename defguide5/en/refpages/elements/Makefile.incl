@@ -6,7 +6,7 @@
 	@rm -f ,$@
 
 %.html : %.gen ../../../stylesheets/tdg.xsl
-	saxon $< ../../../stylesheets/chunk.xsl /dev/null
+	saxon $< ../../../stylesheets/chunk.xsl /dev/null use.extensions=1
 
 depends:
 	@echo -n "all: " > .depends
