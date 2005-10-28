@@ -25,7 +25,7 @@
 
 <!-- ==================================================================== -->
 
-<xsl:template match="info/copyright" mode="titlepage.mode">
+<xsl:template match="bookinfo/copyright" mode="titlepage.mode">
   <xsl:choose>
     <xsl:when test="not(preceding-sibling::copyright)">
       <a href="{concat('dbcpyright',$html.ext)}">Copyright</a>
@@ -63,7 +63,7 @@
   <html>
     <xsl:call-template name="html.head"/>
     <body>
-      <xsl:apply-templates select="info/legalnotice"
+      <xsl:apply-templates select="bookinfo/legalnotice"
                            mode="titlepage.mode"/>
     </body>
   </html>
@@ -561,7 +561,7 @@
           <td align="right">
             <i>DocBook: The Definitive Guide</i>
             <xsl:text> </xsl:text>
-            <xsl:value-of select="/book/info/releaseinfo"/>
+            <xsl:value-of select="/book/bookinfo/releaseinfo"/>
             <xsl:text> </xsl:text>
             <span class="alpha-version">
               <xsl:text>(</xsl:text>

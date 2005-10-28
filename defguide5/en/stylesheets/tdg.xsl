@@ -12,7 +12,7 @@
 <xsl:import href="/sourceforge/docbook/xsl/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
 
-<xsl:param name="ng-release" select="'Bourbon'"/>
+<xsl:param name="ng-release" select="'5.0b1'"/>
 
 <xsl:param name="output.media" select="'online'"/>
 <xsl:param name="html.stylesheet">defguide.css</xsl:param>
@@ -490,12 +490,12 @@ set       nop
 <!-- ============================================================ -->
 
 <xsl:template name="titlepage-block">
-  <xsl:variable name="authorgroup" select="info/authorgroup[1]"/>
-  <xsl:variable name="isbn" select="info/isbn[1]"/>
-  <xsl:variable name="version" select="info/releaseinfo[1]"/>
-  <xsl:variable name="date" select="info/pubdate[1]"/>
-  <xsl:variable name="legalnotice" select="info/legalnotice[1]"/>
-  <xsl:variable name="copyright" select="info/copyright"/>
+  <xsl:variable name="authorgroup" select="bookinfo/authorgroup[1]"/>
+  <xsl:variable name="isbn" select="bookinfo/isbn[1]"/>
+  <xsl:variable name="version" select="bookinfo/releaseinfo[1]"/>
+  <xsl:variable name="date" select="bookinfo/pubdate[1]"/>
+  <xsl:variable name="legalnotice" select="bookinfo/legalnotice[1]"/>
+  <xsl:variable name="copyright" select="bookinfo/copyright"/>
 
   <p class="titlepage-block">
     <span class="authorgroup">
