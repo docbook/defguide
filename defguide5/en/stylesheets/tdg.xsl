@@ -2,7 +2,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:cvs="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.CVS"
-                exclude-result-prefixes="cvs rng"
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns:db="http://docbook.org/ns/docbook"
+                exclude-result-prefixes="cvs rng html db"
                 version="1.0">
 
 <!-- $Id$ -->
@@ -46,6 +48,11 @@ set       nop
     </l:context>
   </l:l10n>
 </l:i18n>
+
+<xsl:variable name="rngfile"
+	      select="'/sourceforge/docbook/defguide5/en/tools/lib/defguide.rnd'"/>
+
+<xsl:variable name="rng" select="document($rngfile,.)"/>
 
 <xsl:template match="processing-instruction('lb')">
   <br/>
@@ -740,6 +747,20 @@ set       nop
 </xsl:template>
 
 <!-- ============================================================ -->
+
+<xsl:template match="html:*">
+  <xsl:element name="{local-name(.)}" namespace="http://www.w3.org/1999/xhtml">
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+  </xsl:element>
+</xsl:template>
+
+<xsl:template match="processing-instruction('tdg-purp')">
+  <xsl:variable name="elem" select="."/>
+  <xsl:if test="rng:div[db:refname = $elem]">
+    <xsl:value-of select="rng:div[db:refname = $elem][1]/db:refpurpose"/>
+  </xsl:if>
+</xsl:template>
 
 </xsl:stylesheet>
 

@@ -567,6 +567,11 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
     <title>
       <xsl:text>Synopsis&#160;</xsl:text>
     </title>
+
+    <para>
+      <xsl:comment> FIXME: figure out how to do something better here </xsl:comment>
+    </para>
+
     <xsl:apply-templates/>
   </refsynopsisdiv>
 </xsl:template>

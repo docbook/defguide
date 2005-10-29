@@ -1369,8 +1369,8 @@ A <tag>LiteralLayout</tag> does not have any semantic
 association beyond the preservation of whitespace and line breaks.  In
 particular, while <tag>ProgramListing</tag> and
 <tag>Screen</tag> are frequently presented in a fixed-width
-font, a change of fonts is not necessarily implied by <tag>LiteralLayout
-</tag>.</para>
+font, a change of fonts is not necessarily implied by
+<tag>LiteralLayout</tag>.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -1401,8 +1401,7 @@ sources, code fragments, and similar listings.</para>
 
 A <tag>Screen</tag> is a verbatim or literal environment
 for text screen-captures, other fragments of an
-<acronym>ASCII</acronym> display, and similar things. <tag>
-Screen</tag> is also a frequent catch-all for any verbatim
+<acronym>ASCII</acronym> display, and similar things. <tag>Screen</tag> is also a frequent catch-all for any verbatim
 text.</para>
 </listitem>
 </varlistentry>
@@ -1415,7 +1414,7 @@ text.</para>
 </indexterm>
 
 <tag>ScreenShot</tag> is actually a wrapper for a
-<tag>Graphic</tag> intended for screen shots of a
+<tag>mediaobject</tag> intended for screen shots of a
 <acronym>GUI</acronym> for example.</para>
 </listitem>
 </varlistentry>
@@ -1481,8 +1480,7 @@ unwrapped, at the location where the informal figure was desired.
   <primary>Para element</primary>
 </indexterm>
 
-There are three paragraph elements: <tag>Para</tag>, <tag>
-SimPara</tag> (simple paragraphs may not contain other block-level
+There are three paragraph elements: <tag>Para</tag>, <tag>SimPara</tag> (simple paragraphs may not contain other block-level
 elements), and <tag>FormalPara</tag> (formal paragraphs have
 titles).
 </para>
@@ -1526,9 +1524,9 @@ lack titles.
 
 Graphics occur most frequently in <tag>Figure</tag>s and
 <tag>ScreenShot</tag>s, but they can also occur without a
-wrapper. DocBook considers a <tag>Graphic</tag> a block
+wrapper. DocBook considers a <tag>mediaobject</tag> a block
 element, even if it appears to occur inline. For graphics that you
-want to be represented inline, use <tag>InlineGraphic</tag>.
+want to be represented inline, use <tag>inlinemediaobject</tag>.
 </para>
 <para>
 <indexterm>
@@ -1620,17 +1618,6 @@ A short introduction, typically a quotation, at the beginning of a document.
 </indexterm>
 
 An environment for marking up the return value and arguments of a function.
-</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><tag>Highlights</tag></term>
-<listitem><para>
-<indexterm>
-  <primary>Highlights element</primary>
-</indexterm>
-
-A summary of the main points discussed in a book component (chapter,
-section, and so on).
 </para></listitem>
 </varlistentry>
 <varlistentry>
@@ -2112,13 +2099,6 @@ Many of the technical inlines in DocBook are related to programming.
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Action</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>Action element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
 <term><tag>ClassName</tag></term>
      <listitem><para>.<indexterm>
   <primary>ClassName element</primary>
@@ -2300,13 +2280,6 @@ operating environment:
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>MediaLabel</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>MediaLabel element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
 <term><tag>MsgText</tag></term>
      <listitem><para>.<indexterm>
   <primary>MsgText element</primary>
@@ -2473,8 +2446,7 @@ There are also a number of general-purpose technical inlines.
 A typical <tag>Book</tag>, in English at least, consists of 
 some meta-information in a <tag>BookInfo</tag>
 (<tag>Title</tag>, <tag>Author</tag>,
-<tag>Copyright</tag>, and so on), one or more <tag>
-Preface</tag>s, several <tag>Chapter</tag>s, and perhaps a
+<tag>Copyright</tag>, and so on), one or more <tag>Preface</tag>s, several <tag>Chapter</tag>s, and perhaps a
 few <tag>Appendix</tag>es. A <tag>Book</tag> may also
 contain <tag>Bibliography</tag>s,
 <tag>Glossary</tag>s, <tag>Index</tag>es and a

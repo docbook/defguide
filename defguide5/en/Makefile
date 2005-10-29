@@ -4,7 +4,7 @@ SSTITLEPG=stylesheets/html-titlepage.xsl
 SSCHUNK=stylesheets/chunk.xsl
 SSFO=stylesheets/tdgfo.xsl
 
-SOURCE=tdg.xml
+SOURCE=tdg-stripped.xml
 MEMORY=100000000
 BASEDIR=../html/
 ROOTID=
@@ -39,10 +39,13 @@ test: tdg.xml
 tdg.xml: book.xml bookinfo.xml WhatsNew refpages/ref-elements.xml
 	xmllint --xinclude book.xml > $@
 
+tdg-stripped.xml: tdg.xml
+	xsltproc --output $@ /sourceforge/docbook/xsl/html/db5strip.xsl $<
+
 bookinfo.xml: VERSION.xml
 	$(XSLT) $< $< $@
 
-chunks: tdg.xml $(SSTITLEPG)
+chunks: $(SOURCE) $(SSTITLEPG)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
 
