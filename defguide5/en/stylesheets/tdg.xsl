@@ -777,9 +777,29 @@ set       nop
 
 <xsl:template match="processing-instruction('tdg-purp')">
   <xsl:variable name="elem" select="."/>
-  <xsl:if test="rng:div[db:refname = $elem]">
-    <xsl:value-of select="rng:div[db:refname = $elem][1]/db:refpurpose"/>
+  <xsl:variable name="div" select="$rng//rng:div[db:refname = $elem]"/>
+  
+  <!--
+  <xsl:if test="count($div) &gt; 1">
+    <xsl:message>
+      <xsl:text>Warning: more than once rng:div for </xsl:text>
+      <xsl:value-of select="$elem"/>
+      <xsl:text>?</xsl:text>
+    </xsl:message>
   </xsl:if>
+  -->
+
+  <xsl:choose>
+    <xsl:when test="$div">
+      <xsl:value-of select="$div[1]/db:refpurpose"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:message>
+	<xsl:text>Can't find purpose of </xsl:text>
+	<xsl:value-of select="$elem"/>
+      </xsl:message>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>
