@@ -1,0 +1,39 @@
+<book xmlns='http://docbook.org/ns/docbook'>
+<title>An Example Book</title>
+
+<chapter xml:id="ch01"><title>XRef Samples</title>
+<para>This paragraph demonstrates several features of
+<tag>XRef</tag>.
+</para>
+
+<itemizedlist>
+<listitem><para>A straight link generates the
+cross-reference text: <xref linkend="ch02"/>.
+</para></listitem>
+<listitem><para>A link to an element with an
+<tag class="attribute">XRefLabel</tag>:
+<xref linkend="ch03"/>.
+</para></listitem>
+<listitem><para>A link with an
+<tag class="attribute">EndTerm</tag>:
+<xref linkend="ch04" endterm="ch04short"/>.
+</para></listitem>
+</itemizedlist>
+</chapter>
+
+<chapter xml:id="ch02">
+  <title>The Second Chapter</title>
+  <para>Some content here</para>
+</chapter>
+
+<chapter xml:id="ch03" xreflabel="Chapter the Third">
+  <title>The Third Chapter</title>
+  <para>Some content here</para>
+</chapter>
+
+<chapter xml:id="ch04">
+  <title>The Fourth Chapter</title>
+  <titleabbrev xml:id="ch04short">Chapter 4</titleabbrev>
+  <para>Some content here</para>
+</chapter>
+</book>

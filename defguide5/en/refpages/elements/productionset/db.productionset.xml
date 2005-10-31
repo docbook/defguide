@@ -31,6 +31,26 @@ languages. Even if you aren't conversant in the programming language
 concepts of context-free languages and grammars, it's not really
 as hard to understand as it sounds.</para>
 
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+The detailed processing expecations with respect to
+individual productions, left-hand sides, and right-hand sides are quite
+complex.
+</para>
+<para><tag>Production</tag>s should be numbered.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition='ref.examples'>
+<title>Examples</title>
+
 <para>A set of EBNF productions describes the legal arrangements of
 tokens in a language. Consider arithmetic expressions as a simple
 example.</para>
@@ -43,67 +63,15 @@ is valid and so is
 <quote><literal>3 + 4 6</literal></quote>. We can use EBNF to
 describe all the possible legal arrangements:</para>
 
-<productionset><title>Arithemetic Expressions</title>
-<production xml:id="ebnf.expression">
-  <lhs>Expression</lhs>
-  <rhs><nonterminal def="ebnf.arith">ArithExpression</nonterminal> |
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
-  <lineannotation>Does this grammar actually get precedence right?
-  </lineannotation>
-  </rhs>
-</production>
-<production xml:id="ebnf.arith">
-  <lhs>ArithExpression</lhs>
-  <rhs><nonterminal def="ebnf.expression">Expression</nonterminal>
-       '+'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
-       <nonterminal def="ebnf.expression">Expression</nonterminal>
-       '-'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
-  </rhs>
-</production>
-<production xml:id="ebnf.mult">
-  <lhs>MultExpression</lhs>
-  <rhs><nonterminal def="ebnf.mult">MultExpression</nonterminal>
-       '*'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal>
-       '/'
-       <nonterminal def="ebnf.mult">MultExpression</nonterminal> |
-       <nonterminal def="ebnf.number">Number</nonterminal>
-  </rhs>
-  <constraint linkend="div0"/>
-</production>
-<production xml:id="ebnf.number">
-  <lhs>Number</lhs>
-  <rhs>[0-9]+</rhs>
-</production>
-</productionset>
+<anchor xml:id='ex.os.productionset.1' role='HACK-ex.out.start'/>
+<xi:include href='example.1.xml' xpointer='/1/2/2'/>
+<xi:include href='example.1.xml' xpointer='/1/2/3'/>
+<anchor xml:id='ex.oe.productionset.1' role='HACK-ex.out.end'/>
 
-<constraintdef xml:id="div0" role="Err">
-<title>Division by Zero</title>
-<para>Division by zero is an error. Constraints, such as this one,
-are used to express conditions that cannot be expressed in the grammar.</para>
-</constraintdef>
+<para>That is expressed in DocBook like this:</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-The detailed processing expecations with respect to
-individual productions, left-hand sides, and right-hand sides are quite
-complex.
-</para>
-<para><tag>Production</tag>s should be numbered.</para>
-</refsection>
-
-
-<?tdg-attributes?>
-<?tdg-parents?>
-<?tdg-children?>
+<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
 
 </refsection>
-
-<?tdg-seealso?>
-
-<!-- FIXME: add examples -->
 
 </refentry>
