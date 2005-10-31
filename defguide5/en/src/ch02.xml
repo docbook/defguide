@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook" 
+<chapter xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xlink="http://www.w3.org/1999/xlink"
-	 version="gin"
-	 xml:id="ch-create">
+	 version="5.0" xml:id="ch-create">
 <?dbhtml filename="ch02.html"?>
 <title>Creating DocBook Documents</title>
 <info>
@@ -75,14 +74,11 @@ alter the semantics of this document. The encoding declaration
 tells the processor what character encoding your document uses.
 It must match the actual encoding that you use. The
 complete details of the <acronym>XML</acronym> declaration are
-described in the <link xmlns:xlink="http://www.w3.org/1999/xlink"
-xlink:href="http://www.w3.org/TR/REC-xml"><acronym>XML</acronym>
+described in the <link xlink:href="http://www.w3.org/TR/REC-xml"><acronym>XML</acronym>
 specification</link>.
 </para>
 
-<para>If your document uses XML 1.0 and an encoding of either <literal
-role="encoding">utf-8</literal> or <literal
-role="encoding">utf-16</literal>, the XML Declaration is not required.
+<para>If your document uses XML 1.0 and an encoding of either <literal role="encoding">utf-8</literal> or <literal role="encoding">utf-16</literal>, the XML Declaration is not required.
 But it is never wrong to include it.</para>
 </section>
 
@@ -392,8 +388,7 @@ mechanisms for mapping public identifiers to
 system identifers using catalog files.</para>
 
 <para>See
-<link xlink:href="http://www.oasis-open.org/html/a401.htm"
-><acronym>OASIS</acronym> Technical Resolution 9401:1997 (Amendment 2 to
+<link xlink:href="http://www.oasis-open.org/html/a401.htm"><acronym>OASIS</acronym> Technical Resolution 9401:1997 (Amendment 2 to
 <acronym>TR</acronym> 9401).</link> or FIXME: link to XML Catalogs.
 </para>
 </listitem>
@@ -880,8 +875,7 @@ and general. Given the variety of books authored with DocBook and the
 number of different conventions for book organization used in
 countries around the world, attempting to impose a strict ordering of
 elements can make the content model extremely complex. But DocBook
-gives you free reign. It's very reasonable to use a local <xref
-linkend="app-customizing"/> to impose a more strict ordering for your
+gives you free reign. It's very reasonable to use a local <xref linkend="app-customizing"/> to impose a more strict ordering for your
 applications.
 </para>
 
@@ -1283,7 +1277,7 @@ states and their capitals might be represented as a
 <listitem>
 <para><indexterm>
   <primary>SimpleList element</primary>
-</indexterm>An unadorned list of items. <tag>SimpleList</tag>s can be
+</indexterm>An unadorned list of items. <tag>simplelist</tag>s can be
 inline or arranged in columns.</para>
 </listitem>
 </varlistentry>
@@ -1293,7 +1287,7 @@ inline or arranged in columns.</para>
 <para><indexterm>
   <primary>VariableList element</primary>
 </indexterm>A list of terms and definitions or descriptions. (This
-list of list types is a <tag>VariableList</tag>.)</para>
+list of list types is a <tag>variablelist</tag>.)</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1346,37 +1340,37 @@ text.
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Address</tag></term>
+<term><tag>address</tag></term>
 <listitem>
 <para>
 <indexterm>
   <primary>Address element</primary>
 </indexterm>
 
-The <tag>Address</tag> element is intended for postal
-addresses.  In addition to being line-specific, <tag>Address</tag>
+The <tag>address</tag> element is intended for postal
+addresses.  In addition to being line-specific, <tag>address</tag>
 contains additional elements suitable for marking up names and
 addresses.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>LiteralLayout</tag></term>
+<term><tag>literallayout</tag></term>
 <listitem>
 <para>
 <indexterm>
   <primary>LiteralLayout element</primary>
 </indexterm>
 
-A <tag>LiteralLayout</tag> does not have any semantic
+A <tag>literallayout</tag> does not have any semantic
 association beyond the preservation of whitespace and line breaks.  In
-particular, while <tag>ProgramListing</tag> and
-<tag>Screen</tag> are frequently presented in a fixed-width
+particular, while <tag>programlisting</tag> and
+<tag>screen</tag> are frequently presented in a fixed-width
 font, a change of fonts is not necessarily implied by
-<tag>LiteralLayout</tag>.</para>
+<tag>literallayout</tag>.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ProgramListing</tag></term>
+<term><tag>programlisting</tag></term>
 <listitem>
 <para>
 <indexterm>
@@ -1386,13 +1380,13 @@ font, a change of fonts is not necessarily implied by
   <secondary>fixed-width, programs and code</secondary>
 </indexterm>
 
-A <tag>ProgramListing</tag> is a verbatim environment, usually
+A <tag>programlisting</tag> is a verbatim environment, usually
 presented in Courier or some other fixed-width font, for program
 sources, code fragments, and similar listings.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Screen</tag></term>
+<term><tag>screen</tag></term>
 <listitem>
 <para>
 <indexterm>
@@ -1401,34 +1395,34 @@ sources, code fragments, and similar listings.</para>
   <primary>text screen-captures </primary>
 </indexterm>
 
-A <tag>Screen</tag> is a verbatim or literal environment
+A <tag>screen</tag> is a verbatim or literal environment
 for text screen-captures, other fragments of an
-<acronym>ASCII</acronym> display, and similar things. <tag>Screen</tag> is also a frequent catch-all for any verbatim
+<acronym>ASCII</acronym> display, and similar things. <tag>screen</tag> is also a frequent catch-all for any verbatim
 text.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ScreenShot</tag></term>
+<term><tag>screenshot</tag></term>
 <listitem>
 <para>
 <indexterm>
   <primary>ScreenShot element</primary>
 </indexterm>
 
-<tag>ScreenShot</tag> is actually a wrapper for a
+<tag>screenshot</tag> is actually a wrapper for a
 <tag>mediaobject</tag> intended for screen shots of a
 <acronym>GUI</acronym> for example.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Synopsis</tag></term>
+<term><tag>synopsis</tag></term>
 <listitem>
 <para>
 <indexterm>
   <primary>Synopsis element</primary>
 </indexterm>
 
-A <tag>Synopsis</tag> is a verbatim environment for command
+A <tag>synopsis</tag> is a verbatim environment for command
 and function synopsis.</para>
 </listitem>
 </varlistentry>
@@ -1458,9 +1452,9 @@ and function synopsis.</para>
 </indexterm>
 
 Examples, Figures, and Tables are common block-level elements:
-<tag>Example</tag>, <tag>InformalExample</tag>,
-<tag>Figure</tag>, <tag>InformalFigure</tag>,
-<tag>Table</tag>, and <tag>InformalTable</tag>.
+<tag>example</tag>, <tag>informalexample</tag>,
+<tag>figure</tag>, <tag>informalfigure</tag>,
+<tag>table</tag>, and <tag>informaltable</tag>.
 </para>
 <para>
 <indexterm>
@@ -1470,7 +1464,7 @@ Examples, Figures, and Tables are common block-level elements:
 
 The distinction between formal and informal elements is that formal
 elements have titles while informal ones do not. The
-<tag>InformalFigure</tag> element was introduced in DocBook
+<tag>informalfigure</tag> element was introduced in DocBook
 <acronym>V3.1</acronym>. In prior versions of DocBook, you could only
 achieve the effect of an informal figure by placing its content,
 unwrapped, at the location where the informal figure was desired.
@@ -1482,8 +1476,8 @@ unwrapped, at the location where the informal figure was desired.
   <primary>Para element</primary>
 </indexterm>
 
-There are three paragraph elements: <tag>Para</tag>, <tag>SimPara</tag> (simple paragraphs may not contain other block-level
-elements), and <tag>FormalPara</tag> (formal paragraphs have
+There are three paragraph elements: <tag>para</tag>, <tag>simpara</tag> (simple paragraphs may not contain other block-level
+elements), and <tag>formalpara</tag> (formal paragraphs have
 titles).
 </para>
 </section>
@@ -1497,15 +1491,15 @@ titles).
 </indexterm><indexterm>
   <primary>InlineEquation element</primary>
 </indexterm>
-There are two block-equation elements, <tag>Equation</tag> and
-<tag>InformalEquation</tag> (for inline equations, use
-<tag>InlineEquation</tag>).
+There are two block-equation elements, <tag>equation</tag> and
+<tag>informalequation</tag> (for inline equations, use
+<tag>inlineequation</tag>).
 </para>
 <para>
 Informal equations don't have titles. For reasons of
-backward-compatibility, <tag>Equation</tag>s are not required
+backward-compatibility, <tag>equation</tag>s are not required
 to have titles. However, it may be more difficult for some stylesheet
-languages to properly enumerate <tag>Equation</tag>s if they
+languages to properly enumerate <tag>equation</tag>s if they
 lack titles.
 </para>
 </section>
@@ -1524,8 +1518,8 @@ lack titles.
   <primary>InlineGraphic element</primary>
 </indexterm>
 
-Graphics occur most frequently in <tag>Figure</tag>s and
-<tag>ScreenShot</tag>s, but they can also occur without a
+Graphics occur most frequently in <tag>figure</tag>s and
+<tag>screenshot</tag>s, but they can also occur without a
 wrapper. DocBook considers a <tag>mediaobject</tag> a block
 element, even if it appears to occur inline. For graphics that you
 want to be represented inline, use <tag>inlinemediaobject</tag>.
@@ -1538,8 +1532,8 @@ want to be represented inline, use <tag>inlinemediaobject</tag>.
 </indexterm>
 
 DocBook <acronym>V3.1</acronym> introduced a new element to contain
-graphics and other media types: <tag>MediaObject</tag> and its inline
-cousin, <tag>InlineMediaObject</tag>. These elements may contain
+graphics and other media types: <tag>mediaobject</tag> and its inline
+cousin, <tag>inlinemediaobject</tag>. These elements may contain
 video, audio, image, and text data. A single media object can contain
 several alternative forms from which the presentation system can
 select the most appropriate object.
@@ -1559,10 +1553,10 @@ select the most appropriate object.
   <primary>Answer element</primary>
 </indexterm>
 
-DocBook <acronym>V3.1</acronym> introduced the <tag>QandASet</tag>
+DocBook <acronym>V3.1</acronym> introduced the <tag>qandaset</tag>
 element, which is suitable for <acronym>FAQ</acronym>s (Frequently
 Asked Questions) and other similar collections of
-<tag>Question</tag>s and <tag>Answer</tag>s.
+<tag>question</tag>s and <tag>answer</tag>s.
 </para>
 </section>
 <section xml:id="s.misc"><info><title>Miscellaneous block elements</title></info>
@@ -1571,7 +1565,7 @@ The following block elements are also available:
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>BlockQuote</tag></term>
+<term><tag>blockquote</tag></term>
 <listitem><para>
 <indexterm>
   <primary>BlockQuote element</primary>
@@ -1580,10 +1574,10 @@ The following block elements are also available:
 </indexterm>
 
 A block quotation.  Block quotations may have
-<tag>Attribution</tag>s.</para></listitem>
+<tag>attribution</tag>s.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>CmdSynopsis</tag></term>
+<term><tag>cmdsynopsis</tag></term>
 <listitem><para>
 <indexterm>
   <primary>CmdSynopsis element</primary>
@@ -1600,18 +1594,18 @@ An environment for marking up all the parameters and options of a command.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Epigraph</tag></term>
+<term><tag>epigraph</tag></term>
 <listitem><para>
 <indexterm>
   <primary>Epigraph element</primary>
 </indexterm>
 
 A short introduction, typically a quotation, at the beginning of a document.
-<tag>Epigraph</tag>s may have <tag>Attribution</tag>s.
+<tag>epigraph</tag>s may have <tag>attribution</tag>s.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>FuncSynopsis</tag></term>
+<term><tag>funcsynopsis</tag></term>
 <listitem><para>
 <indexterm>
   <primary>FuncSynopsis element</primary>
@@ -1623,7 +1617,7 @@ An environment for marking up the return value and arguments of a function.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>MsgSet</tag></term>
+<term><tag>msgset</tag></term>
 <listitem><para>
 <indexterm>
   <primary>error messages</primary>
@@ -1633,7 +1627,7 @@ An environment for marking up the return value and arguments of a function.
 A set of related error messages.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Procedure</tag></term>
+<term><tag>procedure</tag></term>
 <listitem><para>
 <indexterm>
   <primary>Procedure element</primary>
@@ -1643,11 +1637,11 @@ A set of related error messages.</para></listitem>
   <primary>SubStep element</primary>
 </indexterm>
 
-A procedure.  Procedures contain <tag>Step</tag>s, which
+A procedure.  Procedures contain <tag>step</tag>s, which
 may contain <tag>substeps</tag>.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Sidebar</tag></term>
+<term><tag>sidebar</tag></term>
 <listitem><para>A sidebar.</para></listitem>
 </varlistentry>
 </variablelist>
@@ -1688,7 +1682,10 @@ elements appear in more than one category, and arguments could be made
 to support the placement of additional elements in other categories or
 entirely new categories.
 </para>
-<section xml:id="s.inline.tradpub"><info><title>Traditional publishing inlines</title></info>
+
+<section xml:id="s.inline.tradpub">
+<title>Traditional publishing inlines</title>
+
 <para>
 <indexterm>
   <primary>general writing (traditional publishing inlines)</primary>
@@ -1700,35 +1697,35 @@ These inlines identify things that commonly occur in general writing:
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Abbrev</tag></term>
-<listitem><para>.
+<term><tag>abbrev</tag></term>
+<listitem><para><?tdg-purp abbrev?>.
 <indexterm>
   <primary>Abbrev element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Acronym</tag></term>
-<listitem><para>.
+<term><tag>acronym</tag></term>
+<listitem><para><?tdg-purp acronym?>.
 <indexterm>
   <primary>Acronym element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Emphasis</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>emphasis</tag></term>
+<listitem><para><?tdg-purp emphasis?>.<indexterm>
   <primary>Emphasis element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Footnote</tag></term>
+<term><tag>footnote</tag></term>
 <listitem>
-<para>.  The location of the <tag>Footnote</tag>
+<para><?tdg-purp footnote?>.  The location of the <tag>footnote</tag>
 element identifies the location of the first reference to the
 footnote. Additional references to the same footnote can be inserted with
-<tag>FootnoteRef</tag>.
+<tag>footnoteref</tag>.
 <indexterm>
   <primary>FootnoteRef element</primary>
 </indexterm><indexterm>
@@ -1738,22 +1735,22 @@ footnote. Additional references to the same footnote can be inserted with
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Phrase</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>phrase</tag></term>
+<listitem><para><?tdg-purp phrase?>.<indexterm>
   <primary>Phrase element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Quote</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>quote</tag></term>
+<listitem><para><?tdg-purp quote?>.<indexterm>
   <primary>Quote element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Trademark</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>trademark</tag></term>
+<listitem><para><?tdg-purp trademark?>.<indexterm>
   <primary>Trademark element</primary>
 </indexterm>
 </para></listitem>
@@ -1773,71 +1770,71 @@ footnote. Additional references to the same footnote can be inserted with
 </indexterm>
 
 The cross reference inlines identify both explicit cross references,
-such as <tag>Link</tag>, and implicit cross references like
-<tag>GlossTerm</tag>. You can make the most of the implicit
-references explicit with a <tag class="attribute">LinkEnd</tag>
+such as <tag>link</tag>, and implicit cross references like
+<tag>glossterm</tag>. You can make the most of the implicit
+references explicit with a <tag class="attribute">linkend</tag>
 attribute.
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Anchor</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>anchor</tag></term>
+<listitem><para><?tdg-purp anchor?>.<indexterm>
   <primary>Anchor element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Citation</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>citation</tag></term>
+<listitem><para><?tdg-purp citation?>.<indexterm>
   <primary>Citation element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>CiteRefEntry</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>citerefentry</tag></term>
+<listitem><para><?tdg-purp citerefentry?>.<indexterm>
   <primary>CiteRefEntry element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>CiteTitle</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>citetitle</tag></term>
+<listitem><para><?tdg-purp citetitle?>.<indexterm>
   <primary>CiteTitle element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>FirstTerm</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>firstterm</tag></term>
+<listitem><para><?tdg-purp firstterm?>.<indexterm>
   <primary>FirstTerm element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GlossTerm</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>glossterm</tag></term>
+<listitem><para><?tdg-purp glossterm?>.<indexterm>
   <primary>GlossTerm element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Link</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>link</tag></term>
+<listitem><para><?tdg-purp link?>.<indexterm>
   <primary>Link element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>OLink</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>olink</tag></term>
+<listitem><para><?tdg-purp olink?>.<indexterm>
   <primary>OLink element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>XRef</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>xref</tag></term>
+<listitem><para><?tdg-purp xref?>.<indexterm>
   <primary>XRef element</primary>
 </indexterm>
 </para></listitem>
@@ -1855,64 +1852,64 @@ These inlines are used to mark up text for special presentation:
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>ForeignPhrase</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>foreignphrase</tag></term>
+<listitem><para><?tdg-purp foreignphrase?>.<indexterm>
   <primary>ForeignPhrase element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>WordAsWord</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>wordasword</tag></term>
+<listitem><para><?tdg-purp wordasword?>.<indexterm>
   <primary>WordAsWord element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ComputerOutput</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>computeroutput</tag></term>
+<listitem><para><?tdg-purp computeroutput?>.<indexterm>
   <primary>ComputerOutput element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Literal</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>literal</tag></term>
+<listitem><para><?tdg-purp literal?>.<indexterm>
   <primary>Literal element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Markup</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>markup</tag></term>
+<listitem><para><?tdg-purp markup?>.<indexterm>
   <primary>Markup element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Prompt</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>prompt</tag></term>
+<listitem><para><?tdg-purp prompt?>.<indexterm>
   <primary>Prompt element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Replaceable</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>replaceable</tag></term>
+<listitem><para><?tdg-purp replaceable?>.<indexterm>
   <primary>Replaceable element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>tag</tag></term>
-<listitem><para>.<indexterm>
+<listitem><para><?tdg-purp tag?>.<indexterm>
   <primary>tag element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>UserInput</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>userinput</tag></term>
+<listitem><para><?tdg-purp userinput?>.<indexterm>
   <primary>UserInput element</primary>
 </indexterm>
 </para></listitem>
@@ -1936,28 +1933,28 @@ These inlines are used to mark up text for special presentation:
 DocBook does not define a complete set of elements for representing
 equations.  No one has ever pressed the DocBook maintainers to add
 this functionality, and the prevailing opinion is that incorporating
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/REC-MathML/">MathML</link> using a
-mechanism like <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/REC-xml-names/">namespaces</link> is probably
+<link xlink:href="http://www.w3.org/TR/REC-MathML/">MathML</link> using a
+mechanism like <link xlink:href="http://www.w3.org/TR/REC-xml-names/">namespaces</link> is probably
 the best long-term solution.
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>InlineEquation</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>inlineequation</tag></term>
+<listitem><para><?tdg-purp inlineequation?>.<indexterm>
   <primary>InlineEquation element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Subscript</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>subscript</tag></term>
+<listitem><para><?tdg-purp subscript?>.<indexterm>
   <primary>Subscript element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Superscript</tag></term>
-<listitem><para>.<indexterm>
+<term><tag>superscript</tag></term>
+<listitem><para><?tdg-purp superscript?>.<indexterm>
   <primary>Superscript element</primary>
 </indexterm>
 </para></listitem>
@@ -1977,96 +1974,96 @@ These elements describe aspects of a user interface:
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Accel</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>accel</tag></term>
+     <listitem><para><?tdg-purp accel?>.<indexterm>
   <primary>Accel element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GUIButton</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>guibutton</tag></term>
+     <listitem><para><?tdg-purp guibutton?>.<indexterm>
   <primary>GuIButton element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GUIIcon</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>guiicon</tag></term>
+     <listitem><para><?tdg-purp guiicon?>.<indexterm>
   <primary>GUIIcon element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GUILabel</tag></term>
-     <listitem><para>.</para></listitem>
+<term><tag>guilabel</tag></term>
+     <listitem><para><?tdg-purp guilabel?>.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GUIMenu</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>guimenu</tag></term>
+     <listitem><para><?tdg-purp guimenu?>.<indexterm>
   <primary>GUIMenu element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GUIMenuItem</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>guimenuitem</tag></term>
+     <listitem><para><?tdg-purp guimenuitem?>.<indexterm>
   <primary>GUIMenuItem element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>GUISubmenu</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>guisubmenu</tag></term>
+     <listitem><para><?tdg-purp guisubmenu?>.<indexterm>
   <primary>GUISubmenu element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>KeyCap</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>keycap</tag></term>
+     <listitem><para><?tdg-purp keycap?>.<indexterm>
   <primary>KeyCap element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>KeyCode</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>keycode</tag></term>
+     <listitem><para><?tdg-purp keycode?>.<indexterm>
   <primary>KeyCode class</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>KeyCombo</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>keycombo</tag></term>
+     <listitem><para><?tdg-purp keycombo?>.<indexterm>
   <primary>KeyCombo element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>KeySym</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>keysym</tag></term>
+     <listitem><para><?tdg-purp keysym?>.<indexterm>
   <primary>KeySym element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>MenuChoice</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>menuchoice</tag></term>
+     <listitem><para><?tdg-purp menuchoice?>.<indexterm>
   <primary>MenuChoice element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>MouseButton</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>mousebutton</tag></term>
+     <listitem><para><?tdg-purp mousebutton?>.<indexterm>
   <primary>MouseButton element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Shortcut</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>shortcut</tag></term>
+     <listitem><para><?tdg-purp shortcut?>.<indexterm>
   <primary>Shortcut element</primary>
 </indexterm>
 </para></listitem>
@@ -2094,113 +2091,113 @@ Many of the technical inlines in DocBook are related to programming.
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>ClassName</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>classname</tag></term>
+     <listitem><para><?tdg-purp classname?>.<indexterm>
   <primary>ClassName element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Constant</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>constant</tag></term>
+     <listitem><para><?tdg-purp constant?>.<indexterm>
   <primary>Constant element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ErrorCode</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>errorcode</tag></term>
+     <listitem><para><?tdg-purp errorcode?>.<indexterm>
   <primary>ErrorCode element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ErrorName</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>errorname</tag></term>
+     <listitem><para><?tdg-purp errorname?>.<indexterm>
   <primary>ErrorName element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ErrorType</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>errortype</tag></term>
+     <listitem><para><?tdg-purp errortype?>.<indexterm>
   <primary>ErrorType element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Function</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>function</tag></term>
+     <listitem><para><?tdg-purp function?>.<indexterm>
   <primary>Function element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Literal</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>literal</tag></term>
+     <listitem><para><?tdg-purp literal?>.<indexterm>
   <primary>Literal element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>MsgText</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>msgtext</tag></term>
+     <listitem><para><?tdg-purp msgtext?>.<indexterm>
   <primary>MsgText element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Parameter</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>parameter</tag></term>
+     <listitem><para><?tdg-purp parameter?>.<indexterm>
   <primary>Parameter element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Property</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>property</tag></term>
+     <listitem><para><?tdg-purp property?>.<indexterm>
   <primary>Property element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Replaceable</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>replaceable</tag></term>
+     <listitem><para><?tdg-purp replaceable?>.<indexterm>
   <primary>Replaceable element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ReturnValue</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>returnvalue</tag></term>
+     <listitem><para><?tdg-purp returnvalue?>.<indexterm>
   <primary>ReturnValue element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Symbol</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>symbol</tag></term>
+     <listitem><para><?tdg-purp symbol?>.<indexterm>
   <primary>Symbol element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Token</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>token</tag></term>
+     <listitem><para><?tdg-purp token?>.<indexterm>
   <primary>Token element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Type</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>type</tag></term>
+     <listitem><para><?tdg-purp type?>.<indexterm>
   <primary>Type element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>VarName</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>varname</tag></term>
+     <listitem><para><?tdg-purp varname?>.<indexterm>
   <primary>VarName element</primary>
 </indexterm>
 </para></listitem>
@@ -2219,64 +2216,64 @@ operating environment:
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Application</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>application</tag></term>
+     <listitem><para><?tdg-purp application?>.<indexterm>
   <primary>Application element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Command</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>command</tag></term>
+     <listitem><para><?tdg-purp command?>.<indexterm>
   <primary>Command element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>EnVar</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>envar</tag></term>
+     <listitem><para><?tdg-purp envar?>.<indexterm>
   <primary>EnVar element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Filename</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>filename</tag></term>
+     <listitem><para><?tdg-purp filename?>.<indexterm>
   <primary>Filename element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>MsgText</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>msgtext</tag></term>
+     <listitem><para><?tdg-purp msgtext?>.<indexterm>
   <primary>MsgText element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Option</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>option</tag></term>
+     <listitem><para><?tdg-purp option?>.<indexterm>
   <primary>Option element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Parameter</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>parameter</tag></term>
+     <listitem><para><?tdg-purp parameter?>.<indexterm>
   <primary>Parameter element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Prompt</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>prompt</tag></term>
+     <listitem><para><?tdg-purp prompt?>.<indexterm>
   <primary>Prompt element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>SystemItem</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>systemitem</tag></term>
+     <listitem><para><?tdg-purp systemitem?>.<indexterm>
   <primary>SystemItem element</primary>
 </indexterm>
 </para></listitem>
@@ -2296,85 +2293,85 @@ There are also a number of general-purpose technical inlines.
 </para>
 <variablelist>
 <varlistentry>
-<term><tag>Application</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>application</tag></term>
+     <listitem><para><?tdg-purp application?>.<indexterm>
   <primary>Application element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Database</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>database</tag></term>
+     <listitem><para><?tdg-purp database?>.<indexterm>
   <primary>Database element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Email</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>email</tag></term>
+     <listitem><para><?tdg-purp email?>.<indexterm>
   <primary>Email element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Filename</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>filename</tag></term>
+     <listitem><para><?tdg-purp filename?>.<indexterm>
   <primary>Filename element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Hardware</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>hardware</tag></term>
+     <listitem><para><?tdg-purp hardware?>.<indexterm>
   <primary>Hardware element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Literal</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>literal</tag></term>
+     <listitem><para><?tdg-purp literal?>.<indexterm>
   <primary>Literal element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Option</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>option</tag></term>
+     <listitem><para><?tdg-purp option?>.<indexterm>
   <primary>Option element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Optional</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>optional</tag></term>
+     <listitem><para><?tdg-purp optional?>.<indexterm>
   <primary>Optional element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Replaceable</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>replaceable</tag></term>
+     <listitem><para><?tdg-purp replaceable?>.<indexterm>
   <primary>Replaceable element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Symbol</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>symbol</tag></term>
+     <listitem><para><?tdg-purp symbol?>.<indexterm>
   <primary>Symbol element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Token</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>token</tag></term>
+     <listitem><para><?tdg-purp token?>.<indexterm>
   <primary>Token element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Type</tag></term>
-     <listitem><para>.<indexterm>
+<term><tag>type</tag></term>
+     <listitem><para><?tdg-purp type?>.<indexterm>
   <primary>Type element</primary>
 </indexterm>
 </para></listitem>
@@ -2396,14 +2393,14 @@ There are also a number of general-purpose technical inlines.
   <secondary>DocBook Book</secondary>
 </indexterm>
 
-A typical <tag>Book</tag>, in English at least, consists of 
+A typical <tag>book</tag>, in English at least, consists of 
 some meta-information in an <tag>info</tag>
-(<tag>Title</tag>, <tag>Author</tag>,
-<tag>Copyright</tag>, and so on), one or more <tag>Preface</tag>s, several <tag>Chapter</tag>s, and perhaps a
-few <tag>Appendix</tag>es. A <tag>Book</tag> may also
-contain <tag>Bibliography</tag>s,
-<tag>Glossary</tag>s, <tag>Index</tag>es and a
-<tag>Colophon</tag>.
+(<tag>title</tag>, <tag>author</tag>,
+<tag>copyright</tag>, and so on), one or more <tag>preface</tag>s, several <tag>chapter</tag>s, and perhaps a
+few <tag>appendix</tag>es. A <tag>book</tag> may also
+contain <tag>bibliography</tag>s,
+<tag>glossary</tag>s, <tag>index</tag>es and a
+<tag>colophon</tag>.
 </para>
 <para>
 <xref linkend="ex-typicalbook"/> shows the structure of a typical book.
@@ -2445,9 +2442,9 @@ Additional content is required where the ellipses occur.
   <secondary>typical structure</secondary>
 </indexterm>
 
-<tag>Chapter</tag>s, <tag>Preface</tag>s, and
-<tag>Appendix</tag>es all have a similar structure. They
-consist of a <tag>Title</tag>, possibly some additional
+<tag>chapter</tag>s, <tag>preface</tag>s, and
+<tag>appendix</tag>es all have a similar structure. They
+consist of a <tag>title</tag>, possibly some additional
 meta-information, and any number of block-level elements followed by
 any number of top-level sections. Each section may in turn contain any
 number of block-level elements followed by any number from the next
@@ -2484,16 +2481,16 @@ section level, as shown in <xref linkend="ex-typicalchap"/>.
 </indexterm>
 
 For documents smaller than a book, such as: journal articles, white
-papers, or technical notes, <tag>Article</tag> is frequently
+papers, or technical notes, <tag>article</tag> is frequently
 the most logical starting point. The body of an
-<tag>Article</tag> is essentially the same as the body of a
-<tag>Chapter</tag> or any other component-level element, as
+<tag>article</tag> is essentially the same as the body of a
+<tag>chapter</tag> or any other component-level element, as
 shown in <xref linkend="ex-typicalart"/>
 </para>
 <para>
-<tag>Article</tag>s may include
-<tag>Appendix</tag>es, <tag>Bibliography</tag>s,
-<tag>Index</tag>es and <tag>Glossary</tag>s.
+<tag>article</tag>s may include
+<tag>appendix</tag>es, <tag>bibliography</tag>s,
+<tag>index</tag>es and <tag>glossary</tag>s.
 </para>
 <example xml:id="ex-typicalart"><info><title>A Typical Article</title></info>
 
@@ -2545,9 +2542,9 @@ though several of them are actually optional.
 </indexterm><indexterm>
   <primary>RefSect1 element</primary>
 </indexterm>Of the following sequence of elements that may appear in a
-<tag class="element">RefEntry</tag>, only two are obligatory:
-<tag class="element">RefNameDiv</tag> and
-<tag class="element">RefSect1</tag>.</para>
+<tag class="element">refentry</tag>, only two are obligatory:
+<tag class="element">refnamediv</tag> and
+<tag class="element">refsect1</tag>.</para>
 
 <variablelist>
 <varlistentry>
@@ -2564,14 +2561,14 @@ though several of them are actually optional.
 
 The <tag class="element">info</tag> element contains
 meta-information about the reference page (which should not be
-confused with <tag class="element">RefMeta</tag>, which it
+confused with <tag class="element">refmeta</tag>, which it
 precedes). It marks up information about the author of the document,
 or the product to which it pertains, or the document's revision
 history, or other such information.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag class="element">RefMeta</tag></term>
+<term><tag class="element">refmeta</tag></term>
 <listitem>
 <para>
 <indexterm>
@@ -2590,11 +2587,11 @@ history, or other such information.</para>
   <primary>uname command and uname function, distinguishing</primary>
 </indexterm>
 
-<tag class="element">RefMeta</tag> contains a title for
+<tag class="element">refmeta</tag> contains a title for
 the reference page (which may be inferred if the
-<tag>RefMeta</tag> element is not present) and an indication
+<tag>refmeta</tag> element is not present) and an indication
 of the volume number in which this reference page occurs. The
-<tag>ManVolNum</tag> is a very <acronym>UNIX</acronym>-centric concept.  In
+<tag>manvolnum</tag> is a very <acronym>UNIX</acronym>-centric concept.  In
 traditional <acronym>UNIX</acronym> documentation, the subject of a reference page is
 typically identified by name and volume number; this allows you to
 distinguish between the <command>uname</command> command,
@@ -2611,12 +2608,12 @@ volume 3.
 
 Additional information of this sort such as conformance or
 vendor information specific to the particular environment you are
-working in, may be stored in <tag>RefMiscInfo</tag>.
+working in, may be stored in <tag>refmiscinfo</tag>.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag class="element">RefNameDiv</tag></term>
+<term><tag class="element">refnamediv</tag></term>
 <listitem>
 <para>
 <indexterm>
@@ -2636,13 +2633,13 @@ working in, may be stored in <tag>RefMiscInfo</tag>.
   <secondary>configurations, software support</secondary>
 </indexterm>
 
-The first obligatory element is <tag class="element">RefNameDiv</tag>, which is a wrapper for
+The first obligatory element is <tag class="element">refnamediv</tag>, which is a wrapper for
 information about whatever you're documenting, rather than the
-document itself. It can begin with a <tag class="element">RefDescriptor</tag> if several items are being
-documented as a group and the group has a name. The <tag class="element">RefNameDiv</tag> must contain at least one
-<tag class="element">RefName</tag>, that is, the name of
+document itself. It can begin with a <tag class="element">refdescriptor</tag> if several items are being
+documented as a group and the group has a name. The <tag class="element">refnamediv</tag> must contain at least one
+<tag class="element">refname</tag>, that is, the name of
 whatever you're documenting, and a single short statement that sums up
-the use or function of the item(s) at a glance: their <tag class="element">RefPurpose</tag>. Also available is the <tag class="element">RefClass</tag>, intended to detail the
+the use or function of the item(s) at a glance: their <tag class="element">refpurpose</tag>. Also available is the <tag class="element">refclass</tag>, intended to detail the
 operating system configurations that the software element in question
 supports.
 </para>
@@ -2654,15 +2651,15 @@ supports.
   <primary>RefEntryTitle element</primary>
 </indexterm>
 
-If no <tag>RefEntryTitle</tag> is given in the
-<tag>RefMeta</tag>, the title of the reference page is the
-<tag>RefDescriptor</tag>, if present, or the first
-<tag>RefName</tag>.
+If no <tag>refentrytitle</tag> is given in the
+<tag>refmeta</tag>, the title of the reference page is the
+<tag>refdescriptor</tag>, if present, or the first
+<tag>refname</tag>.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag class="element">RefSynopsisDiv</tag></term>
+<term><tag class="element">refsynopsisdiv</tag></term>
 <listitem>
 <para>
 <indexterm>
@@ -2680,11 +2677,11 @@ If no <tag>RefEntryTitle</tag> is given in the
   <primary>Title element</primary>
 </indexterm>
 
-A <tag class="element">RefSynopsisDiv</tag> is intended
+A <tag class="element">refsynopsisdiv</tag> is intended
 to provide a quick synopsis of the topic covered by the reference
 page. For commands, this is generally a syntax summary of the command,
 and for functions, the function prototype, but other options are
-possible. A <tag class="element">Title</tag> is allowed, but
+possible. A <tag class="element">title</tag> is allowed, but
 not required, presumably because the application that processes
 reference pages will generate the appropriate title if it is not
 given. In traditional <acronym>UNIX</acronym> documentation, its title is always
@@ -2693,7 +2690,7 @@ given. In traditional <acronym>UNIX</acronym> documentation, its title is always
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>RefSect1</tag>…<tag>RefSect3</tag></term>
+<term><tag>refsect1</tag>…<tag>refsect3</tag></term>
 <listitem>
 <para>
 <indexterm>
@@ -2703,15 +2700,15 @@ given. In traditional <acronym>UNIX</acronym> documentation, its title is always
   <primary>RefSect1…RefSect3</primary>
 </indexterm>
 
-Within <tag>RefEntry</tag>s, there are only three levels
-of sectioning elements: <tag>RefSect1</tag>,
-<tag>RefSect2</tag>, and <tag>RefSect3</tag>.</para>
+Within <tag>refentry</tag>s, there are only three levels
+of sectioning elements: <tag>refsect1</tag>,
+<tag>refsect2</tag>, and <tag>refsect3</tag>.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
 <para>
-<xref linkend="ex-samprefpage"/> shows the beginning of a <tag class="element">RefEntry</tag> that illustrates one possible
+<xref linkend="ex-samprefpage"/> shows the beginning of a <tag class="element">refentry</tag> that illustrates one possible
 reference page:
 <indexterm>
   <primary>reference pages</primary>
@@ -2823,7 +2820,7 @@ Frontmatter, like the table of contents, is almost always generated
 automatically from the text of a document by the processing
 application. If you need information about how to mark up a table of
 contents in DocBook, please consult the reference page for
-<tag>ToC</tag>.
+<tag>toc</tag>.
 </para>
 <section xml:id="makeindex"><info><title>Making an Index</title></info>
 <para>
@@ -2916,8 +2913,8 @@ leopards.
 </indexterm>
 
 Note that the mark at the start of the range identifies itself as the
-start of a range with the <tag class="attribute">Class</tag>
-attribute, and provides an <tag class="attribute">ID</tag>.
+start of a range with the <tag class="attribute">class</tag>
+attribute, and provides an <tag class="attribute">id</tag>.
 The mark at the end of the range points back to the start.
 </para>
 <para>
@@ -2931,8 +2928,8 @@ The mark at the end of the range points back to the start.
 Another way to mark up a range of text is to specify that the entire
 content of an element, such as a chapter or section, is the complete
 range.  In this case, all you need is for the index term to point to
-the <tag class="attribute">ID</tag> of the element that
-contains the content in question. The <tag class="attribute">Zone</tag> attribute of <tag>indexterm</tag>
+the <tag class="attribute">id</tag> of the element that
+contains the content in question. The <tag class="attribute">zone</tag> attribute of <tag>indexterm</tag>
 provides this functionality.
 </para>
 <para>
@@ -2944,9 +2941,9 @@ the element it indexes.
 </para>
 <para>
 Suppose the discussion of tigers in your document comprises a
-whole text object (like a <tag class="element">Sect1</tag>
-or a <tag class="element">Chapter</tag>) with an
-<tag class="attribute">ID</tag> value of 
+whole text object (like a <tag class="element">sect1</tag>
+or a <tag class="element">chapter</tag>) with an
+<tag class="attribute">id</tag> value of 
 <literal>tiger-desc</literal>. You can put the following
 tag anywhere in your document to index that range of text:
 <screen>
@@ -2961,8 +2958,8 @@ tag anywhere in your document to index that range of text:
 </indexterm>
 DocBook also contains markup for index hits that point to other index
 hits (of the same type such as "See Cats, big" or "See also
-Lions"). See the reference pages for <tag>See</tag> and
-<tag>SeeAlso</tag>.
+Lions"). See the reference pages for <tag>see</tag> and
+<tag>seealso</tag>.
 </para>
 </section>
 <section xml:id="s.printindex"><info><title>Printing an index</title></info>
@@ -2986,7 +2983,7 @@ the index.  In this case, it may never be instantiated in DocBook.
 
 However, there are applications that can produce an index marked up in
 DocBook.  The following example includes some one- and two-level
-<tag class="element">IndexEntry</tag> elements (which
+<tag class="element">indexentry</tag> elements (which
 correspond to the primary and secondary levels in the
 <tag>indexterm</tag>s themselves) that begin with the letter D:
 
@@ -3017,7 +3014,7 @@ correspond to the primary and secondary levels in the
   <secondary>creating</secondary>
 </indexterm>
 
-<tag>Glossary</tag>s, like <tag>Bibliography</tag>s, are often
+<tag>glossary</tag>s, like <tag>bibliography</tag>s, are often
 constructed by hand.  However, some applications are capable of
 building a skeletal index from glossary term markup in the document.
 If all of your terms are defined in some glossary database, it may
@@ -3043,8 +3040,8 @@ even be possible to construct the complete glossary automatically.
 To enable automatic glossary generation, or simply automatic linking
 from glossary terms in the text to glossary entries, you must add
 markup to your documents.  In the text, you markup a term for
-compilation later with the inline <tag>GlossTerm</tag>
-tag. This tag can have a <tag class="attribute">LinkEnd</tag>
+compilation later with the inline <tag>glossterm</tag>
+tag. This tag can have a <tag class="attribute">linkend</tag>
 attribute whose value is the ID of the actual entry in the
 glossary.<footnote>
 <para>
@@ -3084,12 +3081,12 @@ your glossary might look like this:
 &lt;/glossdiv&gt;
 </screen>
 <para>
-Note that the <tag class="element">GlossTerm</tag> tag
+Note that the <tag class="element">glossterm</tag> tag
 reappears in the glossary to mark up the term and distinguish it from
 its definition within the <tag class="element">glossentry</tag>.
-The <tag class="attribute">ID</tag> that
+The <tag class="attribute">id</tag> that
 the <tag class="element">glossentry</tag> referenced in the
-text is the <acronym>ID</acronym> of the <tag class="element">GlossEntry</tag> in the <tag>Glossary</tag>
+text is the <acronym>ID</acronym> of the <tag class="element">glossentry</tag> in the <tag>glossary</tag>
 itself. You can use the link between source and glossary to create a
 link in the online form of your document, as we have done with the
 online form of the glossary in this book.
@@ -3112,7 +3109,7 @@ online form of the glossary in this book.
 There are two ways to set up a bibliography in DocBook: you can have
 the data <emphasis>raw</emphasis> or
 <emphasis>cooked</emphasis>. Here's an example of a raw
-bibliographical item, wrapped in the <tag class="element">Biblioentry</tag> element:
+bibliographical item, wrapped in the <tag class="element">biblioentry</tag> element:
 </para>
 <screen>
 &lt;biblioentry xreflabel="Kites75"&gt;
@@ -3143,7 +3140,7 @@ bibliographical item, wrapped in the <tag class="element">Biblioentry</tag> elem
 &lt;/biblioentry&gt;
 </screen>
 <para>
-The “raw” data in a <tag class="element">Biblioentry</tag> is comprehensive to a
+The “raw” data in a <tag class="element">biblioentry</tag> is comprehensive to a
 fault—there are enough fields to suit a host of different
 bibliographical styles, and that is the point. An abundance of data
 requires processing applications to select, punctuate, order, and
@@ -3155,7 +3152,7 @@ information provided will actually be output.
   <primary>Bibliomixed element</primary>
 </indexterm>
 
-All the “cooked” data in a <tag class="element">Bibliomixed</tag> entry in a bibliography, on the
+All the “cooked” data in a <tag class="element">bibliomixed</tag> entry in a bibliography, on the
 other hand, is intended to be presented to the reader in the form and
 sequence in which it is provided. It even includes punctuation between
 the fields of data:
