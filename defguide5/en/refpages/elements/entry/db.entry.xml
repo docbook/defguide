@@ -39,7 +39,7 @@ that is immediately adjacent to the preceding cell. Note that
 <tag class="attribute">MoreRows</tag> attribute
 from preceding rows implicitly occupy cells in the succeeding 
 <tag>Row</tag>s.</para>
-<para><tag>Rows</tag> are not required to be full.  It is legal for some entries to be
+<para>A <tag>row</tag> is not required to be full.  It is legal for some entries to be
 completely absent (at the beginning, middle, or end of a row).</para>
 <sidebar xml:id="pernicious">
 <title>Pernicious Mixed Content</title>
@@ -53,16 +53,16 @@ of line breaks and spaces are well understood; they are insignificant between
 block elements and significant (to the <acronym>SGML</acronym> parser, anyway) where inline
 markup can occur.</para>
 <para>Table entries are different; they can contain either block or inline
-elements, but not both at the same time.  In other words, one <tag>Entry
-</tag> in a table might contain a paragraph or a list while another contains
+elements, but not both at the same time.  In other words, one
+<tag>entry</tag> in a table might contain a paragraph or a list while another contains
 simply text or another inline markup, but no single <tag>Entry</tag>
 can contain both.</para>
 <para>Because the content model of an <tag>Entry</tag> allows both kinds
 of markup, each time the <acronym>SGML</acronym> parser encounters an <tag>Entry</tag>,
 it has to decide what variety of markup it contains.  <acronym>SGML</acronym> parsers are forbidden
 to use more than a single token of lookahead to reach this decision. In practical
-terms, what this means is that a line feed or space after an <tag>Entry
-</tag> start tag causes the parser to decide that the cell contains inline
+terms, what this means is that a line feed or space after an
+<tag>entry</tag> start tag causes the parser to decide that the cell contains inline
 markup.  Subsequent discovery of a paragraph or another block element causes
 a parsing error.</para>
 <para>All of these are legal: 

@@ -45,26 +45,6 @@ processing instruction, for identifing the location of forced
 line breaks.
 </para>
 
-<para>There are some contexts in which a <tag>Title</tag> can appear more than
-once.  For example, it may appear in both <tag>Book</tag> and
-<tag>BookInfo</tag>:
-
-<screen>
-&lt;book>&lt;title>Some Book Title&lt;/title>
-&lt;bookinfo>
-  &lt;title>Some Book Title&lt;/title>
-  &lt;author>&lt;firstname>Some&lt;/firstname>&lt;surname>Author&lt;/surname>
-    &lt;/author>
-&lt;/bookinfo>
-…
-</screen>
-</para>
-
-<para>In these contexts, if the <tag>Title</tag> occurs more than once,
-<emphasis>the same</emphasis> title must be used in both places.
-It is an error to use different titles, although DocBook has
-no way to detect the error.
-</para>
 </refsection>
 
 <?tdg-attributes?>

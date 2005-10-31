@@ -620,7 +620,7 @@ set       nop
 
 <!-- ============================================================ -->
 
-<xsl:template match="tag">
+<xsl:template match="sgmltag">
   <xsl:variable name="class">
     <xsl:choose>
       <xsl:when test="@class">
@@ -635,8 +635,21 @@ set       nop
 			            'abcdefghijklmnopqrstuvwxyz.')"/>
 
   <xsl:variable name="elemidval">
-    <!-- check for HTML -->
     <xsl:choose>
+      <xsl:when test="(@namespace
+	               and @namespace != 'http://docbook.org/ns/docbook')
+		      or @role = 'nonexistant'">
+	<xsl:value-of select="'NOTEXPECTED'"/>
+      </xsl:when>
+      <xsl:when test="$lcname = 'indexterm'">
+	<xsl:value-of select="'element.db.indexterm.singular'"/>
+      </xsl:when>
+      <xsl:when test="$lcname = 'mml.*'">
+	<xsl:value-of select="'element.db._any.mml'"/>
+      </xsl:when>
+      <xsl:when test="$lcname = 'svg.*'">
+	<xsl:value-of select="'element.db._any.svg'"/>
+      </xsl:when>
       <xsl:when test="count(key('id', concat('element.db.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.', $lcname)"/>
       </xsl:when>
@@ -649,7 +662,7 @@ set       nop
     </xsl:choose>
   </xsl:variable>
 
-<!--
+  <!--
   <xsl:message>
     <xsl:text>check: </xsl:text>
     <xsl:value-of select="."/>
@@ -662,9 +675,13 @@ set       nop
       <xsl:text>1</xsl:text>
     </xsl:if>
   </xsl:message>
--->
+  -->
 
   <xsl:choose>
+    <xsl:when test="$elemidval = 'NOTEXPECTED'">
+      <xsl:apply-templates/>
+    </xsl:when>
+
     <xsl:when test="$class = 'element'
 		    and following-sibling::text()
 		    and contains(following-sibling::text(), '&#160;(')">
@@ -712,6 +729,9 @@ set       nop
       <xsl:message>
 	<xsl:text>Failed to find </xsl:text>
 	<xsl:value-of select="$elemidval"/>
+	<xsl:text> for "</xsl:text>
+	<xsl:value-of select="."/>
+	<xsl:text>"</xsl:text>
       </xsl:message>
       <xsl:apply-imports/>
     </xsl:when>

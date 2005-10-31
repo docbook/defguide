@@ -200,9 +200,17 @@
 	      <xsl:variable name="defs" select="key('elemdef', $elem)"/>
 	      <member>
 		<xsl:choose>
+		  <xsl:when test="@name = 'db._any.mml'">
+		    <xsl:text>mml:*</xsl:text>
+		  </xsl:when>
+		  <xsl:when test="@name = 'db._any.svg'">
+		    <xsl:text>svg:*</xsl:text>
+		  </xsl:when>
 		  <xsl:when test="count($defs) = 0">
 		    <xsl:value-of select="$elem"/>
-		    <xsl:text> ???</xsl:text>
+		    <xsl:text> ??? (</xsl:text>
+		    <xsl:value-of select="@name"/>
+		    <xsl:text>)</xsl:text>
 		  </xsl:when>
 		  <xsl:when test="count($defs) = 1">
 		    <xsl:value-of select="$elem"/>

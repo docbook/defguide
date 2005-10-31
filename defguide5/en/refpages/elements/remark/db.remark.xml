@@ -35,7 +35,7 @@ the <tag>Remark</tag> content model.
 </para>
 
 <para>Prior to version 4.0 of DocBook, this element was named
-<tag>Comment</tag>.</para>
+<tag namespace="">comment</tag>.</para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.context'?>
@@ -46,12 +46,7 @@ of an ancestor element (for example, <tag>Chapter</tag>), or by
 external processes, such as selecting an alternate stylesheet
 when publishing.
 </para>
-<para><tag>Remark</tag>s must not be nested within other <tag>Remark</tag>s.
-Because DocBook is harmonizing towards <acronym>XML</acronym>, this restriction cannot be
-enforced by the <acronym>DTD</acronym>. The processing of nested comments is undefined.
-</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

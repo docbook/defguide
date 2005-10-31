@@ -30,13 +30,12 @@ endif
 
 all: chunks
 
-up-to-date:
-	$(MAKE) -C refpages
-
 test: tdg.xml
-	jing /sourceforge/docbook/docbook/relaxng/docbook.rng $<
+	jing ../../docbook/relaxng/docbook/docbook.rng $<
 
-tdg.xml: book.xml bookinfo.xml WhatsNew refpages/ref-elements.xml
+tdg.xml: book.xml bookinfo.xml refpages/ref-elements.xml \
+         $(wildcard src/*.xml) \
+         $(wildcard refpages/elements/*/*.xml)
 	xmllint --xinclude book.xml > $@
 
 tdg-stripped.xml: tdg.xml

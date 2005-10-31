@@ -50,7 +50,7 @@ If you're used to using a DTD, many of these will be familiar to you.
 If you're using the RELAX NG version of DocBook, many of your documents
 will omit the Document Type Declaration.</para>
 
-<section>
+<section xml:id="s.xmldecl">
 <info>
   <title>An <acronym>XML</acronym> Declaration</title>
 </info>
@@ -86,7 +86,7 @@ role="encoding">utf-16</literal>, the XML Declaration is not required.
 But it is never wrong to include it.</para>
 </section>
 
-<section>
+<section xml:id="s.doctypedecl">
 <info>
   <title>A Document Type Declaration</title>
 </info>
@@ -163,7 +163,7 @@ be valid DocBook V5.0. The normative schema for DocBook V5.0 is
 the RELAX NG Grammar with its Schematron annotations.</para>
 
 </section>
-<section><info><title>An Internal Subset</title></info>
+<section xml:id="s.internalsubset"><info><title>An Internal Subset</title></info>
 
 <para><indexterm>
   <primary>declarations</primary>
@@ -218,7 +218,7 @@ subset override declarations in the external subset.</para>
 </note>
 </section>
 
-<section><info><title>The Document (or Root) Element</title></info>
+<section xml:id="s.rootelem"><info><title>The Document (or Root) Element</title></info>
 
 <para><indexterm>
   <primary>root element</primary>
@@ -243,7 +243,7 @@ present immediately after the document type declaration. You cannot
 place the root element of the document in an external entity.</para>
 </section>
 
-<section>
+<section xml:id="typingxml">
 <info>
   <title>Typing an <acronym>XML</acronym> Document</title>
 </info>
@@ -426,7 +426,7 @@ lowercase letters, digits, any of the following symbols: “'”, “(“,
 including line breaks.
 </para>
 
-<section>
+<section xml:id="s.fpi">
 <info>
   <title>Formal public identifiers</title>
 </info>
@@ -695,7 +695,7 @@ or system to which they apply.
 </section>
 </section>
 
-<section><info><title>System Identifiers</title></info>
+<section xml:id="s.systemid"><info><title>System Identifiers</title></info>
 
 <para><indexterm>
   <primary>system identifiers</primary>
@@ -849,7 +849,7 @@ For more information about any specific element and the elements that
 it may contain, consult the reference page for the element in
 question.
 </para>
-<section><info><title>Sets</title></info>
+<section xml:id="s.sets"><info><title>Sets</title></info>
 
 <para>
 <indexterm>
@@ -865,7 +865,7 @@ for a programming language.
 </para>
 </section>
 
-<section><info><title>Books</title></info>
+<section xml:id="s.books"><info><title>Books</title></info>
 
 <para><indexterm>
   <primary>customizing</primary>
@@ -958,7 +958,7 @@ contain divisions.
 </variablelist>
 </section>
 
-<section>
+<section xml:id="s.components">
 <info>
 <title>Components</title>
 </info>
@@ -996,7 +996,7 @@ navigational components and <tag>refentry</tag>s.
 </para>
 </section>
 
-<section><info><title>Sections</title></info>
+<section xml:id="s.sections"><info><title>Sections</title></info>
 
 <para><indexterm>
   <primary>nesting</primary>
@@ -1089,7 +1089,7 @@ nest.</para>
 </variablelist>
 </section>
 
-<section><info><title>Meta-Information</title></info>
+<section xml:id="s.meta"><info><title>Meta-Information</title></info>
 <para><indexterm>
   <primary>meta-information</primary>
   <secondary>elements</secondary>
@@ -1126,7 +1126,7 @@ terms.
 </para>
 </section>
 
-<section><info><title>Block Elements</title></info>
+<section xml:id="s.block"><info><title>Block Elements</title></info>
 
 <para><indexterm>
   <primary>block elements</primary>
@@ -1210,7 +1210,7 @@ glossary terms.
 </para>
 </sidebar>
 
-<section><info><title>Lists</title></info>
+<section xml:id="s.lists"><info><title>Lists</title></info>
 <para><indexterm>
   <primary>lists</primary>
   <secondary>elements</secondary>
@@ -1299,7 +1299,7 @@ list of list types is a <tag>VariableList</tag>.)</para>
 </variablelist>
 </section>
 
-<section><info><title>Admonitions</title></info>
+<section xml:id="s.admonitions"><info><title>Admonitions</title></info>
 
 <para><indexterm>
   <primary>admonitions</primary>
@@ -1327,7 +1327,7 @@ for cases where bodily harm can result.
 </para>
 </section>
 
-<section>
+<section xml:id="s.line-specific">
 <info><title>Line-specific environments</title></info>
 
 <para><indexterm>
@@ -1339,8 +1339,10 @@ for cases where bodily harm can result.
   <primary>line breaks, preserving</primary>
 </indexterm>These environments preserve whitespace and line breaks in
 the source text. DocBook does not provide the equivalent of
-<acronym>HTML</acronym>'s <tag>BR</tag> tag, so there's no way to
-interject a line break into normal running text.
+<acronym>HTML</acronym>'s
+<tag namespace="http://www.w3.org/1999/xhtml">br</tag>
+tag, so there's no way to interject a line break into normal running
+text.
 </para>
 <variablelist>
 <varlistentry>
@@ -1432,7 +1434,7 @@ and function synopsis.</para>
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Examples, figures, and tables</title></info>
+<section xml:id="s.formal"><info><title>Examples, figures, and tables</title></info>
 <para>
 <indexterm>
   <primary>block elements</primary>
@@ -1474,7 +1476,7 @@ achieve the effect of an informal figure by placing its content,
 unwrapped, at the location where the informal figure was desired.
 </para>
 </section>
-<section><info><title>Paragraphs</title></info>
+<section xml:id="s.paras"><info><title>Paragraphs</title></info>
 <para>
 <indexterm>
   <primary>Para element</primary>
@@ -1485,7 +1487,7 @@ elements), and <tag>FormalPara</tag> (formal paragraphs have
 titles).
 </para>
 </section>
-<section><info><title>Equations</title></info>
+<section xml:id="s.equations"><info><title>Equations</title></info>
 <para>
 <indexterm>
   <primary>Equation element</primary>
@@ -1507,7 +1509,7 @@ languages to properly enumerate <tag>Equation</tag>s if they
 lack titles.
 </para>
 </section>
-<section><info><title>Graphics</title></info>
+<section xml:id="s.graphics"><info><title>Graphics</title></info>
 <para>
 <indexterm>
   <primary>graphics</primary>
@@ -1543,7 +1545,7 @@ several alternative forms from which the presentation system can
 select the most appropriate object.
 </para>
 </section>
-<section><info><title>Questions and answers</title></info>
+<section xml:id="s.qanda"><info><title>Questions and answers</title></info>
 <para>
 <indexterm>
   <primary>QandASet element</primary>
@@ -1563,7 +1565,7 @@ Asked Questions) and other similar collections of
 <tag>Question</tag>s and <tag>Answer</tag>s.
 </para>
 </section>
-<section><info><title>Miscellaneous block elements</title></info>
+<section xml:id="s.misc"><info><title>Miscellaneous block elements</title></info>
 <para>
 The following block elements are also available:
 </para>
@@ -1642,7 +1644,7 @@ A set of related error messages.</para></listitem>
 </indexterm>
 
 A procedure.  Procedures contain <tag>Step</tag>s, which
-may contain <tag>SubStep</tag>s.</para></listitem>
+may contain <tag>substeps</tag>.</para></listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>Sidebar</tag></term>
@@ -1651,7 +1653,7 @@ may contain <tag>SubStep</tag>s.</para></listitem>
 </variablelist>
 </section>
 </section>
-<section><info><title>Inline Elements</title></info>
+<section xml:id="s.inline"><info><title>Inline Elements</title></info>
 <para>
 <indexterm>
   <primary>inline elements</primary>
@@ -1686,7 +1688,7 @@ elements appear in more than one category, and arguments could be made
 to support the placement of additional elements in other categories or
 entirely new categories.
 </para>
-<section><info><title>Traditional publishing inlines</title></info>
+<section xml:id="s.inline.tradpub"><info><title>Traditional publishing inlines</title></info>
 <para>
 <indexterm>
   <primary>general writing (traditional publishing inlines)</primary>
@@ -1758,7 +1760,7 @@ footnote. Additional references to the same footnote can be inserted with
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Cross references</title></info>
+<section xml:id="s.inline.xref"><info><title>Cross references</title></info>
 <para>
 <indexterm>
   <primary>cross references</primary>
@@ -1834,13 +1836,6 @@ attribute.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>ULink</tag></term>
-<listitem><para>.<indexterm>
-  <primary>ULink element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
 <term><tag>XRef</tag></term>
 <listitem><para>.<indexterm>
   <primary>XRef element</primary>
@@ -1849,7 +1844,7 @@ attribute.
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Markup</title></info>
+<section xml:id="s.inline.markup"><info><title>Markup</title></info>
 <para>
 <indexterm>
   <primary>markup</primary>
@@ -1909,9 +1904,9 @@ These inlines are used to mark up text for special presentation:
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>SGMLTag</tag></term>
+<term><tag>tag</tag></term>
 <listitem><para>.<indexterm>
-  <primary>SGMLTag element</primary>
+  <primary>tag element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
@@ -1924,7 +1919,7 @@ These inlines are used to mark up text for special presentation:
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Mathematics</title></info>
+<section xml:id="s.inline.math"><info><title>Mathematics</title></info>
 <para>
 <indexterm>
   <primary>elements</primary>
@@ -1969,7 +1964,7 @@ the best long-term solution.
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>User interfaces</title></info>
+<section xml:id="s.inline.ui"><info><title>User interfaces</title></info>
 <para>
 These elements describe aspects of a user interface:
 <indexterm>
@@ -2078,7 +2073,7 @@ These elements describe aspects of a user interface:
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Programming languages and constructs</title></info>
+<section xml:id="s.inline.prog"><info><title>Programming languages and constructs</title></info>
 <para>
 <indexterm>
   <primary>programming languages (elements)</primary>
@@ -2141,20 +2136,6 @@ Many of the technical inlines in DocBook are related to programming.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>Interface</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>Interface element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><tag>InterfaceDefinition</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>InterfaceDefinition element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
 <term><tag>Literal</tag></term>
      <listitem><para>.<indexterm>
   <primary>Literal element</primary>
@@ -2197,20 +2178,6 @@ Many of the technical inlines in DocBook are related to programming.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>StructField</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>StructField element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><tag>StructName</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>StructName element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
 <term><tag>Symbol</tag></term>
      <listitem><para>.<indexterm>
   <primary>Symbol element</primary>
@@ -2240,7 +2207,7 @@ Many of the technical inlines in DocBook are related to programming.
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>Operating systems</title></info>
+<section xml:id="s.inline.os"><info><title>Operating systems</title></info>
 <para>
 <indexterm>
   <primary>operating systems</primary>
@@ -2316,7 +2283,7 @@ operating environment:
 </varlistentry>
 </variablelist>
 </section>
-<section><info><title>General purpose</title></info>
+<section xml:id="s.inline.general"><info><title>General purpose</title></info>
 <para>
 <indexterm>
   <primary>general-purpose technical inline elements</primary>
@@ -2364,23 +2331,9 @@ There are also a number of general-purpose technical inlines.
 </para></listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>InlineGraphic</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>InlineGraphic element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
 <term><tag>Literal</tag></term>
      <listitem><para>.<indexterm>
   <primary>Literal element</primary>
-</indexterm>
-</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><tag>MediaLabel</tag></term>
-     <listitem><para>.<indexterm>
-  <primary>MediaLabel element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
@@ -2444,7 +2397,7 @@ There are also a number of general-purpose technical inlines.
 </indexterm>
 
 A typical <tag>Book</tag>, in English at least, consists of 
-some meta-information in a <tag>BookInfo</tag>
+some meta-information in an <tag>info</tag>
 (<tag>Title</tag>, <tag>Author</tag>,
 <tag>Copyright</tag>, and so on), one or more <tag>Preface</tag>s, several <tag>Chapter</tag>s, and perhaps a
 few <tag>Appendix</tag>es. A <tag>Book</tag> may also
@@ -2583,31 +2536,33 @@ reflect both the structure and the variability of such texts, DocBook
 specifies that reference pages have a strict sequence of parts, even
 though several of them are actually optional.
 </para>
-<para>
-<indexterm>
+
+<para><indexterm>
   <primary>RefEntry element</primary>
   <secondary>elements, obligatory</secondary>
 </indexterm><indexterm>
   <primary>RefNameDiv element</primary>
 </indexterm><indexterm>
   <primary>RefSect1 element</primary>
-</indexterm>
+</indexterm>Of the following sequence of elements that may appear in a
+<tag class="element">RefEntry</tag>, only two are obligatory:
+<tag class="element">RefNameDiv</tag> and
+<tag class="element">RefSect1</tag>.</para>
 
-Of the following sequence of elements that may appear in a <tag class="element">RefEntry</tag>, only two are obligatory: <tag class="element">RefNameDiv</tag> and <tag class="element">RefSect1</tag>.
 <variablelist>
 <varlistentry>
-<term><tag class="element">DocInfo</tag></term>
+<term><tag class="element">info</tag></term>
 <listitem>
 <para>
 <indexterm>
-  <primary>DocInfo element</primary>
+  <primary>info element</primary>
   <secondary>reference page, meta-information</secondary>
 </indexterm><indexterm>
   <primary>meta-information</primary>
   <secondary>reference page</secondary>
 </indexterm>
 
-The <tag class="element">DocInfo</tag> element contains
+The <tag class="element">info</tag> element contains
 meta-information about the reference page (which should not be
 confused with <tag class="element">RefMeta</tag>, which it
 precedes). It marks up information about the author of the document,
@@ -2754,7 +2709,7 @@ of sectioning elements: <tag>RefSect1</tag>,
 </listitem>
 </varlistentry>
 </variablelist>
-</para>
+
 <para>
 <xref linkend="ex-samprefpage"/> shows the beginning of a <tag class="element">RefEntry</tag> that illustrates one possible
 reference page:
@@ -2888,7 +2843,7 @@ manuals—a useful index still requires human intervention to mark
 occurrences of words or concepts that will appear in the text of the
 index.
 </para>
-<section><info><title>Marking index terms</title></info>
+<section xml:id="s.indexterms"><info><title>Marking index terms</title></info>
 <para>
 <indexterm>
   <primary>singular index markers</primary>
@@ -3010,7 +2965,7 @@ Lions"). See the reference pages for <tag>See</tag> and
 <tag>SeeAlso</tag>.
 </para>
 </section>
-<section><info><title>Printing an index</title></info>
+<section xml:id="s.printindex"><info><title>Printing an index</title></info>
 <para>
 <indexterm>
   <primary>indexes</primary>
@@ -3055,7 +3010,7 @@ correspond to the primary and secondary levels in the
 </para>
 </section>
 </section>
-<section><info><title>Making a Glossary</title></info>
+<section xml:id="s.glossary"><info><title>Making a Glossary</title></info>
 <para>
 <indexterm>
   <primary>glossaries</primary>
@@ -3131,16 +3086,16 @@ your glossary might look like this:
 <para>
 Note that the <tag class="element">GlossTerm</tag> tag
 reappears in the glossary to mark up the term and distinguish it from
-its definition within the <tag class="element">
-GlossEntry</tag>. The <tag class="attribute">ID</tag> that
-the <tag class="element"> GlossEntry</tag> referenced in the
+its definition within the <tag class="element">glossentry</tag>.
+The <tag class="attribute">ID</tag> that
+the <tag class="element">glossentry</tag> referenced in the
 text is the <acronym>ID</acronym> of the <tag class="element">GlossEntry</tag> in the <tag>Glossary</tag>
 itself. You can use the link between source and glossary to create a
 link in the online form of your document, as we have done with the
 online form of the glossary in this book.
 </para>
 </section>
-<section><info><title>Making a Bibliography</title></info>
+<section xml:id="s.bibliography"><info><title>Making a Bibliography</title></info>
 <para>
 <indexterm>
   <primary>bibliographies, creating</primary>

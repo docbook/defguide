@@ -1,4 +1,5 @@
-<partintro xmlns='http://docbook.org/ns/docbook'>
+<partintro xmlns='http://docbook.org/ns/docbook'
+	   xml:id="part.intro.elements">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -10,7 +11,7 @@
 </indexterm>This reference describes every element in the DocBook
 schema.</para>
 
-<sect1>
+<section xml:id="s.elem.org">
 <title>Organization of Reference Pages</title>
 
 <para>The description of each element in this reference is divided
@@ -143,7 +144,7 @@ RELAX NG grammar.
 </varlistentry>
 </variablelist>
 
-<sect2 xml:id="s2-cmintro">
+<section xml:id="s2-cmintro">
 <title>Understanding Content Models</title>
 
 <para><indexterm><primary>content models</primary>
@@ -237,7 +238,9 @@ can have an effect on the meaning of the list as a whole. For example,
 a sequence that consists of only optional elements may have none. This
 differs, in subtle and unimportant ways, from an optional sequence.</para>
 
-<sect3><title>Content models and validity</title>
+<section xml:id="s.elem.contentmodels">
+<title>Content models and validity</title>
+
 <para><indexterm><primary>parsers</primary>
   <secondary>content models, matching to elements</secondary></indexterm>
 <indexterm><primary>elements</primary>
@@ -299,11 +302,11 @@ expansion of the content model that can match it:
 <attribution>John Doe</attribution>
 </epigraph>]]></screen>
 
-</sect3>
-</sect2>
-</sect1>
+</section>
+</section>
+</section>
 
-<sect1 xml:id="common.attributes">
+<section xml:id="common.attributes">
 <title>Common Attributes</title>
 <para>
 <indexterm><primary>attributes</primary>
@@ -620,9 +623,9 @@ element.</para>
 </listitem>
 </varlistentry>
 </variablelist>
-</sect1>
+</section>
 
-<sect1 xml:id="common.linking.attributes">
+<section xml:id="common.linking.attributes">
 <title>Common Linking Attributes</title>
 <para>
 <indexterm><primary>attributes</primary>
@@ -702,7 +705,7 @@ that occur on many elements stand out.</para>
 </informaltable>
 
 <para>FIXME: add a description list</para>
-</sect1>
+</section>
 
 </partintro>
 
