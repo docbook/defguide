@@ -669,10 +669,14 @@ set       nop
 
   <!--
   <xsl:message>
-    <xsl:text>elemidval: </xsl:text>
+    <xsl:text>tag: </xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:text>; elemidval: </xsl:text>
     <xsl:value-of select="$elemidval"/>
   </xsl:message>
+  -->
 
+  <!--
   <xsl:message>
     <xsl:text>check: </xsl:text>
     <xsl:value-of select="."/>
@@ -693,18 +697,15 @@ set       nop
     </xsl:when>
 
     <xsl:when test="$class = 'element'
-		    and following-sibling::text()
-		    and contains(following-sibling::text(), '&#160;(')">
-      <!-- handle <tag>phrase</tag> (db._phrase) -->
-      <xsl:variable name="ftext" select="following-sibling::text()[1]"/>
+		    and following-sibling::*[1]/self::db:phrase
+		    and contains(following-sibling::db:phrase[1], '(')">
+      <!-- handle <tag>phrase</tag> (<phrase>db._phrase</phrase>) -->
       <xsl:variable name="pattern"
-		    select="substring-before(substring-after($ftext,'('),')')"/>
+		    select="string(following-sibling::phrase[1])"/>
       <xsl:variable name="target"
 		    select="key('id', concat('element.',$pattern))[1]"/>
 
-      <!--
       <xsl:message>pattern: <xsl:value-of select="$pattern"/></xsl:message>
-      -->
 
       <xsl:choose>
 	<xsl:when test="$target">
@@ -724,7 +725,7 @@ set       nop
 	    <xsl:text> for "</xsl:text>
 	    <xsl:value-of select="."/>
 	    <xsl:text> </xsl:text>
-	    <xsl:value-of select="$ftext"/>
+	    <xsl:value-of select="$pattern"/>
 	    <xsl:text>"</xsl:text>
 	  </xsl:message>
 	  <xsl:apply-imports/>

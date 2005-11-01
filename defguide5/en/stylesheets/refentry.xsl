@@ -167,7 +167,9 @@
 		    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
 		  </tag>
 		  <xsl:text>&#160;</xsl:text>
-		  <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+		  <phrase role="pattern">
+		    <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+		  </phrase>
 		</xsl:when>
 		<xsl:otherwise>
 		  <tag>
@@ -246,7 +248,9 @@
 		    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
 		  </tag>
 		  <xsl:text>&#160;</xsl:text>
-		  <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+		  <phrase role="pattern">
+		    <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+		  </phrase>
 		</xsl:when>
 		<xsl:otherwise>
 		  <tag>
@@ -334,19 +338,38 @@
 
       <xsl:choose>
 	<xsl:when test="count($cmnAttr) = 19 and count($cmnLinkAttr) = 8">
-	  <para>Common attributes and common linking attributes.</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text> and </xsl:text>
+	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 19 and count($cmnLinkAttr) = 8">
-	  <para>Common attributes (ID required) and common linking atttributes.</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text> (ID required) and </xsl:text>
+	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttr) = 19">
-	  <para>Common attributes.</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 19">
-	  <para>Common attributes (ID required).</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text> (ID required).</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnLinkAttr) = 8">
-	  <para>Common linking attributes.</para>
+	  <para>
+	    <link xlink:href="#common.linking.attributes">Common linking attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
       </xsl:choose>
 
@@ -504,9 +527,12 @@
 	      <xsl:value-of select="current-grouping-key()"/>
 	    </tag>
 	    <xsl:if test="@pattern">
-	      <xsl:text>&#160;(</xsl:text>
-	      <xsl:value-of select="@pattern"/>
-	      <xsl:text>)</xsl:text>
+	      <xsl:text>&#160;</xsl:text>
+	      <phrase role="pattern">
+		<xsl:text>(</xsl:text>
+		<xsl:value-of select="@pattern"/>
+		<xsl:text>)</xsl:text>
+	      </phrase>
 	    </xsl:if>
 	  </member>
 	</xsl:for-each-group>
@@ -584,11 +610,13 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 
   <refsynopsisdiv>
     <title>
-      <xsl:text>Synopsis&#160;</xsl:text>
+      <xsl:text>Synopsis</xsl:text>
     </title>
 
     <para>
-      <xsl:comment> FIXME: figure out how to do something better here </xsl:comment>
+      <xsl:comment>
+	<xsl:text> FIXME: something has to occur before the section </xsl:text>
+      </xsl:comment>
     </para>
 
     <xsl:apply-templates/>
@@ -728,26 +756,44 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 		select="set:difference($attributes,
 			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
-  <xsl:if test="(count($cmnAttrEither) != 19 and count($cmnAttrEither) != 0)
-		or count($otherAttr) &gt; 0">
+  <xsl:if test="count($cmnAttrEither) &gt; 0 or count($otherAttr) &gt; 0">
     <refsection>
       <title>Attributes</title>
 
       <xsl:choose>
 	<xsl:when test="count($cmnAttr) = 19 and count($cmnLinkAttr) = 8">
-	  <para>Common attributes and common linking attributes.</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text> and </xsl:text>
+	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 19 and count($cmnLinkAttr) = 8">
-	  <para>Common attributes (ID required) and common linking atttributes.</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text> (ID required) and </xsl:text>
+	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttr) = 19">
-	  <para>Common attributes.</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 19">
-	  <para>Common attributes (ID required).</para>
+	  <para>
+	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <xsl:text> (ID required).</xsl:text>
+	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnLinkAttr) = 8">
-	  <para>Common linking attributes.</para>
+	  <para>
+	    <link xlink:href="#common.linking.attributes">Common linking attributes</link>
+	    <xsl:text>.</xsl:text>
+	  </para>
 	</xsl:when>
       </xsl:choose>
 
@@ -998,9 +1044,12 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
     </xsl:choose>
 
     <xsl:if test="count($xdefs) &gt; 1">
-      <xsl:text>&#160;(</xsl:text>
-      <xsl:value-of select="@name"/>
-      <xsl:text>)</xsl:text>
+      <xsl:text>&#160;</xsl:text>
+      <phrase role="pattern">
+	<xsl:text>(</xsl:text>
+	<xsl:value-of select="@name"/>
+	<xsl:text>)</xsl:text>
+      </phrase>
     </xsl:if>
   </xsl:variable>
 
