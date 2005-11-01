@@ -552,6 +552,9 @@
   <xsl:choose>
     <xsl:when test="contains(., 'gentext=')">
       <xsl:choose>
+	<xsl:when test="contains(., 'pexp.linespecific')">
+	  <xsl:text>This element is displayed “verbatim”; whitespace and linebreaks within this element are significant.</xsl:text>
+	</xsl:when>
 	<xsl:when test="contains(., 'format.inline')">
 	  <xsl:text>Formatted inline.</xsl:text>
 	</xsl:when>
