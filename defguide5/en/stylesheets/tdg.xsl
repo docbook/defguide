@@ -71,7 +71,7 @@ set       nop
   <div class="copyrightfooter">
     <p>
       <a href="dbcpyright.html">Copyright</a>
-      <xsl:text> &#xA9; 2004 Norman Walsh. </xsl:text>
+      <xsl:text> &#xA9; 2004, 2005 Norman Walsh. </xsl:text>
       <xsl:text>Portions Copright © 1999-2003 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>
@@ -664,6 +664,11 @@ set       nop
 
   <!--
   <xsl:message>
+    <xsl:text>elemidval: </xsl:text>
+    <xsl:value-of select="$elemidval"/>
+  </xsl:message>
+
+  <xsl:message>
     <xsl:text>check: </xsl:text>
     <xsl:value-of select="."/>
     <xsl:text> </xsl:text>
@@ -692,9 +697,9 @@ set       nop
       <xsl:variable name="target"
 		    select="key('id', concat('element.',$pattern))[1]"/>
 
-<!--
+      <!--
       <xsl:message>pattern: <xsl:value-of select="$pattern"/></xsl:message>
--->
+      -->
 
       <xsl:choose>
 	<xsl:when test="$target">
@@ -708,6 +713,15 @@ set       nop
 	  </a>
 	</xsl:when>
 	<xsl:otherwise>
+	  <xsl:message>
+	    <xsl:text>Failed to find </xsl:text>
+	    <xsl:value-of select="$pattern"/>
+	    <xsl:text> for "</xsl:text>
+	    <xsl:value-of select="."/>
+	    <xsl:text> </xsl:text>
+	    <xsl:value-of select="$ftext"/>
+	    <xsl:text>"</xsl:text>
+	  </xsl:message>
 	  <xsl:apply-imports/>
 	</xsl:otherwise>
       </xsl:choose>

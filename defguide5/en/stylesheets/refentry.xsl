@@ -947,8 +947,21 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
   <xsl:variable name="elemName"
 		select="(key('define', @name)/rng:element)[1]/@name"/>
   <xsl:variable name="xdefs" select="key('elemdef', $elemName)"/>
+
+  <!--
+  <xsl:message>name: "<xsl:value-of select="@name"/>"</xsl:message>
+  -->
+
   <xsl:variable name="content">
     <xsl:choose>
+      <xsl:when test="@name = 'db._any.mml'">
+	<tag>mml:*</tag>
+	<xsl:if test="parent::rng:optional">?</xsl:if>
+      </xsl:when>
+      <xsl:when test="@name = 'db._any.svg'">
+	<tag>svg:*</tag>
+	<xsl:if test="parent::rng:optional">?</xsl:if>
+      </xsl:when>
       <xsl:when test="$elemName">
 	<tag>
 	  <xsl:value-of select="key('define', @name)/rng:element/@name"/>
@@ -956,6 +969,14 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 	<xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:otherwise>
+	<xsl:message>
+	  <xsl:text>Failed to find </xsl:text>
+	  <xsl:value-of select="$elemName"/>
+	  <xsl:text> for "</xsl:text>
+	  <xsl:value-of select="."/>
+	  <xsl:value-of select="@name"/>
+	  <xsl:text>"</xsl:text>
+	</xsl:message>
 	<xsl:value-of select="@name"/>
 	<xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:otherwise>

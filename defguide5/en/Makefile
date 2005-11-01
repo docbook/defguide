@@ -35,11 +35,11 @@ test: tdg.xml
 
 tdg.xml: book.xml bookinfo.xml refpages/ref-elements.xml \
          $(wildcard src/*.xml) \
-         $(wildcard refpages/elements/*/*.xml)
+         $(wildcard refpages/elements/*/*.gen)
 	xmllint --xinclude book.xml > $@
 
 tdg-stripped.xml: tdg.xml
-	xsltproc --output $@ /sourceforge/docbook/xsl/html/db5strip.xsl $<
+	xsltproc --output $@ stylesheets/strip.xsl $<
 
 bookinfo.xml: VERSION.xml
 	$(XSLT) $< $< $@
