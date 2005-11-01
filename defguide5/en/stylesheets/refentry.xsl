@@ -120,8 +120,16 @@
       <title>Parents</title>
       <para>
 	<xsl:text>These elements contain </xsl:text>
+
 	<tag>
-	  <xsl:value-of select="$element"/>
+	  <xsl:choose>
+	    <xsl:when test="$element = '_any.svg'">svg:*</xsl:when>
+	    <xsl:when test="$element = '_any.mml'">mml:*</xsl:when>
+	    <xsl:when test="$element = '_any'">*:*</xsl:when>
+	    <xsl:otherwise>
+	      <xsl:value-of select="$element"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</tag>
 
 	<xsl:text>: </xsl:text>
@@ -205,6 +213,9 @@
 		  </xsl:when>
 		  <xsl:when test="@name = 'db._any.svg'">
 		    <xsl:text>svg:*</xsl:text>
+		  </xsl:when>
+		  <xsl:when test="@name = 'db._any'">
+		    <xsl:text>*:*</xsl:text>
 		  </xsl:when>
 		  <xsl:when test="count($defs) = 0">
 		    <xsl:value-of select="$elem"/>
@@ -505,7 +516,7 @@
 </xsl:template>
 
 <xsl:template match="*">
-  <xsl:element name="{name(.)}">
+  <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
     <xsl:copy-of select="@*"/>
     <xsl:apply-templates/>
   </xsl:element>
@@ -960,6 +971,10 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
       </xsl:when>
       <xsl:when test="@name = 'db._any.svg'">
 	<tag>svg:*</tag>
+	<xsl:if test="parent::rng:optional">?</xsl:if>
+      </xsl:when>
+      <xsl:when test="@name = 'db._any'">
+	<tag>*:*</tag>
 	<xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:when test="$elemName">

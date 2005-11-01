@@ -14,6 +14,8 @@
 <xsl:import href="/sourceforge/docbook/xsl/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
 
+<xsl:output method="html" encoding="utf-8" indent="no"/>
+
 <xsl:param name="ng-release" select="'5.0b1'"/>
 
 <xsl:param name="output.media" select="'online'"/>
@@ -649,6 +651,9 @@ set       nop
       </xsl:when>
       <xsl:when test="$lcname = 'svg.*'">
 	<xsl:value-of select="'element.db._any.svg'"/>
+      </xsl:when>
+      <xsl:when test="$lcname = '*.*'">
+	<xsl:value-of select="'element.db._any'"/>
       </xsl:when>
       <xsl:when test="count(key('id', concat('element.db.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.', $lcname)"/>
