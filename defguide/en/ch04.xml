@@ -2215,7 +2215,7 @@ through the hierarchy of elements.</para>
 DocBook <sgmltag class="element">&lt;para&gt;</sgmltag> paragraph element as
 an example. To convert this to HTML, you want to wrap the
 paragraph content with the HTML
-tags <sgmltag class="starttag">&lt;p&gt;</sgmltag> and <sgmltag class="endtag">&lt;/p&gt;</sgmltag>.
+tags <sgmltag class="starttag">p</sgmltag> and <sgmltag class="endtag">/p</sgmltag>.
 But a DocBook <sgmltag class="element">&lt;para&gt;</sgmltag>  can contain
 any number of in-line DocBook elements marking up the text.
 Fortunately, you can let other templates take care of those
@@ -2233,7 +2233,7 @@ starts a new template, and
 its <sgmltag class="attribute">match</sgmltag> attribute indicates where to
 apply the template, in this case to
 any <sgmltag class="element">&lt;para&gt;</sgmltag> elements. The template
-says to output a literal <sgmltag class="starttag">&lt;p&gt;</sgmltag> string
+says to output a literal <sgmltag class="starttag">p</sgmltag> string
 and then execute
 the <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag> instruction.
 This tells the XSL processor to look among all the
@@ -2243,7 +2243,7 @@ stylesheet includes
 an <sgmltag class="element">&lt;xsl:apply-templates/&gt;</sgmltag> instruction,
 then all descendents will eventually be processed. When it
 is through recursively applying templates to the paragraph
-content, it outputs the <sgmltag class="endtag">&lt;/p&gt;</sgmltag> closing
+content, it outputs the <sgmltag class="endtag">/p</sgmltag> closing
 tag.</para>
 <section>
 <title>Context is important</title>
@@ -2605,7 +2605,7 @@ nodes, not just text strings. Line 10 outputs the text of
 the heading title, also passed as a parameter to the
 template, enclosed in HTML boldface tags. Line 11 closes
 the anchor tag with the
-literal <sgmltag class="endtag">&lt;/a&gt;</sgmltag> syntax, while line 12
+literal <sgmltag class="endtag">/a</sgmltag> syntax, while line 12
 closes the heading tag by closing the element definition.
 Since the actual element name is a variable, it couldn't
 use the literal syntax.</para>
