@@ -66,6 +66,7 @@ set       nop
 
 <xsl:template name="user.header.content">
   <xsl:param name="node" select="."/>
+  <link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png">
 </xsl:template>
 
 <xsl:template name="user.footer.navigation">
