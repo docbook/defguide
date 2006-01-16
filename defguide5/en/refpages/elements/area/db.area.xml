@@ -55,7 +55,7 @@ how they are interpreted depends on the
 <tag class='attribute'>Units</tag> specified:
 
 <variablelist>
-<varlistentry><term><tag class='attvalue'>CALSPair</tag></term>
+<varlistentry><term><tag class='attvalue'>calspair</tag></term>
 <listitem>
 <para>The coordinates are expressed using the semantics of the <acronym>CALS</acronym> 
 graphic attributes.  The format of the coordinates is “x1,y1 x2,y2”.
@@ -66,7 +66,7 @@ total distance from 0.00 to 100.00%. The lower-left corner is (0,0).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag class='attvalue'>LineColumn</tag></term>
+<varlistentry><term><tag class='attvalue'>linecolumn</tag></term>
 <listitem>
 <para>The coordinates are expressed using lines and columns.
 The format of the coordinates is “line column.”
@@ -74,7 +74,7 @@ In a graphic context, the meaning of this unit is unspecified.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag class='attvalue'>LineRange</tag></term>
+<varlistentry><term><tag class='attvalue'>linerange</tag></term>
 <listitem>
 <para>The coordinates are expressed using lines.
 The format of the coordinates is “startingline endingline.”
@@ -82,7 +82,7 @@ In a graphic context, the meaning of this unit is unspecified.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag class='attvalue'>LineColumnPair</tag></term>
+<varlistentry><term><tag class='attvalue'>linecolumnpair</tag></term>
 <listitem>
 <para>The coordinates are expressed as a continuous flow of characters.
 The format of the coordinates is “line1 col1 line2 col2”.
@@ -95,7 +95,7 @@ In a graphic context, the meaning of this unit is unspecified.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><tag class='attvalue'>OtherUnits</tag></term>
+<varlistentry><term><tag class='attvalue'>otherunits</tag></term>
 <listitem>
 <para>If specified, then the <tag class='attribute'>OtherUnits</tag>
 attribute is expected to identify the units in some 
@@ -104,9 +104,9 @@ implementation-specific way.
 </listitem>
 </varlistentry>
 </variablelist>
-The <tag class='attribute'>Units</tag> attribute is not required, if it
+The <tag class='attribute'>units</tag> attribute is not required, if it
 is not specified, the semantics of the coordinates must be inherited from
-the surrounding <tag>AreaSpec</tag> or <tag>AreaSet</tag> element
+the surrounding <tag>areaspec</tag> or <tag>areaset</tag> element
 or implied in
 some implementation-specific manner.
 </para>
