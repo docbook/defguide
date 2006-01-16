@@ -66,7 +66,7 @@ set       nop
 
 <xsl:template name="user.header.content">
   <xsl:param name="node" select="."/>
-  <link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png">
+  <link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" />
 </xsl:template>
 
 <xsl:template name="user.footer.navigation">
@@ -698,15 +698,15 @@ set       nop
     </xsl:when>
 
     <xsl:when test="$class = 'element'
-		    and following-sibling::*[1]/self::db:phrase
-		    and contains(following-sibling::db:phrase[1], '(')">
+		    and following-sibling::*[1]/self::phrase
+		    and contains(following-sibling::phrase[1], '(')">
       <!-- handle <tag>phrase</tag> (<phrase>db._phrase</phrase>) -->
       <xsl:variable name="pattern"
-		    select="string(following-sibling::phrase[1])"/>
+		    select="substring-before(
+			      substring-after(
+			        following-sibling::phrase[1],'('),')')"/>
       <xsl:variable name="target"
 		    select="key('id', concat('element.',$pattern))[1]"/>
-
-      <xsl:message>pattern: <xsl:value-of select="$pattern"/></xsl:message>
 
       <xsl:choose>
 	<xsl:when test="$target">

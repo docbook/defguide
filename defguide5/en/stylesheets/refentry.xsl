@@ -319,6 +319,7 @@
 
   <xsl:variable name="cmnLinkAttr"
 		select="$attributes[@name='linkend']
+			|$attributes[@name='linkends']
                         |$attributes[@name='xlink:href']
                         |$attributes[@name='xlink:type']
                         |$attributes[@name='xlink:role']
@@ -392,108 +393,90 @@
 	  
       <variablelist>
 	<xsl:for-each select="exsl:node-set($allAttrNS)/rng:attribute">
-	  <xsl:variable name="name" select="@name"/>
-	  <xsl:choose>
-	    <!-- ignore this one if there's a following because -->
-	    <!-- it might have a description -->
-	    <xsl:when test="following-sibling::*[@name = $name]"/>
-	    <xsl:otherwise>
-	      <varlistentry>
-		<term role="attname">
-		  <xsl:value-of select="$name"/>
-		</term>
-		<listitem>
-		  <xsl:choose>
-		    <xsl:when test="db:refpurpose">
-		      <para>
-			<xsl:value-of select="db:refpurpose"/>
-		      </para>
-		    </xsl:when>
-		    <xsl:when test="dbx:description">
-		      <xsl:copy-of select="dbx:description/*"/>
-		    </xsl:when>
-		    <xsl:otherwise>
-		      <para>
-			<xsl:text>FIXME:</xsl:text>
-		      </para>
-		    </xsl:otherwise>
-		  </xsl:choose>
+	  <xsl:variable name="name">
+	    <xsl:choose>
+	      <xsl:when test="@name">
+		<xsl:value-of select="@name"/>
+	      </xsl:when>
+	      <xsl:otherwise>*</xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:variable>
 
-		  <xsl:if test="rng:choice|rng:value">
-		    <informaltable frame="none">
-		      <tgroup cols="2">
-			<colspec colname="c1" align="left" colwidth="1.25in"/>
-			<colspec colname="c2" align="left"/>
-			<thead>
-			  <row>
-			    <entry namest="c1" nameend="c2">
-			      <para>Enumerated values:</para>
-			    </entry>
-			  </row>
-			</thead>
-			<tbody>
-			  <xsl:for-each select=".//rng:value">
-			    <xsl:variable name="doc"
-					  select="following-sibling::*[1]"/>
-			    <row>
-			      <entry>
-				<quote>
-				  <xsl:value-of select="."/>
-				</quote>
-			      </entry>
-			      <entry>
-				<para>
-				  <xsl:choose>
-				    <xsl:when test="$doc/self::a:documentation">
-				      <xsl:value-of select="$doc"/>
-				    </xsl:when>
-				    <xsl:otherwise>
-				      <xsl:text>FIXME:</xsl:text>
-				    </xsl:otherwise>
-				  </xsl:choose>
-				</para>
-			      </entry>
-			    </row>
-			  </xsl:for-each>
-			</tbody>
-		      </tgroup>
-		    </informaltable>
-		  </xsl:if>
+	  <varlistentry>
+	    <term role="attname">
+	      <xsl:value-of select="$name"/>
+	    </term>
+	    <listitem>
+	      <xsl:choose>
+		<xsl:when test="db:refpurpose">
+		  <para>
+		    <xsl:value-of select="db:refpurpose"/>
+		  </para>
+		</xsl:when>
+		<xsl:when test="dbx:description">
+		  <xsl:copy-of select="dbx:description/*"/>
+		</xsl:when>
+		<xsl:otherwise>
+		  <xsl:message>
+		    <xsl:text>FIXME: </xsl:text>
+		    <xsl:value-of select="$name"/>
+		    <xsl:text> on </xsl:text>
+		    <xsl:value-of select="$elem/@name"/>
+		  </xsl:message>
+		  <para>
+		    <xsl:text>FIXME:</xsl:text>
+		  </para>
+		</xsl:otherwise>
+	      </xsl:choose>
 
-<!--
-		  <xsl:if test="rng:choice|rng:value">
-		    <para>Enumerated values:</para>
-		    <variablelist>
+	      <xsl:if test="rng:choice|rng:value">
+		<informaltable frame="none">
+		  <tgroup cols="2">
+		    <colspec colname="c1" align="left" colwidth="1.25in"/>
+		    <colspec colname="c2" align="left"/>
+		    <thead>
+		      <row>
+			<entry namest="c1" nameend="c2">
+			  <para>Enumerated values:</para>
+			</entry>
+		      </row>
+		    </thead>
+		    <tbody>
 		      <xsl:for-each select=".//rng:value">
 			<xsl:variable name="doc"
 				      select="following-sibling::*[1]"/>
-			<varlistentry>
-			  <term role="attvalue">
+			<row>
+			  <entry>
 			    <quote>
 			      <xsl:value-of select="."/>
 			    </quote>
-			  </term>
-			  <listitem>
+			  </entry>
+			  <entry>
 			    <para>
 			      <xsl:choose>
 				<xsl:when test="$doc/self::a:documentation">
 				  <xsl:value-of select="$doc"/>
 				</xsl:when>
 				<xsl:otherwise>
+				  <xsl:message>
+				    <xsl:text>FIXME: </xsl:text>
+				    <xsl:value-of select="$name"/>
+				    <xsl:text> on </xsl:text>
+				    <xsl:value-of select="$elem/@name"/>
+				  </xsl:message>
 				  <xsl:text>FIXME:</xsl:text>
 				</xsl:otherwise>
 			      </xsl:choose>
 			    </para>
-			  </listitem>
-			</varlistentry>
+			  </entry>
+			</row>
 		      </xsl:for-each>
-		    </variablelist>
-		  </xsl:if>
--->
-		</listitem>
-	      </varlistentry>
-	    </xsl:otherwise>
-	  </xsl:choose>
+		    </tbody>
+		  </tgroup>
+		</informaltable>
+	      </xsl:if>
+	    </listitem>
+	  </varlistentry>
 	</xsl:for-each>
       </variablelist>
     </refsection>
@@ -615,13 +598,6 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
     <title>
       <xsl:text>Synopsis</xsl:text>
     </title>
-
-    <para>
-      <xsl:comment>
-	<xsl:text> FIXME: something has to occur before the section </xsl:text>
-      </xsl:comment>
-    </para>
-
     <xsl:apply-templates/>
   </refsynopsisdiv>
 </xsl:template>
@@ -747,6 +723,7 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 
   <xsl:variable name="cmnLinkAttr"
 		select="$attributes[@name='linkend']
+			|$attributes[@name='linkends']
                         |$attributes[@name='xlink:href']
                         |$attributes[@name='xlink:type']
                         |$attributes[@name='xlink:role']
@@ -828,9 +805,10 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 	  </xsl:for-each>
 	</itemizedlist>
 
-	<xsl:if test=".//rng:attribute[not(ancestor::rng:optional)]">
+	<xsl:if test=".//rng:attribute[not(ancestor::rng:optional)
+		                       and not(ancestor::rng:zeroOrMore)]">
 	  <para>
-	    <xsl:text>Required attributes are show in </xsl:text>
+	    <xsl:text>Required attributes are shown in </xsl:text>
 	    <emphasis role="bold">bold</emphasis>
 	    <xsl:text>.</xsl:text>
 	  </para>
@@ -851,6 +829,9 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
   <listitem>
     <para>
       <xsl:choose>
+	<xsl:when test="ancestor::rng:zeroOrMore">
+	  <emphasis>Zero or more:</emphasis>
+	</xsl:when>
 	<xsl:when test="ancestor::rng:optional">
 	  <emphasis>At most one of:</emphasis>
 	</xsl:when>
@@ -894,57 +875,37 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
   </listitem>
 </xsl:template>
 
-<!--
-<xsl:template match="rng:ref" mode="attributes">
-  <xsl:variable name="attrs" select="key('define', @name)/rng:attribute"/>
-
-  <xsl:choose>
-    <xsl:when test="count($attrs) &gt; 1">
-      <listitem>
-	<para>
-	  <xsl:choose>
-	    <xsl:when test="ancestor::rng:optional">
-	      <emphasis>At most one of:</emphasis>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <emphasis role="bold">Each of:</emphasis>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</para>
-	<itemizedlist spacing='compact' role="element-synopsis">
-	  <xsl:apply-templates select="$attrs" mode="attributes">
-	    <xsl:with-param name="optional" select="ancestor::rng:optional"/>
-	    <xsl:with-param name="choice" select="ancestor::rng:choice"/>
-	  </xsl:apply-templates>
-	</itemizedlist>
-      </listitem>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:apply-templates select="$attrs" mode="attributes">
-	<xsl:with-param name="optional" select="ancestor::rng:optional"/>
-	<xsl:with-param name="choice" select="ancestor::rng:choice"/>
-      </xsl:apply-templates>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
--->
-
 <xsl:template match="rng:attribute" mode="attributes">
   <xsl:param name="optional"
 	     select="parent::rng:optional
 		     or parent::rng:choice/parent::rng:optional
-		     or parent::rng:interleave/parent::rng:choice/parent::rng:optional"/>
+		     or parent::rng:interleave/parent::rng:choice/parent::rng:optional
+		     or parent::rng:zeroOrMore
+		     or parent::rng:choice/parent::rng:zeroOrMore
+		     or parent::rng:interleave/parent::rng:choice/parent::rng:zeroOrMore"/>
+
   <xsl:param name="choice" select="ancestor::rng:choice"/>
+
+  <xsl:variable name="name">
+    <xsl:choose>
+      <xsl:when test="@name">
+	<xsl:value-of select="@name"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<emphasis>Any attribute</emphasis>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
   <listitem>
     <para>
       <xsl:choose>
 	<xsl:when test="$optional">
-	  <xsl:value-of select="@name"/>
+	  <xsl:copy-of select="$name"/>
 	</xsl:when>
 	<xsl:otherwise>
 	  <emphasis role="bold">
-	    <xsl:value-of select="@name"/>
+	    <xsl:copy-of select="$name"/>
 	  </emphasis>
 	</xsl:otherwise>
       </xsl:choose>
@@ -1094,11 +1055,37 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
   <listitem>
     <para>
       <xsl:text>Any element from any namespace</xsl:text>
-      <xsl:if test="rng:except">
-	<xsl:text> (with exceptions!)</xsl:text>
-      </xsl:if>
-      <xsl:text>.</xsl:text>
+      <xsl:choose>
+	<xsl:when test="rng:except">
+	  <xsl:text> except:</xsl:text>
+	</xsl:when>
+	<xsl:otherwise>.</xsl:otherwise>
+      </xsl:choose>
     </para>
+    <xsl:if test="rng:except">
+      <itemizedlist>
+	<xsl:for-each select="rng:except/rng:nsName">
+	  <listitem>
+	    <para>
+	      <xsl:choose>
+		<xsl:when test="@ns">
+		  <xsl:text>Elements from the </xsl:text>
+		  <uri>
+		    <xsl:value-of select="@ns"/>
+		  </uri>
+		  <xsl:text> namespace.</xsl:text>
+		</xsl:when>
+		<xsl:otherwise>
+		  <xsl:text>Elements from the </xsl:text>
+		  <uri>http://docbook.org/ns/docbook</uri>
+		  <xsl:text> namespace.</xsl:text>
+		</xsl:otherwise>
+	      </xsl:choose>
+	    </para>
+	  </listitem>
+	</xsl:for-each>
+      </itemizedlist>
+    </xsl:if>
   </listitem>
 </xsl:template>
 
