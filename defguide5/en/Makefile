@@ -25,7 +25,7 @@ endif
 ifeq ($(XSLT),xsltproc)
   MEMORYOPT=
 else
-  MEMORYOPT=-m $(MEMORY)
+  MEMORYOPT=-opts hugemem
 endif
 
 all: chunks
