@@ -23,39 +23,38 @@
 <title>Description</title>
 
 
-<para>This element contains a set of alternative
-“media objects.” In DocBook V3.1, three types of
-external objects are defined: <tag>VideoObject</tag>s,
-<tag>AudioObject</tag>s, and <tag>ImageObject</tag>s. Additional
-textual descriptions may be provided with <tag>TextObject</tag>s.
-</para>
+<para>This element contains a set of alternative “media objects.”
+Exactly one object will be selected and rendered.</para>
 
-<refsection xml:id="dbreproc.mediaobject"><title>Processing expectations</title>
+<refsection xml:id="dbreproc.mediaobject">
+<title>Processing expectations</title>
+
 <para><?tdg gentext='format.block'?>
-</para>
-
-<para>The primary purpose of the <tag>MediaObject</tag> is to provide
-a wrapper around a set of alternative presentations of the same
+The primary purpose of the <tag>mediaobject</tag> is to provide a
+wrapper around a set of alternative presentations of the same
 information.
 </para>
+
 <para>If possible, the processing system should use the content of the
-first object within the <tag>MediaObject</tag>.  If the first
+first object within the <tag>mediaobject</tag>.  If the first
 object cannot be used, the remaining objects should be
 considered in the order that they occur.  A processor should use
 the first object that it can, although it is free to choose any
 of the remaining objects if the primary one cannot be used.
 </para>
+
 <para>Under no circumstances should more than one object in a
-<tag>MediaObject</tag> be used or presented at the same time.
+<tag>mediaobject</tag> be used or presented at the same time.
 </para>
-<para>For example, a <tag>MediaObject</tag> might contain a video, a high
-resolution image, a low resolution image, a long text description, and
-a short text description.  In a “high end” online system,
-the video is used.  For print publishing, the high resolution image is used.
-For other online systems, either the high or low resolution image is used,
-possibly including the short text description as the online alternative.
-In a text-only environment, either the long or short text descriptions are
-used.
+
+<para>For example, a <tag>mediaobject</tag> might contain a video, a
+high resolution image, a low resolution image, a long text
+description, and a short text description. In a “high end” online
+system, the video is used. For print publishing, the high resolution
+image is used. For other online systems, either the high or low
+resolution image is used, possibly including the short text
+description as the online alternative. In a text-only environment,
+either the long or short text descriptions are used.
 </para>
 </refsection>
 
@@ -74,7 +73,6 @@ used.
 
 <anchor xml:id='ex.os.mediaobject.1' role='HACK-ex.out.start'/>
 <xi:include href='example.1.xml' xpointer='/1/2'/>
-<xi:include href='example.1.xml' xpointer='/1/3'/>
 <anchor xml:id='ex.oe.mediaobject.1' role='HACK-ex.out.end'/>
 
 </refsection>
