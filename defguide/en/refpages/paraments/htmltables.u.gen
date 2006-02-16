@@ -51,7 +51,30 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>id          ID             #IMPLIED
+><synopsis>id		ID		#IMPLIED
+	lang		CDATA		#IMPLIED
+	remap		CDATA		#IMPLIED
+	xreflabel	CDATA		#IMPLIED
+	revisionflag	(changed
+			|added
+			|deleted
+			|off)		#IMPLIED
+	arch		CDATA		#IMPLIED
+        condition	CDATA		#IMPLIED
+	conformance	NMTOKENS	#IMPLIED
+	os		CDATA		#IMPLIED
+	revision	CDATA		#IMPLIED
+        security	CDATA		#IMPLIED
+	userlevel	CDATA		#IMPLIED
+	vendor		CDATA		#IMPLIED
+	wordsize	CDATA		#IMPLIED
+	
+	dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED
+	xml:base	CDATA		#IMPLIED
+	
   class       CDATA          #IMPLIED
   style       CDATA          #IMPLIED
   title       CDATA         #IMPLIED xml:lang    NMTOKEN        #IMPLIED onclick     CDATA       #IMPLIED
@@ -238,7 +261,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>id          ID             #IMPLIED
+><synopsis>%common.attrib;
   class       CDATA          #IMPLIED
   style       CDATA          #IMPLIED
   title       CDATA         #IMPLIED</synopsis></entry>
@@ -250,7 +273,30 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><synopsis>id          ID             #IMPLIED
+><synopsis>id		ID		#IMPLIED
+	lang		CDATA		#IMPLIED
+	remap		CDATA		#IMPLIED
+	xreflabel	CDATA		#IMPLIED
+	revisionflag	(changed
+			|added
+			|deleted
+			|off)		#IMPLIED
+	arch		CDATA		#IMPLIED
+        condition	CDATA		#IMPLIED
+	conformance	NMTOKENS	#IMPLIED
+	os		CDATA		#IMPLIED
+	revision	CDATA		#IMPLIED
+        security	CDATA		#IMPLIED
+	userlevel	CDATA		#IMPLIED
+	vendor		CDATA		#IMPLIED
+	wordsize	CDATA		#IMPLIED
+	
+	dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED
+	xml:base	CDATA		#IMPLIED
+	
   class       CDATA          #IMPLIED
   style       CDATA          #IMPLIED
   title       CDATA         #IMPLIED</synopsis></entry>
@@ -273,7 +319,7 @@
 </row>
 <row rowsep='1' role='cmsynop'>
 <entry namest='c1' nameend='c3' align='left'
-><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//ELEMENTS DocBook XML HTML Tables V4.4//EN
+><para><emphasis role='bold'>Public identifier</emphasis>: -//OASIS//ELEMENTS DocBook XML HTML Tables V4.5CR1//EN
 </para><para><emphasis role='bold'>System identifier</emphasis>: htmltblx.mod
 </para></entry>
 </row>

@@ -4,8 +4,8 @@
 
 my $VERSION = "SF DocBook 1.0";
 
-my $PUBLIC_ID   = "-//OASIS//DTD DocBook XML V4.1.2//EN";
-my $SYSTEM_ID   = "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd";
+my $PUBLIC_ID   = "-//OASIS//DTD DocBook XML V4.5//EN";
+my $SYSTEM_ID   = "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd";
 
 my $prefix = "";
 
