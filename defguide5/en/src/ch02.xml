@@ -1916,32 +1916,35 @@ These inlines are used to mark up text for special presentation:
 </varlistentry>
 </variablelist>
 </section>
-<section xml:id="s.inline.math"><info><title>Mathematics</title></info>
-<para>
-<indexterm>
-  <primary>elements</primary>
-  <secondary>mathematics</secondary>
-</indexterm><indexterm>
-  <primary>mathematics (DocBook)</primary>
-</indexterm><indexterm>
-  <primary>equations (elements)</primary>
-</indexterm><indexterm>
-  <primary>MathML, incorporating</primary>
-</indexterm><indexterm>
-  <primary>namespaces</primary>
-</indexterm>
-DocBook does not define a complete set of elements for representing
-equations.  No one has ever pressed the DocBook maintainers to add
-this functionality, and the prevailing opinion is that incorporating
-<link xlink:href="http://www.w3.org/TR/REC-MathML/">MathML</link> using a
-mechanism like <link xlink:href="http://www.w3.org/TR/REC-xml-names/">namespaces</link> is probably
-the best long-term solution.
-</para>
+
+<section xml:id="s.inline.math">
+<info><title>Mathematics</title></info>
+<para><indexterm><primary>elements</primary>
+<secondary>mathematics</secondary>
+</indexterm><indexterm><primary>mathematics (DocBook)</primary>
+</indexterm><indexterm><primary>equations (elements)</primary>
+</indexterm><indexterm><primary>MathML, incorporating</primary>
+</indexterm><indexterm><primary>namespaces</primary>
+</indexterm>DocBook does not define a complete set of elements for
+representing equations. No one has ever pressed the DocBook
+maintainers to add this functionality, and the prevailing opinion is
+that incorporating
+<link xlink:href="http://www.w3.org/TR/REC-MathML/">MathML</link> is
+probably the best long-term solution.
+For simple mathematics that doesn't require extensive markup, the
+<tag>mathphrase</tag> element may be sufficient.</para>
 <variablelist>
 <varlistentry>
 <term><tag>inlineequation</tag></term>
 <listitem><para><?tdg-purp inlineequation?>.<indexterm>
   <primary>InlineEquation element</primary>
+</indexterm>
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>mathphrase</tag></term>
+<listitem><para><?tdg-purp mathphrase?>.<indexterm>
+  <primary>mathphrase element</primary>
 </indexterm>
 </para></listitem>
 </varlistentry>
