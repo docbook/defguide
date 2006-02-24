@@ -1,0 +1,70 @@
+<refentry xmlns='http://docbook.org/ns/docbook'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<info>
+  <pubdate>$Date$</pubdate>
+  <releaseinfo>$Revision$</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>cover</refmiscinfo>
+  <refmiscinfo role='pattern'>db.cover</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+
+<para>The <tag>cover</tag> element contains additional material to be
+printed on the cover of a publication. Multiple <tag>cover</tag>
+elements may be used to hold material for the inside and outside front
+and back covers, the spine, dust jackets, etc.</para>
+
+<para>Because there is likely to be great variation in the number of
+covers, and the means by which they <tag>cover</tag> elements are
+processed, DocBook does not attempt to define semantics for their
+order or relationship to one another.</para>
+
+<para>The title, authors, and other bibliographic metadata that appears
+in the <tag>info</tag> element should not be repeated inside the
+<tag>cover</tag>. The intent is merely that <tag>cover</tag> can contain
+any additional material required.</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.block'?>
+<?tdg gentext='format.csuppress'?>
+</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition='ref.examples'>
+<title>Examples</title>
+
+<para>The following example shows a <tag>cover</tag> tag as it might
+have appeared in the source for the first edition of this book.</para>
+
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
+
+<para>In this example, we assume that the first <tag>cover</tag> element
+contains additional material for the front cover and the second
+<tag>cover</tag> element contains additional material for the back cover.
+</para>
+
+</refsection>
+
+</refentry>
