@@ -22,29 +22,37 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para>This element points to an external entity containing text
-to be inserted.
-</para>
+<para>This element points to an external entity containing text to be
+inserted.</para>
 
 <note>
 <para>Any markup in the text identified with <tag>textdata</tag>
 will be escaped. In other words, this element is for inserting things
 like program listings, not parts of an XML document. To break a document
-into separate physical files, use entities.</para>
+into separate physical files, use XInclude or external parsed entities.</para>
 </note>
 
-<refsection xml:id="dbreproc.textdata"><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-Insert the text.
-</para>
+<refsection xml:id="dbreproc.textdata">
+<title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>Insert the text.</para>
+
 <para>There are two ways to provide content for <tag>textdata</tag>:
-<tag class='attribute'>entityref</tag> or <tag
-class='attribute'>fileref</tag>.  It is best to use only one of these
-methods, however, if multiple sources are provided, 
-<tag class='attribute'>entityref</tag> will be used in favor of 
+<tag class='attribute'>entityref</tag> or
 <tag class='attribute'>fileref</tag>.
+It is best to use only one of these methods; however, if multiple
+sources are provided, <tag class='attribute'>entityref</tag> will be
+used in favor of <tag class='attribute'>fileref</tag>.
 </para>
+
+<para>If the encoding is such that the processor will not be able to
+determine the encoding of the text, the encoding can be specified in
+the <tag class="attribute">encoding</tag> attribute.
+For encodings 
+<link xlink:href="ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets">registered (as charsets)</link>
+with the Internet Assigned Numbers Authority, recommended best
+practice suggests that they be referred to using their registered
+names.</para>
+
 </refsection> 
 
 

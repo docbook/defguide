@@ -23,23 +23,31 @@
 <title>Description</title>
 
 
-<para><tag>Example</tag> is a formal example with a title. Examples often
-contain <tag>ProgramListing</tag>s or other large, block elements.
-Frequently they are given <acronym>ID</acronym>s and referenced from the text with
-<tag>XRef</tag> or <tag>Link</tag>.
+<para><tag>Example</tag> is a formal example with a title. Examples
+often contain <tag>programlisting</tag>s or other large, block
+elements. Frequently they are given <tag class="attribute">xml:id</tag>s and
+referenced from the text with <tag>xref</tag> or <tag>link</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-DocBook does not
-specify the location of the example within the final displayed
-flow of text; it may float or remain where it is located.
-</para>
-<para>A list of examples may be generated at the beginning of a
-document.
-</para>
-</refsection>
+<para><?tdg gentext='format.block'?></para>
 
+<para>DocBook does not specify the location of the example within the
+final displayed flow of text; it may float or remain where it is
+located.
+</para>
+
+<para>A list of examples may be generated at the beginning of a
+document.</para>
+
+<para>If a <tag class="attribute">label</tag> is specified, that
+label will be used for identifying the example and in generated
+cross-references. If unspecified, <tag>example</tag>s are often, but not
+always, numbered.</para>
+
+<para>If a <tag class="attribute">width</tag> is specified, formatters
+may use this value to determine scaling or rotation.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

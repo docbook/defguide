@@ -1,0 +1,58 @@
+#!/usr/bin/perl -- # -*- Perl -*-
+
+print "DEFGUIDERND=../../tools/lib/defguide.rnd\n";
+print "REFENTRYXSL=../../stylesheets/refentry.xsl\n";
+print "\n";
+print "all: buildall\n";
+print "\trm -f build/*.xi\n";
+print "\n";
+print "clean:\n";
+print "\trm -rf build\n";
+print "\n";
+print "Makefile:\n";
+print "\t../../tools/bin/makeelmake > \$@\n";
+print "\n";
+
+my @all = ();
+
+opendir (DIR, ".");
+while (my $name = readdir(DIR)) {
+    next if ! -d $name;
+    next if $name eq 'build';
+    next if $name =~ /^\.\.?$/;
+
+    my @refentry = ();
+    my @examples = ();
+
+    opendir(DB, $name);
+    while (my $fn = readdir(DB)) {
+	my $file = "$name/$fn";
+	next if ! -f $file;
+	next if $file !~ /\.xml$/;
+	if ($fn =~ /^example\./) {
+	    push (@examples, $fn);
+	} else {
+	    push (@refentry, $fn);
+	}
+    }
+    closedir (DB);
+
+    foreach my $ref (@refentry) {
+	push (@all, "build/$ref");
+	print "build/$ref: $name/$ref";
+	foreach my $ex (@examples) {
+	    print " $name/$ex";
+	}
+	print " build/.f \$(DEFGUIDERND) \$(REFENTRYXSL)\n";
+	print "\t\@echo Making \$@\n";
+	print "\t\@xmllint --xinclude \$< > build/$ref.xi\n";
+	print "\t\@saxon build/$ref.xi \$(REFENTRYXSL) \$@\n\n";
+    }
+}
+closedir (DIR);
+
+print "build/.f:\n";
+print "\tmkdir build\n";
+print "\ttouch build/.f\n\n";
+
+print "buildall: ", join(" ", @all), "\n\n";

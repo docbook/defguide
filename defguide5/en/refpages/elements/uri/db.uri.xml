@@ -23,15 +23,39 @@
 <title>Description</title>
 
 
-<para>The <tag>uri</tag> element identifies a Uniform
-Resource Identifier (<acronym>URI</acronym>) in content.</para>
+<para>The <tag>uri</tag> element identifies a Uniform Resource
+Identifier (<acronym>URI</acronym>) in content.</para>
 
 <refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-The <tag>uri</tag> element does not
-automatically generate a link to the URI it identifies.</para>
-</refsection>
 
+<para><?tdg gentext='format.inline'?> The <tag>uri</tag> element does
+not automatically generate a link to the URI it identifies.</para>
+
+<para>DocBook does not mandate any values for the
+<tag class="attribute">type</tag> attribute, but several useful values
+have been suggested:</para>
+
+<itemizedlist>
+<listitem>
+<para><tag class="attvalue">xmlnamespace</tag></para>
+</listitem>
+<listitem>
+<para><tag class="attvalue">saxfeaturename</tag></para>
+</listitem>
+<listitem>
+<para><tag class="attvalue">saxpropertyname</tag></para>
+</listitem>
+<listitem>
+<para><tag class="attvalue">soapaction</tag></para>
+</listitem>
+<listitem>
+<para><tag class="attvalue">rddlpurpose</tag></para>
+</listitem>
+<listitem>
+<para><tag class="attvalue">rddlnature</tag></para>
+</listitem>
+</itemizedlist>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

@@ -22,13 +22,17 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
+<para>A <tag>nonterminal</tag> is a symbol in an EBNF
+<tag>production</tag> that represents a portion of the grammar.</para>
 
-<para>This element is only available if you are using the EBNF Module.</para>
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.inline'?>
+</para>
+<para>Notice that the <tag class="attribute">def</tag> attribute
+<emphasis>is not</emphasis> an IDREF, it is a URI. References to non-terminals
+often cross document boundaries, making ID/IDREF linking impossible.</para>
 
-<para>A <tag>NonTerminal</tag> is a symbol in an EBNF
-<tag>Production</tag> that represents a portion of the
-grammar.</para>
-
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>
@@ -38,6 +42,10 @@ grammar.</para>
 
 <?tdg-seealso?>
 
-<!-- FIXME: add examples -->
+<refsection condition='ref.examples'>
+<title>Examples</title>
+
+<para>See <tag>productionset</tag>.</para>
+</refsection>
 
 </refentry>

@@ -33,7 +33,7 @@ all: chunks
 test: tdg.xml
 	jing ../../docbook/relaxng/docbook/docbook.rng $<
 
-tdg.xml: book.xml bookinfo.xml refpages/ref-elements.xml \
+tdg.xml: book.xml bookinfo.xml refpages/list-elements.xml \
          $(wildcard src/*.xml) \
          $(wildcard refpages/elements/*/*.gen)
 	xmllint --xinclude book.xml > $@
@@ -48,7 +48,7 @@ chunks: $(SOURCE) $(SSTITLEPG)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
 
-chunk: $(SSTITLEPG)
+chunk: $(SOURCE) $(SSTITLEPG)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
 
 index: $(SSTITLEPG)

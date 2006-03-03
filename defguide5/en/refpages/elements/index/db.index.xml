@@ -22,21 +22,31 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para>An <tag>Index</tag> contains the formatted index of a document.
-An index may begin with introductory material, followed by
-any number of <tag>IndexEntry</tag>s or <tag>IndexDiv</tag>s.
+<para>An <tag>index</tag> contains the formatted index of a document.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-An <tag>Index</tag> in a <tag>Book</tag>
-frequently causes a forced page break in print media.
+<para><?tdg gentext='format.block'?> An <tag>index</tag> in a
+<tag>book</tag> frequently causes a forced page break in print media.
 </para>
 
-<para>In many processing systems, indexes are generated automatically or 
-semiautomatically and never appear instantiated as DocBook markup.
+<para>In many processing systems, indexes are generated automatically
+or semi-automatically and never appear instantiated as DocBook markup.
 </para>
+
+<para>Often an empty <tag>index</tag> is used to indicate where the
+automatically generated index should be rendered.</para>
+
+<para>Authors can choose to have several types of indexes, for example,
+function, command, and concept indexes. This can be achieved in DocBook
+with the <tag class="attribute">type</tag> attribute. All of the
+<tag>indexterm</tag>s with a particular <tag class="attribute">type</tag>
+will be collected together in the <tag>index</tag> with the same
+<tag class="attribute">type</tag>.</para>
+
+<para>All <tag>indexterm</tag>s, irrespective of their
+<tag class="attribute">type</tag> appear in an <tag>index</tag> that has
+no <tag class="attribute">type</tag> attribute.</para>
 </refsection>
 
 <?tdg-attributes?>

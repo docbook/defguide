@@ -30,14 +30,47 @@ a numeral, letter, or other sequential symbol (such as roman numerals).
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
 </para>
-<para>If no value is specified for <tag class='attribute'>Numeration</tag>,
-Arabic numerals (1, 2, 3, …) are to be used.
-</para>
-<para>In nested lists, DocBook does not specify the sequence of numerations.
-</para>
-<para>Note that the attributes of <tag>OrderedList</tag> have a significant
-influence on the processing expectations.
-</para>
+<para>The <tag class="attribute">numeration</tag> attribute indicates
+the desired numeration. If it is not specified, Arabic numerals (1, 2,
+3, …) are to be used.</para>
+
+<note>
+<para>The actually characters used in alphabetic numeration may be locale
+sensitive. Where the sequence “a”, “b”, “c” might be selected in an English
+locale, “&#x30A2;”, “&#x30A4;”, “&#x30A6;”
+might be selected if Katakana was implied by the current
+locale.</para>
+</note>
+
+<para>The <tag class="attribute">continuation</tag> attribute
+indicates how numbering should begin relative to the immediately
+preceding list. If it is not specified, numbering is to be restarted
+at 1.</para>
+
+<note>
+<para>The preceding list is not required to be in the same parent. That is,
+a list in one chapter may be continued in the next, or indeed arbitrarily
+later in the document, provided no other list intervenes.</para>
+</note>
+
+<para>The <tag class="attribute">inheritnum</tag> attribute indicates
+how items in nested lists should be numbered. If it is not specified,
+numbering is to ignore list nesting. Inherited numeration creates
+compound list item numbers.</para>
+
+<para>If <tag class="attribute">inheritnum</tag> is
+“<tag class="attvalue">inherit</tag>”, then the third
+item of a list inside the second item of a list inside the fourth item
+of a list might be enumerated as “4.2.3”. If
+<tag class="attribute">inheritnum</tag> is
+“<tag class="attvalue">ignore</tag>”, then it would be simply “3”.
+(With the <tag class="attribute">numeration</tag> attribute
+handling the actual format of the numbers.)</para>
+
+<para>In nested lists,
+some publishers prefer to use Arabic numbers throughout (4.3.2) while
+others prefer to step through a sequence of numerations (4.b.iii).
+DocBook does not specify the sequence of numerations.</para>
 </refsection>
 
 <?tdg-attributes?>

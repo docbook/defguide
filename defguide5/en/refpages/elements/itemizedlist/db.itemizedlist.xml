@@ -32,14 +32,15 @@ marked with a bullet, dash, or other symbol.
 </para>
 <para>DocBook specifies neither the initial mark nor the sequence of marks
 to be used in nested lists.  If explicit control is desired, the
-<tag class='attribute'>Mark</tag> attribute should be used.  The
-values of the <tag class='attribute'>Mark</tag> attribute are expected
+<tag class='attribute'>mark</tag> attribute should be used.  The
+values of the <tag class='attribute'>mark</tag> attribute are expected
 to be keywords, not representations (numerical character references,
-entities, and so on.) of the actual mark.
+entities, and so on) of the actual mark.
 </para>
+<para>DocBook does not specify a set of appropriate keywords.</para>
 <para>In order to enforce a standard set of marks at your organization,
 it may be useful to construct a customization layer that limits
-the values of the <tag class='attribute'>Mark</tag> attribute to
+the values of the <tag class='attribute'>mark</tag> attribute to
 an enumerated list.  See <xref linkend="app-customizing"/>.
 </para>
 </refsection>

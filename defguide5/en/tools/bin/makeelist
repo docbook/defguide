@@ -1,0 +1,42 @@
+#!/usr/bin/perl -- # -*- Perl -*-
+
+my @files = ();
+
+opendir (DIR, "elements");
+while ($dir = readdir(DIR)) {
+    next if ! -d "elements/$dir";
+    next if $dir eq 'build';
+
+    opendir (EL, "elements/$dir");
+    while ($name = readdir (EL)) {
+	next if $name !~ /^db\..*\.xml$/;
+	push(@files, "elements/$dir/$name");
+    }
+    closedir (EL);
+}
+closedir (DIR);
+
+print "<reference xml:id='ref-element'\n";
+print "           xmlns='http://docbook.org/ns/docbook'\n";
+print "           xmlns:xi='http://www.w3.org/2001/XInclude'>\n";
+print "<title>DocBook Element Reference</title>\n";
+print "<?dbhtml filename='ref-elements.html'?>\n\n";
+print "<xi:include href='intro-elements.xml'/>\n\n";
+
+my @any = ();
+foreach my $file (sort @files) {
+    my $name = $file;
+    $name =~ s/^.*\/([^\/]+)$/$1/;
+
+    if ($file =~ /ANY/) {
+	push (@any, "<xi:include href='elements/build/$name'/>");
+    } else {
+	print "<xi:include href='elements/build/$name'/>\n";
+    }
+}
+
+foreach my $line (@any) {
+    print "$line\n";
+}
+
+print "\n</reference>\n";

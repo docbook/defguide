@@ -22,51 +22,19 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para>A <tag>SimpleList</tag> is a list of words or phrases. It offers a
+<para>A <tag>simplelist</tag> is a list of words or phrases. It offers a
 convenient alternative to the other list elements for inline content.
 </para>
 
-<refsection xml:id="dbreproc.simplelist"><title>Processing expectations</title>
+<refsection xml:id="dbreproc.simplelist">
+<title>Processing expectations</title>
+
 <para>Ironically, the processing expectations of a
-<tag>SimpleList</tag> are quite complex.
-</para>
-
-<para>The presentation of a <tag>SimpleList</tag> is controlled by the
-<tag class='attribute'>Type</tag> attribute, which has three possible
-values:
-
-<variablelist>
-<varlistentry><term><literal>Inline</literal></term>
-  <listitem>
-  <para>    Indicates that the <tag>Member</tag>s of the list should be
-    rendered as a comma separated, inline list.
-  </para>
-  </listitem>
-</varlistentry>
-
-<varlistentry><term><literal>Horiz</literal></term>
-  <listitem>
-  <para>    Indicates that the <tag>Member</tag>s of the list should be
-    rendered in a tabular fashion with members running across the 
-    rows.
-  </para>
-  </listitem>
-</varlistentry>
-
-<varlistentry><term><literal>Vert</literal></term>
-  <listitem>
-  <para>    Indicates that the <tag>Member</tag>s of the list should be
-    rendered in a tabular fashion with members running down the
-    columns.  This is the default.
-  </para>
-  </listitem>
-</varlistentry>
-</variablelist>
-</para>
-
-<para>In both of the tabular cases, the number of columns in the table is
-controlled by the <tag class='attribute'>Columns</tag> attribute.
+<tag>simplelist</tag> are quite complex. The value of the
+<tag class='attribute'>type</tag> attribute determines if the list
+is presented inline, or in a row- or column-major table. In the table
+cases, the <tag class="attribute">columns</tag> attribute determines the
+number of columns in the table.
 </para>
 </refsection>
 

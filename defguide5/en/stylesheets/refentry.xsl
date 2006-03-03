@@ -102,7 +102,7 @@
 
 <xsl:template match="processing-instruction('tdg-refpurpose')">
   <xsl:variable name="def" select="$rng/key('define', $pattern)"/>
-  <xsl:value-of select="$def/ancestor::rng:div[1]/db:refpurpose"/>
+  <xsl:copy-of select="$def/ancestor::rng:div[1]/db:refpurpose/node()"/>
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-refsynopsisdiv')">
@@ -410,7 +410,7 @@
 	      <xsl:choose>
 		<xsl:when test="db:refpurpose">
 		  <para>
-		    <xsl:value-of select="db:refpurpose"/>
+		    <xsl:copy-of select="db:refpurpose/node()"/>
 		  </para>
 		</xsl:when>
 		<xsl:when test="dbx:description">
@@ -920,6 +920,12 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 	  <xsl:text>)</xsl:text>
 	</xsl:when>
       </xsl:choose>
+
+      <xsl:if test="@a:defaultValue">
+	<xsl:text> [default=“</xsl:text>
+	<xsl:value-of select="@a:defaultValue"/>
+	<xsl:text>”]</xsl:text>
+      </xsl:if>
     </para>
 
     <xsl:if test="rng:choice|rng:value">

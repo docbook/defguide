@@ -23,18 +23,20 @@
 <title>Description</title>
 
 
-<para>A <tag>VariableList</tag> is a list consisting of <tag>Term</tag>s and
-their definitions or descriptions.
+<para>A <tag>variablelist</tag> is a list consisting of
+<tag>term</tag>s and their definitions or descriptions.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-</para>
-<para>There are many ways to deal with the problems presented in
-formatting a variable list with long <tag>Term</tag>s. DocBook
-does not mandate any particular presentation. The 
-<tag class='attribute'>TermLength</tag> attribute may influence
-the presentation of <tag>Term</tag>s.
+<para><?tdg gentext='format.block'?></para>
+
+<para>There are many ways to present a variable list. DocBook does
+not mandate any particular presentation. The
+<tag class='attribute'>termlength</tag> attribute may influence the
+presentation of <tag>term</tag>s. The
+<tag class='attribute'>termlength</tag> attribute is often specified
+as a number of characters, but other forms are possible. This is an
+<link linkend="app-interchange">interchange issue</link>.
 </para>
 </refsection>
 

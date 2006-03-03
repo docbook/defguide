@@ -23,27 +23,18 @@
 <title>Description</title>
 
 
-<para>A <tag>tag</tag> identifies an <acronym>SGML</acronym> markup construct.
-The utility of this element is almost
-wholly constrained to books about <acronym>SGML</acronym>.
-</para>
-
-<para>The <tag>tag</tag> element is sufficient for most <acronym>XML</acronym> constructs, which
-are identical to the corresponding <acronym>SGML</acronym> constructs, it but does
-not have any provisions for handling the special features of <acronym>XML</acronym>
-markup. A future version of DocBook will address this issue,
-probably by adding new <tag class="attribute">Class</tag>
-values.  In the 
-meantime, you may get by by assigning a <tag class='attribute'>Role</tag>
-attribute for <acronym>XML</acronym>.
+<para>A <tag>tag</tag> identifies an <acronym>XML</acronym> or
+<acronym>SGML</acronym> markup construct. The utility of this element
+is almost wholly constrained to books about markup.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-A <tag>tag</tag> generates all the necessary punctuation
-before and after the construct it identifies.  For example, it generates
-both the leading ampersand and the trailing semicolon when the
-<tag class='attribute'>Class</tag> is <literal>genentity</literal>.
+<para><?tdg gentext='format.inline'?></para>
+
+<para>A <tag>tag</tag> generates all the necessary punctuation before
+and after the construct it identifies. For example, it generates both
+the leading ampersand and the trailing semicolon when the
+<tag class='attribute'>class</tag> is <literal>genentity</literal>.
 </para>
 </refsection>
 
