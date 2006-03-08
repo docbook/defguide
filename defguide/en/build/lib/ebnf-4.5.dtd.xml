@@ -987,7 +987,7 @@
      public-id="-//OASIS//DTD DocBook V4.5 EBNF Module V1.3//EN"
      declaration="/usr/share/xml/declaration/xml.dcl"
      created-by="DTDParse V2.0beta6"
-     created-on="Thu Feb 16 07:38:10 2006"
+     created-on="Tue Mar  7 08:56:54 2006"
 >
 <notation name="EQN"
         system="EQN"
@@ -3233,7 +3233,7 @@
 
 <entity name="dbcent"
         type="param"
-        public="-//OASIS//ENTITIES DocBook Character Entities V4.5CR1//EN"
+        public="-//OASIS//ENTITIES DocBook Character Entities V4.5//EN"
         system="dbcentx.mod"
 />
 
@@ -3246,7 +3246,7 @@
 
 <entity name="dbhier"
         type="param"
-        public="-//OASIS//ELEMENTS DocBook Document Hierarchy V4.5CR1//EN"
+        public="-//OASIS//ELEMENTS DocBook Document Hierarchy V4.5//EN"
         system="dbhierx.mod"
 />
 
@@ -3907,7 +3907,7 @@
 
 <entity name="dbnotn"
         type="param"
-        public="-//OASIS//ENTITIES DocBook Notations V4.5CR1//EN"
+        public="-//OASIS//ENTITIES DocBook Notations V4.5//EN"
         system="dbnotnx.mod"
 />
 
@@ -6866,7 +6866,7 @@
         type="param"
 >
 <text-expanded>#PCDATA
-		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname 
@@ -7375,7 +7375,7 @@
         type="param"
 >
 <text-expanded>#PCDATA
-		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname 
@@ -9178,11 +9178,11 @@
 <entity name="gen.char.class"
         type="param"
 >
-<text-expanded>abbrev|acronym|citation|citerefentry|citetitle|emphasis
+<text-expanded>abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname </text-expanded>
-<text>abbrev|acronym|citation|citerefentry|citetitle|emphasis
+<text>abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname %local.gen.char.class;</text>
@@ -9697,7 +9697,7 @@
         type="param"
 >
 <text-expanded>#PCDATA
-		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname 
@@ -10026,7 +10026,7 @@
 
 <entity name="dbgenent"
         type="param"
-        public="-//OASIS//ENTITIES DocBook Additional General Entities V4.5CR1//EN"
+        public="-//OASIS//ENTITIES DocBook Additional General Entities V4.5//EN"
         system="dbgenent.mod"
 />
 
@@ -12479,7 +12479,7 @@
         type="param"
 >
 <text-expanded>#PCDATA
-		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname 
@@ -14798,7 +14798,7 @@
 
 <entity name="tablemodel"
         type="param"
-        public="-//OASIS//DTD DocBook CALS Table Model V4.5CR1//EN"
+        public="-//OASIS//DTD DocBook CALS Table Model V4.5//EN"
         system="calstblx.dtd"
 />
 
@@ -15697,7 +15697,7 @@
 
 <entity name="dbpool"
         type="param"
-        public="-//OASIS//ELEMENTS DocBook Information Pool V4.5CR1//EN"
+        public="-//OASIS//ELEMENTS DocBook Information Pool V4.5//EN"
         system="dbpoolx.mod"
 />
 
@@ -15766,7 +15766,7 @@
 
 <entity name="htmltbl"
         type="param"
-        public="-//OASIS//ELEMENTS DocBook XML HTML Tables V4.5CR1//EN"
+        public="-//OASIS//ELEMENTS DocBook XML HTML Tables V4.5//EN"
         system="htmltblx.mod"
 />
 
@@ -17180,7 +17180,7 @@
         type="param"
 >
 <text-expanded>#PCDATA
-		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|emphasis
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
 		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
 		|orgname|quote|trademark|wordasword
 		|personname 
@@ -25809,6 +25809,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -26042,6 +26043,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -26334,6 +26336,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -26548,6 +26551,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -27745,6 +27749,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -28200,6 +28205,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -29306,6 +29312,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -29501,6 +29508,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -30901,6 +30909,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -31983,6 +31992,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -34738,6 +34748,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -35458,6 +35469,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -35775,6 +35787,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -36518,6 +36531,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -38154,6 +38168,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -39365,6 +39380,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -40332,6 +40348,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -40813,6 +40830,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -43054,6 +43072,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -43353,6 +43372,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -44850,6 +44870,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -45564,6 +45585,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -46966,6 +46988,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -50473,6 +50496,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -51357,6 +51381,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -53287,6 +53312,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -55006,6 +55032,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -57704,6 +57731,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -58000,6 +58028,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -59775,6 +59804,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -60118,6 +60148,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -60411,6 +60442,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -62343,6 +62375,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -63110,6 +63143,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -63698,6 +63732,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -63945,6 +63980,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -64499,6 +64535,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -65490,6 +65527,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -65990,6 +66028,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -69208,6 +69247,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -70896,6 +70936,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -71450,6 +71491,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -75456,6 +75498,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -75913,6 +75956,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -76216,6 +76260,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -77919,6 +77964,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -78160,6 +78206,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -78616,6 +78663,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -79666,6 +79714,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -80245,6 +80294,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -80720,6 +80770,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -81305,6 +81356,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -81497,6 +81549,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -81999,6 +82052,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>
@@ -82207,6 +82261,7 @@ top|bottom|topbot|all|sides|none</text>
     <element-name name="citation"/>
     <element-name name="citerefentry"/>
     <element-name name="citetitle"/>
+    <element-name name="citebiblioid"/>
     <element-name name="emphasis"/>
     <element-name name="firstterm"/>
     <element-name name="foreignphrase"/>

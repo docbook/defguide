@@ -2403,25 +2403,33 @@ These inlines are used to mark up text for special presentation:
 </varlistentry>
 </variablelist>
 </sect3>
+
 <sect3><title>Mathematics</title>
-<para>
-<indexterm><primary>elements</primary>
-  <secondary>mathematics</secondary></indexterm>
-<indexterm><primary>mathematics (DocBook)</primary></indexterm>
-<indexterm><primary>equations (elements)</primary></indexterm>
-<indexterm><primary>MathML, incorporating</primary></indexterm>
-<indexterm><primary>namespaces</primary></indexterm>
-DocBook does not define a complete set of elements for representing
-equations.  No one has ever pressed the DocBook maintainers to add
-this functionality, and the prevailing opinion is that incorporating
+<para><indexterm><primary>elements</primary>
+<secondary>mathematics</secondary>
+</indexterm><indexterm><primary>mathematics (DocBook)</primary>
+</indexterm><indexterm><primary>equations (elements)</primary>
+</indexterm><indexterm><primary>MathML, incorporating</primary>
+</indexterm><indexterm><primary>namespaces</primary>
+</indexterm>DocBook does not define a complete set of elements for
+representing equations. No one has ever pressed the DocBook
+maintainers to add this functionality, and the prevailing opinion is
+that incorporating
 <ulink url="http://www.w3.org/TR/REC-MathML/">MathML</ulink> using a
-mechanism like <ulink url="http://www.w3.org/TR/REC-xml-names/">namespaces</ulink> is probably
-the best long-term solution.
-</para>
+mechanism like
+<ulink url="http://www.w3.org/TR/REC-xml-names/">namespaces</ulink>
+is probably the best long-term solution.</para>
+<para>DocBook V4.5 added a <sgmltag>mathphrase</sgmltag> element to support
+simple, textual mathematics that doesn't require extensive markup.</para>
 <variablelist>
 <varlistentry>
 <term><sgmltag>InlineEquation</sgmltag></term>
 <listitem><para>&inlineequation.purpose;.<indexterm><primary>InlineEquation element</primary></indexterm>
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><sgmltag>mathphrase</sgmltag></term>
+<listitem><para>&mathphrase.purpose;.<indexterm><primary>mathphrase element</primary></indexterm>
 </para></listitem>
 </varlistentry>
 <varlistentry>
@@ -3481,10 +3489,3 @@ processing applications.
 </sect2>
 </sect1>
 </chapter>
-
-<!--
-Local Variables:
-mode:sgml
-sgml-parent-document: ("book.sgm" "chapter")
-End:
--->
