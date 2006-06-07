@@ -15,12 +15,17 @@ print "\n";
 
 my @all = ();
 
+my @dirs = ();
 opendir (DIR, ".");
 while (my $name = readdir(DIR)) {
     next if ! -d $name;
     next if $name eq 'build';
     next if $name =~ /^\.\.?$/;
+    push(@dirs, $name);
+}
+closedir (DIR);
 
+foreach my $name (sort @dirs) {
     my @refentry = ();
     my @examples = ();
 
@@ -37,10 +42,10 @@ while (my $name = readdir(DIR)) {
     }
     closedir (DB);
 
-    foreach my $ref (@refentry) {
+    foreach my $ref (sort @refentry) {
 	push (@all, "build/$ref");
 	print "build/$ref: $name/$ref";
-	foreach my $ex (@examples) {
+	foreach my $ex (sort @examples) {
 	    print " $name/$ex";
 	}
 	print " build/.f \$(DEFGUIDERND) \$(REFENTRYXSL)\n";
@@ -49,7 +54,6 @@ while (my $name = readdir(DIR)) {
 	print "\t\@saxon build/$ref.xi \$(REFENTRYXSL) \$@\n\n";
     }
 }
-closedir (DIR);
 
 print "build/.f:\n";
 print "\tmkdir build\n";

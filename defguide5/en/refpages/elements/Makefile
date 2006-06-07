@@ -95,15 +95,15 @@ build/db.arc.xml: arc/db.arc.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@xmllint --xinclude $< > build/db.arc.xml.xi
 	@saxon build/db.arc.xml.xi $(REFENTRYXSL) $@
 
-build/db.area.xml: area/db.area.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.area.xml.xi
-	@saxon build/db.area.xml.xi $(REFENTRYXSL) $@
-
 build/db.area.inareaset.xml: area/db.area.inareaset.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.area.inareaset.xml.xi
 	@saxon build/db.area.inareaset.xml.xi $(REFENTRYXSL) $@
+
+build/db.area.xml: area/db.area.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.area.xml.xi
+	@saxon build/db.area.xml.xi $(REFENTRYXSL) $@
 
 build/db.areaset.xml: areaset/db.areaset.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -175,11 +175,6 @@ build/db.biblioentry.xml: biblioentry/db.biblioentry.xml build/.f $(DEFGUIDERND)
 	@xmllint --xinclude $< > build/db.biblioentry.xml.xi
 	@saxon build/db.biblioentry.xml.xi $(REFENTRYXSL) $@
 
-build/db.book.xml: book/db.book.xml book/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.book.xml.xi
-	@saxon build/db.book.xml.xi $(REFENTRYXSL) $@
-
 build/db.bibliography.xml: bibliography/db.bibliography.xml bibliography/example.1.xml bibliography/example.2.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.bibliography.xml.xi
@@ -235,6 +230,11 @@ build/db.blockquote.xml: blockquote/db.blockquote.xml blockquote/example.1.xml b
 	@xmllint --xinclude $< > build/db.blockquote.xml.xi
 	@saxon build/db.blockquote.xml.xi $(REFENTRYXSL) $@
 
+build/db.book.xml: book/db.book.xml book/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.book.xml.xi
+	@saxon build/db.book.xml.xi $(REFENTRYXSL) $@
+
 build/db.bridgehead.xml: bridgehead/db.bridgehead.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.bridgehead.xml.xi
@@ -250,15 +250,15 @@ build/db.calloutlist.xml: calloutlist/db.calloutlist.xml build/.f $(DEFGUIDERND)
 	@xmllint --xinclude $< > build/db.calloutlist.xml.xi
 	@saxon build/db.calloutlist.xml.xi $(REFENTRYXSL) $@
 
-build/db.html.caption.xml: caption/db.html.caption.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.html.caption.xml.xi
-	@saxon build/db.html.caption.xml.xi $(REFENTRYXSL) $@
-
 build/db.caption.xml: caption/db.caption.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.caption.xml.xi
 	@saxon build/db.caption.xml.xi $(REFENTRYXSL) $@
+
+build/db.html.caption.xml: caption/db.html.caption.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.html.caption.xml.xi
+	@saxon build/db.html.caption.xml.xi $(REFENTRYXSL) $@
 
 build/db.caution.xml: caution/db.caution.xml caution/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -435,6 +435,11 @@ build/db.country.xml: country/db.country.xml build/.f $(DEFGUIDERND) $(REFENTRYX
 	@xmllint --xinclude $< > build/db.country.xml.xi
 	@saxon build/db.country.xml.xi $(REFENTRYXSL) $@
 
+build/db.cover.xml: cover/db.cover.xml cover/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.cover.xml.xi
+	@saxon build/db.cover.xml.xi $(REFENTRYXSL) $@
+
 build/db.database.xml: database/db.database.xml database/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.database.xml.xi
@@ -470,15 +475,15 @@ build/db.email.xml: email/db.email.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@xmllint --xinclude $< > build/db.email.xml.xi
 	@saxon build/db.email.xml.xi $(REFENTRYXSL) $@
 
-build/db.emphasis.xml: emphasis/db.emphasis.xml emphasis/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.emphasis.xml.xi
-	@saxon build/db.emphasis.xml.xi $(REFENTRYXSL) $@
-
 build/db._emphasis.xml: emphasis/db._emphasis.xml emphasis/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db._emphasis.xml.xi
 	@saxon build/db._emphasis.xml.xi $(REFENTRYXSL) $@
+
+build/db.emphasis.xml: emphasis/db.emphasis.xml emphasis/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.emphasis.xml.xi
+	@saxon build/db.emphasis.xml.xi $(REFENTRYXSL) $@
 
 build/db.entry.xml: entry/db.entry.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -715,6 +720,11 @@ build/db.html.button.xml: html/db.html.button.xml html/example.form.1.xml build/
 	@xmllint --xinclude $< > build/db.html.button.xml.xi
 	@saxon build/db.html.button.xml.xi $(REFENTRYXSL) $@
 
+build/db.html.fieldset.xml: html/db.html.fieldset.xml html/example.form.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.html.fieldset.xml.xi
+	@saxon build/db.html.fieldset.xml.xi $(REFENTRYXSL) $@
+
 build/db.html.form.xml: html/db.html.form.xml html/example.form.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.html.form.xml.xi
@@ -729,6 +739,11 @@ build/db.html.label.xml: html/db.html.label.xml html/example.form.1.xml build/.f
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.html.label.xml.xi
 	@saxon build/db.html.label.xml.xi $(REFENTRYXSL) $@
+
+build/db.html.legend.xml: html/db.html.legend.xml html/example.form.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.html.legend.xml.xi
+	@saxon build/db.html.legend.xml.xi $(REFENTRYXSL) $@
 
 build/db.html.option.xml: html/db.html.option.xml html/example.form.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -745,15 +760,15 @@ build/db.html.textarea.xml: html/db.html.textarea.xml html/example.form.1.xml bu
 	@xmllint --xinclude $< > build/db.html.textarea.xml.xi
 	@saxon build/db.html.textarea.xml.xi $(REFENTRYXSL) $@
 
-build/db.html.legend.xml: html/db.html.legend.xml html/example.form.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+build/db.imagedata.mathml.xml: imagedata/db.imagedata.mathml.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
-	@xmllint --xinclude $< > build/db.html.legend.xml.xi
-	@saxon build/db.html.legend.xml.xi $(REFENTRYXSL) $@
+	@xmllint --xinclude $< > build/db.imagedata.mathml.xml.xi
+	@saxon build/db.imagedata.mathml.xml.xi $(REFENTRYXSL) $@
 
-build/db.html.fieldset.xml: html/db.html.fieldset.xml html/example.form.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+build/db.imagedata.svg.xml: imagedata/db.imagedata.svg.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
-	@xmllint --xinclude $< > build/db.html.fieldset.xml.xi
-	@saxon build/db.html.fieldset.xml.xi $(REFENTRYXSL) $@
+	@xmllint --xinclude $< > build/db.imagedata.svg.xml.xi
+	@saxon build/db.imagedata.svg.xml.xi $(REFENTRYXSL) $@
 
 build/db.imagedata.xml: imagedata/db.imagedata.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -985,6 +1000,11 @@ build/db.markup.xml: markup/db.markup.xml markup/example.1.xml build/.f $(DEFGUI
 	@xmllint --xinclude $< > build/db.markup.xml.xi
 	@saxon build/db.markup.xml.xi $(REFENTRYXSL) $@
 
+build/db.mathphrase.xml: mathphrase/db.mathphrase.xml mathphrase/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.mathphrase.xml.xi
+	@saxon build/db.mathphrase.xml.xi $(REFENTRYXSL) $@
+
 build/db.mediaobject.xml: mediaobject/db.mediaobject.xml mediaobject/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.mediaobject.xml.xi
@@ -1095,6 +1115,11 @@ build/db.note.xml: note/db.note.xml note/example.1.xml build/.f $(DEFGUIDERND) $
 	@xmllint --xinclude $< > build/db.note.xml.xi
 	@saxon build/db.note.xml.xi $(REFENTRYXSL) $@
 
+build/db.olink.xml: olink/db.olink.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.olink.xml.xi
+	@saxon build/db.olink.xml.xi $(REFENTRYXSL) $@
+
 build/db.ooclass.xml: ooclass/db.ooclass.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.ooclass.xml.xi
@@ -1124,6 +1149,11 @@ build/db.orderedlist.xml: orderedlist/db.orderedlist.xml orderedlist/example.1.x
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.orderedlist.xml.xi
 	@saxon build/db.orderedlist.xml.xi $(REFENTRYXSL) $@
+
+build/db.org.xml: org/db.org.xml org/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.org.xml.xi
+	@saxon build/db.org.xml.xi $(REFENTRYXSL) $@
 
 build/db.orgdiv.xml: orgdiv/db.orgdiv.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -1184,6 +1214,11 @@ build/db.partintro.xml: partintro/db.partintro.xml build/.f $(DEFGUIDERND) $(REF
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.partintro.xml.xi
 	@saxon build/db.partintro.xml.xi $(REFENTRYXSL) $@
+
+build/db.person.xml: person/db.person.xml person/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.person.xml.xi
+	@saxon build/db.person.xml.xi $(REFENTRYXSL) $@
 
 build/db.personblurb.xml: personblurb/db.personblurb.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
@@ -1765,6 +1800,11 @@ build/db.term.xml: term/db.term.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@xmllint --xinclude $< > build/db.term.xml.xi
 	@saxon build/db.term.xml.xi $(REFENTRYXSL) $@
 
+build/db.termdef.xml: termdef/db.termdef.xml termdef/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+	@echo Making $@
+	@xmllint --xinclude $< > build/db.termdef.xml.xi
+	@saxon build/db.termdef.xml.xi $(REFENTRYXSL) $@
+
 build/db.tertiary.xml: tertiary/db.tertiary.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.tertiary.xml.xi
@@ -1940,29 +1980,9 @@ build/db.year.xml: year/db.year.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@xmllint --xinclude $< > build/db.year.xml.xi
 	@saxon build/db.year.xml.xi $(REFENTRYXSL) $@
 
-build/db.mathphrase.xml: mathphrase/db.mathphrase.xml mathphrase/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.mathphrase.xml.xi
-	@saxon build/db.mathphrase.xml.xi $(REFENTRYXSL) $@
-
-build/db.termdef.xml: termdef/db.termdef.xml termdef/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.termdef.xml.xi
-	@saxon build/db.termdef.xml.xi $(REFENTRYXSL) $@
-
-build/db.cover.xml: cover/db.cover.xml cover/example.1.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.cover.xml.xi
-	@saxon build/db.cover.xml.xi $(REFENTRYXSL) $@
-
-build/db.olink.xml: olink/db.olink.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
-	@echo Making $@
-	@xmllint --xinclude $< > build/db.olink.xml.xi
-	@saxon build/db.olink.xml.xi $(REFENTRYXSL) $@
-
 build/.f:
 	mkdir build
 	touch build/.f
 
-buildall: build/db._any.mml.xml build/db._any.svg.xml build/db._any.xml build/db.abbrev.xml build/db.abstract.xml build/db.accel.xml build/db.ackno.xml build/db.acronym.xml build/db.address.xml build/db.affiliation.xml build/db.alt.xml build/db.anchor.xml build/db.annotation.xml build/db.answer.xml build/db.appendix.xml build/db.application.xml build/db.arc.xml build/db.area.xml build/db.area.inareaset.xml build/db.areaset.xml build/db.areaspec.xml build/db.arg.xml build/db.article.xml build/db.artpagenums.xml build/db.attribution.xml build/db.audiodata.xml build/db.audioobject.xml build/db.author.xml build/db.authorgroup.xml build/db.authorinitials.xml build/db.bibliocoverage.xml build/db.bibliodiv.xml build/db.biblioentry.xml build/db.book.xml build/db.bibliography.xml build/db.biblioid.xml build/db.bibliolist.xml build/db.bibliomisc.xml build/db.bibliomixed.xml build/db.bibliomset.xml build/db.biblioref.xml build/db.bibliorelation.xml build/db.biblioset.xml build/db.bibliosource.xml build/db.blockquote.xml build/db.bridgehead.xml build/db.callout.xml build/db.calloutlist.xml build/db.html.caption.xml build/db.caption.xml build/db.caution.xml build/db.chapter.xml build/db.citation.xml build/db.citebiblioid.xml build/db.citerefentry.xml build/db.citetitle.xml build/db.city.xml build/db.classname.xml build/db.classsynopsis.xml build/db.classsynopsisinfo.xml build/db.cmdsynopsis.xml build/db.co.xml build/db.code.xml build/db.html.col.xml build/db.html.colgroup.xml build/db.collab.xml build/db.colophon.xml build/db.colspec.xml build/db.command.xml build/db.computeroutput.xml build/db.confdates.xml build/db.confgroup.xml build/db.confnum.xml build/db.confsponsor.xml build/db.conftitle.xml build/db.constant.xml build/db.constraint.xml build/db.constraintdef.xml build/db.constructorsynopsis.xml build/db.contractnum.xml build/db.contractsponsor.xml build/db.contrib.xml build/db.copyright.xml build/db.coref.xml build/db.country.xml build/db.database.xml build/db.date.xml build/db.dedication.xml build/db.destructorsynopsis.xml build/db.edition.xml build/db.editor.xml build/db.email.xml build/db.emphasis.xml build/db._emphasis.xml build/db.entry.xml build/db.entrytbl.xml build/db.envar.xml build/db.epigraph.xml build/db.equation.xml build/db.errorcode.xml build/db.errorname.xml build/db.errortext.xml build/db.errortype.xml build/db.example.xml build/db.exceptionname.xml build/db.extendedlink.xml build/db.fax.xml build/db.fieldsynopsis.xml build/db.figure.xml build/db.filename.xml build/db.firstname.xml build/db.firstterm.xml build/db.footnote.xml build/db.footnoteref.xml build/db.foreignphrase.xml build/db.formalpara.xml build/db.funcdef.xml build/db.funcparams.xml build/db.funcprototype.xml build/db.funcsynopsis.xml build/db.funcsynopsisinfo.xml build/db.function.xml build/db.glossary.xml build/db.glossdef.xml build/db.glossdiv.xml build/db.glossentry.xml build/db.glosslist.xml build/db.glosssee.xml build/db.glossseealso.xml build/db.glossterm.xml build/db.group.xml build/db.guibutton.xml build/db.guiicon.xml build/db.guilabel.xml build/db.guimenu.xml build/db.guimenuitem.xml build/db.guisubmenu.xml build/db.hardware.xml build/db.holder.xml build/db.honorific.xml build/db.html.button.xml build/db.html.form.xml build/db.html.input.xml build/db.html.label.xml build/db.html.option.xml build/db.html.select.xml build/db.html.textarea.xml build/db.html.legend.xml build/db.html.fieldset.xml build/db.imagedata.xml build/db.imageobject.xml build/db.imageobjectco.xml build/db.important.xml build/db.index.xml build/db.indexdiv.xml build/db.indexentry.xml build/db.indexterm.endofrange.xml build/db.indexterm.singular.xml build/db.indexterm.startofrange.xml build/db.info.xml build/db.titleforbidden.info.xml build/db.titleonly.info.xml build/db.titleonlyreq.info.xml build/db.titlereq.info.xml build/db.informalequation.xml build/db.informalexample.xml build/db.informalfigure.xml build/db.cals.informaltable.xml build/db.html.informaltable.xml build/db.initializer.xml build/db.inlineequation.xml build/db.inlinemediaobject.xml build/db.interfacename.xml build/db.issuenum.xml build/db.itemizedlist.xml build/db.itermset.xml build/db.jobtitle.xml build/db.keycap.xml build/db.keycode.xml build/db.keycombo.xml build/db.keysym.xml build/db.keyword.xml build/db.keywordset.xml build/db.label.xml build/db.legalnotice.xml build/db.lhs.xml build/db.lineage.xml build/db.lineannotation.xml build/db.link.xml build/db.listitem.xml build/db.literal.xml build/db.literallayout.xml build/db.locator.xml build/db.manvolnum.xml build/db.markup.xml build/db.mediaobject.xml build/db.member.xml build/db.menuchoice.xml build/db.methodname.xml build/db.methodparam.xml build/db.methodsynopsis.xml build/db.modifier.xml build/db.mousebutton.xml build/db.msg.xml build/db.msgaud.xml build/db.msgentry.xml build/db.msgexplan.xml build/db.msginfo.xml build/db.msglevel.xml build/db.msgmain.xml build/db.msgorig.xml build/db.msgrel.xml build/db.msgset.xml build/db.msgsub.xml build/db.msgtext.xml build/db.nonterminal.xml build/db.note.xml build/db.ooclass.xml build/db.ooexception.xml build/db.oointerface.xml build/db.option.xml build/db.optional.xml build/db.orderedlist.xml build/db.orgdiv.xml build/db.orgname.xml build/db.otheraddr.xml build/db.othercredit.xml build/db.othername.xml build/db.package.xml build/db.pagenums.xml build/db.para.xml build/db.paramdef.xml build/db.parameter.xml build/db.part.xml build/db.partintro.xml build/db.personblurb.xml build/db.personname.xml build/db.phone.xml build/db._phrase.xml build/db.phrase.xml build/db.pob.xml build/db.postcode.xml build/db.preface.xml build/db.primary.xml build/db.primaryie.xml build/db.printhistory.xml build/db.procedure.xml build/db.production.xml build/db.productionrecap.xml build/db.productionset.xml build/db.productname.xml build/db.productnumber.xml build/db.programlisting.xml build/db.programlistingco.xml build/db.prompt.xml build/db.property.xml build/db.pubdate.xml build/db.publisher.xml build/db.publishername.xml build/db.qandadiv.xml build/db.qandaentry.xml build/db.qandaset.xml build/db.question.xml build/db.quote.xml build/db.refclass.xml build/db.refdescriptor.xml build/db.refentry.xml build/db.refentrytitle.xml build/db.reference.xml build/db.refmeta.xml build/db.refmiscinfo.xml build/db.refname.xml build/db.refnamediv.xml build/db.refpurpose.xml build/db.refsect1.xml build/db.refsect2.xml build/db.refsect3.xml build/db.refsection.xml build/db.refsynopsisdiv.xml build/db.releaseinfo.xml build/db.remark.xml build/db.replaceable.xml build/db.returnvalue.xml build/db.revdescription.xml build/db.revhistory.xml build/db.revision.xml build/db.revnumber.xml build/db.revremark.xml build/db.rhs.xml build/db.entrytbl.row.xml build/db.row.xml build/db.sbr.xml build/db.screen.xml build/db.screenco.xml build/db.screenshot.xml build/db.secondary.xml build/db.secondaryie.xml build/db.sect1.xml build/db.sect2.xml build/db.sect3.xml build/db.sect4.xml build/db.sect5.xml build/db.section.xml build/db.see.xml build/db.seealso.xml build/db.seealsoie.xml build/db.seeie.xml build/db.seg.xml build/db.seglistitem.xml build/db.segmentedlist.xml build/db.segtitle.xml build/db.seriesvolnums.xml build/db.set.xml build/db.setindex.xml build/db.shortaffil.xml build/db.shortcut.xml build/db.sidebar.xml build/db.simpara.xml build/db.simplelist.xml build/db.simplemsgentry.xml build/db.simplesect.xml build/db.spanspec.xml build/db.state.xml build/db.step.xml build/db.stepalternatives.xml build/db.street.xml build/db.subject.xml build/db.subjectset.xml build/db.subjectterm.xml build/db.subscript.xml build/db.substeps.xml build/db.subtitle.xml build/db.superscript.xml build/db.surname.xml build/db.symbol.xml build/db.synopfragment.xml build/db.synopfragmentref.xml build/db.synopsis.xml build/db.systemitem.xml build/db.cals.table.xml build/db.html.table.xml build/db.tag.xml build/db.task.xml build/db.taskprerequisites.xml build/db.taskrelated.xml build/db.tasksummary.xml build/db.cals.entrytbl.tbody.xml build/db.cals.tbody.xml build/db.html.tbody.xml build/db.html.td.xml build/db.term.xml build/db.tertiary.xml build/db.tertiaryie.xml build/db.textdata.xml build/db.textobject.xml build/db.cals.tfoot.xml build/db.html.tfoot.xml build/db.tgroup.xml build/db.html.th.xml build/db.cals.entrytbl.thead.xml build/db.cals.thead.xml build/db.html.thead.xml build/db.tip.xml build/db.title.xml build/db.titleabbrev.xml build/db.toc.xml build/db.tocdiv.xml build/db.tocentry.xml build/db.token.xml build/db.html.tr.xml build/db.trademark.xml build/db.type.xml build/db.uri.xml build/db.userinput.xml build/db.varargs.xml build/db.variablelist.xml build/db.varlistentry.xml build/db.varname.xml build/db.videodata.xml build/db.videoobject.xml build/db.void.xml build/db.volumenum.xml build/db.warning.xml build/db.wordasword.xml build/db.xref.xml build/db.year.xml build/db.mathphrase.xml build/db.termdef.xml build/db.cover.xml build/db.olink.xml
+buildall: build/db._any.mml.xml build/db._any.svg.xml build/db._any.xml build/db.abbrev.xml build/db.abstract.xml build/db.accel.xml build/db.ackno.xml build/db.acronym.xml build/db.address.xml build/db.affiliation.xml build/db.alt.xml build/db.anchor.xml build/db.annotation.xml build/db.answer.xml build/db.appendix.xml build/db.application.xml build/db.arc.xml build/db.area.inareaset.xml build/db.area.xml build/db.areaset.xml build/db.areaspec.xml build/db.arg.xml build/db.article.xml build/db.artpagenums.xml build/db.attribution.xml build/db.audiodata.xml build/db.audioobject.xml build/db.author.xml build/db.authorgroup.xml build/db.authorinitials.xml build/db.bibliocoverage.xml build/db.bibliodiv.xml build/db.biblioentry.xml build/db.bibliography.xml build/db.biblioid.xml build/db.bibliolist.xml build/db.bibliomisc.xml build/db.bibliomixed.xml build/db.bibliomset.xml build/db.biblioref.xml build/db.bibliorelation.xml build/db.biblioset.xml build/db.bibliosource.xml build/db.blockquote.xml build/db.book.xml build/db.bridgehead.xml build/db.callout.xml build/db.calloutlist.xml build/db.caption.xml build/db.html.caption.xml build/db.caution.xml build/db.chapter.xml build/db.citation.xml build/db.citebiblioid.xml build/db.citerefentry.xml build/db.citetitle.xml build/db.city.xml build/db.classname.xml build/db.classsynopsis.xml build/db.classsynopsisinfo.xml build/db.cmdsynopsis.xml build/db.co.xml build/db.code.xml build/db.html.col.xml build/db.html.colgroup.xml build/db.collab.xml build/db.colophon.xml build/db.colspec.xml build/db.command.xml build/db.computeroutput.xml build/db.confdates.xml build/db.confgroup.xml build/db.confnum.xml build/db.confsponsor.xml build/db.conftitle.xml build/db.constant.xml build/db.constraint.xml build/db.constraintdef.xml build/db.constructorsynopsis.xml build/db.contractnum.xml build/db.contractsponsor.xml build/db.contrib.xml build/db.copyright.xml build/db.coref.xml build/db.country.xml build/db.cover.xml build/db.database.xml build/db.date.xml build/db.dedication.xml build/db.destructorsynopsis.xml build/db.edition.xml build/db.editor.xml build/db.email.xml build/db._emphasis.xml build/db.emphasis.xml build/db.entry.xml build/db.entrytbl.xml build/db.envar.xml build/db.epigraph.xml build/db.equation.xml build/db.errorcode.xml build/db.errorname.xml build/db.errortext.xml build/db.errortype.xml build/db.example.xml build/db.exceptionname.xml build/db.extendedlink.xml build/db.fax.xml build/db.fieldsynopsis.xml build/db.figure.xml build/db.filename.xml build/db.firstname.xml build/db.firstterm.xml build/db.footnote.xml build/db.footnoteref.xml build/db.foreignphrase.xml build/db.formalpara.xml build/db.funcdef.xml build/db.funcparams.xml build/db.funcprototype.xml build/db.funcsynopsis.xml build/db.funcsynopsisinfo.xml build/db.function.xml build/db.glossary.xml build/db.glossdef.xml build/db.glossdiv.xml build/db.glossentry.xml build/db.glosslist.xml build/db.glosssee.xml build/db.glossseealso.xml build/db.glossterm.xml build/db.group.xml build/db.guibutton.xml build/db.guiicon.xml build/db.guilabel.xml build/db.guimenu.xml build/db.guimenuitem.xml build/db.guisubmenu.xml build/db.hardware.xml build/db.holder.xml build/db.honorific.xml build/db.html.button.xml build/db.html.fieldset.xml build/db.html.form.xml build/db.html.input.xml build/db.html.label.xml build/db.html.legend.xml build/db.html.option.xml build/db.html.select.xml build/db.html.textarea.xml build/db.imagedata.mathml.xml build/db.imagedata.svg.xml build/db.imagedata.xml build/db.imageobject.xml build/db.imageobjectco.xml build/db.important.xml build/db.index.xml build/db.indexdiv.xml build/db.indexentry.xml build/db.indexterm.endofrange.xml build/db.indexterm.singular.xml build/db.indexterm.startofrange.xml build/db.info.xml build/db.titleforbidden.info.xml build/db.titleonly.info.xml build/db.titleonlyreq.info.xml build/db.titlereq.info.xml build/db.informalequation.xml build/db.informalexample.xml build/db.informalfigure.xml build/db.cals.informaltable.xml build/db.html.informaltable.xml build/db.initializer.xml build/db.inlineequation.xml build/db.inlinemediaobject.xml build/db.interfacename.xml build/db.issuenum.xml build/db.itemizedlist.xml build/db.itermset.xml build/db.jobtitle.xml build/db.keycap.xml build/db.keycode.xml build/db.keycombo.xml build/db.keysym.xml build/db.keyword.xml build/db.keywordset.xml build/db.label.xml build/db.legalnotice.xml build/db.lhs.xml build/db.lineage.xml build/db.lineannotation.xml build/db.link.xml build/db.listitem.xml build/db.literal.xml build/db.literallayout.xml build/db.locator.xml build/db.manvolnum.xml build/db.markup.xml build/db.mathphrase.xml build/db.mediaobject.xml build/db.member.xml build/db.menuchoice.xml build/db.methodname.xml build/db.methodparam.xml build/db.methodsynopsis.xml build/db.modifier.xml build/db.mousebutton.xml build/db.msg.xml build/db.msgaud.xml build/db.msgentry.xml build/db.msgexplan.xml build/db.msginfo.xml build/db.msglevel.xml build/db.msgmain.xml build/db.msgorig.xml build/db.msgrel.xml build/db.msgset.xml build/db.msgsub.xml build/db.msgtext.xml build/db.nonterminal.xml build/db.note.xml build/db.olink.xml build/db.ooclass.xml build/db.ooexception.xml build/db.oointerface.xml build/db.option.xml build/db.optional.xml build/db.orderedlist.xml build/db.org.xml build/db.orgdiv.xml build/db.orgname.xml build/db.otheraddr.xml build/db.othercredit.xml build/db.othername.xml build/db.package.xml build/db.pagenums.xml build/db.para.xml build/db.paramdef.xml build/db.parameter.xml build/db.part.xml build/db.partintro.xml build/db.person.xml build/db.personblurb.xml build/db.personname.xml build/db.phone.xml build/db._phrase.xml build/db.phrase.xml build/db.pob.xml build/db.postcode.xml build/db.preface.xml build/db.primary.xml build/db.primaryie.xml build/db.printhistory.xml build/db.procedure.xml build/db.production.xml build/db.productionrecap.xml build/db.productionset.xml build/db.productname.xml build/db.productnumber.xml build/db.programlisting.xml build/db.programlistingco.xml build/db.prompt.xml build/db.property.xml build/db.pubdate.xml build/db.publisher.xml build/db.publishername.xml build/db.qandadiv.xml build/db.qandaentry.xml build/db.qandaset.xml build/db.question.xml build/db.quote.xml build/db.refclass.xml build/db.refdescriptor.xml build/db.refentry.xml build/db.refentrytitle.xml build/db.reference.xml build/db.refmeta.xml build/db.refmiscinfo.xml build/db.refname.xml build/db.refnamediv.xml build/db.refpurpose.xml build/db.refsect1.xml build/db.refsect2.xml build/db.refsect3.xml build/db.refsection.xml build/db.refsynopsisdiv.xml build/db.releaseinfo.xml build/db.remark.xml build/db.replaceable.xml build/db.returnvalue.xml build/db.revdescription.xml build/db.revhistory.xml build/db.revision.xml build/db.revnumber.xml build/db.revremark.xml build/db.rhs.xml build/db.entrytbl.row.xml build/db.row.xml build/db.sbr.xml build/db.screen.xml build/db.screenco.xml build/db.screenshot.xml build/db.secondary.xml build/db.secondaryie.xml build/db.sect1.xml build/db.sect2.xml build/db.sect3.xml build/db.sect4.xml build/db.sect5.xml build/db.section.xml build/db.see.xml build/db.seealso.xml build/db.seealsoie.xml build/db.seeie.xml build/db.seg.xml build/db.seglistitem.xml build/db.segmentedlist.xml build/db.segtitle.xml build/db.seriesvolnums.xml build/db.set.xml build/db.setindex.xml build/db.shortaffil.xml build/db.shortcut.xml build/db.sidebar.xml build/db.simpara.xml build/db.simplelist.xml build/db.simplemsgentry.xml build/db.simplesect.xml build/db.spanspec.xml build/db.state.xml build/db.step.xml build/db.stepalternatives.xml build/db.street.xml build/db.subject.xml build/db.subjectset.xml build/db.subjectterm.xml build/db.subscript.xml build/db.substeps.xml build/db.subtitle.xml build/db.superscript.xml build/db.surname.xml build/db.symbol.xml build/db.synopfragment.xml build/db.synopfragmentref.xml build/db.synopsis.xml build/db.systemitem.xml build/db.cals.table.xml build/db.html.table.xml build/db.tag.xml build/db.task.xml build/db.taskprerequisites.xml build/db.taskrelated.xml build/db.tasksummary.xml build/db.cals.entrytbl.tbody.xml build/db.cals.tbody.xml build/db.html.tbody.xml build/db.html.td.xml build/db.term.xml build/db.termdef.xml build/db.tertiary.xml build/db.tertiaryie.xml build/db.textdata.xml build/db.textobject.xml build/db.cals.tfoot.xml build/db.html.tfoot.xml build/db.tgroup.xml build/db.html.th.xml build/db.cals.entrytbl.thead.xml build/db.cals.thead.xml build/db.html.thead.xml build/db.tip.xml build/db.title.xml build/db.titleabbrev.xml build/db.toc.xml build/db.tocdiv.xml build/db.tocentry.xml build/db.token.xml build/db.html.tr.xml build/db.trademark.xml build/db.type.xml build/db.uri.xml build/db.userinput.xml build/db.varargs.xml build/db.variablelist.xml build/db.varlistentry.xml build/db.varname.xml build/db.videodata.xml build/db.videoobject.xml build/db.void.xml build/db.volumenum.xml build/db.warning.xml build/db.wordasword.xml build/db.xref.xml build/db.year.xml
 

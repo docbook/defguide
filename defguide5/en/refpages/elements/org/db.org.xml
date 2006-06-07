@@ -1,0 +1,55 @@
+<refentry xmlns='http://docbook.org/ns/docbook'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          xmlns:xi='http://www.w3.org/2001/XInclude'
+	  version='5.0'
+	  revision='5.0'>
+<info>
+  <pubdate>$Date: 2005-10-31 07:31:58 -0500 (Mon, 31 Oct 2005) $</pubdate>
+  <releaseinfo>$Revision: 5412 $</releaseinfo>
+</info>
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role='element'>org</refmiscinfo>
+  <refmiscinfo role='pattern'>db.org</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition='ref.description'>
+<title>Description</title>
+
+<para>An <tag>org</tag> associates an organization name with other
+information about the organization.
+</para>
+
+<refsection><title>Processing expectations</title>
+<para><?tdg gentext='format.context'?>
+</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition='ref.examples'>
+<title>Examples</title>
+
+<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+
+<anchor xml:id='ex.os.org.1' role='HACK-ex.out.start'/>
+<xi:include href='example.1.xml' xpointer='/1/2'/>
+<anchor xml:id='ex.oe.org.1' role='HACK-ex.out.end'/>
+
+</refsection>
+
+</refentry>
