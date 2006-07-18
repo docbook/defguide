@@ -610,7 +610,7 @@ build/db.funcprototype.xml: funcprototype/db.funcprototype.xml build/.f $(DEFGUI
 	@xmllint --xinclude $< > build/db.funcprototype.xml.xi
 	@saxon build/db.funcprototype.xml.xi $(REFENTRYXSL) $@
 
-build/db.funcsynopsis.xml: funcsynopsis/db.funcsynopsis.xml funcsynopsis/example.1.xml funcsynopsis/example.2.xml funcsynopsis/example.3.xml funcsynopsis/example.4.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
+build/db.funcsynopsis.xml: funcsynopsis/db.funcsynopsis.xml funcsynopsis/example.ansi.1.xml funcsynopsis/example.ansi.2.xml funcsynopsis/example.ansi.3.xml funcsynopsis/example.ansi.4.xml funcsynopsis/example.kr.1.xml funcsynopsis/example.kr.2.xml funcsynopsis/example.kr.3.xml funcsynopsis/example.kr.4.xml build/.f $(DEFGUIDERND) $(REFENTRYXSL)
 	@echo Making $@
 	@xmllint --xinclude $< > build/db.funcsynopsis.xml.xi
 	@saxon build/db.funcsynopsis.xml.xi $(REFENTRYXSL) $@
