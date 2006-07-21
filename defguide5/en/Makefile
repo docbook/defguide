@@ -35,7 +35,7 @@ test: tdg.xml
 
 tdg.xml: book.xml bookinfo.xml refpages/list-elements.xml \
          $(wildcard src/*.xml) \
-         $(wildcard refpages/elements/*/*.gen)
+         $(wildcard refpages/elements/build/*.xml)
 	xmllint --xinclude book.xml > $@
 
 tdg-stripped.xml: tdg.xml
@@ -48,7 +48,7 @@ chunks: $(SOURCE) $(SSTITLEPG)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
 
-chunk: $(SOURCE) $(SSTITLEPG)
+chunk: $(SOURCE) $(SSTITLEPG) tdg-stripped.xml
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
 
 index: $(SSTITLEPG)

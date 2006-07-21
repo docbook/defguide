@@ -281,6 +281,7 @@
 			|$attributes[@name='xreflabel']
 			|$attributes[@name='revisionflag']
 			|$attributes[@name='arch']
+			|$attributes[@name='audience']
 			|$attributes[@name='condition']
 			|$attributes[@name='conformance']
 			|$attributes[@name='os']
@@ -302,6 +303,7 @@
 			|$attributes[@name='xreflabel']
 			|$attributes[@name='revisionflag']
 			|$attributes[@name='arch']
+			|$attributes[@name='audience']
 			|$attributes[@name='condition']
 			|$attributes[@name='conformance']
 			|$attributes[@name='os']
@@ -332,13 +334,13 @@
 		select="set:difference($attributes,
 			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
-  <xsl:if test="(count($cmnAttrEither) != 19 and count($cmnAttrEither) != 0)
+  <xsl:if test="(count($cmnAttrEither) != 20 and count($cmnAttrEither) != 0)
 		or count($otherAttr) &gt; 0">
     <refsection>
       <title>Attributes</title>
 
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 19 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
@@ -346,7 +348,7 @@
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 19 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
@@ -354,13 +356,13 @@
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 19">
+	<xsl:when test="count($cmnAttr) = 20">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 19">
+	<xsl:when test="count($cmnAttrIdReq) = 20">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
@@ -685,6 +687,7 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 			|$attributes[@name='xreflabel']
 			|$attributes[@name='revisionflag']
 			|$attributes[@name='arch']
+			|$attributes[@name='audience']
 			|$attributes[@name='condition']
 			|$attributes[@name='conformance']
 			|$attributes[@name='os']
@@ -706,6 +709,7 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 			|$attributes[@name='xreflabel']
 			|$attributes[@name='revisionflag']
 			|$attributes[@name='arch']
+			|$attributes[@name='audience']
 			|$attributes[@name='condition']
 			|$attributes[@name='conformance']
 			|$attributes[@name='os']
@@ -741,7 +745,7 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
       <title>Attributes</title>
 
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 19 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
@@ -749,7 +753,7 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 19 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
@@ -757,13 +761,13 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 19">
+	<xsl:when test="count($cmnAttr) = 20">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 19">
+	<xsl:when test="count($cmnAttrIdReq) = 20">
 	  <para>
 	    <link xlink:href="#common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
@@ -777,11 +781,11 @@ Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
 	</xsl:when>
       </xsl:choose>
 
-      <xsl:if test="count($cmnAttrEither) != 19 or count($otherAttr) &gt; 0">
+      <xsl:if test="count($cmnAttrEither) != 20 or count($otherAttr) &gt; 0">
 	<para>
 	  <xsl:choose>
-	    <xsl:when test="count($cmnAttr) = 19 
-			    or count($cmnAttrIdReq) = 19">
+	    <xsl:when test="count($cmnAttr) = 20 
+			    or count($cmnAttrIdReq) = 20">
 	      <xsl:text>Additional attributes:</xsl:text>
 	    </xsl:when>
 	    <xsl:otherwise>
