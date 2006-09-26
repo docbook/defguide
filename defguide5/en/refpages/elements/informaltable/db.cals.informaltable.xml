@@ -22,14 +22,15 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para>An <tag>InformalTable</tag> element identifies an informal
-table (one without a <tag>Title</tag>).  DocBook uses the <acronym>CALS</acronym>
-table model, which describes tables geometrically using rows,
-columns, and cells.
+<para>This <tag>informaltable</tag> element identifies an informal
+CALS table (one without a <tag>title</tag>). DocBook allows either
+<acronym>CALS</acronym> or <acronym>HTML</acronym> tables, both of
+which describe tables geometrically using rows, columns, and cells.
 </para>
-<para>Tables may include column headers and footers, but there is no
-provision for row headers.
+
+<para>Tables may include column headers and footers with
+<tag>thead</tag> and <tag>tfoot</tag>, respectively. Use the <tag
+class="attribute">rowheader</tag> attribute to identify row headers.
 </para>
 
 <refsection><title>Processing expectations</title>

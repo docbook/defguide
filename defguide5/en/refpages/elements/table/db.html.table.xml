@@ -22,15 +22,27 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para>The <tag>Table</tag> element identifies a formal table.  DocBook uses the
-<acronym>CALS</acronym> table model, which describes tables geometrically using rows, columns,
-and cells.
+<para>This <tag>table</tag> element identifies a formal (captioned)
+HTML table. DocBook allows either <acronym>CALS</acronym> or
+<acronym>HTML</acronym> tables, both of which describe tables
+geometrically using rows, columns, and cells.
 </para>
 
-<para>Tables may include column headers and footers, but there is no provision for
-row headers.
+<para>HTML tables may include column headers and footers. To identify a 
+row header, use a <tag>th</tag> in the row.</para>
+
+<sidebar>
+<title>Why aren't HTML tables in the HTML namespace?</title>
+<para>HTML tables were introduced in DocBook V4.3 which was not in a namespace and
+was defined normatively with a DTD. DTDs do not support namespaces very well. The
+Technical Committee decided to simply add the HTML element names to DocBook.
+This solution simplified specification, avoided issues of namespace support in
+DTDs, and solved the most compelling use case: cut-and-paste of simple, text-only
+HTML tables into DocBook.</para>
+<para>It's worth noting that the <tag>td</tag> and <tag>th</tag>
+elements have very different content models than their HTML counterparts.
 </para>
+</sidebar>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
