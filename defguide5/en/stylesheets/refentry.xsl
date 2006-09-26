@@ -424,9 +424,10 @@
 		    <xsl:value-of select="$name"/>
 		    <xsl:text> on </xsl:text>
 		    <xsl:value-of select="$elem/@name"/>
+		    <xsl:text> (no refpurpose?)</xsl:text>
 		  </xsl:message>
 		  <para>
-		    <xsl:text>FIXME:</xsl:text>
+		    <xsl:text>FIXME: No refpurpose?</xsl:text>
 		  </para>
 		</xsl:otherwise>
 	      </xsl:choose>
@@ -465,8 +466,9 @@
 				    <xsl:value-of select="$name"/>
 				    <xsl:text> on </xsl:text>
 				    <xsl:value-of select="$elem/@name"/>
+				    <xsl:text> (no documentation?)</xsl:text>
 				  </xsl:message>
-				  <xsl:text>FIXME:</xsl:text>
+				  <xsl:text>FIXME: No documentation?</xsl:text>
 				</xsl:otherwise>
 			      </xsl:choose>
 			    </para>
