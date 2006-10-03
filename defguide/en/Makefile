@@ -79,9 +79,5 @@ freshmeat:
 	grep -v "<?xml" /tmp/fm-docbook-tdg | freshmeat-submit $(FMGO)
 
 WhatsNew:
-	$(CVS2LOG) -w
-ifeq ($(DIFFVER),)
-	$(MERGELOGS) > $@
-else
-	$(MERGELOGS) -v $(DIFFVER) > $@
-endif
+	svn update
+	/usr/local/svn2cl/svn2cl.sh --group-by-day --output=$@
