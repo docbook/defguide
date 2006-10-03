@@ -1,8 +1,8 @@
 <!-- ...................................................................... -->
-<!-- DocBook XML HTML Table Module V4.4 ................................... -->
+<!-- DocBook XML HTML Table Module V4.5 ................................... -->
 <!-- File htmltblx.mod .................................................... -->
 
-<!-- Copyright 2003, 2004 ArborText, Inc., Norman Walsh, Sun Microsystems,
+<!-- Copyright 2003-2006 ArborText, Inc., Norman Walsh, Sun Microsystems,
      Inc., and the Organization for the Advancement of Structured Information
      Standards (OASIS).
 
@@ -34,7 +34,7 @@
      HTML one is more like what browsers are likely to accept today
      and users are likely to use.
 
-     This module has been developed for use with the DocBook V4.4
+     This module has been developed for use with the DocBook V4.5
      "union table model" in which elements and attlists common to both
      models are defined (as the union) in the CALS table module by
      setting various parameter entities appropriately in this file.
@@ -43,7 +43,7 @@
      declaration that uses the public identifier shown below:
 
      <!ENTITY % htmltbl PUBLIC
-     "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.4//EN"
+     "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.5//EN"
      "htmltblx.mod">
      %htmltbl;
 
@@ -56,13 +56,16 @@
 <!--======================= XHTML Tables =======================================-->
 
 <!ENTITY % html.coreattrs
- "id          ID             #IMPLIED
+ "%common.attrib;
   class       CDATA          #IMPLIED
   style       CDATA          #IMPLIED
   title       CDATA         #IMPLIED"
   >
 
 <!-- Does not contain lang or dir because they are in %common.attribs -->
+<![%sgml.features;[
+<!ENTITY % i18n "">
+]]>
 <!ENTITY % i18n
  "xml:lang    NMTOKEN        #IMPLIED"
   >
@@ -92,11 +95,16 @@
   "valign     (top|middle|bottom|baseline) #IMPLIED"
   >
 
-<!ELEMENT colgroup (col)*>
-<!ELEMENT col      EMPTY>
-<!ELEMENT tr       (th|td)+>
-<!ELEMENT th       (%para.char.mix; | %tabentry.mix; | table | informaltable)*>
-<!ELEMENT td       (%para.char.mix; | %tabentry.mix; | table | informaltable)*>
+<!--doc:A group of columns in an HTML table.-->
+<!ELEMENT colgroup %ho; (col)*>
+<!--doc:Specifications for a column in an HTML table.-->
+<!ELEMENT col %ho; EMPTY>
+<!--doc:A row in an HTML table.-->
+<!ELEMENT tr %ho;  (th|td)+>
+<!--doc:A table header entry in an HTML table.-->
+<!ELEMENT th %ho;  (%para.char.mix; | %tabentry.mix; | table | informaltable)*>
+<!--doc:A table ntry in an HTML table.-->
+<!ELEMENT td %ho;  (%para.char.mix; | %tabentry.mix; | table | informaltable)*>
 
 <!ATTLIST colgroup
   %attrs;
@@ -233,5 +241,5 @@ top|bottom|topbot|all|sides|none">
 <!ENTITY % tbl.tbody.mdl       "(tr+|row+)">
 <!ENTITY % tbl.valign.attval   "top|middle|bottom|baseline">
 
-<!-- End of DocBook XML HTML Table Module V4.4 ............................ -->
+<!-- End of DocBook XML HTML Table Module V4.5 ............................ -->
 <!-- ...................................................................... -->
