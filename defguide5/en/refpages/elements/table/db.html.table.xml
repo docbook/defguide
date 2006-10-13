@@ -39,14 +39,16 @@ Technical Committee decided to simply add the HTML element names to DocBook.
 This solution simplified specification, avoided issues of namespace support in
 DTDs, and solved the most compelling use case: cut-and-paste of simple, text-only
 HTML tables into DocBook.</para>
-<para>It's worth noting that the <tag>td</tag> and <tag>th</tag>
+<para>Strictly speaking, it would be incorrect to put these elements in the XHTML
+namespace because the DocBook common attributes are allowed on all of them and
+the <tag>td</tag> and <tag>th</tag>
 elements have very different content models than their HTML counterparts.
 </para>
 </sidebar>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-<?tdg gentext='calssemantics'?>
+<?tdg gentext='htmltablesemantics'?>
 </para>
 </refsection>
 

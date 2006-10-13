@@ -566,6 +566,11 @@ expected to obey the semantics of the
 Document Type Definition</citetitle></link>, as specified by <citetitle>
 <link xlink:href='http://www.oasis-open.org/html/a502.htm'>OASIS
 Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
+	<xsl:when test="contains(., 'htmltablesemantics')">This element is
+expected to obey the semantics described in
+<citetitle xlink:href="http://www.w3.org/TR/html401/struct/tables.html">Tables</citetitle>,
+as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</citetitle>.
+	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:message>
 	    <xsl:text>Unrecognized tdg PI: </xsl:text>
