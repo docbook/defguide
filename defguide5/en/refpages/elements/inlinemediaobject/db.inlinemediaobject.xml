@@ -22,32 +22,43 @@
 <refsection condition='ref.description'>
 <title>Description</title>
 
-
-<para><tag>InlineMediaObject</tag> contains a set of alternative
-“graphical objects.” In DocBook V3.1, three types of
-external graphical objects are defined: <tag>VideoObject</tag>s,
-<tag>AudioObject</tag>s, and <tag>ImageObject</tag>s. Additional
-textual descriptions may be provided with <tag>TextObject</tag>s.
+<para>The <tag>inlinemediaobject</tag> element contains a set of alternative
+“graphical objects”: <tag>videoobject</tag>,
+<tag>audioobject</tag>, and <tag>imageobject</tag>. Additional
+textual descriptions may be provided with <tag>textobject</tag>s.
 </para>
 
-<refsection xml:id="dbreproc.inlinemediaobject"><title>Processing expectations</title>
+<para>An <tag>inlinemediaobject</tag> provides a wrapper for a set of alternative
+presentations for some, usually graphical, information. It is the “inline”
+equivalent of <tag>mediaobject</tag>.</para>
+
+<para>In almost all contexts where text is allowed,
+<tag>inlinemediaobject</tag> is also allowed. This allows an author to
+provide a graphic for a character or glyph, for example, one that is
+not available in the publisher's fonts or perhaps is not available in
+Unicode. Authors should exercise care when using <tag>inlinemediaobject</tag>
+for this purpose as graphics may be difficult or impossible to display
+in some contexts on some presentation systems.</para>
+
+<refsection xml:id="dbreproc.inlinemediaobject">
+<title>Processing expectations</title>
+
 <para><?tdg gentext='format.inline'?>
 </para>
-<para>The primary purpose of the <tag>InlineMediaObject</tag> is to provide
-a wrapper around a set of alternative presentations of the same
-information.
-</para>
+
 <para>If possible, the processing system should use the content of the
-first object within the <tag>InlineMediaObject</tag>.  If the first
+first object within the <tag>inlinemediaobject</tag>.  If the first
 object cannot be used, the remaining objects should be
 considered in the order that they occur.  A processor should use
 the first object that it can, although it is free to choose any
 of the remaining objects if the primary one cannot be used.
 </para>
-<para>Under no circumstances should more than one object in an
-<tag>InlineMediaObject</tag> be used or presented at the same time.
+
+<para>Under no circumstances may more than one object in an
+<tag>inlinemediaobject</tag> be used or presented at the same time.
 </para>
-<para>For example, an <tag>InlineMediaObject</tag> might contain a high
+
+<para>For example, an <tag>inlinemediaobject</tag> might contain a high
 resolution image, a low resolution image, and
 a text description. For print publishing, the high resolution image is used;
 for online systems, either the high or low resolution image is used,
