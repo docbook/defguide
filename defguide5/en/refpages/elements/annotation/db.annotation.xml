@@ -26,6 +26,28 @@
 Block annotations can be used for popups and other “out of line”
 effects.</para>
 
+<para>An <tag>annotation</tag> element is associated with 
+another element by using a reference to an
+<tag class="attribute">xml:id</tag> value.
+The association can go in either direction.
+An <tag>annotation</tag> element can use 
+an <tag class="attribute">annotates</tag> attribute on itself
+to point to an <tag class="attribute">xml:id</tag>
+on another element.
+Or the other element can use an <tag class="attribute">annotations</tag>
+attribute on itself to point to an
+<tag class="attribute">xml:id</tag> on an
+<tag>annotation</tag> element.
+There is no assumption that an <tag>annotation</tag>
+element is associated with its parent or any other ancestor
+element.</para>
+
+<para>The attribute type of <tag class="attribute">annotations</tag>
+and <tag class="attribute">annotates</tag> is plain text,
+not IDREF or IDREFS.  That enables modular content files to
+form associations with elements in other files without
+generating validation errors.</para>
+
 <refsection><title>Processing expectations</title>
 <para>Application specific.</para>
 </refsection>
