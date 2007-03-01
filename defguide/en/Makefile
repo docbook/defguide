@@ -1,4 +1,4 @@
-include ../../cvstools/Makefile.incl
+include ../../buildtools/Makefile.incl
 
 SSTITLEPG=stylesheets/html-titlepage.xsl
 SSCHUNK=stylesheets/chunk.xsl
