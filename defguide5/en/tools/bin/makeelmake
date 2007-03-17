@@ -2,6 +2,7 @@
 
 print "DEFGUIDERND=../../tools/lib/defguide.rnd\n";
 print "REFENTRYXSL=../../stylesheets/refentry.xsl\n";
+print "SAXON=\$(DOCBOOK_SVN)/buildtools/saxon\n";
 print "\n";
 print "all: buildall\n";
 print "\trm -f build/*.xi\n";
@@ -51,7 +52,7 @@ foreach my $name (sort @dirs) {
 	print " build/.f \$(DEFGUIDERND) \$(REFENTRYXSL)\n";
 	print "\t\@echo Making \$@\n";
 	print "\t\@xmllint --xinclude \$< > build/$ref.xi\n";
-	print "\t\@saxon build/$ref.xi \$(REFENTRYXSL) \$@\n\n";
+	print "\t\@\$(SAXON) build/$ref.xi \$(REFENTRYXSL) \$@\n\n";
     }
 }
 
