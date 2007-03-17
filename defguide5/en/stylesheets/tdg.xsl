@@ -4,7 +4,9 @@
                 xmlns:cvs="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.CVS"
 		xmlns:html="http://www.w3.org/1999/xhtml"
 		xmlns:db="http://docbook.org/ns/docbook"
-                exclude-result-prefixes="cvs rng html db"
+		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
+                xmlns:exsl="http://exslt.org/common"
+                exclude-result-prefixes="cvs rng html db dbx exsl"
                 version="1.0">
 
 <!-- $Id$ -->
@@ -727,7 +729,7 @@ set       nop
 	    <xsl:value-of select="."/>
 	    <xsl:text> </xsl:text>
 	    <xsl:value-of select="$pattern"/>
-	    <xsl:text>"</xsl:text>
+	    <xsl:text>" (1)</xsl:text>
 	  </xsl:message>
 	  <xsl:apply-imports/>
 	</xsl:otherwise>
@@ -752,7 +754,7 @@ set       nop
 	<xsl:value-of select="$elemidval"/>
 	<xsl:text> for "</xsl:text>
 	<xsl:value-of select="."/>
-	<xsl:text>"</xsl:text>
+	<xsl:text>" (2)</xsl:text>
       </xsl:message>
       <xsl:apply-imports/>
     </xsl:when>
@@ -821,6 +823,169 @@ set       nop
       </xsl:message>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="processing-instruction('common-attributes')">
+  <!-- get "role" into the list -->
+  <xsl:variable name="ns.common.attributes">
+    <xsl:copy-of select="$rng//rng:define[@name='db.common.attributes']//rng:attribute"/>
+    <rng:attribute name="role">
+      <db:refpurpose>Provides additional, user-specified classification for an element</db:refpurpose>
+      <dbx:description>
+	<db:para>While <db:tag class='attribute'>role</db:tag>
+	is a common attribute in the sense that it
+	occurs on all DocBook elements, customizers will find that it is not part of
+	any of the “common attribute” patterns. It is parameterized differently
+	because it is useful to be able to subclass
+	<db:tag class='attribute'>role</db:tag> independently
+	on different elements.
+	</db:para>
+      </dbx:description>
+    </rng:attribute>
+  </xsl:variable>
+
+  <xsl:call-template name="process.common.attr">
+    <xsl:with-param name="common.attributes"
+		    select="exsl:node-set($ns.common.attributes)/*"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="processing-instruction('common-linking-attributes')">
+  <!-- get "role" into the list -->
+  <xsl:variable name="common.linking.attributes"
+		select="$rng//rng:define[@name='db.common.linking.attributes']//rng:attribute"/>
+
+  <xsl:call-template name="process.common.attr">
+    <xsl:with-param name="common.attributes"
+		    select="$common.linking.attributes"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template name="process.common.attr">
+  <xsl:param name="common.attributes"/>
+
+  <table width="100%" border="0" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; ">
+    <thead>
+      <tr>
+	<th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Name</th>
+	<th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:for-each select="$common.attributes">
+	<xsl:sort select="@name" order="ascending" data-type="text"/>
+	<tr>
+	  <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "
+	      valign="top">
+	    <xsl:choose>
+	      <xsl:when test="@name = 'linkend'">
+		<code class="sgmltag-attribute">
+		  <a href="#db.cmn.{@name}">
+		    <xsl:value-of select="@name"/>
+		  </a>
+		</code>
+		<xsl:text>/</xsl:text>
+		<code class="sgmltag-attribute">
+		  <a href="#db.cmn.linkends">linkends</a>
+		</code>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<code class="sgmltag-attribute">
+		  <a href="#db.cmn.{@name}">
+		    <xsl:value-of select="@name"/>
+		  </a>
+		</code>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </td>
+	  <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "
+	      valign="top">
+	    <xsl:choose>
+	      <xsl:when test="@name = 'linkend'">
+		<xsl:text>IDREF/IDREFS</xsl:text>
+	      </xsl:when>
+	      <xsl:when test="rng:data">
+		<xsl:value-of select="rng:data/@type"/>
+	      </xsl:when>
+	      <xsl:when test="rng:choice">
+		<table class="simplelist" border="0" summary="Simple list">
+		  <tr>
+		    <td><em>Enumeration:</em></td>
+		  </tr>
+		  <xsl:for-each select="rng:choice/rng:value">
+		    <tr>
+		      <td>
+			<xsl:value-of select="."/>
+		      </td>
+		    </tr>
+		  </xsl:for-each>
+		</table>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<em>text</em>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </td>
+	</tr>
+      </xsl:for-each>
+    </tbody>
+  </table>
+
+  <dl>
+    <xsl:for-each select="$common.attributes">
+      <xsl:sort select="@name" order="ascending" data-type="text"/>
+      <dt>
+	<xsl:choose>
+	  <xsl:when test="@name = 'linkend'">
+	    <code class="sgmltag-attribute">
+	      <a name="db.cmn.{@name}">
+		<xsl:value-of select="@name"/>
+	      </a>
+	    </code>
+	    <xsl:text>/</xsl:text>
+	    <code class="sgmltag-attribute">
+	      <a name="db.cmn.linkends">linkends</a>
+	    </code>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <code class="sgmltag-attribute">
+	      <a name="db.cmn.{@name}">
+		<xsl:value-of select="@name"/>
+	      </a>
+	    </code>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </dt>
+      <dd>
+	<p>
+	  <xsl:value-of select="db:refpurpose"/>
+	  <xsl:text>.</xsl:text>
+	</p>
+	<xsl:if test="dbx:description">
+	  <xsl:variable name="desc">
+	    <xsl:apply-templates select="dbx:description/*" mode="stripNS"/>
+	  </xsl:variable>
+	  <xsl:apply-templates select="exsl:node-set($desc)/*"/>
+	</xsl:if>
+
+	<xsl:if test="rng:choice">
+	  <dl>
+	    <xsl:for-each select="rng:choice/rng:value">
+	      <dt>
+		<code>
+		  <xsl:value-of select="."/>
+		</code>
+	      </dt>
+	      <dd>
+		<xsl:value-of select="following-sibling::a:documentation[1]"
+			      xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+	      </dd>
+	    </xsl:for-each>
+	  </dl>
+	</xsl:if>
+      </dd>
+    </xsl:for-each>
+  </dl>
 </xsl:template>
 
 </xsl:stylesheet>
