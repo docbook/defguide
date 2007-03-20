@@ -12,7 +12,7 @@
 
 <xsl:import href="chunk.xsl"/>
 <xsl:import href="../../../xsl/htmlhelp/htmlhelp-common.xsl"/>
-<xsl:include href="../../../xsl/html/manifest.xsl"/>
+<xsl:include href="manifest.xsl"/>
 
 <xsl:param name="use.extensions" select="1"/>
 <xsl:param name="base.dir" select="'htmlhelp/'"/>
