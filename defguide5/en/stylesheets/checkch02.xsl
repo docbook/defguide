@@ -19,7 +19,7 @@
 <xsl:key name="elemdef" match="rng:define" use="rng:element/@name"/>
 
 <xsl:variable name="raw-element-list" as="xs:string*">
-  <xsl:for-each select="document('/sourceforge/docbook/defguide5/en/tools/lib/defguide.rnd')//rng:define[rng:element]">
+  <xsl:for-each select="document('../tools/lib/defguide.rnd')//rng:define[rng:element]">
     <xsl:variable name="pattern" select="@name"/>
     <xsl:variable name="element" select="rng:element/@name"/>
     <xsl:choose>

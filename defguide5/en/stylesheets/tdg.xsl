@@ -54,9 +54,9 @@ set       nop
 </l:i18n>
 
 <xsl:variable name="rngfile"
-	      select="'/sourceforge/docbook/defguide5/en/tools/lib/defguide.rnd'"/>
+	      select="'../tools/lib/defguide.rnd'"/>
 
-<xsl:variable name="rng" select="document($rngfile,.)"/>
+<xsl:variable name="rng" select="document($rngfile)"/>
 
 <xsl:template match="processing-instruction('lb')">
   <br/>
