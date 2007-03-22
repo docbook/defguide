@@ -60,7 +60,7 @@
     <xsl:apply-templates/>
 
     <xsl:if test="db:info/db:releaseinfo or db:info/db:pubdate">
-      <refsection>
+      <refsection condition="ref.desc.changelog">
 	<title>ChangeLog</title>
 	<para>
 	  <xsl:text>This </xsl:text>
@@ -68,7 +68,8 @@
 	  <xsl:text> reference page is </xsl:text>
 	  <xsl:value-of select="db:info/db:releaseinfo"/>
 	  <xsl:text> published </xsl:text>
-	  <xsl:value-of select="db:info/db:pubdate"/>
+	  <xsl:value-of
+	      select="substring-before(substring-after(db:info/db:pubdate,'('),')')"/>
 	  <xsl:text>.</xsl:text>
 	</para>
       </refsection>
@@ -336,9 +337,8 @@
 
   <xsl:if test="(count($cmnAttrEither) != 20 and count($cmnAttrEither) != 0)
 		or count($otherAttr) &gt; 0">
-    <refsection>
+    <refsection condition="ref.desc.attribute-descriptions">
       <title>Attributes</title>
-
       <xsl:choose>
 	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
@@ -502,7 +502,7 @@
   </xsl:variable>
 
   <xsl:if test="$seealsolist/*">
-    <refsection>
+    <refsection condition="ref.desc.seealso">
       <title>See Also</title>
 
       <simplelist type="inline">
@@ -644,7 +644,7 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
   <xsl:param name="elemNum" select="1"/>
   <xsl:variable name="xdefs" select="key('elemdef', @name)"/>
 
-  <refsection>
+  <refsection condition="ref.desc.content-model">
     <title>Content Model</title>
 
     <para>
@@ -748,7 +748,7 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
   <xsl:if test="count($cmnAttrEither) &gt; 0 or count($otherAttr) &gt; 0">
-    <refsection>
+    <refsection condition="ref.desc.attributes">
       <title>Attributes</title>
 
       <xsl:choose>
@@ -956,7 +956,7 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 </xsl:template>
 
 <xsl:template match="doc:rules">
-  <refsection>
+  <refsection condition="ref.desc.rules">
     <title>Additional Constraints</title>
 
     <itemizedlist spacing='compact' role="element-synopsis">
