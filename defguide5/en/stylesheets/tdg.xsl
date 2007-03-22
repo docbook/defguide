@@ -76,7 +76,7 @@ set       nop
   <div class="copyrightfooter">
     <p>
       <a href="dbcpyright.html">Copyright</a>
-      <xsl:text> &#xA9; 2004, 2005 Norman Walsh. </xsl:text>
+      <xsl:text> &#xA9; 2004-2007 Norman Walsh. </xsl:text>
       <xsl:text>Portions Copright © 1999-2003 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>
@@ -623,6 +623,40 @@ set       nop
   </xsl:element>
 </xsl:template>
 
+<xsl:template match="refsection">
+  <div>
+    <xsl:apply-templates select="." mode="class.attribute"/>
+    <xsl:call-template name="dir">
+      <xsl:with-param name="inherit" select="1"/>
+    </xsl:call-template>
+    <xsl:call-template name="language.attribute"/>
+
+    <xsl:choose>
+      <xsl:when test="starts-with(@condition,'ref.desc.')">
+	<a name="{substring-after(@condition,'ref.desc.')}"/>
+      </xsl:when>
+      <xsl:when test="@condition='ref.description'">
+	<a name="description"/>
+      </xsl:when>
+      <xsl:when test="@condition='ref.examples'">
+	<a name="examples"/>
+      </xsl:when>
+      <xsl:when test="not(@condition) and db:title = 'Processing expectations'">
+	<a name="processing-expectations"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:call-template name="anchor">
+	  <xsl:with-param name="conditional" select="0"/>
+	</xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+
+    <!-- pick up info title -->
+    <xsl:apply-templates select="(title|info/title)[1]"/>
+    <xsl:apply-templates select="node()[not(self::title) and not(self::info)]"/>
+  </div>
+</xsl:template>
+
 <!-- ============================================================ -->
 
 <xsl:template match="sgmltag">
@@ -986,6 +1020,55 @@ set       nop
       </dd>
     </xsl:for-each>
   </dl>
+</xsl:template>
+
+<xsl:template match="processing-instruction('db-quickref')">
+  <div class="section" lang="en">
+    <div class="titlepage">
+      <div>
+	<h2 class="title" style="clear: both;">
+	  <xsl:value-of select="$rng/rng:grammar/comment()[1]"/>
+	</h2>
+      </div>
+    </div>
+
+    <div class="informaltable">
+      <table style="border: 0.5pt solid; border-collapse: collapse;"
+	     border="0">
+	<colgroup>
+	  <col width="120"/>
+	  <col/>
+	</colgroup>
+	<thead>
+	  <tr>
+	    <th style="border-right: 0.5pt solid; border-bottom: 0.5pt solid;"
+		valign="top">Element</th>
+	    <th style="border-bottom: 0.5pt solid;">Brief Description</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <xsl:for-each select="$rng/rng:grammar/rng:div[db:refname and db:refpurpose]">
+	    <xsl:sort select="db:refname" order="ascending" data-type="text"/>
+
+	    <!-- FIXME: I've lost the links to the reference pages... -->
+
+	    <tr>
+	      <td style="border-right: 0.5pt solid; border-bottom: 0.5pt solid;"
+		  valign="top">
+		<code class="sgmltag-element">
+		  <xsl:value-of select="db:refname"/>
+		</code>
+	      </td>
+	      <td style="border-bottom: 0.5pt solid;">
+		<xsl:value-of select="db:refpurpose"/>
+		<xsl:text>.</xsl:text>
+	      </td>
+	    </tr>
+	  </xsl:for-each>
+	</tbody>
+      </table>
+    </div>
+  </div>
 </xsl:template>
 
 </xsl:stylesheet>
