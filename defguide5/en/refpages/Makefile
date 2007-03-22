@@ -6,3 +6,6 @@ refpages:
 list-elements.xml: Makefile $(wildcard elements/build/*.xml)
 	@echo Extracting elements...
 	../tools/bin/makeelist > $@
+
+clean:
+	$(MAKE) -C elements clean
