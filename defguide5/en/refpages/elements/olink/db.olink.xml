@@ -32,6 +32,27 @@ to point to the target document by URI, and point into that document
 in some application-specific way.
 </para>
 
+<para>Other elements can also behave like <tag>Olink</tag>
+by using the common linking attributes 
+<tag class="attribute">xlink:href</tag>
+and <tag class="attribute">xlink:role</tag>.
+When an element has a
+<literal>xlink:role="http://docbook.org/xlink/role/olink"</literal>
+attribute, then its 
+<tag class="attribute">xlink:href</tag>
+attribute is interpreted using olink semantics.
+That is, the part of 
+<tag class="attribute">xlink:href</tag>
+before the fragment identifier (#) is interpreted as
+equivalent to an olink
+<tag class="attribute">targetdoc</tag>
+attribute value instead of a URI,
+and the part after the fragment identifier
+as an olink
+<tag class="attribute">targetptr</tag>
+attribute value.
+</para>
+
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
