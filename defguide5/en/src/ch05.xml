@@ -81,11 +81,7 @@ learning the syntax if it's not already familiar to you.
 <section xml:id="s-notdocbook"><info><title>If You Change DocBook,
 It's Not DocBook Anymore!</title></info>
 
-<para><indexterm significance="normal">
-  <primary>public identifiers</primary>
-  <secondary>DocBook DTD</secondary>
-  <tertiary>altering</tertiary>
-</indexterm>Startig with DocBook V5.0, DocBook is identified by its namespace,
+<para>Starting with DocBook V5.0, DocBook is identified by its namespace,
 <uri>http://docbook.org/ns/docbook</uri>. The particular version of
 DocBook to which an element conforms is identified by its
 <tag class='attribute'>version</tag> attribute. If the element does not
@@ -123,6 +119,59 @@ keyword. If you'd rather not characterize your variant specifically as
 a subset or an extension, you can leave out this field entirely or,
 if you prefer, use the <literal>variant</literal> keyword.
 </para>
+
+<section xml:id="pubid">
+<title>Public Identifiers</title>
+
+<para><indexterm>
+  <primary>public identifiers</primary>
+  <secondary>DocBook DTD</secondary>
+  <tertiary>altering</tertiary>
+</indexterm>Although not directly supported by RELAX NG, in some cases it may still
+be valuable to identify a DocBook V5.0 customization layer with a public identifier.
+A public identifier for DocBook V5.0 is:
+</para>
+<screen>-//OASIS//DTD DocBook V5.0//EN</screen>
+
+<para>If you make any changes to the structure of the schema, it is
+imperative that you alter the public identifier that you use to
+identify it.
+</para>
+
+<para><indexterm><primary>owner-identifiers</primary>
+  <secondary>changing (DocBook customization)</secondary></indexterm>
+<indexterm><primary>description, changing (DocBook customization)</primary>
+</indexterm>You should change both the owner identifier and the
+description. Formal public identifiers for the base DocBook modules would have
+identifiers with the 
+following syntax:
+<screen>
+-//OASIS//<replaceable>text-class</replaceable> DocBook <replaceable>description</replaceable> V<replaceable>version</replaceable>//EN
+</screen>
+</para>
+<para>
+Your own formal public identifiers should use the following syntax in
+order to record their DocBook derivation:
+<screen>
+-//<replaceable>your-owner-ID</replaceable>//<replaceable>text-class</replaceable> DocBook V<replaceable>version</replaceable>-Based <optional>Subset|Extension|Variant</optional> <replaceable>your-descrip-and-version</replaceable>//<replaceable>lang</replaceable>
+</screen>
+</para>
+
+<para>For example:
+<screen>-//O'Reilly//DTD DocBook V5.0-Based Subset V1.1//EN
+</screen>
+</para>
+
+<para><indexterm><primary>subsets (DocBook DTD)</primary>
+</indexterm>If your schema is a proper subset, you can advertise this status by
+using the <literal>Subset</literal> keyword in the description. If
+your schema contains any markup model extensions, you can advertise
+this status by using the <literal>Extension</literal> keyword. If
+you'd rather not characterize your variant specifically as a subset or
+an extension, you can leave out this field entirely, or, if you
+prefer, use the <literal>Variant</literal> keyword.
+</para>
+</section>
 </section>
 
 <section xml:id="ch05-layers">
