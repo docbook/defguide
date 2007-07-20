@@ -7,7 +7,7 @@
 
 <!-- $Id$ -->
 
-<xsl:import href="/sourceforge/docbook/xsl/html/db5strip.xsl"/>
+<xsl:import href="/sourceforge/docbook/xsl/common/stripns.xsl"/>
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 <xsl:preserve-space elements="*"/>
