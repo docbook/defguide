@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook" version="gin" xml:id="ch-publish">
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ch-publish">
 <?dbhtml filename="ch04.html"?>
 <title>Publishing DocBook Documents</title>
 <info>
@@ -152,23 +152,23 @@ A sample <acronym>FOSI</acronym> fragment is shown in <xref linkend="ex-fosi"/>.
 </para>
 <example xml:id="ex-fosi"><info><title>A Fragment of a <acronym>FOSI</acronym> Stylesheet</title></info>
 
-<programlisting><![CDATA[<e-i-c gi="para">
-  <charlist>
-    <textbrk startln="1" endln="1">
-  </charlist>
-</e-i-c>
+<programlisting>&lt;e-i-c gi="para"&gt;
+  &lt;charlist&gt;
+    &lt;textbrk startln="1" endln="1"&gt;
+  &lt;/charlist&gt;
+&lt;/e-i-c&gt;
 
-<e-i-c gi="emphasis">
-  <charlist inherit="1">
-    <font posture="italic">
-  </charlist>
-</e-i-c>
+&lt;e-i-c gi="emphasis"&gt;
+  &lt;charlist inherit="1"&gt;
+    &lt;font posture="italic"&gt;
+  &lt;/charlist&gt;
+&lt;/e-i-c&gt;
 
-<e-i-c gi="emphasis" context="emphasis">
-  <charlist inherit="1">
-    <font posture="upright">
-  </charlist>
-</e-i-c>]]></programlisting>
+&lt;e-i-c gi="emphasis" context="emphasis"&gt;
+  &lt;charlist inherit="1"&gt;
+    &lt;font posture="upright"&gt;
+  &lt;/charlist&gt;
+&lt;/e-i-c&gt;</programlisting>
 </example>
 </section>
 <section xml:id="s.dsssl"><info><title><acronym>DSSSL</acronym> stylesheet</title></info>
@@ -186,7 +186,7 @@ individual elements. See the example in <xref linkend="ex-dsssl"/>.
 </para>
 <example xml:id="ex-dsssl"><info><title>A Fragment of a <acronym>DSSSL</acronym> Stylesheet</title></info>
 
-<programlisting><![CDATA[(element para
+<programlisting>(element para
   (make paragraph
     (process-children)))
 
@@ -198,7 +198,7 @@ individual elements. See the example in <xref linkend="ex-dsssl"/>.
 (element (emphasis emphasis)
   (make sequence
     font-posture: 'upright
-    (process-children)))]]></programlisting>
+    (process-children)))</programlisting>
 </example>
 </section>
 <section xml:id="s.css"><info><title><acronym>CSS</acronym> stylesheet</title></info>
@@ -214,11 +214,11 @@ properties, as shown in <xref linkend="ex-css"/>.
 <info>
   <title>A Fragment of a <acronym>CSS</acronym> Stylesheet</title>
 </info>
-<programlisting><![CDATA[para              { display: block }
+<programlisting>para              { display: block }
 emphasis          { display: inline;
                     font-style: italic; }
 emphasis emphasis { display: inline;
-                    font-style: upright; }]]></programlisting>
+                    font-style: upright; }</programlisting>
 
 </example>
 
@@ -241,30 +241,30 @@ stylesheet that controls the presentation of specific elements is the
 <programlisting>
 FIXME: THIS IS WRONG!
 
-<![CDATA[<?xml version='1.0'?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"
+&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"
                 xmlns:fo="http://www.w3.org/XSL/Format/1.0"
-                version="1.0">
+                version="1.0"&gt;
 
-<xsl:template match="para">   
-  <fo:block>
-    <xsl:apply-templates/>  
-  </fo:block>
-</xsl:template>  
+&lt;xsl:template match="para"&gt;   
+  &lt;fo:block&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:block&gt;
+&lt;/xsl:template&gt;  
 
-<xsl:template match="emphasis">
-  <fo:sequence font-style="italic">
-    <xsl:apply-templates/>  
-  </fo:sequence>
-</xsl:template>  
+&lt;xsl:template match="emphasis"&gt;
+  &lt;fo:sequence font-style="italic"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:sequence&gt;
+&lt;/xsl:template&gt;  
 
-<xsl:template match="emphasis/emphasis">
-  <fo:sequence font-style="upright">
-    <xsl:apply-templates/>  
-  </fo:sequence>
-</xsl:template>  
+&lt;xsl:template match="emphasis/emphasis"&gt;
+  &lt;fo:sequence font-style="upright"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:sequence&gt;
+&lt;/xsl:template&gt;  
 
-</xsl:stylesheet>]]></programlisting>
+&lt;/xsl:stylesheet&gt;</programlisting>
 </example>
 </section>
 </section>

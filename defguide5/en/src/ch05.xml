@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook" version="gin" xml:id="app-customizing">
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="app-customizing">
 <?dbhtml filename="ch05.html"?>
 <title>Customizing DocBook</title>
 <info>
@@ -84,10 +84,10 @@ It's Not DocBook Anymore!</title></info>
 <para>Starting with DocBook V5.0, DocBook is identified by its namespace,
 <uri>http://docbook.org/ns/docbook</uri>. The particular version of
 DocBook to which an element conforms is identified by its
-<tag class='attribute'>version</tag> attribute. If the element does not
+<tag class="attribute">version</tag> attribute. If the element does not
 specify a version, the version of the closest ancestor DocBook
 element that does specify a version is assumed. The 
-<tag class='attribute'>version</tag> attribute is required on the root
+<tag class="attribute">version</tag> attribute is required on the root
 DocBook element.</para>
 
 <para>If you make any changes to the DocBook schema, it is imperative
@@ -104,12 +104,12 @@ except that you must not call your alterations <quote>DocBook</quote>.
 
 <para>For example, version 1.0 of Acme Corporation's extension of
 DocBook V5.0 could be identified as
-“<literal>5.0-extension&#160;acme-1.0</literal>”.</para>
+“<literal>5.0-extension acme-1.0</literal>”.</para>
 
 <para>A document that relied on the version 3.2 of Example
 Corporation's subset of DocBook V5.0, MathML 2.0, and SVG 1.1 could be
 identified as:
-“<literal>5.0-subset&#160;example-3.2 mathml-2.0 svg-1.1</literal>”.</para>
+“<literal>5.0-subset example-3.2 mathml-2.0 svg-1.1</literal>”.</para>
 
 <para>If your schema is a proper subset, you can advertise this status
 by using the <literal>subset</literal> keyword in the version. If

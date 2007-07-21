@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<appendix xmlns="http://docbook.org/ns/docbook"
-	  version="5.0"
-	  xml:id="app-interchange">
+<appendix xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="app-interchange">
 <?dbhtml filename="appf.html"?>
 <info>
   <title>Interchanging DocBook Documents</title>
@@ -98,18 +96,18 @@ information regarding its format and version?</para>
 </listitem><listitem><para>How did you create tables of contents,
 lists of titles, and indexes? Are they stored in DocBook form? If so,
 did you generate them (and according to what rules) or create them by
-hand?</para> </listitem><listitem><para>If you used the <tag class="attribute">Lang</tag> common attribute, why, and to what
-effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">Remap</tag> common attribute, why, and to what
-effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">Role</tag> common attribute, why, and to what
+hand?</para> </listitem><listitem><para>If you used the <tag class="attribute">lang</tag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">remap</tag> common attribute, why, and to what
+effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">role</tag> common attribute, why, and to what
 effect?</para> </listitem><listitem><para>If you used the effectivity
 attributes, which did you use, why, and to what effect?</para>
-</listitem><listitem><para>What values did you give to the <tag class="attribute">Label</tag> attribute and how are they to be
+</listitem><listitem><para>What values did you give to the <tag class="attribute">label</tag> attribute and how are they to be
 interpreted for rendering?</para> </listitem><listitem><para>What
-values did you give to the <tag class="attribute">Mark</tag>
-and <tag class="attribute">Override</tag> attributes for lists
+values did you give to the <tag class="attribute">mark</tag>
+and <tag class="attribute">override</tag> attributes for lists
 and how are they to be interpreted for rendering?</para>
-</listitem><listitem><para>Did you use the <tag class="attribute">Renderas</tag> attribute on sections and/or
-<tag>BridgeHead</tag>s?</para>
+</listitem><listitem><para>Did you use the <tag class="attribute">renderas</tag> attribute on sections and/or
+<tag>bridgehead</tag>s?</para>
 </listitem><listitem><para>Did you supply all keyword values you used for
 attributes whose declared values are not enumerated tokens, along with
 the expected processing for the occurrence of each keyword?</para>
@@ -117,62 +115,62 @@ the expected processing for the occurrence of each keyword?</para>
 and/or positioning settings (such as <quote>fold-out</quote> or
 <quote>centered</quote>) for graphics, line specific regions, and
 tables? If so, how?</para> </listitem><listitem><para>For rendering of
-<tag>Sidebar</tag>s, must these appear in the flow of the text
+<tag>sidebar</tag>s, must these appear in the flow of the text
 where they appear in your files, or may they float?</para>
 </listitem>
-<listitem><para>Did you use <tag>Callout</tag>s? If so, what are the
+<listitem><para>Did you use <tag>callout</tag>s? If so, what are the
 processing expectations for callout marks?
 </para>
 </listitem>
-<listitem><para>Did you use <tag>ItemizedList</tag>s? If so, what are the
+<listitem><para>Did you use <tag>itemizedlist</tag>s? If so, what are the
 processing expectations for the marks on list items and nested lists?
 </para>
 </listitem>
 <listitem><para>For <tag>mediaobject</tag> and <tag>inlinemediaobject</tag>, what method(s) did
-you use for providing graphic data: element content, <tag class="attribute">Fileref</tag> attribute, or
-<tag class="attribute">Entityref</tag> attribute?</para>
+you use for providing graphic data: element content, <tag class="attribute">fileref</tag> attribute, or
+<tag class="attribute">entityref</tag> attribute?</para>
 </listitem>
-<listitem><para>For <tag>MediaObject</tag> and <tag>InlineMediaObject</tag>,
+<listitem><para>For <tag>mediaobject</tag> and <tag>inlinemediaobject</tag>,
 what method(s) did
 you use for selecting between alternative presentations?</para>
 </listitem><listitem><para>How did you specify column widths in tables? Did
 you use vertical spans? Did you use horizontal spans?</para>
-</listitem><listitem><para>Did you use <tag>EntryTbl</tag>s?
+</listitem><listitem><para>Did you use <tag>entrytbl</tag>s?
 </para>
-</listitem><listitem><para>If you used the <tag class="attribute">Type</tag> attribute on the link elements,
+</listitem><listitem><para>If you used the <tag class="attribute">type</tag> attribute on the link elements,
 why, and to what effect?</para>
-</listitem><listitem><para>If you used <tag>XRef</tag>, do your interchange
+</listitem><listitem><para>If you used <tag>xref</tag>, do your interchange
 partners need additional information about the semantic of the link?
-Have you provided it, perhaps with <tag class="attribute">Role</tag>?</para>
-</listitem><listitem><para>Did you use the <tag class="attribute">Subject</tag> attribute on <tag>GlossDef</tag>?
+Have you provided it, perhaps with <tag class="attribute">role</tag>?</para>
+</listitem><listitem><para>Did you use the <tag class="attribute">subject</tag> attribute on <tag>glossdef</tag>?
 If so, did you use a thesaurus of terms? If so, what is it?</para>
-</listitem><listitem><para>If you used the <tag class="attribute">Class</tag> attribute on <tag>RefMiscInfo</tag>,
+</listitem><listitem><para>If you used the <tag class="attribute">class</tag> attribute on <tag>refmiscinfo</tag>,
 why and to what effect?</para>
 </listitem><listitem><para>If you used <tag>link</tag> and provided <acronym>URL</acronym>s that are queries,
 what back-end processing is required to resolve those queries?</para>
 </listitem>
-<listitem><para><tag class="attribute">FileRef</tag> or 
-<tag class="attribute">EntityRef</tag> is supplied on every
-<tag>AudioData</tag>, 
-<tag>ImageData</tag>, and
-<tag>VideoData</tag> element.  If one is not present, what is the expectation?
+<listitem><para>A <tag class="attribute">fileref</tag> or 
+<tag class="attribute">entityref</tag> attribute is supplied on every
+<tag>audiodata</tag>, 
+<tag>imagedata</tag>, and
+<tag>videodata</tag> element.  If one is not present, what is the expectation?
 </para>
 </listitem>
-<listitem><para>If your <tag>Bibliography</tag>s or
-<tag>Glossary</tag>s have special processing expectations,
+<listitem><para>If your <tag>bibliography</tag>s or
+<tag>glossary</tag>s have special processing expectations,
 such as the ability to display only those entries that are cited,
 have you described them?
 </para>
 </listitem>
 
-<listitem><para>If your <tag>Bibliography</tag>s contain
-<tag>BiblioEntry</tag>s, what are the processing expectations?
+<listitem><para>If your <tag>bibliography</tag>s contain
+<tag>biblioentry</tag>s, what are the processing expectations?
 Which fields are selected for display?
 What punctuation is added, and where?
 </para>
 </listitem>
 
-<listitem><para>Do <tag>GlossTerm</tag>s or other elements have
+<listitem><para>Do <tag>glossterm</tag>s or other elements have
 implicit linking relationships that must be obeyed or handled in
 presentation?
 </para>
@@ -184,15 +182,15 @@ Are they in entities?
 <listitem><para>What copyfitting have you already done, and for what outputs?
 </para>
 </listitem>
-<listitem><para>Are the <tag>Revision</tag>s in your
-<tag>RevHistory</tag>s sorted in any particular way?
+<listitem><para>Are the <tag>revision</tag>s in your
+<tag>revhistory</tag>s sorted in any particular way?
 </para>
 </listitem>
 </orderedlist>
 <bridgehead>Miscellaneous</bridgehead>
 <orderedlist continuation="continues" inheritnum="ignore"><listitem><para>Have you checked your
 files for viruses?</para>
-</listitem><listitem><para>If you used <tag>BridgeHead</tag>, have you joined a recovery
+</listitem><listitem><para>If you used <tag>bridgehead</tag>, have you joined a recovery
 support group?</para>
 </listitem></orderedlist>
 <indexterm startref="questionappf" class="endofrange"/>

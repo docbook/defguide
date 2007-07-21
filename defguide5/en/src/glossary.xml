@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<glossary xmlns="http://docbook.org/ns/docbook" version="gin" xml:id="glossary">
+<glossary xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="glossary">
 <?dbhtml filename="dbgloss.html"??>
 <info><title>Glossary</title>
 <pubdate>$Date$</pubdate>
@@ -22,7 +22,7 @@ provide additional information about the element.
 
 Attributes appear as name-value pairs in the element's start-tag.
 For example, to assign the value <literal>hostname</literal> to the
-<tag class="attribute">Role</tag> attribute of <tag>SystemItem</tag>,
+<tag class="attribute">role</tag> attribute of <tag>systemitem</tag>,
 you would use the mark up:
 <tag class="starttag">systemitem role="hostname"</tag>.
 </para>
@@ -129,10 +129,10 @@ within the content of the element.
 <indexterm significance="normal"><primary>nesting</primary>
   <secondary>footnotes</secondary></indexterm>
 
-For example, in DocBook, <tag>Footnote</tag> excludes <tag>Footnote</tag>.
-This means that footnotes cannot nest, even though <tag>Footnote</tag>
-contains <tag>Para</tag>, and <tag>Footnote</tag> occurs in the proper
-content model of <tag>Para</tag>.
+For example, in DocBook, <tag>footnote</tag> excludes <tag>footnote</tag>.
+This means that footnotes cannot nest, even though <tag>footnote</tag>
+contains <tag>para</tag>, and <tag>footnote</tag> occurs in the proper
+content model of <tag>para</tag>.
 </para>
 </glossdef>
 </glossentry>
@@ -228,17 +228,17 @@ like commonly repeated phrases or names or chapters.</para>
 </glossentry>
 <glossentry xml:id="gloss-gi"><glossterm><acronym>GI</acronym></glossterm>
 <glossdef>
-<para>
-<indexterm significance="normal"><primary>generic identifiers (GI)</primary></indexterm>
+
+<para><indexterm significance="normal"><primary>generic identifiers (GI)</primary></indexterm>
 <indexterm significance="normal"><primary>GI (generic identifiers)</primary></indexterm>
 <indexterm significance="normal"><primary>identifiers, generic</primary></indexterm>
 <indexterm significance="normal"><primary>elements</primary>
   <secondary>generic identifiers</secondary></indexterm>
 <indexterm significance="normal"><primary>names</primary>
-  <secondary>elements (generic identifiers)</secondary></indexterm>
-
-Generic identifier, proper term for the actual name of an element;
-<literal>Para</literal> is the generic identifier of the <tag class="element">para</tag> element.</para>
+  <secondary>elements (generic identifiers)</secondary>
+</indexterm>Generic identifier, proper term for the actual name of an
+element; <literal>para</literal> is the generic identifier of the
+<tag class="element">para</tag> element.</para>
 </glossdef>
 </glossentry>
 <glossentry xml:id="gloss-incl"><glossterm>inclusion</glossterm>
@@ -257,9 +257,9 @@ which the inclusion occurs, the included elements are valid anywhere
 within the content of the element.
 </para>
 <para>
-For example, in DocBook, <tag>Chapter</tag> includes <tag>IndexTerm</tag>.
-This means that <tag>IndexTerm</tag>s can occur anywhere inside chapters,
-even inside elements that do not have <tag>IndexTerm</tag>s in their
+For example, in DocBook, <tag>chapter</tag> includes <tag>indexterm</tag>.
+This means that <tag>indexterm</tag>s can occur anywhere inside chapters,
+even inside elements that do not have <tag>indexterm</tag>s in their
 proper content models.
 </para>
 </glossdef>
@@ -513,7 +513,7 @@ The World Wide Web Consortium (<link xmlns:xlink="http://www.w3.org/1999/xlink" 
 <indexterm significance="normal"><primary>elements</primary>
   <secondary>wrappers</secondary></indexterm>
 
-Some elements, such as <tag>Chapter</tag>, have important semantic
+Some elements, such as <tag>chapter</tag>, have important semantic
 significance.  Other elements serve no obvious purpose except to contain
 a number of other elements. For example, <tag>info</tag> has no
 important semantics; it merely serves as a container for the meta-information
