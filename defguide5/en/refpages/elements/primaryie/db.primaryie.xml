@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>primaryie</refmiscinfo>
-  <refmiscinfo role='pattern'>db.primaryie</refmiscinfo>
+  <refmiscinfo role="element">primaryie</refmiscinfo>
+  <refmiscinfo role="pattern">db.primaryie</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,24 +17,23 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>PrimaryIE</tag> identifies the most significant word or
-words in an <tag>IndexEntry</tag>.  <tag>IndexEntry</tag>s
-occur in an <tag>Index</tag>, not in the flow of the text. They are
+<para>A <tag>primaryie</tag> identifies the most significant word or
+words in an <tag>indexentry</tag>.  The <tag>indexentry</tag>s
+occur in an <tag>index</tag>, not in the flow of the text. They are
 part of a formatted index, not markers for indexing.
 </para>
-<para>If a document includes both <tag>IndexTerm</tag>s and <tag>IndexEntry</tag>s,
-the <tag>IndexEntry</tag>s are usually constructed from the
-<tag>IndexTerm</tag>s by some external process.
+<para>If a document includes both <tag>indexterm</tag>s and <tag>indexentry</tag>s,
+the <tag>indexentry</tag>s are usually constructed from the
+<tag>indexterm</tag>s by some external process.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-The <tag>PrimaryIE</tag> starts a new entry in the
-<tag>Index</tag>.
+The <tag>primaryie</tag> starts a new entry in the
+<tag>index</tag>.
 </para>
 </refsection>
 

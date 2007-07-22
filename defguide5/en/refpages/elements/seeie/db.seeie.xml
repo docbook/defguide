@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>seeie</refmiscinfo>
-  <refmiscinfo role='pattern'>db.seeie</refmiscinfo>
+  <refmiscinfo role="element">seeie</refmiscinfo>
+  <refmiscinfo role="pattern">db.seeie</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,28 +17,27 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>SeeIE</tag> identifies a <quote>See</quote> cross reference 
-in an <tag>IndexEntry</tag>.  <tag>IndexEntry</tag>s
-occur in an <tag>Index</tag>, not in the flow of the text. They are
+<para>A <tag>seeie</tag> identifies a <quote>See</quote> cross
+reference in an <tag>indexentry</tag>. The <tag>indexentry</tag>s
+occur in an <tag>index</tag>, not in the flow of the text. They are
 part of a formatted index, not markers for indexing.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-<tag>IndexEntry</tag>s that include a <tag>SeeIE</tag>
+The <tag>indexentry</tag>s that include a <tag>seeie</tag>
 should be formatted normally, with the <quote>See also</quote> indented below
 the term.  There should be no other entries for this term.
 </para>
-<para><tag>SeeIE</tag> is usually expected to generate the text,
-<quote>See.</quote>
+<para>The <tag>seeie</tag> is usually expected to generate the text,
+<quote>See</quote>.
 </para>
-<para>The <tag class='attribute'>Linkend</tag> attribute should point to the
-referenced <tag>IndexEntry</tag>s, which should be in the same
-<tag>Index</tag>. Online systems
+<para>The <tag class="attribute">linkend</tag> attribute should point to the
+referenced <tag>indexentry</tag>s, which should be in the same
+<tag>index</tag>. Online systems
 may use the link information to form a hypertext link.
 </para>
 </refsection> 

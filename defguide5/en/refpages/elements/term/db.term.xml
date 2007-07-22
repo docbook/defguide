@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>term</refmiscinfo>
-  <refmiscinfo role='pattern'>db.term</refmiscinfo>
+  <refmiscinfo role="element">term</refmiscinfo>
+  <refmiscinfo role="pattern">db.term</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,23 +17,23 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>The <tag>Term</tag> in a <tag>VarListEntry</tag> identifies the 
+<para>The <tag>term</tag> in a <tag>varlistentry</tag> identifies the 
 thing that is described or defined by that entry.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-<tag>Term</tag>s are usually formatted to make
-them stand out with respect to the text that follows. The best
+A <tag>term</tag> is usually formatted to make
+it stand out with respect to the text that follows. The best
 presentation depends on several factors, including the number
-and length of the terms.  The <tag
-class='attribute'>TermLength</tag> attribute on the containing
-<tag>VariableList</tag> may influence the presentation of
-<tag>Term</tag>s.  See <tag>VariableList</tag>.
+and length of the terms.
+The <tag class="attribute">termlength</tag> attribute on the containing
+<tag>variablelist</tag> may influence the presentation of
+<tag>term</tag>s.  See <tag>variablelist</tag>.
 </para>
 </refsection>
 

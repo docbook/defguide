@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>link</refmiscinfo>
-  <refmiscinfo role='pattern'>db.link</refmiscinfo>
+  <refmiscinfo role="element">link</refmiscinfo>
+  <refmiscinfo role="pattern">db.link</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,14 +17,14 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>The <tag>link</tag> is a general purpose hypertext element.
 Usually, <tag>link</tag> surrounds the text that should be made
 “hot,” (unlike <tag>xref</tag> which must generate the text) but
-the <tag class='attribute'>endterm</tag> attribute can be used to copy
+the <tag class="attribute">endterm</tag> attribute can be used to copy
 text from another element.
 </para>
 
@@ -36,7 +34,7 @@ a <tag class="attribute">xlink:href</tag> attribute. If it has an
 <tag class="attribute">xlink:href</tag> attribute,
 <tag>link</tag> is the equivalent of an
 <acronym>HTML</acronym> anchor
-(<tag class='starttag'>html:a href="..."</tag>)
+(<tag class="starttag">html:a href="..."</tag>)
 for cross reference with a Uniform Resource Identifier
 (<acronym>URI</acronym>). 
 </para>
@@ -47,12 +45,12 @@ for cross reference with a Uniform Resource Identifier
 
 <para>If the <tag>link</tag> element has content, then that content is
 processed for output as the “hot” text. If the <tag>link</tag> element
-has content and an <tag class='attribute'>endterm</tag> attribute,
-then the content is used and the <tag class='attribute'>endterm</tag>
+has content and an <tag class="attribute">endterm</tag> attribute,
+then the content is used and the <tag class="attribute">endterm</tag>
 is ignored. If the <tag>link</tag> element has an
-<tag class='attribute'>endterm</tag> attribute and no content, then the
+<tag class="attribute">endterm</tag> attribute and no content, then the
 content of the element pointed to by
-<tag class='attribute'>endterm</tag> should be repeated at the location of
+<tag class="attribute">endterm</tag> should be repeated at the location of
 the <tag>link</tag> and used as the “hot” text.
 </para>
 </refsection>
@@ -82,10 +80,10 @@ be rendered as the text of the link.</para>
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
 </refsection>
 

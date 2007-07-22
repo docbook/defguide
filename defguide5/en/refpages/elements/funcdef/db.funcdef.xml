@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>funcdef</refmiscinfo>
-  <refmiscinfo role='pattern'>db.funcdef</refmiscinfo>
+  <refmiscinfo role="element">funcdef</refmiscinfo>
+  <refmiscinfo role="pattern">db.funcdef</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,30 +17,30 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>FuncDef</tag> contains the name of a programming language function,
+<para>A <tag>funcdef</tag> contains the name of a programming language function,
 and its return type.
 </para>
-<para>Within the <tag>FuncDef</tag>, the function name is identified with 
-<tag>Function</tag>, and the rest of the content is assumed to be the
+<para>Within the <tag>funcdef</tag>, the function name is identified with 
+<tag>function</tag>, and the rest of the content is assumed to be the
 return type.
 </para>
 <para>In the following definition, <function>max</function> is the name of the 
 function and <type>int</type> is the return type:
 <screen>
-<![CDATA[
-<funcdef>int <function>max</function></funcdef>
-]]>
+
+&lt;funcdef&gt;int &lt;function&gt;max&lt;/function&gt;&lt;/funcdef&gt;
+
 </screen>
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
 For a complete description of the processing expecations,
-see <tag>FuncSynopsis</tag>.
+see <tag>funcsynopsis</tag>.
 </para>
 </refsection>
 
@@ -55,14 +53,14 @@ see <tag>FuncSynopsis</tag>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.funcdef.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.funcdef.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.funcdef.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.funcdef.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

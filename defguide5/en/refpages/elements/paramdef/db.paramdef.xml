@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>paramdef</refmiscinfo>
-  <refmiscinfo role='pattern'>db.paramdef</refmiscinfo>
+  <refmiscinfo role="element">paramdef</refmiscinfo>
+  <refmiscinfo role="pattern">db.paramdef</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,28 +17,28 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>In the syntax summary for a function in a programming language,
-<tag>ParamDef</tag> provides the description of a parameter to the
+<tag>paramdef</tag> provides the description of a parameter to the
 function.  Typically, this includes the data type of the parameter
 and its name.  For parameters that are pointers to functions, it also
 includes a summary of the nested parameters.
 </para>
 
-<para>Within the <tag>ParamDef</tag>, the parameter name is identified with 
-<tag>Parameter</tag>, and the rest of the content is assumed to be the
+<para>Within the <tag>paramdef</tag>, the parameter name is identified with 
+<tag>parameter</tag>, and the rest of the content is assumed to be the
 data type.
 </para>
 
 <para>In the following definition, <parameter>str</parameter> is the name of the 
 parameter and <type>char *</type> is its type:
 <screen>
-<![CDATA[
-<paramdef>char *<parameter>str</parameter></paramdef>
-]]>
+
+&lt;paramdef&gt;char *&lt;parameter&gt;str&lt;/parameter&gt;&lt;/paramdef&gt;
+
 </screen>
 </para>
 
@@ -49,16 +47,16 @@ parameter.  For example, the <parameter>a</parameter> parameter in this
 definition is an array of 
 <type>char *</type>:
 <screen>
-<![CDATA[
-<paramdef>char *<parameter>a</parameter>[]</paramdef>
-]]>
+
+&lt;paramdef&gt;char *&lt;parameter&gt;a&lt;/parameter&gt;[]&lt;/paramdef&gt;
+
 </screen>
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
 For a complete description of the processing expectations,
-see <tag>FuncSynopsis</tag>.
+see <tag>funcsynopsis</tag>.
 </para>
 </refsection>
 
@@ -72,14 +70,14 @@ see <tag>FuncSynopsis</tag>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.paramdef.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.paramdef.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.paramdef.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.paramdef.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

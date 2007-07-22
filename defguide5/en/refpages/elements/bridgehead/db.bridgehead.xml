@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>bridgehead</refmiscinfo>
-  <refmiscinfo role='pattern'>db.bridgehead</refmiscinfo>
+  <refmiscinfo role="element">bridgehead</refmiscinfo>
+  <refmiscinfo role="pattern">db.bridgehead</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,24 +17,24 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>Some documents, usually legacy documents, use headings that are
 not tied to the normal sectional hieararchy.
 These headings may be
-represented in DocBook with the <tag>BridgeHead</tag> element.  
+represented in DocBook with the <tag>bridgehead</tag> element.  
 </para>
 
-<para><tag>BridgeHead</tag>s may also be useful in fiction or journalistic 
+<para>A <tag>bridgehead</tag> may also be useful in fiction or journalistic 
 works that don't have a nested hierarchy.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>A <tag>BridgeHead</tag> is formatted as a block, using the same
+<para>A <tag>bridgehead</tag> is formatted as a block, using the same
 display properties as the section heading which it
-masquerades as.  The <tag class="attribute">RenderAs</tag>
+masquerades as.  The <tag class="attribute">renderas</tag>
 attribute controls which heading it mimics.
 </para>
 </refsection>

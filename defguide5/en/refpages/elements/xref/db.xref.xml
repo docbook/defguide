@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>xref</refmiscinfo>
-  <refmiscinfo role='pattern'>db.xref</refmiscinfo>
+  <refmiscinfo role="element">xref</refmiscinfo>
+  <refmiscinfo role="pattern">db.xref</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,13 +17,13 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>The <tag>XRef</tag> element forms a cross-reference from the location
-of the <tag>XRef</tag> to the element to which it points.  Unlike
-<tag>Link</tag> and the other cross-referencing elements, <tag>XRef</tag>
+<para>The <tag>xref</tag> element forms a cross-reference from the location
+of the <tag>xref</tag> to the element to which it points.  Unlike
+<tag>link</tag> and the other cross-referencing elements, <tag>xref</tag>
 is empty. The processing system has to generate appropriate cross-reference
 text for the reader.
 </para>
@@ -40,16 +38,16 @@ ways for the author to influence the generated text:</para>
 
 <orderedlist>
 <listitem>
-<para>If the <tag class='attribute'>endterm</tag> attribute is specified
+<para>If the <tag class="attribute">endterm</tag> attribute is specified
 on <tag>xref</tag>, the
-content of the element pointed to by <tag class='attribute'>endterm</tag>
+content of the element pointed to by <tag class="attribute">endterm</tag>
 will be used as the text of the cross-reference.
 </para>
 </listitem>
 
 <listitem>
 <para>Otherwise, if the object <emphasis>pointed to</emphasis> has a
-specified <tag class='attribute'>XRefLabel</tag>, the content of
+specified <tag class="attribute">xreflabel</tag>, the content of
 that attribute will be used as the cross-reference text.
 </para>
 </listitem>
@@ -76,10 +74,10 @@ is dependent on the processing system.</para>
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
 </refsection>
 

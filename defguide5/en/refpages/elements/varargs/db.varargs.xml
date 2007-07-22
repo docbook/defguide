@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>varargs</refmiscinfo>
-  <refmiscinfo role='pattern'>db.varargs</refmiscinfo>
+  <refmiscinfo role="element">varargs</refmiscinfo>
+  <refmiscinfo role="pattern">db.varargs</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,16 +17,16 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>VarArgs</tag> indicates that a function takes a variable
+<para>A <tag>varargs</tag> indicates that a function takes a variable
 number of arguments.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>The <tag>VarArgs</tag> element produces generated text that indicates
+<para>The <tag>varargs</tag> element produces generated text that indicates
 that the function takes a variable number of arguments.  The
 exact generated text may vary.  One common result is
 <quote><computeroutput>(…)</computeroutput></quote>.
@@ -45,14 +43,14 @@ exact generated text may vary.  One common result is
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.varargs.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.varargs.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.varargs.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.varargs.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

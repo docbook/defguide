@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>equation</refmiscinfo>
-  <refmiscinfo role='pattern'>db.equation</refmiscinfo>
+  <refmiscinfo role="element">equation</refmiscinfo>
+  <refmiscinfo role="pattern">db.equation</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,30 +17,30 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>An <tag>Equation</tag> is a formal mathematical equation
+<para>An <tag>equation</tag> is a formal mathematical equation
 (with an optional rather than required title).
 </para>
 
-<para>If the MathML Module is used, <tag>Equation</tag> can
+<para>If the MathML Module is used, <tag>equation</tag> can
 also contain the
 <tag namespace="http://www.w3.org/1998/Math/MathML">mml:math</tag>
 element.</para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-For an inline equation, use <tag>InlineEquation</tag>.
+For an inline equation, use <tag>inlineequation</tag>.
 </para>
 
 <para>Processing systems that number equations or build a table of
 equations at the beginning of a document may have difficulty correctly
-formatting documents that contain both <tag>Equation</tag>s
-with <tag>Title</tag>s and <tag>Equation</tag>s
-without <tag>Title</tag>s.  You are advised to use
-<tag>InformalEquation</tag> for equations without titles.
+formatting documents that contain both <tag>equation</tag>s
+with <tag>title</tag>s and <tag>equation</tag>s
+without <tag>title</tag>s.  You are advised to use
+<tag>informalequation</tag> for equations without titles.
 </para>
 </refsection>
 
@@ -54,7 +52,7 @@ without <tag>Title</tag>s.  You are advised to use
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

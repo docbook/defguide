@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>keysym</refmiscinfo>
-  <refmiscinfo role='pattern'>db.keysym</refmiscinfo>
+  <refmiscinfo role="element">keysym</refmiscinfo>
+  <refmiscinfo role="pattern">db.keysym</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,14 +17,13 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para>The <tag>KeySym</tag> identifies the symbolic name of a key on a 
+<para>The <tag>keysym</tag> identifies the symbolic name of a key on a 
 computer keyboard. This is distinct from any scan code
-that it may generate (<tag>KeyCode</tag>), or any symbolic name
-(<tag>KeySym</tag>) that might exist for the key.
+that it may generate (<tag>keycode</tag>), or any symbolic name
+(<tag>keysym</tag>) that might exist for the key.
 </para>
 
 <refsection><title>Processing expectations</title>
@@ -43,14 +40,14 @@ that it may generate (<tag>KeyCode</tag>), or any symbolic name
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.keysym.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.keysym.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.keysym.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.keysym.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

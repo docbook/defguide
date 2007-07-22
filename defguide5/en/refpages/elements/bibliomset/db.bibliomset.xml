@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>bibliomset</refmiscinfo>
-  <refmiscinfo role='pattern'>db.bibliomset</refmiscinfo>
+  <refmiscinfo role="element">bibliomset</refmiscinfo>
+  <refmiscinfo role="pattern">db.bibliomset</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,18 +17,18 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>BiblioMSet</tag> is a <quote>cooked</quote> wrapper for a
+<para>A <tag>bibliomset</tag> is a <quote>cooked</quote> wrapper for a
 collection of bibliographic information.
 </para>
 
 <para>The purpose of this wrapper is
 to assert the relationship that binds the collection.  For example, in a
-<tag>BiblioMixed</tag> entry for an article in a journal, you might
-use two <tag>BiblioMSet</tag>s to wrap the fields related to the article
+<tag>bibliomixed</tag> entry for an article in a journal, you might
+use two <tag>bibliomset</tag>s to wrap the fields related to the article
 and the fields related to the journal.
 </para>
 
@@ -38,8 +36,8 @@ and the fields related to the journal.
 <para><?tdg gentext='format.block'?>
 </para>
 
-<para><tag>BiblioMSet</tag>s are <quote>cooked.</quote> In
-addition to named fields, they can contain interspersed <literal>#PCDATA</literal>
+<para>A <tag>bibliomset</tag> is <quote>cooked.</quote> In
+addition to named fields, it can contain interspersed text
 to provide punctuation and other formatting information.
 </para>
 
@@ -58,7 +56,7 @@ occurs.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>biblioset</refmiscinfo>
-  <refmiscinfo role='pattern'>db.biblioset</refmiscinfo>
+  <refmiscinfo role="element">biblioset</refmiscinfo>
+  <refmiscinfo role="pattern">db.biblioset</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,18 +17,18 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>BiblioSet</tag> is a <quote>raw</quote> wrapper for a
+<para>A <tag>biblioset</tag> is a <quote>raw</quote> wrapper for a
 collection of bibliographic information.
 </para>
 
 <para>The purpose of this wrapper is
 to assert the relationship that binds the collection.  For example, in a
-<tag>BiblioEntry</tag> for an article in a journal, you might
-use two <tag>BiblioSet</tag>s to wrap the fields related to the article
+<tag>biblioentry</tag> for an article in a journal, you might
+use two <tag>biblioset</tag>s to wrap the fields related to the article
 and the fields related to the journal.
 </para>
 
@@ -38,19 +36,19 @@ and the fields related to the journal.
 <para><?tdg gentext='format.block'?>
 </para>
 
-<para><tag>BiblioSet</tag>s are <quote>raw.</quote> They contain a
+<para>A <tag>biblioset</tag> is <quote>raw</quote>. It contain a
 database-like collection of named fields. It is the responsibility of
 the processing system to select elements from within a 
-<tag>BiblioSet</tag>, present them in the correct order, and add
+<tag>biblioset</tag>, present them in the correct order, and add
 all punctuation.
 </para>
 
 <para>There is no expectation that a system will present all of the fields
-in a <tag>BiblioSet</tag> or that they will be displayed in the order
+in a <tag>biblioset</tag> or that they will be displayed in the order
 in which they occur.
 </para>
 
-<para>Correct formatting of <tag>BiblioSet</tag>s is an interchange
+<para>Correct formatting of <tag>biblioset</tag>s is an interchange
 issue. See <xref linkend="app-interchange"/>.
 </para>
 
@@ -64,7 +62,7 @@ issue. See <xref linkend="app-interchange"/>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

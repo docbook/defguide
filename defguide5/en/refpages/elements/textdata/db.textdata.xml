@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>textdata</refmiscinfo>
-  <refmiscinfo role='pattern'>db.textdata</refmiscinfo>
+  <refmiscinfo role="element">textdata</refmiscinfo>
+  <refmiscinfo role="pattern">db.textdata</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,7 +17,7 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 <para>This element points to an external entity containing text to be
@@ -37,11 +35,11 @@ into separate physical files, use XInclude or external parsed entities.</para>
 <para><?tdg gentext='format.context'?>Insert the text.</para>
 
 <para>There are two ways to provide content for <tag>textdata</tag>:
-<tag class='attribute'>entityref</tag> or
-<tag class='attribute'>fileref</tag>.
+<tag class="attribute">entityref</tag> or
+<tag class="attribute">fileref</tag>.
 It is best to use only one of these methods; however, if multiple
-sources are provided, <tag class='attribute'>entityref</tag> will be
-used in favor of <tag class='attribute'>fileref</tag>.
+sources are provided, <tag class="attribute">entityref</tag> will be
+used in favor of <tag class="attribute">fileref</tag>.
 </para>
 
 <para>If the encoding is such that the processor will not be able to

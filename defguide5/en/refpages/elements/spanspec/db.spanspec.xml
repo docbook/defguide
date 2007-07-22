@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>spanspec</refmiscinfo>
-  <refmiscinfo role='pattern'>db.spanspec</refmiscinfo>
+  <refmiscinfo role="element">spanspec</refmiscinfo>
+  <refmiscinfo role="pattern">db.spanspec</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,17 +17,17 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>SpanSpec</tag> associates a name with a span between two columns
+<para>A <tag>spanspec</tag> associates a name with a span between two columns
 in a table. In the body of the table, cells can refer to the span by name.
 Cells that refer to a span will span horizontally from the first column
 to the last column, inclusive.
 </para>
 <para>Cells can also form spans directly, by naming the start and end
-columns themselves.  The added benefit of a <tag>SpanSpec</tag>
+columns themselves.  The added benefit of a <tag>spanspec</tag>
 is that it can associate formatting information (such as
 alignment and table rule specifications) with the span.  This information
 does not need to be repeated then, on each spanning cell.
@@ -38,14 +36,13 @@ does not need to be repeated then, on each spanning cell.
 <para><?tdg gentext='format.suppress'?>
 <?tdg gentext='calssemantics'?>
 </para>
-<para>The <tag class='attribute'>NameSt</tag> and <tag
-class='attribute'>NameEnd</tag> attributes of a <tag>SpanSpec</tag> must
-refer to named <tag>ColSpec</tag>s in the same table.  In other 
-words, if the <tag>SpanSpec</tag>
+<para>The <tag class="attribute">namest</tag> and <tag class="attribute">nameend</tag> attributes of a <tag>spanspec</tag> must
+refer to named <tag>colspec</tag>s in the same table.  In other 
+words, if the <tag>spanspec</tag>
 
-<screen><![CDATA[<spanspec spanname="fullyear" namest="jan" nameend="dec"/>]]></screen>
+<screen>&lt;spanspec spanname="fullyear" namest="jan" nameend="dec"/&gt;</screen>
 
-exists in a table, <tag>ColSpec</tag>s named <quote>jan</quote>
+exists in a table, <tag>colspec</tag>s named <quote>jan</quote>
 and <quote>dec</quote> must also exist in the same table.
 </para>
 </refsection>

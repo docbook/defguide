@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>refdescriptor</refmiscinfo>
-  <refmiscinfo role='pattern'>db.refdescriptor</refmiscinfo>
+  <refmiscinfo role="element">refdescriptor</refmiscinfo>
+  <refmiscinfo role="pattern">db.refdescriptor</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,22 +17,22 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>Reference pages (<tag>RefEntry</tag>s) are usually identified
+<para>Reference pages (<tag>refentry</tag>s) are usually identified
 by a short, succinct topic name, such as the name of a function
-or command.  The <tag>RefName</tag> (or one of the
-<tag>RefName</tag>s, in the case of a reference page that has
+or command.  The <tag>refname</tag> (or one of the
+<tag>refname</tag>s, in the case of a reference page that has
 several) is generally used as the topic name.  When none of the
-<tag>RefName</tag>s is appropriate, <tag>RefDescriptor</tag>
+<tag>refname</tag>s is appropriate, <tag>refdescriptor</tag>
 is used to specify the topic name.
 </para>
 
-<para><tag>RefDescriptor</tag> is unnecessary when an appropriate
-<tag>RefName</tag> can be selected automatically.  At least one
-<tag>RefName</tag> is required, so <tag>RefDescriptor</tag> cannot
+<para>A <tag>refdescriptor</tag> is unnecessary when an appropriate
+<tag>refname</tag> can be selected automatically.  At least one
+<tag>refname</tag> is required, so <tag>refdescriptor</tag> cannot
 be used in place of a name, only in addition to it.
 </para>
 
@@ -45,16 +43,16 @@ be used in place of a name, only in addition to it.
 processing system.  Much of the meta-information about a
 reference page (its name, type, purpose, title, and
 classification) is stored in wrappers near the beginning of
-the <tag>RefEntry</tag>.
+the <tag>refentry</tag>.
 </para>
 <para>Common presentational features, such as titles and running
 heads, may require data from several of these wrappers plus
 some generated text. Other formatting often requires that
 these elements be reordered.
 </para>
-<para>If a <tag>RefDescriptor</tag> is present, it should be used
+<para>If a <tag>refdescriptor</tag> is present, it should be used
 for the short topic name.  This name usually appears in the running
-header along with the <tag>ManVolNum</tag> in print media.
+header along with the <tag>manvolnum</tag> in print media.
 It may also appear in tables of contents and the index.
 </para>
 </refsection>

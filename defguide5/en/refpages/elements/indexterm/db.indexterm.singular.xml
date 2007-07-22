@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>indexterm</refmiscinfo>
-  <refmiscinfo role='pattern'>db.indexterm.singular</refmiscinfo>
+  <refmiscinfo role="element">indexterm</refmiscinfo>
+  <refmiscinfo role="pattern">db.indexterm.singular</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,7 +17,7 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
@@ -41,12 +39,12 @@ There are two ways to identify a range of text:
 <itemizedlist>
 <listitem>
 <para>Place an <tag>indexterm</tag> at the beginning of the range with
-<tag class='attribute'>class</tag> set to
+<tag class="attribute">class</tag> set to
 <tag class="attvalue">startofrange</tag> and
-give this term an <tag class='attribute'>xml:id</tag>.
+give this term an <tag class="attribute">xml:id</tag>.
 Place another <tag>indexterm</tag> at the end of the range with
-<tag class='attribute'>startref</tag> pointing to the 
-<tag class='attribute'>xml:id</tag> of the starting <tag>indexterm</tag>.
+<tag class="attribute">startref</tag> pointing to the 
+<tag class="attribute">xml:id</tag> of the starting <tag>indexterm</tag>.
 This second <tag>indexterm</tag> must be empty.
 </para>
 
@@ -58,8 +56,8 @@ boundaries.
 <listitem>
 <para>Place the <tag>indexterm</tag> anywhere you like and point to the
 element that contains the range of text you wish to index with the
-<tag class='attribute'>zone</tag> attribute on the <tag>indexterm</tag>.
-Note that <tag class='attribute'>zone</tag> is defined as 
+<tag class="attribute">zone</tag> attribute on the <tag>indexterm</tag>.
+Note that <tag class="attribute">zone</tag> is defined as 
 <literal>IDREFS</literal> so a single <tag>indexterm</tag> can point to
 multiple ranges.
 </para>
@@ -95,7 +93,7 @@ will be collected together in the <tag>index</tag> with the same
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

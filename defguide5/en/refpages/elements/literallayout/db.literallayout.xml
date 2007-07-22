@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>literallayout</refmiscinfo>
-  <refmiscinfo role='pattern'>db.literallayout</refmiscinfo>
+  <refmiscinfo role="element">literallayout</refmiscinfo>
+  <refmiscinfo role="pattern">db.literallayout</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,13 +17,12 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>LiteralLayout</tag> is a verbatim environment. Unlike the other
-verbatim environments, it does not have strong semantic overtones and
-may not imply a font change.
+<para>A <tag>literallayout</tag> is a verbatim environment. Unlike
+the other verbatim environments, it does not have strong semantic
+overtones and may not imply a font change.
 </para>
 
 <refsection><title>Processing expectations</title>
@@ -33,20 +30,19 @@ may not imply a font change.
 </para>
 
 <para>Unlike 
-<tag>ProgramListing</tag> and <tag>Screen</tag>, which usually
-imply a font change, <tag>LiteralLayout</tag> does not.
+<tag>programlisting</tag> and <tag>screen</tag>, which usually
+imply a font change, <tag>literallayout</tag> does not.
 How spaces are to be represented faithfully in a proportional
 font is not addressed by DocBook.
 </para>
 
-<para>In DocBook <acronym>V3.1</acronym>, the <tag class='attribute'>Class</tag> attribute
+<para>In DocBook <acronym>V3.1</acronym>, the <tag class="attribute">class</tag> attribute
 was added to give users control over the font used in
-<tag>LiteralLayout</tag>s.  If the <tag
-class='attribute'>Class</tag> attribute is specified and its value is
-<literal>Monospaced</literal>, then the <tag>LiteralLayout</tag>
+<tag>literallayout</tag>s.  If the <tag class="attribute">class</tag> attribute is specified and its value is
+<literal>Monospaced</literal>, then the <tag>literallayout</tag>
 will be presented in a monospaced font, probably the same one
 used for other verbatim environments.  The default value for
-<tag class='attribute'>Class</tag> is <literal>Normal</literal>, meaning
+<tag class="attribute">class</tag> is <literal>Normal</literal>, meaning
 that no font change will occur.
 </para>
 </refsection> 
@@ -59,14 +55,14 @@ that no font change will occur.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.literallayout.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.literallayout.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.literallayout.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.literallayout.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

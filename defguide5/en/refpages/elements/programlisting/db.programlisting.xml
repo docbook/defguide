@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>programlisting</refmiscinfo>
-  <refmiscinfo role='pattern'>db.programlisting</refmiscinfo>
+  <refmiscinfo role="element">programlisting</refmiscinfo>
+  <refmiscinfo role="pattern">db.programlisting</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,51 +17,52 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para>A <tag>ProgramListing</tag> is a verbatim environment for program source or
-source fragment listings.  <tag>ProgramListing</tag>s are often placed
-in <tag>Example</tag>s or <tag>Figure</tag>s so that they can be
-cross-referenced from the text.
+<para>A <tag>programlisting</tag> is a verbatim environment for
+program source or source fragment listings.
+The <tag>programlisting</tag>s are often placed in <tag>example</tag>s
+or <tag>figure</tag>s so that they can be cross-referenced from the
+text.
 </para>
 
 <refsection><title>Processing Expectations</title>
 <para><?tdg gentext='format.block'?>
-<?tdg gentext='pexp.linespecific'?> <tag>ProgramListing</tag>s are usually
+<?tdg gentext='pexp.linespecific'?>
+The <tag>programlisting</tag>s are usually
 displayed in a fixed width font.
 </para>
 
-<para>Other markup within a <tag>ProgramListing</tag> is recognized.
+<para>Other markup within a <tag>programlisting</tag> is recognized.
 Contrast
 this with systems like LaTeX, in which verbatim environments disable
 markup recognition.  If you want to disable markup recognition, you
 must use a <glossterm>CDATA section</glossterm>:
 
 <programlisting>
-<![CDATA[
-<programlisting>
-<![CDATA[
+
+&lt;programlisting&gt;
+&lt;![CDATA[
 This is a programlisting so white       space and line
 breaks are significant.  But it is also a CDATA
-section so <emphasis>tags</emphasis> and &entities;
+section so &lt;emphasis&gt;tags&lt;/emphasis&gt; and &amp;entities;
 are not recognized.  The only markup that is recognized
 is the end-of-section marker, which is two
-"]"'s in a row followed by a >.
-]]>
+"]"'s in a row followed by a &gt;.
+
 ]]&gt;
-<![CDATA[
-</programlisting>
-]]>
+
+&lt;/programlisting&gt;
+
 </programlisting>
 </para>
 
 <para>Two markup tags have
-special significance in <tag>ProgramListing</tag>s: <tag>CO</tag>
-and <tag>LineAnnotation</tag>.
-A <tag>CO</tag> identifies the location of a <tag>Callout</tag>.
-A <tag>LineAnnotation</tag> is a comment, added by the 
+special significance in <tag>programlisting</tag>s: <tag>co</tag>
+and <tag>lineannotation</tag>.
+A <tag>co</tag> identifies the location of a <tag>callout</tag>.
+A <tag>lineannotation</tag> is a comment, added by the 
 <emphasis>documentor</emphasis>—not the programmer.
 </para>
 </refsection>

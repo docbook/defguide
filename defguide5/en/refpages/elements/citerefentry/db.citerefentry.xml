@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>citerefentry</refmiscinfo>
-  <refmiscinfo role='pattern'>db.citerefentry</refmiscinfo>
+  <refmiscinfo role="element">citerefentry</refmiscinfo>
+  <refmiscinfo role="pattern">db.citerefentry</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,22 +17,22 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>This element is a citation to a <tag>RefEntry</tag>.  It must include
-a <tag>RefEntryTitle</tag> that should exactly match the title of a 
-<tag>RefEntry</tag>.
+<para>This element is a citation to a <tag>refentry</tag>.  It must include
+a <tag>refentrytitle</tag> that should exactly match the title of a 
+<tag>refentry</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>This element implicitly links to the <tag>RefEntry</tag> with the
-same <tag>RefEntryTitle</tag> (in the same volume, as defined by
-<tag>ManVolNum</tag>).
+<para>This element implicitly links to the <tag>refentry</tag> with the
+same <tag>refentrytitle</tag> (in the same volume, as defined by
+<tag>manvolnum</tag>).
 </para>
 <para><?tdg gentext='format.inline'?>
-Usually the <tag>ManVolNum</tag> is put in parentheses.
+Usually the <tag>manvolnum</tag> is put in parentheses.
 </para>
 </refsection>
 
@@ -47,7 +45,7 @@ Usually the <tag>ManVolNum</tag> is put in parentheses.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

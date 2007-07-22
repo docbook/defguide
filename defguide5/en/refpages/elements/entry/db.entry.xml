@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>entry</refmiscinfo>
-  <refmiscinfo role='pattern'>db.entry</refmiscinfo>
+  <refmiscinfo role="element">entry</refmiscinfo>
+  <refmiscinfo role="pattern">db.entry</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,7 +17,7 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
@@ -31,19 +29,19 @@ ArborText, Inc., 1988-1998, v.4002
 ]>
 -->
 <?Pub CX set(book(bookinfo()part()part(title()reference(title()refentry(refmeta()refnamediv()refsynopsisdiv()refsect1(title()?>
-<para><tag>Entry</tag> is a cell in a table.</para>
-<para>Each <tag>Entry</tag> may specify its starting column.  Entries
+<para>An <tag>entry</tag> is a cell in a table.</para>
+<para>Each <tag>entry</tag> may specify its starting column.  Entries
 that do not explicitly specify a starting column begin implicitly in the column
 that is immediately adjacent to the preceding cell. Note that 
-<tag>Entry</tag>s with the 
-<tag class="attribute">MoreRows</tag> attribute
+<tag>entry</tag>s with the 
+<tag class="attribute">morerows</tag> attribute
 from preceding rows implicitly occupy cells in the succeeding 
-<tag>Row</tag>s.</para>
+<tag>row</tag>s.</para>
 <para>A <tag>row</tag> is not required to be full.  It is legal for some entries to be
 completely absent (at the beginning, middle, or end of a row).</para>
 <sidebar xml:id="pernicious">
 <title>Pernicious Mixed Content</title>
-<para>The content model of the <tag>Entry</tag> element exhibits a
+<para>The content model of the <tag>entry</tag> element exhibits a
 nasty peculiarity that we call “pernicious mixed content”.<footnote>
 <para>A term coined by Terry Allen.</para>
 </footnote></para>
@@ -55,10 +53,10 @@ markup can occur.</para>
 <para>Table entries are different; they can contain either block or inline
 elements, but not both at the same time.  In other words, one
 <tag>entry</tag> in a table might contain a paragraph or a list while another contains
-simply text or another inline markup, but no single <tag>Entry</tag>
+simply text or another inline markup, but no single <tag>entry</tag>
 can contain both.</para>
-<para>Because the content model of an <tag>Entry</tag> allows both kinds
-of markup, each time the <acronym>SGML</acronym> parser encounters an <tag>Entry</tag>,
+<para>Because the content model of an <tag>entry</tag> allows both kinds
+of markup, each time the <acronym>SGML</acronym> parser encounters an <tag>entry</tag>,
 it has to decide what variety of markup it contains.  <acronym>SGML</acronym> parsers are forbidden
 to use more than a single token of lookahead to reach this decision. In practical
 terms, what this means is that a line feed or space after an
@@ -67,36 +65,36 @@ markup.  Subsequent discovery of a paragraph or another block element causes
 a parsing error.</para>
 <para>All of these are legal: 
 <screen>
-<![CDATA[
-<entry>3.1415927</entry>
-<entry>General <emphasis>#PCDATA</emphasis></entry>
-<entry><para>A paragraph of text
-</para></entry>
-]]>
+
+&lt;entry&gt;3.1415927&lt;/entry&gt;
+&lt;entry&gt;General &lt;emphasis&gt;#PCDATA&lt;/emphasis&gt;&lt;/entry&gt;
+&lt;entry&gt;&lt;para&gt;A paragraph of text
+&lt;/para&gt;&lt;/entry&gt;
+
 </screen>
 </para>
-<para>However, each of these is an error:  <screen>&lt;entry>                <lineannotation>
+<para>However, each of these is an error:  <screen>&lt;entry&gt;                <lineannotation>
 Error, cannot have a line break before a block element</lineannotation>
-<![CDATA[<para>A paragraph of text.
-</para></entry>
+&lt;para&gt;A paragraph of text.
+&lt;/para&gt;&lt;/entry&gt;
 
-<entry><para>A paragraph of text.]]>
-&lt;/para>               <lineannotation>Error, cannot have a line break between block elements
+&lt;entry&gt;&lt;para&gt;A paragraph of text.
+&lt;/para&gt;               <lineannotation>Error, cannot have a line break between block elements
 </lineannotation>
-<![CDATA[<para>A paragraph of text.
-</para></entry>
+&lt;para&gt;A paragraph of text.
+&lt;/para&gt;&lt;/entry&gt;
 
-]]><?ORA break="sidebar"?><![CDATA[<entry><para>A paragraph of text.]]>
-&lt;/para>               <lineannotation>Error, cannot have a line break after a block element
+<?ORA break="sidebar"?>&lt;entry&gt;&lt;para&gt;A paragraph of text.
+&lt;/para&gt;               <lineannotation>Error, cannot have a line break after a block element
 </lineannotation>
-<![CDATA[</entry>]]></screen></para>
+&lt;/entry&gt;</screen></para>
 
 <para>When designing a <acronym>DTD</acronym>, it is wise to avoid pernicious mixed
 content.  Unfortunately, the only way to correct the pernicious
 mixed content problem that already exists in DocBook is
 to require some sort of wrapper (a block element, or an inline
-like <tag>Phrase</tag>) around text within table
-<tag>Entry</tag>s.  This is annoying and inconvenient in
+like <tag>phrase</tag>) around text within table
+<tag>entry</tag>s.  This is annoying and inconvenient in
 a great many tables in which text cells predominate and, in
 addition, differ from
 <acronym>CALS</acronym>.</para>
@@ -105,9 +103,9 @@ addition, differ from
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='calssemantics'?>
 </para>
-<para>The content of <tag>Entry</tag> is formatted to fit within the table
+<para>The content of <tag>entry</tag> is formatted to fit within the table
 cell that it occupies.  Horizontal and vertical spanning may allow the
-content of an <tag>Entry</tag> to occupy several physical cells.
+content of an <tag>entry</tag> to occupy several physical cells.
 </para>
 </refsection>
 

@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>olink</refmiscinfo>
-  <refmiscinfo role='pattern'>db.olink</refmiscinfo>
+  <refmiscinfo role="element">olink</refmiscinfo>
+  <refmiscinfo role="pattern">db.olink</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,20 +17,21 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-<para>Unlike <tag>Link</tag>, the semantics of <tag>OLink</tag> are
-application-specific. <tag>OLink</tag> provides a mechanism for
-establishing links across documents, where ID/IDREF linking is not
-possible and URI-based linking may be inappropriate.</para>
+<para>Unlike <tag>link</tag>, the semantics of <tag>olink</tag> are
+application-specific. The <tag>olink</tag> element provides a
+mechanism for establishing links across documents, where ID/IDREF
+linking is not possible and URI-based linking may be
+inappropriate.</para>
 
-<para>In general terms, the strategy employed by <tag>OLink</tag> is
+<para>In general terms, the strategy employed by <tag>olink</tag> is
 to point to the target document by URI, and point into that document
 in some application-specific way.
 </para>
 
-<para>Other elements can also behave like <tag>Olink</tag>
+<para>Other elements can also behave like <tag>olink</tag>
 by using the common linking attributes 
 <tag class="attribute">xlink:href</tag>
 and <tag class="attribute">xlink:role</tag>.
@@ -58,25 +57,25 @@ attribute value.
 <para><?tdg gentext='format.inline'?>
 </para>
 
-<para><tag>OLink</tag> points to its target primarily with the
-<tag class='attribute'>TargetDoc</tag> attribute.
-<tag class='attribute'>TargetDoc</tag> is a URI that identifies a target
+<para>An <tag>olink</tag> points to its target primarily with the <tag
+class="attribute">targetdoc</tag> attribute. The <tag
+class="attribute">targetdoc</tag> is a URI that identifies a target
 document.
 </para>
 
 <para>The semantics of the link are controlled by three other attributes:
-<tag class='attribute'>TargetPtr</tag>,
-<tag class='attribute'>LocalInfo</tag>, and
-<tag class='attribute'>Type</tag>.
-The <tag class='attribute'>TargetPtr</tag>
+<tag class="attribute">targetptr</tag>,
+<tag class="attribute">localinfo</tag>, and
+<tag class="attribute">type</tag>.
+The <tag class="attribute">targetptr</tag>
 attribute points into the document in some fashion.
 </para>
 <para>
 The values of 
-<tag class='attribute'>LocalInfo</tag> and
-<tag class='attribute'>Type</tag> may also influence the application.
-For example, if the <tag class="attribute">TargetPtr</tag> describes some sort of query, 
-<tag class='attribute'>LocalInfo</tag> might hold the query text.
+<tag class="attribute">localinfo</tag> and
+<tag class="attribute">type</tag> may also influence the application.
+For example, if the <tag class="attribute">targetptr</tag> describes some sort of query, 
+<tag class="attribute">localinfo</tag> might hold the query text.
 </para>
 
 <para>Linking elements must not be nested within other linking
@@ -95,4 +94,3 @@ elements is undefined.
 
 <!-- FIXME: add examples -->
 </refentry>
-

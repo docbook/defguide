@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>footnoteref</refmiscinfo>
-  <refmiscinfo role='pattern'>db.footnoteref</refmiscinfo>
+  <refmiscinfo role="element">footnoteref</refmiscinfo>
+  <refmiscinfo role="pattern">db.footnoteref</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,30 +17,30 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>This element forms an <acronym>IDREF</acronym> link to a
-<tag>Footnote</tag>. It generates the same mark or link as the
-<tag>Footnote</tag> to which it points.
+<tag>footnote</tag>. It generates the same mark or link as the
+<tag>footnote</tag> to which it points.
 </para>
 
-<para>In technical documentation, <tag>FootnoteRef</tag> occurs most
+<para>In technical documentation, <tag>footnoteref</tag> occurs most
 frequently in tables.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>The <tag>FootnoteRef</tag> element usually generates the same mark
-as the <tag>Footnote</tag> to which it points, although its mark can
-be influenced by the <tag class="attribute">Label</tag> attribute.
+<para>The <tag>footnoteref</tag> element usually generates the same mark
+as the <tag>footnote</tag> to which it points, although its mark can
+be influenced by the <tag class="attribute">label</tag> attribute.
 </para>
 
 <para>Neither <acronym>SGML</acronym> nor <acronym>XML</acronym>
 provide a mechnism (at this time) for asserting that some
 <acronym>IDREF</acronym> links must point to specific classes of
-elements. If a <tag>FootnoteRef</tag> points to something other than a
-<tag>Footnote</tag>, the parser will not report it as an error. It is
+elements. If a <tag>footnoteref</tag> points to something other than a
+<tag>footnote</tag>, the parser will not report it as an error. It is
 an error nonetheless. Processing is undefined.
 </para>
 </refsection>
@@ -54,14 +52,14 @@ an error nonetheless. Processing is undefined.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.footnoteref.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.footnoteref.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.footnoteref.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.footnoteref.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>errorname</refmiscinfo>
-  <refmiscinfo role='pattern'>db.errorname</refmiscinfo>
+  <refmiscinfo role="element">errorname</refmiscinfo>
+  <refmiscinfo role="pattern">db.errorname</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,24 +17,23 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>ErrorName</tag> holds the symbolic name of an error.</para>
+<para>An <tag>errorname</tag> holds the symbolic name of an error.</para>
 
 <para>DocBook provides four elements for identifying the parts of an error message:
-<tag>ErrorCode</tag>, for the alphanumeric error code (e.g., <quote>-2</quote>);
-<tag>ErrorName</tag>, for the symbolic name of the error
+<tag>errorcode</tag>, for the alphanumeric error code (e.g., <quote>-2</quote>);
+<tag>errorname</tag>, for the symbolic name of the error
 (e.g., <quote>ENOENT</quote>);
-<tag>ErrorText</tag>, for the text of the error message (e.g., <quote>file
+<tag>errortext</tag>, for the text of the error message (e.g., <quote>file
 not found</quote>); and
-<tag>ErrorType</tag>, for the error type (e.g., <quote>recoverable</quote>).
+<tag>errortype</tag>, for the error type (e.g., <quote>recoverable</quote>).
 </para>
 
-<para>Prior to DocBook V4.2, the <tag>ErrorName</tag> element was the
+<para>Prior to DocBook V4.2, the <tag>errorname</tag> element was the
 recommended element for error <emphasis>messages</emphasis>. However, this left no
-element for symoblic names, so the <tag>ErrorText</tag> element was added
+element for symoblic names, so the <tag>errortext</tag> element was added
 and the semantics of the error elements adjusted slightly.
 </para>
 

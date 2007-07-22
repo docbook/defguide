@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>bibliodiv</refmiscinfo>
-  <refmiscinfo role='pattern'>db.bibliodiv</refmiscinfo>
+  <refmiscinfo role="element">bibliodiv</refmiscinfo>
+  <refmiscinfo role="pattern">db.bibliodiv</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,27 +17,27 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>BiblioDiv</tag> is a section of a <tag>Bibliography</tag>. A
+<para>A <tag>bibliodiv</tag> is a section of a <tag>bibliography</tag>. A
 bibliography might be divided into sections in order to group
 different types of sources together, like books, journal articles, web
 sites, and so on.
 </para>
 
 <para>A bibliography may
-contain any number of <tag>BiblioEntry</tag> or <tag>BiblioMixed</tag>
+contain any number of <tag>biblioentry</tag> or <tag>bibliomixed</tag>
 elements or any number
-of <tag>BiblioDiv</tag>s, but it cannot
+of <tag>bibliodiv</tag>s, but it cannot
 contain a mixture of both at the same level. 
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
 Some systems may display only those entries within a 
-<tag>BiblioDiv</tag> that are cited in the containing document.
+<tag>bibliodiv</tag> that are cited in the containing document.
 This may be an interchange issue. See <xref linkend="app-interchange"/>.
 </para>
 </refsection>

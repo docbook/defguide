@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>remark</refmiscinfo>
-  <refmiscinfo role='pattern'>db.remark</refmiscinfo>
+  <refmiscinfo role="element">remark</refmiscinfo>
+  <refmiscinfo role="pattern">db.remark</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,11 +17,11 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>The <tag>Remark</tag> element is designed to hold remarks, for
+<para>The <tag>remark</tag> element is designed to hold remarks, for
 example, editorial comments, that are useful while the document is
 in the draft stage, but are not intended for final publication.
 </para>
@@ -31,7 +29,7 @@ in the draft stage, but are not intended for final publication.
 <para>Remarks are available almost anywhere and have a particularly broad
 content model.  Your processing system may or may not support either the use
 of comments everywhere they are allowed or the full generality of
-the <tag>Remark</tag> content model.
+the <tag>remark</tag> content model.
 </para>
 
 <para>Prior to version 4.0 of DocBook, this element was named
@@ -41,8 +39,8 @@ the <tag>Remark</tag> content model.
 <para><?tdg gentext='format.context'?>
 Remarks are often printed only in draft
 versions of a document and suppressed otherwise.  This may be
-controlled by the <tag class='attribute'>Status</tag> attribute
-of an ancestor element (for example, <tag>Chapter</tag>), or by
+controlled by the <tag class="attribute">status</tag> attribute
+of an ancestor element (for example, <tag>chapter</tag>), or by
 external processes, such as selecting an alternate stylesheet
 when publishing.
 </para>
@@ -56,14 +54,14 @@ when publishing.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.remark.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.remark.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.remark.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.remark.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

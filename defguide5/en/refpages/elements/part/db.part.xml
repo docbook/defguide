@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>part</refmiscinfo>
-  <refmiscinfo role='pattern'>db.part</refmiscinfo>
+  <refmiscinfo role="element">part</refmiscinfo>
+  <refmiscinfo role="pattern">db.part</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,20 +17,20 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>Part</tag>s segment a book into divisions.  Each division can
-contain a number of component-level elements, such as <tag>Chapter</tag>s.
+<para>The <tag>part</tag>s segment a book into divisions. Each
+division can contain a number of component-level elements, such as
+<tag>chapter</tag>s.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-<tag>Part</tag>s almost always introduce a forced page
-break.  Sometimes starts on the next recto page.
-Frequently, they also produce a part separator page, on which may
-be printed the content of the <tag>PartIntro</tag>.
+Each <tag>part</tag> almost always introduces a forced page break.
+Sometimes parts start on the next recto page. Frequently, they also produce
+a part separator page, on which may be printed the content of the
+<tag>partintro</tag>.
 </para>
 </refsection>
 
@@ -44,10 +42,10 @@ be printed the content of the <tag>PartIntro</tag>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
 </refsection>
 

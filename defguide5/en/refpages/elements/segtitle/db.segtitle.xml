@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>segtitle</refmiscinfo>
-  <refmiscinfo role='pattern'>db.segtitle</refmiscinfo>
+  <refmiscinfo role="element">segtitle</refmiscinfo>
+  <refmiscinfo role="pattern">db.segtitle</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,27 +17,27 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>Each heading in a <tag>SegmentedList</tag> is contained in its own
-<tag>SegTitle</tag>.
+<para>Each heading in a <tag>segmentedlist</tag> is contained in its own
+<tag>segtitle</tag>.
 </para>
-<para>The relationship between <tag>SegTitle</tag>s and
-<tag>Seg</tag>s is implicit in the document; the first
-<tag>SegTitle</tag> goes with the first <tag>Seg</tag> in each
-<tag>SegListItem</tag>, the second <tag>SegTitle</tag> goes
-with the second <tag>Seg</tag>, and so on.
+<para>The relationship between <tag>segtitle</tag>s and
+<tag>seg</tag>s is implicit in the document; the first
+<tag>segtitle</tag> goes with the first <tag>seg</tag> in each
+<tag>seglistitem</tag>, the second <tag>segtitle</tag> goes
+with the second <tag>seg</tag>, and so on.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para>Segmented lists can be formatted in a number of ways.  Two popular
 formats are tabular and as list of repeated headings and elements.
-In a tabular presentation, each <tag>SegTitle</tag> is a column
+In a tabular presentation, each <tag>segtitle</tag> is a column
 heading.
-In the list presentation, each <tag>SegTitle</tag> is repeated
-before the corresponding <tag>Seg</tag>.
+In the list presentation, each <tag>segtitle</tag> is repeated
+before the corresponding <tag>seg</tag>.
 </para>
 </refsection> 
 

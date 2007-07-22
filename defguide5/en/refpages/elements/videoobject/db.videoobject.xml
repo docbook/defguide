@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>videoobject</refmiscinfo>
-  <refmiscinfo role='pattern'>db.videoobject</refmiscinfo>
+  <refmiscinfo role="element">videoobject</refmiscinfo>
+  <refmiscinfo role="pattern">db.videoobject</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,20 +17,20 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>VideoObject</tag> is a wrapper containing <tag>VideoData</tag>
+<para>A <tag>videoobject</tag> is a wrapper containing <tag>videodata</tag>
 and its associated meta-information.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.context'?>
 It might not be rendered at all, depending on its placement
-within a <tag>MediaObject</tag> or <tag>InlineMediaObject</tag> and
+within a <tag>mediaobject</tag> or <tag>inlinemediaobject</tag> and
 the constraints on the publishing system.  For a more detailed description
-of the semantics involved, see <tag>MediaObject</tag>.
+of the semantics involved, see <tag>mediaobject</tag>.
 </para>
 </refsection> 
 
@@ -45,10 +43,10 @@ of the semantics involved, see <tag>MediaObject</tag>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
 </refsection>
 

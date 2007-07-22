@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>guimenu</refmiscinfo>
-  <refmiscinfo role='pattern'>db.guimenu</refmiscinfo>
+  <refmiscinfo role="element">guimenu</refmiscinfo>
+  <refmiscinfo role="pattern">db.guimenu</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,13 +17,12 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>GUIMenu</tag> identifies a menu name in a graphical user interface.
-In particular, this is distinct from a menu item (<tag>GUIMenuItem</tag>),
-which is terminal, and a submenu (<tag>GUISubmenu</tag>), which occurs as
+<para>A <tag>guimenu</tag> identifies a menu name in a graphical user interface.
+In particular, this is distinct from a menu item (<tag>guimenuitem</tag>),
+which is terminal, and a submenu (<tag>guisubmenu</tag>), which occurs as
 a selection from a menu.
 </para>
 
@@ -44,14 +41,14 @@ a selection from a menu.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.guimenu.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.guimenu.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.guimenu.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.guimenu.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

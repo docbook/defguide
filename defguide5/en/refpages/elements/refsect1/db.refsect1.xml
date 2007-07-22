@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>refsect1</refmiscinfo>
-  <refmiscinfo role='pattern'>db.refsect1</refmiscinfo>
+  <refmiscinfo role="element">refsect1</refmiscinfo>
+  <refmiscinfo role="pattern">db.refsect1</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,13 +17,12 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
 <para>Reference pages have their own hierarchical structure. A
-<tag>RefSect1</tag> is a major division in a
-<tag>RefEntry</tag>, analagous to a <tag>Sect1</tag> elsewhere
+<tag>refsect1</tag> is a major division in a
+<tag>refentry</tag>, analagous to a <tag>sect1</tag> elsewhere
 in the document.
 </para>
 
@@ -33,9 +30,9 @@ in the document.
 the content model of sections in reference pages to be
 customized differently than the content model of sections
 outside.  For example, because of this split, it was easy to add
-a recursive sectioning element (<tag>Section</tag>) as a peer
-to <tag>Sect1</tag> in DocBook <acronym>V3.1</acronym> without introducing it to
-<tag>RefEntry</tag>s, in which it would not be desirable.
+a recursive sectioning element (<tag>section</tag>) as a peer
+to <tag>sect1</tag> in DocBook <acronym>V3.1</acronym> without introducing it to
+<tag>refentry</tag>s, in which it would not be desirable.
 </para>
 
 <refsection><title>Processing expectations</title>
@@ -46,15 +43,15 @@ in a reference page is strictly defined by house style.  For example,
 one style requires that the first major section after the synopsis
 be the <quote>Description,</quote> which it must have as its title.
 </para>
-<para>In those cases, it may be useful to replace <tag>RefSect1</tag> in
+<para>In those cases, it may be useful to replace <tag>refsect1</tag> in
 the content model with a set of named sections (following the pattern
-of <tag>RefNameDiv</tag> and <tag>RefSynopsisDiv</tag>).
+of <tag>refnamediv</tag> and <tag>refsynopsisdiv</tag>).
 </para>
 <para>Formatting reference pages may require a fairly sophisticated
 processing system.  Much of the meta-information about a
 reference page (its name, type, purpose, title, and
 classification) is stored in wrappers near the beginning of
-the <tag>RefEntry</tag>.
+the <tag>refentry</tag>.
 </para>
 <para>Common presentational features, such as titles and running
 headers, may require data from several of these wrappers plus

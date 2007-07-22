@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>callout</refmiscinfo>
-  <refmiscinfo role='pattern'>db.callout</refmiscinfo>
+  <refmiscinfo role="element">callout</refmiscinfo>
+  <refmiscinfo role="pattern">db.callout</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,7 +17,7 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
@@ -38,7 +36,7 @@ Note the location of the old and new filenames.
 mv <co xml:id="co-oldname"/><replaceable>oldfile</replaceable> <co xml:id="co-newname"/><replaceable>newfile</replaceable>
 </screen>
 
-<para>Somewhere else in the document, usually close by, a <tag>CalloutList</tag>
+<para>Somewhere else in the document, usually close by, a <tag>calloutlist</tag>
 provides a description for each of the callouts:
 </para>
 
@@ -54,17 +52,17 @@ be replaced by the old file.
 </para></callout>
 </calloutlist>
 
-<para>Each <tag>Callout</tag> contains an annotation for an individual
-callout or a group of callouts. The <tag>Callout</tag> points to the
+<para>Each <tag>callout</tag> contains an annotation for an individual
+callout or a group of callouts. The <tag>callout</tag> points to the
 areas that it annotates with <acronym>ID</acronym> references.
-The areas are identified by coordinates in an an <tag>Area</tag> or
-<tag>AreaSet</tag>, or by an explicit <tag>CO</tag> element.
+The areas are identified by coordinates in an an <tag>area</tag> or
+<tag>areaset</tag>, or by an explicit <tag>co</tag> element.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
 </para>
-<para><tag>CallOut</tag>s usually generate text that points the reader to
+<para>A <tag>callout</tag> usually generates text that points the reader to
 the appropriate area on the object being augmented. Often, these are
 numbered bullets or other distinct visual icons. The same icons should
 be used in both places. In other words, whatever identifies the callouts
@@ -74,12 +72,12 @@ callouts.
 <para>In online environments, it may also be possible to establish a linking
 relationship between the two elements.
 </para>
-<para>The processing expectations of <tag>Callout</tag>s are likely
-to deserve special consideration for interchange.  See <xref
-linkend="app-interchange"/>.  This is especially true if your
-interchange partners are producing documentation in a medium
-that has restricted visual presentation features, such as aural
-media or Braille.
+<para>The processing expectations of <tag>callout</tag>s are likely to
+deserve special consideration for interchange. See
+<xref linkend="app-interchange"/>. This is especially true if your
+interchange partners are producing documentation in a medium that has
+restricted visual presentation features, such as aural media or
+Braille.
 </para>
 </refsection>
 

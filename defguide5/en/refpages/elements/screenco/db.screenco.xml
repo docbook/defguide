@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>screenco</refmiscinfo>
-  <refmiscinfo role='pattern'>db.screenco</refmiscinfo>
+  <refmiscinfo role="element">screenco</refmiscinfo>
+  <refmiscinfo role="pattern">db.screenco</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,44 +17,44 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>Callout</tag>s, such as numbered bullets, are an annotation mechanism.  In an
-online system, these bullets are frequently <quote>hot,</quote> and clicking on
-them navigates to the corresponding annotation.
+<para>The <tag>callout</tag>s, such as numbered bullets, are an
+annotation mechanism. In an online system, these bullets are
+frequently <quote>hot,</quote> and clicking on them navigates to the
+corresponding annotation.
 </para>
-<para>A <tag>ScreenCO</tag> is a wrapper around an <tag>AreaSpec</tag> and
-a <tag>Screen</tag>.  An <tag>AreaSpec</tag> identifies the locations
+<para>A <tag>screenco</tag> is a wrapper around an <tag>areaspec</tag> and
+a <tag>screen</tag>.  An <tag>areaspec</tag> identifies the locations
 (coordinates)
-in the <tag>Screen</tag> where the callouts occur.
-The <tag>ScreenCO</tag> may also contain the list of annotations in
-a <tag>CalloutList</tag>, although the <tag>CalloutList</tag> may also
+in the <tag>screen</tag> where the callouts occur.
+The <tag>screenco</tag> may also contain the list of annotations in
+a <tag>calloutlist</tag>, although the <tag>calloutlist</tag> may also
 occur outside of the wrapper, elsewhere in the document.
 </para>
 
-<para>It is also possible to embed <tag>CO</tag> elements directly in the
+<para>It is also possible to embed <tag>co</tag> elements directly in the
 verbatim text, in order to avoid the overhead of calculating the
 correct coordinates.  If you decide to follow this route, use a 
-<tag>Screen</tag> and a <tag>CalloutList</tag> without the
-<tag>ScreenCO</tag> wrapper.  A <tag>ScreenCO</tag>
+<tag>screen</tag> and a <tag>calloutlist</tag> without the
+<tag>screenco</tag> wrapper.  A <tag>screenco</tag>
 must specify at least one coordinate.
 </para>
 
-<para>For a complete description of callouts, see <tag>Callout</tag>.
+<para>For a complete description of callouts, see <tag>callout</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
 <?tdg gentext='pexp.linespecific'?>
 </para>
-<para>The mandatory processing expectations of a <tag>ScreenCO</tag> are
+<para>The mandatory processing expectations of a <tag>screenco</tag> are
 minimal: a system is expected to render the program listing and the
 callout list, if present.
 </para>
-<para>If explicit <tag>CO</tag> elements are embedded in a
-<tag>Screen</tag>, they must generate appropriate
+<para>If explicit <tag>co</tag> elements are embedded in a
+<tag>screen</tag>, they must generate appropriate
 callout marks.
 </para>
 <para>In online environments, the processing system may be able to instantiate
@@ -76,14 +74,14 @@ but this level of sophistication is not mandatory.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.screenco.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.screenco.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.screenco.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.screenco.1" role="HACK-ex.out.end"/>
 
 <para>Compare this example with the example for
 <tag>co</tag>.</para>

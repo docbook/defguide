@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>bibliography</refmiscinfo>
-  <refmiscinfo role='pattern'>db.bibliography</refmiscinfo>
+  <refmiscinfo role="element">bibliography</refmiscinfo>
+  <refmiscinfo role="pattern">db.bibliography</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,38 +17,38 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>A bibliography. A DocBook bibliography may contain some preferatory matter,
 but its main content is a set of bibliography entries (either 
-<tag>BiblioEntry</tag> or <tag>BiblioMixed</tag>).  These may occur
-inside <tag>BiblioDiv</tag>s, instead of appearing directly in the
+<tag>biblioentry</tag> or <tag>bibliomixed</tag>).  These may occur
+inside <tag>bibliodiv</tag>s, instead of appearing directly in the
 <tag>bibliography</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-A <tag>Bibliography</tag> in a <tag>Book</tag>
+A <tag>bibliography</tag> in a <tag>book</tag>
 frequently causes a forced page break in print media.
 </para>
 <para>Some systems may display only those entries within a 
-<tag>Bibliography</tag> that are cited in the containing document.
+<tag>bibliography</tag> that are cited in the containing document.
 This may be an interchange issue. See <xref linkend="app-interchange"/>.
 </para>
 <para>The two styles of bibliography entry have quite different processing
-expectations.  <tag>BiblioEntry</tag>s are <quote>raw;</quote> they contain
-a database-like collection of named fields.  <tag>BiblioMixed</tag>
-entries are <quote>cooked;</quote> the fields occur in the order in which
+expectations. A <tag>biblioentry</tag> is <quote>raw;</quote> it contains
+a database-like collection of named fields.  A <tag>bibliomixed</tag>
+entry is <quote>cooked;</quote> the fields occur in the order in which
 they will be presented and additional punctuation may be sprinkled
 between the fields.
 </para>
-<para>See 
-<tag>BiblioEntry</tag> and <tag>BiblioMixed</tag> for further discussion.
+
+<para>See <tag>biblioentry</tag> and <tag>bibliomixed</tag> for
+further discussion.
 </para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>
@@ -60,7 +58,7 @@ between the fields.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <para>The entries in a <tag>bibliography</tag> come in two general

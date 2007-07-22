@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>substeps</refmiscinfo>
-  <refmiscinfo role='pattern'>db.substeps</refmiscinfo>
+  <refmiscinfo role="element">substeps</refmiscinfo>
+  <refmiscinfo role="pattern">db.substeps</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,23 +17,23 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>Procedure</tag> describes a sequence of
-<tag>Step</tag>s that a reader is expected to perform.  If a
+<para>A <tag>procedure</tag> describes a sequence of
+<tag>step</tag>s that a reader is expected to perform.  If a
 finer level of granularity is required for some steps, you can
-use <tag>SubSteps</tag> to embed substeps within a
-<tag>Step</tag>.
+use <tag>substeps</tag> to embed substeps within a
+<tag>step</tag>.
 </para>
-<para><tag>SubSteps</tag> contain <tag>Step</tag>s, so substeps can
+<para>The <tag>substeps</tag> element contains <tag>step</tag>s, so substeps can
 be nested to any depth.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-<tag>SubSteps</tag> are almost always numbered.
+The <tag>substeps</tag> are almost always numbered.
 </para>
 </refsection>
 

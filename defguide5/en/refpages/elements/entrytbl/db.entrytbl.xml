@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>entrytbl</refmiscinfo>
-  <refmiscinfo role='pattern'>db.entrytbl</refmiscinfo>
+  <refmiscinfo role="element">entrytbl</refmiscinfo>
+  <refmiscinfo role="pattern">db.entrytbl</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,7 +17,7 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
@@ -27,8 +25,8 @@
 within <acronym>CALS</acronym> tables.
 </para>
 
-<para>An entry table may occur in a row instead of an <tag>Entry</tag>.
-<tag>EntryTbl</tag>s have most of the elements of a table but
+<para>An entry table may occur in a row instead of an <tag>entry</tag>.
+An <tag>entrytbl</tag> has most of the elements of a table but
 may not include themselves, thus limiting nesting to a single
 level.
 </para>
@@ -42,18 +40,18 @@ is unclear, but it has always been that way in CALS.</para>
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='calssemantics'?></para>
 
-<para>The content of <tag>EntryTbl</tag> is formatted, <emphasis>as a table</emphasis>,
+<para>The content of <tag>entrytbl</tag> is formatted, <emphasis>as a table</emphasis>,
 to fit within the table cell that it occupies.  Horizontal and vertical
-spanning may allow an <tag>EntryTbl</tag> to occupy several physical cells
+spanning may allow an <tag>entrytbl</tag> to occupy several physical cells
 in the table that contains it.
 </para>
 
-<para>If multiple <tag>EntryTbl</tag>s occur in a single row, formatters
-that support <tag>EntryTbl</tag> are not required to ensure that subrows
+<para>If multiple <tag>entrytbl</tag>s occur in a single row, formatters
+that support <tag>entrytbl</tag> are not required to ensure that subrows
 within the various tables are vertically aligned.
 </para>
 
-<para>Many formatters are incapable of supporting <tag>EntryTbl</tag>s.
+<para>Many formatters are incapable of supporting <tag>entrytbl</tag>s.
 This is an interchange issue. See <xref linkend="app-interchange"/>.
 </para>
 </refsection>
@@ -67,14 +65,14 @@ This is an interchange issue. See <xref linkend="app-interchange"/>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.entrytbl.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.entrytbl.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.entrytbl.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.entrytbl.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>question</refmiscinfo>
-  <refmiscinfo role='pattern'>db.question</refmiscinfo>
+  <refmiscinfo role="element">question</refmiscinfo>
+  <refmiscinfo role="pattern">db.question</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,30 +17,27 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para>A <tag>Question</tag> in a <tag>QandAEntry</tag> poses a question or
-states a problem that is addressed by the following <tag>Answer</tag>(s).
-<tag>Answer</tag>s are optional (some questions
+<para>A <tag>question</tag> in a <tag>qandaentry</tag> poses a question or
+states a problem that is addressed by the following <tag>answer</tag>(s).
+The <tag>answer</tag>s are optional (some questions
 have no answers) and may be repeated (some questions have more than
 one answer).
 </para>
 
 <refsection><title>Processing expectations</title>
-<para><tag>Question</tag>s are frequently introduced with a label,
-such as <quote>A:</quote>. If a <tag>Question</tag> has a
+<para>The <tag>question</tag>s are frequently introduced with a label,
+such as <quote>A:</quote>. If a <tag>question</tag> has a
 <literal>Label</literal> child element, the content of that
-<tag>Label</tag> is used as the label for the
-<tag>Question</tag>. The <tag
-class='attribute'>DefaultLabel</tag> attribute on the nearest
-ancestor <tag>QandASet</tag> of a <tag>Question</tag>
+<tag>label</tag> is used as the label for the
+<tag>question</tag>. The <tag class="attribute">defaultlabel</tag> attribute on the nearest
+ancestor <tag>qandaset</tag> of a <tag>question</tag>
 can be used to indicate that a processing application should
-automatically generate a label for the <tag>Question</tag>.
+automatically generate a label for the <tag>question</tag>.
 </para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

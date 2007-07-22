@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>othercredit</refmiscinfo>
-  <refmiscinfo role='pattern'>db.othercredit</refmiscinfo>
+  <refmiscinfo role="element">othercredit</refmiscinfo>
+  <refmiscinfo role="pattern">db.othercredit</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,14 +17,13 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para>DocBook allows you to directly identify <tag>Author</tag>s and 
-<tag>Editor</tag>s.  <tag>OtherCredit</tag> provides a mechanism for
-identifying other individuals, for example, contributors or production
-editors, in a similar context.
+<para>DocBook allows you to directly identify <tag>author</tag>s and
+<tag>editor</tag>s. The <tag>othercredit</tag> element provides a
+mechanism for identifying other individuals, for example, contributors
+or production editors, in a similar context.
 </para>
 
 <refsection><title>Processing expectations</title>
@@ -43,14 +40,14 @@ editors, in a similar context.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.othercredit.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.othercredit.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.othercredit.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.othercredit.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

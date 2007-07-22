@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>cmdsynopsis</refmiscinfo>
-  <refmiscinfo role='pattern'>db.cmdsynopsis</refmiscinfo>
+  <refmiscinfo role="element">cmdsynopsis</refmiscinfo>
+  <refmiscinfo role="pattern">db.cmdsynopsis</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,22 +17,22 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>CmdSynopsis</tag> summarizes the options and parameters of
+<para>A <tag>cmdsynopsis</tag> summarizes the options and parameters of
 a command started from a text prompt.  This is usually a program started
 from the <acronym>DOS</acronym>, Windows, or <acronym>UNIX</acronym> shell prompt.
 </para>
 
-<para><tag>CmdSynopsis</tag> operates under the following general model:
+<para>A <tag>cmdsynopsis</tag> operates under the following general model:
 commands have arguments, that may be grouped; arguments and groups may
 be required or optional and may be repeated.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>The processing expectations of <tag>CmdSynopsis</tag> are fairly
+<para>The processing expectations of <tag>cmdsynopsis</tag> are fairly
 complex.
 </para>
 <itemizedlist>
@@ -76,13 +74,11 @@ indicate these characteristics on arguments are used on groups.
 </para></listitem>
 <listitem><para><?tdg gentext='format.block'?>
 The processing system is free to introduce line breaks
-where required, but the <tag>SBR</tag> element may be introduced
+where required, but the <tag>sbr</tag> element may be introduced
 by the author to provide an explicit break location.
 </para></listitem>
 </itemizedlist>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>
@@ -92,7 +88,7 @@ by the author to provide an explicit break location.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

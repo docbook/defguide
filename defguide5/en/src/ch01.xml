@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ch-gssgml">
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 version="5.0" xml:id="ch-gsxml">
 <?dbhtml filename="ch01.html"?>
 <title>Getting Started with <acronym>XML</acronym></title>
 <info>
@@ -14,83 +16,97 @@ to structured markup. If you're not already familiar with
 <acronym>XML</acronym>, consult one of the many popular books on
 <acronym>XML</acronym>.</para>
 
-<section xml:id="ch01-wheredocbook"><info><title>How Does DocBook Fit In?</title></info>
-<para>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>history and overview</secondary></indexterm>
+<section xml:id="ch01-wheredocbook">
+<title>How Does DocBook Fit In?</title>
 
-DocBook is a very popular set of tags for describing books, articles,
-and other prose documents, particularly technical
-documentation. DocBook is defined using the native <acronym>DTD</acronym> syntax of
-<acronym>SGML</acronym> and <acronym>XML</acronym>. Like <acronym>HTML</acronym>, DocBook is an example of a markup
-language defined in <acronym>SGML</acronym>/<acronym>XML</acronym>.
+<para><indexterm significance="normal"><primary>DocBook</primary>
+  <secondary>history and overview</secondary>
+</indexterm>DocBook is a very popular set of tags for describing
+books, articles, and other prose documents, particularly technical
+documentation. DocBook is an XML vocabulary normatively defined using
+RELAX NG and Schematron.
 </para>
-<section xml:id="s.shorthistory"><info><title>A Short DocBook History</title></info>
-<para>
-DocBook is almost 10 years old. It began in 1991 as a joint project of
-HaL Computer Systems and O'Reilly. Its popularity grew, and eventually
-it spawned its own maintenance organization, the Davenport Group. In
-mid-1998, it became a Technical Committee (<acronym>TC</acronym>) of
-the Organization for the Advancement of Structured Information
-Standards (<acronym>OASIS</acronym>).
-</para>
-<section xml:id="s.history.haloreilly"><info><title>The HaL and O'Reilly era</title></info>
-<para>
-<indexterm significance="normal"><primary>Open Software Foundation</primary></indexterm>
-<indexterm significance="normal"><primary>troff markup (UNIX documentation)</primary></indexterm>
-<indexterm significance="normal"><primary>UNIX</primary>
-  <secondary>DocBook DTD, development</secondary></indexterm>
 
-The DocBook <acronym>DTD</acronym> was originally designed and implemented by HaL
-Computer Systems and O'Reilly &amp; Associates around 1991. It was
-developed primarily to facilitate the exchange of <acronym>UNIX</acronym> documentation
-originally marked up in <command>troff</command>. Its design appears
-to have been based partly on input from <acronym>SGML</acronym> interchange projects
-conducted by the Unix International and Open Software Foundation
-consortia.
+<section xml:id="s.shorthistory">
+<title>A Short DocBook History</title>
+
+<para>DocBook is more than 15 years old. It began in 1991 as a joint
+project of HaL Computer Systems and O'Reilly. Its popularity grew, and
+eventually it spawned its own maintenance organization, the Davenport
+Group. In mid-1998, it became a Technical Committee
+(<acronym>TC</acronym>) of the Organization for the Advancement of
+Structured Information Standards (<acronym>OASIS</acronym>).
 </para>
-<para>
-<indexterm significance="normal"><primary>Davenport Group (DocBook maintenance)</primary></indexterm>
-When DocBook <acronym>V1.1</acronym> was published, discussion about
-its revision and maintenance began in earnest in the Davenport Group,
-a forum created by O'Reilly for computer documentation
-producers. Version 1.2 was influenced strongly by
-Novell and Digital.
+
+<para>Starting with DocBook V5.0, DocBook is an XML vocabulary defined
+with RELAX NG and Schematron. But DocBook is older than any of those
+technologies. It was originally an <emphasis>SGML</emphasis> vocabulary
+described with the standard <acronym>SGML</acronym> Document Type
+Definition, or <acronym>DTD</acronym>.</para>
+
+<section xml:id="s.history.haloreilly">
+<title>The HaL and O'Reilly era</title>
+
+<para><indexterm significance="normal">
+  <primary>Open Software Foundation</primary>
+</indexterm><indexterm significance="normal">
+  <primary>troff markup (UNIX documentation)</primary>
+</indexterm><indexterm significance="normal"><primary>UNIX</primary>
+  <secondary>DocBook DTD, development</secondary>
+</indexterm>The DocBook <acronym>DTD</acronym> was originally designed
+and implemented by HaL Computer Systems and O'Reilly &amp; Associates
+around 1991. It was developed primarily to facilitate the exchange of
+<acronym>UNIX</acronym> documentation originally marked up in
+<command>troff</command>. Its design appears to have been based partly
+on input from <acronym>SGML</acronym> interchange projects conducted
+by the Unix International and Open Software Foundation consortia.
 </para>
-<para>
-In 1994, the Davenport Group became an officially chartered entity
-responsible for DocBook's maintenance. DocBook
+
+<para><indexterm significance="normal">
+  <primary>Davenport Group (DocBook maintenance)</primary>
+</indexterm>When DocBook <acronym>V1.1</acronym> was published,
+discussion about its revision and maintenance began in earnest in the
+Davenport Group, a forum created by O'Reilly for computer
+documentation producers. Version 1.2 was influenced strongly by Novell
+and Digital.
+</para>
+
+<para>In 1994, the Davenport Group became an officially chartered
+entity responsible for DocBook's maintenance. DocBook
 <acronym>V1.2.2</acronym> was published simultaneously. The founding
 sponsors of this incarnation of Davenport include the following
 people:
 <itemizedlist spacing="compact">
-<listitem><para>Jon Bosak, Novell</para></listitem>
-<listitem><para>Dale Dougherty, O'Reilly &amp; Associates</para></listitem>
-<listitem><para>Ralph Ferris, Fujitsu <acronym>OSSI</acronym></para></listitem>
-<listitem><para>Dave Hollander, Hewlett-Packard</para></listitem>
-<listitem><para>Eve Maler, Digital Equipment Corporation</para></listitem>
-<listitem><para>Murray Maloney, <acronym>SCO</acronym></para></listitem>
-<listitem><para>Conleth O'Connell, HaL Computer Systems</para></listitem>
-<listitem><para>Nancy Paisner, Hitachi Computer Products</para></listitem>
-<listitem><para>Mike Rogers, SunSoft</para></listitem>
-<listitem><para>Jean Tappan, Unisys</para></listitem>
+<listitem><simpara>Jon Bosak, Novell</simpara></listitem>
+<listitem><simpara>Dale Dougherty, O'Reilly &amp; Associates</simpara></listitem>
+<listitem><simpara>Ralph Ferris, Fujitsu <acronym>OSSI</acronym></simpara></listitem>
+<listitem><simpara>Dave Hollander, Hewlett-Packard</simpara></listitem>
+<listitem><simpara>Eve Maler, Digital Equipment Corporation</simpara></listitem>
+<listitem><simpara>Murray Maloney, <acronym>SCO</acronym></simpara></listitem>
+<listitem><simpara>Conleth O'Connell, HaL Computer Systems</simpara></listitem>
+<listitem><simpara>Nancy Paisner, Hitachi Computer Products</simpara></listitem>
+<listitem><simpara>Mike Rogers, SunSoft</simpara></listitem>
+<listitem><simpara>Jean Tappan, Unisys</simpara></listitem>
 </itemizedlist>
 </para>
 </section>
-<section xml:id="s.history.davenport"><info><title>The Davenport era</title></info>
-<para>
-Under the auspices of the Davenport Group, the DocBook <acronym>DTD</acronym> began to
-widen its scope. It was now being used by a much wider audience, and
-for new purposes, such as direct authoring with <acronym>SGML</acronym>-aware tools,
-and publishing directly to paper. As the largest users of DocBook,
-Novell and Sun had a heavy influence on its design.
-</para>
-<para>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>releases, rules for new versions</secondary></indexterm>
 
-In order to help users manage change, the new Davenport charter established
-the following rules for DocBook releases:
+<section xml:id="s.history.davenport">
+<title>The Davenport era</title>
+
+<para>Under the auspices of the Davenport Group, the DocBook
+<acronym>DTD</acronym> began to widen its scope. It was now being used
+by a much wider audience, and for new purposes, such as direct
+authoring with <acronym>SGML</acronym>-aware tools, and publishing
+directly to paper. As the largest users of DocBook, Novell and Sun had
+a heavy influence on its design.
+</para>
+
+<para><indexterm significance="normal"><primary>DocBook DTD</primary>
+  <secondary>releases, rules for new versions</secondary>
+</indexterm>In order to help users manage change, the new Davenport
+charter established the following rules for DocBook releases:</para>
+
 <itemizedlist>
 <listitem><para>Minor versions (<quote>point releases</quote> such as
 <acronym>V2.2</acronym>) could add to the markup model, but could not
@@ -101,89 +117,77 @@ it instead of only one. Thus, any document conforming to version
 <replaceable>n</replaceable>.0 would also conform to
 <replaceable>n</replaceable>.<replaceable>m</replaceable>.</para>
 </listitem>
+
 <listitem><para>Major versions (such as <acronym>V3.0</acronym>) could
 both add to the markup model and make backward-incompatible
 changes. However, the changes would have to be announced in the last
 major release.</para>
 </listitem>
+
 <listitem><para>Major-version introductions must be separated by at
 least a year.</para>
 </listitem>
 </itemizedlist>
-</para>
-<para>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>XML</secondary>
-    <tertiary>XML-compliant version</tertiary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>DocBook version compliant with</secondary></indexterm>
 
-<acronym>V3.0</acronym> was released in January 1997. After that time,
-although DocBook's audience continued to grow, many of the Davenport
-Group stalwarts became involved in the <acronym>XML</acronym> effort, and development
-slowed dramatically. The idea of creating an official <acronym>XML</acronym>-compliant
+<para><indexterm significance="normal"><primary>DocBook DTD</primary>
+  <secondary>XML</secondary>
+    <tertiary>XML-compliant version</tertiary>
+</indexterm><indexterm significance="normal"><primary>XML</primary>
+  <secondary>DocBook version compliant with</secondary>
+</indexterm><acronym>V3.0</acronym> was released in January 1997.
+After that time, although DocBook's audience continued to grow, many
+of the Davenport Group stalwarts became involved in the
+<acronym>XML</acronym> effort, and development slowed dramatically.
+The idea of creating an official <acronym>XML</acronym>-compliant
 version of DocBook was discussed, but not implemented. (For more
 detailed information about DocBook <acronym>V3.0</acronym> and plans
 for subsequent versions, see <xref linkend="app-versions"/>.)
 </para>
-<para>
-<indexterm significance="normal"><primary>OASIS</primary>
-  <secondary>DocBook Technical Committee</secondary></indexterm>
 
-The sponsors wanted to close out Davenport in an orderly way to ensure
-that DocBook users would be supported. It was suggested that
-<acronym>OASIS</acronym> become DocBook's new home. An
+<para><indexterm significance="normal"><primary>OASIS</primary>
+  <secondary>DocBook Technical Committee</secondary>
+</indexterm>The sponsors wanted to close out Davenport in an orderly
+way to ensure that DocBook users would be supported. It was suggested
+that <acronym>OASIS</acronym> become DocBook's new home. An
 <acronym>OASIS</acronym> DocBook Technical Committee was formed in
 July, 1998, with Eduardo Gutentag of Sun Microsystems as chair.
 </para>
 </section>
-<section xml:id="s.history.oasis"><info><title>The <acronym>OASIS</acronym> era</title></info>
 
-<para>
-The <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/">DocBook Technical
-Commitee</link> is continuing the work started by the
-Davenport Group. The transition from Davenport to
-<acronym>OASIS</acronym> has been very smooth, in part because the
-core design team consists of essentially the same individuals (we all
-just changed hats).
+<section xml:id="s.history.oasis">
+<title>The <acronym>OASIS</acronym> era</title>
+
+<para>The
+<link xlink:href="http://www.oasis-open.org/docbook/">DocBook Technical
+Commitee</link> is continuing the work started by the Davenport Group.
+The transition from Davenport to <acronym>OASIS</acronym> was
+very smooth, in part because the core design team consists of
+essentially the same individuals (we all just changed hats).
 </para>
-<para>
-DocBook <acronym>V3.1</acronym>, published in February 1999, was the
-first <acronym>OASIS</acronym> release.  It integrated a number of
+
+<para>DocBook <acronym>V3.1</acronym>, published in February 1999, was
+the first <acronym>OASIS</acronym> release. It integrated a number of
 changes that had been <quote>in the wings</quote> for some time.
 </para>
 
-<para>In February of 2001, OASIS made DocBook SGML V4.1 and DocBook XML V4.1.2
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://lists.oasis-open.org/archives/members/200102/msg00000.html">official
+<para>In February of 2001, OASIS made DocBook SGML V4.1 and DocBook
+XML V4.1.2
+<link xlink:href="http://lists.oasis-open.org/archives/members/200102/msg00000.html">official
 OASIS Specifications</link>.
 </para>
 
-<para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/specs/cs-docbook-docbook-4.2.html">Version 4.2</link> of the DocBook <acronym>DTD</acronym>, for both <acronym>SGML</acronym> and <acronym>XML</acronym>, was
-released in July 2002.</para>
+<para>In October, 2005, the DocBook Technical Committee released the
+first beta-test version of DocBook V5.0. Development of the DocBook
+V4.x series continued in parallel with the development of V5.0. In
+October, 2006, the DocBook Technical Committee released DocBook V4.5,
+likely the last release in the V4.x series.</para>
 
-<para>
-The committee continues new DocBook development to ensure
-that the <acronym>DTD</acronym> continues to meet the needs of its users.  Forthcoming
-and experimental work includes:
-</para>
+<para>The official release of DocBook V5.0 is expected in August, 2007.</para>
 
-<itemizedlist>
-<listitem><para>A V5.0 DTD projected for release no earlier than the end of
-2002.
-</para></listitem>
-<listitem><para>Experimental
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/committees/relax-ng/">RELAX NG</link> schemas
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/relaxng">available</link>.</para></listitem>
-<listitem><para>Experimental
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/XML/Schema">W3C XML Schema</link> versions
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/xmlschema/">available</link>.</para></listitem>
-<listitem><para>Experimental
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.xml.gr.jp/relax/">RELAX</link> schemas
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/relax/">available</link>.</para></listitem>
-<listitem><para>Experimental
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.thaiopensource.com/trex/">TREX</link> schemas
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/trex/">available</link>.</para></listitem>
-</itemizedlist>
+<para>FIXME: say more about the motivations for V5.x.</para>
+
+<para>The committee continues new DocBook development to ensure that
+the schema will continue to meet the needs of its users.</para>
 
 <indexterm startref="XMLgetstart" class="endofrange"/>
 </section>

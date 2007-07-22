@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>funcsynopsis</refmiscinfo>
-  <refmiscinfo role='pattern'>db.funcsynopsis</refmiscinfo>
+  <refmiscinfo role="element">funcsynopsis</refmiscinfo>
+  <refmiscinfo role="pattern">db.funcsynopsis</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,18 +17,18 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>FuncSynopsis</tag> contains the syntax summary of a function prototype
+<para>A <tag>funcsynopsis</tag> contains the syntax summary of a function prototype
 or a set of function prototypes.  The content model of this element
 was designed specifically to capture the semantics of most C-language
 function prototypes (for use in <acronym>UNIX</acronym> reference pages).
 </para>
 
 <para>This is one of the few places where DocBook attempts to model as well
-as describe.  Using <tag>FuncSynopsis</tag> for languages that are
+as describe.  Using <tag>funcsynopsis</tag> for languages that are
 unrelated to C may prove difficult.
 </para>
 
@@ -48,35 +46,35 @@ a function synopsis with enough clarity so that a processing system can
 generate either <acronym>K&amp;R</acronym>-style or <acronym>ANSI</acronym>-style renderings.
 </para>
 
-<refsection><title>A Note on the Use of <tag>VarArgs</tag></title>
-<para>The content model of <tag>FuncPrototype</tag> is such that you
-cannot use <tag>VarArgs</tag> in a function prototype in which the
+<refsection><title>A Note on the Use of <tag>varargs</tag></title>
+<para>The content model of <tag>funcprototype</tag> is such that you
+cannot use <tag>varargs</tag> in a function prototype in which the
 first few parameters to the function are given explicitly before
 the variable arguments (generally rendered as an ellipsis).
 </para>
 
 <para>In other words, the following synopsis cannot be rendered with
-<tag>VarArgs</tag>:
+<tag>varargs</tag>:
 
 <synopsis>
 int printf(char *format, ...)
 </synopsis>
 </para>
 
-<para>Instead, you can enclose the ellipsis in a final <tag>Parameter</tag>,
+<para>Instead, you can enclose the ellipsis in a final <tag>parameter</tag>,
 like this:
 
 <screen>
-<![CDATA[
-<funcsynopsis>
-<funcprototype><funcdef>int <function>printf</function></funcdef>
-<paramdef>
-  <parameter>char *format</parameter>
-  <parameter>...</parameter>
-</paramdef>
-</funcprototype>
-</funcsynopsis>
-]]>
+
+&lt;funcsynopsis&gt;
+&lt;funcprototype&gt;&lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
+&lt;paramdef&gt;
+  &lt;parameter&gt;char *format&lt;/parameter&gt;
+  &lt;parameter&gt;...&lt;/parameter&gt;
+&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+&lt;/funcsynopsis&gt;
+
 </screen>
 </para>
 </refsection>
@@ -91,7 +89,7 @@ like this:
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <para>There are two common presentation styles for function synopses,

@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>see</refmiscinfo>
-  <refmiscinfo role='pattern'>db.see</refmiscinfo>
+  <refmiscinfo role="element">see</refmiscinfo>
+  <refmiscinfo role="pattern">db.see</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,16 +17,16 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>The use of <tag>See</tag> in an <tag>IndexTerm</tag> indicates that
+<para>The use of <tag>see</tag> in an <tag>indexterm</tag> indicates that
 the reader should be directed elsewhere in the index if they attempt
 to look up this term.
 </para>
 
-<para>The content of <tag>See</tag> identifies another term in the
+<para>The content of <tag>see</tag> identifies another term in the
 index which the reader should consult <emphasis>instead</emphasis> of
 the current term.
 </para>
@@ -38,18 +36,18 @@ the current term.
 This element provides data for processing but it
 is not rendered in the primary flow of text.
 </para>
-<para>It is possible for multiple <tag>IndexTerm</tag>s, taken together,
+<para>It is possible for multiple <tag>indexterm</tag>s, taken together,
 to form an illogical index.  For example, given the following
-<tag>IndexTerm</tag>s:
+<tag>indexterm</tag>s:
 
 <screen>
-<![CDATA[
-<indexterm><primary>Extensible Markup Language</primary>
-  <see>XML</see></indexterm>
-<indexterm><primary>Extensible Markup Language</primary>
-  <secondary>definition of</secondary>
-</indexterm>
-]]>
+
+&lt;indexterm&gt;&lt;primary&gt;Extensible Markup Language&lt;/primary&gt;
+  &lt;see&gt;XML&lt;/see&gt;&lt;/indexterm&gt;
+&lt;indexterm&gt;&lt;primary&gt;Extensible Markup Language&lt;/primary&gt;
+  &lt;secondary&gt;definition of&lt;/secondary&gt;
+&lt;/indexterm&gt;
+
 </screen>
 </para>
 <para>there's no way to construct a logical index because an entry in

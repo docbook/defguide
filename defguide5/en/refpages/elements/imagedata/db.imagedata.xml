@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>imagedata</refmiscinfo>
-  <refmiscinfo role='pattern'>db.imagedata</refmiscinfo>
+  <refmiscinfo role="element">imagedata</refmiscinfo>
+  <refmiscinfo role="pattern">db.imagedata</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,9 +17,8 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
-
 
 <para>This element points to an external entity containing graphical
 image data.
@@ -32,15 +29,14 @@ image data.
 <para>Render the image. <?tdg gentext='format.context'?>
 </para>
 
-<para>There are two ways to provide content for <tag>ImageData</tag>:
-<tag class='attribute'>EntityRef</tag> or <tag
-class='attribute'>FileRef</tag>.  It is best to use only one of these
+<para>There are two ways to provide content for <tag>imagedata</tag>:
+<tag class="attribute">entityref</tag> or <tag class="attribute">fileref</tag>.  It is best to use only one of these
 methods, however, if multiple sources are provided, 
-<tag class='attribute'>EntityRef</tag> will be used in favor of 
-<tag class='attribute'>FileRef</tag>.
+<tag class="attribute">entityref</tag> will be used in favor of 
+<tag class="attribute">fileref</tag>.
 </para>
 
-<para><tag>ImageData</tag> provides a selection of attributes
+<para>The <tag>imagedata</tag> provides a selection of attributes
 that can be used to control how the image is rendered. These
 attributes define two rectangles, the <glossterm>viewport
 area</glossterm> and the <glossterm>content area</glossterm>, and how
@@ -52,7 +48,7 @@ influences the way an image is rendered.
 <para>It is important to understand the distinction between these
 three areas. When rendering an image, the viewport area defines the
 space reserved in the flow of content for the image. If a
-6in&#xa0;x&#160;4in viewport area is specified, that's how much space will be
+6in x 4in viewport area is specified, that's how much space will be
 reserved for the image, independent of the actual size of the rendered
 image. The content area defines the actual size of the rendered image,
 independent of the intrinsic size of the image. The intrinisic size of
@@ -113,9 +109,7 @@ a <literal>%</literal> sign.</para>
 <refsection xml:id="viewport.area">
 <title>Specifying the Viewport Area</title>
 
-<para>The viewport area is specified by the <tag
-class="attribute">width</tag> and <tag
-class="attribute">depth</tag> attributes.</para>
+<para>The viewport area is specified by the <tag class="attribute">width</tag> and <tag class="attribute">depth</tag> attributes.</para>
 
 <para>If neither width nor depth is specified, an implementation is
 free to choose defaults. These defaults may be influenced by context.
@@ -141,9 +135,7 @@ may choose arbitrary defaults or may generate errors.</para>
 <refsection>
 <title>Specifing the Content Area</title>
 
-<para>The content area is specified by the <tag
-class="attribute">contentwidth</tag> and <tag
-class="attribute">contentdepth</tag> attributes.</para>
+<para>The content area is specified by the <tag class="attribute">contentwidth</tag> and <tag class="attribute">contentdepth</tag> attributes.</para>
 
 <para>If neither content width nor content depth is specified, an
 implementation is expected to render the image at its intrinsic size
@@ -175,8 +167,7 @@ values or may generate errors if the intrinsic size cannot be obtained.</para>
 is always interpreted to be a percentage value where
 <quote><literal>100</literal></quote> represents 100%.</para>
 
-<para>The legal values of <tag
-class="attribute">scalefit</tag> are <literal>0</literal> (false)
+<para>The legal values of <tag class="attribute">scalefit</tag> are <literal>0</literal> (false)
 or <literal>1</literal> (true). If scaling to fit is requested, the
 content area is scaled until <emphasis>either</emphasis> the content
 width is the same as the viewport width (and the content depth is less
@@ -189,9 +180,7 @@ bounds of the viewport area.
 </para>
 
 <para>Specification of content area, scaling, and scaling to fit are
-mutually exclusive. If a content area (<tag
-class="attribute">contentwidth</tag>, <tag
-class="attribute">contentdepth</tag>, or both) is specified,
+mutually exclusive. If a content area (<tag class="attribute">contentwidth</tag>, <tag class="attribute">contentdepth</tag>, or both) is specified,
 <emphasis>both</emphasis> scaling and scaling to fit are ignored. If
 the content area is not specified and both scaling and scaling to fit
 are specified, <tag class="attribute">scalefit</tag> is

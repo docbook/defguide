@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>tertiary</refmiscinfo>
-  <refmiscinfo role='pattern'>db.tertiary</refmiscinfo>
+  <refmiscinfo role="element">tertiary</refmiscinfo>
+  <refmiscinfo role="pattern">db.tertiary</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,27 +17,27 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>Tertiary</tag> contains a third-level word or phrase in an
-<tag>IndexTerm</tag>.  The text of a <tag>Tertiary</tag> term
-is less significant than the <tag>Primary</tag> and
-<tag>Secondary</tag> terms for sorting and display purposes.
+<para>A <tag>tertiary</tag> element contains a third-level word or
+phrase in an <tag>indexterm</tag>. The text of a <tag>tertiary</tag>
+term is less significant than the <tag>primary</tag> and
+<tag>secondary</tag> terms for sorting and display purposes.
 </para>
 
 <para>DocBook does not define any additional levels. You cannot use
-<tag>IndexTerm</tag>s to construct indexes with more than three
+<tag>indexterm</tag>s to construct indexes with more than three
 levels without extending the <acronym>DTD</acronym>.
 </para>
 
-<para>In <tag>IndexTerm</tag>s, you can only have one primary,
+<para>In <tag>indexterm</tag>s, you can only have one primary,
 secondary, and tertiary term. If you want to index multiple
 tertiary terms for the same primary and secondary, you must
 repeat the primary and secondary in another
-<tag>IndexTerm</tag>. You cannot place several
-<tag>Tertiary</tag>s in the same primary.
+<tag>indexterm</tag>. You cannot place several
+<tag>tertiary</tag>s in the same primary.
 </para>
 
 <refsection><title>Processing expectations</title>

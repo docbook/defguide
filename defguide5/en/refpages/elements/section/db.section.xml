@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>section</refmiscinfo>
-  <refmiscinfo role='pattern'>db.section</refmiscinfo>
+  <refmiscinfo role="element">section</refmiscinfo>
+  <refmiscinfo role="pattern">db.section</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,29 +17,28 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>Section</tag> is one of the top-level sectioning elements in
+<para>A <tag>section</tag> is one of the top-level sectioning elements in
 a component. There are three types of sectioning elements in
 DocBook:
 </para>
 
 <itemizedlist>
-<listitem><para>Explicitly numbered sections, <tag>Sect1</tag>…<tag>Sect5</tag>,
+<listitem><para>Explicitly numbered sections, <tag>sect1</tag>…<tag>sect5</tag>,
 which must be properly nested and can only be five levels deep.
 </para></listitem>
-<listitem><para>Recursive <tag>Section</tag>s, which are an alternative to the numbered
+<listitem><para>Recursive <tag>section</tag>s, which are an alternative to the numbered
 sections and have unbounded depth.
 </para></listitem>
-<listitem><para><tag>SimpleSect</tag>s, which are terminal.  <tag>SimpleSect</tag>s can
-occur as the <quote>leaf</quote> sections in either recursive sections or any
-of the numbered sections, or directly in components.
-</para></listitem>
+<listitem><para>And <tag>simplesect</tag>s, which are terminal.
+The <tag>simplesect</tag>s can occur as the <quote>leaf</quote>
+sections in either recursive sections or any of the numbered sections,
+or directly in components. </para></listitem>
 </itemizedlist>
 
-<para><tag>Section</tag>s may be more convenient than numbered
+<para>The <tag>section</tag>s may be more convenient than numbered
 sections in some authoring environments because they can be
 moved around in the document hierarchy without renaming.
 </para>
@@ -55,7 +52,7 @@ before a section, but you cannot place anything after it.
 <para><?tdg gentext='format.block'?>
 Sometimes sections are numbered.
 </para>
-<para>Use of deeply nested <tag>Section</tag>s may cause problems
+<para>Use of deeply nested <tag>section</tag>s may cause problems
 in some processing systems.
 </para>
 </refsection>
@@ -69,14 +66,14 @@ in some processing systems.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.section.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.section.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.section.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.section.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

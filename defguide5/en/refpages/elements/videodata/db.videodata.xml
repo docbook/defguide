@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>videodata</refmiscinfo>
-  <refmiscinfo role='pattern'>db.videodata</refmiscinfo>
+  <refmiscinfo role="element">videodata</refmiscinfo>
+  <refmiscinfo role="pattern">db.videodata</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,7 +17,7 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
@@ -32,12 +30,11 @@ Rendering a video is usually accomplished by reserving
 a rectangular area on the display and <quote>running</quote> the video in
 that frame.
 </para>
-<para>There are two ways to provide content for <tag>VideoData</tag>:
-<tag class='attribute'>EntityRef</tag> or <tag
-class='attribute'>FileRef</tag>.  It is best to use only one of these
+<para>There are two ways to provide content for <tag>videodata</tag>:
+<tag class="attribute">entityref</tag> or <tag class="attribute">fileref</tag>.  It is best to use only one of these
 methods. However, if multiple sources are provided, 
-<tag class='attribute'>EntityRef</tag> will be used in favor of 
-<tag class='attribute'>FileRef</tag>.
+<tag class="attribute">entityref</tag> will be used in favor of 
+<tag class="attribute">fileref</tag>.
 </para>
 </refsection> 
 

@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>synopfragment</refmiscinfo>
-  <refmiscinfo role='pattern'>db.synopfragment</refmiscinfo>
+  <refmiscinfo role="element">synopfragment</refmiscinfo>
+  <refmiscinfo role="pattern">db.synopfragment</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,20 +17,20 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A complex <tag>CmdSynopsis</tag> can be made more manageable
-with <tag>SynopFragment</tag>s.  Rather than attempting to
+<para>A complex <tag>cmdsynopsis</tag> can be made more manageable
+with <tag>synopfragment</tag>s.  Rather than attempting to
 present the entire synopsis in one large
 piece, parts of the synopsis can be extracted out and presented
-elsewhere. These extracted pieces are placed in <tag>SynopFragment</tag>s
-at the end of the <tag>CmdSynopsis</tag>.
+elsewhere. These extracted pieces are placed in <tag>synopfragment</tag>s
+at the end of the <tag>cmdsynopsis</tag>.
 </para>
 
 <para>At the point in which each piece was extracted, insert a
-<tag>SynopFragmentRef</tag> that points to the fragment. The
+<tag>synopfragmentref</tag> that points to the fragment. The
 content of the reference element will be presented inline.
 </para>
 
@@ -61,14 +59,14 @@ or place the fragments in pop-up windows.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.synopfragment.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.synopfragment.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.synopfragment.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.synopfragment.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

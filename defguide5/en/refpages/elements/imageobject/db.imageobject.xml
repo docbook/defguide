@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>imageobject</refmiscinfo>
-  <refmiscinfo role='pattern'>db.imageobject</refmiscinfo>
+  <refmiscinfo role="element">imageobject</refmiscinfo>
+  <refmiscinfo role="pattern">db.imageobject</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,25 +17,25 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>An <tag>ImageObject</tag> is a wrapper containing
-<tag>ImageData</tag> and its associated meta-information.
+<para>An <tag>imageobject</tag> is a wrapper containing
+<tag>imagedata</tag> and its associated meta-information.
 </para>
 
-<para>If the SVG Module is used, <tag>ImageObject</tag> can
+<para>If the SVG Module is used, <tag>imageobject</tag> can
 also contain the <tag namespace="http://www.w3.org/2000/svg">svg:svg</tag>
 element.</para>
 
 <refsection xml:id="dbreproc.imageobject"><title>Processing expectations</title>
 <para><?tdg gentext='format.context'?>
 It might not be rendered at all, depending on its
-placement within a <tag>MediaObject</tag> or
-<tag>InlineMediaObject</tag> and the constraints on the
+placement within a <tag>mediaobject</tag> or
+<tag>inlinemediaobject</tag> and the constraints on the
 publishing system.  For a more detailed description of the semantics
-involved, see <tag>MediaObject</tag>.
+involved, see <tag>mediaobject</tag>.
 </para>
 </refsection> 
 
@@ -50,14 +48,14 @@ involved, see <tag>MediaObject</tag>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.imageobject.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.imageobject.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.imageobject.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.imageobject.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

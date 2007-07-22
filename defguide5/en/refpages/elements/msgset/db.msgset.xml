@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>msgset</refmiscinfo>
-  <refmiscinfo role='pattern'>db.msgset</refmiscinfo>
+  <refmiscinfo role="element">msgset</refmiscinfo>
+  <refmiscinfo role="pattern">db.msgset</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,11 +17,11 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>MsgSet</tag> is a complex structure designed to hold a detailed
+<para>A <tag>msgset</tag> is a complex structure designed to hold a detailed
 set of messages, usually error messages.  In addition to the actual text
 of each message, it can contain 
 additional information about each message and the messages related to it.
@@ -32,7 +30,7 @@ additional information about each message and the messages related to it.
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
 </para>
-<para>On the whole, the semantics of <tag>MsgSet</tag>
+<para>On the whole, the semantics of <tag>msgset</tag>
 are not clearly defined.
 </para>
 </refsection>
@@ -47,14 +45,14 @@ are not clearly defined.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.msgset.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.msgset.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.msgset.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.msgset.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

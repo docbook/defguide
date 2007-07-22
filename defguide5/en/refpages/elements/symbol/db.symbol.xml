@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>symbol</refmiscinfo>
-  <refmiscinfo role='pattern'>db.symbol</refmiscinfo>
+  <refmiscinfo role="element">symbol</refmiscinfo>
+  <refmiscinfo role="pattern">db.symbol</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,21 +17,21 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>Symbol</tag> is a name that represents a value.  It should be used
+<para>A <tag>symbol</tag> is a name that represents a value.  It should be used
 in contexts in which the name will actually be replaced by a value before
 processing.  The canonical example is a <literal>#define</literal>d symbol in
 a C program where the C preprocessor replaces every occurance of the symbol
 with its value before compilation begins.
 </para>
 
-<para>The <literal>Limit</literal> value of the <tag class='attribute'>Class</tag> attribute
+<para>The <literal>Limit</literal> value of the <tag class="attribute">class</tag> attribute
 identifies those symbols that represent system limitations (for example, the
 number of characters allowed in a path name or the largest possible positive
-integer). DocBook <acronym>V3.1</acronym> introduced the <tag>Constant</tag> element,
+integer). DocBook <acronym>V3.1</acronym> introduced the <tag>constant</tag> element,
 which may be more suitable for some of these symbols.
 </para>
 
@@ -51,14 +49,14 @@ which may be more suitable for some of these symbols.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.symbol.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.symbol.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.symbol.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.symbol.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

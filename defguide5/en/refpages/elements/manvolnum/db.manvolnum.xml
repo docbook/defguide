@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>manvolnum</refmiscinfo>
-  <refmiscinfo role='pattern'>db.manvolnum</refmiscinfo>
+  <refmiscinfo role="element">manvolnum</refmiscinfo>
+  <refmiscinfo role="pattern">db.manvolnum</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,16 +17,16 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>In a DocBook reference page, the <tag>ManVolNum</tag> holds
-the number of the volume in which the <tag>RefEntry</tag> belongs.
+<para>In a DocBook reference page, the <tag>manvolnum</tag> holds
+the number of the volume in which the <tag>refentry</tag> belongs.
 </para>
 <para>The notion of a volume number is historical.  <acronym>UNIX</acronym>
 manual pages (<quote>man
-pages</quote>), for which <tag>RefEntry</tag> was devised, were typically
+pages</quote>), for which <tag>refentry</tag> was devised, were typically
 stored in three ring binders.  Each bound manual was a volume in a set
 and contained information about a particular class of things.  For
 example, volume 1 was for user commands, and volume 8 was for administrator
@@ -42,7 +40,7 @@ had an <quote>x</quote> in the volume number: for example,
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>The content of <tag>ManVolNum</tag> is usually printed in parentheses
+<para>The content of <tag>manvolnum</tag> is usually printed in parentheses
 after the element title or citation.
 </para>
 </refsection>
@@ -56,14 +54,14 @@ after the element title or citation.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.manvolnum.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.manvolnum.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.manvolnum.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.manvolnum.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

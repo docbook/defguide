@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>subjectset</refmiscinfo>
-  <refmiscinfo role='pattern'>db.subjectset</refmiscinfo>
+  <refmiscinfo role="element">subjectset</refmiscinfo>
+  <refmiscinfo role="pattern">db.subjectset</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,18 +17,18 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>SubjectSet</tag> is a container for a set of
-<tag>Subject</tag>s.  All of the <tag>Subject</tag>s within a
-<tag>SubjectSet</tag> should come from the <emphasis>same</emphasis>
+<para>A <tag>subjectset</tag> is a container for a set of
+<tag>subject</tag>s.  All of the <tag>subject</tag>s within a
+<tag>subjectset</tag> should come from the <emphasis>same</emphasis>
 controlled vocabulary.
 </para>
 <para>A document can be described using terms from more than one controlled
 vocabulary.  In order to do this, you should use the
-<tag class='attribute'>Scheme</tag> attribute to distinguish between
+<tag class="attribute">scheme</tag> attribute to distinguish between
 controlled vocabularies.
 </para>
 
@@ -39,9 +37,9 @@ controlled vocabularies.
 Subjects are rarely displayed to a reader. Usually, they
 are reserved for searching and retrieval purposes.
 </para>
-<para>DocBook does not specify a relationship between <tag>SubjectSet</tag>s
-in different parts of a document or between a <tag>SubjectSet</tag> and
-the <tag>SubjectSet</tag>s of enclosing parts of the document.
+<para>DocBook does not specify a relationship between <tag>subjectset</tag>s
+in different parts of a document or between a <tag>subjectset</tag> and
+the <tag>subjectset</tag>s of enclosing parts of the document.
 </para>
 </refsection>
 
@@ -55,14 +53,14 @@ the <tag>SubjectSet</tag>s of enclosing parts of the document.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.subjectset.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.subjectset.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.subjectset.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.subjectset.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

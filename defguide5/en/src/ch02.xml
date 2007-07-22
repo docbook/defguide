@@ -19,8 +19,8 @@ that are possible in DocBook documents. It explains how to create
 several kinds of DocBook documents: books, sets of books, chapters,
 articles, and reference manual entries. The idea is to give you enough
 basic information to actually start writing. The information here is
-intentionally skeletal; you can find the details in the
-reference section of this book.
+intentionally skeletal; you can find the details in the reference
+section of this book.
 </para>
 
 <section xml:id="ch02-makexml">
@@ -42,12 +42,16 @@ reference section of this book.
 </indexterm><indexterm>
   <primary>prologue</primary>
   <secondary>XML documents</secondary>
-</indexterm>An <acronym>XML</acronym> consists of an optional
+</indexterm>An <acronym>XML</acronym> document consists of an optional
 XML Declaration, an optional Document Type Declaration, which includes
-an optional Internal Subset, and a Document (or Root) Element.
-If you're used to using a DTD, many of these will be familiar to you.
-If you're using the RELAX NG version of DocBook, many of your documents
-will omit the Document Type Declaration.</para>
+an optional Internal Subset, and a Document (or Root) Element. We'll discuss
+each of these in turn.</para>
+
+<para>In XML vocabularies like DocBook which are defined with RELAX NG
+(and also in the case of vocabularies defined with W3C's XML Schema),
+it is common to omit the Document Type Declaration entirely. The
+Document Type Declaration associates a document with a particular
+Document Type Definition (DTD).</para>
 
 <section xml:id="s.xmldecl">
 <info>
@@ -85,6 +89,10 @@ the XML Declaration is not required. But it is never wrong to include
 it. If you do not include an XML declaration, your document must conform
 to XML 1.0. If you want to use XML 1.1, you must include an XML Declaration
 and specify <code>version="1.1"</code> in it.</para>
+
+<para>The XML Declaration is syntactically similar to a processing instruction,
+but it is not. The XML Declaration, if it is present, must be absolutely the
+first thing in your document and it may not appear anywhere else.</para>
 </section>
 
 <section xml:id="s.doctypedecl">
@@ -121,12 +129,12 @@ they will not include one. Historically, DocBook
 </indexterm>The document type declaration identifies what the root
 element of the document will be and may specify the DTD that should be
 used when parsing the document. A typical doctype declaration
-for a DocBook V4.4 document looks like this:
+for a DocBook V4.5 document looks like this:
 </para>
 
 <screen>&lt;?xml version='1.0'?&gt;
-&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-               "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"&gt;</screen>
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+               "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"&gt;</screen>
 
 <para><indexterm>
   <primary>external declarations (XML)</primary>
@@ -138,8 +146,10 @@ for a DocBook V4.4 document looks like this:
   <secondary>XML</secondary>
 </indexterm>This declaration indicates that the root element will be
 <tag>book</tag> and that the <acronym>DTD</acronym>
-used will be DocBook V4.4. In this example, the
-<acronym>DTD</acronym> is stored on a web server.
+used will be DocBook V4.5, identified with both its public and system
+identifiers. In this example, the
+<acronym>DTD</acronym> identified with an <acronym>HTTP</acronym>
+<acronym>URI</acronym>.
 <indexterm>
   <primary>URI</primary>
   <secondary>XML system identifiers</secondary>
@@ -163,7 +173,9 @@ the RELAX NG Grammar with its Schematron annotations.</para>
 
 <para>The only reason to use a DTD with DocBook V5.0 is if your
 editing environment (or other tool) requires one, for example, for
-syntax directed editing.</para>
+syntax directed editing. If you're using tools that require DTDs, check
+with the vendor, maybe a more recent version is available that supports
+RELAX NG.</para>
 
 </section>
 <section xml:id="s.internalsubset">
@@ -576,12 +588,13 @@ question.
   <primary>Sets</primary>
 </indexterm>
 
-A <tag>set</tag> contains two or more
-<tag>book</tag>s.  It's the hierarchical top of DocBook. You
-use the <tag>set</tag> tag, for example, for a series of books
-on a single subject that you want to access and maintain as a single
-unit, such as the manuals for an airplane engine or the documentation
-for a programming language.
+A <tag>set</tag> contains two or more <tag>book</tag>s. It's the
+hierarchical top of DocBook. You use the <tag>set</tag> tag, for
+example, for a series of books on a single subject that you want to
+access and maintain as a single unit, such as the manuals for series
+of computer systems or the documentation (tutorial, reference, etc.)
+for a programming language. Sets are allowed to contain themselves,
+though this is not common.
 </para>
 </section>
 

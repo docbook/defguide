@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>lineannotation</refmiscinfo>
-  <refmiscinfo role='pattern'>db.lineannotation</refmiscinfo>
+  <refmiscinfo role="element">lineannotation</refmiscinfo>
+  <refmiscinfo role="pattern">db.lineannotation</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,18 +17,18 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>LineAnnotation</tag> is an author or editor's comment on a line
+<para>A <tag>lineannotation</tag> is an author or editor's comment on a line
 in one of the verbatim environments. These are annotations added by
 the documentor, not part of the original listing.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
-In verbatim environments like <tag>ProgramListing</tag>,
+In verbatim environments like <tag>programlisting</tag>,
 which are often presented in a fixed width font, they may get special
 typographic treatment, such as italics.
 </para>
@@ -47,14 +45,14 @@ may be aligned horizontally.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.lineannotation.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.lineannotation.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.lineannotation.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.lineannotation.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

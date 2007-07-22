@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>othername</refmiscinfo>
-  <refmiscinfo role='pattern'>db.othername</refmiscinfo>
+  <refmiscinfo role="element">othername</refmiscinfo>
+  <refmiscinfo role="pattern">db.othername</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,23 +17,19 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>OtherName</tag> is a generic wrapper for parts of an individual's
-name other than 
-<tag>Honorific</tag>,
-<tag>FirstName</tag>,
-<tag>Surname</tag> and
-<tag>Lineage</tag>.  One common use is to identify
-an individual's middle name or initial.  Use <tag class='attribute'>Role</tag>
-to classify the type of other name.
+<para>An <tag>othername</tag> element is a generic wrapper for parts
+of an individual's name other than <tag>honorific</tag>,
+<tag>firstname</tag>, <tag>surname</tag> and <tag>lineage</tag>. One
+common use is to identify an individual's middle name or initial. Use
+<tag class="attribute">role</tag> to classify the type of other name.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
-In an <tag>Address</tag>, this element may inherit
+In an <tag>address</tag>, this element may inherit
 the verbatim qualities of an address.
 </para>
 </refsection>

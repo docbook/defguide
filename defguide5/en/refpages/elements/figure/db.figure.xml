@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>figure</refmiscinfo>
-  <refmiscinfo role='pattern'>db.figure</refmiscinfo>
+  <refmiscinfo role="element">figure</refmiscinfo>
+  <refmiscinfo role="pattern">db.figure</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,28 +17,30 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para><tag>Figure</tag> is a formal example with a title. Figures often
+<para>A <tag>figure</tag> is a formal example with a title. Figures often
 contain <tag>mediaobject</tag>s, or other large, display elements.
 Frequently they are given <acronym>ID</acronym>s and referenced from the text with
-<tag>XRef</tag> or <tag>Link</tag>.
+<tag>xref</tag> or <tag>link</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
+</para>
 
+<para>A <tag>figure</tag> may contain multiple display elements.
+DocBook does not specify how these elements are to be presented with
+respect to one another.
 </para>
-<para><tag>Figure</tag>s may contain multiple display elements.  DocBook
-does not specify how these elements are to be presented with respect
-to one another.
+
+<para>DocBook does not specify the location of the figure within the
+final displayed flow of text; it may float or remain where it is
+located.
 </para>
-<para>DocBook does not
-specify the location of the figure within the final displayed
-flow of text; it may float or remain where it is located.
-</para>
+
 <para>A list of figures may be generated at the beginning of a
 document.
 </para>
@@ -55,14 +55,14 @@ document.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.figure.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.figure.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.figure.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.figure.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

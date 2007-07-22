@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>itermset</refmiscinfo>
-  <refmiscinfo role='pattern'>db.itermset</refmiscinfo>
+  <refmiscinfo role="element">itermset</refmiscinfo>
+  <refmiscinfo role="pattern">db.itermset</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,22 +17,21 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para>When <tag>IndexTerm</tag>s use the <tag class='attribute'>Zone</tag>
+<para>When <tag>indexterm</tag>s use the <tag class="attribute">zone</tag>
 attribute to point to index ranges, it may be handy to hoist them
 out of the flow and put them in the document meta-information.
 </para>
-<para>The <tag>ITermSet</tag> element, which occurs in the DocBook containers
-for meta-information, is one place to put them.  <tag>ITermSet</tag> is
-simply a wrapper around a group of <tag>IndexTerm</tag>s.
+<para>The <tag>itermset</tag> element, which occurs in the DocBook containers
+for meta-information, is one place to put them.  An <tag>itermset</tag> is
+simply a wrapper around a group of <tag>indexterm</tag>s.
 </para>
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.suppress'?>
 </para>
-<para>Although more than one <tag>ITermSet</tag> may appear in the
+<para>Although more than one <tag>itermset</tag> may appear in the
 meta-information for a document, neither a relationship nor a specific
 facility for constructing a relationship is defined.
 </para>

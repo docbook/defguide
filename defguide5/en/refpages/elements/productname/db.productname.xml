@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>productname</refmiscinfo>
-  <refmiscinfo role='pattern'>db.productname</refmiscinfo>
+  <refmiscinfo role="element">productname</refmiscinfo>
+  <refmiscinfo role="pattern">db.productname</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,11 +17,11 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>ProductName</tag> is the formal name of any product. Identifying
+<para>A <tag>productname</tag> is the formal name of any product. Identifying
 a product this way may be useful if you need to provide explicit disclaimers
 about product names or information.
 </para>
@@ -39,26 +37,26 @@ claim, the designations have been printed in caps or initial caps.</para>
 </blockquote>
 
 or words to that effect. If every product name in this book had
-been diligently coded as a <tag>ProductName</tag>, we could
+been diligently coded as a <tag>productname</tag>, we could
 have automatically generated a complete list of all the product
 names and mentioned them explicitly in the notice.
 </para>
 
-<para>In running prose, the distinction between an <tag>Application</tag> and a
-<tag>ProductName</tag> may be very subjective.
+<para>In running prose, the distinction between an <tag>application</tag> and a
+<tag>productname</tag> may be very subjective.
 </para>
 
 <refsection xml:id="dbreproc.productname"><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
 </para>
-<para>Two of the values of the <tag class='attribute'>Class</tag>
-attribute on <tag>ProductName</tag>, <literal>Trade</literal> and
+<para>Two of the values of the <tag class="attribute">class</tag>
+attribute on <tag>productname</tag>, <literal>Trade</literal> and
 <literal>Registered</literal>, make assertions about
-trademarks. DocBook also has a <tag>TradeMark</tag> element;
+trademarks. DocBook also has a <tag>trademark</tag> element;
 presumably the same markup is intended regardless of which one is
 used.
 </para>
-<para>The <literal>Service</literal> and <tag>Copyright</tag> values should
+<para>The <literal>Service</literal> and <tag>copyright</tag> values should
 also generate the anticipated marks, if appropriate.
 </para>
 </refsection>
@@ -71,7 +69,7 @@ also generate the anticipated marks, if appropriate.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
 <programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>

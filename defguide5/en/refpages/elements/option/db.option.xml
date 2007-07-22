@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>option</refmiscinfo>
-  <refmiscinfo role='pattern'>db.option</refmiscinfo>
+  <refmiscinfo role="element">option</refmiscinfo>
+  <refmiscinfo role="pattern">db.option</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,11 +17,10 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
-
-<para><tag>Option</tag> identifies an argument to a software
+<para>An <tag>option</tag> identifies an argument to a software
 command or instruction. Options may or may not be required. The
 <tag>optional</tag> element can be used to explicitly identify
 options that are not required.
@@ -34,7 +31,7 @@ options that are not required.
 </para>
 <para>DocBook does not specify whether or not a symbol (such as
 <literal>-</literal> or <literal>/</literal>) is generated before the content
-of <tag>Option</tag>, or what that symbol might be.  Generating
+of <tag>option</tag>, or what that symbol might be.  Generating
 the text may or may not be desirable, but in either case, it is
 an interchange issue. See <xref linkend="app-interchange"/>.
 </para>
@@ -48,14 +45,14 @@ an interchange issue. See <xref linkend="app-interchange"/>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.option.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.option.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.option.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.option.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

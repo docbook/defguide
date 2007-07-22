@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>funcparams</refmiscinfo>
-  <refmiscinfo role='pattern'>db.funcparams</refmiscinfo>
+  <refmiscinfo role="element">funcparams</refmiscinfo>
+  <refmiscinfo role="pattern">db.funcparams</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,14 +17,14 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>In some programming languages (like C), it is possible for a
 function to have a pointer to another
 function as one of its parameters.  In the syntax summary for such a function, the
-<tag>FuncParams</tag> element provides a wrapper for the
+<tag>funcparams</tag> element provides a wrapper for the
 function pointer.
 </para>
 
@@ -38,21 +36,21 @@ an <type>int</type>. The <function>comp</function> function takes two parameters
 both of type <type>int *</type>:
 
 <screen>
-<![CDATA[
-<funcprototype>
-  <funcdef>void <function>sort</function></funcdef>
-    <paramdef>int *<parameter>arr</parameter>[]</paramdef>
-    <paramdef>int <parameter>(* comp)</parameter>
-      <funcparams>int *, int *</funcparams></paramdef>
-</funcprototype>
-]]>
+
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;void &lt;function&gt;sort&lt;/function&gt;&lt;/funcdef&gt;
+    &lt;paramdef&gt;int *&lt;parameter&gt;arr&lt;/parameter&gt;[]&lt;/paramdef&gt;
+    &lt;paramdef&gt;int &lt;parameter&gt;(* comp)&lt;/parameter&gt;
+      &lt;funcparams&gt;int *, int *&lt;/funcparams&gt;&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+
 </screen>
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
 For a complete description of the processing expecations,
-see <tag>FuncSynopsis</tag>.
+see <tag>funcsynopsis</tag>.
 </para>
 </refsection>
 
@@ -64,14 +62,14 @@ see <tag>FuncSynopsis</tag>.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.funcparams.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.funcparams.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.funcparams.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.funcparams.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

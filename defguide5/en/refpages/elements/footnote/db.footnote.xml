@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>footnote</refmiscinfo>
-  <refmiscinfo role='pattern'>db.footnote</refmiscinfo>
+  <refmiscinfo role="element">footnote</refmiscinfo>
+  <refmiscinfo role="pattern">db.footnote</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,18 +17,18 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
 <para>This element is a wrapper around the contents of a footnote.
 </para>
 <para>Additional references to the same
-footnote may be generated with <tag>FootnoteRef</tag>.
+footnote may be generated with <tag>footnoteref</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>The <tag>Footnote</tag> element usually generates a mark (a superscript
+<para>The <tag>footnote</tag> element usually generates a mark (a superscript
 symbol or number) at the place in the
 flow of the document in which it occurs.  The body of the footnote is then
 presented elsewhere, typically at the bottom of the page.
@@ -39,7 +37,7 @@ presented elsewhere, typically at the bottom of the page.
 <para>Alternative presentations are also possible.  In print environments that
 do not support footnotes at the bottom of the page, they may be presented
 as end notes occurring at the end of the component that contains the
-<tag>Footnote</tag>.  Online systems may choose to present them inline
+<tag>footnote</tag>.  Online systems may choose to present them inline
 or as <quote>pop-ups,</quote> or links, or any combination thereof.
 </para>
 </refsection>
@@ -55,14 +53,14 @@ or as <quote>pop-ups,</quote> or links, or any combination thereof.
 
 <?tdg-seealso?>
 
-<refsection condition='ref.examples'>
+<refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href='example.1.xml' parse='text'/></programlisting>
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
 
-<anchor xml:id='ex.os.footnote.1' role='HACK-ex.out.start'/>
-<xi:include href='example.1.xml' xpointer='/1/2'/>
-<anchor xml:id='ex.oe.footnote.1' role='HACK-ex.out.end'/>
+<anchor xml:id="ex.os.footnote.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.footnote.1" role="HACK-ex.out.end"/>
 
 </refsection>
 

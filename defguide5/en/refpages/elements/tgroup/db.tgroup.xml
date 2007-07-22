@@ -1,6 +1,4 @@
-<refentry xmlns='http://docbook.org/ns/docbook'
-          xmlns:xlink='http://www.w3.org/1999/xlink'
-          xmlns:xi='http://www.w3.org/2001/XInclude'>
+<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
@@ -8,8 +6,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role='element'>tgroup</refmiscinfo>
-  <refmiscinfo role='pattern'>db.tgroup</refmiscinfo>
+  <refmiscinfo role="element">tgroup</refmiscinfo>
+  <refmiscinfo role="pattern">db.tgroup</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -19,24 +17,24 @@
 
 <?tdg-refsynopsisdiv?>
 
-<refsection condition='ref.description'>
+<refsection condition="ref.description">
 <title>Description</title>
 
 
-<para>A <tag>TGroup</tag> surrounds a logically complete portion of a table.
-Most tables consist of a single <tag>TGroup</tag>, but complex tables
+<para>A <tag>tgroup</tag> surrounds a logically complete portion of a table.
+Most tables consist of a single <tag>tgroup</tag>, but complex tables
 with widely varying column specifications may be easier to code using
-multiple <tag>TGroup</tag>s.
+multiple <tag>tgroup</tag>s.
 </para>
 
-<para>The <tag>TGroup</tag> specifies the number of columns in the table,
+<para>The <tag>tgroup</tag> specifies the number of columns in the table,
 and contains all of the header, body, and footer
 rows, along with any additional column or span specifications
 necessary to express the geometry of the table.
 </para>
 
 <para>Most of the properties of rows, columns, and cells inherit their 
-default characteristics from the enclosing <tag>TGroup</tag>.
+default characteristics from the enclosing <tag>tgroup</tag>.
 </para>
 
 <refsection><title>Processing expectations</title>
