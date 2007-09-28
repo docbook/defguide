@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="defguide5-en-refpages" default="all">
+
+    <property file="../../build.properties"/>
+
+    <path id="saxon.classpath">
+        <fileset dir="${ant.home}/lib">
+            <include name="saxon*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="elements/build"/>
+    </target>
+
+    <target name="all" depends="list,elements"/>
+
+    <target name="list" description="Create file 'refpages/list-elements.xml'.">
+        <script language="beanshell" manager="bsf">
+        <![CDATA[
+        System.out.println("ref.basedir: " + basedir);
+            new File(basedir + "/list-elements.xml").delete();
+            file = new OutputStreamWriter(new FileOutputStream(basedir + "/list-elements.xml"), "UTF-8");
+
+            file.write("<reference xml:id='ref-element'\n");
+            file.write("           xmlns='http://docbook.org/ns/docbook'\n");
+            file.write("           xmlns:xi='http://www.w3.org/2001/XInclude'>\n");
+            file.write("<title>DocBook Element Reference</title>\n");
+            file.write("<?dbhtml filename='ref-elements.html'?>\n\n");
+            file.write("<xi:include href='intro-elements.xml'/>\n\n");
+
+            files = new ArrayList();
+            any = new ArrayList();
+            db_elements = new File(basedir + "/elements").listFiles();
+            for(db_element : db_elements) {
+                if (db_element.isDirectory() && !db_element.getName().equals("build")) {
+                    xmls = new File(basedir + "/elements", db_element.getName()).listFiles();
+                    for(xml : xmls) {
+                        name = xml.getName();
+                        if(name.startsWith("db.") && name.endsWith(".xml")) {
+                            path = "<xi:include href='elements/" + db_element.getName() + "/" + name + "'/>\n";
+                            if(db_element.getName().equals("ANY"))
+                                any.add(path);
+                            else
+                                files.add(path);
+                        }
+                    }
+                }
+            }
+
+            files = files.toArray(new String[files.size()]);
+            any = any.toArray(new String[any.size()]);
+            for(f : files) file.write(f);
+            for(f : any) file.write(f);
+
+            file.write("\n</reference>\n");
+
+            file.close();
+        ]]>
+        </script>
+    </target>
+
+    <target name="elements">
+        <mkdir dir="elements/build"/>
+
+        <script language="beanshell" manager="bsf">
+        <![CDATA[
+            start = System.currentTimeMillis();
+            ac = self.getProject().createTask("antcall");
+            ac.target = "make";
+            dir = ac.createParam();
+            dir.name = "dir";
+            db = ac.createParam();
+            db.name = "file.db";
+
+            db_elements = new File(basedir + "/elements").listFiles();
+            for(db_element : db_elements) {
+                if (db_element.isDirectory() && !db_element.getName().equals("build")) {
+                    xmls = new File(basedir + "/elements", db_element.getName()).listFiles();
+                    for(xml : xmls) {
+                        name = xml.getName();
+                        if(name.startsWith("db.") && name.endsWith(".xml")) {
+                            fd = new File(basedir + "/elements/build", name);
+                            fs = new File(basedir + "/elements/" + db_element.getName(), name);
+                            if(!fd.exists() || fd.lastModified() < fs.lastModified()) {
+                                dir.value = db_element.getName();
+                                db.value = name;
+                                t = System.currentTimeMillis();
+                                ac.perform();
+                                t = System.currentTimeMillis() - t ;
+                                ac.log("Finished build " + db.value + ", using " + t + " ms.");
+                            }
+                        }
+                    }
+                }
+            }
+            start = System.currentTimeMillis() - start;
+            ac.log("Finished build elements, using " + start + " ms.");
+        ]]>
+        </script>
+
+        <!--antcall target="make">
+            <param name="dir" value="acronym"/>
+            <param name="file.db" value="db.acronym.xml"/>
+        </antcall-->
+    </target>
+
+    <target name="make" description="Invoked by target 'elements'">
+        <echo message="Making ${file.db} ..."/>
+        <exec dir="${basedir}${file.separator}elements${file.separator}${dir}" executable="xmllint" failonerror="true">
+            <arg value="--nonet"/>
+            <arg value="--xinclude"/>
+            <arg value="--output"/>
+            <arg value="../build${file.separator}${file.db}.xi"/>
+            <arg value="${file.db}"/>
+        </exec>
+
+        <!--
+        java -jar saxonb89.jar -o db.acronym.xml \
+            db.acronym.xml.xi ../../../stylesheets/refentry.xsl
+        -->
+        <java classname="net.sf.saxon.Transform" fork="true"
+                dir="${basedir}${file.separator}elements${file.separator}build" maxmemory="512m">
+            <classpath refid="saxon.classpath"/>
+            <arg value="-o"/>
+            <arg value="${file.db}"/>
+            <arg value="${file.db}.xi"/>
+            <arg value="../../../stylesheets/refentry.xsl"/>
+        </java>
+        <delete file="elements/build/${file.db}.xi"/>
+    </target>
+
+</project>

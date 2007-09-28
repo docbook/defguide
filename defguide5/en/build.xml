@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Usage:
+    Building 'The Definitive Guide (5.0)' - all(html & pdf)
+        $ ant
+
+    Building 'The Definitive Guide (5.0)' - html
+        $ ant html
+
+    Building 'The Definitive Guide (5.0)' - pdf
+        $ ant pdf
+
+    more information can be found in '../build.tmpl.properties' and 'refpages/build.xml'.
+
+Dependency:
+    *) ant 1.7+
+    *) beanshell 2.0b4+, more information can be found in the ant manual, OptionalTasks/script.html
+    *) xsltproc 1.1.20+
+    *) jdk 1.4.2+
+    *) saxon8+, copy saxon*.jar to ${ant.home}/lib.
+    *) fop 0.94+, pdf only
+    *) For windows user, you can download gettext & xsltproc binary from:
+        http://i18n-zh.googlecode.com/files/gettext-0.16.1_xsltproc-1.1.20.tar.bz2
+TODO:
+    *) Add chm output
+    *) ...
+
+Author：
+    *) Dongsheng Song <dongsheng.song@gmail.com>, 2007
+-->
+<project name="defguide5-en" default="all">
+
+    <property file="../build.properties"/>
+    <property name="doc.name" value="defguide5-en"/>
+
+    <path id="lib.classpath">
+        <fileset dir="${fop.dir}/build">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${fop.dir}/lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+        <delete file="bookinfo.xml"/>
+        <delete file="stylesheets/fo-import.xsl"/>
+        <ant dir="refpages" target="clean"/>
+    </target>
+
+    <target name="all">
+        <antcall target="html"/>
+        <!--antcall target="chm"/-->
+        <antcall target="pdf"/>
+    </target>
+
+    <target name="profile.init">
+        <uptodate property="profile.isUpToDate" targetfile="build/${doc.name}.xml">
+            <srcfiles dir="." includes="book.xml, VERSION.xml"/>
+            <srcfiles dir="src" includes="*.xml"/>
+            <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
+        </uptodate>
+    </target>
+
+    <target name="profile" depends="profile.init" unless="profile.isUpToDate">
+        <ant dir="refpages" target="all"/>
+
+        <filter token="docbook5.xsl" value="${docbook5.xsl}"/>
+        <filter token="file.separator" value="${file.separator}"/>
+
+        <echo message="docbook5.xsl: ${docbook5.xsl}"/>
+        <copy file="stylesheets/html-import.tmpl.xsl" tofile="stylesheets/html-import.xsl" filtering="true" overwrite="true"/>
+        <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
+
+        <copy todir="build/figures">
+            <fileset dir="figures" includes="*.png"/>
+        </copy>
+
+        <exec dir="${basedir}" executable="xsltproc" failonerror="true">
+            <arg value="--nonet"/>
+            <arg value="--output"/>
+            <arg value="${basedir}${file.separator}bookinfo.xml"/>
+            <arg value="${basedir}${file.separator}VERSION.xml"/>
+            <arg value="${basedir}${file.separator}VERSION.xml"/>
+        </exec>
+
+        <exec dir="${basedir}" executable="xmllint" failonerror="true">
+            <arg value="--nonet"/>
+            <arg value="--xinclude"/>
+            <arg value="--output"/>
+            <arg value="${basedir}${file.separator}build/${doc.name}.xml"/>
+            <arg value="${basedir}${file.separator}book.xml"/>
+        </exec>
+    </target>
+
+    <target name="html" depends="profile">
+        <mkdir dir="build/html"/>
+
+        <exec dir="${basedir}${file.separator}build${file.separator}html" executable="xsltproc" failonerror="false">
+            <arg value="--nonet"/>
+            <arg value="${basedir}${file.separator}stylesheets${file.separator}html.xsl"/>
+            <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
+        </exec>
+
+        <copy file="stylesheets/defguide.css" todir="build/html"/>
+    </target>
+
+    <target name="pdf" depends="profile">
+        <mkdir dir="build/pdf"/>
+
+        <exec dir="${basedir}" executable="xsltproc" failonerror="false">
+            <arg value="--nonet"/>
+            <arg value="--output"/>
+            <arg value="${basedir}${file.separator}build/${file.separator}pdf${file.separator}${doc.name}.fo"/>
+            <arg value="${basedir}${file.separator}stylesheets${file.separator}fo.xsl"/>
+            <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
+        </exec>
+
+        <java classname="org.apache.fop.cli.Main" fork="true"
+                dir="." maxmemory="512m">
+            <classpath refid="lib.classpath"/>
+            <arg value="build/pdf/${doc.name}.fo"/>
+            <arg value="build/pdf/${doc.name}.pdf"/>
+        </java>
+
+        <delete>
+            <fileset dir="build/pdf" excludes="**/*.pdf, **/*.fo"/>
+        </delete>
+    </target>
+
+</project>
