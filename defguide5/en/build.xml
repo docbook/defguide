@@ -17,7 +17,8 @@ Dependency:
     *) beanshell 2.0b4+, more information can be found in the ant manual, OptionalTasks/script.html
     *) xsltproc 1.1.20+
     *) jdk 1.4.2+
-    *) saxon8+, copy saxon*.jar to ${ant.home}/lib.
+    *) saxon8b+, copy saxon*.jar to ${ant.home}/lib
+    *) DocBook v5 XSL 1.72+
     *) fop 0.94+, pdf only
     *) For windows user, you can download gettext & xsltproc binary from:
         http://i18n-zh.googlecode.com/files/gettext-0.16.1_xsltproc-1.1.20.tar.bz2
@@ -32,6 +33,8 @@ Author：
 
     <property file="../build.properties"/>
     <property name="doc.name" value="defguide5-en"/>
+
+    <import file="../build-common.xml"/>
 
     <path id="lib.classpath">
         <fileset dir="${fop.dir}/build">
@@ -49,6 +52,8 @@ Author：
         <ant dir="refpages" target="clean"/>
     </target>
 
+    <target name="init" depends="init-avail"/>
+
     <target name="all">
         <antcall target="html"/>
         <!--antcall target="chm"/-->
@@ -63,13 +68,12 @@ Author：
         </uptodate>
     </target>
 
-    <target name="profile" depends="profile.init" unless="profile.isUpToDate">
+    <target name="profile" depends="init, profile.init" unless="profile.isUpToDate">
         <ant dir="refpages" target="all"/>
 
         <filter token="docbook5.xsl" value="${docbook5.xsl}"/>
         <filter token="file.separator" value="${file.separator}"/>
 
-        <echo message="docbook5.xsl: ${docbook5.xsl}"/>
         <copy file="stylesheets/html-import.tmpl.xsl" tofile="stylesheets/html-import.xsl" filtering="true" overwrite="true"/>
         <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
 
@@ -94,10 +98,11 @@ Author：
         </exec>
     </target>
 
+    <!-- Total time: 9 minutes 10 seconds -->
     <target name="html" depends="profile">
         <mkdir dir="build/html"/>
 
-        <exec dir="${basedir}${file.separator}build${file.separator}html" executable="xsltproc" failonerror="false">
+        <exec dir="${basedir}${file.separator}build${file.separator}html" executable="xsltproc" failonerror="true">
             <arg value="--nonet"/>
             <arg value="${basedir}${file.separator}stylesheets${file.separator}html.xsl"/>
             <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
@@ -109,13 +114,22 @@ Author：
     <target name="pdf" depends="profile">
         <mkdir dir="build/pdf"/>
 
-        <exec dir="${basedir}" executable="xsltproc" failonerror="false">
-            <arg value="--nonet"/>
-            <arg value="--output"/>
+        <!-- exec dir="${basedir}" executable="xsltproc" failonerror="false">
+            <arg value="- -nonet"/>
+            <arg value="- -output"/>
             <arg value="${basedir}${file.separator}build/${file.separator}pdf${file.separator}${doc.name}.fo"/>
             <arg value="${basedir}${file.separator}stylesheets${file.separator}fo.xsl"/>
             <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
-        </exec>
+        </exec -->
+
+        <java classname="net.sf.saxon.Transform" fork="true"
+                 failonerror="true" dir="${basedir}" maxmemory="512m">
+            <classpath refid="saxon.classpath"/>
+            <arg value="-o"/>
+            <arg value="${basedir}${file.separator}build/${file.separator}pdf${file.separator}${doc.name}.fo"/>
+            <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
+            <arg value="${basedir}${file.separator}stylesheets${file.separator}fo.xsl"/>
+        </java>
 
         <java classname="org.apache.fop.cli.Main" fork="true"
                 dir="." maxmemory="512m">

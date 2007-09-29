@@ -2,23 +2,19 @@
 <project name="defguide5-en-refpages" default="all">
 
     <property file="../../build.properties"/>
-
-    <path id="saxon.classpath">
-        <fileset dir="${ant.home}/lib">
-            <include name="saxon*.jar"/>
-        </fileset>
-    </path>
+    <import file="../../build-common.xml"/>
 
     <target name="clean">
         <delete dir="elements/build"/>
     </target>
 
+    <target name="init" depends="init-avail"/>
+
     <target name="all" depends="list,elements"/>
 
-    <target name="list" description="Create file 'refpages/list-elements.xml'.">
+    <target name="list" depends="init" description="Create file 'refpages/list-elements.xml'.">
         <script language="beanshell" manager="bsf">
         <![CDATA[
-        System.out.println("ref.basedir: " + basedir);
             new File(basedir + "/list-elements.xml").delete();
             file = new OutputStreamWriter(new FileOutputStream(basedir + "/list-elements.xml"), "UTF-8");
 
@@ -38,7 +34,7 @@
                     for(xml : xmls) {
                         name = xml.getName();
                         if(name.startsWith("db.") && name.endsWith(".xml")) {
-                            path = "<xi:include href='elements/" + db_element.getName() + "/" + name + "'/>\n";
+                            path = "<xi:include href='elements/build/" + name + "'/>\n";
                             if(db_element.getName().equals("ANY"))
                                 any.add(path);
                             else
@@ -60,7 +56,12 @@
         </script>
     </target>
 
-    <target name="elements">
+    <!--
+    This is a heavy cpu load task, in my notebook:
+        Total time: 28 minutes 20 seconds
+    TODO: switch to parallel perform target 'make' for multiprocessor or multicore system.
+    -->
+    <target name="elements" depends="init">
         <mkdir dir="elements/build"/>
 
         <script language="beanshell" manager="bsf">
@@ -85,17 +86,18 @@
                             if(!fd.exists() || fd.lastModified() < fs.lastModified()) {
                                 dir.value = db_element.getName();
                                 db.value = name;
+                                ac.log("Building " + db.value + " ...");
                                 t = System.currentTimeMillis();
                                 ac.perform();
                                 t = System.currentTimeMillis() - t ;
-                                ac.log("Finished build " + db.value + ", using " + t + " ms.");
+                                ac.log("Build " + db.value + " finished, using " + t + " ms.");
                             }
                         }
                     }
                 }
             }
             start = System.currentTimeMillis() - start;
-            ac.log("Finished build elements, using " + start + " ms.");
+            ac.log("Build elements finished, using " + start + " ms.");
         ]]>
         </script>
 
@@ -103,10 +105,13 @@
             <param name="dir" value="acronym"/>
             <param name="file.db" value="db.acronym.xml"/>
         </antcall-->
+
+        <delete>
+            <fileset dir="elements/build" includes="*.xi"/>
+        </delete>
     </target>
 
     <target name="make" description="Invoked by target 'elements'">
-        <echo message="Making ${file.db} ..."/>
         <exec dir="${basedir}${file.separator}elements${file.separator}${dir}" executable="xmllint" failonerror="true">
             <arg value="--nonet"/>
             <arg value="--xinclude"/>
@@ -127,7 +132,6 @@
             <arg value="${file.db}.xi"/>
             <arg value="../../../stylesheets/refentry.xsl"/>
         </java>
-        <delete file="elements/build/${file.db}.xi"/>
     </target>
 
 </project>
