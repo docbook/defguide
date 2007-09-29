@@ -4,6 +4,10 @@
     <property file="../../build.properties"/>
     <import file="../../build-common.xml"/>
 
+    <target name="usage">
+        <echo message="Use the -projecthelp option instead"/>
+    </target>
+
     <target name="clean">
         <delete dir="elements/build"/>
     </target>
@@ -121,12 +125,14 @@
         </exec>
 
         <!--
+        saxon65(com.icl.saxon.StyleSheet) fail, must use saxon8 !
         java -jar saxonb89.jar -o db.acronym.xml \
             db.acronym.xml.xi ../../../stylesheets/refentry.xsl
+
         -->
         <java classname="net.sf.saxon.Transform" fork="true"
                 dir="${basedir}${file.separator}elements${file.separator}build" maxmemory="512m">
-            <classpath refid="saxon.classpath"/>
+            <classpath refid="lib.classpath"/>
             <arg value="-o"/>
             <arg value="${file.db}"/>
             <arg value="${file.db}.xi"/>

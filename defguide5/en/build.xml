@@ -36,14 +36,11 @@ Author：
 
     <import file="../build-common.xml"/>
 
-    <path id="lib.classpath">
-        <fileset dir="${fop.dir}/build">
-            <include name="**/*.jar"/>
-        </fileset>
-        <fileset dir="${fop.dir}/lib">
-            <include name="**/*.jar"/>
-        </fileset>
-    </path>
+    <taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask"/>
+
+    <target name="usage">
+        <echo message="Use the -projecthelp option instead"/>
+    </target>
 
     <target name="clean">
         <delete dir="build"/>
@@ -98,6 +95,12 @@ Author：
         </exec>
     </target>
 
+    <target name="validate" depends="profile">
+        <jing rngfile="${docbook5.home}/rng/docbook.rng">
+            <fileset file="${basedir}${file.separator}build/${doc.name}.xml"/>
+        </jing>
+    </target>
+
     <!-- Total time: 9 minutes 10 seconds -->
     <target name="html" depends="profile">
         <mkdir dir="build/html"/>
@@ -122,9 +125,9 @@ Author：
             <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
         </exec -->
 
-        <java classname="net.sf.saxon.Transform" fork="true"
+        <java classname="com.icl.saxon.StyleSheet" fork="true"
                  failonerror="true" dir="${basedir}" maxmemory="512m">
-            <classpath refid="saxon.classpath"/>
+            <classpath refid="lib.classpath"/>
             <arg value="-o"/>
             <arg value="${basedir}${file.separator}build/${file.separator}pdf${file.separator}${doc.name}.fo"/>
             <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>

@@ -8,7 +8,8 @@
 
   <!-- These extensions are required for table printing and other stuff -->
   <xsl:param name="use.extensions">1</xsl:param>
-  <xsl:param name="tablecolumns.extension">0</xsl:param>
+  <xsl:param name="tablecolumns.extension">1</xsl:param>
+  <xsl:param name="callouts.extension">1</xsl:param>
   <xsl:param name="fop.extensions">0</xsl:param>
   <xsl:param name="fop1.extensions">1</xsl:param>
 
@@ -20,11 +21,6 @@
   <xsl:param name="admon.graphics.path">images/</xsl:param>
   <xsl:param name="admon.graphics.extension">.png</xsl:param>
   <xsl:param name="section.autolabel" select="1" />
-  <xsl:attribute-set name="sidebar.properties" use-attribute-sets="formal.object.properties">
-    <xsl:attribute name="border-style">solid</xsl:attribute>
-    <xsl:attribute name="border-width">.1mm</xsl:attribute>
-    <xsl:attribute name="background-color">#EEEEEE</xsl:attribute>
-  </xsl:attribute-set>
 
   <!-- Prevent blank pages in output -->
   <xsl:template name="book.titlepage.before.verso">
