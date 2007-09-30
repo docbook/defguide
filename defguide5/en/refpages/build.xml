@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="defguide5-en-refpages" default="all">
 
-    <property file="../../build.properties"/>
+    <property file="../../build-common.properties"/>
     <import file="../../build-common.xml"/>
+
+    <taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask"/>
 
     <target name="usage">
         <echo message="Use the -projecthelp option instead"/>
     </target>
 
-    <target name="clean">
+    <target name="clean" description="Clean the build directory">
         <delete dir="elements/build"/>
     </target>
 
-    <target name="init" depends="init-avail"/>
+    <target name="init" depends="init-avail" description="Check runtime class"/>
 
-    <target name="all" depends="list,elements"/>
+    <target name="all" depends="list,elements" description="Generate xml files"/>
 
-    <target name="list" depends="init" description="Create file 'refpages/list-elements.xml'.">
+    <target name="list" depends="init" description="Generate file 'refpages/list-elements.xml'">
         <script language="beanshell" manager="bsf">
         <![CDATA[
             new File(basedir + "/list-elements.xml").delete();
@@ -65,7 +67,7 @@
         Total time: 28 minutes 20 seconds
     TODO: switch to parallel perform target 'make' for multiprocessor or multicore system.
     -->
-    <target name="elements" depends="init">
+    <target name="elements" depends="init" description="Generate file 'elements/build/db.*.xml'">
         <mkdir dir="elements/build"/>
 
         <script language="beanshell" manager="bsf">
@@ -125,10 +127,9 @@
         </exec>
 
         <!--
-        saxon65(com.icl.saxon.StyleSheet) fail, must use saxon8 !
+        refentry.xsl is xsl 2.0, so we must use saxon8 !
         java -jar saxonb89.jar -o db.acronym.xml \
             db.acronym.xml.xi ../../../stylesheets/refentry.xsl
-
         -->
         <java classname="net.sf.saxon.Transform" fork="true"
                 dir="${basedir}${file.separator}elements${file.separator}build" maxmemory="512m">
@@ -138,6 +139,21 @@
             <arg value="${file.db}.xi"/>
             <arg value="../../../stylesheets/refentry.xsl"/>
         </java>
+    </target>
+
+    <target name="validate" description="Validate source document">
+        <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
+            <fileset dir="${basedir}${file.separator}elements"
+                    includes="**/*.xml" excludes="build/**"/>
+        </jing>
+    </target>
+
+    <!-- attavlue: db.area.xml, db.areaset.xml, db.areaspec.xml -->
+    <target name="validate-build" description="Validate generated document">
+        <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
+            <fileset dir="${basedir}${file.separator}elements${file.separator}/build"
+                    includes="**/*.xml"/>
+        </jing>
     </target>
 
 </project>

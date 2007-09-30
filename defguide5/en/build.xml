@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 Usage:
-    Building 'The Definitive Guide (5.0)' - all(html & pdf)
+    Building 'The Definitive Guide (5.0)' - all(html, chm & pdf)
         $ ant
 
     Building 'The Definitive Guide (5.0)' - html
         $ ant html
 
+    Building 'The Definitive Guide (5.0)' - chm
+        $ ant chm
+
     Building 'The Definitive Guide (5.0)' - pdf
         $ ant pdf
-
-    more information can be found in '../build.tmpl.properties' and 'refpages/build.xml'.
-
-Dependency:
-    *) ant 1.7+
-    *) beanshell 2.0b4+, more information can be found in the ant manual, OptionalTasks/script.html
-    *) xsltproc 1.1.20+
-    *) jdk 1.4.2+
-    *) saxon8b+, copy saxon*.jar to ${ant.home}/lib
-    *) DocBook v5 XSL 1.72+
-    *) fop 0.94+, pdf only
-    *) For windows user, you can download gettext & xsltproc binary from:
-        http://i18n-zh.googlecode.com/files/gettext-0.16.1_xsltproc-1.1.20.tar.bz2
-TODO:
-    *) Add chm output
-    *) ...
-
-Author：
-    *) Dongsheng Song <dongsheng.song@gmail.com>, 2007
 -->
 <project name="defguide5-en" default="all">
 
-    <property file="../build.properties"/>
-    <property name="doc.name" value="defguide5-en"/>
-
+    <property file="../build-common.properties"/>
     <import file="../build-common.xml"/>
+
+    <property name="doc.name" value="defguide5-en"/>
 
     <taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask"/>
 
@@ -42,37 +26,41 @@ Author：
         <echo message="Use the -projecthelp option instead"/>
     </target>
 
-    <target name="clean">
+    <target name="clean" description="Clean the build directory">
         <delete dir="build"/>
         <delete file="bookinfo.xml"/>
+        <delete file="stylesheets/chm-import.xsl"/>
         <delete file="stylesheets/fo-import.xsl"/>
+        <delete file="stylesheets/html-import.xsl"/>
         <ant dir="refpages" target="clean"/>
     </target>
 
-    <target name="init" depends="init-avail"/>
+    <target name="init" depends="init-avail" description="Check runtime class"/>
 
-    <target name="all">
+    <target name="validate" description="Validate source document">
+        <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
+            <fileset dir="${basedir}${file.separator}src"
+                    includes="**/*.xml"/>
+        </jing>
+        <!--ant dir="refpages" target="validate"/-->
+    </target>
+
+    <target name="all" description="Generate document - html,chm,pdf">
         <antcall target="html"/>
-        <!--antcall target="chm"/-->
+        <antcall target="chm"/>
         <antcall target="pdf"/>
     </target>
 
-    <target name="profile.init">
-        <uptodate property="profile.isUpToDate" targetfile="build/${doc.name}.xml">
+    <target name="xinclude.init">
+        <uptodate property="xinclude.isUpToDate" targetfile="build/${doc.name}.xml">
             <srcfiles dir="." includes="book.xml, VERSION.xml"/>
             <srcfiles dir="src" includes="*.xml"/>
             <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
         </uptodate>
     </target>
 
-    <target name="profile" depends="init, profile.init" unless="profile.isUpToDate">
+    <target name="xinclude" depends="init, xinclude.init" unless="xinclude.isUpToDate" description="XInclude processing on document">
         <ant dir="refpages" target="all"/>
-
-        <filter token="docbook5.xsl" value="${docbook5.xsl}"/>
-        <filter token="file.separator" value="${file.separator}"/>
-
-        <copy file="stylesheets/html-import.tmpl.xsl" tofile="stylesheets/html-import.xsl" filtering="true" overwrite="true"/>
-        <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
 
         <copy todir="build/figures">
             <fileset dir="figures" includes="*.png"/>
@@ -95,15 +83,27 @@ Author：
         </exec>
     </target>
 
-    <target name="validate" depends="profile">
-        <jing rngfile="${docbook5.home}/rng/docbook.rng">
-            <fileset file="${basedir}${file.separator}build/${doc.name}.xml"/>
-        </jing>
+    <target name="html.init">
+        <uptodate property="html.isUpToDate" targetfile="build/html/.done">
+            <srcfiles dir="." includes="book.xml, VERSION.xml"/>
+            <srcfiles dir="src" includes="*.xml"/>
+            <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
+        </uptodate>
     </target>
 
     <!-- Total time: 9 minutes 10 seconds -->
-    <target name="html" depends="profile">
-        <mkdir dir="build/html"/>
+    <target name="html" depends="xinclude,html.init" unless="html.isUpToDate" description="Generate document - html">
+
+        <filter token="docbook5.xsl.url" value="${docbook5.xsl.url}"/>
+        <copy file="stylesheets/html-import.tmpl.xsl" tofile="stylesheets/html-import.xsl" filtering="true" overwrite="true"/>
+
+        <copy file="html/defguide.css" todir="build/html"/>
+        <copy todir="build/html/figures">
+            <fileset dir="figures" includes="*.png"/>
+        </copy>
+        <copy todir="build/html/images">
+            <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
+        </copy>
 
         <exec dir="${basedir}${file.separator}build${file.separator}html" executable="xsltproc" failonerror="true">
             <arg value="--nonet"/>
@@ -111,19 +111,60 @@ Author：
             <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
         </exec>
 
-        <copy file="stylesheets/defguide.css" todir="build/html"/>
+        <touch file="build/html/.done"/>
     </target>
 
-    <target name="pdf" depends="profile">
-        <mkdir dir="build/pdf"/>
+    <target name="chm.init">
+        <uptodate property="chm.isUpToDate" targetfile="build/chm/defguide5-en.chm">
+            <srcfiles dir="." includes="book.xml, VERSION.xml"/>
+            <srcfiles dir="src" includes="*.xml"/>
+            <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
+        </uptodate>
+    </target>
 
-        <!-- exec dir="${basedir}" executable="xsltproc" failonerror="false">
-            <arg value="- -nonet"/>
-            <arg value="- -output"/>
-            <arg value="${basedir}${file.separator}build/${file.separator}pdf${file.separator}${doc.name}.fo"/>
-            <arg value="${basedir}${file.separator}stylesheets${file.separator}fo.xsl"/>
+    <target name="chm" depends="xinclude,chm.init" unless="chm.isUpToDate" description="Generate document - chm">
+        <fail>
+            <condition>
+                <not><os family="windows"/></not>
+            </condition>
+            This target only known work on windows !
+        </fail>
+
+        <filter token="docbook5.xsl.url" value="${docbook5.xsl.url}"/>
+        <copy file="stylesheets/chm-import.tmpl.xsl" tofile="stylesheets/chm-import.xsl" filtering="true" overwrite="true"/>
+
+        <copy file="html/defguide.css" todir="build/chm/htmlhelp"/>
+        <copy todir="build/chm/htmlhelp/figures">
+            <fileset dir="figures" includes="*.png"/>
+        </copy>
+        <copy todir="build/chm/htmlhelp/images">
+            <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
+        </copy>
+
+        <exec dir="${basedir}${file.separator}build${file.separator}chm" executable="xsltproc" failonerror="true">
+            <arg value="--nonet"/>
+            <arg value="${basedir}${file.separator}stylesheets${file.separator}chm.xsl"/>
             <arg value="${basedir}${file.separator}build${file.separator}${doc.name}.xml"/>
-        </exec -->
+        </exec>
+        <exec dir="${basedir}${file.separator}build${file.separator}chm" executable="hhc" failonerror="false">
+            <arg value="htmlhelp.hhp"/>
+        </exec>
+
+        <delete dir="build/chm/htmlhelp"/>
+        <delete dir="build/chm" excludes="**/*.chm"/>
+    </target>
+
+    <target name="pdf" depends="xinclude" description="Generate document - pdf">
+
+        <filter token="docbook5.xsl.url" value="${docbook5.xsl.url}"/>
+        <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
+
+        <copy todir="build/pdf/figures">
+            <fileset dir="figures" includes="*.png"/>
+        </copy>
+        <copy todir="build/pdf/images">
+            <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
+        </copy>
 
         <java classname="com.icl.saxon.StyleSheet" fork="true"
                  failonerror="true" dir="${basedir}" maxmemory="512m">
@@ -134,13 +175,15 @@ Author：
             <arg value="${basedir}${file.separator}stylesheets${file.separator}fo.xsl"/>
         </java>
 
-        <java classname="org.apache.fop.cli.Main" fork="true"
-                dir="." maxmemory="512m">
+        <java classname="${fop.class}" fork="true"
+                dir="${basedir}" maxmemory="512m">
             <classpath refid="lib.classpath"/>
             <arg value="build/pdf/${doc.name}.fo"/>
             <arg value="build/pdf/${doc.name}.pdf"/>
         </java>
 
+        <delete dir="build/pdf/figures"/>
+        <delete dir="build/pdf/images"/>
         <delete>
             <fileset dir="build/pdf" excludes="**/*.pdf, **/*.fo"/>
         </delete>

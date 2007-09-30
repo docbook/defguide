@@ -8,6 +8,10 @@
   <xsl:param name="toc.section.depth">3</xsl:param>
   <xsl:param name="annotate.toc">0</xsl:param>
 
+  <xsl:param name="use.extensions">1</xsl:param>
+  <xsl:param name="tablecolumns.extension">0</xsl:param>
+  <xsl:param name="callouts.extension">0</xsl:param>
+
   <xsl:template match="sect1" mode="toc">
     <xsl:param name="toc-context" select="."/>
     <xsl:call-template name="subtoc">
