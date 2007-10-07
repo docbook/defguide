@@ -73,7 +73,7 @@
     &lt;/OBJECT&gt;</xsl:text>
   </xsl:if>
   <xsl:choose>
-    <xsl:when test="refentry/refmeta[refmiscinfo = 'Element']">
+    <xsl:when test="refentry/refmeta[refmiscinfo/@role = 'element']">
       <xsl:text disable-output-escaping="yes">&lt;UL&gt;</xsl:text>
       <xsl:for-each select="refentry">
         <xsl:variable name="letter" select="substring(refnamediv/refname,1,1)"/>     
