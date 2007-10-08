@@ -40,7 +40,7 @@
                     for(xml : xmls) {
                         name = xml.getName();
                         if(name.startsWith("db.") && name.endsWith(".xml")) {
-                            path = "<xi:include href='elements/build/" + name + "'/>\n";
+                            path = db_element.getName() + "/" + name;
                             if(db_element.getName().equals("ANY"))
                                 any.add(path);
                             else
@@ -50,23 +50,19 @@
                 }
             }
 
-            cmp = new Comparator() {
-                int compare(p1, p2) {
-                    p1 = p1.substring(p1.indexOf('.') + 1, p1.length());
-                    if(p1.charAt(0) == '_') p1 = p1.substring(1);
-
-                    p2 = p2.substring(p2.indexOf('.') + 1, p2.length());
-                    if(p2.charAt(0) == '_') p2 = p2.substring(1);
-
-                    return p1.compareTo(p2);
-                }
-            };
             files = files.toArray(new String[files.size()]);
-            Arrays.sort(files, cmp);
+            Arrays.sort(files);
+            for(f : files) {
+                file.write("<xi:include href='elements/build" +
+                        f.substring(f.indexOf('/')) + "'/>\n");
+            }
+
             any = any.toArray(new String[any.size()]);
-            Arrays.sort(any, cmp);
-            for(f : files) file.write(f);
-            for(f : any) file.write(f);
+            Arrays.sort(any);
+            for(f : any) {
+                file.write("<xi:include href='elements/build" +
+                        f.substring(f.indexOf('/')) + "'/>\n");
+            }
 
             file.write("\n</reference>\n");
 
@@ -155,14 +151,20 @@
     </target>
 
     <target name="validate" description="Validate source document">
-        <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
+        <jing rngfile="${docbook5.home}/rng/docbookxi.rng" checkid="false">
             <fileset dir="${basedir}${file.separator}elements"
                     includes="**/*.xml" excludes="build/**"/>
         </jing>
     </target>
 
-    <!-- attavlue: db.area.xml, db.areaset.xml, db.areaspec.xml -->
-    <target name="validate-build" description="Validate generated document">
+    <!-- itemizedlist:
+    <itemizedlist spacing="compact" role="element-synopsis"/>
+
+    db.html.col.xml, db.html.colgroup.xml, db.html.informaltable.xml,
+    db.html.table.xml, db.html.tbody.xml, db.html.td.xml, db.html.tfoot.xml,
+    db.html.th.xml, db.html.thead.xml, db.html.tr.xml
+    -->
+    <target name="validate-build"  depends="elements" description="Validate generated document">
         <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
             <fileset dir="${basedir}${file.separator}elements${file.separator}/build"
                     includes="**/*.xml"/>

@@ -18,7 +18,7 @@ Usage:
     <property file="../build-common.properties"/>
     <import file="../build-common.xml"/>
 
-    <property name="doc.name" value="defguide5-en"/>
+    <property name="doc.name" value="defguide5"/>
 
     <taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask"/>
 
@@ -37,12 +37,14 @@ Usage:
 
     <target name="init" depends="init-avail" description="Check runtime class"/>
 
-    <target name="validate" description="Validate source document">
+    <target name="validate" depends="xinclude" description="Validate document">
         <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
             <fileset dir="${basedir}${file.separator}src"
                     includes="**/*.xml"/>
         </jing>
         <!--ant dir="refpages" target="validate"/-->
+        <jing rngfile="${docbook5.home}/rng/docbookxi.rng"
+                file="../en/build/defguide5.xml"/>
     </target>
 
     <target name="all" description="Generate document - html,chm,pdf">
