@@ -65,7 +65,7 @@ Usage:
         <ant dir="refpages" target="all"/>
 
         <copy todir="build/figures">
-            <fileset dir="figures" includes="*.png"/>
+            <fileset dir="figures" includes="*.png,*.gif,*.eps"/>
         </copy>
 
         <exec dir="${basedir}" executable="xsltproc" failonerror="true">
@@ -102,7 +102,7 @@ Usage:
 
         <copy file="html/defguide.css" todir="build/html"/>
         <copy todir="build/html/figures">
-            <fileset dir="figures" includes="*.png"/>
+            <fileset dir="figures" includes="*.png,*.gif,*.eps"/>
         </copy>
         <copy todir="build/html/images">
             <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
@@ -138,7 +138,7 @@ Usage:
 
         <copy file="html/defguide.css" todir="build/chm/htmlhelp"/>
         <copy todir="build/chm/htmlhelp/figures">
-            <fileset dir="figures" includes="*.png"/>
+            <fileset dir="figures" includes="*.png,*.gif,*.eps"/>
         </copy>
         <copy todir="build/chm/htmlhelp/images">
             <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
@@ -163,7 +163,7 @@ Usage:
         <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
 
         <copy todir="build/pdf/figures">
-            <fileset dir="figures" includes="*.png"/>
+            <fileset dir="figures" includes="*.png,*.gif,*.eps"/>
         </copy>
         <copy todir="build/pdf/images">
             <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
