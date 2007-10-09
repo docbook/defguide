@@ -79,20 +79,11 @@ Usage:
         <exec dir="${basedir}" executable="xmllint" failonerror="true">
             <arg value="--nonet"/>
             <arg value="--xinclude"/>
-            <arg value="--output"/>
-            <arg value="${basedir}${file.separator}build/${doc.name}-tmp.xml"/>
-            <arg value="${basedir}${file.separator}book.xml"/>
-        </exec>
-
-        <exec dir="${basedir}/build" executable="xmllint">
-            <arg value="--encode"/>
-            <arg value="UTF-8"/>
+            <arg value="--format"/>
             <arg value="--output"/>
             <arg value="${basedir}${file.separator}build/${doc.name}.xml"/>
-            <arg value="--format"/>
-            <arg value="${basedir}${file.separator}build/${doc.name}-tmp.xml"/>
+            <arg value="${basedir}${file.separator}book.xml"/>
         </exec>
-        <delete file="${basedir}${file.separator}build/${doc.name}-tmp.xml"/>
     </target>
 
     <target name="html.init">
