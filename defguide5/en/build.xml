@@ -76,7 +76,7 @@ Usage:
             <arg value="${basedir}${file.separator}VERSION.xml"/>
         </exec>
 
-        <exec dir="${basedir}" executable="xmllint" failonerror="true">
+        <exec dir="${basedir}" executable="xmllint">
             <arg value="--nonet"/>
             <arg value="--xinclude"/>
             <arg value="--format"/>
@@ -169,8 +169,8 @@ Usage:
             <fileset dir="${docbook5.xsl}/images" includes="*.git,*.png,*.tif,*.svg"/>
         </copy>
 
-        <java classname="com.icl.saxon.StyleSheet" fork="true"
-                 failonerror="true" dir="${basedir}" maxmemory="512m">
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="512m"
+                 failonerror="true" dir="${basedir}">
             <classpath refid="lib.classpath"/>
             <arg value="-o"/>
             <arg value="${basedir}${file.separator}build/${file.separator}pdf${file.separator}${doc.name}.fo"/>
@@ -178,8 +178,8 @@ Usage:
             <arg value="${basedir}${file.separator}stylesheets${file.separator}fo.xsl"/>
         </java>
 
-        <java classname="${fop.class}" fork="true"
-                dir="${basedir}" maxmemory="512m">
+        <java classname="${fop.class}" fork="true" maxmemory="512m" failonerror="true"
+                dir="${basedir}">
             <classpath refid="lib.classpath"/>
             <arg value="build/pdf/${doc.name}.fo"/>
             <arg value="build/pdf/${doc.name}.pdf"/>
