@@ -35,7 +35,9 @@ Usage:
         <ant dir="refpages" target="clean"/>
     </target>
 
-    <target name="init" depends="init-avail" description="Check runtime class"/>
+    <target name="init" depends="init-avail" description="Check runtime class">
+        <echo message="java.version: ${java.version}"/>
+    </target>
 
     <target name="validate" depends="xinclude" description="Validate document">
         <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
