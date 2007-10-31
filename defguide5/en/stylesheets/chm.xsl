@@ -31,7 +31,7 @@
 </xsl:param>
 
 <xsl:param name="VERSION" select="string(document('../VERSION.xml')//fm:Version[1])"/>
-<xsl:param name="htmlhelp.chm" select="'defguide5-en.chm'"/>
+<xsl:param name="htmlhelp.chm" select="'defguide5.chm'"/>
 
 <xsl:param name="htmlhelp.generate.index" select="1"/>
 
