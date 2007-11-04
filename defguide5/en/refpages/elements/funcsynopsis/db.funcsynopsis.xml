@@ -46,39 +46,6 @@ a function synopsis with enough clarity so that a processing system can
 generate either <acronym>K&amp;R</acronym>-style or <acronym>ANSI</acronym>-style renderings.
 </para>
 
-<refsection><title>A Note on the Use of <tag>varargs</tag></title>
-<para>The content model of <tag>funcprototype</tag> is such that you
-cannot use <tag>varargs</tag> in a function prototype in which the
-first few parameters to the function are given explicitly before
-the variable arguments (generally rendered as an ellipsis).
-</para>
-
-<para>In other words, the following synopsis cannot be rendered with
-<tag>varargs</tag>:
-
-<synopsis>
-int printf(char *format, ...)
-</synopsis>
-</para>
-
-<para>Instead, you can enclose the ellipsis in a final <tag>parameter</tag>,
-like this:
-
-<screen>
-
-&lt;funcsynopsis&gt;
-&lt;funcprototype&gt;&lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
-&lt;paramdef&gt;
-  &lt;parameter&gt;char *format&lt;/parameter&gt;
-  &lt;parameter&gt;...&lt;/parameter&gt;
-&lt;/paramdef&gt;
-&lt;/funcprototype&gt;
-&lt;/funcsynopsis&gt;
-
-</screen>
-</para>
-</refsection>
-
 </refsection>
 
 <?tdg-attributes?>
