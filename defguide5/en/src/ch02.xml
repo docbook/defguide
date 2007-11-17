@@ -2763,7 +2763,7 @@ reference page:
 
 <programlisting>
 
-&lt;refentry id="printf"&gt;
+&lt;refentry xml:id="printf" &gt;
 
 &lt;refmeta&gt;
 &lt;refentrytitle&gt;printf&lt;/refentrytitle&gt;
@@ -2786,21 +2786,21 @@ reference page:
 &lt;funcprototype&gt;
   &lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
   &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;paramdef&gt;...&lt;/paramdef&gt;
+  &lt;varargs/&gt;
 &lt;/funcprototype&gt;
 
 &lt;funcprototype&gt;
   &lt;funcdef&gt;int &lt;function&gt;fprintf&lt;/function&gt;&lt;/funcdef&gt;
   &lt;paramdef&gt;FILE *&lt;parameter&gt;strm&lt;/parameter&gt;&lt;/paramdef&gt;
   &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;paramdef&gt;...&lt;/paramdef&gt;
+  &lt;varargs/&gt;
 &lt;/funcprototype&gt;
 
 &lt;funcprototype&gt;
   &lt;funcdef&gt;int &lt;function&gt;sprintf&lt;/function&gt;&lt;/funcdef&gt;
   &lt;paramdef&gt;char *&lt;parameter&gt;s&lt;/parameter&gt;&lt;/paramdef&gt;
   &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;paramdef&gt;...&lt;/paramdef&gt;
+  &lt;varargs/&gt;
 &lt;/funcprototype&gt;
 &lt;/funcsynopsis&gt;
 
