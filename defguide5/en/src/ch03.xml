@@ -107,9 +107,9 @@ so they don't all scroll off your screen.
 <indexterm><primary>XML</primary>
   <secondary>nsgmls parser</secondary></indexterm>
 
-If you want to validate an &XML; document with <acronym>SP</acronym>,
+If you want to validate an XML document with <acronym>SP</acronym>,
 you must make sure that <acronym>SP</acronym> uses the correct
-declaration.  An &XML; declaration called <filename>xml.dcl</filename> is
+declaration.  An XML declaration called <filename>xml.dcl</filename> is
 included with <acronym>SP</acronym>.
 </para>
 
@@ -132,7 +132,7 @@ m:\jade\nsgmls.exe:I: SP version "1.3.2"
 The <application>xp</application> distribution includes several sample programs.
 One of these programs, <command>Time</command>, performs a validating parse
 of the document and prints the amount of time required to parse the
-&DTD; and the document.  This program makes an excellent validity
+DTD and the document.  This program makes an excellent validity
 checker:
 </para>
 <screen>
@@ -140,7 +140,7 @@ java com.jclark.xml.apps.Time examples\simple.xml
 6.639
 </screen>
 <para>
-The result states that it took 6.639 seconds to parse the &DTD; and
+The result states that it took 6.639 seconds to parse the DTD and
 the document.  This indicates that the document is valid.  If the
 document is invalid, additional error messages are displayed.
 </para>
@@ -163,7 +163,7 @@ It is often the case that you can correct an error in the document in
 several ways.  The parser suggests one possible fix, but this is not
 always the right fix.  For example, the parser may suggest that you
 can correct out of context data by adding another element, when in
-fact it's &ldquo;obvious&rdquo; to human eyes that the problem is a
+fact it's “obvious” to human eyes that the problem is a
 missing end tag.
 </para>
 </footnote> what is wrong and where the error occurred.  With a little
@@ -181,7 +181,7 @@ chosen <acronym>SP</acronym> for the rest of these examples because
 that is the same parser used by Jade, which we'll be discussing
 further in <xref linkend="ch-publish"/>.
 </para>
-<sect2><title>&DTD; Cannot Be Found</title>
+<sect2><title>DTD Cannot Be Found</title>
 <para>
 <indexterm><primary>cannot be found errors</primary></indexterm>
 <indexterm><primary>DTDs</primary>
@@ -189,10 +189,10 @@ further in <xref linkend="ch-publish"/>.
 <indexterm><primary>public identifiers</primary>
   <secondary>errors</secondary></indexterm>
 
-The telltale sign that SP could not find the &DTD;, or some module of
-the &DTD;, is the error message: "cannot generate system identifier
-for public text &hellip;".  Generally, the errors that occur after
-this are spurious; if SP couldn't find some part of the &DTD;,
+The telltale sign that SP could not find the DTD, or some module of
+the DTD, is the error message: "cannot generate system identifier
+for public text …".  Generally, the errors that occur after
+this are spurious; if SP couldn't find some part of the DTD,
 it's likely to think that <emphasis>everything</emphasis> is wrong.
 </para>
 <para>
@@ -266,7 +266,7 @@ m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:74:67:W: cannot generate
   <secondary>locating</secondary></indexterm>
 
 The <acronym>ISO</acronym> entity sets are required by the DocBook
-&DTD;, but they are not distributed with it.  That's because they
+DTD, but they are not distributed with it.  That's because they
 aren't maintained by <acronym>OASIS</acronym>.<footnote>
 <para>
 If you need to locate the entity sets, consult <ulink url="http://www.oasis-open.org/cover/topics.html#entities">http://www.oasis-open.org/cover/topics.html#entities</ulink>.
@@ -449,8 +449,8 @@ entity name.  For example, this happens when you type
 <indexterm><primary>errors</primary>
   <secondary>8-bit characters (SGML)</secondary></indexterm>
 
-In &XML;, the entire range of Unicode characters is available to you,
-but in &SGML;, the declaration indicates what characters are valid.
+In XML, the entire range of Unicode characters is available to you,
+but in SGML, the declaration indicates what characters are valid.
 The distributed DocBook declaration doesn't allow a bunch of fairly
 common 8-bit characters.
 </para>
@@ -490,7 +490,7 @@ the modified declaration. See <xref linkend="app-interchange"/>.
 
 <sect1 id="ch03-otherschema"><title>Considering Other Schema Languages</title>
 
-<para>Historically, &DTD;s were the only way to describe the valid
+<para>Historically, DTDs were the only way to describe the valid
 stricture of SGML and XML documents, but that is no longer the case.
 At the time of this writing (January, 2001), DocBook is experimentally
 available in three other schema languages:</para>
@@ -500,8 +500,8 @@ available in three other schema languages:</para>
 <term><ulink url="http://www.w3.org/XML/Schema">XML Schema</ulink></term>
 <listitem>
 <para>The schema language being defined by the
-<ulink url="http://www.w3.org/">W3C</ulink> as the successor to &DTD;s
-for describing the structure of &XML;. XML Schema are likely to become
+<ulink url="http://www.w3.org/">W3C</ulink> as the successor to DTDs
+for describing the structure of XML. XML Schema are likely to become
 a <ulink url="http://www.w3.org/">W3C</ulink> Recommendation in 2001.
 </para></listitem>
 </varlistentry>
@@ -530,13 +530,13 @@ neutral.</para>
 <sect2><title>Parsing and Validation</title>
 
 <para>Before we look closer at these new schema languages, there's one
-significant difference between &DTD;s and all of them that we should
-get out of the way: &XML; parsers (which may understand &DTD;s) build an
-&XML; information set out of a stream of characters, all of these other
+significant difference between DTDs and all of them that we should
+get out of the way: XML parsers (which may understand DTDs) build an
+XML information set out of a stream of characters, all of these other
 schema languages begin with an information set and perform validation
 on it.</para>
 
-<para>What I mean by that is that an &XML; parser reads a stream of
+<para>What I mean by that is that an XML parser reads a stream of
 bytes:
 
 <screen>"&lt;" "?" "x" "m" "l" " " "v" "e" ...
@@ -547,20 +547,20 @@ bytes:
 
 interprets them as a stream of characters (which may change the
 interpretation of some sequences of bytes) and constructs some
-representation of the &XML; document. This representation is the set
-of all the &XML; information items encountered: the information
+representation of the XML document. This representation is the set
+of all the XML information items encountered: the information
 set of the document. The <ulink url="http://www.w3.org/">W3C</ulink>
 <ulink url="http://www.w3.org/XML/">XML Core Working Group</ulink>
 is in the process of defining what an
-<ulink url="http://www.w3.org/TR/xml-infoset">&XML; Information Set</ulink>
+<ulink url="http://www.w3.org/TR/xml-infoset">XML Information Set</ulink>
 contains.</para>
 
 <para>The other schema languages are defined not in terms of the sequence
 of characters in the file but in terms of the information set of the
-&XML; document. They have to work this way because the
-<ulink url="http://www.w3.org/TR/REC-xml">&XML; Recommendation</ulink>
-says what an &XML; document is and they all want to work on top of
-&XML;.</para>
+XML document. They have to work this way because the
+<ulink url="http://www.w3.org/TR/REC-xml">XML Recommendation</ulink>
+says what an XML document is and they all want to work on top of
+XML.</para>
 
 <para>So what, you might ask? Well, it turns out that this has at least
 one very significant implication: there's no way for these languages to
@@ -569,14 +569,14 @@ provide support for entity declarations.</para>
 <para>An entity, like <quote><literal>&amp;ora;</literal></quote>
 as a shortcut for <quote>O'Reilly &amp; Associates</quote> or
 <quote><literal>&amp;eacute;</literal></quote> as a mnemonic for
-<quote>&eacute;</quote>, is a feature of the character stream seen by
-the &XML; parser, it doesn't exist in the information set of valid
-&XML; documents. More importantly, this means that even if the schema
-language had a syntax for declaring entities, it wouldn't help the &XML;
+<quote>é</quote>, is a feature of the character stream seen by
+the XML parser, it doesn't exist in the information set of valid
+XML documents. More importantly, this means that even if the schema
+language had a syntax for declaring entities, it wouldn't help the XML
 parser that needs to know the definitions long before the schema language
 processor comes into play.</para>
 
-<para>There are a couple of other &XML; features that are impacted,
+<para>There are a couple of other XML features that are impacted,
 though not necessarily as significantly: notations and default
 attribute values.  One use for notations is on external entity
 declarations, and as we've already seen, the schema language is too
@@ -586,7 +586,7 @@ set produced by the parser so that the schema language sees them.</para>
 
 </sect2>
 
-<sect2><title>A Coarse Comparison of Three &XML; Schema Languages</title>
+<sect2><title>A Coarse Comparison of Three XML Schema Languages</title>
 
 <para>FIXME: write a short synopsis of how these languages compare.</para>
 
