@@ -97,14 +97,17 @@ properties, as shown in <xref linkend="ex-css"/>.
 <info>
   <title>A Fragment of a <acronym>CSS</acronym> Stylesheet</title>
 </info>
-<programlisting>para              { display: block }
+<programlisting>@namespace "http://docbook.org/ns/docbook"
+
+para              { display: block }
 emphasis          { display: inline;
                     font-style: italic; }
 emphasis emphasis { display: inline;
                     font-style: upright; }</programlisting>
 </example>
 
-<para>FIXME: update this example to use namespaces correctly.</para>
+<para>Namespace selection in CSS is widely supported, but not yet a standard.
+</para>
 
 </section>
 <section xml:id="s.xsl"><info><title><acronym>XSL</acronym> stylesheet</title></info>
