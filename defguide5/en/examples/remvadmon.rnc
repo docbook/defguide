@@ -1,0 +1,27 @@
+namespace db = "http://docbook.org/ns/docbook"
+
+include "docbook.rnc" {
+   db.entry = element entry {
+      db.entry.attlist,
+      (db.all.inlines* | db.some.blocks*)
+   }
+}
+
+db.some.blocks =
+   db.somenopara.blocks
+ | db.para.blocks
+ | db.extension.blocks
+
+db.somenopara.blocks =
+   db.list.blocks
+ | db.formal.blocks
+ | db.informal.blocks
+ | db.publishing.blocks
+ | db.graphic.blocks
+ | db.technical.blocks
+ | db.verbatim.blocks
+ | db.bridgehead
+ | db.remark
+ | db.revhistory
+ | db.indexterm
+ | db.synopsis.blocks

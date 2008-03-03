@@ -1,0 +1,9 @@
+namespace db = "http://docbook.org/ns/docbook"
+
+include "docbook.rnc" {
+   db.sect4 = notAllowed
+
+   # Strictly speaking, we don't need to remove sect5 because, having removed
+   # sect4, there's no way to reach it. But it seems cleaner to do so.
+   db.sect5 = notAllowed
+}

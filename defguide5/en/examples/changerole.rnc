@@ -1,0 +1,5 @@
+namespace db = "http://docbook.org/ns/docbook"
+
+include "docbook.rnc" {
+   db.procedure.role.attribute = attribute role { "required" | "optional" }
+}
