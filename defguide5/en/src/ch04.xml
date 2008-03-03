@@ -7,119 +7,67 @@
 <releaseinfo>$Revision$</releaseinfo>
 </info>
 
-<para>
-<indexterm xml:id="publishDocBookch04" class="startofrange" significance="normal"><primary>DocBook DTD</primary>
-  <secondary>publishing documents</secondary></indexterm>
-<indexterm xml:id="DocBookpublishch04" class="startofrange" significance="normal"><primary>publishing DocBook documents</primary></indexterm>
-<indexterm significance="normal"><primary>stylesheets</primary>
-  <secondary>publishing SGML/XML documents</secondary></indexterm>
-<indexterm significance="normal"><primary>HTML</primary>
+<para><indexterm xml:id="publishDocBookch04" class="startofrange" significance="normal"><primary>DocBook DTD</primary>
+  <secondary>publishing documents</secondary></indexterm><indexterm xml:id="DocBookpublishch04" class="startofrange" significance="normal"><primary>publishing DocBook documents</primary></indexterm><indexterm significance="normal"><primary>stylesheets</primary>
+  <secondary>publishing SGML/XML documents</secondary></indexterm><indexterm significance="normal"><primary>HTML</primary>
   <secondary>translating SGML/XML documents</secondary>
-</indexterm>Creating and editing
-<acronym>XML</acronym> documents is usually
-only half the battle. After you've composed your document, you'll want
-to publish it. Publishing, for our purposes, means either print or web
-publishing. For <acronym>XML</acronym>
-documents, this is usually accomplished with some kind of
+</indexterm>Creating and editing <acronym>XML</acronym> documents is
+usually only half the battle. After you've composed your document,
+you'll want to publish it. Publishing, for our purposes, means either
+print or web publishing. For <acronym>XML</acronym> documents, this is
+usually accomplished with some kind of
 <glossterm>stylesheet</glossterm>. In some environments, it is now
 possible to publish an <acronym>XML</acronym> document on the Web
 simply by putting it online with a stylesheet.
 </para>
 
 <section xml:id="stylesurvey"><info><title>A Survey of Stylesheet Languages</title></info>
-<para>
-<indexterm significance="normal"><primary>stylesheets</primary>
-  <secondary>languages</secondary></indexterm>
-<indexterm significance="normal"><primary>languages</primary>
-  <secondary>stylesheets</secondary></indexterm>
-
-Over the years, a number of attempts have been made to produce a
-standard stylesheet language and, failing that, a large number of
-proprietary languages have been developed.
+<para><indexterm significance="normal"><primary>stylesheets</primary>
+  <secondary>languages</secondary></indexterm><indexterm significance="normal"><primary>languages</primary>
+  <secondary>stylesheets</secondary>
+</indexterm>Over the years, a number of attempts have been made to
+produce a standard stylesheet language and, failing that, a large
+number of proprietary languages have been developed. Since this book was
+first written, three standards have emerged as the clear front-runners:
 </para>
 <variablelist>
-<varlistentry><term>FOSIs</term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>FOSI stylesheets</primary></indexterm>
-<indexterm significance="normal"><primary>Formatting Output Specification Instance</primary><see>FOSI stylesheets</see></indexterm>
-<indexterm significance="normal"><primary>U.S. Department of Defense stylesheet standard</primary></indexterm>
-
-First, the U.S. Department of Defense, in an attempt to
-standardize stylesheets across military branches, created the
-<citetitle>Output Specification</citetitle>, which is defined in
-<acronym>MIL-PRF-28001C</acronym>, <citetitle>Markup Requirements and
-Generic Style Specification for Electronic Printed Output and Exchange
-of Text</citetitle>.<footnote>
-<para>
-See <citetitle><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www-cals.itsi.disa.mil/core/formal/fps.htm">Formally
-Published CALS Standards</link></citetitle> for more information.
-</para>
-</footnote>
-</para>
-<para>
-<indexterm significance="normal"><primary>ADEPT Publisher (Arbortext), FOSIs support</primary></indexterm>
-<indexterm significance="normal"><primary>Arbortext ADEPT Publisher, FOSIs support</primary></indexterm>
-
-Commonly called FOSIs (for Formatting Output Specification Instances),
-they are supported by a few products including ADEPT Publisher by
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.arbortext.com/">Arbortext</link> and DL
-Composer by <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.datalogics.com/">Datalogics</link>.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term>DSSSL</term>
-<listitem>
-<para>
-<indexterm significance="normal"><primary>DSSSL</primary></indexterm>
-<indexterm significance="normal"><primary>Document Style Semantics and Specification Language</primary><see>DSSSL</see></indexterm>
-<indexterm significance="normal"><primary>ISO standards</primary>
-  <secondary>DSSSL</secondary></indexterm>
-<indexterm significance="normal"><primary>International Organization for Standardization</primary><see>ISO Entity Sets; ISO standards</see></indexterm>
-
-Next, the International Organization for Standardization
-(<acronym>ISO</acronym>) created <acronym>DSSSL</acronym>, the
-Document Style Semantics and Specification Language. Subsets of
-<acronym>DSSSL</acronym> are supported by Jade and a few other tools,
-but it never achieved widespread support.
-</para>
-</listitem>
-</varlistentry>
 <varlistentry><term>CSS</term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>CSS</primary></indexterm>
-<indexterm significance="normal"><primary>HTML</primary>
-  <secondary>CSS</secondary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>CSS</secondary></indexterm>
-
+<para><indexterm significance="normal"><primary>CSS</primary></indexterm><indexterm significance="normal"><primary>HTML</primary>
+  <secondary>CSS</secondary></indexterm><indexterm significance="normal"><primary>XML</primary>
+  <secondary>CSS</secondary>
+</indexterm>
 The <acronym>W3C</acronym> CSS Working Group created
-<acronym>CSS</acronym> as a style attachment language for <acronym>HTML</acronym>, and,
-more recently, <acronym>XML</acronym>.
-</para>
+<acronym>CSS</acronym> as a style attachment language for <acronym>HTML</acronym>.
+It has also been advanced as a stylesheet language for XML. Some browsers will
+style arbitrary XML with CSS and some commercial products exist that will
+render XML+CSS either online or in print.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term>XSL</term>
 <listitem>
-<para>
-<indexterm significance="normal"><primary>XSL</primary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>XSL</secondary></indexterm>
-<indexterm significance="normal"><primary>Extensible Style Language</primary><see>XSL</see></indexterm>
-Most recently, the <acronym>XML</acronym> effort has identified a standard Extensible Style
-Language (<acronym>XSL</acronym>) as a requirement. The
-<acronym>W3C</acronym> <acronym>XSL</acronym> Working Group is
-currently pursuing that effort.
-</para>
+<para><indexterm significance="normal"><primary>XSL</primary></indexterm><indexterm significance="normal"><primary>XML</primary>
+  <secondary>XSL</secondary></indexterm><indexterm significance="normal"><primary>Extensible Style Language</primary><see>XSL</see>
+</indexterm>XSL 1.0 is well-established and is probably the most common
+styling technology for DocBook. XSL 2.0 offers a number of important new
+features (at the expense of some complexity, naturally) and is growing
+in popularity.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>XQuery</term>
+<listitem>
+<para><indexterm significance="normal"><primary>XQuery</primary></indexterm><indexterm significance="normal"><primary>XML</primary>
+  <secondary>XQuery</secondary></indexterm><indexterm significance="normal"><primary>XML Query Language</primary><see>XQuery</see>
+</indexterm>XQuery 1.0, developed in parallel with XSL 2.0, provides a different
+set of features than XSL, but can be used to transform DocBook into other
+formats.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 <section xml:id="styleexamples"><info><title>Stylesheet Examples</title></info>
-<para>
-<indexterm xml:id="stylsheetsch04" class="startofrange" significance="normal"><primary>stylesheets</primary>
-  <secondary>examples</secondary></indexterm>
-
+<para><indexterm xml:id="stylsheetsch04" class="startofrange" significance="normal"><primary>stylesheets</primary>
+  <secondary>examples</secondary>
+</indexterm>
 
 
 By way of comparison, here's an example of each of the standard style
@@ -127,85 +75,17 @@ languages. In each case, the stylesheet fragment shown contains the
 rules that reasonably formatted the following paragraph:
 </para>
 <screen>
-&lt;para&gt;
-This is an example paragraph. It should be presented in a
+&lt;para&gt;This is an example paragraph. It should be presented in a
 reasonable body font. &lt;emphasis&gt;Emphasized&lt;/emphasis&gt; words
 should be printed in italics. A single level of 
 &lt;emphasis&gt;Nested &lt;emphasis&gt;emphasis&lt;/emphasis&gt; should also
 be supported.&lt;/emphasis&gt;
 &lt;/para&gt;
 </screen>
-<section xml:id="s.fosi"><info><title><acronym>FOSI</acronym> stylesheet</title></info>
-
-<para>
-<indexterm significance="normal"><primary>FOSI stylesheets</primary>
-  <secondary>example</secondary></indexterm>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>FOSIs</secondary></indexterm>
-<indexterm significance="normal"><primary>e-i-c element</primary></indexterm>
-<indexterm significance="normal"><primary>element in context (e-i-c)</primary></indexterm>
-
-<acronym>FOSI</acronym>s are <acronym>SGML</acronym> documents. The element in the
-<acronym>FOSI</acronym> that controls the presentation of specific
-elements is the <tag namespace="">e-i-c</tag> (element in context) element.
-A sample <acronym>FOSI</acronym> fragment is shown in <xref linkend="ex-fosi"/>.
-</para>
-<example xml:id="ex-fosi"><info><title>A Fragment of a <acronym>FOSI</acronym> Stylesheet</title></info>
-
-<programlisting>&lt;e-i-c gi="para"&gt;
-  &lt;charlist&gt;
-    &lt;textbrk startln="1" endln="1"&gt;
-  &lt;/charlist&gt;
-&lt;/e-i-c&gt;
-
-&lt;e-i-c gi="emphasis"&gt;
-  &lt;charlist inherit="1"&gt;
-    &lt;font posture="italic"&gt;
-  &lt;/charlist&gt;
-&lt;/e-i-c&gt;
-
-&lt;e-i-c gi="emphasis" context="emphasis"&gt;
-  &lt;charlist inherit="1"&gt;
-    &lt;font posture="upright"&gt;
-  &lt;/charlist&gt;
-&lt;/e-i-c&gt;</programlisting>
-</example>
-</section>
-<section xml:id="s.dsssl"><info><title><acronym>DSSSL</acronym> stylesheet</title></info>
-<para>
-<indexterm significance="normal"><primary>DSSSL</primary>
-  <secondary>stylesheets</secondary>
-    <tertiary>example</tertiary></indexterm>
-<indexterm significance="normal"><primary>Scheme language</primary>
-  <secondary>DSSSL stylesheets</secondary></indexterm>
-
-<acronym>DSSSL</acronym> stylesheets are written in a Scheme-like
-language. It is the
-<function>element</function> function that controls the presentation of
-individual elements. See the example in <xref linkend="ex-dsssl"/>.
-</para>
-<example xml:id="ex-dsssl"><info><title>A Fragment of a <acronym>DSSSL</acronym> Stylesheet</title></info>
-
-<programlisting>(element para
-  (make paragraph
-    (process-children)))
-
-(element emphasis
-  (make sequence
-    font-posture: 'italic
-    (process-children)))
-
-(element (emphasis emphasis)
-  (make sequence
-    font-posture: 'upright
-    (process-children)))</programlisting>
-</example>
-</section>
 <section xml:id="s.css"><info><title><acronym>CSS</acronym> stylesheet</title></info>
-<para>
-<indexterm significance="normal"><primary>CSS stylesheets</primary>
-  <secondary>example</secondary></indexterm>
-
+<para><indexterm significance="normal"><primary>CSS stylesheets</primary>
+  <secondary>example</secondary>
+</indexterm>
 <acronym>CSS</acronym> stylesheets consist of selectors and formatting
 properties, as shown in <xref linkend="ex-css"/>.
 </para>
@@ -224,10 +104,9 @@ emphasis emphasis { display: inline;
 
 </section>
 <section xml:id="s.xsl"><info><title><acronym>XSL</acronym> stylesheet</title></info>
-<para>
-<indexterm significance="normal"><primary>XSL stylesheets</primary>
-  <secondary>example</secondary></indexterm>
-
+<para><indexterm significance="normal"><primary>XSL stylesheets</primary>
+  <secondary>example</secondary>
+</indexterm>
 <acronym>XSL</acronym> stylesheets are <acronym>XML</acronym> documents, as shown in
 <xref linkend="ex-xsl"/>. The element in the <acronym>XSL</acronym>
 stylesheet that controls the presentation of specific elements is the
@@ -238,10 +117,7 @@ stylesheet that controls the presentation of specific elements is the
 <info>
   <title>A Fragment of an <acronym>XSL</acronym> Stylesheet</title>
 </info>
-<programlisting>
-FIXME: THIS IS WRONG!
-
-&lt;?xml version='1.0'?&gt;
+<programlisting>&lt;?xml version='1.0'?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"
                 xmlns:fo="http://www.w3.org/XSL/Format/1.0"
                 version="1.0"&gt;
@@ -266,33 +142,33 @@ FIXME: THIS IS WRONG!
 
 &lt;/xsl:stylesheet&gt;</programlisting>
 </example>
-</section>
-</section>
+
+<para>A complete stylesheet for generating an entire XSL Formatting Objects
+document would
+require additional boilerplate text not shown.</para>
 </section>
 
-<section xml:id="jade"><info><title>Using Jade and <acronym>DSSSL</acronym> to Publish DocBook Documents</title></info>
-<para>
-<indexterm significance="normal"><primary>Jade</primary>
-  <secondary>DSSSL, using (DocBook document)</secondary></indexterm>
-<indexterm significance="normal"><primary>SGML</primary>
-  <secondary>DSSSL stylesheets</secondary></indexterm>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>DSSSL stylesheets</secondary></indexterm>
-<indexterm significance="normal"><primary>DSSSL</primary>
-  <secondary>stylesheets</secondary>
-    <tertiary>print and HTML output (DocBook)</tertiary></indexterm>
-<indexterm significance="normal"><primary>HTML</primary>
-  <secondary>DSSSL stylesheets</secondary></indexterm>
-
-Jade is a free tool that applies <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.jclark.com/dsssl/"> <acronym>DSSSL</acronym></link>
-stylesheets to <acronym>SGML</acronym> and <acronym>XML</acronym> documents. As distributed, Jade can
-output <acronym>RTF</acronym>, TeX, <acronym>MIF</acronym>, and
-<acronym>SGML</acronym>. The <acronym>SGML</acronym> backend can be used for <acronym>SGML</acronym> to <acronym>SGML</acronym>
-transformations (for example, DocBook to <acronym>HTML</acronym>).
+<section xml:id="s.xquery"><info><title>XQuery</title></info>
+<para><indexterm significance="normal"><primary>XQuery</primary>
+  <secondary>example</secondary>
+</indexterm>
+<acronym>XQuery</acronym> is expressed in a mixture of text and XML
+fragments, as shown in 
+<xref linkend="ex-xquery"/>.
 </para>
 
-<para>For more information about <application>Jade</application> and
-<acronym>DSSSL</acronym>, see the first edition of this book.</para>
+<example xml:id="ex-xquery">
+<info>
+  <title>A Fragment of XQuery</title>
+</info>
+<programlisting>FIXME: WRITE THIS</programlisting>
+</example>
+
+<para>A complete query for generating an XSL Formatting Objects document
+would
+require additional boilerplate text not shown.</para>
+</section>
+</section>
 </section>
 
 <section xml:id="xsl">
@@ -300,7 +176,7 @@ transformations (for example, DocBook to <acronym>HTML</acronym>).
   <title>Using <acronym>XSL</acronym> to Publish DocBook Documents</title>
 </info>
 
-<para>For more information about using <acronym>XSL</acronym> to publish
+<para>For a detailed discussion of using <acronym>XSL</acronym> to publish
 DocBook documents, see
 <citetitle>DocBook XSL: The Complete Guide</citetitle> by
 <personname><firstname>Bob</firstname><surname>Stayton</surname></personname>.

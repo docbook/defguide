@@ -179,6 +179,688 @@ prefer, use the <literal>Variant</literal> keyword.
   <title>Customization Layers</title>
 </info>
 
-<para>FIXME: discuss customizing DocBook V5.0</para>
+<para>A RELAX NG grammar is a collection of patterns. These patterns
+can be stored in a single file or in a collection of files that import
+each other. Patterns can augment each other in a variety of ways.
+A complete grammar is the logical union of the specified patterns.</para>
+
+<para>For convenience, the DocBook grammar is distributed in a single
+file.</para>
+
+<section xml:id="ch05-syntax">
+<title>RELAX NG Syntax</title>
+
+<para>There are two standard syntaxes for RELAX NG, an XML syntax and
+a “compact” text syntax. The two forms have the same expressive power;
+it is possible to transform between them with no loss of information.</para>
+
+<para>Many users find the relative terseness of the compact syntax makes
+it a convenient form for reading and writing RELAX NG. That is the form
+we will use in the following examples.</para>
+</section>
+
+<section xml:id="ch05-patnames">
+<title>DocBook Pattern Names</title>
+
+<para>The names of the patterns used in a RELAX NG grammar are arbitrary,
+they have nothing to do with the names of the elements and attributes defined
+by the schema. The DocBook RELAX NG grammar employs a number of naming
+conventions in order to make it easier to navigate.</para>
+
+<variablelist>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.attlist</literal></term>
+<listitem>
+<para>Defines the list of attributes associated with an element. For example,
+<literal>db.emphasis.attlist</literal> is the pattern that matches all of the
+attributes of the <tag>emphasis</tag> element.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.attribute</literal></term>
+<listitem>
+<para>Defines a single attribute. For example,
+<literal>db.conformance.attribute</literal> is the pattern that matches
+the <tag class="attribute">conformance</tag> attribute on all of the elements
+where it occurs.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.attributes</literal></term>
+<listitem>
+<para>Defines a collection of attributes. For example,
+<literal>db.effectivity.attributes</literal> is all of the effectivity
+attributes (<tag class="attribute">arch</tag>,
+<tag class="attribute">audience</tag>, etc.).</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.blocks</literal></term>
+<listitem>
+<para>Defines a list (a choice of) a set of related block elements.
+For example, <literal>db.list.blocks</literal> is a pattern that matches
+any of the list elements.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.contentmodel</literal></term>
+<listitem>
+<para>Defines a fragment of content model shared by several elements.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.enumeration</literal></term>
+<listitem>
+<para>Defines an enumeration, usually one used in an attribute value.
+For example, <literal>db.revisionflag.enumeration</literal> is a pattern that
+matches the list of values that can be used as the value of a
+<tag class="attribute">revisionflag</tag> attribute.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.info</literal></term>
+<listitem>
+<para>Defines the <tag>info</tag> element for a particular element.
+For example, <literal>db.example.info</literal> is the pattern that
+matches <tag>info</tag> on <tag>example</tag>.</para>
+<para>Almost all of the <tag>info</tag> elements are the same, but they
+are described with distinct patterns so that customizers can change
+them selectively.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.inlines</literal></term>
+<listitem>
+<para>Defines a list (a choice of) a set of related inline elements.
+For example, <literal>db.link.inlines</literal> is a pattern that matches
+any of the linking-related elements.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable>.role.attribute</literal></term>
+<listitem>
+<para>Defines the <tag class="attribute">role</tag> attribute for a particular
+element. For example, <literal>db.emphasis.role</literal> is the pattern
+that matches <tag class="attribute">role</tag> on <tag>emphasis</tag>.
+</para>
+<para>All of the <tag class="attribute">role</tag> attributes are the same, but they
+are described with distinct patterns so that customizers can change
+them selectively.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>db.<replaceable>*</replaceable></literal></term>
+<listitem>
+<para>Is the pattern that matches a particular DocBook element.
+element. For example, <literal>db.title.role</literal> is the pattern
+that matches <tag>title</tag>.
+</para>
+<para>RELAX NG allows multiple patterns to match the same element, so sometimes
+these patterns come in flavors, for example,
+<literal>db.indexterm.singular</literal>,
+<literal>db.indexterm.startofrange</literal>, and
+<literal>db.indexterm.endofrange</literal>. Each of these patterns matches
+a <tag>indexterm</tag> with varying attributes.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>These are conventions, not hard and fast rules. There are patterns that
+don't follow these conventions.</para>
+</section>
+</section>
+<section xml:id="ch05-genstruct">
+<title>The General Structure of Customization Layers</title>
+
+<para><indexterm><primary>customizing</primary>
+  <secondary>DocBook</secondary>
+    <tertiary>structure (customization layers)</tertiary>
+</indexterm>Although customization layers vary in complexity, most of
+them have the same general structure as other customization layers of
+similar complexity.
+</para>
+
+<para>In the most common case, you probably want to include all of
+DocBook, but you want to make some small changes. These customization
+layers tend to look like this:
+</para>
+
+<screenco>
+<areaspec>
+<area xml:id="gs1-d1" coords="4 50" units="linecolumn"/>
+<area xml:id="gs1-n1" coords="6 50" units="linecolumn"/>
+</areaspec>
+<screen><textobject>
+<textdata fileref="examples/custlayer.rnc"/>
+</textobject></screen>
+<calloutlist>
+<callout arearefs="gs1-d1"><para>Start by importing the base DocBook
+schema.
+</para></callout>
+<callout arearefs="gs1-n1"><para>Then you can add new patterns or
+augment existing patterns.
+</para></callout>
+</calloutlist>
+</screenco>
+
+<para>If you want to completely replace a pattern (for example, to
+remove or completely change an element), the template is a little
+different.</para>
+
+<screenco>
+<areaspec>
+<area xml:id="gs2-d1" coords="5 50" units="linecolumn"/>
+<area xml:id="gs2-n1" coords="8 50" units="linecolumn"/>
+</areaspec>
+<screen><textobject>
+<textdata fileref="examples/custlayer2.rnc"/>
+</textobject></screen>
+<calloutlist>
+<callout arearefs="gs2-d1"><para>You can redefine patterns in the
+body of an import statement. These patterns completely replace any that
+appear in the imported schema.
+</para></callout>
+<callout arearefs="gs2-n1"><para>As before, patterns outside the
+include statement can augment existing patterns (even redefined ones).
+</para></callout>
+</calloutlist>
+</screenco>
+
+<para>There are other possibilities as well, these examples are
+illustrative, not exhaustive.</para>
+</section>
+
+<section xml:id="ch05-write">
+<title>Writing, Testing, and Using a Customization Layer</title>
+
+<para><indexterm><primary>DocBook</primary>
+  <secondary>customizing</secondary>
+    <tertiary>customization layers, writing, testing, and using</tertiary>
+</indexterm><indexterm><primary>customizing</primary>
+  <secondary>DocBook</secondary>
+    <tertiary>writing, testing and using customization layers</tertiary>
+</indexterm>The procedure for creating, testing, and using a
+customization layer is always about the same. In this section, we'll
+go through the process in some detail. The rest of the sections in
+this chapter describe a range of useful customization layers.
+</para>
+
+<section><title>Deciding What to Change</title>
+
+<para>If you're considering writing a customization layer, there must be
+something that you want to change. Perhaps you want to add an element
+or attribute, remove one, or change some other aspect of the schema.
+</para>
+
+<para><indexterm><primary>inline elements</primary>
+<secondary>adding</secondary>
+</indexterm>Adding an element, particularly an inline element, is one
+possibility. If you're writing about cryptography, you might want
+to add a “<literal>cleartext</literal>” element, for example.
+</para>
+</section>
+
+<section><title>Deciding How to Change a Customization Layer</title>
+
+<para><indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>changing customization layers</tertiary>
+</indexterm>Figuring out what to change may be the hardest part of the
+process. Finding something similar usually provides a
+good model for new changes.
+</para>
+
+<para>Depending on the exact focus of your document, there are
+probably several candidates. In this case, all of the following look
+plausible: technical inlines, programming inlines, and domain inlines.
+Let's suppose you chose the domain inlines.
+</para>
+
+<para>As shown in <xref linkend="ex-addcleartext"/>, your
+customization would import the DocBook schema, extend the domain
+inlines, and then provide a pattern that matches the new element.
+</para>
+
+<example xml:id="ex-addcleartext">
+<title>Adding <literal>cleartext</literal> with a Customization Layer</title>
+<programlistingco>
+<areaspec>
+<area xml:id="gs3-d1" coords="5 50" units="linecolumn"/>
+<area xml:id="gs3-d1b" coords="7 50" units="linecolumn"/>
+<area xml:id="gs3-d2" coords="9 57" units="linecolumn"/>
+<area xml:id="gs3-d3" coords="10 50" units="linecolumn"/>
+<area xml:id="gs3-d4" coords="15 50" units="linecolumn"/>
+</areaspec>
+<programlisting><textobject>
+<textdata fileref="examples/addcleartext.rnc"/>
+</textobject></programlisting>
+<calloutlist>
+<callout arearefs="gs3-d1"><para>The “<literal>|=</literal>” operator
+adds a new choice to a pattern. So this line makes the
+“<literal>db.cleartext</literal>” pattern a valid option where (anywhere that)
+“<literal>db.domain.inlines</literal>” appears.</para>
+</callout>
+<callout arearefs="gs3-d1b"><para>Next, we create a pattern for the
+<literal>cleartext</literal> element. The convention in the DocBook
+schema is to create three patterns, one for the role attribute, one
+for the attributes, and one for the element. We use that pattern here
+in case someone wants to customize our customization.</para>
+</callout>
+<callout arearefs="gs3-d2"><para>Defining a separate pattern for the role
+attribute makes it easy for customizers to change it on a per-element 
+basis.</para>
+</callout>
+<callout arearefs="gs3-d3"><para>Defining a separate pattern for the attributes
+makes it easy for customizer to change them on a per-element basis.
+</para>
+</callout>
+<callout arearefs="gs3-d4"><para>The pattern for the element pulls it all
+together. The pattern “<literal>db._text</literal>” matches text plus
+a number of ubiquitous or nearly ubiquitous inlines. It's recommended
+unless you really, really want only text.</para>
+</callout></calloutlist>
+</programlistingco>
+</example>
+</section>
+
+<section>
+<title>Using Your Customization Layer</title>
+
+<para><indexterm><primary>customizing</primary>
+  <secondary>DocBook</secondary>
+    <tertiary>writing, testing, and using customization layers</tertiary></indexterm>
+<indexterm><primary>DocBook</primary>
+  <secondary>customizing</secondary>
+    <tertiary>using customization layer</tertiary>
+</indexterm>Using a customization layer is as simple as referring to it
+instead of the base DocBook schema where your tools offer the option.
+</para>
+</section>
+</section>
+
+<section xml:id="cust.test">
+<title>Testing Your Work</title>
+
+<para><indexterm><primary>customizing</primary>
+  <secondary>DocBook DTD</secondary>
+    <tertiary>writing, testing, and using customization layers</tertiary></indexterm>
+<indexterm><primary>testing</primary>
+  <secondary>customization layers (DocBook DTD)</secondary></indexterm>
+<indexterm><primary>validation</primary>
+  <secondary>customization layers</secondary>
+</indexterm>Schemas, by their nature, contain many complex,
+interrelated patterns. Whenever you make a change to the schema, it's
+always wise to use a validator to double-check your work.</para>
+
+<para>Start by validating a document that's plain, vanilla DocBook, one
+that you know is valid according to the DocBook standard schema. This
+will help you identify errors that you've introduced to the schema itself.
+After you are confident that the schema is correct, begin testing with
+instances that you expect (and don't expect) to be valid against it.
+</para>
+</section>
+
+<section xml:id="ch05-remvelem">
+<title>Removing Elements</title>
+
+<para><indexterm><primary>elements</primary>
+  <secondary>removing</secondary>
+</indexterm>DocBook has a large number of elements. In some authoring
+environments, it may be useful or necessary to remove some of these
+elements.
+</para>
+
+<section><title>Removing <tag>msgset</tag></title>
+
+<para><indexterm><primary>msgset element</primary>
+  <secondary>removing</secondary>
+</indexterm><tag>MsgSet</tag> is a favorite target. It has a
+complex internal structure designed for describing interrelated error
+messages, especially on systems that may exhibit messages from several
+different components. Many technical documents can do without it, and
+removing it leaves one less complexity to explain to your authors.
+</para>
+
+<para><xref linkend="ex.remvmsgset"/> shows a customization layer that
+removes the <tag>msgset</tag> element from DocBook:
+</para>
+
+<example xml:id="ex.remvmsgset">
+<title>Removing <tag>msgset</tag></title>
+<programlisting><textobject>
+<textdata fileref="examples/remvmsgset.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>The complexity of <tag>msgset</tag> is really in its <tag>msgentry</tag>
+children. DocBook V4.5 introduced a simple alternative, <tag>simplemsgentry</tag>.
+<xref linkend="ex.remvmsgentry"/> demonstrates how you could
+allow <tag>msgset</tag> but only support the simpler
+alternative.</para>
+
+<example xml:id="ex.remvmsgentry">
+<title>Removing <tag>msgentry</tag></title>
+<programlisting><textobject>
+<textdata fileref="examples/remvmsgentry.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>Closer examination of the <tag>msgentry</tag> content model will
+reveal that it contains a number of descendants. It isn't necessary, but it
+wouldn't be wrong, to define their patterns as <literal>notAllowed</literal>
+as well.</para>
+</section>
+
+<section><title>Removing Computer Inlines</title>
+
+<para><indexterm><primary>inline elements</primary>
+  <secondary>computer inlines, removing</secondary></indexterm>
+<indexterm><primary>parameter entities</primary>
+  <secondary>tech.char.class, redefining</secondary></indexterm>
+<indexterm><primary>tech.char.class parameter entity</primary>
+  <secondary>redefining</secondary>
+</indexterm>DocBook contains a large number of computer inlines. The
+DocBook inlines define a domain-specific vocabulary. If you're working
+in another domain, many of them may be unnecessary.</para>
+
+<para>They're defined in a set of patterns that ultimately roll-up to
+the “<literal>db.domain.inlines</literal>” pattern. If you make that
+pattern “<literal>notAllowed</literal>”, you'll remove them all in one
+fell swoop.</para>
+
+<example>
+<title>Removing Computer Inlines</title>
+<programlisting><textobject>
+<textdata fileref="examples/remvdomain.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>If you want to be more selective, you might consider making one
+or more of the set not allowed instead:
+“<literal>db.error.inlines</literal>”, errors and
+error messages;
+“<literal>db.gui.inlines</literal>”, GUI elements;
+“<literal>db.keyboard.inlines</literal>”, key and keyboard elements;
+“<literal>db.markup.inlines</literal>”, markup elements;
+“<literal>db.math.inlines</literal>”, mathematical expressions;
+“<literal>db.os.inlines</literal>”, operating system inlines; and
+“<literal>db.programming.inlines</literal>”, programming-related inlines.</para>
+
+<para><indexterm><primary>synopses</primary>
+  <secondary>synopsis elements, removing</secondary></indexterm>
+<indexterm><primary>funcsynopsis element</primary>
+  <secondary>removing</secondary></indexterm>
+<indexterm><primary>cmdsynopsis element</primary>
+  <secondary>removing</secondary>
+</indexterm>It's likely that a customization layer that removed this
+many technical inlines would also remove some larger technical
+structures (<tag>msgset</tag>, <tag>funcsynopsis</tag>).</para>
+</section>
+
+<section>
+<title>Removing Synopsis Elements</title>
+
+<para>Another possibility is removing the complex synopsis elements.
+The customization layer in <xref linkend="ex.remvcmdsyn"/> removes
+<tag>cmdsynopsis</tag> and <tag>funcsynopsis</tag>.
+</para>
+
+<example xml:id="ex.remvcmdsyn">
+<title>Removing CmdSynopsis and FuncSynopsis</title>
+<programlisting><textobject>
+<textdata fileref="examples/remvcmdsyn.rnc"/>
+</textobject></programlisting>
+</example>
+</section>
+
+<section>
+<title>Removing Sectioning Elements</title>
+
+<para><indexterm><primary>sections</primary>
+  <secondary>elements, removing</secondary>
+</indexterm>Perhaps you want to restrict your authors to only three
+levels of sectioning. To do that, you must remove the <tag>sect4</tag>
+and <tag>sect5</tag> elements, as shown in <xref
+linkend="ex.remvsect4"/>.</para>
+
+<example xml:id="ex.remvsect4">
+<title>Removing <tag>sect4</tag> and <tag>sect5</tag> Elements
+</title>
+<programlisting><textobject>
+<textdata fileref="examples/remvsect4.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>This technique works if your authors are using numbered sections.
+You could require them to do so by removing <tag>section</tag>. But
+suppose instead you want to allow them to use recursive sections and
+still limit them to only three levels.</para>
+
+<para>One way to do this would be to define new “<literal>section2</literal>”
+and “<literal>section3</literal>” patterns, as shown in
+<xref linkend="ex.limitsdepth"/>.</para>
+
+<example xml:id="ex.limitsdepth">
+<title>Limiting recursive sections to three levels</title>
+<programlisting><textobject>
+<textdata fileref="examples/limitsdepth.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>Another solution, assuming your validation environment supports
+Schematron, is simply to add a new rule,  as shown in
+<xref linkend="ex.limitsdepthsch"/>.</para>
+
+<example xml:id="ex.limitsdepthsch">
+<title>Limiting recursive sections to three levels</title>
+<programlisting><textobject>
+<textdata fileref="examples/limitsdepthsch.rnc"/>
+</textobject></programlisting>
+</example>
+
+</section>
+
+<section xml:id="s2-remvadmon">
+<title>Removing Admonitions from Table Entries</title>
+
+<para><indexterm><primary>modules</primary>
+  <secondary>redeclarations</secondary></indexterm>
+<indexterm><primary>redeclarations</primary>
+  <secondary>modules</secondary>
+</indexterm>Sometimes what you want to do is not as simple as entirely
+removing an element. Instead, you want to remove it only from some
+contexts. The way to accomplish this task is to redefine the patterns
+used to calculate the elements allowed in those contexts.</para>
+
+<para>Standard DocBook allows any inline element or any block element
+to appear in a table cell. You might decide that it's unreasonable to
+allow admonitions (<tag>note</tag>, <tag>caution</tag>, <tag>warning</tag>,
+etc.) to appear in a table cell.</para>
+
+<para>In order to remove them, you must change what is allowed in an
+<tag>entry</tag>, as show in 
+<xref linkend="ex.remvadmon"/>.</para>
+
+<example xml:id="ex.remvadmon">
+<title>Removing Admonitions from Tables</title>
+<programlisting><textobject>
+<textdata fileref="examples/remvadmon.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>The extent to which any particular change is easy or hard
+depends in part on how many patterns need to be changed. The DocBook
+Technical Committee is generally open to the idea of adding more
+patterns if it improves the readability of customization layers. Feel
+free to ask, if you think some refactoring would make your job
+easier.</para>
+</section>
+</section>
+
+<section xml:id="ch05-remvattr">
+<title>Removing Attributes</title>
+
+<para>Just as there may be more elements than you need, there may be more
+attributes.</para>
+
+<section>
+<title>Removing an Attribute</title>
+
+<para><indexterm><primary>attributes</primary>
+  <secondary>removing</secondary></indexterm>
+<indexterm><primary>continues attribute, removing</primary>
+</indexterm>Suppose your processing system doesn't support “continued”
+lists. You want to remove the
+<tag class="attribute">continuation</tag> attribute from the
+<tag>orderedlist</tag>
+element. There are two ways you could accomplish this. One way would be
+to redefine the “<literal>db.orderedlist.continuation.attribute</literal>”
+as not allowed; the other would be to redefine the
+“<literal>db.orderedlist.attlist</literal>” pattern so that it does not
+include the continuation attribute. Either would accomplish the goal.
+</para>
+
+<example xml:id="ex.remvcontinuation">
+<title>Removing <tag class="attribute">continuations</tag> from
+<tag>orderedlist</tag></title>
+<programlisting><textobject>
+<textdata fileref="examples/remvcontinuation.rnc"/>
+</textobject></programlisting>
+</example>
+
+<section><title>Subsetting the Common Attributes</title>
+
+<para><indexterm><primary>attributes</primary>
+  <secondary>common</secondary>
+    <tertiary>subsetting</tertiary></indexterm>
+<indexterm><primary>subsetting common attributes</primary>
+</indexterm>DocBook defines a whole set of “common attributes”; these attributes
+appear on <emphasis>every</emphasis> element. Depending on how you're
+processing your documents, removing some of them can both simplify the
+authoring task and improve processing speed.
+</para>
+<para>Some obvious candidates are:</para>
+<variablelist>
+<varlistentry><term>Effectivity attributes (<tag class="attribute">Arch
+</tag>, <tag class="attribute">OS</tag>,...)</term>
+<listitem>
+<para>
+<indexterm><primary>effectivity attributes, removing</primary></indexterm>
+
+If you're not using all of the effectivity attributes in your
+documents, you can get rid of up to seven attributes in one fell
+swoop.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">lang</tag></term>
+<listitem>
+<para>
+<indexterm><primary>lang attribute</primary>
+  <secondary>removing</secondary>
+</indexterm>If you're not producing multilingual documents, you can remove
+<tag class="attribute">lang</tag>.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">remap</tag></term>
+<listitem>
+<para>
+<indexterm><primary>remap attribute</primary>
+  <secondary>removing</secondary>
+</indexterm>The <tag class="attribute">remap</tag> attribute is
+designed to hold the name of a semantically equivalent construct from
+a previous markup scheme (for example, a Microsoft Word style template
+name, if you're converting from Word). If you're authoring from
+scratch, or not preserving previous constructs with <tag
+class="attribute">remap</tag>, you can get rid of it.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag class="attribute">xreflabel</tag></term>
+<listitem>
+<para>
+<indexterm><primary>xreflabel attribute</primary>
+  <secondary>removing</secondary>
+</indexterm>If your processing system isn't using
+<tag class="attribute">xreflabel</tag>, it's a candidate as well.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>The customization layer in <xref linkend="ex.remvcommon"/>
+reduces the common attributes to just <tag class="attribute">xml:id</tag>
+<tag class="attribute">version</tag>,
+and <tag class="attribute">lang</tag>.
+</para>
+
+<example xml:id="ex.remvcommon">
+<title>Removing Common Attributes</title>
+<programlisting><textobject>
+<textdata fileref="examples/remvcommon.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>The <tag class="attribute">xml:id</tag> attribute is added in two
+other patterns, one where it's required and one where it's optional.</para>
+</section>
+</section>
+</section>
+
+<section xml:id="ch05-addelem">
+<title>Adding Elements: Adding a <literal>sect6</literal></title>
+
+<para><indexterm><primary>elements</primary>
+  <secondary>adding</secondary>
+</indexterm>Adding a new inline or block element is generally a
+straightforward matter of creating a pattern for the new element and
+“|=” adding it to the right pattern. But if your new element is more
+intimately related to the existing structure of the document, it may
+require more surgery.</para>
+
+<para><xref linkend="ex.addsect6"/>
+extends DocBook by adding a <literal>sect6</literal> element.
+</para>
+
+<example xml:id="ex.addsect6">
+<title>Adding a <literal>sect6</literal> Element</title>
+<programlisting><textobject>
+<textdata fileref="examples/addsect6.rnc"/>
+</textobject></programlisting>
+</example>
+
+<para>Here we've redefined <tag>sect5</tag> to include
+<literal>sect6</literal> and provided a pattern for
+<literal>sect6</literal>.
+</para>
+</section>
+
+<section xml:id="ch05-classrole">
+<title>Other Modifications: Classifying a Role</title>
+
+<para><indexterm><primary>Role attribute</primary>
+  <secondary>changing on Procedure (example)</secondary>
+</indexterm>The <tag class="attribute">role</tag> attribute, found on
+almost all of the elements in DocBook, is a text
+attribute that can be used to subclass an element. In some
+applications, it may be useful to modify the definition of
+<tag class="attribute">role</tag> so that authors must choose one of a
+specific set of possible values.</para>
+
+<para>In <xref linkend="ex.changerole"/>,
+<tag class="attribute">role</tag> on the <tag>procedure</tag> element
+is constrained to the values <literal>required</literal> or
+<literal>optional</literal>.</para>
+
+<example xml:id="ex.changerole">
+<title>Changing role on <tag>procedure</tag></title>
+<programlisting><textobject>
+<textdata fileref="examples/changerole.rnc"/>
+</textobject></programlisting>
+</example>
 </section>
 </chapter>
+
