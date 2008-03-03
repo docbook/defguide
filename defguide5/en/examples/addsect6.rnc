@@ -1,4 +1,5 @@
 namespace db = "http://docbook.org/ns/docbook"
+default namespace = "http://docbook.org/ns/docbook"
 
 include "docbook.rnc" {
    db.sect5.sections = (db.sect6+, db.simplesect*) | db.simplesect+
