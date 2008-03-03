@@ -52,6 +52,11 @@ render XML+CSS either online or in print.</para>
 styling technology for DocBook. XSL 2.0 offers a number of important new
 features (at the expense of some complexity, naturally) and is growing
 in popularity.</para>
+<para>It's worth observing that there are two, related technologies in play
+here. XSLT 1.0 and 2.0, the transformation languages, and XSL Formatting
+Objects. XSL Formatting Objects are an XML vocabulary for describing constraints
+on page layout.
+</para>
 </listitem>
 </varlistentry>
 <varlistentry><term>XQuery</term>
@@ -65,14 +70,12 @@ formats.</para>
 </varlistentry>
 </variablelist>
 <section xml:id="styleexamples"><info><title>Stylesheet Examples</title></info>
+
 <para><indexterm xml:id="stylsheetsch04" class="startofrange" significance="normal"><primary>stylesheets</primary>
   <secondary>examples</secondary>
-</indexterm>
-
-
-By way of comparison, here's an example of each of the standard style
-languages. In each case, the stylesheet fragment shown contains the
-rules that reasonably formatted the following paragraph:
+</indexterm>By way of comparison, here's an example of each of the
+standard style languages. In each case, the stylesheet fragment shown
+contains the rules that reasonably formatted the following paragraph:
 </para>
 <screen>
 &lt;para&gt;This is an example paragraph. It should be presented in a
@@ -99,8 +102,9 @@ emphasis          { display: inline;
                     font-style: italic; }
 emphasis emphasis { display: inline;
                     font-style: upright; }</programlisting>
-
 </example>
+
+<para>FIXME: update this example to use namespaces correctly.</para>
 
 </section>
 <section xml:id="s.xsl"><info><title><acronym>XSL</acronym> stylesheet</title></info>
