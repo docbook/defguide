@@ -91,6 +91,7 @@ function deleteAll() {
     }
 
     var ul = dli[0].parentNode;
+
     for (i = 0; i < dli.length; i++) {
 	ul.removeChild(dli[i]);
     }
@@ -103,8 +104,7 @@ function deleteAll() {
 
     sli.sort(sortText);
 
-    ul.innerHTML = "";
-
+    // This effectively moves them into sorted order
     for (i = 0; i < sli.length; i++) {
 	ul.appendChild(sli[i]);
     }
@@ -124,6 +124,7 @@ function unwrapItem(listdiv) {
     var li = listdiv.parentNode;
     var ul = li.parentNode;
     var lis = listdiv.getElementsByTagName("li");
+
     // why does this insertBefore change the lis array?
     while (lis.length > 0) {
 	ul.insertBefore(lis[0],li);
