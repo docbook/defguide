@@ -73,7 +73,7 @@ set       nop
 </xsl:template>
 
 <xsl:template name="body.attributes">
-  <xsl:if test="self::refentry">
+  <xsl:if test="self::refentry and refsynopsisdiv//itemizedlist[@role='patnlist']">
     <xsl:attribute name="onload">hideAll();</xsl:attribute>
   </xsl:if>
 </xsl:template>
