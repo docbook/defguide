@@ -11,7 +11,9 @@
 		xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
 		xmlns:html="http://www.w3.org/1999/xhtml"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		exclude-result-prefixes="db rng xlink doc s set dbx exsl html a"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:f="http://nwalsh.com/ns/xsl/functions"
+		exclude-result-prefixes="db rng xlink f doc s set dbx exsl html a xs"
                 version="2.0">
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
@@ -36,6 +38,41 @@
 
 <xsl:variable name="pattern"
 	      select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+  <!-- it's ok to mix inlines and blocks because no elements in DocBook
+       contain a mixture of both -->
+<xsl:variable name="test.patterns"
+	      select="('db.bibliography.inlines',
+		       'db.computeroutput.inlines',
+		       'db.error.inlines',
+		       'db.graphic.inlines',
+		       'db.gui.inlines',
+		       'db.htmlform.inlines',
+		       'db.indexing.inlines',
+		       'db.keyboard.inlines',
+		       'db.link.inlines',
+		       'db.markup.inlines',
+		       'db.math.inlines',
+		       'db.oo.inlines',
+		       'db.os.inlines',
+		       'db.product.inlines',
+		       'db.programming.inlines',
+		       'db.publishing.inlines',
+		       'db.technical.inlines',
+		       'db.ubiq.inlines',
+		       'db.userinput.inlines',
+
+                       'db.admonition.blocks',
+		       'db.formal.blocks',
+		       'db.graphic.blocks',
+		       'db.htmlform.blocks',
+		       'db.informal.blocks',
+		       'db.list.blocks',
+		       'db.para.blocks',
+		       'db.publishing.blocks',
+		       'db.synopsis.blocks',
+		       'db.technical.blocks',
+		       'db.verbatim.blocks')"/>
 
 <xsl:template match="/">
   <xsl:apply-templates/>
@@ -440,19 +477,17 @@
 		    <thead>
 		      <row>
 			<entry namest="c1" nameend="c2">
-			  <para>Enumerated values:</para>
+			  <xsl:text>Enumerated values:</xsl:text>
 			</entry>
 		      </row>
 		    </thead>
 		    <tbody>
-		      <xsl:for-each select=".//rng:value">
+		      <xsl:for-each select=".//rng:value|.//rng:data">
 			<xsl:variable name="doc"
 				      select="following-sibling::*[1]"/>
 			<row>
 			  <entry>
-			    <quote>
-			      <xsl:value-of select="."/>
-			    </quote>
+			    <xsl:apply-templates select="." mode="value-enum"/>
 			  </entry>
 			  <entry>
 			    <para>
@@ -644,8 +679,10 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
   <xsl:param name="elemNum" select="1"/>
   <xsl:variable name="xdefs" select="key('elemdef', @name)"/>
 
+<!--
   <refsection condition="ref.desc.content-model">
     <title>Content Model</title>
+-->
 
     <para>
       <xsl:choose>
@@ -664,7 +701,8 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 	<xsl:value-of select="../@name"/>
 	<xsl:text>)</xsl:text>
       </xsl:if>
-      <xsl:text> ::=</xsl:text>
+      <xsl:text>&#160;</xsl:text>
+      <phrase role="cceq">::=</phrase>
     </para>
 
     <itemizedlist spacing='compact' role="element-synopsis">
@@ -677,7 +715,10 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 	</xsl:otherwise>
       </xsl:choose>
     </itemizedlist>
+
+<!--
   </refsection>
+-->
 
   <xsl:apply-templates select="doc:attributes"/>
   <xsl:apply-templates select="doc:rules"/>
@@ -858,21 +899,29 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 </xsl:template>
 
 <xsl:template match="rng:interleave" mode="attributes">
-  <listitem>
-    <para>
-      <xsl:choose>
-	<xsl:when test="ancestor::rng:optional">
-	  <emphasis>All or none of:</emphasis>
-	</xsl:when>
-	<xsl:otherwise>
-	  <emphasis>All of:</emphasis>
-	</xsl:otherwise>
-      </xsl:choose>
-    </para>
-    <itemizedlist spacing='compact' role="element-synopsis">
+  <xsl:choose>
+    <xsl:when test="count(rng:optional) = count(*)">
+      <!-- interleave of optional attributes isn't important -->
       <xsl:apply-templates mode="attributes"/>
-    </itemizedlist>
-  </listitem>
+    </xsl:when>
+    <xsl:otherwise>
+      <listitem>
+	<para>
+	  <xsl:choose>
+	    <xsl:when test="ancestor::rng:optional">
+	      <emphasis>All or none of:</emphasis>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <emphasis>All of:</emphasis>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</para>
+	<itemizedlist spacing='compact' role="element-synopsis">
+	  <xsl:apply-templates mode="attributes"/>
+	</itemizedlist>
+      </listitem>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="rng:group" mode="attributes">
@@ -941,18 +990,35 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 
     <xsl:if test="rng:choice|rng:value">
       <itemizedlist spacing='compact' role="element-synopsis">
-	<xsl:for-each select="rng:choice/rng:value|rng:value">
+	<xsl:for-each
+	    select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
 	  <listitem>
 	    <para>
-	      <xsl:text>“</xsl:text>
-	      <xsl:value-of select="."/>
-	      <xsl:text>”</xsl:text>
+	      <xsl:apply-templates select="." mode="value-enum"/>
 	    </para>
 	  </listitem>
 	</xsl:for-each>
       </itemizedlist>
     </xsl:if>
   </listitem>
+</xsl:template>
+
+<xsl:template match="rng:value" mode="value-enum">
+  <xsl:text>“</xsl:text>
+  <xsl:value-of select="."/>
+  <xsl:text>”</xsl:text>
+</xsl:template>
+
+<xsl:template match="rng:data" mode="value-enum">
+  <literal>
+    <xsl:text>xsd:</xsl:text>
+    <xsl:value-of select="@type"/>
+  </literal>
+  <xsl:if test="rng:param">
+    <xsl:text> (Pattern: “</xsl:text>
+    <xsl:value-of select="rng:param" separator=", "/>
+    <xsl:text>”)</xsl:text>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="doc:rules">
@@ -1111,47 +1177,244 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
 </xsl:template>
 
 <xsl:template match="rng:zeroOrMore">
+  <xsl:variable name="context" select="."/>
+
+  <xsl:variable name="contains" as="xs:string*">
+    <xsl:for-each select="$test.patterns">
+      <xsl:if test="f:containsPattern($context, .)">
+	<xsl:sequence select="."/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+
+  <xsl:variable name="trimmed" as="element()*">
+    <xsl:for-each select="*">
+      <xsl:choose>
+	<xsl:when test="not(self::rng:ref)">
+	  <xsl:sequence select="."/>
+	</xsl:when>
+	<xsl:when test="f:isContained($context,.,$contains)">
+	  <!-- drop it -->
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:sequence select="."/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:variable>
+
   <listitem>
     <para>Zero or more of:</para>
 
     <itemizedlist spacing='compact' role="element-synopsis">
-      <xsl:apply-templates>
+      <xsl:apply-templates select="$trimmed">
 	<xsl:sort select="key('define',@name)/rng:element/@name"/>
 	<xsl:sort select="@name"/>
       </xsl:apply-templates>
-    </itemizedlist>
 
-<!--
-    <itemizedlist spacing='compact' role="element-synopsis">
-      <xsl:choose>
-	<xsl:when test="*[not(self::rng:ref) and not(self::rng:text)]">
-	  <xsl:apply-templates>
-	    <xsl:sort select="key('define',@name)/rng:element/@name"/>
-	    <xsl:sort select="@name"/>
-	  </xsl:apply-templates>
-	</xsl:when>
-	<xsl:otherwise>
-	  <listitem>
-	    <simplelist type='inline'>
-	      <xsl:for-each select="*">
-		<xsl:sort select="key('define',@name)/rng:element/@name"/>
-		<xsl:sort select="@name"/>
-		<member>
-		  <xsl:apply-templates select=".">
-		    <xsl:with-param name="li" select="0"/>
-		  </xsl:apply-templates>
-		</member>
-	      </xsl:for-each>
-	    </simplelist>
-	  </listitem>
-	</xsl:otherwise>
-      </xsl:choose>
+      <xsl:for-each select="$contains">
+	<xsl:call-template name="format-pattern">
+	  <xsl:with-param name="context" select="$context"/>
+	  <xsl:with-param name="pattern" select="."/>
+	</xsl:call-template>
+      </xsl:for-each>
+
     </itemizedlist>
--->
+  </listitem>
+</xsl:template>
+
+<xsl:function name="f:containsPattern" as="xs:boolean">
+  <xsl:param name="context"/>
+  <xsl:param name="pattern"/>
+
+  <xsl:if test="not($context/key('define',$pattern))">
+    <xsl:message>No pattern: <xsl:value-of select="$pattern"/></xsl:message>
+  </xsl:if>
+
+  <xsl:variable name="p.refs" select="$context/key('define', $pattern)//rng:ref"/>
+  <xsl:variable name="c.refs" select="$context/rng:ref"/>
+
+  <xsl:variable name="patn" as="xs:integer*">
+    <xsl:for-each select="$p.refs">
+      <xsl:variable name="n" select="@name"/>
+      <xsl:if test="not($c.refs[@name = $n])">0</xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+
+  <xsl:value-of select="count($patn) = 0"/>
+</xsl:function>
+
+<xsl:function name="f:isContained" as="xs:boolean">
+  <xsl:param name="context"/>
+  <xsl:param name="ref"/>
+  <xsl:param name="patterns"/>
+
+  <xsl:variable name="contains" as="xs:integer*">
+    <xsl:for-each select="$patterns">
+      <xsl:variable name="patname" select="."/>
+      <!-- work around apparent bug in Saxon -->
+      <xsl:variable name="def"
+		    select="root($context)//rng:define[@name = $patname]"/>
+      <xsl:for-each select="$def//rng:ref">
+	<xsl:if test="@name = $ref/@name">
+	  <xsl:sequence select="1"/>
+	</xsl:if>
+      </xsl:for-each>
+    </xsl:for-each>
+  </xsl:variable>
+
+  <xsl:value-of select="count($contains) &gt; 0"/>
+</xsl:function>
+
+<xsl:template name="format-pattern">
+  <xsl:param name="context"/>
+  <xsl:param name="pattern"/>
+
+  <listitem xml:id="{generate-id($context)}-{$pattern}">
+    <para>
+      <emphasis role="patnlink">
+	<xsl:choose>
+	  <xsl:when test="$pattern = 'db.bibliography.inlines'">
+	    <xsl:text>Bibliography inlines</xsl:text>
+	  </xsl:when>
+          <xsl:when test="$pattern = 'db.computeroutput.inlines'">
+            <xsl:text>Computer-output inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.error.inlines'">
+            <xsl:text>Error inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.graphic.inlines'">
+            <xsl:text>Graphic inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.gui.inlines'">
+            <xsl:text>GUI inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.htmlform.inlines'">
+            <xsl:text>HTML Form inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.indexing.inlines'">
+            <xsl:text>Indexing inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.keyboard.inlines'">
+            <xsl:text>Keyboard inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.link.inlines'">
+            <xsl:text>Linking inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.markup.inlines'">
+            <xsl:text>Markup inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.math.inlines'">
+            <xsl:text>Math inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.oo.inlines'">
+            <xsl:text>Object-oriented programming inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.os.inlines'">
+            <xsl:text>Operating system inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.product.inlines'">
+            <xsl:text>Product inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.programming.inlines'">
+            <xsl:text>Programming inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.publishing.inlines'">
+            <xsl:text>Publishing inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.technical.inlines'">
+            <xsl:text>Technical inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.ubiq.inlines'">
+            <xsl:text>Ubiquitous inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.userinput.inlines'">
+            <xsl:text>User-input inlines</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.admonition.blocks'">
+            <xsl:text>Admonition elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.formal.blocks'">
+            <xsl:text>Formal elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.graphic.blocks'">
+            <xsl:text>Graphic elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.htmlform.blocks'">
+            <xsl:text>HTML Form elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.informal.blocks'">
+            <xsl:text>Informal elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.list.blocks'">
+            <xsl:text>List elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.para.blocks'">
+            <xsl:text>Paragraph elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.publishing.blocks'">
+            <xsl:text>Publishing elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.synopsis.blocks'">
+            <xsl:text>Synopsis elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.technical.blocks'">
+            <xsl:text>Technical elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.verbatim.blocks'">
+            <xsl:text>Verbatim elements</xsl:text>
+          </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:message>
+	      <xsl:text>Warning: no prose for </xsl:text>
+	      <xsl:value-of select="$pattern"/>
+	    </xsl:message>
+	    <xsl:value-of select="$pattern"/>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </emphasis>
+    </para>
+
+    <xsl:variable name="def"
+		  select="root($context)//rng:define[@name = $pattern]"/>
+
+    <itemizedlist role="patnlist" xml:id="l.{generate-id($context)}-{$pattern}">
+      <xsl:for-each select="$def//rng:ref">
+	<xsl:sort select="key('define',@name)/rng:element/@name"/>
+	<xsl:sort select="@name"/>
+	<xsl:apply-templates select="."/>
+      </xsl:for-each>
+    </itemizedlist>
   </listitem>
 </xsl:template>
 
 <xsl:template match="rng:oneOrMore">
+  <xsl:variable name="context" select="."/>
+
+  <xsl:variable name="contains" as="xs:string*">
+    <xsl:for-each select="$test.patterns">
+      <xsl:if test="f:containsPattern($context, .)">
+	<xsl:sequence select="."/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+
+  <xsl:variable name="trimmed" as="element()*">
+    <xsl:for-each select="*">
+      <xsl:choose>
+	<xsl:when test="not(self::rng:ref)">
+	  <xsl:sequence select="."/>
+	</xsl:when>
+	<xsl:when test="f:isContained($context,.,$contains)">
+	  <!-- drop it -->
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:sequence select="."/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:variable>
+
   <listitem>
     <para>
       <xsl:choose>
@@ -1164,10 +1427,17 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
       </xsl:choose>
     </para>
     <itemizedlist spacing='compact' role="element-synopsis">
-      <xsl:apply-templates>
+      <xsl:apply-templates select="$trimmed">
 	<xsl:sort select="key('define',@name)/rng:element/@name"/>
 	<xsl:sort select="@name"/>
       </xsl:apply-templates>
+
+      <xsl:for-each select="$contains">
+	<xsl:call-template name="format-pattern">
+	  <xsl:with-param name="context" select="$context"/>
+	  <xsl:with-param name="pattern" select="."/>
+	</xsl:call-template>
+      </xsl:for-each>
     </itemizedlist>
   </listitem>
 </xsl:template>

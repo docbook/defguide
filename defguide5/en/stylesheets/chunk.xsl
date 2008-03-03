@@ -874,6 +874,8 @@
     </xsl:call-template>
 
     <body>
+      <xsl:call-template name="body.attributes"/>
+
       <xsl:if test=". != /book">
         <xsl:call-template name="user.header.navigation"/>
 

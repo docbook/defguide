@@ -16,7 +16,7 @@
 <xsl:import href="/sourceforge/docbook/xsl/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
 
-<xsl:output method="html" encoding="utf-8" indent="no"/>
+<xsl:output method="xml" encoding="utf-8" indent="no"/>
 
 <xsl:param name="ng-release" select="'5.0b1'"/>
 
@@ -66,9 +66,16 @@ set       nop
   <xsl:text> </xsl:text>
 </xsl:template>
 
-<xsl:template name="user.header.content">
+<xsl:template name="user.head.content">
   <xsl:param name="node" select="."/>
   <link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" />
+  <script type="text/javascript" src="script/refentry.js"/>
+</xsl:template>
+
+<xsl:template name="body.attributes">
+  <xsl:if test="self::refentry">
+    <xsl:attribute name="onload">hideAll();</xsl:attribute>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template name="user.footer.navigation">
@@ -76,7 +83,7 @@ set       nop
   <div class="copyrightfooter">
     <p>
       <a href="dbcpyright.html">Copyright</a>
-      <xsl:text> &#xA9; 2004-2007 Norman Walsh. </xsl:text>
+      <xsl:text> &#xA9; 2004-2008 Norman Walsh. </xsl:text>
       <xsl:text>Portions Copright © 1999-2003 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>
@@ -202,6 +209,92 @@ set       nop
     </xsl:call-template>
     <xsl:copy-of select="$title"/>
   </h1>
+</xsl:template>
+
+<xsl:template match="itemizedlist[@role='patnlist']">
+  <!-- don't apply imports because we don't want the anchor name -->
+  <div class="patnlist" id="{@id}">
+    <div>
+      <xsl:apply-templates select="." mode="class.attribute"/>
+      <xsl:if test="title">
+	<xsl:call-template name="formal.object.heading"/>
+      </xsl:if>
+
+      <!-- Preserve order of PIs and comments -->
+      <xsl:apply-templates 
+	  select="*[not(self::listitem
+		    or self::title
+		    or self::titleabbrev)]
+		    |comment()[not(preceding-sibling::listitem)]
+		    |processing-instruction()[not(preceding-sibling::listitem)]"/>
+
+      <ul>
+	<xsl:if test="$css.decoration != 0">
+	  <xsl:attribute name="type">
+	    <xsl:call-template name="list.itemsymbol"/>
+	  </xsl:attribute>
+	</xsl:if>
+
+	<xsl:if test="@spacing='compact'">
+	  <xsl:attribute name="compact">
+	    <xsl:value-of select="@spacing"/>
+	  </xsl:attribute>
+	</xsl:if>
+	<xsl:apply-templates 
+	    select="listitem
+                    |comment()[preceding-sibling::listitem]
+                    |processing-instruction()[preceding-sibling::listitem]"/>
+      </ul>
+    </div>
+  </div>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='patnlink']">
+  <xsl:variable name="id" select="ancestor::listitem[1]/@id"/>
+  <xsl:variable name="list" select="following::itemizedlist[@role='patnlist'][1]"/>
+
+  <xsl:variable name="title">
+    <xsl:for-each select="$list//sgmltag">
+      <xsl:if test="position() &gt; 1 and last() &gt; 2">, </xsl:if>
+      <xsl:if test="position() = last() and last() &gt; 1"> and </xsl:if>
+      <xsl:value-of select="."/>
+    </xsl:for-each>
+  </xsl:variable>
+
+  <em title="{$title}" class='patnlink'>
+    <xsl:apply-templates/>
+  </em>
+  <span id="pls.{$id}" style="display: none;">
+    <xsl:text>&#160;</xsl:text>
+    <a href="javascript:show('{$id}')">
+      <img src="graphics/right.gif" border="0" alt="[+]"/>
+    </a>
+  </span>
+  <span id="plh.{$id}">
+    <xsl:text>&#160;</xsl:text>
+    <a href="javascript:hide('{$id}')">
+      <img src="graphics/down.gif" border="0" alt="[-]"/>
+    </a>
+  </span>
+</xsl:template>
+
+<xsl:template match="phrase[@role='cceq']">
+  <xsl:apply-imports/>
+
+  <xsl:if test="ancestor::refsynopsisdiv//itemizedlist[@role='patnlist']">
+    <span id="cmshow" style="display: none;">
+      <xsl:text>&#160;</xsl:text>
+      <a href="javascript:showAll()">
+	<img src="graphics/right.gif" border="0" alt="[+]"/>
+      </a>
+    </span>
+    <span id="cmhide">
+      <xsl:text>&#160;</xsl:text>
+      <a href="javascript:hideAll()">
+	<img src="graphics/down.gif" border="0" alt="[-]"/>
+      </a>
+    </span>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="para">
@@ -899,6 +992,7 @@ set       nop
   <xsl:param name="common.attributes"/>
 
   <table width="100%" border="0" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; ">
+    <col align="left" width="25%"/>
     <thead>
       <tr>
 	<th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Name</th>

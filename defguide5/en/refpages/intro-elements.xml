@@ -238,6 +238,56 @@ can have an effect on the meaning of the list as a whole. For example,
 a sequence that consists of only optional elements may have none. This
 differs, in subtle and unimportant ways, from an optional sequence.</para>
 
+<para>Some of the lists, especially ones that would otherwise be quite long,
+are subdivided into groups. For example:</para>
+
+<itemizedlist spacing="compact" role="element-synopsis">
+  <listitem>
+    <para>Sequence of:</para>
+    <itemizedlist spacing="compact" role="element-synopsis">
+      <listitem>
+        <para><tag>info</tag>? (db.titleforbidden.info)</para>
+      </listitem>
+      <listitem>
+        <para><tag>attribution</tag>?</para>
+      </listitem>
+      <listitem>
+	<para>One or more of:</para>
+	<itemizedlist spacing="compact" role="element-synopsis">
+	  <listitem><para><tag>literallayout</tag></para></listitem>
+	  <listitem><para><emphasis>Paragraph elements</emphasis>
+<inlinemediaobject>
+<imageobject>
+<imagedata fileref="graphics/right.gif"/>
+</imageobject>
+</inlinemediaobject></para>
+            <itemizedlist spacing="compact" role="element-synopsis">
+	      <listitem><para><tag>anchor</tag></para></listitem>
+	      <listitem><para><tag>formalpara</tag></para></listitem>
+	      <listitem><para><tag>para</tag></para></listitem>
+	      <listitem><para><tag>simpara</tag></para></listitem>
+	    </itemizedlist>
+	  </listitem>
+	</itemizedlist>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+</itemizedlist>
+
+<para>This extra levels of list (e.g., <emphasis>Paragraph elements</emphasis>)
+are just a convenience for readers, they don't
+have any effect on the content model. An <tag>epigraph</tag> can contain one
+or more of “<tag>literallayout</tag>”,
+“<tag>anchor</tag>”,
+“<tag>formalpara</tag>”,
+“<tag>para</tag>”, or
+“<tag>simpara</tag>”.</para>
+
+<para>In online versions of this document, rendered with a user agent that
+supports JavaScript, these lists can be opened and closed dynamically, or
+removed altogether.
+</para>
+
 <section xml:id="s.elem.contentmodels">
 <title>Content models and validity</title>
 
@@ -257,31 +307,7 @@ elements in the document.
 </para>
 
 <para>For example, consider the content model of the
-<tag>epigraph</tag> element:</para>
-
-<itemizedlist spacing="compact" role="element-synopsis">
-  <listitem>
-    <para>Sequence of:</para>
-    <itemizedlist spacing="compact" role="element-synopsis">
-      <listitem>
-        <para><tag>info</tag>? (db.titleforbidden.info)</para>
-      </listitem>
-      <listitem>
-        <para><tag>attribution</tag>?</para>
-      </listitem>
-      <listitem>
-	<para>One or more of:</para>
-	<itemizedlist spacing="compact" role="element-synopsis">
-	  <listitem><para><tag>anchor</tag></para></listitem>
-	  <listitem><para><tag>formalpara</tag></para></listitem>
-	  <listitem><para><tag>literallayout</tag></para></listitem>
-	  <listitem><para><tag>para</tag></para></listitem>
-	  <listitem><para><tag>simpara</tag></para></listitem>
-	</itemizedlist>
-      </listitem>
-    </itemizedlist>
-  </listitem>
-</itemizedlist>
+<tag>epigraph</tag>, above, and this example:</para>
 
 <screen><![CDATA[<epigraph>
 <para>Some text</para>

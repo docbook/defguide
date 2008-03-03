@@ -11,6 +11,7 @@ ROOTID=
 FORESULT=chunk.fo
 STYLEOPT=
 HTMLEXT=.html
+TIDY=tidy
 
 DIFFVER=
 
@@ -39,7 +40,7 @@ tdg.xml: book.xml bookinfo.xml refpages/references.xml refpages/list-elements.xm
 	xmllint --xinclude book.xml > $@
 
 tdg-stripped.xml: tdg.xml
-	xsltproc --output $@ stylesheets/strip.xsl $<
+	$(XSLT) $< stylesheets/strip.xsl $@
 
 bookinfo.xml: VERSION.xml
 	$(XSLT) $< $< $@
@@ -47,6 +48,7 @@ bookinfo.xml: VERSION.xml
 chunks: $(SOURCE) $(SSTITLEPG) tdg-stripped.xml
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
+	cd $(BASEDIR) && $(TIDY) *.html
 
 chunk: $(SOURCE) $(SSTITLEPG) tdg-stripped.xml
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
