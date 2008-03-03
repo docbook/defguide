@@ -8,7 +8,7 @@
 </info>
  
 <para><indexterm xml:id="customDocBookch05" class="startofrange" significance="normal"><primary>customizing</primary>
-  <secondary>DocBook DTD</secondary></indexterm><indexterm xml:id="DocBookcustomch05" class="startofrange" significance="normal"><primary>DocBook DTD</primary>
+  <secondary>DocBook schema</secondary></indexterm><indexterm xml:id="DocBookcustomch05" class="startofrange" significance="normal"><primary>DocBook schema</primary>
   <secondary>customizing</secondary>
 </indexterm>For the applications you have in mind, DocBook <quote>out
 of the box</quote> may not be exactly what you need. Perhaps you need
@@ -17,9 +17,9 @@ you never want your authors to use. By design, DocBook makes this sort
 of customization easy.</para>
 
 <para><indexterm significance="normal"><primary>attributes</primary>
-  <secondary>DocBook DTD, customizing</secondary>
+  <secondary>DocBook schema, customizing</secondary>
 </indexterm><indexterm significance="normal"><primary>elements</primary>
-  <secondary>DocBook DTD, customizing</secondary>
+  <secondary>DocBook schema, customizing</secondary>
 </indexterm>This chapter explains how to make your own
 <firstterm>customization layer</firstterm>. You might do this in order
 to:
@@ -37,16 +37,16 @@ attribute</para></listitem>
 specific list or a fixed value</para></listitem>
 </itemizedlist>
 
-<para><indexterm significance="normal"><primary>extensions, DocBook DTD</primary>
+<para><indexterm significance="normal"><primary>extensions, DocBook schema</primary>
 </indexterm><indexterm significance="normal"><primary>environment</primary>
 <secondary>DocBook extensions, affecting</secondary>
 </indexterm>You can use customization layers to extend DocBook or
-subset it. Creating a <acronym>DTD</acronym> that is a strict subset
+subset it. Creating a schema that is a strict subset
 of DocBook means that all of your instances are still completely valid
 DocBook instances, which may be important to your tools and
 stylesheets, and to other people with whom you share documents. An
 <firstterm>extension</firstterm> adds new structures, or changes the
-<acronym>DTD</acronym> in a way that is not compatible with DocBook.
+schema in a way that is not compatible with DocBook.
 Extensions can be very useful, but might have a great impact on your
 environment.
 </para>
@@ -59,20 +59,20 @@ the inline elements.
 <section xml:id="ch05-shouldi"><info><title>Should You Do This?</title></info>
 
 <para><indexterm significance="normal"><primary>stylesheets</primary>
-  <secondary>DTD extension, effects</secondary>
-</indexterm>Changing a <acronym>DTD</acronym> can have a wide-ranging
+  <secondary>schema extension, effects</secondary>
+</indexterm>Changing a schema can have a wide-ranging
 impact on the tools and stylesheets that you use. It can have an
 impact on your authors and on your legacy documents. This is
 especially true if you make an extension. If you rely on your support
 staff to install and maintain your authoring and publishing tools,
 check with them before you invest a lot of time modifying the
-<acronym>DTD</acronym>. There may be additional issues that are
+schema. There may be additional issues that are
 outside your immediate control. Proceed with caution.
 </para>
 
 <para>That said, DocBook is designed to be easy to modify. This
 chapter assumes that you are comfortable with
-<acronym>SGML</acronym>/<acronym>XML</acronym> <acronym>DTD</acronym>
+<acronym>XML</acronym> and RELAX NG grammar
 syntax, but the examples presented should be a good springboard to
 learning the syntax if it's not already familiar to you.
 </para>
@@ -125,7 +125,7 @@ if you prefer, use the <literal>variant</literal> keyword.
 
 <para><indexterm>
   <primary>public identifiers</primary>
-  <secondary>DocBook DTD</secondary>
+  <secondary>DocBook</secondary>
   <tertiary>altering</tertiary>
 </indexterm>Although not directly supported by RELAX NG, in some cases it may still
 be valuable to identify a DocBook V5.0 customization layer with a public identifier.
@@ -162,7 +162,7 @@ order to record their DocBook derivation:
 </screen>
 </para>
 
-<para><indexterm><primary>subsets (DocBook DTD)</primary>
+<para><indexterm><primary>subsets (DocBook schema)</primary>
 </indexterm>If your schema is a proper subset, you can advertise this status by
 using the <literal>Subset</literal> keyword in the description. If
 your schema contains any markup model extensions, you can advertise
@@ -409,7 +409,7 @@ to add a “<literal>cleartext</literal>” element, for example.
 <section><title>Deciding How to Change a Customization Layer</title>
 
 <para><indexterm><primary>customizing</primary>
-  <secondary>DocBook DTD</secondary>
+  <secondary>DocBook schema</secondary>
     <tertiary>changing customization layers</tertiary>
 </indexterm>Figuring out what to change may be the hardest part of the
 process. Finding something similar usually provides a
@@ -431,11 +431,11 @@ inlines, and then provide a pattern that matches the new element.
 <title>Adding <literal>cleartext</literal> with a Customization Layer</title>
 <programlistingco>
 <areaspec>
-<area xml:id="gs3-d1" coords="5 50" units="linecolumn"/>
-<area xml:id="gs3-d1b" coords="7 50" units="linecolumn"/>
-<area xml:id="gs3-d2" coords="9 57" units="linecolumn"/>
-<area xml:id="gs3-d3" coords="10 50" units="linecolumn"/>
-<area xml:id="gs3-d4" coords="15 50" units="linecolumn"/>
+<area xml:id="gs3-d1" coords="6 50" units="linecolumn"/>
+<area xml:id="gs3-d1b" coords="8 50" units="linecolumn"/>
+<area xml:id="gs3-d2" coords="10 57" units="linecolumn"/>
+<area xml:id="gs3-d3" coords="11 50" units="linecolumn"/>
+<area xml:id="gs3-d4" coords="16 50" units="linecolumn"/>
 </areaspec>
 <programlisting><textobject>
 <textdata fileref="examples/addcleartext.rnc"/>
@@ -488,10 +488,10 @@ instead of the base DocBook schema where your tools offer the option.
 <title>Testing Your Work</title>
 
 <para><indexterm><primary>customizing</primary>
-  <secondary>DocBook DTD</secondary>
+  <secondary>DocBook schema</secondary>
     <tertiary>writing, testing, and using customization layers</tertiary></indexterm>
 <indexterm><primary>testing</primary>
-  <secondary>customization layers (DocBook DTD)</secondary></indexterm>
+  <secondary>customization layers (DocBook schema)</secondary></indexterm>
 <indexterm><primary>validation</primary>
   <secondary>customization layers</secondary>
 </indexterm>Schemas, by their nature, contain many complex,
