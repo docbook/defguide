@@ -80,6 +80,8 @@ function hideAll() {
     addDeleteLink();
 }
 
+var XSLI;
+
 function deleteAll() {
     var divs = document.getElementsByTagName("div");
     var dli = new Array();
@@ -103,10 +105,32 @@ function deleteAll() {
     }
 
     sli.sort(sortText);
+    XSLI = sli;
+
+    // Get rid of duplicates
+    var nsli = new Array();
+    var dups = new Array();
+    nsli[0] = sli[0];
+    var pos = 1;
+    var dpos = 0;
+    for (i = 1; i < sli.length; i++) {
+	if (!sameAs(sli[i-1],sli[i])) {
+	    nsli[pos] = sli[i];
+	    pos++;
+	} else {
+	    dups[dpos] = sli[i];
+	    dpos++;
+	}
+    }
+
+    // Delete the dups...
+    for (i = 0; i < dups.length; i++) {
+	ul.removeChild(dups[i]);
+    }
 
     // This effectively moves them into sorted order
-    for (i = 0; i < sli.length; i++) {
-	ul.appendChild(sli[i]);
+    for (i = 0; i < nsli.length; i++) {
+	ul.appendChild(nsli[i]);
     }
 
     var plus = document.getElementById("cmshow");
@@ -132,21 +156,38 @@ function unwrapItem(listdiv) {
 }
 
 function sortText(a,b) {
-    var acode = a.getElementsByTagName("code")[0];
-    var bcode = b.getElementsByTagName("code")[0];
-
-    if (acode == null) {
-	return -1;
-    }
-
-    if (bcode == null) {
-	return 1;
-    }
-
-    if (acode.firstChild.data < bcode.firstChild.data) {
+    if (stringValue(a) < stringValue(b)) {
 	return -1;
     } else {
 	return 1;
+    }
+}
+
+function sameAs(a,b) {
+    return stringValue(a) == stringValue(b);
+}
+
+function stringValue(a) {
+    var s = "";
+    var c = a.firstChild;
+    var e = false;
+
+    while (c != null) {
+	if (c.nodeType == Node.ELEMENT_NODE) {
+	    e = e || c.nodeName == 'CODE'
+	    s = s + stringValue(c);
+	} else if (c.nodeType == Node.TEXT_NODE) {
+	    s = s + c.data;
+	}
+	c = c.nextSibling;
+    }
+
+    // This makes "text" => "a text" and "alt" = "e alt" which forces
+    // text to sort first...
+    if (e) {
+	return "e " + s;
+    } else {
+	return "a " + s;
     }
 }
 
