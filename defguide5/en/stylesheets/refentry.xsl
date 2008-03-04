@@ -66,6 +66,7 @@
 		       'db.formal.blocks',
 		       'db.graphic.blocks',
 		       'db.htmlform.blocks',
+		       'db.info.elements',
 		       'db.informal.blocks',
 		       'db.list.blocks',
 		       'db.para.blocks',
@@ -1342,6 +1343,9 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
           </xsl:when>
           <xsl:when test="$pattern = 'db.htmlform.blocks'">
             <xsl:text>HTML Form elements</xsl:text>
+          </xsl:when>
+          <xsl:when test="$pattern = 'db.info.elements'">
+            <xsl:text>“Info” elements</xsl:text>
           </xsl:when>
           <xsl:when test="$pattern = 'db.informal.blocks'">
             <xsl:text>Informal elements</xsl:text>
