@@ -1382,7 +1382,8 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
     <xsl:variable name="def"
 		  select="root($context)//rng:define[@name = $pattern]"/>
 
-    <itemizedlist role="patnlist" xml:id="l.{generate-id($context)}-{$pattern}">
+    <itemizedlist role="patnlist {$pattern}"
+		  xml:id="l.{generate-id($context)}-{$pattern}">
       <xsl:for-each select="$def//rng:ref">
 	<xsl:sort select="key('define',@name)/rng:element/@name"/>
 	<xsl:sort select="@name"/>

@@ -73,7 +73,7 @@ set       nop
 </xsl:template>
 
 <xsl:template name="body.attributes">
-  <xsl:if test="self::refentry and refsynopsisdiv//itemizedlist[@role='patnlist']">
+  <xsl:if test="self::refentry and refsynopsisdiv//itemizedlist[contains(@role,'patnlist')]">
     <xsl:attribute name="onload">hideAll();</xsl:attribute>
   </xsl:if>
 </xsl:template>
@@ -211,7 +211,7 @@ set       nop
   </h1>
 </xsl:template>
 
-<xsl:template match="itemizedlist[@role='patnlist']">
+<xsl:template match="itemizedlist[contains(@role,'patnlist')]">
   <!-- don't apply imports because we don't want the anchor name -->
   <div class="patnlist" id="{@id}">
     <div>
@@ -251,7 +251,7 @@ set       nop
 
 <xsl:template match="emphasis[@role='patnlink']">
   <xsl:variable name="id" select="ancestor::listitem[1]/@id"/>
-  <xsl:variable name="list" select="following::itemizedlist[@role='patnlist'][1]"/>
+  <xsl:variable name="list" select="following::itemizedlist[contains(@role,'patnlist')][1]"/>
 
   <xsl:variable name="title">
     <xsl:for-each select="$list//sgmltag">
@@ -281,7 +281,7 @@ set       nop
 <xsl:template match="phrase[@role='cceq']">
   <xsl:apply-imports/>
 
-  <xsl:if test="ancestor::refsynopsisdiv//itemizedlist[@role='patnlist']">
+  <xsl:if test="ancestor::refsynopsisdiv//itemizedlist[contains(@role,'patnlist')]">
     <span id="cmshow" style="display: none;">
       <xsl:text>&#160;</xsl:text>
       <a href="javascript:showAll()">
