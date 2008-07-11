@@ -2936,7 +2936,7 @@ ending index terms:
 </para>
 <screen>
 &lt;para&gt;
-The tiger&lt;indexterm id="tiger-desc" class="startofrange"&gt;
+The tiger&lt;indexterm xml:id="tiger-desc" class="startofrange"&gt;
 &lt;primary&gt;Big Cats&lt;/primary&gt;
 &lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;
 is a very large cat indeed…
@@ -2949,7 +2949,7 @@ Let's talk about leopards.
 </screen>
 <para>
 <indexterm>
-  <primary>ID attribute</primary>
+  <primary>xml:id attribute</primary>
   <secondary>index entries, ranges</secondary>
 </indexterm><indexterm>
   <primary>class attribute</primary>
@@ -2958,7 +2958,7 @@ Let's talk about leopards.
 
 Note that the mark at the start of the range identifies itself as the
 start of a range with the <tag class="attribute">class</tag>
-attribute, and provides an <tag class="attribute">id</tag>.
+attribute, and provides an <tag class="attribute">xml:id</tag>.
 The mark at the end of the range points back to the start.
 </para>
 <para>
@@ -2972,7 +2972,7 @@ The mark at the end of the range points back to the start.
 Another way to mark up a range of text is to specify that the entire
 content of an element, such as a chapter or section, is the complete
 range.  In this case, all you need is for the index term to point to
-the <tag class="attribute">id</tag> of the element that
+the <tag class="attribute">xml:id</tag> of the element that
 contains the content in question. The <tag class="attribute">zone</tag> attribute of <tag>indexterm</tag>
 provides this functionality.
 </para>
@@ -2987,7 +2987,7 @@ the element it indexes.
 Suppose the discussion of tigers in your document comprises a
 whole text object (like a <tag class="element">sect1</tag>
 or a <tag class="element">chapter</tag>) with an
-<tag class="attribute">id</tag> value of 
+<tag class="attribute">xml:id</tag> value of 
 <literal>tiger-desc</literal>. You can put the following
 tag anywhere in your document to index that range of text:
 <screen>
