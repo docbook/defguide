@@ -470,7 +470,7 @@ Declaration.
 <para>For example, Chapter 1 might begin like this:
 </para>
 
-<screen>&lt;chapter id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
+<screen>&lt;chapter xml:id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
 &lt;para&gt;My first paragraph.&lt;/para&gt;
 …</screen>
 
@@ -479,7 +479,7 @@ Declaration.
 
 <screen>&lt;!DOCTYPE chapter&gt;
 &lt;chapter xmlns="http://docbook.org/ns/docbook"
-         id="ch1"&gt;
+         xml:id="ch1"&gt;
 &lt;title&gt;My First Chapter&lt;/title&gt;
 &lt;para&gt;My first paragraph.&lt;/para&gt;
 …</screen>
@@ -3125,7 +3125,7 @@ your glossary might look like this:
 ⋮
 &lt;glossdiv&gt;&lt;title&gt;E&lt;/title&gt;
 
-&lt;glossentry id="xml"&gt;&lt;glossterm&gt;Extensible Markup Language&lt;/glossterm&gt;
+&lt;glossentry xml:id="xml"&gt;&lt;glossterm&gt;Extensible Markup Language&lt;/glossterm&gt;
   &lt;acronym&gt;XML&lt;/acronym&gt;
 &lt;glossdef&gt;
   &lt;para&gt;Some reasonable definition here.&lt;/para&gt;
