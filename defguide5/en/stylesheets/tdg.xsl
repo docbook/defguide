@@ -84,7 +84,7 @@ set       nop
     <p>
       <a href="dbcpyright.html">Copyright</a>
       <xsl:text> &#xA9; 2004-2008 Norman Walsh. </xsl:text>
-      <xsl:text>Portions Copright © 1999-2003 </xsl:text>
+      <xsl:text>Portions Copyright © 1999-2003 </xsl:text>
       <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
       <xsl:text> All rights reserved.</xsl:text>
     </p>
