@@ -73,6 +73,9 @@ Usage:
     <target name="xinclude" depends="init, xinclude.init" unless="xinclude.isUpToDate" description="XInclude processing on document">
         <ant dir="refpages" target="all"/>
 
+        <copy todir="build/graphics">
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+        </copy>
         <copy todir="build/figures">
             <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
         </copy>
@@ -114,6 +117,9 @@ Usage:
         <copy todir="build/defguide5/images">
             <fileset dir="${docbook5.xsl}/images" includes="**/*.png"/>
         </copy>
+        <copy todir="build/defguide5/graphics">
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+        </copy>
         <copy todir="build/defguide5/figures">
             <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
         </copy>
@@ -151,6 +157,9 @@ Usage:
         <copy todir="build/chm/htmlhelp/images">
             <fileset dir="${docbook5.xsl}/images" includes="**/*.png"/>
         </copy>
+        <copy todir="build/chm/htmlhelp/graphics">
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+        </copy>
         <copy todir="build/chm/htmlhelp/figures">
             <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
         </copy>
@@ -183,6 +192,9 @@ Usage:
 
         <copy todir="build/pdf/images">
             <fileset dir="${docbook5.xsl}/images" includes="**/*.png"/>
+        </copy>
+        <copy todir="build/pdf/graphics">
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
         </copy>
         <copy todir="build/pdf/figures">
             <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
