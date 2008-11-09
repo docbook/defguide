@@ -74,10 +74,10 @@ Usage:
         <ant dir="refpages" target="all"/>
 
         <copy todir="build/graphics">
-            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
         <copy todir="build/figures">
-            <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
         <exec dir="${basedir}" executable="xsltproc" failonerror="true">
@@ -115,13 +115,13 @@ Usage:
         <copy file="html/defguide.css" todir="build/defguide5"/>
 
         <copy todir="build/defguide5/images">
-            <fileset dir="${docbook5.xsl}/images" includes="**/*.png"/>
+            <fileset dir="${docbook5.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/defguide5/graphics">
-            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
         <copy todir="build/defguide5/figures">
-            <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
         <exec dir="${basedir}/build/defguide5" executable="xsltproc" failonerror="true">
@@ -155,13 +155,13 @@ Usage:
         <copy file="html/defguide.css" todir="build/chm/htmlhelp"/>
 
         <copy todir="build/chm/htmlhelp/images">
-            <fileset dir="${docbook5.xsl}/images" includes="**/*.png"/>
+            <fileset dir="${docbook5.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/chm/htmlhelp/graphics">
-            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
         <copy todir="build/chm/htmlhelp/figures">
-            <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
         <exec dir="${basedir}/build/chm" executable="xsltproc" failonerror="true">
@@ -191,17 +191,17 @@ Usage:
         <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
 
         <copy todir="build/pdf/images">
-            <fileset dir="${docbook5.xsl}/images" includes="**/*.png"/>
+            <fileset dir="${docbook5.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/pdf/graphics">
-            <fileset dir="graphics" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
         <copy todir="build/pdf/figures">
-            <fileset dir="figures" includes="*.eps,*.gif,*.png"/>
+            <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
         <echo message="Making fo ..."/>
-        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="512m"
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m"
                  failonerror="true" dir="${basedir}">
             <classpath refid="lib.classpath"/>
             <arg value="-o"/>
@@ -211,8 +211,9 @@ Usage:
         </java>
 
         <echo message="Making pdf ..."/>
-        <java classname="${fop.class}" fork="true" maxmemory="512m" failonerror="true"
+        <java classname="${fop.class}" fork="true" maxmemory="1024m" failonerror="true"
                 dir="${basedir}">
+            <jvmarg value="-Djava.awt.headless=true"/>
             <classpath refid="lib.classpath"/>
             <arg value="build/pdf/defguide5.fo"/>
             <arg value="build/defguide5.pdf"/>
