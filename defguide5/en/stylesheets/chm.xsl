@@ -7,9 +7,9 @@
                 version="1.0"
                 exclude-result-prefixes="doc exsl set fm">
 
-<xsl:import href="chm-import.xsl"/>
-<xsl:include href="manifest.xsl"/>
 
+<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/htmlhelp/htmlhelp.xsl"/>
+<xsl:include href="manifest.xsl"/>
 
 <xsl:param name="use.extensions">1</xsl:param>
 <xsl:param name="tablecolumns.extension">0</xsl:param>

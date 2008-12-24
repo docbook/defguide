@@ -203,7 +203,14 @@ Usage:
         <echo message="Making fo ..."/>
         <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m"
                  failonerror="true" dir="${basedir}">
+            <jvmarg value="-Xss512k"/>
             <classpath refid="lib.classpath"/>
+            <arg value="-x"/>
+            <arg value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+            <arg value="-y"/>
+            <arg value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+            <arg value="-r"/>
+            <arg value="org.apache.xml.resolver.tools.CatalogResolver"/>
             <arg value="-o"/>
             <arg value="${basedir}/build/pdf/defguide5.fo"/>
             <arg value="${basedir}/build/defguide5.xml"/>
