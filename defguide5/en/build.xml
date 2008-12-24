@@ -108,14 +108,10 @@ Usage:
 
     <!-- Total time: 9 minutes 10 seconds -->
     <target name="html" depends="xinclude,html.init" unless="html.isUpToDate" description="Generate document - html">
-
-        <filter token="docbook5.xsl.url" value="${docbook5.xsl.url}"/>
-        <copy file="stylesheets/html-import.tmpl.xsl" tofile="stylesheets/html-import.xsl" filtering="true" overwrite="true"/>
-
         <copy file="html/defguide.css" todir="build/defguide5"/>
 
         <copy todir="build/defguide5/images">
-            <fileset dir="${docbook5.xsl}/images" includes="**/*.png,**/*.svg"/>
+            <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/defguide5/graphics">
             <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
@@ -149,13 +145,10 @@ Usage:
             This target only work on windows !
         </fail>
 
-        <filter token="docbook5.xsl.url" value="${docbook5.xsl.url}"/>
-        <copy file="stylesheets/chm-import.tmpl.xsl" tofile="stylesheets/chm-import.xsl" filtering="true" overwrite="true"/>
-
         <copy file="html/defguide.css" todir="build/chm/htmlhelp"/>
 
         <copy todir="build/chm/htmlhelp/images">
-            <fileset dir="${docbook5.xsl}/images" includes="**/*.png,**/*.svg"/>
+            <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/chm/htmlhelp/graphics">
             <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
@@ -186,12 +179,8 @@ Usage:
     </target>
 
     <target name="pdf" depends="xinclude,pdf.init" unless="pdf.isUpToDate" description="Generate document - pdf">
-
-        <filter token="docbook5.xsl.url" value="${docbook5.xsl.url}"/>
-        <copy file="stylesheets/fo-import.tmpl.xsl" tofile="stylesheets/fo-import.xsl" filtering="true" overwrite="true"/>
-
         <copy todir="build/pdf/images">
-            <fileset dir="${docbook5.xsl}/images" includes="**/*.png,**/*.svg"/>
+            <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/pdf/graphics">
             <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
