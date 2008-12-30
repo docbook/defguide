@@ -27,9 +27,6 @@ Usage:
     <target name="clean" description="Clean the build directory">
         <delete dir="build"/>
         <delete file="bookinfo.xml"/>
-        <delete file="stylesheets/chm-import.xsl"/>
-        <delete file="stylesheets/fo-import.xsl"/>
-        <delete file="stylesheets/html-import.xsl"/>
         <ant dir="refpages" target="clean"/>
     </target>
 
@@ -48,8 +45,7 @@ Usage:
 
     <target name="validate" depends="xinclude" description="Validate document">
         <jing rngfile="${docbook5.home}/rng/docbook.rng" checkid="false">
-            <fileset dir="${basedir}/src"
-                    includes="**/*.xml"/>
+            <fileset dir="src" includes="**/*.xml"/>
         </jing>
         <!--ant dir="refpages" target="validate"/-->
         <jing rngfile="${docbook5.home}/rng/docbook.rng"
@@ -83,9 +79,9 @@ Usage:
         <exec dir="${basedir}" executable="xsltproc" failonerror="true">
             <arg value="--nonet"/>
             <arg value="--output"/>
-            <arg value="${basedir}/bookinfo.xml"/>
-            <arg value="${basedir}/VERSION.xml"/>
-            <arg value="${basedir}/VERSION.xml"/>
+            <arg value="bookinfo.xml"/>
+            <arg value="VERSION.xml"/>
+            <arg value="VERSION.xml"/>
         </exec>
 
         <exec dir="${basedir}" executable="xmllint">
@@ -93,8 +89,8 @@ Usage:
             <arg value="--xinclude"/>
             <arg value="--format"/>
             <arg value="--output"/>
-            <arg value="${basedir}/build/defguide5.xml"/>
-            <arg value="${basedir}/book.xml"/>
+            <arg value="build/defguide5.xml"/>
+            <arg value="book.xml"/>
         </exec>
     </target>
 
@@ -103,6 +99,7 @@ Usage:
             <srcfiles dir="." includes="book.xml, VERSION.xml"/>
             <srcfiles dir="src" includes="*.xml"/>
             <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
+            <srcfiles dir="stylesheets" includes="html.xsl"/>
         </uptodate>
     </target>
 
@@ -110,6 +107,9 @@ Usage:
     <target name="html" depends="xinclude,html.init" unless="html.isUpToDate" description="Generate document - html">
         <copy file="html/defguide.css" todir="build/defguide5"/>
 
+        <copy todir="build/src/examples">
+          <fileset dir="examples"/>
+        </copy>
         <copy todir="build/defguide5/images">
             <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
@@ -120,11 +120,23 @@ Usage:
             <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
-        <exec dir="${basedir}/build/defguide5" executable="xsltproc" failonerror="true">
-            <arg value="--nonet"/>
-            <arg value="${basedir}/stylesheets/html.xsl"/>
-            <arg value="${basedir}/build/defguide5.xml"/>
-        </exec>
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m" failonerror="true" dir="build/defguide5">
+            <jvmarg value="-Xss512k"/>
+            <classpath refid="lib.classpath"/>
+            <arg value="-x"/>
+            <arg value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+            <arg value="-y"/>
+            <arg value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+            <arg value="-r"/>
+            <arg value="org.apache.xml.resolver.tools.CatalogResolver"/>
+            <arg value="../defguide5.xml"/>
+            <arg value="../../stylesheets/html.xsl"/>
+        </java>
+        <!--exec dir="build/defguide5" executable="xsltproc" failonerror="true">
+            <arg value="- -nonet"/>
+            <arg value="stylesheets/html.xsl"/>
+            <arg value="build/defguide5.xml"/>
+        </exec-->
 
         <touch file="build/defguide5/.done"/>
     </target>
@@ -134,6 +146,7 @@ Usage:
             <srcfiles dir="." includes="book.xml, VERSION.xml"/>
             <srcfiles dir="src" includes="*.xml"/>
             <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
+            <srcfiles dir="stylesheets" includes="htmlhelp.xsl"/>
         </uptodate>
     </target>
 
@@ -147,6 +160,9 @@ Usage:
 
         <copy file="html/defguide.css" todir="build/chm/htmlhelp"/>
 
+        <copy todir="build/src/examples">
+          <fileset dir="examples"/>
+        </copy>
         <copy todir="build/chm/htmlhelp/images">
             <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
@@ -157,17 +173,17 @@ Usage:
             <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
-        <exec dir="${basedir}/build/chm" executable="xsltproc" failonerror="true">
+        <exec dir="build/chm" executable="xsltproc" failonerror="true">
             <arg value="--nonet"/>
-            <arg value="${basedir}/stylesheets/chm.xsl"/>
-            <arg value="${basedir}/build/defguide5.xml"/>
+            <arg value="stylesheets/chm.xsl"/>
+            <arg value="build/defguide5.xml"/>
         </exec>
-        <exec dir="${basedir}/build/chm" executable="hhc" failonerror="false">
+        <exec dir="build/chm" executable="hhc" failonerror="false">
             <arg value="htmlhelp.hhp"/>
         </exec>
 
         <move file="build/chm/defguide5.chm" tofile="build/defguide5.chm"/>
-        <delete dir="build/chm"/>
+        <!--delete dir="build/chm"/-->
     </target>
 
     <target name="pdf.init">
@@ -175,23 +191,36 @@ Usage:
             <srcfiles dir="." includes="book.xml, VERSION.xml"/>
             <srcfiles dir="src" includes="*.xml"/>
             <srcfiles dir="refpages" includes="intro-elements.xml, references.xml, elements/**/*.xml"/>
+            <srcfiles dir="stylesheets" includes="fo.xsl"/>
         </uptodate>
     </target>
 
     <target name="pdf" depends="xinclude,pdf.init" unless="pdf.isUpToDate" description="Generate document - pdf">
+        <copy todir="build/src/examples">
+          <fileset dir="examples"/>
+        </copy>
         <copy todir="build/pdf/images">
             <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
-        <copy todir="build/pdf/graphics">
+        <copy todir="build/refpages/graphics/graphics">
             <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
-        <copy todir="build/pdf/figures">
+        <copy todir="build/refpages/elements/build/figures">
             <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
+        </copy>
+        <copy todir="build/pdf">
+            <fileset dir="${fonts.dir}">
+                <include name="*.ttf"/>
+                <include name="*.ttc"/>
+            </fileset>
+            <fileset dir="${fop.home}/conf">
+                <include name="*.xml"/>
+            </fileset>
         </copy>
 
         <echo message="Making fo ..."/>
         <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m"
-                 failonerror="true" dir="${basedir}">
+                 failonerror="true" dir="build/pdf">
             <jvmarg value="-Xss512k"/>
             <classpath refid="lib.classpath"/>
             <arg value="-x"/>
@@ -201,21 +230,23 @@ Usage:
             <arg value="-r"/>
             <arg value="org.apache.xml.resolver.tools.CatalogResolver"/>
             <arg value="-o"/>
-            <arg value="${basedir}/build/pdf/defguide5.fo"/>
-            <arg value="${basedir}/build/defguide5.xml"/>
-            <arg value="${basedir}/stylesheets/fo.xsl"/>
+            <arg value="defguide5.fo"/>
+            <arg value="../defguide5.xml"/>
+            <arg value="../../stylesheets/fo.xsl"/>
         </java>
 
         <echo message="Making pdf ..."/>
         <java classname="${fop.class}" fork="true" maxmemory="1024m" failonerror="true"
-                dir="${basedir}">
+                dir="build/pdf">
             <jvmarg value="-Djava.awt.headless=true"/>
             <classpath refid="lib.classpath"/>
-            <arg value="build/pdf/defguide5.fo"/>
-            <arg value="build/defguide5.pdf"/>
+            <arg value="-c"/>
+            <arg value="userconfig.xml"/>
+            <arg value="defguide5.fo"/>
+            <arg value="../defguide5.pdf"/>
         </java>
 
-        <delete dir="build/pdf"/>
+        <!--delete dir="build/pdf"/-->
     </target>
 
 </project>
