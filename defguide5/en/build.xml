@@ -182,7 +182,6 @@ Usage:
         </exec>
 
         <move file="build/chm/defguide5.chm" tofile="build/defguide5.chm"/>
-        <!--delete dir="build/chm"/-->
     </target>
 
     <target name="pdf.init">
@@ -207,14 +206,54 @@ Usage:
         <copy todir="build/refpages/elements/build/figures">
             <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
-        <copy todir="build/pdf">
-            <fileset dir="${fonts.dir}">
-                <include name="*.ttf"/>
-                <include name="*.ttc"/>
-            </fileset>
-            <fileset dir="${fop.home}/conf">
-                <include name="*.xml"/>
-            </fileset>
+
+        <echo message="Making fo ..."/>
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m"
+                 failonerror="true" dir="build/pdf">
+            <jvmarg value="-Xss512k"/>
+            <classpath refid="lib.classpath"/>
+            <arg value="-x"/>
+            <arg value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+            <arg value="-y"/>
+            <arg value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+            <arg value="-r"/>
+            <arg value="org.apache.xml.resolver.tools.CatalogResolver"/>
+            <arg value="-o"/>
+            <arg value="defguide5.fo"/>
+            <arg value="../defguide5.xml"/>
+            <arg value="../../stylesheets/fo.xsl"/>
+            <arg value="fop1.extensions=1"/>
+            <arg value="title.font.family=${fop.title.font.family}"/>
+            <arg value="body.font.family=${fop.body.font.family}"/>
+            <arg value="sans.font.family=${fop.sans.font.family}"/>
+            <arg value="ingbat.font.family=${fop.ingbat.font.family}"/>
+            <arg value="monospace.font.family=${fop.monospace.font.family}"/>
+        </java>
+
+        <echo message="Making pdf ..."/>
+        <java classname="${fop.class}" fork="true" maxmemory="1024m" failonerror="true"
+                dir="build/pdf">
+            <jvmarg value="-Djava.awt.headless=true"/>
+            <classpath refid="lib.classpath"/>
+            <arg value="-c"/>
+            <arg value="${fop.home}/conf/userconfig.xml"/>
+            <arg value="defguide5.fo"/>
+            <arg value="../defguide5.pdf"/>
+        </java>
+    </target>
+
+    <target name="pdf-xep" depends="xinclude,pdf.init" unless="pdf.isUpToDate" description="Generate document - pdf - xep">
+        <copy todir="build/src/examples">
+          <fileset dir="examples"/>
+        </copy>
+        <copy todir="build/pdf/images">
+            <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
+        </copy>
+        <copy todir="build/refpages/graphics">
+            <fileset dir="graphics" includes="*.eps,*.gif,*.png,*.svg"/>
+        </copy>
+        <copy todir="build/refpages/elements/build/figures">
+            <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
         <echo message="Making fo ..."/>
@@ -232,20 +271,21 @@ Usage:
             <arg value="defguide5.fo"/>
             <arg value="../defguide5.xml"/>
             <arg value="../../stylesheets/fo.xsl"/>
+            <arg value="xep.extensions=1"/>
         </java>
 
         <echo message="Making pdf ..."/>
-        <java classname="${fop.class}" fork="true" maxmemory="1024m" failonerror="true"
-                dir="build/pdf">
-            <jvmarg value="-Djava.awt.headless=true"/>
-            <classpath refid="lib.classpath"/>
-            <arg value="-c"/>
-            <arg value="userconfig.xml"/>
+        <java classname="com.renderx.xep.XSLDriver" fork="true" maxmemory="1024m"
+                failonerror="true" dir="build/pdf">
+            <jvmarg value="-Xss512k"/>
+            <jvmarg value="-XX:-UseGCOverheadLimit"/>
+            <classpath refid="xep.classpath"/>
+            <arg value="-DCONFIG=${xep.home}/xep.xml"/>
+            <arg value="-quiet"/>
             <arg value="defguide5.fo"/>
             <arg value="../defguide5.pdf"/>
         </java>
 
-        <!--delete dir="build/pdf"/-->
     </target>
 
 </project>

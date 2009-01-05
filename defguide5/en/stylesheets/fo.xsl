@@ -22,13 +22,11 @@
   <xsl:param name="section.autolabel" select="1" />
   <xsl:param name="section.label.includes.component.label">1</xsl:param>
 
-  <xsl:param name="fop.extensions">0</xsl:param>                <!-- fo only -->
-  <xsl:param name="fop1.extensions">1</xsl:param>               <!-- fo only -->
   <xsl:param name="variablelist.as.blocks" select="1" />        <!-- fo only -->
   <xsl:param name="hyphenate">false</xsl:param>                 <!-- fo only -->
   <xsl:param name="paper.type" select="'A4'"></xsl:param>       <!-- fo only -->
 
-  <!-- English font related Settings -->
+  <!-- Default font settings -->
   <!--
   <xsl:param name="title.font.family">sans-serif</xsl:param>
   <xsl:param name="body.font.family">serif</xsl:param>
@@ -37,15 +35,15 @@
   <xsl:param name="monospace.font.family">monospace</xsl:param>
   <xsl:param name="symbol.font.family">Symbol,ZapfDingbats</xsl:param>
   -->
+
+  <!-- Custom font settings - preferred truetype font -->
+  <!--
   <xsl:param name="title.font.family">Arial,Calibri,sans-serif,SimHei</xsl:param>
   <xsl:param name="body.font.family">Times New Roman,Cambria,Cambria Math,serif,SimSun</xsl:param>
   <xsl:param name="sans.font.family">Arial,Calibri,sans-serif,SimHei</xsl:param>
   <xsl:param name="dingbat.font.family">Times New Roman,Cambria,Cambria Math,serif,SimSun</xsl:param>
   <xsl:param name="monospace.font.family">Courier New,monospace,FangSong</xsl:param>
-  <xsl:param name="symbol.font.family">Symbol,ZapfDingbats</xsl:param>
-
-  <xsl:param name="title.fontset">Arial,Calibri,sans-serif,Symbol,ZapfDingbats,SimHei</xsl:param>
-  <xsl:param name="body.fontset">Times New Roman,Cambria,Cambria Math,serif,Symbol,ZapfDingbats,SimSun</xsl:param>
+  -->
 
   <!-- Page related Settings -->
   <xsl:param name="page.margin.inner">1.5cm</xsl:param>
