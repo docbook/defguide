@@ -66,7 +66,8 @@ Usage:
         </uptodate>
     </target>
 
-    <target name="xinclude" depends="init, xinclude.init" unless="xinclude.isUpToDate" description="XInclude processing on document">
+    <target name="xinclude" depends="init, xinclude.init" unless="xinclude.isUpToDate"
+            description="XInclude processing on document">
         <ant dir="refpages" target="all"/>
 
         <copy todir="build/graphics">
@@ -102,11 +103,12 @@ Usage:
         </uptodate>
     </target>
 
-    <!-- Total time: 9 minutes 10 seconds -->
-    <target name="html" depends="xinclude,html.init" unless="html.isUpToDate" description="Generate document - html">
+    <!-- Total time: 14 minutes 35 seconds -->
+    <target name="html" depends="xinclude,html.init" unless="html.isUpToDate"
+            description="Generate document - html">
         <copy file="html/defguide.css" todir="build/defguide5"/>
 
-        <copy todir="build/src/examples">
+        <copy todir="build/defguide5/src/examples">
           <fileset dir="examples"/>
         </copy>
         <copy todir="build/defguide5/images">
@@ -119,7 +121,8 @@ Usage:
             <fileset dir="figures" includes="*.eps,*.gif,*.png,*.svg"/>
         </copy>
 
-        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m" failonerror="true" dir="build/defguide5">
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="512m"
+                failonerror="true" dir="build/defguide5">
             <jvmarg value="-Xss512k"/>
             <classpath refid="lib.classpath"/>
             <arg value="-x"/>
@@ -149,7 +152,8 @@ Usage:
         </uptodate>
     </target>
 
-    <target name="chm" depends="xinclude,chm.init" unless="chm.isUpToDate" description="Generate document - chm">
+    <target name="chm" depends="xinclude,chm.init" unless="chm.isUpToDate"
+            description="Generate document - chm">
         <fail>
             <condition>
                 <not><os family="windows"/></not>
@@ -193,11 +197,13 @@ Usage:
         </uptodate>
     </target>
 
-    <target name="pdf" depends="xinclude,pdf.init" unless="pdf.isUpToDate" description="Generate document - pdf">
+    <!-- Total time: 6 minutes 27 seconds -->
+    <target name="pdf" depends="xinclude,pdf.init" unless="pdf.isUpToDate"
+            description="Generate document - pdf">
         <copy todir="build/src/examples">
           <fileset dir="examples"/>
         </copy>
-        <copy todir="build/pdf/images">
+        <copy todir="build/images">
             <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/refpages/graphics">
@@ -208,8 +214,8 @@ Usage:
         </copy>
 
         <echo message="Making fo ..."/>
-        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m"
-                 failonerror="true" dir="build/pdf">
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="512m"
+                failonerror="true" dir="build">
             <jvmarg value="-Xss512k"/>
             <classpath refid="lib.classpath"/>
             <arg value="-x"/>
@@ -220,8 +226,8 @@ Usage:
             <arg value="org.apache.xml.resolver.tools.CatalogResolver"/>
             <arg value="-o"/>
             <arg value="defguide5.fo"/>
-            <arg value="../defguide5.xml"/>
-            <arg value="../../stylesheets/fo.xsl"/>
+            <arg value="defguide5.xml"/>
+            <arg value="../stylesheets/fo.xsl"/>
             <arg value="fop1.extensions=1"/>
             <arg value="title.font.family=${fop.title.font.family}"/>
             <arg value="body.font.family=${fop.body.font.family}"/>
@@ -231,22 +237,24 @@ Usage:
         </java>
 
         <echo message="Making pdf ..."/>
-        <java classname="${fop.class}" fork="true" maxmemory="1024m" failonerror="true"
-                dir="build/pdf">
+        <java classname="${fop.class}" fork="true" maxmemory="1024m"
+                failonerror="true" dir="build">
             <jvmarg value="-Djava.awt.headless=true"/>
             <classpath refid="lib.classpath"/>
             <arg value="-c"/>
             <arg value="${fop.home}/conf/userconfig.xml"/>
             <arg value="defguide5.fo"/>
-            <arg value="../defguide5.pdf"/>
+            <arg value="defguide5.pdf"/>
         </java>
     </target>
 
-    <target name="pdf-xep" depends="xinclude,pdf.init" unless="pdf.isUpToDate" description="Generate document - pdf - xep">
+    <!-- Total time: 8 minutes 32 seconds -->
+    <target name="pdf-xep" depends="xinclude,pdf.init" unless="pdf.isUpToDate"
+            description="Generate document - pdf - xep">
         <copy todir="build/src/examples">
           <fileset dir="examples"/>
         </copy>
-        <copy todir="build/pdf/images">
+        <copy todir="build/images">
             <fileset dir="${docbook.xsl}/images" includes="**/*.png,**/*.svg"/>
         </copy>
         <copy todir="build/refpages/graphics">
@@ -257,8 +265,8 @@ Usage:
         </copy>
 
         <echo message="Making fo ..."/>
-        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="1024m"
-                 failonerror="true" dir="build/pdf">
+        <java classname="com.icl.saxon.StyleSheet" fork="true" maxmemory="512m"
+                failonerror="true" dir="build">
             <jvmarg value="-Xss512k"/>
             <classpath refid="lib.classpath"/>
             <arg value="-x"/>
@@ -269,21 +277,20 @@ Usage:
             <arg value="org.apache.xml.resolver.tools.CatalogResolver"/>
             <arg value="-o"/>
             <arg value="defguide5.fo"/>
-            <arg value="../defguide5.xml"/>
-            <arg value="../../stylesheets/fo.xsl"/>
+            <arg value="defguide5.xml"/>
+            <arg value="../stylesheets/fo.xsl"/>
             <arg value="xep.extensions=1"/>
         </java>
 
         <echo message="Making pdf ..."/>
-        <java classname="com.renderx.xep.XSLDriver" fork="true" maxmemory="1024m"
-                failonerror="true" dir="build/pdf">
+        <java classname="com.renderx.xep.XSLDriver" fork="true" maxmemory="1536m"
+                failonerror="true" dir="build">
             <jvmarg value="-Xss512k"/>
-            <jvmarg value="-XX:-UseGCOverheadLimit"/>
             <classpath refid="xep.classpath"/>
             <arg value="-DCONFIG=${xep.home}/xep.xml"/>
             <arg value="-quiet"/>
             <arg value="defguide5.fo"/>
-            <arg value="../defguide5.pdf"/>
+            <arg value="defguide5.pdf"/>
         </java>
 
     </target>

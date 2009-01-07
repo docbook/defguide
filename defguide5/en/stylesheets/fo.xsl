@@ -52,6 +52,15 @@
   <xsl:param name="body.start.indent">24pt</xsl:param>
   <xsl:param name="body.end.indent">0pt</xsl:param>
 
+  <!-- Breaking long lines -->
+  <xsl:param name="hyphenate.verbatim">1</xsl:param>
+  <xsl:param name="hyphenate.verbatim.characters"></xsl:param>
+  <xsl:attribute-set name="monospace.verbatim.properties"
+                     use-attribute-sets="verbatim.properties monospace.properties">
+    <xsl:attribute name="wrap-option">wrap</xsl:attribute>
+    <xsl:attribute name="hyphenation-character">&#x25BA;</xsl:attribute>
+  </xsl:attribute-set>
+
   <!-- Prevent blank pages in output -->
   <xsl:template name="book.titlepage.before.verso">
   </xsl:template>
