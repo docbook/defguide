@@ -60,8 +60,7 @@ tailor DocBook explicitly for your information.</para>
 <listitem><para>Understanding all of the elements. Each element is
 extensively documented, including the intended semantics and the
 purpose of all its attributes. An example of proper usage is given
-for every element. The parameter entities and character entities are
-also described.
+for every element.
 </para>
 </listitem>
 <listitem><para>Stylesheets. The DocBook XSL Stylesheets, part of the
@@ -98,9 +97,9 @@ V5.0, DocBook is normatively an XML vocabulary.</para>
 </note>
 
 <para>Some sections of this book describe tools and applications. For
-the most part, these are Microsoft Windows or <acronym>UNIX</acronym>
+the most part, these are Microsoft Windows or <acronym>Linux</acronym>
 applications, although there's nothing about DocBook that makes it
-unsuitable for the Mac or <acronym>VM/CMS</acronym> or any other
+unsuitable for the Mac or any other
 operating system of your choice.
 </para>
 </section>
@@ -110,31 +109,27 @@ operating system of your choice.
 
 <para>This book is divided into three parts.
 <citetitle>Part I: Introduction </citetitle> is an introduction to
-structured markup and DocBook:</para>
+structured markup and DocBook, and includes the following chapters:</para>
 <variablelist>
+<varlistentry><term><xref linkend="preface"/></term>
+<listitem>
+<para>This Preface.</para>
+</listitem>
+</varlistentry>
 <varlistentry><term><xref linkend="ch-gsxml"/></term>
 <listitem>
-<para>A quick introduction to structured markup.</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><xref linkend="ch-create"/></term>
-<listitem>
-<para>How to make DocBook documents.</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><xref linkend="ch-parse"/></term>
-<listitem>
-<para>Parsing and validating DocBook documents.</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><xref linkend="ch-publish"/></term>
-<listitem>
-<para>How to publish DocBook documents.</para>
+<para>Getting Started with DocBook. This chapter combines and updates
+the information in the <quote>Getting Started with SGML/XML,</quote>
+<quote>Creating DocBook Documents,</quote>
+<quote>Parsing DocBook Documents,</quote> and
+<quote>Publishing DocBook Documents</quote> chapters from the First Edition,
+along with some of the information originally in Appendix A,
+<quote>Installation</quote>.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><xref linkend="app-customizing"/></term>
 <listitem>
-<para>How to customize DocBook.</para>
+<para>How to Customize DocBook.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -157,11 +152,6 @@ the DocBook V5.0 schema.</phrase>
 <para><citetitle>Part III: Appendixes</citetitle> discusses other resources:
 </para>
 <variablelist>
-<varlistentry><term><xref linkend="app-install"/></term>
-<listitem>
-<para>How to install DocBook and the stylesheets.</para>
-</listitem>
-</varlistentry>
 <varlistentry><term><xref linkend="app-versions"/></term>
 <listitem>
 <para>A guide to DocBook versions, including a summary of the features
@@ -226,7 +216,7 @@ filename.</para>
 </listitem>
 
 <listitem>
-<para><filename>Italic</filename> is used for filenames and
+<para>An <filename>italic</filename> font is used for filenames and
 (in the print version of the book) <acronym>URL</acronym>s.
 </para>
 </listitem>
@@ -242,11 +232,9 @@ in the print version of the book.</para>
 <section xml:id="pref-getbook">
 <title>Getting This Book</title>
 
-<para>If you want to hold this book in your hand and flip through its
-pages, you'll have to print it yourself. As of July, 2007, there are no
-plans to publish it on dead trees again. Our immediate focus is on the
-web presentation, but we do expect to provide a reasonable PDF version in
-due course.</para>
+<para condition="online">If you want to hold this book in your hands and
+flip through its pages, you can now buy a copy from O'Reilly and Associates
+or at your favorite online bookseller.</para>
 
 <para>You can also get this book in electronic form, as a DocBook
 document, and in <acronym>HTML</acronym> from this book's web site:
@@ -258,7 +246,7 @@ document, and in <acronym>HTML</acronym> from this book's web site:
 <title>Getting Examples from This Book</title>
 
 <para>All of the examples are online at the book's web site. You can
-get the most up-to-date information about this book from the web site:
+get the most up-to-date information at the web site:
 <link xlink:href="http://docbook.org/">http://docbook.org/</link>.</para>
 </section>
 
@@ -268,7 +256,7 @@ get the most up-to-date information about this book from the web site:
 <para>You can get DocBook from 
 <link xlink:href="http://docbook.org/">http://docbook.org/</link>.
 It is also available from the official OASIS web site,
-<link xlink:href="http://docbook.org/">http://www.oasis-open.org/docbook/</link>.
+<link xlink:href="http://www.oasis-open.org/docbook/">http://www.oasis-open.org/docbook/</link>.
 </para>
 
 </section>
@@ -286,10 +274,10 @@ your bug reports and comments to us at
 </section>
 
 <section xml:id="acknowledgements">
-<title>Acknowledgements from the First Edition</title>
+<title>Acknowledgments from the First Edition</title>
 
 <section xml:id="pref-acknorm">
-<title>Acknowledgements from Norm</title>
+<title>Acknowledgments from Norm</title>
 
 <para>This book has been in the works for a long time. It could not
 have been completed without the help and encouragement of a lot of
@@ -312,7 +300,7 @@ a better book because of them.
 </para>
 </section>
 <section xml:id="pref-acklen">
-<title>Acknowledgements from Lenny</title>
+<title>Acknowledgments from Lenny</title>
 
 <para>My gratitude goes back to Dale Dougherty and Terry Allen, who
 long ago encouraged me and the production department at O'Reilly to learn
@@ -323,7 +311,7 @@ supreme graciousness in keeping me a part of this project.
 </para>
 </section>
 <section xml:id="pref-ackboth">
-<title>Acknowledgements from Norm and Lenny</title>
+<title>Acknowledgments from Norm and Lenny</title>
 
 <para>
 Thanks finally to the great people at O'Reilly who encouraged us to
@@ -334,6 +322,12 @@ produced it (Chris Maden, Madeline Newell, and David Futato), and
 indexed it (Ellen Troutman).
 </para>
 </section>
+</section>
+<section>
+  <title>Acknowledgments from the Second Edition</title>
+  <para>
+    Thanks to .....
+  </para>
 </section>
 
 </preface>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="app-customizing">
+<chapter xmlns="http://docbook.org/ns/docbook"
+         version="5.0"
+         xml:id="app-customizing"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
 <?dbhtml filename="ch05.html"?>
 <title>Customizing DocBook</title>
 <info>
@@ -10,32 +13,29 @@
 <para><indexterm significance="normal"><primary>customizing</primary>
   <secondary>DocBook schema</secondary></indexterm><indexterm significance="normal"><primary>DocBook schema</primary>
   <secondary>customizing</secondary>
-</indexterm>For the applications you have in mind, DocBook <quote>out
+</indexterm><indexterm significance="normal"><primary>attributes</primary>
+  <secondary>DocBook schema, customizing</secondary>
+</indexterm><indexterm significance="normal"><primary>elements</primary>
+  <secondary>DocBook schema, customizing</secondary>
+</indexterm>For some applications, DocBook <quote>out
 of the box</quote> may not be exactly what you need. Perhaps you need
 additional inline elements or perhaps you want to remove elements that
 you never want your authors to use. By design, DocBook makes this sort
 of customization easy.</para>
-
-<para><indexterm significance="normal"><primary>attributes</primary>
-  <secondary>DocBook schema, customizing</secondary>
-</indexterm><indexterm significance="normal"><primary>elements</primary>
-  <secondary>DocBook schema, customizing</secondary>
-</indexterm>This chapter explains how to make your own
-<firstterm>customization layer</firstterm>. You might do this in order
-to:
+<para>
+It is even easier to customize DocBook 5.0 than it was to customize
+earlier releases. This is because DocBook 5.0 uses RELAX NG to
+express its schema. RELAX NG provides better
+support for modifications than DTDs, and the DocBook
+schema takes full advantage of that support.
 </para>
-
-<itemizedlist>
-<listitem><para>Add new elements</para></listitem>
-<listitem><para>Remove elements</para></listitem>
-<listitem><para>Change the structure of existing elements</para></listitem>
-<listitem><para>Add new attributes</para></listitem>
-<listitem><para>Remove attributes</para></listitem>
-<listitem><para>Broaden the range of values allowed in an
-attribute</para></listitem>
-<listitem><para>Narrow the range of values in an attribute to a
-specific list or a fixed value</para></listitem>
-</itemizedlist>
+<para>This chapter describes the organization of the RELAX NG
+schema for DocBook and how to make your own <firstterm>customization layer</firstterm>. It contains methods and examples for adding, removing, and
+modifying elements and attributes, and conventions for naming and
+versioning DocBook customizations. It assumes some familiarity with
+RELAX NG. If you are unfamiliar with RELAX NG, you can find a tutorial
+introduction in the <citetitle xlink:href="http://www.relaxng.org/tutorial-20011203.html">RELAX NG Tutorial</citetitle>.
+</para>
 
 <para><indexterm significance="normal"><primary>extensions, DocBook schema</primary>
 </indexterm><indexterm significance="normal"><primary>environment</primary>
@@ -80,7 +80,13 @@ learning the syntax if it's not already familiar to you.
 
 <section xml:id="s-notdocbook"><info><title>If You Change DocBook,
 It's Not DocBook Anymore!</title></info>
-
+<para>The license agreement under
+which DocBook is distributed gives you complete freedom to change,
+modify, reuse, and generally hack the schema in any way you want,
+except that you must not call your alterations <quote>DocBook.</quote>
+</para>
+<section xml:id="s-dbversion">
+<title>Namespace and Version</title>
 <para>Starting with DocBook V5.0, DocBook is identified by its namespace,
 <uri>http://docbook.org/ns/docbook</uri>. The particular version of
 DocBook to which an element conforms is identified by its
@@ -89,71 +95,70 @@ specify a version, the version of the closest ancestor DocBook
 element that does specify a version is assumed. The 
 <tag class="attribute">version</tag> attribute is required on the root
 DocBook element.</para>
-
-<para>If you make any changes to the DocBook schema, it is imperative
-that you provide an alternative version identifier that you use for
-the schema and the modules you changed. The license agreement under
-which DocBook is distributed gives you complete freedom to change,
-modify, reuse, and generally hack the schema in any way you want,
-except that you must not call your alterations <quote>DocBook</quote>.
+<para>Here is how these attributes would appear on the <tag>book</tag> element.
 </para>
+<informalexample xml:id="ex.rootelement">
+<programlisting language="xml"><![CDATA[<book xmlns="http://docbook.org/ns/docbook"
+      version="5.0">
+  …
+</book>
+]]></programlisting>
+</informalexample>
+<para>If you make any changes to the DocBook schema, the namespace
+remains the same, but you must provide an alternative version
+identifier for the schema and the modules you changed. The version
+attribute identifies the version of DocBook the alternate is based on,
+specifies what type of variant it is, and names the variant and any
+additional modules. While the format for the version string is not
+part of the normative specification, the DocBook Technical Committee
+recommends the following format:</para>
 
-<para>The following format is recommended:</para>
-
-<screen><replaceable>base_version</replaceable>-[subset|extension|variant] (<replaceable>name</replaceable>[-<replaceable>version</replaceable>])+</screen>
+<screen><replaceable>base_version</replaceable>-(subset|extension|variant) (<replaceable>name</replaceable>[-<replaceable>version</replaceable>])+</screen>
 
 <para>For example, version 1.0 of Acme Corporation's extension of
 DocBook V5.0 could be identified as
 “<literal>5.0-extension acme-1.0</literal>”.</para>
 
-<para>A document that relied on the version 3.2 of Example
-Corporation's subset of DocBook V5.0, MathML 2.0, and SVG 1.1 could be
+<para>A document that relied on version 3.2 of Sample
+Corporation's subset of DocBook V5.0, with MathML 2.0 and SVG 1.1, could be
 identified as:
-“<literal>5.0-subset example-3.2 mathml-2.0 svg-1.1</literal>”.</para>
+“<literal>5.0-subset Sample-3.2 mathml-2.0 svg-1.1</literal>”.</para>
 
-<para>If your schema is a proper subset, you can advertise this status
-by using the <literal>subset</literal> keyword in the version. If
-your schema contains any markup model extensions, you
-can advertise this status by using the <literal>extension</literal>
+<para>If your schema is a proper subset, use the
+<literal>subset</literal> keyword in the version. If your schema
+extends the markup model, use the <literal>extension</literal>
 keyword. If you'd rather not characterize your variant specifically as
-a subset or an extension, you can leave out this field entirely or,
-if you prefer, use the <literal>variant</literal> keyword.
+a subset or an extension, use the <literal>variant</literal> keyword.
 </para>
-
+</section>
 <section xml:id="pubid">
 <title>Public Identifiers</title>
 
 <para><indexterm>
   <primary>public identifiers</primary>
   <secondary>DocBook</secondary>
-  <tertiary>altering</tertiary>
-</indexterm>Although not directly supported by RELAX NG, in some cases it may still
-be valuable to identify a DocBook V5.0 customization layer with a public identifier.
-A public identifier for DocBook V5.0 is:
+  <tertiary>altering</tertiary> </indexterm>Although not directly
+  supported by RELAX NG, in some cases it may still be valuable to
+  identify a DocBook V5.0 customization layer with a public
+  identifier.  A public identifier for DocBook V5.0 is:
 </para>
 <screen>-//OASIS//DTD DocBook V5.0//EN</screen>
 
-<para>If you make any changes to the structure of the schema, it is
-imperative that you alter the public identifier that you use to
-identify it.
-</para>
-
 <para><indexterm><primary>owner-identifiers</primary>
   <secondary>changing (DocBook customization)</secondary></indexterm>
-<indexterm><primary>description, changing (DocBook customization)</primary>
-</indexterm>You should change both the owner identifier and the
-description. Formal public identifiers for the base DocBook modules would have
-identifiers with the 
-following syntax:
-<screen>
--//OASIS//<replaceable>text-class</replaceable> DocBook <replaceable>description</replaceable> V<replaceable>version</replaceable>//EN
+  <indexterm><primary>description, changing (DocBook
+  customization)</primary> </indexterm>If you make any changes to the
+  structure of the schema, you must change the public identifier. You
+  should change both the owner identifier and the description. Formal
+  public identifiers for the base DocBook modules would have
+  identifiers with the following syntax:
+<screen>-//OASIS//<replaceable>text-class</replaceable> DocBook <replaceable>description</replaceable> V<replaceable>version</replaceable>//EN
 </screen>
 </para>
 <para>
-Your own formal public identifiers should use the following syntax in
-order to record their DocBook derivation:
-<screen>
--//<replaceable>your-owner-ID</replaceable>//<replaceable>text-class</replaceable> DocBook V<replaceable>version</replaceable>-Based <optional>Subset|Extension|Variant</optional> <replaceable>your-descrip-and-version</replaceable>//<replaceable>lang</replaceable>
+Your public identifiers should use the following syntax:
+<screen>-//<replaceable>Owner-ID</replaceable>//<replaceable>text-class</replaceable> DocBook V<replaceable>version</replaceable>-Based (Subset|Extension|Variant) \
+<replaceable>Description-and-version</replaceable>//<replaceable>lang</replaceable>
 </screen>
 </para>
 
@@ -163,13 +168,12 @@ order to record their DocBook derivation:
 </para>
 
 <para><indexterm><primary>subsets (DocBook schema)</primary>
-</indexterm>If your schema is a proper subset, you can advertise this status by
-using the <literal>Subset</literal> keyword in the description. If
-your schema contains any markup model extensions, you can advertise
-this status by using the <literal>Extension</literal> keyword. If
-you'd rather not characterize your variant specifically as a subset or
-an extension, you can leave out this field entirely, or, if you
-prefer, use the <literal>Variant</literal> keyword.
+</indexterm>If your schema is a proper subset, use the
+<literal>Subset</literal> keyword in the description. If your schema
+extends the markup model, use the
+<literal>Extension</literal> keyword. If you'd rather not characterize
+your variant specifically as a subset or an extension, use the
+<literal>Variant</literal> keyword.
 </para>
 </section>
 </section>
@@ -200,12 +204,21 @@ we will use in the following examples.</para>
 </section>
 
 <section xml:id="ch05-patnames">
-<title>DocBook Pattern Names</title>
+<title>DocBook Schema Structure</title>
 
-<para>The names of the patterns used in a RELAX NG grammar are arbitrary,
-they have nothing to do with the names of the elements and attributes defined
-by the schema. The DocBook RELAX NG grammar employs a number of naming
-conventions in order to make it easier to navigate.</para>
+<para>
+The DocBook RELAX NG schema is highly modular, using named patterns
+extensively. Every element, attribute, attribute list, and enumeration
+has its own named pattern. In addition, there are named patterns for
+logical combinations of elements and attributes. These named patterns
+provide <quote>hooks</quote> into the schema that allow you to do a
+wide range of customization by simply redefining one or more of the
+named patterns.
+</para>
+<para>The names of the patterns used in a RELAX NG grammar can be defined
+in any way the schema designer chooses. To make it easier to navigate,
+the DocBook RELAX NG grammar employs the following naming
+conventions:</para>
 
 <variablelist>
 <varlistentry>
@@ -298,7 +311,7 @@ them selectively.
 <term><literal>db.<replaceable>*</replaceable></literal></term>
 <listitem>
 <para>Is the pattern that matches a particular DocBook element.
-element. For example, <literal>db.title.role</literal> is the pattern
+element. For example, <literal>db.title</literal> is the pattern
 that matches <tag>title</tag>.
 </para>
 <para>RELAX NG allows multiple patterns to match the same element, so sometimes
@@ -314,14 +327,18 @@ a <tag>indexterm</tag> with varying attributes.</para>
 <para>These are conventions, not hard and fast rules. There are patterns that
 don't follow these conventions.</para>
 </section>
-</section>
 <section xml:id="ch05-genstruct">
 <title>The General Structure of Customization Layers</title>
 
 <para><indexterm><primary>customizing</primary>
   <secondary>DocBook</secondary>
     <tertiary>structure (customization layers)</tertiary>
-</indexterm>Although customization layers vary in complexity, most of
+    </indexterm>Creating a customized schema is similar to creating a
+customization layer for XSL. The schema customization layer is a
+new RELAX NG schema that defines your changes and includes the
+standard docbook schema. You then validate using the schema
+customization as your schema.
+Although customization layers vary in complexity, most of
 them have the same general structure as other customization layers of
 similar complexity.
 </para>
@@ -375,6 +392,7 @@ include statement can augment existing patterns (even redefined ones).
 <para>There are other possibilities as well, these examples are
 illustrative, not exhaustive.</para>
 </section>
+</section>
 
 <section xml:id="ch05-write">
 <title>Writing, Testing, and Using a Customization Layer</title>
@@ -402,24 +420,23 @@ or attribute, remove one, or change some other aspect of the schema.
 <secondary>adding</secondary>
 </indexterm>Adding an element, particularly an inline element, is one
 possibility. If you're writing about cryptography, you might want
-to add a “<literal>cleartext</literal>” element, for example.
+to add a “<literal>cleartext</literal>” element, for example. The
+next section describes how to create a customization layer to do this.
 </para>
 </section>
 
 <section><title>Deciding How to Change a Customization Layer</title>
 
 <para><indexterm><primary>customizing</primary>
-  <secondary>DocBook schema</secondary>
-    <tertiary>changing customization layers</tertiary>
-</indexterm>Figuring out what to change may be the hardest part of the
-process. Finding something similar usually provides a
-good model for new changes.
-</para>
-
-<para>Depending on the exact focus of your document, there are
-probably several candidates. In this case, all of the following look
-plausible: technical inlines, programming inlines, and domain inlines.
-Let's suppose you chose the domain inlines.
+<secondary>DocBook schema</secondary>
+<tertiary>changing customization layers</tertiary>
+</indexterm>Figuring out what to change may be the hardest part of
+the process. For the <tag>cleartext</tag> example, there are
+several patterns that you could possibly change. The choice will
+depend on the exact focus of your document. Here are several
+candidates, all of which look plausible: technical inlines,
+programming inlines, and domain inlines.  Let's suppose you chose
+the domain inlines.
 </para>
 
 <para>As shown in <xref linkend="ex-addcleartext"/>, your
@@ -428,7 +445,7 @@ inlines, and then provide a pattern that matches the new element.
 </para>
 
 <example xml:id="ex-addcleartext">
-<title>Adding <literal>cleartext</literal> with a Customization Layer</title>
+<title>Adding <tag>cleartext</tag> with a Customization Layer</title>
 <programlistingco>
 <areaspec>
 <area xml:id="gs3-d1" coords="6 50" units="linecolumn"/>
@@ -443,27 +460,27 @@ inlines, and then provide a pattern that matches the new element.
 <calloutlist>
 <callout arearefs="gs3-d1"><para>The “<literal>|=</literal>” operator
 adds a new choice to a pattern. So this line makes the
-“<literal>db.cleartext</literal>” pattern a valid option where (anywhere that)
+“<literal>db.cleartext</literal>” pattern a valid option anywhere that
 “<literal>db.domain.inlines</literal>” appears.</para>
 </callout>
 <callout arearefs="gs3-d1b"><para>Next, we create a pattern for the
 <literal>cleartext</literal> element. The convention in the DocBook
 schema is to create three patterns, one for the role attribute, one
-for the attributes, and one for the element. We use that pattern here
-in case someone wants to customize our customization.</para>
+for the attributes, and one for the element. By following this convention,
+we make it easier for someone to customize our customization.</para>
 </callout>
 <callout arearefs="gs3-d2"><para>Defining a separate pattern for the role
 attribute makes it easy for customizers to change it on a per-element 
 basis.</para>
 </callout>
 <callout arearefs="gs3-d3"><para>Defining a separate pattern for the attributes
-makes it easy for customizer to change them on a per-element basis.
+makes it easy for customizers to change them on a per-element basis.
 </para>
 </callout>
 <callout arearefs="gs3-d4"><para>The pattern for the element pulls it all
 together. The pattern “<literal>db._text</literal>” matches text plus
-a number of ubiquitous or nearly ubiquitous inlines. It's recommended
-unless you really, really want only text.</para>
+a number of ubiquitous or nearly ubiquitous inlines. Use this pattern
+unless you <emphasis>really</emphasis> want only text.</para>
 </callout></calloutlist>
 </programlistingco>
 </example>
@@ -477,11 +494,12 @@ unless you really, really want only text.</para>
     <tertiary>writing, testing, and using customization layers</tertiary></indexterm>
 <indexterm><primary>DocBook</primary>
   <secondary>customizing</secondary>
-    <tertiary>using customization layer</tertiary>
-</indexterm>Using a customization layer is as simple as referring to it
-instead of the base DocBook schema where your tools offer the option.
+    <tertiary>using customization layer</tertiary> </indexterm>Using a
+    customization layer is simple.  Just put the customization into a
+    file, for example <filename>mycustomization.rnc</filename>, then
+    refer to that file instead of the DocBook schema when your tools
+    offer the option.
 </para>
-</section>
 </section>
 
 <section xml:id="cust.test">
@@ -504,6 +522,10 @@ will help you identify errors that you've introduced to the schema itself.
 After you are confident that the schema is correct, begin testing with
 instances that you expect (and don't expect) to be valid against it.
 </para>
+<para>The following sections contain examples for several
+common customizations.
+</para>
+</section>
 </section>
 
 <section xml:id="ch05-remvelem">
@@ -697,9 +719,8 @@ etc.) to appear in a table cell.</para>
 <para>The extent to which any particular change is easy or hard
 depends in part on how many patterns need to be changed. The DocBook
 Technical Committee is generally open to the idea of adding more
-patterns if it improves the readability of customization layers. Feel
-free to ask, if you think some refactoring would make your job
-easier.</para>
+patterns if it improves the readability of customization layers. If
+you think some refactoring would make your job easier, feel free to ask.</para>
 </section>
 </section>
 
@@ -708,9 +729,6 @@ easier.</para>
 
 <para>Just as there may be more elements than you need, there may be more
 attributes.</para>
-
-<section>
-<title>Removing an Attribute</title>
 
 <para><indexterm><primary>attributes</primary>
   <secondary>removing</secondary></indexterm>
@@ -724,6 +742,7 @@ to redefine the “<literal>db.orderedlist.continuation.attribute</literal>”
 as not allowed; the other would be to redefine the
 “<literal>db.orderedlist.attlist</literal>” pattern so that it does not
 include the continuation attribute. Either would accomplish the goal.
+<xref linkend="ex.remvcontinuation"/> uses the first method.
 </para>
 
 <example xml:id="ex.remvcontinuation">
@@ -803,21 +822,22 @@ and <tag class="attribute">lang</tag>.
 <textdata fileref="examples/remvcommon.rnc"/>
 </textobject></programlisting>
 </example>
-
+<!-- Seems like this is orphaned or out of context.
 <para>The <tag class="attribute">xml:id</tag> attribute is added in two
 other patterns, one where it's required and one where it's optional.</para>
-</section>
+-->
 </section>
 </section>
 
 <section xml:id="ch05-addelem">
-<title>Adding Elements: Adding a <literal>sect6</literal></title>
+<title>Adding Elements</title>
 
 <para><indexterm><primary>elements</primary>
   <secondary>adding</secondary>
 </indexterm>Adding a new inline or block element is generally a
 straightforward matter of creating a pattern for the new element and
-“|=” adding it to the right pattern. But if your new element is more
+“<literal>|=</literal>” adding it to the right pattern, as we did in
+<xref linkend="ex-addcleartext"/>. But if your new element is more
 intimately related to the existing structure of the document, it may
 require more surgery.</para>
 
@@ -837,10 +857,44 @@ extends DocBook by adding a <literal>sect6</literal> element.
 <literal>sect6</literal>.
 </para>
 </section>
+<section xml:id="ch05-addattribute">
+  <title>Adding Attributes</title>
+<para><indexterm><primary>attributes</primary>
+<secondary>adding</secondary> </indexterm>The simplest way to add an
+attribute to a single element is to add it to the attlist pattern for
+that element. <xref linkend="ex.addattribute"/> adds the optional
+attributes <tag class="attribute">born</tag> and <tag
+class="attribute">died</tag> to the attribute list for <tag>author</tag>. The
+<literal>db.author.attlist</literal> pattern is redefined to interleave the two new
+optional attributes with the existing attributes on the list.
+  
+</para>
+<example xml:id="ex.addattribute">
+<title>Adding <literal>born</literal> and <literal>died</literal> Attributes</title>
+<programlistingco>
+<areaspec>
+  <area xml:id="exarea-a1" coords="6 50" units="linecolumn"/>
+  <area xml:id="exarea-a2" coords="7 50" units="linecolumn"/>
+</areaspec>
+<programlisting><textobject>
+<textdata fileref="examples/addattribute.rnc"/>
+</textobject></programlisting>
+<calloutlist>
+<callout
+arearefs="exarea-a1"><para><quote><literal>&amp;=</literal></quote>
+interleaves the two new optional attributes with the existing
+attributes on the list.</para></callout>
+<callout
+arearefs="exarea-a2"><para><literal>db.date.contentmodel</literal> is a pattern used for any attribute or element that represents a date.</para></callout>
+</calloutlist>
+</programlistingco>
+</example>
 
+</section>
 <section xml:id="ch05-classrole">
-<title>Other Modifications: Classifying a Role</title>
-
+<title>Other Modifications</title>
+<section>
+<title>Changing the Contents of the <tag class="attribute">role</tag> Attribute</title>
 <para><indexterm><primary>role attribute</primary>
   <secondary>changing on procedure (example)</secondary>
 </indexterm>The <tag class="attribute">role</tag> attribute, found on
@@ -857,10 +911,34 @@ is constrained to the values <literal>required</literal> or
 
 <example xml:id="ex.changerole">
 <title>Changing role on <tag>procedure</tag></title>
-<programlisting><textobject>
+<programlisting>
+<textobject>
 <textdata fileref="examples/changerole.rnc"/>
 </textobject></programlisting>
 </example>
+</section>
+<section>
+<title>Adding a Value to an Enumerated Attribute</title>
+<para><indexterm><primary>attribute</primary>
+  <secondary>adding a value to an enumeration</secondary>
+  </indexterm><xref linkend="ex.addenumeration"/> modifies
+  <varname>db.spacing.enumeration</varname> to add the value
+  <quote>large.</quote> Any attribute that is defined using
+  <varname>db.spacing.enumeration</varname> will now have <tag
+  class="attvalue">large</tag> as a legal value. Note that while it is
+  easy to add a value to an enumeration, to remove a value from an
+  enumeration, you need to redefine the entire enumeration, minus the
+  values you don't need.
+</para>
+<example xml:id="ex.addenumeration">
+<title>Adding a Value to an Enumeration</title>
+<programlisting>
+<textobject>
+<textdata fileref="examples/addenumeration.rnc"/>
+</textobject></programlisting>
+</example>
+</section>
+
 </section>
 </chapter>
 
