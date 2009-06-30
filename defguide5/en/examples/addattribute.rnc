@@ -1,0 +1,8 @@
+namespace db = "http://docbook.org/ns/docbook"
+default namespace = "http://docbook.org/ns/docbook"
+
+include "docbook.rnc"
+
+db.author.attlist &=
+  attribute born { db.date.contentmodel }?
+  & attribute died { db.date.contentmodel }?
