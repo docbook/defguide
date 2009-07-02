@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter [
+<!ENTITY version "5.0">
+]>
 <chapter xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xlink="http://www.w3.org/1999/xlink"
 	 version="5.0" xml:id="ch-gsxml">
 <?dbhtml filename="ch01.html"?>
-<title>Getting Started with <acronym>XML</acronym></title>
+<title>Getting Started with <acronym>DocBook</acronym></title>
 <info>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
 </info>
 
 <para><indexterm xml:id="XMLgetstart" class="startofrange">
-<primary>XML</primary><secondary>getting started</secondary>
-</indexterm>This chapter used to provide a quick introduction
-to structured markup. If you're not already familiar with
-<acronym>XML</acronym>, consult one of the many popular books on
-<acronym>XML</acronym>.</para>
-
-<section xml:id="ch01-wheredocbook">
-<title>How Does DocBook Fit In?</title>
-
-<para><indexterm significance="normal"><primary>DocBook</primary>
-  <secondary>history and overview</secondary>
-</indexterm>DocBook is a very popular set of tags for describing
-books, articles, and other prose documents, particularly technical
-documentation. DocBook is an XML vocabulary normatively defined using
-RELAX NG and Schematron.
-</para>
+<primary>DocBook</primary><secondary>getting started</secondary>
+</indexterm>This chapter provides an overview of DocBook, including
+information about how to create, parse, and publish DocBook documents.
+It assumes you have a basic understanding of XML. If you're not already familiar with
+<acronym>XML</acronym>, there are many popular books, including Erik Ray's <citetitle >Learning XML</citetitle><biblioref linkend="Ray03"/>.</para>
+<remark>Norm: Do you have a preference for an XML reference?</remark>
 
 <section xml:id="s.shorthistory">
 <title>A Short DocBook History</title>
@@ -122,6 +115,9 @@ it instead of only one. Thus, any document conforming to version
 both add to the markup model and make backward-incompatible
 changes. However, the changes would have to be announced in the last
 major release.</para>
+<para>In 2009, the Technical Committee updated this policy to allow
+backward-incompatible changes in a major version, provided the change
+is announced in a major or minor release at least six months in advance.</para>
 </listitem>
 
 <listitem><para>Major-version introductions must be separated by at
@@ -139,18 +135,15 @@ After that time, although DocBook's audience continued to grow, many
 of the Davenport Group stalwarts became involved in the
 <acronym>XML</acronym> effort, and development slowed dramatically.
 The idea of creating an official <acronym>XML</acronym>-compliant
-version of DocBook was discussed, but not implemented. (For more
-detailed information about DocBook <acronym>V3.0</acronym> and plans
-for subsequent versions, see <xref linkend="app-versions"/>.)
+version of DocBook was discussed, but not implemented at that time.
 </para>
 
 <para><indexterm significance="normal"><primary>OASIS</primary>
-  <secondary>DocBook Technical Committee</secondary>
-</indexterm>The sponsors wanted to close out Davenport in an orderly
-way to ensure that DocBook users would be supported. It was suggested
-that <acronym>OASIS</acronym> become DocBook's new home. An
-<acronym>OASIS</acronym> DocBook Technical Committee was formed in
-July, 1998, with Eduardo Gutentag of Sun Microsystems as chair.
+  <secondary>DocBook Technical Committee</secondary> </indexterm>In
+  July, 1998, the sponsors moved the standards activities from the
+  Davenport Group to <acronym>OASIS</acronym>, forming the
+  <acronym>OASIS</acronym> DocBook Technical Committee with Eduardo
+  Gutentag of Sun Microsystems as chair.
 </para>
 </section>
 
@@ -161,9 +154,9 @@ July, 1998, with Eduardo Gutentag of Sun Microsystems as chair.
 <link xlink:href="http://www.oasis-open.org/docbook/">DocBook Technical
 Commitee</link> is continuing the work started by the Davenport Group.
 The transition from Davenport to <acronym>OASIS</acronym> was
-very smooth, in part because the core design team consists of
-essentially the same individuals (we all just changed hats).
-</para>
+very smooth, in part because the core design team remained
+essentially the same. In MMM, YYYY, Norm Walsh became chair of
+the Technical Committee.</para>
 
 <para>DocBook <acronym>V3.1</acronym>, published in February 1999, was
 the first <acronym>OASIS</acronym> release. It integrated a number of
@@ -180,17 +173,253 @@ OASIS Specifications</link>.
 first beta-test version of DocBook V5.0. Development of the DocBook
 V4.x series continued in parallel with the development of V5.0. In
 October, 2006, the DocBook Technical Committee released DocBook V4.5,
-likely the last release in the V4.x series.</para>
+the last release in the V4.x series.</para>
 
-<para>The official release of DocBook V5.0 is expected in August, 2007.</para>
+<para>DocBook V5.0 became an official Committee Specification in June,
+2009 and became an official OASIS standard in MMM, 2009. The committee
+continues new DocBook development to ensure that the schema will
+continue to meet the needs of its users.</para>
+<para>In 2008, the Publisher's Sub-Committee was chartered to develop
+and maintain official variants of DocBook in support of the publishing
+industry. The subcommittee focuses on schema and
+stylesheet customizations to support: periodicals as regularly
+published technical notes or journals, book publishing (such as
+business, legal, medical, and other non-technical domains),
+educational textbooks and other document types as appropriate for this
+industry.</para>
+</section>
+</section>
+<section>
+  <title>DocBook V5.0</title>
+  <para>DocBook V5.0 represents a major step forward for DocBook. The
+  differences between DocBook V4.x and V5.0 are quite radical in some
+  aspects, but the basic idea behind DocBook is still the same, and
+  almost all element names are unchanged. Because of this it is very
+  easy to become familiar with DocBook V5.0 if you know any previous
+  version of DocBook </para>
 
-<para>FIXME: say more about the motivations for V5.x.</para>
 
-<para>The committee continues new DocBook development to ensure that
-the schema will continue to meet the needs of its users.</para>
+<section xml:id="introduction-ns">
+<title>Finally in a namespace</title>
 
+<para>All DocBook V5.0 elements are in the namespace
+<uri>http://docbook.org/ns/docbook</uri>. <acronym>XML<alt>Extensible
+Markup Language</alt></acronym> namespaces are used to distinguish
+between different element sets. In the last few years, almost all new
+XML grammars have used their own namespace. It is easy to
+create compound documents that contain elements from different XML
+vocabularies. DocBook V5.0 is following this design rule. Using
+namespaces in your documents is very easy. Consider this
+simple article marked up in DocBook V4.5:</para>
+
+<programlisting><![CDATA[<article>
+  <title>Sample article</title>
+  <para>This is a really short article.</para>
+</article>]]></programlisting>
+
+<para>The corresponding DocBook V5.0 article will look very similar:</para>
+
+<programlisting><![CDATA[<article xmlns="http://docbook.org/ns/docbook" …>
+  <title>Sample article</title>
+  <para>This is a really short article.</para>
+</article>]]></programlisting>
+
+<para>The only change is the addition of a default namespace declaration
+(<code>xmlns="http://docbook.org/ns/docbook"</code>) on the root
+element. This declaration applies the namespace to the root element and
+all nested elements. Each
+element is now uniquely identified by its local name and namespace.</para>
+
+<note>
+<para>The namespace name <uri>http://docbook.org/ns/docbook</uri> serves
+only as an identifier. This resource is not fetched during processing
+of DocBook documents, and you are not required to have an Internet
+connection during processing. If you access the namespace URI with a browser,
+you will find a short explanatory document about the namespace. In the
+future this document will probably conform to (some version of) RDDL
+and provide pointers to related resources.</para>
+</note>
+
+</section>
+
+<section xml:id="introduction-rng">
+<title>Relaxing with DocBook</title>
+
+<para>For more than a decade, the DocBook schema was defined using a
+DTD. However, DTDs have serious limitations, and DocBook V5.0 is thus
+defined using a very powerful schema language called RELAX NG. Thanks
+to RELAX NG, it is now much easier to create customized versions of
+DocBook, and some content models are now cleaner and more
+precise.</para>
+
+<para>Using RELAX NG has an impact on the document prolog. The following
+example shows the typical prolog of a DocBook V4.x document. The version of
+the DocBook DTD (in this case 4.5) is indicated in the document type
+declaration (!DOCTYPE) which points to a particular version of the
+DTD.</para>
+
+<example xml:id="ex.docbook45">
+<title>DocBook V4.5 document</title>
+<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
+                         'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'>
+<article lang="en">
+  <title>Sample article</title>
+  <para>This is a very short article.</para>
+</article>]]></programlisting>
+</example>
+
+<para>In contrast, DocBook V5.0 does not depend on DTDs anymore. This
+mean that there is no document type declaration and the version of DocBook
+used is indicated with the <tag class="attribute">version</tag>
+attribute instead.</para>
+
+<example xml:id="ex.docbook5">
+<title>DocBook V5.0 document</title>
+<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en">
+  <title>Sample article</title>
+  <para>This is a very short article.</para>
+</article>]]></programlisting>
+</example>
+
+<para>As you can see, DocBook V5.0 is built on top of existing XML
+standards as much as possible, for example the <tag
+class="attribute">lang</tag> attribute is superseded by the standard
+<tag xlink:href="http://www.w3.org/TR/REC-xml/#sec-lang-tag"
+class="attribute">xml:lang</tag> attribute.</para>
+
+<para>Another fundamental change is that there is no direct indication
+of the schema used. Later in this document, you will learn how you can
+specify a schema to be used for document validation.</para>
+
+<note>
+<para>Although we recommend the RELAX NG schema for DocBook
+V5.0, there are also DTD and W3C XML Schema versions available (see <xref
+linkend="schemas"/>) for tools that do not yet support RELAX NG.</para>
+</note>
+
+</section>
+
+<section xml:id="introduction-why-to-switch">
+<title>Why switch to DocBook V5.0?</title>
+
+<para>The simple answer is <quote>because DocBook V5.0 is the
+future</quote>. Apart from this marketing blurb, there are also more
+technical reasons:</para>
+
+<itemizedlist>
+<listitem>
+<para><emphasis>DocBook V4.x is feature frozen.</emphasis>DocBook V4.5
+is the last version of DocBook in the V4.x series. Any new DocBook
+development, like the addition of new elements, will be done in
+DocBook V5.0. It is only matter of time before useful, new elements
+will be added into DocBook V5.0, but they are not likely to be back
+ported into DocBook V4.x. DocBook V4.x will be in maintenance mode and
+errata will be published if necessary. </para>
+</listitem>
+<listitem>
+<para><emphasis>DocBook V5.0 offers new functionality.</emphasis>
+DocBook V5.0 provides significant improvements over DocBook V4.x. For
+example there is general markup for annotations, a new and flexible
+system for linking, and unified markup for information sections using
+the <tag>info</tag> element.</para>
+</listitem>
+<listitem>
+<para><emphasis>DocBook V5.0 is more extensible.</emphasis> Having
+DocBook V5.0 in a separate namespace allows you to easily mix DocBook
+markup with other XML-based languages like SVG, MathML, XHTML or even
+FooBarML.</para>
+</listitem>
+<listitem>
+<para><emphasis>DocBook V5.0 is easier to customize.</emphasis> RELAX
+NG offers many powerful constructs that make customization much easier
+than it would be using a DTD (see <xref linkend="customizations"/>).</para>
+</listitem>
+</itemizedlist>
+
+</section>
+
+<section xml:id="introduction-schemas">
+<title>Schema jungle</title>
+
+<para>Schemas for DocBook V5.0 are available in several formats at
+<link xlink:href="http://www.oasis-open.org/docbook/xml/&version;/"/> (or the
+mirror at <link xlink:href="http://docbook.org/xml/&version;/"/>).
+Only the RELAX NG schema is normative
+and it is preferred over the other schema languages.  However, for your
+convenience there are also DTD and W3C XML Schema versions provided for DocBook
+V5.0. But please note that neither the DTD nor the W3C XML schema are able to
+capture all the constraints of DocBook V5.0. This mean that a
+document that validates against the DTD or XML schema is not necessarily
+valid against the RELAX NG schema and thus may not be a valid
+DocBook V5.0 document.</para>
+
+<para>DTD and W3C XML Schema versions of the DocBook V5.0 grammar are provided
+as a convenience for users who want to use DocBook V5.0 with legacy tools
+that don't support RELAX NG. Authors are encouraged to switch to RELAX
+NG based tools as soon as possible, or at least to validate documents
+against the RELAX NG schema before further processing.</para>
+
+<para>Some document constraints can't be expressed in schema languages
+like RELAX NG or W3C XML Schema. To check for these additional
+constraints DocBook V5.0 uses Schematron.  We recommend that you
+validate your document against both the RELAX NG and
+Schematron schemas.</para>
+
+<section xml:id="schemas">
+<title>Where to get the schemas</title>
+
+<para>The latest versions of schemas can be obtained from <link
+xlink:href="http://docbook.org/schemas/5x.html"/>. At the time this was
+written the latest version was &version;. Individual schemas are
+available at the following locations:</para>
+
+<variablelist>
+<varlistentry>
+<term>RELAX NG schema</term>
+<listitem><para><link xlink:href="http://docbook.org/xml/&version;/rng/docbook.rng"/></para></listitem>
+</varlistentry>
+<varlistentry>
+<term>RELAX NG schema in compact syntax</term>
+<listitem><para><link xlink:href="http://docbook.org/xml/&version;/rng/docbook.rnc"/></para></listitem>
+</varlistentry>
+<varlistentry>
+<term>DTD</term>
+<listitem><para><link xlink:href="http://docbook.org/xml/&version;/dtd/docbook.dtd"/></para></listitem>
+</varlistentry>
+<varlistentry>
+<term>W3C XML Schema</term>
+<listitem><para><link xlink:href="http://docbook.org/xml/&version;/xsd/docbook.xsd"/></para></listitem>
+</varlistentry>
+<varlistentry>
+<term>Schematron schema with additional checks</term>
+<listitem><para><link xlink:href="http://docbook.org/xml/&version;/sch/docbook.sch"/></para></listitem>
+</varlistentry>
+</variablelist>
+
+<para>These schemas are also available from the mirror at
+<link xlink:href="http://www.oasis-open.org/docbook/xml/&version;/"/>.</para>
+
+</section>
+
+<section xml:id="docs">
+<title>DocBook documentation</title>
+
+<para>Detailed documentation about each DocBook V5.0 element is
+presented in <link
+xlink:href="http://docbook.org/tdg5/en/html/pt02.html">the reference part
+of <citetitle>DocBook: The Definitive Guide</citetitle></link>.</para>
+
+<note>
+<para>Other parts of <citetitle>DocBook: The Definitive
+Guide</citetitle> have not yet been updated to reflect the changes
+made in DocBook V5.0. Please do not be confused by this.</para>
+</note>
 <indexterm startref="XMLgetstart" class="endofrange"/>
 </section>
+
 </section>
+
 </section>
 </chapter>
