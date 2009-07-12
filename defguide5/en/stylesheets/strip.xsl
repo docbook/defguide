@@ -9,7 +9,10 @@
 
 <xsl:import href="/sourceforge/docbook/xsl/common/stripns.xsl"/>
 
-<xsl:output method="xml" encoding="utf-8" indent="no"/>
+<xsl:output method="xml" encoding="utf-8" indent="no"
+	    doctype-public="-//OASIS//DTD DocBook V4.5//EN//XML"
+	    doctype-system="/home/ndw/docbook.org/xml/4.5/docbookx.dtd"/>
+
 <xsl:preserve-space elements="*"/>
 
 <xsl:template match="/">
@@ -34,6 +37,25 @@
       </xsl:message>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="db:info[parent::db:partintro]" mode="stripNS">
+  <xsl:message>Discarding info on partintro</xsl:message>
+</xsl:template>
+
+<xsl:template match="db:info[parent::db:colophon]" mode="stripNS">
+  <xsl:message>Discarding info on colophon</xsl:message>
+</xsl:template>
+
+<xsl:template match="db:info[parent::db:part]" mode="stripNS">
+  <xsl:message>Discarding info on part</xsl:message>
+  <xsl:apply-templates select="db:title" mode="stripNS"/>
+</xsl:template>
+
+<xsl:template match="db:refsection[parent::db:refsynopsisdiv]" mode="stripNS">
+  <refsect2>
+    <xsl:apply-templates mode="stripNS"/>
+  </refsect2>
 </xsl:template>
 
 <xsl:template match="*" mode="stripbase">

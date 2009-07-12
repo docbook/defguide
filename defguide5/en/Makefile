@@ -31,6 +31,11 @@ endif
 
 all: chunks
 
+compact:
+	saxon tools/lib/defguide.rnd stylesheets/rnd2rng.xsl tools/lib/compact.rng
+	trang tools/lib/compact.rng tools/lib/compact.rnc
+	jing -c tools/lib/compact.rnc /tmp/test.xml
+
 test: tdg.xml
 	jing ../../docbook/relaxng/docbook/docbook.rng $<
 

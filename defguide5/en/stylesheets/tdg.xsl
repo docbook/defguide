@@ -16,7 +16,7 @@
 <xsl:import href="/sourceforge/docbook/xsl/html/docbook.xsl"/>
 <xsl:include href="html-titlepage.xsl"/>
 
-<xsl:output method="xml" encoding="utf-8" indent="no"/>
+<xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
 <xsl:param name="ng-release" select="'5.0b1'"/>
 
