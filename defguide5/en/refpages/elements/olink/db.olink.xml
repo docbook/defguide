@@ -66,17 +66,24 @@ document.
 <para>The semantics of the link are controlled by three other attributes:
 <tag class="attribute">targetptr</tag>,
 <tag class="attribute">localinfo</tag>, and
-<tag class="attribute">type</tag>.
-The <tag class="attribute">targetptr</tag>
-attribute points into the document in some fashion.
+<tag class="attribute">type</tag>.</para>
+
+<para>The <tag class="attribute">targetptr</tag>
+attribute (possibly in conjunction with <tag class="attribute">localinfo</tag>)
+points into the document in some fashion. The
+<tag class="attribute">type</tag> may provide some additional, application-specific
+information about the link.
+DocBook does not provide any semantics for the values of these attributes.
 </para>
-<para>
-The values of 
-<tag class="attribute">localinfo</tag> and
-<tag class="attribute">type</tag> may also influence the application.
-For example, if the <tag class="attribute">targetptr</tag> describes some sort of query, 
-<tag class="attribute">localinfo</tag> might hold the query text.
-</para>
+
+<note>
+<para>The <tag class="attribute">targetptr</tag> and
+<tag class="attribute">localinfo</tag> attributes were developed somewhat
+indpendently and arguably have somewhat overlapping semantics. While almost
+all applications can certainly get by with one or the other, the Technical
+Committee has decided that removing <tag class="attribute">localinfo</tag>
+simply for semantic cleanliness isn't worth the effort.</para>
+</note>
 
 <para>Linking elements must not be nested within other linking
 elements (including themselves). The processing of nested linking
