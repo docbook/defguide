@@ -251,7 +251,8 @@ set       nop
 
 <xsl:template match="emphasis[@role='patnlink']">
   <xsl:variable name="id" select="ancestor::listitem[1]/@id"/>
-  <xsl:variable name="list" select="following::itemizedlist[contains(@role,'patnlist')][1]"/>
+  <xsl:variable name="list"
+		select="following::itemizedlist[contains(@role,'patnlist')][1]"/>
 
   <xsl:variable name="title">
     <xsl:for-each select="$list//sgmltag">
@@ -264,18 +265,21 @@ set       nop
   <em title="{$title}" class='patnlink'>
     <xsl:apply-templates/>
   </em>
-  <span id="pls.{$id}" style="display: none;">
-    <xsl:text>&#160;</xsl:text>
-    <a href="javascript:show('{$id}')">
-      <img src="graphics/right.gif" border="0" alt="[+]"/>
-    </a>
-  </span>
-  <span id="plh.{$id}">
-    <xsl:text>&#160;</xsl:text>
-    <a href="javascript:hide('{$id}')">
-      <img src="graphics/down.gif" border="0" alt="[-]"/>
-    </a>
-  </span>
+
+  <xsl:if test="$id != ''">
+    <span id="pls.{$id}" style="display: none;">
+      <xsl:text>&#160;</xsl:text>
+      <a href="javascript:show('{$id}')">
+	<img src="graphics/right.gif" border="0" alt="[+]"/>
+      </a>
+    </span>
+    <span id="plh.{$id}">
+      <xsl:text>&#160;</xsl:text>
+      <a href="javascript:hide('{$id}')">
+	<img src="graphics/down.gif" border="0" alt="[-]"/>
+      </a>
+    </span>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="phrase[@role='cceq']">
