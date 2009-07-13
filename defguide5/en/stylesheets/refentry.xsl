@@ -16,12 +16,16 @@
 		exclude-result-prefixes="db rng xlink f doc s set dbx exsl html a xs"
                 version="2.0">
 
+<xsl:include href="inline-synop.xsl"/>
+
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
 <xsl:key name="div" match="rng:div" use="db:refname"/>
 <xsl:key name="element" match="rng:element" use="@name"/>
 <xsl:key name="define" match="rng:define" use="@name"/>
 <xsl:key name="elemdef" match="rng:define" use="rng:element/@name"/>
+
+<xsl:param name="compact-format" select="1"/>
 
 <xsl:variable name="rngfile"
 	      select="'../tools/lib/defguide.rnd'"/>
@@ -154,7 +158,7 @@
   <xsl:variable name="parents"
 	select="$rng//rng:element[doc:content-model//rng:ref[@name=$pattern]]"/>
 
-  <xsl:if test="$parents">
+  <xsl:if test="$parents and $compact-format = 0">
     <refsection condition="ref.desc.parents">
       <title>Parents</title>
       <para>
@@ -230,7 +234,7 @@
   <xsl:variable name="children"
 		select="$elem/doc:content-model//rng:ref"/>
 
-  <xsl:if test="$children">
+  <xsl:if test="$children and $compact-format = 0">
     <refsection condition="ref.desc.children">
       <title>Children</title>
       <para>
@@ -706,16 +710,29 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
       <phrase role="cceq">::=</phrase>
     </para>
 
-    <itemizedlist spacing='compact' role="element-synopsis">
-      <xsl:choose>
-	<xsl:when test="doc:content-model">
-	  <xsl:apply-templates select="doc:content-model/*"/>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:apply-templates/>
-	</xsl:otherwise>
-      </xsl:choose>
-    </itemizedlist>
+    <xsl:variable name="synop" as="element(db:itemizedlist)">
+      <itemizedlist spacing='compact' role="element-synopsis">
+	<xsl:choose>
+	  <xsl:when test="doc:content-model">
+	    <xsl:apply-templates select="doc:content-model/*"/>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:apply-templates/>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </itemizedlist>
+    </xsl:variable>
+
+    <xsl:choose>
+      <xsl:when test="$compact-format = 0">
+	<xsl:copy-of select="$synop"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<para>
+	  <xsl:apply-templates select="$synop" mode="inlinesynop"/>
+	</para>
+      </xsl:otherwise>
+    </xsl:choose>
 
 <!--
   </refsection>
