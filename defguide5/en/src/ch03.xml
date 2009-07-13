@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xlink="http://www.w3.org/1999/xlink"
-	 version="5.0" xml:id="ch-parse">
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch-parse">
 <?dbhtml filename="ch03.html"?>
 <info>
   <title>Parsing DocBook Documents</title>
@@ -159,11 +156,7 @@ error messages.</para>
 missing start tag, but sometimes it's just the result of typing in the
 wrong place!
 </para>
-<programlisting>
-<textobject>
-<textdata fileref="examples/errs/badpcdata.xml"/>
-</textobject>
-</programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/errs/badpcdata.xml"/></programlisting>
 <screen>java -jar msv.jar docbook.rng badpcdata.xml
 start parsing a grammar.
 warnings are found. use -warning switch to see all warnings.
@@ -185,30 +178,26 @@ missing around the sentence between the first two paragraphs.
     <tertiary>misspelling</tertiary>
 </indexterm>If you spell it wrong, the parser gets confused.
 </para>
-<programlisting>
-<textobject>
-<textdata fileref="examples/errs/misspell.xml"/>
-</textobject>
-</programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/errs/misspell.xml"/></programlisting>
 <screen>java -jar msv.jar docbook.rng misspell.xml
 start parsing a grammar.
 warnings are found. use -warning switch to see all warnings.
 validating misspell.xml
 Error at line:9, column:7 of misspell.xml
-  tag name "paar" is not allowed. Possible tag names are: &lt;address>,&lt;anchor>,
-&lt;annotation>,&lt;bibliography>,&lt;bibliolist>,&lt;blockquote>,&lt;bridgehead>,
-&lt;calloutlist>,&lt;caution>,&lt;classsynopsis>,&lt;cmdsynopsis>,
-&lt;constraintdef>,&lt;constructorsynopsis>,&lt;destructorsynopsis>,&lt;epigraph>,
-&lt;equation>,&lt;example>,&lt;fieldsynopsis>,&lt;figure>,&lt;formalpara>,
-&lt;funcsynopsis>,&lt;glossary>,&lt;glosslist>,&lt;important>,&lt;index>,
-&lt;indexterm>,&lt;informalequation>,&lt;informalexample>,&lt;informalfigure>,
-&lt;informaltable>,&lt;itemizedlist>,&lt;literallayout>,&lt;mediaobject>,
-&lt;methodsynopsis>,&lt;msgset>,&lt;note>,&lt;orderedlist>,&lt;para>,
-&lt;procedure>,&lt;productionset>,&lt;programlisting>,&lt;programlistingco>,
-&lt;qandaset>,&lt;refentry>,&lt;remark>,&lt;revhistory>,&lt;screen>,&lt;screenco>,
-&lt;screenshot>,&lt;section>,&lt;section>,&lt;segmentedlist>,&lt;sidebar>,
-&lt;simpara>,&lt;simplelist>,&lt;simplesect>,&lt;synopsis>,&lt;table>,&lt;task>,
-&lt;tip>,&lt;toc>,&lt;variablelist>,&lt;warning></screen>
+  tag name "paar" is not allowed. Possible tag names are: &lt;address&gt;,&lt;anchor&gt;,
+&lt;annotation&gt;,&lt;bibliography&gt;,&lt;bibliolist&gt;,&lt;blockquote&gt;,&lt;bridgehead&gt;,
+&lt;calloutlist&gt;,&lt;caution&gt;,&lt;classsynopsis&gt;,&lt;cmdsynopsis&gt;,
+&lt;constraintdef&gt;,&lt;constructorsynopsis&gt;,&lt;destructorsynopsis&gt;,&lt;epigraph&gt;,
+&lt;equation&gt;,&lt;example&gt;,&lt;fieldsynopsis&gt;,&lt;figure&gt;,&lt;formalpara&gt;,
+&lt;funcsynopsis&gt;,&lt;glossary&gt;,&lt;glosslist&gt;,&lt;important&gt;,&lt;index&gt;,
+&lt;indexterm&gt;,&lt;informalequation&gt;,&lt;informalexample&gt;,&lt;informalfigure&gt;,
+&lt;informaltable&gt;,&lt;itemizedlist&gt;,&lt;literallayout&gt;,&lt;mediaobject&gt;,
+&lt;methodsynopsis&gt;,&lt;msgset&gt;,&lt;note&gt;,&lt;orderedlist&gt;,&lt;para&gt;,
+&lt;procedure&gt;,&lt;productionset&gt;,&lt;programlisting&gt;,&lt;programlistingco&gt;,
+&lt;qandaset&gt;,&lt;refentry&gt;,&lt;remark&gt;,&lt;revhistory&gt;,&lt;screen&gt;,&lt;screenco&gt;,
+&lt;screenshot&gt;,&lt;section&gt;,&lt;section&gt;,&lt;segmentedlist&gt;,&lt;sidebar&gt;,
+&lt;simpara&gt;,&lt;simplelist&gt;,&lt;simplesect&gt;,&lt;synopsis&gt;,&lt;table&gt;,&lt;task&gt;,
+&lt;tip&gt;,&lt;toc&gt;,&lt;variablelist&gt;,&lt;warning&gt;</screen>
 
 <para>
 Luckily, these are pretty easy to spot, unless you accidentally spell
@@ -228,18 +217,14 @@ what it can add to your document to make it valid. Then it proceeds as
 if it had seen what was added in order to recover from the error seen,
 which can cause future errors.
 </para>
-<programlisting>
-<textobject>
-<textdata fileref="examples/errs/context.xml"/>
-</textobject>
-</programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/errs/context.xml"/></programlisting>
 <screen>$ java -jar msv.jar docbook.rng context.xml
 start parsing a grammar.
 warnings are found. use -warning switch to see all warnings.
 validating context.xml
 Error at line:9, column:14 of context.xml
-  tag name "title" is not allowed. Possible tag names are: &lt;abbrev>,&lt;accel>,
-&lt;acronym>,&lt;address>,…,&lt;varname>,&lt;warning>,&lt;wordasword>,&lt;xref></screen>
+  tag name "title" is not allowed. Possible tag names are: &lt;abbrev&gt;,&lt;accel&gt;,
+&lt;acronym&gt;,&lt;address&gt;,…,&lt;varname&gt;,&lt;warning&gt;,&lt;wordasword&gt;,&lt;xref&gt;</screen>
 
 <para><indexterm><primary>titles</primary>
   <secondary>formal elements</secondary>

@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook"
-         version="5.0"
-         xml:id="app-customizing"
-         xmlns:xlink="http://www.w3.org/1999/xlink">
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="app-customizing">
 <?dbhtml filename="ch05.html"?>
 <info>
 <title>Customizing DocBook</title>
@@ -98,11 +94,11 @@ DocBook element.</para>
 <para>Here is how these attributes would appear on the <tag>book</tag> element.
 </para>
 <informalexample xml:id="ex.rootelement">
-<programlisting language="xml"><![CDATA[<book xmlns="http://docbook.org/ns/docbook"
-      version="5.0">
+<programlisting language="xml">&lt;book xmlns="http://docbook.org/ns/docbook"
+      version="5.0"&gt;
   …
-</book>
-]]></programlisting>
+&lt;/book&gt;
+</programlisting>
 </informalexample>
 <para>If you make any changes to the DocBook schema, the namespace
 remains the same, but you must provide an alternative version
@@ -353,9 +349,7 @@ layers tend to look like this:
 <area xml:id="gs1-d1" coords="4 50" units="linecolumn"/>
 <area xml:id="gs1-n1" coords="6 50" units="linecolumn"/>
 </areaspec>
-<screen><textobject>
-<textdata fileref="examples/custlayer.rnc"/>
-</textobject></screen>
+<screen><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/custlayer.rnc"/></screen>
 <calloutlist>
 <callout arearefs="gs1-d1"><para>Start by importing the base DocBook
 schema.
@@ -375,9 +369,7 @@ different.</para>
 <area xml:id="gs2-d1" coords="5 50" units="linecolumn"/>
 <area xml:id="gs2-n1" coords="8 50" units="linecolumn"/>
 </areaspec>
-<screen><textobject>
-<textdata fileref="examples/custlayer2.rnc"/>
-</textobject></screen>
+<screen><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/custlayer2.rnc"/></screen>
 <calloutlist>
 <callout arearefs="gs2-d1"><para>You can redefine patterns in the
 body of an import statement. These patterns completely replace any that
@@ -454,9 +446,7 @@ inlines, and then provide a pattern that matches the new element.
 <area xml:id="gs3-d3" coords="11 50" units="linecolumn"/>
 <area xml:id="gs3-d4" coords="16 50" units="linecolumn"/>
 </areaspec>
-<programlisting><textobject>
-<textdata fileref="examples/addcleartext.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/addcleartext.rnc"/></programlisting>
 <calloutlist>
 <callout arearefs="gs3-d1"><para>The “<literal>|=</literal>” operator
 adds a new choice to a pattern. So this line makes the
@@ -555,9 +545,7 @@ removes the <tag>msgset</tag> element from DocBook:
 
 <example xml:id="ex.remvmsgset">
 <title>Removing <tag>msgset</tag></title>
-<programlisting><textobject>
-<textdata fileref="examples/remvmsgset.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvmsgset.rnc"/></programlisting>
 </example>
 
 <para>The complexity of <tag>msgset</tag> is really in its <tag>msgentry</tag>
@@ -568,9 +556,7 @@ alternative.</para>
 
 <example xml:id="ex.remvmsgentry">
 <title>Removing <tag>msgentry</tag></title>
-<programlisting><textobject>
-<textdata fileref="examples/remvmsgentry.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvmsgentry.rnc"/></programlisting>
 </example>
 
 <para>Closer examination of the <tag>msgentry</tag> content model will
@@ -598,9 +584,7 @@ fell swoop.</para>
 
 <example>
 <title>Removing Computer Inlines</title>
-<programlisting><textobject>
-<textdata fileref="examples/remvdomain.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvdomain.rnc"/></programlisting>
 </example>
 
 <para>If you want to be more selective, you might consider making one
@@ -635,9 +619,7 @@ The customization layer in <xref linkend="ex.remvcmdsyn"/> removes
 
 <example xml:id="ex.remvcmdsyn">
 <title>Removing CmdSynopsis and FuncSynopsis</title>
-<programlisting><textobject>
-<textdata fileref="examples/remvcmdsyn.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvcmdsyn.rnc"/></programlisting>
 </example>
 </section>
 
@@ -648,15 +630,12 @@ The customization layer in <xref linkend="ex.remvcmdsyn"/> removes
   <secondary>elements, removing</secondary>
 </indexterm>Perhaps you want to restrict your authors to only three
 levels of sectioning. To do that, you must remove the <tag>sect4</tag>
-and <tag>sect5</tag> elements, as shown in <xref
-linkend="ex.remvsect4"/>.</para>
+and <tag>sect5</tag> elements, as shown in <xref linkend="ex.remvsect4"/>.</para>
 
 <example xml:id="ex.remvsect4">
 <title>Removing <tag>sect4</tag> and <tag>sect5</tag> Elements
 </title>
-<programlisting><textobject>
-<textdata fileref="examples/remvsect4.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvsect4.rnc"/></programlisting>
 </example>
 
 <para>This technique works if your authors are using numbered sections.
@@ -670,9 +649,7 @@ and “<literal>section3</literal>” patterns, as shown in
 
 <example xml:id="ex.limitsdepth">
 <title>Limiting recursive sections to three levels</title>
-<programlisting><textobject>
-<textdata fileref="examples/limitsdepth.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/limitsdepth.rnc"/></programlisting>
 </example>
 
 <para>Another solution, assuming your validation environment supports
@@ -681,9 +658,7 @@ Schematron, is simply to add a new rule,  as shown in
 
 <example xml:id="ex.limitsdepthsch">
 <title>Limiting recursive sections to three levels</title>
-<programlisting><textobject>
-<textdata fileref="examples/limitsdepthsch.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/limitsdepthsch.rnc"/></programlisting>
 </example>
 
 </section>
@@ -711,9 +686,7 @@ etc.) to appear in a table cell.</para>
 
 <example xml:id="ex.remvadmon">
 <title>Removing Admonitions from Tables</title>
-<programlisting><textobject>
-<textdata fileref="examples/remvadmon.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvadmon.rnc"/></programlisting>
 </example>
 
 <para>The extent to which any particular change is easy or hard
@@ -748,9 +721,7 @@ include the continuation attribute. Either would accomplish the goal.
 <example xml:id="ex.remvcontinuation">
 <title>Removing <tag class="attribute">continuations</tag> from
 <tag>orderedlist</tag></title>
-<programlisting><textobject>
-<textdata fileref="examples/remvcontinuation.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvcontinuation.rnc"/></programlisting>
 </example>
 
 <section><title>Subsetting the Common Attributes</title>
@@ -795,8 +766,7 @@ swoop.</para>
 designed to hold the name of a semantically equivalent construct from
 a previous markup scheme (for example, a Microsoft Word style template
 name, if you're converting from Word). If you're authoring from
-scratch, or not preserving previous constructs with <tag
-class="attribute">remap</tag>, you can get rid of it.</para>
+scratch, or not preserving previous constructs with <tag class="attribute">remap</tag>, you can get rid of it.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><tag class="attribute">xreflabel</tag></term>
@@ -818,9 +788,7 @@ and <tag class="attribute">lang</tag>.
 
 <example xml:id="ex.remvcommon">
 <title>Removing Common Attributes</title>
-<programlisting><textobject>
-<textdata fileref="examples/remvcommon.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/remvcommon.rnc"/></programlisting>
 </example>
 <!-- Seems like this is orphaned or out of context.
 <para>The <tag class="attribute">xml:id</tag> attribute is added in two
@@ -847,9 +815,7 @@ extends DocBook by adding a <literal>sect6</literal> element.
 
 <example xml:id="ex.addsect6">
 <title>Adding a <literal>sect6</literal> Element</title>
-<programlisting><textobject>
-<textdata fileref="examples/addsect6.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/addsect6.rnc"/></programlisting>
 </example>
 
 <para>Here we've redefined <tag>sect5</tag> to include
@@ -863,8 +829,7 @@ extends DocBook by adding a <literal>sect6</literal> element.
 <secondary>adding</secondary> </indexterm>The simplest way to add an
 attribute to a single element is to add it to the attlist pattern for
 that element. <xref linkend="ex.addattribute"/> adds the optional
-attributes <tag class="attribute">born</tag> and <tag
-class="attribute">died</tag> to the attribute list for <tag>author</tag>. The
+attributes <tag class="attribute">born</tag> and <tag class="attribute">died</tag> to the attribute list for <tag>author</tag>. The
 <literal>db.author.attlist</literal> pattern is redefined to interleave the two new
 optional attributes with the existing attributes on the list.
   
@@ -876,16 +841,12 @@ optional attributes with the existing attributes on the list.
   <area xml:id="exarea-a1" coords="6 50" units="linecolumn"/>
   <area xml:id="exarea-a2" coords="7 50" units="linecolumn"/>
 </areaspec>
-<programlisting><textobject>
-<textdata fileref="examples/addattribute.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/addattribute.rnc"/></programlisting>
 <calloutlist>
-<callout
-arearefs="exarea-a1"><para><quote><literal>&amp;=</literal></quote>
+<callout arearefs="exarea-a1"><para><quote><literal>&amp;=</literal></quote>
 interleaves the two new optional attributes with the existing
 attributes on the list.</para></callout>
-<callout
-arearefs="exarea-a2"><para><literal>db.date.contentmodel</literal> is a pattern used for any attribute or element that represents a date.</para></callout>
+<callout arearefs="exarea-a2"><para><literal>db.date.contentmodel</literal> is a pattern used for any attribute or element that represents a date.</para></callout>
 </calloutlist>
 </programlistingco>
 </example>
@@ -911,10 +872,7 @@ is constrained to the values <literal>required</literal> or
 
 <example xml:id="ex.changerole">
 <title>Changing role on <tag>procedure</tag></title>
-<programlisting>
-<textobject>
-<textdata fileref="examples/changerole.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/changerole.rnc"/></programlisting>
 </example>
 </section>
 <section>
@@ -924,21 +882,16 @@ is constrained to the values <literal>required</literal> or
   </indexterm><xref linkend="ex.addenumeration"/> modifies
   <varname>db.spacing.enumeration</varname> to add the value
   <quote>large.</quote> Any attribute that is defined using
-  <varname>db.spacing.enumeration</varname> will now have <tag
-  class="attvalue">large</tag> as a legal value. Note that while it is
+  <varname>db.spacing.enumeration</varname> will now have <tag class="attvalue">large</tag> as a legal value. Note that while it is
   easy to add a value to an enumeration, to remove a value from an
   enumeration, you need to redefine the entire enumeration, minus the
   values you don't need.
 </para>
 <example xml:id="ex.addenumeration">
 <title>Adding a Value to an Enumeration</title>
-<programlisting>
-<textobject>
-<textdata fileref="examples/addenumeration.rnc"/>
-</textobject></programlisting>
+<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/addenumeration.rnc"/></programlisting>
 </example>
 </section>
 
 </section>
 </chapter>
-
