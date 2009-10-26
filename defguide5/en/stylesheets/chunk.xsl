@@ -9,7 +9,7 @@
 <!-- THIS STYLESHEET IS FOR SAXON -->
 
 <!-- Because I want to change the chunking rules, I need to copy the
-     while stylesheet. The import/apply-imports trick won't work because
+     whole stylesheet. The import/apply-imports trick won't work because
      the imported chunking code would chunk at the places where I want
      to avoid chunking. -->
 
