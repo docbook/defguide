@@ -20,16 +20,38 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-
 <para>A <tag>simplemsgentry</tag> is a simpler alternative to
-<tag>msgentry</tag>.  In a <tag>msgset</tag>, each
-<tag>simplemsgentry</tag> contains the text of a message
-and its explanation.
+<tag>msgentry</tag>. In a <tag>msgset</tag>, each
+<tag>simplemsgentry</tag> contains the text of a message and its
+explanation.
 </para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
 </para>
+</refsection>
+
+<refsection><title>Backward incompatibilities</title>
+
+<para>In DocBook V5.0, the <tag class="attribute">audience</tag>,
+<tag class="attribute">level</tag>, and
+<tag class="attribute">origin</tag> attributes are
+accidentally misspelled. The attribute “<literal>msgaud</literal>” should
+be spelled “<literal>audience</literal>”;
+the attribute “<literal>msglevel</literal>” should
+be spelled “<literal>level</literal>”; and
+the attribute “<literal>msgorig</literal>” should
+be spelled “<literal>origin</literal>”. Those are the spellings in DocBook V4.5.
+</para>
+
+<para>Unfortunately, fixing this bug is technically a
+backward incompatible change. In order to be consistent with our
+policy on backward incompatible changes, the misspelled names cannot
+be removed until DocBook V6.0.</para>
+
+<para>In DocBook V5.1, attributes with the correct spellings will be
+added to <tag>simplemsgentry</tag>. The attributes with incorrectly
+spelled names will be removed in DocBook V6.0.</para>
 </refsection>
 
 <?tdg-attributes?>

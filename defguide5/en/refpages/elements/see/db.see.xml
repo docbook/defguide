@@ -20,10 +20,9 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-
 <para>The use of <tag>see</tag> in an <tag>indexterm</tag> indicates that
-the reader should be directed elsewhere in the index if they attempt
-to look up this term.
+the reader should be directed elsewhere in the index when encountering
+this term.
 </para>
 
 <para>The content of <tag>see</tag> identifies another term in the
@@ -32,10 +31,12 @@ the current term.
 </para>
 
 <refsection><title>Processing expectations</title>
+
 <para><?tdg gentext='format.suppress'?>
 This element provides data for processing but it
 is not rendered in the primary flow of text.
 </para>
+
 <para>It is possible for multiple <tag>indexterm</tag>s, taken together,
 to form an illogical index.  For example, given the following
 <tag>indexterm</tag>s:

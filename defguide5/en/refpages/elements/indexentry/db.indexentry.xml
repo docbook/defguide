@@ -20,23 +20,27 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-
-<para>An <tag>indexentry</tag> wraps all of the index terms associated with
-a particular primary index term.  This includes an arbitrary list of
-<link linkend="element.db.secondaryie">secondary</link> and 
-<link linkend="element.db.tertiaryie">tertiary</link> elements as well as 
-<link linkend="element.db.seeie">See</link> and
-<link linkend="element.db.seealsoie">SeeAlso</link> elements.
+<para>An <tag>indexentry</tag> is a wrapper for index terms
+as they appear in an index. It's the markup used for creating a
+back-of-the-book index. To identify index terms in the flow of
+the text, use <tag>indexterm</tag>.
 </para>
+
+<para>The content of an <tag>indexentry</tag> is the collated,
+formatted list of terms and cross-references.</para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.block'?>
-
 A rendered index usually places secondary items under primary items
 and tertiary items under secondary.
 </para>
-</refsection>
 
+<para>It is very uncommon to construct an index explicitly with
+<tag>indexentry</tag> markup. Indexes are almost always generated
+automatically from embedded <tag>indexterm</tag> markup in the
+document.</para>
+
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>
@@ -46,6 +50,15 @@ and tertiary items under secondary.
 
 <?tdg-seealso?>
 
-<!-- FIXME: add examples -->
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>Here's how the example indexes from the <tag>indexterm</tag>
+description might be represented using <tag>indexentry</tag> markup:
+</para>
+
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
+
+</refsection>
 
 </refentry>

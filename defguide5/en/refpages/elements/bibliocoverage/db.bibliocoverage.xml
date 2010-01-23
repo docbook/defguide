@@ -21,44 +21,45 @@
 <title>Description</title>
 
 
-<para>The <tag>bibliocoverage</tag> element satisfies coverage
-element of the <link xlink:href="http://dublincore.org/">Dublin Core
-Metadata Initiative</link>.</para>
+<para>The <tag>bibliocoverage</tag> element is equivalent to the coverage
+element of the <citetitle>Dublin Core
+Metadata Element Set</citetitle><biblioref linkend="DCMI"/>.</para>
 
 <para>The Dublin Core defines coverage as <quote>the
 extent or scope of the content of the resource.</quote> It goes on
 to say:</para>
 
 <blockquote>
-<para>Coverage will typically include spatial location (a place name
-or geographic coordinates), temporal period (a period label,
-date, or date range) or jurisdiction (such as a named
-administrative entity).
+<para>
+Spatial topic and spatial applicability may be a named place or a
+location specified by its geographic coordinates. Temporal topic may
+be a named period, date, or date range. A jurisdiction may be a named
+administrative entity or a geographic place to which the resource
+applies.
 </para>
-<para>Recommended best practice is to select a value from a
-controlled vocabulary (for example, the
-<link xlink:href="http://www.getty.edu/research/tools/vocabulary/tgn/">Thesaurus of Geographic
-Names</link> [TGN]) and that, where appropriate, named places or time
-periods be used in preference to numeric identifiers such as
-sets of coordinates or date ranges.
+<para>Recommended best practice is to use a controlled vocabulary
+such as the <citetitle>Thesaurus of Geographic Names
+Online</citetitle><biblioref linkend="TGN"/>. Where appropriate,
+named places or time periods can be used in preference to numeric
+identifiers such as sets of coordinates or date ranges.
 </para>
 </blockquote>
 
-<para>DocBook 4.2 added <tag>bibliocoverage</tag>,
+<para>DocBook <acronym>V4.2</acronym> added <tag>bibliocoverage</tag>,
 <tag>bibliorelation</tag>, and
 <tag>bibliosource</tag> to make the DocBook meta-information wrappers
-a complete superset of the Dublin Core.</para>
+a superset of the Dublin Core.</para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='format.inline'?>
 <?tdg gentext='format.csuppress'?>
 </para>
 
-<para>This element is used for both spatial and temporal coverage, but the intent
-is that only one is specified at a time. In other words, on any given instance
+<para>This element is used for both spatial and temporal coverage, but
+only one should specified at a time. In other words, on any given instance
 of the <tag>bibliocoverage</tag> element, specify either
-a <tag class="attribute">spatial</tag> or a 
-<tag class="attribute">temporal</tag> encoding, but not both.</para>
+the <tag class="attribute">spatial</tag> attribute or the 
+<tag class="attribute">temporal</tag> attribute, but not both.</para>
 
 </refsection>
 

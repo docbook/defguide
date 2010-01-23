@@ -20,85 +20,18 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-
-<!-- Fragment document type declaration subset:
-ArborText, Inc., 1988-1998, v.4002
-<!DOCTYPE SET PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
-<!ENTITY % entities SYSTEM "/Documents/books/dbnutshell/entities/entities.ent">
-%entities;
-]>
--->
-<?Pub CX set(book(bookinfo()part()part(title()reference(title()refentry(refmeta()refnamediv()refsynopsisdiv()refsect1(title()?>
 <para>An <tag>entry</tag> is a cell in a table.</para>
-<para>Each <tag>entry</tag> may specify its starting column.  Entries
-that do not explicitly specify a starting column begin implicitly in the column
-that is immediately adjacent to the preceding cell. Note that 
-<tag>entry</tag>s with the 
-<tag class="attribute">morerows</tag> attribute
-from preceding rows implicitly occupy cells in the succeeding 
-<tag>row</tag>s.</para>
-<para>A <tag>row</tag> is not required to be full.  It is legal for some entries to be
-completely absent (at the beginning, middle, or end of a row).</para>
-<sidebar xml:id="pernicious">
-<title>Pernicious Mixed Content</title>
-<para>The content model of the <tag>entry</tag> element exhibits a
-nasty peculiarity that we call “pernicious mixed content”.<footnote>
-<para>A term coined by Terry Allen.</para>
-</footnote></para>
-<para>Every other element in DocBook contains either block elements or inline
-elements (including text) unambiguously.  In these cases, the meaning
-of line breaks and spaces are well understood; they are insignificant between
-block elements and significant (to the <acronym>SGML</acronym> parser, anyway) where inline
-markup can occur.</para>
-<para>Table entries are different; they can contain either block or inline
-elements, but not both at the same time.  In other words, one
-<tag>entry</tag> in a table might contain a paragraph or a list while another contains
-simply text or another inline markup, but no single <tag>entry</tag>
-can contain both.</para>
-<para>Because the content model of an <tag>entry</tag> allows both kinds
-of markup, each time the <acronym>SGML</acronym> parser encounters an <tag>entry</tag>,
-it has to decide what variety of markup it contains.  <acronym>SGML</acronym> parsers are forbidden
-to use more than a single token of lookahead to reach this decision. In practical
-terms, what this means is that a line feed or space after an
-<tag>entry</tag> start tag causes the parser to decide that the cell contains inline
-markup.  Subsequent discovery of a paragraph or another block element causes
-a parsing error.</para>
-<para>All of these are legal: 
-<screen>
 
-&lt;entry&gt;3.1415927&lt;/entry&gt;
-&lt;entry&gt;General &lt;emphasis&gt;#PCDATA&lt;/emphasis&gt;&lt;/entry&gt;
-&lt;entry&gt;&lt;para&gt;A paragraph of text
-&lt;/para&gt;&lt;/entry&gt;
+<para>Each <tag>entry</tag> may specify its starting column. Entries
+that do not explicitly specify a starting column begin implicitly in
+the column that is immediately adjacent to the preceding cell. Note
+that <tag>entry</tag>s with the <tag class="attribute">morerows</tag>
+attribute from preceding rows implicitly occupy cells in the
+succeeding <tag>row</tag>s.</para>
 
-</screen>
-</para>
-<para>However, each of these is an error:  <screen>&lt;entry&gt;                <lineannotation>
-Error, cannot have a line break before a block element</lineannotation>
-&lt;para&gt;A paragraph of text.
-&lt;/para&gt;&lt;/entry&gt;
-
-&lt;entry&gt;&lt;para&gt;A paragraph of text.
-&lt;/para&gt;               <lineannotation>Error, cannot have a line break between block elements
-</lineannotation>
-&lt;para&gt;A paragraph of text.
-&lt;/para&gt;&lt;/entry&gt;
-
-<?ORA break="sidebar"?>&lt;entry&gt;&lt;para&gt;A paragraph of text.
-&lt;/para&gt;               <lineannotation>Error, cannot have a line break after a block element
-</lineannotation>
-&lt;/entry&gt;</screen></para>
-
-<para>When designing a <acronym>DTD</acronym>, it is wise to avoid pernicious mixed
-content.  Unfortunately, the only way to correct the pernicious
-mixed content problem that already exists in DocBook is
-to require some sort of wrapper (a block element, or an inline
-like <tag>phrase</tag>) around text within table
-<tag>entry</tag>s.  This is annoying and inconvenient in
-a great many tables in which text cells predominate and, in
-addition, differ from
-<acronym>CALS</acronym>.</para>
-</sidebar>
+<para>A <tag>row</tag> is not required to be full. It is legal for
+some entries to be completely absent (at the beginning, middle, or end
+of a row).</para>
 
 <refsection><title>Processing expectations</title>
 <para><?tdg gentext='calssemantics'?>

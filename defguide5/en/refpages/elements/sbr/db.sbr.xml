@@ -21,18 +21,19 @@
 <title>Description</title>
 
 <para>For the most part, DocBook attempts to describe document
-structure rather than presentation.  However, in some complex
-environments, it is possible to demonstrate that there is no
-reasonable set of processing expectations that can guarantee
-correct formatting.
+structure rather than presentation. However, in some complex
+environments, there may be no reasonable set of processing
+expectations that can guarantee correct formatting.
 </para>
-<para>A <tag>cmdsynopsis</tag> is one of those environments. Within a
-long synopsis, it may be necessary to specify the location of a line
-break explicitly.
+
+<para>There are two such environments in DocBook:
+<tag>cmdsynopsis</tag> and <tag>rhs</tag>. Within a long synopsis or
+long “right hand side”, it may be necessary to specify the location of
+a line break explicitly.
 </para>
-<para>The <tag>sbr</tag> element indicates the position of such a
-line break in a <tag>cmdsynopsis</tag>. It is purely
-presentational.
+
+<para>The <tag>sbr</tag> element indicates the position of such a line
+break. It is purely presentational.
 </para>
 
 <refsection><title>Processing expectations</title>

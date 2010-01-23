@@ -49,33 +49,201 @@ This second <tag>indexterm</tag> must be empty.
 </para>
 
 <para>The advantage of this method is that the range can span unbalanced element
-boundaries.
+boundaries. (For example, a range could span from the middle of one paragraph
+to the middle of the next.)
 </para>
 </listitem>
 
 <listitem>
-<para>Place the <tag>indexterm</tag> anywhere you like and point to the
-element that contains the range of text you wish to index with the
-<tag class="attribute">zone</tag> attribute on the <tag>indexterm</tag>.
-Note that <tag class="attribute">zone</tag> is defined as 
-<literal>IDREFS</literal> so a single <tag>indexterm</tag> can point to
-multiple ranges.
+<para>Place the <tag>indexterm</tag> anywhere you like and point to
+the element that contains the range of text you wish to index with the
+<tag class="attribute">zone</tag> attribute on the
+<tag>indexterm</tag>. Note that <tag class="attribute">zone</tag> is
+defined as <literal>IDREFS</literal> so a single <tag>indexterm</tag>
+can point to multiple ranges.
 </para>
 
-<para>The advantage of this method is that <tag>indexterm</tag>s can be 
-collected together or even stored totally outside the flow of the
+<para>The advantage of this method is that <tag>indexterm</tag>s can
+be collected together or even stored totally outside the flow of the
 document (in the <tag>info</tag> for example).
 </para>
 </listitem>
 </itemizedlist>
 </para>
 
-<refsection><title>Processing expectations</title>
-<para><tag>indexterm</tag>s are suppressed in the primary text flow,
-although they contribute to the population of an index and serve as
-anchors for cross references. Under no circumstances is the actual
+<refsection>
+<title>Processing expectations</title>
+
+<para>The <tag>indexterm</tag>s are suppressed in the primary text
+flow, although they contribute to the population of an index and serve
+as anchors for cross references. Under no circumstances is the actual
 content of <tag>indexterm</tag> rendered in the primary flow.
+For example, consider:
 </para>
+
+<example xml:id="indexterm-example">
+<title>Example Index Terms</title>
+<programlisting><![CDATA[<para>USB<indexterm>
+<primary>USB</primary><see>Universal Serial Bus</see>
+</indexterm><indexterm>
+<primary>Universal Serial Bus</primary></indexterm>
+and Firewire<indexterm><primary>Firewire</primary></indexterm> are
+common interface technologies for external hard drives, although
+eSATA<indexterm><primary>eSATA</primary><seealso>Serial ATA</seealso>
+</indexterm> is also used.</para>]]></programlisting>
+</example>
+
+<para>When rendered, either on paper or in online form, this
+paragraph always appears without any of the content of the index
+terms:</para>
+
+<blockquote>
+<para>USB<!-- comment out <indexterm>
+<primary>USB</primary><see>Universal Serial Bus</see>
+</indexterm><indexterm>
+<primary>Universal Serial Bus</primary></indexterm> -->
+and Firewire<!--<indexterm><primary>Firewire</primary></indexterm>--> are
+common interface technologies for external hard drives, although
+eSATA<!--<indexterm><primary>eSATA</primary><seealso>Serial ATA</seealso>
+</indexterm>--> is also used.</para>
+</blockquote>
+
+<para>For most elements, the processing expectations of a
+<tag>indexterm</tag> are straightforward: the location of the term
+serves as an anchor for the cross reference from the index. If the
+word “Firewire” appears on page 75 of the document, then page 75
+appears in the index entry for “Firewire”. In an online presentation,
+there's an anchor for “Fireware” immediately after that word in the
+paragraph.</para>
+
+<para>Several aspects of index markup require special attention:
+whitespace around index terms, see and see also entries, index
+markup in repeating and floating elements, and multiple indexes.</para>
+
+<refsection>
+<title>Whitespace around index terms</title>
+
+<para>Special care should be taken when entering <tag>indexterm</tag>s
+into text, especially when one of the final output formats for your document
+is paginated. Most processing systems are forgiving about the amount of
+whitespace that you use. Outside of “line specific” environments like
+<tag>literallayout</tag> and <tag>programlisting</tag>, you can indent
+lines, insert tabs or spaces at will, and otherwise rely on the processor
+to coalesce multiple spaces into a single space.</para>
+
+<para>However, when the processor is determining where a line or page
+break will occur in a long block of text, it's an almost universal
+convention that such breaks occur where whitespace occurs in the
+markup. Sometimes words have to be hyphnated, of course, but usually
+it's sufficient to break a line at a space and break a page between lines.
+</para>
+
+<para>This means that you want to <emphasis>avoid extraneous
+spaces</emphasis> between index terms and the words with which they
+are associated. Consider this example:</para>
+
+<programlisting><![CDATA[<para>…long, rambling paragraph about wood ducks
+<indexterm><primary>ducks</primary><secondary>wood</secondary>
+</indexterm> and the habitat that they occupy, etc., etc., etc.
+</para>]]></programlisting>
+
+<para>At first glance this seems fine, but consider what happens if the
+processor needs to break this paragraph across two pages. There is a small,
+but non-zero, chance that the page break will occur at the space (introduced
+by the line break) following the word “ducks”. If this happens, the anchor
+associated with the entry “ducks, wood” will appear on the page
+<emphasis>following</emphasis> the relevant words. To avoid this situation,
+never insert whitespace between the term and the <tag>indexterm</tag>:</para>
+
+<programlisting><![CDATA[<para>…long, rambling paragraph about wood
+ducks<indexterm><primary>ducks</primary><secondary>wood</secondary>
+</indexterm> and the habitat that they occupy, etc., etc., etc.
+</para>]]></programlisting>
+
+<para>The whitespace <emphasis>after</emphasis> the <tag>indexterm</tag>
+is necessary, of course. Without it, when the <tag>indexterm</tag> is
+removed for presentation, the words “ducks” and “and” will appear to run
+together.</para>
+</refsection>
+
+<refsection>
+<title>See and See Also entries</title>
+
+<para>The use of <tag>see</tag> and <tag>seealso</tag> elements in
+an <tag>indexterm</tag> also have special semantics.</para>
+
+<para>A <tag>see</tag> entry directs the reader to another location
+in the index. In <xref linkend="indexterm-example"/>, the
+entry for USB:</para>
+
+<programlisting><![CDATA[<indexterm>
+<primary>USB</primary><see>Universal Serial Bus</see>
+</indexterm><indexterm>]]></programlisting>
+
+<para>directs the reader to the entry for Universal Serial Bus. The resulting
+index will look something like this:</para>
+
+<literallayout>…
+Ubiquitous networking, 34, 44, 173-199
+Universal Serial Bus, 50-55
+Up time, 2, 5
+USB, see Universal Serial Bus
+Useless bits, 304, 411
+…</literallayout>
+
+<para>There are no page numbers associated with a “see” entry. In most
+environments, if there is at least one “see” entry for a particular term,
+it is an error to have any other kind of entry for that term.</para>
+
+<para>A <tag>seealso</tag> entry, on the other hand, directs the reader
+to other, possibly related terms in the index. We expect the index
+for “eSATA” to look something like this:
+</para>
+
+<literallayout>…
+Entering markup, 14, 18, 22-33
+eSATA, 56, 58-61
+  (see also Serial ATA)
+evaluating expressions, 44
+…</literallayout>
+
+<para>It's entirely possible for a term to have several “seealso”
+entries.</para>
+</refsection>
+
+<refsection>
+<title>Index terms in repeating and floating elements</title>
+
+<para>When an <tag>indexterm</tag> appears in an element whose content
+may be repeated in more than one place, the anchor is
+<emphasis>only</emphasis> associated with what would be considered
+the “primary” presentation (or
+presentations) of
+the element in the flow of the text. For example, in a traditional
+printed book, the <tag>title</tag> of a <tag>chapter</tag> might
+appear in the Table of Contents, in the running header, and in the
+body of the of the book on the first page of the chapter. If an
+<tag>indexterm</tag> is placed in the <tag>title</tag>, it serves as
+an anchor to <emphasis>only</emphasis> the first page of the
+chapter.</para>
+
+<para>If the processing expectations of an element are that it may
+be repeated several times and that each of these occurrences is
+equally “primary”<footnote><para>There are no elements in DocBook V5.0
+that have these semantics.</para></footnote>,
+then any <tag>indexterm</tag> occurring in that element
+should generate an anchor at each location where the content
+is repeated.</para>
+
+<para>If an <tag>indexterm</tag> appears in an element whose
+content may float, the anchor is to the location where the term occurs
+in the floated text. For example, if an <tag>indexterm</tag> occurs in
+a <tag>figure</tag> that floats to the top of some following page, the
+anchor is on the page where the figure actually occurs.</para>
+</refsection>
+
+<refsection>
+<title>Multiple indexes</title>
 
 <para>Authors can choose to have several types of indexes, for example,
 function, command, and concept indexes. This can be achieved in DocBook
@@ -83,6 +251,7 @@ with the <tag class="attribute">type</tag> attribute. All of the
 <tag>indexterm</tag>s with a particular <tag class="attribute">type</tag>
 will be collected together in the <tag>index</tag> with the same
 <tag class="attribute">type</tag>.</para>
+</refsection>
 </refsection>
 
 <?tdg-attributes?>

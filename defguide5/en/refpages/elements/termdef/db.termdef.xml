@@ -33,12 +33,14 @@ of the term. Often it is valuable to word the definition so that it will stand a
 in case it becomes useful to extract all the terms into a separate glossary
 in addition to having them defined in line.</para>
 
-<para>Every <tag>termdef</tag> must contain exactly one <tag>firstterm</tag><footnote>
-<para>This is a slight change in semantics introduces in DocBook V5.0CR3. Earlier
+<para>Every <tag>termdef</tag> must contain exactly one <tag>firstterm</tag>
+<!-- removed because it seems like it's inside baseball
+<footnote>
+<para>This is a slight change in semantics introduced in DocBook V5.0CR3. Earlier
 versions used a single <tag>glossterm</tag> to identify the term. However, using a
 <tag>glossterm</tag> made it impossible to refer to other defined terms in the
 definition of a term, so the decision was made to switch to <tag>firstterm</tag>.
-</para></footnote>
+</para></footnote> -->
 The <tag>firstterm</tag> identifies the actual term defined by the <tag>termdef</tag>.
 </para>
 

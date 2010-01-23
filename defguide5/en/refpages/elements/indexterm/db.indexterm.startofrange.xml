@@ -20,79 +20,32 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>An <tag>indexterm</tag> identifies text that is to be placed in
-the index. In the simplest case, the placement of the
-<tag>indexterm</tag> in the document identifies the location of the
-term in the text. In other words, the <tag>indexterm</tag> is placed
-in the flow of the document at the point where the
-<tag>indexentry</tag> in the <tag>index</tag> should point. In other
-cases, attributes on <tag>indexterm</tag> are used to identify the
-location of the term in the text.
-</para>
-
-<para>An <tag>indexterm</tag> marks either a single point in the
-document or a range. A single point is marked with an
-<tag>indexterm</tag> placed in the text at the point of reference.
-There are two ways to identify a range of text:
-
-<itemizedlist>
-<listitem>
-<para>Place an <tag>indexterm</tag> at the beginning of the range with
-<tag class="attribute">class</tag> set to <literal>StartOfRange</literal> and
-give this term an <tag class="attribute">id</tag>.
-Place another <tag>indexterm</tag> at the end of the range with
-<tag class="attribute">startref</tag> pointing to the 
-<tag class="attribute">id</tag> of the starting <tag>indexterm</tag>.
-This second <tag>indexterm</tag> must be empty.
-</para>
-<para>The advantage of this method is that the range can span unbalanced element
-boundaries.
-</para>
-</listitem>
-<listitem>
-<para>Place the <tag>indexterm</tag> anywhere you like and point to the
-element that contains the range of text you wish to index with the
-<tag class="attribute">zone</tag> attribute on the <tag>indexterm</tag>.
-Note that <tag class="attribute">zone</tag> is defined as 
-<literal>IDREFS</literal> so a single <tag>indexterm</tag> can point to
-multiple ranges.
-</para>
-<para>The advantage of this method is that <tag>indexterm</tag>s can be 
-collected together or even stored totally outside the flow of the
-document (in the meta for example).
-</para>
-</listitem>
-</itemizedlist>
+<para>A “start of range” <tag>indexterm</tag> marks the start of a range.
+It must have an associated “end of range” <tag>indexterm</tag>.
+The resulting index entry applies to the entire range.
+See <xref linkend="element.db.indexterm.singular"/>.
 </para>
 
 <refsection><title>Processing expectations</title>
-<para>The <tag>indexterm</tag>s are suppressed in the primary text
-flow, although they contribute to the population of an index and serve
-as anchors for cross references. Under no circumstances is the actual
-content of <tag>indexterm</tag> rendered in the primary flow.
+
+<para>See <xref linkend="element.db.indexterm.singular"/>.
 </para>
 
-<para>It is possible to construct index terms that are difficult to parse at
-best and totally illogical at worst.  Consider the following:
+<para>It is possible to construct index terms that are difficult to
+parse at best and totally illogical at worst. Consider the following:
 
-<screen>
-
-&lt;indexterm class='startofrange' zone="id1 id2"&gt;...&lt;/indexterm&gt;
-
-</screen>
+<screen>&lt;indexterm class='startofrange' zone="id1 id2"&gt;...&lt;/indexterm&gt;</screen>
 </para>
 
 <para>There is no way that this can fit into the semantics of an
-<tag>indexterm</tag>.  Although it claims to be the start of a range,
-it does not have an 
-<tag class="attribute">id</tag> for the end-of-range
-<tag>indexterm</tag> to point back to.
-In addition, it includes zoned terms, and mixing the two
-different methods for indicating a range in the same <tag>indexterm</tag>
-is probably a bad idea.
+<tag>indexterm</tag>. Although it claims to be the start of a range,
+it does not have an <tag class="attribute">xml:id</tag> for the
+end-of-range <tag>indexterm</tag> to point back to. In addition, it
+includes zoned terms, and mixing the two different methods for
+indicating a range in the same <tag>indexterm</tag> is probably a bad
+idea.
 </para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

@@ -77,7 +77,7 @@ to overflow, and/or generate errors.</para>
 in terms of lengths (width and depth).</para>
 
 <para>Lengths must be expressed as a decimal value followed
-immediately by an optional unit of measure or a percentage. Six and one eight inches,
+immediately by an optional unit of measure or a percentage. Six and one eighth inches,
 for example, must be expressed as <quote>6.125in</quote>. It is an error to
 put a space or other punctuation between the decimal value and the
 unit of measure.</para>
@@ -186,7 +186,7 @@ the content area is not specified and both scaling and scaling to fit
 are specified, <tag class="attribute">scalefit</tag> is
 ignored.</para>
 
-<para>In order to achieve a level of backwards compatibility with previous
+<para>In order to achieve a level of backward compatibility with previous
 versions of DocBook (which did not have attributes for specifying a content
 area) while maintaining coherent semantics, the default value of
 <tag class="attribute">scalefit</tag> depends on other attributes:</para>
@@ -228,7 +228,7 @@ area) while maintaining coherent semantics, the default value of
 <para>If a viewport area is specified (and neither a content area nor scaling
 is specified) and <tag class="attribute">scalefit</tag> is explicitly
 <quote><literal>0</literal></quote>, the viewport area specification must
-be ignored.</para>
+be ignored, and the image must not be re-sized.</para>
 
 </refsection>
 
@@ -260,7 +260,7 @@ is implementation defined:</para>
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-6.png"/>
+<imagedata fileref="figures/graphic-attr-6.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image at its intrinsic size</phrase></textobject>
 </mediaobject>
@@ -275,7 +275,7 @@ area that is the same as its intrinsic size in the specified viewport area:
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-7.png"/>
+<imagedata fileref="figures/graphic-attr-7.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image at its intrinsic size in a viewport</phrase></textobject>
 </mediaobject>
@@ -291,7 +291,7 @@ implementation defined:
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-5.png"/>
+<imagedata fileref="figures/graphic-attr-5.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image at a specified content size</phrase></textobject>
 </mediaobject>
@@ -307,7 +307,7 @@ in a viewport area that is implementation defined:
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-4.png"/>
+<imagedata fileref="figures/graphic-attr-4.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image scaled</phrase></textobject>
 </mediaobject>
@@ -325,7 +325,7 @@ specified.
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-3.png"/>
+<imagedata fileref="figures/graphic-attr-3.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image scaled to fit</phrase></textobject>
 </mediaobject>
@@ -342,7 +342,7 @@ the specified viewport area:
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-2.png"/>
+<imagedata fileref="figures/graphic-attr-2.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image at a specified size in a specified viewport</phrase></textobject>
 </mediaobject>
@@ -358,7 +358,7 @@ content area which is rendered in the specified viewport area:
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="figures/graphic-attr-1.png"/>
+<imagedata fileref="figures/graphic-attr-1.png" scale="70"/>
 </imageobject>
 <textobject><phrase>An image scaled in a specified viewport</phrase></textobject>
 </mediaobject>

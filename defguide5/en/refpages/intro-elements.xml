@@ -6,10 +6,19 @@
 </info>
 
 <para><indexterm>
+<primary>reference pages</primary>
+<secondary>element reference</secondary>
+</indexterm><indexterm>
+<primary>element reference</primary>
+</indexterm><indexterm>
 <primary>elements</primary>
 <secondary>reference</secondary>
-</indexterm>This reference describes every element in the DocBook
-schema.</para>
+</indexterm><indexterm>
+<primary>DocBook</primary>
+<secondary>elements</secondary>
+<tertiary>reference</tertiary>
+</indexterm>This reference describes every element in DocBook <acronym>V5.0</acronym>.
+</para>
 
 <section xml:id="s.elem.org">
 <title>Organization of Reference Pages</title>
@@ -70,11 +79,9 @@ grammar.</para>
 <variablelist>
 <varlistentry><term>Processing expectations</term>
 <listitem>
-<para><indexterm><primary>formatting</primary>
-  <secondary>elements</secondary></indexterm>
+<para><indexterm><primary>processing expectations</primary></indexterm><indexterm><primary>formatting elements</primary></indexterm>
 <indexterm><primary>elements</primary>
-  <secondary>attributes</secondary>
-    <tertiary>processing expectations, affecting</tertiary>
+  <secondary>processing expectations</secondary>
 </indexterm>Summarizes specific formatting expectations of the
 element. Many processing expectations are influenced by attribute
 values. Be sure to consult the description of element attributes as
@@ -94,7 +101,7 @@ well.
     <tertiary>future changes</tertiary>
 </indexterm>Identifies changes that are scheduled for future versions
 of the schema. These changes are highlighted because they involve some
-backward-incompatability that may make currently valid DocBook
+backward incompatibility that may make currently valid DocBook
 documents no longer valid under the new version.
 </para>
 </listitem>
@@ -135,7 +142,7 @@ element is used. In many cases, a formatted version of the example is
 also shown.
 </para>
 
-<para>All of the examples printed in the book are valid according to the
+<para>All of the examples in the book are valid according to the
 RELAX NG grammar.
 </para>
 
@@ -152,7 +159,13 @@ RELAX NG grammar.
 </indexterm>Each element synopsis begins with a description of its
 content model. Content models are the way that grammars describe the
 name, number, and order of other elements that may be used inside an
-element. This description is presented as a series of nested lists.
+element.
+</para>
+
+<section xml:id="s3-cmintro-notation" condition="expanded">
+<title>Content Model Notation</title>
+
+<para>This description is presented as a series of nested lists.
 The rules of RELAX NG are considerably more powerful than the rules of
 <acronym>DTD</acronym>s and I've seen no obvious way to expose them.
 Suggestions welcome.</para>
@@ -171,7 +184,7 @@ are selected from it:</para>
 <varlistentry>
 <term>Optionally one of:</term>
 <listitem>
-<para>Like “one of” but may be omitted entirely.
+<para>Like <quote>one of</quote> but may be omitted entirely.
 </para>
 </listitem>
 </varlistentry>
@@ -186,7 +199,7 @@ selections must be presented in the order they appear in the list.
 <varlistentry>
 <term>Optional sequence of:</term>
 <listitem>
-<para>Like “sequence of” but may be omitted entirely.
+<para>Like <quote>sequence of</quote> but may be omitted entirely.
 </para>
 </listitem>
 </varlistentry>
@@ -211,7 +224,7 @@ of occurrences except that at least one must be selected.
 <varlistentry>
 <term>Optional one or more of:</term>
 <listitem>
-<para>Like “one or more of” but may be omitted entirely.
+<para>Like <quote>one or more of</quote> but may be omitted entirely.
 </para>
 </listitem>
 </varlistentry>
@@ -226,21 +239,22 @@ they can be selected in any order.
 <varlistentry>
 <term>Optional interleave of:</term>
 <listitem>
-<para>Like “interleave of” but may be omitted entirely.
+<para>Like <quote>interleave of</quote> but may be omitted entirely.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 
 <para>Individual elements in the list may be followed by an occurrence
-indicator. If the indicator is “?” the element is optional. Note that this
+indicator. If the indicator is <quote>?</quote> the element is optional. Note that this
 can have an effect on the meaning of the list as a whole. For example,
 a sequence that consists of only optional elements may have none. This
 differs, in subtle and unimportant ways, from an optional sequence.</para>
 
 <para>Some of the lists, especially ones that would otherwise be quite long,
 are subdivided into groups. For example:</para>
-
+<indexterm><primary>examples</primary><secondary>reference page syntax</secondary></indexterm>
+<indexterm><primary>reference pages</primary><secondary>syntax example</secondary></indexterm>
 <itemizedlist spacing="compact" role="element-synopsis">
   <listitem>
     <para>Sequence of:</para>
@@ -274,28 +288,182 @@ are subdivided into groups. For example:</para>
   </listitem>
 </itemizedlist>
 
-<para>This extra levels of list (e.g., <emphasis>Paragraph elements</emphasis>)
+<para>These extra levels of list (e.g., <emphasis>Paragraph elements</emphasis>)
 are just a convenience for readers, they don't
 have any effect on the content model. An <tag>epigraph</tag> can contain one
-or more of “<tag>literallayout</tag>”,
-“<tag>anchor</tag>”,
-“<tag>formalpara</tag>”,
-“<tag>para</tag>”, or
-“<tag>simpara</tag>”.</para>
+or more of <quote><tag>literallayout</tag>,</quote>
+<quote><tag>anchor</tag>,</quote>
+<quote><tag>formalpara</tag>,</quote>
+<quote><tag>para</tag>,</quote> or
+<quote><tag>simpara</tag>.</quote></para>
 
 <para>In online versions of this document, rendered with a user agent that
 supports JavaScript, these lists can be opened and closed dynamically, or
 removed altogether.
 </para>
+</section>
+
+<section xml:id="s3-cmintro-notation" condition="compact">
+<title>Content Model Notation</title>
+
+<para>Presenting the content models is an editorial challenge.
+Presenting the RELAX NG patterns would be easy and absolutely correct,
+but would only be valuable to readers that understand both RELAX NG and the
+patterns in the schema. Presenting the RELAX NG patterns <quote>fully
+expanded</quote> to just element and attribute names would remove the requirement
+to understand the patterns, but the result is so verbose that it completely
+obscures the actual meaning.</para>
+
+<para>On the web and in other interactive media, it's possible to
+format the content models in a <quote>natural language</quote> list format with names that
+can be expanded to show more detail. That format is useful even without the
+ability to expand patterns interactively. Unfortunately,
+that presentation occupies significant vertical space and, were it used,
+this book would run to more than a thousand pages. That's not really practical.
+</para>
+
+<para>Instead, we compromise with a compact syntax reminiscent of DTD
+syntax. It's not any sort of standard, but it has the dual advantages of
+being reasonably concise and reasonably easy to understand.</para>
+
+<variablelist>
+<varlistentry>
+<term>name</term>
+<listitem>
+<para>A <literal>name</literal> is the name of a DocBook element.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>( )</term>
+<listitem>
+<para>Parenthesis delimit groups.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>*, +, ?</term>
+<listitem>
+<para>Symbols appear after names and groups to indicate how many
+occurrences are allowed. If a <quote><literal>*</literal></quote> is present, zero
+or more occurrences are allowed; if a <quote><literal>+</literal></quote> is
+present, one or more occurrences are allowed; if a
+<quote><literal>?</literal></quote> is present, the symbol may occur zero or one
+times; if no symbol is present, exactly one occurrence is allowed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>|</term>
+<listitem>
+<para>A vertical bar indicates a choice. Either the item that precedes or
+the item that follows the bar is allowed.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>&amp;</term>
+<listitem>
+<para>An ampersand indicates an <quote>interleave.</quote> Both the item that precedes
+and the item that follows the <quote>&amp;</quote> are allowed, but they may occur in any order.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>,</term>
+<listitem>
+<para>A comma separates items in a sequence. Both the item that
+precedes and the item that follows the <quote><literal>,</literal></quote> are
+allowed, and they must occur in that order.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>Here are a few examples:</para>
+<indexterm><primary>examples</primary><secondary>content model</secondary></indexterm>
+<indexterm><primary>content models</primary><secondary>examples</secondary></indexterm>
+<variablelist>
+<varlistentry>
+<term><literal>A</literal></term>
+<listitem>
+<para>exactly one <quote>A</quote> element is allowed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>A | B | C</literal></term>
+<listitem>
+<para>Exactly one <quote>A</quote>, or exactly one <quote>B</quote>, or exactly one
+<quote>C</quote> is allowed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>A,B,C</literal></term>
+<listitem>
+<para>Exactly one <quote>A</quote>, followed by exactly one <quote>B</quote>, followed by exactly
+one <quote>C</quote> is allowed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>A &amp; B &amp; C</literal></term>
+<listitem>
+<para>Exactly one <quote>A</quote> and exactly one <quote>B</quote> and exactly
+one <quote>C</quote> is allowed <emphasis>in any order</emphasis>. This pattern
+allows <literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;</literal>,
+<literal>&lt;B/&gt;&lt;C/&gt;&lt;A/&gt;</literal>,
+<literal>&lt;C/&gt;&lt;A/&gt;&lt;B/&gt;</literal>, etc. but does
+not allow <literal>&lt;A/&gt;&lt;A/&gt;&lt;C/&gt;</literal> or
+<literal>&lt;A/&gt;&lt;B/&gt;</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>A+,B*,C?</literal></term>
+<listitem>
+<para>At least one, but possibly more than one <quote>A</quote>, followed by zero
+or more <quote>B</quote>s, followed by an optional (zero or one) <quote>C</quote> is allowed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>A,(B|C)+,D</literal></term>
+<listitem>
+<para>Exactly one <quote>A</quote>, followed by one or more <quote>B</quote> or <quote>C</quote> elements, followed
+by exactly one <quote>D</quote> is allowed. Because the group can be repeated,
+this pattern matches
+<literal>&lt;A/&gt;&lt;B/&gt;&lt;D/&gt;</literal>,
+<literal>&lt;A/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
+<literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
+<literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;&lt;C/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
+etc.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>Some element names are defined by more than one pattern. When this
+is the case, the name of the pattern is explicitly shown in a superscript
+following the name.</para>
+
+<para>In order to avoid long, repetitive lists of element names,
+similar items are grouped together and only the name of the group is
+given: For example, a <tag>para</tag> may contain the <quote>Bibliography
+inlines,</quote> the <quote>Error inlines,</quote> etc. The author has the choice of using any of the elements belonging to the group. The elements included in each
+group are summarized below.</para>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude'
+	    href="../patterns.xml"/>
+
+</section>
 
 <section xml:id="s.elem.contentmodels">
 <title>Content models and validity</title>
 
-<para><indexterm><primary>parsers</primary>
+<para><indexterm><primary>validating</primary>
   <secondary>content models, matching to elements</secondary></indexterm>
 <indexterm><primary>elements</primary>
-  <secondary>parsing</secondary>
-</indexterm>A parser uses the content models to determine if a given
+  <secondary>validating</secondary>
+</indexterm>A validator uses the content models to determine if a given
 document is valid. In order for a document to be valid, the content of
 every element in the document must <quote>match</quote> the content
 model for that element.
@@ -307,19 +475,25 @@ elements in the document.
 </para>
 
 <para>For example, consider the content model of the
-<tag>epigraph</tag>, above, and this example:</para>
+<tag>epigraph</tag>:</para>
+
+<para><tag>epigraph</tag> ::= (<tag>info</tag>?<superscript>db.titleforbidden.info</superscript>,
+<tag>attribution</tag>?,(<tag>literallayout</tag> | <emphasis>Paragraph elements</emphasis>)+)</para>
+
+<para>Does the following example <quote>match</quote> that content model?</para>
 
 <screen><![CDATA[<epigraph>
 <para>Some text</para>
 </epigraph>]]></screen>
 
-<para>It is valid because the following expansion of the content model exactly
+<para>Yes, it is valid because the following expansion of the content model exactly
 matches the actual content: choose zero occurrences of <tag>info</tag>,
 zero occurrences of <tag>attribution</tag>, choose the alternative
-<tag>para</tag> from the choice, and choose to let the “one or more” match once.
+<tag>para</tag> from the <quote><emphasis>Paragraph elements</emphasis></quote> choice,
+and choose to let the <quote>one or more</quote> match once.
 </para>
 
-<para>By the same token, this example is not valid because there is no 
+<para>By the same token, this example is not valid because there is no
 expansion of the content model that can match it:
 </para>
 
@@ -335,23 +509,58 @@ expansion of the content model that can match it:
 <section xml:id="common.attributes">
 <title>Common Attributes</title>
 <para>
-<indexterm><primary>attributes</primary>
+<indexterm zone="common.attributes"><primary>attributes</primary>
   <secondary>common</secondary></indexterm>
-<indexterm><primary>common attributes</primary>
-</indexterm>The following attributes occur on all elements. They are
-summarized here once for brevity and to make the additional attributes
-that occur on many elements stand out.</para>
+<indexterm zone="common.attributes"><primary>common attributes</primary>
+</indexterm>There are many <quote>common attributes</quote> that occur on every
+DocBook element. They are summarized here for brevity and to make
+the additional attributes that occur on many elements stand
+out.</para>
 
-<?common-attributes?>
+<?common-general-attributes?>
 
+<section xml:id="common.effectivity.attributes">
+<title>Common Effectivity Attributes</title>
+<indexterm zone="common.effectivity.attributes"><primary>effectivity</primary></indexterm>
+<indexterm zone="common.effectivity.attributes"><primary>attributes</primary><secondary>effectivity</secondary></indexterm>
+<indexterm zone="common.effectivity.attributes"><primary>effectivity attributes</primary></indexterm>
+<para>The common attributes include a collection of <quote>effectivity
+attributes.</quote> These attributes are available for authors to identify to
+whom a particular element applies. Effectivity attributes are often
+used for profiling: building documents that contain information only
+relevant to a particular audience. </para>
+
+<para>For example, a section might be identified as available only to
+readers with a <quote>top-secret</quote> <tag class="attribute">security</tag>
+clearance or a paragraph might be identifies as effecting only users
+running the implementation provided by a particular <tag
+class="attribute">vendor</tag>.
+</para>
+
+<?common-effectivity-attributes?>
+
+<para>The names of the effectivity attributes are suggestive of
+several classes of common effectivity information. The semantically
+neutral <tag class="attribute">condition</tag> attribute was added
+to give authors a place to put values that don't fit neatly into one
+of the other alternatives.</para>
+
+<para>In authoring environments where many different kinds of
+effectivity information are required, it's not uncommon to see local
+extensions that add new attributes. It's also not uncommon to see attributes used
+without regard to the class of information suggested by the name.
+</para>
+</section>
 </section>
 
 <section xml:id="common.linking.attributes">
 <title>Common Linking Attributes</title>
 <para>
-<indexterm><primary>attributes</primary>
+<indexterm zone="common.linking.attributes"><primary>attributes</primary>
   <secondary>common linking</secondary></indexterm>
-<indexterm><primary>common linking attributes</primary>
+<indexterm zone="common.linking.attributes"><primary>linking</primary>
+  <secondary>attributes</secondary></indexterm>
+<indexterm zone="common.linking.attributes"><primary>common linking attributes</primary>
 </indexterm>The following attributes occur on all elements that can
 be the start of a link. They are
 summarized here once for brevity and to make the additional attributes
