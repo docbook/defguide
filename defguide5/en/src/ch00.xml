@@ -15,12 +15,12 @@ papers about computer hardware and software, though it is by no means
 limited to them. Because it is a large and robust format,
 and because its main structures correspond to
 the general notion of what constitutes a book, DocBook has been
-adopted by a large and constantly growing community of authors. DocBook is
+adopted by a large and growing community of authors. DocBook is
 supported <quote>out of the box</quote> by a wide range of tools, both open
 source and commercial. In short, DocBook is an easy-to-understand and
-widely used schema. Hundreds (perhaps thousands) of organizations use
-DocBook for millions of pages of documentation, in various print and
-online formats, worldwide.
+widely used schema. Worldwide, hundreds (perhaps thousands) of organizations use
+DocBook for millions of pages of documentation in a wide variety of print and
+online formats.
 </para>
 
 <section xml:id="pref-whyread">
@@ -34,45 +34,65 @@ online formats, worldwide.
   have about all the elements and attributes in DocBook. In particular,
   we cover the following subjects:</para>
 
-  <itemizedlist>
-    <listitem><para>The general nature of DocBook. With over 400 elements,
-    DocBook can be a bit overwhelming at first. We quickly get you up to
-    speed on how the pieces fit together.</para>
+  <variablelist>
+    <varlistentry><term>Getting started with DocBook:</term>
+    <listitem><para>With around 400 elements,
+    DocBook can be a bit overwhelming at first. We get you up to
+    speed quickly.</para>
     </listitem>
-    <listitem><para>How to write DocBook documents. Where should you start
+    </varlistentry>
+    <varlistentry><term>Writing DocBook documents:</term>
+    <listitem><para>Where should you start
     and what should you do?</para>
     </listitem>
-    <listitem><para>Parsing and validation. After you've written a
-    document, how can you tell if it really conforms to the DocBook
-    schema?</para>
+    </varlistentry>
+    <varlistentry><term>Parsing and validating DocBook documents:</term>
+    <listitem><para>After
+    you've written a document, how can you tell if it really conforms
+    to the DocBook schema?</para>
     </listitem>
-    <listitem><para>How to publish DocBook documents. After you've written
-    one, what do you do with it? We provide a guide to using some popular
-    free tools to publish DocBook documents both in print and on the
-    Web.</para>
+    </varlistentry>
+    <varlistentry><term>Publishing DocBook documents:</term>
+    <listitem><para>After you've written
+    one, what do you do with it? We introduce some popular
+    free tools you can use to publish DocBook documents in print and various
+    electronic formats.</para>
     </listitem>
-    <listitem><para>Customizing the schema. Many individuals and
-    corporations have standardized on the DocBook schema. Whether your
-    subject matter is computer software documentation or not,
-    we explain how you can write a <quote>customization layer</quote> to
-    tailor DocBook explicitly for your information.</para>
+    </varlistentry>
+    <varlistentry><term>Customizing the schema:</term>
+    <listitem><para>Many individuals and
+    corporations have created custom schemas based on DocBook.
+    We show you how to write a <quote>customization layer</quote>
+    to tailor DocBook for your content.</para>
     </listitem>
-    <listitem><para>Understanding all of the elements. Each element is
+    </varlistentry>
+    <varlistentry><term>Understanding the elements:</term>
+    <listitem><para>Each element is
     extensively documented, including the intended semantics and the
-    purpose of all its attributes. An example of proper usage is given
-    for every element.
-  </para>
+    purpose of all its attributes. An example of proper usage is included
+    for most elements.</para>
     </listitem>
-    <listitem><para>Stylesheets. The DocBook XSL Stylesheets, part of the
-    <link xlink:href="http://docbook.sf.net/">DocBook
-    project</link> at <link xlink:href="http://sourceforge.net/">SourceForge</link>,
-    have become a defacto standard way to process DocBook. We describe them
-    briefly.</para>
+    </varlistentry>
+    <varlistentry><term>Using the DocBook stylesheets:</term>
+    <listitem><para>The DocBook <acronym>XSL</acronym> Stylesheets,
+    part of the <link xlink:href="http://docbook.sf.net/">DocBook
+    project</link> at <link
+    xlink:href="http://sourceforge.net/">SourceForge</link>, have
+    become the de facto standard way to process DocBook. This book
+    contains a brief description about using the stylesheets, but for
+    detailed information we recommend Bob Stayton's excellent book,
+    <citetitle>DocBook XSL: The Complete Guide</citetitle><biblioref
+    linkend="Stayton07"/>.
+    </para>
     </listitem>
+    </varlistentry>
+    <varlistentry><term>Getting more information:</term>
     <listitem><para>Finally, we direct you to other places you
-    can go for all the latest info.</para>
+    can go for information about DocBook, <acronym>XML</acronym>, and
+    other relevant topics.</para>
     </listitem>
-  </itemizedlist>
+    </varlistentry>
+  </variablelist>
 </section>
 
 <section xml:id="pref-bookaud">
@@ -81,109 +101,109 @@ online formats, worldwide.
   <para>We expect that most readers will have some familiarity with
   <acronym>XML</acronym>. Even if your experience goes no farther than
   writing a few <acronym>HTML</acronym> pages, you're probably in good
-  shape. Although we provide an introduction to <acronym>XML</acronym>,
-  and structured markup, this book may not
-  suffice as your only tutorial about <acronym>XML</acronym>.
-  This depends, naturally, on your needs and
-  experience. For a list of some other good resources, consult <xref
-  linkend="app-resources"/>.
+  shape. If you're not already familiar with <acronym>XML</acronym>,
+  there are many popular books, including Erik Ray's <citetitle
+  >Learning XML</citetitle><biblioref linkend="Ray03"/>. For a list
+  of other resources, consult <xref linkend="app-resources"/>.
   </para>
 
   <note xml:id="sgml">
     <para>The previous edition of this book described some of the SGML-specific
     features available to users of the DocBook <acronym>DTD</acronym> versions 4.x
-    and earlier. In this edition, we don't cover SGML at all. Starting with DocBook
-    V5.0, DocBook is normatively an XML vocabulary.</para>
+    and earlier. In this edition, we don't cover <acronym>SGML</acronym> at all. Starting with DocBook
+    <acronym>V5.0</acronym>, DocBook is normatively an <acronym>XML</acronym> vocabulary.</para>
   </note>
 
-  <para>Some sections of this book describe tools and applications. For
-  the most part, these are Microsoft Windows or <acronym>Linux</acronym>
-  applications, although there's nothing about DocBook that makes it
-  unsuitable for the Mac or any other
-  operating system of your choice.
-  </para>
 </section>
 
 <section xml:id="pref-organization">
   <title>Organization of This Book</title>
 
-  <para>This book is divided into three parts.
+  <para>This book is divided into three parts:</para>
+  <para>
   <citetitle>Part I: Introduction </citetitle> is an introduction to
-  structured markup and DocBook, and includes the following chapters:</para>
+  DocBook and includes the following chapters:</para>
   <variablelist>
-    <varlistentry><term><xref linkend="preface"/></term>
-    <listitem>
-      <para>This Preface.</para>
-    </listitem>
-    </varlistentry>
     <varlistentry><term><xref linkend="ch-gsxml"/></term>
     <listitem>
-      <para>Getting Started with DocBook. This chapter combines and updates
-      the information in the <quote>Getting Started with SGML/XML,</quote>
-      <quote>Creating DocBook Documents,</quote>
-      <quote>Parsing DocBook Documents,</quote> and
-      <quote>Publishing DocBook Documents</quote> chapters from the First Edition,
-      along with some of the information originally in Appendix A,
-      <quote>Installation</quote>.</para>
+      <para>Getting Started with DocBook</para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry><term><xref linkend="ch-create"/></term>
+    <listitem>
+      <para>Creating DocBook Documents</para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry><term><xref linkend="ch-parse"/></term>
+    <listitem>
+      <para>Validating DocBook Documents</para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry><term><xref linkend="ch-publish"/></term>
+    <listitem>
+      <para>Publishing DocBook Documents</para>
     </listitem>
     </varlistentry>
     <varlistentry><term><xref linkend="app-customizing"/></term>
     <listitem>
-      <para>How to Customize DocBook.</para>
+      <para>Customizing DocBook</para>
     </listitem>
     </varlistentry>
   </variablelist>
 
   <para condition="refpages"><citetitle>Part II: Reference</citetitle>
   <phrase condition="online">is a complete reference to every element
-  and parameter entity in the DocBook V5.0 schema.</phrase>
+  and parameter entity in the DocBook <acronym>V5.0</acronym> schema.</phrase>
   <phrase condition="print">is a complete reference to every element in
-  the DocBook V5.0 schema.</phrase>
+  the DocBook <acronym>V5.0</acronym> schema.</phrase>
   </para>
 
   <variablelist condition="refpages">
-    <varlistentry><term><xref linkend="ref-element"/></term>
+    <varlistentry><term><xref linkend="ref-element" xrefstyle="select:nopage"/></term>
     <listitem>
       <para>A reference guide to the DocBook elements.</para>
     </listitem>
     </varlistentry>
   </variablelist>
 
-  <para><citetitle>Part III: Appendixes</citetitle> discusses other resources:
+  <para><citetitle>Part III: Appendixes</citetitle>:
   </para>
   <variablelist>
-    <varlistentry><term><xref linkend="app-versions"/></term>
+    <varlistentry><term><xref linkend="app-install"/></term>
     <listitem>
-      <para>A guide to DocBook versions, including a summary of the features
-      expected in future releases.</para>
+      <para>Describes how to install the DocBook schema and stylesheets.</para>
+    </listitem>
+    </varlistentry>
+    <varlistentry><term><xref linkend="app-variants"/></term>
+    <listitem>
+      <para>Describes DocBook variants and discusses future directions.</para>
     </listitem>
     </varlistentry>
     <varlistentry><term><xref linkend="app-resources"/></term>
     <listitem>
-      <para>Other resources.</para>
-    </listitem>
-    </varlistentry>
-    <varlistentry><term><xref linkend="app-cdrom"/></term>
-    <listitem>
-      <para>The first edition of the book included a CD-ROM. This appendix still
-      exists, so that the labels of following appendixes remains the same. There
-      is no CD-ROM for this edition of the book.</para>
+      <para>Lists websites, books and other resources.</para>
     </listitem>
     </varlistentry>
     <varlistentry><term><xref linkend="app-interchange"/></term>
     <listitem>
-      <para>An interchange checklist. Things to consider when you're sharing
+      <para>An interchange checklist. Things to consider when sharing
       DocBook documents with others.</para>
     </listitem>
     </varlistentry>
-    <varlistentry><term><xref linkend="quickref"/></term>
+    <varlistentry><term><xref linkend="gfdl"/></term>
     <listitem>
-      <para>A Quick Reference to the elements in DocBook.</para>
+      <para>A copy of the GNU Free Documentation License.</para>
     </listitem>
     </varlistentry>
   </variablelist>
-  <para>At the end of this book you'll find a <xref linkend="glossary"/> and an
-  <!-- YES, THIS IS DUPLICATED ONCE WITH THE LINK AND ONCE WITHOUT: -->
+  <para>At the end of this book you'll find a 
+  <!-- YES, THESE ARE DUPLICATED ONCE WITH THE LINK AND ONCE WITHOUT: -->
+  <phrase condition="online"><xref linkend="glossary"/></phrase>
+  <phrase condition="print">Glossary</phrase>
+  and an
   <phrase condition="online"><xref linkend="index"/>.</phrase>
   <phrase condition="print">Index.</phrase>
   </para>
@@ -200,7 +220,7 @@ online formats, worldwide.
         <term>Italic</term>
 
         <listitem>
-          <para>Indicates new terms, URLs, email addresses, filenames, and
+          <para>Indicates new terms, <acronym>URL</acronym>s, email addresses, filenames, and
           file extensions.</para>
         </listitem>
       </varlistentry>
@@ -263,7 +283,7 @@ online formats, worldwide.
 
     <para>We appreciate, but do not require, attribution. An attribution
     usually includes the title, author, publisher, and ISBN. For example:
-    “<emphasis>DocBook: The Definitive Guide, Second Edition</emphasis> by Norman Walsh. Copyright 2009 O’Reilly Media, Inc., 978-0-596-8050-2-9.”</para>
+    <quote><citetitle>DocBook: The Definitive Guide, Second Edition</citetitle> by Norman Walsh. Copyright 2010 O’Reilly Media, Inc., ISBN: 978-0-596-8050-2-9.</quote></para>
 
     <para>If you feel your use of code examples falls outside fair use or the
     permission given above, feel free to contact us at
@@ -333,9 +353,40 @@ online formats, worldwide.
   </section>
   <section>
     <title>Acknowledgments</title>
-    <para>
-      <remark>TBD: Also, should Acknowledgments from first edition
-      be included, too?</remark>
-    </para>
-  </section>
+
+<para>This book wouldn't exist, there wouldn't have been any point in
+writing it, were it not for DocBook's enthusiastic support from an
+entire community of writers, engineers, managers, and other users. My
+thanks to you all.</para>
+
+<para>It also wouldn't exist if my wife was not so understanding and
+supportive. Writing a book invariable takes more time and effort than
+one imagines, time first borrowed from, then begged, and eventually
+stolen from other activities. Thank you, Deb!</para>
+
+<para>And, to conclude a series, it also wouldn't exist were it not
+for Dick Hamilton's encouragement and hard work. Dick first persuaded me
+to complete a second edition in print, then offered to publish it. He
+negotiated with O'Reilly, agreed to edit it, and wrote more of it than
+he could be persuaded to take credit for. Thank you, Dick.</para>
+
+<para>Several sections in this book use material from <link
+xlink:href="http://docbook.org/docs/howto/"><quote>DocBook V5.0: The
+Transition Guide,</quote></link> also known as the <quote>DocBook
+How-to.</quote> Thanks to Jirka Kosek and Michael
+Smith for their work on the How-to.
+</para>
+
+<para>Thanks to Nancy Harrison, Scott Hudson, Mauritz Jeanson, Jirka
+Kosek, and Larry Rowland for their technical review of the book.
+</para>
+
+<para>Thanks to Bob Stayton for being Secretary to the Technical
+Committee and to Scott Hudson for chairing the eLearning and Publisher's
+Subcommittees and for being the driving force behind those two initiatives.
+Thanks also to the entire DocBook Technical Committee for
+contributing time every month to the continued maintenance of DocBook.
+</para>
+
+</section>
 </preface>

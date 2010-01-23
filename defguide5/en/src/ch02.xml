@@ -12,7 +12,6 @@
 <para><indexterm xml:id="documentsDocBookch02" class="startofrange">
 <primary>documents</primary>
 <secondary>creating</secondary>
-<tertiary>DocBook</tertiary>
 </indexterm>This chapter explains in concrete, practical terms how to
 make DocBook documents. It's an overview of all the kinds of markup
 that are possible in DocBook documents. It explains how to create
@@ -24,39 +23,31 @@ section of this book.
 </para>
 
 <section xml:id="ch02-makexml">
-<info>
 <title>Making an <acronym>XML</acronym> Document</title>
-</info>
 
 <para><indexterm>
   <primary>XML</primary>
   <secondary>DocBook documents, creating</secondary>
 </indexterm><indexterm>
-  <primary>DocBook DTD</primary>
+  <primary>DocBook</primary>
   <secondary>documents</secondary>
-  <tertiary>creating in XML</tertiary>
+  <tertiary>creating</tertiary>
 </indexterm><indexterm>
-  <primary>documents</primary>
-  <secondary>creating</secondary>
-  <tertiary>in XML (DocBook)</tertiary>
-</indexterm><indexterm>
-  <primary>prologue</primary>
+  <primary>prolog</primary>
   <secondary>XML documents</secondary>
 </indexterm>An <acronym>XML</acronym> document consists of an optional
-XML Declaration, an optional Document Type Declaration, which includes
+<acronym>XML</acronym> Declaration, an optional Document Type Declaration, which includes
 an optional Internal Subset, and a Document (or Root) Element. We'll discuss
 each of these in turn.</para>
 
-<para>In XML vocabularies like DocBook which are defined with RELAX NG
-(and also in the case of vocabularies defined with W3C's XML Schema),
+<para>In <acronym>XML</acronym> vocabularies like DocBook, which are defined with RELAX NG
+(and also in the case of vocabularies defined with W3C's <acronym>XML</acronym> Schema),
 it is common to omit the Document Type Declaration entirely. The
 Document Type Declaration associates a document with a particular
-Document Type Definition (DTD).</para>
+Document Type Definition (<acronym>DTD</acronym>).</para>
 
 <section xml:id="s.xmldecl">
-<info>
   <title>An <acronym>XML</acronym> Declaration</title>
-</info>
 
 <para><indexterm>
   <primary>declarations</primary>
@@ -70,7 +61,7 @@ Document Type Definition (DTD).</para>
 </indexterm><acronym>XML</acronym> documents often begin with an
 <acronym>XML</acronym> declaration that identifies a few simple aspects of
 the document, for example:</para>
-<screen>&lt;?xml version="1.0" encoding="utf-8"?&gt;</screen>
+<screen><![CDATA[<?xml version="1.0" encoding="utf-8"?>]]></screen>
 
 <para>Identifying the version of <acronym>XML</acronym> ensures that
 future changes to the <acronym>XML</acronym> specification will not
@@ -78,32 +69,28 @@ alter the semantics of this document. The encoding declaration
 tells the processor what character encoding this document uses.
 It must match the actual encoding that you use. The
 complete details of the <acronym>XML</acronym> declaration are
-described in the <link xlink:href="http://www.w3.org/TR/REC-xml"><acronym>XML</acronym>
-specification</link>.
+described in the W3C standard, <citetitle>Extensible Markup Language (<acronym>XML</acronym>) 1.0</citetitle><biblioref linkend="XML"/>.
 </para>
 
-<para>If your document uses XML 1.0 and an encoding of either
+<para>If your document uses <acronym>XML</acronym> 1.0 and an encoding of either
 <literal role="encoding">utf-8</literal> or
 <literal role="encoding">utf-16</literal>,
-the XML Declaration is not required. But it is never wrong to include
-it. If you do not include an XML declaration, your document must conform
-to XML 1.0. If you want to use XML 1.1, you must include an XML Declaration
+the <acronym>XML</acronym> Declaration is not required. But it is never wrong to include
+it. If you do not include an <acronym>XML</acronym> declaration, your document must conform
+to <acronym>XML</acronym> 1.0. If you want to use <acronym>XML</acronym> 1.1, you must include an <acronym>XML</acronym> Declaration
 and specify <code>version="1.1"</code> in it.</para>
 
-<para>The XML Declaration is syntactically similar to a processing instruction,
-but it is not. The XML Declaration, if it is present, must be absolutely the
+<para>The <acronym>XML</acronym> Declaration is syntactically similar to a processing instruction,
+but it is not one. The <acronym>XML</acronym> Declaration, if it is present, must be absolutely the
 first thing in your document and it may not appear anywhere else.</para>
 </section>
 
 <section xml:id="s.doctypedecl">
-<info>
   <title>A Document Type Declaration</title>
-</info>
 
 <para><indexterm>
   <primary>declarations</primary>
-  <secondary>document type declaration</secondary>
-  <tertiary>XML</tertiary>
+  <see>document type declaration</see>
 </indexterm><indexterm>
   <primary>XML</primary>
   <secondary>document type declaration</secondary>
@@ -111,11 +98,10 @@ first thing in your document and it may not appear anywhere else.</para>
   <primary>document type declaration</primary>
   <secondary>XML documents</secondary>
 </indexterm><indexterm>
-  <primary>DocBook DTD</primary>
-  <secondary>XML</secondary>
-  <tertiary>document type declaration</tertiary>
+  <primary>DocBook</primary>
+  <secondary>document type declaration</secondary><see>document type declaration</see>
 </indexterm><acronym>XML</acronym> documents don't
-require a <acronym>DTD</acronym> and if you are using RELAX NG, often
+require a <acronym>DTD</acronym>, and if you are using RELAX NG, often
 they will not include one. Historically, DocBook
 <acronym>XML</acronym> documents have almost always had one.
 </para>
@@ -126,10 +112,10 @@ they will not include one. Historically, DocBook
 </indexterm><indexterm>
   <primary>root element</primary>
   <secondary>document type declaration</secondary>
-</indexterm>The document type declaration identifies what the root
-element of the document will be and may specify the DTD that should be
-used when parsing the document. A typical doctype declaration
-for a DocBook V4.5 document looks like this:
+</indexterm>The Document Type Declaration identifies what the root
+element of the document will be and may specify the <acronym>DTD</acronym> that should be
+used when parsing the document. A typical Document Type Declaration
+for a DocBook <acronym>V4.5</acronym> document looks like this:
 </para>
 
 <screen>&lt;?xml version='1.0'?&gt;
@@ -146,9 +132,9 @@ for a DocBook V4.5 document looks like this:
   <secondary>XML</secondary>
 </indexterm>This declaration indicates that the root element will be
 <tag>book</tag> and that the <acronym>DTD</acronym>
-used will be DocBook V4.5, identified with both its public and system
+used will be DocBook <acronym>V4.5</acronym>, identified with both its public and system
 identifiers. In this example, the
-<acronym>DTD</acronym> identified with an <acronym>HTTP</acronym>
+<acronym>DTD</acronym> is identified with an <acronym>HTTP</acronym>
 <acronym>URI</acronym>.
 <indexterm>
   <primary>URI</primary>
@@ -160,70 +146,78 @@ interpret them locally as <literal>file:</literal>
 them.
 </para>
 
-<para>You can specify a DTD for DocBook V5.0 documents:</para>
+<para>You can specify a <acronym>DTD</acronym> for DocBook <acronym>V5.0</acronym> documents:</para>
 
 <screen>&lt;?xml version='1.0'?&gt;
 &lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0//EN"
                "http://www.oasis-open.org/docbook/xml/5.0/docbook.dtd"&gt;</screen>
 
-<para>But the limited constraints that can be expressed in DTDs mean
+<para>But the limited constraints that can be expressed in <acronym>DTD</acronym>s mean
 that the resulting document may or may not <emphasis>really</emphasis>
-be valid DocBook V5.0. The normative schema for DocBook V5.0 is
-the RELAX NG Grammar with its Schematron annotations.</para>
+be valid DocBook <acronym>V5.0</acronym>. The normative schema for DocBook <acronym>V5.0</acronym> is
+the RELAX NG grammar with its Schematron annotations.</para>
 
-<para>The only reason to use a DTD with DocBook V5.0 is if your
-editing environment (or other tool) requires one, for example, for
-syntax directed editing. If you're using tools that require DTDs, check
-with the vendor, maybe a more recent version is available that supports
-RELAX NG.</para>
+<para>The only reason to use a <acronym>DTD</acronym> with DocBook
+<acronym>V5.0</acronym> is if your editing environment (or other tool)
+requires one, for example, for syntax directed editing. If you're
+using a tool that requires <acronym>DTD</acronym>s, check with the
+vendor, maybe a more recent version is available that supports RELAX
+NG.</para>
 
 </section>
 <section xml:id="s.internalsubset">
 <title>An Internal Subset</title>
 
 <para><indexterm>
-  <primary>declarations</primary>
-  <secondary>document type declaration</secondary>
-  <tertiary>XML</tertiary>
+  <primary>document type declaration</primary>
+  <secondary>XML</secondary>
 </indexterm><indexterm>
   <primary>document type declaration</primary>
   <secondary>internal subset</secondary>
 </indexterm><indexterm>
   <primary>internal subset</primary>
-  <secondary>XML document type declarations</secondary>
+  <secondary>document type declarations</secondary>
+</indexterm><indexterm xml:id="idx.entities-1" class="startofrange">
+  <primary>entities</primary>
+</indexterm><indexterm xml:id="idx.entities-2" class="startofrange">
+  <primary>general entities</primary>
 </indexterm><indexterm>
   <primary>XML</primary>
-  <secondary>document type declarations</secondary>
+  <secondary>document type declaration</secondary>
   <tertiary>internal subset</tertiary>
-</indexterm>One reason to use a Document Type Declaration with DocBook
-V5.0 is to provide local declarations such as entities:</para>
-
-<screen>&lt;?xml version='1.0'?&gt;
-&lt;!DOCTYPE book [
-&lt;!ENTITY nwalsh "Norman Walsh"&gt;
-&lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
-&lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
-]&gt;</screen>
+</indexterm>Even if you aren't using the DTD version of DocBook
+<acronym>V5.0</acronym>, you may still want to use a
+Document Type Declaration
+to provide local declarations such as entities:</para>
+<indexterm><primary>examples</primary><secondary>document type declaration</secondary></indexterm>
+<indexterm><primary>document type declaration</primary><secondary>example</secondary></indexterm>
+<programlisting><![CDATA[<?xml version='1.0'?>
+<!DOCTYPE book [
+<!ENTITY nwalsh "Norman Walsh">
+<!ENTITY chap1 SYSTEM "chap1.xml">
+<!ENTITY chap2 SYSTEM "chap2.xml">
+]>]]></programlisting>
 
 <para>These declarations form what is known as the internal subset. In
-this example, the DTD has been omitted, but the two are not mutually
-exclusive. If you are using a DTD (which is technically known as the
-“<firstterm>external subset</firstterm>”), you can include the
-internal subset immediately after the DTD:</para>
+this example, the <acronym>DTD</acronym> has been omitted, but the two are not mutually
+exclusive. If you are using a <acronym>DTD</acronym> (which is technically known as the <quote><firstterm>external subset</firstterm></quote>), you can include the
+internal subset immediately after the <acronym>DTD</acronym>:</para>
 
-<screen>&lt;?xml version='1.0'?&gt;
-&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0/EN"
+<programlisting><![CDATA[<?xml version='1.0'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0/EN"
                "http://www.oasis-open.org/docbook/xml/5.0/docbook.dtd" [
-&lt;!ENTITY nwalsh "Norman Walsh"&gt;
-&lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
-&lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
-]&gt;</screen>
+<!ENTITY nwalsh "Norman Walsh">
+<!ENTITY chap1 SYSTEM "chap1.xml">
+<!ENTITY chap2 SYSTEM "chap2.xml">
+]>]]></programlisting>
 
 
 <para><indexterm>
-  <primary>parsing</primary>
-  <secondary>order</secondary>
-  <tertiary>XML document declarations</tertiary>
+  <primary>document type declaration</primary>
+  <secondary>parsing order</secondary>
+</indexterm><indexterm>
+  <primary>parsing order</primary>
+  <secondary>document type declaration</secondary>
 </indexterm>When both are specified, the internal subset is parsed
 <emphasis>first</emphasis>. If multiple declarations for an entity
 occur, the first declaration is used. This means that declarations in
@@ -231,7 +225,7 @@ the internal subset override declarations in the external
 subset.</para>
 </section>
 
-<section xml:id="s.rootelem"><info><title>The Document (or Root) Element</title></info>
+<section xml:id="s.rootelem"><title>The Document (or Root) Element</title>
 
 <para><indexterm>
   <primary>root element</primary>
@@ -249,7 +243,7 @@ root element usually immediately follows it:</para>
 &lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
 &lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
 ]&gt;
-&lt;book xmlns="http://docbook.org/ns/docbook"&gt;…&lt;/book&gt;</screen>
+&lt;book xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;…&lt;/book&gt;</screen>
 
 <para>The important point is that the root element must be physically
 present immediately after the document type declaration. You cannot
@@ -257,165 +251,13 @@ place the root element of the document in an external entity.</para>
 </section>
 </section>
 
-<section xml:id="s-pid-sid-catalogs">
-<info>
-  <title>Public Identifiers, System Identifiers, and Catalog Files</title>
-</info>
-
-<para><indexterm>
-<primary>files</primary>
-<secondary>external, referencing</secondary>
-</indexterm><indexterm>
-<primary>XML</primary>
-<secondary>external file references, id</secondary>
-</indexterm>When a <acronym>DTD</acronym> or other external entity is
-referenced from a document, the reference can be specified in three
-ways: using a <firstterm>public identifier</firstterm>, a
-<firstterm>system identifier</firstterm>, or both. In
-<acronym>XML</acronym>, the system identifier is required and the
-public identifier is optional.
-Taken together, the combination of an optional public identifier and a
-system identifier is known as a <firstterm>external identifier</firstterm>.
-</para>
-
-<para><indexterm>
-  <primary>public identifiers</primary>
-  <secondary>names, requirements</secondary>
-</indexterm>A public identifier is a globally unique, abstract name,
-such as the following, which is the official public identifier for
-DocBook <acronym>V4.5</acronym>:</para>
-
-<screen>-//OASIS//DTD DocBook XML V4.5//EN</screen>
-
-<para><indexterm>
-  <primary>SGML</primary>
-  <secondary>system identifiers</secondary>
-</indexterm><indexterm>
-  <primary>URI</primary>
-  <secondary>XML system identifiers</secondary>
-</indexterm><indexterm>
-  <primary>URL</primary>
-  <secondary>SGML system identifers, similarity to</secondary>
-</indexterm><indexterm>
-  <primary>Uniform Resource Locator</primary>
-  <see>URL</see>
-</indexterm><indexterm>
-  <primary>Uniform Resource Names</primary>
-  <see>URN</see>
-</indexterm><indexterm>
-  <primary>URN</primary>
-  <secondary>XML system identifiers, future</secondary>
-</indexterm>In <acronym>XML</acronym> the system identifier
-must be a Uniform Resource Identifier (<acronym>URI</acronym>).
-The most common <acronym>URI</acronym> today is the Uniform Resource
-Locator (<acronym>URL</acronym>), which is familiar to anyone who
-browses the Web.
-</para>
-
-<para>The historical advantage of using a public identifier is that it
-made your documents more portable. For any system on which DocBook is
-installed, the public identifier will resolve to the appropriate local
-version of the <acronym>DTD</acronym> (if public identifiers can be
-resolved at all). Today most systems can resolve system identifiers in
-a similar way.
-</para>
-
-<para>Public identifiers have two disadvantages:</para>
-
-<itemizedlist>
-<listitem>
-<para>Because <acronym>XML</acronym> does not require them, and because system
-identifiers are required, <acronym>XML</acronym> tools may not provide
-adequate support for public identifiers. To work with these systems
-you must use system identifiers.</para>
-</listitem>
-<listitem>
-<para><indexterm>
-  <primary>public identifiers</primary>
-  <secondary>resolution, mapping to system identifiers</secondary>
-</indexterm><indexterm>
-  <primary>OASIS</primary>
-  <secondary>public identifiers, resolution mechanism</secondary>
-</indexterm>Public identifiers aren't magic. They're simply a method
-of indirection. For them to work, there must be a resolution mechanism
-for public identifiers. Luckily, there are standards that define
-mechanisms for mapping public identifiers to
-system identifers using catalog files.</para>
-
-<para>See FIXME: link to XML Catalogs or
-<link xlink:href="http://www.oasis-open.org/html/a401.htm"><acronym>OASIS</acronym>
-Technical Resolution 9401:1997 (Amendment 2 to <acronym>TR</acronym> 9401)</link>.
-</para>
-</listitem>
-</itemizedlist>
-
-<section xml:id="ch.create.pubids">
-<info>
-  <title>Public Identifiers</title>
-</info>
-
-<para><indexterm>
-  <primary>uniqueness</primary>
-  <secondary>public identifiers</secondary>
-</indexterm>An important characteristic of public identifiers is that
-they are intended to be <emphasis>globally unique</emphasis>.
-Referring to a document with a public identifier should mean that the
-identifier will resolve to the same actual document on any system, even
-though the location of that document on each system may vary. As a
-rule, you should never reuse public identifiers, and a published
-revision should have a new public identifier. Not following these
-rules defeats one purpose of the public identifier.
-</para>
-
-<para><indexterm>
-  <primary>public identifiers</primary>
-  <secondary>syntax, examples</secondary>
-</indexterm>A public identifier can be any string of upper- and
-lowercase letters, digits, any of the following symbols: “'”, “(“,
-“)”, “+”, “,”, “-”, “.”, “/”, “:”, “=”, “?”, and white space,
-including line breaks.
-</para>
-</section>
-
-<section xml:id="s.systemid"><info><title>System Identifiers</title></info>
-
-<para><indexterm>
-  <primary>system identifiers</primary>
-</indexterm><indexterm>
-  <primary>URI</primary>
-  <secondary>XML system identifiers</secondary>
-</indexterm>System identifiers often appear simply to be filenames on
-the local system. Technically, they must be <acronym>URI</acronym>s,
-and a simple filename is treated as a relative URI and is resolved
-against the location of the document that contains its declaration.
-</para>
-</section>
-
-<section xml:id="s-catalog-files">
-<info>
-  <title>Catalog Files</title>
-</info>
-
-<para><indexterm>
-  <primary>catalog files</primary>
-  <secondary>pubic identifiers, resolving to system</secondary>
-</indexterm><firstterm>XML Catalogs</firstterm> are the standard
-mechanism for resolving public identifiers into system identifiers.
-Some systems also use <firstterm>SGML Open Catalogs</firstterm>.</para>
-</section>
-</section>
-
 <section xml:id="ch02-physdiv">
-<info>
 <title>Physical Divisions: Breaking a Document into Separate Files</title>
-</info>
 
-<para><indexterm>
+<para><indexterm><primary>divisions</primary><secondary>logical</secondary>
+</indexterm><indexterm>
   <primary>documents</primary>
   <secondary>dividing</secondary>
-</indexterm><indexterm>
-  <primary>divisions</primary>
-  <secondary>documents (DocBook)</secondary>
 </indexterm>The rest of this chapter describes how you can break
 documents into logical chunks, such as books, chapters, sections, and
 so on. Before we begin, and while the subject of the internal subset
@@ -438,7 +280,8 @@ document at that point. So, if you've got a book that consists of
 three chapters and two appendixes, you might create a file called
 <filename>book.xml</filename>, which looks like this:
 </para>
-
+<indexterm><primary>examples</primary><secondary>book</secondary></indexterm>
+<indexterm><primary>books</primary><secondary>example</secondary></indexterm>
 <screen>&lt;!DOCTYPE book [
 &lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
 &lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
@@ -446,7 +289,7 @@ three chapters and two appendixes, you might create a file called
 &lt;!ENTITY appa SYSTEM "appa.xml"&gt;
 &lt;!ENTITY appb SYSTEM "appb.xml"&gt;
 ]&gt;
-&lt;book xmlns="http://docbook.org/ns/docbook"&gt;
+&lt;book xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
 &lt;title&gt;My First Book&lt;/title&gt;
 &amp;chap1;
 &amp;chap2;
@@ -456,18 +299,13 @@ three chapters and two appendixes, you might create a file called
 &lt;/book&gt;</screen>
 
 <para><indexterm>
-  <primary>declarations</primary>
-  <secondary>document type declaration</secondary>
-</indexterm><indexterm>
   <primary>document type declaration</primary>
   <secondary>divisions of documents</secondary>
 </indexterm>You can then write the chapters and appendixes
-conveniently in separate files. Documents that you reference with
-external parsed entities are forbidden from having a Document Type
-Declaration.
-</para>
-
-<para>For example, Chapter 1 might begin like this:
+conveniently in separate files.</para>
+<para>Documents that you reference with
+external parsed entities cannot have a Document Type
+Declaration. For example, Chapter 1 might begin like this:
 </para>
 
 <screen>&lt;chapter xml:id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
@@ -486,10 +324,10 @@ Declaration.
 
 <para>It is also possible to construct documents from different files
 using XInclude. Recasting the previous example using XInclude,
-yields:</para>
+yields:</para><indexterm><primary>XInclude</primary></indexterm><indexterm><primary>examples</primary><secondary>XInclude</secondary></indexterm>
 
 <screen>&lt;book xmlns="http://docbook.org/ns/docbook"
-      xmlns:xi="http://www.w3.org/2001/XInclude"&gt;
+      xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0"&gt;
 &lt;title&gt;My First Book&lt;/title&gt;
 &lt;xi:include href="chap1.xml"/&gt;
 &lt;xi:include href="chap2.xml"/&gt;
@@ -499,9 +337,9 @@ yields:</para>
 &lt;/book&gt;</screen>
 
 <para>Notice that we can completely omit the Document Type Declaration
-in this case, but we must declare the XInclude namespace.</para>
+in this case, but we must declare the XInclude namespace.<indexterm><primary>namespaces</primary><secondary>XInclude</secondary></indexterm></para>
 
-<para>The essential tradeoffs between external parsed entities and XInclude
+<para>The essential trade-offs between external parsed entities and XInclude
 are:</para>
 
 <itemizedlist>
@@ -514,7 +352,7 @@ any sort.
 </listitem>
 <listitem>
 <para>The documents <emphasis>referenced by</emphasis> XInclude are complete,
-free-standing XML documents. They can declare their own local entities using
+free-standing <acronym>XML</acronym> documents. They can declare their own local entities using
 a Document Type Declaration.
 Documents referenced by external parsed entities cannot
 have a Document Type Declaration. If they use entities, those entities must
@@ -523,38 +361,48 @@ be declared in the document that does the including.
 </listitem>
 <listitem>
 <para>External parsed entities can have multiple top-level elements. They
-are not required to be “single rooted”. XIncluded documents must be wholly
-well-formed XML.
+are not required to be <quote>single rooted.</quote> XIncluded documents must be wholly
+well-formed <acronym>XML</acronym>.
 </para>
 </listitem>
 <listitem>
-<para>All XML parsers support external parsed entities. (Parsers which do
-not <emphasis>are not</emphasis> conformant XML processors.) XInclude is
+<para>All <acronym>XML</acronym> validators support external parsed entities. (Validators which do
+not <emphasis>are not</emphasis> conformant <acronym>XML</acronym> processors.) XInclude is
 a separate specification and may or may not be supported by tools.
 </para>
 </listitem>
 <listitem>
-<para>The XML parser expands entities and therefore “sees” the entire
+<para>The <acronym>XML</acronym> validator expands entities and therefore <quote>sees</quote> the entire
 document. This means that ID/IDREF links can freely cross entity boundaries.
 Because XIncluded documents are free-standing, a document containing an
 IDREF that crosses a document boundary cannot be valid. It can be well-formed,
-and processors can do the right thing, but the parser cannot determine that
+and processors can do the right thing, but the validator cannot determine that
 the document is valid. What's more, the same ID value can occur in several
 XIncluded documents without causing a validity error. This may have a
 consequence on the resulting processing.
 </para>
 </listitem>
+<listitem>
+  <para>
+    As time passes, the use of <acronym>DTD</acronym>-based mechanisms
+    like entities is diminishing. If you have an eye on the future, to
+    the extent that it is practical, it is probably better to use XInclude
+    than entities.
+  </para>
+</listitem>
 </itemizedlist>
+<indexterm class="endofrange" startref="idx.entities-1"/>
+<indexterm class="endofrange" startref="idx.entities-2"/>
 </section>
 
 <section xml:id="ch02-logdiv">
-<info>
-  <title>Logical Divisions: The Categories of Elements in DocBook</title>
-</info>
+  <title>Logical Divisions: The Categories of Elements in
+  DocBook</title>
 
-<para><indexterm>
-  <primary>divisions</primary>
-  <secondary>elements, categories of (DocBook)</secondary>
+<para><indexterm><primary>divisions</primary><secondary>logical</secondary>
+</indexterm><indexterm>
+  <primary>DocBook</primary>
+  <secondary>elements</secondary><tertiary> categories of</tertiary>
 </indexterm><indexterm>
   <primary>elements</primary>
   <secondary>categories, DocBook divisions</secondary>
@@ -564,8 +412,8 @@ categories:</para>
 <simplelist type="vert">
 <member>Sets</member>
 <member>Books</member>
-<member>Divisions, which divide books into parts</member>
-<member>Components, which divide books or divisions into chapters</member>
+<member>Divisions, which divide books</member>
+<member>Components, which divide books or divisions</member>
 <member>Sections, which subdivide components</member>
 <member>Meta-information elements</member>
 <member>Block elements</member>
@@ -581,11 +429,12 @@ For more information about any specific element and the elements that
 it may contain, consult the reference page for the element in
 question.
 </para>
-<section xml:id="s.sets"><info><title>Sets</title></info>
+
+<section xml:id="s.sets"><title>Sets</title>
 
 <para>
 <indexterm>
-  <primary>Sets</primary>
+  <primary>sets</primary>
 </indexterm>
 
 A <tag>set</tag> contains two or more <tag>book</tag>s. It's the
@@ -593,27 +442,28 @@ hierarchical top of DocBook. You use the <tag>set</tag> tag, for
 example, for a series of books on a single subject that you want to
 access and maintain as a single unit, such as the manuals for series
 of computer systems or the documentation (tutorial, reference, etc.)
-for a programming language. Sets are allowed to contain themselves,
+for a programming language. Sets are allowed to contain other sets,
 though this is not common.
 </para>
 </section>
 
-<section xml:id="s.books"><info><title>Books</title></info>
+<section xml:id="s.books"><title>Books</title>
 
 <para><indexterm>
-  <primary>customizing</primary>
-  <secondary>DocBook DTD</secondary>
-    <tertiary>book organization</tertiary>
+  <primary>customizing DocBook</primary>
+  <secondary>book organization</secondary>
+</indexterm><indexterm>
+  <primary>books</primary>
+  <secondary>typical structure</secondary>
 </indexterm><indexterm>
   <primary>book element</primary>
-  <secondary>elements, ordering</secondary>
 </indexterm>A <tag>book</tag> is probably the most common top-level
 element in a document. The DocBook definition of a book is very loose
 and general. Given the variety of books authored with DocBook and the
-number of different conventions for book organization used in
-countries around the world, attempting to impose a strict ordering of
-elements can make the content model extremely complex. But DocBook
-gives you free rein. It's very reasonable to use a local <xref linkend="app-customizing"/> to impose a more strict ordering for your
+number of different conventions for book organization used around the world,
+any attempt to impose a strict ordering of
+elements would make the content model extremely complex. Therefore, DocBook
+gives you free rein. You can use a local customization (see <xref linkend="app-customizing"/>) if you want to impose a more strict ordering for your
 applications.
 </para>
 
@@ -638,12 +488,11 @@ a book.<indexterm>
   <primary>elements</primary>
   <secondary>components, navigation</secondary>
 </indexterm><indexterm>
-  <primary>ToC</primary>
+  <primary>toc</primary><see>tables of contents</see>
 </indexterm><indexterm>
   <primary>index element</primary>
 </indexterm><indexterm>
   <primary>tables of contents</primary>
-  <seealso>ToC</seealso>
 </indexterm>There are a couple of component-level elements designed for
 navigation: <tag>toc</tag>, for Tables of Contents and Lists of Titles
 (for lists of figures, tables, examples, and so
@@ -655,7 +504,7 @@ on); and <tag>index</tag>, for indexes.</para>
 <listitem>
 <para><indexterm>
   <primary>divisions</primary>
-  <secondary>Book</secondary>
+  <secondary>book</secondary>
 </indexterm><indexterm>
   <primary>part element</primary>
 </indexterm><indexterm>
@@ -665,10 +514,10 @@ on); and <tag>index</tag>, for indexes.</para>
 </indexterm><indexterm>
   <primary>components</primary>
 </indexterm>Divisions are the first hierarchical level below
-<tag>book</tag>. They contain <tag>part</tag>s and
-<tag>reference</tag>s. A <tag>part</tag>, in turn, contains components.
+<tag>book</tag>. Divisions contain <tag>part</tag>s and
+<tag>reference</tag>s. A <tag>part</tag> contains components.
 A <tag>reference</tag> contains <tag>refentry</tag>s. These are
-discussed more thoroughly in <xref linkend="making-refentry"/>”.
+discussed more thoroughly in <xref linkend="making-refentry"/>.
 </para>
 
 <para>Books can contain components directly and are not required to
@@ -691,9 +540,7 @@ contain divisions.
 </section>
 
 <section xml:id="s.components">
-<info>
 <title>Components</title>
-</info>
 
 <para><indexterm>
   <primary>books</primary>
@@ -721,14 +568,14 @@ contain divisions.
 <tag>book</tag> or <tag>part</tag>: <tag>preface</tag>,
 <tag>chapter</tag>, <tag>appendix</tag>, <tag>glossary</tag>, and
 <tag>bibliography</tag>. An <tag>article</tag> can also occur at the
-component level. We describe <tag>article</tag>s in more detail in the
-section titled <xref linkend="making-article"/>”. Components generally
+component level. We describe <tag>article</tag>s in more detail in 
+<xref linkend="making-article"/>. Components generally
 contain block elements and/or sections, and some can contain
 navigational components and <tag>refentry</tag>s.
 </para>
 </section>
 
-<section xml:id="s.sections"><info><title>Sections</title></info>
+<section xml:id="s.sections"><title>Sections</title>
 
 <para><indexterm>
   <primary>nesting</primary>
@@ -750,7 +597,7 @@ DocBook:</para>
   <term><tag>sect5</tag></term>
 <listitem>
 <para>The <tag>sect1</tag>…<tag>sect5</tag>
-elements are the most common sectioning elements. They can occur in
+elements are sectioning elements. They can occur in
 most component-level elements. These numbered section elements must be
 properly nested (<tag>sect2</tag>s can only occur inside
 <tag>sect1</tag>s, <tag>sect3</tag>s can only occur inside
@@ -764,7 +611,7 @@ sections.</para>
 <para><indexterm>
   <primary>section element</primary>
 </indexterm>The <tag>section</tag> element is an alternative to
-numbered sections. The <tag>section</tag> elements are recursive,
+numbered sections. The <tag>section</tag> element is recursive,
 meaning that you can nest them to any depth desired.
 </para>
 </listitem>
@@ -774,11 +621,11 @@ meaning that you can nest them to any depth desired.
 <listitem>
 <para><indexterm>
   <primary>simplesect element</primary>
-</indexterm>In addition to numbered sections, there's the
+</indexterm>In addition to numbered sections, there is the
 <tag>simplesect</tag> element. It is a terminal section that can occur
 at any level, but it cannot have any other sectioning element nested
 within it.</para>
-<para>The distinguishing feature of <tag>simplesect</tag> is that it
+<para>A distinguishing feature of <tag>simplesect</tag> is that it
 does not occur in the Table of Contents.</para>
 </listitem>
 </varlistentry>
@@ -796,11 +643,21 @@ any containing section.</para>
 <listitem>
 <para><indexterm>
   <primary>refentry element</primary>
-
 </indexterm>These elements, which occur only in <tag>refentry</tag>s,
 are analogous to the numbered section elements in components. There
 are only three levels of numbered section elements in a
 <tag>refentry</tag>.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><tag>refsection</tag> element</term>
+<listitem>
+<para><indexterm>
+  <primary>refsection element</primary> </indexterm>The
+  <tag>refsection</tag> element is a recursive division in a
+  <tag>refentry</tag>. It is an alternative to the numbered reference
+  section tags (<tag>refsect1</tag>…<tag>refsect3</tag>). Like the <tag>section</tag> element, the
+  <tag>refsection</tag> element is recursive.
+</para>
 </listitem>
 </varlistentry>
 
@@ -826,7 +683,7 @@ nest.</para>
 </variablelist>
 </section>
 
-<section xml:id="s.meta"><info><title>Meta-Information</title></info>
+<section xml:id="s.meta"><title>Meta-Information</title>
 <para><indexterm>
   <primary>meta-information</primary>
   <secondary>elements</secondary>
@@ -838,7 +695,7 @@ many other elements, include a wrapper for meta-information about the
 content. That element is named <tag>info</tag>. In earlier versions of
 DocBook, there were many similarly named elements for this purpose,
 <literal>bookinfo</literal>, <literal>chapterinfo</literal>, etc. In
-DocBook V5.0, there is only one.
+DocBook <acronym>V5.0</acronym>, there is only one.
 </para>
 
 <para><indexterm>
@@ -850,8 +707,7 @@ DocBook V5.0, there is only one.
 </indexterm><indexterm>
   <primary>revision histories</primary>
 </indexterm><indexterm>
-  <primary>keywords</primary>
-  <secondary>keyword sets (meta-information)</secondary>
+  <primary>keyword sets (meta-information)</primary>
 </indexterm><indexterm>
   <primary>indexes</primary>
   <secondary>metainformation</secondary>
@@ -1054,7 +910,7 @@ need the extra wrapper in the common case where all you want to specify is
 a title.</para>
 </section>
 
-<section xml:id="s.block"><info><title>Block Elements</title></info>
+<section xml:id="s.block"><title>Block Elements</title>
 
 <para><indexterm>
   <primary>block elements</primary>
@@ -1064,7 +920,7 @@ a title.</para>
 </indexterm><indexterm>
   <primary>lists</primary>
 </indexterm><indexterm>
-  <primary>examples</primary>
+  <primary>examples</primary><secondary>block elements</secondary>
 </indexterm><indexterm>
   <primary>figures</primary>
 </indexterm><indexterm>
@@ -1083,7 +939,7 @@ sorts, tables, figures, examples, and a dozen or more miscellaneous
 elements.
 </para>
 
-<sidebar>
+<section><title>Block vs. inline elements</title>
 <para><indexterm>
   <primary>block elements</primary>
   <secondary>inline elements vs.</secondary>
@@ -1136,9 +992,9 @@ Inline elements are used to mark up data such as cross references,
 filenames, commands, options, subscripts and superscripts, and
 glossary terms.
 </para>
-</sidebar>
+</section>
 
-<section xml:id="s.lists"><info><title>Lists</title></info>
+<section xml:id="s.lists"><title>Lists</title>
 <para><indexterm>
   <primary>lists</primary>
   <secondary>elements</secondary>
@@ -1229,7 +1085,7 @@ list of list types is a <tag>variablelist</tag>.)</para>
 </variablelist>
 </section>
 
-<section xml:id="s.admonitions"><info><title>Admonitions</title></info>
+<section xml:id="s.admonitions"><title>Admonitions</title>
 
 <para><indexterm>
   <primary>admonitions</primary>
@@ -1258,7 +1114,7 @@ for cases where bodily harm can result.
 </section>
 
 <section xml:id="s.line-specific">
-<info><title>Line-specific environments</title></info>
+<title>Line-specific environments</title>
 
 <para><indexterm>
   <primary>line-specific environments</primary>
@@ -1307,35 +1163,43 @@ font, a change of fonts is not ordinarily implied by
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>programlisting</tag></term>
+<term><tag>programlisting</tag>, <tag>programlistingco</tag></term>
 <listitem>
 <para>
 <indexterm>
   <primary>programlisting element</primary>
 </indexterm><indexterm>
+  <primary>programlistingco element</primary>
+</indexterm><indexterm>
   <primary>fonts</primary>
   <secondary>fixed-width, programs and code</secondary>
 </indexterm>
 
-A <tag>programlisting</tag> is a verbatim environment, usually
-presented in Courier or some other fixed-width font, for program
-sources, code fragments, and similar listings.</para>
+The <tag>programlisting</tag> and <tag>programlistingco</tag> elements
+are verbatim environments, usually presented in Courier or some other
+fixed-width font, for program sources, code fragments, and similar
+listings. The two elements are the same, except that
+<tag>programlistingco</tag> supports markup for callouts.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>screen</tag></term>
+<term><tag>screen</tag> and <tag>screenco</tag></term>
 <listitem>
 <para>
 <indexterm>
   <primary>screen element</primary>
 </indexterm><indexterm>
+  <primary>screenco element</primary>
+</indexterm><indexterm>
   <primary>text screen-captures </primary>
 </indexterm>
 
-A <tag>screen</tag> is a verbatim or literal environment
-for text screen-captures, other fragments of an
-<acronym>ASCII</acronym> display, and similar things. <tag>screen</tag> is also a frequent catch-all for any verbatim
-text.</para>
+The <tag>screen</tag> and <tag>screenco</tag> elements are verbatim or
+literal environments for text screen-captures, other fragments of an
+<acronym>ASCII</acronym> display, and similar
+things. <tag>screen</tag> is also a frequent catch-all for any
+verbatim text. The two elements are the same, except that
+<tag>screenco</tag> supports markup for callouts.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -1398,18 +1262,19 @@ block-level elements:
   <secondary>formal elements</secondary>
 </indexterm>The distinction between formal and informal elements is that formal
 elements have titles while informal ones do not.</para>
-
+<indexterm><primary>CALS tables</primary></indexterm>
 <para>DocBook supports CALS tables (defined with
 <tag>tgroup</tag>, <tag>colspec</tag>, <tag>spanspec</tag>,
 <tag>thead</tag>, <tag>tfoot</tag>, <tag>tbody</tag>,
 <tag>row</tag>, <tag>entry</tag>, <tag>entrytbl</tag>, and
 <tag>caption</tag>) and
-HTML tables (defined with <tag>col</tag>, <tag>colgroup</tag>,
+HTML tables<indexterm><primary>HTML</primary><secondary>tables</secondary></indexterm>
+(defined with <tag>col</tag>, <tag>colgroup</tag>,
 <tag>thead</tag>, <tag>tfoot</tag>, <tag>tbody</tag>,
 <tag>tr</tag>, <tag>td</tag>, and <tag>caption</tag>).</para>
 </section>
 
-<section xml:id="s.paras"><info><title>Paragraphs</title></info>
+<section xml:id="s.paras"><title>Paragraphs</title>
 <para>
 <indexterm>
   <primary>para element</primary>
@@ -1420,7 +1285,7 @@ elements), and <tag>formalpara</tag> (formal paragraphs have
 titles).
 </para>
 </section>
-<section xml:id="s.equations"><info><title>Equations</title></info>
+<section xml:id="s.equations"><title>Equations</title>
 <para>
 <indexterm>
   <primary>equation element</primary>
@@ -1436,13 +1301,13 @@ There are two block-equation elements, <tag>equation</tag> and
 </para>
 <para>
 Informal equations don't have titles. For reasons of
-backward-compatibility, <tag>equation</tag>s are not required
+backward compatibility, <tag>equation</tag>s are not required
 to have titles. However, it may be more difficult for some stylesheet
 languages to properly enumerate <tag>equation</tag>s if they
 lack titles.
 </para>
 </section>
-<section xml:id="s.graphics"><info><title>Graphics</title></info>
+<section xml:id="s.graphics"><title>Graphics and media</title>
 <para>
 <indexterm>
   <primary>graphics</primary>
@@ -1452,7 +1317,7 @@ lack titles.
   <primary>screenshot element</primary>
 </indexterm><indexterm>
   <primary>block elements</primary>
-  <secondary>Graphic</secondary>
+  <secondary>graphic</secondary>
 </indexterm><indexterm>
   <primary>inlinegraphic element</primary>
 </indexterm>
@@ -1510,6 +1375,7 @@ by definition, alternatives.</para>
   <primary>faq element</primary>
 </indexterm><indexterm>
   <primary>frequently asked questions (FAQ)</primary>
+  <secondary>markup for</secondary>
 </indexterm><indexterm>
   <primary>question element</primary>
 </indexterm><indexterm>
@@ -1523,16 +1389,14 @@ questions and answers can be divided into sections with
 </section>
 
 <section xml:id="s.tasks">
-<title>Tasks and Procedures</title>
+<title>Procedures and Tasks</title>
 
-<para>A <tag>task</tag> describes a <tag>procedure</tag>. Each task
-has an associated <tag>tasksummary</tag>, <tag>taskprerequisites</tag>,
-optional <tag>example</tag>s, and a section for <tag>taskrelated</tag>
-information.</para>
-
-<para>A <tag>procedure</tag> contains <tag>step</tag>s, which
+<para><indexterm><primary>procedure element</primary></indexterm>A <tag>procedure</tag> contains <tag>step</tag>s, which
 may contain <tag>substeps</tag> or <tag>stepalternatives</tag>.
 </para>
+
+<para><indexterm><primary>task element</primary></indexterm>The <tag>task</tag> element is a wrapper around the <tag>procedure</tag> element that provides additional, optional elements, including <tag>tasksummary</tag>, <tag>taskprerequisites</tag>, <tag>example</tag>, and <tag>taskrelated</tag>.</para>
+
 </section>
 
 <section xml:id="s.synopses">
@@ -1550,7 +1414,7 @@ and class synopses.</para>
   <primary>parameters (commands), markup</primary>
 </indexterm><indexterm>
   <primary>options</primary>
-  <secondary>commands, marking up</secondary>
+  <secondary>marking up</secondary>
 </indexterm><indexterm>
   <primary>commands</primary>
 </indexterm><?tdg-purp cmdsynopsis?>.
@@ -1598,6 +1462,7 @@ may include additional, literal information, in this case, in a
 </variablelist>
 </section>
 
+<!--
 <section xml:id="s.htmlforms">
 <title>HTML Forms</title>
 
@@ -1643,8 +1508,9 @@ elements are available:</para>
 </varlistentry>
 </variablelist>
 </section>
+-->
 
-<section xml:id="s.misc"><info><title>Miscellaneous block elements</title></info>
+<section xml:id="s.misc"><title>Miscellaneous block elements</title>
 <para>
 The following block elements are also available:
 </para>
@@ -1668,9 +1534,9 @@ A block quotation.  Block quotations may have
   <primary>epigraph element</primary>
 </indexterm>
 
-A short introduction, typically a quotation, at the beginning of a document.
-<tag>epigraph</tag>s may have <tag>attribution</tag>s.
-</para></listitem>
+A short introduction, typically a quotation, at the beginning of a
+document or component.  The <tag>epigraph</tag> element may include
+an <tag>attribution</tag> element.  </para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -1690,7 +1556,7 @@ A short introduction, typically a quotation, at the beginning of a document.
 </variablelist>
 </section>
 </section>
-<section xml:id="s.inline"><info><title>Inline Elements</title></info>
+<section xml:id="s.inline"><title>Inline Elements</title>
 <para>
 <indexterm>
   <primary>inline elements</primary>
@@ -1731,9 +1597,10 @@ entirely new categories.
 
 <para>
 <indexterm>
-  <primary>general writing (traditional publishing inlines)</primary>
+  <primary>inline elements</primary>
+<secondary>traditional publishing</secondary>
 </indexterm><indexterm>
-  <primary>traditional publishing, inline elements</primary>
+  <primary>traditional publishing inline elements</primary>
 </indexterm>
 
 These inlines identify things that commonly occur in general writing:
@@ -1800,7 +1667,7 @@ footnote. Additional references to the same footnote can be inserted with
 </varlistentry>
 </variablelist>
 </section>
-<section xml:id="s.inline.xref"><info><title>Cross references</title></info>
+<section xml:id="s.inline.xref"><title>Cross references</title>
 <para>
 <indexterm>
   <primary>cross references</primary>
@@ -1884,7 +1751,7 @@ attribute.
 </varlistentry>
 </variablelist>
 </section>
-<section xml:id="s.inline.markup"><info><title>Markup</title></info>
+<section xml:id="s.inline.markup"><title>Markup</title>
 <para>
 <indexterm>
   <primary>markup</primary>
@@ -1961,21 +1828,21 @@ These inlines are used to mark up text for special presentation:
 </section>
 
 <section xml:id="s.inline.math">
-<info><title>Mathematics</title></info>
+<title>Mathematics</title>
 <para><indexterm><primary>elements</primary>
 <secondary>mathematics</secondary>
 </indexterm><indexterm><primary>mathematics (DocBook)</primary>
 </indexterm><indexterm><primary>equations (elements)</primary>
-</indexterm><indexterm><primary>MathML, incorporating</primary>
+</indexterm><indexterm><primary>MathML</primary><secondary>incorporating</secondary>
 </indexterm><indexterm><primary>namespaces</primary>
 </indexterm>DocBook does not define a complete set of elements for
-representing equations. No one has ever pressed the DocBook
-maintainers to add this functionality, and the prevailing opinion is
-that incorporating
-<link xlink:href="http://www.w3.org/TR/REC-MathML/">MathML</link> is
-probably the best long-term solution.
-For simple mathematics that doesn't require extensive markup, the
-<tag>mathphrase</tag> element may be sufficient.</para>
+representing equations. The <citetitle>Mathematical Markup Language (<acronym>MathML</acronym>)</citetitle><biblioref linkend="MathML"/> is a standard
+that defines a comprehensive grammar for representing equations.
+<acronym>MathML</acronym> markup may be used in any of the equation elements
+(<tag>equation</tag>,<tag>informalequation</tag>, and
+<tag>inlineequation</tag>) For simple mathematics equations that do
+not require extensive markup, the <tag>mathphrase</tag> element is an
+alternative.</para>
 <variablelist>
 <varlistentry>
 <term><tag>inlineequation</tag></term>
@@ -2007,7 +1874,7 @@ For simple mathematics that doesn't require extensive markup, the
 </varlistentry>
 </variablelist>
 </section>
-<section xml:id="s.inline.ui"><info><title>User interfaces</title></info>
+<section xml:id="s.inline.ui"><title>User interfaces</title>
 <para>
 These elements describe aspects of a user interface:
 <indexterm>
@@ -2116,7 +1983,7 @@ These elements describe aspects of a user interface:
 </variablelist>
 </section>
 
-<section xml:id="s.inline.prog"><info><title>Programming languages and constructs</title></info>
+<section xml:id="s.inline.prog"><title>Programming languages and constructs</title>
 <para>
 <indexterm>
   <primary>programming languages (elements)</primary>
@@ -2250,7 +2117,7 @@ Many of the technical inlines in DocBook are related to programming.
 </varlistentry>
 </variablelist>
 </section>
-<section xml:id="s.inline.os"><info><title>Operating systems</title></info>
+<section xml:id="s.inline.os"><title>Operating systems</title>
 <para>
 <indexterm>
   <primary>operating systems</primary>
@@ -2326,7 +2193,7 @@ operating environment:
 </varlistentry>
 </variablelist>
 </section>
-<section xml:id="s.inline.general"><info><title>General purpose</title></info>
+<section xml:id="s.inline.general"><title>General purpose</title>
 <para>
 <indexterm>
   <primary>general-purpose technical inline elements</primary>
@@ -2426,17 +2293,52 @@ There are also a number of general-purpose technical inlines.
 </section>
 </section>
 </section>
-<section xml:id="ch02-makebook"><info><title>Making a DocBook Book</title></info>
+
+<section xml:id="roots">
+<title>Roots: Starting Your DocBook Document</title>
+
+<para>There's one final detail of the physical and logical structures
+of DocBook that we've left out: where can your document begin? In
+other words, what are the valid <quote>document elements</quote> of DocBook documents.
+Naturally, you can start at <tag>set</tag> and <tag>book</tag>, but
+can you also start at <tag>chapter</tag>? What about <tag>para</tag>
+or <tag>personname</tag>?</para>
+
+<para>If you come to DocBook from the <acronym>DTD</acronym> days,
+this may seem an odd question. A <acronym>DTD</acronym> doesn't
+provide any facility to impose constraints on where a document can
+begin. If the element occurs in the <acronym>DTD</acronym>, you can
+start with it.</para>
+
+<para>RELAX NG does give us the ability to impose such constraints. In
+fact, it <emphasis>requires</emphasis> that we do. Of course, we could
+make the constraint vacuous by listing every possible element as a
+potential document element.</para>
+
+<para>But, on reflection, that's not necessarily the best choice. It's
+valuable to have metadata associated with documents, so only elements
+with an <tag>info</tag> element can be root elements, but not every
+element with an <tag>info</tag> element is currently included. In DocBook
+<acronym>V5.0</acronym> the following elements are available:
+<?db-roots?>
+</para>
+<para>With the next point release of DocBook, <acronym>V5.1</acronym>
+the technical committee may take the position that any element which
+can contain an <tag>info</tag> wrapper can be a document element. This
+would dramatically expand the list of valid root elements.</para>
+</section>
+
+<section xml:id="ch02-makebook"><title>Making a DocBook Book</title>
 <para>
 <indexterm>
-  <primary>DocBook DTD</primary>
-  <secondary>Book, making</secondary>
+  <primary>DocBook</primary>
+  <secondary>book, making</secondary>
 </indexterm><indexterm>
   <primary>books</primary>
   <secondary>DocBook, making</secondary>
 </indexterm><indexterm>
   <primary>meta-information</primary>
-  <secondary>DocBook Book</secondary>
+  <secondary>DocBook book</secondary>
 </indexterm>A typical <tag>book</tag>, in English at least, consists of 
 some meta-information in an <tag>info</tag>
 (<tag>title</tag>, <tag>author</tag>,
@@ -2455,13 +2357,14 @@ Additional content is required where the ellipses occur.
 </indexterm>
 
 </para>
-<example xml:id="ex-typicalbook"><info><title>A Typical Book</title></info>
-
+<example xml:id="ex-typicalbook"><title>A Typical Book</title>
+<indexterm><primary>examples</primary><secondary>book</secondary></indexterm>
+<indexterm><primary>books</primary><secondary>example</secondary></indexterm>
 <programlisting>&lt;book&gt;
 &lt;info&gt;
   &lt;title&gt;My First Book&lt;/title&gt;
   &lt;author&gt;&lt;firstname&gt;Jane&lt;/firstname&gt;&lt;surname&gt;Doe&lt;/surname&gt;&lt;/author&gt;
-  &lt;copyright&gt;&lt;year&gt;1998&lt;/year&gt;&lt;holder&gt;Jane Doe&lt;/holder&gt;&lt;/copyright&gt;
+  &lt;copyright&gt;&lt;year&gt;2010&lt;/year&gt;&lt;holder&gt;Jane Doe&lt;/holder&gt;&lt;/copyright&gt;
 &lt;/info&gt;
 &lt;preface&gt;&lt;title&gt;Foreword&lt;/title&gt; ... &lt;/preface&gt;
 &lt;chapter&gt; ... &lt;/chapter&gt;
@@ -2473,7 +2376,7 @@ Additional content is required where the ellipses occur.
 &lt;/book&gt;</programlisting>
 </example>
 </section>
-<section xml:id="ch02-makechap"><info><title>Making a Chapter</title></info>
+<section xml:id="ch02-makechap"><title>Making a Chapter</title>
 <para>
 <indexterm>
   <primary>chapter element</primary>
@@ -2494,23 +2397,22 @@ any number of top-level sections. Each section may in turn contain any
 number of block-level elements followed by any number from the next
 section level, as shown in <xref linkend="ex-typicalchap"/>.
 </para>
-<example xml:id="ex-typicalchap"><info><title>A Typical Chapter</title></info>
+<example xml:id="ex-typicalchap"><title>A Typical Chapter</title>
 
-<programlisting>&lt;chapter&gt;&lt;title&gt;My Chapter&lt;/title&gt;
-&lt;para&gt; ... &lt;/para&gt;
-&lt;sect1&gt;&lt;title&gt;First Section&lt;/title&gt;
-&lt;para&gt; ... &lt;/para&gt;
-&lt;example&gt; ... &lt;/example&gt;
-&lt;/sect1&gt;
-&lt;/chapter&gt;
-</programlisting>
+<programlisting><![CDATA[<chapter><title>My Chapter</title>
+  <para> ... </para>
+  <section><title>First Section</title>
+    <para> ... </para>
+    <example> ... </example>
+  </section>
+</chapter>]]></programlisting>
 </example>
 </section>
-<section xml:id="making-article"><info><title>Making an Article</title></info>
+<section xml:id="making-article"><title>Making an Article</title>
 
 <para>
 <indexterm>
-  <primary>articles</primary>
+  <primary>article</primary>
   <secondary>creating</secondary>
 </indexterm><indexterm>
   <primary>elements</primary>
@@ -2536,24 +2438,24 @@ shown in <xref linkend="ex-typicalart"/>
 <tag>appendix</tag>es, <tag>bibliography</tag>s,
 <tag>index</tag>es and <tag>glossary</tag>s.
 </para>
-<example xml:id="ex-typicalart"><info><title>A Typical Article</title></info>
-
-<programlisting>&lt;article&gt;
-&lt;artheader&gt;
-  &lt;title&gt;My Article&lt;/title&gt;
-  &lt;author&gt;&lt;honorific&gt;Dr&lt;/honorific&gt;&lt;firstname&gt;Emilio&lt;/firstname&gt;
-          &lt;surname&gt;Lizardo&lt;/surname&gt;&lt;/author&gt;
-&lt;/artheader&gt;
-&lt;para&gt; ... &lt;/para&gt;
-&lt;sect1&gt;&lt;title&gt;On the Possibility of Going Home&lt;/title&gt;
-&lt;para&gt; ... &lt;/para&gt;
-&lt;/sect1&gt;
-&lt;bibliography&gt; ... &lt;/bibliography&gt;
-&lt;/article&gt;
-</programlisting>
+<example xml:id="ex-typicalart"><title>A Typical Article</title>
+<indexterm><primary>examples</primary><secondary>article</secondary></indexterm>
+<indexterm><primary>article</primary><secondary>examples</secondary></indexterm>
+<programlisting><![CDATA[<article>
+  <info>
+    <title>My Article</title>
+    <author><honorific>Dr</honorific><firstname>Emilio</firstname>
+            <surname>Lizardo</surname></author>
+  </info>
+  <para> ... </para>
+  <section><title>On the Possibility of Going Home</title>
+    <para> ... </para>
+  </section>
+  <bibliography> ... </bibliography>
+</article>]]></programlisting>
 </example>
 </section>
-<section xml:id="making-refentry"><info><title>Making a Reference Page</title></info>
+<section xml:id="making-refentry"><title>Making a Reference Page</title>
 <para>
 <indexterm>
   <primary>reference pages</primary>
@@ -2568,8 +2470,8 @@ shown in <xref linkend="ex-typicalart"/>
 </indexterm>
 
 The reference page or manual page in DocBook was inspired by, and in
-fact designed to reproduce, the common <acronym>UNIX</acronym> “manpage”
-concept. (We use the word "page" loosely here to mean a document of
+fact designed to reproduce, the common <acronym>UNIX</acronym> <quote>manpage</quote>
+concept. (We use the word <quote>page</quote> loosely here to mean a document of
 variable length containing reference material on a specific topic.)
 DocBook is rich in markup tailored for such documents, which often
 vary greatly in content, however well-structured they may be. To
@@ -2587,8 +2489,8 @@ though several of them are actually optional.
   <primary>refsect1 element</primary>
 </indexterm>Of the following sequence of elements that may appear in a
 <tag class="element">refentry</tag>, only two are obligatory:
-<tag class="element">refnamediv</tag> and
-<tag class="element">refsect1</tag>.</para>
+<tag class="element">refnamediv</tag> and either
+<tag class="element">refsect1</tag> or <tag class="element">refsection</tag>.</para>
 
 <variablelist>
 <varlistentry>
@@ -2644,11 +2546,7 @@ volume 3.
 <para>
 <indexterm>
   <primary>refmiscinfo element</primary>
-</indexterm><indexterm>
-  <primary>miscellaneous information, reference pages</primary>
-</indexterm>
-
-Additional information of this sort such as conformance or
+</indexterm>Additional information of this sort such as conformance or
 vendor information specific to the particular environment you are
 working in, may be stored in <tag>refmiscinfo</tag>.
 </para>
@@ -2713,8 +2611,7 @@ If no <tag>refentrytitle</tag> is given in the
   <primary>commands</primary>
   <secondary>syntax summary</secondary>
 </indexterm><indexterm>
-  <primary>functions</primary>
-  <secondary>function prototype</secondary>
+  <primary>function prototype</primary>
 </indexterm><indexterm>
   <primary>title element</primary>
 </indexterm>
@@ -2727,7 +2624,7 @@ possible. A <tag class="element">title</tag> is allowed, but
 not required, presumably because the application that processes
 reference pages will generate the appropriate title if it is not
 given. In traditional <acronym>UNIX</acronym> documentation, its title is always
-“Synopsis”.
+<quote>Synopsis.</quote>
 </para>
 </listitem>
 </varlistentry>
@@ -2747,6 +2644,18 @@ of sectioning elements: <tag>refsect1</tag>,
 <tag>refsect2</tag>, and <tag>refsect3</tag>.</para>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term><tag>refsection</tag></term>
+<listitem>
+<para>
+<indexterm>
+  <primary>refsection</primary>
+</indexterm>
+As with <tag>sect1</tag>, <tag>sect2</tag>, etc., there is a recursive
+version of the reference section elements, <tag>refsection</tag>.
+</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 <para>
@@ -2757,85 +2666,79 @@ reference page:
   <secondary>sample page</secondary>
 </indexterm>
 </para>
-<example xml:id="ex-samprefpage"><info><title>A Sample Reference Page</title></info>
+<example xml:id="ex-samprefpage"><title>A Sample Reference Page</title>
+<programlisting><![CDATA[<refentry xml:id="printf">
+  <refmeta>
+    <refentrytitle>printf</refentrytitle>
+      <manvolnum>3S</manvolnum>
+  </refmeta>
 
-<programlisting>
+  <refnamediv>
+    <refname>printf</refname>
+    <refname>fprintf</refname>
+    <refname>sprintf</refname>
+    <refpurpose>print formatted output</refpurpose>
+  </refnamediv>
 
-&lt;refentry xml:id="printf" &gt;
+  <refsynopsisdiv>
+    <funcsynopsis>
+      <funcsynopsisinfo>
+        #include <stdio.h>
+      </funcsynopsisinfo>
 
-&lt;refmeta&gt;
-&lt;refentrytitle&gt;printf&lt;/refentrytitle&gt;
-&lt;manvolnum&gt;3S&lt;/manvolnum&gt;
-&lt;/refmeta&gt;
+      <funcprototype>
+        <funcdef>int <function>printf</function></funcdef>
+        <paramdef>const char *<parameter>format</parameter></paramdef>
+        <varargs/>
+      </funcprototype>
 
-&lt;refnamediv&gt;
-&lt;refname&gt;printf&lt;/refname&gt;
-&lt;refname&gt;fprintf&lt;/refname&gt;
-&lt;refname&gt;sprintf&lt;/refname&gt;
-&lt;refpurpose&gt;print formatted output&lt;/refpurpose&gt;
-&lt;/refnamediv&gt;
+      <funcprototype>
+        <funcdef>int <function>fprintf</function></funcdef>
+        <paramdef>FILE *<parameter>strm</parameter></paramdef>
+        <paramdef>const char *<parameter>format</parameter></paramdef>
+        <varargs/>
+      </funcprototype>
 
-&lt;refsynopsisdiv&gt;
+      <funcprototype>
+        <funcdef>int <function>sprintf</function></funcdef>
+        <paramdef>char *<parameter>s</parameter></paramdef>
+        <paramdef>const char *<parameter>format</parameter></paramdef>
+        <varargs/>
+      </funcprototype>
+    </funcsynopsis>
 
-&lt;funcsynopsis&gt;
-&lt;funcsynopsisinfo&gt;
-#include &amp;lt;stdio.h&amp;gt;
-&lt;/funcsynopsisinfo&gt;
-&lt;funcprototype&gt;
-  &lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
-  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;varargs/&gt;
-&lt;/funcprototype&gt;
+  </refsynopsisdiv>
 
-&lt;funcprototype&gt;
-  &lt;funcdef&gt;int &lt;function&gt;fprintf&lt;/function&gt;&lt;/funcdef&gt;
-  &lt;paramdef&gt;FILE *&lt;parameter&gt;strm&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;varargs/&gt;
-&lt;/funcprototype&gt;
+  <refsect1><title>Description</title>
+    <para><indexterm><primary>functions</primary>
+                     <secondary>printf</secondary></indexterm>
+          <indexterm><primary>printing function</primary></indexterm>
 
-&lt;funcprototype&gt;
-  &lt;funcdef&gt;int &lt;function&gt;sprintf&lt;/function&gt;&lt;/funcdef&gt;
-  &lt;paramdef&gt;char *&lt;parameter&gt;s&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
-  &lt;varargs/&gt;
-&lt;/funcprototype&gt;
-&lt;/funcsynopsis&gt;
-
-&lt;/refsynopsisdiv&gt;
-
-&lt;refsect1&gt;&lt;title&gt;Description&lt;/title&gt;
-&lt;para&gt;
-&lt;indexterm&gt;&lt;primary&gt;functions&lt;/primary&gt;
-  &lt;secondary&gt;printf&lt;/secondary&gt;&lt;/indexterm&gt;
-&lt;indexterm&gt;&lt;primary&gt;printing function&lt;/primary&gt;&lt;/indexterm&gt;
-
-&lt;function&gt;printf&lt;/function&gt; places output on the standard
-output stream stdout.
-&amp;hellip;
-&lt;/para&gt;
-&lt;/refsect1&gt;
-&lt;/refentry&gt;</programlisting>
+      <function>printf</function> places output on the standard
+      output stream stdout.
+    </para>
+  </refsect1>
+</refentry>]]></programlisting>
 </example>
 </section>
-<section xml:id="ch02-makefrontback"><info><title>Making Front- and Backmatter</title></info>
+<section xml:id="ch02-makefrontback"><title>Making Front and Back Matter</title>
 <para>
 <indexterm>
-  <primary>frontmatter, books and articles</primary>
+  <primary>front matter</primary>
 </indexterm><indexterm>
-  <primary>backmatter, books and articles</primary>
+  <primary>back matter</primary>
 </indexterm><indexterm>
   <primary>indexes</primary>
-  <secondary>creating, books and articles</secondary>
+  <secondary>creating</secondary>
 </indexterm><indexterm>
   <primary>glossaries</primary>
   <secondary>creating</secondary>
 </indexterm><indexterm>
   <primary>tables of contents</primary>
-  <secondary>creating, books and articles</secondary>
+  <secondary>creating</secondary>
 </indexterm>
 
-DocBook contains markup for the usual variety of front- and backmatter
+DocBook contains markup for the usual variety of front and back matter
 necessary for books and articles: indexes, glossaries, bibliographies,
 and tables of contents. In many cases, these components are generated
 automatically, at least in part, from your document by an external
@@ -2845,10 +2748,10 @@ them in DocBook.
 <para>
 <indexterm>
   <primary>markup</primary>
-  <secondary>backmatter, books and articles</secondary>
+  <secondary>back matter, books and articles</secondary>
 </indexterm>
 
-Some forms of backmatter, like indexes and glossaries, usually require
+Some forms of back matter, like indexes and glossaries, usually require
 additional markup <emphasis>in the document</emphasis> to make
 generation by an application possible.  Bibliographies are usually
 composed by hand like the rest of your text, unless you are
@@ -2858,17 +2761,21 @@ of markup you need to include in your documents if you want to
 construct these components.
 </para>
 <para>
-Frontmatter, like the table of contents, is almost always generated
+Front matter, like the table of contents, is almost always generated
 automatically from the text of a document by the processing
 application. If you need information about how to mark up a table of
 contents in DocBook, please consult the reference page for
 <tag>toc</tag>.
 </para>
-<section xml:id="makeindex"><info><title>Making an Index</title></info>
+<section xml:id="makeindex"><title>Making an Index</title>
 <para>
 <indexterm>
   <primary>indexes</primary>
   <secondary>marking index terms</secondary>
+</indexterm>
+<indexterm xml:id="idx.makeindex" class="startofrange">
+  <primary>indexes</primary>
+  <secondary>creating</secondary>
 </indexterm>
 In some highly-structured documents such as reference manuals, you can
 automate the whole process of generating an index successfully without
@@ -2882,7 +2789,7 @@ manuals—a useful index still requires human intervention to mark
 occurrences of words or concepts that will appear in the text of the
 index.
 </para>
-<section xml:id="s.indexterms"><info><title>Marking index terms</title></info>
+<section xml:id="s.indexterms"><title>Marking index terms</title>
 <para>
 <indexterm>
   <primary>singular index markers</primary>
@@ -2895,15 +2802,14 @@ singular and result in a single page entry in the index itself, and
 those that are multiple and refer to a range of pages.
 </para>
 <para>You put a singular index marker where the subject it refers to
-actually occurs in your text:
-<screen>
-&lt;para&gt;
-The tiger&lt;indexterm&gt;
-&lt;primary&gt;Big Cats&lt;/primary&gt;
-&lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;
-is a very large cat indeed.
-&lt;/para&gt;
-</screen> 
+actually occurs in your text:<indexterm><primary>examples</primary><secondary>indexing</secondary></indexterm>
+</para>
+<programlisting><![CDATA[<para>
+  <indexterm><primary>Big Cats</primary>
+  <secondary>Tigers</secondary></indexterm>
+  The tiger is a very large cat indeed.
+</para>]]></programlisting>
+<para> 
 <indexterm>
   <primary>primary level index entries</primary>
 </indexterm><indexterm>
@@ -2931,23 +2837,21 @@ mark at the end refers back to the beginning. In this way, the
 processing application can determine what range of text is
 indexed. Here's the previous tiger example recast as starting and
 ending index terms:
+</para><indexterm><primary>examples</primary><secondary>indexing</secondary></indexterm>
+<programlisting><![CDATA[<para>
+  <indexterm xml:id="tiger-desc" class="startofrange">
+  <primary>Big Cats</primary>
+  <secondary>Tigers</secondary></indexterm>
+  The tiger is a very large cat indeed…
 </para>
-<screen>
-&lt;para&gt;
-The tiger&lt;indexterm xml:id="tiger-desc" class="startofrange"&gt;
-&lt;primary&gt;Big Cats&lt;/primary&gt;
-&lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;
-is a very large cat indeed…
-&lt;/para&gt;
 ⋮
-&lt;para&gt;
-So much for tigers&lt;indexterm startref="tiger-desc" class="endofrange"/&gt;.
+<para>
+So much for tigers<indexterm startref="tiger-desc" class="endofrange"/>.
 Let's talk about leopards.  
-&lt;/para&gt;
-</screen>
+</para>]]></programlisting>
 <para>
 <indexterm>
-  <primary>xml:id attribute</primary>
+  <primary>xml:id</primary>
   <secondary>index entries, ranges</secondary>
 </indexterm><indexterm>
   <primary>class attribute</primary>
@@ -2961,8 +2865,8 @@ The mark at the end of the range points back to the start.
 </para>
 <para>
 <indexterm>
-  <primary>indexterm element</primary>
-  <secondary>zone attribute</secondary>
+  <primary>indexes</primary>
+  <secondary>zone attribute, using</secondary>
 </indexterm><indexterm>
   <primary>zone attribute (indexterm)</primary>
 </indexterm>
@@ -2988,22 +2892,20 @@ or a <tag class="element">chapter</tag>) with an
 <tag class="attribute">xml:id</tag> value of 
 <literal>tiger-desc</literal>. You can put the following
 tag anywhere in your document to index that range of text:
-<screen>
-&lt;indexterm zone="tiger-desc"&gt;
-&lt;primary&gt;Big Cats&lt;/primary&gt;
-&lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;
-</screen> 
-</para>
+</para><indexterm><primary>examples</primary><secondary>indexing</secondary></indexterm>
+<programlisting><![CDATA[<indexterm zone="tiger-desc">
+<primary>Big Cats</primary>
+<secondary>Tigers</secondary></indexterm>]]></programlisting>
 <para>
 <indexterm>
   <primary>see and see also index entries</primary>
 </indexterm>
 DocBook also contains markup for index hits that point to other index
-hits (of the same type such as "See Cats, big" or "See also
+hits (for example, "See Cats, big" or "See also
 Lions"). See the reference pages for <tag>see</tag> and
 <tag>seealso</tag>.
 </para>
-
+<indexterm startref="idx.makeindex" class="endofrange"/>
 </section>
 <section xml:id="s.printindex">
 <title>Printing an index</title>
@@ -3023,33 +2925,30 @@ the index.  In this case, it may never be instantiated in DocBook.
 <para>
 <indexterm>
   <primary>indexes</primary>
-  <secondary>index marked up in DocBook (example)</secondary>
+  <secondary>example</secondary>
 </indexterm>
-
-However, there are applications that can produce an index marked up in
+<indexterm><primary>examples</primary><secondary>indexing</secondary></indexterm>However, there are applications that can produce an index marked up in
 DocBook.  The following example includes some one- and two-level
 <tag class="element">indexentry</tag> elements (which
 correspond to the primary and secondary levels in the
 <tag>indexterm</tag>s themselves) that begin with the letter D:
-
-<screen>&lt;index&gt;&lt;title&gt;Index&lt;/title&gt;
-&lt;indexdiv&gt;&lt;title&gt;D&lt;/title&gt;
-&lt;indexentry&gt;
-  &lt;primaryie&gt;database (bibliographic), 253, 255&lt;/primaryie&gt;
-     &lt;secondaryie&gt;structure, 255&lt;/secondaryie&gt;
-     &lt;secondaryie&gt;tools, 259&lt;/secondaryie&gt;
-&lt;/indexentry&gt;
-&lt;indexentry&gt;
-  &lt;primaryie&gt;dates (language specific), 179&lt;/primaryie&gt;
-&lt;/indexentry&gt;
-&lt;indexentry&gt;
-  &lt;primaryie&gt;DC fonts, &lt;emphasis&gt;172&lt;/emphasis&gt;, 177&lt;/primaryie&gt;
-     &lt;secondaryie&gt;Math fonts, 177&lt;/secondaryie&gt;
-&lt;/indexentry&gt;
-&lt;/indexdiv&gt;
-&lt;/index&gt;
-</screen> 
 </para>
+<programlisting><![CDATA[<index><title>Index</title>
+  <indexdiv><title>D</title>
+    <indexentry>
+      <primaryie>database (bibliographic), 253, 255</primaryie>
+         <secondaryie>structure, 255</secondaryie>
+         <secondaryie>tools, 259</secondaryie>
+    </indexentry>
+    <indexentry>
+      <primaryie>dates (language specific), 179</primaryie>
+    </indexentry>
+    <indexentry>
+      <primaryie>DC fonts, <emphasis>172</emphasis>, 177</primaryie>
+         <secondaryie>Math fonts, 177</secondaryie>
+    </indexentry>
+  </indexdiv>
+</index>]]></programlisting> 
 
 <para>The structure of <tag>indexentry</tag> is parallel to the structure
 of <tag>indexterm</tag>. Where <tag>indexterm</tag> has
@@ -3060,14 +2959,14 @@ of <tag>indexterm</tag>. Where <tag>indexterm</tag> has
 <tag>seeie</tag>, and <tag>seealsoie</tag>.</para>
 </section>
 </section>
-<section xml:id="s.glossary"><info><title>Making a Glossary</title></info>
+<section xml:id="s.glossary"><title>Making a Glossary</title>
 <para>
-<indexterm>
+<indexterm xml:id="idx.s.glossary" class="startofrange">
   <primary>glossaries</primary>
   <secondary>creating</secondary>
 </indexterm>
 
-<tag>glossary</tag>s, like <tag>bibliography</tag>s, are often
+A <tag>glossary</tag>, like a <tag>bibliography</tag>, is often
 constructed by hand.  However, some applications are capable of
 building a skeletal index from glossary term markup in the document.
 If all of your terms are defined in some glossary database, it may
@@ -3086,66 +2985,78 @@ even be possible to construct the complete glossary automatically.
   <primary>ID attribute</primary>
   <secondary>glossary entries</secondary>
 </indexterm><indexterm>
-  <primary>links</primary>
-  <secondary>glossary terms (text) to glossary entries</secondary>
-</indexterm>
-
-To enable automatic glossary generation, or simply automatic linking
+  <primary>linking</primary>
+  <secondary>glossary terms to glossary entries</secondary>
+</indexterm><indexterm>
+  <primary>glossaries</primary>
+  <secondary>linking</secondary>
+</indexterm>To enable automatic glossary generation, or simply automatic linking
 from glossary terms in the text to glossary entries, you must add
-markup to your documents.  In the text, you markup a term for
+markup to your documents.  In the text, you mark up a term for
 compilation later with the inline <tag>glossterm</tag>
 tag. This tag can have a <tag class="attribute">linkend</tag>
 attribute whose value is the ID of the actual entry in the
 glossary.<footnote>
 <para>
-Some sophisticated formatters might even be able to establish the link
-simply by examining the content of the terms and the glossary. In that
-case, the author is not required to make explicit links.
+Some formatters are able to establish the link
+by examining the content of the terms and the glossary. In that
+case, the author does not need to make explicit links.
 </para>
 </footnote>
 </para>
 <para>
 For instance, if you have this markup in your document:
 </para>
-<screen>
-&lt;glossterm linkend="xml"&gt;Extensible Markup Language&lt;/glossterm&gt; is a new standard… 
-</screen>
+<programlisting><![CDATA[<glossterm linkend="xml">Extensible Markup Language</glossterm> is a new standard… ]]></programlisting>
 <para>
 <indexterm>
   <primary>glossaries</primary>
   <secondary>example</secondary>
 </indexterm>
-
-your glossary might look like this:
+<indexterm>
+  <primary>examples</primary>
+  <secondary>glossaries</secondary>
+</indexterm>your glossary might look like this:
 </para>
 
-<screen>&lt;glossary&gt;&lt;title&gt;Example Glossary&lt;/title&gt;
+<programlisting><![CDATA[<glossary><title>Example Glossary</title>
 ⋮
-&lt;glossdiv&gt;&lt;title&gt;E&lt;/title&gt;
+  <glossdiv><title>E</title>
 
-&lt;glossentry xml:id="xml"&gt;&lt;glossterm&gt;Extensible Markup Language&lt;/glossterm&gt;
-  &lt;acronym&gt;XML&lt;/acronym&gt;
-&lt;glossdef&gt;
-  &lt;para&gt;Some reasonable definition here.&lt;/para&gt;
-  &lt;glossseealso otherterm="sgml"&gt;
-&lt;/glossdef&gt;
-&lt;/glossentry&gt;
+    <glossentry xml:id="xml"><glossterm>Extensible Markup Language</glossterm>
+      <acronym>XML</acronym>
+      <glossdef>
+       <para>Some reasonable definition here.</para>
+       <glossseealso otherterm="sgml">
+      </glossdef>
+    </glossentry>
 
-&lt;/glossdiv&gt;
-</screen>
+  </glossdiv>
+⋮
+</glossary>]]></programlisting>
 <para>
 Note that the <tag class="element">glossterm</tag> tag
 reappears in the glossary to mark up the term and distinguish it from
 its definition within the <tag class="element">glossentry</tag>.
-The <tag class="attribute">id</tag> that
+The <tag class="attribute">xml:id</tag> that
 the <tag class="element">glossentry</tag> referenced in the
 text is the <acronym>ID</acronym> of the <tag class="element">glossentry</tag> in the <tag>glossary</tag>
 itself. You can use the link between source and glossary to create a
-link in the online form of your document, as we have done with the
-online form of the glossary in this book.
+link in electronic formats, as we have done with the
+HTML and PDF forms of the glossary in this book.
 </para>
+<para>
+  You can use the <tag class="attribute">baseform</tag> attribute on
+  <tag>glossterm</tag> and <tag>firstterm</tag> when the term marked
+  up in context is in a different form, for example plural. Here is
+  an example:
+</para>
+<programlisting><![CDATA[<para>
+  Using <glossterm baseform="DTD">DTDs</glossterm> can
+  be hazardous to your sanity.
+</para>]]></programlisting>
 </section>
-<section xml:id="s.bibliography"><info><title>Making a Bibliography</title></info>
+<section xml:id="s.bibliography"><title>Making a Bibliography</title>
 <para>
 <indexterm>
   <primary>bibliographies, creating</primary>
@@ -3160,41 +3071,46 @@ online form of the glossary in this book.
 </indexterm>
 
 There are two ways to set up a bibliography in DocBook: you can have
-the data <emphasis>raw</emphasis> or
-<emphasis>cooked</emphasis>. Here's an example of a raw
-bibliographical item, wrapped in the <tag class="element">biblioentry</tag> element:
+the data <firstterm>raw</firstterm> or <firstterm>cooked</firstterm>. When
+you use <quote>raw</quote> data, you wrap your entry in the
+<tag>biblioentry</tag> element and mark up each item individually. The
+processor determines the display order and supplies punctuation. When
+you use <quote>cooked</quote> data, you wrap your entry in the
+<tag>bibliomixed</tag> and provide the data in the order you want it
+displayed in, and you include the punctuation.
 </para>
-<screen>
-&lt;biblioentry xreflabel="Kites75"&gt;
-  &lt;authorgroup&gt;
-    &lt;author&gt;&lt;firstname&gt;Andrea&lt;/firstname&gt;&lt;surname&gt;Bahadur&lt;/surname&gt;&lt;/author&gt;
-    &lt;author&gt;&lt;firstname&gt;Mark&lt;/firstname&gt;&lt;surname&gt;Shwarek&lt;/surname&gt;&lt;/author&gt;
-  &lt;/authorgroup&gt;
-  &lt;copyright&gt;&lt;year&gt;1974&lt;/year&gt;&lt;year&gt;1975&lt;/year&gt;
-     &lt;holder&gt;Product Development International Holding N. V.&lt;/holder&gt;
-     &lt;/copyright&gt;
-  &lt;isbn&gt;0-88459-021-6&lt;/isbn&gt;    
-  &lt;publisher&gt;
-    &lt;publishername&gt;Plenary Publications International, Inc.&lt;/publishername&gt;
-  &lt;/publisher&gt;
-  &lt;title&gt;Kites&lt;/title&gt;
-  &lt;subtitle&gt;Ancient Craft to Modern Sport&lt;/subtitle&gt;
-  &lt;pagenums&gt;988-999&lt;/pagenums&gt;
-  &lt;seriesinfo&gt;
-    &lt;title&gt;The Family Creative Workshop&lt;/title&gt;
-    &lt;seriesvolnums&gt;1-22&lt;/seriesvolnums&gt;
-    &lt;editor&gt;
-      &lt;firstname&gt;Allen&lt;/firstname&gt;
-      &lt;othername role=middle&gt;Davenport&lt;/othername&gt;
-      &lt;surname&gt;Bragdon&lt;/surname&gt;
-      &lt;contrib&gt;Editor in Chief&lt;/contrib&gt;
-    &lt;/editor&gt;
-  &lt;/seriesinfo&gt;
-&lt;/biblioentry&gt;
-</screen>
+<para>Here's an example of a raw
+bibliographical item, wrapped in the <tag class="element">biblioentry</tag> element:
+</para><indexterm><primary>examples</primary><secondary>biblioentry</secondary></indexterm>
+<programlisting><![CDATA[<biblioentry xreflabel="Kites75">
+  <authorgroup>
+    <author><firstname>Andrea</firstname><surname>Bahadur</surname></author>
+    <author><firstname>Mark</firstname><surname>Shwarek</surname></author>
+  </authorgroup>
+  <copyright><year>1974</year><year>1975</year>
+     <holder>Product Development International Holding N. V.</holder>
+     </copyright>
+  <isbn>0-88459-021-6</isbn>    
+  <publisher>
+    <publishername>Plenary Publications International, Inc.</publishername>
+  </publisher>
+  <title>Kites</title>
+  <subtitle>Ancient Craft to Modern Sport</subtitle>
+  <pagenums>988-999</pagenums>
+  <seriesinfo>
+    <title>The Family Creative Workshop</title>
+    <seriesvolnums>1-22</seriesvolnums>
+    <editor>
+      <firstname>Allen</firstname>
+      <othername role=middle>Davenport</othername>
+      <surname>Bragdon</surname>
+      <contrib>Editor in Chief</contrib>
+    </editor>
+  </seriesinfo>
+</biblioentry>]]></programlisting>
 <para>
-The “raw” data in a <tag class="element">biblioentry</tag> is comprehensive to a
-fault—there are enough fields to suit a host of different
+The <quote>raw</quote> data in a <tag class="element">biblioentry</tag> is comprehensive to a
+fault&#x2014;there are enough fields to suit a host of different
 bibliographical styles, and that is the point. An abundance of data
 requires processing applications to select, punctuate, order, and
 format the bibliographical data, and it is unlikely that all the
@@ -3205,33 +3121,33 @@ information provided will actually be output.
   <primary>bibliomixed element</primary>
 </indexterm>
 
-All the “cooked” data in a <tag class="element">bibliomixed</tag> entry in a bibliography, on the
+All the <quote>cooked</quote> data in a <tag class="element">bibliomixed</tag> entry in a bibliography, on the
 other hand, is intended to be presented to the reader in the form and
 sequence in which it is provided. It even includes punctuation between
 the fields of data:
-</para>
-<screen>
-&lt;bibliomixed&gt;
-  &lt;bibliomset relation=article&gt;
-    &lt;surname&gt;Walsh&lt;/surname&gt;, &lt;firstname&gt;Norman&lt;/firstname&gt;.
-    &lt;title role=article&gt;Introduction to Cascading Style Sheets&lt;/title&gt;.
-  &lt;/bibliomset&gt;
-  &lt;bibliomset relation=journal&gt;
-    &lt;title&gt;The World Wide Web Journal&lt;/title&gt; 
-    &lt;volumenum&gt;2&lt;/volumenum&gt;&lt;issuenum&gt;1&lt;/issuenum&gt;.
-    &lt;publishername&gt;O'Reilly &amp; Associates, Inc.&lt;/publishername&gt; and
-    &lt;corpname&gt;The World Wide Web Consortium&lt;/corpname&gt;.
-    &lt;pubdate&gt;Winter, 1996&lt;/pubdate&gt;&lt;/bibliomset&gt;.
-&lt;/bibliomixed&gt;
-</screen>
+</para><indexterm><primary>examples</primary><secondary>bibliomixed</secondary></indexterm>
+<programlisting><![CDATA[<bibliomixed>
+  <bibliomset relation="article">
+    <surname>Walsh</surname>, <firstname>Norman</firstname>.
+    <title role="article">Introduction to Cascading Style Sheets</title>.
+  </bibliomset>
+  <bibliomset relation="journal">
+    <title>The World Wide Web Journal</title> 
+    <volumenum>2</volumenum><issuenum>1</issuenum>.
+    <publishername>O'Reilly & Associates, Inc.</publishername> and
+    <corpname>The World Wide Web Consortium</corpname>.
+    <pubdate>Winter, 1996</pubdate></bibliomset>.
+</bibliomixed>
+]]></programlisting>
 
 <para>Clearly, these two ways of marking up bibliographical entries are
 suited to different circumstances.  You should use one or the other
 for your bibliography, not both. Strictly speaking, mingling the raw
-and the cooked may be “kosher” as far as the <acronym>DTD</acronym> is
+and the cooked may be <quote>kosher</quote> as far as the schema is
 concerned, but it will almost certainly cause problems for most
 processing applications.
 <indexterm startref="documentsDocBookch02" class="endofrange"/>
+<indexterm startref="idx.s.glossary" class="endofrange"/>
 </para>
 </section>
 </section>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<appendix xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="app-install">
+<appendix xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="5.0" xml:id="app-install">
 <?dbhtml filename="appa.html"?>
 <info>
   <title>Installation</title>
@@ -9,216 +11,305 @@
 
 <section xml:id="s-install">
 <title>Installing DocBook</title>
+<para><indexterm xml:id="idx.installingdb-1" class="startofrange"><primary>DocBook</primary><secondary>installing</secondary></indexterm><indexterm xml:id="idx.installingdb-2" class="startofrange"><primary>installing DocBook</primary>
+</indexterm>If you use editing software that already supports DocBook, then
+  DocBook should be installed with that software. Although at this
+  writing, DocBook <acronym>V5.0</acronym> is new, many tools
+  already support <acronym>V5.0</acronym>. The
+  <link xlink:href="http://wiki.docbook.org/">DocBook Wiki</link>
+  has a list of editing and other tools that support DocBook, along
+  with other relevant information and links to further information.
+</para>
+<para>
+  If you are not using a tool that directly supports DocBook, then
+  you will need to install one or more of the DocBook schemas directly.
+  This appendix describes how to do that.
+</para>
+<para>
+  The most recent version of the DocBook <acronym>V5.x</acronym>
+  schemas can be found at: <link xlink:href="http://docbook.org/schemas/5x.html"/>.
+  At the time this was written the most recent version was
+  <acronym>V5.0</acronym>. The directory for <acronym>V5.0</acronym>
+  (<link xlink:href="http://docbook.org/xml/5.0/"/>)
+  contains the RELAX NG schema, DTD, W3C XML schema, Schematron rules,
+  tools to convert DocBook <acronym>V4.x</acronym> to <acronym>V5.0</acronym>,
+  and a sample catalog file.
 
+</para>
 <section xml:id="s-installrng">
-<title>Installing the DocBook RELAX NG Grammar</title>
+  <title>Installing the DocBook Schemas</title>
 
-<para>FIXME: tbd.</para>
-
+  <para>
+    The schemas may be installed in any convenient directory.  If you
+    download the file <filename>docbook-5.0.zip</filename> and unpack
+    it, it will create a directory structure that puts each schema in
+    its own directory.  This directory structure matches the structure
+    in the sample <filename>catalog.xml</filename> file, so you should
+    be able to set up the catalog file (described in <xref
+    linkend="dbcatalog"/>) with minimal effort.
+  </para>
+  <para>
+    Once you have unpacked the schemas, you will need to set them up
+    so that your tools can use them. While each tool has its own
+    procedure for accessing schemas, many use
+    <citetitle><acronym>XML</acronym> Catalogs: OASIS Standard
+    V1.1</citetitle><biblioref linkend="XML-CAT"/> as a common means
+    to locate schemas, stylesheets, and other files. The next section
+    describes how to set up a catalog for DocBook using the sample
+    <filename>catalog.xml</filename> file from the distribution.
+  </para>
+<indexterm class="endofrange" startref="idx.installingdb-1"/>
+<indexterm class="endofrange" startref="idx.installingdb-2"/>
 </section>
-
-<section xml:id="s-installdtd">
-<title>Installing the DocBook DTD</title>
-
-<para>FIXME: tbd.</para>
-
-</section>
-
-<section xml:id="s-installxsd">
-<title>Installing the DocBook W3C XML Schema</title>
-
-<para>FIXME: tbd.</para>
-
-</section>
-
-<section xml:id="s-installsch">
-<title>Installing the DocBook Schematron Schema</title>
-
-<para>FIXME: tbd.</para>
-
+<section xml:id="dbcatalog">
+<title>XML Catalogs and DocBook</title>
+<para>
+<indexterm significance="normal"><primary>XML catalogs</primary>
+  <secondary>DocBook V5.0</secondary></indexterm>
+<indexterm significance="normal"><primary>DocBook</primary>
+  <secondary>public identifiers</secondary></indexterm>
+<indexterm significance="normal"><primary>DocBook</primary>
+  <secondary>system identifiers</secondary></indexterm>SGML instances
+  require either a public or system identifier to specify the schema.
+  Public identifiers are abstract identifiers that must be mapped to a
+  schema file to be useful. For the <acronym>SGML</acronym> versions
+  of DocBook, the distribution included a catalog file,
+  <filename>docbook.cat</filename> that provided mappings for all of
+  the public identifiers referenced by DocBook. Unlike
+  <acronym>SGML</acronym>, which allows an instance to use only a
+  public identifier, <acronym>XML</acronym> requires a system
+  identifier in the form of a <acronym>URI</acronym>. For the
+  <acronym>XML</acronym> version of DocBook, the distribution contains
+  a sample catalog file using the <citetitle><acronym>XML</acronym> Catalogs: OASIS Standard
+    V1.1</citetitle><biblioref linkend="XML-CAT"/>, which is used by
+  many <acronym>XML</acronym> tools.<indexterm
+  significance="normal"><primary>catalog files</primary>
+  <secondary>DocBook distribution, installing</secondary></indexterm>
+</para>
+<para>
+  To quote the standard, an <acronym>XML</acronym> catalog
+  <quote>defines an entity catalog that maps both external identifiers
+  and arbitrary <acronym>URI</acronym> references to
+  <acronym>URI</acronym> references.</quote> This means that you can
+  define mappings through an <acronym>XML</acronym> catalog that tell
+  tools where you have put the schemas (and other files, like the
+  stylesheets) on your system. Those tools can then access them
+  without having to resolve a remote <acronym>URL</acronym>.
+</para>
+<section xml:id="s.installingcatalog">
+  <title>Installing and setting up the DocBook XML catalog</title>
+<para>
+  One way to set up a catalog for DocBook is install the DocBook
+  stylesheets (see <xref linkend="s.stylesheetinstall"/>), which also
+  sets up a catalog.  You can also use the sample catalog from the
+  schema distribution, which can be found at: <link
+  xlink:href="http://docbook.org/xml/5.0/catalog.xml"/>. The sample is
+  a starting place, but it will almost surely not work <quote>out of
+  the box.</quote> To make it work, you need to make the catalog
+  available to your tools, and you will also need to update the
+  catalog entries to point to the right location on your system.
+  Here is an example based on the sample file:
+</para>
+<programlisting><![CDATA[<catalog prefer="public"
+       xml:base="file:///usr/share/xml/docbook/schema/rng/5.0/">
+  <public publicId="-//OASIS//DTD DocBook XML 5.0//EN"
+          uri="dtd/docbook.dtd"/>
+  <system systemId="http://docbook.org/xml/5.0/dtd/docbook.dtd"
+          uri="dtd/docbook.dtd"/>
+  <uri name="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng"
+       uri="rng/docbook.rng"/>
+</catalog>]]>
+</programlisting>
+<para>
+  In this example, the <tag>public</tag> and <tag>system</tag>
+  elements describe where to find the <acronym>DTD</acronym>
+  associated with named public and system identifiers. The
+  <tag>uri</tag> element describes where to find the RELAX NG schema.
+  In all three cases, the <tag
+  class="attribute">uri</tag> attribute identifies a relative path to
+  the file. The absolute path is constructed by concatenating the
+  value of the <tag class="attribute">xml:base</tag> attribute on the
+  <tag>catalog</tag> element to the value of the <tag
+  class="attribute">uri</tag> attribute. If there is no <tag
+  class="attribute">xml:base</tag> attribute, the value of the <tag
+  class="attribute">uri</tag> attribute is used as is.
+</para>
+<para>
+  To make the catalog work on your system, set the <tag
+  class="attribute">xml:base</tag> attribute to the directory on your
+  system that contains the schema directories. That should be the only
+  change you need to make to the sample catalog.
+</para>
+<para>
+  If you already have other <acronym>XML</acronym> schemas installed,
+  you probably already have a catalog file. On Linux systems, this is often in
+  <filename>/etc/xml/catalog.xml</filename>. In that case, you can add
+  the following line to that file, replacing
+  <filename>/usr/share/xml/docbook/catalog.xml</filename> with the location
+  of the DocBook catalog file on your system:
+</para>
+  <programlisting><![CDATA[<nextCatalog catalog="file:///usr/share/xml/docbook/catalog.xml">]]> 
+  </programlisting>
+<para><indexterm significance="normal"><primary>environment</primary>
+  <secondary>variables, setting (catalog
+  files)</secondary></indexterm> <indexterm
+  significance="normal"><primary>XML_CATALOG_FILES environment
+  variable, setting</primary></indexterm>Some <acronym>XML</acronym>
+  and <acronym>XSL</acronym> applications use the environment variable
+  <envar>XML_CATALOG_FILES</envar>, which contains a delimited list of
+  catalog filenames. Here is an example:</para>
+  <screen>XML_CATALOG_FILES=/usr/share/xml/docbook/catalog.xml:/etc/xml/catalog
+  </screen>
+  <para>
+  (On a Windows system, use semicolons instead of colons to delimit the
+  filenames.)
+  </para>
+  <para>
+    Many applications also provide a configuration option that allows
+    you to set the location of a catalog file. Check the documentation
+    for your tool for details.
+  </para>
+  <para>
+    This description only scratches the surface of
+    <acronym>XML</acronym> Catalogs. For a full description, go to the
+    <citetitle><acronym>XML</acronym> Catalogs: OASIS Standard
+    V1.1</citetitle><biblioref linkend="XML-CAT"/>
+    or Bob Stayton's <citetitle>DocBook XSL: The Complete Guide</citetitle><biblioref linkend="Stayton07"/>.
+</para>
 </section>
 
 <section xml:id="s.getting-iso-entities">
-<title>Getting the ISO Entity Sets</title>
-
+<title>Getting the ISO entity sets</title>
 <para>
 <indexterm significance="normal"><primary>entity sets</primary>
   <secondary>ISO standard, obtaining</secondary></indexterm>
 <indexterm significance="normal"><primary>entities</primary>
   <secondary>entity sets</secondary><see>entity sets</see></indexterm>
 <indexterm significance="normal"><primary>ISO standards</primary>
-  <secondary>entity sets</secondary>
-    <tertiary>obtaining</tertiary></indexterm>
+  <secondary>entity sets, obtaining</secondary>
+</indexterm>
 <indexterm significance="normal"><primary>OASIS</primary>
-  <secondary>entity sets (ISO standard), obtaining</secondary></indexterm>
-
-DocBook refers to a number of standard entity sets that
-are not distributed with DocBook. (They aren't distributed with
-DocBook because they aren't maintained by the DocBook
-TC. They're maintained by ISO.) If you've installed other SGML
-DTDs or tools, they may already be on your system.</para>
-<para>If you are missing some of them, they are available from
-Robin Cover's pages at OASIS: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/cover/ISOEnts.zip">
-http://www.oasis-open.org/cover/ISOEnts.zip</link>.<footnote>
-<para>The names of the entity files in this distribution do not
-exactly match the names of the files used in the catalog file
-distributed with DocBook (<filename>docbook.cat</filename>). Make sure your
-catalog file points to the right files.</para></footnote> See <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/cover/topics.html#entities">http://www.oasis-open.org/cover/topics.html#entities</link>
-for more information.
-</para>
-
-</section>
-<section xml:id="dbcatalog"><info><title>The DocBook Catalog</title></info>
-
-<para>
-<indexterm significance="normal"><primary>public identifiers</primary>
-  <secondary>DocBook DTD</secondary>
-    <tertiary>V3.1</tertiary></indexterm>
-<indexterm significance="normal"><primary>DocBook DTD</primary>
-  <secondary>public identifiers</secondary></indexterm>
-
-DocBook uses public identifiers to refer to its
-constituent parts. In some sense, DocBook <emphasis>is</emphasis>
-DocBook because it has the formal public
-identifier <quote><literal>-//OASIS//DTD DocBook V3.1//EN</literal></quote>.
-In order for tools on your system to
-find your locally installed copy of DocBook, you must map these
-public identifiers into system identifiers, i.e., filenames, on
-your system. For a complete discussion of catalog files, 
-see <xref linkend="s-pid-sid-catalogs"/>.</para>
-
-<para>
-<indexterm significance="normal"><primary>catalog files</primary>
-  <secondary>DocBook distribution, installing</secondary></indexterm>
-
-The DocBook distribution includes a sample catalog, <filename>docbook.cat
-</filename>, which provides a mapping for all of the public identifiers referenced
-by DocBook. This mapping won't work <quote>out of the box</quote> for two
-reasons: first, your tools won't be able to find it, and second, the mappings
-for the ISO entity sets probably don't point to the right place on your system.
-</para>
-
-<section xml:id="s.findingcatalog">
-<title>Finding the Catalog</title>
-
-<para>If you've already got some other SGML DTDs installed, you probably already
-have a catalog file. In this case, the easiest thing to do is append
-the DocBook catalog entries to the end of your existing catalog and then change
-them to point to the files on your system.</para>
-
-<para>If DocBook is the first DTD that you're installing, make a
-copy of <filename>docbook.cat</filename> and call it
-<filename>catalog</filename>. Put this file in a higher-level
-directory and edit the relative pathnames that it contains to point to
-the actual locations of the files on your system. For example, if you installed DocBook
-in <filename>/share/sgml/docbk30/</filename>, put the
-<filename>catalog</filename> in <filename>/share/sgml/</filename>.</para>
-
-<para>
-<indexterm significance="normal"><primary>environment</primary>
-  <secondary>variables, setting (catalog files)</secondary></indexterm>
-<indexterm significance="normal"><primary>SGML_CATALOG_FILES environment variable, setting</primary></indexterm>
-
-In order for applications to find your catalog file(s), you may have
-to change the application preferences or set an environment variable. For <application>
-SP</application> and <application>Jade</application>, set the environment
-variable <envar>SGML_CATALOG_FILES</envar> to the delimited list of catalog
-filenames. On my system, this looks like:</para>
-<screen>SGML_CATALOG_FILES=./catalog;n:/share/sgml/catalog;n:/adept80/doctypes/catalog.jade;j:/jade/catalog
-</screen>
-<para>
-(On a UNIX machine, use colons instead of semicolons to delimit the
-filenames.)</para>
-<para>If you don't wish to set the environment variable, you can explicitly
-pass the name of each catalog to the <application>SP</application> application
-with the <option>-c</option> option, like this:</para>
-<screen>nsgmls -c ./catalog -c n:/share/sgml/catalog <replaceable>-c othercatalogs
-</replaceable> ...</screen>
-</section>
-<section xml:id="s.fixingcatalog">
-<title>Fixing the Catalog</title>
-
-<para>
-<indexterm significance="normal"><primary>catalog files</primary>
-  <secondary>mapping to system</secondary></indexterm>
-
-The basic format of each entry in the DocBook catalog is:</para>
-<screen>PUBLIC "some public id" "some filename"</screen>
-<para>What you have to do is change each of the <quote>some filenames</quote>
-to point to the actual name of the file on your system.</para>
-<note>
-<para>
-<indexterm significance="normal"><primary>filenames</primary>
-  <secondary>catalog file</secondary></indexterm>
-
-Filenames should be supplied using absolute filenames,
-or paths relative to the location of
-the <emphasis>catalog</emphasis> file.</para>
-</note>
-<para>To continue with the example above, let's say that you've got:</para>
-<itemizedlist>
-<listitem><para>DocBook in <filename>/share/sgml/docbk30/</filename>,</para>
-</listitem>
-<listitem><para>The ISO entities in <filename>/share/sgml/entities/8879/</filename>,
-and</para>
-</listitem>
-<listitem><para>Your catalog in <filename>/share/sgml/catalog</filename></para>
-</listitem>
-</itemizedlist>
-<para>Then you would change the catalog entry for the DTD to be:</para>
-<screen>PUBLIC "-//OASIS//DTD DocBook V3.1//EN" "docbk30/docbook.dtd"
-</screen>
-<para>You would change the catalog entry for the general technical character entities to:
-</para>
-<screen>PUBLIC "ISO 8879:1986//ENTITIES General Technical//EN" "entities/8879/iso-tech.gml"
-</screen>
-<para>And similarly for the other public identifiers used by DocBook. In each
-case, the filename specified for the public identifier should be the name
-of the file on your system, specified as an absolute filename, or 
-relative to the location of the <filename>catalog</filename>
-in which it occurs.</para>
-</section>
-
-<section xml:id="s.mappingsystemids">
-<title>Mapping System Identifiers for XML</title>
-
-<para>
-<indexterm significance="normal"><primary>XML</primary>
-  <secondary>system identifiers</secondary>
-    <tertiary>mapping</tertiary></indexterm>
-<indexterm significance="normal"><primary>system identifiers</primary>
-  <secondary>XML</secondary>
-    <tertiary>mapping for</tertiary></indexterm>
-Since XML documents are required to have system identifiers, but are not
-required to have public identifiers, it's likely that some of the documents
-you want to process will only have system identifiers.
+  <secondary>entity sets (ISO standard),
+  obtaining</secondary></indexterm>Modern schema languages (including
+  RELAX NG and <acronym>W3X</acronym> <acronym>XML</acronym> Schema)
+  do not include the <acronym>ISO</acronym> Entity Sets.  Therefore,
+  you need to use other means if you want to use these or other sets
+  of entities. For the ISO Entity Sets, some editors give you the
+  ability to easily select needed characters and insert them into a
+  document.
 </para>
 <para>
-It turns out that you can still take advantage of the catalog in this case.
-The <literal>SYSTEM</literal> directive allows you to map the system
-identifier used in the document to the actual location on your system.
+  You can also directly include entity definitions in the prolog of
+  your document. The World Wide Web Consortium
+  (<acronym>W3C</acronym>) maintains the <link
+  xlink:href="http://www.w3.org/2003/entities/">ISO Entity Set
+  Definitions</link> and you can reference them from the document
+  prolog as shown here:
 </para>
+<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article [
+<!ENTITY % isopub SYSTEM "http://www.w3.org/2003/entities/iso8879/isopub.ent">
+%isopub;
+]>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+<title>DocBook V5.0 &ndash; the superb documentation format</title>
+…
+</article>]]>
+</programlisting>
 <para>
-Suppose that you work with a colleague who uses the system identifier
-<quote>file:///c:/sgml/db3xml/db3xml.dtd</quote> to identify the XML version
-of DocBook on her system.  On your system, you want to map that to
-<quote>/share/sgml/db3xml/db3xml.dtd</quote>.  The following entry in
-your catalog will do the trick:
+  For your convenience there is also a flattened entity definition file
+  which contains all entity definitions.
 </para>
-<screen>
-SYSTEM "http://docbook.org/docbook/xml/1.4/db3xml.dtd" "/share/sgml/db3xml/db3xml.dtd"
-</screen>
-<para>
-Unfortunately, this technique only works with applications that read and
-understand catalog files.
-</para>
+<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article [
+<!ENTITY % allent SYSTEM "http://www.w3.org/2003/entities/2007/w3centities-f.ent">
+%allent;
+]>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+<title>DocBook V5.0 &ndash; the superb documentation format</title>
+…
+</article>]]>
+</programlisting>
 </section>
 </section>
-
-<section xml:id="s.testinginstall">
-<title>Testing Your Installation</title>
-
-<para>FIXME: tbd.</para>
+<section xml:id="s.stylesheetinstall">
+<title>Installing the DocBook Stylesheets</title>
+  <para><indexterm><primary>stylesheets</primary><secondary>installing</secondary></indexterm>
+    Members of the <acronym>OASIS</acronym> DocBook Technical Committee
+    and other interested people have developed a set of XSL stylesheets
+    that can be used to transform DocBook into various forms, including:
+    HTML, FO (for print), HTML Help, Java Help, ePub, and other formats.
+  </para>
+  <para>
+    The definitive guide to using the stylesheets is Bob Stayton's
+    <citetitle>DocBook XSL: The Complete Guide</citetitle><biblioref linkend="Stayton07"/>.
+    The description below is sufficient to install and run the stylesheets
+    in their standard form. However, to do any serious work with the
+    stylesheets or to customize them, you should read Stayton's book.
+  </para>
+  <procedure><title>Procedure for Installing DocBook XSL Stylesheets</title>
+    <step>
+      <para>
+        Download the latest stylesheets from: <link
+        xlink:href="http://sourceforge.net/projects/docbook/"/>.
+        Look for a file with the name: 
+        docbook-xsl-ns-<replaceable>X.YY.Z</replaceable>.zip, where
+        <replaceable>X.YY.Z</replaceable> is the version number of the
+        latest stable release of the stylesheets.
+      </para>
+    </step>
+    <step>
+      <para>
+        Unpack the distribution into a directory on your system.  The
+        exact location is your choice. On Windows systems you might
+        use a folder named: <filename
+        class="directory">C:\docbook\stylesheets</filename>.  On a
+        Linux/UNIX-based system you might use a directory named
+        <filename
+        class="directory">/usr/share/xml/docbook/stylesheets</filename>,
+        or a directory under your home directory.  As long as you have
+        permissions to create and write in the directory, it doesn't
+        matter where it is.
+      </para>
+    </step>
+    <step>
+      <para>
+        When you unpack the distribution, it will create a directory
+        named <filename class="directory">docbook-xsl-ns-<replaceable>X.YY.Z</replaceable></filename> that will contain the stylesheets.
+      </para>
+    </step>
+    <step>
+      <para>
+        This is all you need to do to install the distribution,
+        however, on Linux/UNIX systems, you can run an install
+        script that will set up catalogs for you. Look for a
+        file named <filename>INSTALL</filename> for details.
+      </para>
+    </step>
+  </procedure>
+  <para>
+    You will also need an <acronym>XSLT</acronym> processor. If you
+    are running Linux, you may already have <application>xsltproc</application>
+    or <application>Saxon</application> installed on your system.
+    If not, most Linux distributions will let you install one of
+    these packages through their application installer.
+  </para>
+  <para>
+    If you are running Windows or Mac, you can find information about
+    these applications at:
+  </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <application>xsltproc</application>: <link xlink:href="http://xmlsoft.org/XSLT/xsltproc2.html"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <application>Saxon</application>: <link xlink:href="http://saxon.sourceforge.net/"/>
+        </para>
+      </listitem>
+    </itemizedlist>
 </section>
 </section>
 

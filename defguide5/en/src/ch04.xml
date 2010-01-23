@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ch-publish">
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         version="5.0" xml:id="ch-publish">
 <?dbhtml filename="ch04.html"?>
 <info>
 <title>Publishing DocBook Documents</title>
@@ -7,11 +9,11 @@
 <releaseinfo>$Revision$</releaseinfo>
 </info>
 
-<para><indexterm significance="normal"><primary>DocBook DTD</primary>
+<para><indexterm significance="normal"><primary>DocBook</primary>
   <secondary>publishing documents</secondary></indexterm><indexterm significance="normal"><primary>publishing DocBook documents</primary></indexterm><indexterm significance="normal"><primary>stylesheets</primary>
-  <secondary>publishing SGML/XML documents</secondary></indexterm><indexterm significance="normal"><primary>HTML</primary>
-  <secondary>translating SGML/XML documents</secondary>
-</indexterm>Creating and editing <acronym>XML</acronym> documents is
+  <secondary>publishing documents</secondary></indexterm><indexterm significance="normal"><primary>HTML</primary>
+  <secondary>translating XML documents</secondary>
+</indexterm>Creating and validating <acronym>XML</acronym> documents is
 usually only half the battle. After you've composed your document,
 you'll want to publish it. Publishing, for our purposes, means either
 print or web publishing. For <acronym>XML</acronym> documents, this is
@@ -21,40 +23,40 @@ possible to publish an <acronym>XML</acronym> document on the Web
 simply by putting it online with a stylesheet.
 </para>
 
-<section xml:id="stylesurvey"><info><title>A Survey of Stylesheet Languages</title></info>
-<para><indexterm significance="normal"><primary>stylesheets</primary>
+<section xml:id="stylesurvey"><title>A Survey of Stylesheet Languages</title>
+<para><indexterm xml:id="idx.stylesheets" class="startofrange"><primary>stylesheets</primary>
   <secondary>languages</secondary></indexterm><indexterm significance="normal"><primary>languages</primary>
-  <secondary>stylesheets</secondary>
+  <secondary>stylesheet</secondary>
 </indexterm>Over the years, a number of attempts have been made to
 produce a standard stylesheet language and, failing that, a large
 number of proprietary languages have been developed. Since this book was
 first written, three standards have emerged as the clear front-runners:
 </para>
 <variablelist>
-<varlistentry><term>CSS</term>
+<varlistentry><term><acronym>CSS</acronym></term>
 <listitem>
 <para><indexterm significance="normal"><primary>CSS</primary></indexterm><indexterm significance="normal"><primary>HTML</primary>
   <secondary>CSS</secondary></indexterm><indexterm significance="normal"><primary>XML</primary>
   <secondary>CSS</secondary>
 </indexterm>
-The <acronym>W3C</acronym> CSS Working Group created
+The <acronym>W3C</acronym> <acronym>CSS</acronym> Working Group created
 <acronym>CSS</acronym> as a style attachment language for <acronym>HTML</acronym>.
-It has also been advanced as a stylesheet language for XML. Some browsers will
-style arbitrary XML with CSS and some commercial products exist that will
-render XML+CSS either online or in print.</para>
+It has also been advanced as a stylesheet language for <acronym>XML</acronym>. Some browsers will
+style arbitrary <acronym>XML</acronym> with <acronym>CSS</acronym> and some commercial products exist that will
+render <acronym>XML</acronym>+<acronym>CSS</acronym> either online or in print.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>XSL</term>
+<varlistentry><term><acronym>XSL</acronym></term>
 <listitem>
 <para><indexterm significance="normal"><primary>XSL</primary></indexterm><indexterm significance="normal"><primary>XML</primary>
-  <secondary>XSL</secondary></indexterm><indexterm significance="normal"><primary>Extensible Style Language</primary><see>XSL</see>
-</indexterm>XSL 1.0 is well-established and is probably the most common
-styling technology for DocBook. XSL 2.0 offers a number of important new
+  <secondary>XSL</secondary></indexterm><indexterm significance="normal"><primary>Extensible Stylesheet Language</primary><see>XSL</see>
+</indexterm><acronym>XSLT</acronym> 1.0 is well-established and is probably the most common
+styling technology for DocBook. <acronym>XSLT</acronym> 2.0 offers a number of important new
 features (at the expense of some complexity, naturally) and is growing
 in popularity.</para>
 <para>It's worth observing that there are two, related technologies in play
-here. XSLT 1.0 and 2.0, the transformation languages, and XSL Formatting
-Objects. XSL Formatting Objects are an XML vocabulary for describing constraints
+here. <acronym>XSLT</acronym> 1.0 and 2.0, the transformation languages, and <acronym>XSL</acronym> Formatting
+Objects (<acronym>XSL-FO</acronym>). <acronym>XSL</acronym>-FO is an <acronym>XML</acronym> vocabulary for describing constraints
 on page layout.
 </para>
 </listitem>
@@ -63,13 +65,13 @@ on page layout.
 <listitem>
 <para><indexterm significance="normal"><primary>XQuery</primary></indexterm><indexterm significance="normal"><primary>XML</primary>
   <secondary>XQuery</secondary></indexterm><indexterm significance="normal"><primary>XML Query Language</primary><see>XQuery</see>
-</indexterm>XQuery 1.0, developed in parallel with XSL 2.0, provides a different
-set of features than XSL, but can be used to transform DocBook into other
+</indexterm>XQuery 1.0, developed in parallel with <acronym>XPath</acronym> 2.0, provides a different
+set of features than <acronym>XSL</acronym>, but can be used to transform DocBook into other
 formats.</para>
 </listitem>
 </varlistentry>
 </variablelist>
-<section xml:id="styleexamples"><info><title>Stylesheet Examples</title></info>
+<section xml:id="styleexamples"><title>Stylesheet Examples</title>
 
 <para><indexterm significance="normal"><primary>stylesheets</primary>
   <secondary>examples</secondary>
@@ -85,8 +87,8 @@ should be printed in italics. A single level of
 be supported.&lt;/emphasis&gt;
 &lt;/para&gt;
 </screen>
-<section xml:id="s.css"><info><title><acronym>CSS</acronym> stylesheet</title></info>
-<para><indexterm significance="normal"><primary>CSS stylesheets</primary>
+<section xml:id="s.css"><title><acronym>CSS</acronym> Stylesheet</title>
+<para><indexterm significance="normal"><primary>CSS</primary>
   <secondary>example</secondary>
 </indexterm>
 <acronym>CSS</acronym> stylesheets consist of selectors and formatting
@@ -95,7 +97,7 @@ properties, as shown in <xref linkend="ex-css"/>.
 
 <example xml:id="ex-css">
 <info>
-  <title>A Fragment of a <acronym>CSS</acronym> Stylesheet</title>
+  <title>A fragment of a <acronym>CSS</acronym> stylesheet</title>
 </info>
 <programlisting>@namespace "http://docbook.org/ns/docbook"
 
@@ -103,14 +105,15 @@ para              { display: block }
 emphasis          { display: inline;
                     font-style: italic; }
 emphasis emphasis { display: inline;
-                    font-style: upright; }</programlisting>
+                    font-style: normal; }</programlisting>
 </example>
 
-<para>Namespace selection in CSS is widely supported, but not yet a standard.
+<para>As this edition is being written, namespace selection in <acronym>CSS</acronym>,
+while widely supported, is still a Candidate Recommendation at W3C.
 </para>
 
 </section>
-<section xml:id="s.xsl"><info><title><acronym>XSL</acronym> stylesheet</title></info>
+<section xml:id="s.xsl"><title><acronym>XSL</acronym> Stylesheet</title>
 <para><indexterm significance="normal"><primary>XSL stylesheets</primary>
   <secondary>example</secondary>
 </indexterm>
@@ -122,72 +125,112 @@ stylesheet that controls the presentation of specific elements is the
 
 <example xml:id="ex-xsl">
 <info>
-  <title>A Fragment of an <acronym>XSL</acronym> Stylesheet</title>
+  <title>A fragment of an <acronym>XSL</acronym> stylesheet</title>
 </info>
-<programlisting>&lt;?xml version='1.0'?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"
-                xmlns:fo="http://www.w3.org/XSL/Format/1.0"
-                version="1.0"&gt;
+<programlisting><![CDATA[<?xml version='1.0'?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                xmlns:db="http://docbook.org/ns/docbook"
+                version="1.0">
 
-&lt;xsl:template match="para"&gt;   
-  &lt;fo:block&gt;
-    &lt;xsl:apply-templates/&gt;  
-  &lt;/fo:block&gt;
-&lt;/xsl:template&gt;  
+<xsl:template match="db:para">   
+  <fo:block>
+    <xsl:apply-templates/>  
+  </fo:block>
+</xsl:template>  
 
-&lt;xsl:template match="emphasis"&gt;
-  &lt;fo:sequence font-style="italic"&gt;
-    &lt;xsl:apply-templates/&gt;  
-  &lt;/fo:sequence&gt;
-&lt;/xsl:template&gt;  
+<xsl:template match="db:emphasis">
+  <fo:sequence font-style="italic">
+    <xsl:apply-templates/>  
+  </fo:sequence>
+</xsl:template>  
 
-&lt;xsl:template match="emphasis/emphasis"&gt;
-  &lt;fo:sequence font-style="upright"&gt;
-    &lt;xsl:apply-templates/&gt;  
-  &lt;/fo:sequence&gt;
-&lt;/xsl:template&gt;  
+<xsl:template match="db:emphasis/db:emphasis">
+  <fo:sequence font-style="normal">
+    <xsl:apply-templates/>  
+  </fo:sequence>
+</xsl:template>  
 
-&lt;/xsl:stylesheet&gt;</programlisting>
+</xsl:stylesheet>]]></programlisting>
 </example>
 
-<para>A complete stylesheet for generating an entire XSL Formatting Objects
+<para>A complete stylesheet for generating an entire <acronym>XSL</acronym>-FO
 document would
 require additional boilerplate text not shown.</para>
 </section>
 
-<section xml:id="s.xquery"><info><title>XQuery</title></info>
+<section xml:id="s.xquery"><title>XQuery</title>
 <para><indexterm significance="normal"><primary>XQuery</primary>
   <secondary>example</secondary>
 </indexterm>
-<acronym>XQuery</acronym> is expressed in a mixture of text and XML
-fragments, as shown in 
+<acronym>XQuery</acronym> is expressed in a mixture of text and <acronym>XML</acronym>
+fragments, as shown in
 <xref linkend="ex-xquery"/>.
 </para>
 
 <example xml:id="ex-xquery">
 <info>
-  <title>A Fragment of XQuery</title>
+  <title>A fragment of XQuery</title>
 </info>
-<programlisting>FIXME: WRITE THIS</programlisting>
+<programlisting><![CDATA[xquery version "1.0";
+
+declare default function namespace "http://www.w3.org/2005/xpath-functions";
+
+declare namespace db="http://docbook.org/ns/docbook";
+declare namespace fo="http://www.w3.org/1999/XSL/Format";
+
+declare function local:convert($node as node()) as node()* {
+  if (empty($node))
+  then
+    ()
+  else
+    typeswitch ($node)
+      case text() return $node
+      case document-node() return local:convert($node/node())
+      case element(db:para) return local:para($node)
+      case element(db:emphasis) return local:emphasis($node)
+      default return ("ERROR: UNEXPECTED NODE", local:convert($node/node()))
+};
+
+declare function local:param($node as element()) as element() {
+  <fo:block>
+    { local:convert($node/node()) }
+  </fo:block>
+};
+
+declare function local:emphasis($node as element()) as element() {
+  if ($node/parent::db:emphasis)
+  then
+    <fo:sequence font-style="normal">
+      { local:convert($node/node()) }
+    </fo:sequence>
+  else
+    <fo:sequence font-style="italic">
+      { local:convert($node/node()) }
+    </fo:sequence>
+};]]></programlisting>
 </example>
 
-<para>A complete query for generating an XSL Formatting Objects document
-would
-require additional boilerplate text not shown.</para>
+<para>A complete query for generating an <acronym>XSL</acronym>-FO
+document would require additional boilerplate text not shown.</para>
 </section>
 </section>
 </section>
 
 <section xml:id="xsl">
-<info>
-  <title>Using <acronym>XSL</acronym> to Publish DocBook Documents</title>
-</info>
-
+<title>Using <acronym>XSL</acronym> to Publish DocBook Documents</title>
+<para><indexterm><primary>stylesheets</primary><secondary>sourceforge.net</secondary></indexterm>The community of people using DocBook has created a set of open
+  source <acronym>XSL</acronym> stylesheets that are maintained at
+  <link
+  xlink:href="http://sourceforge.net/projects/docbook">Sourceforge.net</link>.
+  These stylesheets can be used to transform DocBook <acronym>XML</acronym> into a wide
+  variety of formats, including <acronym>HTML</acronym>, Javahelp, <acronym>XSL-FO</acronym> (for processing into
+  print), ePub, and <acronym>HTML</acronym> help.
+</para>
 <para>For a detailed discussion of using <acronym>XSL</acronym> to publish
 DocBook documents, see
-<citetitle>DocBook XSL: The Complete Guide</citetitle> by
-<personname><firstname>Bob</firstname><surname>Stayton</surname></personname>.
+<citetitle>DocBook XSL: The Complete Guide</citetitle><biblioref linkend="Stayton07"/>.
 </para>
-
+<indexterm class="endofrange" startref="idx.stylesheets"/>
 </section>
 </chapter>

@@ -7,34 +7,36 @@
   <releaseinfo>$Revision$</releaseinfo>
 </info>
 
-<indexterm xml:id="DocBookinterchangeappf" class="startofrange" significance="normal"><primary>DocBook DTD</primary>
+<indexterm xml:id="DocBookinterchangeappf" class="startofrange" significance="normal"><primary>DocBook</primary>
   <secondary>documents</secondary>
-    <tertiary>interchanging</tertiary></indexterm>
-<indexterm xml:id="questionappf" class="startofrange" significance="normal"><primary>questionnaire, DocBook document interchange issues</primary></indexterm>
+    <tertiary>interchange</tertiary></indexterm>
+<indexterm xml:id="DocBookinterchangeappf-2" class="startofrange" significance="normal"><primary>interchange</primary>
+  <secondary>documents</secondary></indexterm>
+<indexterm xml:id="questionappf" class="startofrange" significance="normal"><primary>questionnaire, document interchange</primary></indexterm>
 
 <para>
-One of the early factors that motivated the development of the DocBook
-<acronym>DTD</acronym> was the desire for companies to interchange documents.  In particular,
+One of the early factors that motivated the development of DocBook
+was the desire for companies to interchange documents.  In particular,
 <acronym>UNIX</acronym> vendors wanted to be able to interchange common <acronym>UNIX</acronym> documentation.
 </para>
 
 <para>
 A great deal of effort went into making sure that DocBook could handle
 most (probably all) of the documents that were likely to be exchanged.
-This avoids the guaranteed interchange problem of <acronym>DTD</acronym> extension.
+This avoids the guaranteed problem of interchanging documents created
+with extended schemas.
 </para>
 
 <para>However, simply using DocBook or a subset of it is not
 enough to ensure successful interchange. If you send someone
 your DocBook files, you must also tell the recipient about the
-markup your documents use and any of your additional markup
-conventions and processing expectations that impose constraints
-on processing.
+markup your documents use, any additional markup
+conventions, and any processing expectations that impose constraints.
 </para>
 
 <para>
 This appendix provides a sample interchange questionnaire to
-help draw your attention to those areas that might be problematic.
+help draw your attention to those areas that might cause problems.
 </para>
 
 <para>For maximum portability, delivered DocBook documents
@@ -43,46 +45,24 @@ questionnaire. Because each situation is unique, you may need to
 supply additional information (such as layout specifications) in
 order to deliver a complete package.</para>
 
-<bridgehead>DocBook and <acronym>SGML</acronym> Usage</bridgehead>
+<bridgehead>DocBook and <acronym>XML</acronym> Usage</bridgehead>
 
 <orderedlist inheritnum="ignore" continuation="restarts">
-<listitem><para>What version of the <acronym>DTD</acronym> are you using?</para>
-</listitem><listitem><para>Did you use any markup features of the <acronym>DTD</acronym> that
+<listitem><para>What version of the schema are you using?</para>
+</listitem><listitem><para>Did you use any markup features of the schema that
 have been flagged as obsolete (to be removed at the next major version
 of DocBook)? If so, which ones?</para>
 </listitem><listitem><para>Did you extend DocBook in any way, inside or outside
 the provided customization mechanisms? How? All extensions must be negotiated
 with the recipient.</para>
 </listitem><listitem><para>Did you remove markup from DocBook to create a
-subset? If you used a subset of DocBook, supply the subset you used. (Note
-that even the removal of references to <acronym>ISO</acronym> entity sets creates a subset.)
+subset? If you used a subset of DocBook, supply the subset you used.
 </para>
-</listitem><listitem><para>Did you use the supplied <acronym>SGML</acronym> declaration or another
-one? If you used another one, provide it.</para>
 </listitem><listitem><para>Did you use the supplied catalog or another one,
 or none at all? If you used a catalog other than the one supplied, provide
 it.</para>
-</listitem><listitem><para>If your documents bear no document type declaration,
-and you parsed them with a document declaration (with or without an internal
-subset), supply it.</para>
-</listitem><listitem><para>Did you add <literal>NOTATION</literal> declarations?
-If so, what are they? List all data content notations used in your documents.
-</para>
-</listitem><listitem><para>Did you use the <literal>SUBDOC</literal> feature?
-If so, how did you manage the name spaces of their <acronym>ID</acronym>s, if you managed
-them at all?</para>
-</listitem><listitem><para>Did you use character sets other than <acronym>ISO</acronym> 8859-1
-(Latin 1)? If so, which ones? How did you use them?</para>
-</listitem><listitem><para>Did you declare and use character entities and
-other general entities besides the <acronym>ISO</acronym> entity sets? If so, supply the entity
-declarations and the desired appearance of the additional character entities.
-</para>
-</listitem><listitem><para>Are your document files normalized to include all
-markup explicitly?</para>
-</listitem><listitem><para>Are you supplying a document fragment? If so, have
-you provided any necessary auxiliary information (such as meta-information)
-for the fragment? Are there any attribute values that haven't been specified
-that you expect to inherit from a parent that isn't present?</para>
+</listitem><listitem><para>Did you use <acronym>SVG</acronym>, MathML, XInclude, XLink, or any other <acronym>XML</acronym> schema?</para>
+</listitem><listitem><para>Did you use character sets other than <acronym>UTF-8</acronym>? If so, which ones? How did you use them?</para>
 </listitem></orderedlist>
 
 <bridgehead>Processing Requirements and Markup Interpretation</bridgehead>
@@ -96,7 +76,7 @@ information regarding its format and version?</para>
 </listitem><listitem><para>How did you create tables of contents,
 lists of titles, and indexes? Are they stored in DocBook form? If so,
 did you generate them (and according to what rules) or create them by
-hand?</para> </listitem><listitem><para>If you used the <tag class="attribute">lang</tag> common attribute, why, and to what
+hand?</para> </listitem><listitem><para>If you used the <tag class="attribute">xml:lang</tag> common attribute, why, and to what
 effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">remap</tag> common attribute, why, and to what
 effect?</para> </listitem><listitem><para>If you used the <tag class="attribute">role</tag> common attribute, why, and to what
 effect?</para> </listitem><listitem><para>If you used the effectivity
@@ -139,8 +119,8 @@ you use vertical spans? Did you use horizontal spans?</para>
 </para>
 </listitem><listitem><para>If you used the <tag class="attribute">type</tag> attribute on the link elements,
 why, and to what effect?</para>
-</listitem><listitem><para>If you used <tag>xref</tag>, do your interchange
-partners need additional information about the semantic of the link?
+</listitem><listitem><para>If you used the <tag>xref</tag>, do your interchange
+partners need additional information about the semantics of the link?
 Have you provided it, perhaps with <tag class="attribute">role</tag>?</para>
 </listitem><listitem><para>Did you use the <tag class="attribute">subject</tag> attribute on <tag>glossdef</tag>?
 If so, did you use a thesaurus of terms? If so, what is it?</para>
@@ -149,8 +129,8 @@ why and to what effect?</para>
 </listitem><listitem><para>If you used <tag>link</tag> and provided <acronym>URL</acronym>s that are queries,
 what back-end processing is required to resolve those queries?</para>
 </listitem>
-<listitem><para>A <tag class="attribute">fileref</tag> or 
-<tag class="attribute">entityref</tag> attribute is supplied on every
+<listitem><para>Is there a <tag class="attribute">fileref</tag> or 
+<tag class="attribute">entityref</tag> attribute on every
 <tag>audiodata</tag>, 
 <tag>imagedata</tag>, and
 <tag>videodata</tag> element.  If one is not present, what is the expectation?
@@ -179,12 +159,19 @@ presentation?
 Are they in entities?
 </para>
 </listitem>
-<listitem><para>What copyfitting have you already done, and for what outputs?
+<listitem><para>What copy fitting have you already done, and for what outputs?
 </para>
 </listitem>
 <listitem><para>Are the <tag>revision</tag>s in your
 <tag>revhistory</tag>s sorted in any particular way?
 </para>
+</listitem>
+<listitem>
+  <para>
+    If you use any of the <tag>*synopsis</tag> elements, describe how you
+    define and markup <quote>arguments,</quote> <quote>options,</quote>
+    <quote>parameters,</quote> etc.
+  </para>
 </listitem>
 </orderedlist>
 <bridgehead>Miscellaneous</bridgehead>
@@ -195,5 +182,6 @@ support group?</para>
 </listitem></orderedlist>
 <indexterm startref="questionappf" class="endofrange"/>
 <indexterm startref="DocBookinterchangeappf" class="endofrange"/>
+<indexterm startref="DocBookinterchangeappf-2" class="endofrange"/>
 
 </appendix>

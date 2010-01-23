@@ -6,7 +6,8 @@
                 xmlns:fm="http://freshmeat.net/projects/freshmeat-submit/"
 		xmlns:sf="http://sourceforge.net/"
 		xmlns='http://docbook.org/ns/docbook'
-		exclude-result-prefixes="fm sf"
+		xmlns:db='http://docbook.org/ns/docbook'
+		exclude-result-prefixes="fm sf db"
                 version='1.0'>
 
 <xsl:param name="freshmeat" select="0"/>
@@ -17,7 +18,7 @@
 <fm:project>
   <fm:Project>DocBook</fm:Project>
   <fm:Branch>The Definitive Guide (5.0)</fm:Branch>
-  <fm:Version>0.0.26</fm:Version>
+  <fm:Version>OREILLY.1</fm:Version>
   <fm:Release-Focus>
   <!-- Initial freshmeat announcement -->
   Documentation
@@ -37,25 +38,18 @@
   <fm:Changes>Updated for DocBook V5.0; fixed a few JavaScript problems.</fm:Changes>
 </fm:project>
 
-<xsl:template name="bookinfo">
-  <info xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>DocBook 5.0</title>
-    <subtitle>The Definitive Guide</subtitle>
-    <authorgroup>
-      <author>
-	<personname>
-	  <firstname>Norman</firstname><surname>Walsh</surname>
-	</personname>
-      </author>
-      <othercredit>
-	<personname>
-	  <firstname>Leonard</firstname><surname>Muellner</surname>
-	</personname>
-      </othercredit>
-    </authorgroup>
+<info xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>DocBook: The Definitive Guide</title>
+    <edition>2</edition>
+    <biblioid class="isbn">xxxxxxxxxxxxx</biblioid>
+    <author>
+      <personname>
+	<firstname>Norman</firstname><surname>Walsh</surname>
+      </personname>
+    </author>
     <editor>
       <personname>
-	<firstname>Frank</firstname><surname>Willison</surname>
+	<firstname>Richard</firstname><surname>Hamilton</surname>
       </personname>
     </editor>
     <publisher>
@@ -71,6 +65,7 @@
     </publisher>
     <printhistory>
       <para>October 1999: First Edition.</para>
+      <para>February 2010: Second Edition. (est.)</para>
     </printhistory>
     <releaseinfo>
       <xsl:value-of select="$VERSION"/>
@@ -80,8 +75,8 @@
 
     <legalnotice>
       <para condition="online">
-	<citetitle>DocBook 5.0: The Definitive Guide</citetitle> Copyright
-© 2005–2008 Norman Walsh. Portions Copyright © 1999-2003 O'Reilly Media, Inc.</para>
+	<citetitle>DocBook 5: The Definitive Guide</citetitle> Copyright
+© 2005–2009 Norman Walsh. Portions Copyright © 1999-2003, 2010 O'Reilly Media, Inc.</para>
 
 <para>Permission is granted to copy, distribute and/or modify this
 document under the terms of the GNU Free Documentation License,
@@ -114,6 +109,8 @@ information contained herein.
 <year>2006</year>
 <year>2007</year>
 <year>2008</year>
+<year>2009</year>
+<year>2010</year>
 <holder>Norman Walsh.</holder>
 </copyright>
 <copyright>
@@ -122,6 +119,7 @@ information contained herein.
 <year>2001</year>
 <year>2002</year>
 <year>2003</year>
+<year>2010</year>
 <holder>O'Reilly Media, Inc. All rights reserved.</holder>
 </copyright>
 
@@ -131,7 +129,6 @@ information contained herein.
   </imageobject>
 </mediaobject>
 </info>
-</xsl:template>
 
 <xsl:template match="/">
   <xsl:choose>
@@ -139,7 +136,7 @@ information contained herein.
       <xsl:apply-templates select="//fm:project"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:call-template name="bookinfo"/>
+      <xsl:apply-templates select="//db:info"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -196,6 +193,23 @@ information contained herein.
       <xsl:value-of select="$string"/>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:preserve-space elements="*"/>
+
+<xsl:template match="db:biblioid[@class='isbn']">
+  <isbn><xsl:value-of select="."/></isbn>
+</xsl:template>
+
+<xsl:template match="db:*">
+  <xsl:copy>
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+  </xsl:copy>
+</xsl:template>
+
+<xsl:template match="comment()|processing-instruction()|text()">
+  <xsl:copy/>
 </xsl:template>
 
 </xsl:stylesheet>

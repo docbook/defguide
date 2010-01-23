@@ -1,25 +1,25 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch-parse">
 <?dbhtml filename="ch03.html"?>
 <info>
-  <title>Parsing DocBook Documents</title>
+  <title>Validating DocBook Documents</title>
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
 </info>
 
-<para><indexterm><primary>parsing</primary>
+<para><indexterm><primary>validating</primary>
   <secondary>DocBook documents</secondary></indexterm>
-<indexterm><primary>DocBook DTD</primary>
-  <secondary>parsing documents</secondary>
+<indexterm><primary>DocBook</primary>
+  <secondary>validating documents</secondary>
 </indexterm>A key feature of <acronym>XML</acronym> markup is that you
 <emphasis>validate</emphasis> it.  The DocBook schema is a precise description
 of valid nesting: the order of elements, and their content.  All
 DocBook documents must conform to this description or they are not
 DocBook documents (by definition).
-<indexterm><primary>parsers</primary>
+<indexterm><primary>tools</primary>
   <secondary>validating</secondary></indexterm>
 <indexterm><primary>validation</primary>
-  <secondary>parsers</secondary>
-</indexterm>The validation technology that is built into XML is the
+  <secondary>tools</secondary>
+</indexterm>The validation technology that is built into <acronym>XML</acronym> is the
 Document Type Definition or <acronym>DTD</acronym>. A
 <firstterm>validating parser</firstterm>
 is a program that can read the <acronym>DTD</acronym> and a particular
@@ -27,95 +27,98 @@ document and determine whether the exact nesting and order of elements
 in the document is valid according to the <acronym>DTD</acronym>.
 </para>
 
-<para>DocBook is now defined by a RELAX NG grammar so it is no longer
-necessary to validate with the DTD. In fact, it isn't even very valuable
-since the DTD version doesn't enforce many DocBook constraints.
-Instead, an external RELAX NG validator must be used.</para>
+<para>DocBook is now defined by a RELAX NG grammar and Schematron rules so it is no longer
+necessary to validate with the <acronym>DTD</acronym>. In fact, it isn't even very valuable
+since the <acronym>DTD</acronym> version doesn't enforce many DocBook constraints.
+Instead, an external RELAX NG and Schematron validator must be used.</para>
 
-<para>RELAX NG validation is performed on a document <emphasis>after</emphasis>
-it has been parsed. It is possible for parse errors to occur as well as
-validation errors (if, for example, your document isn't well-formed XML).
+<para>Validation is performed on a document <emphasis>after</emphasis>
+it has been parsed. It is possible for parsing errors to occur as well as
+validation errors (if, for example, your document isn't well-formed <acronym>XML</acronym>).
 We're going to assume that your documents are well formed and not discuss
-XML parsing errors.</para>
+<acronym>XML</acronym> parsing errors.</para>
 
 <para>
 <indexterm><primary>text editors</primary>
   <secondary>unstructured, parsing and</secondary>
-</indexterm>If you are not using a structured editor that can enforce
-the markup as you type, validation with an external tool is a
+</indexterm>If you are not using a structured editor that can provide
+guidance on the markup as you type, validation with an external tool is a
 particularly important step in the document creation process. You
 cannot expect to get rational results from subsequent processing (such
 as document publishing) if your documents are not valid.
 </para>
 
-<para>There are several free RELAX NG validators including
-Jing and MSV. For more detail about available RELAX NG tools,
-see <link xlink:href="http://www.relax-ng.org/"/>.</para>
+<para>There are several free validators that will handle RELAX NG
+and Schematron, including Jing and MSV. For more detail about available tools,
+see <xref linkend="res-tools"/>.</para>
 
 <section xml:id="s.id-idref">
-<title>ID/IDREF constraints and validation</title>
-
-<para>Before we begin, we need to get a slightly tricky subject out of the
-way: ID/IDREF constraints. In XML, attributes of type ID and IDREF provide
-a straightforward cross-referencing mechanism. The value of an attribute of
-type IDREF must be the same as the value of some other attribute of type
-ID in the document.
-Checking these constraints is not a core part of RELAX NG, instead
-they are provided by a set of “DTD Compatibility” extensions.</para>
-
-<para>Unfortunately, schema extensibility and DTD compatibility don't
-mix well. Several aspects of the RELAX NG grammar for DocBook introduce
-errors with respect to ID/IDREF constraint checking.</para>
-
-<para>Luckily, because DocBook uses <tag class="attribute">xml:id</tag>
-for its ID attribute, it's not necessary to enforce the constraints
-with RELAX NG.</para>
-
-<para>You can either tell your processor not to perform the DTD
+<title>ID/IDREF Constraints and Validation</title>
+<indexterm><primary>ID/IDREF</primary></indexterm>
+<para>In <acronym>XML</acronym>, attributes of type ID and IDREF provide a
+straightforward cross-referencing mechanism. In DocBook, the <tag
+class="attribute">xml:id</tag> attribute contains values of type ID,
+and the <tag class="attribute">linkend</tag> attribute contains values
+of type IDREF.
+</para>
+<para>
+Within any document, no two attributes of type ID may have the same
+value.  In addition, for any attribute of type
+IDREF, there must be one, and only one, instance of an attribute
+of type ID with the same value in the same document. In other
+words, you can't have two elements with the same ID and every
+IDREF must match an ID that exists somewhere in the same document.
+</para>
+<note>
+<para>
+Checking these constraints is not a core part of RELAX NG. If you want
+RELAX NG to check them, you need to enable a set of <quote>DTD
+Compatibility</quote> extensions.  Unfortunately, the DTD
+compatibility extensions do not work well with the DocBook
+grammar. However, because DocBook uses <tag
+class="attribute">xml:id</tag> for its ID attribute, it's not
+necessary to enforce the constraints with RELAX NG.
+You can either tell your processor not to perform the DTD
 compatibility extension checks, or ignore the warning messages that
-they produce.</para>
+they produce. You could also use Schematron to check ID/IDREF constraints.</para>
+</note>
 </section>
 
 <section xml:id="ch03-validate"><title>Validating Your Documents</title>
 
-<para>As examples, we'll describe how you can use Jing and MSV for
-validation. For information about your particular validator, consult
-the documentation that came with it.
-</para>
+<para>RELAX NG validation is supported natively in some editing environments,
+such as <phrase>&lt;oXygen/&gt;</phrase><indexterm><primary sortas="oxygen">&lt;oXygen/&gt;</primary>
+  <secondary>documents, validating</secondary>
+  </indexterm><indexterm><primary>Schematron</primary><secondary>validating</secondary></indexterm> (see <xref linkend="fig.oxygen-validate"/>), XMLmind,<indexterm><primary>XMLmind</primary><secondary>documents, validating</secondary></indexterm><indexterm><primary>XML editor</primary><secondary>XMLmind</secondary></indexterm> and
+<phrase>Emacs</phrase> (with <literal>nxml-mode</literal>).
+<phrase>&lt;oXygen/&gt;</phrase><indexterm><primary sortas="oxygen">&lt;oXygen/&gt;</primary>
+  <secondary>Schematron support</secondary></indexterm><indexterm><primary>XML editor</primary><secondary sortas="oxygen">&lt;oXygen/&gt;</secondary>
+  </indexterm>
+and XMLmind<indexterm><primary>XMLmind</primary>
+  <secondary>Schematron support</secondary></indexterm> also support Schematron validation.
+There are also several standalone validators, for example
+<phrase>Jing</phrase><indexterm><primary>Jing</primary>
+</indexterm> and Sun's
+<phrase>Multi-Schema Validator</phrase> (MSV)<indexterm><primary>MSV (Multi-Schema Validator)</primary>
+</indexterm>.</para>
 
-<section><title>Using Jing</title>
+<para>If your documents make use of several namespaces (<acronym>SVG</acronym> and <acronym>MathML</acronym>
+embedded in DocBook, for example), tools that support
+<acronym>NVDL</acronym>, <citetitle>Namespace-based Validation Dispatching Language</citetitle><biblioref linkend="NVDL"/><indexterm><primary>NVDL</primary></indexterm>,
+can greatly simplify complex validation scenarios.</para>
 
-<para><indexterm><primary>Jing validator</primary>
-  <secondary>RELAX NG documents, validating</secondary>
-</indexterm>The <command>jing</command> tool performs RELAX NG
-validation.</para>
-
-<screen>java -jar jing.jar -t -i docbook.rng test.xml
-Elapsed time 562+75=637 milliseconds</screen>
-
-<para>The elapsed time is printed because we used the
-<option>-t</option> option. Without that option, it produces no output
-if there are no errors. The <option>-i</option> option suppresses
-ID/IDREF checks.</para>
+<figure xml:id="fig.oxygen-validate">
+  <title> <command>&lt;oXygen/&gt;</command> <acronym>XML</acronym> Editor validation</title>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="figures/oxygen-screen.png"
+                 contentwidth="678px" contentdepth="609px"
+                 format="PNG" width="6.2in"/>
+    </imageobject>
+  </mediaobject>
+</figure>
 </section>
 
-<section><title>Using MSV</title>
-
-<para><indexterm><primary>MSV validator</primary>
-  <secondary>RELAX NG documents, validating</secondary>
-</indexterm>The <command>MSV</command> tool performs RELAX NG
-validation.</para>
-
-<screen>java -jar msv.jar docbook.rng test.xml
-start parsing a grammar.
-warnings are found. use -warning switch to see all warnings.
-validating test.xml
-the document is valid.</screen>
-
-<para>If you use the <option>-warnings</option> option, you'll see the
-ID/IDREF warnings.</para>
-</section>
-</section>
 <section xml:id="ch03-parseerr"><title>Understanding Validation Errors</title>
 <para>
 <indexterm><primary>errors</primary>
@@ -128,10 +131,10 @@ ID/IDREF warnings.</para>
 indicate exactly (at least technically<footnote>
 <para>
 It is often the case that you can correct an error in the document in
-several ways.  The parser suggests one possible fix, but this is not
-always the right fix.  For example, the parser may suggest that you
+several ways.  The validator suggests one possible fix, but this is not
+always the right fix.  For example, the validator may suggest that you
 can correct out of context data by adding another element, when in
-fact it's “obvious” to human eyes that the problem is a
+fact it's <quote>obvious</quote> to human eyes that the problem is a
 missing end tag.
 </para>
 </footnote>) what is wrong and where the error occurred.  With a little
@@ -140,8 +143,8 @@ what's wrong.
 </para>
 
 <para>In the rest of this section, we'll look at a number of common errors
-and the messages they produce in <command>msv</command>.  We've
-chosen <command>msv</command> because it generally produces informative
+and the messages they produce in <acronym>MSV</acronym>.  We've
+chosen <acronym>MSV</acronym> because it generally produces informative
 error messages.</para>
 
 <section><title>Character Data Not Allowed Here</title>
@@ -175,8 +178,9 @@ missing around the sentence between the first two paragraphs.
 <section><title>Misspelled Start Tag</title>
 <para><indexterm><primary>start tags</primary>
   <secondary>errors</secondary>
-    <tertiary>misspelling</tertiary>
-</indexterm>If you spell it wrong, the parser gets confused.
+    <tertiary>misspelling</tertiary> </indexterm>If you spell a start
+    tag incorrectly, or use the wrong namespace, the parser will get
+    confused.
 </para>
 <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/errs/misspell.xml"/></programlisting>
 <screen>java -jar msv.jar docbook.rng misspell.xml
@@ -200,8 +204,8 @@ Error at line:9, column:7 of misspell.xml
 &lt;tip&gt;,&lt;toc&gt;,&lt;variablelist&gt;,&lt;warning&gt;</screen>
 
 <para>
-Luckily, these are pretty easy to spot, unless you accidentally spell
-the name of another element.  In that case, your error might appear to
+Luckily, these are usually easy to spot, unless you accidentally spell
+the name of another element. In that case, your error might appear to
 be out of context.
 </para>
 </section>
@@ -210,12 +214,12 @@ be out of context.
   <secondary>errors</secondary>
     <tertiary>out of context</tertiary></indexterm>
 <indexterm><primary>tags</primary>
-  <secondary>context errors</secondary>
-</indexterm>Sometimes the problem isn't spelling, but placing a tag in
-the wrong context. When this happens, the parser tries to figure out
-what it can add to your document to make it valid. Then it proceeds as
-if it had seen what was added in order to recover from the error seen,
-which can cause future errors.
+  <secondary>context errors</secondary> </indexterm>Sometimes the
+  problem isn't spelling, but rather placing a tag in the wrong
+  context. When this happens, the validator tries to figure out what it
+  can add to your document to make it valid. Then it tries to recover by
+  continuing as if it had seen what it just added. Of course, this may
+  cause future errors.
 </para>
 <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/errs/context.xml"/></programlisting>
 <screen>$ java -jar msv.jar docbook.rng context.xml
@@ -233,7 +237,7 @@ Error at line:9, column:14 of context.xml
   <secondary>titles</secondary>
 </indexterm>In this example, we probably wanted a
 <tag>formalpara</tag>, so that we could have a title on the paragraph.
-But note that the parser didn't suggest this alternative. The parser
+But note that the validator didn't suggest this alternative. The validator
 only tries to add additional elements, rather than rename elements
 that it's already seen.
 </para>
