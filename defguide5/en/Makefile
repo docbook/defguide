@@ -1,10 +1,10 @@
-include ../../buildtools/Makefile.incl
+include $(DOCBOOK_SVN)/buildtools/Makefile.incl
 
 SSTITLEPG=stylesheets/html-titlepage.xsl
 SSCHUNK=stylesheets/chunk.xsl
 SSFO=stylesheets/tdgfo.xsl
 
-SOURCE=tdg-stripped.xml
+SOURCE=book.xml
 MEMORY=100000000
 BASEDIR=../html/
 ROOTID=
@@ -29,33 +29,45 @@ else
   MEMORYOPT=-opts hugemem
 endif
 
-all: chunks
+.PHONY: refpages
 
-compact:
-	saxon tools/lib/defguide.rnd stylesheets/rnd2rng.xsl tools/lib/compact.rng
-	trang tools/lib/compact.rng tools/lib/compact.rnc
-	jing -c tools/lib/compact.rnc /tmp/test.xml
+all: book.xml
 
-test: tdg.xml
+test: book.xml
 	jing ../../docbook/relaxng/docbook/docbook.rng $<
 
-tdg.xml: book.xml bookinfo.xml refpages/references.xml refpages/list-elements.xml \
+patterns.xml: stylesheets/patterns.xml stylesheets/patterns.xsl
+	$(XSLT) $< stylesheets/patterns.xsl $@
+
+tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
+         refpages/references.xml refpages/list-elements.xml \
+         refpages/intro-elements.xml \
          $(wildcard src/*.xml) \
          $(wildcard refpages/elements/build/*.xml)
-	xmllint --xinclude book.xml > $@
+	xmllint --nowarning --xinclude book5.xml > $@
 
-tdg-stripped.xml: tdg.xml
-	$(XSLT) $< stylesheets/strip.xsl $@
+profiled.xml: tdg.xml stylesheets/profile.xsl
+	$(XSLT) $< stylesheets/profile.xsl $@ not-condition=compact
+
+tdg-p.xml: profiled.xml stylesheets/purpose.xsl
+	$(XSLT) $< stylesheets/purpose.xsl $@
+
+# No more stripping!
+book.xml: tdg-p.xml
+	cp $< $@
+
+refpages:
+	make -C refpages
 
 bookinfo.xml: VERSION.xml
 	$(XSLT) $< $< $@
 
-chunks: $(SOURCE) $(SSTITLEPG) tdg-stripped.xml
+chunks: $(SOURCE) $(SSTITLEPG) book.xml
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
 	cd $(BASEDIR) && $(TIDY) *.html
 
-chunk: $(SOURCE) $(SSTITLEPG) tdg-stripped.xml
+chunk: $(SOURCE) $(SSTITLEPG) book.xml
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
 
 index: $(SSTITLEPG)
@@ -82,7 +94,7 @@ tdg.pdf: tdg.fo
 	xep $< $@
 
 clean:
-	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml
+	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml tdg-p.xml
 
 freshmeat:
 	$(XSLT) VERSION.xml VERSION.xml /tmp/fm-docbook-tdg freshmeat=1

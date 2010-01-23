@@ -335,21 +335,12 @@ DocBook, but you want to make some small changes. These customization
 layers tend to look like this:
 </para>
 
-<!--
 <screenco>
 <areaspec>
 <area xml:id="gs1-d1" coords="4 50" units="linecolumn"/>
 <area xml:id="gs1-n1" coords="6 50" units="linecolumn"/>
 </areaspec>
 <screen><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/custlayer.rnc"/></screen>
--->
-<screen>namespace db = "http://docbook.org/ns/docbook"
-# perhaps other namespace declarations
-
-include "docbook.rnc"                     <co xml:id="gs1-d1"/>
-
-# new patterns and augmented patterns     <co xml:id="gs1-n1"/></screen>
-
 <calloutlist>
 <callout arearefs="gs1-d1"><para>Start by importing the base DocBook
 schema.
@@ -358,31 +349,18 @@ schema.
 augment existing patterns.
 </para></callout>
 </calloutlist>
-<!--
 </screenco>
--->
 
 <para>If you want to completely replace a pattern (for example, to
 remove or completely change an element), the template is a little
 different.</para>
 
-<!--
 <screenco>
 <areaspec>
 <area xml:id="gs2-d1" coords="5 50" units="linecolumn"/>
 <area xml:id="gs2-n1" coords="8 50" units="linecolumn"/>
 </areaspec>
 <screen><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/custlayer2.rnc"/></screen>
--->
-<screen>namespace db = "http://docbook.org/ns/docbook"
-# perhaps other namespace declarations
-
-include "docbook.rnc" {
-   # redefinitions of DocBook patterns    <co xml:id="gs2-d1"/>
-}
-
-# new patterns and augmented patterns     <co xml:id="gs2-n1"/></screen>
-
 <calloutlist>
 <callout arearefs="gs2-d1"><para>You can redefine patterns in the
 body of an import statement. These patterns completely replace any that
@@ -392,9 +370,7 @@ appear in the imported schema.
 include statement can augment existing patterns (even redefined ones).
 </para></callout>
 </calloutlist>
-<!--
 </screenco>
--->
 
 <para>There are other possibilities as well, these examples are
 illustrative, not exhaustive.</para>
@@ -450,7 +426,6 @@ inlines, and then provide a pattern that matches the new element.
 
 <example xml:id="ex-addcleartext">
 <title>Adding <tag role="nonexistant">cleartext</tag> with a customization layer</title>
-<!--
 <programlistingco>
 <areaspec>
 <area xml:id="gs3-d1" coords="6 50" units="linecolumn"/>
@@ -460,28 +435,6 @@ inlines, and then provide a pattern that matches the new element.
 <area xml:id="gs3-d4" coords="16 50" units="linecolumn"/>
 </areaspec>
 <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/addcleartext.rnc"/></programlisting>
--->
-<programlisting>namespace db = "http://docbook.org/ns/docbook"
-default namespace = "http://docbook.org/ns/docbook"
-
-include "docbook.rnc"
-
-db.domain.inlines |= db.cleartext                      <co xml:id="gs3-d1"/>
-
-# Define a new cleartext element:                      <co xml:id="gs3-d1b"/>
-
-db.cleartext.role.attribute = attribute role { text }  <co xml:id="gs3-d2"/>
-db.cleartext.attlist =                                 <co xml:id="gs3-d3"/>
-   db.cleartext.role.attribute?
- &amp; db.common.attributes
- &amp; db.common.linking.attributes
-
-db.cleartext =                                         <co xml:id="gs3-d4"/>
-   element cleartext {
-      db.cleartext.attlist,
-      db._text
-   }</programlisting>
-
 <calloutlist>
 <callout arearefs="gs3-d1"><para>The <quote><literal>|=</literal></quote> operator
 adds a new choice to a pattern. So this line makes the
@@ -508,9 +461,7 @@ together. The pattern <quote><literal>db._text</literal></quote> matches text pl
 a number of ubiquitous or nearly ubiquitous inlines. Use this pattern
 unless you <emphasis>really</emphasis> want only text.</para>
 </callout></calloutlist>
-<!--
 </programlistingco>
--->
 </example>
 </section>
 
@@ -905,37 +856,24 @@ that element. <xref linkend="ex.addattribute"/> adds the optional
 attributes <tag class="attribute">born</tag> and <tag class="attribute">died</tag> to the attribute list for <tag>author</tag>. The
 <literal>db.author.attlist</literal> pattern is redefined to interleave the two new
 optional attributes with the existing attributes on the list.
-  
+
 </para>
 <example xml:id="ex.addattribute">
 <title>Adding <tag class="attribute">born</tag> and <tag class="attribute">died</tag> attributes</title>
 
-<!--
 <programlistingco>
 <areaspec>
   <area xml:id="exarea-a1" coords="6 50" units="linecolumn"/>
   <area xml:id="exarea-a2" coords="7 50" units="linecolumn"/>
 </areaspec>
 <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../examples/addattribute.rnc"/></programlisting>
--->
-<programlisting>namespace db = "http://docbook.org/ns/docbook"
-default namespace = "http://docbook.org/ns/docbook"
-
-include "docbook.rnc"
-
-db.author.attlist &amp;=                             <co xml:id="exarea-a1"/>
-  attribute born { db.date.contentmodel }?           <co xml:id="exarea-a2"/>
-  &amp; attribute died { db.date.contentmodel }?</programlisting>
-
 <calloutlist>
 <callout arearefs="exarea-a1"><para><quote><literal>&amp;=</literal></quote>
 interleaves the two new optional attributes with the existing
 attributes on the list.</para></callout>
 <callout arearefs="exarea-a2"><para><literal>db.date.contentmodel</literal> is a pattern used for any attribute or element that represents a date.</para></callout>
 </calloutlist>
-<!--
 </programlistingco>
--->
 </example>
 <indexterm class="endofrange" startref="idx.add.attr-1"/>
 <indexterm class="endofrange" startref="idx.add.attr-2"/>

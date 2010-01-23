@@ -25,12 +25,14 @@
 <xsl:key name="define" match="rng:define" use="@name"/>
 <xsl:key name="elemdef" match="rng:define" use="rng:element/@name"/>
 
-<xsl:param name="compact-format" select="1"/>
+<xsl:variable name="FOR-OREILLY" select="false()"/>
 
 <xsl:variable name="rngfile"
 	      select="'../tools/lib/defguide.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile)"/>
+
+<xsl:variable name="choice-patterns" select="document('patterns.xml')"/>
 
 <xsl:variable name="seealsofile"
 	      select="'../tools/lib/seealso.xml'"/>
@@ -45,39 +47,8 @@
 
   <!-- it's ok to mix inlines and blocks because no elements in DocBook
        contain a mixture of both -->
-<xsl:variable name="test.patterns"
-	      select="('db.bibliography.inlines',
-		       'db.computeroutput.inlines',
-		       'db.error.inlines',
-		       'db.graphic.inlines',
-		       'db.gui.inlines',
-		       'db.htmlform.inlines',
-		       'db.indexing.inlines',
-		       'db.keyboard.inlines',
-		       'db.link.inlines',
-		       'db.markup.inlines',
-		       'db.math.inlines',
-		       'db.oo.inlines',
-		       'db.os.inlines',
-		       'db.product.inlines',
-		       'db.programming.inlines',
-		       'db.publishing.inlines',
-		       'db.technical.inlines',
-		       'db.ubiq.inlines',
-		       'db.userinput.inlines',
-
-                       'db.admonition.blocks',
-		       'db.formal.blocks',
-		       'db.graphic.blocks',
-		       'db.htmlform.blocks',
-		       'db.info.elements',
-		       'db.informal.blocks',
-		       'db.list.blocks',
-		       'db.para.blocks',
-		       'db.publishing.blocks',
-		       'db.synopsis.blocks',
-		       'db.technical.blocks',
-		       'db.verbatim.blocks')"/>
+  <!-- ndw: that's a lie. What about para? But apparently it's ok anyway... -->
+<xsl:variable name="test.patterns" select="$choice-patterns/patterns/pattern/@name"/>
 
 <xsl:template match="/">
   <xsl:apply-templates/>
@@ -99,10 +70,15 @@
       </xsl:choose>
       <xsl:text>.html"</xsl:text>
     </xsl:processing-instruction>
+    <indexterm>
+      <primary>elements</primary>
+      <secondary><xsl:value-of select="$element"/></secondary>
+    </indexterm>
+
     <xsl:apply-templates/>
 
     <xsl:if test="db:info/db:releaseinfo or db:info/db:pubdate">
-      <refsection condition="ref.desc.changelog">
+      <refsection condition="ref.desc.changelog expanded">
 	<title>ChangeLog</title>
 	<para>
 	  <xsl:text>This </xsl:text>
@@ -122,10 +98,6 @@
 <xsl:template match="db:refmeta">
   <xsl:element name="{name(.)}">
     <xsl:copy-of select="@*"/>
-    <indexterm>
-      <primary>elements</primary>
-      <secondary><xsl:value-of select="$element"/></secondary>
-    </indexterm>
     <xsl:apply-templates/>
   </xsl:element>
 </xsl:template>
@@ -158,8 +130,8 @@
   <xsl:variable name="parents"
 	select="$rng//rng:element[doc:content-model//rng:ref[@name=$pattern]]"/>
 
-  <xsl:if test="$parents and $compact-format = 0">
-    <refsection condition="ref.desc.parents">
+  <xsl:if test="$parents">
+    <refsection condition="ref.desc.parents expanded">
       <title>Parents</title>
       <para>
 	<xsl:text>These elements contain </xsl:text>
@@ -234,8 +206,8 @@
   <xsl:variable name="children"
 		select="$elem/doc:content-model//rng:ref"/>
 
-  <xsl:if test="$children and $compact-format = 0">
-    <refsection condition="ref.desc.children">
+  <xsl:if test="$children">
+    <refsection condition="ref.desc.children expanded">
       <title>Children</title>
       <para>
 	<xsl:text>The following elements occur in </xsl:text>
@@ -384,35 +356,35 @@
       <xsl:choose>
 	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
-	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <link linkend="common.linking.attributes">common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
-	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <link linkend="common.linking.attributes">common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttr) = 20">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 20">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnLinkAttr) = 8">
 	  <para>
-	    <link xlink:href="#common.linking.attributes">Common linking attributes</link>
+	    <link linkend="common.linking.attributes">Common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
@@ -434,7 +406,7 @@
 	  </xsl:choose>
 	</xsl:for-each>
       </xsl:variable>
-	  
+
       <variablelist>
 	<xsl:for-each select="exsl:node-set($allAttrNS)/rng:attribute">
 	  <xsl:variable name="name">
@@ -442,7 +414,7 @@
 	      <xsl:when test="@name">
 		<xsl:value-of select="@name"/>
 	      </xsl:when>
-	      <xsl:otherwise>*</xsl:otherwise>
+	      <xsl:otherwise><xsl:text>any attribute</xsl:text></xsl:otherwise>
 	    </xsl:choose>
 	  </xsl:variable>
 
@@ -544,7 +516,7 @@
   <xsl:if test="$seealsolist/*">
     <refsection condition="ref.desc.seealso">
       <title>See Also</title>
-
+      <para>
       <simplelist type="inline">
 	<!-- use f-e-g to remove duplicates -->
 	<xsl:for-each-group select="$seealsolist/*" group-by="@name">
@@ -564,15 +536,9 @@
 	  </member>
 	</xsl:for-each-group>
       </simplelist>
+      </para>
     </refsection>
   </xsl:if>
-</xsl:template>
-
-<xsl:template match="*">
-  <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
-    <xsl:copy-of select="@*"/>
-    <xsl:apply-templates/>
-  </xsl:element>
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg')" priority="20">
@@ -602,14 +568,12 @@
 	</xsl:when>
 	<xsl:when test="contains(., 'calssemantics')">This element is
 expected to obey the semantics of the
-<link linkend='calsdtd'><citetitle>CALS Table Model
-Document Type Definition</citetitle></link>, as specified by <citetitle>
-<link xlink:href='http://www.oasis-open.org/html/a502.htm'>OASIS
-Technical Memorandum TM 9502:1995</link></citetitle>.</xsl:when>
+<citetitle>CALS Table Model Document Type Definition</citetitle>
+<biblioref linkend="calsdtd"/>.</xsl:when>
 	<xsl:when test="contains(., 'htmltablesemantics')">This element is
 expected to obey the semantics described in
 <citetitle xlink:href="http://www.w3.org/TR/html401/struct/tables.html">Tables</citetitle>,
-as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</citetitle>.
+as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref linkend="XHTML"/>.
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:message>
@@ -624,6 +588,80 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
       <xsl:copy/>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="db:refsection[db:anchor[starts-with(@role,'HACK-')]]">
+  <xsl:choose>
+    <xsl:when test="$FOR-OREILLY">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+
+        <xsl:for-each select="node()">
+          <xsl:variable name="panch"
+               select="preceding-sibling::db:anchor[@role='HACK-ex.out.start'][1]"/>
+          <xsl:variable name="nanch"
+               select="following-sibling::db:anchor[@role='HACK-ex.out.end'][1]"/>
+          <xsl:choose>
+            <xsl:when test="substring-after($panch/@xml:id,'ex.os.')
+                            = substring-after($nanch/@xml:id,'ex.oe.')">
+              <!-- skip this node, it's between tombstones -->
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="."/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:copy>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates/>
+      </xsl:element>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="db:anchor[@role='HACK-ex.out.start']">
+  <xsl:choose>
+    <xsl:when test="$FOR-OREILLY">
+      <xsl:variable name="endid"
+                    select="concat('ex.oe.', substring-after(@xml:id,'ex.os.'))"/>
+      <xsl:variable name="eanch"
+                    select="following-sibling::db:anchor[@xml:id=$endid]"/>
+      <db:sidebar>
+        <xsl:apply-templates select="following-sibling::node()
+                                     except $eanch/following-sibling::node()"/>
+      </db:sidebar>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates/>
+      </xsl:element>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="db:anchor[@role='HACK-ex.out.end']">
+  <xsl:choose>
+    <xsl:when test="$FOR-OREILLY">
+      <!-- nop -->
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates/>
+      </xsl:element>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="*">
+  <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="comment()|processing-instruction()|text()">
@@ -689,7 +727,7 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
     <title>Content Model</title>
 -->
 
-    <para>
+    <para condition="expanded">
       <xsl:choose>
 	<xsl:when test="@name">
 	  <xsl:value-of select="@name"/>
@@ -711,7 +749,7 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
     </para>
 
     <xsl:variable name="synop" as="element(db:itemizedlist)">
-      <itemizedlist spacing='compact' role="element-synopsis">
+      <itemizedlist spacing='compact' role="element-synopsis" condition="expanded">
 	<xsl:choose>
 	  <xsl:when test="doc:content-model">
 	    <xsl:apply-templates select="doc:content-model/*"/>
@@ -723,16 +761,29 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
       </itemizedlist>
     </xsl:variable>
 
-    <xsl:choose>
-      <xsl:when test="$compact-format = 0">
-	<xsl:copy-of select="$synop"/>
-      </xsl:when>
-      <xsl:otherwise>
-	<para>
-	  <xsl:apply-templates select="$synop" mode="inlinesynop"/>
-	</para>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:copy-of select="$synop"/>
+
+    <para condition="compact">
+      <xsl:choose>
+	<xsl:when test="@name">
+	  <xsl:value-of select="@name"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <emphasis>
+	    <xsl:value-of select="ancestor::rng:div[1]/db:refname"/>
+	  </emphasis>
+	</xsl:otherwise>
+      </xsl:choose>
+
+      <xsl:if test="count($xdefs) &gt; 1">
+	<xsl:text> (</xsl:text>
+	<xsl:value-of select="../@name"/>
+	<xsl:text>)</xsl:text>
+      </xsl:if>
+      <xsl:text>&#160;</xsl:text>
+      <phrase role="cceq">::= </phrase>
+      <xsl:apply-templates select="$synop" mode="inlinesynop"/>
+    </para>
 
 <!--
   </refsection>
@@ -813,35 +864,35 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
       <xsl:choose>
 	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
-	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <link linkend="common.linking.attributes">common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 20 and count($cmnLinkAttr) = 8">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
-	    <link xlink:href="#common.linking.attributes">common linking attributes</link>
+	    <link linkend="common.linking.attributes">common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttr) = 20">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnAttrIdReq) = 20">
 	  <para>
-	    <link xlink:href="#common.attributes">Common attributes</link>
+	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
 	  </para>
 	</xsl:when>
 	<xsl:when test="count($cmnLinkAttr) = 8">
 	  <para>
-	    <link xlink:href="#common.linking.attributes">Common linking attributes</link>
+	    <link linkend="common.linking.attributes">Common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
@@ -991,6 +1042,14 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
       <xsl:choose>
 	<xsl:when test="rng:choice|rng:value">
 	  <xsl:text> (enumeration)</xsl:text>
+	  <phrase condition="compact">
+	    <xsl:text> = </xsl:text>
+	    <xsl:for-each
+		select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
+	      <xsl:if test="position() &gt; 1"> | </xsl:if>
+	      <xsl:apply-templates select="." mode="value-enum"/>
+	    </xsl:for-each>
+	  </phrase>
 	</xsl:when>
 	<xsl:when test="rng:data">
 	  <xsl:text> (</xsl:text>
@@ -1007,7 +1066,7 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
     </para>
 
     <xsl:if test="rng:choice|rng:value">
-      <itemizedlist spacing='compact' role="element-synopsis">
+      <itemizedlist spacing='compact' role="element-synopsis" condition="expanded">
 	<xsl:for-each
 	    select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
 	  <listitem>
@@ -1291,100 +1350,13 @@ as specified in <citetitle linkend="xhtml"><trademark>XHTML</trademark> 1.0</cit
   <listitem xml:id="{generate-id($context)}-{$pattern}">
     <para>
       <emphasis role="patnlink">
+	<xsl:attribute name="linkend"
+		       select="concat('ipatn.', $pattern)"/>
 	<xsl:choose>
-	  <xsl:when test="$pattern = 'db.bibliography.inlines'">
-	    <xsl:text>Bibliography inlines</xsl:text>
+	  <xsl:when test="$choice-patterns/patterns/pattern[@name=$pattern]">
+	    <xsl:value-of
+		select="$choice-patterns/patterns/pattern[@name=$pattern]"/>
 	  </xsl:when>
-          <xsl:when test="$pattern = 'db.computeroutput.inlines'">
-            <xsl:text>Computer-output inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.error.inlines'">
-            <xsl:text>Error inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.graphic.inlines'">
-            <xsl:text>Graphic inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.gui.inlines'">
-            <xsl:text>GUI inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.htmlform.inlines'">
-            <xsl:text>HTML Form inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.indexing.inlines'">
-            <xsl:text>Indexing inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.keyboard.inlines'">
-            <xsl:text>Keyboard inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.link.inlines'">
-            <xsl:text>Linking inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.markup.inlines'">
-            <xsl:text>Markup inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.math.inlines'">
-            <xsl:text>Math inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.oo.inlines'">
-            <xsl:text>Object-oriented programming inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.os.inlines'">
-            <xsl:text>Operating system inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.product.inlines'">
-            <xsl:text>Product inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.programming.inlines'">
-            <xsl:text>Programming inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.publishing.inlines'">
-            <xsl:text>Publishing inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.technical.inlines'">
-            <xsl:text>Technical inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.ubiq.inlines'">
-            <xsl:text>Ubiquitous inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.userinput.inlines'">
-            <xsl:text>User-input inlines</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.admonition.blocks'">
-            <xsl:text>Admonition elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.formal.blocks'">
-            <xsl:text>Formal elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.graphic.blocks'">
-            <xsl:text>Graphic elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.htmlform.blocks'">
-            <xsl:text>HTML Form elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.info.elements'">
-            <xsl:text>“Info” elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.informal.blocks'">
-            <xsl:text>Informal elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.list.blocks'">
-            <xsl:text>List elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.para.blocks'">
-            <xsl:text>Paragraph elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.publishing.blocks'">
-            <xsl:text>Publishing elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.synopsis.blocks'">
-            <xsl:text>Synopsis elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.technical.blocks'">
-            <xsl:text>Technical elements</xsl:text>
-          </xsl:when>
-          <xsl:when test="$pattern = 'db.verbatim.blocks'">
-            <xsl:text>Verbatim elements</xsl:text>
-          </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:message>
 	      <xsl:text>Warning: no prose for </xsl:text>

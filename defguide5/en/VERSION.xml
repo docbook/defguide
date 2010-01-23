@@ -197,10 +197,6 @@ information contained herein.
 
 <xsl:preserve-space elements="*"/>
 
-<xsl:template match="db:biblioid[@class='isbn']">
-  <isbn><xsl:value-of select="."/></isbn>
-</xsl:template>
-
 <xsl:template match="db:*">
   <xsl:copy>
     <xsl:copy-of select="@*"/>
