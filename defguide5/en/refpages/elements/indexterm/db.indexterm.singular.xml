@@ -43,7 +43,7 @@ There are two ways to identify a range of text:
 <tag class="attvalue">startofrange</tag> and
 give this term an <tag class="attribute">xml:id</tag>.
 Place another <tag>indexterm</tag> at the end of the range with
-<tag class="attribute">startref</tag> pointing to the 
+<tag class="attribute">startref</tag> pointing to the
 <tag class="attribute">xml:id</tag> of the starting <tag>indexterm</tag>.
 This second <tag>indexterm</tag> must be empty.
 </para>
@@ -167,6 +167,64 @@ together.</para>
 </refsection>
 
 <refsection>
+<title>Index terms between block and floating elements</title>
+
+<para>Just as extraneous whitespace can lead to indexing errors,
+placing index terms between block elements may lead to indexing
+errors.
+</para>
+
+<para>If an index term occurs between two paragraphs, and a page break
+occurs between those two paragraphs, the processing system may
+associate the index entry with either page.</para>
+
+<para>This problem can be exacerbated by floating elements. Suppose an
+index term appears between two figures, both of which float to
+subsequent pages. There is no reliable way to predict what page the
+processing system will associate with that index term.</para>
+
+<para>If the index term in question marks the beginning or end of a
+range, the resulting range may contain too few, too many, or perhaps
+even only the wrong pages!</para>
+
+<para>As a general rule, it's best to avoid placing index terms
+between block elements that may be broken across multiple
+pages.</para>
+
+</refsection>
+
+<refsection>
+<title>Index terms in repeating and floating elements</title>
+
+<para>When an <tag>indexterm</tag> appears in an element whose content
+may be repeated in more than one place, the anchor is
+<emphasis>only</emphasis> associated with what would be considered
+the “primary” presentation (or
+presentations) of
+the element in the flow of the text. For example, in a traditional
+printed book, the <tag>title</tag> of a <tag>chapter</tag> might
+appear in the Table of Contents, in the running header, and in the
+body of the of the book on the first page of the chapter. If an
+<tag>indexterm</tag> is placed in the <tag>title</tag>, it serves as
+an anchor to <emphasis>only</emphasis> the first page of the
+chapter.</para>
+
+<para>If the processing expectations of an element are that it may
+be repeated several times and that each of these occurrences is
+equally “primary”<footnote><para>There are no elements in DocBook V5.0
+that have these semantics.</para></footnote>,
+then any <tag>indexterm</tag> occurring in that element
+should generate an anchor at each location where the content
+is repeated.</para>
+
+<para>If an <tag>indexterm</tag> appears in an element whose
+content may float, the anchor is to the location where the term occurs
+in the floated text. For example, if an <tag>indexterm</tag> occurs in
+a <tag>figure</tag> that floats to the top of some following page, the
+anchor is on the page where the figure actually occurs.</para>
+</refsection>
+
+<refsection>
 <title>See and See Also entries</title>
 
 <para>The use of <tag>see</tag> and <tag>seealso</tag> elements in
@@ -209,37 +267,6 @@ evaluating expressions, 44
 
 <para>It's entirely possible for a term to have several “seealso”
 entries.</para>
-</refsection>
-
-<refsection>
-<title>Index terms in repeating and floating elements</title>
-
-<para>When an <tag>indexterm</tag> appears in an element whose content
-may be repeated in more than one place, the anchor is
-<emphasis>only</emphasis> associated with what would be considered
-the “primary” presentation (or
-presentations) of
-the element in the flow of the text. For example, in a traditional
-printed book, the <tag>title</tag> of a <tag>chapter</tag> might
-appear in the Table of Contents, in the running header, and in the
-body of the of the book on the first page of the chapter. If an
-<tag>indexterm</tag> is placed in the <tag>title</tag>, it serves as
-an anchor to <emphasis>only</emphasis> the first page of the
-chapter.</para>
-
-<para>If the processing expectations of an element are that it may
-be repeated several times and that each of these occurrences is
-equally “primary”<footnote><para>There are no elements in DocBook V5.0
-that have these semantics.</para></footnote>,
-then any <tag>indexterm</tag> occurring in that element
-should generate an anchor at each location where the content
-is repeated.</para>
-
-<para>If an <tag>indexterm</tag> appears in an element whose
-content may float, the anchor is to the location where the term occurs
-in the floated text. For example, if an <tag>indexterm</tag> occurs in
-a <tag>figure</tag> that floats to the top of some following page, the
-anchor is on the page where the figure actually occurs.</para>
 </refsection>
 
 <refsection>
