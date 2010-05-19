@@ -18,26 +18,24 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>segmentedlist</tag> consists of a set of headings
+      (<tag>segtitle</tag>s) and a list of parallel sets of elements.
+      Each set of elements is stored in a
+      <tag>seglistitem</tag>.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A <tag>segmentedlist</tag> consists of a set of headings
-(<tag>segtitle</tag>s) and a list of parallel sets of elements.
-Each set of elements is stored in a <tag>seglistitem</tag>.
-</para>
+        <para>Segmented lists can be formatted in a number of ways. Two
+        popular formats are tabular and as a list of repeated headings and
+        elements. In a tabular presentation, each <tag role="keep-together">seglistitem</tag> is a row in the table. In
+        the list presentation, each <tag>seglistitem</tag> contains a
+        block of heading/element pairs.</para>
 
-<refsection><title>Processing expectations</title>
-<para>Segmented lists can be formatted in a number of ways.  Two popular
-formats are tabular and as a list of repeated headings and elements.
-In a tabular presentation, each <tag>seglistitem</tag> is a row in
-the table.  In the list presentation, each <tag>seglistitem</tag>
-contains a block of heading/element pairs.
-</para>
-<para>DocBook cannot detect errors caused by too many or too few <tag>seg</tag>s
-in a <tag>seglistitem</tag>. You will have to rely on external processes
-to find those errors.
-</para>
-</refsection> 
+        <para>DocBook cannot detect errors caused by too many or too few
+        <tag>seg</tag>s in a <tag>seglistitem</tag>. You will
+        have to rely on external processes to find those errors.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

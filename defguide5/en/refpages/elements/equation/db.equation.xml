@@ -18,30 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>An <tag>equation</tag> is a formal mathematical equation
+      (with an optional rather than a required title).</para>
 
+      <para>If the MathML Module is used, <tag>equation</tag> can also
+      contain the <tag namespace="http://www.w3.org/1998/Math/MathML">mml:math</tag>
+      element.</para>
 
-<para>An <tag>equation</tag> is a formal mathematical equation
-(with an optional rather than required title).
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>If the MathML Module is used, <tag>equation</tag> can
-also contain the
-<tag namespace="http://www.w3.org/1998/Math/MathML">mml:math</tag>
-element.</para>
+        <para>Formatted as a displayed block. For an inline equation, use
+        <tag>inlineequation</tag>.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-For an inline equation, use <tag>inlineequation</tag>.
-</para>
-
-<para>Processing systems that number equations or build a table of
-equations at the beginning of a document may have difficulty correctly
-formatting documents that contain both <tag>equation</tag>s
-with <tag>title</tag>s and <tag>equation</tag>s
-without <tag>title</tag>s.  You are advised to use
-<tag>informalequation</tag> for equations without titles.
-</para>
+        <para>Processing systems that number equations or build a table of
+        equations at the beginning of a document may have difficulty correctly
+        formatting documents that contain both <tag>equation</tag>s
+        with <tag>title</tag>s and <tag>equation</tag>s
+        without <tag>title</tag>s. You are advised to use <tag role="keep-together">informalequation</tag> for equations without
+        titles.</para>
 </refsection>
 
 <?tdg-attributes?>

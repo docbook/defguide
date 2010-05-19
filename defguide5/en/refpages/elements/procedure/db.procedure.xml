@@ -18,34 +18,27 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>procedure</tag> encapsulates a task composed of
+      <tag>step</tag>s (and possibly, <tag>substeps</tag>).
+      Procedures are usually performed sequentially, unless individual
+      <tag>step</tag>s direct the reader <phrase role="keep-together">explicitly</phrase>.</para>
 
+      <para>Often it is important to ensure that certain conditions exist
+      before a procedure is performed, and that the outcome of the procedure
+      matches the expected results. DocBook does not provide explicit semantic
+      markup for these pre- and post-conditions. Instead, they must be
+      described as steps (check the preconditions in the first step and the
+      results in the last step), or described outside the body of the
+      procedure.</para>
 
-<para>A <tag>procedure</tag> encapsulates a task composed of
-<tag>step</tag>s (and possibly, <tag>substeps</tag>).
-Procedures are usually performed sequentially, unless individual
-<tag>step</tag>s direct the reader explicitly.
-</para>
+      <para>The <tag>task</tag> element, added to DocBook in V4.3,
+      provides some of this infrastructure.</para>
 
-<para>Often it is important to assure that certain conditions exist
-before a procedure is performed, and that the outcome of the procedure
-matches the expected results. DocBook does not provide explicit
-semantic markup for these pre- and post-conditions. Instead, they must
-be described as steps (check the pre-conditions in the first step and
-the results in the last step), or described outside the body of the
-procedure.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>task</tag> element, added to DocBook in V4.3, provides
-some of this infrastructure.</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-
-</para>
+        <para>Formatted as a displayed block.</para>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

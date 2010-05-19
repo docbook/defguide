@@ -18,44 +18,42 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>entrytbl</tag> element allows for a single level
+      of nesting within <acronym>CALS</acronym> tables.</para>
 
+      <para>An entry table may occur in a row instead of an
+      <tag>entry</tag>. An <tag>entrytbl</tag> has most of the
+      elements of a table but may not include itself, thus limiting nesting to
+      a single level.</para>
 
-<para>The <tag>entrytbl</tag> element allows for a single level of nesting
-within <acronym>CALS</acronym> tables.
-</para>
+      <note>
+        <para>An <tag>entrytbl</tag> can span horizontally (across
+        columns), but it cannot span across rows. Whether this is by accident
+        or by design is unclear, but it has always been that way in
+        CALS.</para>
+      </note>
 
-<para>An entry table may occur in a row instead of an <tag>entry</tag>.
-An <tag>entrytbl</tag> has most of the elements of a table but
-may not include themselves, thus limiting nesting to a single
-level.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<note>
-<para>An <tag>entrytbl</tag> can span horizontally (across columns)
-but it cannot span across rows. Whether this is by accident or design
-is unclear, but it has always been that way in CALS.</para>
-</note>
+        <para>This element is expected to obey the semantics of the
+        <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='calssemantics'?></para>
+        <para>The content of <tag>entrytbl</tag> is formatted,
+        <emphasis>as a table</emphasis>, to fit within the table cell that it
+        occupies. Horizontal and vertical spanning may allow an
+        <tag>entrytbl</tag> to occupy several physical cells in the
+        table that contains it.</para>
 
-<para>The content of <tag>entrytbl</tag> is formatted, <emphasis>as a table</emphasis>,
-to fit within the table cell that it occupies.  Horizontal and vertical
-spanning may allow an <tag>entrytbl</tag> to occupy several physical cells
-in the table that contains it.
-</para>
+        <para>If multiple <tag>entrytbl</tag>s occur in a single row,
+        formatters that support <tag>entrytbl</tag> are not required
+        to ensure that subrows within the various tables are vertically
+        aligned.</para>
 
-<para>If multiple <tag>entrytbl</tag>s occur in a single row, formatters
-that support <tag>entrytbl</tag> are not required to ensure that subrows
-within the various tables are vertically aligned.
-</para>
-
-<para>Many formatters are incapable of supporting <tag>entrytbl</tag>s.
-This is an interchange issue. See <xref linkend="app-interchange"/>.
-</para>
+        <para>Many formatters are incapable of supporting
+        <tag>entrytbl</tag>s. This is an interchange issue. See <xref linkend="app-interchange"/>.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

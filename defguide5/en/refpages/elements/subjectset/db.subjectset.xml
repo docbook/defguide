@@ -18,32 +18,27 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>subjectset</tag> is a container for a set of
+      <tag>subject</tag>s. All of the <tag>subject</tag>s
+      within a <tag>subjectset</tag> should come from the
+      <emphasis>same</emphasis> controlled vocabulary.</para>
 
+      <para>A document can be described using terms from more than one
+      controlled vocabulary. In order to do this, you should use the <tag class="attribute">scheme</tag> attribute to distinguish between
+      controlled vocabularies.</para>
 
-<para>A <tag>subjectset</tag> is a container for a set of
-<tag>subject</tag>s.  All of the <tag>subject</tag>s within a
-<tag>subjectset</tag> should come from the <emphasis>same</emphasis>
-controlled vocabulary.
-</para>
-<para>A document can be described using terms from more than one controlled
-vocabulary.  In order to do this, you should use the
-<tag class="attribute">scheme</tag> attribute to distinguish between
-controlled vocabularies.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-Subjects are rarely displayed to a reader. Usually, they
-are reserved for searching and retrieval purposes.
-</para>
-<para>DocBook does not specify a relationship between <tag>subjectset</tag>s
-in different parts of a document or between a <tag>subjectset</tag> and
-the <tag>subjectset</tag>s of enclosing parts of the document.
-</para>
+        <para>May be formatted inline or as a displayed block, depending on
+        context. Subjects are rarely displayed to a reader. Usually, they are
+        reserved for searching and retrieval <phrase role="keep-together">purposes</phrase>.</para>
+
+        <para>DocBook does not specify a relationship between
+        <tag>subjectset</tag>s in different parts of a document or
+        between a <tag>subjectset</tag> and the
+        <tag>subjectset</tag>s of enclosing parts of the <phrase role="keep-together">document</phrase>.</para>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

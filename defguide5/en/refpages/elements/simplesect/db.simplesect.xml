@@ -18,41 +18,44 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>simplesect</tag> is one of the top-level sectioning
+      elements in a component. There are three types of sectioning elements in
+      DocBook:</para>
 
-<para>A <tag>simplesect</tag> is one of the top-level sectioning
-elements in a component. There are three types of sectioning elements
-in DocBook:
-</para>
+      <itemizedlist>
+        <listitem>
+          <para>Explicitly numbered sections,
+          <tag>sect1</tag>…<tag>sect5</tag>, which must be
+          properly nested and can only be five levels deep.</para>
+        </listitem>
 
-<itemizedlist>
-<listitem><para>Explicitly numbered sections,
-<tag>sect1</tag>…<tag>sect5</tag>, which must be properly nested and
-can only be five levels deep. </para></listitem>
+        <listitem>
+          <para>Recursive <tag>section</tag>s, which are alternatives
+          to the numbered sections and have unbounded depth.</para>
+        </listitem>
 
-<listitem><para>Recursive <tag>section</tag>s, which are alternative
-to the numbered sections and have unbounded depth. </para></listitem>
+        <listitem>
+          <para><tag>simplesect</tag>s, which are terminal. The
+          <tag>simplesect</tag>s can occur as the <quote>leaf</quote>
+          sections in either recursive sections or any of the numbered
+          sections, or directly in <phrase role="keep-together">components</phrase>.</para>
+        </listitem>
+      </itemizedlist>
 
-<listitem><para>And <tag>simplesect</tag>s, which are terminal.
-The <tag>simplesect</tag>s can occur as the <quote>leaf</quote> sections
-in either recursive sections or any of the numbered sections, or
-directly in components.</para></listitem>
-</itemizedlist>
+      <para>None of the sectioning elements is allowed to <quote>float</quote>
+      in a component. You can place paragraphs and other block elements before
+      a section, but you cannot place anything after it.</para>
 
-<para>None of the sectioning elements is allowed to <quote>float</quote> in
-a component. You can place paragraphs and other block elements
-before a section, but you cannot place anything after it.
-</para>
+      <para>The important semantic distinction of
+      <tag>simplesect</tag> elements is that they never appear in the
+      table of contents.</para>
 
-<para>The important semantic distinction of <tag>simplesect</tag> elements
-is that they never appear in the <citetitle>Table of Contents</citetitle>.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-A <tag>simplesect</tag> element <emphasis>never</emphasis>
-appears in the <citetitle>Table of Contents</citetitle>.
-</para>
+        <para>Formatted as a displayed block. A <tag>simplesect</tag>
+        element <emphasis>never</emphasis> appears in the table of
+        contents.</para>
 </refsection>
 
 <?tdg-attributes?>

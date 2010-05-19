@@ -18,33 +18,36 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>segmentedlist</tag> consists of a set of headings
+      (<tag>segtitle</tag>s) and a list of parallel sets of elements.
+      Every <tag>seglistitem</tag> contains a set of elements that
+      have a one-to-one correspondence with the headings. Each of these
+      elements is contained in a <tag>seg</tag>.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A <tag>segmentedlist</tag> consists of a set of headings
-(<tag>segtitle</tag>s) and a list of parallel sets of elements.
-Every <tag>seglistitem</tag> contains a set of elements that
-have a one-to-one correspondence with the headings.  Each of these
-elements is contained in a <tag>seg</tag>.
-</para>
+        <para>Segmented lists can be formatted in a number of ways. Two
+        popular formats are tabular and as a list of repeated headings and
+        elements. In a tabular presentation, the
+        <tag>segmentedlist</tag> is the table. In the list
+        presentation, the <tag>segmentedlist</tag> surrounds the
+        entire list of blocks of heading/element pairs.</para>
 
-<refsection><title>Processing expectations</title>
-<para>Segmented lists can be formatted in a number of ways.  Two popular
-formats are tabular and as a list of repeated headings and elements.
-In a tabular presentation, the <tag>segmentedlist</tag> is the table.
-In the list presentation, the <tag>segmentedlist</tag> surrounds the
-entire list of blocks of heading/element pairs.
-</para>
-<para>
-  Specifying output format for lists is not part of the normative
-  definition of DocBook. However, the tabular and list formats are
-  supported in the open source DocBook stylesheets using the <tag
-  class="attribute">list-presentation</tag> attribute on the <tag
-  class="pi">dbhtml</tag> and <tag class="pi">dbfo</tag> processing
-  instructions. The examples on this reference page show how to use
-  these processing instructions.<indexterm><primary>processing instructions</primary></indexterm><indexterm><primary>examples</primary><secondary>processing instructions</secondary></indexterm>
-</para>
-</refsection> 
+        <para>Specifying the output format for lists is not part of the
+        normative definition of DocBook. However, the tabular and list formats
+        are supported in the open source DocBook stylesheets using the
+        <tag class="attribute">list-presentation</tag> attribute on
+        the <tag class="pi">dbhtml</tag> and <tag class="pi">dbfo</tag> processing instructions. The examples on
+        this reference page show how to use these processing
+        instructions.<indexterm>
+            <primary>processing instructions</primary>
+          </indexterm><indexterm>
+            <primary>examples</primary>
+
+            <secondary>processing instructions</secondary>
+          </indexterm></para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

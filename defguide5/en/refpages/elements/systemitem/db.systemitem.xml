@@ -18,25 +18,20 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>systemitem</tag> identifies any system-related item
+      or term. The <tag class="attribute">class</tag> attribute
+      defines a number of common system-related terms.</para>
 
+      <para>Many inline elements in DocBook are, in fact, system related. Some
+      of the objects identified by the <tag class="attribute">class</tag> attribute on
+      <tag>systemitem</tag> may eventually migrate out to become
+      separate inline elements, and some inline elements may migrate into
+      <tag>systemitem</tag>.</para>
 
-<para>A <tag>systemitem</tag> identifies any system-related item or term.
-The <tag class="attribute">class</tag> attribute defines a
-number of common system-related terms.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>Many inline elements in DocBook are, in fact, system-related.  Some of
-the objects identified by the <tag class="attribute">class</tag>
-attribute on <tag>systemitem</tag> may eventually migrate out to become
-separate inline elements, and some inline elements may migrate into
-<tag>systemitem</tag>.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-
-</para>
+        <para>Formatted inline.</para>
 </refsection>
 
 <?tdg-attributes?>

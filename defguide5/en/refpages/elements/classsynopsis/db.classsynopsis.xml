@@ -18,30 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>classsynopsis</tag> contains the syntax summary of
+      a class (generally speaking, a class in the object-oriented programming
+      language sense).</para>
 
+      <para>This is one of the few places where DocBook attempts to model as
+      well as describe. Unlike <tag>funcsynopsis</tag>, which was
+      designed with C language function prototypes in mind, the content model
+      of <tag>classsynopsis</tag> was designed to capture a wide range
+      of object-oriented language semantics.</para>
 
-<para>A <tag>classsynopsis</tag> contains the syntax summary of a
-class (generally speaking, a class in the object-oriented programming
-language sense).
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>This is one of the few places where DocBook attempts to model as well
-as describe. Unlike <tag>funcsynopsis</tag> which was designed
-with C language function prototypes in mind, the content model of
-<tag>classsynopsis</tag> was designed to capture a wide range
-of object-oriented language semantics.</para>
-
-<refsection><title>Processing expectations</title>
-<para>For the most part, the processing application is expected to
-generate all of the parenthesis, semicolons, commas,
-and so on. required in the rendered synopsis.  The exception to this
-rule is that the spacing and other punctuation inside a
-parameter that is a pointer to a function must be provided in
-the source markup.
-</para>
+        <para>For the most part, the processing application is expected to
+        generate all of the parentheses, semicolons, commas, and so on
+        required in the rendered synopsis. The <phrase role="keep-together">exception</phrase> to this rule is that the
+        spacing and other punctuation inside a parameter that is a pointer to
+        a function must be provided in the source markup.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

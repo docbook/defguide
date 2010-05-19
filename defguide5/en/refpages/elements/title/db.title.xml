@@ -18,31 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>title</tag> element is widely used in DocBook. It
+      identifies the titles of documents and parts of documents, and is the
+      required caption on formal objects. It is also allowed as an optional
+      title or caption on many additional block elements.</para>
 
+      <refsection xml:id="dbreproc.title"><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>title</tag> element is widely used in DocBook. It identifies the
-titles of documents and parts of documents, and is the required
-caption on formal objects.  It is also allowed as an optional
-title or caption on many additional block elements.
-</para>
+        <para>Formatted as a displayed block. Titles are often repeated in
+        several locations: for example, at the location where the object
+        occurs, in the table of contents, and in running headers and
+        footers.</para>
 
-<refsection xml:id="dbreproc.title"><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-Titles are often repeated in several locations,
-for example, at the location where the object occurs, in the
-<emphasis>table of contents</emphasis>, and in running headers and
-footers.
-</para>
-<para>DocBook does not offer any mechanism for indicating where a line
-break should occur in long titles.  Titles are often repeated
-and no single line break is likely to be correct in all of the
-places where a title is used. Instead, you will have to rely on
-your processing system to provide a mechanism, such as a
-processing instruction, for identifing the location of forced
-line breaks.
-</para>
-
+        <para>DocBook does not offer any mechanism for indicating where a line
+        break should occur in long titles. Titles are often repeated and no
+        single line break is likely to be correct in all of the places where a
+        title is used. Instead, you will have to rely on your processing
+        system to provide a mechanism, such as a processing instruction, for
+        identifying the location of forced line breaks.</para>
 </refsection>
 
 <?tdg-attributes?>

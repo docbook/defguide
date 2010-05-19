@@ -18,32 +18,30 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Within an <tag>address</tag>, <tag>otheraddr</tag>
+      is a wrapper for parts of an address other than
+      <tag>street</tag>, <tag>pob</tag>,
+      <tag>postcode</tag>, <tag>city</tag>,
+      <tag>state</tag>, <tag>country</tag>,
+      <tag>phone</tag>, <tag>fax</tag>, and
+      <tag>email</tag>, all of which have elements specific to their
+      content.</para>
 
+      <para>In early versions of DocBook, <tag>address</tag> was not
+      allowed to contain character data (it was a database-like collection of
+      fields). In that context, a wrapper was necessary for any random pieces
+      of information that might be required for an address. With the
+      introduction of character data directly in the
+      <tag>address</tag> element, <tag>otheraddr</tag> may
+      have lost most of its <foreignphrase>raison
+      d’être</foreignphrase>.</para>
 
-<para>Within an <tag>address</tag>, <tag>otheraddr</tag> is a wrapper for
-parts of an address other than <tag>street</tag>, <tag>pob</tag>,
-<tag>postcode</tag>, <tag>city</tag>, <tag>state</tag>,
-<tag>country</tag>, <tag>phone</tag>, <tag>fax</tag>, and
-<tag>email</tag>, all of which have elements specific to their
-content.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>In early versions of DocBook, <tag>address</tag> was not allowed to
-contain character data (it was a database-like collection of fields).
-In that context, a wrapper was necessary for any random pieces of information
-that might be required for an address.
-With the introduction of character data directly in the <tag>address</tag> 
-element, <tag>otheraddr</tag> may have lost most of its
-<foreignphrase>raison d'être</foreignphrase>.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-This element may inherit the verbatim qualities of an <tag>address</tag>.
-</para>
+        <para>Formatted inline. This element may inherit the verbatim
+        qualities of an <tag>address</tag>.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

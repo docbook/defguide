@@ -18,29 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>seeie</tag> identifies a <quote>See</quote>
+      cross-reference in an <tag>indexentry</tag>. The
+      <tag>indexentry</tag>s occur in an <tag>index</tag>, not
+      in the flow of the text. They are part of a formatted index, not markers
+      for indexing.</para>
 
-<para>A <tag>seeie</tag> identifies a <quote>See</quote> cross
-reference in an <tag>indexentry</tag>. The <tag>indexentry</tag>s
-occur in an <tag>index</tag>, not in the flow of the text. They are
-part of a formatted index, not markers for indexing.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-The <tag>indexentry</tag>s that include a <tag>seeie</tag>
-should be formatted normally, with the <quote>See also</quote> indented below
-the term.  There should be no other entries for this term.
-</para>
-<para>The <tag>seeie</tag> is usually expected to generate the text,
-<quote>See</quote>.
-</para>
-<para>The <tag class="attribute">linkend</tag> attribute should point to the
-referenced <tag>indexentry</tag>s, which should be in the same
-<tag>index</tag>. Online systems
-may use the link information to form a hypertext link.
-</para>
-</refsection> 
+        <para>Formatted as a displayed block. The
+        <tag>indexentry</tag>s that include a <tag>seeie</tag>
+        should be formatted normally, with the <quote>See also</quote>
+        indented below the term. There should be no other entries for this
+        term.</para>
+
+        <para>The <tag>seeie</tag> is usually expected to generate the
+        text <quote>See</quote>.</para>
+
+        <para>The <tag class="attribute">linkend</tag> attribute
+        should point to the referenced <tag>indexentry</tag>s, which
+        should be in the same <tag>index</tag>. Online systems may use
+        the link information to form a hypertext link.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

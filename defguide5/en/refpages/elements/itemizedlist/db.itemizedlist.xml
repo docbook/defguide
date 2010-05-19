@@ -18,29 +18,27 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>In an <tag>itemizedlist</tag>, each member of the list is
+      marked with a bullet, dash, or other symbol.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>In an <tag>itemizedlist</tag>, each member of the list is
-marked with a bullet, dash, or other symbol.
-</para>
+        <para>Formatted as a displayed block.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-</para>
-<para>DocBook specifies neither the initial mark nor the sequence of marks
-to be used in nested lists.  If explicit control is desired, the
-<tag class="attribute">mark</tag> attribute should be used.  The
-values of the <tag class="attribute">mark</tag> attribute are expected
-to be keywords, not representations (numerical character references,
-entities, and so on) of the actual mark.
-</para>
-<para>DocBook does not specify a set of appropriate keywords.</para>
-<para>In order to enforce a standard set of marks at your organization,
-it may be useful to construct a customization layer that limits
-the values of the <tag class="attribute">mark</tag> attribute to
-an enumerated list.  See <xref linkend="app-customizing"/>.
-</para>
+        <para>DocBook specifies neither the initial mark nor the sequence of
+        marks to be used in nested lists. If explicit control is desired, the
+        <tag class="attribute">mark</tag> attribute should be used.
+        The values of the <tag class="attribute">mark</tag> attribute
+        are expected to be keywords, not representations (numerical character
+        references, entities, etc.) of the actual mark.</para>
+
+        <para>DocBook does not specify a set of appropriate keywords.</para>
+
+        <para>In order to enforce a standard set of marks at your
+        organization, it may be useful to construct a customization layer that
+        limits the values of the <tag class="attribute">mark</tag>
+        attribute to an enumerated list. See <xref linkend="app-customizing"/>.</para>
 </refsection>
 
 <?tdg-attributes?>

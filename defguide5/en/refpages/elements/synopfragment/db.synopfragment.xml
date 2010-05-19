@@ -18,38 +18,32 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A complex <tag>cmdsynopsis</tag> can be made more
+      manageable with <tag>synopfragment</tag>s. Rather than
+      attempting to present the entire synopsis in one large piece, parts of
+      the synopsis can be extracted and presented elsewhere. These extracted
+      pieces are placed in <tag>synopfragment</tag>s at the end of the
+      <tag>cmdsynopsis</tag>.</para>
 
+      <para>At the point in which each piece was extracted, insert a
+      <tag>synopfragmentref</tag> that points to the fragment. The
+      content of the reference element will be presented inline.</para>
 
-<para>A complex <tag>cmdsynopsis</tag> can be made more manageable
-with <tag>synopfragment</tag>s.  Rather than attempting to
-present the entire synopsis in one large
-piece, parts of the synopsis can be extracted out and presented
-elsewhere. These extracted pieces are placed in <tag>synopfragment</tag>s
-at the end of the <tag>cmdsynopsis</tag>.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>At the point in which each piece was extracted, insert a
-<tag>synopfragmentref</tag> that points to the fragment. The
-content of the reference element will be presented inline.
-</para>
+        <para>Formatted as a displayed block.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
+        <para>The presentation system is responsible for generating text that
+        makes the reader aware of the link. This can be done with numbered
+        bullets, or any other appropriate mechanism. Whatever mark is
+        generated for the reference must also be generated for the
+        fragment.</para>
 
-</para>
-<para>The presentation system is responsible for generating text that
-makes the reader aware of the link. This can be done with
-numbered bullets, or any other appropriate mechanism. Whatever
-mark is generated for the reference must also be generated for
-the fragment.
-</para>
-<para>Online systems have additional flexibility. They may generate
-hot links between the references and the fragments, for example,
-or place the fragments in pop-up windows.
-</para>
+        <para>Online systems have additional flexibility. They may generate
+        hot links between the references and the fragments, for example, or
+        place the fragments in pop-up windows.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

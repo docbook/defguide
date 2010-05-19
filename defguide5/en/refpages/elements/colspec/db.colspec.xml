@@ -18,24 +18,22 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The attributes of this empty element specify the presentation
+      characteristics of entries in a column of a table.</para>
 
+      <para>Each <tag>colspec</tag> refers to a single column. Columns
+      are numbered sequentially from left to right in the table. If the
+      <tag class="attribute">colnum</tag> attribute is not specified,
+      the <tag>colspec</tag> is for the next column after the
+      preceding <tag>colspec</tag> or column 1 if it is the first
+      <tag>colspec</tag>.</para>
 
-<para>The attributes of this empty element specify the presentation characteristics
-of entries in a column of a table.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>Each <tag>colspec</tag> refers to a single column.  Columns are numbered
-sequentially from left to right in the table.  If the 
-<tag class="attribute">colnum</tag> attribute is not specified, the
-<tag>colspec</tag> is for the next column after the preceeding
-<tag>colspec</tag> or column 1 if it is the first <tag>colspec</tag>.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.suppress'?>
-<?tdg gentext='calssemantics'?>
-</para>
+        <para>Suppressed. This element is expected to obey the semantics of
+        the <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
 </refsection>
 
 <?tdg-attributes?>

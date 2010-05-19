@@ -18,28 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Each heading in a <tag>segmentedlist</tag> is contained in
+      its own <tag>segtitle</tag>.</para>
 
+      <para>The relationship between <tag>segtitle</tag>s and
+      <tag>seg</tag>s is implicit in the document; the first
+      <tag>segtitle</tag> goes with the first <tag>seg</tag>
+      in each <tag>seglistitem</tag>, the second
+      <tag>segtitle</tag> goes with the second <tag>seg</tag>,
+      and so on.</para>
 
-<para>Each heading in a <tag>segmentedlist</tag> is contained in its own
-<tag>segtitle</tag>.
-</para>
-<para>The relationship between <tag>segtitle</tag>s and
-<tag>seg</tag>s is implicit in the document; the first
-<tag>segtitle</tag> goes with the first <tag>seg</tag> in each
-<tag>seglistitem</tag>, the second <tag>segtitle</tag> goes
-with the second <tag>seg</tag>, and so on.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para>Segmented lists can be formatted in a number of ways.  Two popular
-formats are tabular and as list of repeated headings and elements.
-In a tabular presentation, each <tag>segtitle</tag> is a column
-heading.
-In the list presentation, each <tag>segtitle</tag> is repeated
-before the corresponding <tag>seg</tag>.
-</para>
-</refsection> 
+        <para>Segmented lists can be formatted in a number of ways. Two
+        popular formats are tabular and as a list of repeated headings and
+        elements. In a tabular presentation, each <tag role="keep-together">segtitle</tag> is a column heading. In the
+        list presentation, each <tag>segtitle</tag> is repeated before
+        the corresponding <tag>seg</tag>.</para>
+      </refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

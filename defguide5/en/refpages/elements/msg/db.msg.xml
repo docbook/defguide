@@ -18,30 +18,26 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>In a <tag>msgset</tag>, each <tag>msgentry</tag>
+      contains at least one <tag>msg</tag>. A <tag>msg</tag>
+      consists of a main message (<tag>msgmain</tag>), and optionally
+      one or more submessages (<tag>msgsub</tag>) or related messages
+      (<tag>msgrel</tag>).</para>
 
-<para>In a <tag>msgset</tag>, each <tag>msgentry</tag> contains at least
-one <tag>msg</tag>.  A <tag>msg</tag> consists of a main message
-(<tag>msgmain</tag>), 
-and optionally one or more submessages (<tag>msgsub</tag>) 
-or related messages (<tag>msgrel</tag>).
-</para>
-<para>Additional information or explanation for the message is contained
-in the siblings of <tag>msg</tag> within the <tag>msgentry</tag>.
-</para>
+      <para>Additional information or explanation for the message is contained
+      in the siblings of <tag>msg</tag> within the
+      <tag>msgentry</tag>.</para>
 
-<para>See <tag>msgset</tag>.</para>
+      <para>See <tag>msgset</tag>.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-<?tdg gentext='format.csuppress'?>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-</para>
-<para>On the whole, the semantics of <tag>msgset</tag>
-are not clearly defined.
-</para>
-</refsection>
+        <para>Formatted as a displayed block. Sometimes suppressed.</para>
 
+        <para>On the whole, the semantics of <tag>msgset</tag> are not
+        clearly defined.</para>
+      </refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

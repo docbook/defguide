@@ -18,25 +18,21 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Some documents, usually legacy documents, use headings that are
+      not tied to the normal sectional hierarchy. These headings may be
+      represented in DocBook with the <tag>bridgehead</tag>
+      element.</para>
 
+      <para>A <tag>bridgehead</tag> may also be useful in fiction or
+      journalistic works that don’t have a nested hierarchy.</para>
 
-<para>Some documents, usually legacy documents, use headings that are
-not tied to the normal sectional hieararchy.
-These headings may be
-represented in DocBook with the <tag>bridgehead</tag> element.  
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A <tag>bridgehead</tag> may also be useful in fiction or journalistic 
-works that don't have a nested hierarchy.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para>A <tag>bridgehead</tag> is formatted as a block, using the same
-display properties as the section heading which it
-masquerades as.  The <tag class="attribute">renderas</tag>
-attribute controls which heading it mimics.
-</para>
+        <para>A <tag>bridgehead</tag> is formatted as a block, using
+        the same display properties as the section heading which it
+        masquerades as. The <tag class="attribute">renderas</tag>
+        attribute controls which heading it mimics.</para>
 </refsection>
 
 <?tdg-attributes?>

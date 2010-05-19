@@ -18,48 +18,45 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Reference pages have their own hierarchical structure. A
+      <tag>refsect1</tag> is a major division in a
+      <tag>refentry</tag>, analogous to a <tag>sect1</tag>
+      elsewhere in the document.</para>
 
-<para>Reference pages have their own hierarchical structure. A
-<tag>refsect1</tag> is a major division in a
-<tag>refentry</tag>, analagous to a <tag>sect1</tag> elsewhere
-in the document.
-</para>
+      <para>The value of a separate hierarchical structure is that it allows
+      the content model of sections in reference pages to be customized
+      differently than the content model of sections outside. For example,
+      because of this split, it was easy to add a recursive sectioning element
+      (<tag>section</tag>) as a peer to <tag>sect1</tag> in
+      DocBook <acronym>V3.1</acronym> without introducing it to <tag role="keep-together">refentry</tag>s, in which it would not be
+      desirable.</para>
 
-<para>The value of a separate hierarchical structure is that it allows
-the content model of sections in reference pages to be
-customized differently than the content model of sections
-outside.  For example, because of this split, it was easy to add
-a recursive sectioning element (<tag>section</tag>) as a peer
-to <tag>sect1</tag> in DocBook <acronym>V3.1</acronym> without introducing it to
-<tag>refentry</tag>s, in which it would not be desirable.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-</para>
-<para>In some environments, the name, number, and order of major divisions
-in a reference page is strictly defined by house style.  For example,
-one style requires that the first major section after the synopsis
-be the <quote>Description,</quote> which it must have as its title.
-</para>
-<para>In those cases, it may be useful to replace <tag>refsect1</tag> in
-the content model with a set of named sections (following the pattern
-of <tag>refnamediv</tag> and <tag>refsynopsisdiv</tag>).
-</para>
-<para>Formatting reference pages may require a fairly sophisticated
-processing system.  Much of the meta-information about a
-reference page (its name, type, purpose, title, and
-classification) is stored in wrappers near the beginning of
-the <tag>refentry</tag>.
-</para>
-<para>Common presentational features, such as titles and running
-headers, may require data from several of these wrappers plus
-some generated text. Other formatting often requires that
-these elements be reordered.
-</para>
+        <para>Formatted as a displayed block.</para>
+
+        <para>In some environments, the name, number, and order of major
+        divisions in a reference page are strictly defined by house style. For
+        example, one style requires that the first major section after the
+        synopsis be the <quote>Description,</quote> which it must have as its
+        title.</para>
+
+        <para>In those cases, it may be useful to replace
+        <tag>refsect1</tag> in the content model with a set of named
+        sections (following the pattern of <tag>refnamediv</tag> and
+        <tag>refsynopsisdiv</tag>).</para>
+
+        <para>Formatting reference pages may require a fairly sophisticated
+        processing system. Much of the meta-information about a reference page
+        (its name, type, purpose, title, and classification) is stored in
+        wrappers near the beginning of the <tag>refentry</tag>.</para>
+
+        <para>Common presentational features, such as titles and running
+        headers, may require data from several of these wrappers plus some
+        generated text. Other formatting often requires that these elements be
+        reordered.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

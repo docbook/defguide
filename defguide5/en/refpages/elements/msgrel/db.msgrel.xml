@@ -18,28 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Every <tag>msg</tag> has one primary message
+      (<tag>msgmain</tag>). It may also have any number of related
+      messages, stored in <tag>msgrel</tag> elements within the same
+      <tag>msg</tag>.</para>
 
-<para>Every <tag>msg</tag> has one primary message (<tag>msgmain</tag>).
-It may also have any number of related messages, stored in
-<tag>msgrel</tag> elements within the same <tag>msg</tag>.
-</para>
-<para>Related messages are usually messages that appear elsewhere in
-response to the same event (or set of events) that triggered
-the main message. For example, if a network client
-produces a failure or warning message, a related message might
-appear on the server console.
-</para>
+      <para>Related messages are usually messages that appear elsewhere in
+      response to the same event (or set of events) that triggered the main
+      message. For example, if a network client produces a failure or warning
+      message, a related message might appear on the server console.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-<?tdg gentext='format.csuppress'?>
-</para>
-<para>On the whole, the semantics of <tag>msgset</tag>
-are not clearly defined.
-</para>
-</refsection>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
+        <para>May be formatted inline or as a displayed block, depending on
+        context. Sometimes suppressed.</para>
+
+        <para>On the whole, the semantics of <tag>msgset</tag> are not
+        clearly defined.</para>
+      </refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

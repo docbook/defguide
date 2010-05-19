@@ -18,47 +18,46 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>refnamediv</tag> is the first mandatory section in
+      a <tag>refentry</tag>. It is a peer to
+      <tag>refsynopsisdiv</tag> and
+      <tag>refsect1</tag>.</para>
 
-<para>A <tag>refnamediv</tag> is the first mandatory section in a
-<tag>refentry</tag>.  It is a peer to
-<tag>refsynopsisdiv</tag> and <tag>refsect1</tag>.
-</para>
-<para>The elements in <tag>refnamediv</tag> identify the topic of the
-reference page (<tag>refdescriptor</tag> or <tag>refname</tag>), provide a
-concise summary (<tag>refpurpose</tag>), and classify the
-page (<tag>refclass</tag>).
-</para>
+      <para>The elements in <tag>refnamediv</tag> identify the topic
+      of the reference page (<tag>refdescriptor</tag> or
+      <tag>refname</tag>), provide a concise summary
+      (<tag>refpurpose</tag>), and classify the page
+      (<tag>refclass</tag>).</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-A <tag>refnamediv</tag> usually generates a
-section heading, in the same typographic style as a
-<tag>refsect1</tag> <tag>title</tag>, called <quote>Name.</quote>
-</para>
-<para>The content of this section is traditionally the <tag>refdescriptor</tag>
-or <tag>refname</tag>, and the <tag>refpurpose</tag>, separated by an
-em dash.
-</para>
-<para>The <tag>refclass</tag> may be presented, or it may be suppressed and used
-only to select a group of reference pages to process.  You might use the value of <tag>refclass</tag> to print all the reference pages
-appropriate to <productname>Solaris</productname>
-<acronym>UNIX</acronym>, for example.
-</para>
-<para>Formatting reference pages may require a fairly sophisticated
-processing system.  Much of the meta-information about a
-reference page (its name, type, purpose, title, and
-classification) is stored in wrappers near the beginning of
-the <tag>refentry</tag>.
-</para>
-<para>Common presentational features, such as titles and running
-headers, may require data from several of these wrappers plus
-some generated text. Other formatting often requires that
-these elements be reordered.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted as a displayed block. A <tag>refnamediv</tag>
+        usually generates a section heading, in the same typographic style as
+        a <tag>refsect1</tag> <tag>title</tag>, called
+        <quote>Name.</quote></para>
+
+        <para>The content of this section is traditionally the
+        <tag>refdescriptor</tag> or <tag>refname</tag>, and
+        the <tag role="keep-together">refpurpose</tag>, separated by
+        an em dash.</para>
+
+        <para>The <tag>refclass</tag> may be presented, or it may be
+        suppressed and used only to select a group of reference pages to
+        process. You might use the value of <tag>refclass</tag> to
+        print all the reference pages appropriate to Solaris
+        <acronym>UNIX</acronym>, for example.</para>
+
+        <para>Formatting reference pages may require a fairly sophisticated
+        processing system. Much of the meta-information about a reference page
+        (its name, type, purpose, title, and classification) is stored in
+        wrappers near the beginning of the <tag>refentry</tag>.</para>
+
+        <para>Common presentational features, such as titles and running
+        headers, may require data from several of these wrappers plus some
+        generated text. Other formatting often requires that these elements be
+        reordered.</para>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

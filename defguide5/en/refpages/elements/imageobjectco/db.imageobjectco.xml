@@ -18,57 +18,54 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The use of <tag>callout</tag>s, such as numbered bullets,
+      provides an annotation mechanism. In an online system, these bullets are
+      frequently <quote>hot</quote> and clicking on them navigates to the
+      corresponding annotation.</para>
 
+      <para>An <tag>imageobjectco</tag> is a wrapper around an
+      <tag>areaspec</tag> and a set of alternative
+      <tag>imageobject</tag>s. More than one
+      <tag>imageobject</tag> may be provided (just as more than one
+      media object may occur inside <tag>mediaobject</tag>), but they
+      must share exactly the same callout coordinates and exactly one must be
+      selected by the processing system. (Use multiple <tag role="keep-together">imageobjectco</tag> elements inside a
+      <tag>mediaobject</tag> to provide alternatives with different
+      <phrase role="keep-together">callout</phrase> coordinates.)</para>
 
-<para>The use of <tag>callout</tag>s, such as numbered bullets,
-provide an annotation mechanism. In an online system, these bullets
-are frequently <quote>hot</quote> and clicking on them navigates to
-the corresponding annotation.
-</para>
+      <para>An <tag>areaspec</tag> identifies the locations
+      (coordinates) on the image where the <tag>callout</tag>s occur.
+      The <tag>imageobjectco</tag> may also contain the list of
+      annotations in a <tag>calloutlist</tag>, although the
+      <tag>calloutlist</tag> may also occur outside the wrapper,
+      elsewhere in the <phrase role="keep-together">document</phrase>.</para>
 
-<para>An <tag>imageobjectco</tag> is a wrapper around an
-<tag>areaspec</tag> and a set of alternative <tag>imageobject</tag>s.
-More than one <tag>imageobject</tag> may be provided (just as more than
-one media object may occur inside <tag>mediaobject</tag>), but they must
-share exactly the same callout coordinates and exactly one must be selected
-by the processing system. (Use multiple <tag>imageobjectco</tag> elements
-inside a <tag>mediaobject</tag> to provide alternatives with different
-callout coordinates.)</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>An <tag>areaspec</tag> identifies the locations (coordinates) on
-the image where the <tag>callout</tag>s occur. The
-<tag>imageobjectco</tag> may also contain the list of annotations in a
-<tag>calloutlist</tag>, although the <tag>calloutlist</tag> may also
-occur outside of the wrapper, elsewhere in the document.
-</para>
+        <para>Formatted as a displayed block. It may not be rendered at all,
+        depending on its placement within the <tag>mediaobject</tag>
+        that contains it and the constraints on the publishing system. For a
+        more detailed description of the semantics involved, see
+        <tag>mediaobject</tag>.</para>
 
-<refsection><title>Processing expectations</title>
+        <para>The mandatory processing expectations of an
+        <tag>imageobjectco</tag> are minimal: a processor is expected
+        to render the image, if possible, and the
+        <tag>calloutlist</tag>, if present. If more than one
+        <tag>imageobject</tag> is present, exactly one must be
+        selected. A processor should select the first object that it can,
+        although it is free to choose any of the objects according to
+        implementation-dependent mechanisms.</para>
 
-<para><?tdg gentext='format.block'?>
-It may not be rendered at all, depending on its placement
-within the <tag>mediaobject</tag> that contains it and
-the constraints on the publishing system.  For a more detailed description
-of the semantics involved, see <tag>mediaobject</tag>.
-</para>
-
-<para>The mandatory processing expectations of a
-<tag>imageobjectco</tag> are minimal: a processor is expected to render
-the image, if possible, and the <tag>calloutlist</tag>, if present.
-If more than one <tag>imageobject</tag> is present, exactly one must
-be selected. A processor should select the first object that it can,
-although it is free to choose any of the objects according to
-implementation-dependent mechanisms.</para>
-
-<para>In online environments, the processing system may be able to
-instantiate the linking relationships between the callout marks on the
-image and the annotations. For example, an <acronym>HTML</acronym>
-presentation system might use the coordinate information to construct
-a client-side image map. Some processing systems may even be able to
-go a step further and generate the callout marks automatically from
-the coordinate information. But this level of sophistication is not
-mandatory.
-</para>
+        <para>In online environments, the processing system may be able to
+        instantiate the linking relationships between the callout marks on the
+        image and the annotations. For example, an <acronym>HTML</acronym>
+        presentation system might use the coordinate information to construct
+        a client-side image map. Some processing systems may even be able to
+        go a step further and generate the callout marks automatically from
+        the coordinate information. But this level of sophistication is not
+        mandatory.</para>
 </refsection>
 
 <?tdg-attributes?>

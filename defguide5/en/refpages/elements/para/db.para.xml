@@ -18,27 +18,23 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>para</tag> is a paragraph. Paragraphs in DocBook
+      may contain almost all inlines and most block elements. Sectioning and
+      higher-level structural elements are excluded. DocBook offers two
+      variants of paragraph: <tag>simpara</tag>, which cannot contain
+      block elements, and <tag>formalpara</tag>, which has a
+      title.</para>
 
+      <para>Some processing systems may find the presence of block elements in
+      a paragraph difficult to handle. On the other hand, it is frequently
+      most logical, from a structural point of view, to include block
+      elements, especially informal block elements, in the paragraphs that
+      describe their content. There is no easy answer to this problem.</para>
 
-<para>A <tag>para</tag> is a paragraph.  Paragraphs in DocBook may contain 
-almost all inlines and most block elements. Sectioning and higher-level
-structural elements are excluded. DocBook offers two variants of paragraph:
-<tag>simpara</tag>, which cannot contain block elements, and
-<tag>formalpara</tag>, which has a title.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>Some processing systems may find the presence of block elements in a
-paragraph difficult to handle.
-On the other hand, it is frequently
-most logical, from a structural point of view, to include block elements,
-especially informal block elements, in the paragraphs that describe their
-content. There is no easy answer to this problem.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-</para>
+        <para>Formatted as a displayed block.</para>
 </refsection>
 
 <?tdg-attributes?>

@@ -20,6 +20,8 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
+<xsl:param name="include.changelog" select="0"/>
+
 <xsl:key name="div" match="rng:div" use="db:refname"/>
 <xsl:key name="element" match="rng:element" use="@name"/>
 <xsl:key name="define" match="rng:define" use="@name"/>
@@ -77,7 +79,7 @@
 
     <xsl:apply-templates/>
 
-    <xsl:if test="db:info/db:releaseinfo or db:info/db:pubdate">
+    <xsl:if test="$include.changelog != 0 and (db:info/db:releaseinfo or db:info/db:pubdate)">
       <refsection condition="ref.desc.changelog expanded">
 	<title>ChangeLog</title>
 	<para>

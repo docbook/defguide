@@ -730,7 +730,14 @@ set       nop
 
     <xsl:choose>
       <xsl:when test="starts-with(@condition,'ref.desc.')">
-	<a name="{substring-after(@condition,'ref.desc.')}"/>
+        <xsl:choose>
+          <xsl:when test="contains(@condition, ' ')">
+            <a name="{substring-after(substring-before(@condition,' '),'ref.desc.')}"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <a name="{substring-after(@condition,'ref.desc.')}"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
       <xsl:when test="@condition='ref.description'">
 	<a name="description"/>

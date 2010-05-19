@@ -18,25 +18,21 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>procedure</tag> describes a sequence of
+      <tag>step</tag>s that a reader is expected to perform. If a
+      finer level of granularity is required for some steps, you can use
+      <tag>substeps</tag> to embed substeps within a
+      <tag>step</tag>.</para>
 
+      <para>The <tag>substeps</tag> element contains
+      <tag>step</tag>s, so substeps can be nested to any depth.</para>
 
-<para>A <tag>procedure</tag> describes a sequence of
-<tag>step</tag>s that a reader is expected to perform.  If a
-finer level of granularity is required for some steps, you can
-use <tag>substeps</tag> to embed substeps within a
-<tag>step</tag>.
-</para>
-<para>The <tag>substeps</tag> element contains <tag>step</tag>s, so substeps can
-be nested to any depth.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-The <tag>substeps</tag> are almost always numbered.
-</para>
+        <para>Formatted as a displayed block. The <tag>substeps</tag>
+        are almost always numbered.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

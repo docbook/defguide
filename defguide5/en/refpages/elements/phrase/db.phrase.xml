@@ -18,23 +18,19 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>phrase</tag> element in DocBook has no specific
+      semantic. It is provided as a wrapper around a selection of words
+      smaller than a paragraph so that it is possible to provide an <tag class="attribute">xml:id</tag> or other attributes for it.</para>
 
+      <para>For example, if you are making note of changes to a document using
+      one of the effectivity attributes, you might use
+      <tag>phrase</tag> to mark up specific sentences with
+      revisions.</para>
 
-<para>The <tag>phrase</tag> element in DocBook has no specific semantic.
-It is provided as a wrapper around a selection of words smaller than a
-paragraph so that it is possible to provide an
-<tag class="attribute">xml:id</tag> or other attributes for them.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>For example, if you are making note of changes to a document using one
-of the effectivity attributes, you might use <tag>phrase</tag> to 
-mark up specific sentences with revisions.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-</para>
+        <para>Formatted inline.</para>
 </refsection>
 
 <?tdg-attributes?>

@@ -18,43 +18,42 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>textobject</tag> is a wrapper containing a textual
+      description of a media object and its associated meta-information. A
+      <tag>textobject</tag> is only allowed in
+      <tag>mediaobject</tag> as a fallback. It cannot be the primary
+      content.</para>
 
+      <para>There are two different forms of <tag>textobject</tag>,
+      and it is not unreasonable for a media object to contain both of
+      them.</para>
 
-<para>A <tag>textobject</tag> is a wrapper containing a textual description
-of a media object, and its associated meta-information.
-A <tag>textobject</tag> is only allowed in <tag>mediaobject</tag> as
-a fall-back option, it cannot be the primary content.
-</para>
+      <para>In the first form, the content of a <tag>textobject</tag>
+      is simply a <tag>phrase</tag>. This form is a mechanism for
+      providing a simple <quote>alt text</quote> for a media object. The
+      phrase might be used, for example, as the value of the <tag class="attribute">alt</tag> attribute on an <acronym>HTML</acronym>
+      <tag namespace="http://www.w3.org/1999/xhtml">img</tag>, with
+      the primary content of the image coming from one of the other objects in
+      the media object.</para>
 
-<para>There are two different forms of <tag>textobject</tag>, and it is
-not unreasonable for a media object to contain both of them.
-</para>
+      <para>In the second form, the content of <tag>textobject</tag>
+      is a longer, prose description. This form could be used when rendering
+      to devices that are incapable of displaying any of the other
+      alternatives.</para>
 
-<para>In the first form, the content of a <tag>textobject</tag> is
-simply a <tag>phrase</tag>. This form is a mechanism for providing a
-simple <quote>alt text</quote> for a media object. The phrase might be
-used, for example, as the value of the
-<tag class="attribute">alt</tag> attribute on an <acronym>HTML</acronym>
-<tag namespace="http://www.w3.org/1999/xhtml">img</tag>,
-with the primary content of the image coming from one
-of the other objects in the media object.
-</para>
+      <?dbfo-need height=”2in”
+?>
 
-<para>In the second form, the content of <tag>textobject</tag> is a longer,
-prose description.  This form could be used when rendering to devices
-that are incapable of displaying any of the other alternatives.
-</para>
+      <refsection xml:id="dbreproc.textobject"><info><title>Processing expectations</title></info>
+        
 
-<refsection xml:id="dbreproc.textobject"><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-It might not be rendered at all, depending on its placement
-within a <tag>mediaobject</tag> or <tag>inlinemediaobject</tag> and
-the constraints on the publishing system.  For a more detailed description
-of the semantics involved, see <tag>mediaobject</tag>.
-</para>
-</refsection> 
-
+        <para>May be formatted inline or as a displayed block, depending on
+        context. It might not be rendered at all, depending on its placement
+        within a <tag>mediaobject</tag> or
+        <tag>inlinemediaobject</tag> and the constraints on the
+        publishing system. For a more detailed description of the semantics
+        involved, see <tag>mediaobject</tag>.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

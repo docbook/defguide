@@ -18,28 +18,23 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A complete book. This is probably the most common document
+      starting point in DocBook documents. The content model of
+      <tag>book</tag> was made dramatically less restrictive in
+      DocBook <acronym>V3.1</acronym>.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A complete book. This is probably the most common document starting 
-point in DocBook documents.  The content model of <tag>book</tag> was
-made dramatically less restrictive in DocBook <acronym>V3.1</acronym>.
-</para>
+        <para>Formatted as a displayed block. Generally causes a forced page
+        break, restarts page numbering, and may generate additional front and
+        back matter (e.g., tables of contents and indexes) automatically. In a
+        <tag>set</tag>, <tag>book</tag> almost always begins
+        on the next available recto page.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-Generally causes a forced page break, restarts
-page numbering, and may generate additional front and back
-matter (tables of contents and indexes, for example) automatically.
-In a <tag>set</tag>, <tag>book</tag> almost always begins on the
-next available recto page.
-</para>
-<para>The input order of major components is taken to be the desired output 
-order.
-</para>
+        <para>The input order of major components is taken to be the desired
+        output order.</para>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

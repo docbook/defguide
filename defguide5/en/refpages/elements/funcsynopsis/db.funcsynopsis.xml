@@ -18,34 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>funcsynopsis</tag> contains the syntax summary of a
+      function prototype or a set of function prototypes. The content model of
+      this element was designed specifically to capture the semantics of most
+      C-language function prototypes (for use in <acronym>UNIX</acronym>
+      reference pages).</para>
 
+      <para>This is one of the few places where DocBook attempts to model as
+      well as describe. Using <tag>funcsynopsis</tag> for languages
+      that are unrelated to C may prove difficult.</para>
 
-<para>A <tag>funcsynopsis</tag> contains the syntax summary of a function prototype
-or a set of function prototypes.  The content model of this element
-was designed specifically to capture the semantics of most C-language
-function prototypes (for use in <acronym>UNIX</acronym> reference pages).
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>This is one of the few places where DocBook attempts to model as well
-as describe.  Using <tag>funcsynopsis</tag> for languages that are
-unrelated to C may prove difficult.
-</para>
+        <para>For the most part, the processing application is expected to
+        generate all of the parentheses, semicolons, commas, and so on
+        required in the rendered synopsis. The exception to this rule is that
+        the spacing and other punctuation inside a parameter that is a pointer
+        to a function must be provided in the source markup.</para>
 
-<refsection><title>Processing expectations</title>
-<para>For the most part, the processing application is expected to
-generate all of the parenthesis, semicolons, commas,
-and so on. required in the rendered synopsis.  The exception to this
-rule is that the spacing and other punctuation inside a
-parameter that is a pointer to a function must be provided in
-the source markup.
-</para>
-
-<para>With sufficient author cooperation, it should be possible to markup
-a function synopsis with enough clarity so that a processing system can
-generate either <acronym>K&amp;R</acronym>-style or <acronym>ANSI</acronym>-style renderings.
-</para>
-
+        <para>With sufficient author cooperation, it should be possible to
+        mark up a function synopsis with enough clarity so that a processing
+        system can generate either <acronym>K&amp;R</acronym>-style or
+        <acronym>ANSI</acronym>-style renderings.</para>
 </refsection>
 
 <?tdg-attributes?>

@@ -18,23 +18,21 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Most <tag>step</tag>s in a <tag>procedure</tag>
+      are sequential: do the first, then the second, then the third. Sometimes
+      procedures provide an explicit ordering: do step 7 next.</para>
 
+      <para>The <tag>stepalternatives</tag> element was added to
+      support the semantics of alternative steps: perform exactly one of the
+      following steps. The reader is presumably given some criteria for
+      deciding which one to choose, but the significant difference is that
+      only one of the steps is performed.</para>
 
-<para>Most <tag>step</tag>s in a <tag>procedure</tag>
-are sequential: do the first, then the second, then the third. Sometimes
-procedures provide an explicit ordering: do step 7 next.</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>stepalternatives</tag> element was added to
-support the semantics of alternative steps: perform exactly one of the
-following steps. The reader is presumably given some criteria for deciding
-which one to choose, but the significant difference is that only one of
-the steps is performed.</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?></para>
+        <para>Formatted as a displayed block.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

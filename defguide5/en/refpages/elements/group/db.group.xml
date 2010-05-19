@@ -18,33 +18,36 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>group</tag> surrounds several related items.
+      Usually, they are grouped because they are mutually exclusive. The user
+      is expected to select one of the items.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A <tag>group</tag> surrounds several related items. Usually, they are
-grouped because they are mutually exclusive. The user is expected to select
-one of the items.
-</para>
+        <para>Formatted inline. The additional processing expectations of a
+        <tag>group</tag> are significant. For a complete discussion,
+        see <tag>cmdsynopsis</tag>.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-The additional processing expectations of a
-<tag>group</tag> are significant.  For a complete discussion,
-see <tag>cmdsynopsis</tag>.
-</para>
-<itemizedlist>
-<listitem><para>Multiple arguments within a group are considered exclusive and are
-separated by vertical bars.
-</para></listitem>
-<listitem><para>Brackets are used to distinguish between optional, required, or plain
-arguments.  Usually square brackets are placed around optional
-arguments, <option>[-f | -g]</option>, and curly brackets are placed
-around required arguments, <option>{-f | -g}</option>.  Plain
-arguments are required, but are not decorated with brackets.
-</para></listitem>
-<listitem><para>Repeatable arguments are followed by an ellipsis.
-</para></listitem>
-</itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <para>Multiple arguments within a group are considered exclusive
+            and are separated by vertical bars.</para>
+          </listitem>
+
+          <listitem>
+            <para>Brackets are used to distinguish between optional, required,
+            or plain arguments. Usually square brackets are placed around
+            optional arguments, <option>[-f | -g]</option>, and curly brackets
+            are placed around required arguments, <option>{-f | -g}</option>.
+            Plain arguments are required, but are not decorated with
+            brackets.</para>
+          </listitem>
+
+          <listitem>
+            <para>Repeatable arguments are followed by an ellipsis.</para>
+          </listitem>
+        </itemizedlist>
 </refsection>
 
 <?tdg-attributes?>

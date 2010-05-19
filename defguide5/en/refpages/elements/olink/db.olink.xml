@@ -18,77 +18,60 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Unlike <tag>link</tag>, the semantics of
+      <tag>olink</tag> are application specific. The
+      <tag>olink</tag> element provides a mechanism for establishing
+      links across documents, where ID/IDREF linking is not possible and
+      URI-based linking may be inappropriate.</para>
 
-<para>Unlike <tag>link</tag>, the semantics of <tag>olink</tag> are
-application-specific. The <tag>olink</tag> element provides a
-mechanism for establishing links across documents, where ID/IDREF
-linking is not possible and URI-based linking may be
-inappropriate.</para>
+      <para>In general terms, the strategy employed by
+      <tag>olink</tag> is to point to the target document by URI, and
+      point into that document in some application-specific way.</para>
 
-<para>In general terms, the strategy employed by <tag>olink</tag> is
-to point to the target document by URI, and point into that document
-in some application-specific way.
-</para>
+      <para>Other elements can also behave like <tag>olink</tag> by
+      using the common linking attributes <tag class="attribute">xlink:href</tag> and <tag class="attribute">xlink:role</tag>. When an element has an
+      <literal>xlink:role="http://docbook.org/xlink/role/olink"</literal>
+      attribute, then its <tag class="attribute">xlink:href</tag>
+      attribute is interpreted using <tag>olink</tag> semantics. That
+      is, the part of <tag class="attribute">xlink:href</tag> before
+      the fragment identifier (#) is interpreted as equivalent to an
+      <tag>olink</tag> <tag class="attribute">targetdoc</tag>
+      attribute value instead of a URI, and the part after the fragment
+      identifier as an <tag>olink</tag> <tag class="attribute">targetptr</tag> attribute value.</para>
 
-<para>Other elements can also behave like <tag>olink</tag>
-by using the common linking attributes 
-<tag class="attribute">xlink:href</tag>
-and <tag class="attribute">xlink:role</tag>.
-When an element has a
-<literal>xlink:role="http://docbook.org/xlink/role/olink"</literal>
-attribute, then its 
-<tag class="attribute">xlink:href</tag>
-attribute is interpreted using olink semantics.
-That is, the part of 
-<tag class="attribute">xlink:href</tag>
-before the fragment identifier (#) is interpreted as
-equivalent to an olink
-<tag class="attribute">targetdoc</tag>
-attribute value instead of a URI,
-and the part after the fragment identifier
-as an olink
-<tag class="attribute">targetptr</tag>
-attribute value.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
+        <para>Formatted inline.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-</para>
+        <para>An <tag>olink</tag> points to its target primarily with
+        the <tag class="attribute">targetdoc</tag> attribute. The
+        <tag class="attribute">targetdoc</tag> is a URI that
+        identifies a target document.</para>
 
-<para>An <tag>olink</tag> points to its target primarily with the <tag
-class="attribute">targetdoc</tag> attribute. The <tag
-class="attribute">targetdoc</tag> is a URI that identifies a target
-document.
-</para>
+        <para>The semantics of the link are controlled by three other
+        attributes: <tag class="attribute">targetptr</tag>, <tag class="attribute">localinfo</tag>, and <tag class="attribute">type</tag>.</para>
 
-<para>The semantics of the link are controlled by three other attributes:
-<tag class="attribute">targetptr</tag>,
-<tag class="attribute">localinfo</tag>, and
-<tag class="attribute">type</tag>.</para>
+        <para>The <tag class="attribute">targetptr</tag> attribute
+        (possibly in conjunction with <tag class="attribute">localinfo</tag>) points into the document in
+        some fashion. The <tag class="attribute">type</tag> may
+        provide some additional, application-specific information about the
+        link. DocBook does not provide any semantics for the values of these
+        attributes.</para>
 
-<para>The <tag class="attribute">targetptr</tag>
-attribute (possibly in conjunction with <tag class="attribute">localinfo</tag>)
-points into the document in some fashion. The
-<tag class="attribute">type</tag> may provide some additional, application-specific
-information about the link.
-DocBook does not provide any semantics for the values of these attributes.
-</para>
+        <note>
+          <para>The <tag class="attribute">targetptr</tag> and
+          <tag class="attribute">localinfo</tag> attributes were
+          developed somewhat independently and arguably have somewhat
+          overlapping semantics. While almost all applications can certainly
+          get by with one or the other, the Technical Committee has decided
+          that removing <tag class="attribute">localinfo</tag> simply
+          for semantic cleanliness isn’t worth the effort.</para>
+        </note>
 
-<note>
-<para>The <tag class="attribute">targetptr</tag> and
-<tag class="attribute">localinfo</tag> attributes were developed somewhat
-indpendently and arguably have somewhat overlapping semantics. While almost
-all applications can certainly get by with one or the other, the Technical
-Committee has decided that removing <tag class="attribute">localinfo</tag>
-simply for semantic cleanliness isn't worth the effort.</para>
-</note>
-
-<para>Linking elements must not be nested within other linking
-elements (including themselves). The processing of nested linking
-elements is undefined.
-</para>
+        <para>Linking elements must not be nested within other linking
+        elements (including themselves). The processing of nested linking
+        elements is undefined.</para>
 </refsection>
 
 <?tdg-attributes?>

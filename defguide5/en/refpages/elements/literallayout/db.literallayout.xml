@@ -18,34 +18,32 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>literallayout</tag> is a verbatim environment.
+      Unlike the other verbatim environments, it does not have strong semantic
+      overtones and may not imply a font change.</para>
 
-<para>A <tag>literallayout</tag> is a verbatim environment. Unlike
-the other verbatim environments, it does not have strong semantic
-overtones and may not imply a font change.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='pexp.linespecific'?>
-</para>
+        <para>This element is displayed “verbatim”; whitespace and line breaks
+        within this element are significant.</para>
 
-<para>Unlike 
-<tag>programlisting</tag> and <tag>screen</tag>, which usually
-imply a font change, <tag>literallayout</tag> does not.
-How spaces are to be represented faithfully in a proportional
-font is not addressed by DocBook.
-</para>
+        <para>Unlike <tag>programlisting</tag> and
+        <tag>screen</tag>, which usually imply a font change,
+        <tag>literallayout</tag> does not. How spaces are to be
+        represented faithfully in a proportional font is not addressed by
+        DocBook.</para>
 
-<para>In DocBook <acronym>V3.1</acronym>, the <tag class="attribute">class</tag> attribute
-was added to give users control over the font used in
-<tag>literallayout</tag>s.  If the <tag class="attribute">class</tag> attribute is specified and its value is
-<tag class="attvalue">monospaced</tag>, then the <tag>literallayout</tag>
-will be presented in a monospaced font, probably the same one
-used for other verbatim environments.  The default value for
-<tag class="attribute">class</tag> is <tag class="attvalue">normal</tag>, meaning
-that no font change will occur.
-</para>
-</refsection> 
+        <para>In DocBook <acronym>V3.1</acronym>, the <tag class="attribute">class</tag> attribute was added to give users
+        control over the font used in <tag>literallayout</tag>s. If
+        the <tag class="attribute">class</tag> attribute is specified
+        and its value is <tag class="attvalue">monospaced</tag>, then
+        the <tag>literallayout</tag> will be presented in a monospaced
+        font, probably the same one used for other verbatim environments. The
+        default value for <tag class="attribute">class</tag> is
+        <tag class="attvalue">normal</tag>, meaning that no font
+        change will occur.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

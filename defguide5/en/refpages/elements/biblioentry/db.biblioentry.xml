@@ -18,34 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>biblioentry</tag> is an entry in a
+      <tag>bibliography</tag>. The contents of
+      <tag>biblioentry</tag> are a <quote>database</quote> of named
+      fields. Presentation systems frequently suppress some elements in a
+      <tag role="keep-together">biblioentry</tag>.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A <tag>biblioentry</tag> is an entry in a <tag>bibliography</tag>.
-The contents of <tag>biblioentry</tag> is a <quote>database</quote>
-of named fields. Presentation systems frequently suppress some elements
-in a <tag>biblioentry</tag>.
-</para>
+        <para>Formatted as a displayed block.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-</para>
+        <para>A <tag>biblioentry</tag> is <quote>raw.</quote> It
+        contains a database-like collection of named fields. It is the
+        responsibility of the processing system to select elements from within
+        a <tag>biblioentry</tag>, present them in the correct order,
+        and add all punctuation.</para>
 
-<para>A <tag>biblioentry</tag> is <quote>raw.</quote> It contains a
-database-like collection of named fields. It is the responsibility of
-the processing system to select elements from within a 
-<tag>biblioentry</tag>, present them in the correct order, and add
-all punctuation.
-</para>
+        <para>There is no expectation that a system will present all of the
+        fields in a <tag>biblioentry</tag> or that they will be
+        displayed in the order in which they occur.</para>
 
-<para>There is no expectation that a system will present all of the fields
-in a <tag>biblioentry</tag> or that they will be displayed in the order
-in which they occur.
-</para>
-
-<para>Correct formatting of <tag>biblioentry</tag>s is an interchange
-issue. See <xref linkend="app-interchange"/>.
-</para>
+        <para>Correct formatting of <tag>biblioentry</tag>s is an
+        interchange issue. See <xref linkend="app-interchange"/>.</para>
 </refsection>
 
 <?tdg-attributes?>

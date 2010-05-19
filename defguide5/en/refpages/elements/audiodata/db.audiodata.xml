@@ -18,21 +18,16 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>This empty element points to external audio data.</para>
 
+      <refsection xml:id="dbreproc.audiodata"><info><title>Processing expectations</title></info>
+        
 
-<para>This empty element points to external audio data.
-</para>
-
-<refsection xml:id="dbreproc.audiodata"><title>Processing expectations</title>
-<para>There are two ways to provide content for <tag>audiodata</tag>:
-<tag class="attribute">entityref</tag> or <tag class="attribute">fileref</tag>.  It is best to use only one of these
-methods. However, if multiple sources are provided, 
-<tag class="attribute">entityref</tag> will be used in favor of 
-<tag class="attribute">fileref</tag>.
-</para>
-</refsection> 
-
+        <para>There are two ways to provide content for
+        <tag>audiodata</tag>: <tag class="attribute">entityref</tag> or <tag class="attribute">fileref</tag>. It is best to use only one of
+        these methods. However, if multiple sources are provided, <tag class="attribute" role="keep-together">entityref</tag> will be
+        used in favor of <tag class="attribute">fileref</tag>.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

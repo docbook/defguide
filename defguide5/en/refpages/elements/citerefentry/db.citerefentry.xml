@@ -18,24 +18,20 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>This element is a citation to a <tag>refentry</tag>. It
+      must include a <tag>refentrytitle</tag> that should exactly
+      match the title of a <tag>refentry</tag>.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>This element is a citation to a <tag>refentry</tag>.  It must include
-a <tag>refentrytitle</tag> that should exactly match the title of a 
-<tag>refentry</tag>.
-</para>
+        <para>This element implicitly links to the <tag>refentry</tag>
+        with the same <tag>refentrytitle</tag> (in the same volume, as
+        defined by <tag>manvolnum</tag>).</para>
 
-<refsection><title>Processing expectations</title>
-<para>This element implicitly links to the <tag>refentry</tag> with the
-same <tag>refentrytitle</tag> (in the same volume, as defined by
-<tag>manvolnum</tag>).
-</para>
-<para><?tdg gentext='format.inline'?>
-Usually the <tag>manvolnum</tag> is put in parentheses.
-</para>
+        <para>Formatted inline. Usually the <tag>manvolnum</tag> is
+        put in parentheses.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

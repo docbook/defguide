@@ -18,54 +18,51 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Callouts, such as numbered bullets, are an annotation mechanism.
+      In an online system, these bullets are frequently <quote>hot,</quote>
+      and clicking on them sends you to the corresponding annotation.</para>
 
+      <para>A <tag>programlistingco</tag> is a wrapper around an
+      <tag>areaspec</tag> and a <tag>programlisting</tag>. An
+      <tag>areaspec</tag> identifies the locations (coordinates) in
+      the <tag>programlisting</tag> where the callouts occur. The
+      <tag>programlistingco</tag> may also contain the list of
+      annotations in a <tag>calloutlist</tag>, although the
+      <tag>calloutlist</tag> may also occur outside the wrapper,
+      elsewhere in the <phrase role="keep-together">document</phrase>.</para>
 
-<para>Callouts, such as numbered bullets, are an annotation mechanism.  In an
-online system, these bullets are frequently <quote>hot,</quote> and clicking on
-them sends you to the corresponding annotation.
-</para>
-<para>A <tag>programlistingco</tag> is a wrapper around an <tag>areaspec</tag> and
-a <tag>programlisting</tag>.  An <tag>areaspec</tag> identifies the locations
-(coordinates)
-in the <tag>programlisting</tag> where the callouts occur.
-The <tag>programlistingco</tag> may also contain the list of annotations in
-a <tag>calloutlist</tag>, although the <tag>calloutlist</tag> may also
-occur outside of the wrapper, elsewhere in the document.
-</para>
+      <para>It is also possible to embed <tag>co</tag> elements
+      directly in the verbatim text, in order to avoid having to calculate the
+      correct coordinates. If you decided to go this route, use a <tag role="keep-together">programlisting</tag> and a
+      <tag>calloutlist</tag> without the
+      <tag>programlistingco</tag> wrapper. A <tag role="keep-together">programlistingco</tag> must specify at least
+      one coordinate.</para>
 
-<para>It is also possible to embed <tag>co</tag> elements directly in the
-verbatim text, in order to avoid having to calculate the
-correct coordinates.  If you decided to go this route, use a 
-<tag>programlisting</tag> and a <tag>calloutlist</tag> without the
-<tag>programlistingco</tag> wrapper.  A <tag>programlistingco</tag>
-must specify at least one coordinate.
-</para>
+      <para>For a complete description of callouts, see
+      <tag>callout</tag>.</para>
 
-<para>For a complete description of callouts, see <tag>callout</tag>.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-<?tdg gentext='pexp.linespecific'?>
-</para>
-<para>The mandatory processing expectations of a <tag>programlistingco</tag> are
-minimal: a system is expected to render the program listing and the
-callout list, if present.
-</para>
-<para>If explicit <tag>co</tag> elements are embedded in a
-<tag>programlisting</tag>, they must generate appropriate
-callout marks.
-</para>
-<para>In online environments, the processing system may be able to instantiate
-the linking relationships between the callout marks in the program listing and
-the annotations.
-Some systems may even be able to go a step further and generate
-the callout marks automatically from the coordinate information,
-but this level of sophistication is not mandatory.
-</para>
+        <para>Formatted as a displayed block. This element is displayed
+        “verbatim”; whitespace and line breaks within this element are
+        significant.</para>
+
+        <para>The mandatory processing expectations of a
+        <tag>programlistingco</tag> are minimal: a system is expected
+        to render the program listing and the callout list, if present.</para>
+
+        <para>If explicit <tag>co</tag> elements are embedded in a
+        <tag>programlisting</tag>, they must generate appropriate
+        callout marks.</para>
+
+        <para>In online environments, the processing system may be able to
+        instantiate the linking relationships between the callout marks in the
+        program listing and the annotations. Some systems may even be able to
+        go a step further and generate the callout marks automatically from
+        the coordinate information, but this level of sophistication is not
+        mandatory.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>
@@ -87,3 +84,4 @@ but this level of sophistication is not mandatory.
 </refsection>
 
 </refentry>
+

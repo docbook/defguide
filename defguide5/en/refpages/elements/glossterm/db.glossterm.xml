@@ -18,34 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>glossterm</tag> identifies a term that appears in a
+      <tag>glossary</tag> or <tag>glosslist</tag>. This
+      element occurs in two very different places: it is both an inline, and a
+      structure element of a <tag>glossentry</tag>. As an inline, it
+      identifies a term defined in a glossary, and may point to it. Within a
+      <tag>glossentry</tag>, it identifies the term defined by that
+      particular entry.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A <tag>glossterm</tag> identifies a term that appears in a
-<tag>glossary</tag> or <tag>glosslist</tag>.  This element
-occurs in two very different places: it is both an inline, and a
-structure element of a <tag>glossentry</tag>.  As an inline, it
-identifies a term defined in a glossary, and may point to it.
-Within a <tag>glossentry</tag>, it identifies the term defined
-by that particular entry.
-</para>
+        <para>As an inline, <tag>glossterm</tag>s frequently get
+        special typographic treatment, such as italics. In an online
+        environment, they may also form a link (explicitly or implicitly) to
+        the corresponding definition in a glossary.</para>
 
-<refsection><title>Processing expectations</title>
-<para>As an inline, <tag>glossterm</tag>s frequently get special typographic
-treatment, such as italics. In an online environment, they may also
-form a link (explicitly or implicitly) to the corresponding definition
-in a glossary.
-</para>
+        <para>The <tag>glossterm</tag>s must not be nested within
+        other <tag>glossterm</tag>s. The processing of nested
+        <tag>glossterm</tag>s is undefined.</para>
 
-<para>The <tag>glossterm</tag>s must not be nested within other
-<tag>glossterm</tag>s. The processing of nested <tag>glossterm</tag>s is
-undefined.
-</para>
-
-<para>As part of a <tag>glossentry</tag>, <tag>glossterm</tag>s are usually
-set as block and separated from the definition.
-</para>
-
+        <para>As part of a <tag>glossentry</tag>,
+        <tag>glossterm</tag>s are usually set as a block and separated
+        from the definition.</para>
 </refsection>
 
 <?tdg-attributes?>

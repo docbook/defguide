@@ -18,34 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>replaceable</tag> is used to mark text that
+      describes <emphasis>what</emphasis> a user is supposed to enter, but not
+      the <emphasis>actual text</emphasis> that the user is supposed to
+      enter.</para>
 
-<para>A <tag>replaceable</tag> is used to mark text that describes
-<emphasis>what</emphasis> a user is supposed to enter, but not the
-<emphasis>actual text</emphasis> that they are supposed to enter.
-</para>
-<para>It is used to identify a class of object
-in the document, in which the user is expected to replace the text that
-identifies the class
-with some specific instance of that class.  A canonical example is
-<screen>
+      <para>It is used to identify a class of object in the document, in which
+      the user is expected to replace the text that identifies the class with
+      some specific instance of that class. A canonical example is:</para>
 
-&lt;replaceable&gt;filename&lt;/replaceable&gt;
+      <screen>&lt;replaceable&gt;filename&lt;/replaceable&gt;</screen>
 
-</screen>
-in which the user is expected to provide the name of some specific file
-to replace the text <quote>filename.</quote>
-</para>
+      <para>in which the user is expected to provide the name of some specific
+      file to replace the text <quote>filename.</quote></para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-Usually, the text is given special typographic treatment,
-such as italics, as a clue to the user that this is replaceable text.
-Often the font used is described in a <quote>conventions</quote> section at
-the beginning of the document.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted inline. Usually, the text is given special typographic
+        treatment, such as italics, as a clue to the user that this is
+        replaceable text. Often the font used is described in a
+        <quote>conventions</quote> section at the beginning of the
+        document.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

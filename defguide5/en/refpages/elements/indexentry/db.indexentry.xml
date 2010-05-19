@@ -18,28 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>An <tag>indexentry</tag> is a wrapper for index terms as
+      they appear in an index. It’s the markup used for creating a
+      back-of-the-book index. To identify index terms in the flow of the text,
+      use <tag>indexterm</tag>.</para>
 
-<para>An <tag>indexentry</tag> is a wrapper for index terms
-as they appear in an index. It's the markup used for creating a
-back-of-the-book index. To identify index terms in the flow of
-the text, use <tag>indexterm</tag>.
-</para>
+      <para>The content of an <tag>indexentry</tag> is the collated,
+      formatted list of terms and <phrase role="keep-together">cross-references</phrase>.</para>
 
-<para>The content of an <tag>indexentry</tag> is the collated,
-formatted list of terms and cross-references.</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-A rendered index usually places secondary items under primary items
-and tertiary items under secondary.
-</para>
+        <para>Formatted as a displayed block. A rendered index usually places
+        secondary items under primary items and tertiary items under secondary
+        items.</para>
 
-<para>It is very uncommon to construct an index explicitly with
-<tag>indexentry</tag> markup. Indexes are almost always generated
-automatically from embedded <tag>indexterm</tag> markup in the
-document.</para>
-
+        <para>It is very uncommon to construct an index explicitly with
+        <tag>indexentry</tag> markup. Indexes are almost always
+        generated automatically from embedded <tag>indexterm</tag>
+        markup in the document.</para>
 </refsection>
 
 <?tdg-attributes?>
@@ -62,3 +59,4 @@ description might be represented using <tag>indexentry</tag> markup:
 </refsection>
 
 </refentry>
+

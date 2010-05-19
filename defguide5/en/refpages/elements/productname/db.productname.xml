@@ -18,48 +18,44 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>productname</tag> is the formal name of any
+      product. Identifying a product this way <phrase role="keep-together">may
+      be useful</phrase> if you need to provide explicit disclaimers about
+      product names or <phrase role="keep-together">information</phrase>.</para>
 
+      <para>For example, the copyright statement in most books includes a
+      notice similar to this:</para>
 
-<para>A <tag>productname</tag> is the formal name of any product. Identifying
-a product this way may be useful if you need to provide explicit disclaimers
-about product names or information.
-</para>
+      <blockquote>
+        <para>Many of the designations used by manufacturers and sellers to
+        distinguish their products are claimed as trademarks. Where those
+        designations appear in this book, and O’Reilly Media, Inc. was aware
+        of a trademark claim, the designations have been printed in caps or
+        initial caps.</para>
+      </blockquote>
 
-<para>For example, the copyright statement in most books includes
-a notice similar to this:
+      <para>If every product name were coded as a
+      <tag>productname</tag>, you could automatically generate a
+      complete list of all the product names and mention them explicitly in
+      the notice.</para>
 
-<blockquote>
-<para>Many of the designations used by manufacturers and sellers to
-distinguish their products are claimed as trademarks. Where those
-designations appear in this book, and O'Reilly Media, Inc.
-was aware of a trademark claim, the designations have been printed in
-caps or initial caps.
-</para>
-</blockquote>
+      <para>In running prose, the distinction between an
+      <tag>application</tag> and a <tag>productname</tag> may
+      be very subjective.</para>
 
-If every product name were coded as a <tag>productname</tag>, you could
-automatically generate a complete list of all the product
-names and mention them explicitly in the notice.
-</para>
+      <refsection xml:id="dbreproc.productname"><info><title>Processing expectations</title></info>
+        
 
-<para>In running prose, the distinction between an <tag>application</tag> and a
-<tag>productname</tag> may be very subjective.
-</para>
+        <para>Formatted inline.</para>
 
-<refsection xml:id="dbreproc.productname"><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-</para>
-<para>Two of the values of the <tag class="attribute">class</tag>
-attribute on <tag>productname</tag>, <literal>Trade</literal> and
-<literal>Registered</literal>, make assertions about
-trademarks. DocBook also has a <tag>trademark</tag> element;
-presumably the same markup is intended regardless of which one is
-used.
-</para>
-<para>The <literal>Service</literal> and <tag>copyright</tag> values should
-also generate the anticipated marks, if appropriate.
-</para>
+        <para>Two of the values of the <tag class="attribute">class</tag> attribute on
+        <tag>productname</tag>, <literal>Trade</literal> and
+        <literal>Registered</literal>, make assertions about trademarks.
+        DocBook also has a <tag>trademark</tag> element; presumably
+        the same markup is intended regardless of which one is used.</para>
+
+        <para>The <literal>service</literal> and <tag>copyright</tag>
+        values should also generate the anticipated marks, if <phrase role="keep-together">appropriate</phrase>.</para>
 </refsection>
 
 <?tdg-attributes?>

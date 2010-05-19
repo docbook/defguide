@@ -18,26 +18,24 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>When <tag>indexterm</tag>s use the <tag class="attribute">zone</tag> attribute to point to index ranges, it
+      may be handy to hoist them out of the flow and put them in the document
+      meta-information.</para>
 
-<para>When <tag>indexterm</tag>s use the <tag class="attribute">zone</tag>
-attribute to point to index ranges, it may be handy to hoist them
-out of the flow and put them in the document meta-information.
-</para>
-<para>The <tag>itermset</tag> element, which occurs in the DocBook containers
-for meta-information, is one place to put them.  An <tag>itermset</tag> is
-simply a wrapper around a group of <tag>indexterm</tag>s.
-</para>
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.suppress'?>
-</para>
-<para>Although more than one <tag>itermset</tag> may appear in the
-meta-information for a document, neither a relationship nor a specific
-facility for constructing a relationship is defined.
-</para>
-</refsection>
+      <para>The <tag>itermset</tag> element, which occurs in the
+      DocBook containers for meta-information, is one place to put them. An
+      <tag>itermset</tag> is simply a wrapper around a group of
+      <tag>indexterm</tag>s.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
+        <para>Suppressed.</para>
+
+        <para>Although more than one <tag>itermset</tag> may appear in
+        the meta-information for a document, neither a relationship nor a
+        specific facility for constructing a relationship is defined.</para>
+      </refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

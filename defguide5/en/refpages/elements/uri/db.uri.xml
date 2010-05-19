@@ -18,66 +18,72 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>uri</tag> element identifies a Uniform Resource
+      Identifier (<acronym>URI</acronym>) in content.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>uri</tag> element identifies a Uniform Resource
-Identifier (<acronym>URI</acronym>) in content.</para>
+        <para>Formatted inline. The <tag>uri</tag> element does not
+        automatically generate a link to the URI it identifies.</para>
 
-<refsection><title>Processing expectations</title>
+        <para>DocBook does not mandate any values for the <tag class="attribute">type</tag> attribute, but several useful values
+        have been suggested:</para>
 
-<para><?tdg gentext='format.inline'?> The <tag>uri</tag> element does
-not automatically generate a link to the URI it identifies.</para>
+        <itemizedlist>
+          <listitem>
+            <para><tag class="attvalue">xmlnamespace</tag> for an XML
+            namespace name; for example, <uri type="xmlnamespace">http://docbook.org/ns/docbook</uri></para>
+          </listitem>
 
-<para>DocBook does not mandate any values for the
-<tag class="attribute">type</tag> attribute, but several useful values
-have been suggested:</para>
+          <listitem>
+            <para><tag class="attvalue">saxfeaturename</tag> for a SAX
+            feature name; for example, <uri type="saxfeaturename">http://xml.org/sax/features/namespaces</uri></para>
+          </listitem>
 
-<itemizedlist>
-<listitem>
-<para><tag class="attvalue">xmlnamespace</tag> for an XML namespace name,
-e.g., <uri type="xmlnamespace">http://docbook.org/ns/docbook</uri>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">saxfeaturename</tag> for a SAX feature name,
-e.g., <uri type="saxfeaturename">http://xml.org/sax/features/namespaces</uri>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">saxpropertyname</tag> for a SAX property name,
-e.g. <uri type="saxpropertyname">http://xml.org/sax/properties/declaration-handler</uri>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">soapaction</tag> for a SOAP action, see
-<citetitle xlink:href="http://www.w3.org/TR/soap12-part2/#ActionFeature">SOAP
-Version 1.2 Part 2: Adjuncts</citetitle>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">rddlpurpose</tag> for a RDDL purpose, see
-<citetitle xlink:href="http://rddl.org/">Resource Directory Description
-Language (RDDL)</citetitle>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">rddlnature</tag> for a RDDL nature, see
-<citetitle xlink:href="http://rddl.org/">Resource Directory Description
-Language (RDDL)</citetitle>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">homepage</tag> for a home page,
-e.g. <uri type="homepage">http://nwalsh.com/</uri>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">weblog</tag> for a web log,
-e.g., <uri type="weblog">http://norman.walsh.name/</uri>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">webpage</tag> for a web page,
-e.g., <uri type="webpage">http://docbook.org/schemas/</uri>.</para>
-</listitem>
-<listitem>
-<para><tag class="attvalue">website</tag> for a web site,
-e.g., <uri type="website">http://docbook.org</uri>.</para>
-</listitem>
-</itemizedlist>
+          <listitem>
+            <para><tag class="attvalue">saxpropertyname</tag> for a
+            SAX property name; for example, <uri type="saxpropertyname">http://xml.org/sax/properties/declaration-handler</uri></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">soapaction</tag> for a SOAP
+            action; see <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/soap12-part2/#ActionFeature"><citetitle>SOAP
+            Version 1.2 Part 2: Adjuncts</citetitle></link></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">rddlpurpose</tag> for an RDDL
+            purpose; see <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://rddl.org/"><citetitle>Resource
+            Directory Description Language (RDDL)</citetitle></link></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">rddlnature</tag> for an RDDL
+            nature; see <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://rddl.org/"><citetitle>Resource
+            Directory Description Language (RDDL)</citetitle></link></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">homepage</tag> for a home
+            page; for example, <uri type="homepage">http://nwalsh.com/</uri></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">weblog</tag> for a web log;
+            for example, <uri type="weblog">http://norman.walsh.name/</uri></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">webpage</tag> for a web page;
+            for example, <uri type="webpage">http://docbook.org/schemas/</uri></para>
+          </listitem>
+
+          <listitem>
+            <para><tag class="attvalue">website</tag> for a website;
+            for example, <uri type="website">http://docbook.org</uri></para>
+          </listitem>
+        </itemizedlist>
 </refsection>
 
 <?tdg-attributes?>

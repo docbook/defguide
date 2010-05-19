@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE chapter [
-<!ENTITY version "5.0">
-]>
 <chapter xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xlink="http://www.w3.org/1999/xlink"
 	 version="5.0" xml:id="ch-gsxml">
@@ -11,886 +8,1114 @@
   <pubdate>$Date$</pubdate>
   <releaseinfo>$Revision$</releaseinfo>
 </info>
-<para><indexterm xml:id="XMLgetstart" class="startofrange">
-<primary>DocBook</primary><secondary>getting started</secondary>
-</indexterm>This chapter provides an overview of DocBook, starting with
-its history. It includes a description of DocBook <acronym>V5.0</acronym> and the changes from DocBook <acronym>V4.x</acronym> to <acronym>V5.0</acronym>.
-</para>
 
-<section xml:id="s.shorthistory">
-<title>A Short DocBook History</title>
-<indexterm xml:id="idx.dbhistory-1" class="startofrange"><primary>DocBook</primary><secondary>history</secondary></indexterm><indexterm xml:id="idx.dbhistory-2" class="startofrange"><primary>history, DocBook</primary></indexterm>
+  <para><indexterm class="startofrange" xml:id="XMLgetstart">
+      <primary>DocBook</primary>
 
-<para>DocBook is more than 15 years old. It began in 1991 as a joint
-project of HaL Computer Systems and O'Reilly &amp; Associates. Its
-popularity grew, and eventually it spawned its own maintenance
-organization, the Davenport Group.<indexterm xml:id="idx.davenport" class="startofrange"><primary>Davenport Group</primary></indexterm> In mid-1998, maintenance moved to
-a Technical
-Committee (<acronym>TC</acronym>) of the Organization for the
-Advancement of Structured Information Standards
-(<acronym>OASIS</acronym>).<indexterm><primary>OASIS</primary></indexterm>
-<indexterm><primary>DocBook</primary><secondary>Technical Committee</secondary></indexterm>
-</para>
+      <secondary>getting started</secondary>
+    </indexterm>This chapter provides an overview of DocBook, starting with
+  its history. It includes a description of DocBook <acronym>V5.0</acronym>
+  and the changes from DocBook <acronym>V4.x</acronym> to
+  <acronym>V5.0</acronym>.</para>
 
-<para>DocBook's roots are in <firstterm linkend="gloss-sgml">SGML</firstterm>, where it was
-defined with a Document Type Definition, or <acronym>DTD</acronym>.
-DocBook was released as both an <acronym>SGML</acronym> and an <firstterm linkend="gloss-xml"><acronym>XML</acronym></firstterm> vocabulary 
-starting with <acronym>V4.1</acronym>. The 
-<acronym>V4.x</acronym> versions of DocBook,
-like the versions that came before them, were also defined with a
-<acronym>DTD</acronym>.
-Starting with DocBook <acronym>V5.0</acronym>, DocBook is exclusively
-an <acronym>XML</acronym> vocabulary defined with RELAX NG and Schematron.</para>
+  <section xml:id="s.shorthistory"><info><title>A Short DocBook History</title></info>
+    
 
-<section xml:id="s.history.haloreilly">
-<title>The HaL and O'Reilly era</title>
+    <para><indexterm class="startofrange" xml:id="idx.dbhistory-1">
+        <primary>DocBook</primary>
 
-<para><indexterm significance="normal">
-  <primary>Open Software Foundation</primary>
-</indexterm><indexterm significance="normal">
-  <primary>troff markup (UNIX documentation)</primary>
-</indexterm><indexterm significance="normal"><primary>UNIX</primary>
-  <secondary>DocBook DTD, development</secondary>
-</indexterm>The DocBook <acronym>DTD</acronym> was originally designed
-and implemented by HaL Computer Systems and O'Reilly &amp; Associates
-around 1991. It was developed primarily to facilitate the exchange of
-<acronym>UNIX</acronym> documentation originally marked up in
-<command>troff</command>. Its design appears to have been based partly
-on input from <acronym>SGML</acronym> interchange projects conducted
-by the Unix International and Open Software Foundation consortia.
-</para>
+        <secondary>history</secondary>
+      </indexterm><indexterm class="startofrange" xml:id="idx.dbhistory-2">
+        <primary>history, DocBook</primary>
+      </indexterm>DocBook is more than 15 years old. It began in 1991 as a
+    joint project of HaL Computer Systems and O’Reilly &amp; Associates (as
+    O’Reilly Media, Inc. was then called). Its popularity grew, and eventually
+    it spawned its own maintenance organization, the Davenport
+    Group.<indexterm class="startofrange" xml:id="idx.davenport">
+        <primary>Davenport Group</primary>
+      </indexterm> In mid-1998, maintenance moved to a Technical Committee of
+    the <phrase role="keep-together">Organization</phrase> for the Advancement
+    of Structured Information Standards (<acronym>OASIS</acronym>).<indexterm>
+        <primary>OASIS</primary>
+      </indexterm><indexterm>
+        <primary>DocBook</primary>
 
-<para><indexterm significance="normal">
-  <primary>Davenport Group</primary>
-</indexterm>When DocBook <acronym>V1.1</acronym> was published,
-discussion about its revision and maintenance began in earnest in the
-Davenport Group, a forum created by O'Reilly for computer
-documentation producers. DocBook <acronym>V1.2</acronym> was influenced
-strongly by Novell and Digital.
-</para>
+        <secondary>Technical Committee</secondary>
+      </indexterm></para>
 
-<para>In 1994, the Davenport Group became an officially chartered
-entity responsible for DocBook's maintenance. DocBook
-<acronym>V1.2.2</acronym> was published simultaneously. The founding
-sponsors of this incarnation of Davenport include the following
-people with their affiliations at that time:
-<itemizedlist spacing="compact">
-<listitem><simpara>Jon Bosak, Novell</simpara></listitem>
-<listitem><simpara>Dale Dougherty, O'Reilly &amp; Associates</simpara></listitem>
-<listitem><simpara>Ralph Ferris, Fujitsu <acronym>OSSI</acronym></simpara></listitem>
-<listitem><simpara>Dave Hollander, Hewlett-Packard</simpara></listitem>
-<listitem><simpara>Eve Maler, Digital Equipment Corporation</simpara></listitem>
-<listitem><simpara>Murray Maloney, <acronym>SCO</acronym></simpara></listitem>
-<listitem><simpara>Conleth O'Connell, HaL Computer Systems</simpara></listitem>
-<listitem><simpara>Nancy Paisner, Hitachi Computer Products</simpara></listitem>
-<listitem><simpara>Mike Rogers, SunSoft</simpara></listitem>
-<listitem><simpara>Jean Tappan, Unisys</simpara></listitem>
-</itemizedlist>
-</para>
-</section>
+    <para>DocBook’s roots are in <firstterm linkend="gloss-sgml">SGML</firstterm>, where it was defined with a
+    Document Type Definition, or <acronym>DTD</acronym>. DocBook was released
+    as both an <acronym>SGML</acronym> and an <firstterm linkend="gloss-xml"><acronym>XML</acronym></firstterm> vocabulary starting
+    with <acronym>V4.1</acronym>. The <acronym>V4.x</acronym> versions of
+    DocBook, like the versions that came before them, were also defined with a
+    <acronym>DTD</acronym>. Starting with DocBook <acronym>V5.0</acronym>,
+    DocBook is exclusively an <acronym>XML</acronym> vocabulary defined with
+    RELAX NG and Schematron.</para>
 
-<section xml:id="s.history.davenport">
-<title>The Davenport era</title>
+    <section xml:id="s.history.haloreilly"><info><title>The HaL and O’Reilly Era</title></info>
+      
 
-<para>Under the auspices of the Davenport Group, the DocBook
-<acronym>DTD</acronym> began to widen its scope. It was now being used
-by a much wider audience and for new purposes such as direct
-authoring with <acronym>SGML</acronym>-aware tools and publishing
-directly to paper. As the largest users of DocBook, Novell and Sun had
-a heavy influence on its design.
-</para>
+      <para><indexterm>
+          <primary>Open Software Foundation</primary>
+        </indexterm><indexterm>
+          <primary>troff markup (UNIX documentation)</primary>
+        </indexterm><indexterm>
+          <primary>UNIX</primary>
 
-<para><indexterm significance="normal"><primary>DocBook</primary>
-  <secondary>rules for new releases</secondary>
-</indexterm>In order to help users manage change, the new Davenport
-charter established the following rules for DocBook releases:</para>
+          <secondary>DocBook DTD, development</secondary>
+        </indexterm>The DocBook <acronym>DTD</acronym> was originally designed
+      and implemented by HaL Computer Systems and O’Reilly &amp; Associates
+      around 1991. It was developed primarily to facilitate the exchange of
+      <acronym>UNIX</acronym> documentation originally marked up in
+      <command>troff</command>. Its design appears to have been based partly
+      on input from <acronym>SGML</acronym> interchange projects conducted by
+      the Unix International and Open Software Foundation consortia.</para>
 
-<itemizedlist>
-<listitem><para>Minor versions (<quote>point releases</quote> such as
-<acronym>V2.2</acronym>) could add to the markup model, but could not
-change it in a backward incompatible way. For example, a new kind of
-list element could be added, but it would not be acceptable for the
-existing itemized list model to start requiring two list items inside
-it instead of only one. Thus, any document conforming to version
-<replaceable>n</replaceable>.0 would also conform to
-<replaceable>n</replaceable>.<replaceable>m</replaceable>.</para>
-</listitem>
+      <para><indexterm>
+          <primary>Davenport Group</primary>
+        </indexterm>When DocBook <acronym>V1.1</acronym> was published,
+      discussion about its revision and maintenance began in earnest in the
+      Davenport Group, a forum created by O’Reilly for computer documentation
+      producers. DocBook <acronym>V1.2</acronym> was influenced strongly by
+      Novell and <phrase role="keep-together">Digital</phrase>.</para>
 
-<listitem><para>Major versions (such as <acronym>V3.0</acronym>) could
-both add to the markup model and make backward incompatible
-changes. However, the changes would have to be announced in the last
-major release.</para>
-<para>In 2009, the Technical Committee updated this policy to allow
-backward incompatible changes in a major version, provided the change
-is announced in a major or minor release at least six months in advance.</para>
-</listitem>
+      <para>In 1994, the Davenport Group became an officially chartered entity
+      responsible <phrase role="keep-together">for DocBook’s</phrase>
+      maintenance. DocBook <acronym>V1.2.2</acronym> was published
+      simultaneously. The <phrase role="keep-together">founding</phrase>
+      sponsors of this incarnation of Davenport include the following people
+      with their affiliations at that time:</para>
 
-<listitem><para>Major version introductions must be separated by at
-least a year.</para>
-</listitem>
-</itemizedlist>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <simpara>Jon Bosak, Novell</simpara>
+        </listitem>
 
-<para><indexterm significance="normal"><primary>XML</primary>
-  <secondary>DocBook version compliant with</secondary>
-</indexterm><acronym>V3.0</acronym> was released in January 1997.
-DocBook's audience continued to grow, but many
-of the Davenport Group stalwarts became involved in the
-<acronym>XML</acronym> effort, and development slowed dramatically.
-The idea of creating an official <acronym>XML</acronym>-compliant
-version of DocBook was discussed, but not implemented at that time.
-</para>
+        <listitem>
+          <simpara>Dale Dougherty, O’Reilly &amp; Associates</simpara>
+        </listitem>
 
-<para><indexterm significance="normal"><primary>OASIS</primary>
-  <secondary>DocBook Technical Committee</secondary> </indexterm>In
-  July, 1998, the sponsors moved the standards activities from the
-  Davenport Group to <acronym>OASIS</acronym>, forming the
-  <acronym>OASIS</acronym> DocBook Technical Committee with Eduardo
-  Gutentag of Sun Microsystems as chair.
-</para>
-</section>
+        <listitem>
+          <simpara>Ralph Ferris, Fujitsu <acronym>OSSI</acronym></simpara>
+        </listitem>
 
-<section xml:id="s.history.oasis">
-<title>The <acronym>OASIS</acronym> era</title>
+        <listitem>
+          <simpara>Dave Hollander, Hewlett-Packard</simpara>
+        </listitem>
 
-<para>The <acronym>OASIS</acronym>
-<link xlink:href="http://www.oasis-open.org/docbook/">DocBook Technical
-Committee</link> is continuing the work started by the Davenport Group.
-The transition from Davenport to <acronym>OASIS</acronym> was
-very smooth, in part because the core team remained
-essentially the same.</para>
+        <listitem>
+          <simpara>Eve Maler, Digital Equipment Corporation</simpara>
+        </listitem>
 
-<para>DocBook <acronym>V3.1</acronym>, published in February 1999, was
-the first <acronym>OASIS</acronym> release. It integrated a number of
-changes that had been <quote>in the wings</quote> for some time.
-In March 2000, Norm Walsh became chair of the Technical Committee.
-<remark>Norm: is this date correct?</remark></para>
+        <listitem>
+          <simpara>Murray Maloney, <acronym>SCO</acronym></simpara>
+        </listitem>
 
-<para>In February 2001, <acronym>OASIS</acronym> made DocBook <acronym>SGML</acronym> <acronym>V4.1</acronym> and DocBook
-<acronym>XML</acronym> <acronym>V4.1.2</acronym>
-<link xlink:href="http://lists.oasis-open.org/archives/members/200102/msg00000.html">official
-<acronym>OASIS</acronym> Specifications</link>.
-</para>
+        <listitem>
+          <simpara>Conleth O’Connell, HaL Computer Systems</simpara>
+        </listitem>
 
-<para>In October 2005, the DocBook Technical Committee released the
-first beta test version of DocBook <acronym>V5.0</acronym>. Development of the DocBook
-<acronym>4.x</acronym> series continued in parallel with the development of <acronym>V5.0</acronym>. In
-October 2006, the DocBook Technical Committee released DocBook <acronym>V4.5</acronym>,
-the last release planned in the <acronym>4.x</acronym> series.</para>
+        <listitem>
+          <simpara>Nancy Paisner, Hitachi Computer Products</simpara>
+        </listitem>
 
-<para>In 2008, the Publisher's Subcommittee was chartered to develop
-and maintain official variants of DocBook in support of the publishing
-industry. The subcommittee focuses on schema customizations to
-support: periodicals as regularly published technical notes or
-journals, book publishing (such as business, legal, medical, and other
-non-technical domains), educational textbooks, and other document types
-as appropriate for this industry.</para>
-<para>DocBook <acronym>V5.0</acronym> became an official Committee
-Specification in June 2009 and became an official
-<acronym>OASIS</acronym> Standard in October 2009.  <remark>Date may
-need to change if voting is delayed</remark> The Technical Committee
-continues DocBook development to ensure that the schema will continue
-to meet the needs of its users.</para>
-<indexterm class="endofrange" startref="idx.dbhistory-1"/>
-<indexterm class="endofrange" startref="idx.dbhistory-2"/>
-</section>
-</section>
-<section>
-  <title>DocBook <acronym>V5.0</acronym></title>
-  <para>DocBook <acronym>V5.0</acronym> represents a major step
-  forward for DocBook. The differences between DocBook <acronym>4.x</acronym> and
-  <acronym>V5.0</acronym> are quite radical in some aspects, but the
-  basic idea behind DocBook is still the same, and almost all element
-  names are unchanged. Because of this it is very easy to become
-  familiar with DocBook <acronym>V5.0</acronym> if you know any
-  previous version of DocBook.</para>
+        <listitem>
+          <simpara>Mike Rogers, SunSoft</simpara>
+        </listitem>
 
-<section xml:id="introduction-whats-new">
-  <title>What's New in DocBook <acronym>V5.0</acronym>?</title>
-  <para><indexterm xml:id="WhatsNewStart"
-  class="startofrange"><primary>DocBook</primary><secondary>changes in
-  V5.0</secondary></indexterm>In <acronym>V5.0</acronym>, DocBook has been re-written as
-  a native RELAX NG grammar (<quote><citetitle pubwork="webpage">An introduction to the RELAX NG schema language</citetitle></quote><biblioref linkend="RNG-Intro"/> is an excellent introduction to the grammar). The objectives were to produce a schema
-  that:
-  <orderedlist>
-    <listitem>
-      <para><quote>Feels like</quote> DocBook. Most existing documents
-      should still be valid or it should be possible to transform them
-      in simple, mechanical ways into valid documents.
-      </para>
-    </listitem>
-    <listitem>
-      <para>Enforces as many constraints as possible in the schema. Some
-      additional constraints are expressed with Schematron rules.
-      </para>
-    </listitem>
-    <listitem>
-      <para>Cleans up the content models.</para>
-    </listitem>
-    <listitem>
-      <para>Gives users the flexibility to extend or subset the schema
-      in an easy and straightforward way.
-      </para>
-    </listitem>
-    <listitem>
-      <para>Can be used to generate <acronym>XML</acronym> DTD and W3C <acronym>XML</acronym> Schema versions
-      of DocBook.
-      </para>
-    </listitem>
-  </orderedlist>
-  </para>
-  <para>
-    Under the ordinary operating rules of DocBook evolution, the only
-    backward incompatible changes that could be made in DocBook <acronym>V5.0</acronym>
-    were those announced in DocBook <acronym>V4.0.</acronym> In light of the fact that
-    this is a complete rewrite, the Technical Committee gave itself
-    the freedom to make <quote>unannounced</quote>
-    backward incompatible changes for this one release.
-  </para>
-<section>
-<title>Renamed and removed elements</title>
+        <listitem>
+          <simpara>Jean Tappan, Unisys</simpara>
+        </listitem>
+      </itemizedlist>
+    </section>
 
-<para>A number of elements have been removed from DocBook. Some have
-been replaced by simpler, more versatile alternatives.  Others have
-been removed because they were no longer needed, and still others have
-been renamed. <xref
-linkend="t.renamed"/> lists the elements that have been renamed for
-DocBook <acronym>V5.0</acronym>.</para><indexterm><primary>renamed elements</primary></indexterm><indexterm><primary>elements</primary><secondary>renamed in DocBook V5.0</secondary></indexterm>
-<table xml:id="t.renamed">
-<title>Renamed elements</title>
-<tgroup cols="2">
-<thead>
-<row>
-<entry>Old name</entry>
-<entry>New name</entry>
-</row>
-</thead>
-<tbody>
-<row>
-<entry><tag>sgmltag</tag></entry>
-<entry><tag>tag</tag></entry>
-</row>
-<row>
-<entry><tag>bookinfo</tag>, <tag>articleinfo</tag>,
-<tag>chapterinfo</tag>, <tag condition="nolink">*info</tag></entry>
-<entry><tag>info</tag></entry>
-</row>
-<row>
-<entry><tag>authorblurb</tag></entry>
-<entry><tag>personblurb</tag></entry>
-</row>
-<row>
-<entry><tag>collabname</tag>, <tag>corpauthor</tag>,
-<tag>corpcredit</tag>, <tag>corpname</tag></entry>
-<entry><tag>orgname</tag></entry>
-</row>
-<row>
-<entry><tag>isbn</tag>, <tag>issn</tag>,
-<tag>pubsnumber</tag></entry>
-<entry><tag>biblioid</tag></entry>
-</row>
-<row>
-<entry><tag>lot</tag>, <tag>lotentry</tag>, <tag>tocback</tag>,
-<tag>tocchap</tag>, <tag>tocfront</tag>, <tag>toclevel1</tag>,
-<tag>toclevel2</tag>, <tag>toclevel3</tag>, <tag>toclevel4</tag>,
-<tag>toclevel5</tag>, <tag>tocpart</tag></entry>
-<entry><tag>toc</tag>, <tag>tocdiv</tag>, and <tag>tocentry</tag></entry>
-</row>
-<row>
-<entry><tag>graphic</tag>, <tag>graphicco</tag>,
-<tag>inlinegraphic</tag>, <tag>mediaobjectco</tag></entry>
-<entry><tag>mediaobject</tag> and <tag>inlinemediaobject</tag></entry>
-</row>
-<row>
-<entry><tag>ulink</tag></entry>
-<entry><tag>link</tag></entry>
-</row>
-<row>
-<entry><tag>ackno</tag></entry>
-<entry><tag>acknowledgements</tag></entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-<para><indexterm><primary>removed elements</primary></indexterm><indexterm><primary>elements</primary><secondary>removed in DocBook V5.0</secondary></indexterm>The following elements were removed from DocBook <acronym>V5.0</acronym> without
-direct replacements: <tag>action</tag>, <tag>beginpage</tag>,
-<tag>highlights</tag>, <tag>interface</tag>, <tag>invpartnumber</tag>,
-<tag>medialabel</tag>, <tag>modespec</tag>, <tag>structfield</tag>,
-<tag>structname</tag>.  If you use one or more of these elements,
-<xref linkend="t.removed"/> contains suggestions for re-coding
-them in DocBook <acronym>V5.0</acronym>.
-</para>
+    <section xml:id="s.history.davenport"><info><title>The Davenport Era</title></info>
+      
 
-<table xml:id="t.removed">
-<title>Recommended mapping for removed elements</title>
-<tgroup cols="2">
-  <colspec colnum="1" colwidth="1*"/>
-  <colspec colnum="2" colwidth="3*"/>
-<thead>
-<row>
-<entry>Old name</entry>
-<entry>Recommended mapping</entry>
-</row>
-</thead>
-<tbody>
-<row>
-<entry><tag>action</tag></entry>
-<entry>Use <computeroutput>&lt;<tag>phrase</tag> remap="action"&gt;</computeroutput>.</entry>
-</row>
-<row>
-<entry><tag>beginpage</tag></entry>
-<entry>Remove: <tag>beginpage</tag> is advisory only
-and has tended to cause confusion.  A processing instruction or
-comment should be a workable replacement if one is needed.</entry>
-</row>
-<row>
-<entry><tag>highlights</tag></entry>
-<entry>Use <tag>abstract</tag>.  Note that because <tag>highlights</tag> has a broader content model, you may
-need to wrap contents in a <tag>para</tag> inside
-<tag>abstract</tag>.</entry>
-</row>
-<row>
-<entry><tag>interface</tag></entry>
-<entry>Use <tag>menuchoice or </tag>one of the <quote>gui*</quote> elements
-(<tag>guibutton</tag>, <tag>guiicon</tag>, <tag>guilabel</tag>,
-<tag>guimenu</tag>, <tag>guimenuitem</tag>, or
-<tag>guisubmenu</tag>).</entry>
-</row>
-<row>
-<entry><tag>invpartnumber</tag></entry>
-<entry>Use <computeroutput>&lt;<tag>biblioid</tag> class="other"
-otherclass="medialabel"&gt;</computeroutput>.  The
-<tag>productnumber</tag> element is another alternative.</entry>
-</row>
-<row>
-<entry><tag>medialabel</tag></entry>
-<entry>Use <computeroutput>&lt;<tag>citetitle</tag>
-pubwork="<replaceable>mediatype</replaceable>"&gt;</computeroutput>,
-where <replaceable>mediatype</replaceable> is the type of media being
-labeled (e.g.,<tag class="attvalue">cdrom</tag> or <tag
-class="attvalue">dvd</tag>).</entry>
-</row>
-<row>
-<entry><tag>modespec</tag></entry>
-<entry>No longer needed.  The current processing model for
-<tag>olink</tag> renders <tag>modespec</tag>
-unnecessary.</entry>
-</row>
-<row>
-<entry><tag>structfield</tag>, <tag>structname</tag></entry>
-<entry>Use <tag>varname</tag>. If you need to distinguish between the
-two, use <computeroutput>&lt;<tag>varname</tag>
-remap="<replaceable>structname or
-structfield</replaceable>"&gt;</computeroutput>.  In some contexts, it
-may also be appropriate to use <tag>property</tag> for <tag>structfield</tag>.</entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-</section>
-<section xml:id="s.linking-xref">
-  <title>Linking and cross-referencing</title>
-  <para><indexterm xml:id="idx.s.linking-xref-1" class="startofrange"><primary>linking</primary>
-</indexterm>
-<indexterm xml:id="idx.s.linking-xref-2" class="startofrange"><primary>cross references</primary>
-</indexterm>    In DocBook <acronym>4.x</acronym> the <tag class="attribute">id</tag> attribute is
-    used to assign a unique identifier to an element. In DocBook <acronym>V5.0</acronym>
-    this attribute is renamed <tag class="attribute">xml:id</tag>, and
-    its usage is consistent with <citetitle>xml:id Version 1.0</citetitle><biblioref linkend="XML-ID"/>, a W3C
-    Recommendation.
-  </para>
-  <para>
-    The biggest change in linking is that now nearly any inline element,
-    not just <tag>xref</tag> or <tag>link</tag>, can be the source of a link.
-    For example, consider the following DocBook <acronym>4.x</acronym> example:
-  </para><indexterm><primary>inline elements</primary><secondary>linking</secondary></indexterm><indexterm><primary>examples</primary><secondary>linking</secondary></indexterm>
-  <programlisting><![CDATA[<section id="dir">
-  <title>DIR command</title>
-  <para>...</para>
-</section>
+      <para>Under the auspices of the Davenport Group, the DocBook
+      <acronym>DTD</acronym> began to widen its scope. It was now being used
+      by a much wider audience and for new purposes such as direct authoring
+      with <acronym>SGML</acronym>-aware tools and publishing directly to
+      paper. As the largest users of DocBook, Novell and Sun had a heavy
+      influence on its design.</para>
 
-<section id="ls">
-  <title>LS command</title>
-  <para>This command is a synonym for
-    <link linkend="dir"><command>DIR</command></link> command.
-  </para>
-</section>]]></programlisting>
-  <para>
-    In DocBook <acronym>V5.0</acronym>, this can be written as the following:
-  </para>
-  <programlisting><![CDATA[<section xml:id="dir">
-  <title>DIR command</title>
-  <para>...</para>
-</section>
+      <para><indexterm>
+          <primary>DocBook</primary>
 
-<section xml:id="ls">
-  <title>LS command</title>
-  <para>This command is a synonym for
-    <command linkend="dir">DIR</command> command.
-  </para>
-</section>]]></programlisting>
-  <para>
-    In addition, the <tag class="attribute">href</tag> attribute from
-    the XLink namespace was added to the same set of inline elements
-    as <tag class="attribute">linkend</tag>. The following examples shows
-    how you can use <tag class="attribute">href</tag>. Note that you need
-    to declare the XLink namespace in your document instance to use this
-    attribute.
-  </para>
-  <programlisting><![CDATA[<article xmlns="http://docbook.org/ns/docbook" 
-         xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
-  <title>Test article</title>
+          <secondary>rules for new releases</secondary>
+        </indexterm>In order to help users manage change, the new Davenport
+      charter established the following rules for DocBook releases:</para>
 
-  <para>
-    <application xl:href="http://www.gnu.org/software/emacs/">Emacs</application> 
-    is my favourite text editor.</para>
+      <itemizedlist>
+        <listitem>
+          <para>Minor versions (<quote>point releases</quote> such as
+          <acronym>V2.2</acronym>) could add to the markup model, but could
+          not change it in a backward-incompatible way. For example, a new
+          kind of list element could be added, but it would not be acceptable
+          for the existing itemized list model to start requiring two list
+          items inside it instead of only one. Thus, any document conforming
+          to version <replaceable>n</replaceable>.0 would also conform to
+          <replaceable>n</replaceable>.<replaceable>m</replaceable>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Major versions (such as <acronym>V3.0</acronym>) could both
+          add to the markup model and make backward-incompatible changes.
+          However, the changes would have to be <phrase role="keep-together">announced</phrase> in the last major
+          release.</para>
+
+          <para>In 2009, the Technical Committee updated this policy to allow
+          <phrase role="keep-together">backward-</phrase><phrase role="keep-together">incompatible</phrase> changes in a major
+          version, provided the change is announced in a major or minor
+          release at least six months in advance.</para>
+        </listitem>
+
+        <listitem>
+          <para>Major version introductions must be separated by at least a
+          year.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para><indexterm>
+          <primary>XML</primary>
+
+          <secondary>DocBook version compliant with</secondary>
+        </indexterm><acronym>V3.0</acronym> was released in January 1997.
+      DocBook’s audience continued to grow, but many of the Davenport Group
+      stalwarts became involved in the <acronym>XML</acronym> effort, and
+      development slowed dramatically. The idea of creating an official
+      <acronym>XML</acronym>-compliant version of DocBook was discussed, but
+      not implemented at that time.</para>
+
+      <para><indexterm>
+          <primary>OASIS</primary>
+
+          <secondary>DocBook Technical Committee</secondary>
+        </indexterm>In July 1998, the sponsors moved the standards activities
+      from the Davenport Group to <acronym>OASIS</acronym>, forming the
+      <acronym>OASIS</acronym> DocBook Technical Committee with Eduardo
+      Gutentag of Sun Microsystems as chair.</para>
+    </section>
+
+    <section xml:id="s.history.oasis"><info><title>The <acronym>OASIS</acronym> Era</title></info>
+      
+
+      <para>The <acronym>OASIS</acronym> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/">DocBook Technical
+      Committee</link> is continuing the work started by the Davenport Group.
+      The transition from Davenport to <acronym>OASIS</acronym> was very
+      smooth, in part because the core team remained essentially the
+      same.</para>
+
+      <para>DocBook <acronym>V3.1</acronym>, published in February 1999, was
+      the first <acronym>OASIS</acronym> release. It integrated a number of
+      changes that had been <quote>in the wings</quote> for some time. In
+      March 2000, Norm Walsh became chair of the Technical Committee.
+      <remark>Norm: is this date correct?</remark></para>
+
+      <para>In February 2001, <acronym>OASIS</acronym> made DocBook
+      <acronym>SGML</acronym> <acronym>V4.1</acronym> and DocBook
+      <acronym>XML</acronym> <acronym>V4.1.2</acronym> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://lists.oasis-open.org/archives/members/200102/msg00000.html">official
+      <acronym>OASIS</acronym> Specifications</link>.</para>
+
+      <para>In October 2005, the DocBook Technical Committee released the
+      first beta test version of DocBook <acronym>V5.0</acronym>. Development
+      of the DocBook <acronym>4.x</acronym> series continued in parallel with
+      the development of <acronym>V5.0</acronym>. In October 2006, the DocBook
+      Technical Committee released DocBook <acronym>V4.5</acronym>, the last
+      release planned in the <acronym>4.x</acronym> series.</para>
+
+      <para>In 2008, the Publisher’s Subcommittee was chartered to develop and
+      maintain official variants of DocBook in support of the publishing
+      industry. The subcommittee focuses on schema customizations to support:
+      periodicals as regularly published technical notes or journals, book
+      publishing (such as business, legal, medical, and other nontechnical
+      domains), educational textbooks, and other document types as appropriate
+      for this industry.</para>
+
+      <para>DocBook <acronym>V5.0</acronym> became an official Committee
+      Specification in June 2009 and became an official
+      <acronym>OASIS</acronym> Standard in October 2009. <remark>Date may need
+      to change if voting is delayed</remark> The Technical Committee
+      continues DocBook development to ensure that the schema will continue to
+      meet the needs of its users.<indexterm class="endofrange" startref="idx.dbhistory-1"/><indexterm class="endofrange" startref="idx.dbhistory-2"/></para>
+    </section>
+  </section>
+
+  <section><info><title>DocBook <acronym>V5.0</acronym></title></info>
+    
+
+    <para>DocBook <acronym>V5.0</acronym> represents a major step forward for
+    DocBook. The differences between DocBook <acronym>4.x</acronym> and
+    <acronym>V5.0</acronym> are quite radical in some aspects, but the basic
+    idea behind DocBook is still the same, and almost all element names are
+    unchanged. Because of this it is very easy to become familiar with DocBook
+    <acronym>V5.0</acronym> if you know any previous version of
+    DocBook.</para>
+
+    <section xml:id="introduction-whats-new"><info><title>What’s New in DocBook <acronym>V5.0</acronym>?</title></info>
+      
+
+      <para><indexterm class="startofrange" xml:id="WhatsNewStart">
+          <primary>DocBook</primary>
+
+          <secondary>changes in V5.0</secondary>
+        </indexterm>In <acronym>V5.0</acronym>, DocBook has been rewritten as
+      a native RELAX NG grammar (<quote><citetitle pubwork="webpage">An
+      introduction to the RELAX NG schema language</citetitle></quote>
+      <biblioref linkend="RNG-Intro"/> is an excellent introduction to the
+      grammar). The objectives were to produce a schema that:</para>
+
+      <orderedlist inheritnum="ignore" continuation="restarts">
+        <listitem>
+          <para><quote>Feels like</quote> DocBook. Most existing documents
+          should still be valid or it should be possible to transform them in
+          simple, mechanical ways into valid documents.</para>
+        </listitem>
+
+        <listitem>
+          <para>Enforces as many constraints as possible in the schema. Some
+          additional constraints are expressed with Schematron rules.</para>
+        </listitem>
+
+        <listitem>
+          <para>Cleans up the content models.</para>
+        </listitem>
+
+        <listitem>
+          <para>Gives users the flexibility to extend or subset the schema in
+          an easy and straightforward way.</para>
+        </listitem>
+
+        <listitem>
+          <para>Can be used to generate <acronym>XML</acronym> DTD and W3C
+          <acronym>XML</acronym> Schema versions of DocBook.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>Under the ordinary operating rules of DocBook evolution, the only
+      <phrase role="keep-together">backward-</phrase><phrase role="keep-together">incompatible</phrase> changes that could be made in
+      DocBook <acronym>V5.0</acronym> were those announced in DocBook
+      <acronym>V4.0.</acronym> In light of the fact that this is a complete
+      rewrite, the Technical Committee gave itself the freedom to make
+      <quote>unannounced</quote> backward-incompatible changes for this one
+      release.</para>
+
+      <section><info><title>Renamed and removed elements</title></info>
+        
+
+        <para>A number of elements have been removed from DocBook. Some have
+        been replaced by simpler, more versatile alternatives. Others have
+        been removed because they were no longer needed, and still others have
+        been renamed. <xref linkend="t.renamed"/> lists the elements that
+        have been renamed for DocBook <acronym>V5.0</acronym>.<indexterm>
+            <primary>renamed elements</primary>
+          </indexterm><indexterm>
+            <primary>elements</primary>
+
+            <secondary>renamed in DocBook V5.0</secondary>
+          </indexterm></para>
+
+        <table xml:id="t.renamed"><info><title>Renamed elements</title></info>
+          
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>Old name</entry>
+
+                <entry>New name</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry><tag role="nonexistant">sgmltag</tag></entry>
+
+                <entry><tag>tag</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">bookinfo</tag>,
+                <tag role="nonexistant">articleinfo</tag>,
+                <tag role="nonexistant">chapterinfo</tag>, <tag role="nonexistant">*info</tag></entry>
+
+                <entry><tag>info</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">authorblurb</tag></entry>
+
+                <entry><tag>personblurb</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">collabname</tag>,
+                <tag role="nonexistant">corpauthor</tag>, <tag role="nonexistant">corpcredit</tag>,
+                <tag role="nonexistant">corpname</tag></entry>
+
+                <entry><tag>orgname</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">isbn</tag>, <tag role="nonexistant">issn</tag>,
+                <tag role="nonexistant">pubsnumber</tag></entry>
+
+                <entry><tag>biblioid</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">lot</tag>, <tag role="nonexistant">lotentry</tag>,
+                <tag role="nonexistant">tocback</tag>, <tag role="nonexistant">tocchap</tag>,
+                <tag role="nonexistant">tocfront</tag>, <tag role="nonexistant">toclevel1</tag>,
+                <tag role="nonexistant">toclevel2</tag>, <tag role="nonexistant">toclevel3</tag>,
+                <tag role="nonexistant">toclevel4</tag>, <tag role="nonexistant">toclevel5</tag>,
+                <tag role="nonexistant">tocpart</tag></entry>
+
+                <entry><tag>toc</tag>, <tag>tocdiv</tag>, and
+                <tag>tocentry</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">graphic</tag>,
+                <tag role="nonexistant">graphicco</tag>,
+                <tag role="nonexistant">inlinegraphic</tag>,
+                <tag role="nonexistant">mediaobjectco</tag></entry>
+
+                <entry><tag>mediaobject</tag> and <tag role="keep-together">inlinemediaobject</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">ulink</tag></entry>
+
+                <entry><tag>link</tag></entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">ackno</tag></entry>
+
+                <entry><tag>acknowledgements</tag></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para><indexterm>
+            <primary>removed elements</primary>
+          </indexterm><indexterm>
+            <primary>elements</primary>
+
+            <secondary>removed in DocBook V5.0</secondary>
+          </indexterm>The following elements were removed from DocBook
+        <acronym>V5.0</acronym> without direct <phrase role="keep-together">replacements</phrase>: <tag role="nonexistant">action</tag>,
+        <tag role="nonexistant">beginpage</tag>, <tag role="nonexistant">highlights</tag>,
+        <tag role="nonexistant">interface</tag>, <tag role="nonexistant">invpartnumber</tag>,
+        <tag role="nonexistant">medialabel</tag>, <tag role="nonexistant">modespec</tag>,
+        <tag role="nonexistant">structfield</tag>, and <tag role="nonexistant">structname</tag>. If
+        you use one or more of these elements, <xref linkend="t.removed"/>
+        contains suggestions for recoding them in DocBook
+        <acronym>V5.0</acronym>.</para>
+
+        <table xml:id="t.removed"><info><title>Recommended mapping for removed elements</title></info>
+          
+
+          <tgroup cols="2">
+            <colspec colnum="1" colwidth="1*"/>
+
+            <colspec colnum="2" colwidth="3*"/>
+
+            <thead>
+              <row>
+                <entry>Old name</entry>
+
+                <entry>Recommended mapping</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry><tag role="nonexistant">action</tag></entry>
+
+                <entry>Use <computeroutput>&lt;<tag>phrase</tag>
+                remap="action"&gt;</computeroutput>.</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">beginpage</tag></entry>
+
+                <entry>Remove: <tag role="nonexistant">beginpage</tag> is advisory only
+                and has tended to cause confusion. A processing <phrase role="keep-together">instruction</phrase> or comment should be
+                a workable replacement if one is needed.</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">highlights</tag></entry>
+
+                <entry>Use <tag>abstract</tag>. Note that because
+                <tag role="nonexistant">highlights</tag> has a broader content model, you
+                may need to wrap contents in a <tag>para</tag> inside
+                <tag>abstract</tag>.</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">interface</tag></entry>
+
+                <entry>Use <tag>menuchoice</tag> or one of the
+                <quote>gui*</quote> elements (<tag>guibutton</tag>,
+                <tag>guiicon</tag>, <tag>guilabel</tag>,
+                <tag>guimenu</tag>, <tag>guimenuitem</tag>, or
+                <tag>guisubmenu</tag>).</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">invpartnumber</tag></entry>
+
+                <entry>Use <computeroutput>&lt;<tag>biblioid</tag>
+                class="other" otherclass="medialabel"&gt;</computeroutput>.
+                The <tag role="keep-together">productnumber</tag>
+                element is another alternative.</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">medialabel</tag></entry>
+
+                <entry>Use <computeroutput>&lt;<tag>citetitle</tag>
+                pubwork="<replaceable>mediatype</replaceable>"&gt;</computeroutput>,
+                where <replaceable>mediatype</replaceable> is the type of
+                media being labeled (e.g., <tag class="attvalue">cdrom</tag> or <tag class="attvalue">dvd</tag>).</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">modespec</tag></entry>
+
+                <entry>No longer needed. The current processing model for
+                <tag>olink</tag> renders <tag role="nonexistant">modespec</tag>
+                unnecessary.</entry>
+              </row>
+
+              <row>
+                <entry><tag role="nonexistant">structfield</tag>,
+                <tag role="nonexistant">structname</tag></entry>
+
+                <entry>Use <tag>varname</tag>. If you need to
+                distinguish between the two, use
+                <computeroutput>&lt;<tag>varname</tag>
+                remap="<replaceable role="keep-together">structname or
+                structfield</replaceable>"&gt;</computeroutput>. In some
+                contexts, it may also be appropriate to use <tag role="keep-together">property</tag> for
+                <tag role="nonexistant">structfield</tag>.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+
+      <section xml:id="s.linking-xref"><info><title>Linking and cross-referencing</title></info>
+        
+
+        <para><indexterm class="startofrange" xml:id="idx.s.linking-xref-1">
+            <primary>linking</primary>
+          </indexterm><indexterm class="startofrange" xml:id="idx.s.linking-xref-2">
+            <primary>cross-references</primary>
+          </indexterm>In DocBook <acronym>4.x</acronym> the <tag class="attribute">id</tag> attribute is used to assign a unique
+        identifier to an element. In DocBook <acronym>V5.0</acronym> this
+        attribute is renamed <tag class="attribute">xml:id</tag>, and
+        its usage is consistent with <citetitle>xml:id Version 1.0</citetitle>
+        <biblioref linkend="XML-ID"/>, a W3C Recommendation.</para>
+
+        <para>The biggest change in linking is that now nearly any inline
+        element, not just <tag>xref</tag> or <tag>link</tag>,
+        can be the source of a link. For example, consider the following
+        DocBook <acronym>4.x</acronym> example:<indexterm>
+            <primary>inline elements</primary>
+
+            <secondary>linking</secondary>
+          </indexterm><indexterm>
+            <primary>examples</primary>
+
+            <secondary>linking</secondary>
+          </indexterm></para>
+
+        <programlisting>&lt;section id="dir"&gt;
+  &lt;title&gt;DIR command&lt;/title&gt;
+  &lt;para&gt;...&lt;/para&gt;
+&lt;/section&gt;
+
+&lt;section id="ls"&gt;
+  &lt;title&gt;LS command&lt;/title&gt;
+  &lt;para&gt;This command is a synonym for
+    &lt;link linkend="dir"&gt;&lt;command&gt;DIR&lt;/command&gt;&lt;/link&gt; command.
+  &lt;/para&gt;
+&lt;/section&gt;</programlisting>
+
+        <para><?dbfo-need height=”1in”
+?>In DocBook <acronym>V5.0</acronym>, this can be written as the
+        following:</para>
+
+        <programlisting>&lt;section xml:id="dir"&gt;
+  &lt;title&gt;DIR command&lt;/title&gt;
+  &lt;para&gt;...&lt;/para&gt;
+&lt;/section&gt;
+
+&lt;section xml:id="ls"&gt;
+  &lt;title&gt;LS command&lt;/title&gt;
+  &lt;para&gt;This command is a synonym for
+    &lt;command linkend="dir"&gt;DIR&lt;/command&gt; command.
+  &lt;/para&gt;
+&lt;/section&gt;</programlisting>
+
+        <para>In addition, the <tag class="attribute">href</tag>
+        attribute from the XLink namespace was added to the same set of inline
+        elements as <tag class="attribute">linkend</tag>. The
+        following example shows how you can use <tag class="attribute">href</tag>. Note that you need to declare the
+        XLink namespace in your document instance to use this
+        attribute:</para>
+
+        <programlisting>&lt;article xmlns="http://docbook.org/ns/docbook" 
+         xmlns:xl="http://www.w3.org/1999/xlink" version="5.0"&gt;
+  &lt;title&gt;Test article&lt;/title&gt;
+
+  &lt;para&gt;
+    &lt;application xl:href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/application&gt; 
+    is my favourite text editor.&lt;/para&gt;
     ...
-</article>]]></programlisting>
-<para><indexterm><primary>ulink element (removed)</primary>
-</indexterm><indexterm><primary>linking</primary><secondary>ulink removed</secondary></indexterm>
-  The <tag>ulink</tag> element was removed from DocBook <acronym>V5.0</acronym>. It can be replaced by the <tag>link</tag> element using the XLink <tag class="attribute">href</tag> attribute.
-</para>
-<para>
-  The XLink <tag class="attribute">href</tag> attribute may contain a fragment identifier to create a link within a document. For example,
-</para><indexterm><primary>XLink</primary></indexterm>
-  <programlisting><![CDATA[<command xl:href="#dir">DIR</command>]]></programlisting>
-<note>
-<para>
-XLink references are not expected to be checked during validation, but <tag class="attribute">linkend</tag> references are.
-</para>
-</note>
-<indexterm startref="idx.s.linking-xref-1" class="endofrange"/>
-<indexterm startref="idx.s.linking-xref-2" class="endofrange"/>
-</section>
-<section>
-  <title>Uniform <tag>info</tag> elements</title>
-<indexterm><primary>info element</primary></indexterm>
-  <para>
-    DocBook versions prior to DocBook <acronym>V5.0</acronym> use unique elements for
-    block information. For example, a <tag>book</tag> element would
-    contain a <tag>bookinfo</tag> element. This was done to support
-    different content models for different block elements. DTDs only
-    allow one content model for each element, so a different element
-    name was required for each block's information element.
-  </para>
-  <para>
-    RELAX NG does not have this limitation. An element can have a different
-    content model in different contexts. Therefore, the array of info
-    elements (<tag>articleinfo</tag>, <tag>bookinfo</tag>, and so forth)
-    has been replaced with a single <tag>info</tag> element.
-  </para>
-</section>
-<section>
-  <title>Required title and version attributes</title>
-  <indexterm><primary>attributes</primary>
-  <secondary>title</secondary></indexterm>
-  <indexterm><primary>attributes</primary>
-  <secondary>version</secondary></indexterm>
-  <indexterm><primary>title attribute</primary></indexterm>
-  <indexterm><primary>version attribute</primary></indexterm>
-  <para>
-    DocBook <acronym>V5.0</acronym> requires the <tag class="attribute">title</tag>
-    attribute on large block elements like <tag>article</tag>. The written
-    specification for earlier versions of DocBook noted this, but the DTD
-    could not enforce this constraint. With RELAX NG, this constraint can
-    now be enforced in the schema.
-  </para>
-  <para>
-    DocBook <acronym>V5.0</acronym> no longer requires a document type
-    declaration. However, because processors may need to know the
-    version of an instance, DocBook <acronym>V5.0</acronym> has added the <tag
-    class="attribute">version</tag> attribute, which must appear on
-    the root element of a DocBook document. The <tag
-    class="attribute">version</tag> attribute may also appear on other
-    elements, and mixing of versions is allowed.
-  </para>
-</section>
-  <section>
-    <title>Additional constraints</title>
+&lt;/article&gt;</programlisting>
+
+        <para><indexterm>
+            <primary>ulink element (removed)</primary>
+          </indexterm><indexterm>
+            <primary>linking</primary>
+
+            <secondary>ulink removed</secondary>
+          </indexterm>The <tag role="nonexistant">ulink</tag> element was removed from
+        DocBook <acronym>V5.0</acronym>. It can be replaced by the
+        <tag>link</tag> element using the XLink <tag class="attribute">href</tag> attribute.</para>
+
+        <para>The XLink <tag class="attribute">href</tag> attribute
+        may contain a fragment identifier to create a link within a document.
+        For example:<indexterm>
+            <primary>XLink</primary>
+          </indexterm></para>
+
+        <programlisting>&lt;command xl:href="#dir"&gt;DIR&lt;/command&gt;</programlisting>
+
+        <note>
+          <para>XLink references are not expected to be checked during
+          validation, but <tag class="attribute">linkend</tag>
+          references are.<indexterm class="endofrange" startref="idx.s.linking-xref-2"/><indexterm class="endofrange" startref="idx.s.linking-xref-1"/></para>
+        </note>
+      </section>
+
+      <section><info><title>Uniform info elements</title></info>
+        
+
+        <para><indexterm>
+            <primary>info element</primary>
+          </indexterm>DocBook versions earlier than DocBook
+        <acronym>V5.0</acronym> use unique elements for block information. For
+        example, a <tag>book</tag> element would contain a
+        <tag role="nonexistant">bookinfo</tag> element. This was done to support
+        different content models for different block elements. DTDs only allow
+        one content model for each element, so a different element name was
+        required for each block’s information element.</para>
+
+        <para>RELAX NG does not have this limitation. An element can have a
+        different content model in different contexts. Therefore, the array of
+        info elements (<tag role="nonexistant">articleinfo</tag>, <tag role="nonexistant">bookinfo</tag>, etc.) has been replaced with
+        a single <tag>info</tag> element.</para>
+      </section>
+
+      <section><info><title>Required title and version attributes</title></info>
+        
+
+        <para><indexterm>
+            <primary>attributes</primary>
+
+            <secondary>title</secondary>
+          </indexterm><indexterm>
+            <primary>attributes</primary>
+
+            <secondary>version</secondary>
+          </indexterm><indexterm>
+            <primary>title attribute</primary>
+          </indexterm><indexterm>
+            <primary>version attribute</primary>
+          </indexterm>DocBook <acronym>V5.0</acronym> requires the <tag class="attribute">title</tag> attribute on large block elements
+        such as <tag>article</tag>. The written specification for
+        earlier versions of DocBook noted this, but the DTD could not enforce
+        this constraint. With RELAX NG, this constraint can now be enforced in
+        the schema.</para>
+
+        <para>DocBook <acronym>V5.0</acronym> no longer requires a Document
+        Type Declaration. However, because processors may need to know the
+        version of an instance, DocBook <acronym>V5.0</acronym> has added the
+        <tag class="attribute">version</tag> attribute, which must
+        appear on the root element of a DocBook document. The <tag class="attribute">version</tag> attribute may also appear on other
+        elements, and mixing of versions is allowed.</para>
+      </section>
+
+      <section><info><title>Additional constraints</title></info>
+        
+
+        <variablelist>
+          <varlistentry>
+            <term>HTML and CALS tables</term>
+
+            <listitem>
+              <para><indexterm>
+                  <primary>tables</primary>
+
+                  <secondary>mixing CALS and HTML</secondary>
+                </indexterm><indexterm>
+                  <primary>CALS</primary>
+
+                  <secondary>with HTML tables</secondary>
+                </indexterm><indexterm>
+                  <primary>HTML tables</primary>
+
+                  <secondary>with CALS tables</secondary>
+                </indexterm>DocBook <acronym>4.x</acronym> did not prevent
+              mixing of <acronym>CALS</acronym> and <acronym>HTML</acronym>
+              table elements in a single table, even in cases where the result
+              might be unusable. DocBook <acronym>V5.0</acronym> specifically
+              prohibits mixing.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Co-constraints</term>
+
+            <listitem>
+              <para>DocBook <acronym>V5.0</acronym> enforces co-constraints
+              such as the constraint that the <tag class="attribute">otherclass</tag> attribute on
+              <tag>biblioid</tag> may appear if, and only if, the
+              <tag class="attribute">class</tag> attribute exists and
+              has the value <tag class="attvalue">other</tag>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Data types</term>
+
+            <listitem>
+              <para><indexterm>
+                  <primary>data types</primary>
+                </indexterm>DocBook <acronym>V5.0</acronym> uses some data
+              types; for example, the <tag class="attribute">col</tag>
+              attribute on <tag>tgroup</tag> is defined as a positive
+              integer. In some cases, the data type for a particular value may
+              constrain it further than that value was constrained in prior
+              releases.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section><info><title>Table of contents</title></info>
+        
+
+        <para><indexterm>
+            <primary>tables of contents</primary>
+
+            <secondary>markup</secondary>
+          </indexterm>Prior to DocBook <acronym>V5.0</acronym>, the markup for
+        tables of contents was clumsy and difficult to use. Although nearly
+        all tables of contents are generated automatically, there are still
+        cases where a table may need to be created or edited manually.
+        Therefore, DocBook <acronym>V5.0</acronym> introduces a simpler,
+        recursive structure. See the <tag>toc</tag>,
+        <tag>tocdiv</tag>, and <tag>tocentry</tag> reference
+        pages for details and an example.</para>
+      </section>
+
+      <section><info><title>Constraint definitions using Schematron</title></info>
+        
+
+        <para><indexterm>
+            <primary>Schematron</primary>
+
+            <secondary>constraints</secondary>
+          </indexterm>DocBook <acronym>V5.0</acronym> uses rule-based
+        validation for certain constraints using Schematron. These
+        constraints, such as the requirement that the root element of a
+        document have a <tag class="attribute">version</tag> attribute, are easier to
+        express in a rule-based language than in a schema language, even one
+        as flexible as RELAX NG.</para>
+      </section>
+
+      <section><info><title>Accessibility</title></info>
+        
+
+        <para><indexterm>
+            <primary>accessibility</primary>
+          </indexterm>Inline and block annotations are allowed in most
+        contexts. Inline annotations use the <tag>alt</tag> element,
+        and block annotations are supported by the new
+        <tag>annotation</tag> element.<indexterm class="endofrange" startref="WhatsNewStart"/></para>
+      </section>
+    </section>
+  </section>
+
+  <section xml:id="introduction-ns"><info><title>Finally in a Namespace</title></info>
+    
+
+    <para><indexterm class="startofrange" xml:id="idx.introduction-ns">
+        <primary>namespaces</primary>
+
+        <secondary>DocBook</secondary>
+      </indexterm>All DocBook <acronym>V5.0</acronym> elements are in the
+    namespace <uri>http://docbook.org/ns/docbook</uri>. <acronym>XML</acronym>
+    namespaces are used to distinguish between different element sets. In the
+    past few years, almost all new <acronym>XML</acronym> grammars have used
+    their own namespace. It is easy to create compound documents that contain
+    elements from different <acronym>XML</acronym> vocabularies. Consider this
+    simple article marked up in DocBook <acronym>V4.5</acronym>:<indexterm>
+        <primary>examples</primary>
+
+        <secondary>DocBook namespace</secondary>
+      </indexterm></para>
+
+    <programlisting>&lt;!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
+                         'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'&gt;
+&lt;article&gt;
+  &lt;title&gt;Sample article&lt;/title&gt;
+  &lt;para&gt;This is a really short article.&lt;/para&gt;
+&lt;/article&gt;</programlisting>
+
+    <para>The corresponding DocBook <acronym>V5.0</acronym> article will look
+    very similar:</para>
+
+    <programlisting>&lt;article xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+  &lt;title&gt;Sample article&lt;/title&gt;
+  &lt;para&gt;This is a really short article.&lt;/para&gt;
+&lt;/article&gt;</programlisting>
+
+    <para>The only change is the addition of a default namespace declaration
+    (<code>xmlns="http://docbook.org/ns/docbook"</code>) on the root element
+    (and a <tag class="attribute">version</tag> attribute, which is
+    described in the next section). This declaration applies the namespace to
+    the root element and all nested elements. Each element is now uniquely
+    identified by its local name and namespace.</para>
+
+    <note>
+      <para>The namespace name <uri>http://docbook.org/ns/docbook</uri> serves
+      only as an identifier. This resource is not fetched during processing of
+      DocBook documents, and you are not required to have an Internet
+      connection during processing. If you access the namespace URI with a
+      browser, you will find a short explanatory document about the namespace.
+      In the future, this document will probably conform to (some version of)
+      RDDL and provide pointers to related resources.<indexterm class="endofrange" startref="idx.introduction-ns"/></para>
+    </note>
+  </section>
+
+  <section xml:id="introduction-rng"><info><title>Relaxing with DocBook</title></info>
+    
+
+    <para><indexterm class="startofrange" xml:id="idx.introduction-rng">
+        <primary>RELAX NG</primary>
+      </indexterm>For more than a decade, the DocBook schema was defined using
+    a <acronym>DTD</acronym>. However, <acronym>DTD</acronym>s have serious
+    limitations, and DocBook <acronym>V5.0</acronym> is thus defined using a
+    powerful schema language called RELAX NG. Thanks to RELAX NG, it is now
+    much easier to create customized versions of DocBook, and the content
+    models are now cleaner and more precise.</para>
+
+    <para>Using RELAX NG has an impact on the document prolog. <xref linkend="ex.docbook45"/> shows the typical prolog of a DocBook
+    <acronym>4.x</acronym> document. The version of the DocBook
+    <acronym>DTD</acronym> (in this case <acronym>V4.5</acronym>) is indicated
+    in the Document Type Declaration (&lt;!DOCTYPE&gt;) that points to a
+    particular version of the <acronym>DTD</acronym>.</para>
+
+    <example xml:id="ex.docbook45"><info><title>DocBook <acronym>V4.5</acronym> document</title></info>
+      
+
+      <programlisting>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
+                         'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'&gt;
+&lt;article lang="en"&gt;
+  &lt;title&gt;Sample article&lt;/title&gt;
+  &lt;para&gt;This is a very short article.&lt;/para&gt;
+&lt;/article&gt;</programlisting>
+    </example>
+
+    <para>In contrast, DocBook <acronym>V5.0</acronym> does not depend on
+    <acronym>DTD</acronym>s anymore. Instead of the Document Type Declaration,
+    the <tag class="attribute">version</tag> attribute identifies the
+    DocBook version, as shown in <xref linkend="ex.docbook5"/>.</para>
+
+    <example xml:id="ex.docbook5"><info><title>DocBook <acronym>V5.0</acronym> document</title></info>
+      
+
+      <programlisting>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en"&gt;
+  &lt;title&gt;Sample article&lt;/title&gt;
+  &lt;para&gt;This is a very short article.&lt;/para&gt;
+&lt;/article&gt;</programlisting>
+    </example>
+
+    <para>DocBook <acronym>V5.0</acronym> is built on top of existing
+    <acronym>XML</acronym> standards as much as possible. For example, the
+    <tag class="attribute">lang</tag> attribute is superseded by the
+    standard <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/REC-xml/#sec-lang-tag"><tag class="attribute">xml:lang</tag></link> attribute.<indexterm>
+        <primary>xml:lang attribute</primary>
+      </indexterm></para>
+
+    <para>Another fundamental change is that there is no direct indication of
+    the schema used. In <xref linkend="ch-parse"/>, you will learn how you
+    can specify a schema to be used for document validation.<indexterm class="endofrange" startref="idx.introduction-rng"/></para>
+
+    <note>
+      <para>Although we recommend the RELAX NG schema for DocBook
+      <acronym>V5.0</acronym>, there are also <acronym>DTD</acronym> and W3C
+      <acronym>XML</acronym> Schema versions available (see <xref linkend="schemas"/>) for tools that do not yet support RELAX
+      NG.<indexterm>
+          <primary>DocBook</primary>
+
+          <secondary>V5.0 DTD</secondary>
+        </indexterm><indexterm>
+          <primary>DocBook</primary>
+
+          <secondary>W3C schema</secondary>
+        </indexterm><indexterm>
+          <primary>DTD</primary>
+
+          <secondary>DocBook V5.0</secondary>
+        </indexterm><indexterm>
+          <primary>W3C</primary>
+
+          <secondary>W3C schema (DocBook V5.0)</secondary>
+        </indexterm></para>
+    </note>
+  </section>
+
+  <section xml:id="introduction-why-to-switch"><info><title>Why Switch to DocBook <acronym>V5.0</acronym>?</title></info>
+    
+
+    <para>The simple answer is <quote>because DocBook <acronym>V5.0</acronym>
+    is the future.</quote> Apart from this marketing blurb, there are also
+    more technical reasons:</para>
+
     <variablelist>
       <varlistentry>
-        <term>HTML and CALS tables</term>
-        <listitem><indexterm><primary>tables</primary><secondary>mixing CALS and HTML</secondary></indexterm>
-        <indexterm><primary>CALS</primary><secondary>with HTML tables</secondary></indexterm>
-        <indexterm><primary>HTML tables</primary><secondary>with CALS tables</secondary></indexterm>
-          <para>
-            DocBook <acronym>4.x</acronym> did not prevent mixing of
-            <acronym>CALS</acronym> and <acronym>HTML</acronym> table
-            elements in a single table, even in cases where the result might be
-            unusable. DocBook <acronym>V5.0</acronym> specifically prohibits mixing.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Co-constraints</term>
+        <term>DocBook <acronym>4.x</acronym> is feature-frozen</term>
+
         <listitem>
-          <para>
-            DocBook <acronym>V5.0</acronym> enforces co-constraints such as the
-            constraint that the <tag
-            class="attribute">otherclass</tag> attribute on
-            <tag>biblioid</tag> may appear if, and only if, the <tag
-            class="attribute">class</tag> attribute exists and has
-            the value <tag class="attvalue">other</tag>.
-          </para>
+          <para>DocBook <acronym>V4.5</acronym> is the last version of DocBook
+          in the <acronym>4.x</acronym> series. Any new DocBook development,
+          like the addition of new elements, will be done in DocBook
+          <acronym>V5.0</acronym>. It is only a matter of time before new
+          elements are added into DocBook <acronym>V5.0</acronym>, but they
+          are not likely to be back-ported into DocBook
+          <acronym>4.x</acronym>. DocBook <acronym>4.x</acronym> will be in
+          maintenance mode and errata will be published if necessary.</para>
         </listitem>
       </varlistentry>
+
       <varlistentry>
-        <term>Data types</term>
-        <listitem><indexterm><primary>data types</primary></indexterm>
-          <para>
-            DocBook <acronym>V5.0</acronym> uses some data types, for example, the <tag
-            class="attribute">col</tag> attribute on <tag>tgroup</tag>
-            is defined as a positive integer. In some cases the data
-            type for a particular value may constrain it further than
-            that value was constrained in prior releases.
-          </para>
+        <term>DocBook <acronym>V5.0</acronym> offers new functionality</term>
+
+        <listitem>
+          <para>DocBook <acronym>V5.0</acronym> provides significant
+          improvements over DocBook <acronym>4.x</acronym>. For example, there
+          is general markup for annotations, a new and more flexible system
+          for linking, and unified markup for information sections using the
+          <tag>info</tag> element.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>DocBook <acronym>V5.0</acronym> is more extensible</term>
+
+        <listitem>
+          <para><indexterm>
+              <primary>MathML</primary>
+            </indexterm><indexterm>
+              <primary>SVG</primary>
+            </indexterm><indexterm>
+              <primary>XHTML</primary>
+            </indexterm>Having DocBook <acronym>V5.0</acronym> in a separate
+          namespace allows you to easily mix DocBook markup with other
+          <acronym>XML</acronym>-based languages such as
+          <acronym>SVG</acronym>, <acronym>MathML</acronym>,
+          <acronym>XHTML</acronym>, or even FooBarML.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>DocBook <acronym>V5.0</acronym> is easier to customize</term>
+
+        <listitem>
+          <para>RELAX NG offers many powerful constructs that make
+          customization much easier than it would be using a
+          <acronym>DTD</acronym> (see <xref linkend="app-customizing"/>).</para>
         </listitem>
       </varlistentry>
     </variablelist>
   </section>
-  <section>
-    <title>Table of Contents</title>
-    <indexterm><primary>tables of contents</primary><secondary>markup</secondary></indexterm>
-    <para>
-      Prior to DocBook <acronym>V5.0</acronym>, the markup for tables of contents was
-      clumsy and difficult to use. Although nearly all tables of contents
-      are generated automatically, there are still cases where a table
-      may need to be created or edited manually. Therefore, DocBook <acronym>V5.0</acronym>
-      introduces a simpler, recursive structure. See the <tag>toc</tag>,
-      <tag>tocdiv</tag>, and <tag>tocentry</tag> reference pages for details
-      and an example.
-    </para>
+
+  <section xml:id="introduction-schemas"><info><title>Schema Jungle</title></info>
+    
+
+    <para>Schemas for DocBook <acronym>V5.0</acronym> are available in several
+    formats at <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/xml/5.0/">http://www.oasis-open.org/docbook/xml/5.0/</uri> (or the mirror
+    at <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/xml/5.0/">http://docbook.org/xml/5.0/</uri>). Only the RELAX NG
+    schema is normative, and it is preferred over the other schema languages.
+    For your convenience there are also <acronym>DTD</acronym> and W3C
+    <acronym>XML</acronym> Schema versions provided for DocBook
+    <acronym>V5.0</acronym>. However, neither the <acronym>DTD</acronym> nor
+    the W3C <acronym>XML</acronym> schema can capture all the constraints of
+    DocBook <acronym>V5.0</acronym>. This means that a document that validates
+    against the <acronym>DTD</acronym> or <acronym>XML</acronym> schema is not
+    necessarily valid against the RELAX NG schema, and thus may not be a valid
+    DocBook <acronym>V5.0</acronym> document.</para>
+
+    <para><acronym>DTD</acronym> and W3C <acronym>XML</acronym> Schema
+    versions of the DocBook <acronym>V5.0</acronym> grammar are provided as a
+    convenience for users who want to use DocBook <acronym>V5.0</acronym> with
+    legacy tools that don’t support RELAX NG. Authors are encouraged to switch
+    to RELAX NG-based tools as soon as possible, or at least to validate
+    documents against the RELAX NG schema before further processing.</para>
+
+    <para>Some document constraints can’t be expressed in grammar-based schema
+    languages like RELAX NG or W3C <acronym>XML</acronym> Schema. To define
+    these additional constraints DocBook <acronym>V5.0</acronym> uses
+    Schematron. We recommend that you validate your document against both the
+    RELAX NG and Schematron schemas.</para>
+
+    <section xml:id="schemas"><info><title>Where to Get the Schemas</title></info>
+      
+
+      <para>The latest versions of schemas can be obtained from <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/schemas/5x.html">http://docbook.org/schemas/5x.html</uri>. At the time this was
+      written the latest version was 5.0. Individual schemas are available at
+      the following locations:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>RELAX NG schema</term>
+
+          <listitem>
+            <para><uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/xml/5.0/rng/docbook.rng">http://docbook.org/xml/5.0/rng/docbook.rng</uri></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>RELAX NG schema in compact syntax</term>
+
+          <listitem>
+            <para><uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/xml/5.0/rng/docbook.rnc">http://docbook.org/xml/5.0/rng/docbook.rnc</uri></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>DTD</term>
+
+          <listitem>
+            <para><uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/xml/5.0/dtd/docbook.dtd">http://docbook.org/xml/5.0/dtd/docbook.dtd</uri></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>W3C <acronym>XML</acronym> Schema</term>
+
+          <listitem>
+            <para><uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/xml/5.0/xsd/docbook.xsd">http://docbook.org/xml/5.0/xsd/docbook.xsd</uri></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Schematron schema with additional checks</term>
+
+          <listitem>
+            <para><uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.org/xml/5.0/sch/docbook.sch">http://docbook.org/xml/5.0/sch/docbook.sch</uri></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>These schemas are also available from the mirror at <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oasis-open.org/docbook/xml/5.0/">http://www.oasis-open.org/docbook/xml/5.0/</uri>.</para>
+    </section>
+
+    <section xml:id="docs"><info><title>DocBook Documentation</title></info>
+      
+
+      <para>Detailed documentation about each DocBook <acronym>V5.0</acronym>
+      element can be found in <phrase condition="print"><xref linkend="ref-element"/> in this book.</phrase></para>
+
+      <para><citetitle>DocBook XSL: The Complete Guide</citetitle> <biblioref linkend="Stayton07"/> by Bob Stayton is the essential reference for the
+      DocBook stylesheets.<indexterm class="endofrange" startref="XMLgetstart"/></para>
+    </section>
   </section>
-  <section>
-    <title>Constraint definitions using Schematron</title>
-    <indexterm><primary>Schematron</primary><secondary>constraints</secondary></indexterm>
-    <para>
-      DocBook <acronym>V5.0</acronym> uses rule-based validation for certain constraints
-      using Schematron. These constraints, such as the requirement
-      that the root element of a document have a <tag>version</tag>
-      attribute, are easier to express in a rule-based language
-      than in a schema language, even one as flexible as RELAX NG.
-    </para>
+
+  <section xml:id="bwcompat"><info><title>Backward Compatibility</title></info>
+    
+
+    <para>Whether you’re just getting started with DocBook, or curating a
+    collection of tens of thousands of DocBook documents, one question that
+    you have to consider is <quote>how stable is DocBook?</quote> Will the
+    documents that you write today still be useful tomorrow, or next year, or
+    in the next century?</para>
+
+    <para>This question may seem particularly pertinent if you’re in the
+    process of converting a collection of DocBook <acronym>4.x</acronym>
+    documents to DocBook <acronym>V5.0</acronym> because we introduced a
+    number of backward-incompatible changes in <acronym>V5.0</acronym>.</para>
+
+    <para>The DocBook Technical Committee understands that the community
+    benefits from the long-term stability of the DocBook family of schemas. We
+    also understand that DocBook must continue to adapt and change in order to
+    remain relevant in a changing world.</para>
+
+    <para>All changes, and especially changes that are backward incompatible
+    (changes that make a currently valid document no longer valid under a new
+    version of the schema), have a cost associated with them. The technical
+    committee must balance those costs against the need to remain responsive
+    to the community’s desire to see DocBook grow to cover the new use cases
+    that inevitably arise in documentation.</para>
+
+    <para>With that in mind, the DocBook Technical Committee has adopted the
+    following policy on backward-incompatible changes. This policy spells out
+    when <phrase role="keep-together">backward-</phrase><phrase role="keep-together">incompatible</phrase> changes can occur and how much
+    notice the technical committee must provide before adopting a schema that
+    is backward incompatible with the current <phrase role="keep-together">release</phrase>.</para>
+
+    <para>This policy allows DocBook to continue to change and adapt while
+    simultaneously guaranteeing that existing users will have sufficient
+    advance notice to develop reasonable migration plans.</para>
+
+    <para>With respect to schema changes, the technical committee asserts that
+    the following points will always apply:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>A point release (X.1 to X.2, X.2 to X.3, X.1 to X.1.2, etc.)
+        <emphasis>will not</emphasis> contain any backward-incompatible
+        changes.</para>
+      </listitem>
+
+      <listitem>
+        <para>A major release (X.1 to Y.0, X.2 to Y.0, X.1.2 to Y.0, etc.)
+        <glossterm>may</glossterm> contain backward-incompatible changes
+        if:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>the change was announced in the release notes for the
+            previous version (major or minor) and</para>
+          </listitem>
+
+          <listitem>
+            <para>the change was announced in a release that occurred at least
+            six months <phrase role="keep-together">previously</phrase>.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+    <para>By these rules, the technical committee can announce, in
+    <acronym>V5.1</acronym>, for example, its plans to make a
+    backward-incompatible change in V6.0. Then, in V6.0, if it’s been at least
+    six months since <acronym>V5.1</acronym> was released, it can make that
+    change.</para>
+
+    <para>As a general rule, the technical committee tries to avoid
+    backward-incompatible changes.</para>
   </section>
-  <section>
-    <title>Accessibility</title>
-    <indexterm><primary>accessibility</primary></indexterm>
-    <para>
-      Inline and block annotations are allowed in most contexts.
-      Inline annotations use the <tag>alt</tag> element, and block
-      annotations are supported by the new <tag>annotation</tag> element.
-    </para>
-<indexterm startref="WhatsNewStart" class="endofrange"/>
-  </section>
-</section>
-</section>
-
-<section xml:id="introduction-ns">
-<title>Finally in a Namespace</title>
-<indexterm xml:id="idx.introduction-ns" class="startofrange"><primary>namespaces</primary><secondary>DocBook</secondary></indexterm>
-<para>All DocBook <acronym>V5.0</acronym> elements are in the namespace
-<uri>http://docbook.org/ns/docbook</uri>. <acronym>XML<alt>Extensible
-Markup Language</alt></acronym> namespaces are used to distinguish
-between different element sets. In the last few years, almost all new
-<acronym>XML</acronym> grammars have used their own namespace. It is easy to
-create compound documents that contain elements from different <acronym>XML</acronym>
-vocabularies. Consider this
-simple article marked up in DocBook <acronym>V4.5</acronym>:</para>
-<indexterm><primary>examples</primary><secondary>DocBook namespace</secondary></indexterm>
-<programlisting><![CDATA[<!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
-                         'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'>
-<article>
-  <title>Sample article</title>
-  <para>This is a really short article.</para>
-</article>]]></programlisting>
-
-<para>The corresponding DocBook <acronym>V5.0</acronym> article will look very similar:</para>
-
-<programlisting><![CDATA[<article xmlns="http://docbook.org/ns/docbook" version="5.0">
-  <title>Sample article</title>
-  <para>This is a really short article.</para>
-</article>]]></programlisting>
-
-<para>The only change is the addition of a default namespace
-declaration (<code>xmlns="http://docbook.org/ns/docbook"</code>) on
-the root element (and a <tag class="attribute">version</tag>
-attribute, which is described in the next section). This declaration
-applies the namespace to the root element and all nested
-elements. Each element is now uniquely identified by its local name
-and namespace.</para>
-
-<note>
-<para>The namespace name <uri>http://docbook.org/ns/docbook</uri> serves
-only as an identifier. This resource is not fetched during processing
-of DocBook documents, and you are not required to have an Internet
-connection during processing. If you access the namespace URI with a browser,
-you will find a short explanatory document about the namespace. In the
-future this document will probably conform to (some version of) RDDL
-and provide pointers to related resources.</para>
-</note>
-<indexterm startref="idx.introduction-ns" class="endofrange"/>
-</section>
-
-<section xml:id="introduction-rng">
-<title>Relaxing with DocBook</title>
-<indexterm xml:id="idx.introduction-rng" class="startofrange"><primary>RELAX NG</primary></indexterm>
-<para>For more than a decade, the DocBook schema was defined using a
-<acronym>DTD</acronym>. However, <acronym>DTD</acronym>s have serious limitations, and DocBook <acronym>V5.0</acronym> is thus
-defined using a powerful schema language called RELAX NG. Thanks
-to RELAX NG, it is now much easier to create customized versions of
-DocBook, and the content models are now cleaner and more precise.</para>
-
-<para>Using RELAX NG has an impact on the document prolog. The
-following example shows the typical prolog of a DocBook <acronym>4.x</acronym>
-document. The version of the DocBook <acronym>DTD</acronym> (in this
-case <acronym>V4.5</acronym>) is indicated in the document type
-declaration (&lt;!DOCTYPE&gt;) which points to a
-particular version of the <acronym>DTD</acronym>.</para>
-
-<example xml:id="ex.docbook45">
-<title>DocBook <acronym>V4.5</acronym> document</title>
-<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
-                         'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'>
-<article lang="en">
-  <title>Sample article</title>
-  <para>This is a very short article.</para>
-</article>]]></programlisting>
-</example>
-
-<para>In contrast, DocBook <acronym>V5.0</acronym> does not depend on <acronym>DTD</acronym>s anymore. Instead of the document type declaration, the <tag class="attribute">version</tag> attribute identifies the DocBook version.</para>
-
-<example xml:id="ex.docbook5">
-<title>DocBook <acronym>V5.0</acronym> document</title>
-<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en">
-  <title>Sample article</title>
-  <para>This is a very short article.</para>
-</article>]]></programlisting>
-</example>
-
-<para>DocBook <acronym>V5.0</acronym> is built on top of existing <acronym>XML</acronym>
-standards as much as possible. For example, the <tag
-class="attribute">lang</tag> attribute is superseded by the standard
-<tag xlink:href="http://www.w3.org/TR/REC-xml/#sec-lang-tag"
-class="attribute">xml:lang</tag> attribute.<indexterm><primary>xml:lang attribute</primary></indexterm></para>
-
-<para>Another fundamental change is that there is no direct indication
-of the schema used. In <xref linkend="ch-parse"/>, you will learn how you can
-specify a schema to be used for document validation.</para>
-
-<note>
-<para>Although we recommend the RELAX NG schema for DocBook
-<acronym>V5.0</acronym>, there are also <acronym>DTD</acronym> and W3C <acronym>XML</acronym> Schema versions available (see <xref
-linkend="schemas"/>) for tools that do not yet support RELAX NG.</para>
-<indexterm><primary>DocBook</primary><secondary>V5.0 DTD</secondary></indexterm>
-<indexterm><primary>DocBook</primary><secondary>W3C schema</secondary></indexterm>
-<indexterm><primary>DTD</primary><secondary>DocBook V5.0</secondary></indexterm>
-<indexterm><primary>W3C</primary><secondary>W3C schema (DocBook V5.0)</secondary></indexterm>
-</note>
-<indexterm startref="idx.introduction-rng" class="endofrange"/>
-</section>
-
-<section xml:id="introduction-why-to-switch">
-<title>Why Switch to DocBook <acronym>V5.0</acronym>?</title>
-
-<para>The simple answer is <quote>because DocBook <acronym>V5.0</acronym> is the
-future.</quote> Apart from this marketing blurb, there are also more
-technical reasons:</para>
-
-<variablelist>
-  <varlistentry>
-    <term>DocBook <acronym>4.x</acronym> is feature frozen</term>
-    <listitem>
-      <para>DocBook <acronym>V4.5</acronym> is the last version of
-      DocBook in the <acronym>4.x</acronym> series. Any new DocBook
-      development, like the addition of new elements, will be done in
-      DocBook <acronym>V5.0</acronym>. It is only a matter of time
-      before new elements are added into DocBook
-      <acronym>V5.0</acronym>, but they are not likely to be
-      back-ported into DocBook <acronym>4.x</acronym>. DocBook
-      <acronym>4.x</acronym> will be in maintenance mode and errata
-      will be published if necessary. </para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>DocBook <acronym>V5.0</acronym> offers new functionality</term>
-    <listitem>
-      <para>DocBook <acronym>V5.0</acronym> provides significant
-      improvements over DocBook <acronym>4.x</acronym>. For example,
-      there is general markup for annotations, a new and more flexible
-      system for linking, and unified markup for information sections
-      using the <tag>info</tag> element.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>DocBook <acronym>V5.0</acronym> is more extensible</term>
-    <listitem><indexterm><primary>MathML</primary></indexterm><indexterm><primary>SVG</primary></indexterm><indexterm><primary>XHTML</primary></indexterm>
-      <para>Having DocBook <acronym>V5.0</acronym> in a separate
-      namespace allows you to easily mix DocBook markup with other
-      <acronym>XML</acronym>-based languages like <acronym>SVG</acronym>,
-      <acronym>MathML</acronym>, <acronym>XHTML</acronym>
-      or even FooBarML.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>DocBook <acronym>V5.0</acronym> is easier to customize</term>
-    <listitem>
-      <para>RELAX NG offers many powerful constructs that make
-      customization much easier than it would be using a
-      <acronym>DTD</acronym> (see <xref linkend="app-customizing"/>).</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-
-</section>
-
-<section xml:id="introduction-schemas">
-<title>Schema Jungle</title>
-
-<para>Schemas for DocBook <acronym>V5.0</acronym> are available in several formats at
-<link xlink:href="http://www.oasis-open.org/docbook/xml/&version;/"/> (or the
-mirror at <link xlink:href="http://docbook.org/xml/&version;/"/>).
-Only the RELAX NG schema is normative,
-and it is preferred over the other schema languages.  For your
-convenience there are also <acronym>DTD</acronym> and W3C <acronym>XML</acronym> Schema versions provided for DocBook
-<acronym>V5.0</acronym>. However, neither the <acronym>DTD</acronym> nor the W3C <acronym>XML</acronym> schema can
-capture all the constraints of DocBook <acronym>V5.0</acronym>. This mean that a
-document that validates against the <acronym>DTD</acronym> or <acronym>XML</acronym> schema is not necessarily
-valid against the RELAX NG schema and thus may not be a valid
-DocBook <acronym>V5.0</acronym> document.</para>
-
-<para><acronym>DTD</acronym> and W3C <acronym>XML</acronym> Schema versions of the DocBook <acronym>V5.0</acronym> grammar are provided
-as a convenience for users who want to use DocBook <acronym>V5.0</acronym> with legacy tools
-that don't support RELAX NG. Authors are encouraged to switch to RELAX NG-based tools as soon as possible, or at least to validate documents
-against the RELAX NG schema before further processing.</para>
-
-<para>Some document constraints can't be expressed in grammar-based schema languages
-like RELAX NG or W3C <acronym>XML</acronym> Schema. To define these additional
-constraints DocBook <acronym>V5.0</acronym> uses Schematron.  We recommend that you
-validate your document against both the RELAX NG and
-Schematron schemas.</para>
-
-<section xml:id="schemas">
-<title>Where to get the schemas</title>
-
-<para>The latest versions of schemas can be obtained from <link
-xlink:href="http://docbook.org/schemas/5x.html"/>. At the time this was
-written the latest version was &version;. Individual schemas are
-available at the following locations:</para>
-
-<variablelist>
-<varlistentry>
-<term>RELAX NG schema</term>
-<listitem><para><link xlink:href="http://docbook.org/xml/&version;/rng/docbook.rng"/></para></listitem>
-</varlistentry>
-<varlistentry>
-<term>RELAX NG schema in compact syntax</term>
-<listitem><para><link xlink:href="http://docbook.org/xml/&version;/rng/docbook.rnc"/></para></listitem>
-</varlistentry>
-<varlistentry>
-<term>DTD</term>
-<listitem><para><link xlink:href="http://docbook.org/xml/&version;/dtd/docbook.dtd"/></para></listitem>
-</varlistentry>
-<varlistentry>
-<term>W3C <acronym>XML</acronym> Schema</term>
-<listitem><para><link xlink:href="http://docbook.org/xml/&version;/xsd/docbook.xsd"/></para></listitem>
-</varlistentry>
-<varlistentry>
-<term>Schematron schema with additional checks</term>
-<listitem><para><link xlink:href="http://docbook.org/xml/&version;/sch/docbook.sch"/></para></listitem>
-</varlistentry>
-</variablelist>
-
-<para>These schemas are also available from the mirror at
-<link xlink:href="http://www.oasis-open.org/docbook/xml/&version;/"/>.</para>
-
-</section>
-
-<section xml:id="docs">
-<title>DocBook documentation</title>
-
-<para>Detailed documentation about each DocBook <acronym>V5.0</acronym> element can be found in <phrase condition="print">The DocBook Element Reference in this book.</phrase><phrase condition="online"><link
-xlink:href="http://docbook.org/tdg5/en/html/pt02.html">the reference part
-of <citetitle>DocBook: The Definitive Guide</citetitle></link>.</phrase></para>
-<para>
-  <citetitle>DocBook XSL: The Complete Guide</citetitle><biblioref
-  linkend="Stayton07"/> by Bob Stayton is the essential reference for
-  the DocBook stylesheets.
-</para>
-
-<indexterm startref="XMLgetstart" class="endofrange"/>
-</section>
-</section>
-
-<section xml:id="bwcompat">
-<title>Backward Compatibility</title>
-
-<para>Whether you're just getting started with DocBook, or curating a
-collection of tens of thousands of DocBook documents, one question
-that you have to consider is <quote>how stable is DocBook?</quote> Will the
-documents that you write today still be useful tomorrow, or next year,
-or in the next century?</para>
-
-<para>This question may seem particularly pertinent if you're in the
-process of converting a collection of DocBook <acronym>4.x</acronym> documents to
-DocBook <acronym>V5.0</acronym> because we introduced a number of backward incompatible
-changes in <acronym>V5.0</acronym>.</para>
-
-<para>The DocBook Technical Committee understands that the community
-benefits from the long-term stability of the DocBook family of
-schemas. We also understand that DocBook must continue to adapt and
-change in order to remain relevant in a changing world.</para>
-
-<para>All changes, and especially changes that are backward
-incompatible (changes that make a currently valid document no longer
-valid under a new version of the schema), have a cost associated with
-them. The technical committee must balance those costs against the
-need to remain responsive to the community's desire to see DocBook
-grow to cover the new use cases that inevitably arise in
-documentation.</para>
-
-<para>With that in mind, the DocBook Technical Committee has adopted
-the following policy on backward incompatible changes. This policy
-spells out when backward incompatible changes can occur and how much
-notice the technical committee must provide before adopting a schema
-that is backward incompatible with the current release.</para>
-
-<para>This policy allows DocBook to continue to change and adapt while
-simultaneously guaranteeing that existing users will have sufficient
-advance notice to develop reasonable migration plans.</para>
-
-<para>With respect to schema changes, the technical committee asserts
-that the following points will always apply:</para>
-
-<itemizedlist>
-<listitem>
-<para>A point release (X.1 to X.2, X.2 to X.3, X.1 to X.1.2, etc.)
-<emphasis>will not</emphasis> contain any backward incompatible changes.
-</para>
-</listitem>
-<listitem>
-<para>A major release (X.1 to Y.0, X.2 to Y.0, X.1.2 to Y.0, etc.)
-<glossterm>may</glossterm> contain backward incompatible changes if:
-</para>
-<itemizedlist>
-<listitem>
-<para>the change was announced in the release notes for the previous
-version (major or minor) and</para>
-</listitem>
-<listitem>
-<para>the change was announced in a release that occurred at least six
-months previously.</para>
-</listitem>
-</itemizedlist>
-</listitem>
-</itemizedlist>
-
-<para>By these rules, the technical committee can announce, in <acronym>V5.1</acronym>
-for example, its plans to make a backward incompatible change in
-V6.0. Then, in V6.0, if it's been at least six months since <acronym>V5.1</acronym> was
-released, it can make that change.</para>
-
-<para>As a general rule, the technical committee tries to avoid backward
-incompatible changes.</para>
-</section>
 </chapter>

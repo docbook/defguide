@@ -18,24 +18,23 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>coref</tag> element plays a role for callouts
+      that is analogous to the role of <tag role="keep-together">footnoteref</tag> for footnotes.</para>
 
+      <para>Use one <tag>co</tag> and one or more
+      <tag>coref</tag> elements when you want to indicate that the
+      same callout should appear in several places.</para>
 
-<para>The <tag>coref</tag> plays a role for callouts that is analagous
-to the role of <tag>footnoteref</tag> for footnotes.</para>
+      <note>
+        <para>A <tag>coref</tag> is not a cross-reference to a callout
+        (use <tag>xref</tag> for that); rather, it is an indication
+        that the callout appears semantically in more than one place.</para>
+      </note>
 
-<para>Use one <tag>co</tag> and one or more
-<tag>coref</tag> elements when you want to indicate that the
-same callout should appear in several places.</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<note>
-<para>A <tag>coref</tag> is not a cross-reference to a callout
-(use <tag>xref</tag> for that), rather, it is an indication that the
-callout appears semantically in more than one place.</para>
-</note>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?></para>
+        <para>Formatted inline.</para>
 </refsection>
 
 <?tdg-attributes?>

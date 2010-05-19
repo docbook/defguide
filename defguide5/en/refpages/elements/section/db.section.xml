@@ -18,45 +18,48 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>section</tag> is one of the top-level sectioning
+      elements in a component. There are three types of sectioning elements in
+      DocBook:</para>
 
-<para>A <tag>section</tag> is one of the top-level sectioning elements in
-a component. There are three types of sectioning elements in
-DocBook:
-</para>
+      <itemizedlist>
+        <listitem>
+          <para>Explicitly numbered sections,
+          <tag>sect1</tag>…<tag>sect5</tag>, which must be
+          properly nested and can only be five levels deep.</para>
+        </listitem>
 
-<itemizedlist>
-<listitem><para>Explicitly numbered sections, <tag>sect1</tag>…<tag>sect5</tag>,
-which must be properly nested and can only be five levels deep.
-</para></listitem>
-<listitem><para>Recursive <tag>section</tag>s, which are an alternative to the numbered
-sections and have unbounded depth.
-</para></listitem>
-<listitem><para>And <tag>simplesect</tag>s, which are terminal.
-The <tag>simplesect</tag>s can occur as the <quote>leaf</quote>
-sections in either recursive sections or any of the numbered sections,
-or directly in components. </para></listitem>
-</itemizedlist>
+        <listitem>
+          <para>Recursive <tag>section</tag>s, which are an
+          alternative to the numbered sections and have unbounded
+          depth.</para>
+        </listitem>
 
-<para>The <tag>section</tag> element may be more convenient than numbered
-sections in some authoring environments because instances can be
-moved around in the document hierarchy without renaming.
-</para>
+        <listitem>
+          <para><tag>simplesect</tag>s, which are terminal. The
+          <tag>simplesect</tag>s can occur as the <quote>leaf</quote>
+          sections in recursive sections or any of the numbered sections, or
+          directly in components.</para>
+        </listitem>
+      </itemizedlist>
 
-<para>None of the sectioning elements is allowed to <quote>float</quote> in
-a component. You can place paragraphs and other block elements
-before a section, but you cannot place anything after it.
-</para>
+      <para>The <tag>section</tag> element may be more convenient than
+      numbered sections in some authoring environments because instances can
+      be moved around in the document hierarchy without renaming.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-Sometimes sections are numbered.
-</para>
-<para>Use of deeply nested <tag>section</tag>s may cause problems
-in some processing systems.
-</para>
+      <para>None of the sectioning elements is allowed to <quote>float</quote>
+      in a component. You can place paragraphs and other block elements before
+      a section, but you cannot place anything after it.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted as a displayed block. Sometimes sections are
+        numbered.</para>
+
+        <para>Use of deeply nested <tag>section</tag>s may cause
+        problems in some processing systems.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

@@ -18,28 +18,30 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>An <tag>entry</tag> is a cell in a table.</para>
 
-<para>An <tag>entry</tag> is a cell in a table.</para>
+      <para>Each <tag>entry</tag> may specify its starting column.
+      Entries that do not explicitly specify a starting column begin
+      implicitly in the column that is immediately adjacent to the preceding
+      cell. Note that <tag>entry</tag>s with the <tag class="attribute">morerows</tag> attribute from preceding rows
+      implicitly occupy cells in the succeeding
+      <tag>row</tag>s.</para>
 
-<para>Each <tag>entry</tag> may specify its starting column. Entries
-that do not explicitly specify a starting column begin implicitly in
-the column that is immediately adjacent to the preceding cell. Note
-that <tag>entry</tag>s with the <tag class="attribute">morerows</tag>
-attribute from preceding rows implicitly occupy cells in the
-succeeding <tag>row</tag>s.</para>
+      <para>A <tag>row</tag> is not required to be full. It is legal
+      for some entries to be completely absent (at the beginning, middle, or
+      end of a row).</para>
 
-<para>A <tag>row</tag> is not required to be full. It is legal for
-some entries to be completely absent (at the beginning, middle, or end
-of a row).</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='calssemantics'?>
-</para>
-<para>The content of <tag>entry</tag> is formatted to fit within the table
-cell that it occupies.  Horizontal and vertical spanning may allow the
-content of an <tag>entry</tag> to occupy several physical cells.
-</para>
+        <para>This element is expected to obey the semantics of the
+        <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
+
+        <para>The content of <tag>entry</tag> is formatted to fit
+        within the table cell that it occupies. Horizontal and vertical
+        spanning may allow the content of an <tag>entry</tag> to
+        occupy several physical cells.</para>
 </refsection>
 
 <?tdg-attributes?>

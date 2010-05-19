@@ -18,31 +18,26 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>trademark</tag> identifies a legal
+      trademark.</para>
 
+      <para>One of the values of the <tag class="attribute">class</tag> attribute on
+      <tag>trademark</tag> is <literal>Copyright</literal>. DocBook
+      also has a <tag>copyright</tag> element, but it is confined to
+      meta-information. A copyright in running text is best represented as
+      <tag class="starttag">trademark class=copyright</tag>.</para>
 
-<para>A <tag>trademark</tag> identifies a legal trademark.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>One of the values of the <tag class="attribute">class</tag>
-attribute on <tag>trademark</tag> is <literal>Copyright</literal>.
-DocBook also has a <tag>copyright</tag> element, but it is
-confined to meta-information.  A copyright in running text is
-best represented as <tag class="starttag">trademark
-class=copyright</tag>.
-</para>
+        <para>Formatted inline.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-</para>
-
-<para>In addition to <tag>trademark</tag>, two of the values of the
-<tag class="attribute">class</tag> attribute on
-<tag>productname</tag> make assertions about trademarks;
-presumably the same markup is intended for both
-<tag>trademark</tag> and <tag>productname</tag> when they make
-assertions about trademarks.
-</para>
+        <para>In addition to <tag>trademark</tag>, two of the values
+        of the <tag class="attribute">class</tag> attribute on
+        <tag>productname</tag> make assertions about trademarks;
+        presumably the same markup is intended for both
+        <tag>trademark</tag> and <tag>productname</tag> when
+        they make assertions about trademarks.</para>
 </refsection>
 
 <?tdg-attributes?>

@@ -18,27 +18,22 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>quote</tag> surrounds an inline quotation. Using an
+      element for quotations is sometimes more convenient than entering the
+      quotation marks directly, and makes it possible for a presentation
+      system to alter the format of the quotation marks.</para>
 
-<para>A <tag>quote</tag> surrounds an inline quotation. Using an
-element for quotations is sometimes more convenient than
-entering the quotation marks directly, and makes it possible for
-a presentation system to alter the format of the quotation
-marks.
-</para>
-<para>Block quotations are properly identified as
-<tag>blockquote</tag>s.
-</para>
+      <para>Block quotations are properly identified as
+      <tag>blockquote</tag>s.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-The <tag>quote</tag> element is expected to generate
-the proper quotation marks.  These may be influenced by the 
-<tag class="attribute">lang</tag> attribute on an ancestor element.
-For example,
-a quote in French might use «guillemets» instead of
-English “quote marks.”
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted inline. The <tag>quote</tag> element is
+        expected to generate the proper quotation marks. These may be
+        influenced by the <tag class="attribute">lang</tag> attribute
+        on an ancestor element. For example, a quote in French might use
+        «guillemets» instead of English “quote marks.”</para>
 </refsection>
 
 <?tdg-attributes?>

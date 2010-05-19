@@ -18,28 +18,26 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>tgroup</tag> surrounds a logically complete portion
+      of a table. Most tables consist of a single <tag>tgroup</tag>,
+      but complex tables with widely varying column specifications may be
+      easier to code using multiple <tag>tgroup</tag>s.</para>
 
+      <para>The <tag>tgroup</tag> specifies the number of columns in
+      the table, and contains all of the header, body, and footer rows, along
+      with any additional column or span specifications necessary to express
+      the geometry of the table.</para>
 
-<para>A <tag>tgroup</tag> surrounds a logically complete portion of a table.
-Most tables consist of a single <tag>tgroup</tag>, but complex tables
-with widely varying column specifications may be easier to code using
-multiple <tag>tgroup</tag>s.
-</para>
+      <para>Most of the properties of rows, columns, and cells inherit their
+      default characteristics from the enclosing
+      <tag>tgroup</tag>.</para>
 
-<para>The <tag>tgroup</tag> specifies the number of columns in the table,
-and contains all of the header, body, and footer
-rows, along with any additional column or span specifications
-necessary to express the geometry of the table.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>Most of the properties of rows, columns, and cells inherit their 
-default characteristics from the enclosing <tag>tgroup</tag>.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='calssemantics'?>
-</para>
+        <para>This element is expected to obey the semantics of the
+        <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
 </refsection>
 
 <?tdg-attributes?>

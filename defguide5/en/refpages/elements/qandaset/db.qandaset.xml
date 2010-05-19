@@ -18,34 +18,28 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>qandaset</tag> is a list consisting of
+      <tag>question</tag>s and <tag>answer</tag>s. A
+      <tag>qandaset</tag> can be divided into sections.</para>
 
-<para>A <tag>qandaset</tag> is a list consisting of
-<tag>question</tag>s and <tag>answer</tag>s.
-A <tag>qandaset</tag> can be divided into sections.
-</para>
+      <para>Every entry in a <tag>qandaset</tag> must contain a
+      <tag>question</tag>, but <tag>answer</tag>s are optional
+      (some questions have no answers), and may be repeated (some questions
+      have more than one answer).</para>
 
-<para>Every entry in a <tag>qandaset</tag> must contain a
-<tag>question</tag>, but <tag>answer</tag>s are
-optional (some questions have no answers), and may be repeated (some
-questions have more than one answer).
-</para>
+      <para>Common uses for <tag>qandaset</tag>s include reader
+      questionnaires and lists of Frequently Asked Questions
+      (<acronym>FAQ</acronym>s). For the purpose of a <acronym>FAQ</acronym>,
+      DocBook <acronym>V3.1</acronym> added the <literal>FAQ</literal> class
+      to <tag>article</tag>.</para>
 
-<para>Common uses for <tag>qandaset</tag>s include reader
-questionnaires and lists of <quote>Frequently Asked Questions</quote>
-(<acronym>FAQ</acronym>s). For the purpose of an
-<acronym>FAQ</acronym>, DocBook <acronym>V3.1</acronym> added the
-<literal>FAQ</literal> class to <tag>article</tag>.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-The <tag class="attribute">defaultlabel</tag>
-attribute has a significant influence on the presentation of
-<tag>question</tag>s and <tag>answer</tag>s.
-</para>
+        <para>Formatted as a displayed block. The <tag class="attribute">defaultlabel</tag> attribute has a significant
+        influence on the presentation of <tag>question</tag>s and
+        <tag>answer</tag>s.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

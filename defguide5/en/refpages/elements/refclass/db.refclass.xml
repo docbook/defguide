@@ -18,32 +18,28 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>refclass</tag> element describes the
+      applicability or scope of a <tag>refentry</tag>. A
+      <tag>refclass</tag> might indicate that the entry was only
+      applicable to a particular application, for example, or only to a
+      particular vendor’s operating system.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>refclass</tag> element describes the applicability or scope
-of a <tag>refentry</tag>.  A <tag>refclass</tag> might indicate that
-the entry was only applicable to a particular application, for example,
-or only to a particular vendor's operating system.
-</para>
+        <para>May be formatted inline or as a displayed block, depending on
+        context. Sometimes suppressed.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-<?tdg gentext='format.csuppress'?>
-</para>
-<para>Formatting reference pages may require a fairly sophisticated
-processing system.  Much of the meta-information about a
-reference page (its name, type, purpose, title, and
-classification) is stored in wrappers near the beginning of
-the <tag>refentry</tag>.
-</para>
-<para>Common presentational features, such as titles and running
-heads, may require data from several of these wrappers plus
-some generated text. Other formatting often requires that
-these elements be reordered.
-</para>
+        <para>Formatting reference pages may require a fairly sophisticated
+        processing system. Much of the meta-information about a reference page
+        (its name, type, purpose, title, and classification) is stored in
+        wrappers near the beginning of the <tag>refentry</tag>.</para>
+
+        <para>Common presentational features, such as titles and running
+        heads, may require data from several of these wrappers plus some
+        generated text. Other formatting often requires that these elements be
+        reordered.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

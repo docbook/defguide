@@ -18,32 +18,24 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>funcdef</tag> contains the name of a programming
+      language function and its return type.</para>
 
+      <para>Within the <tag>funcdef</tag>, the function name is
+      identified with <tag>function</tag>, and the rest of the content
+      is assumed to be the return type.</para>
 
-<para>A <tag>funcdef</tag> contains the name of a programming language function,
-and its return type.
-</para>
-<para>Within the <tag>funcdef</tag>, the function name is identified with 
-<tag>function</tag>, and the rest of the content is assumed to be the
-return type.
-</para>
-<para>In the following definition, <function>max</function> is the name of the 
-function and <type>int</type> is the return type:
-<screen>
+      <para>In the following definition, <function>max</function> is the name
+      of the function and <type>int</type> is the return type:</para>
 
-&lt;funcdef&gt;int &lt;function&gt;max&lt;/function&gt;&lt;/funcdef&gt;
+      <screen>&lt;funcdef&gt;int &lt;function&gt;max&lt;/function&gt;&lt;/funcdef&gt;</screen>
 
-</screen>
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-For a complete description of the processing expecations,
-see <tag>funcsynopsis</tag>.
-</para>
+        <para>Formatted inline. For a complete description of the processing
+        expectations, see <tag role="keep-together">funcsynopsis</tag>.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

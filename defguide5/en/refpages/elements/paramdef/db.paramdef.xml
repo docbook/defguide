@@ -18,49 +18,33 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>In the syntax summary for a function in a programming language,
+      <tag>paramdef</tag> provides the description of a parameter to
+      the function. Typically, this includes the data type of the parameter
+      and its name. For parameters that are pointers to functions, it also
+      includes a summary of the nested parameters.</para>
 
+      <para>Within the <tag>paramdef</tag>, the parameter name is
+      identified with <tag>parameter</tag>, and the rest of the
+      content is assumed to be the data type.</para>
 
-<para>In the syntax summary for a function in a programming language,
-<tag>paramdef</tag> provides the description of a parameter to the
-function.  Typically, this includes the data type of the parameter
-and its name.  For parameters that are pointers to functions, it also
-includes a summary of the nested parameters.
-</para>
+      <para>In the following definition, <parameter>str</parameter> is the
+      name of the parameter and <type>char *</type> is its type:</para>
 
-<para>Within the <tag>paramdef</tag>, the parameter name is identified with 
-<tag>parameter</tag>, and the rest of the content is assumed to be the
-data type.
-</para>
+      <screen>&lt;paramdef&gt;char *&lt;parameter&gt;str&lt;/parameter&gt;&lt;/paramdef&gt;</screen>
 
-<para>In the following definition, <parameter>str</parameter> is the name of the 
-parameter and <type>char *</type> is its type:
-<screen>
+      <para>Sometimes a data type requires punctuation on both sides of the
+      parameter. For example, the <parameter>a</parameter> parameter in this
+      definition is an array of <type>char *</type>:</para>
 
-&lt;paramdef&gt;char *&lt;parameter&gt;str&lt;/parameter&gt;&lt;/paramdef&gt;
+      <screen>&lt;paramdef&gt;char *&lt;parameter&gt;a&lt;/parameter&gt;[]&lt;/paramdef&gt;</screen>
 
-</screen>
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>Sometimes a data type requires punctuation on both sides of the
-parameter.  For example, the <parameter>a</parameter> parameter in this
-definition is an array of 
-<type>char *</type>:
-<screen>
-
-&lt;paramdef&gt;char *&lt;parameter&gt;a&lt;/parameter&gt;[]&lt;/paramdef&gt;
-
-</screen>
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-For a complete description of the processing expectations,
-see <tag>funcsynopsis</tag>.
-</para>
+        <para>Formatted inline. For a complete description of the processing
+        expectations, see <tag role="keep-together">funcsynopsis</tag>.</para>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

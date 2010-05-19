@@ -18,37 +18,34 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A bibliography. A DocBook bibliography may contain some
+      introductory information, but its main content is a set of bibliography
+      entries (either <tag>biblioentry</tag> or
+      <tag>bibliomixed</tag>). These may occur directly inside the
+      <tag>bibliography</tag> element or inside
+      <tag>bibliodiv</tag> elements.</para>
 
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>A bibliography. A DocBook bibliography may contain some introductory
-information,
-but its main content is a set of bibliography entries (either 
-<tag>biblioentry</tag> or <tag>bibliomixed</tag>). These may occur
-directly inside the <tag>bibliography</tag> element or 
-inside <tag>bibliodiv</tag> elements.
-</para>
+        <para>Formatted as a displayed block. A
+        <tag>bibliography</tag> in a <tag>book</tag>
+        frequently causes a forced page break in print media.</para>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-A <tag>bibliography</tag> in a <tag>book</tag>
-frequently causes a forced page break in print media.
-</para>
-<para>Some systems may display only those entries within a 
-<tag>bibliography</tag> that are cited in the containing document.
-This may be an interchange issue. See <xref linkend="app-interchange"/>.
-</para>
-<para>The two styles of bibliography entry have quite different processing
-expectations. A <tag>biblioentry</tag> is <quote>raw;</quote> it contains
-a database-like collection of named fields.  A <tag>bibliomixed</tag>
-entry is <quote>cooked;</quote> the fields occur in the order in which
-they will be presented and additional punctuation may be sprinkled
-between the fields.
-</para>
+        <para>Some systems may display only those entries within a
+        <tag>bibliography</tag> that are cited in the containing
+        document. This may be an interchange issue. See <xref linkend="app-interchange"/>.</para>
 
-<para>See <tag>biblioentry</tag> and <tag>bibliomixed</tag> for
-further discussion.
-</para>
+        <para>The two styles of bibliography entry have quite different
+        processing expectations. A <tag>biblioentry</tag> is
+        <quote>raw</quote>; it contains a database-like collection of named
+        fields. A <tag>bibliomixed</tag> entry is
+        <quote>cooked</quote>; the fields occur in the order in which they
+        will be presented and additional punctuation may be sprinkled between
+        the fields.</para>
+
+        <para>See <tag>biblioentry</tag> and
+        <tag>bibliomixed</tag> for further discussion.</para>
 </refsection>
 
 <?tdg-attributes?>

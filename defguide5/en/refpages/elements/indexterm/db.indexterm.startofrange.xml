@@ -18,33 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A “start of range” <tag>indexterm</tag> marks the start of
+      a range. It must have an associated “end of range”
+      <tag>indexterm</tag>. The resulting index entry applies to the
+      entire range. See <xref linkend="element.db.indexterm.singular"/>.</para>
 
-<para>A “start of range” <tag>indexterm</tag> marks the start of a range.
-It must have an associated “end of range” <tag>indexterm</tag>.
-The resulting index entry applies to the entire range.
-See <xref linkend="element.db.indexterm.singular"/>.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
+        <para>See <xref linkend="element.db.indexterm.singular"/>.</para>
 
-<para>See <xref linkend="element.db.indexterm.singular"/>.
-</para>
+        <para>It is possible to construct index terms that are difficult to
+        parse at best and totally illogical at worst. Consider the
+        following:</para>
 
-<para>It is possible to construct index terms that are difficult to
-parse at best and totally illogical at worst. Consider the following:
+        <screen>&lt;indexterm class='startofrange' zone="id1 id2"&gt;...&lt;/indexterm&gt;</screen>
 
-<screen>&lt;indexterm class='startofrange' zone="id1 id2"&gt;...&lt;/indexterm&gt;</screen>
-</para>
-
-<para>There is no way that this can fit into the semantics of an
-<tag>indexterm</tag>. Although it claims to be the start of a range,
-it does not have an <tag class="attribute">xml:id</tag> for the
-end-of-range <tag>indexterm</tag> to point back to. In addition, it
-includes zoned terms, and mixing the two different methods for
-indicating a range in the same <tag>indexterm</tag> is probably a bad
-idea.
-</para>
+        <para>There is no way that this can fit into the semantics of an
+        <tag>indexterm</tag>. Although it claims to be the start of a
+        range, it does not have an <tag class="attribute">xml:id</tag>
+        for the end-of-range <tag>indexterm</tag> to point back to. In
+        addition, it includes zoned terms, and mixing the two different
+        methods for indicating a range in the same
+        <tag>indexterm</tag> is probably a bad idea.</para>
 </refsection>
 
 <?tdg-attributes?>

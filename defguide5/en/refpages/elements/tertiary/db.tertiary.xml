@@ -18,33 +18,28 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>tertiary</tag> element contains a third-level word
+      or phrase in an <tag>indexterm</tag>. The text of a
+      <tag>tertiary</tag> term is less significant than the
+      <tag>primary</tag> and <tag>secondary</tag> terms for
+      sorting and display purposes.</para>
 
+      <para>DocBook does not define any additional levels. You cannot use
+      <tag>indexterm</tag>s to construct indexes with more than three
+      levels without extending the schema.</para>
 
-<para>A <tag>tertiary</tag> element contains a third-level word or
-phrase in an <tag>indexterm</tag>. The text of a <tag>tertiary</tag>
-term is less significant than the <tag>primary</tag> and
-<tag>secondary</tag> terms for sorting and display purposes.
-</para>
+      <para>In <tag>indexterm</tag>s, you can only have one primary,
+      secondary, and tertiary term. If you want to index multiple tertiary
+      terms for the same primary and secondary, you must repeat the primary
+      and secondary in another <tag>indexterm</tag>. You cannot place
+      several <tag>tertiary</tag>s in the same primary.</para>
 
-<para>DocBook does not define any additional levels. You cannot use
-<tag>indexterm</tag>s to construct indexes with more than three
-levels without extending the schema.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>In <tag>indexterm</tag>s, you can only have one primary,
-secondary, and tertiary term. If you want to index multiple
-tertiary terms for the same primary and secondary, you must
-repeat the primary and secondary in another
-<tag>indexterm</tag>. You cannot place several
-<tag>tertiary</tag>s in the same primary.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.suppress'?>
-This element provides data for processing but
-is not rendered in the primary flow of text.
-</para>
+        <para>Suppressed. This element provides data for processing but is not
+        rendered in the <phrase role="keep-together">primary</phrase> flow of
+        text.</para>
 </refsection>
 
 <?tdg-attributes?>

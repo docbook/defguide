@@ -18,29 +18,28 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>seealsoie</tag> identifies a <quote>See
+      also</quote> cross-reference in an <tag>indexentry</tag>. The
+      <tag>indexentry</tag>s occur in an <tag>index</tag>, not
+      in the flow of the text. They are part of a formatted index, not markers
+      for indexing.</para>
 
-<para>A <tag>seealsoie</tag> identifies a <quote>See also</quote>
-cross-reference in an <tag>indexentry</tag>.
-The <tag>indexentry</tag>s occur in an <tag>index</tag>, not in the
-flow of the text. They are part of a formatted index, not markers for
-indexing.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-The <tag>indexentry</tag>s that include a <tag>seealsoie</tag>
-should be formatted normally, with the <quote>See also</quote> indented below
-the term.
-</para>
-<para>A <tag>seealsoie</tag> is usually expected to generate the text
-<quote>See Also</quote>.
-</para>
-<para>The <tag class="attribute">linkends</tag> attribute should point other
-<tag>indexentry</tag>s in the same <tag>index</tag>. Online systems
-may use them to form hypertext links.
-</para>
-</refsection> 
+        <para>Formatted as a displayed block. The
+        <tag>indexentry</tag>s that include a
+        <tag>seealsoie</tag> should be formatted normally, with the
+        <quote>See also</quote> indented below the term.</para>
+
+        <para>A <tag>seealsoie</tag> is usually expected to generate
+        the text <quote>See also</quote>.</para>
+
+        <para>The <tag class="attribute">linkends</tag> attribute
+        should point other <tag>indexentry</tag>s in the same
+        <tag>index</tag>. Online systems may use them to form
+        hypertext links.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

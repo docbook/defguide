@@ -18,37 +18,39 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>This <tag>informaltable</tag> element identifies an
+      informal HTML table (one without a <tag role="keep-together">caption</tag>). DocBook allows either
+      <acronym>CALS</acronym> or <acronym>HTML</acronym> tables, both of which
+      describe tables geometrically using rows, columns, and cells.</para>
 
+      <para>HTML tables may include column headers and footers. To identify a
+      row header, use a <tag>th</tag> in the row.</para>
 
-<para>This <tag>informaltable</tag> element identifies an informal
-HTML table (one without a <tag>caption</tag>). DocBook allows either
-<acronym>CALS</acronym> or <acronym>HTML</acronym> tables, both of
-which describe tables geometrically using rows, columns, and cells.
-</para>
+      <tip><info><title>Why aren’t HTML tables in the HTML namespace?</title></info>
+        
 
-<para>HTML tables may include column headers and footers. To identify a 
-row header, use a <tag>th</tag> in the row.</para>
+        <para>HTML tables were introduced in DocBook V4.3, which was not in a
+        namespace and was defined normatively with a DTD. DTDs do not support
+        namespaces very well. The Technical Committee decided to simply add
+        the HTML element names to DocBook. This solution simplified
+        specification, avoided issues of namespace support in DTDs, and solved
+        the most compelling use case: cut-and-paste of simple, text-only HTML
+        tables into DocBook.</para>
 
-<tip>
-<title>Why aren't HTML tables in the HTML namespace?</title>
-<para>HTML tables were introduced in DocBook V4.3, which was not in a namespace and
-was defined normatively with a DTD. DTDs do not support namespaces very well. The
-Technical Committee decided to simply add the HTML element names to DocBook.
-This solution simplified specification, avoided issues of namespace support in
-DTDs, and solved the most compelling use case: cut-and-paste of simple, text-only
-HTML tables into DocBook.</para>
-<para>Strictly speaking, it would be incorrect to put these elements in the XHTML
-namespace because the DocBook common attributes are allowed on all of them and
-the <tag>td</tag> and <tag>th</tag>
-elements have very different content models than their HTML counterparts.
-</para>
-</tip>
+        <para>Strictly speaking, it would be incorrect to put these elements
+        in the XHTML namespace because the DocBook common attributes are
+        <phrase role="keep-together">allowed</phrase> on all of them and the
+        <tag>td</tag> and <tag>th</tag> elements have very
+        different content models than their HTML counterparts.</para>
+      </tip>
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-<?tdg gentext='htmltablesemantics'?>
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted as a displayed block. This element is expected to obey
+        the semantics described in <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/html401/struct/tables.html"><citetitle>Tables</citetitle></link>,
+        as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle>
+        <biblioref linkend="XHTML"/>.</para>
 </refsection>
 
 <?tdg-attributes?>

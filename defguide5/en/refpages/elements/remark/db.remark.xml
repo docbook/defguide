@@ -18,32 +18,26 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>remark</tag> element is designed to hold
+      remarks—for example, editorial comments—that are useful while the
+      document is in the draft stage, but are not intended for final <phrase role="keep-together">publication</phrase>.</para>
 
+      <para>Remarks are available almost anywhere and have a particularly
+      broad content model. Your processing system may or may not support
+      either the use of comments everywhere they are allowed or the full
+      generality of the <tag>remark</tag> content model.</para>
 
-<para>The <tag>remark</tag> element is designed to hold remarks, for
-example, editorial comments, that are useful while the document is
-in the draft stage, but are not intended for final publication.
-</para>
+      <para>Prior to version 4.0 of DocBook, this element was named <tag namespace="">comment</tag>.</para>
 
-<para>Remarks are available almost anywhere and have a particularly broad
-content model.  Your processing system may or may not support either the use
-of comments everywhere they are allowed or the full generality of
-the <tag>remark</tag> content model.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>Prior to version 4.0 of DocBook, this element was named
-<tag namespace="">comment</tag>.</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-Remarks are often printed only in draft
-versions of a document and suppressed otherwise.  This may be
-controlled by the <tag class="attribute">status</tag> attribute
-of an ancestor element (for example, <tag>chapter</tag>), or by
-external processes, such as selecting an alternate stylesheet
-when publishing.
-</para>
+        <para>May be formatted inline or as a displayed block, depending on
+        context. Remarks are often printed only in draft versions of a
+        document and suppressed otherwise. This may be controlled by the
+        <tag class="attribute">status</tag> attribute of an ancestor
+        element (e.g., <tag>chapter</tag>), or by external processes,
+        such as selecting an alternate stylesheet when publishing.</para>
 </refsection>
 
 <?tdg-attributes?>

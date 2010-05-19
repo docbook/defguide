@@ -18,27 +18,23 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>For the most part, DocBook attempts to describe document structure
+      rather than presentation. However, in some complex environments, there
+      may be no reasonable set of processing expectations that can guarantee
+      correct formatting.</para>
 
-<para>For the most part, DocBook attempts to describe document
-structure rather than presentation. However, in some complex
-environments, there may be no reasonable set of processing
-expectations that can guarantee correct formatting.
-</para>
+      <para>There are two such environments in DocBook:
+      <tag>cmdsynopsis</tag> and <tag>rhs</tag>. Within a long
+      synopsis or long “righthand side,” it may be necessary to specify the
+      location of a line break explicitly.</para>
 
-<para>There are two such environments in DocBook:
-<tag>cmdsynopsis</tag> and <tag>rhs</tag>. Within a long synopsis or
-long “right hand side”, it may be necessary to specify the location of
-a line break explicitly.
-</para>
+      <para>The <tag>sbr</tag> element indicates the position of such
+      a line break. It is purely presentational.</para>
 
-<para>The <tag>sbr</tag> element indicates the position of such a line
-break. It is purely presentational.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para>An <tag>sbr</tag> causes a line break.
-</para>
+        <para>An <tag>sbr</tag> causes a line break.</para>
 </refsection>
 
 <?tdg-attributes?>

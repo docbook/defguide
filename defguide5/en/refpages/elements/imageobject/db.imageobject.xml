@@ -18,27 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>An <tag>imageobject</tag> is a wrapper containing
+      <tag>imagedata</tag> and its associated meta-information.</para>
 
+      <para>If the SVG Module is used, <tag>imageobject</tag> can also
+      contain the <tag namespace="http://www.w3.org/2000/svg">svg:svg</tag> element.</para>
 
-<para>An <tag>imageobject</tag> is a wrapper containing
-<tag>imagedata</tag> and its associated meta-information.
-</para>
+      <?dbfo-need height=”2in”
+?>
 
-<para>If the SVG Module is used, <tag>imageobject</tag> can
-also contain the <tag namespace="http://www.w3.org/2000/svg">svg:svg</tag>
-element.</para>
+      <refsection xml:id="dbreproc.imageobject"><info><title>Processing expectations</title></info>
+        
 
-<refsection xml:id="dbreproc.imageobject"><title>Processing expectations</title>
-<para><?tdg gentext='format.context'?>
-It might not be rendered at all, depending on its
-placement within a <tag>mediaobject</tag> or
-<tag>inlinemediaobject</tag> and the constraints on the
-publishing system.  For a more detailed description of the semantics
-involved, see <tag>mediaobject</tag>.
-</para>
-</refsection> 
-
+        <para>May be formatted inline or as a displayed block, depending on
+        context. It might not be rendered at all, depending on its placement
+        within a <tag>mediaobject</tag> or
+        <tag>inlinemediaobject</tag> and the constraints on the
+        publishing system. For a more detailed description of the semantics
+        involved, see <tag>mediaobject</tag>.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>

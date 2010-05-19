@@ -2,149 +2,178 @@
 <appendix xmlns="http://docbook.org/ns/docbook"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           version="5.0" xml:id="app-variants">
-  <info>
-    <title>DocBook Variants and Future Directions</title>
-    <pubdate>$Date: 2009-10-28 05:29:14 -0600 (Wed, 28 Oct 2009) $</pubdate>
-    <releaseinfo>$Revision: 205773 $</releaseinfo>
-  </info>
-  <?dbhtml filename="variants.html"?>
-  <section xml:id="s.variants"><title>DocBook Variants</title>
-  <indexterm xml:id="idx.s.variants" class="startofrange"><primary>DocBook</primary><secondary>variants</secondary></indexterm>
-  <para>
-    The DocBook community has developed several variants that, while
-    not part of the normative specification, have proven to be
-    useful. These include:
-  </para>
+<info>
+  <title>DocBook Variants and Future Directions</title>
+  <pubdate>$Date: 2009-10-28 05:29:14 -0600 (Wed, 28 Oct 2009) $</pubdate>
+  <releaseinfo>$Revision: 205773 $</releaseinfo>
+</info>
+<?dbhtml filename="variants.html"?>
+
+<section xml:id="s.variants"><info><title>DocBook Variants</title></info>
+    <para><indexterm class="startofrange" xml:id="idx.s.variants">
+        <primary>DocBook</primary>
+
+        <secondary>variants</secondary>
+      </indexterm>The DocBook community has developed several variants that,
+    while not part of the normative specification, have proven to be useful.
+    These include:</para>
+
     <variablelist>
       <varlistentry>
-        <term>Simplified DocBook:</term>
-        <listitem><indexterm><primary>DocBook</primary><secondary>simplified schema</secondary></indexterm>
-        <indexterm><primary>Simplified DocBook</primary></indexterm>
-          <para>
-            Simplified DocBook is a proper subset of
-            DocBook. Therefore, any valid instance will also be valid
-            against the full DocBook schema. The objective is to
-            provide a significantly smaller schema that is useful for
-            articles and other small documents. As of the publication
-            of this book, the latest version of Simplified DocBook was
-            based on DocBook <acronym>V4.5</acronym>. Further
-            information can be found at <link
-            xlink:href="http://www.docbook.org/schemas/simplified"/>.
-          </para>
+        <term>Simplified DocBook</term>
+
+        <listitem>
+          <para><indexterm>
+              <primary>DocBook</primary>
+
+              <secondary>simplified schema</secondary>
+            </indexterm><indexterm>
+              <primary>Simplified DocBook</primary>
+            </indexterm>Simplified DocBook is a proper subset of DocBook.
+          Therefore, any valid instance will also be valid against the full
+          DocBook schema. The objective is to provide a significantly smaller
+          schema that is useful for articles and other small documents. As of
+          the publication of this book, the latest version of Simplified
+          DocBook was based on DocBook <acronym>V4.5</acronym>. Further
+          information can be found at <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.docbook.org/schemas/simplified">http://www.docbook.org/schemas/simplified</uri>.</para>
         </listitem>
       </varlistentry>
+
       <varlistentry>
-        <term>DocBook Website:</term>
-        <listitem><indexterm><primary>DocBook</primary><secondary>Website schema</secondary></indexterm>
-        <indexterm><primary>website schema</primary><secondary>DocBook</secondary></indexterm>
-          <para>
-            The DocBook website schema is a customization of the
-            schema designed for building websites. There is also
-            support in the DocBook stylesheets for this schema. As of
-            the publication of this book, there is a version of the
-            schema based on DocBook <acronym>V5.0</acronym> under
-            development. Information about the DocBook website and how
-            to use it can be found in <citetitle>DocBook XSL: The
-            Complete Guide</citetitle><biblioref linkend="Stayton07"/>
-            and at
-            <link xlink:href="http://www.dpawson.co.uk/docbook/website/"/>.
-            The latter has information about the DocBook <acronym>V5.0</acronym>
-            version of the schema.
-          </para>
+        <term>DocBook website</term>
+
+        <listitem>
+          <para><indexterm>
+              <primary>DocBook</primary>
+
+              <secondary>website schema</secondary>
+            </indexterm><indexterm>
+              <primary>website schema</primary>
+
+              <secondary>DocBook</secondary>
+            </indexterm>The DocBook website schema is a customization of the
+          schema designed for building websites. There is also support in the
+          DocBook stylesheets for this schema. As of the publication of this
+          book, there is a version of the schema based on DocBook
+          <acronym>V5.0</acronym> under development. Information about the
+          DocBook website and how to use it can be found in <citetitle>DocBook
+          XSL: The Complete Guide</citetitle> <biblioref linkend="Stayton07"/> and at <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.dpawson.co.uk/docbook/website/">http://www.dpawson.co.uk/docbook/website/</uri>. The latter
+          has information about the DocBook <acronym>V5.0</acronym> version of
+          the schema.</para>
         </listitem>
       </varlistentry>
+
       <varlistentry>
-        <term>DocBook Slides:</term>
-        <listitem><indexterm><primary>DocBook</primary><secondary>slides</secondary></indexterm>
-          <para>
-            This schema is a customization for making slide sets. The
-            schema and stylesheets can be found at <link
-            xlink:href="docbook.sourceforge.net"/> as part of the open
-            source DocBook stylesheet distribution.
-          </para>
+        <term>DocBook slides</term>
+
+        <listitem>
+          <para><indexterm>
+              <primary>DocBook</primary>
+
+              <secondary>slides</secondary>
+            </indexterm>This schema is a customization for making slide sets.
+          The schema and stylesheets can be found at <uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docbook.sourceforge.net">http://docbook.sourceforge.net</uri> as part of the open
+          source DocBook stylesheet distribution.<indexterm class="endofrange" startref="idx.s.variants"/></para>
         </listitem>
       </varlistentry>
     </variablelist>
-<indexterm startref="idx.s.variants" class="endofrange"/>
   </section>
-  <section>
-    <title>Future Directions</title>
-    <indexterm><primary>DocBook</primary><secondary>future directions</secondary></indexterm>
-    <para>
-      With the introduction of DocBook <acronym>V5.0</acronym>, there
-      have been several new initiatives started to take advantage of
-      the increased flexibility and customizability of the standard.
-      Two of these initiatives have become subcommittees of the
-      <acronym>OASIS</acronym> DocBook Technical Committee:
-    </para>
+
+  <section><info><title>Future Directions</title></info>
+    
+
+    <para><indexterm>
+        <primary>DocBook</primary>
+
+        <secondary>future directions</secondary>
+      </indexterm>With the introduction of DocBook <acronym>V5.0</acronym>,
+    there have been several new initiatives started to take advantage of the
+    increased flexibility and customizability of the standard. Two of these
+    initiatives have become subcommittees of the <acronym>OASIS</acronym>
+    DocBook Technical Committee:</para>
+
     <variablelist>
       <varlistentry>
-        <term><acronym>OASIS</acronym> DocBook Publisher's Subcommittee:</term>
-        <listitem><indexterm><primary>DocBook</primary><secondary>Publisher's Subcommittee</secondary></indexterm><indexterm><primary>Publisher's Subcommittee, DocBook</primary></indexterm>
-          <para>
-            This subcommittee is chartered to develop and maintain
-            official variants of DocBook in support of the publishing
-            industry. In May, 2009, this subcommittee released <link
-            xlink:href="http://docs.oasis-open.org/docbook/specs/publishers-1.0-spec-cd-01.html">The
-            DocBook Publishers Schema Version 1.0</link>, a draft
-            based on the DocBook <acronym>V5.0</acronym> standard.
-          </para>
+        <term><acronym>OASIS</acronym> DocBook Publisher’s Subcommittee</term>
+
+        <listitem>
+          <para><indexterm>
+              <primary>DocBook</primary>
+
+              <secondary>Publisher’s Subcommittee</secondary>
+            </indexterm><indexterm>
+              <primary>Publisher’s Subcommittee, DocBook</primary>
+            </indexterm>This subcommittee is chartered to develop and maintain
+          official variants of DocBook in support of the publishing industry.
+          In May, 2009, this subcommittee released <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docs.oasis-open.org/docbook/specs/publishers-1.0-spec-cd-01.html">The
+          DocBook Publishers Schema Version 1.0</link>, a draft based on the
+          DocBook <acronym>V5.0</acronym> standard.</para>
         </listitem>
       </varlistentry>
+
       <varlistentry>
-        <term><acronym>OASIS</acronym> DocBook eLearning Subcommittee:</term>
-        <listitem><indexterm><primary>DocBook</primary><secondary>eLearning Subcommittee</secondary></indexterm><indexterm><primary>eLearning Subcommittee, DocBook</primary></indexterm>
-          <para>
-            This subcommittee will develop enhancements to the DocBook
-            standard for eLearning applications, including materials for
-            online learning, instructor-led training and other related
-            educational activities.
-          </para>
+        <term><acronym>OASIS</acronym> DocBook eLearning Subcommittee</term>
+
+        <listitem>
+          <para><indexterm>
+              <primary>DocBook</primary>
+
+              <secondary>eLearning Subcommittee</secondary>
+            </indexterm><indexterm>
+              <primary>eLearning Subcommittee, DocBook</primary>
+            </indexterm>This subcommittee will develop enhancements to the
+          DocBook standard for <phrase role="keep-together">eLearning</phrase>
+          applications, including materials for online learning,
+          instructor-led training and other related educational
+          activities.</para>
         </listitem>
       </varlistentry>
     </variablelist>
-    <section>
-      <title>DocBook Assembly Mechanism</title>
-      <indexterm><primary>assembly mechanism</primary></indexterm>
-      <indexterm><primary>DocBook</primary><secondary>assembly</secondary></indexterm>
-      <indexterm><primary>future directions</primary><secondary>assembly mechanism</secondary></indexterm><indexterm><primary>topic-oriented writing</primary></indexterm>
-      <para>
-        In addition to these two subcommittees, there is a current
-        effort to create markup for an <quote>assembly</quote>
-        capability to better support development of documents using a
-        modular approach.
-      </para>
-      <para>
-         Most modular methodologies use a topic-oriented approach,
-         where writers create independent units of information that
-         are meant to stand alone.  Topics are then collected into a
-         library in much the same way that programmers create
-         libraries of functions.  Authors select the topics they
-         need to assemble the documentation for a particular system
-         from the library.
-      </para>
-      <para>
-        In order to support modular methodologies, you need support
-        for marking up individual topics, which DocBook does well. You
-        also need support for some kind of <quote>map</quote> or
-        <quote>assembly</quote> file that identifies which topics are required
-        for a particular deliverable, and at least for print deliverables,
-        what order they should be presented in.
-      </para>
-      <para>
-        The proposed DocBook assembly would serve this purpose. While
-        still under consideration as this book is being written, the
-        general outline of an assembly is clear. It would identify a
-        collection of resources (which could include topics and other
-        modules), an ordering of those resources for a particular
-        document, a set of relationships between resources, and the
-        transformations that are to be applied to the collection.
-      </para>
-      <para>
-        While DocBook already supports many aspects of topic-oriented
-        writing, the assembly mechanism is being designed to provide a more
-        capable and intuitive model for this type of methodology. 
-      </para>
+
+    <section><info><title>DocBook Assembly Mechanism</title></info>
+      
+
+      <para><indexterm>
+          <primary>assembly mechanism</primary>
+        </indexterm><indexterm>
+          <primary>DocBook</primary>
+
+          <secondary>assembly</secondary>
+        </indexterm><indexterm>
+          <primary>future directions</primary>
+
+          <secondary>assembly mechanism</secondary>
+        </indexterm><indexterm>
+          <primary>topic-oriented writing</primary>
+        </indexterm>In addition to these two subcommittees, there is a current
+      effort to create markup for an <quote>assembly</quote> capability to
+      better support development of documents using a modular approach.</para>
+
+      <para>Most modular methodologies use a topic-oriented approach, where
+      writers create independent units of information that are meant to stand
+      alone. Topics are then collected into a library in much the same way
+      that programmers create libraries of functions. Authors select the
+      topics they need to assemble the documentation for a particular system
+      from the library.</para>
+
+      <para>In order to support modular methodologies, you need support for
+      marking up individual topics, which DocBook does well. You also need
+      support for some kind of <quote>map</quote> or <quote>assembly</quote>
+      file that identifies which topics are required for a particular
+      deliverable, and at least for print deliverables, what order they should
+      be presented in.</para>
+
+      <para>The proposed DocBook assembly would serve this purpose. While
+      still under consideration as this book is being written, the general
+      outline of an assembly is clear. It would identify a collection of
+      resources (which could include topics and other modules), an ordering of
+      those resources for a particular document, a set of relationships
+      between resources, and the transformations that are to be applied to the
+      collection.</para>
+
+      <para>While DocBook already supports many aspects of topic-oriented
+      writing, the assembly mechanism is being designed to provide a more
+      capable and intuitive model for this type of methodology.</para>
     </section>
   </section>
 </appendix>

@@ -18,28 +18,27 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>cover</tag> element contains additional material
+      to be printed on the cover of a publication. Multiple
+      <tag>cover</tag> elements may be used to hold material for the
+      inside and outside front and back covers, the spine, dust jackets,
+      etc.</para>
 
+      <para>Because there is likely to be great variation in the number of
+      covers, and the means by which the <tag>cover</tag> elements are
+      processed, DocBook does not attempt to define semantics for their order
+      or relationship to one another.</para>
 
-<para>The <tag>cover</tag> element contains additional material to be
-printed on the cover of a publication. Multiple <tag>cover</tag>
-elements may be used to hold material for the inside and outside front
-and back covers, the spine, dust jackets, etc.</para>
+      <para>The title, authors, and other bibliographic metadata that appears
+      in the <tag>info</tag> element should not be repeated inside the
+      <tag>cover</tag>. The intent is merely that
+      <tag>cover</tag> can contain any additional material
+      required.</para>
 
-<para>Because there is likely to be great variation in the number of
-covers, and the means by which they <tag>cover</tag> elements are
-processed, DocBook does not attempt to define semantics for their
-order or relationship to one another.</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>The title, authors, and other bibliographic metadata that appears
-in the <tag>info</tag> element should not be repeated inside the
-<tag>cover</tag>. The intent is merely that <tag>cover</tag> can contain
-any additional material required.</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-<?tdg gentext='format.csuppress'?>
-</para>
+        <para>Formatted as a displayed block. Sometimes suppressed.</para>
 </refsection>
 
 <?tdg-attributes?>

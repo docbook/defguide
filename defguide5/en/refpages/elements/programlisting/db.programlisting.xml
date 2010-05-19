@@ -18,31 +18,27 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>programlisting</tag> is a verbatim environment for
+      program source or source fragment listings. The
+      <tag>programlisting</tag>s are often placed in
+      <tag>example</tag>s or <tag>figure</tag>s so that they
+      can be cross-referenced from the text.</para>
 
-<para>A <tag>programlisting</tag> is a verbatim environment for
-program source or source fragment listings.
-The <tag>programlisting</tag>s are often placed in <tag>example</tag>s
-or <tag>figure</tag>s so that they can be cross-referenced from the
-text.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing Expectations</title>
-<para><?tdg gentext='format.block'?>
-<?tdg gentext='pexp.linespecific'?>
-The <tag>programlisting</tag>s are usually
-displayed in a fixed width font.
-</para>
+        <para>Formatted as a displayed block. This element is displayed
+        “verbatim”; whitespace and line breaks within this element are
+        significant. The <tag>programlisting</tag>s are usually
+        displayed in a fixed-width font.</para>
 
-<para>Other markup within a <tag>programlisting</tag> is recognized.
-Contrast
-this with systems like LaTeX, in which verbatim environments disable
-markup recognition.  If you want to disable markup recognition, you
-must use a <glossterm>CDATA section</glossterm>:
+        <para>Other markup within a <tag>programlisting</tag> is
+        recognized. Contrast this with systems like LaTeX, in which verbatim
+        environments disable markup recognition. If you want to disable markup
+        recognition, you must use a <glossterm>CDATA
+        section</glossterm>:</para>
 
-<programlisting>
-
-&lt;programlisting&gt;
+        <programlisting>&lt;programlisting&gt;
 &lt;![CDATA[
 This is a programlisting so white       space and line
 breaks are significant.  But it is also a CDATA
@@ -54,22 +50,14 @@ is the end-of-section marker, which is two
 ]]&gt;
 
 &lt;/programlisting&gt;
-
 </programlisting>
-</para>
 
-<para>Two markup tags have
-special significance in <tag>programlisting</tag>s: <tag>co</tag>
-and <tag>lineannotation</tag>.
-A <tag>co</tag> identifies the location of a <tag>callout</tag>.
-A <tag>lineannotation</tag> is a comment, added by the 
-<emphasis>documentor</emphasis>—not the programmer.
-</para>
-</refsection>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='pexp.linespecific'?>
-</para>
+        <para>Two markup tags have special significance in
+        <tag>programlisting</tag>s: <tag>co</tag> and
+        <tag>lineannotation</tag>. A <tag>co</tag> identifies
+        the location of a <tag>callout</tag>. A
+        <tag>lineannotation</tag> is a comment, added by the
+        <emphasis>documentor</emphasis>—not the programmer.</para>
 </refsection>
 
 <?tdg-attributes?>

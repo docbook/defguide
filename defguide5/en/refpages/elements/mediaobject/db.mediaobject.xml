@@ -18,42 +18,35 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>This element contains a set of alternative “media objects.”
+      Exactly one object will be selected and rendered.</para>
 
+      <refsection xml:id="dbreproc.mediaobject"><info><title>Processing expectations</title></info>
+        
 
-<para>This element contains a set of alternative “media objects.”
-Exactly one object will be selected and rendered.</para>
+        <para>Formatted as a displayed block. The primary purpose of the
+        <tag>mediaobject</tag> is to provide a wrapper around a set of
+        alternative presentations of the same information.</para>
 
-<refsection xml:id="dbreproc.mediaobject">
-<title>Processing expectations</title>
+        <para>If possible, the processing system should use the content of the
+        first object within the <tag>mediaobject</tag>. If the first
+        object cannot be used, the remaining objects should be considered in
+        the order that they occur. A processor should use the first object
+        that it can, although it is free to choose any of the remaining
+        objects if the primary one cannot be used.</para>
 
-<para><?tdg gentext='format.block'?>
-The primary purpose of the <tag>mediaobject</tag> is to provide a
-wrapper around a set of alternative presentations of the same
-information.
-</para>
+        <para>Under no circumstances should more than one object in a
+        <tag>mediaobject</tag> be used or presented at the same
+        time.</para>
 
-<para>If possible, the processing system should use the content of the
-first object within the <tag>mediaobject</tag>.  If the first
-object cannot be used, the remaining objects should be
-considered in the order that they occur.  A processor should use
-the first object that it can, although it is free to choose any
-of the remaining objects if the primary one cannot be used.
-</para>
-
-<para>Under no circumstances should more than one object in a
-<tag>mediaobject</tag> be used or presented at the same time.
-</para>
-
-<para>For example, a <tag>mediaobject</tag> might contain a video, a
-high resolution image, a low resolution image, a long text
-description, and a short text description. In a “high end” online
-system, the video is used. For print publishing, the high resolution
-image is used. For other online systems, either the high or low
-resolution image is used, possibly including the short text
-description as the online alternative. In a text-only environment,
-either the long or short text descriptions are used.
-</para>
+        <para>For example, a <tag>mediaobject</tag> might contain a
+        video, a high-resolution image, a <phrase role="keep-together">low-</phrase><phrase role="keep-together">resolution</phrase> image, a long text
+        description, and a short text description. In a “high-end” online
+        system, the video is used. For print publishing, the high-resolution
+        image is used. For other online systems, either the high- or the
+        low-resolution image is used, possibly including the short text
+        description as the online alternative. In a text-only environment,
+        either the long or the short text description is used.</para>
 </refsection>
 
 <?tdg-attributes?>

@@ -18,27 +18,23 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>listitem</tag> element is a wrapper around an
+      item in a list. In an <tag>itemizedlist</tag> or an
+      <tag>orderedlist</tag>, the <tag>listitem</tag>
+      surrounds the entire list item. In a <tag>variablelist</tag>,
+      <tag>listitem</tag> surrounds the <quote>definition</quote> part
+      of the list item.</para>
 
+      <refsection xml:id="dbreproc.listitem"><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>listitem</tag> element is a wrapper around an item in a list.
-In an <tag>itemizedlist</tag> or an <tag>orderedlist</tag>, the
-<tag>listitem</tag> surrounds the entire list item.
-In a <tag>variablelist</tag>, <tag>listitem</tag> surrounds the 
-<quote>definition</quote> part of the list item.
-</para>
-
-<refsection xml:id="dbreproc.listitem"><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-List items usually generate the appropriate mark
-(a number or bullet) and appear indented, next to the mark.  In a
-<tag>variablelist</tag>, the presentation may be influenced by
-the length of the <tag>term</tag> or <tag>term</tag>s that precede
-the list item and by attributes on the list itself.
-</para>
+        <para>Formatted as a displayed block. List items usually generate the
+        appropriate mark (a number or bullet) and appear indented, next to the
+        mark. In a <tag>variablelist</tag>, the presentation may be
+        influenced by the length of the <tag>term</tag> or
+        <tag>term</tag>s that precede the list item and by attributes
+        on the list itself.</para>
 </refsection>
-
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

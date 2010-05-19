@@ -18,25 +18,24 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>question</tag> in a <tag>qandaentry</tag>
+      poses a question or states a problem that is addressed by the following
+      <tag>answer</tag>(s). The <tag>answer</tag>s are
+      optional (some questions have no answers) and may be repeated (some
+      questions have more than one answer).</para>
 
-<para>A <tag>question</tag> in a <tag>qandaentry</tag> poses a question or
-states a problem that is addressed by the following <tag>answer</tag>(s).
-The <tag>answer</tag>s are optional (some questions
-have no answers) and may be repeated (some questions have more than
-one answer).
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para>The <tag>question</tag>s are frequently introduced with a label,
-such as <quote>A:</quote>. If a <tag>question</tag> has a
-<tag>label</tag> child element, the content of that
-<tag>label</tag> is used as the label for the
-<tag>question</tag>. The <tag class="attribute">defaultlabel</tag> attribute on the nearest
-ancestor <tag>qandaset</tag> of a <tag>question</tag>
-can be used to indicate that a processing application should
-automatically generate a label for the <tag>question</tag>.
-</para>
+        <para>The <tag>question</tag>s are frequently introduced with
+        a label, such as <quote>A:</quote>. If a <tag>question</tag>
+        has a <tag>label</tag> child element, the content of that
+        <tag>label</tag> is used as the label for the
+        <tag>question</tag>. The <tag class="attribute">defaultlabel</tag> attribute on the nearest
+        ancestor <tag>qandaset</tag> of a <tag>question</tag>
+        can be used to indicate that a processing application should
+        automatically generate a label for the
+        <tag>question</tag>.</para>
 </refsection>
 
 <?tdg-attributes?>

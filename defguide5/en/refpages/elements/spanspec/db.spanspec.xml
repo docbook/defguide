@@ -18,33 +18,34 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>spanspec</tag> associates a name with a span
+      between two columns in a table. In the body of the table, cells can
+      refer to the span by name. Cells that refer to a span will span
+      horizontally from the first column to the last column, inclusive.</para>
 
+      <para>Cells can also form spans directly, by naming the start and end
+      columns themselves. The added benefit of a <tag>spanspec</tag>
+      is that it can associate formatting information (such as alignment and
+      table rule specifications) with the span. This information does not need
+      to be repeated then, on each spanning cell.</para>
 
-<para>A <tag>spanspec</tag> associates a name with a span between two columns
-in a table. In the body of the table, cells can refer to the span by name.
-Cells that refer to a span will span horizontally from the first column
-to the last column, inclusive.
-</para>
-<para>Cells can also form spans directly, by naming the start and end
-columns themselves.  The added benefit of a <tag>spanspec</tag>
-is that it can associate formatting information (such as
-alignment and table rule specifications) with the span.  This information
-does not need to be repeated then, on each spanning cell.
-</para>
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.suppress'?>
-<?tdg gentext='calssemantics'?>
-</para>
-<para>The <tag class="attribute">namest</tag> and <tag class="attribute">nameend</tag> attributes of a <tag>spanspec</tag> must
-refer to named <tag>colspec</tag>s in the same table.  In other 
-words, if the <tag>spanspec</tag>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<screen>&lt;spanspec spanname="fullyear" namest="jan" nameend="dec"/&gt;</screen>
+        <para>Suppressed. This element is expected to obey the semantics of
+        the <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
 
-exists in a table, <tag>colspec</tag>s named <quote>jan</quote>
-and <quote>dec</quote> must also exist in the same table.
-</para>
+        <para>The <tag class="attribute">namest</tag> and <tag class="attribute">nameend</tag> attributes of a
+        <tag>spanspec</tag> must refer to named
+        <tag>colspec</tag>s in the same table. In other words, if the
+        <tag>spanspec</tag>:</para>
+
+        <screen>t&lt;spanspec spanname="fullyear" namest="jan" nameend="dec"/&gt;</screen>
+
+        <para>exists in a table, <tag>colspec</tag>s named
+        <quote>jan</quote> and <quote>dec</quote> must also exist in the same
+        table.</para>
 </refsection>
 
 <?tdg-attributes?>

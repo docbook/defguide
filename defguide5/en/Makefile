@@ -31,7 +31,7 @@ endif
 
 .PHONY: refpages
 
-all: book.xml
+all: chunks
 
 test: book.xml
 	jing ../../docbook/relaxng/docbook/docbook.rng $<

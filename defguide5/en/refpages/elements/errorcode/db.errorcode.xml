@@ -18,26 +18,21 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>An error code. Error codes are often numeric, but in some
+      environments they may be symbolic constants.</para>
 
+      <para>DocBook provides four elements for identifying the parts of an
+      error message: <tag>errorcode</tag>, for the alphanumeric error
+      code (e.g., <quote>–2</quote>); <tag>errorname</tag>, for the
+      symbolic name of the error (e.g., <quote>ENOENT</quote>);
+      <tag>errortext</tag>, for the text of the error message (e.g.,
+      <quote>file not found</quote>); and <tag>errortype</tag>, for
+      the error type (e.g., <quote>recoverable</quote>).</para>
 
-<para>An error code. Error codes are often numeric, but in some environments
-they may be symbolic constants.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>DocBook provides four elements for identifying the parts of an error message:
-<tag>errorcode</tag>, for the alphanumeric error code (e.g., <quote>-2</quote>);
-<tag>errorname</tag>, for the symbolic name of the error
-(e.g., <quote>ENOENT</quote>);
-<tag>errortext</tag>, for the text of the error message (e.g., <quote>file
-not found</quote>); and
-<tag>errortype</tag>, for the error type (e.g., <quote>recoverable</quote>).
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.inline'?>
-
-</para>
+        <para>Formatted inline.</para>
 </refsection>
 
 <?tdg-attributes?>

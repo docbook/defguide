@@ -5,576 +5,943 @@
   <releaseinfo>$Revision$</releaseinfo>
 </info>
 
-<para><indexterm>
-<primary>reference pages</primary>
-<secondary>element reference</secondary>
-</indexterm><indexterm>
-<primary>element reference</primary>
-</indexterm><indexterm>
-<primary>elements</primary>
-<secondary>reference</secondary>
-</indexterm><indexterm>
-<primary>DocBook</primary>
-<secondary>elements</secondary>
-<tertiary>reference</tertiary>
-</indexterm>This reference describes every element in DocBook <acronym>V5.0</acronym>.
-</para>
+    <para><indexterm>
+        <primary>reference pages</primary>
 
-<section xml:id="s.elem.org">
-<title>Organization of Reference Pages</title>
+        <secondary>element reference</secondary>
+      </indexterm><indexterm>
+        <primary>element reference</primary>
+      </indexterm><indexterm>
+        <primary>elements</primary>
 
-<para>The description of each element in this reference is divided
-into the following sections:</para>
-<variablelist>
+        <secondary>reference</secondary>
+      </indexterm><indexterm>
+        <primary>DocBook</primary>
 
-<varlistentry><term>Synopsis</term>
-<listitem>
-<para><indexterm><primary>elements</primary>
-  <secondary>reference</secondary>
-    <tertiary>synopses</tertiary></indexterm><indexterm>
-<primary>synopses</primary>
-  <secondary>elements (reference pages)</secondary>
-</indexterm><indexterm><primary>content models</primary>
-  <secondary>elements, reference</secondary>
-</indexterm>Provides a quick synopsis of the element. The content of
-the synopsis varies according to the nature of the element
-described, but may include any or all of the following
-sections:</para>
-<variablelist>
-<varlistentry><term>Content Model</term>
-<listitem>
-<para>Describes the content model of the element, the mixture of things
-that it can contain. See <xref linkend="s2-cmintro"/>.</para>
-</listitem>
-</varlistentry>
+        <secondary>elements</secondary>
 
-<varlistentry><term>Attributes</term>
-<listitem>
-<para><indexterm><primary>attributes</primary>
-  <secondary>elements, referencing</secondary>
-</indexterm>Provides a synopsis of the attributes on the element. For
-brevity, common attributes are described only once,
-<link linkend="common.attributes">in this introduction</link>.
-Likewise, common linking attributes are
-<link linkend="common.linking.attributes">described once</link>.
-</para>
-</listitem>
-</varlistentry>
+        <tertiary>reference</tertiary>
+      </indexterm>This reference describes every element in DocBook
+    <acronym>V5.0</acronym>.</para>
 
-<varlistentry><term>Additional Constraints</term>
-<listitem>
-<para>Provides a synopsis of any additional constraints on the element.
-These constraints are expressed using Schematron in the RELAX NG
-grammar.</para>
-</listitem>
-</varlistentry>
+    <section xml:id="s.elem.org"><info><title>Organization of Reference Pages</title></info>
+      
 
-<varlistentry><term>Description</term>
-<listitem>
-<para><indexterm><primary>elements</primary>
-  <secondary>description, semantics</secondary></indexterm>
-<indexterm><primary>semantics (elements), describing</primary>
-</indexterm>Describes the semantics of the element.</para>
+      <para>The description of each element in this reference is divided into
+      the following sections:</para>
 
-<variablelist>
-<varlistentry><term>Processing expectations</term>
-<listitem>
-<para><indexterm><primary>processing expectations</primary></indexterm><indexterm><primary>formatting elements</primary></indexterm>
-<indexterm><primary>elements</primary>
-  <secondary>processing expectations</secondary>
-</indexterm>Summarizes specific formatting expectations of the
-element. Many processing expectations are influenced by attribute
-values. Be sure to consult the description of element attributes as
-well.
-</para>
-</listitem>
-</varlistentry>
+      <variablelist>
+        <varlistentry>
+          <term>Synopsis</term>
 
-<varlistentry><term>Future changes</term>
-<listitem>
-<para>
-<indexterm><primary>DocBook</primary>
-  <secondary>changes, future versions</secondary></indexterm>
-<indexterm><primary>compatibility, DocBook versions</primary></indexterm>
-<indexterm><primary>versions</primary>
-  <secondary>DocBook</secondary>
-    <tertiary>future changes</tertiary>
-</indexterm>Identifies changes that are scheduled for future versions
-of the schema. These changes are highlighted because they involve some
-backward incompatibility that may make currently valid DocBook
-documents no longer valid under the new version.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</listitem>
-</varlistentry>
-</variablelist>
-</listitem>
-</varlistentry>
+          <listitem>
+            <para><indexterm>
+                <primary>elements</primary>
 
-<varlistentry><term>Attributes</term>
-<listitem>
-<para>
-<indexterm><primary>attributes</primary>
-<secondary>semantics</secondary>
-</indexterm>Describes the semantics of each attribute.</para>
-</listitem>
-</varlistentry>
+                <secondary>reference</secondary>
 
-<varlistentry><term>See Also</term>
-<listitem>
-<para>Lists similar or related elements.
-<indexterm><primary>cross references</primary>
-  <secondary>elements</secondary></indexterm>
-</para>
-</listitem>
-</varlistentry>
+                <tertiary>synopses</tertiary>
+              </indexterm><indexterm>
+                <primary>synopses</primary>
 
-<varlistentry><term>Examples</term>
-<listitem>
+                <secondary>elements (reference pages)</secondary>
+              </indexterm><indexterm>
+                <primary>content models</primary>
 
-<para><indexterm><primary>elements</primary>
-  <secondary>proper usage, examples</secondary>
-</indexterm>Provides examples of proper usage for the element.
-Generally, the smallest example required to reasonably demonstrate the
-element is used. In many cases, a formatted version of the example is
-also shown.
-</para>
+                <secondary>elements, reference</secondary>
+              </indexterm>Provides a quick synopsis of the element. The
+            content of the synopsis varies according to the nature of the
+            element described, but may include any or all of the following
+            sections:</para>
 
-<para>All of the examples in the book are valid according to the
-RELAX NG grammar.
-</para>
+            <variablelist>
+              <varlistentry>
+                <term>Content Model</term>
 
-<para>Formatted examples are indicated using a vertical bar.</para>
-</listitem>
-</varlistentry>
-</variablelist>
+                <listitem>
+                  <para>Describes the content model of the element, the
+                  mixture of things that it can contain. See <xref linkend="s2-cmintro"/>.</para>
+                </listitem>
+              </varlistentry>
 
-<section xml:id="s2-cmintro">
-<title>Understanding Content Models</title>
+              <varlistentry>
+                <term>Attributes</term>
 
-<para><indexterm><primary>content models</primary>
-  <secondary>overview</secondary>
-</indexterm>Each element synopsis begins with a description of its
-content model. Content models are the way that grammars describe the
-name, number, and order of other elements that may be used inside an
-element.
-</para>
+                <listitem>
+                  <para><indexterm>
+                      <primary>attributes</primary>
 
-<section xml:id="s3-cmintro-notation" condition="expanded">
-<title>Content Model Notation</title>
+                      <secondary>elements, referencing</secondary>
+                    </indexterm>Provides a synopsis of the attributes on the
+                  element. For brevity, common attributes are described only
+                  once, <link linkend="common.attributes">in this
+                  introduction</link>. Likewise, common linking attributes are
+                  <link linkend="common.linking.attributes">described
+                  once</link>.</para>
+                </listitem>
+              </varlistentry>
 
-<para>This description is presented as a series of nested lists.
-The rules of RELAX NG are considerably more powerful than the rules of
-<acronym>DTD</acronym>s and I've seen no obvious way to expose them.
-Suggestions welcome.</para>
+              <varlistentry>
+                <term>Additional Constraints</term>
 
-<para>Each level of list is introduced by a description of how elements
-are selected from it:</para>
+                <listitem>
+                  <para>Provides a synopsis of any additional constraints on
+                  the element. These constraints are expressed using
+                  Schematron in the RELAX NG grammar.</para>
+                </listitem>
+              </varlistentry>
 
-<variablelist>
-<varlistentry>
-<term>One of:</term>
-<listitem>
-<para>Exactly one selection must be taken from the list.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Optionally one of:</term>
-<listitem>
-<para>Like <quote>one of</quote> but may be omitted entirely.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Sequence of:</term>
-<listitem>
-<para>One selection must be made for each member of the list and those
-selections must be presented in the order they appear in the list.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Optional sequence of:</term>
-<listitem>
-<para>Like <quote>sequence of</quote> but may be omitted entirely.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Zero or more of:</term>
-<listitem>
-<para>Any number of selections, including none, can be made from the list.
-Selections can be made in any order, without restriction on order or number
-of occurrences.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>One or more of:</term>
-<listitem>
-<para>Any number of selections can be made from the list.
-Selections can be made in any order, without restriction on order or number
-of occurrences except that at least one must be selected.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Optional one or more of:</term>
-<listitem>
-<para>Like <quote>one or more of</quote> but may be omitted entirely.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Interleave of:</term>
-<listitem>
-<para>All of the members of the list must be selected exactly once, but
-they can be selected in any order.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Optional interleave of:</term>
-<listitem>
-<para>Like <quote>interleave of</quote> but may be omitted entirely.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
+              <varlistentry>
+                <term>Description</term>
 
-<para>Individual elements in the list may be followed by an occurrence
-indicator. If the indicator is <quote>?</quote> the element is optional. Note that this
-can have an effect on the meaning of the list as a whole. For example,
-a sequence that consists of only optional elements may have none. This
-differs, in subtle and unimportant ways, from an optional sequence.</para>
+                <listitem>
+                  <para><indexterm>
+                      <primary>elements</primary>
 
-<para>Some of the lists, especially ones that would otherwise be quite long,
-are subdivided into groups. For example:</para>
-<indexterm><primary>examples</primary><secondary>reference page syntax</secondary></indexterm>
-<indexterm><primary>reference pages</primary><secondary>syntax example</secondary></indexterm>
-<itemizedlist spacing="compact" role="element-synopsis">
-  <listitem>
-    <para>Sequence of:</para>
-    <itemizedlist spacing="compact" role="element-synopsis">
-      <listitem>
-        <para><tag>info</tag>? (db.titleforbidden.info)</para>
-      </listitem>
-      <listitem>
-        <para><tag>attribution</tag>?</para>
-      </listitem>
-      <listitem>
-	<para>One or more of:</para>
-	<itemizedlist spacing="compact" role="element-synopsis">
-	  <listitem><para><tag>literallayout</tag></para></listitem>
-	  <listitem><para><emphasis>Paragraph elements</emphasis>
-<inlinemediaobject>
-<imageobject>
-<imagedata fileref="graphics/right.gif"/>
-</imageobject>
-</inlinemediaobject></para>
-            <itemizedlist spacing="compact" role="element-synopsis">
-	      <listitem><para><tag>anchor</tag></para></listitem>
-	      <listitem><para><tag>formalpara</tag></para></listitem>
-	      <listitem><para><tag>para</tag></para></listitem>
-	      <listitem><para><tag>simpara</tag></para></listitem>
-	    </itemizedlist>
-	  </listitem>
-	</itemizedlist>
-      </listitem>
-    </itemizedlist>
-  </listitem>
-</itemizedlist>
+                      <secondary>description, semantics</secondary>
+                    </indexterm> <indexterm>
+                      <primary>semantics (elements), describing</primary>
+                    </indexterm>Describes the semantics of the element.</para>
 
-<para>These extra levels of list (e.g., <emphasis>Paragraph elements</emphasis>)
-are just a convenience for readers, they don't
-have any effect on the content model. An <tag>epigraph</tag> can contain one
-or more of <quote><tag>literallayout</tag>,</quote>
-<quote><tag>anchor</tag>,</quote>
-<quote><tag>formalpara</tag>,</quote>
-<quote><tag>para</tag>,</quote> or
-<quote><tag>simpara</tag>.</quote></para>
+                  <variablelist>
+                    <varlistentry>
+                      <term>Processing expectations</term>
 
-<para>In online versions of this document, rendered with a user agent that
-supports JavaScript, these lists can be opened and closed dynamically, or
-removed altogether.
-</para>
+                      <listitem>
+                        <para><indexterm>
+                            <primary>processing expectations</primary>
+                          </indexterm><indexterm>
+                            <primary>formatting elements</primary>
+                          </indexterm> <indexterm>
+                            <primary>elements</primary>
 
-<para>The elements included in each
-group are summarized below.</para>
+                            <secondary>processing expectations</secondary>
+                          </indexterm>Summarizes specific formatting
+                        expectations of the element. Many processing
+                        expectations are influenced by attribute values. Be
+                        sure to consult the description of element attributes
+                        as well.</para>
+                      </listitem>
+                    </varlistentry>
 
-<xi:include xmlns:xi='http://www.w3.org/2001/XInclude'
-	    href="../patterns.xml"/>
+                    <varlistentry>
+                      <term>Future changes</term>
 
-</section>
+                      <listitem>
+                        <para><indexterm>
+                            <primary>DocBook</primary>
 
-<section xml:id="s3-cmintro-notation" condition="compact">
-<title>Content Model Notation</title>
+                            <secondary>changes, future versions</secondary>
+                          </indexterm> <indexterm>
+                            <primary>compatibility, DocBook versions</primary>
+                          </indexterm> <indexterm>
+                            <primary>versions</primary>
 
-<para>Presenting the content models is an editorial challenge.
-Presenting the RELAX NG patterns would be easy and absolutely correct,
-but would only be valuable to readers that understand both RELAX NG and the
-patterns in the schema. Presenting the RELAX NG patterns <quote>fully
-expanded</quote> to just element and attribute names would remove the requirement
-to understand the patterns, but the result is so verbose that it completely
-obscures the actual meaning.</para>
+                            <secondary>DocBook</secondary>
 
-<para>On the web and in other interactive media, it's possible to
-format the content models in a <quote>natural language</quote> list format with names that
-can be expanded to show more detail. That format is useful even without the
-ability to expand patterns interactively. Unfortunately,
-that presentation occupies significant vertical space and, were it used,
-this book would run to more than a thousand pages. That's not really practical.
-</para>
+                            <tertiary>future changes</tertiary>
+                          </indexterm>Identifies changes that are scheduled
+                        for future versions of the schema. These changes are
+                        highlighted because they involve some backward <phrase role="keep-together">incompatibility</phrase> that may
+                        make currently valid DocBook documents no longer valid
+                        under the new version.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
 
-<para>Instead, we compromise with a compact syntax reminiscent of DTD
-syntax. It's not any sort of standard, but it has the dual advantages of
-being reasonably concise and reasonably easy to understand.</para>
+        <varlistentry>
+          <term>Attributes</term>
 
-<variablelist>
-<varlistentry>
-<term>name</term>
-<listitem>
-<para>A <literal>name</literal> is the name of a DocBook element.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>( )</term>
-<listitem>
-<para>Parenthesis delimit groups.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>*, +, ?</term>
-<listitem>
-<para>Symbols appear after names and groups to indicate how many
-occurrences are allowed. If a <quote><literal>*</literal></quote> is present, zero
-or more occurrences are allowed; if a <quote><literal>+</literal></quote> is
-present, one or more occurrences are allowed; if a
-<quote><literal>?</literal></quote> is present, the symbol may occur zero or one
-times; if no symbol is present, exactly one occurrence is allowed.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>|</term>
-<listitem>
-<para>A vertical bar indicates a choice. Either the item that precedes or
-the item that follows the bar is allowed.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>&amp;</term>
-<listitem>
-<para>An ampersand indicates an <quote>interleave.</quote> Both the item that precedes
-and the item that follows the <quote>&amp;</quote> are allowed, but they may occur in any order.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>,</term>
-<listitem>
-<para>A comma separates items in a sequence. Both the item that
-precedes and the item that follows the <quote><literal>,</literal></quote> are
-allowed, and they must occur in that order.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
+          <listitem>
+            <para><indexterm>
+                <primary>attributes</primary>
 
-<para>Here are a few examples:</para>
-<indexterm><primary>examples</primary><secondary>content model</secondary></indexterm>
-<indexterm><primary>content models</primary><secondary>examples</secondary></indexterm>
-<variablelist>
-<varlistentry>
-<term><literal>A</literal></term>
-<listitem>
-<para>exactly one <quote>A</quote> element is allowed.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><literal>A | B | C</literal></term>
-<listitem>
-<para>Exactly one <quote>A</quote>, or exactly one <quote>B</quote>, or exactly one
-<quote>C</quote> is allowed.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><literal>A,B,C</literal></term>
-<listitem>
-<para>Exactly one <quote>A</quote>, followed by exactly one <quote>B</quote>, followed by exactly
-one <quote>C</quote> is allowed.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><literal>A &amp; B &amp; C</literal></term>
-<listitem>
-<para>Exactly one <quote>A</quote> and exactly one <quote>B</quote> and exactly
-one <quote>C</quote> is allowed <emphasis>in any order</emphasis>. This pattern
-allows <literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;</literal>,
-<literal>&lt;B/&gt;&lt;C/&gt;&lt;A/&gt;</literal>,
-<literal>&lt;C/&gt;&lt;A/&gt;&lt;B/&gt;</literal>, etc. but does
-not allow <literal>&lt;A/&gt;&lt;A/&gt;&lt;C/&gt;</literal> or
-<literal>&lt;A/&gt;&lt;B/&gt;</literal>.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><literal>A+,B*,C?</literal></term>
-<listitem>
-<para>At least one, but possibly more than one <quote>A</quote>, followed by zero
-or more <quote>B</quote>s, followed by an optional (zero or one) <quote>C</quote> is allowed.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><literal>A,(B|C)+,D</literal></term>
-<listitem>
-<para>Exactly one <quote>A</quote>, followed by one or more <quote>B</quote> or <quote>C</quote> elements, followed
-by exactly one <quote>D</quote> is allowed. Because the group can be repeated,
-this pattern matches
-<literal>&lt;A/&gt;&lt;B/&gt;&lt;D/&gt;</literal>,
-<literal>&lt;A/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
-<literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
-<literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;&lt;C/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
-etc.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
+                <secondary>semantics</secondary>
+              </indexterm>Describes the semantics of each attribute.</para>
+          </listitem>
+        </varlistentry>
 
-<para>Some element names are defined by more than one pattern. When this
-is the case, the name of the pattern is explicitly shown in a superscript
-following the name.</para>
+        <varlistentry>
+          <term>See Also</term>
 
-<para>In order to avoid long, repetitive lists of element names,
-similar items are grouped together and only the name of the group is
-given: For example, a <tag>para</tag> may contain the <quote>Bibliography
-inlines,</quote> the <quote>Error inlines,</quote> etc. The author has the choice of using any of the elements belonging to the group. The elements included in each
-group are summarized below.</para>
+          <listitem>
+            <para>Lists similar or related elements. <indexterm>
+                <primary>cross-references</primary>
 
-<xi:include xmlns:xi='http://www.w3.org/2001/XInclude'
-	    href="../patterns.xml"/>
+                <secondary>elements</secondary>
+              </indexterm></para>
+          </listitem>
+        </varlistentry>
 
-</section>
+        <varlistentry>
+          <term>Examples</term>
 
-<section xml:id="s.elem.contentmodels">
-<title>Content models and validity</title>
+          <listitem>
+            <para><indexterm>
+                <primary>elements</primary>
 
-<para><indexterm><primary>validating</primary>
-  <secondary>content models, matching to elements</secondary></indexterm>
-<indexterm><primary>elements</primary>
-  <secondary>validating</secondary>
-</indexterm>A validator uses the content models to determine if a given
-document is valid. In order for a document to be valid, the content of
-every element in the document must <quote>match</quote> the content
-model for that element.
-</para>
+                <secondary>proper usage, examples</secondary>
+              </indexterm>Provides examples of proper usage for the element.
+            Generally, the smallest example required to reasonably demonstrate
+            the element is used. In many cases, a formatted version of the
+            example is also shown.</para>
 
-<para>In practical terms, match means that it must be possible to
-expand the content model until it exactly matches the sequence of
-elements in the document.
-</para>
+            <para>All of the examples in the book are valid according to the
+            RELAX NG grammar.</para>
 
-<para>For example, consider the content model of the
-<tag>epigraph</tag>:</para>
+            <para>Formatted examples are indicated using a vertical
+            bar.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
 
-<para><tag>epigraph</tag> ::= (<tag>info</tag>?<superscript>db.titleforbidden.info</superscript>,
-<tag>attribution</tag>?,(<tag>literallayout</tag> | <emphasis>Paragraph elements</emphasis>)+)</para>
+      <section xml:id="s2-cmintro"><info><title>Understanding Content Models</title></info>
+        
 
-<para>Does the following example <quote>match</quote> that content model?</para>
+        <para><indexterm>
+            <primary>content models</primary>
 
-<screen><![CDATA[<epigraph>
-<para>Some text</para>
-</epigraph>]]></screen>
+            <secondary>overview</secondary>
+          </indexterm>Each element synopsis begins with a description of its
+        content model. Content models are the way that grammars describe the
+        name, number, and order of other elements that may be used inside an
+        element.</para>
 
-<para>Yes, it is valid because the following expansion of the content model exactly
-matches the actual content: choose zero occurrences of <tag>info</tag>,
-zero occurrences of <tag>attribution</tag>, choose the alternative
-<tag>para</tag> from the <quote><emphasis>Paragraph elements</emphasis></quote> choice,
-and choose to let the <quote>one or more</quote> match once.
-</para>
+        <section condition="compact" xml:id="s3-cmintro-notation"><info><title>Content model notation</title></info>
+          
 
-<para>By the same token, this example is not valid because there is no
-expansion of the content model that can match it:
-</para>
+          <para>Presenting the content models is an editorial challenge.
+          Presenting the RELAX NG patterns would be easy and absolutely
+          correct, but would only be valuable to readers who understand both
+          RELAX NG and the patterns in the schema. Presenting the RELAX NG
+          patterns <quote>fully expanded</quote> to just element and attribute
+          names would remove the requirement to understand the patterns, but
+          the result is so verbose that it completely obscures the actual
+          meaning.</para>
 
-<screen><![CDATA[<epigraph>
-<para>Some text</para>
-<attribution>John Doe</attribution>
-</epigraph>]]></screen>
+          <para>On the Web and in other interactive media, it’s possible to
+          format the content models in a <quote>natural language</quote> list
+          format with names that can be expanded to show more detail. That
+          format is useful even without the ability to expand patterns
+          interactively. Unfortunately, that presentation occupies significant
+          vertical space and, were it used, this book would run to more than a
+          thousand pages. That’s not really practical.</para>
 
-</section>
-</section>
-</section>
+          <para>Instead, we compromise with a compact syntax reminiscent of
+          DTD syntax. It’s not any sort of standard, but it has the dual
+          advantages of being reasonably concise and reasonably easy to
+          understand:</para>
+
+          <variablelist>
+            <varlistentry>
+              <term>name</term>
+
+              <listitem>
+                <para>A <literal>name</literal> is the name of a DocBook
+                element.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>( )</term>
+
+              <listitem>
+                <para>Parentheses delimit groups.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>*, +, ?</term>
+
+              <listitem>
+                <para>Symbols appear after names and groups to indicate how
+                many occurrences are allowed. If a
+                <quote><literal>*</literal></quote> is present, zero or more
+                occurrences are allowed; if a
+                <quote><literal>+</literal></quote> is present, one or more
+                occurrences are allowed; if a
+                <quote><literal>?</literal></quote> is present, the symbol may
+                occur zero or one time; if no symbol is present, exactly one
+                occurrence is allowed.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>|</term>
+
+              <listitem>
+                <para>A vertical bar indicates a choice. Either the item that
+                precedes or the item that follows the bar is allowed.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>&amp;</term>
+
+              <listitem>
+                <para>An ampersand indicates an <quote>interleave.</quote>
+                Both the item that precedes and the item that follows the
+                <literal>&amp;</literal> are allowed, but they may occur in
+                any order.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>,</term>
+
+              <listitem>
+                <para>A comma separates items in a sequence. Both the item
+                that precedes and the item that follows the
+                <quote><literal>,</literal></quote> are allowed, and they must
+                occur in that order.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <para>Here are a few examples:<indexterm>
+              <primary>examples</primary>
+
+              <secondary>content model</secondary>
+            </indexterm><indexterm>
+              <primary>content models</primary>
+
+              <secondary>examples</secondary>
+            </indexterm></para>
+
+          <variablelist>
+            <varlistentry>
+              <term><literal>A</literal></term>
+
+              <listitem>
+                <para>Exactly one <quote>A</quote> element is allowed.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term><literal>A | B | C</literal></term>
+
+              <listitem>
+                <para>Exactly one <quote>A</quote>, or exactly one
+                <quote>B</quote>, or exactly one <quote>C</quote> is
+                allowed.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term><literal>A,B,C</literal></term>
+
+              <listitem>
+                <para>Exactly one <quote>A</quote>, followed by exactly one
+                <quote>B</quote>, followed by exactly one <quote>C</quote> is
+                <phrase role="keep-together">allowed</phrase>.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term><literal>A &amp; B &amp; C</literal></term>
+
+              <listitem>
+                <para>Exactly one <quote>A</quote> and exactly one
+                <quote>B</quote> and exactly one <quote>C</quote> is allowed
+                <emphasis>in any order</emphasis>. This pattern allows
+                <literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;</literal>,
+                <literal>&lt;B/&gt;&lt;C/&gt;&lt;A/&gt;</literal>,
+                <literal>&lt;C/&gt;&lt;A/&gt;&lt;B/&gt;</literal>, etc. but
+                does not allow
+                <literal>&lt;A/&gt;&lt;A/&gt;&lt;C/&gt;</literal> or
+                <literal>&lt;A/&gt;&lt;B/&gt;</literal>.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term><literal>A+,B*,C?</literal></term>
+
+              <listitem>
+                <para>At least one, but possibly more than one
+                <quote>A</quote>, followed by zero or more <quote>B</quote>s,
+                followed by an optional (zero or one) <quote>C</quote> is
+                allowed.</para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term><literal>A,(B|C)+,D</literal></term>
+
+              <listitem>
+                <para>Exactly one <quote>A</quote>, followed by one or more
+                <quote>B</quote> or <quote>C</quote> elements, followed by
+                exactly one <quote>D</quote> is allowed. Because the group can
+                be repeated, this pattern matches <literal role="keep-together">&lt;A/&gt;&lt;B/&gt;&lt;D/&gt;</literal>,
+                <literal>&lt;A/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
+                <literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
+                <literal>&lt;A/&gt;&lt;B/&gt;&lt;C/&gt;&lt;C/&gt;&lt;C/&gt;&lt;D/&gt;</literal>,
+                etc.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <para>Some element names are defined by more than one pattern. When
+          this is the case, the name of the pattern is explicitly shown in a
+          superscript following the name.</para>
+
+          <para>In order to avoid long, repetitive lists of element names,
+          similar items are grouped together and only the name of the group is
+          given. For example, a <tag>para</tag> may contain the
+          <quote>Bibliography inlines,</quote> the <quote>Error
+          inlines,</quote> etc. The author has the choice of using any of the
+          elements belonging to the group. Here is a summary of the elements
+          included in each group:</para>
+
+          <variablelist>
+            <varlistentry xml:id="ipatn.db.bibliography.inlines">
+              <term>Bibliography inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>citation</tag>, <tag>citerefentry</tag>,
+                <tag>citetitle</tag>, <tag role="keep-together">citebiblioid</tag>,
+                <tag>author</tag>, <tag>person</tag>,
+                <tag>personname</tag>, <tag>org</tag>,
+                <tag>orgname</tag>, <tag>editor</tag>, or
+                <tag>jobtitle</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.computeroutput.inlines">
+              <term>Computer-output inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>inlinemediaobject</tag>,
+                <tag>remark</tag>, <tag>superscript</tag>,
+                <tag role="keep-together">subscript</tag>,
+                <tag>xref</tag>, <tag>link</tag>,
+                <tag>olink</tag>, <tag>anchor</tag>,
+                <tag>biblioref</tag>, <tag>alt</tag>,
+                <tag>annotation</tag>, <tag>indexterm</tag>,
+                <tag>prompt</tag>, <tag>envar</tag>,
+                <tag>filename</tag>, <tag>command</tag>,
+                <tag>computeroutput</tag>,
+                <tag>userinput</tag>, <tag>replaceable</tag>,
+                <tag>package</tag>, <tag role="keep-together">parameter</tag>,
+                <tag>termdef</tag>, <tag>nonterminal</tag>,
+                <tag>systemitem</tag>, <tag>option</tag>,
+                <tag>optional</tag>, <tag>property</tag>,
+                <tag>co</tag>, <tag>tag</tag>, <tag role="keep-together">markup</tag>,
+                <tag>token</tag>, <tag>symbol</tag>,
+                <tag>literal</tag>, <tag>code</tag>,
+                <tag>constant</tag>, <tag>email</tag>, or
+                <tag>uri</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.error.inlines">
+              <term>Error inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>errorcode</tag>, <tag>errortext</tag>,
+                <tag>errorname</tag>, or
+                <tag>errortype</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.graphic.inlines">
+              <term>Graphic inlines</term>
+
+              <listitem>
+                <para><tag>inlinemediaobject</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.gui.inlines">
+              <term>GUI inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>guiicon</tag>, <tag>guibutton</tag>,
+                <tag>guimenuitem</tag>, <tag>guimenu</tag>,
+                <tag role="keep-together">guisubmenu</tag>,
+                <tag>guilabel</tag>, <tag>menuchoice</tag>, or
+                <tag>mousebutton</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.indexing.inlines">
+              <term>Indexing inlines</term>
+
+              <listitem>
+                <para><tag>indexterm</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.keyboard.inlines">
+              <term>Keyboard inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>keycombo</tag>, <tag>keycap</tag>,
+                <tag>keycode</tag>, <tag>keysym</tag>,
+                <tag>shortcut</tag>, or
+                <tag>accel</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.link.inlines">
+              <term>Linking inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>xref</tag>, <tag>link</tag>,
+                <tag>olink</tag>, <tag>anchor</tag>, or
+                <tag>biblioref</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.markup.inlines">
+              <term>Markup inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>tag</tag>, <tag>markup</tag>,
+                <tag>token</tag>, <tag>symbol</tag>,
+                <tag>literal</tag>, <tag>code</tag>, <tag role="keep-together">constant</tag>,
+                <tag>email</tag>, or <tag>uri</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.math.inlines">
+              <term>Math inlines</term>
+
+              <listitem>
+                <para><tag>inlineequation</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.oo.inlines">
+              <term>Object-oriented programming inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>ooclass</tag>, <tag>ooexception</tag>, or
+                <tag>oointerface</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.os.inlines">
+              <term>Operating system inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>prompt</tag>, <tag>envar</tag>,
+                <tag>filename</tag>, <tag>command</tag>,
+                <tag>computeroutput</tag>, or
+                <tag>userinput</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.product.inlines">
+              <term>Product inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>trademark</tag>,
+                <tag>productnumber</tag>,
+                <tag>productname</tag>, <tag>database</tag>,
+                <tag>application</tag>, or
+                <tag>hardware</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.programming.inlines">
+              <term>Programming inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>function</tag>, <tag>parameter</tag>,
+                <tag>varname</tag>, <tag>returnvalue</tag>,
+                <tag>type</tag>, <tag>classname</tag>,
+                <tag>exceptionname</tag>,
+                <tag>interfacename</tag>,
+                <tag>methodname</tag>, <tag>modifier</tag>,
+                <tag>initializer</tag>, <tag>ooclass</tag>,
+                <tag>ooexception</tag>, or
+                <tag>oointerface</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.publishing.inlines">
+              <term>Publishing inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>abbrev</tag>, <tag>acronym</tag>,
+                <tag>date</tag>, <tag>emphasis</tag>,
+                <tag>footnote</tag>, <tag>footnoteref</tag>,
+                <tag>foreignphrase</tag>, <tag>phrase</tag>,
+                <tag>quote</tag>, <tag>subscript</tag>,
+                <tag>superscript</tag>, <tag>wordasword</tag>,
+                <tag>firstterm</tag>, <tag>glossterm</tag>, or
+                <tag>coref</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.technical.inlines">
+              <term>Technical inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>replaceable</tag>, <tag>package</tag>,
+                <tag>parameter</tag>, <tag>termdef</tag>,
+                <tag>nonterminal</tag>, <tag>systemitem</tag>,
+                <tag>option</tag>, <tag>optional</tag>, or
+                <tag>property</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.ubiq.inlines">
+              <term>Ubiquitous inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>inlinemediaobject</tag>,
+                <tag>remark</tag>, <tag>superscript</tag>,
+                <tag role="keep-together">subscript</tag>,
+                <tag>xref</tag>, <tag>link</tag>,
+                <tag>olink</tag>, <tag>anchor</tag>,
+                <tag>biblioref</tag>, <tag>alt</tag>,
+                <tag>annotation</tag>, or
+                <tag>indexterm</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.userinput.inlines">
+              <term>User-input inlines</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>inlinemediaobject</tag>,
+                <tag>remark</tag>, <tag>superscript</tag>,
+                <tag role="keep-together">subscript</tag>,
+                <tag>xref</tag>, <tag>link</tag>,
+                <tag>olink</tag>, <tag>anchor</tag>,
+                <tag>biblioref</tag>, <tag>alt</tag>,
+                <tag>annotation</tag>, <tag>indexterm</tag>,
+                <tag>prompt</tag>, <tag>envar</tag>,
+                <tag>filename</tag>, <tag>command</tag>,
+                <tag>computeroutput</tag>,
+                <tag>userinput</tag>, <tag>replaceable</tag>,
+                <tag>package</tag>, <tag role="keep-together">parameter</tag>,
+                <tag>termdef</tag>, <tag>nonterminal</tag>,
+                <tag>systemitem</tag>, <tag>option</tag>,
+                <tag>optional</tag>, <tag>property</tag>,
+                <tag>co</tag>, <tag>tag</tag>, <tag role="keep-together">markup</tag>,
+                <tag>token</tag>, <tag>symbol</tag>,
+                <tag>literal</tag>, <tag>code</tag>,
+                <tag>constant</tag>, <tag>email</tag>,
+                <tag>uri</tag>, <tag>guiicon</tag>,
+                <tag>guibutton</tag>, <tag role="keep-together">guimenuitem</tag>,
+                <tag>guimenu</tag>, <tag>guisubmenu</tag>,
+                <tag>guilabel</tag>, <tag>menuchoice</tag>,
+                <tag>mousebutton</tag>, <tag>keycombo</tag>,
+                <tag>keycap</tag>, <tag role="keep-together">keycode</tag>,
+                <tag>keysym</tag>, <tag>shortcut</tag>, or
+                <tag>accel</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.admonition.blocks">
+              <term>Admonition elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>caution</tag>, <tag>important</tag>,
+                <tag>note</tag>, <tag>tip</tag>, or
+                <tag>warning</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.formal.blocks">
+              <term>Formal elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>example</tag>, <tag>figure</tag>,
+                <tag>table</tag>, or
+                <tag>equation</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.graphic.blocks">
+              <term>Graphic elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>mediaobject</tag> or
+                <tag>screenshot</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.info.elements">
+              <term>“Info” elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>abstract</tag>, <tag>address</tag>,
+                <tag>artpagenums</tag>, <tag>author</tag>,
+                <tag>authorgroup</tag>,
+                <tag>authorinitials</tag>,
+                <tag>bibliocoverage</tag>,
+                <tag>biblioid</tag>, <tag>bibliosource</tag>,
+                <tag>collab</tag>, <tag role="keep-together">confgroup</tag>,
+                <tag>contractsponsor</tag>,
+                <tag>contractnum</tag>, <tag>copyright</tag>,
+                <tag>cover</tag>, <tag>date</tag>,
+                <tag>edition</tag>, <tag role="keep-together">editor</tag>,
+                <tag>issuenum</tag>, <tag>keywordset</tag>,
+                <tag>legalnotice</tag>,
+                <tag>mediaobject</tag>, <tag>org</tag>,
+                <tag>orgname</tag>, <tag>othercredit</tag>,
+                <tag>pagenums</tag>, <tag>printhistory</tag>,
+                <tag>pubdate</tag>, <tag>publisher</tag>,
+                <tag>publishername</tag>,
+                <tag>releaseinfo</tag>, <tag>revhistory</tag>,
+                <tag>seriesvolnums</tag>,
+                <tag>subjectset</tag>, <tag>volumenum</tag>,
+                <tag>annotation</tag>,
+                <tag>extendedlink</tag>,
+                <tag>bibliomisc</tag>, <tag role="keep-together">bibliomset</tag>,
+                <tag>bibliorelation</tag>,
+                <tag>biblioset</tag>, <tag>itermset</tag>,
+                <tag>productname</tag>, or
+                <tag>productnumber</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.informal.blocks">
+              <term>Informal elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>informalexample</tag>,
+                <tag>informalfigure</tag>,
+                <tag>informaltable</tag>, or
+                <tag>informalequation</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.list.blocks">
+              <term>List elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>itemizedlist</tag>,
+                <tag>orderedlist</tag>, <tag>procedure</tag>,
+                <tag role="keep-together">simplelist</tag>,
+                <tag>variablelist</tag>,
+                <tag>segmentedlist</tag>,
+                <tag>glosslist</tag>, <tag>bibliolist</tag>,
+                <tag>calloutlist</tag>, or <tag role="keep-together">qandaset</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.para.blocks">
+              <term>Paragraph elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>anchor</tag>, <tag>para</tag>,
+                <tag>formalpara</tag>, or
+                <tag>simpara</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.publishing.blocks">
+              <term>Publishing elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>sidebar</tag>, <tag>blockquote</tag>,
+                <tag>address</tag>, or
+                <tag>epigraph</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.synopsis.blocks">
+              <term>Synopsis elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>funcsynopsis</tag>,
+                <tag>classsynopsis</tag>,
+                <tag>methodsynopsis</tag>,
+                <tag>constructorsynopsis</tag>,
+                <tag>destructorsynopsis</tag>,
+                <tag>fieldsynopsis</tag>, or
+                <tag>cmdsynopsis</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.technical.blocks">
+              <term>Technical elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>procedure</tag>, <tag>task</tag>,
+                <tag>productionset</tag>,
+                <tag>constraintdef</tag>, or
+                <tag>msgset</tag></para>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry xml:id="ipatn.db.verbatim.blocks">
+              <term>Verbatim elements</term>
+
+              <listitem>
+                <para>A choice of one of the following:
+                <tag>screen</tag>, <tag>literallayout</tag>,
+                <tag>programlistingco</tag>,
+                <tag>screenco</tag>,
+                <tag>programlisting</tag>, or
+                <tag>synopsis</tag></para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </section>
+
+        <section xml:id="s.elem.contentmodels"><info><title>Content models and validity</title></info>
+          
+
+          <para><indexterm>
+              <primary>validating</primary>
+
+              <secondary>content models, matching to elements</secondary>
+            </indexterm> <indexterm>
+              <primary>elements</primary>
+
+              <secondary>validating</secondary>
+            </indexterm>A validator uses the content models to determine if a
+          given document is valid. In order for a document to be valid, the
+          content of every element in the document must <quote>match</quote>
+          the content model for that element.</para>
+
+          <para>In practical terms, <quote>match</quote> means that it must be
+          possible to expand the content model until it exactly matches the
+          sequence of elements in the document.</para>
+
+          <para>For example, consider the content model of the
+          <tag>epigraph</tag>:</para>
+
+          <para><tag>epigraph</tag> ::=
+          (<tag>info</tag>?<superscript>db.titleforbidden.info</superscript>,
+          <tag>attribution</tag>?,(<tag>literallayout</tag> |
+          <emphasis>Paragraph elements</emphasis>)+)</para>
+
+          <para>Does the following example <quote>match</quote> that content
+          model?</para>
+
+          <screen>&lt;epigraph&gt;
+&lt;para&gt;Some text&lt;/para&gt;
+&lt;/epigraph&gt;</screen>
+
+          <para>Yes, it is valid because the following expansion of the
+          content model exactly matches the actual content: choose zero
+          occurrences of <tag>info</tag>, choose zero occurrences of
+          <tag role="keep-together">attribution</tag>, choose the
+          alternative <tag>para</tag> from the
+          <quote><emphasis>Paragraph elements</emphasis></quote> choice, and
+          choose to let the <quote>one or more</quote> match once.</para>
+
+          <para>By the same token, this example is not valid because there is
+          no expansion of the content model that can match it:</para>
+
+          <screen>&lt;epigraph&gt;
+&lt;para&gt;Some text&lt;/para&gt;
+&lt;attribution&gt;John Doe&lt;/attribution&gt;
+&lt;/epigraph&gt;</screen>
+        </section>
+      </section>
+    </section>
 
 <section xml:id="common.attributes">
 <title>Common Attributes</title>
-<para>
-<indexterm zone="common.attributes"><primary>attributes</primary>
-  <secondary>common</secondary></indexterm>
-<indexterm zone="common.attributes"><primary>common attributes</primary>
-</indexterm>There are many <quote>common attributes</quote> that occur on every
-DocBook element. They are summarized here for brevity and to make
-the additional attributes that occur on many elements stand
-out.</para>
+
+      <para><indexterm zone="common.attributes">
+          <primary>attributes</primary>
+
+          <secondary>common</secondary>
+        </indexterm> <indexterm zone="common.attributes">
+          <primary>common attributes</primary>
+        </indexterm>There are many <quote>common attributes</quote> that occur
+      on every DocBook element. They are summarized here for brevity and to
+      make the additional attributes that occur on many elements stand
+      out.</para>
 
 <?common-general-attributes?>
 
 <section xml:id="common.effectivity.attributes">
 <title>Common Effectivity Attributes</title>
-<indexterm zone="common.effectivity.attributes"><primary>effectivity</primary></indexterm>
-<indexterm zone="common.effectivity.attributes"><primary>attributes</primary><secondary>effectivity</secondary></indexterm>
-<indexterm zone="common.effectivity.attributes"><primary>effectivity attributes</primary></indexterm>
-<para>The common attributes include a collection of <quote>effectivity
-attributes.</quote> These attributes are available for authors to identify to
-whom a particular element applies. Effectivity attributes are often
-used for profiling: building documents that contain information only
-relevant to a particular audience. </para>
 
-<para>For example, a section might be identified as available only to
-readers with a <quote>top-secret</quote> <tag class="attribute">security</tag>
-clearance or a paragraph might be identifies as effecting only users
-running the implementation provided by a particular <tag
-class="attribute">vendor</tag>.
-</para>
+        <para><indexterm zone="common.effectivity.attributes">
+            <primary>effectivity</primary>
+          </indexterm><indexterm zone="common.effectivity.attributes">
+            <primary>attributes</primary>
+
+            <secondary>effectivity</secondary>
+          </indexterm><indexterm zone="common.effectivity.attributes">
+            <primary>effectivity attributes</primary>
+          </indexterm>The common attributes include a collection of
+        <quote>effectivity attributes.</quote> These attributes are available
+        for authors to identify to whom a particular element applies.
+        Effectivity attributes are often used for profiling: building
+        documents that contain information only relevant to a particular
+        audience.</para>
+
+        <para>For example, a section might be identified as available only to
+        readers with a <quote>top-secret</quote> <tag class="attribute">security</tag> clearance or a paragraph might be
+        identified as affecting only users running the implementation provided
+        by a particular <tag class="attribute">vendor</tag>.</para>
 
 <?common-effectivity-attributes?>
 
-<para>The names of the effectivity attributes are suggestive of
-several classes of common effectivity information. The semantically
-neutral <tag class="attribute">condition</tag> attribute was added
-to give authors a place to put values that don't fit neatly into one
-of the other alternatives.</para>
+        <para>The names of the effectivity attributes are suggestive of
+        several classes of common effectivity information. The semantically
+        neutral <tag class="attribute">condition</tag> attribute was
+        added to give authors a place to put values that don’t fit neatly into
+        one of the other alternatives.</para>
 
-<para>In authoring environments where many different kinds of
-effectivity information are required, it's not uncommon to see local
-extensions that add new attributes. It's also not uncommon to see attributes used
-without regard to the class of information suggested by the name.
-</para>
+        <para>In authoring environments where many different kinds of
+        effectivity information are required, it’s not uncommon to see local
+        extensions that add new attributes. It’s also not uncommon to see
+        attributes used without regard to the class of information suggested
+        by the name.</para>
 </section>
 </section>
 
 <section xml:id="common.linking.attributes">
 <title>Common Linking Attributes</title>
-<para>
-<indexterm zone="common.linking.attributes"><primary>attributes</primary>
-  <secondary>common linking</secondary></indexterm>
-<indexterm zone="common.linking.attributes"><primary>linking</primary>
-  <secondary>attributes</secondary></indexterm>
-<indexterm zone="common.linking.attributes"><primary>common linking attributes</primary>
-</indexterm>The following attributes occur on all elements that can
-be the start of a link. They are
-summarized here once for brevity and to make the additional attributes
-that occur on many elements stand out.</para>
+
+      <para><indexterm zone="common.linking.attributes">
+          <primary>attributes</primary>
+
+          <secondary>common linking</secondary>
+        </indexterm><indexterm zone="common.linking.attributes">
+          <primary>linking</primary>
+
+          <secondary>attributes</secondary>
+        </indexterm><indexterm zone="common.linking.attributes">
+          <primary>common linking attributes</primary>
+        </indexterm>The following attributes occur on all elements that can be
+      the start of a link. They are summarized here once for brevity and to
+      make the additional attributes that occur on many elements stand
+      out.</para>
 
 <?common-linking-attributes?>
 
 </section>
 </partintro>
-

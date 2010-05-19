@@ -18,21 +18,25 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>This <tag>informaltable</tag> element identifies an
+      informal CALS table (one without a <tag>title</tag>). DocBook
+      allows either <acronym>CALS</acronym> or <acronym>HTML</acronym> tables,
+      both of which describe tables geometrically using rows, columns, and
+      cells.</para>
 
-<para>This <tag>informaltable</tag> element identifies an informal
-CALS table (one without a <tag>title</tag>). DocBook allows either
-<acronym>CALS</acronym> or <acronym>HTML</acronym> tables, both of
-which describe tables geometrically using rows, columns, and cells.
-</para>
+      <para>Tables may include column headers and footers with
+      <tag>thead</tag> and <tag>tfoot</tag>, respectively. Use
+      the <tag class="attribute">rowheader</tag> attribute to identify
+      row headers.</para>
 
-<para>Tables may include column headers and footers with
-<tag>thead</tag> and <tag>tfoot</tag>, respectively. Use the <tag class="attribute">rowheader</tag> attribute to identify row headers.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?></para>
-<para><?tdg gentext='calssemantics'?></para>
+        <para>Formatted as a displayed block.</para>
+
+        <para>This element is expected to obey the semantics of the
+        <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
 </refsection>
 
 <?tdg-attributes?>

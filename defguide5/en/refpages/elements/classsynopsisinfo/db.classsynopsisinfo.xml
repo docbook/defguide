@@ -18,20 +18,19 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Supplementary information in a <tag>classsynopsis</tag>.
+      See <tag>classsynopsis</tag>.</para>
 
-<para>Supplementary information in a <tag>classsynopsis</tag>. See
-<tag>classsynopsis</tag>.
-</para>
+      <para>Unlike the other info elements,
+      <tag>classsynopsisinfo</tag> is not a container for <phrase role="keep-together">meta-</phrase><phrase role="keep-together">information</phrase>. Instead,
+      <tag>classsynopsisinfo</tag> is a verbatim environment for
+      adding additional information to a class synopsis.</para>
 
-<para>Unlike the other info elements, <tag>classsynopsisinfo</tag> is
-not a container for meta-information. Instead
-<tag>classsynopsisinfo</tag> is a verbatim environment for adding
-additional information to a class synopsis.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='pexp.linespecific'?></para>
+        <para>This element is displayed “verbatim”; whitespace and line breaks
+        within this element are significant.</para>
 </refsection>
 
 <?tdg-attributes?>

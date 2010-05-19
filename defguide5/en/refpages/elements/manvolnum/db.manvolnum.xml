@@ -18,33 +18,29 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>In a DocBook reference page, the <tag>manvolnum</tag>
+      holds the number of the volume in which the <tag>refentry</tag>
+      belongs.</para>
 
+      <para>The notion of a volume number is historical.
+      <acronym>UNIX</acronym> manual pages (<quote>man pages</quote>), for
+      which <tag>refentry</tag> was devised, were typically stored in
+      three-ring binders. Each bound manual was a volume in a set and
+      contained information about a particular class of things. For example,
+      volume 1 was for user commands, and volume 8 was for administrator
+      commands.</para>
 
-<para>In a DocBook reference page, the <tag>manvolnum</tag> holds
-the number of the volume in which the <tag>refentry</tag> belongs.
-</para>
-<para>The notion of a volume number is historical.  <acronym>UNIX</acronym>
-manual pages (<quote>man
-pages</quote>), for which <tag>refentry</tag> was devised, were typically
-stored in three ring binders.  Each bound manual was a volume in a set
-and contained information about a particular class of things.  For
-example, volume 1 was for user commands, and volume 8 was for administrator
-commands.
-</para>
-<para>Volume numbers need not be strictly numerical; volume
-<quote>l</quote> frequently held manual pages for local
-additions to the system, and the X Window System manual pages
-had an <quote>x</quote> in the volume number: for example,
-1x.
-</para>
+      <para>Volume numbers need not be strictly numerical; volume
+      <quote>l</quote> frequently held manual pages for local additions to the
+      system, and the X Window System manual pages had an <quote>x</quote> in
+      the volume number: for example, 1x.</para>
 
-<refsection><title>Processing expectations</title>
-<para>The content of <tag>manvolnum</tag> is usually printed in parentheses
-after the element title or citation.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>The content of <tag>manvolnum</tag> is usually printed
+        in parentheses after the element title or citation.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

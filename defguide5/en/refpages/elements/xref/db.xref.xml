@@ -18,53 +18,47 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>The <tag>xref</tag> element forms a cross-reference from
+      the location of the <tag>xref</tag> to the element to which it
+      points. Unlike <tag>link</tag> and the other cross-referencing
+      elements, <tag>xref</tag> is empty. The processing system has to
+      generate appropriate cross-reference text for the reader.</para>
 
+      <refsection xml:id="dbreproc.xref"><info><title>Processing expectations</title></info>
+        
 
-<para>The <tag>xref</tag> element forms a cross-reference from the location
-of the <tag>xref</tag> to the element to which it points.  Unlike
-<tag>link</tag> and the other cross-referencing elements, <tag>xref</tag>
-is empty. The processing system has to generate appropriate cross-reference
-text for the reader.
-</para>
+        <para>Under ordinary circumstances, the <tag>xref</tag> points
+        to some element with its <tag class="attribute">linkend</tag>
+        attribute and the processing system generates appropriate
+        cross-reference text. There are three ways for the author to influence
+        the generated text:</para>
 
-<refsection xml:id="dbreproc.xref"><title>Processing expectations</title>
+        <orderedlist inheritnum="ignore" continuation="restarts">
+          <listitem>
+            <para>If the <tag class="attribute">endterm</tag>
+            attribute is specified on <tag>xref</tag>, the content of
+            the element pointed to by <tag class="attribute">endterm</tag> will be used as the text of
+            the cross-reference.</para>
+          </listitem>
 
-<para>Under ordinary circumstances, the <tag>xref</tag>
-points to the some element with its
-<tag class="attribute">linkend</tag> attribute and the processing system
-generates appropriate cross reference text. There are three
-ways for the author to influence the generated text:</para>
+          <listitem>
+            <para>Otherwise, if the object <emphasis>pointed to</emphasis> has
+            a specified <tag class="attribute">xreflabel</tag>, the
+            content of that attribute will be used as the cross-reference
+            text.</para>
+          </listitem>
 
-<orderedlist>
-<listitem>
-<para>If the <tag class="attribute">endterm</tag> attribute is specified
-on <tag>xref</tag>, the
-content of the element pointed to by <tag class="attribute">endterm</tag>
-will be used as the text of the cross-reference.
-</para>
-</listitem>
-
-<listitem>
-<para>Otherwise, if the object <emphasis>pointed to</emphasis> has a
-specified <tag class="attribute">xreflabel</tag>, the content of
-that attribute will be used as the cross-reference text.
-</para>
-</listitem>
-
-<listitem>
-<para>Finally, the author may specify a keyword (or other information) in the
-<tag class="attribute">xrefstyle</tag> attribute. Unlike
-<tag class="attribute">endterm</tag> and
-<tag class="attribute">xreflabel</tag> which have rigid semantics,
-the content of the <tag class="attribute">xrefstyle</tag> attribute is simply
-additional information for the processing system. What effect it has, if any,
-is dependent on the processing system.</para>
-</listitem>
-</orderedlist>
-
+          <listitem>
+            <para>Finally, the author may specify a keyword (or other
+            information) in the <tag class="attribute">xrefstyle</tag>
+            attribute. Unlike <tag class="attribute">endterm</tag> and
+            <tag class="attribute">xreflabel</tag> which have rigid
+            semantics, the content of the <tag class="attribute">xrefstyle</tag> attribute is simply
+            additional information for the processing system. What effect it
+            has, if any, is dependent on the processing system.</para>
+          </listitem>
+        </orderedlist>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>

@@ -18,27 +18,23 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>A <tag>secondary</tag> contains a secondary word or phrase
+      in an <tag>indexterm</tag>. The text of a <tag role="keep-together">secondary</tag> term is less significant than
+      the <tag>primary</tag> term, but more significant than the
+      <tag role="keep-together">tertiary</tag> term for sorting and
+      display purposes.</para>
 
-<para>A <tag>secondary</tag> contains a secondary word or phrase in an
-<tag>indexterm</tag>.  The text of a <tag>secondary</tag> term
-is less significant than the <tag>primary</tag> term, but more
-significant than the <tag>tertiary</tag> term for sorting and
-display purposes.
-</para>
+      <para>In <tag>indexterm</tag>s, you can only have one primary,
+      secondary, and tertiary term. If you want to index multiple secondary
+      terms for the same primary, you must repeat the primary in another
+      <tag>indexterm</tag>. You cannot place several
+      <tag>secondary</tag>s in the same primary.</para>
 
-<para>In <tag>indexterm</tag>s, you can only have one primary,
-secondary, and tertiary term. If you want to index multiple
-secondary terms for the same primary, you must repeat the
-primary in another <tag>indexterm</tag>. You cannot place
-several <tag>secondary</tag>s in the same primary.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.suppress'?>
-This element provides data for processing but
-is not rendered in the primary flow of text.
-</para>
+        <para>Suppressed. This element provides data for processing but is not
+        rendered in the primary flow of text.</para>
 </refsection>
 
 <?tdg-attributes?>

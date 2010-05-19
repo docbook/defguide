@@ -18,26 +18,20 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title>
+<title>Description</title><para>Reference pages have their own hierarchical structure. A
+      <tag>refsection</tag> is a recursive <phrase role="keep-together">division</phrase> in a <tag>refentry</tag>,
+      analogous to a <tag>section</tag> elsewhere in the
+      document.</para>
 
+      <para>The value of a separate hierarchical structure is that it allows
+      the content model of sections in reference pages to be customized
+      differently than the content model of sections outside.</para>
 
-<para>Reference pages have their own hierarchical structure. A
-<tag>refsection</tag> is a recursive division in a
-<tag>refentry</tag>, analagous to a <tag>section</tag> elsewhere
-in the document.
-</para>
+      <refsection><info><title>Processing expectations</title></info>
+        
 
-<para>The value of a separate hierarchical structure is that it allows
-the content model of sections in reference pages to be
-customized differently than the content model of sections
-outside.
-</para>
-
-<refsection><title>Processing expectations</title>
-<para><?tdg gentext='format.block'?>
-</para>
+        <para>Formatted as a displayed block.</para>
 </refsection>
-
 
 <?tdg-attributes?>
 <?tdg-parents?>
