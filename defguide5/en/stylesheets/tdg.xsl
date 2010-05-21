@@ -81,10 +81,7 @@ set       nop
   <div class="copyrightfooter">
     <p>
       <a href="dbcpyright.html">Copyright</a>
-      <xsl:text> &#xA9; 2004-2008 Norman Walsh. </xsl:text>
-      <xsl:text>Portions Copyright © 1999-2003 </xsl:text>
-      <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a>
-      <xsl:text> All rights reserved.</xsl:text>
+      <xsl:text> &#xA9; 2010 Norman Walsh.</xsl:text>
     </p>
   </div>
 </xsl:template>
@@ -372,6 +369,9 @@ set       nop
   <xsl:text>: </xsl:text>
   <xsl:apply-templates/>
 </xsl:template>
+
+<xsl:template match="pubdate" mode="titlepage.mode"/>
+<xsl:template match="releaseinfo" mode="titlepage.mode"/>
 
 <!-- ============================================================ -->
 
