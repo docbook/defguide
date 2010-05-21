@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          revision="5.1">
 <info>
   <pubdate>$Date: 2009-10-28 07:50:42 -0400 (Wed, 28 Oct 2009) $</pubdate>
   <releaseinfo>$Revision: 205774 $</releaseinfo>
@@ -33,7 +37,6 @@ the verbatim qualities of an address.
 </para>
 </refsection>
 
-
 <?tdg-attributes?>
 <?tdg-parents?>
 <?tdg-children?>
@@ -42,6 +45,15 @@ the verbatim qualities of an address.
 
 <?tdg-seealso?>
 
-<!-- FIXME: add examples -->
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.givenname.1" role="HACK-ex.out.start"/>
+<xi:include href="example.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.givenname.1" role="HACK-ex.out.end"/>
+
+</refsection>
 
 </refentry>
