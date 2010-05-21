@@ -17,12 +17,6 @@
   <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="db:pubdate[not(@condition)]|db:releaseinfo[not(@condition)]">
-  <xsl:if test="not(starts-with(.,'$'))">
-    <xsl:sequence select="."/>
-  </xsl:if>
-</xsl:template>
-
 <xsl:template match="db:info">
   <xsl:variable name="content" as="element()*">
     <xsl:apply-templates select="*"/>

@@ -556,18 +556,11 @@
           </td>
           <td align="right">
             <i>DocBook: The Definitive Guide</i>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="/book/bookinfo/releaseinfo"/>
-            <xsl:text> </xsl:text>
-            <span class="alpha-version">
-              <xsl:text>(</xsl:text>
-              <a>
-		<xsl:attribute name="href">co01.html</xsl:attribute>
-                <em>Alpha</em>
-              </a>
-              <xsl:text>)</xsl:text>
-            </span>
-            <xsl:text> </xsl:text>
+            <xsl:text> (</xsl:text>
+            <a href="ch00-online.html">
+              <xsl:value-of select="/book/bookinfo/releaseinfo"/>
+            </a>
+            <xsl:text>)</xsl:text>
           </td>
         </tr>
       </table>

@@ -18,8 +18,6 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
-<xsl:param name="ng-release" select="'5.0b1'"/>
-
 <xsl:param name="output.media" select="'online'"/>
 <xsl:param name="html.stylesheet">defguide.css</xsl:param>
 <xsl:param name="toc.section.depth" select="1"/>
@@ -97,6 +95,15 @@ set       nop
 
   <xsl:if test="@revision">
     <xsl:choose>
+      <xsl:when test="@revision='5.1'">
+        <img src="figures/rev_5.1.png" alt="[5.1]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
       <xsl:when test="@revision='5.0'">
         <img src="figures/rev_5.0.png" alt="[5.0]">
           <xsl:if test="$align != ''">
@@ -598,9 +605,14 @@ set       nop
 
 <!-- ============================================================ -->
 
+<xsl:template match="bookinfo/mediaobject">
+  <div class="covergraphic">
+    <xsl:apply-imports/>
+  </div>
+</xsl:template>
+
 <xsl:template name="titlepage-block">
-  <xsl:variable name="authorgroup" select="bookinfo/authorgroup[1]"/>
-  <xsl:variable name="isbn" select="bookinfo/isbn[1]"/>
+  <xsl:variable name="isbn" select="bookinfo/biblioid[@class='isbn'][1]"/>
   <xsl:variable name="version" select="bookinfo/releaseinfo[1]"/>
   <xsl:variable name="date" select="bookinfo/pubdate[1]"/>
   <xsl:variable name="legalnotice" select="bookinfo/legalnotice[1]"/>
@@ -611,23 +623,25 @@ set       nop
       <xsl:call-template name="gentext">
         <xsl:with-param name="key">by</xsl:with-param>
       </xsl:call-template>
-      <xsl:text>&#160;</xsl:text>
-      <xsl:apply-templates select="$authorgroup/author" mode="titleblock"/>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="bookinfo/author" mode="titleblock"/>
     </span>
     <br/>
-    <span class="contributors">
-      <xsl:text>With contributions from</xsl:text>
-      <xsl:text>&#160;</xsl:text>
-      <xsl:apply-templates select="$authorgroup/othercredit" mode="titleblock"/>
+    <span class="editor">
+      <xsl:text>Edited by</xsl:text>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="bookinfo/editor" mode="titleblock"/>
     </span>
     <br/>
     <xsl:if test="$isbn">
       <span class="isbn">
 	<xsl:text>ISBN: </xsl:text>
-	<a href="http://www.oreilly.com/catalog/docbook">
+	<a href="http://oreilly.com/catalog/9781565925809/">
 	  <xsl:apply-templates select="$isbn/node()"/>
 	</a>
       </span>
+      <xsl:text>, published in conjunction with </xsl:text>
+      <a href="http://xmlpress.net/">XML Press</a>.
       <br/>
     </xsl:if>
     <span class="version">
@@ -636,17 +650,32 @@ set       nop
     </span>
     <br/>
     <span class="date">
-      <!-- rcsdate = "$Date$" -->
-      <!-- timeString = "dow mon dd hh:mm:ss TZN yyyy" -->
-      <xsl:variable name="timeString" select="cvs:localTime($date/text())"/>
+      <!-- <pubdate>$Date$ -->
+      <xsl:variable name="y" select="substring($date,8,4)"/>
+      <xsl:variable name="m" select="substring($date,13,2)"/>
+      <xsl:variable name="d" select="substring($date,16,2)"/>
+
       <xsl:text>Updated: </xsl:text>
-      <xsl:value-of select="substring($timeString, 1, 3)"/>
+      <xsl:value-of select="$d + 0"/>
+      <xsl:text> </xsl:text>
+
+      <xsl:choose>
+        <xsl:when test="$m = 1">January</xsl:when>
+        <xsl:when test="$m = 2">February</xsl:when>
+        <xsl:when test="$m = 3">March</xsl:when>
+        <xsl:when test="$m = 4">April</xsl:when>
+        <xsl:when test="$m = 5">May</xsl:when>
+        <xsl:when test="$m = 6">June</xsl:when>
+        <xsl:when test="$m = 7">July</xsl:when>
+        <xsl:when test="$m = 8">August</xsl:when>
+        <xsl:when test="$m = 9">September</xsl:when>
+        <xsl:when test="$m = 10">October</xsl:when>
+        <xsl:when test="$m = 11">November</xsl:when>
+        <xsl:when test="$m = 12">December</xsl:when>
+      </xsl:choose>
+
       <xsl:text>, </xsl:text>
-      <xsl:value-of select="substring($timeString, 9, 2)"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="substring($timeString, 5, 3)"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="substring($timeString, 25, 4)"/>
+      <xsl:value-of select="$y"/>
     </span>
   </p>
 
@@ -654,9 +683,10 @@ set       nop
     <xsl:apply-templates select="$copyright" mode="titlepage.mode"/>
   </p>
   <br clear="all"/>
+  <p id="backcover">(<a href="figures/coverback.png">back cover</a>)</p>
 </xsl:template>
 
-<xsl:template match="authorgroup/author" mode="titleblock">
+<xsl:template match="bookinfo/author|bookinfo/editor" mode="titleblock">
   <xsl:if test="position() &gt; 1 and last() &gt; 2">,</xsl:if>
   <xsl:if test="position() &gt; 1 and position() = last()"> and</xsl:if>
   <xsl:if test="position() &gt; 1">&#160;</xsl:if>
