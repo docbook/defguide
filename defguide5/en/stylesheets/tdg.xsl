@@ -650,10 +650,10 @@ set       nop
     </span>
     <br/>
     <span class="date">
-      <!-- <pubdate>$Date$ -->
-      <xsl:variable name="y" select="substring($date,8,4)"/>
-      <xsl:variable name="m" select="substring($date,13,2)"/>
-      <xsl:variable name="d" select="substring($date,16,2)"/>
+      <!-- <pubdate>2010-05-21</pubdate> -->
+      <xsl:variable name="y" select="substring($date,1,4)"/>
+      <xsl:variable name="m" select="substring($date,6,2)"/>
+      <xsl:variable name="d" select="substring($date,9,2)"/>
 
       <xsl:text>Updated: </xsl:text>
       <xsl:value-of select="$d + 0"/>
