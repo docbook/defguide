@@ -1,8 +1,20 @@
-/* CSS2 Stylesheet for _DocBook: The Definitive Guide_
- * Copyright (C) 1999, 2000, 2001, 2002 O'Reilly & Associates, Inc.
+/* CSS Stylesheet for _DocBook: The Definitive Guide_
+ * Copyright (C) 2010 Norman Walsh.
  *
  * $Id$
  */
+
+div.covergraphic div.mediaobject img {
+  margin-right: 20px;
+  border: solid black 1px;
+}
+
+#backcover {
+  position: relative;
+  top: -40px;
+  height: 0px;
+  left: 380px;
+}
 
 div.example-output {
   padding-left: 15px;
@@ -99,12 +111,20 @@ div.navheader {
 div.navfooter {
   background-color: #c6bec6;
   margin-bottom: 0px;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   border-top-style: solid;
   border-top-width: 1px;
   padding-top: 2px;
+}
+
+div.infofooter {
+  background-color: #c6bec6;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  border-top: solid 1px #aaaaaa;
 }
 
 div.copyrightfooter {
