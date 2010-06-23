@@ -1,6 +1,9 @@
 #!/usr/bin/perl -- # -*- Perl -*-
 
+my $assembly = shift @ARGV || undef;
+
 my @files = ();
+my @assembly = ();
 
 opendir (DIR, "elements");
 while ($dir = readdir(DIR)) {
@@ -10,18 +13,36 @@ while ($dir = readdir(DIR)) {
     opendir (EL, "elements/$dir");
     while ($name = readdir (EL)) {
 	next if $name !~ /^db\..*\.xml$/;
-	push(@files, "elements/$dir/$name");
+
+        if (-f "elements/$dir/.assembly") {
+            push(@assembly, "elements/$dir/$name");
+        } else {
+            push(@files, "elements/$dir/$name");
+        }
     }
     closedir (EL);
 }
 closedir (DIR);
 
-print "<reference xml:id='ref-element'\n";
-print "           xmlns='http://docbook.org/ns/docbook'\n";
-print "           xmlns:xi='http://www.w3.org/2001/XInclude'>\n";
-print "<title>DocBook Element Reference</title>\n";
-print "<?dbhtml filename='ref-elements.html'?>\n\n";
-print "<xi:include href='intro-elements.xml'/>\n\n";
+if ($assembly) {
+    print "<reference xml:id='ref-assembly'\n";
+    print "           xmlns='http://docbook.org/ns/docbook'\n";
+    print "           xmlns:xi='http://www.w3.org/2001/XInclude'>\n";
+    print "<title>DocBook Assembly Element Reference</title>\n";
+    print "<?dbhtml filename='ref-assembly.html'?>\n\n";
+
+    print "<xi:include href='intro-assembly.xml'/>\n\n";
+    @files = @assembly;
+} else {
+    print "<reference xml:id='ref-element'\n";
+    print "           xmlns='http://docbook.org/ns/docbook'\n";
+    print "           xmlns:xi='http://www.w3.org/2001/XInclude'>\n";
+
+    print "<title>DocBook Element Reference</title>\n";
+    print "<?dbhtml filename='ref-elements.html'?>\n\n";
+
+    print "<xi:include href='intro-elements.xml'/>\n\n";
+}
 
 my @any = ();
 foreach my $file (sort @files) {
