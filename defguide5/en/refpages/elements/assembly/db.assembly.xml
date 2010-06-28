@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <refentry xmlns="http://docbook.org/ns/docbook"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          xmlns:xi="http://www.w3.org/2001/XInclude">
-<info>
-  <pubdate>$Date: 2010-05-19 09:57:55 -0400 (Wed, 19 May 2010) $</pubdate>
-  <releaseinfo>$Revision: 8627 $</releaseinfo>
-</info>
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          revision="5.1">
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
@@ -23,12 +20,21 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>Part of an <tag>assembly</tag>. FIXME: TBD.</para>
+<para>An <tag>assembly</tag> describes how a set of resources are
+combined together to form a new structure. In topic-oriented authoring scenarios,
+a set of topics (perhaps, but not necessarily, in <tag>topic</tag> elements)
+is used to assemble a <tag>structure</tag>, a new document composed from
+those topics.</para>
+
+<para>The assembly imposes a structure on the topics that may never
+have been conceived by the topic authors.</para>
 
 <refsection>
 <title>Processing expectations</title>
 
-<para>FIXME: TBD.</para>
+<para>An <tag>assembly</tag> is a container, it is not expected to produce any
+particular output. When an assembly is processed, one or more of its
+<tag>structure</tag> elements is rendered.</para>
 
 </refsection>
 

@@ -3,10 +3,6 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           xmlns:xi="http://www.w3.org/2001/XInclude"
           revision="5.1">
-<info>
-  <pubdate>$Date: 2010-05-19 09:57:55 -0400 (Wed, 19 May 2010) $</pubdate>
-  <releaseinfo>$Revision: 8627 $</releaseinfo>
-</info>
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
@@ -24,12 +20,16 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>Part of an <tag>assembly</tag>. FIXME: TBD.</para>
+<para>The <tag>resources</tag> element is a wrapper for one or more
+<tag>resource</tag> elements. The <tag class="attribute">grammar</tag>, if specified,
+can be used to specify the default markup grammar used by resources in this collection.
+The <tag>assembly</tag> can specify <tag>transforms</tag> to convert non-DocBook
+grammars into DocBook.</para>
 
 <refsection>
 <title>Processing expectations</title>
 
-<para>FIXME: TBD.</para>
+<para>None. The <tag>resources</tag> element is just a container.</para>
 
 </refsection>
 
