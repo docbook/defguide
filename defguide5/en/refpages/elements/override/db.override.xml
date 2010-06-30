@@ -1,0 +1,52 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1">
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">override</refmiscinfo>
+  <refmiscinfo role="pattern">db.override</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>The <tag>override</tag> element has the same content model as
+<tag>info</tag>. When used in a <tag>module</tag>, the
+<tag>override</tag> element indicates elements in the meta-information
+of the included <tag>resource</tag> that should be replaced with the
+content of the <tag>override</tag> element.</para>
+
+<para>This can be used, for example, to override the <tag>title</tag>
+of an included resource, or the <tag>pubdate</tag> or any other
+meta-information.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>The content of <tag>override</tag> is not rendered directly. Each element
+in the <tag>override</tag> replaces all elements of the same name in the
+meta-information of the included resource. They are rendered from that
+<tag>info</tag> wrapper in the normal way.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>
