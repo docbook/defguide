@@ -172,7 +172,7 @@ may identify any number of relationships.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><tag>transformations</tag></term>
+<term><tag>transforms</tag></term>
 <listitem>
 <para>Identifies transformations that can be applied during assembly.
 An assembly may identify any number of transformations.</para>
@@ -303,13 +303,13 @@ with a resource (for example, to translate from some other format into
 DocBook), or with a module (to address requirements beyond the limited
 transformation capabilities of the assembly).</para>
 
-<programlisting><![CDATA[<transformations>
+<programlisting><![CDATA[<transforms>
   <transform name="dita2docbook" type="text/xsl" fileref="dita2db.xsl"/>
   <transform name="tutorial" type="text/xsl" fileref="db2tutorial.xsl"/>
   <transform name="art2pi" type="text/xsl" fileref="art2pi.xsl"/>
   <transform name="office" type="application/xproc+xml" fileref="office2db.xpl"/>
   <transform name="office" type="text/xsl" fileref="extractoffice.xsl"/>
-</transformations>]]></programlisting>
+</transforms>]]></programlisting>
 
 <para>If there are several ways to provide a transformation, they may
 all be listed provided that they have different types. In the example above,
