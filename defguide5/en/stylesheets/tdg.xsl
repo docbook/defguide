@@ -817,6 +817,9 @@ set       nop
       <xsl:when test="$lcname = 'indexterm'">
 	<xsl:value-of select="'element.db.indexterm.singular'"/>
       </xsl:when>
+      <xsl:when test="$lcname = 'resource'">
+	<xsl:value-of select="'element.db.file.resource'"/>
+      </xsl:when>
       <xsl:when test="$lcname = 'mml.*'">
 	<xsl:value-of select="'element.db._any.mml'"/>
       </xsl:when>
