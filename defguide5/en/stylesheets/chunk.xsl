@@ -807,6 +807,7 @@
           <xsl:with-param name="next" select="$next"/>
         </xsl:call-template>
 
+<!--  This is pointless since keywords aren't updated
         <xsl:if test="*[pubdate or releaseinfo]">
           <xsl:variable name="p" select="*[pubdate or releaseinfo][1]/pubdate"/>
           <xsl:variable name="r" select="*[pubdate or releaseinfo][1]/releaseinfo"/>
@@ -816,6 +817,7 @@
             <xsl:value-of select="$p"/>
           </div>
         </xsl:if>
+-->
 
 <!--
         <xsl:message><xsl:copy-of select="."/></xsl:message>
