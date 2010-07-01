@@ -4,14 +4,14 @@
 	 version="5.0" xml:id="preface-online">
 <?dbhtml filename="ch00-online.html"?>
 <info>
-  <title>Preface to the Online Edition</title>
+  <title>Preface to the DocBook V5.1 Edition</title>
   <pubdate>$Date: 2010-05-19 09:57:55 -0400 (Wed, 19 May 2010) $</pubdate>
   <releaseinfo>$Revision: 8627 $</releaseinfo>
 </info>
 
 <para><citetitle>DocBook 5: The Definitive Guide</citetitle> as you
-see it on this site is always tracking the most current development
-release of DocBook.</para>
+see it on this site tracks the most current development
+release of DocBook, at the moment, that's DocBook V5.1.</para>
 
 <para>The current
 <link xlink:href="http://oreilly.com/catalog/9780596805012/">O'Reilly
@@ -20,4 +20,83 @@ edition</link> covers DocBook V5.0, the OASIS Standard.</para>
 <para>If you're using DocBook V5.0, you will find some things in this
 online text which are new or different from the OASIS Standard
 release.</para>
+
+<section xml:id="changes-in-51">
+<title>Summary of Changes in DocBook V5.1</title>
+
+<para>This section summarizes the changes made since DocBook V5.0.</para>
+
+<para>The largest change is the introduction of support for topic-based authoring
+through the addition of the <tag>topic</tag> element and the <tag>assembly</tag>
+structure. For more information about assemblies, see
+<xref linkend="assemblies"/>.</para>
+
+<para>DocBook V5.1 also addresses the following requests for enhancement:</para>
+
+<itemizedlist>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1679665">1679665</link>
+Add better support for modular documentation
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1722935">1722935</link>
+Add a <tag class="attvalue">proofreader</tag> value to the <tag class="attribute">class</tag>
+attribute for <tag>othercredit</tag>
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1770787">1770787</link>
+Add <tag>givenname</tag> as an alternative for <tag>firstname</tag>
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1899655">1899655</link>
+Allow more elements to be the root of a DocBook document
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2100736">2100736</link>
+Allow <tag>constant</tag> in <tag>initializer</tag>
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2791288">2791288</link>
+Added several additional elements, including <tag>quote</tag>, to the ubiquitous inlines
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2820190">2820190</link>
+Add a <tag>topic</tag> element
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2821653">2821653</link>
+Remove the constraint that <tag>indexterm</tag> elements must not appear in
+<tag>footnote</tag>s
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2907124">2907124</link>
+Allow personal name components directly in <tag>bibliomset</tag>.
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2907125">2907125</link>
+Allow all inlines in <tag>remark</tag>
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2907131">2907131</link>
+Allow <tag>simplesect</tag> in <tag>colophon</tag>
+</para>
+</listitem>
+<listitem>
+<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2964576">2964576</link>
+Fix the bug that allowed <tag>table</tag> to appear inside <tag>entry</tag>
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
 </preface>
