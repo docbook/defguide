@@ -11,7 +11,7 @@
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
   <refmiscinfo role="element">resource</refmiscinfo>
-  <refmiscinfo role="pattern">db.resource</refmiscinfo>
+  <refmiscinfo role="pattern">db.container.resource</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -24,12 +24,15 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>Part of an <tag>assembly</tag>. FIXME: TBD.</para>
+<para>A container <tag>resource</tag> is a wrapper for an “inline” resource. If a
+<tag class="attribute">grammar</tag> is specified, then the resource is assumed to
+be authored in the grammar named.</para>
 
 <refsection>
 <title>Processing expectations</title>
 
-<para>FIXME: TBD.</para>
+<para>A <tag>resource</tag> is never rendered directly, though it may
+be rendered in one or more <tag>structure</tag>s.</para>
 
 </refsection>
 

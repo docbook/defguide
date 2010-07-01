@@ -24,12 +24,36 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>Part of an <tag>assembly</tag>. FIXME: TBD.</para>
+<para>Within a <tag>structure</tag>, the <tag>module</tag> elements
+describe the subunits of the structure. If the structure represents a
+book, then the modules are effectively the chapters, appendixes, etc.
+If the structure represents an interactive help system or web site,
+then the modules may be pages or sets of pages within that
+system.</para>
+
+<para>In the simplest case, a <tag>module</tag> points to the
+<tag>resource</tag> that is the body of the module. In more complex
+cases, a <tag>module</tag> may impose more structure through nested
+modules.</para>
+
+<para>If <tag class="attribute">contentonly</tag> is <literal>true</literal>, then
+only the content of the referenced resource is included (that is, the children of
+the root element, but not the root element itself).</para>
+
+<para>If <tag class="attribute">omittitles</tag> is <literal>true</literal>, then
+the title elements of the referenced resource are not included.</para>
+
+<note>
+<para>The <tag class="attribute">omittitles</tag> attribute seems redundant,
+or perhaps just misnamed (<tag class="attribute">notitles</tag>?) given the
+existence of <tag>override</tag>.</para>
+</note>
 
 <refsection>
 <title>Processing expectations</title>
 
-<para>FIXME: TBD.</para>
+<para>Never rendered directly. The content that results from processing a module
+is generally rendered in the normal fashion.</para>
 
 </refsection>
 

@@ -10,8 +10,8 @@
 
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
-  <refmiscinfo role="element">transforms</refmiscinfo>
-  <refmiscinfo role="pattern">db.transforms</refmiscinfo>
+  <refmiscinfo role="element">resource</refmiscinfo>
+  <refmiscinfo role="pattern">db.file.resource</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -24,13 +24,15 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>The <tag>transforms</tag> element is a wrapper for one or more
-<tag>transform</tag> elements.</para>
+<para>A file <tag>resource</tag> identifies a resource by URI. If a
+<tag class="attribute">grammar</tag> is specified, then the resource is assumed to
+be authored in the grammar named.</para>
 
 <refsection>
 <title>Processing expectations</title>
 
-<para>None. The <tag>transforms</tag> element is just a container.</para>
+<para>A <tag>resource</tag> is a pointer to another document. It's never rendered directly,
+though the resource identified may be rendered in one or more <tag>structure</tag>s.</para>
 
 </refsection>
 
@@ -45,7 +47,7 @@
 <refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href="example.1.xml" parse="text"/></programlisting>
+<para>FIXME: TBD.</para>
 
 </refsection>
 
