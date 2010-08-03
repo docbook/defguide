@@ -4,8 +4,9 @@
                 xmlns:exsl="http://exslt.org/common"
                 xmlns:set="http://exslt.org/sets"
 		xmlns:fm="http://freshmeat.net/projects/freshmeat-submit/"
+		xmlns:db="http://docbook.org/ns/docbook"
 		version="1.0"
-                exclude-result-prefixes="doc exsl set fm">
+                exclude-result-prefixes="doc exsl set fm db">
 
 <!-- ********************************************************************
      $Id: htmlhelp.xsl 6721 2007-03-20 21:16:16Z kosek $
@@ -31,18 +32,14 @@
 <xsl:param name="htmlhelp.button.home.url">http://www.docbook.org</xsl:param>
 
 <xsl:param name="htmlhelp.button.jump1" select="1"/>
-<xsl:param name="htmlhelp.button.jump1.url">http://sourceforge.net/docman/display_doc.php?docid=10513&amp;group_id=21935</xsl:param>
-<xsl:param name="htmlhelp.button.jump1.title">Archives</xsl:param>
-
-<xsl:param name="htmlhelp.button.jump2" select="1"/>
-<xsl:param name="htmlhelp.button.jump2.url">http://sourceforge.net/project/showfiles.php?group_id=21935</xsl:param>
-<xsl:param name="htmlhelp.button.jump2.title">Stylesheets</xsl:param>
+<xsl:param name="htmlhelp.button.jump1.url">http://sourceforge.net/project/showfiles.php?group_id=21935</xsl:param>
+<xsl:param name="htmlhelp.button.jump1.title">Stylesheets</xsl:param>
 
 <xsl:param name="htmlhelp.title">
-  <xsl:text>DocBook: The Definitive Guide</xsl:text>
+  <xsl:text>DocBook 5: The Definitive Guide</xsl:text>
 </xsl:param>
 
-<xsl:param name="VERSION" select="string(document('../VERSION.xml')//fm:Version[1])"/>
+<xsl:param name="VERSION" select="substring-before(/db:book/db:info/db:releaseinfo, ' ')"/>
 <xsl:param name="htmlhelp.chm" select="concat('tdg5-en-', $VERSION, '.chm')"/>
 
 <xsl:param name="htmlhelp.generate.index" select="1"/>

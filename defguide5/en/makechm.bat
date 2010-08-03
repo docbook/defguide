@@ -7,7 +7,7 @@ REM of HTML Help Workshop is installed in common place
 xcopy /s /y /i figures htmlhelp\figures
 xcopy /i /y html\defguide.css htmlhelp\defguide.css
 
-call saxon-big-stack tdg.xml stylesheets/htmlhelp.xsl
+call saxon-big-stack book.xml stylesheets/htmlhelp.xsl
 %HHC% htmlhelp.hhp
 
 
