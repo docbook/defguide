@@ -263,7 +263,7 @@ declare function local:convert($node as node()) as node()* {
       default return ("ERROR: UNEXPECTED NODE", local:convert($node/node()))
 };
 
-declare function local:param($node as element()) as element() {
+declare function local:para($node as element()) as element() {
   &lt;fo:block&gt;
     { local:convert($node/node()) }
   &lt;/fo:block&gt;
