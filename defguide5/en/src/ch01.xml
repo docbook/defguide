@@ -805,6 +805,45 @@
       In the future, this document will probably conform to (some version of)
       RDDL and provide pointers to related resources.<indexterm class="endofrange" startref="idx.introduction-ns"/></para>
     </note>
+
+<section xml:id="nsusage" revisionflag="added">
+<info>
+<title>Namespace Usage Policy</title>
+</info>
+
+<para>DocBook is used throughout the world. As one would expect in such a
+broad context, DocBook is often customized to satisfy the requirements
+of specific organizations or projects. The DocBook Technical Committee encourages such
+customization and works hard to make sure that the schemas are as
+amenable to customization as possible.</para>
+
+<para>When customizers add new elements to DocBook, they often place those
+elements in the DocBook namespace.
+There is historical precedent for this approach as DocBook's history
+pre-dates namespaces and even XML. Even without precedent, users would
+almost certainly encourage customizers to use the same namespace. In
+many cases it simplifies authoring and almost always simplifies the
+training of new authors.</para>
+
+<para>However, a new element introduced into the DocBook namespace by a
+local customization is not officially part of DocBook. Only the
+DocBook Technical Committee can introduce new elements into DocBook officially by
+publishing a new version of the standard with those elements.</para>
+
+<para>This means that the practice of adding new, local elements into the DocBook
+namespace comes with a cost:
+the potential for confusion among authors familiar with different
+customizations and the costs associated with resolving any conflicts
+between interchange partners.
+</para>
+
+<para>The DocBook Technical Committee encourages customizers to think carefully about these
+costs and weight the potential tradoffs between unofficially adding
+elements to DocBook and using elements in their own namespace with
+care.</para>
+
+</section>
+
   </section>
 
   <section xml:id="introduction-rng"><info><title>Relaxing with DocBook</title></info>
