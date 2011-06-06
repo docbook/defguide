@@ -1,30 +1,31 @@
 #!/usr/bin/perl -- # -*- Perl -*-
 
-my $assembly = shift @ARGV || undef;
+use strict;
+use English;
 
+my $class = shift @ARGV || undef;
 my @files = ();
-my @assembly = ();
 
 opendir (DIR, "elements");
-while ($dir = readdir(DIR)) {
-    next if ! -d "elements/$dir";
-    next if $dir eq 'build';
+while (my $name = readdir(DIR)) {
+    next if ! -f "elements/$name";
+    next if $name !~ /\.fmt$/;
 
-    opendir (EL, "elements/$dir");
-    while ($name = readdir (EL)) {
-	next if $name !~ /^db\..*\.xml$/;
+    open (F, "elements/$name");
+    read (F, $_, -s "elements/$name");
+    close (F);
 
-        if (-f "elements/$dir/.assembly") {
-            push(@assembly, "elements/$dir/$name");
-        } else {
-            push(@files, "elements/$dir/$name");
-        }
+    my @classes = /<refmiscinfo role=.class.>.*?<\/refmiscinfo>/g;
+    my $match = (!@classes && !defined($class)) ? 1 : 0;
+    foreach my $info (@classes) {
+        $match = 1 if $info =~ />$class</;
     }
-    closedir (EL);
+
+    push (@files, $name) if $match;
 }
 closedir (DIR);
 
-if ($assembly) {
+if ($class eq 'assembly') {
     print "<reference xml:id='ref-assembly'\n";
     print "           xmlns='http://docbook.org/ns/docbook'\n";
     print "           xmlns:xi='http://www.w3.org/2001/XInclude'>\n";
@@ -32,8 +33,7 @@ if ($assembly) {
     print "<?dbhtml filename='ref-assembly.html'?>\n\n";
 
     print "<xi:include href='intro-assembly.xml'/>\n\n";
-    @files = @assembly;
-} else {
+} elsif (!defined($class)) {
     print "<reference xml:id='ref-element'\n";
     print "           xmlns='http://docbook.org/ns/docbook'\n";
     print "           xmlns:xi='http://www.w3.org/2001/XInclude'>\n";
@@ -42,17 +42,20 @@ if ($assembly) {
     print "<?dbhtml filename='ref-elements.html'?>\n\n";
 
     print "<xi:include href='intro-elements.xml'/>\n\n";
+} else {
+    print STDERR "Unexpected class: $class\n";
+    exit 1;
 }
 
 my @any = ();
-foreach my $file (sort @files) {
+foreach my $file (sort specialsort @files) {
     my $name = $file;
     $name =~ s/^.*\/([^\/]+)$/$1/;
 
-    if ($file =~ /ANY/) {
-	push (@any, "<xi:include href='elements/build/$name'/>");
+    if ($file =~ /_any/) {
+	push (@any, "<xi:include href='elements/$name'/>");
     } else {
-	print "<xi:include href='elements/build/$name'/>\n";
+	print "<xi:include href='elements/$name'/>\n";
     }
 }
 
@@ -61,3 +64,18 @@ foreach my $line (@any) {
 }
 
 print "\n</reference>\n";
+
+sub specialsort {
+    # Make sure _x sorts after x
+    my $ap = $a;
+    my $bp = $b;
+
+    $ap =~ s/^_//;
+    $bp =~ s/^_//;
+
+    if ($ap eq $bp) {
+        return $b cmp $a;
+    } else {
+        return $ap cmp $bp;
+    }
+}
