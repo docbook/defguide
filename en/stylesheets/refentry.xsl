@@ -20,6 +20,10 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
+<xsl:param name="rngfile" required="yes"/> <!-- path to .rnd (yes 'd') file -->
+
+<xsl:param name="seealsofile" required="yes"/> <!-- path to seealso.xml -->
+
 <xsl:param name="include.changelog" select="0"/>
 
 <xsl:param name="SOURCES" select="()"/>
@@ -31,17 +35,11 @@
 
 <xsl:variable name="FOR-OREILLY" select="false()"/>
 
-<xsl:variable name="rngfile"
-	      select="'../tools/lib/defguide.rnd'"/>
-
-<xsl:variable name="rng" select="document($rngfile)"/>
+<xsl:variable name="rng" select="document(resolve-uri($rngfile,base-uri(/)))"/>
 
 <xsl:variable name="choice-patterns" select="document('patterns.xml')"/>
 
-<xsl:variable name="seealsofile"
-	      select="'../tools/lib/seealso.xml'"/>
-
-<xsl:variable name="seealso" select="document($seealsofile)"/>
+<xsl:variable name="seealso" select="document(resolve-uri($seealsofile,base-uri(/)))"/>
 
 <xsl:variable name="element"
 	      select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>

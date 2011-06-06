@@ -3,13 +3,13 @@ all: refpages list-elements.xml list-assembly.xml
 refpages:
 	$(MAKE) -C elements
 
-list-elements.xml: Makefile $(wildcard elements/build/*.xml) ../tools/bin/makeelist
+list-elements.xml: Makefile elements/.formatted ../../tools/bin/makeelist
 	@echo Extracting elements...
-	../tools/bin/makeelist > $@
+	../../tools/bin/makeelist > $@
 
-list-assembly.xml: Makefile $(wildcard elements/build/*.xml) ../tools/bin/makeelist
+list-assembly.xml: Makefile elements/.formatted ../../tools/bin/makeelist
 	@echo Extracting elements...
-	../tools/bin/makeelist assembly > $@
+	../../tools/bin/makeelist assembly > $@
 
 clean:
 	$(MAKE) -C elements clean

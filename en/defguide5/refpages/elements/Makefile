@@ -1,6 +1,7 @@
-DEFGUIDERND=../../tools/lib/defguide.rnd
+DEFGUIDERND=../../lib/defguide.rnd
 REFENTRYXSL=../../../stylesheets/refentry.xsl
 SAXON=$(DOCBOOK_SVN)/buildtools/saxon
+SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml
 
 VPATH=../../../refpages/elements
 
@@ -35,11 +36,11 @@ XINCLUDED=_any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstterm.xi \
           glossdiv.xi glossentry.xi glosslist.xi glosssee.xi glossseealso.xi \
           glossterm.xi group.methodparam.xi group.paramdef.xi group.xi \
           guibutton.xi guiicon.xi guilabel.xi guimenu.xi guimenuitem.xi \
-          guisubmenu.xi hardware.xi holder.xi honorific.xi html.button.xi \
-          html.caption.xi html.col.xi html.colgroup.xi html.fieldset.xi \
-          html.form.xi html.informaltable.xi html.input.xi html.label.xi \
-          html.legend.xi html.option.xi html.select.xi html.table.xi \
-          html.tbody.xi html.td.xi html.textarea.xi html.tfoot.xi html.th.xi \
+          guisubmenu.xi hardware.xi holder.xi honorific.xi \
+          html.caption.xi html.col.xi html.colgroup.xi \
+          html.informaltable.xi \
+          html.table.xi \
+          html.tbody.xi html.td.xi html.tfoot.xi html.th.xi \
           html.thead.xi html.tr.xi imagedata.mathml.xi imagedata.svg.xi \
           imagedata.xi imageobject.xi imageobjectco.xi important.xi index.xi \
           indexdiv.xi indexentry.xi indexterm.endofrange.xi \
@@ -95,11 +96,11 @@ clean:
 	rm -f *.xi *.fmt
 
 .formatted: $(XINCLUDED)
-	$(SAXON) $@ $(REFENTRYXSL) SOURCES="$?"
+	$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$?"
 	touch .formatted
 
 %.xi : %.xml
 	xmllint --xinclude $< > $@
 
 %.fmt : %.xi $(REFENTRYXSL) $(DEFGUIDERND)
-	$(SAXON) $< $(REFENTRYXSL) $@
+	$(SAXON) $< $(REFENTRYXSL) $@ $(SAXONPARAM)
