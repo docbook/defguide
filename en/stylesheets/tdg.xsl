@@ -14,7 +14,6 @@
 <!-- this stylesheet somewhat dangerously does its own profiling -->
 
 <xsl:import href="/sourceforge/docbook/xsl/html/docbook.xsl"/>
-<xsl:include href="html-titlepage.xsl"/>
 
 <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
@@ -819,6 +818,9 @@ set       nop
       </xsl:when>
       <xsl:when test="$lcname = 'resource'">
 	<xsl:value-of select="'element.db.file.resource'"/>
+      </xsl:when>
+      <xsl:when test="$lcname = 'module'">
+	<xsl:value-of select="'element.db.resource.module'"/>
       </xsl:when>
       <xsl:when test="$lcname = 'mml.*'">
 	<xsl:value-of select="'element.db._any.mml'"/>

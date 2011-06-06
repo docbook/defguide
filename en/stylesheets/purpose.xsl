@@ -5,9 +5,9 @@
 		xmlns:html="http://www.w3.org/1999/xhtml"
 		xmlns:db="http://docbook.org/ns/docbook"
 		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
-        xmlns:exsl="http://exslt.org/common"
-        exclude-result-prefixes="cvs rng html db dbx exsl"
-        version="2.0">
+                xmlns:exsl="http://exslt.org/common"
+                exclude-result-prefixes="cvs rng html db dbx exsl"
+                version="2.0">
 
 <xsl:key name="define" match="rng:define" use="@name"/>
 

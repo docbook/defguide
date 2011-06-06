@@ -20,9 +20,9 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
-<xsl:param name="rngfile" required="yes"/> <!-- path to .rnd (yes 'd') file -->
-
-<xsl:param name="seealsofile" required="yes"/> <!-- path to seealso.xml -->
+<xsl:param name="rngfile"      required="yes"/> <!-- path to .rnd (yes 'd') file -->
+<xsl:param name="seealsofile"  required="yes"/> <!-- path to seealso.xml -->
+<xsl:param name="patternsfile" required="yes"/> <!-- path to patterns.xml -->
 
 <xsl:param name="include.changelog" select="0"/>
 
@@ -36,16 +36,8 @@
 <xsl:variable name="FOR-OREILLY" select="false()"/>
 
 <xsl:variable name="rng" select="document(resolve-uri($rngfile,base-uri(/)))"/>
-
-<xsl:variable name="choice-patterns" select="document('patterns.xml')"/>
-
+<xsl:variable name="choice-patterns" select="document(resolve-uri($patternsfile,base-uri(/)))"/>
 <xsl:variable name="seealso" select="document(resolve-uri($seealsofile,base-uri(/)))"/>
-
-<xsl:variable name="element"
-	      select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
-
-<xsl:variable name="pattern"
-	      select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
 
   <!-- it's ok to mix inlines and blocks because no elements in DocBook
        contain a mixture of both -->
@@ -66,7 +58,13 @@
         <xsl:variable name="fmt"
                       select="resolve-uri(concat(substring-before($src,'.xi'),'.fmt'), $root)"/>
         <xsl:variable name="doc" select="doc($src)"/>
-        <xsl:message>Formatting <xsl:value-of select="$src"/>...</xsl:message>
+
+        <xsl:message>
+          <xsl:text>Formatting </xsl:text>
+          <xsl:value-of select="substring-after($src,'/elements/')"/>
+          <xsl:text>...</xsl:text>
+        </xsl:message>
+
         <xsl:result-document href="{$fmt}">
           <xsl:apply-templates select="$doc/db:refentry"/>
         </xsl:result-document>
@@ -76,6 +74,12 @@
 </xsl:template>
 
 <xsl:template match="db:refentry">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+  <xsl:variable name="element"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+
   <xsl:element name="{name(.)}">
     <xsl:copy-of select="@*"/>
     <xsl:attribute name="xml:id" select="translate(concat('element.', $pattern),':','-')"/>
@@ -124,6 +128,12 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-refentrytitle')">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+  <xsl:variable name="element"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+
   <xsl:value-of select="$element"/>
   <xsl:if test="count($rng/key('elemdef', $element)) &gt; 1">
     <xsl:text> (</xsl:text>
@@ -133,10 +143,16 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-refname')">
+  <xsl:variable name="element"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+
   <xsl:value-of select="$element"/>
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-refpurpose')">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
   <xsl:variable name="def" select="$rng/key('define', $pattern)"/>
   <xsl:copy-of select="$def/ancestor::rng:div[1]/db:refpurpose/node()"/>
 </xsl:template>
@@ -148,6 +164,12 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-parents')">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+  <xsl:variable name="element"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+
   <xsl:variable name="parents"
 	select="$rng//rng:element[doc:content-model//rng:ref[@name=$pattern]]"/>
 
@@ -177,6 +199,7 @@
 	      <member>
 		<xsl:choose>
 		  <xsl:when test="count($defs) = 0">
+                    <xsl:message>Failed to find type for: <xsl:value-of select="@name"/></xsl:message>
 		    <xsl:value-of select="@name"/>
 		    <xsl:text> ???</xsl:text>
 		  </xsl:when>
@@ -223,6 +246,12 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-children')">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+  <xsl:variable name="element"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+
   <xsl:variable name="elem" select="$rng/key('define', $pattern)/rng:element"/>
   <xsl:variable name="children"
 		select="$elem/doc:content-model//rng:ref"/>
@@ -252,10 +281,14 @@
 		  <xsl:when test="@name = 'db._any.svg'">
 		    <xsl:text>svg:*</xsl:text>
 		  </xsl:when>
+		  <xsl:when test="@name = 'db._any.docbook'">
+		    <xsl:text>docbook:*</xsl:text>
+		  </xsl:when>
 		  <xsl:when test="@name = 'db._any'">
 		    <xsl:text>*:*</xsl:text>
 		  </xsl:when>
 		  <xsl:when test="count($defs) = 0">
+                    <xsl:message>Failed to find text for: <xsl:value-of select="@name"/></xsl:message>
 		    <xsl:value-of select="$elem"/>
 		    <xsl:text> ??? (</xsl:text>
 		    <xsl:value-of select="@name"/>
@@ -305,6 +338,9 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-attributes')">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
   <xsl:variable name="elem" select="$rng/key('define', $pattern)/rng:element"/>
   <xsl:variable name="attributes"
 		select="$elem/doc:attributes//rng:attribute"/>
@@ -521,6 +557,12 @@
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-seealso')">
+  <xsl:variable name="pattern"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+  <xsl:variable name="element"
+                select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+
   <xsl:variable name="xdefs" select="$rng/key('elemdef', $element)"/>
   <xsl:variable name="seealsolist">
     <xsl:copy-of select="$seealso//group[elem[@name=$element]]
@@ -693,6 +735,10 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
 <xsl:template match="/" mode="synopsis">
   <xsl:param name="info"/>
+
+  <xsl:variable name="pattern"
+                select="$info/ancestor::db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
   <xsl:variable name="def" select="key('define', $pattern)"/>
   <xsl:apply-templates select="$def">
     <xsl:with-param name="info" select="$info"/>
@@ -1346,6 +1392,9 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:param name="context"/>
   <xsl:param name="ref"/>
   <xsl:param name="patterns"/>
+
+  <xsl:variable name="pattern"
+                select="$context/ancestor::db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
 
   <xsl:variable name="contains" as="xs:integer*">
     <xsl:for-each select="$patterns">

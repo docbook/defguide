@@ -1,7 +1,7 @@
 DEFGUIDERND=../../lib/defguide.rnd
 REFENTRYXSL=../../../stylesheets/refentry.xsl
 SAXON=$(DOCBOOK_SVN)/buildtools/saxon
-SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml
+SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml patternsfile=../../lib/patterns.xml
 
 VPATH=../../../refpages/elements
 
@@ -53,7 +53,8 @@ XINCLUDED=_any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstterm.xi \
           lineannotation.xi link.xi listitem.xi literal.xi literallayout.xi \
           locator.xi manvolnum.xi markup.xi mathphrase.xi mediaobject.xi \
           member.xi menuchoice.xi methodname.xi methodparam.xi methodsynopsis.xi \
-          modifier.xi module.xi mousebutton.xi msg.xi msgaud.xi msgentry.xi \
+          modifier.xi module.container.xi module.resource.xi \
+          mousebutton.xi msg.xi msgaud.xi msgentry.xi \
           msgexplan.xi msginfo.xi msglevel.xi msgmain.xi msgorig.xi msgrel.xi \
           msgset.xi msgsub.xi msgtext.xi nonterminal.xi note.xi olink.xi \
           ooclass.xi ooexception.xi oointerface.xi option.xi optional.xi \
@@ -99,7 +100,9 @@ clean:
 	$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$?"
 	touch .formatted
 
-%.xi : %.xml
+# The xinclude doesn't really depend on the stylesheet or the RND file, but
+# this makes the $? in the .formatted rule do the right thing.
+%.xi : %.xml $(REFENTRYXSL) $(DEFGUIDERND)
 	xmllint --xinclude $< > $@
 
 %.fmt : %.xi $(REFENTRYXSL) $(DEFGUIDERND)
