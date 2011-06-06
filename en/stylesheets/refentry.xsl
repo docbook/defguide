@@ -22,6 +22,8 @@
 
 <xsl:param name="include.changelog" select="0"/>
 
+<xsl:param name="SOURCES" select="()"/>
+
 <xsl:key name="div" match="rng:div" use="db:refname"/>
 <xsl:key name="element" match="rng:element" use="@name"/>
 <xsl:key name="define" match="rng:define" use="@name"/>
@@ -52,8 +54,27 @@
   <!-- ndw: that's a lie. What about para? But apparently it's ok anyway... -->
 <xsl:variable name="test.patterns" select="$choice-patterns/patterns/pattern/@name"/>
 
+<!-- The $SOURCES trick allows us to process a whole list of refentry pages without
+     restarting the JVM each time. It's roughly a zillion times faster that way. -->
 <xsl:template match="/">
-  <xsl:apply-templates/>
+  <xsl:choose>
+    <xsl:when test="empty($SOURCES)">
+      <xsl:apply-templates/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:variable name="root" select="base-uri(/)"/>
+      <xsl:for-each select="tokenize($SOURCES, ' ')">
+        <xsl:variable name="src" select="resolve-uri(., $root)"/>
+        <xsl:variable name="fmt"
+                      select="resolve-uri(concat(substring-before($src,'.xi'),'.fmt'), $root)"/>
+        <xsl:variable name="doc" select="doc($src)"/>
+        <xsl:message>Formatting <xsl:value-of select="$src"/>...</xsl:message>
+        <xsl:result-document href="{$fmt}">
+          <xsl:apply-templates select="$doc/db:refentry"/>
+        </xsl:result-document>
+      </xsl:for-each>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="db:refentry">
