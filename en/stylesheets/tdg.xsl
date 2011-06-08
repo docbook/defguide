@@ -100,6 +100,15 @@ set       nop
           </xsl:if>
         </img>
       </xsl:when>
+      <xsl:when test="@revision='5.1 assembly'">
+        <img src="figs/web/rev_5.1_assembly.png" alt="[5.1 Assembly]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
       <xsl:when test="@revision='5.0 publishers'">
         <img src="figs/web/rev_5.0p.png" alt="[5.0 Publishers]">
           <xsl:if test="$align != ''">
