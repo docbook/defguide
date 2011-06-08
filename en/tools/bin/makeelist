@@ -19,6 +19,7 @@ while (my $name = readdir(DIR)) {
     my $match = (!@classes && !defined($class)) ? 1 : 0;
     foreach my $info (@classes) {
         $match = 1 if $info =~ />$class</;
+        $match = 1 if $info =~ />publishers</ && (!defined($class) || $class eq 'publishers');
     }
 
     push (@files, $name) if $match;
