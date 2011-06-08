@@ -41,7 +41,7 @@ test: book.xml
 patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl
 	$(XSLT) $< ../stylesheets/patterns.xsl $@
 
-tdg.xml: refpages/elements/.formatted book5.xml bookinfo.xml patterns.xml \
+tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
          refpages/references.xml refpages/list-elements.xml \
          refpages/intro-elements.xml \
          $(wildcard src/*.xml) \
@@ -54,16 +54,19 @@ profiled.xml: tdg.xml ../stylesheets/profile.xsl
 book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
 	$(XSLT) $< style/purpose.xsl $@
 
-refpages/elements/.formatted:
+refpages:
 	make -C refpages
 
 setup:
 	mkdir -p build build/css build/js
-	cp css/*.css build/css/
-	cp script/*.js build/js/
+	cp ../css/*.css build/css/
+	cp ../script/*.js build/js/
 
+# Warning: this might only work on Unix
 chunks: $(SOURCE) $(SSTITLEPG) book.xml setup
+	rm -rf figs && mkdir -p figs && cd ../figs && tar cf - web | (cd ../defguide5/figs; tar xf -)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT)
+	rm -rf build/figs && mv figs build/
 	cd $(BASEDIR) && $(TIDY) *.html
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) rootid=index
 
@@ -95,3 +98,5 @@ tdg.pdf: tdg.fo
 
 clean:
 	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml book.xml
+	rm -rf build
+

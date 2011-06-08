@@ -17,7 +17,7 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
-<xsl:param name="output.media" select="'online'"/>
+<xsl:param name="output.media" select="'web'"/>
 <xsl:param name="html.stylesheet">css/defguide.css</xsl:param>
 <xsl:param name="toc.section.depth" select="1"/>
 <xsl:param name="callout.graphics.path" select="'figs/web/callouts/'"/>

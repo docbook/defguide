@@ -5,7 +5,7 @@ SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml patternsfile
 
 VPATH=../../../refpages/elements
 
-XINCLUDED=_any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstterm.xi \
+XINCLUDED=_any.docbook.xi _any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstterm.xi \
           _foreignphrase.xi _glossterm.xi _phrase.xi _quote.xi abbrev.xi \
           abstract.xi accel.xi acknowledgements.xi acronym.xi address.xi \
           affiliation.xi alt.xi anchor.xi annotation.xi answer.xi appendix.xi \
@@ -102,7 +102,8 @@ clean:
 
 # The xinclude doesn't really depend on the stylesheet or the RND file, but
 # this makes the $? in the .formatted rule do the right thing.
-%.xi : %.xml $(REFENTRYXSL) $(DEFGUIDERND)
+# Similarly, not every .xi depends on all the figures, but that's also easiest
+%.xi : %.xml $(REFENTRYXSL) $(DEFGUIDERND) $(wildcard ../../../refpages/examples/*.xml)
 	xmllint --xinclude $< > $@
 
 %.fmt : %.xi $(REFENTRYXSL) $(DEFGUIDERND)

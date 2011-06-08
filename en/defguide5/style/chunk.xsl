@@ -487,8 +487,7 @@
                   <xsl:with-param name="object" select="$home"/>
                 </xsl:call-template>
               </xsl:attribute>
-
-              <img src="figures/nav-home.png" alt="Home" border="0"/>
+              <img src="{/book/bookinfo/releaseinfo[@role='nav-home']}" alt="Home" border="0"/>
             </a>
             <xsl:text>&#160;</xsl:text>
 
@@ -504,11 +503,11 @@
                     </xsl:call-template>
                   </xsl:attribute>
 
-                  <img src="figures/nav-prev.png" alt="Prev" border="0"/>
+                  <img src="figs/web/nav/prev.png" alt="Prev" border="0"/>
                 </a>
               </xsl:when>
               <xsl:otherwise>
-                <img src="figures/nav-xprev.png" alt="Prev" border="0"/>
+                <img src="figs/web/nav/xprev.png" alt="Prev" border="0"/>
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text>&#160;</xsl:text>
@@ -525,11 +524,11 @@
                     </xsl:call-template>
                   </xsl:attribute>
 
-                  <img src="figures/nav-up.png" alt="Up" border="0"/>
+                  <img src="figs/web/nav/up.png" alt="Up" border="0"/>
                 </a>
               </xsl:when>
               <xsl:otherwise>
-                <img src="figures/nav-xup.png" alt="Up" border="0"/>
+                <img src="figs/web/nav/xup.png" alt="Up" border="0"/>
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text>&#160;</xsl:text>
@@ -546,11 +545,11 @@
                     </xsl:call-template>
                   </xsl:attribute>
 
-                  <img src="figures/nav-next.png" alt="Next" border="0"/>
+                  <img src="figs/web/nav/next.png" alt="Next" border="0"/>
                 </a>
               </xsl:when>
               <xsl:otherwise>
-                <img src="figures/nav-xnext.png" alt="Next" border="0"/>
+                <img src="figs/web/nav/xnext.png" alt="Next" border="0"/>
               </xsl:otherwise>
             </xsl:choose>
           </td>
@@ -592,7 +591,7 @@
                   </xsl:call-template>
                 </xsl:attribute>
 
-                <img src="figures/nav-prev.png" alt="Prev" border="0"/>
+                <img src="figs/web/nav/prev.png" alt="Prev" border="0"/>
               </a>
             </xsl:if>
             <xsl:text>&#160;</xsl:text>
@@ -610,7 +609,7 @@
                     </xsl:call-template>
                   </xsl:attribute>
 
-                  <img src="figures/nav-home.png" alt="Home" border="0"/>
+                  <img src="figs/web/nav/home.png" alt="Home" border="0"/>
                 </a>
               </xsl:when>
               <xsl:otherwise>&#160;</xsl:otherwise>
@@ -629,7 +628,7 @@
                   </xsl:call-template>
                 </xsl:attribute>
 
-                <img src="figures/nav-next.png" alt="Next" border="0"/>
+                <img src="figs/web/nav/next.png" alt="Next" border="0"/>
               </a>
             </xsl:if>
           </td>
@@ -653,7 +652,7 @@
                     </xsl:call-template>
                   </xsl:attribute>
 
-                  <img src="figures/nav-up.png" alt="Up" border="0"/>
+                  <img src="figs/web/nav/up.png" alt="Up" border="0"/>
                 </a>
               </xsl:when>
               <xsl:otherwise>&#160;</xsl:otherwise>
