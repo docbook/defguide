@@ -18,9 +18,9 @@
 <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
 <xsl:param name="output.media" select="'online'"/>
-<xsl:param name="html.stylesheet">defguide.css</xsl:param>
+<xsl:param name="html.stylesheet">css/defguide.css</xsl:param>
 <xsl:param name="toc.section.depth" select="1"/>
-<xsl:param name="callout.graphics.path" select="'figures/callouts/'"/>
+<xsl:param name="callout.graphics.path" select="'figs/web/callouts/'"/>
 <xsl:param name="refentry.generate.name" select="0"/>
 <xsl:param name="refentry.generate.title" select="0"/>
 <xsl:param name="refentry.separator" select="0"/>
@@ -65,8 +65,8 @@ set       nop
 
 <xsl:template name="user.head.content">
   <xsl:param name="node" select="."/>
-  <link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" />
-  <script type="text/javascript" src="script/refentry.js"/>
+  <link rel="icon" href="{/book/bookinfo/releaseinfo[@role='icon']}" type="image/png" />
+  <script type="text/javascript" src="js/refentry.js"/>
 </xsl:template>
 
 <xsl:template name="body.attributes">
@@ -92,7 +92,16 @@ set       nop
   <xsl:if test="@revision">
     <xsl:choose>
       <xsl:when test="@revision='5.1'">
-        <img src="figures/rev_5.1.png" alt="[5.1]">
+        <img src="figs/web/rev_5.1.png" alt="[5.1]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
+      <xsl:when test="@revision='5.0 publishers'">
+        <img src="figs/web/rev_5.0p.png" alt="[5.0 Publishers]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -101,7 +110,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='5.0'">
-        <img src="figures/rev_5.0.png" alt="[5.0]">
+        <img src="figs/web/rev_5.0.png" alt="[5.0]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -110,7 +119,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='4.3'">
-        <img src="figures/rev_4.3.png" alt="[4.3]">
+        <img src="figs/web/rev_4.3.png" alt="[4.3]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -119,7 +128,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='4.2'">
-        <img src="figures/rev_4.2.png" alt="[4.2]">
+        <img src="figs/web/rev_4.2.png" alt="[4.2]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -128,7 +137,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='4.0'">
-        <img src="figures/rev_4.0.png" alt="[4.0]">
+        <img src="figs/web/rev_4.0.png" alt="[4.0]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -140,7 +149,7 @@ set       nop
         <!-- nop; 3.1 isn't interesting anymore -->
       </xsl:when>
       <xsl:when test="@revision='EBNF'">
-        <img src="figures/rev_ebnf.png" alt="[EBNF]">
+        <img src="figs/web/rev_ebnf.png" alt="[EBNF]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -149,7 +158,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='SVG'">
-        <img src="figures/rev_svg.png" alt="[SVG]">
+        <img src="figs/web/rev_svg.png" alt="[SVG]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -158,7 +167,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='MathML'">
-        <img src="figures/rev_mathml.png" alt="[MathML]">
+        <img src="figs/web/rev_mathml.png" alt="[MathML]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -167,7 +176,7 @@ set       nop
         </img>
       </xsl:when>
       <xsl:when test="@revision='HTMLForms'">
-        <img src="figures/rev_htmlforms.png" alt="[HTML Forms]">
+        <img src="figs/web/rev_htmlforms.png" alt="[HTML Forms]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -273,13 +282,13 @@ set       nop
     <span id="pls.{$id}" style="display: none;">
       <xsl:text>&#160;</xsl:text>
       <a href="javascript:show('{$id}')">
-	<img src="graphics/right.gif" border="0" alt="[+]"/>
+	<img src="figs/web/nav/right.gif" border="0" alt="[+]"/>
       </a>
     </span>
     <span id="plh.{$id}">
       <xsl:text>&#160;</xsl:text>
       <a href="javascript:hide('{$id}')">
-	<img src="graphics/down.gif" border="0" alt="[-]"/>
+	<img src="figs/web/nav/down.gif" border="0" alt="[-]"/>
       </a>
     </span>
   </xsl:if>
@@ -292,13 +301,13 @@ set       nop
     <span id="cmshow" style="display: none;">
       <xsl:text>&#160;</xsl:text>
       <a href="javascript:showAll()">
-	<img src="graphics/right.gif" border="0" alt="[+]"/>
+	<img src="figs/web/nav/right.gif" border="0" alt="[+]"/>
       </a>
     </span>
     <span id="cmhide">
       <xsl:text>&#160;</xsl:text>
       <a href="javascript:hideAll()">
-	<img src="graphics/down.gif" border="0" alt="[-]"/>
+	<img src="figs/web/nav/down.gif" border="0" alt="[-]"/>
       </a>
     </span>
   </xsl:if>
@@ -682,7 +691,9 @@ set       nop
     <xsl:apply-templates select="$copyright" mode="titlepage.mode"/>
   </p>
   <br clear="all"/>
-  <p id="backcover">(<a href="figures/coverback.png">back cover</a>)</p>
+  <xsl:if test="/book/bookinfo/releaseinfo[@role='backcover']">
+    <p id="backcover">(<a href="{/book/bookinfo/releaseinfo[@role='backcover']}">back cover</a>)</p>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="bookinfo/author|bookinfo/editor" mode="titleblock">
@@ -831,11 +842,17 @@ set       nop
       <xsl:when test="$lcname = '*.*'">
 	<xsl:value-of select="'element.db._any'"/>
       </xsl:when>
+      <xsl:when test="starts-with($lcname, 'dcterms.')">
+	<xsl:value-of select="$lcname"/>
+      </xsl:when>
       <xsl:when test="count(key('id', concat('element.db.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.', $lcname)"/>
       </xsl:when>
       <xsl:when test="count(key('id', concat('element.db.html.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.html.', $lcname)"/>
+      </xsl:when>
+      <xsl:when test="count(key('id', concat('element.db.cals.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('element.db.cals.', $lcname)"/>
       </xsl:when>
       <xsl:otherwise>
 	<xsl:value-of select="concat('element.db.', $lcname)"/>

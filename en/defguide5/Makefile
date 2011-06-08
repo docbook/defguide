@@ -6,7 +6,7 @@ SSFO=style/tdgfo.xsl
 
 SOURCE=book.xml
 MEMORY=100000000
-BASEDIR=../html/
+BASEDIR=build/
 ROOTID=
 FORESULT=chunk.fo
 STYLEOPT=
@@ -16,6 +16,8 @@ TIDY=tidy
 DIFFVER=
 
 FMGO=-N
+
+XSLTOPT=base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
 
 ifeq ($(ROOTID),)
   ROOTIDPARAM=
@@ -39,7 +41,7 @@ test: book.xml
 patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl
 	$(XSLT) $< ../stylesheets/patterns.xsl $@
 
-tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
+tdg.xml: refpages/elements/.formatted book5.xml bookinfo.xml patterns.xml \
          refpages/references.xml refpages/list-elements.xml \
          refpages/intro-elements.xml \
          $(wildcard src/*.xml) \
@@ -47,28 +49,29 @@ tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
 	xmllint --nowarning --xinclude book5.xml > $@
 
 profiled.xml: tdg.xml ../stylesheets/profile.xsl
-	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition=compact
+	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition="compact print"
 
-tdg-p.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
+book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
 	$(XSLT) $< style/purpose.xsl $@
 
-# No more stripping!
-book.xml: tdg-p.xml
-	cp $< $@
-
-refpages:
+refpages/elements/.formatted:
 	make -C refpages
 
-chunks: $(SOURCE) $(SSTITLEPG) book.xml
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
+setup:
+	mkdir -p build build/css build/js
+	cp css/*.css build/css/
+	cp script/*.js build/js/
+
+chunks: $(SOURCE) $(SSTITLEPG) book.xml setup
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT)
 	cd $(BASEDIR) && $(TIDY) *.html
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) rootid=index
 
 chunk: $(SOURCE) $(SSTITLEPG) book.xml
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(ROOTIDPARAM) $(STYLEOPT)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) $(ROOTIDPARAM)
 
 index: $(SSTITLEPG)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null base.dir=$(BASEDIR) html.ext=$(HTMLEXT) rootid=index
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) rootid=index
 
 style/html-titlepage.xsl: style/html-titlepage.xml
 	$(XSLT) $< /sourceforge/docbook/xsl/template/titlepage.xsl $@
@@ -91,12 +94,4 @@ tdg.pdf: tdg.fo
 	xep $< $@
 
 clean:
-	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml tdg-p.xml
-
-WhatsNew:
-	$(CVS2LOG) -w
-ifeq ($(DIFFVER),)
-	$(MERGELOGS) > $@
-else
-	$(MERGELOGS) -v $(DIFFVER) > $@
-endif
+	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml book.xml
