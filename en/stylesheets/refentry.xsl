@@ -159,7 +159,7 @@
 
 <xsl:template match="processing-instruction('tdg-refsynopsisdiv')">
   <xsl:apply-templates select="$rng" mode="synopsis">
-    <xsl:with-param name="info" select="/db:refentry/db:info"/>
+    <xsl:with-param name="refentry" select="/db:refentry"/>
   </xsl:apply-templates>
 </xsl:template>
 
@@ -734,19 +734,19 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 <!-- ============================================================ -->
 
 <xsl:template match="/" mode="synopsis">
-  <xsl:param name="info"/>
+  <xsl:param name="refentry"/>
 
   <xsl:variable name="pattern"
-                select="$info/ancestor::db:refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+                select="$refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
 
   <xsl:variable name="def" select="key('define', $pattern)"/>
   <xsl:apply-templates select="$def">
-    <xsl:with-param name="info" select="$info"/>
+    <xsl:with-param name="refentry" select="$refentry"/>
   </xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="rng:define[rng:element]" priority="2">
-  <xsl:param name="info"/>
+  <xsl:param name="refentry"/>
 
   <refsynopsisdiv>
     <title>
