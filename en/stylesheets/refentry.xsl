@@ -604,6 +604,29 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template match="processing-instruction('tdg-dcterms')">
+  <xsl:variable name="terms"
+                select="$rng//rng:define[rng:element[starts-with(@name,'dcterms:')]]"/>
+
+  <variablelist>
+    <xsl:for-each select="$terms">
+      <xsl:sort select="rng:element/@name"/>
+      <varlistentry>
+        <term>
+          <tag xml:id="{lower-case(translate(rng:element/@name, ':', '.'))}">
+            <xsl:value-of select="rng:element/@name"/>
+          </tag>
+        </term>
+        <listitem>
+          <para>
+            <xsl:value-of select="../db:refpurpose"/>
+          </para>
+        </listitem>
+      </varlistentry>
+    </xsl:for-each>
+  </variablelist>
+</xsl:template>
+
 <xsl:template match="processing-instruction('tdg')" priority="20">
   <xsl:choose>
     <xsl:when test="contains(., 'gentext=')">
