@@ -98,5 +98,5 @@ tdg.pdf: tdg.fo
 
 clean:
 	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml book.xml
-	rm -rf build
-
+	rm -rf build figs
+	$(MAKE) -C refpages clean
