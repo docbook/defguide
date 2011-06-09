@@ -554,7 +554,7 @@
             </xsl:choose>
           </td>
           <td align="right">
-            <i>DocBook 5: The Definitive Guide</i>
+            <i><xsl:value-of select="/book/bookinfo/title"/></i>
             <xsl:text> (Version </xsl:text>
             <a href="ch00-online.html">
               <xsl:value-of select="/book/bookinfo/releaseinfo"/>
