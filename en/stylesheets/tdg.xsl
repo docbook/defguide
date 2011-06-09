@@ -323,16 +323,64 @@ set       nop
 </xsl:template>
 
 <xsl:template match="para">
-  <xsl:if test="not(@condition)
-                or (@condition = $output.media)">
-    <p>
-      <xsl:if test="@id">
-        <a name="{@id}"/>
-      </xsl:if>
-      <xsl:call-template name="revision.graphic"/>
-      <xsl:apply-templates/>
-    </p>
-  </xsl:if>
+  <xsl:choose>
+    <xsl:when test="@condition and (@condition != $output.media)">
+      <!-- suppress -->
+    </xsl:when>
+    <xsl:when test="@conformance = 'inschema'">
+      <xsl:variable name="conforms">
+        <xsl:for-each select="sgmltag">
+          <xsl:variable name="class">
+            <xsl:choose>
+              <xsl:when test="@class">
+                <xsl:value-of select="@class"/>
+              </xsl:when>
+              <xsl:otherwise>element</xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:variable name="id">
+            <xsl:apply-templates select="." mode="idvalue"/>
+          </xsl:variable>
+
+          <xsl:choose>
+            <xsl:when test="$id = 'NOTEXPECTED'">
+              <xsl:value-of select="concat(.,':2 ')"/>
+            </xsl:when>
+            <xsl:when test="$class = 'element' and count(key('id', $id)) &gt; 0">
+              <xsl:value-of select="concat(.,':1 ')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="concat(.,':0 ')"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:variable>
+
+      <xsl:choose>
+        <xsl:when test="contains($conforms, '0')">
+          <xsl:message>Suppressing inschema (<xsl:value-of select="local-name(.)"/>): <xsl:value-of select="$conforms"/></xsl:message>
+        </xsl:when>
+        <xsl:otherwise>
+          <p>
+            <xsl:if test="@id">
+              <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+            </xsl:if>
+            <xsl:call-template name="revision.graphic"/>
+            <xsl:apply-templates/>
+          </p>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
+    <xsl:otherwise>
+      <p>
+        <xsl:if test="@id">
+          <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+        </xsl:if>
+        <xsl:call-template name="revision.graphic"/>
+        <xsl:apply-templates/>
+      </p>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="para[ancestor::itemizedlist[@role='element-synopsis']]"
@@ -346,10 +394,52 @@ set       nop
 </xsl:template>
 
 <xsl:template match="phrase">
-  <xsl:if test="not(@condition)
-                or (@condition = $output.media)">
-    <xsl:apply-imports/>
-  </xsl:if>
+  <xsl:choose>
+    <xsl:when test="@condition and (@condition != $output.media)">
+      <!-- suppress -->
+    </xsl:when>
+    <xsl:when test="@conformance = 'inschema'">
+      <xsl:variable name="conforms">
+        <xsl:for-each select="sgmltag">
+          <xsl:variable name="class">
+            <xsl:choose>
+              <xsl:when test="@class">
+                <xsl:value-of select="@class"/>
+              </xsl:when>
+              <xsl:otherwise>element</xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:variable name="id">
+            <xsl:apply-templates select="." mode="idvalue"/>
+          </xsl:variable>
+
+          <xsl:choose>
+            <xsl:when test="$id = 'NOTEXPECTED'">
+              <xsl:value-of select="concat(.,':2 ')"/>
+            </xsl:when>
+            <xsl:when test="$class = 'element' and count(key('id', $id)) &gt; 0">
+              <xsl:value-of select="concat(.,':1 ')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="concat(.,':0 ')"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:variable>
+
+      <xsl:choose>
+        <xsl:when test="contains($conforms, '0')">
+          <xsl:message>Suppressing inschema (<xsl:value-of select="local-name(.)"/>): <xsl:value-of select="$conforms"/></xsl:message>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-imports/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:apply-imports/>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="ulink">
@@ -812,7 +902,7 @@ set       nop
 
 <!-- ============================================================ -->
 
-<xsl:template match="sgmltag">
+<xsl:template match="sgmltag" mode="idvalue">
   <xsl:variable name="class">
     <xsl:choose>
       <xsl:when test="@class">
@@ -869,35 +959,7 @@ set       nop
     </xsl:choose>
   </xsl:variable>
 
-  <!--
-  <xsl:message>
-    <xsl:text>tag: </xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text>; elemidval: </xsl:text>
-    <xsl:value-of select="$elemidval"/>
-  </xsl:message>
-  -->
-
-  <!--
-  <xsl:message>
-    <xsl:text>check: </xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="$class"/>
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="following-sibling::text()"/>
-    <xsl:text> </xsl:text>
-    <xsl:if test="starts-with(following-sibling::text(), '&#160;(')">
-      <xsl:text>1</xsl:text>
-    </xsl:if>
-  </xsl:message>
-  -->
-
   <xsl:choose>
-    <xsl:when test="$elemidval = 'NOTEXPECTED'">
-      <xsl:apply-templates/>
-    </xsl:when>
-
     <xsl:when test="$class = 'element'
 		    and following-sibling::*[1]/self::phrase
 		    and contains(following-sibling::phrase[1], '(')">
@@ -906,33 +968,33 @@ set       nop
 		    select="substring-before(
 			      substring-after(
 			        following-sibling::phrase[1],'('),')')"/>
-      <xsl:variable name="target"
-		    select="key('id', concat('element.',$pattern))[1]"/>
 
-      <xsl:choose>
-	<xsl:when test="$target">
-	  <a>
-	    <xsl:attribute name="href">
-	      <xsl:call-template name="href.target">
-		<xsl:with-param name="object" select="$target"/>
-	      </xsl:call-template>
-	    </xsl:attribute>
-	    <xsl:apply-imports/>
-	  </a>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:message>
-	    <xsl:text>Failed to find </xsl:text>
-	    <xsl:value-of select="$pattern"/>
-	    <xsl:text> for "</xsl:text>
-	    <xsl:value-of select="."/>
-	    <xsl:text> </xsl:text>
-	    <xsl:value-of select="$pattern"/>
-	    <xsl:text>" (1)</xsl:text>
-	  </xsl:message>
-	  <xsl:apply-imports/>
-	</xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="concat('element.',$pattern)"/>
+    </xsl:when>
+
+    <xsl:otherwise>
+      <xsl:value-of select="$elemidval"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="sgmltag">
+  <xsl:variable name="class">
+    <xsl:choose>
+      <xsl:when test="@class">
+        <xsl:value-of select="@class"/>
+      </xsl:when>
+      <xsl:otherwise>element</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="elemidval">
+    <xsl:apply-templates select="." mode="idvalue"/>
+  </xsl:variable>
+
+  <xsl:choose>
+    <xsl:when test="$elemidval = 'NOTEXPECTED'">
+      <xsl:apply-templates/>
     </xsl:when>
 
     <xsl:when test="$class = 'element' and count(key('id', $elemidval)) &gt; 0">
