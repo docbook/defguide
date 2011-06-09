@@ -557,7 +557,7 @@
             <i><xsl:value-of select="/book/bookinfo/title"/></i>
             <xsl:text> (Version </xsl:text>
             <a href="ch00-online.html">
-              <xsl:value-of select="/book/bookinfo/releaseinfo"/>
+              <xsl:value-of select="/book/bookinfo/releaseinfo[not(@role)]"/>
             </a>
             <xsl:text>)</xsl:text>
           </td>
@@ -806,17 +806,22 @@
           <xsl:with-param name="next" select="$next"/>
         </xsl:call-template>
 
-<!--  This is pointless since keywords aren't updated
         <xsl:if test="*[pubdate or releaseinfo]">
           <xsl:variable name="p" select="*[pubdate or releaseinfo][1]/pubdate"/>
-          <xsl:variable name="r" select="*[pubdate or releaseinfo][1]/releaseinfo"/>
+          <xsl:variable name="r" select="*[pubdate or releaseinfo][1]/releaseinfo[@role='hash']"/>
+          <xsl:variable name="a" select="*[pubdate or releaseinfo][1]/releaseinfo[@role='author']"/>
           <div class="infofooter">
-            <xsl:value-of select="$r"/>
-            <xsl:if test="$p and $r"> / </xsl:if>
+            <xsl:text>Last revised by </xsl:text>
+            <xsl:value-of select="$a"/>
+            <xsl:text> on </xsl:text>
             <xsl:value-of select="$p"/>
+            <span class="githash">
+              <xsl:text> (git hash: </xsl:text>
+              <xsl:value-of select="$r"/>
+              <xsl:text>)</xsl:text>
+            </span>
           </div>
         </xsl:if>
--->
 
 <!--
         <xsl:message><xsl:copy-of select="."/></xsl:message>

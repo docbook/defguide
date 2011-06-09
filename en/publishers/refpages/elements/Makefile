@@ -1,7 +1,7 @@
 DEFGUIDERND=../../lib/defguide.rnd
 REFENTRYXSL=../../../stylesheets/refentry.xsl
 SAXON=$(DOCBOOK_SVN)/buildtools/saxon
-SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml patternsfile=../../lib/patterns.xml
+SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml patternsfile=../../lib/patterns.xml gitfile=../../lib/gitlog.xml
 
 VPATH=../../../refpages/elements
 
@@ -64,6 +64,7 @@ clean:
 	rm -f *.xi *.fmt
 
 .formatted: $(XINCLUDED)
+	git-log-summary > ../../lib/gitlog.xml
 	$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$?"
 	touch .formatted
 

@@ -13,7 +13,8 @@
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:f="http://nwalsh.com/ns/xsl/functions"
-		exclude-result-prefixes="db rng xlink f doc s set dbx exsl html a xs"
+                xmlns:git="http://nwalsh.com/ns/git-repo-info"
+		exclude-result-prefixes="db rng xlink f doc s set dbx exsl html a xs git"
                 version="2.0">
 
 <xsl:include href="inline-synop.xsl"/>
@@ -21,6 +22,7 @@
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
 <xsl:param name="rngfile"      required="yes"/> <!-- path to .rnd (yes 'd') file -->
+<xsl:param name="gitfile"      required="yes"/> <!-- path to xml git log file -->
 <xsl:param name="seealsofile"  required="yes"/> <!-- path to seealso.xml -->
 <xsl:param name="patternsfile" required="yes"/> <!-- path to patterns.xml -->
 
@@ -36,6 +38,7 @@
 <xsl:variable name="FOR-OREILLY" select="false()"/>
 
 <xsl:variable name="rng" select="document(resolve-uri($rngfile,base-uri(/)))"/>
+<xsl:variable name="git" select="document(resolve-uri($gitfile,base-uri(/)))"/>
 <xsl:variable name="choice-patterns" select="document(resolve-uri($patternsfile,base-uri(/)))"/>
 <xsl:variable name="seealso" select="document(resolve-uri($seealsofile,base-uri(/)))"/>
 
@@ -119,6 +122,34 @@
     </xsl:if>
   </xsl:element>
 </xsl:template>
+
+<xsl:template match="db:refentry/db:info">
+  <xsl:variable name="base-path" select="substring-after(base-uri(.), '/refpages/')"/>
+  <xsl:variable name="path"
+                select="concat('en/refpages/', substring-before($base-path,'.xi'), '.xml')"/>
+  <xsl:variable name="commit" select="$git//git:commit[git:file=$path]"/>
+
+  <xsl:copy>
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+    <xsl:choose>
+      <xsl:when test="empty($commit)">
+        <xsl:message>Failed to find GIT commit for <xsl:value-of select="$path"/></xsl:message>
+      </xsl:when>
+      <xsl:otherwise>
+        <pubdate><xsl:value-of select="$commit/git:date"/></pubdate>
+        <xsl:text>&#10;</xsl:text>
+        <releaseinfo role='hash'><xsl:value-of select="$commit/git:hash"/></releaseinfo>
+        <xsl:text>&#10;</xsl:text>
+        <releaseinfo role='author'><xsl:value-of select="$commit/git:committer"/></releaseinfo>
+        <xsl:text>&#10;</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:copy>
+</xsl:template>
+
+<xsl:template match="db:pubdate[. = '$Date$']"/>
+<xsl:template match="db:releaseinfo[. = '$Revision$']"/>
 
 <xsl:template match="db:refmeta">
   <xsl:element name="{name(.)}">
