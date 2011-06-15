@@ -58,9 +58,10 @@ refpages:
 	make -C refpages
 
 setup:
-	mkdir -p build build/css build/js
-	cp ../css/*.css build/css/
-	cp ../script/*.js build/js/
+	mkdir -p $(BASEDIR) $(BASEDIR)/css $(BASEDIR)/js
+	cp ../css/*.css $(BASEDIR)/css/
+	cp ../script/*.js $(BASEDIR)/js/
+	echo "DirectoryIndex docbook.html" > $(BASEDIR)/.htaccess
 
 # Warning: this might only work on Unix
 raw-chunks: $(SOURCE) book.xml setup
