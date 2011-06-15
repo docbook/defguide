@@ -89,7 +89,7 @@ XINCLUDED=_any.docbook.xi _any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstter
           tocdiv.xi tocentry.xi token.xi topic.xi trademark.xi transform.xi \
           transforms.xi type.xi uri.xi userinput.xi varargs.xi variablelist.xi \
           varlistentry.xi varname.xi videodata.xi videoobject.xi void.xi \
-          volumenum.xi warning.xi wordasword.xi xref.xi year.xi
+          volumenum.xi warning.xi wordasword.xi xref.xi year.xi description.xi
 
 all: .formatted
 
@@ -97,19 +97,10 @@ all: .formatted
 	@../../../tools/bin/listxml $(XINCLUDED) > $@
 
 clean:
-	rm -f *.xi *.fmt .xincluded
+	rm -f *.xi *.fmt .xincluded .formatted
 
 .formatted: .xincluded
+	echo "<irrelevant/>" > $@
 	calabash -isource=.xincluded -oresult=/dev/null ../../../stylesheets/xinclude-list.xpl
 	git-log-summary > ../../lib/gitlog.xml
 	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)"
-	touch .formatted
-
-# The xinclude doesn't really depend on the stylesheet or the RND file, but
-# this makes the $? in the .formatted rule do the right thing.
-# Similarly, not every .xi depends on all the figures, but that's also easiest
-%.xi : %.xml $(REFENTRYXSL) $(DEFGUIDERND) $(wildcard ../../../refpages/examples/*.xml)
-	calabash -isource=$< -oresult=$@ ../../../stylesheets/xinclude.xpl
-
-%.fmt : %.xi $(REFENTRYXSL) $(DEFGUIDERND)
-	$(SAXON) $< $(REFENTRYXSL) $@ $(SAXONPARAM)

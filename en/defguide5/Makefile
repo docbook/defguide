@@ -1,12 +1,12 @@
 include $(DOCBOOK_SVN)/buildtools/Makefile.incl
 
 SSTITLEPG=style/html-titlepage.xsl
-SSCHUNK=style/chunk.xsl
+SSCHUNK=../stylesheets/chunk.xsl
 SSFO=style/tdgfo.xsl
 
 SOURCE=book.xml
 MEMORY=100000000
-BASEDIR=build/
+BASEDIR=build
 ROOTID=
 FORESULT=chunk.fo
 STYLEOPT=
@@ -17,7 +17,7 @@ DIFFVER=
 
 FMGO=-N
 
-XSLTOPT=base.dir=$(BASEDIR) html.ext=$(HTMLEXT) $(STYLEOPT)
+XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) $(STYLEOPT)
 
 ifeq ($(ROOTID),)
   ROOTIDPARAM=
@@ -31,15 +31,15 @@ else
   MEMORYOPT=-opts hugemem
 endif
 
-.PHONY: refpages
+.PHONY: refpages debug-chunks
 
 all: chunks
 
 test: book.xml
 	jing ../../docbook/relaxng/docbook/docbook.rng $<
 
-patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl
-	$(XSLT) $< ../stylesheets/patterns.xsl $@
+patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl lib/defguide.rnd
+	$(XSLT) $< ../stylesheets/patterns.xsl $@ rngfile=/projects/docbook/defguide/en/defguide5/lib/defguide.rnd
 
 tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
          refpages/references.xml refpages/list-elements.xml \
@@ -48,13 +48,10 @@ tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
          $(wildcard refpages/elements/*.fmt)
 	calabash -isource=book5.xml -oresult=$@ ../stylesheets/xinclude.xpl
 
-#profiled.xml: tdg.xml ../stylesheets/profile.xsl
-#	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition="compact print"
-#
-#book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
-#	$(XSLT) $< style/purpose.xsl $@
+profiled.xml: tdg.xml ../stylesheets/profile.xsl
+	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition="compact print"
 
-book.xml: tdg.xml ../stylesheets/profile.xsl style/purpose.xsl ../stylesheets/purpose.xsl
+book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
 	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl
 
 refpages:
@@ -66,12 +63,18 @@ setup:
 	cp ../script/*.js build/js/
 
 # Warning: this might only work on Unix
-chunks: $(SOURCE) $(SSTITLEPG) book.xml setup
-	rm -rf figs && mkdir -p figs && cd ../figs && tar cf - web | (cd ../defguide5/figs; tar xf -)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT)
-	rm -rf build/figs && mv figs build/
+raw-chunks: $(SOURCE) book.xml setup
+	mkdir -p figs && cd ../figs && tar cf - web | (cd ../defguide5/figs; tar xf -)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) ../stylesheets/chunk.xsl - $(XSLTOPT)
+	rm -rf $(BASEDIR)/figs && mv figs $(BASEDIR)/
+
+debug-chunks:
+	mkdir -p figs && cd ../figs && tar cf - web | (cd ../defguide5/figs; tar xf -)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) ../stylesheets/chunk.xsl - $(XSLTOPT)
+	rm -rf $(BASEDIR)/figs && mv figs $(BASEDIR)/
+
+chunks: raw-chunks
 	cd $(BASEDIR) && $(TIDY) *.html
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) rootid=index
 
 chunk: $(SOURCE) $(SSTITLEPG) book.xml
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) $(ROOTIDPARAM)
@@ -81,23 +84,6 @@ index: $(SSTITLEPG)
 
 style/html-titlepage.xsl: style/html-titlepage.xml
 	$(XSLT) $< /sourceforge/docbook/xsl/template/titlepage.xsl $@
-
-fochunks:
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) partI.fo rootid=docbook-intro $(STYLEOPT)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) partII.fo rootid=docbook-reference $(STYLEOPT)
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) partIII.fo rootid=docbook-apps $(STYLEOPT)
-
-fochunk:
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSFO) $(FORESULT) $(ROOTIDPARAM) $(STYLEOPT)
-
-%.pdf: %.fo
-	xep $<
-
-tdg.fo: tdg.xml
-	$(XSLT) $(MEMORYOPT) $< $(SSFO) $@ $(ROOTIDPARAM) $(STYLEOPT)
-
-tdg.pdf: tdg.fo
-	xep $< $@
 
 clean:
 	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml book.xml
