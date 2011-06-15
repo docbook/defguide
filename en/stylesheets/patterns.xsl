@@ -9,8 +9,8 @@
 <xsl:output method="xml" encoding="utf-8" indent="yes"
 	    omit-xml-declaration="yes"/>
 
-<xsl:variable name="rngfile"
-	      select="'../tools/lib/defguide.rnd'"/>
+<xsl:param name="rngfile"
+	   select="'../tools/lib/defguide.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile)"/>
 

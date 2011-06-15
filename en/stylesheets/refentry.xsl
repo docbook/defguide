@@ -124,9 +124,7 @@
 </xsl:template>
 
 <xsl:template match="db:refentry/db:info">
-  <xsl:variable name="base-path" select="substring-after(base-uri(.), '/refpages/')"/>
-  <xsl:variable name="path"
-                select="concat('en/refpages/', substring-before($base-path,'.xi'), '.xml')"/>
+  <xsl:variable name="path" select="substring-after(base-uri(.), '/defguide/')"/>
   <xsl:variable name="commit" select="$git//git:commit[git:file=$path]"/>
 
   <xsl:copy>
@@ -708,70 +706,40 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 </xsl:template>
 
 <xsl:template match="db:refsection[db:anchor[starts-with(@role,'HACK-')]]">
-  <xsl:choose>
-    <xsl:when test="$FOR-OREILLY">
-      <xsl:copy>
-        <xsl:copy-of select="@*"/>
+  <xsl:copy>
+    <xsl:copy-of select="@*"/>
 
-        <xsl:for-each select="node()">
-          <xsl:variable name="panch"
-               select="preceding-sibling::db:anchor[@role='HACK-ex.out.start'][1]"/>
-          <xsl:variable name="nanch"
-               select="following-sibling::db:anchor[@role='HACK-ex.out.end'][1]"/>
-          <xsl:choose>
-            <xsl:when test="substring-after($panch/@xml:id,'ex.os.')
-                            = substring-after($nanch/@xml:id,'ex.oe.')">
-              <!-- skip this node, it's between tombstones -->
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:apply-templates select="."/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:for-each>
-      </xsl:copy>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
-        <xsl:copy-of select="@*"/>
-        <xsl:apply-templates/>
-      </xsl:element>
-    </xsl:otherwise>
-  </xsl:choose>
+    <xsl:for-each select="node()">
+      <xsl:variable name="panch"
+                    select="preceding-sibling::db:anchor[@role='HACK-ex.out.start'][1]"/>
+      <xsl:variable name="nanch"
+                    select="following-sibling::db:anchor[@role='HACK-ex.out.end'][1]"/>
+      <xsl:choose>
+        <xsl:when test="substring-after($panch/@xml:id,'ex.os.')
+                        = substring-after($nanch/@xml:id,'ex.oe.')">
+          <!-- skip this node, it's between tombstones -->
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="."/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:copy>
 </xsl:template>
 
 <xsl:template match="db:anchor[@role='HACK-ex.out.start']">
-  <xsl:choose>
-    <xsl:when test="$FOR-OREILLY">
-      <xsl:variable name="endid"
-                    select="concat('ex.oe.', substring-after(@xml:id,'ex.os.'))"/>
-      <xsl:variable name="eanch"
-                    select="following-sibling::db:anchor[@xml:id=$endid]"/>
-      <db:sidebar>
-        <xsl:apply-templates select="following-sibling::node()
-                                     except $eanch/following-sibling::node()"/>
-      </db:sidebar>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
-        <xsl:copy-of select="@*"/>
-        <xsl:apply-templates/>
-      </xsl:element>
-    </xsl:otherwise>
-  </xsl:choose>
+  <xsl:variable name="endid"
+                select="concat('ex.oe.', substring-after(@xml:id,'ex.os.'))"/>
+  <xsl:variable name="eanch"
+                select="following-sibling::db:anchor[@xml:id=$endid]"/>
+  <db:example-wrapper>
+    <xsl:apply-templates select="following-sibling::node()
+                                 except $eanch/following-sibling::node()"/>
+  </db:example-wrapper>
 </xsl:template>
 
 <xsl:template match="db:anchor[@role='HACK-ex.out.end']">
-  <xsl:choose>
-    <xsl:when test="$FOR-OREILLY">
-      <!-- nop -->
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
-        <xsl:copy-of select="@*"/>
-        <xsl:apply-templates/>
-      </xsl:element>
-    </xsl:otherwise>
-  </xsl:choose>
+  <!-- nop -->
 </xsl:template>
 
 <xsl:template match="*">

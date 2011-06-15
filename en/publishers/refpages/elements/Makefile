@@ -60,12 +60,16 @@ XINCLUDED=_any.xi _any.mml.xi _any.svg.xi _emphasis.xi _firstterm.xi _foreignphr
 
 all: .formatted
 
-clean:
-	rm -f *.xi *.fmt
+.xincluded:
+	@../../../tools/bin/listxml $(XINCLUDED) > $@
 
-.formatted: $(XINCLUDED)
+clean:
+	rm -f *.xi *.fmt .xincluded
+
+.formatted: .xincluded
+	calabash -isource=.xincluded -oresult=/dev/null ../../../stylesheets/xinclude-list.xpl
 	git-log-summary > ../../lib/gitlog.xml
-	$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$?"
+	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)"
 	touch .formatted
 
 # The xinclude doesn't really depend on the stylesheet or the RND file, but

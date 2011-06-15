@@ -46,13 +46,16 @@ tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
          refpages/intro-elements.xml \
          $(wildcard src/*.xml) \
          $(wildcard refpages/elements/*.fmt)
-	xmllint --nowarning --xinclude book5.xml > $@
+	calabash -isource=book5.xml -oresult=$@ ../stylesheets/xinclude.xpl
 
-profiled.xml: tdg.xml ../stylesheets/profile.xsl
-	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition="compact print"
+#profiled.xml: tdg.xml ../stylesheets/profile.xsl
+#	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition="compact print"
+#
+#book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
+#	$(XSLT) $< style/purpose.xsl $@
 
-book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
-	$(XSLT) $< style/purpose.xsl $@
+book.xml: tdg.xml ../stylesheets/profile.xsl style/purpose.xsl ../stylesheets/purpose.xsl
+	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl
 
 refpages:
 	make -C refpages

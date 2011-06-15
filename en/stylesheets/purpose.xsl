@@ -45,8 +45,8 @@
 
 <xsl:template match="processing-instruction('common-general-attributes')">
   <!-- get "role" into the list -->
-  <xsl:variable name="ns.all.common.attributes">
-    <xsl:copy-of select="$rng//rng:define[@name='db.common.attributes']//rng:attribute"/>
+  <xsl:variable name="all.common.attributes" as="element(rng:attribute)+">
+    <xsl:sequence select="$rng//rng:define[@name='db.common.attributes']//rng:attribute"/>
     <rng:attribute name="role">
       <db:refpurpose>Provides additional, user-specified classification for an element</db:refpurpose>
       <dbx:description>
@@ -65,10 +65,7 @@
   <xsl:variable name="effectivity.attributes"
                 select="$rng//rng:define[@name='db.effectivity.attributes']//rng:attribute"/>
 
-  <xsl:variable name="all.common.attributes"
-                select="exsl:node-set($ns.all.common.attributes)/*"/>
-
-  <xsl:variable name="ns.common.attributes">
+  <xsl:variable name="common.attributes" as="element(rng:attribute)+">
     <xsl:for-each select="$all.common.attributes">
       <xsl:variable name="name" select="@name"/>
       <xsl:if test="not($effectivity.attributes[@name = $name])">
@@ -76,9 +73,6 @@
       </xsl:if>
     </xsl:for-each>
   </xsl:variable>
-
-  <xsl:variable name="common.attributes"
-                select="exsl:node-set($ns.common.attributes)/*"/>
 
   <xsl:call-template name="process.common.attr">
     <xsl:with-param name="common.attributes"
@@ -228,10 +222,7 @@
           <xsl:text>.</xsl:text>
 
           <xsl:if test="dbx:description">
-            <xsl:variable name="desc">
-              <xsl:apply-templates select="dbx:description/*" mode="stripNS"/>
-            </xsl:variable>
-            <xsl:apply-templates select="exsl:node-set($desc)/*"/>
+            <xsl:apply-templates select="dbx:description/*"/>
           </xsl:if>
 
           <xsl:if test="rng:choice">
