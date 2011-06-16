@@ -22,8 +22,8 @@
       placed in the index. In the simplest case, <phrase role="keep-together">the placement</phrase> of the
       <tag>indexterm</tag> in the document identifies the location of
       the term in the text. In other words, the <tag>indexterm</tag>
-      is placed in the flow of the document where the
-      <tag>indexentry</tag> in the <tag>index</tag> should
+      is placed in the flow of the document where <phrase conformance="inschema">the
+      <tag>indexentry</tag> in </phrase>the <tag>index</tag> should
       point. In other cases, attributes on <tag>indexterm</tag> are
       used to identify the location of the term in the text.</para>
 
@@ -110,29 +110,28 @@ eSATA&lt;indexterm&gt;&lt;primary&gt;eSATA&lt;/primary&gt;&lt;seealso&gt;Serial 
         markup in repeating and floating elements, and multiple
         indexes.</para>
 
-        <refsection><info><title>Whitespace around index terms</title></info>
-          
+<refsection>
+<title>Whitespace around index terms</title>
 
-          <para>Special care should be taken when entering
-          <tag>indexterm</tag>s into text, especially when one of the
-          final output formats for your document is paginated. Most processing
-          systems are forgiving about the amount of whitespace that you use.
-          Outside of “line-specific” environments such as
-          <tag>literallayout</tag> and
-          <tag>programlisting</tag>, you can indent lines, insert tabs
-          or spaces at will, and otherwise rely on the processor to coalesce
-          multiple spaces into a single space.</para>
+<para>Special care should be taken when entering <tag>indexterm</tag>s
+into text, especially when one of the final output formats for your
+document is paginated. Most processing systems are forgiving about the
+amount of whitespace that you use. Outside of “line-specific”
+environments such as <tag>literallayout</tag><phrase conformance="inschema"> and
+<tag>programlisting</tag></phrase>, you can indent lines, insert tabs or spaces
+at will, and otherwise rely on the processor to coalesce multiple
+spaces into a single space.</para>
 
-          <para>However, when the processor is determining where a line or
-          page break will occur in a long block of text, it’s an almost
-          universal convention that such breaks occur where whitespace occurs
-          in the markup. Sometimes words have to be hyphenated, of course, but
-          usually it’s sufficient to break a line at a space and break a page
-          between lines.</para>
+<para>However, when the processor is determining where a line or page
+break will occur in a long block of text, it’s an almost universal
+convention that such breaks occur where whitespace occurs in the
+markup. Sometimes words have to be hyphenated, of course, but usually
+it’s sufficient to break a line at a space and break a page between
+lines.</para>
 
-          <para>This means that you want to <emphasis>avoid extraneous
-          spaces</emphasis> between index terms and the words with which they
-          are associated. Consider this example:</para>
+<para>This means that you want to <emphasis>avoid extraneous
+spaces</emphasis> between index terms and the words with which they
+are associated. Consider this example:</para>
 
           <programlisting>&lt;para&gt;…long, rambling paragraph about wood ducks
 &lt;indexterm&gt;&lt;primary&gt;ducks&lt;/primary&gt;&lt;secondary&gt;wood&lt;/secondary&gt;
