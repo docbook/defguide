@@ -64,18 +64,11 @@ all: .formatted
 	@../../../tools/bin/listxml $(XINCLUDED) > $@
 
 clean:
-	rm -f *.xi *.fmt .xincluded
+	rm -f *.xi *.fmt .xincluded .formatted
 
 .formatted: .xincluded
+	echo "<irrelevant/>" > $@
 	calabash -isource=.xincluded -oresult=/dev/null ../../../stylesheets/xinclude-list.xpl
 	git-log-summary > ../../lib/gitlog.xml
+	@echo saxon $(REFENTRYXSL) $(SAXONPARAM) SOURCES="..."
 	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)"
-	touch .formatted
-
-# The xinclude doesn't really depend on the stylesheet or the RND file, but
-# this makes the $? in the .formatted rule do the right thing.
-%.xi : %.xml $(REFENTRYXSL) $(DEFGUIDERND)
-	xmllint --xinclude $< > $@
-
-%.fmt : %.xi $(REFENTRYXSL) $(DEFGUIDERND)
-	$(SAXON) $< $(REFENTRYXSL) $@ $(SAXONPARAM)
