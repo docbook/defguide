@@ -7,9 +7,13 @@
 
 <xsl:param name="condition" select="''"/>
 <xsl:param name="not-condition" select="''"/>
+<xsl:param name="arch" select="''"/>
+<xsl:param name="not-arch" select="''"/>
 
 <xsl:variable name="condition-tokens" as="xs:string*" select="tokenize($condition,' ')"/>
 <xsl:variable name="not-condition-tokens" as="xs:string*" select="tokenize($not-condition,' ')"/>
+<xsl:variable name="arch-tokens" as="xs:string*" select="tokenize($arch,' ')"/>
+<xsl:variable name="not-arch-tokens" as="xs:string*" select="tokenize($not-arch,' ')"/>
 
 <xsl:output method="xml" encoding="utf-8" indent="no"
 	    omit-xml-declaration="yes"/>
@@ -32,20 +36,13 @@
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="*[@condition]">
+<xsl:template match="*[@condition or @arch]">
   <xsl:choose>
-    <xsl:when test="exists($condition-tokens) and @condition
-                    and $condition-tokens != tokenize(@condition,' ')">
+    <xsl:when test="(exists($condition-tokens) and @condition
+                     and $condition-tokens != tokenize(@condition,' '))
+                    or (exists($arch-tokens) and @arch
+                        and $arch-tokens != tokenize(@arch,' '))">
 <!--
-      <xsl:variable name="cond" as="xs:string*" select="tokenize(@condition, ' ')"/>
-      <xsl:variable name="match" as="xs:string*">
-        <xsl:for-each select="$condition-tokens">
-          <xsl:if test=". != $cond">
-            <xsl:value-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:variable>
-
       <xsl:message>
 	<xsl:text>Suppress: </xsl:text>
 	<xsl:value-of select="local-name(.)"/>
@@ -55,22 +52,24 @@
           <xsl:text> )</xsl:text>
         </xsl:if>
         <xsl:text>: </xsl:text>
-	<xsl:value-of select="string-join($match, ', ')"/>
+        <xsl:if test="@arch">
+          <xsl:text>arch=</xsl:text>
+          <xsl:value-of select="@arch"/>
+          <xsl:text> </xsl:text>
+        </xsl:if>
+        <xsl:if test="@condition">
+          <xsl:text>condition=</xsl:text>
+          <xsl:value-of select="@condition"/>
+          <xsl:text> </xsl:text>
+        </xsl:if>
       </xsl:message>
 -->
     </xsl:when>
-    <xsl:when test="exists($not-condition-tokens) and @condition
-                    and $not-condition-tokens = tokenize(@condition, ' ')">
+    <xsl:when test="(exists($not-condition-tokens) and @condition
+                     and $not-condition-tokens = tokenize(@condition, ' '))
+                    or (exists($not-arch-tokens) and @arch
+                        and $not-arch-tokens = tokenize(@arch, ' '))">
 <!--
-      <xsl:variable name="cond" as="xs:string*" select="tokenize(@condition, ' ')"/>
-      <xsl:variable name="match" as="xs:string*">
-        <xsl:for-each select="$not-condition-tokens">
-          <xsl:if test=". = $cond">
-            <xsl:value-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:variable>
-
       <xsl:message>
 	<xsl:text>Suppress: </xsl:text>
 	<xsl:value-of select="local-name(.)"/>
@@ -79,8 +78,17 @@
           <xsl:value-of select="@xml:id"/>
           <xsl:text> )</xsl:text>
         </xsl:if>
-        <xsl:text>: not </xsl:text>
-	<xsl:value-of select="string-join($match, ', ')"/>
+        <xsl:text>: </xsl:text>
+        <xsl:if test="@arch">
+          <xsl:text>arch!=</xsl:text>
+          <xsl:value-of select="@arch"/>
+          <xsl:text> </xsl:text>
+        </xsl:if>
+        <xsl:if test="@condition">
+          <xsl:text>condition!=</xsl:text>
+          <xsl:value-of select="@condition"/>
+          <xsl:text> </xsl:text>
+        </xsl:if>
       </xsl:message>
 -->
     </xsl:when>

@@ -3,13 +3,21 @@
 <p:output port="result" />
 <p:input port="parameters" kind="parameter"/>
 
+<p:option name="not-condition" select="'compact print'"/>
+<p:option name="condition" select="''"/>
+<p:option name="not-arch" select="''"/>
+<p:option name="arch" select="'defguide5'"/>
+
 <p:variable name="srcbase" select="base-uri(/)"/>
 
 <p:xslt name="profiled">
   <p:input port="stylesheet">
     <p:document href="profile.xsl"/>
   </p:input>
-  <p:with-param name="not-condition" select="'compact print'"/>
+  <p:with-param name="condition" select="$condition"/>
+  <p:with-param name="not-condition" select="$not-condition"/>
+  <p:with-param name="arch" select="$arch"/>
+  <p:with-param name="not-arch" select="$not-arch"/>
 </p:xslt>
 
 <p:load name="purpose.xsl">
