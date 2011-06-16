@@ -5,7 +5,7 @@ SAXONPARAM=rngfile=$(DEFGUIDERND) seealsofile=../../lib/seealso.xml patternsfile
 
 VPATH=../../../refpages/elements
 
-XINCLUDED=_any.xi _any.mml.xi _any.svg.xi _emphasis.xi _firstterm.xi _foreignphrase.xi \
+XINCLUDED=_any.mml.xi _any.svg.xi _emphasis.xi _firstterm.xi _foreignphrase.xi \
           _glossterm.xi _phrase.xi _quote.xi abbrev.xi abstract.xi \
           acknowledgements.xi acronym.xi address.xi affiliation.xi alt.xi \
           anchor.xi answer.xi appendix.xi area.xi area.inareaset.xi areaset.xi \
