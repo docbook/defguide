@@ -11,7 +11,8 @@ STYLEOPT=
 HTMLEXT=.html
 TIDY=tidy
 
-XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=/projects/docbook/defguide/en/sdocbook/lib/defguide.rnd $(STYLEOPT)
+RNDFILE=/projects/docbook/defguide/en/sdocbook/lib/defguide.rnd
+XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) $(STYLEOPT)
 
 ifeq ($(ROOTID),)
   ROOTIDPARAM=
@@ -29,8 +30,8 @@ endif
 
 all: chunks
 
-patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl lib/defguide.rnd
-	$(XSLT) $< ../stylesheets/patterns.xsl $@ rngfile=/projects/docbook/defguide/en/sdocbook/lib/defguide.rnd
+patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl $(RNDFILE)
+	$(XSLT) $< ../stylesheets/patterns.xsl $@ rngfile=$(RNDFILE)
 
 tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
          refpages/references.xml refpages/list-elements.xml \
@@ -39,10 +40,7 @@ tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
          $(wildcard refpages/elements/*.fmt)
 	calabash -isource=book5.xml -oresult=$@ ../stylesheets/xinclude.xpl
 
-profiled.xml: tdg.xml ../stylesheets/profile.xsl
-	$(XSLT) $< ../stylesheets/profile.xsl $@ not-condition="compact print"
-
-book.xml: profiled.xml style/purpose.xsl ../stylesheets/purpose.xsl
+book.xml: tdg.xml ../stylesheets/profile.xsl style/purpose.xsl ../stylesheets/purpose.xsl
 	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl
 
 refpages:
