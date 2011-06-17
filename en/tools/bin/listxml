@@ -4,44 +4,7 @@ use strict;
 use English;
 
 print "<list>\n";
-
-my %hash = ();
 while (@ARGV) {
-    my $xifile = shift @ARGV;
-    my $file = $xifile;
-    $file =~ s/\.xi/.xml/;
-    $file = "/projects/docbook/defguide/en/refpages/elements/$file";
-
-    my $data = "";
-    open (F, $file);
-    read (F, $data, 1024);
-    close (F);
-
-    my $elem = $1 if $data =~ /<refmiscinfo role=.element.>(.*?)</s;
-    my $patn = $1 if $data =~ /<refmiscinfo role=.pattern.>(.*?)</s;
-
-    die "No elem/patn for $file: $elem/$patn\n" if !defined($elem) || !defined($patn);
-
-    $hash{$xifile} = "$elem $patn";
+    print "<item>", shift @ARGV, "</item>\n";
 }
-
-foreach my $file (sort { &valuecomp } keys %hash) {
-    print "<item>$file</item> <!-- ", $hash{$file}, "-->\n";
-}
-
 print "</list>\n";
-
-sub valuecomp {
-    my $ap = $hash{$a};
-    my $bp = $hash{$b};
-
-    if ($a =~ /^_any/ && $b !~ /^_any/) {
-        return 1;
-    }
-
-    if ($a !~ /^_any/ && $b =~ /^_any/) {
-        return -1;
-    }
-
-    return $ap cmp $bp;
-}

@@ -4,7 +4,7 @@ use strict;
 use English;
 
 my $class = shift @ARGV || undef;
-my @files = ();
+my %hash = ();
 
 opendir (DIR, "elements");
 while (my $name = readdir(DIR)) {
@@ -15,6 +15,9 @@ while (my $name = readdir(DIR)) {
     read (F, $_, -s "elements/$name");
     close (F);
 
+    my $elem = $1 if /<refmiscinfo role=.element.>(.*?)</s;
+    my $patn = $1 if /<refmiscinfo role=.pattern.>(.*?)</s;
+
     my @classes = /<refmiscinfo role=.class.>.*?<\/refmiscinfo>/g;
     my $match = (!@classes && !defined($class)) ? 1 : 0;
     foreach my $info (@classes) {
@@ -22,7 +25,7 @@ while (my $name = readdir(DIR)) {
         $match = 1 if $info =~ />publishers</ && (!defined($class) || $class eq 'publishers');
     }
 
-    push (@files, $name) if $match;
+    $hash{$name} = "$elem $patn" if $match;
 }
 closedir (DIR);
 
@@ -48,35 +51,33 @@ if ($class eq 'assembly') {
     exit 1;
 }
 
-my @any = ();
-foreach my $file (sort specialsort @files) {
+foreach my $file (sort specialsort keys %hash) {
     my $name = $file;
     $name =~ s/^.*\/([^\/]+)$/$1/;
-
-    if ($file =~ /_any/) {
-	push (@any, "<xi:include href='elements/$name'/>");
-    } else {
-	print "<xi:include href='elements/$name'/>\n";
-    }
-}
-
-foreach my $line (@any) {
-    print "$line\n";
+    print "<xi:include href='elements/$name'/>\n";
 }
 
 print "\n</reference>\n";
 
 sub specialsort {
-    # Make sure _x sorts after x
-    my $ap = $a;
-    my $bp = $b;
+    my $ap = $hash{$a};
+    my $bp = $hash{$b};
 
-    $ap =~ s/^_//;
-    $bp =~ s/^_//;
-
-    if ($ap eq $bp) {
-        return $b cmp $a;
-    } else {
-        return $ap cmp $bp;
+    if ($a =~ /^_any/ && $b !~ /^_any/) {
+        return 1;
     }
+
+    if ($a !~ /^_any/ && $b =~ /^_any/) {
+        return -1;
+    }
+
+    if ("_$a" eq $b) {
+        return -1;
+    }
+
+    if ("_$b" eq $a) {
+        return 1;
+    }
+
+    return $ap cmp $bp;
 }
