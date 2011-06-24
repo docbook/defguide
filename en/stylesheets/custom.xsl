@@ -718,7 +718,18 @@
           </xsl:for-each>
         </div>
         <div class="shownlist" id="summary-{generate-id($html)}" style="display: block;">
-          <xsl:text>This element occurs in </xsl:text>
+          <xsl:choose>
+            <xsl:when test="contains(@condition, 'ref.desc.parents')">
+              <xsl:text>This element occurs in </xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(@condition, 'ref.desc.children')">
+              <xsl:text>This element contains </xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:message terminate="yes">What? That's broken.</xsl:message>
+            </xsl:otherwise>
+          </xsl:choose>
+
           <a href="javascript:showDetail('{generate-id($html)}')">
             <xsl:value-of select="$count"/>
             <xsl:text> element</xsl:text>
