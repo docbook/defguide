@@ -33,7 +33,7 @@ all: chunks
 patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl $(RNDFILE)
 	$(XSLT) $< ../stylesheets/patterns.xsl $@ rngfile=$(RNDFILE)
 
-tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
+tdg.xml: book5.xml bookinfo.xml patterns.xml \
          refpages/references.xml refpages/list-elements.xml \
          refpages/intro-elements.xml \
          $(wildcard src/*.xml) \
@@ -61,11 +61,8 @@ raw-chunks: $(SOURCE) book.xml setup
 chunks: raw-chunks
 	cd $(BASEDIR) && $(TIDY) *.html
 
-chunk: $(SOURCE) book.xml
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) $(ROOTIDPARAM)
-
-index:
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) rootid=index
+chunk: $(SOURCE) book.xml setup
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - $(XSLTOPT) $(ROOTIDPARAM)
 
 clean:
 	rm -f tdg.{html,fo,pdf} tdg.xml tdgex.xml book.xml
