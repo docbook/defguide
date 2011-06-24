@@ -676,6 +676,69 @@
 
 <!-- ============================================================ -->
 
+<xsl:template match="db:refsection">
+  <xsl:variable name="html" as="element(html:div)">
+    <xsl:apply-imports/>
+  </xsl:variable>
+
+  <xsl:variable name="titlepage" select="$html/html:div"/>
+  <xsl:variable name="elemlist" select="$html/html:p"/>
+  <xsl:variable name="count" select="count($elemlist//html:tt)"/>
+
+  <xsl:choose>
+    <xsl:when test="(contains(@condition, 'ref.desc.parents')
+                     or contains(@condition, 'ref.desc.children'))
+                    and ($count &gt; 10)">
+      <div>
+        <div>
+          <xsl:copy-of select="$titlepage/@*"/>
+          <xsl:for-each select="$titlepage/*">
+            <xsl:choose>
+              <xsl:when test="self::html:h4">
+                <h4>
+                  <xsl:copy-of select="@*"/>
+                  <xsl:copy-of select="node()"/>
+                  <xsl:text>&#160;</xsl:text>
+                  <span id="dls.{generate-id($html)}" style="display: inline;">
+                    <a href="javascript:showDetail('{generate-id($html)}')">
+                      <img src="figs/web/nav/right.gif" border="0" alt="[+]"/>
+                    </a>
+                  </span>
+                  <span id="dlh.{generate-id($html)}" style="display: none;">
+                    <a href="javascript:hideDetail('{generate-id($html)}')">
+                      <img src="figs/web/nav/down.gif" border="0" alt="[+]"/>
+                    </a>
+                  </span>
+                </h4>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:sequence select="."/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </div>
+        <div class="shownlist" id="summary-{generate-id($html)}" style="display: block;">
+          <xsl:text>This element occurs in </xsl:text>
+          <a href="javascript:showDetail('{generate-id($html)}')">
+            <xsl:value-of select="$count"/>
+            <xsl:text> element</xsl:text>
+            <xsl:if test="count($elemlist//html:tt) != 1">s</xsl:if>
+          </a>
+          <xsl:text>.</xsl:text>
+        </div>
+        <div class="hiddenlist" id="detail-{generate-id($html)}" style="display: none;">
+          <xsl:sequence select="$elemlist"/>
+        </div>
+      </div>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$html"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<!-- ============================================================ -->
+
 <xsl:template match="processing-instruction('lb')">
   <br/>
 </xsl:template>

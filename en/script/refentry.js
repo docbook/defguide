@@ -215,3 +215,29 @@ function addDeleteLink() {
 	parent.insertBefore(document.createTextNode(" "),plus);
     }
 }
+
+function showDetail(id) {
+    var detail = document.getElementById("detail-" + id);
+    var summary = document.getElementById("summary-" + id);
+    summary.style.display = 'none';
+    detail.style.display = 'block';
+
+    var plus = document.getElementById("dls." + id);
+    plus.style.display = 'none';
+
+    var minus = document.getElementById("dlh." + id);
+    minus.style.display = 'inline';
+}
+
+function hideDetail(id) {
+    var detail = document.getElementById("detail-" + id);
+    var summary = document.getElementById("summary-" + id);
+    summary.style.display = 'block';
+    detail.style.display = 'none';
+
+    var plus = document.getElementById("dls." + id);
+    plus.style.display = 'inline';
+
+    var minus = document.getElementById("dlh." + id);
+    minus.style.display = 'none';
+}
