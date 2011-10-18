@@ -12,7 +12,7 @@ HTMLEXT=.html
 TIDY=tidy
 
 RNDFILE=/projects/docbook/defguide/en/defguide5/lib/defguide.rnd
-XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) $(STYLEOPT)
+XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) resource.root="" $(STYLEOPT)
 
 ifeq ($(ROOTID),)
   ROOTIDPARAM=
@@ -59,7 +59,8 @@ raw-chunks: $(SOURCE) book.xml setup
 	rm -rf $(BASEDIR)/figs && mv figs $(BASEDIR)/
 
 chunks: raw-chunks
-	cd $(BASEDIR) && $(TIDY) *.html
+# No more tidy, we're outputing things like <article> that it simply doesn't understand
+#	cd $(BASEDIR) && $(TIDY) *.html
 
 chunk: $(SOURCE) book.xml setup
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - $(XSLTOPT) $(ROOTIDPARAM)
