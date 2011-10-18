@@ -12,7 +12,7 @@
                 exclude-result-prefixes="ch db f fn h m t xs"
                 version="2.0">
 
-<xsl:import href="/projects/docbook/xslt20/stylesheets/base/html/chunk.xsl"/>
+<xsl:import href="/projects/docbook/xslt20/xslt/base/html/chunk.xsl"/>
 <xsl:include href="custom.xsl"/>
 
 <xsl:template name="t:user-header-content">

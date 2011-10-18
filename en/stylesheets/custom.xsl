@@ -40,18 +40,17 @@
 
 <xsl:variable name="rng" select="document($rngfile)"/>
 
+<xsl:template name="t:javascript">
+  <xsl:param name="node" select="."/>
+  <script type="text/javascript" src="{concat($resource.root, 'js/dbmodnizr.js')}"/>
+  <script type="text/javascript" src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
+  <script type="text/javascript" src="{concat($resource.root, 'js/refentry.js')}"/>
+</xsl:template>
+
 <xsl:template name="t:user-head-content">
   <xsl:param name="node" select="."/>
   <link rel="icon" href="{/db:book/db:info/db:releaseinfo[@role='icon']}" type="image/png" />
-  <script type="text/javascript" src="js/refentry.js"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</xsl:template>
-
-<xsl:template name="t:body-attributes">
-  <xsl:if test="self::db:refentry
-                and db:refsynopsisdiv//db:itemizedlist[contains(@role,'patnlist')]">
-    <xsl:attribute name="onload">hideAll();</xsl:attribute>
-  </xsl:if>
 </xsl:template>
 
 <xsl:template name="t:user-footer-navigation">
@@ -683,7 +682,7 @@
 
   <xsl:variable name="titlepage" select="$html/html:div"/>
   <xsl:variable name="elemlist" select="$html/html:p"/>
-  <xsl:variable name="count" select="count($elemlist//html:tt)"/>
+  <xsl:variable name="count" select="count($elemlist//html:code)"/>
 
   <xsl:choose>
     <xsl:when test="(contains(@condition, 'ref.desc.parents')
@@ -694,7 +693,7 @@
           <xsl:copy-of select="$titlepage/@*"/>
           <xsl:for-each select="$titlepage/*">
             <xsl:choose>
-              <xsl:when test="self::html:h4">
+              <xsl:when test="self::html:h3">
                 <h4>
                   <xsl:copy-of select="@*"/>
                   <xsl:copy-of select="node()"/>
@@ -733,7 +732,7 @@
           <a href="javascript:showDetail('{generate-id($html)}')">
             <xsl:value-of select="$count"/>
             <xsl:text> element</xsl:text>
-            <xsl:if test="count($elemlist//html:tt) != 1">s</xsl:if>
+            <xsl:if test="count($elemlist//html:code) != 1">s</xsl:if>
           </a>
           <xsl:text>.</xsl:text>
         </div>
