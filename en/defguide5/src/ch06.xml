@@ -489,15 +489,8 @@ that we simply allow the <tag>info</tag> element to be placed in the
     <output renderas="appendix"/>
   </module>
   <module resourceref="task4"/>
-  <module resourceref="index">
-    <output renderas="index"/>
-  </module>
+  <module resourceref="index"/>
 </structure>]]></programlisting>
-
-<para>By default, the <tag class="attribute">renderas</tag> value is
-inherited from a module's preceding sibling. Even though the index
-is an <tag>index</tag>, because there is an explicit rendering on
-a preceding module, it must be explicit on the index.</para>
 
 <para>The realized structure that this produces is:</para>
 
