@@ -1,4 +1,8 @@
-// -*- JavaScript -*- 
+// Started to add jQuery; could probably do with some more simplification
+
+$(document).ready(function(){
+    hideAll();
+});
 
 function show(id) {
     var list = document.getElementById("l." + id);
@@ -72,15 +76,17 @@ function hideAll() {
     }
 
     var plus = document.getElementById("cmshow");
-    plus.style.display = 'inline';
+    if (plus != null) {
+        plus.style.display = 'inline';
+    }
 
     var minus = document.getElementById("cmhide");
-    minus.style.display = 'none';
+    if (minus != null) {
+        minus.style.display = 'none';
+    }
 
     addDeleteLink();
 }
-
-var XSLI;
 
 function deleteAll() {
     var divs = document.getElementsByTagName("div");
@@ -105,7 +111,6 @@ function deleteAll() {
     }
 
     sli.sort(sortText);
-    XSLI = sli;
 
     // Get rid of duplicates
     var nsli = new Array();
@@ -194,7 +199,7 @@ function stringValue(a) {
 function addDeleteLink() {
     var plus = document.getElementById("cmshow");
     var delspan = document.getElementById("cmdelete");
-    if (delspan == null) {
+    if (plus != null && delspan == null) {
 	var parent = plus.parentNode;
 	delspan = document.createElement("span");
 	delspan.setAttribute("id", "cmdelete");
