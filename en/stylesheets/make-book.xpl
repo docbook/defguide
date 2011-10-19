@@ -7,6 +7,7 @@
 <p:option name="condition" select="''"/>
 <p:option name="not-arch" select="''"/>
 <p:option name="arch" select="'defguide5'"/>
+<p:option name="revision" required="true"/>
 
 <p:variable name="srcbase" select="base-uri(/)"/>
 
@@ -18,6 +19,8 @@
   <p:with-param name="not-condition" select="$not-condition"/>
   <p:with-param name="arch" select="$arch"/>
   <p:with-param name="not-arch" select="$not-arch"/>
+  <p:with-param name="revision" select="$revision"/>
+  <p:log port="result" href="/tmp/tdg-profile.xml"/>
 </p:xslt>
 
 <p:load name="purpose.xsl">

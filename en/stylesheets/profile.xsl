@@ -9,11 +9,13 @@
 <xsl:param name="not-condition" select="''"/>
 <xsl:param name="arch" select="''"/>
 <xsl:param name="not-arch" select="''"/>
+<xsl:param name="revision" select="''"/>
 
 <xsl:variable name="condition-tokens" as="xs:string*" select="tokenize($condition,' ')"/>
 <xsl:variable name="not-condition-tokens" as="xs:string*" select="tokenize($not-condition,' ')"/>
 <xsl:variable name="arch-tokens" as="xs:string*" select="tokenize($arch,' ')"/>
 <xsl:variable name="not-arch-tokens" as="xs:string*" select="tokenize($not-arch,' ')"/>
+<xsl:variable name="revision-tokens" as="xs:string*" select="tokenize($revision,' ')"/>
 
 <xsl:output method="xml" encoding="utf-8" indent="no"
 	    omit-xml-declaration="yes"/>
@@ -36,12 +38,14 @@
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="*[@condition or @arch]">
+<xsl:template match="*[@condition or @arch or @revision]">
   <xsl:choose>
     <xsl:when test="(exists($condition-tokens) and @condition
                      and $condition-tokens != tokenize(@condition,' '))
                     or (exists($arch-tokens) and @arch
-                        and $arch-tokens != tokenize(@arch,' '))">
+                        and $arch-tokens != tokenize(@arch,' '))
+                    or (exists($revision-tokens) and @revision
+                        and $revision-tokens != tokenize(@revision,' '))">
 <!--
       <xsl:message>
 	<xsl:text>Suppress: </xsl:text>

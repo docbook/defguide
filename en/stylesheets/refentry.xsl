@@ -2,8 +2,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns='http://docbook.org/ns/docbook'
 		xmlns:s="http://www.ascc.net/xml/schematron"
-		xmlns:set="http://exslt.org/sets"
-		xmlns:exsl="http://exslt.org/common"
 		xmlns:db='http://docbook.org/ns/docbook'
 		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
@@ -14,7 +12,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:f="http://nwalsh.com/ns/xsl/functions"
                 xmlns:git="http://nwalsh.com/ns/git-repo-info"
-		exclude-result-prefixes="db rng xlink f doc s set dbx exsl html a xs git"
+		exclude-result-prefixes="db rng xlink f doc s dbx html a xs git"
                 version="2.0">
 
 <xsl:include href="inline-synop.xsl"/>
@@ -432,8 +430,7 @@
                         |$attributes[@name='xlink:actuate']"/>
 
   <xsl:variable name="otherAttr"
-		select="set:difference($attributes,
-			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
   <xsl:if test="(count($cmnAttrEither) != 20 and count($cmnAttrEither) != 0)
 		or count($otherAttr) &gt; 0">
@@ -476,7 +473,7 @@
 	</xsl:when>
       </xsl:choose>
 
-      <xsl:variable name="allAttrNS">
+      <xsl:variable name="allAttrNS" as="element(rng:attribute)*">
 	<xsl:for-each select="$elem/doc:attributes//rng:attribute">
 	  <!-- In the case where there are two patterns for the same -->
 	  <!-- attribute, this odd sort clause forces the one with the -->
@@ -494,7 +491,7 @@
       </xsl:variable>
 
       <variablelist>
-	<xsl:for-each select="exsl:node-set($allAttrNS)/rng:attribute">
+	<xsl:for-each select="$allAttrNS">
 	  <xsl:variable name="name">
 	    <xsl:choose>
 	      <xsl:when test="@name">
@@ -943,8 +940,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
                         |$attributes[@name='xlink:actuate']"/>
 
   <xsl:variable name="otherAttr"
-		select="set:difference($attributes,
-			               $cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
   <xsl:if test="count($cmnAttrEither) &gt; 0 or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attributes">
