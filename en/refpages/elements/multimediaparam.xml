@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">multimediaparam</refmiscinfo>
+  <refmiscinfo role="pattern">db.multimediaparam</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>This empty element is a hook for additional, application-specific parameters
+that might be needed by audio and video players.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>The expectation is that these parameters will be used when generating
+presentation markup, for example HTML. They are never rendered directly.
+</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+<para>See <tag>videoobject</tag> for an example.</para>
+</refsection>
+
+</refentry>
