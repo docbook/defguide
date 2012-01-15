@@ -89,7 +89,8 @@ XINCLUDED=_any.docbook.xi _any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstter
           tocdiv.xi tocentry.xi token.xi topic.xi trademark.xi transform.xi \
           transforms.xi type.xi uri.xi userinput.xi varargs.xi variablelist.xi \
           varlistentry.xi varname.xi videodata.xi videoobject.xi void.xi \
-          volumenum.xi warning.xi wordasword.xi xref.xi year.xi description.xi
+          volumenum.xi warning.xi wordasword.xi xref.xi year.xi description.xi \
+          multimediaparam.xi
 
 all: .formatted
 
@@ -103,4 +104,4 @@ clean:
 	echo "<irrelevant/>" > $@
 	calabash -isource=.xincluded -oresult=/dev/null ../../../stylesheets/xinclude-list.xpl
 	git-log-summary > ../../lib/gitlog.xml
-	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)"
+	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)" schema=docbook
