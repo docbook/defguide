@@ -153,6 +153,7 @@ div.copyrightfooter {
 div.copyrightfooter p {
   margin-top: 0px;
   padding-top: 10px;
+  font-size: 10pt;
 }
 
 article {
@@ -256,4 +257,45 @@ div.note {
 
 div.note h3 {
   display: none;
+}
+
+/* ============================================================
+
+The rules below place the footers at the bottom of the page.
+They rely on this page structure:
+
+body
+  .page
+    .content
+      .body
+    .footers
+ ============================================================ */
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    height: 100%;
+}
+
+.content {
+    min-height: 100%;
+}
+
+.body {
+    overflow: auto;
+    padding-bottom: 110px;
+    padding-right: 2em;
+}
+
+.footers {
+    position: relative;
+    background-color: #c6bec6;
+    margin-top: -110px; /* negative value of footer height */
+    height: 110px;
+    bottom: 0px;
+    clear: both;
 }
