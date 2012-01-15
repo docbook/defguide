@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns='http://docbook.org/ns/docbook'
-		xmlns:s="http://www.ascc.net/xml/schematron"
+                xmlns:s="http://purl.oclc.org/dsdl/schematron"
 		xmlns:db='http://docbook.org/ns/docbook'
 		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
@@ -27,6 +27,7 @@
 <xsl:param name="include.changelog" select="0"/>
 
 <xsl:param name="SOURCES" select="()"/>
+<xsl:param name="schema" required="yes"/>
 
 <xsl:key name="div" match="rng:div" use="db:refname"/>
 <xsl:key name="element" match="rng:element" use="@name"/>
@@ -421,13 +422,16 @@
   <xsl:variable name="cmnLinkAttr"
 		select="$attributes[@name='linkend']
 			|$attributes[@name='linkends']
-                        |$attributes[@name='xlink:href']
-                        |$attributes[@name='xlink:type']
-                        |$attributes[@name='xlink:role']
+                        |$attributes[@name='xlink:actuate']
                         |$attributes[@name='xlink:arcrole']
-                        |$attributes[@name='xlink:title']
+                        |$attributes[@name='xlink:from']
+                        |$attributes[@name='xlink:href']
+                        |$attributes[@name='xlink:label']
+                        |$attributes[@name='xlink:role']
                         |$attributes[@name='xlink:show']
-                        |$attributes[@name='xlink:actuate']"/>
+                        |$attributes[@name='xlink:title']
+                        |$attributes[@name='xlink:to']
+                        |$attributes[@name='xlink:type']"/>
 
   <xsl:variable name="otherAttr"
 		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
@@ -772,6 +776,39 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       <xsl:text>Synopsis</xsl:text>
     </title>
     <xsl:apply-templates/>
+
+    <xsl:if test="$schema != 'docbook' and not(contains($refentry/@revision, 'publishers'))">
+      <xsl:variable name="pattern"
+                    select="$refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
+
+      <xsl:variable name="ver"
+                    select="if (contains($refentry/@revision, '5.1'))
+                            then 'tdg51' else 'tdg5'"/>
+
+      <xsl:variable name="fn" as="xs:string">
+        <xsl:choose>
+          <xsl:when test="starts-with($pattern, 'db.')">
+            <xsl:value-of select="substring-after($pattern, 'db.')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$pattern"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
+      <refsection condition="ref.desc.otherschema">
+        <title>DocBook Schema</title>
+        <para>
+          <xsl:text>The </xsl:text>
+          <tag>
+            <xsl:value-of select="$refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
+          </tag>
+          <xsl:text> element</xsl:text>
+          <link xlink:href="http://docbook.org/{$ver}/en/html/{$fn}.html"> also occurs </link>
+          <xsl:text>in the full DocBook schema, where it may have a different content model.</xsl:text>
+        </para>
+      </refsection>
+    </xsl:if>
   </refsynopsisdiv>
 </xsl:template>
 
@@ -931,13 +968,16 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="cmnLinkAttr"
 		select="$attributes[@name='linkend']
 			|$attributes[@name='linkends']
-                        |$attributes[@name='xlink:href']
-                        |$attributes[@name='xlink:type']
-                        |$attributes[@name='xlink:role']
+                        |$attributes[@name='xlink:actuate']
                         |$attributes[@name='xlink:arcrole']
-                        |$attributes[@name='xlink:title']
+                        |$attributes[@name='xlink:from']
+                        |$attributes[@name='xlink:href']
+                        |$attributes[@name='xlink:label']
+                        |$attributes[@name='xlink:role']
                         |$attributes[@name='xlink:show']
-                        |$attributes[@name='xlink:actuate']"/>
+                        |$attributes[@name='xlink:title']
+                        |$attributes[@name='xlink:to']
+                        |$attributes[@name='xlink:type']"/>
 
   <xsl:variable name="otherAttr"
 		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
@@ -986,7 +1026,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       <xsl:if test="count($cmnAttrEither) != 20 or count($otherAttr) &gt; 0">
 	<para>
 	  <xsl:choose>
-	    <xsl:when test="count($cmnAttr) = 20 
+	    <xsl:when test="count($cmnAttr) = 20
 			    or count($cmnAttrIdReq) = 20">
 	      <xsl:text>Additional attributes:</xsl:text>
 	    </xsl:when>

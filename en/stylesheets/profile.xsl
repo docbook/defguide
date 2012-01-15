@@ -40,67 +40,60 @@
 
 <xsl:template match="*[@condition or @arch or @revision]">
   <xsl:choose>
-    <xsl:when test="(exists($condition-tokens) and @condition
-                     and $condition-tokens != tokenize(@condition,' '))
-                    or (exists($arch-tokens) and @arch
-                        and $arch-tokens != tokenize(@arch,' '))
-                    or (exists($revision-tokens) and @revision
-                        and $revision-tokens != tokenize(@revision,' '))">
-<!--
-      <xsl:message>
-	<xsl:text>Suppress: </xsl:text>
-	<xsl:value-of select="local-name(.)"/>
-        <xsl:if test="@xml:id">
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="@xml:id"/>
-          <xsl:text> )</xsl:text>
-        </xsl:if>
-        <xsl:text>: </xsl:text>
-        <xsl:if test="@arch">
-          <xsl:text>arch=</xsl:text>
-          <xsl:value-of select="@arch"/>
-          <xsl:text> </xsl:text>
-        </xsl:if>
-        <xsl:if test="@condition">
-          <xsl:text>condition=</xsl:text>
-          <xsl:value-of select="@condition"/>
-          <xsl:text> </xsl:text>
-        </xsl:if>
-      </xsl:message>
--->
-    </xsl:when>
-    <xsl:when test="(exists($not-condition-tokens) and @condition
-                     and $not-condition-tokens = tokenize(@condition, ' '))
-                    or (exists($not-arch-tokens) and @arch
-                        and $not-arch-tokens = tokenize(@arch, ' '))">
-<!--
-      <xsl:message>
-	<xsl:text>Suppress: </xsl:text>
-	<xsl:value-of select="local-name(.)"/>
-        <xsl:if test="@xml:id">
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="@xml:id"/>
-          <xsl:text> )</xsl:text>
-        </xsl:if>
-        <xsl:text>: </xsl:text>
-        <xsl:if test="@arch">
-          <xsl:text>arch!=</xsl:text>
-          <xsl:value-of select="@arch"/>
-          <xsl:text> </xsl:text>
-        </xsl:if>
-        <xsl:if test="@condition">
-          <xsl:text>condition!=</xsl:text>
-          <xsl:value-of select="@condition"/>
-          <xsl:text> </xsl:text>
-        </xsl:if>
-      </xsl:message>
--->
+    <xsl:when test="(empty($condition-tokens) or not(@condition) or $condition-tokens = tokenize(@condition,' '))
+                    or (empty($arch-tokens) or not(@arch) or $arch-tokens = tokenize(@arch,' '))
+                    or (empty($revision-tokens) or not(@revision) or $revision-tokens = tokenize(@revision,' '))">
+      <xsl:choose>
+        <xsl:when test="(exists($not-condition-tokens) and @condition
+                         and $not-condition-tokens = tokenize(@condition, ' '))
+                        or (exists($not-arch-tokens) and @arch
+                            and $not-arch-tokens = tokenize(@arch, ' '))">
+          <!--
+          <xsl:message>
+            <xsl:text>Suppress: </xsl:text>
+            <xsl:value-of select="local-name(.)"/>
+            <xsl:if test="@xml:id">
+              <xsl:text> (</xsl:text>
+              <xsl:value-of select="@xml:id"/>
+              <xsl:text> )</xsl:text>
+            </xsl:if>
+            <xsl:text>: </xsl:text>
+            <xsl:for-each select="(@arch, @condition, @revision)">
+              <xsl:value-of select="local-name(.)"/>
+              <xsl:text>!=</xsl:text>
+              <xsl:value-of select="."/>
+              <xsl:text> </xsl:text>
+            </xsl:for-each>
+          </xsl:message>
+          -->
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates/>
+          </xsl:copy>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:copy>
-	<xsl:copy-of select="@*"/>
-	<xsl:apply-templates/>
-      </xsl:copy>
+      <!--
+      <xsl:message>
+	<xsl:text>Suppress: </xsl:text>
+	<xsl:value-of select="local-name(.)"/>
+        <xsl:if test="@xml:id">
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="@xml:id"/>
+          <xsl:text> )</xsl:text>
+        </xsl:if>
+        <xsl:text>: </xsl:text>
+        <xsl:for-each select="(@arch, @condition, @revision)">
+          <xsl:value-of select="local-name(.)"/>
+          <xsl:text>=</xsl:text>
+          <xsl:value-of select="."/>
+          <xsl:text> </xsl:text>
+        </xsl:for-each>
+      </xsl:message>
+      -->
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>

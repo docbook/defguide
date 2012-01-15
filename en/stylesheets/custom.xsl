@@ -24,16 +24,15 @@
   <tocparam path="part" toc="1"/>
 </xsl:param>
 
-<xsl:template name="t:user-localization-data">
-  <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
-    <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="en">
-      <l:context name="title-numbered">
-        <l:template name="appendix" text="%t"/>
-        <l:template name="chapter" text="%t"/>
-      </l:context>
-    </l:l10n>
-  </l:i18n>
-</xsl:template>
+<xsl:param name="autolabel.elements">
+  <db:appendix format="A"/>
+  <db:figure/>
+  <db:example/>
+  <db:table/>
+  <db:equation/>
+  <db:part format="I"/>
+  <db:reference format="I"/>
+</xsl:param>
 
 <xsl:variable name="rngfile"
 	      select="'../tools/lib/defguide.rnd'"/>
@@ -53,34 +52,25 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </xsl:template>
 
-<xsl:template name="t:user-footer-navigation">
-  <xsl:param name="node" select="."/>
-  <div class="copyrightfooter">
-    <p>
-      <a href="dbcpyright.html">Copyright</a>
-      <xsl:text> &#xA9; </xsl:text>
-      <xsl:for-each select="/db:book/db:info/db:copyright/db:year">
-        <xsl:if test="position() &gt; 1">, </xsl:if>
-        <xsl:value-of select="."/>
-      </xsl:for-each>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="/db:book/db:info/db:copyright/db:holder"/>
-      <xsl:text>.</xsl:text>
-    </p>
-  </div>
-</xsl:template>
-
 <xsl:template name="revision.graphic">
   <xsl:param name="node" select="."/>
   <xsl:param name="large" select="'0'"/>
   <xsl:param name="align" select="''"/>
 
   <xsl:variable name="revision" as="xs:string*" select="$node/@revision"/>
+  <xsl:variable name="arch" as="xs:string*" select="$node/@arch"/>
 
-  <xsl:if test="$revision">
+  <xsl:if test="$revision or $arch">
     <xsl:choose>
-      <xsl:when test="empty($revision)"/>
-      <xsl:when test="$revision='5.1'">
+      <xsl:when test="($arch = 'defguide5' or $arch = 'publishers') and empty($revision)">
+        <!-- nop, expected -->
+      </xsl:when>
+
+      <xsl:when test="empty($revision)">
+        <xsl:message>Element with arch=<xsl:value-of select="$arch"/> but no revision!?</xsl:message>
+      </xsl:when>
+
+      <xsl:when test="$revision='5.1' and empty($arch)">
         <img src="figs/web/rev_5.1.png" alt="[5.1]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -89,7 +79,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='5.1 assembly'">
+      <xsl:when test="$revision='5.1' and $arch='assembly'">
         <img src="figs/web/rev_5.1_assembly.png" alt="[5.1 Assembly]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -98,7 +88,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='5.0 publishers'">
+      <xsl:when test="$revision='5.0' and $arch='publishers'">
         <img src="figs/web/rev_5.0p.png" alt="[5.0 Publishers]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -107,7 +97,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='5.0'">
+      <xsl:when test="$revision='5.0' and empty($arch)">
         <img src="figs/web/rev_5.0.png" alt="[5.0]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -116,7 +106,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='4.3'">
+      <xsl:when test="$revision='4.3' and empty($arch)">
         <img src="figs/web/rev_4.3.png" alt="[4.3]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -125,7 +115,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='4.2'">
+      <xsl:when test="$revision='4.2' and empty($arch)">
         <img src="figs/web/rev_4.2.png" alt="[4.2]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -134,7 +124,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='4.0'">
+      <xsl:when test="$revision='4.0' and empty($arch)">
         <img src="figs/web/rev_4.0.png" alt="[4.0]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -143,7 +133,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='3.1'">
+      <xsl:when test="$revision='3.1' and empty($arch)">
         <!-- nop; 3.1 isn't interesting anymore -->
       </xsl:when>
       <xsl:when test="$revision='EBNF'">
@@ -155,7 +145,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='SVG'">
+      <xsl:when test="$revision='SVG' and empty($arch)">
         <img src="figs/web/rev_svg.png" alt="[SVG]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -164,7 +154,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='MathML'">
+      <xsl:when test="$revision='MathML' and empty($arch)">
         <img src="figs/web/rev_mathml.png" alt="[MathML]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -173,7 +163,7 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='HTMLForms'">
+      <xsl:when test="$revision='HTMLForms' and empty($arch)">
         <img src="figs/web/rev_htmlforms.png" alt="[HTML Forms]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
@@ -184,8 +174,10 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:message>
-          <xsl:text>Unexpected revision '</xsl:text>
+          <xsl:text>Unexpected revision/arch '</xsl:text>
           <xsl:value-of select="$revision"/>
+          <xsl:text>/</xsl:text>
+          <xsl:value-of select="$arch"/>
           <xsl:text>' on </xsl:text>
           <xsl:value-of select="local-name(.)"/>
         </xsl:message>
@@ -195,22 +187,24 @@
 </xsl:template>
 
 <xsl:template match="db:book">
-  <div class="{local-name(.)}">
-    <xsl:call-template name="t:id"/>
+  <article>
+    <xsl:sequence select="f:html-attributes(.,f:node-id(.))"/>
+
     <xsl:call-template name="titlepage-block"/>
+
     <xsl:if test="not(db:toc)">
       <!-- only generate a toc automatically if there's no explicit toc -->
       <xsl:apply-templates select="." mode="m:toc"/>
     </xsl:if>
+
     <xsl:apply-templates/>
-  </div>
+  </article>
 </xsl:template>
 
 <xsl:template name="titlepage-block">
   <xsl:variable name="isbn" select="db:info/db:biblioid[@class='isbn'][1]"/>
   <xsl:variable name="version" select="db:info/db:releaseinfo[1]"/>
   <xsl:variable name="date" select="db:info/db:pubdate[1]"/>
-  <xsl:variable name="legalnotice" select="db:info/db:legalnotice[1]"/>
   <xsl:variable name="copyright" select="db:info/db:copyright"/>
 
   <div>
@@ -276,6 +270,41 @@
 
     <hr/>
   </div>
+
+  <xsl:result-document href="{$base.dir}dbcpyright.html" method="xhtml" indent="no">
+    <html>
+      <xsl:call-template name="t:head">
+        <xsl:with-param name="node" select="/*"/>
+      </xsl:call-template>
+      <body>
+        <div class="page">
+          <xsl:call-template name="t:body-attributes"/>
+          <xsl:if test="@status">
+            <xsl:attribute name="class" select="@status"/>
+          </xsl:if>
+
+          <!-- irrelevant, as long as it's in a different chunk from us! -->
+          <xsl:variable name="link-context" select="(/db:book/db:part/db:chapter)[1]"/>
+
+          <div class="content">
+            <xsl:call-template name="t:user-header-content">
+              <xsl:with-param name="node" select="$link-context"/>
+              <xsl:with-param name="up" select="root(.)/*"/>
+            </xsl:call-template>
+
+            <div class="body">
+              <xsl:apply-templates select="db:info/db:legalnotice/*"/>
+            </div>
+          </div>
+
+          <xsl:call-template name="t:user-footer-content">
+            <xsl:with-param name="node" select="$link-context"/>
+            <xsl:with-param name="up" select="root(.)/*"/>
+          </xsl:call-template>
+        </div>
+      </body>
+    </html>
+  </xsl:result-document>
 </xsl:template>
 
 <xsl:template match="db:info/db:author|db:info/db:editor" mode="titleblock">

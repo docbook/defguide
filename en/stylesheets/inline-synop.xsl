@@ -22,6 +22,9 @@
     <xsl:when test="$type = 'Sequence of:'">
       <xsl:apply-templates select="." mode="inlinesynop-seq"/>
     </xsl:when>
+    <xsl:when test="$type = 'Optional sequence of:'">
+      <xsl:apply-templates select="." mode="inlinesynop-opt-seq"/>
+    </xsl:when>
     <xsl:when test="$type = 'One of:'">
       <xsl:apply-templates select="." mode="inlinesynop-one"/>
     </xsl:when>
@@ -85,6 +88,13 @@
   <xsl:call-template name="group">
     <xsl:with-param name="sep" select="', '"/>
     <xsl:with-param name="suffix" select="''"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="db:listitem" mode="inlinesynop-opt-seq">
+  <xsl:call-template name="group">
+    <xsl:with-param name="sep" select="', '"/>
+    <xsl:with-param name="suffix" select="'?'"/>
   </xsl:call-template>
 </xsl:template>
 

@@ -12,7 +12,7 @@
                 exclude-result-prefixes="ch db f fn h m t xs"
                 version="2.0">
 
-<xsl:import href="/projects/docbook/xslt20/xslt/base/html/chunk.xsl"/>
+<xsl:import href="/Volumes/Data/docbook/xslt20/xslt/base/html/chunk.xsl"/>
 <xsl:include href="custom.xsl"/>
 
 <xsl:template name="t:user-header-content">
@@ -88,91 +88,95 @@
   <xsl:param name="up" select="()"/>
   <xsl:variable name="home" select="root($node)/*"/>
 
-  <div class="navfooter">
-    <table width="100%" summary="Navigation table">
-      <tr>
-        <td width="40%" align="left">
-          <xsl:if test="count($prev)>0">
-            <a title="{f:title-content($prev, false())}" href="{f:href($node, $prev)}">
-              <img src="figs/web/nav/prev.png" alt="Prev" border="0"/>
-            </a>
-          </xsl:if>
-          <xsl:text>&#160;</xsl:text>
-        </td>
-        <td width="20%" align="center">
-          <xsl:choose>
-            <xsl:when test="exists($home)">
-              <a title="{f:title-content($home, false())}" href="{f:href($node, $home)}">
-                <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}"
-                     alt="Home" border="0"/>
+  <div class="footers">
+    <div class="navfooter">
+      <table width="100%" summary="Navigation table">
+        <tr>
+          <td width="40%" align="left">
+            <xsl:if test="count($prev)>0">
+              <a title="{f:title-content($prev, false())}" href="{f:href($node, $prev)}">
+                <img src="figs/web/nav/prev.png" alt="Prev" border="0"/>
               </a>
-            </xsl:when>
-            <xsl:otherwise>&#160;</xsl:otherwise>
-          </xsl:choose>
-        </td>
-        <td width="40%" align="right">
-          <xsl:text>&#160;</xsl:text>
-          <xsl:if test="count($next)>0">
-            <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-              <img src="figs/web/nav/next.png" alt="Next" border="0"/>
-            </a>
-          </xsl:if>
-        </td>
-      </tr>
+            </xsl:if>
+            <xsl:text>&#160;</xsl:text>
+          </td>
+          <td width="20%" align="center">
+            <xsl:choose>
+              <xsl:when test="exists($home)">
+                <a title="{f:title-content($home, false())}" href="{f:href($node, $home)}">
+                  <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}"
+                       alt="Home" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>&#160;</xsl:otherwise>
+            </xsl:choose>
+          </td>
+          <td width="40%" align="right">
+            <xsl:text>&#160;</xsl:text>
+            <xsl:if test="count($next)>0">
+              <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
+                <img src="figs/web/nav/next.png" alt="Next" border="0"/>
+              </a>
+            </xsl:if>
+          </td>
+        </tr>
 
-      <tr>
-        <td width="40%" align="left">
-          <xsl:value-of select="f:title-content($prev, false())"/>
-          <xsl:text>&#160;</xsl:text>
-        </td>
-        <td width="20%" align="center">
-          <xsl:choose>
-            <xsl:when test="count($up)>0">
-              <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-                <img src="figs/web/nav/up.png" alt="Up" border="0"/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>&#160;</xsl:otherwise>
-          </xsl:choose>
-        </td>
-        <td width="40%" align="right">
-          <xsl:text>&#160;</xsl:text>
-          <xsl:value-of select="f:title-content($next, false())"/>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <xsl:if test="$node/db:info/db:releaseinfo[@role='hash']">
-    <div class="infofooter">
-      <xsl:text>Last revised by </xsl:text>
-      <xsl:value-of select="substring-before($node/db:info/db:releaseinfo[@role='author'],
-                                             ' &lt;')"/>
-      <xsl:text> on </xsl:text>
-      <xsl:for-each select="$node/db:info/db:pubdate">
-        <!-- hack: there should be only one -->
-        <xsl:if test=". castable as xs:dateTime">
-          <xsl:value-of select="format-dateTime(. cast as xs:dateTime,
-                                                '[D1] [MNn,*-3] [Y0001]')"/>
-        </xsl:if>
-      </xsl:for-each>
-      <xsl:text> </xsl:text>
-      <span class="githash">
-        <xsl:text>(git hash: </xsl:text>
-        <xsl:value-of select="$node/db:info/db:releaseinfo[@role='hash']"/>
-        <xsl:text>)</xsl:text>
-      </span>
+        <tr>
+          <td width="40%" align="left">
+            <xsl:value-of select="f:title-content($prev, false())"/>
+            <xsl:text>&#160;</xsl:text>
+          </td>
+          <td width="20%" align="center">
+            <xsl:choose>
+              <xsl:when test="count($up)>0">
+                <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
+                  <img src="figs/web/nav/up.png" alt="Up" border="0"/>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>&#160;</xsl:otherwise>
+            </xsl:choose>
+          </td>
+          <td width="40%" align="right">
+            <xsl:text>&#160;</xsl:text>
+            <xsl:value-of select="f:title-content($next, false())"/>
+          </td>
+        </tr>
+      </table>
     </div>
-  </xsl:if>
-  <div class="copyrightfooter">
-    <p>
-      <a href="dbcpyright.html">Copyright</a>
-      <xsl:text> &#xA9; </xsl:text>
-      <xsl:for-each select="/db:book/db:info/db:copyright/db:year">
-        <xsl:if test="position() &gt; 1">, </xsl:if>
-        <xsl:value-of select="."/>
-      </xsl:for-each>
-      <xsl:text> Norman Walsh.</xsl:text>
-    </p>
+
+    <xsl:if test="$node/db:info/db:releaseinfo[@role='hash']">
+      <div class="infofooter">
+        <xsl:text>Last revised by </xsl:text>
+        <xsl:value-of select="substring-before($node/db:info/db:releaseinfo[@role='author'],
+                                               ' &lt;')"/>
+        <xsl:text> on </xsl:text>
+        <xsl:for-each select="$node/db:info/db:pubdate">
+          <!-- hack: there should be only one -->
+          <xsl:if test=". castable as xs:dateTime">
+            <xsl:value-of select="format-dateTime(. cast as xs:dateTime,
+                                                  '[D1] [MNn,*-3] [Y0001]')"/>
+          </xsl:if>
+        </xsl:for-each>
+        <xsl:text> </xsl:text>
+        <span class="githash">
+          <xsl:text>(git hash: </xsl:text>
+          <xsl:value-of select="$node/db:info/db:releaseinfo[@role='hash']"/>
+          <xsl:text>)</xsl:text>
+        </span>
+      </div>
+    </xsl:if>
+
+    <div class="copyrightfooter">
+      <p>
+        <a href="dbcpyright.html">Copyright</a>
+        <xsl:text> &#xA9; </xsl:text>
+        <xsl:for-each select="/db:book/db:info/db:copyright/db:year">
+          <xsl:if test="position() &gt; 1">, </xsl:if>
+          <xsl:value-of select="."/>
+        </xsl:for-each>
+        <xsl:text> Norman Walsh.</xsl:text>
+      </p>
+    </div>
   </div>
 </xsl:template>
 

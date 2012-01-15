@@ -93,11 +93,20 @@
 <xsl:template match="processing-instruction('common-linking-attributes')">
   <!-- get "role" into the list -->
   <xsl:variable name="common.linking.attributes"
-		select="$rng//rng:define[@name='db.common.linking.attributes']//rng:attribute"/>
+                select="$rng//rng:define[@name='db.common.linking.attributes']//rng:attribute"/>
+  <xsl:variable name="unique" select="distinct-values($common.linking.attributes/@name)"/>
+
+  <xsl:variable name="attributes" as="element()*">
+    <xsl:for-each select="$unique">
+      <xsl:sort select="."/>
+      <xsl:variable name="name" select="."/>
+      <xsl:sequence select="($common.linking.attributes[@name=$name])[1]"/>
+    </xsl:for-each>
+  </xsl:variable>
 
   <xsl:call-template name="process.common.attr">
     <xsl:with-param name="common.attributes"
-		    select="$common.linking.attributes"/>
+		    select="$attributes"/>
   </xsl:call-template>
 </xsl:template>
 
