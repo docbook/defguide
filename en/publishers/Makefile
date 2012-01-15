@@ -12,7 +12,7 @@ HTMLEXT=.html
 TIDY=tidy
 
 RNDFILE=/projects/docbook/defguide/en/publishers/lib/defguide.rnd
-XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) $(STYLEOPT)
+XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) resource.root="" $(STYLEOPT)
 
 ifeq ($(ROOTID),)
   ROOTIDPARAM=
@@ -33,7 +33,7 @@ all: chunks
 patterns.xml: lib/patterns.xml ../stylesheets/patterns.xsl $(RNDFILE)
 	$(XSLT) $< ../stylesheets/patterns.xsl $@ rngfile=$(RNDFILE)
 
-tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
+tdg.xml: book5.xml bookinfo.xml patterns.xml \
          refpages/references.xml refpages/list-elements.xml \
          refpages/intro-elements.xml \
          $(wildcard src/*.xml) \
@@ -41,7 +41,7 @@ tdg.xml: refpages book5.xml bookinfo.xml patterns.xml \
 	calabash -isource=book5.xml -oresult=$@ ../stylesheets/xinclude.xpl
 
 book.xml: tdg.xml ../stylesheets/profile.xsl style/purpose.xsl ../stylesheets/purpose.xsl
-	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl arch=publishers
+	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl arch=publishers revision="5.0 5.1"
 
 refpages:
 	make -C refpages
@@ -59,10 +59,11 @@ raw-chunks: $(SOURCE) book.xml setup
 	rm -rf $(BASEDIR)/figs && mv figs $(BASEDIR)/
 
 chunks: raw-chunks
-	cd $(BASEDIR) && $(TIDY) *.html
 
-chunk: $(SOURCE) book.xml
-	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) $(ROOTIDPARAM)
+#	cd $(BASEDIR) && $(TIDY) *.html
+
+chunk: $(SOURCE)
+	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - $(XSLTOPT) $(ROOTIDPARAM)
 
 index:
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) /dev/null $(XSLTOPT) rootid=index
