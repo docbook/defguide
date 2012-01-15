@@ -54,7 +54,7 @@ XINCLUDED=_any.xi _any.mml.xi _any.svg.xi _emphasis.xi _firstterm.xi _foreignphr
           tasksummary.xi term.xi termdef.xi tertiary.xi textdata.xi \
           textobject.xi tgroup.xi title.xi titleabbrev.xi titleforbidden.info.xi \
           titleonly.info.xi titleonlyreq.info.xi titlereq.info.xi toc.xi \
-          topic.xi trademark.xi uri.xi variablelist.xi varlistentry.xi \
+          trademark.xi uri.xi variablelist.xi varlistentry.xi \
           videodata.xi videoobject.xi volumenum.xi wordasword.xi xref.xi year.xi \
           dcterms.xi
 
@@ -71,4 +71,4 @@ clean:
 	calabash -isource=.xincluded -oresult=/dev/null ../../../stylesheets/xinclude-list.xpl
 	git-log-summary > ../../lib/gitlog.xml
 	@echo saxon $(REFENTRYXSL) $(SAXONPARAM) SOURCES="..."
-	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)"
+	@$(SAXON) $@ $(REFENTRYXSL) $(SAXONPARAM) SOURCES="$(XINCLUDED)" schema=publishers
