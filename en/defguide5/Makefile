@@ -11,7 +11,7 @@ STYLEOPT=
 HTMLEXT=.html
 TIDY=tidy
 
-RNDFILE=/projects/docbook/defguide/en/defguide5/lib/defguide.rnd
+RNDFILE=/Volumes/Data/docbook/defguide/en/defguide5/lib/defguide.rnd
 XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) resource.root="" $(STYLEOPT)
 
 ifeq ($(ROOTID),)
@@ -41,7 +41,7 @@ tdg.xml: book5.xml bookinfo.xml patterns.xml \
 	calabash -isource=book5.xml -oresult=$@ ../stylesheets/xinclude.xpl
 
 book.xml: tdg.xml ../stylesheets/profile.xsl style/purpose.xsl ../stylesheets/purpose.xsl
-	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl
+	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl arch=assembly revision="5.0 5.1"
 
 refpages:
 	make -C refpages
@@ -53,7 +53,7 @@ setup:
 	echo "DirectoryIndex docbook.html" > $(BASEDIR)/.htaccess
 
 # Warning: this might only work on Unix
-raw-chunks: $(SOURCE) book.xml setup
+raw-chunks: $(SOURCE) setup
 	mkdir -p figs && cd ../figs && tar cf - web | (cd ../defguide5/figs; tar xf -)
 	$(XSLT) $(MEMORYOPT) $(SOURCE) $(SSCHUNK) - $(XSLTOPT)
 	rm -rf $(BASEDIR)/figs && mv figs $(BASEDIR)/
