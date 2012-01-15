@@ -233,13 +233,9 @@ that we produce today as well as the structures we will want to produce
 tomorrow.</para>
 
 <para>The principle task of the <tag>structure</tag> element is to
-identify the resources that are to be combined for that structure. The
-processing expectation of a structure is that after combining the
-resources together, the result will be a single document, the
-<firstterm>realized structure</firstterm>. The realized structure is
-then processed to produce the desired output. (Whether or not a processor
-actually realizes the structure as a single document in memory or on
-disk is an implementation detail; logically, that's what happens.)</para>
+identify the resources that are to be combined for that structure.
+The resulting structure may be delivered in any number of ways: as a single document,
+help system, or web site, for example.</para>
 
 <para>It is important to observe that the realized structure is often,
 but not necessarily, a valid DocBook document. What is important is
@@ -351,6 +347,410 @@ The transforms are applied in the order specified.</para>
 class="attribute">renderas</tag>, it is applied to the result of the
 last transformation.</para>
 
+</section>
+</section>
+
+<section>
+<info>
+<title>Describing Structural Relationships With Assemblies</title>
+<author>
+  <personname>
+    <firstname>Larry</firstname>
+    <surname>Roland</surname>
+  </personname>
+</author>
+</info>
+
+<para>In addition to providing a mechanism for describing the
+structure of the classical DocBook products such as books and
+articles, the <tag class="element">assembly</tag> element can be used
+to describe the relationships among non-linear collections of topics
+such as are presented in Web sites and help systems. While help
+systems can be produced by chunking a typical book into pieces; it is
+important to emphasize the non-linear nature of the content during the
+creation of it to avoid the presumption that a particular topic
+follows its predecessor in the document.</para>
+
+<para>Another characteristic of collections of topics such as help
+systems and Web sites is that it can be, at times, important to
+maintain explicit control over file names (to produce consistent
+<acronym>URI</acronym>s or to reduce churn in source control systems).
+The use of the assembly mechanism easily allows control over file
+names for the delivered products.</para>
+
+<para>It is also desirable, at times, to produce multiple output
+formats for some of the non-linear documents, with different locations
+for some portions of the content (the Index may go near the top of a
+navigational hierarchy of the HTML delivery of a help system, while it
+traditionally would be at the back of a printed version of a help
+system). The ability to specify specific outputs for elements and
+suppress them in other output formats supports this
+requirement.</para>
+
+<para>At this point, working through an example may be helpful.</para>
+
+<section>
+<title>Describing a Help System with an Assembly</title>
+
+<para>This section describes the use of an assembly to describe the
+hierarchical relationship among pages in a help system, and the use of
+the <tag class="attribute">type</tag> attribute on assemblies to carry
+information beyond the simple structure of a document. While there may
+be other specific considerations applying the <tag class="element"
+>assembly</tag> element to the description of a Web site, similar
+considerations are likely to apply.</para>
+
+<note>
+<para>This is a simplified example, but based on a real system.</para>
+</note>
+
+<section>
+<title>Background</title>
+
+<para>This is the help system for a simple documentation build system
+that has two Web-based screens that allow the user to build documents
+(books rendered into PDF and chunked HTML and help systems that are
+delivered with products using a Webhelp type system).</para>
+
+<para>There are four tasks supported by the system. Two screens of
+help are provided for the screens in the user interface, and the help
+system organization has to comply with documentation standards.</para>
+
+<itemizedlist spacing="compact">
+  <title>Help System Structure</title>
+  <para>Each entry in this list represents a node (HTML page) in the
+  help system.</para>
+  <listitem>
+    <para>ToC</para>
+  </listitem>
+  <listitem>
+    <para>Index</para>
+  </listitem>
+  <listitem>
+    <para>Overview (Welcome)</para>
+  </listitem>
+  <listitem>
+    <para>Tasks</para>
+    <itemizedlist>
+      <listitem>
+        <para>Building Documents</para>
+      </listitem>
+      <listitem>
+        <para>Packaging Books for Publication</para>
+      </listitem>
+      <listitem>
+        <para>Packaging Help for Submitting to Product Builds</para>
+      </listitem>
+      <listitem>
+        <para>Packaging Documents (Books and Help) for
+        Localization</para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+  <listitem>
+    <para>Screens and Menus</para>
+    <itemizedlist>
+      <listitem>
+        <para>Document Build Screen</para>
+      </listitem>
+      <listitem>
+        <para>Document Packaging Screen</para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+  <listitem>
+    <para>Printable Version (PDF)</para>
+  </listitem>
+  <listitem>
+    <para>Glossary</para>
+  </listitem>
+  <listitem>
+    <para>Help on Help</para>
+  </listitem>
+</itemizedlist>
+
+<para>The Webhelp system delivers topics of help with a navigational
+hierarchy on the left-hand side of the content presented for each
+topic. The navigational hierarchy indicates the location of the topic
+in the hierarchy by highlighting it and can be used to navigate to
+other topics in the help system. Help is provided for each page in the
+interface. In addition, a glossary is provided, with links from
+glossterms in the body of the help system to the glossary along with
+an index and full text search, that must be build across all the
+topics in the help system.</para>
+
+<para>In addition to being delivered using Webhelp, a printable
+version of the help system is delivered with the help system in the
+form of a PDF generated by walking the structure of the help system,
+collecting the individual topics to create a book with the structure
+derived from the hierarchical structure of the help system. However,
+the PDF follows the conventions of printed books, putting the index at
+the back of the book, and does not include the help on help
+content.</para>
+
+<para>In addition to the files for the Webhelp HTML and JavaScript,
+supplementary files are delivered to allow merging with other help
+systems and to support integration of the help on screens with the
+product help buttons. Some of the HTML files are expected to have
+standard names.</para>
+
+<para>The following example assumes that the Webhelp transform has
+been extended to support non-chunked generation of the system by
+passing in a topic for each page to be rendered. The navigational
+structure will be derived from the assembly.</para>
+</section>
+
+<section>
+<title>The Resources</title>
+
+<para>A very simple set of resources is specified for the help system.
+The file names are immaterial, and all the referenced file resources
+are presumed to be topics except the glossary, which is simply a
+glossary element (and usually derived from a glossary
+database).</para>
+
+<example>
+<title>Resources for a Help System</title>
+<programlisting><![CDATA[  <resources xml:base="some/path">
+    <description>Resources for help system.</description>
+    <resource xml:id="overview" fileref="overview.xml">
+      <description>Overview of help system.</description>
+    </resource>
+    <resource xml:id="task.build.doc">
+      <description>Describe how to build a document.</description>
+    </resource>
+    <resource xml:id="pckg.intro" fileref="task-intro.xml">
+      <description>Introduction to the packaging tasks.</description>
+    </resource>
+    <resource xml:id="task.package.book.pub">
+      <description>Describe how to package a document for publication.</description>
+    </resource>
+    <resource xml:id="task.package.help">
+      <description>Describe how to package a help system for submission to product
+        build.</description>
+    </resource>
+    <resource xml:id="task.package.l10n">
+      <description>Describe how to package source files for localization.</description>
+    </resource>
+    <resource xml:id="screen.overview">
+      <description>Introductory text for screens and menus section.</description>
+    </resource>
+    <resource xml:id="screen.build.doc">
+      <description>Displayed when question mark icon on document build screen is
+        clicked.</description>
+    </resource>
+    <resource xml:id="screen.package">
+      <description>Displayed when question mark icon on packaging screen is clicked.</description>
+    </resource>
+    <resource xml:id="glossary">
+      <description>Glossary for help system.</description>
+    </resource>
+    <resource xml:id="help.on.help">
+      <description>How to use the help system.</description>
+    </resource>
+  </resources>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>Setting Up the Structure</title>
+
+<para>The First few lines of the structure set up general things about
+the help system:</para>
+
+<example>
+<title>Defining the Basics of the Help System</title>
+<programlisting linenumbering="numbered"><![CDATA[  <structure type="help.system">
+    <title>XIDI Build System Help</title>
+    <titleabbrev>XIDI Help</titleabbrev>
+    <output format="pdf" file="sys-book.pdf" renderas="book"/>
+    <!-- The PDF output will be rendered into a file expected by the help
+         system for the printable version of the help system. -->
+    <output format="webhelp" chunk="false" renderas="topic"/>
+    <!-- The webhelp output will NOT be chunked and the default render
+         (wherever a file name is specified) is as a topic.   IF the
+         renderas on an output that is a child of structure is not treated as
+         a default for specified files, a renderas has to be added to each of
+         the webhelp output statements in the modules that specify a file. -->]]></programlisting>
+<para>The <tag class="attribute">type</tag> attribute provides
+information to the render system so that the auxiliary files for
+merging and integration are built in addition to the Webhelp system.</para>
+<para>The <tag class="element">output</tag> element for <tag
+class="attvalue">pdf</tag> specifies the name of the file to use
+and tells the render system to render a book as the printable
+version of the help system.</para>
+<para>The <tag class="element">output</tag> element for <tag
+class="attvalue">webhelp</tag> suppresses chunking and sets the
+default value for the webhelp output statements that do not have a
+renderas attribute.</para>
+</example>
+</section>
+
+<section>
+<title>Standard Front End</title>
+<para>By convention, the first two pages in the help system are the
+table of contents and the index. However, in the book, the index goes
+in the back.</para>
+
+<example>
+<title>The Front End</title>
+<programlisting><![CDATA[    <module>
+      <output format="webhelp" file="sys-toc.html" renderas="topic"/>
+      <toc/>
+      <!-- By convention, there is a ToC at the beginning of a help system and
+           of the PDF of the help system.  The delivery system expects the file
+           to be named sys-toc.html. -->
+    </module>
+    <module>
+      <output format="webhelp" file="sys-index.html"/>
+      <output format="pdf" suppress="true"/>
+      <index/>
+      <!-- By convention, there is an index at the beginning of a help system
+           but it is expected to be at the end of a book.  The delivery system
+           expects the file to be named sys-index.html -->
+    </module>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>Main Body of the Help System</title>
+
+<para>The main content of the help system is broken into an overview
+(Which can have lower-level topics below the main overview topic),
+task descriptions, which may be grouped together or appear at the top
+level if they are considered important enough to the user, and a set
+of help pages for screens.</para>
+
+<para>Each task description has a task element with a summary,
+prerequisites, the procedure, and lists of related topics and tasks.
+Help on screens always includes standard information such as how to
+navigate to the screen and what tasks the screen is used to
+accomplish. In complex systems, screens can be grouped together to
+deal with things like Wizards and related screens and dialogs.</para>
+
+<example>
+<title>Middles Section of Help System</title>
+<programlisting><![CDATA[    <module resourceref="overview">
+      <output format="webhelp" file="overview.html"/>
+      <output format="pdf" renderas="chapter"/>
+    </module>
+    <module resourceref="task.build.doc">
+      <output format="webhelp" file="tsk-build-doc.html"/>
+      <output format="pdf" renderas="section"/>
+    </module>
+    <module>
+      <output format="webhelp" file="pckg-intro.html"/>
+      <output format="pdf" renderas="chapter"/>
+      <title>Packaging</title>
+      <module resourceref="pckg.intro" contentonly="true" omittitles="true"/>
+
+      <module resourceref="task.package.book.pub">
+        <output format="webhelp" file="tsk-pckg-book-pub.html"/>
+        <output format="pdf" renderas="section"/>
+      </module>
+      <module resourceref="task.package.help">
+        <output format="webhelp" file="tsk-pckg-help.html"/>
+        <output format="pdf" renderas="section"/>
+      </module>
+      <module resourceref="task.package.l10n">
+        <output format="webhelp" file="tsk-pckg-l10n.html"/>
+        <output format="pdf" renderas="section"/>
+      </module>
+    </module>
+    <module>
+      <output format="webhelp" file="scr-overvw.html"/>
+      <output format="pdf" renderas="chapter"/>
+      <title>Screens</title>
+      <module resourceref="screen.overview" contentonly="true"
+      omittitles="true"/>
+      <module resourceref="screen.build.doc">
+        <output format="webhelp" file="scr-build.html"/>
+        <output format="pdf" renderas="section"/>
+      </module>
+      <module resourceref="screen.package">
+        <output format="webhelp" file="scr-package.html"/>
+        <output format="pdf" renderas="section"/>
+      </module>
+    </module>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>Standard Back End for the Help System</title>
+
+<para>Once the main body of the help system is built, the standard
+back end components are added.</para>
+
+<example>
+<title>Back End of Help System</title>
+<programlisting><![CDATA[    <module>
+      <output format="webhelp"/> 
+      <!-- No file, just want the link in the navigation. -->
+      <output format="pdf" suppress="true"/>
+      <!-- Nothing in PDF. -->
+      <title xmlns:ns1="http://www.w3.org/1999/xlink" ns1:href="sys-book.pdf">Printable Version (PDF)</title>
+    </module>
+    <module resourceref="glossary">
+      <output format="webhelp" file="sys-glossary.html"/>
+      <!-- The help delivery system expects the glossary to be in a file named
+           sys-glossary.html.-->
+    </module>
+    <module>
+      <output format="webhelp" suppress="true"/>
+      <index/>
+      <!-- By conventions, the index is at the back of a book, but it has
+           already been presented at the front of the help system. -->
+    </module>
+    <module resourceref="help.on.help">
+      <output format="webhelp" file="help-on-help.html"/>
+      <output format="pdf" suppress="true"/>
+      <!-- By convention help on how to use the help system is not included in
+           the printable version of the help system and is stock, pulled from a
+           library. -->
+    </module>
+  </structure>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>What Happens</title>
+
+<para>Presuming an Ant (or other target based) build system for this
+help system document, the following targets are meaningful for
+building the document described by this structure.</para>
+
+<variablelist>
+  <title>Targets for Building the Help System</title>
+  <varlistentry>
+    <term>build.help</term>
+    <listitem>
+      <para>Builds a help system with the following:</para>
+      <simplelist columns="1" type="vert">
+        <member>Webhelp files, including the full test search inverse
+        index files</member>
+        <member>XML files for merging with other help systems</member>
+        <member>Properties files for integrating into product</member>
+      </simplelist>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>build.pdf</term>
+    <listitem>
+      <para>Build the PDF printable version</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>build.all</term>
+    <listitem>
+      <para>Build the help system and the printable version, packaged
+      into the same directory structure used to deliver the help
+      system with the product, so that it can be zipped up for
+      delivery into the product source control system.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</section>
 </section>
 </section>
 
