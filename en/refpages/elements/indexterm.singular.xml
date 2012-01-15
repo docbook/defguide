@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
-<info>
-  <pubdate>$Date$</pubdate>
-  <releaseinfo>$Revision$</releaseinfo>
-</info>
-
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.0">
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
   <refmiscinfo role="element">indexterm</refmiscinfo>
@@ -18,63 +17,73 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>An <tag>indexterm</tag> identifies text that is to be
-      placed in the index. In the simplest case, <phrase role="keep-together">the placement</phrase> of the
-      <tag>indexterm</tag> in the document identifies the location of
-      the term in the text. In other words, the <tag>indexterm</tag>
-      is placed in the flow of the document where <phrase conformance="inschema">the
-      <tag>indexentry</tag> in </phrase>the <tag>index</tag> should
-      point. In other cases, attributes on <tag>indexterm</tag> are
-      used to identify the location of the term in the text.</para>
+<title>Description</title>
 
-      <para>An <tag>indexterm</tag> marks either a single point in the
-      document or a range. A single point is marked with an
-      <tag>indexterm</tag> placed in the text at the point of
-      reference. There are two ways to identify a range of text:</para>
+<para>An <tag>indexterm</tag> identifies text that is to be placed in
+the index. In the simplest case, <phrase role="keep-together">the
+placement</phrase> of the <tag>indexterm</tag> in the document
+identifies the location of the term in the text. In other words, the
+<tag>indexterm</tag> is placed in the flow of the document where
+<phrase conformance="inschema">the <tag>indexentry</tag> in
+</phrase>the <tag>index</tag> should point. In other cases, attributes
+on <tag>indexterm</tag> are used to identify the location of the term
+in the text.</para>
 
-      <itemizedlist>
-        <listitem>
-          <para>Place an <tag>indexterm</tag> at the beginning of the
-          range with <tag class="attribute">class</tag> set to
-          <tag class="attvalue">startofrange</tag> and give this term
-          an <tag class="attribute">xml:id</tag>. Place another
-          <tag>indexterm</tag> at the end of the range with <tag class="attribute">startref</tag> pointing to the <tag class="attribute">xml:id</tag> of the starting
-          <tag>indexterm</tag>. This second
-          <tag>indexterm</tag> must be empty.</para>
+<para>An <tag>indexterm</tag> marks either a single point in the
+document or a range. A single point is marked with an
+<tag>indexterm</tag> placed in the text at the point of reference.
+There are two ways to identify a range of text:</para>
 
-          <para>The advantage of this method is that the range can span
-          unbalanced element boundaries. (For example, a range could span from
-          the middle of one paragraph to the middle of the next.)</para>
-        </listitem>
+<itemizedlist>
+<listitem>
+<para>Place an <tag>indexterm</tag> at the beginning of the range with
+<tag class="attribute">class</tag> set to <tag
+class="attvalue">startofrange</tag> and give this term an <tag
+class="attribute">xml:id</tag>. Place another <tag>indexterm</tag> at
+the end of the range with <tag class="attribute">startref</tag>
+pointing to the <tag class="attribute">xml:id</tag> of the starting
+<tag>indexterm</tag>. This second <tag>indexterm</tag> must be
+empty.</para>
 
-        <listitem>
-          <para>Place the <tag>indexterm</tag> anywhere you like and
-          point to the element that contains the range of text you wish to
-          index with the <tag class="attribute">zone</tag> attribute
-          on the <tag>indexterm</tag>. Note that <tag class="attribute">zone</tag> is defined as
-          <literal>IDREFS</literal>, so a single <tag>indexterm</tag>
-          can point to multiple ranges.</para>
+<para>The advantage of this method is that the range can span
+unbalanced element boundaries. (For example, a range could span from
+the middle of one paragraph to the middle of the next.)</para>
+</listitem>
 
-          <para>The advantage of this method is that
-          <tag>indexterm</tag>s can be collected together or even
-          stored totally outside the flow of the document (e.g., in the
-          <tag>info</tag>).</para>
-        </listitem>
-      </itemizedlist>
+<listitem>
+<para>Place the <tag>indexterm</tag> anywhere you like and point to
+the element that contains the range of text you wish to index with the
+<tag class="attribute">zone</tag> attribute on the
+<tag>indexterm</tag>. Note that <tag class="attribute">zone</tag> is
+defined as <literal>IDREFS</literal>, so a single <tag>indexterm</tag>
+can point to multiple ranges.</para>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>The advantage of this method is that <tag>indexterm</tag>s can
+be collected together or even stored totally outside the flow of the
+document (e.g., in the <tag>info</tag>).</para>
+</listitem>
+</itemizedlist>
 
-        <para>The <tag>indexterm</tag>s are suppressed in the primary
-        text flow, although they contribute to the population of an index and
-        serve as anchors for cross-references. Under no circumstances is the
-        actual content of <tag>indexterm</tag> rendered in the primary
-        flow. For example, consider:</para>
+<important role="fu">
+<para>The common linking attributes will be removed from
+<tag>biblioid</tag> in DocBook V6.0. They are inappropriate for
+an index term.
+</para>
+</important>
 
-        <example xml:id="indexterm-example"><info><title>Example index terms</title></info>
-          
+<refsection>
+<title>Processing expectations</title>
 
-          <programlisting>&lt;para&gt;USB&lt;indexterm&gt;
+<para>The <tag>indexterm</tag>s are suppressed in the primary text
+flow, although they contribute to the population of an index and serve
+as anchors for cross-references. Under no circumstances is the actual
+content of <tag>indexterm</tag> rendered in the primary flow. For
+example, consider:</para>
+
+<example xml:id="indexterm-example">
+<title>Example index terms</title>
+
+<programlisting>&lt;para&gt;USB&lt;indexterm&gt;
 &lt;primary&gt;USB&lt;/primary&gt;&lt;see&gt;Universal Serial Bus&lt;/see&gt;
 &lt;/indexterm&gt;&lt;indexterm&gt;
 &lt;primary&gt;Universal Serial Bus&lt;/primary&gt;&lt;/indexterm&gt;

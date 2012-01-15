@@ -97,6 +97,44 @@ Fix the bug that allowed <tag>table</tag> to appear inside <tag>entry</tag>
 </para>
 </listitem>
 </itemizedlist>
+
+<section xml:id="fu60">
+<title>Backwards incompatible changes planned for DocBook V6.0</title>
+<para>The following backwards incompatible changes are planned for
+DocBook V6.0:</para>
+
+<orderedlist>
+<listitem>
+<para>The linking elements will be removed from the content model of
+<tag>biblioid</tag>.
+</para>
+</listitem>
+<listitem>
+<para>The common linking attributes will be removed from <tag>indexterm</tag>.
+</para>
+</listitem>
+<listitem>
+<para>The <tag class="attribute">xml:id</tag> attribute will be made
+required on <tag class="attribute">startofrange</tag> <tag>indexterms</tag>.
+</para>
+</listitem>
+<listitem>
+<para>A Schematron constraint will be added to assert that for every
+<tag class="attribute">startofrange</tag>
+<tag>indexterm</tag> there is exactly one
+<tag class="attribute">endofrange</tag> <tag>indexterm</tag>
+that points to it.</para>
+</listitem>
+<listitem>
+<para>The <tag class="attribute">language</tag> attribute will be removed from
+<tag>address</tag>; use <tag class="attribute">xml:lang</tag> instead.</para>
+</listitem>
+<listitem>
+<para>The <tag>arc</tag> and <tag>locator</tag> elements will be dropped; instead
+<tag>link</tag> will be allowed in <tag>extendedlink</tag>.</para>
+</listitem>
+</orderedlist>
+</section>
 </section>
 
 <section xml:id="formatting-note">

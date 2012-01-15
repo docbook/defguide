@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
-<info>
-  <pubdate>$Date$</pubdate>
-  <releaseinfo>$Revision$</releaseinfo>
-</info>
-
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.0">
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
   <refmiscinfo role="element">address</refmiscinfo>
@@ -18,16 +17,22 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>An address is generally a postal address, although it does contain
-      elements for <tag>fax</tag> and <tag>email</tag>
-      addresses as well as the catchall <tag>otheraddr</tag>.</para>
+<title>Description</title>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>An address is generally a postal address, although it does
+contain elements for <tag>fax</tag> and <tag>email</tag> addresses as
+well as the catchall <tag>otheraddr</tag>.</para>
 
-        <para>Formatted as a displayed block. This element is displayed
-        “verbatim”; whitespace and line breaks within this element are
-        significant.</para>
+<important role="fu">
+<para>The <tag class="attribute">language</tag> attribute will be removed
+in DocBook V6.0. Use <tag class="attribute">xml:lang</tag> instead.
+</para>
+</important>
+
+<refsection><info><title>Processing expectations</title></info>
+<para>Formatted as a displayed block. This element is displayed
+“verbatim”; whitespace and line breaks within this element are
+significant.</para>
 </refsection>
 
 <?tdg-attributes?>

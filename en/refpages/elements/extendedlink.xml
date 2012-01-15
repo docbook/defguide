@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" revision="5.0">
-<info>
-  <pubdate>$Date$</pubdate>
-  <releaseinfo>$Revision$</releaseinfo>
-</info>
-
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.0">
 <refmeta>
   <refentrytitle><?tdg-refentrytitle?></refentrytitle>
   <refmiscinfo role="element">extendedlink</refmiscinfo>
@@ -18,13 +17,21 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>An XLink extended link. See <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/TR/xlink/">XLink</link> for more details.</para>
+<title>Description</title>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>An XLink extended link. See <link
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xlink:href="http://www.w3.org/TR/xlink/">XLink</link> for more
+details.</para>
 
-        <para>Suppressed.</para>
-      </refsection>
+<important role="fu">
+<para>The <tag>arc</tag> and <tag>locator</tag> elements will be removed in DocBook V6.0.
+Use <tag>link</tag> instead.</para>
+</important>
+
+<refsection><info><title>Processing expectations</title></info>
+<para>Suppressed.</para>
+</refsection>
 
 <?tdg-attributes?>
 <?tdg-parents?>
