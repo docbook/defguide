@@ -17,6 +17,7 @@
 <xsl:param name="refentry.separator" select="0"/>
 <xsl:param name="css.decoration" select="1"/>
 <xsl:param name="docbook.css">css/defguide.css</xsl:param>
+<xsl:param name="callout.graphics.path" select="'figs/web/callouts/'"/>
 
 <xsl:param xmlns="http://docbook.org/ns/docbook"
            name="generate.toc" as="element()*">
@@ -26,18 +27,29 @@
 
 <xsl:param name="autolabel.elements">
   <db:appendix format="A"/>
+  <db:chapter/>
   <db:figure/>
   <db:example/>
   <db:table/>
   <db:equation/>
   <db:part format="I"/>
   <db:reference format="I"/>
+  <db:section/>
 </xsl:param>
 
 <xsl:variable name="rngfile"
 	      select="'../tools/lib/defguide.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile)"/>
+
+<xsl:template name="border">
+  <xsl:param name="side" required="yes"/>
+  <xsl:param name="padding" select="0"/>
+  <xsl:param name="style" select="$table.cell.border.style"/>
+  <xsl:param name="color" select="$table.cell.border.color"/>
+  <xsl:param name="thickness" select="$table.cell.border.thickness"/>
+  <!-- nop -->
+</xsl:template>
 
 <xsl:template name="t:javascript">
   <xsl:param name="node" select="."/>
@@ -57,8 +69,8 @@
   <xsl:param name="large" select="'0'"/>
   <xsl:param name="align" select="''"/>
 
-  <xsl:variable name="revision" as="xs:string*" select="$node/@revision"/>
-  <xsl:variable name="arch" as="xs:string*" select="$node/@arch"/>
+  <xsl:variable name="revision" as="xs:string?" select="$node/@revision"/>
+  <xsl:variable name="arch" as="xs:string?" select="$node/@arch"/>
 
   <xsl:if test="$revision or $arch">
     <xsl:choose>
@@ -67,7 +79,11 @@
       </xsl:when>
 
       <xsl:when test="empty($revision)">
-        <xsl:message>Element with arch=<xsl:value-of select="$arch"/> but no revision!?</xsl:message>
+        <xsl:message>
+          <xsl:text>Element with arch=</xsl:text>
+          <xsl:value-of select="$arch"/>
+          <xsl:text> but no revision!?</xsl:text>
+        </xsl:message>
       </xsl:when>
 
       <xsl:when test="$revision='5.1' and empty($arch)">
@@ -328,6 +344,48 @@
 
 <xsl:template match="db:othercredit/db:contrib" mode="titleblock">
   <xsl:apply-templates/>
+</xsl:template>
+
+<!-- Override this template in order to put revision graphics in the TOC -->
+<xsl:template match="db:refentry" mode="mp:toc"
+              xmlns:mp="http://docbook.org/xslt/ns/mode/private">
+  <xsl:param name="toc-context" select="."/>
+
+  <xsl:variable name="refmeta" select=".//db:refmeta"/>
+  <xsl:variable name="refentrytitle" select="$refmeta//db:refentrytitle"/>
+  <xsl:variable name="refnamediv" select=".//db:refnamediv"/>
+  <xsl:variable name="refname" select="$refnamediv//db:refname"/>
+  <xsl:variable name="title">
+    <xsl:choose>
+      <xsl:when test="$refentrytitle">
+        <xsl:apply-templates select="$refentrytitle[1]" mode="m:titleabbrev-content"/>
+      </xsl:when>
+      <xsl:when test="$refname">
+        <xsl:apply-templates select="$refname[1]" mode="m:titleabbrev-content"/>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <li>
+    <span class='refentrytitle'>
+      <a href="{f:href(/,.)}">
+        <xsl:copy-of select="$title"/>
+      </a>
+    </span>
+    <span class='refpurpose'>
+      <xsl:if test="$annotate.toc != 0">
+        <xsl:text> - </xsl:text>
+        <xsl:value-of select="db:refnamediv/db:refpurpose"/>
+      </xsl:if>
+    </span>
+
+    <xsl:call-template name="revision.graphic">
+      <xsl:with-param name="node" select="."/>
+      <xsl:with-param name="large" select="'0'"/>
+      <xsl:with-param name="align" select="''"/>
+    </xsl:call-template>
+  </li>
 </xsl:template>
 
 <!-- ============================================================ -->
