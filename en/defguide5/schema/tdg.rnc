@@ -1,0 +1,14 @@
+namespace rng  = "http://relaxng.org/ns/structure/1.0"
+namespace db = "http://docbook.org/ns/docbook"
+default namespace = "http://docbook.org/ns/docbook"
+
+include "docbookxi.rnc" {
+   db.extension.blocks = tdg.element-summary-list
+   db.extension.inlines = tdg.att
+}
+
+tdg.element-summary-list =
+   element element-summary-list { db.common.attributes, db.tag+ }
+
+tdg.att =
+   element att { db.common.attributes, text }
