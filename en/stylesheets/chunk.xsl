@@ -15,6 +15,8 @@
 <xsl:import href="/Volumes/Data/docbook/xslt20/xslt/base/html/chunk.xsl"/>
 <xsl:include href="custom.xsl"/>
 
+<xsl:param name="chunk.section.depth" select="0"/>
+
 <xsl:template name="t:user-header-content">
   <xsl:param name="node" select="."/>
   <xsl:param name="next" select="()"/>
