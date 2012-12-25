@@ -502,9 +502,6 @@
 
 <xsl:template match="db:phrase">
   <xsl:choose>
-    <xsl:when test="@condition and (@condition != $output.media)">
-      <!-- suppress -->
-    </xsl:when>
     <xsl:when test="@conformance = 'inschema'">
       <xsl:variable name="conforms">
         <xsl:for-each select="db:tag">
@@ -554,18 +551,6 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template match="db:link">
-  <xsl:choose>
-    <xsl:when test="not(@condition)
-                    or (@condition = $output.media)">
-      <xsl:apply-imports/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:apply-templates/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
 <xsl:template match="db:para[ancestor::db:itemizedlist[@role='element-synopsis']]"
 	      priority="100">
   <!-- force this kind of list to be "compact" -->
@@ -574,10 +559,6 @@
 
 <xsl:template match="db:para">
   <xsl:choose>
-    <xsl:when test="@condition and (@condition != $output.media)">
-      <!-- suppress -->
-    </xsl:when>
-
     <xsl:when test="@conformance = 'inschema'">
       <xsl:variable name="conforms">
         <xsl:for-each select="db:tag">
@@ -665,12 +646,14 @@
       <xsl:when test="$lcname = 'indexterm'">
 	<xsl:value-of select="'element.db.indexterm.singular'"/>
       </xsl:when>
+<!--
       <xsl:when test="$lcname = 'resource'">
 	<xsl:value-of select="'element.db.file.resource'"/>
       </xsl:when>
       <xsl:when test="$lcname = 'module'">
 	<xsl:value-of select="'element.db.resource.module'"/>
       </xsl:when>
+-->
       <xsl:when test="$lcname = 'mml.*'">
 	<xsl:value-of select="'element.db._any.mml'"/>
       </xsl:when>
