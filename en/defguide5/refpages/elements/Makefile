@@ -22,14 +22,14 @@ XINCLUDED=_any.docbook.xi _any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstter
           collab.xi colophon.xi colspec.xi command.xi computeroutput.xi \
           confdates.xi confgroup.xi confnum.xi confsponsor.xi conftitle.xi \
           constant.xi constraint.xi constraintdef.xi constructorsynopsis.xi \
-          container.resource.xi contractnum.xi contractsponsor.xi contrib.xi \
+          resource.xi contractnum.xi contractsponsor.xi contrib.xi \
           copyright.xi coref.xi country.xi cover.xi database.xi date.xi \
           dedication.xi destructorsynopsis.xi edition.xi editor.xi email.xi \
           emphasis.xi entry.xi entrytbl.row.xi entrytbl.tbody.xi \
           entrytbl.thead.xi entrytbl.xi envar.xi epigraph.xi equation.xi \
           errorcode.xi errorname.xi errortext.xi errortype.xi example.xi \
           exceptionname.xi extendedlink.xi fax.xi fieldsynopsis.xi figure.xi \
-          file.resource.xi filename.xi filterin.xi filterout.xi firstname.xi \
+          filename.xi filterin.xi filterout.xi firstname.xi \
           firstterm.xi footnote.xi footnoteref.xi foreignphrase.xi formalpara.xi \
           funcdef.xi funcparams.xi funcprototype.xi funcsynopsis.xi \
           funcsynopsisinfo.xi function.xi givenname.xi glossary.xi glossdef.xi \
@@ -53,13 +53,13 @@ XINCLUDED=_any.docbook.xi _any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstter
           lineannotation.xi link.xi listitem.xi literal.xi literallayout.xi \
           locator.xi manvolnum.xi markup.xi mathphrase.xi mediaobject.xi \
           member.xi menuchoice.xi methodname.xi methodparam.xi methodsynopsis.xi \
-          modifier.xi module.container.xi module.resource.xi \
+          modifier.xi module.xi \
           mousebutton.xi msg.xi msgaud.xi msgentry.xi \
           msgexplan.xi msginfo.xi msglevel.xi msgmain.xi msgorig.xi msgrel.xi \
           msgset.xi msgsub.xi msgtext.xi nonterminal.xi note.xi olink.xi \
           ooclass.xi ooexception.xi oointerface.xi option.xi optional.xi \
           orderedlist.xi org.xi orgdiv.xi orgname.xi otheraddr.xi othercredit.xi \
-          othername.xi output.xi override.xi package.xi pagenums.xi para.xi \
+          othername.xi output.xi merge.xi package.xi pagenums.xi para.xi \
           paramdef.xi parameter.xi part.xi partintro.xi person.xi personblurb.xi \
           personname.xi phone.xi phrase.xi pob.xi postcode.xi preface.xi \
           primary.xi primaryie.xi printhistory.xi procedure.xi production.xi \
