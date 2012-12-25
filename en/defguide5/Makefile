@@ -40,8 +40,9 @@ tdg.xml: book5.xml bookinfo.xml patterns.xml \
          $(wildcard refpages/elements/*.fmt)
 	calabash -isource=book5.xml -oresult=$@ ../stylesheets/xinclude.xpl
 
-book.xml: tdg.xml ../stylesheets/profile.xsl style/purpose.xsl ../stylesheets/purpose.xsl
-	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl arch=assembly revision="5.0 5.1"
+book.xml: tdg.xml ../stylesheets/profile.xsl ../stylesheets/purpose.xsl \
+          style/purpose.xsl ../stylesheets/tdg2db.xsl
+	calabash -isource=$< -oresult=$@ ../stylesheets/make-book.xpl arch=assembly revision="5.0 5.1" condition="refpages web"
 
 refpages:
 	make -C refpages
