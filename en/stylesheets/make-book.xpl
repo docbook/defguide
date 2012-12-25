@@ -11,6 +11,12 @@
 
 <p:variable name="srcbase" select="base-uri(/)"/>
 
+<p:xslt name="tdg2db">
+  <p:input port="stylesheet">
+    <p:document href="tdg2db.xsl"/>
+  </p:input>
+</p:xslt>
+
 <p:xslt name="profiled">
   <p:input port="stylesheet">
     <p:document href="profile.xsl"/>
