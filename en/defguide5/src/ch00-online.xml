@@ -35,65 +35,200 @@ structure. For more information about assemblies, see
 
 <itemizedlist>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1679665">1679665</link>
-Add better support for modular documentation
+<para><rfe>1679665</rfe>
+Add better support for modular documentation.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1722935">1722935</link>
+<para><rfe>1722935</rfe>
 Add a <tag class="attvalue">proofreader</tag> value to the <tag class="attribute">class</tag>
-attribute for <tag>othercredit</tag>
+attribute for <tag>othercredit</tag>.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1770787">1770787</link>
-Add <tag>givenname</tag> as an alternative for <tag>firstname</tag>
+<para><rfe>1770787</rfe>
+Add <tag>givenname</tag> as an alternative for <tag>firstname</tag>.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=1899655">1899655</link>
-Allow more elements to be the root of a DocBook document
+<para><rfe>1899655</rfe>
+Allow more elements to be the root of a DocBook document.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2100736">2100736</link>
-Allow <tag>constant</tag> in <tag>initializer</tag>
+<para><rfe>2100736</rfe>
+Allow <tag>constant</tag> in <tag>initializer</tag>.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2791288">2791288</link>
-Added several additional elements, including <tag>quote</tag>, to the ubiquitous inlines
+<para><rfe>2791288</rfe>
+Added several additional elements, including <tag>quote</tag>, to the ubiquitous inlines.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2820190">2820190</link>
-Add a <tag>topic</tag> element
+<para><rfe>2820190</rfe>
+Add a <tag>topic</tag> element.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2821653">2821653</link>
+<para><rfe>2821653</rfe>
 Remove the constraint that <tag>indexterm</tag> elements must not appear in
-<tag>footnote</tag>s
+<tag>footnote</tag>s.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2907124">2907124</link>
+<para><rfe>2907124</rfe>
 Allow personal name components directly in <tag>bibliomset</tag>.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2907125">2907125</link>
-Allow all inlines in <tag>remark</tag>
+<para><rfe>2907125</rfe>
+Allow all inlines in <tag>remark</tag>.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2907131">2907131</link>
-Allow <tag>simplesect</tag> in <tag>colophon</tag>
+<para><rfe>2907131</rfe>
+Allow <tag>simplesect</tag> in <tag>colophon</tag>.
 </para>
 </listitem>
 <listitem>
-<para>RFE <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid=2964576">2964576</link>
-Fix the bug that allowed <tag>table</tag> to appear inside <tag>entry</tag>
+<para><rfe>2964576</rfe>
+Fix the bug that allowed <tag>table</tag> to appear inside <tag>entry</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3064674</rfe>
+Make sure <tag>abstract</tag> isn't lost during the DocBook 4-to-5 upgrade
+in <filename>db4-upgrade.xsl</filename>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3150303</rfe>
+Broaden content model of <tag>contrib</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3171553</rfe>
+Allow <tag>dedication</tag> in <tag>article</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3174769</rfe>
+Added <tag class="attvalue">securitycontext</tag> and
+<tag class="attvalue">other</tag> to <tag>systemitem</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3199793</rfe> Allow XInclude to be used in <tag>set</tag>.
+Also allowed in more places. Tweaked XInclude pattern to allow
+foreign, namespace-qualified attributes in preparation for
+<citetitle>XInclude 1.1</citetitle>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3227210</rfe>
+Fix HTML <tag>informaltable</tag> attributes.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3274136</rfe>
+Allow <tag>production</tag> to contain more than one <tag>rhs</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3287339</rfe>
+Support “<literal>istc</literal> as a <att>class</att> attribute value
+on <tag>biblioid</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3368279</rfe>
+Make content optional in components and sections.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3384939</rfe>
+Fix XLink support. Allow extended links and other link types.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3390036</rfe>
+Allow <tag>tag</tag> elements to nest.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3406169</rfe>
+Allow multiple <tag>procedure</tag> elements in <tag>task</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3500814</rfe>
+Added <att>pgwide</att> attribute to <tag>informalexample</tag> and
+<tag>informalequation</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3517981</rfe>
+Remove spurious, duplicate “<literal>other</literal> value from <tag>othercredit</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3530659</rfe>
+Allow admonitions in formal objects.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3531365</rfe>
+Allow navigation components at the beginnings of sections.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3540409</rfe>
+Added <tag class="attvalue">altgr</tag> and <tag class="attvalue">return</tag> values
+to the <att>function</att> attribute on <tag>keycap</tag>
+</para>
+</listitem>
+<listitem>
+<para><rfe>3547943</rfe>
+Don't allow <tag>secondary</tag> without a <tag>primary</tag> in <tag>indexterm</tag>.
+</para>
+</listitem>
+<listitem>
+<para><rfe>3571149</rfe>
+Allow <tag>article</tag> in <tag>set</tag>.
+</para>
+</listitem>
+</itemizedlist>
+
+<para>The following issues are also addressed:</para>
+
+<itemizedlist>
+<listitem>
+<para>Added accessibility attributes to CALS tables.
+</para>
+</listitem>
+<listitem>
+<para>Added <att>outputformat</att> as a common effectivity attribute.
+</para>
+</listitem>
+<listitem>
+<para>Fixed bug in Schematron assertions (several conditions were reversed).
+</para>
+</listitem>
+<listitem>
+<para>Improve support for multimedia. Added <att>autoplay</att> and
+<att>classid</att> attributes to <tag>audiodata</tag> and <tag>videodata</tag>.
+Added <tag>multimediaparam</tag>, allowed in <tag>audioobject</tag> and
+<tag>videoobject</tag>.
+</para>
+</listitem>
+<listitem>
+<para>Allow <tag>link</tag> in <tag>extendedlink</tag>. See backwards incompatible
+changes planned for DocBook V6.0; <tag>arc</tag> and <tag>locator</tag> will
+be removed.</para>
+</listitem>
+<listitem>
+<para>Changed Schematron namespace to official ISO Schematron URI.
 </para>
 </listitem>
 </itemizedlist>
