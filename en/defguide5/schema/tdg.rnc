@@ -4,7 +4,7 @@ default namespace = "http://docbook.org/ns/docbook"
 
 include "docbookxi.rnc" {
    db.extension.blocks = tdg.element-summary-list
-   db.extension.inlines = tdg.att
+   db.extension.inlines = tdg.att | tdg.rfe
 }
 
 tdg.element-summary-list =
@@ -12,3 +12,6 @@ tdg.element-summary-list =
 
 tdg.att =
    element att { db.common.attributes, text }
+
+tdg.rfe =
+   element rfe { db.common.attributes, text }

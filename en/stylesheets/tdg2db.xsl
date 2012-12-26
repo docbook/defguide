@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:db="http://docbook.org/ns/docbook"
                 xmlns="http://docbook.org/ns/docbook"
@@ -13,6 +14,13 @@
   <tag class="attribute">
     <xsl:apply-templates select="@*,node()"/>
   </tag>
+</xsl:template>
+
+<xsl:template match="db:rfe">
+  <xsl:text>RFE </xsl:text>
+  <link xlink:href="https://sourceforge.net/tracker/index.php?func=detail&amp;group_id=21935&amp;atid=384107&amp;aid={.}">
+    <xsl:apply-templates/>
+  </link>
 </xsl:template>
 
 <xsl:template match="db:element-summary-list">
