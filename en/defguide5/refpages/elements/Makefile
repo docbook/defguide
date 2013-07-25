@@ -90,7 +90,7 @@ XINCLUDED=_any.docbook.xi _any.mml.xi _any.svg.xi _any.xi _emphasis.xi _firstter
           transforms.xi type.xi uri.xi userinput.xi varargs.xi variablelist.xi \
           varlistentry.xi varname.xi videodata.xi videoobject.xi void.xi \
           volumenum.xi warning.xi wordasword.xi xref.xi year.xi description.xi \
-          multimediaparam.xi
+          multimediaparam.xi result.xi
 
 all: .formatted
 
