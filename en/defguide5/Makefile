@@ -11,7 +11,7 @@ STYLEOPT=
 HTMLEXT=.html
 TIDY=tidy
 
-RNDFILE=/Volumes/Data/docbook/defguide/en/defguide5/lib/defguide.rnd
+RNDFILE=/projects/docbook/defguide/en/defguide5/lib/defguide.rnd
 XSLTOPT=base.dir=$(BASEDIR)/ html.ext=$(HTMLEXT) rngfile=$(RNDFILE) resource.root="" $(STYLEOPT)
 
 ifeq ($(ROOTID),)
