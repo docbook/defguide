@@ -186,13 +186,21 @@ An assembly may identify any number of transformations.</para>
 <para>Individual resources are identified through a <tag>resource</tag>
 element:</para>
 
-<programlisting>&lt;resource xml:id="topicA" fileref="uri/for/topicA.xml"/&gt;</programlisting>
+<programlisting>&lt;resource xml:id="topicA" href="uri/for/topicA.xml"/&gt;</programlisting>
 
 <para>Here the resource “<literal>topicA</literal>” is associated with
 the URI <uri>uri/for/topicA.xml</uri>. Relative URIs are made absolute
 with respect to the element on which they appear. An optional <tag
 class="attribute">description</tag> attribute may also be used to
 provide a description of the resource.</para>
+
+<note>
+<title>Fragment Identifiers</title>
+<para>The URI specified in the <tag class="attribute">href</tag> attribute
+may include a fragment identifier, such as <uri>uri/for/topicA.xml#sectionid</uri>.
+Which fragment identifier schemes are supported is implementation
+defined.</para>
+</note>
 
 <para>A collection of resources may appear in a <tag>resources</tag>
 wrapper. The primary motivation for the resources wrapper is to group
@@ -201,22 +209,6 @@ physically and logically colocated resources together. The
 a common <tag class="attribute">xml:base</tag> or
 <tag class="attribute">xml:lang</tag> and
 <tag class="attribute">description</tag>.</para>
-
-<para>If the <tag>resource</tag> element does not have a
-<tag class="attribute">fileref</tag> attribute, then the content of
-the <tag>resource</tag> element itself is the resource. This is often
-used to create modules which trigger the automatic generation of
-content, for example Tables of Contents or Indexes:</para>
-
-<programlisting>&lt;resource xml:id=”toc”>
-  &lt;toc/>
-  &lt;toc role=”procedures”/>
-&lt;/resource></programlisting>
-
-<para>It is an error
-if the <tag class="attribute">fileref</tag> attribute is specified and
-the element is not empty.</para>
-</section>
 
 <section xml:id="structures">
 <title>Structures</title>
@@ -252,6 +244,14 @@ element), the assembly process may be allowed to nest them.</para>
 
 <para>A <tag>structure</tag> consists mostly of <tag>module</tag> elements.
 </para>
+</section>
+
+<section xml:id="modules">
+<title>Modules</title>
+
+<para>The <tag>module</tag> element is a wrapper for a unit of structure.
+The attributes and children of a module provide facilities for selecting
+the content of the module and controlling its presentation.</para>
 </section>
 
 <section xml:id="relationships">
@@ -300,11 +300,11 @@ DocBook), or with a module (to address requirements beyond the limited
 transformation capabilities of the assembly).</para>
 
 <programlisting><![CDATA[<transforms>
-  <transform name="dita2docbook" type="text/xsl" fileref="dita2db.xsl"/>
-  <transform name="tutorial" type="text/xsl" fileref="db2tutorial.xsl"/>
-  <transform name="art2pi" type="text/xsl" fileref="art2pi.xsl"/>
-  <transform name="office" type="application/xproc+xml" fileref="office2db.xpl"/>
-  <transform name="office" type="text/xsl" fileref="extractoffice.xsl"/>
+  <transform name="dita2docbook" type="text/xsl" href="dita2db.xsl"/>
+  <transform name="tutorial" type="text/xsl" href="db2tutorial.xsl"/>
+  <transform name="art2pi" type="text/xsl" href="art2pi.xsl"/>
+  <transform name="office" type="application/xproc+xml" href="office2db.xpl"/>
+  <transform name="office" type="text/xsl" href="extractoffice.xsl"/>
 </transforms>]]></programlisting>
 
 <para>If there are several ways to provide a transformation, they may
@@ -324,7 +324,7 @@ as possible, ideally none.</para>
 <para>Given the transformations above, a DITA resource might be
 included in the assembly:</para>
 
-<programlisting>&lt;resource xml:id="overview" fileref="dita/over.xml"
+<programlisting>&lt;resource xml:id="overview" href="dita/over.xml"
           transform="dita2docbook"/></programlisting>
 
 <para>Whenever a module refers to this resource, it will receive the transformed,
@@ -513,13 +513,13 @@ database).</para>
 <title>Resources for a Help System</title>
 <programlisting><![CDATA[  <resources xml:base="some/path">
     <description>Resources for help system.</description>
-    <resource xml:id="overview" fileref="overview.xml">
+    <resource xml:id="overview" href="overview.xml">
       <description>Overview of help system.</description>
     </resource>
     <resource xml:id="task.build.doc">
       <description>Describe how to build a document.</description>
     </resource>
-    <resource xml:id="pckg.intro" fileref="task-intro.xml">
+    <resource xml:id="pckg.intro" href="task-intro.xml">
       <description>Introduction to the packaging tasks.</description>
     </resource>
     <resource xml:id="task.package.book.pub">
@@ -772,18 +772,18 @@ assume that we have the following resources available:</para>
 </resource>
 
 <resources xml:base="tutorial/">
-  <resource xml:id="tut1" fileref="tut1.xml"/>
-  <resource xml:id="tut2" fileref="tut2.xml"/>
-  <resource xml:id="tut3" fileref="tut3.xml"/>
-  <resource xml:id="tut4" fileref="tut4.xml"/>
-  <resource xml:id="tut5" fileref="tut5.xml"/>
+  <resource xml:id="tut1" href="tut1.xml"/>
+  <resource xml:id="tut2" href="tut2.xml"/>
+  <resource xml:id="tut3" href="tut3.xml"/>
+  <resource xml:id="tut4" href="tut4.xml"/>
+  <resource xml:id="tut5" href="tut5.xml"/>
 </resources>
 
 <resources xml:base="tasks/">
-  <resource xml:id="task1" fileref="task1.xml"/>
-  <resource xml:id="task2" fileref="task2.xml"/>
-  <resource xml:id="task3" fileref="task3.xml"/>
-  <resource xml:id="task4" fileref="task4.xml"/>
+  <resource xml:id="task1" href="task1.xml"/>
+  <resource xml:id="task2" href="task2.xml"/>
+  <resource xml:id="task3" href="task3.xml"/>
+  <resource xml:id="task4" href="task4.xml"/>
 </resources>]]></programlisting>
 
 <para>Further, let's assume that each of the tutorials and tasks is
