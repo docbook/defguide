@@ -208,7 +208,7 @@ function addDeleteLink() {
 	dellink.setAttribute("href", "javascript:deleteAll()");
 
 	var img = document.createElement("img");
-	img.setAttribute("src","graphics/delete.gif");
+	img.setAttribute("src","figs/web/nav/delete.gif");
 	img.setAttribute("alt","[x]");
 	img.setAttribute("border","0");
 
