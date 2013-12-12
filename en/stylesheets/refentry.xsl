@@ -394,7 +394,12 @@
 			|$attributes[@name='role']
 			|$attributes[@name='version']
 			|$attributes[@name='dir']
-			|$attributes[@name='annotations']"/>
+			|$attributes[@name='annotations']
+			|$attributes[@name='vocab']
+			|$attributes[@name='property']
+			|$attributes[@name='typeof']
+			|$attributes[@name='resource']
+			|$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrIdReq"
 		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
@@ -417,7 +422,12 @@
 			|$attributes[@name='role']
 			|$attributes[@name='version']
 			|$attributes[@name='dir']
-			|$attributes[@name='annotations']"/>
+			|$attributes[@name='annotations']
+			|$attributes[@name='vocab']
+			|$attributes[@name='property']
+			|$attributes[@name='typeof']
+			|$attributes[@name='resource']
+			|$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
@@ -438,12 +448,25 @@
   <xsl:variable name="otherAttr"
 		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
-  <xsl:if test="(count($cmnAttrEither) != 20 and count($cmnAttrEither) != 0)
+<!--
+  <xsl:message>
+    <xsl:text>1: </xsl:text>
+    <xsl:value-of select="count($cmnAttr)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="count($cmnAttrEither)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="count($cmnLinkAttr)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="count($otherAttr)"/>
+  </xsl:message>
+-->
+
+  <xsl:if test="(count($cmnAttrEither) != 26 and count($cmnAttrEither) != 0)
 		or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attribute-descriptions">
       <title>Attributes</title>
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = 26 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
@@ -451,7 +474,7 @@
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 20 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = 26 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
@@ -459,13 +482,13 @@
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 20">
+	<xsl:when test="count($cmnAttr) = 26">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 20">
+	<xsl:when test="count($cmnAttrIdReq) = 26">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
@@ -942,7 +965,12 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 			|$attributes[@name='role']
 			|$attributes[@name='version']
 			|$attributes[@name='dir']
-			|$attributes[@name='annotations']"/>
+			|$attributes[@name='annotations']
+			|$attributes[@name='vocab']
+			|$attributes[@name='property']
+			|$attributes[@name='typeof']
+			|$attributes[@name='resource']
+			|$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrIdReq"
 		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
@@ -965,7 +993,12 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 			|$attributes[@name='role']
 			|$attributes[@name='version']
 			|$attributes[@name='dir']
-			|$attributes[@name='annotations']"/>
+			|$attributes[@name='annotations']
+			|$attributes[@name='vocab']
+			|$attributes[@name='property']
+			|$attributes[@name='typeof']
+			|$attributes[@name='resource']
+			|$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
@@ -986,12 +1019,25 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="otherAttr"
 		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
+<!--
+  <xsl:message>
+    <xsl:text>2: </xsl:text>
+    <xsl:value-of select="count($cmnAttr)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="count($cmnAttrEither)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="count($cmnLinkAttr)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="count($otherAttr)"/>
+  </xsl:message>
+-->
+
   <xsl:if test="count($cmnAttrEither) &gt; 0 or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attributes">
       <title>Attributes</title>
 
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 20 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = 26 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
@@ -999,7 +1045,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 20 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = 26 and count($cmnLinkAttr) = 8">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
@@ -1007,13 +1053,13 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 20">
+	<xsl:when test="count($cmnAttr) = 26">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 20">
+	<xsl:when test="count($cmnAttrIdReq) = 26">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
@@ -1027,11 +1073,11 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 	</xsl:when>
       </xsl:choose>
 
-      <xsl:if test="count($cmnAttrEither) != 20 or count($otherAttr) &gt; 0">
+      <xsl:if test="count($cmnAttrEither) != 26 or count($otherAttr) &gt; 0">
 	<para>
 	  <xsl:choose>
-	    <xsl:when test="count($cmnAttr) = 20
-			    or count($cmnAttrIdReq) = 20">
+	    <xsl:when test="count($cmnAttr) = 26
+			    or count($cmnAttrIdReq) = 26">
 	      <xsl:text>Additional attributes:</xsl:text>
 	    </xsl:when>
 	    <xsl:otherwise>

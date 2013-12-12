@@ -3,8 +3,14 @@
 
 <mediaobject>
   <videoobject>
-    <videodata fileref='movie.avi' autoplay="true" classid="com.example.player">
-      <multimediaparam name="crossfade" value="false"/>
+    <videodata fileref='movie.ogg' autoplay="true" classid="com.example.player">
+      <multimediaparam name="type" value="video/ogg"/>
+    </videodata>
+    <videodata fileref='movie.mp4' autoplay="true" classid="com.example.player">
+      <multimediaparam name="type" value="vidoe/mp4"/>
+    </videodata>
+    <videodata fileref='movie.webm' autoplay="true" classid="com.example.player">
+      <multimediaparam name="type" value="video/webm"/>
     </videodata>
   </videoobject>
   <imageobject>

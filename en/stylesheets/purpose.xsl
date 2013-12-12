@@ -65,10 +65,14 @@
   <xsl:variable name="effectivity.attributes"
                 select="$rng//rng:define[@name='db.effectivity.attributes']//rng:attribute"/>
 
+  <xsl:variable name="rdfalite.attributes"
+                select="$rng//rng:define[@name='db.rdfalite.attributes']//rng:attribute"/>
+
   <xsl:variable name="common.attributes" as="element(rng:attribute)+">
     <xsl:for-each select="$all.common.attributes">
       <xsl:variable name="name" select="@name"/>
-      <xsl:if test="not($effectivity.attributes[@name = $name])">
+      <xsl:if test="not($effectivity.attributes[@name = $name])
+                    and not($rdfalite.attributes[@name = $name])">
         <xsl:copy-of select="."/>
       </xsl:if>
     </xsl:for-each>
@@ -87,6 +91,16 @@
   <xsl:call-template name="process.common.attr">
     <xsl:with-param name="common.attributes"
 		    select="$effectivity.attributes"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="processing-instruction('common-rdfalite-attributes')">
+  <xsl:variable name="rdfalite.attributes"
+                select="$rng//rng:define[@name='db.rdfalite.attributes']//rng:attribute"/>
+
+  <xsl:call-template name="process.common.attr">
+    <xsl:with-param name="common.attributes"
+		    select="$rdfalite.attributes"/>
   </xsl:call-template>
 </xsl:template>
 
