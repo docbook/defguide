@@ -12,7 +12,7 @@
 <xsl:key name="define" match="rng:define" use="@name"/>
 
 <xsl:variable name="rngfile"
-	      select="'../tools/lib/defguide.rnd'"/>
+	      select="'../defguide5/lib/defguide.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile)"/>
 
@@ -243,31 +243,31 @@
         <db:para>
           <xsl:value-of select="db:refpurpose"/>
           <xsl:text>.</xsl:text>
-
-          <xsl:if test="dbx:description">
-            <xsl:apply-templates select="dbx:description/*"/>
-          </xsl:if>
-
-          <xsl:if test="rng:choice">
-            <db:variablelist>
-              <xsl:for-each select="rng:choice/rng:value">
-                <db:varlistentry>
-                  <db:term>
-                    <db:code>
-                      <xsl:value-of select="."/>
-                    </db:code>
-                  </db:term>
-                  <db:listitem>
-                    <db:para>
-                      <xsl:value-of select="following-sibling::a:documentation[1]"
-                                    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                    </db:para>
-                  </db:listitem>
-                </db:varlistentry>
-              </xsl:for-each>
-            </db:variablelist>
-          </xsl:if>
         </db:para>
+
+        <xsl:if test="dbx:description">
+          <xsl:apply-templates select="dbx:description/*"/>
+        </xsl:if>
+
+        <xsl:if test="rng:choice">
+          <db:variablelist>
+            <xsl:for-each select="rng:choice/rng:value">
+              <db:varlistentry>
+                <db:term>
+                  <db:code>
+                    <xsl:value-of select="."/>
+                  </db:code>
+                </db:term>
+                <db:listitem>
+                  <db:para>
+                    <xsl:value-of select="following-sibling::a:documentation[1]"
+                                  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  </db:para>
+                </db:listitem>
+              </db:varlistentry>
+            </xsl:for-each>
+          </db:variablelist>
+        </xsl:if>
       </db:listitem>
       </db:varlistentry>
     </xsl:for-each>
