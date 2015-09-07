@@ -758,10 +758,10 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
                 select="concat('ex.oe.', substring-after(@xml:id,'ex.os.'))"/>
   <xsl:variable name="eanch"
                 select="following-sibling::db:anchor[@xml:id=$endid]"/>
-  <db:example-wrapper>
+  <informalexample role="example-output">
     <xsl:apply-templates select="following-sibling::node()
                                  except $eanch/following-sibling::node()"/>
-  </db:example-wrapper>
+  </informalexample>
 </xsl:template>
 
 <xsl:template match="db:anchor[@role='HACK-ex.out.end']">
