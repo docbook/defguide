@@ -2,9 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns="http://docbook.org/ns/docbook"
 		xmlns:rng='http://relaxng.org/ns/structure/1.0'
-                xmlns:exsl="http://exslt.org/common"
-		exclude-result-prefixes="rng exsl"
-		version="1.0">
+		exclude-result-prefixes="rng"
+		version="2.0">
 
 <xsl:output method="xml" encoding="utf-8" indent="yes"
 	    omit-xml-declaration="yes"/>
@@ -37,14 +36,16 @@
             <xsl:variable name="patname" select="@name"/>
             <xsl:variable name="elname"
                           select="$rng//rng:define[@name = $patname]/rng:element/@name"/>
-            <tag>
-              <xsl:value-of select="$elname"/>
-            </tag>
+            <xsl:if test="not(empty($elname))">
+              <tag>
+                <xsl:value-of select="$elname"/>
+              </tag>
+            </xsl:if>
           </xsl:for-each>
         </xsl:variable>
 
         <xsl:variable name="elem.names"
-                      select="exsl:node-set($ns.elem.names)/*"/>
+                      select="$ns.elem.names/*"/>
 
         <xsl:variable name="ns.uniq.names">
           <xsl:for-each select="$elem.names">
@@ -55,7 +56,7 @@
           </xsl:for-each>
         </xsl:variable>
 
-        <xsl:variable name="uniq.names" select="exsl:node-set($ns.uniq.names)/*"/>
+        <xsl:variable name="uniq.names" select="$ns.uniq.names/*"/>
 
 	<xsl:for-each select="$uniq.names">
 	  <xsl:if test="position() &gt; 1 and last() != 2">, </xsl:if>

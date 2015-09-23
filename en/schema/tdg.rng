@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://docbook.org/ns/docbook" xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="docbookxi.rng">
+    <define name="db.extension.blocks">
+      <choice>
+        <ref name="tdg.element-summary-list"/>
+        <ref name="tdg.example-wrapper"/>
+      </choice>
+    </define>
+    <define name="db.extension.inlines">
+      <choice>
+        <ref name="tdg.att"/>
+        <ref name="tdg.rfe"/>
+      </choice>
+    </define>
+  </include>
+  <define name="tdg.element-summary-list">
+    <element name="element-summary-list">
+      <ref name="db.common.attributes"/>
+      <oneOrMore>
+        <ref name="db.tag"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="tdg.att">
+    <element name="att">
+      <ref name="db.common.attributes"/>
+      <text/>
+    </element>
+  </define>
+  <define name="tdg.rfe">
+    <element name="rfe">
+      <ref name="db.common.attributes"/>
+      <text/>
+    </element>
+  </define>
+  <define name="tdg.example-wrapper">
+    <element name="example-wrapper">
+      <ref name="db.common.attributes"/>
+      <oneOrMore>
+        <ref name="db.all.blocks"/>
+      </oneOrMore>
+    </element>
+  </define>
+</grammar>

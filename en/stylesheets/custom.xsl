@@ -51,7 +51,7 @@
   <!-- nop -->
 </xsl:template>
 
-<xsl:template name="t:javascript">
+<xsl:template name="t:user-javascript-head">
   <xsl:param name="node" select="."/>
   <script type="text/javascript" src="{concat($resource.root, 'js/dbmodnizr.js')}"/>
   <script type="text/javascript" src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
