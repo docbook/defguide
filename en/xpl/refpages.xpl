@@ -8,12 +8,19 @@
 <p:input port="parameters" kind="parameter"/>
 
 <p:option name="src" select="'../refpages/elements/'"/>
+<p:option name="rnd" select="'lib/defguide.rnd'"/>
 
 <p:declare-step type="cx:message">
   <p:input port="source" sequence="true"/>
   <p:output port="result" sequence="true"/>
   <p:option name="message" required="true"/>
 </p:declare-step>
+
+<p:xslt>
+  <p:input port="stylesheet">
+    <p:document href="../stylesheets/elem-list.xsl"/>
+  </p:input>
+</p:xslt>
 
 <p:for-each name="loop">
   <p:iteration-source select="/list/item"/>
@@ -34,15 +41,16 @@
       <p:document href="../stylesheets/refentry.xsl"/>
     </p:input>
     <p:with-param name="rngfile"
-                  select="resolve-uri('lib/defguide.rnd', exf:cwd())"/>
+                  select="resolve-uri($rnd, exf:cwd())"/>
     <p:with-param name="seealsofile"
                   select="resolve-uri('lib/seealso.xml', exf:cwd())"/>
     <p:with-param name="patternsfile"
                   select="resolve-uri('lib/patterns.xml', exf:cwd())"/>
     <p:with-param name="gitfile"
-                  select="resolve-uri('build/gitlog.xml', exf:cwd())"/>
+                  select="resolve-uri('lib/gitlog.xml', exf:cwd())"/>
     <p:with-param name="schema"
                   select="'docbook'"/>
+    <!-- <p:log port="result" href="/tmp/refentry.xml"/> -->
   </p:xslt>
 
   <p:validate-with-relax-ng>

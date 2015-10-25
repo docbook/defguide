@@ -7,9 +7,9 @@ buildscript {
   }
 
   dependencies {
-    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.0.16'
+    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.0.18'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.4'
-    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.0.0'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.1.2'
   }
 }
 
@@ -24,77 +24,70 @@ apply plugin: 'com.xmlcalabash.task'
 import org.docbook.DocBookTask
 import com.xmlcalabash.XMLCalabashTask
 
-task gitLog(type: Exec) {
-  FileCollection sources = fileTree(dir: '.').exclude("build")
-  inputs.file sources
-  inputs.dir "../stylesheets"
-  inputs.dir "../tools"
-  inputs.dir "../xpl"
-  inputs.dir "../refpages"
-  outputs.file "build/gitlog.xml"
+task refpageElements(type: XMLCalabashTask) {
+  inputs.dir "../refpages/elements"
+  inputs.dir "lib"
+  inputs.file "../stylesheets/refentry.xsl"
+  inputs.file "../xpl/refpages.xpl"
+  outputs.dir "build/elements"
 
-  commandLine "../tools/bin/git-log-summary"
-  args('-o', 'build/gitlog.xml')
+  input("source", "lib/$rnd")
+  pipeline "../xpl/refpages.xpl"
+}
+
+task refpageListElements(type: XMLCalabashTask) {
+  inputs.file "lib/$rnd"
+  inputs.file "../stylesheets/elemlist.xsl"
+  inputs.file "../xpl/element-list.xpl"
+  outputs.file "build/list-elements.xml"
+
+  input("source", "lib/$rnd")
+  output("result", "build/list-elements.xml")
+  pipeline "../xpl/element-list.xpl"
 
   doFirst {
     mkdir("build")
   }
 }
 
-task refpageElements(dependsOn: 'gitLog', type: XMLCalabashTask) {
-  inputs.dir "../refpages/elements"
-  inputs.dir "lib"
-  inputs.file "../stylesheets/refentry.xsl"
-  inputs.file "../xpl/refpages.xpl"
-  inputs.file "refpages/elements.xml"
-  outputs.dir "build/elements"
-
-  input("source", "refpages/elements.xml")
-  pipeline "../xpl/refpages.xpl"
-}
-
-task refpageListElements(dependsOn: refpageElements, type: Exec) {
-  inputs.dir "build/elements"
-  inputs.file "../../tools/bin/makeelist"
-  outputs.file "build/list-elements.xml"
-
-  workingDir "build"
-  commandLine "../../tools/bin/makeelist"
-  args('-o', 'list-elements.xml')
-}
-
-task refpageListAssembly(dependsOn: refpageElements, type: Exec) {
-  inputs.dir "build/elements"
-  inputs.file "../../tools/bin/makeelist"
+task refpageListAssembly(type: XMLCalabashTask) {
+  inputs.file "lib/$rnd"
+  inputs.file "../stylesheets/elemlist.xsl"
+  inputs.file "../xpl/element-list.xpl"
   outputs.file "build/list-assembly.xml"
 
-  workingDir "build"
-  commandLine "../../tools/bin/makeelist"
-  args('-o', 'list-assembly.xml', '-c', 'assembly')
+  input("source", "lib/$rnd")
+  output("result", "build/list-assembly.xml")
+  pipeline "../xpl/element-list.xpl"
+  option("manual","assembly")
+
+  doFirst {
+    mkdir("build")
+  }
 }
 
 task copyRefpages(type: Copy) {
-  FileCollection refpages = fileTree(dir: 'refpages').exclude("elements.xml")
+  FileCollection refpages = fileTree(dir: 'refpages')
   from refpages
   into "build/"
 }
 
-task refpages(dependsOn: ['refpageListElements', 'refpageListAssembly',
-                          'copyRefpages']) {
+task refpages(dependsOn: ['refpageElements', 'copyRefpages',
+                          'refpageListElements', 'refpageListAssembly']) {
   // nothing to see here
 }
 
 task patterns(type: XMLCalabashTask) {
   inputs.file "lib/patterns.xml"
   inputs.file "../stylesheets/patterns.xsl"
-  inputs.file "lib/defguide.rnd"
+  inputs.file "lib/$rnd"
   inputs.file "../xpl/style.xpl"
   outputs.file "build/patterns.xml"
 
   input("source", "lib/patterns.xml")
   input("stylesheet", "../stylesheets/patterns.xsl")
   output("result", "build/patterns.xml")
-  param("rngfile", "../defguide5/lib/defguide.rnd")
+  param("rngfile", "../defguide5/lib/$rnd")
   pipeline "../xpl/style.xpl"
 
   doFirst {
@@ -147,11 +140,13 @@ task copyHtaccess(type: Copy) {
 
 task copySourceFigs(type: Copy) {
   from "../resources/figs/"
+  from "figs/"
   into "build/figs/"
 }
 
 task copyWebFigs(type: Copy) {
   from "../resources/figs/web"
+  from "figs/web"
   into "build/html/figs/web/"
 }
 
@@ -172,12 +167,11 @@ task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   param("output.dir", System.getProperty('user.dir') + "/build/")
   param("base.dir", "build/html/")
   param("html.ext", ".html")
-  param("rngfile", "lib/defguide.rnd")
+  param("rngfile", "lib/$rnd")
   param("resource.root", "")
 }
 
 task clean
 task clean.doFirst {
   delete "build"
-  delete "figs"
 }

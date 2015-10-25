@@ -1,0 +1,162 @@
+defaultTasks 'tdg'
+
+buildscript {
+  repositories {
+    mavenCentral()
+    maven { url "http://maven.restlet.org" }
+  }
+
+  dependencies {
+    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.0.18'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.4'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.1.2'
+  }
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+apply plugin: 'org.docbook.task'
+apply plugin: 'com.xmlcalabash.task'
+
+import org.docbook.DocBookTask
+import com.xmlcalabash.XMLCalabashTask
+
+task refpageElements(type: XMLCalabashTask) {
+  inputs.dir "../refpages/elements"
+  inputs.dir "lib"
+  inputs.file "../stylesheets/refentry.xsl"
+  inputs.file "../xpl/refpages.xpl"
+  option("rnd", "lib/$rnd")
+  outputs.dir "build/elements"
+
+  input("source", "lib/$rnd")
+  pipeline "../xpl/refpages.xpl"
+}
+
+task refpageListElements(type: XMLCalabashTask) {
+  inputs.file "lib/$rnd"
+  inputs.file "../stylesheets/elem-xi.xsl"
+  inputs.file "../xpl/element-list.xpl"
+  outputs.file "build/list-elements.xml"
+
+  input("source", "lib/$rnd")
+  output("result", "build/list-elements.xml")
+  pipeline "../xpl/element-list.xpl"
+
+  doFirst {
+    mkdir("build")
+  }
+}
+
+task copyRefpages(type: Copy) {
+  FileCollection refpages = fileTree(dir: 'refpages')
+  from refpages
+  into "build/"
+}
+
+task refpages(dependsOn: ['refpageElements', 'refpageListElements',
+                          'copyRefpages']) {
+  // nothing to see here
+}
+
+task patterns(type: XMLCalabashTask) {
+  inputs.file "lib/patterns.xml"
+  inputs.file "../stylesheets/patterns.xsl"
+  inputs.file "lib/$rnd"
+  inputs.file "../xpl/style.xpl"
+  outputs.file "build/patterns.xml"
+
+  input("source", "lib/patterns.xml")
+  input("stylesheet", "../stylesheets/patterns.xsl")
+  output("result", "build/patterns.xml")
+  param("rngfile", "../website/lib/$rnd")
+  pipeline "../xpl/style.xpl"
+
+  doFirst {
+    mkdir("build")
+  }
+}
+
+task tdgxml(dependsOn: ['patterns', 'refpages'], type: XMLCalabashTask) {
+  inputs.dir "refpages"
+  inputs.dir "src"
+  inputs.file "../xpl/xinclude.xpl"
+  outputs.file "build/tdg.xml"
+
+  input("source", "book5.xml")
+  output("result", "build/tdg.xml")
+  pipeline "../xpl/xinclude.xpl"
+}
+
+task book(dependsOn: 'tdgxml', type: XMLCalabashTask) {
+  inputs.file file("build/tdg.xml")
+  inputs.file file("../xpl/make-book.xpl")
+  inputs.file file("../stylesheets/profile.xsl")
+  inputs.file file("../stylesheets/purpose.xsl")
+  inputs.file file("../stylesheets/tdg2db.xsl")
+  inputs.file file("../stylesheets/profile.xsl")
+  outputs.file file("build/book.xml")
+
+  input("source", "build/tdg.xml")
+  output("result", "build/book.xml")
+  option("arch", "assembly")
+  option("revision", "5.0 5.1")
+  option("condition", "refpages web")
+  pipeline "../xpl/make-book.xpl"
+}
+
+task copyCss(type: Copy) {
+  from "../resources/css"
+  into "build/html/css"
+}
+
+task copyJs(type: Copy) {
+  from "../resources/js"
+  into "build/html/js"
+}
+
+task copyHtaccess(type: Copy) {
+  from "../resources/etc/"
+  into "build/html/"
+}
+
+task copySourceFigs(type: Copy) {
+  from "../resources/figs/"
+  from "figs/"
+  into "build/figs/"
+}
+
+task copyWebFigs(type: Copy) {
+  from "../resources/figs/web"
+  from "figs/web"
+  into "build/html/figs/web/"
+}
+
+task copyFigs(dependsOn: ['copySourceFigs', 'copyWebFigs']) {
+  // nothing to see here
+}
+
+task copyFiles(dependsOn: ['copyCss', 'copyJs', 'copyHtaccess', 'copyFigs']) {
+  // nothing to see here
+}
+
+task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
+  inputs.file "build/book.xml"
+  outputs.dir "build/html"
+
+  input "build/book.xml"
+  style "../stylesheets/chunk.xsl"
+  param("output.dir", System.getProperty('user.dir') + "/build/")
+  param("base.dir", "build/html/")
+  param("html.ext", ".html")
+  param("rngfile", "lib/$rnd")
+  param("resource.root", "")
+}
+
+task clean
+task clean.doFirst {
+  delete "build"
+}

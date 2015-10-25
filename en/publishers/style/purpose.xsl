@@ -14,7 +14,7 @@
 <xsl:import href="../../stylesheets/purpose.xsl"/>
 
 <xsl:variable name="rngfile"
-	      select="'../lib/defguide.rnd'"/>
+	      select="'../lib/publishers.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile)"/>
 

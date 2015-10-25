@@ -7,6 +7,7 @@
 		xmlns:db="http://docbook.org/ns/docbook"
 		xmlns:t="http://docbook.org/xslt/ns/template"
 		xmlns:m="http://docbook.org/xslt/ns/mode"
+		xmlns:mp="http://docbook.org/xslt/ns/mode/private"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="f rng html db m t xs"
                 version="2.0">
@@ -51,17 +52,18 @@
   <!-- nop -->
 </xsl:template>
 
-<xsl:template name="t:user-javascript-head">
-  <xsl:param name="node" select="."/>
-  <script type="text/javascript" src="{concat($resource.root, 'js/dbmodnizr.js')}"/>
-  <script type="text/javascript" src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
-  <script type="text/javascript" src="{concat($resource.root, 'js/refentry.js')}"/>
+<xsl:template match="*" mode="m:javascript-head">
+  <script type="text/javascript"
+          src="{concat($resource.root, 'js/dbmodnizr.js')}"/>
+  <script type="text/javascript"
+          src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
+  <script type="text/javascript"
+          src="{concat($resource.root, 'js/refentry.js')}"/>
 </xsl:template>
 
-<xsl:template name="t:user-head-content">
-  <xsl:param name="node" select="."/>
-  <link rel="icon" href="{/db:book/db:info/db:releaseinfo[@role='icon']}" type="image/png" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<xsl:template match="*" mode="m:head-content">
+  <link rel="icon" href="{/db:book/db:info/db:releaseinfo[@role='icon']}"
+        type="image/png" />
 </xsl:template>
 
 <xsl:template name="revision.graphic">
@@ -74,7 +76,8 @@
 
   <xsl:if test="$revision or $arch">
     <xsl:choose>
-      <xsl:when test="($arch = 'defguide5' or $arch = 'publishers') and empty($revision)">
+      <xsl:when test="($arch = 'defguide5' or $arch = 'publishers')
+                      and empty($revision)">
         <!-- nop, expected -->
       </xsl:when>
 
@@ -106,6 +109,24 @@
       </xsl:when>
       <xsl:when test="$revision='5.0' and $arch='publishers'">
         <img src="figs/web/rev_5.0p.png" alt="[5.0 Publishers]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
+      <xsl:when test="$revision='5.0' and $arch='slides'">
+        <img src="figs/web/rev_5.0s.png" alt="[5.0 Slides]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
+      <xsl:when test="$revision='5.0' and $arch='website'">
+        <img src="figs/web/rev_5.0w.png" alt="[5.0 Website]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -289,9 +310,9 @@
 
   <xsl:result-document href="{$base.dir}dbcpyright.html" method="xhtml" indent="no">
     <html>
-      <xsl:call-template name="t:head">
-        <xsl:with-param name="node" select="/*"/>
-      </xsl:call-template>
+      <head>
+        <xsl:apply-templates select="/*" mode="mp:html-head"/>
+      </head>
       <body>
         <div class="page">
           <xsl:call-template name="t:body-attributes"/>
@@ -303,20 +324,20 @@
           <xsl:variable name="link-context" select="(/db:book/db:part/db:chapter)[1]"/>
 
           <div class="content">
-            <xsl:call-template name="t:user-header-content">
+            <xsl:apply-templates select="." mode="m:user-header-content">
               <xsl:with-param name="node" select="$link-context"/>
               <xsl:with-param name="up" select="root(.)/*"/>
-            </xsl:call-template>
+            </xsl:apply-templates>
 
             <div class="body">
               <xsl:apply-templates select="db:info/db:legalnotice/*"/>
             </div>
           </div>
 
-          <xsl:call-template name="t:user-footer-content">
+          <xsl:apply-templates select="." mode="m:user-footer-content">
             <xsl:with-param name="node" select="$link-context"/>
             <xsl:with-param name="up" select="root(.)/*"/>
-          </xsl:call-template>
+          </xsl:apply-templates>
         </div>
       </body>
     </html>

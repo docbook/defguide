@@ -41,6 +41,23 @@
 <xsl:variable name="choice-patterns" select="document(resolve-uri($patternsfile,base-uri(/)))"/>
 <xsl:variable name="seealso" select="document(resolve-uri($seealsofile,base-uri(/)))"/>
 
+<xsl:variable name="CMN_COUNT" as="xs:integer">
+  <xsl:sequence select="count($rng/key('define', 'db.common.attributes')
+                              //rng:attribute) + 1"/>
+  <!-- +1 because there's always a role attribute even though it isn't "common" -->
+</xsl:variable>
+
+<xsl:variable name="CMNIDR_COUNT" as="xs:integer">
+  <xsl:sequence select="count($rng/key('define', 'db.common.idreq.attributes')
+                              //rng:attribute) + 1"/>
+  <!-- +1 because there's always a role attribute even though it isn't "common" -->
+</xsl:variable>
+
+<xsl:variable name="LINK_COUNT" as="xs:integer">
+  <xsl:sequence select="count($rng/key('define', 'db.common.linking.attributes')
+                              //rng:attribute)"/>
+</xsl:variable>
+
   <!-- it's ok to mix inlines and blocks because no elements in DocBook
        contain a mixture of both -->
   <!-- ndw: that's a lie. What about para? But apparently it's ok anyway... -->
@@ -461,12 +478,12 @@
   </xsl:message>
 -->
 
-  <xsl:if test="(count($cmnAttrEither) != 26 and count($cmnAttrEither) != 0)
+  <xsl:if test="(count($cmnAttrEither) != $CMN_COUNT and count($cmnAttrEither) != 0)
 		or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attribute-descriptions">
       <title>Attributes</title>
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 26 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
@@ -474,7 +491,7 @@
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 26 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
@@ -482,24 +499,41 @@
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 26">
+	<xsl:when test="count($cmnAttr) = $CMN_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 26">
+	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnLinkAttr) = $LINK_COUNT">
 	  <para>
 	    <link linkend="common.linking.attributes">Common linking attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
+        <xsl:otherwise>
+          <para>None.</para>
+          <para>
+            <xsl:value-of select="$CMN_COUNT"/>
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="$CMNIDR_COUNT"/>
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="$LINK_COUNT"/>
+          </para>
+          <para>
+            <xsl:value-of select="count($cmnAttr)"/>
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="count($cmnAttrIdReq)"/>
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="count($cmnLinkAttr)"/>
+          </para>
+        </xsl:otherwise>
       </xsl:choose>
 
       <xsl:variable name="allAttrNS" as="element(rng:attribute)*">
@@ -519,94 +553,96 @@
 	</xsl:for-each>
       </xsl:variable>
 
-      <variablelist>
-	<xsl:for-each select="$allAttrNS">
-	  <xsl:variable name="name">
-	    <xsl:choose>
-	      <xsl:when test="@name">
-		<xsl:value-of select="@name"/>
-	      </xsl:when>
-	      <xsl:otherwise><xsl:text>any attribute</xsl:text></xsl:otherwise>
-	    </xsl:choose>
-	  </xsl:variable>
-
-	  <varlistentry>
-	    <term role="attname">
-	      <xsl:value-of select="$name"/>
-	    </term>
-	    <listitem>
+      <xsl:if test="$allAttrNS">
+        <variablelist>
+	  <xsl:for-each select="$allAttrNS">
+	    <xsl:variable name="name">
 	      <xsl:choose>
-		<xsl:when test="db:refpurpose">
-		  <para>
-		    <xsl:copy-of select="db:refpurpose/node()"/>
-		  </para>
-		</xsl:when>
-		<xsl:when test="dbx:description">
-		  <xsl:copy-of select="dbx:description/*"/>
-		</xsl:when>
-		<xsl:otherwise>
-		  <xsl:message>
-		    <xsl:text>FIXME: </xsl:text>
-		    <xsl:value-of select="$name"/>
-		    <xsl:text> on </xsl:text>
-		    <xsl:value-of select="$elem/@name"/>
-		    <xsl:text> (no refpurpose?)</xsl:text>
-		  </xsl:message>
-		  <para>
-		    <xsl:text>FIXME: No refpurpose?</xsl:text>
-		  </para>
-		</xsl:otherwise>
+	        <xsl:when test="@name">
+		  <xsl:value-of select="@name"/>
+	        </xsl:when>
+	        <xsl:otherwise><xsl:text>any attribute</xsl:text></xsl:otherwise>
 	      </xsl:choose>
+	    </xsl:variable>
 
-	      <xsl:if test="rng:choice|rng:value">
-		<informaltable frame="none">
-		  <tgroup cols="2">
-		    <colspec colname="c1" align="left" colwidth="1.25in"/>
-		    <colspec colname="c2" align="left"/>
-		    <thead>
-		      <row>
-			<entry namest="c1" nameend="c2">
-			  <xsl:text>Enumerated values:</xsl:text>
-			</entry>
-		      </row>
-		    </thead>
-		    <tbody>
-		      <xsl:for-each select=".//rng:value|.//rng:data">
-			<xsl:variable name="doc"
-				      select="following-sibling::*[1]"/>
-			<row>
-			  <entry>
-			    <xsl:apply-templates select="." mode="value-enum"/>
+	    <varlistentry>
+	      <term role="attname">
+	        <xsl:value-of select="$name"/>
+	      </term>
+	      <listitem>
+	        <xsl:choose>
+		  <xsl:when test="db:refpurpose">
+		    <para>
+		      <xsl:copy-of select="db:refpurpose/node()"/>
+		    </para>
+		  </xsl:when>
+		  <xsl:when test="dbx:description">
+		    <xsl:copy-of select="dbx:description/*"/>
+		  </xsl:when>
+		  <xsl:otherwise>
+		    <xsl:message>
+		      <xsl:text>FIXME: </xsl:text>
+		      <xsl:value-of select="$name"/>
+		      <xsl:text> on </xsl:text>
+		      <xsl:value-of select="$elem/@name"/>
+		      <xsl:text> (no refpurpose?)</xsl:text>
+		    </xsl:message>
+		    <para>
+		      <xsl:text>FIXME: No refpurpose?</xsl:text>
+		    </para>
+		  </xsl:otherwise>
+	        </xsl:choose>
+
+	        <xsl:if test="rng:choice|rng:value">
+		  <informaltable frame="none">
+		    <tgroup cols="2">
+		      <colspec colname="c1" align="left" colwidth="1.25in"/>
+		      <colspec colname="c2" align="left"/>
+		      <thead>
+		        <row>
+			  <entry namest="c1" nameend="c2">
+			    <xsl:text>Enumerated values:</xsl:text>
 			  </entry>
-			  <entry>
-			    <para>
-			      <xsl:choose>
-				<xsl:when test="$doc/self::a:documentation">
-				  <xsl:value-of select="$doc"/>
-				</xsl:when>
-				<xsl:otherwise>
-				  <xsl:message>
-				    <xsl:text>FIXME: </xsl:text>
-				    <xsl:value-of select="$name"/>
-				    <xsl:text> on </xsl:text>
-				    <xsl:value-of select="$elem/@name"/>
-				    <xsl:text> (no documentation?)</xsl:text>
-				  </xsl:message>
-				  <xsl:text>FIXME: No documentation?</xsl:text>
-				</xsl:otherwise>
-			      </xsl:choose>
-			    </para>
-			  </entry>
-			</row>
-		      </xsl:for-each>
-		    </tbody>
-		  </tgroup>
-		</informaltable>
-	      </xsl:if>
-	    </listitem>
-	  </varlistentry>
-	</xsl:for-each>
-      </variablelist>
+		        </row>
+		      </thead>
+		      <tbody>
+		        <xsl:for-each select=".//rng:value|.//rng:data">
+			  <xsl:variable name="doc"
+				        select="following-sibling::*[1]"/>
+			  <row>
+			    <entry>
+			      <xsl:apply-templates select="." mode="value-enum"/>
+			    </entry>
+			    <entry>
+			      <para>
+			        <xsl:choose>
+				  <xsl:when test="$doc/self::a:documentation">
+				    <xsl:value-of select="$doc"/>
+				  </xsl:when>
+				  <xsl:otherwise>
+				    <xsl:message>
+				      <xsl:text>FIXME: </xsl:text>
+				      <xsl:value-of select="$name"/>
+				      <xsl:text> on </xsl:text>
+				      <xsl:value-of select="$elem/@name"/>
+				      <xsl:text> (no documentation?)</xsl:text>
+				    </xsl:message>
+				    <xsl:text>FIXME: No documentation?</xsl:text>
+				  </xsl:otherwise>
+			        </xsl:choose>
+			      </para>
+			    </entry>
+			  </row>
+		        </xsl:for-each>
+		      </tbody>
+		    </tgroup>
+		  </informaltable>
+	        </xsl:if>
+	      </listitem>
+	    </varlistentry>
+	  </xsl:for-each>
+        </variablelist>
+      </xsl:if>
     </refsection>
   </xsl:if>
 </xsl:template>
@@ -1037,7 +1073,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       <title>Attributes</title>
 
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = 26 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> and </xsl:text>
@@ -1045,7 +1081,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 26 and count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required) and </xsl:text>
@@ -1053,19 +1089,19 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttr) = 26">
+	<xsl:when test="count($cmnAttr) = $CMN_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text>.</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = 26">
+	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT">
 	  <para>
 	    <link linkend="common.attributes">Common attributes</link>
 	    <xsl:text> (ID required).</xsl:text>
 	  </para>
 	</xsl:when>
-	<xsl:when test="count($cmnLinkAttr) = 8">
+	<xsl:when test="count($cmnLinkAttr) = $LINK_COUNT">
 	  <para>
 	    <link linkend="common.linking.attributes">Common linking attributes</link>
 	    <xsl:text>.</xsl:text>
@@ -1073,42 +1109,54 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 	</xsl:when>
       </xsl:choose>
 
-      <xsl:if test="count($cmnAttrEither) != 26 or count($otherAttr) &gt; 0">
-	<para>
-	  <xsl:choose>
-	    <xsl:when test="count($cmnAttr) = 26
-			    or count($cmnAttrIdReq) = 26">
-	      <xsl:text>Additional attributes:</xsl:text>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <xsl:text>Attributes:</xsl:text>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</para>
-
-	<itemizedlist spacing='compact' role="element-synopsis">
+      <xsl:if test="count($cmnAttrEither) != $CMN_COUNT or count($otherAttr) &gt; 0">
+        <xsl:variable name="attrs" as="element()*">
 	  <xsl:for-each select="rng:interleave/*|*[not(self::rng:interleave)]">
 	    <xsl:sort select="descendant-or-self::rng:attribute[1]/@name"/>
 	    <!-- don't bother with common attributes -->
 	    <xsl:variable name="name"
 			  select="descendant-or-self::rng:attribute/@name"/>
 	    <xsl:choose>
-	      <xsl:when test="$cmnAttrEither[@name=$name]|$cmnLinkAttr[@name=$name]"/>
+	      <xsl:when test="$cmnAttrEither[@name=$name]
+                              |$cmnLinkAttr[@name=$name]"/>
 	      <xsl:otherwise>
 		<xsl:apply-templates select="." mode="attributes"/>
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </xsl:for-each>
-	</itemizedlist>
+        </xsl:variable>
 
-	<xsl:if test=".//rng:attribute[not(ancestor::rng:optional)
-		                       and not(ancestor::rng:zeroOrMore)]">
-	  <para>
-	    <xsl:text>Required attributes are shown in </xsl:text>
-	    <emphasis role="bold">bold</emphasis>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:if>
+        <xsl:choose>
+          <xsl:when test="exists($attrs)">
+	    <para>
+	      <xsl:choose>
+	        <xsl:when test="count($cmnAttr) = $CMN_COUNT
+			        or count($cmnAttrIdReq) = $CMNIDR_COUNT">
+	          <xsl:text>Additional attributes:</xsl:text>
+	        </xsl:when>
+	        <xsl:otherwise>
+	          <xsl:text>Attributes:</xsl:text>
+	        </xsl:otherwise>
+	      </xsl:choose>
+	    </para>
+
+	    <itemizedlist spacing='compact' role="element-synopsis">
+              <xsl:sequence select="$attrs"/>
+	    </itemizedlist>
+
+	    <xsl:if test=".//rng:attribute[not(ancestor::rng:optional)
+		                           and not(ancestor::rng:zeroOrMore)]">
+	      <para>
+	        <xsl:text>Required attributes are shown in </xsl:text>
+	        <emphasis role="bold">bold</emphasis>
+	        <xsl:text>.</xsl:text>
+	      </para>
+	    </xsl:if>
+          </xsl:when>
+          <xsl:otherwise>
+            <para>None.</para>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </refsection>
   </xsl:if>
@@ -1116,7 +1164,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
 <xsl:template match="db:*" mode="attributes"/>
 <xsl:template match="dbx:*" mode="attributes"/>
-  
+
 <xsl:template match="rng:optional" mode="attributes">
   <xsl:apply-templates mode="attributes"/>
 </xsl:template>
@@ -1254,6 +1302,8 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
     </xsl:if>
   </listitem>
 </xsl:template>
+
+<xsl:template match="text()" mode="attributes"/>
 
 <xsl:template match="rng:value" mode="value-enum">
   <xsl:text>“</xsl:text>
@@ -1525,39 +1575,41 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:param name="context"/>
   <xsl:param name="pattern"/>
 
-  <listitem xml:id="{generate-id($context)}-{$pattern}">
-    <para>
-      <emphasis role="patnlink">
-	<xsl:attribute name="linkend"
-		       select="concat('ipatn.', $pattern)"/>
-	<xsl:choose>
-	  <xsl:when test="$choice-patterns/patterns/pattern[@name=$pattern]">
-	    <xsl:value-of
-		select="$choice-patterns/patterns/pattern[@name=$pattern]"/>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:message>
-	      <xsl:text>Warning: no prose for </xsl:text>
+  <xsl:variable name="def"
+		select="root($context)//rng:define[@name = $pattern]"/>
+
+  <xsl:if test="$def//rng:ref">
+    <listitem xml:id="{generate-id($context)}-{$pattern}">
+      <para>
+        <emphasis role="patnlink">
+	  <xsl:attribute name="linkend"
+		         select="concat('ipatn.', $pattern)"/>
+	  <xsl:choose>
+	    <xsl:when test="$choice-patterns/patterns/pattern[@name=$pattern]">
+	      <xsl:value-of
+		  select="$choice-patterns/patterns/pattern[@name=$pattern]"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:message>
+	        <xsl:text>Warning: no prose for </xsl:text>
+	        <xsl:value-of select="$pattern"/>
+	      </xsl:message>
 	      <xsl:value-of select="$pattern"/>
-	    </xsl:message>
-	    <xsl:value-of select="$pattern"/>
-	  </xsl:otherwise>
-	</xsl:choose>
-      </emphasis>
-    </para>
+	    </xsl:otherwise>
+	  </xsl:choose>
+        </emphasis>
+      </para>
 
-    <xsl:variable name="def"
-		  select="root($context)//rng:define[@name = $pattern]"/>
-
-    <itemizedlist role="patnlist {$pattern}"
-		  xml:id="l.{generate-id($context)}-{$pattern}">
-      <xsl:for-each select="$def//rng:ref">
-	<xsl:sort select="key('define',@name)/rng:element/@name"/>
-	<xsl:sort select="@name"/>
-	<xsl:apply-templates select="."/>
-      </xsl:for-each>
-    </itemizedlist>
-  </listitem>
+      <itemizedlist role="patnlist {$pattern}"
+		    xml:id="l.{generate-id($context)}-{$pattern}">
+        <xsl:for-each select="$def//rng:ref">
+	  <xsl:sort select="key('define',@name)/rng:element/@name"/>
+	  <xsl:sort select="@name"/>
+	  <xsl:apply-templates select="."/>
+        </xsl:for-each>
+      </itemizedlist>
+    </listitem>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="rng:oneOrMore">
