@@ -396,8 +396,8 @@
     </span>
     <span class='refpurpose'>
       <xsl:if test="$annotate.toc != 0">
-        <xsl:text> - </xsl:text>
-        <xsl:value-of select="db:refnamediv/db:refpurpose"/>
+        <xsl:text> — </xsl:text>
+        <xsl:apply-templates select="db:refnamediv/db:refpurpose/node()"/>
       </xsl:if>
     </span>
 
