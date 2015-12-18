@@ -70,6 +70,10 @@ task copyRefpages(type: Copy) {
   FileCollection refpages = fileTree(dir: 'refpages')
   from refpages
   into "build/"
+
+  doFirst {
+    mkdir("build")
+  }
 }
 
 task refpages(dependsOn: ['refpageElements', 'copyRefpages',
