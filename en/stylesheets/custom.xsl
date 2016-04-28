@@ -54,7 +54,7 @@
 
 <xsl:template match="*" mode="m:javascript-head">
   <script type="text/javascript"
-          src="{concat($resource.root, 'js/dbmodnizr.js')}"/>
+          src="{concat($resource.root, 'js/prism.js')}"/>
   <script type="text/javascript"
           src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
   <script type="text/javascript"
