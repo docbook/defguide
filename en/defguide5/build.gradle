@@ -24,7 +24,12 @@ apply plugin: 'com.xmlcalabash.task'
 import org.docbook.DocBookTask
 import com.xmlcalabash.XMLCalabashTask
 
-task refpageElements(type: XMLCalabashTask) {
+task gitLogSummary(type: Exec) {
+  commandLine "../bin/git-log-summary"
+  standardOutput = new FileOutputStream(new File("lib/gitlog.xml"))
+}
+
+task refpageElements(dependsOn: ['gitLogSummary'], type: XMLCalabashTask) {
   inputs.dir "../refpages/elements"
   inputs.dir "lib"
   inputs.file "../stylesheets/refentry.xsl"
