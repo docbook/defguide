@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-		xmlns='http://docbook.org/ns/docbook'
+                xmlns='http://docbook.org/ns/docbook'
                 xmlns:s="http://purl.oclc.org/dsdl/schematron"
-		xmlns:db='http://docbook.org/ns/docbook'
-		xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
-		xmlns:rng='http://relaxng.org/ns/structure/1.0'
-		xmlns:xlink="http://www.w3.org/1999/xlink"
-		xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
-		xmlns:html="http://www.w3.org/1999/xhtml"
-		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                xmlns:db='http://docbook.org/ns/docbook'
+                xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
+                xmlns:rng='http://relaxng.org/ns/structure/1.0'
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
+                xmlns:html="http://www.w3.org/1999/xhtml"
+                xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:f="http://nwalsh.com/ns/xsl/functions"
                 xmlns:git="http://nwalsh.com/ns/git-repo-info"
-		exclude-result-prefixes="db rng xlink f doc s dbx html a xs git"
+                exclude-result-prefixes="db rng xlink f doc s dbx html a xs git"
                 version="2.0">
 
 <xsl:include href="inline-synop.xsl"/>
@@ -105,12 +105,12 @@
     <xsl:processing-instruction name="dbhtml">
       <xsl:text>filename="</xsl:text>
       <xsl:choose>
-	<xsl:when test="starts-with($pattern, 'db.')">
-	  <xsl:value-of select="substring-after($pattern, 'db.')"/>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:value-of select="$pattern"/>
-	</xsl:otherwise>
+        <xsl:when test="starts-with($pattern, 'db.')">
+          <xsl:value-of select="substring-after($pattern, 'db.')"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$pattern"/>
+        </xsl:otherwise>
       </xsl:choose>
       <xsl:text>.html"</xsl:text>
     </xsl:processing-instruction>
@@ -123,17 +123,17 @@
 
     <xsl:if test="$include.changelog != 0 and (db:info/db:releaseinfo or db:info/db:pubdate)">
       <refsection condition="ref.desc.changelog expanded">
-	<title>ChangeLog</title>
-	<para>
-	  <xsl:text>This </xsl:text>
-	  <emphasis>alpha</emphasis>
-	  <xsl:text> reference page is </xsl:text>
-	  <xsl:value-of select="db:info/db:releaseinfo"/>
-	  <xsl:text> published </xsl:text>
-	  <xsl:value-of
-	      select="substring-before(substring-after(db:info/db:pubdate,'('),')')"/>
-	  <xsl:text>.</xsl:text>
-	</para>
+        <title>ChangeLog</title>
+        <para>
+          <xsl:text>This </xsl:text>
+          <emphasis>alpha</emphasis>
+          <xsl:text> reference page is </xsl:text>
+          <xsl:value-of select="db:info/db:releaseinfo"/>
+          <xsl:text> published </xsl:text>
+          <xsl:value-of
+              select="substring-before(substring-after(db:info/db:pubdate,'('),')')"/>
+          <xsl:text>.</xsl:text>
+        </para>
       </refsection>
     </xsl:if>
   </xsl:element>
@@ -216,75 +216,75 @@
                 select="/db:refentry/db:refmeta/db:refmiscinfo[@role='element']"/>
 
   <xsl:variable name="parents"
-	select="$rng//rng:element[doc:content-model//rng:ref[@name=$pattern]]"/>
+        select="$rng//rng:element[doc:content-model//rng:ref[@name=$pattern]]"/>
 
   <xsl:if test="$parents">
     <refsection condition="ref.desc.parents expanded">
       <title>Parents</title>
       <para>
-	<xsl:text>These elements contain </xsl:text>
+        <xsl:text>These elements contain </xsl:text>
 
-	<tag>
-	  <xsl:choose>
-	    <xsl:when test="$element = '_any.svg'">svg:*</xsl:when>
-	    <xsl:when test="$element = '_any.mml'">mml:*</xsl:when>
-	    <xsl:when test="$element = '_any'">*:*</xsl:when>
-	    <xsl:otherwise>
-	      <xsl:value-of select="$element"/>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</tag>
+        <tag>
+          <xsl:choose>
+            <xsl:when test="$element = '_any.svg'">svg:*</xsl:when>
+            <xsl:when test="$element = '_any.mml'">mml:*</xsl:when>
+            <xsl:when test="$element = '_any'">*:*</xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$element"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </tag>
 
-	<xsl:text>: </xsl:text>
+        <xsl:text>: </xsl:text>
 
-	<simplelist type='inline'>
-	  <xsl:variable name="names">
-	    <xsl:for-each select="$parents">
-	      <xsl:variable name="defs" select="key('elemdef', @name)"/>
-	      <member>
-		<xsl:choose>
-		  <xsl:when test="count($defs) = 0">
+        <simplelist type='inline'>
+          <xsl:variable name="names">
+            <xsl:for-each select="$parents">
+              <xsl:variable name="defs" select="key('elemdef', @name)"/>
+              <member>
+                <xsl:choose>
+                  <xsl:when test="count($defs) = 0">
                     <xsl:message>Failed to find type for: <xsl:value-of select="@name"/></xsl:message>
-		    <xsl:value-of select="@name"/>
-		    <xsl:text> ???</xsl:text>
-		  </xsl:when>
-		  <xsl:when test="count($defs) = 1">
-		    <xsl:value-of select="@name"/>
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <xsl:value-of select="@name"/>
-		    <xsl:text> (</xsl:text>
-		    <xsl:value-of select="parent::rng:define/@name"/>
-		    <xsl:text>)</xsl:text>
-		  </xsl:otherwise>
-		</xsl:choose>
-	      </member>
-	    </xsl:for-each>
-	  </xsl:variable>
+                    <xsl:value-of select="@name"/>
+                    <xsl:text> ???</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="count($defs) = 1">
+                    <xsl:value-of select="@name"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="@name"/>
+                    <xsl:text> (</xsl:text>
+                    <xsl:value-of select="parent::rng:define/@name"/>
+                    <xsl:text>)</xsl:text>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </member>
+            </xsl:for-each>
+          </xsl:variable>
 
-	  <xsl:for-each-group select="$names" group-by="db:member">
-	    <xsl:sort select="current-grouping-key()" data-type="text"/>
-	    <member>
-	      <xsl:choose>
-		<xsl:when test="contains(current-grouping-key(),' ')">
-		  <tag>
-		    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
-		  </tag>
-		  <xsl:text>&#160;</xsl:text>
-		  <phrase role="pattern">
-		    <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
-		  </phrase>
-		</xsl:when>
-		<xsl:otherwise>
-		  <tag>
-		    <xsl:value-of select="current-grouping-key()"/>
-		  </tag>
-		</xsl:otherwise>
-	      </xsl:choose>
-	    </member>
-	  </xsl:for-each-group>
-	</simplelist>
-	<xsl:text>.</xsl:text>
+          <xsl:for-each-group select="$names" group-by="db:member">
+            <xsl:sort select="current-grouping-key()" data-type="text"/>
+            <member>
+              <xsl:choose>
+                <xsl:when test="contains(current-grouping-key(),' ')">
+                  <tag>
+                    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
+                  </tag>
+                  <xsl:text>&#160;</xsl:text>
+                  <phrase role="pattern">
+                    <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+                  </phrase>
+                </xsl:when>
+                <xsl:otherwise>
+                  <tag>
+                    <xsl:value-of select="current-grouping-key()"/>
+                  </tag>
+                </xsl:otherwise>
+              </xsl:choose>
+            </member>
+          </xsl:for-each-group>
+        </simplelist>
+        <xsl:text>.</xsl:text>
       </para>
     </refsection>
   </xsl:if>
@@ -299,84 +299,84 @@
 
   <xsl:variable name="elem" select="$rng/key('define', $pattern)/rng:element"/>
   <xsl:variable name="children"
-		select="$elem/doc:content-model//rng:ref"/>
+                select="$elem/doc:content-model//rng:ref"/>
 
   <xsl:if test="$children">
     <refsection condition="ref.desc.children expanded">
       <title>Children</title>
       <para>
-	<xsl:text>The following elements occur in </xsl:text>
-	<xsl:value-of select="$element"/>
-	<xsl:text>: </xsl:text>
-	<simplelist type='inline'>
-	  <xsl:if test="$elem/doc:content-model//rng:text">
-	    <member><emphasis>text</emphasis></member>
-	  </xsl:if>
+        <xsl:text>The following elements occur in </xsl:text>
+        <xsl:value-of select="$element"/>
+        <xsl:text>: </xsl:text>
+        <simplelist type='inline'>
+          <xsl:if test="$elem/doc:content-model//rng:text">
+            <member><emphasis>text</emphasis></member>
+          </xsl:if>
 
-	  <xsl:variable name="names">
-	    <xsl:for-each select="$children">
-	      <xsl:variable name="def" select="key('define', @name)"/>
-	      <xsl:variable name="elem" select="$def/rng:element/@name"/>
-	      <xsl:variable name="defs" select="key('elemdef', $elem)"/>
-	      <member>
-		<xsl:choose>
-		  <xsl:when test="@name = 'db._any.mml'">
-		    <xsl:text>mml:*</xsl:text>
-		  </xsl:when>
-		  <xsl:when test="@name = 'db._any.svg'">
-		    <xsl:text>svg:*</xsl:text>
-		  </xsl:when>
-		  <xsl:when test="@name = 'db._any.docbook'">
-		    <xsl:text>docbook:*</xsl:text>
-		  </xsl:when>
-		  <xsl:when test="@name = 'db._any'">
-		    <xsl:text>*:*</xsl:text>
-		  </xsl:when>
-		  <xsl:when test="count($defs) = 0">
+          <xsl:variable name="names">
+            <xsl:for-each select="$children">
+              <xsl:variable name="def" select="key('define', @name)"/>
+              <xsl:variable name="elem" select="$def/rng:element/@name"/>
+              <xsl:variable name="defs" select="key('elemdef', $elem)"/>
+              <member>
+                <xsl:choose>
+                  <xsl:when test="@name = 'db._any.mml'">
+                    <xsl:text>mml:*</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="@name = 'db._any.svg'">
+                    <xsl:text>svg:*</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="@name = 'db._any.docbook'">
+                    <xsl:text>docbook:*</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="@name = 'db._any'">
+                    <xsl:text>*:*</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="count($defs) = 0">
                     <xsl:message>Failed to find text for: <xsl:value-of select="@name"/></xsl:message>
-		    <xsl:value-of select="$elem"/>
-		    <xsl:text> ??? (</xsl:text>
-		    <xsl:value-of select="@name"/>
-		    <xsl:text>)</xsl:text>
-		  </xsl:when>
-		  <xsl:when test="count($defs) = 1">
-		    <xsl:value-of select="$elem"/>
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <xsl:value-of select="$elem"/>
-		    <xsl:text> (</xsl:text>
-		    <xsl:value-of select="@name"/>
-		    <xsl:text>)</xsl:text>
-		  </xsl:otherwise>
-		</xsl:choose>
-	      </member>
-	    </xsl:for-each>
-	  </xsl:variable>
+                    <xsl:value-of select="$elem"/>
+                    <xsl:text> ??? (</xsl:text>
+                    <xsl:value-of select="@name"/>
+                    <xsl:text>)</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="count($defs) = 1">
+                    <xsl:value-of select="$elem"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="$elem"/>
+                    <xsl:text> (</xsl:text>
+                    <xsl:value-of select="@name"/>
+                    <xsl:text>)</xsl:text>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </member>
+            </xsl:for-each>
+          </xsl:variable>
 
-	  <xsl:for-each-group select="$names" group-by="db:member">
-	    <xsl:sort select="current-grouping-key()" data-type="text"/>
-	    <member>
-	      <xsl:choose>
-		<xsl:when test="contains(current-grouping-key(),' ')">
-		  <tag>
-		    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
-		  </tag>
-		  <xsl:text>&#160;</xsl:text>
-		  <phrase role="pattern">
-		    <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
-		  </phrase>
-		</xsl:when>
-		<xsl:otherwise>
-		  <tag>
-		    <xsl:value-of select="current-grouping-key()"/>
-		  </tag>
-		</xsl:otherwise>
-	      </xsl:choose>
-	    </member>
-	  </xsl:for-each-group>
+          <xsl:for-each-group select="$names" group-by="db:member">
+            <xsl:sort select="current-grouping-key()" data-type="text"/>
+            <member>
+              <xsl:choose>
+                <xsl:when test="contains(current-grouping-key(),' ')">
+                  <tag>
+                    <xsl:value-of select="substring-before(current-grouping-key(),' ')"/>
+                  </tag>
+                  <xsl:text>&#160;</xsl:text>
+                  <phrase role="pattern">
+                    <xsl:value-of select="substring-after(current-grouping-key(),' ')"/>
+                  </phrase>
+                </xsl:when>
+                <xsl:otherwise>
+                  <tag>
+                    <xsl:value-of select="current-grouping-key()"/>
+                  </tag>
+                </xsl:otherwise>
+              </xsl:choose>
+            </member>
+          </xsl:for-each-group>
 
-	</simplelist>
-	<xsl:text>.</xsl:text>
+        </simplelist>
+        <xsl:text>.</xsl:text>
       </para>
     </refsection>
   </xsl:if>
@@ -388,69 +388,69 @@
 
   <xsl:variable name="elem" select="$rng/key('define', $pattern)/rng:element"/>
   <xsl:variable name="attributes"
-		select="$elem/doc:attributes//rng:attribute"/>
+                select="$elem/doc:attributes//rng:attribute"/>
 
   <xsl:variable name="cmnAttr"
-		select="$attributes[@name='xml:id' and parent::rng:optional]
-			|$attributes[@name='xml:lang']
-			|$attributes[@name='xml:base']
-			|$attributes[@name='remap']
-			|$attributes[@name='xreflabel']
-			|$attributes[@name='revisionflag']
-			|$attributes[@name='arch']
-			|$attributes[@name='audience']
-			|$attributes[@name='condition']
-			|$attributes[@name='conformance']
-			|$attributes[@name='os']
-			|$attributes[@name='revision']
-			|$attributes[@name='security']
-			|$attributes[@name='userlevel']
-			|$attributes[@name='vendor']
-			|$attributes[@name='wordsize']
-			|$attributes[@name='outputformat']
-			|$attributes[@name='role']
-			|$attributes[@name='version']
-			|$attributes[@name='dir']
-			|$attributes[@name='annotations']
-			|$attributes[@name='vocab']
-			|$attributes[@name='property']
-			|$attributes[@name='typeof']
-			|$attributes[@name='resource']
-			|$attributes[@name='prefix']"/>
+                select="$attributes[@name='xml:id' and parent::rng:optional]
+                        |$attributes[@name='xml:lang']
+                        |$attributes[@name='xml:base']
+                        |$attributes[@name='remap']
+                        |$attributes[@name='xreflabel']
+                        |$attributes[@name='revisionflag']
+                        |$attributes[@name='arch']
+                        |$attributes[@name='audience']
+                        |$attributes[@name='condition']
+                        |$attributes[@name='conformance']
+                        |$attributes[@name='os']
+                        |$attributes[@name='revision']
+                        |$attributes[@name='security']
+                        |$attributes[@name='userlevel']
+                        |$attributes[@name='vendor']
+                        |$attributes[@name='wordsize']
+                        |$attributes[@name='outputformat']
+                        |$attributes[@name='role']
+                        |$attributes[@name='version']
+                        |$attributes[@name='dir']
+                        |$attributes[@name='annotations']
+                        |$attributes[@name='vocab']
+                        |$attributes[@name='property']
+                        |$attributes[@name='typeof']
+                        |$attributes[@name='resource']
+                        |$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrIdReq"
-		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
-			|$attributes[@name='xml:lang']
-			|$attributes[@name='xml:base']
-			|$attributes[@name='remap']
-			|$attributes[@name='xreflabel']
-			|$attributes[@name='revisionflag']
-			|$attributes[@name='arch']
-			|$attributes[@name='audience']
-			|$attributes[@name='condition']
-			|$attributes[@name='conformance']
-			|$attributes[@name='os']
-			|$attributes[@name='revision']
-			|$attributes[@name='security']
-			|$attributes[@name='userlevel']
-			|$attributes[@name='vendor']
-			|$attributes[@name='wordsize']
-			|$attributes[@name='outputformat']
-			|$attributes[@name='role']
-			|$attributes[@name='version']
-			|$attributes[@name='dir']
-			|$attributes[@name='annotations']
-			|$attributes[@name='vocab']
-			|$attributes[@name='property']
-			|$attributes[@name='typeof']
-			|$attributes[@name='resource']
-			|$attributes[@name='prefix']"/>
+                select="$attributes[@name='xml:id' and not(parent::rng:optional)]
+                        |$attributes[@name='xml:lang']
+                        |$attributes[@name='xml:base']
+                        |$attributes[@name='remap']
+                        |$attributes[@name='xreflabel']
+                        |$attributes[@name='revisionflag']
+                        |$attributes[@name='arch']
+                        |$attributes[@name='audience']
+                        |$attributes[@name='condition']
+                        |$attributes[@name='conformance']
+                        |$attributes[@name='os']
+                        |$attributes[@name='revision']
+                        |$attributes[@name='security']
+                        |$attributes[@name='userlevel']
+                        |$attributes[@name='vendor']
+                        |$attributes[@name='wordsize']
+                        |$attributes[@name='outputformat']
+                        |$attributes[@name='role']
+                        |$attributes[@name='version']
+                        |$attributes[@name='dir']
+                        |$attributes[@name='annotations']
+                        |$attributes[@name='vocab']
+                        |$attributes[@name='property']
+                        |$attributes[@name='typeof']
+                        |$attributes[@name='resource']
+                        |$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
   <xsl:variable name="cmnLinkAttr"
-		select="$attributes[@name='linkend']
-			|$attributes[@name='linkends']
+                select="$attributes[@name='linkend']
+                        |$attributes[@name='linkends']
                         |$attributes[@name='xlink:actuate']
                         |$attributes[@name='xlink:arcrole']
                         |$attributes[@name='xlink:from']
@@ -463,7 +463,7 @@
                         |$attributes[@name='xlink:type']"/>
 
   <xsl:variable name="otherAttr"
-		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+                select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
 <!--
   <xsl:message>
@@ -479,44 +479,44 @@
 -->
 
   <xsl:if test="(count($cmnAttrEither) != $CMN_COUNT and count($cmnAttrEither) != 0)
-		or count($otherAttr) &gt; 0">
+                or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attribute-descriptions">
       <title>Attributes</title>
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text> and </xsl:text>
-	    <link linkend="common.linking.attributes">common linking attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text> (ID required) and </xsl:text>
-	    <link linkend="common.linking.attributes">common linking attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnAttr) = $CMN_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text> (ID required).</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnLinkAttr) = $LINK_COUNT">
-	  <para>
-	    <link linkend="common.linking.attributes">Common linking attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
+        <xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text> and </xsl:text>
+            <link linkend="common.linking.attributes">common linking attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text> (ID required) and </xsl:text>
+            <link linkend="common.linking.attributes">common linking attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnAttr) = $CMN_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text> (ID required).</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnLinkAttr) = $LINK_COUNT">
+          <para>
+            <link linkend="common.linking.attributes">Common linking attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
         <xsl:otherwise>
           <para>None.</para>
           <para>
@@ -537,110 +537,110 @@
       </xsl:choose>
 
       <xsl:variable name="allAttrNS" as="element(rng:attribute)*">
-	<xsl:for-each select="$elem/doc:attributes//rng:attribute">
-	  <!-- In the case where there are two patterns for the same -->
-	  <!-- attribute, this odd sort clause forces the one with the -->
-	  <!-- dbx:description to be last -->
-	  <xsl:sort select="concat(@name, '.', string(count(dbx:description)))"/>
-	  <xsl:variable name="name" select="@name"/>
-	  <xsl:choose>
-	    <xsl:when test="$cmnAttrEither[@name=$name]
-			    |$cmnLinkAttr[@name=$name]"/>
-	    <xsl:otherwise>
-	      <xsl:copy-of select="."/>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</xsl:for-each>
+        <xsl:for-each select="$elem/doc:attributes//rng:attribute">
+          <!-- In the case where there are two patterns for the same -->
+          <!-- attribute, this odd sort clause forces the one with the -->
+          <!-- dbx:description to be last -->
+          <xsl:sort select="concat(@name, '.', string(count(dbx:description)))"/>
+          <xsl:variable name="name" select="@name"/>
+          <xsl:choose>
+            <xsl:when test="$cmnAttrEither[@name=$name]
+                            |$cmnLinkAttr[@name=$name]"/>
+            <xsl:otherwise>
+              <xsl:copy-of select="."/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
       </xsl:variable>
 
       <xsl:if test="$allAttrNS">
         <variablelist>
-	  <xsl:for-each select="$allAttrNS">
-	    <xsl:variable name="name">
-	      <xsl:choose>
-	        <xsl:when test="@name">
-		  <xsl:value-of select="@name"/>
-	        </xsl:when>
-	        <xsl:otherwise><xsl:text>any attribute</xsl:text></xsl:otherwise>
-	      </xsl:choose>
-	    </xsl:variable>
+          <xsl:for-each select="$allAttrNS">
+            <xsl:variable name="name">
+              <xsl:choose>
+                <xsl:when test="@name">
+                  <xsl:value-of select="@name"/>
+                </xsl:when>
+                <xsl:otherwise><xsl:text>any attribute</xsl:text></xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
 
-	    <varlistentry>
-	      <term role="attname">
-	        <xsl:value-of select="$name"/>
-	      </term>
-	      <listitem>
-	        <xsl:choose>
-		  <xsl:when test="db:refpurpose">
-		    <para>
-		      <xsl:copy-of select="db:refpurpose/node()"/>
-		    </para>
-		  </xsl:when>
-		  <xsl:when test="dbx:description">
-		    <xsl:copy-of select="dbx:description/*"/>
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <xsl:message>
-		      <xsl:text>FIXME: </xsl:text>
-		      <xsl:value-of select="$name"/>
-		      <xsl:text> on </xsl:text>
-		      <xsl:value-of select="$elem/@name"/>
-		      <xsl:text> (no refpurpose?)</xsl:text>
-		    </xsl:message>
-		    <para>
-		      <xsl:text>FIXME: No refpurpose?</xsl:text>
-		    </para>
-		  </xsl:otherwise>
-	        </xsl:choose>
+            <varlistentry>
+              <term role="attname">
+                <xsl:value-of select="$name"/>
+              </term>
+              <listitem>
+                <xsl:choose>
+                  <xsl:when test="db:refpurpose">
+                    <para>
+                      <xsl:copy-of select="db:refpurpose/node()"/>
+                    </para>
+                  </xsl:when>
+                  <xsl:when test="dbx:description">
+                    <xsl:copy-of select="dbx:description/*"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:message>
+                      <xsl:text>FIXME: </xsl:text>
+                      <xsl:value-of select="$name"/>
+                      <xsl:text> on </xsl:text>
+                      <xsl:value-of select="$elem/@name"/>
+                      <xsl:text> (no refpurpose?)</xsl:text>
+                    </xsl:message>
+                    <para>
+                      <xsl:text>FIXME: No refpurpose?</xsl:text>
+                    </para>
+                  </xsl:otherwise>
+                </xsl:choose>
 
-	        <xsl:if test="rng:choice|rng:value">
-		  <informaltable frame="none">
-		    <tgroup cols="2">
-		      <colspec colname="c1" align="left" colwidth="1.25in"/>
-		      <colspec colname="c2" align="left"/>
-		      <thead>
-		        <row>
-			  <entry namest="c1" nameend="c2">
-			    <xsl:text>Enumerated values:</xsl:text>
-			  </entry>
-		        </row>
-		      </thead>
-		      <tbody>
-		        <xsl:for-each select=".//rng:value|.//rng:data">
-			  <xsl:variable name="doc"
-				        select="following-sibling::*[1]"/>
-			  <row>
-			    <entry>
-			      <xsl:apply-templates select="." mode="value-enum"/>
-			    </entry>
-			    <entry>
-			      <para>
-			        <xsl:choose>
-				  <xsl:when test="$doc/self::a:documentation">
-				    <xsl:value-of select="$doc"/>
-				  </xsl:when>
-				  <xsl:otherwise>
-				    <xsl:message>
-				      <xsl:text>FIXME: </xsl:text>
-				      <xsl:value-of select="$name"/>
-				      <xsl:text> on </xsl:text>
-				      <xsl:value-of select="$elem/@name"/>
-				      <xsl:text> (no documentation?)</xsl:text>
-				    </xsl:message>
-				    <xsl:text>FIXME: No documentation?</xsl:text>
-				  </xsl:otherwise>
-			        </xsl:choose>
-			      </para>
-			    </entry>
-			  </row>
-		        </xsl:for-each>
-		      </tbody>
-		    </tgroup>
-		  </informaltable>
-	        </xsl:if>
-	      </listitem>
-	    </varlistentry>
-	  </xsl:for-each>
+                <xsl:if test="rng:choice|rng:value">
+                  <informaltable frame="none">
+                    <tgroup cols="2">
+                      <colspec colname="c1" align="left" colwidth="1.25in"/>
+                      <colspec colname="c2" align="left"/>
+                      <thead>
+                        <row>
+                          <entry namest="c1" nameend="c2">
+                            <xsl:text>Enumerated values:</xsl:text>
+                          </entry>
+                        </row>
+                      </thead>
+                      <tbody>
+                        <xsl:for-each select=".//rng:value|.//rng:data">
+                          <xsl:variable name="doc"
+                                        select="following-sibling::*[1]"/>
+                          <row>
+                            <entry>
+                              <xsl:apply-templates select="." mode="value-enum"/>
+                            </entry>
+                            <entry>
+                              <para>
+                                <xsl:choose>
+                                  <xsl:when test="$doc/self::a:documentation">
+                                    <xsl:value-of select="$doc"/>
+                                  </xsl:when>
+                                  <xsl:otherwise>
+                                    <xsl:message>
+                                      <xsl:text>FIXME: </xsl:text>
+                                      <xsl:value-of select="$name"/>
+                                      <xsl:text> on </xsl:text>
+                                      <xsl:value-of select="$elem/@name"/>
+                                      <xsl:text> (no documentation?)</xsl:text>
+                                    </xsl:message>
+                                    <xsl:text>FIXME: No documentation?</xsl:text>
+                                  </xsl:otherwise>
+                                </xsl:choose>
+                              </para>
+                            </entry>
+                          </row>
+                        </xsl:for-each>
+                      </tbody>
+                    </tgroup>
+                  </informaltable>
+                </xsl:if>
+              </listitem>
+            </varlistentry>
+          </xsl:for-each>
         </variablelist>
       </xsl:if>
     </refsection>
@@ -657,12 +657,12 @@
   <xsl:variable name="xdefs" select="$rng/key('elemdef', $element)"/>
   <xsl:variable name="seealsolist">
     <xsl:copy-of select="$seealso//group[elem[@name=$element]]
-			 /*[@name != $element]"/>
+                         /*[@name != $element]"/>
     <xsl:if test="count($xdefs) &gt; 1">
       <xsl:for-each select="$xdefs">
-	<xsl:if test="@name != $pattern">
-	  <elem name="{$element}" pattern="{@name}" xmlns=""/>
-	</xsl:if>
+        <xsl:if test="@name != $pattern">
+          <elem name="{$element}" pattern="{@name}" xmlns=""/>
+        </xsl:if>
       </xsl:for-each>
     </xsl:if>
   </xsl:variable>
@@ -672,23 +672,23 @@
       <title>See Also</title>
       <para>
       <simplelist type="inline">
-	<!-- use f-e-g to remove duplicates -->
-	<xsl:for-each-group select="$seealsolist/*" group-by="@name">
-	  <xsl:sort select="current-grouping-key()" data-type="text"/>
-	  <member>
-	    <tag>
-	      <xsl:value-of select="current-grouping-key()"/>
-	    </tag>
-	    <xsl:if test="@pattern">
-	      <xsl:text>&#160;</xsl:text>
-	      <phrase role="pattern">
-		<xsl:text>(</xsl:text>
-		<xsl:value-of select="@pattern"/>
-		<xsl:text>)</xsl:text>
-	      </phrase>
-	    </xsl:if>
-	  </member>
-	</xsl:for-each-group>
+        <!-- use f-e-g to remove duplicates -->
+        <xsl:for-each-group select="$seealsolist/*" group-by="@name">
+          <xsl:sort select="current-grouping-key()" data-type="text"/>
+          <member>
+            <tag>
+              <xsl:value-of select="current-grouping-key()"/>
+            </tag>
+            <xsl:if test="@pattern">
+              <xsl:text>&#160;</xsl:text>
+              <phrase role="pattern">
+                <xsl:text>(</xsl:text>
+                <xsl:value-of select="@pattern"/>
+                <xsl:text>)</xsl:text>
+              </phrase>
+            </xsl:if>
+          </member>
+        </xsl:for-each-group>
       </simplelist>
       </para>
     </refsection>
@@ -722,43 +722,43 @@
   <xsl:choose>
     <xsl:when test="contains(., 'gentext=')">
       <xsl:choose>
-	<xsl:when test="contains(., 'pexp.linespecific')">
-	  <xsl:text>This element is displayed “verbatim”; whitespace and linebreaks within this element are significant.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'format.inline')">
-	  <xsl:text>Formatted inline.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'format.block')">
-	  <xsl:text>Formatted as a displayed block.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'format.heading')">
-	  <xsl:text>Formatted as a heading.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'format.context')">
-	  <xsl:text>May be formatted inline or as a displayed block, depending on context.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'format.csuppress')">
-	  <xsl:text>Sometimes suppressed.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'format.suppress')">
-	  <xsl:text>Suppressed.</xsl:text>
-	</xsl:when>
-	<xsl:when test="contains(., 'calssemantics')">This element is
+        <xsl:when test="contains(., 'pexp.linespecific')">
+          <xsl:text>This element is displayed “verbatim”; whitespace and linebreaks within this element are significant.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'format.inline')">
+          <xsl:text>Formatted inline.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'format.block')">
+          <xsl:text>Formatted as a displayed block.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'format.heading')">
+          <xsl:text>Formatted as a heading.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'format.context')">
+          <xsl:text>May be formatted inline or as a displayed block, depending on context.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'format.csuppress')">
+          <xsl:text>Sometimes suppressed.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'format.suppress')">
+          <xsl:text>Suppressed.</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains(., 'calssemantics')">This element is
 expected to obey the semantics of the
 <citetitle>CALS Table Model Document Type Definition</citetitle>
 <biblioref linkend="calsdtd"/>.</xsl:when>
-	<xsl:when test="contains(., 'htmltablesemantics')">This element is
+        <xsl:when test="contains(., 'htmltablesemantics')">This element is
 expected to obey the semantics described in
 <citetitle xlink:href="http://www.w3.org/TR/html401/struct/tables.html">Tables</citetitle>,
 as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref linkend="XHTML"/>.
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:message>
-	    <xsl:text>Unrecognized tdg PI: </xsl:text>
-	    <xsl:value-of select="."/>
-	  </xsl:message>
-	  <xsl:copy/>
-	</xsl:otherwise>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:message>
+            <xsl:text>Unrecognized tdg PI: </xsl:text>
+            <xsl:value-of select="."/>
+          </xsl:message>
+          <xsl:copy/>
+        </xsl:otherwise>
       </xsl:choose>
     </xsl:when>
     <xsl:otherwise>
@@ -879,9 +879,9 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:choose>
     <xsl:when test="$li = 1">
       <listitem>
-	<para>
-	  <emphasis>text</emphasis>
-	</para>
+        <para>
+          <emphasis>text</emphasis>
+        </para>
       </listitem>
     </xsl:when>
     <xsl:otherwise>
@@ -913,20 +913,20 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
     <para condition="expanded">
       <xsl:choose>
-	<xsl:when test="@name">
-	  <xsl:value-of select="@name"/>
-	</xsl:when>
-	<xsl:otherwise>
-	  <emphasis>
-	    <xsl:value-of select="ancestor::rng:div[1]/db:refname"/>
-	  </emphasis>
-	</xsl:otherwise>
+        <xsl:when test="@name">
+          <xsl:value-of select="@name"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <emphasis>
+            <xsl:value-of select="ancestor::rng:div[1]/db:refname"/>
+          </emphasis>
+        </xsl:otherwise>
       </xsl:choose>
 
       <xsl:if test="count($xdefs) &gt; 1">
-	<xsl:text> (</xsl:text>
-	<xsl:value-of select="../@name"/>
-	<xsl:text>)</xsl:text>
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="../@name"/>
+        <xsl:text>)</xsl:text>
       </xsl:if>
       <xsl:text>&#160;</xsl:text>
       <phrase role="cceq">::=</phrase>
@@ -934,14 +934,14 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
     <xsl:variable name="synop" as="element(db:itemizedlist)">
       <itemizedlist spacing='compact' role="element-synopsis" condition="expanded">
-	<xsl:choose>
-	  <xsl:when test="doc:content-model">
-	    <xsl:apply-templates select="doc:content-model/*"/>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:apply-templates/>
-	  </xsl:otherwise>
-	</xsl:choose>
+        <xsl:choose>
+          <xsl:when test="doc:content-model">
+            <xsl:apply-templates select="doc:content-model/*"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates/>
+          </xsl:otherwise>
+        </xsl:choose>
       </itemizedlist>
     </xsl:variable>
 
@@ -949,20 +949,20 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
     <para condition="compact">
       <xsl:choose>
-	<xsl:when test="@name">
-	  <xsl:value-of select="@name"/>
-	</xsl:when>
-	<xsl:otherwise>
-	  <emphasis>
-	    <xsl:value-of select="ancestor::rng:div[1]/db:refname"/>
-	  </emphasis>
-	</xsl:otherwise>
+        <xsl:when test="@name">
+          <xsl:value-of select="@name"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <emphasis>
+            <xsl:value-of select="ancestor::rng:div[1]/db:refname"/>
+          </emphasis>
+        </xsl:otherwise>
       </xsl:choose>
 
       <xsl:if test="count($xdefs) &gt; 1">
-	<xsl:text> (</xsl:text>
-	<xsl:value-of select="../@name"/>
-	<xsl:text>)</xsl:text>
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="../@name"/>
+        <xsl:text>)</xsl:text>
       </xsl:if>
       <xsl:text>&#160;</xsl:text>
       <phrase role="cceq">::= </phrase>
@@ -981,66 +981,66 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="attributes" select=".//rng:attribute"/>
 
   <xsl:variable name="cmnAttr"
-		select="$attributes[@name='xml:id' and parent::rng:optional]
-			|$attributes[@name='xml:lang']
-			|$attributes[@name='xml:base']
-			|$attributes[@name='remap']
-			|$attributes[@name='xreflabel']
-			|$attributes[@name='revisionflag']
-			|$attributes[@name='arch']
-			|$attributes[@name='audience']
-			|$attributes[@name='condition']
-			|$attributes[@name='conformance']
-			|$attributes[@name='os']
-			|$attributes[@name='revision']
-			|$attributes[@name='security']
-			|$attributes[@name='userlevel']
-			|$attributes[@name='vendor']
-			|$attributes[@name='wordsize']
-			|$attributes[@name='outputformat']
-			|$attributes[@name='role']
-			|$attributes[@name='version']
-			|$attributes[@name='dir']
-			|$attributes[@name='annotations']
-			|$attributes[@name='vocab']
-			|$attributes[@name='property']
-			|$attributes[@name='typeof']
-			|$attributes[@name='resource']
-			|$attributes[@name='prefix']"/>
+                select="$attributes[@name='xml:id' and parent::rng:optional]
+                        |$attributes[@name='xml:lang']
+                        |$attributes[@name='xml:base']
+                        |$attributes[@name='remap']
+                        |$attributes[@name='xreflabel']
+                        |$attributes[@name='revisionflag']
+                        |$attributes[@name='arch']
+                        |$attributes[@name='audience']
+                        |$attributes[@name='condition']
+                        |$attributes[@name='conformance']
+                        |$attributes[@name='os']
+                        |$attributes[@name='revision']
+                        |$attributes[@name='security']
+                        |$attributes[@name='userlevel']
+                        |$attributes[@name='vendor']
+                        |$attributes[@name='wordsize']
+                        |$attributes[@name='outputformat']
+                        |$attributes[@name='role']
+                        |$attributes[@name='version']
+                        |$attributes[@name='dir']
+                        |$attributes[@name='annotations']
+                        |$attributes[@name='vocab']
+                        |$attributes[@name='property']
+                        |$attributes[@name='typeof']
+                        |$attributes[@name='resource']
+                        |$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrIdReq"
-		select="$attributes[@name='xml:id' and not(parent::rng:optional)]
-			|$attributes[@name='xml:lang']
-			|$attributes[@name='xml:base']
-			|$attributes[@name='remap']
-			|$attributes[@name='xreflabel']
-			|$attributes[@name='revisionflag']
-			|$attributes[@name='arch']
-			|$attributes[@name='audience']
-			|$attributes[@name='condition']
-			|$attributes[@name='conformance']
-			|$attributes[@name='os']
-			|$attributes[@name='revision']
-			|$attributes[@name='security']
-			|$attributes[@name='userlevel']
-			|$attributes[@name='vendor']
-			|$attributes[@name='wordsize']
-			|$attributes[@name='outputformat']
-			|$attributes[@name='role']
-			|$attributes[@name='version']
-			|$attributes[@name='dir']
-			|$attributes[@name='annotations']
-			|$attributes[@name='vocab']
-			|$attributes[@name='property']
-			|$attributes[@name='typeof']
-			|$attributes[@name='resource']
-			|$attributes[@name='prefix']"/>
+                select="$attributes[@name='xml:id' and not(parent::rng:optional)]
+                        |$attributes[@name='xml:lang']
+                        |$attributes[@name='xml:base']
+                        |$attributes[@name='remap']
+                        |$attributes[@name='xreflabel']
+                        |$attributes[@name='revisionflag']
+                        |$attributes[@name='arch']
+                        |$attributes[@name='audience']
+                        |$attributes[@name='condition']
+                        |$attributes[@name='conformance']
+                        |$attributes[@name='os']
+                        |$attributes[@name='revision']
+                        |$attributes[@name='security']
+                        |$attributes[@name='userlevel']
+                        |$attributes[@name='vendor']
+                        |$attributes[@name='wordsize']
+                        |$attributes[@name='outputformat']
+                        |$attributes[@name='role']
+                        |$attributes[@name='version']
+                        |$attributes[@name='dir']
+                        |$attributes[@name='annotations']
+                        |$attributes[@name='vocab']
+                        |$attributes[@name='property']
+                        |$attributes[@name='typeof']
+                        |$attributes[@name='resource']
+                        |$attributes[@name='prefix']"/>
 
   <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
 
   <xsl:variable name="cmnLinkAttr"
-		select="$attributes[@name='linkend']
-			|$attributes[@name='linkends']
+                select="$attributes[@name='linkend']
+                        |$attributes[@name='linkends']
                         |$attributes[@name='xlink:actuate']
                         |$attributes[@name='xlink:arcrole']
                         |$attributes[@name='xlink:from']
@@ -1053,7 +1053,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
                         |$attributes[@name='xlink:type']"/>
 
   <xsl:variable name="otherAttr"
-		select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+                select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
 
 <!--
   <xsl:message>
@@ -1073,85 +1073,85 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       <title>Attributes</title>
 
       <xsl:choose>
-	<xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text> and </xsl:text>
-	    <link linkend="common.linking.attributes">common linking attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text> (ID required) and </xsl:text>
-	    <link linkend="common.linking.attributes">common linking attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnAttr) = $CMN_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT">
-	  <para>
-	    <link linkend="common.attributes">Common attributes</link>
-	    <xsl:text> (ID required).</xsl:text>
-	  </para>
-	</xsl:when>
-	<xsl:when test="count($cmnLinkAttr) = $LINK_COUNT">
-	  <para>
-	    <link linkend="common.linking.attributes">Common linking attributes</link>
-	    <xsl:text>.</xsl:text>
-	  </para>
-	</xsl:when>
+        <xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text> and </xsl:text>
+            <link linkend="common.linking.attributes">common linking attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text> (ID required) and </xsl:text>
+            <link linkend="common.linking.attributes">common linking attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnAttr) = $CMN_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnAttrIdReq) = $CMNIDR_COUNT">
+          <para>
+            <link linkend="common.attributes">Common attributes</link>
+            <xsl:text> (ID required).</xsl:text>
+          </para>
+        </xsl:when>
+        <xsl:when test="count($cmnLinkAttr) = $LINK_COUNT">
+          <para>
+            <link linkend="common.linking.attributes">Common linking attributes</link>
+            <xsl:text>.</xsl:text>
+          </para>
+        </xsl:when>
       </xsl:choose>
 
       <xsl:if test="count($cmnAttrEither) != $CMN_COUNT or count($otherAttr) &gt; 0">
         <xsl:variable name="attrs" as="element()*">
-	  <xsl:for-each select="rng:interleave/*|*[not(self::rng:interleave)]">
-	    <xsl:sort select="descendant-or-self::rng:attribute[1]/@name"/>
-	    <!-- don't bother with common attributes -->
-	    <xsl:variable name="name"
-			  select="descendant-or-self::rng:attribute/@name"/>
-	    <xsl:choose>
-	      <xsl:when test="$cmnAttrEither[@name=$name]
+          <xsl:for-each select="rng:interleave/*|*[not(self::rng:interleave)]">
+            <xsl:sort select="descendant-or-self::rng:attribute[1]/@name"/>
+            <!-- don't bother with common attributes -->
+            <xsl:variable name="name"
+                          select="descendant-or-self::rng:attribute/@name"/>
+            <xsl:choose>
+              <xsl:when test="$cmnAttrEither[@name=$name]
                               |$cmnLinkAttr[@name=$name]"/>
-	      <xsl:otherwise>
-		<xsl:apply-templates select="." mode="attributes"/>
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </xsl:for-each>
+              <xsl:otherwise>
+                <xsl:apply-templates select="." mode="attributes"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
         </xsl:variable>
 
         <xsl:choose>
           <xsl:when test="exists($attrs)">
-	    <para>
-	      <xsl:choose>
-	        <xsl:when test="count($cmnAttr) = $CMN_COUNT
-			        or count($cmnAttrIdReq) = $CMNIDR_COUNT">
-	          <xsl:text>Additional attributes:</xsl:text>
-	        </xsl:when>
-	        <xsl:otherwise>
-	          <xsl:text>Attributes:</xsl:text>
-	        </xsl:otherwise>
-	      </xsl:choose>
-	    </para>
+            <para>
+              <xsl:choose>
+                <xsl:when test="count($cmnAttr) = $CMN_COUNT
+                                or count($cmnAttrIdReq) = $CMNIDR_COUNT">
+                  <xsl:text>Additional attributes:</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:text>Attributes:</xsl:text>
+                </xsl:otherwise>
+              </xsl:choose>
+            </para>
 
-	    <itemizedlist spacing='compact' role="element-synopsis">
+            <itemizedlist spacing='compact' role="element-synopsis">
               <xsl:sequence select="$attrs"/>
-	    </itemizedlist>
+            </itemizedlist>
 
-	    <xsl:if test=".//rng:attribute[not(ancestor::rng:optional)
-		                           and not(ancestor::rng:zeroOrMore)]">
-	      <para>
-	        <xsl:text>Required attributes are shown in </xsl:text>
-	        <emphasis role="bold">bold</emphasis>
-	        <xsl:text>.</xsl:text>
-	      </para>
-	    </xsl:if>
+            <xsl:if test=".//rng:attribute[not(ancestor::rng:optional)
+                                           and not(ancestor::rng:zeroOrMore)]">
+              <para>
+                <xsl:text>Required attributes are shown in </xsl:text>
+                <emphasis role="bold">bold</emphasis>
+                <xsl:text>.</xsl:text>
+              </para>
+            </xsl:if>
           </xsl:when>
           <xsl:otherwise>
             <para>None.</para>
@@ -1173,15 +1173,15 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <listitem>
     <para>
       <xsl:choose>
-	<xsl:when test="ancestor::rng:zeroOrMore">
-	  <emphasis>Zero or more:</emphasis>
-	</xsl:when>
-	<xsl:when test="ancestor::rng:optional">
-	  <emphasis>At most one of:</emphasis>
-	</xsl:when>
-	<xsl:otherwise>
-	  <emphasis>Exactly one of:</emphasis>
-	</xsl:otherwise>
+        <xsl:when test="ancestor::rng:zeroOrMore">
+          <emphasis>Zero or more:</emphasis>
+        </xsl:when>
+        <xsl:when test="ancestor::rng:optional">
+          <emphasis>At most one of:</emphasis>
+        </xsl:when>
+        <xsl:otherwise>
+          <emphasis>Exactly one of:</emphasis>
+        </xsl:otherwise>
       </xsl:choose>
     </para>
     <itemizedlist spacing='compact' role="element-synopsis">
@@ -1198,19 +1198,19 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
     </xsl:when>
     <xsl:otherwise>
       <listitem>
-	<para>
-	  <xsl:choose>
-	    <xsl:when test="ancestor::rng:optional">
-	      <emphasis>All or none of:</emphasis>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <emphasis>All of:</emphasis>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</para>
-	<itemizedlist spacing='compact' role="element-synopsis">
-	  <xsl:apply-templates mode="attributes"/>
-	</itemizedlist>
+        <para>
+          <xsl:choose>
+            <xsl:when test="ancestor::rng:optional">
+              <emphasis>All or none of:</emphasis>
+            </xsl:when>
+            <xsl:otherwise>
+              <emphasis>All of:</emphasis>
+            </xsl:otherwise>
+          </xsl:choose>
+        </para>
+        <itemizedlist spacing='compact' role="element-synopsis">
+          <xsl:apply-templates mode="attributes"/>
+        </itemizedlist>
       </listitem>
     </xsl:otherwise>
   </xsl:choose>
@@ -1229,22 +1229,22 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
 <xsl:template match="rng:attribute" mode="attributes">
   <xsl:param name="optional"
-	     select="parent::rng:optional
-		     or parent::rng:choice/parent::rng:optional
-		     or parent::rng:interleave/parent::rng:choice/parent::rng:optional
-		     or parent::rng:zeroOrMore
-		     or parent::rng:choice/parent::rng:zeroOrMore
-		     or parent::rng:interleave/parent::rng:choice/parent::rng:zeroOrMore"/>
+             select="parent::rng:optional
+                     or parent::rng:choice/parent::rng:optional
+                     or parent::rng:interleave/parent::rng:choice/parent::rng:optional
+                     or parent::rng:zeroOrMore
+                     or parent::rng:choice/parent::rng:zeroOrMore
+                     or parent::rng:interleave/parent::rng:choice/parent::rng:zeroOrMore"/>
 
   <xsl:param name="choice" select="ancestor::rng:choice"/>
 
   <xsl:variable name="name">
     <xsl:choose>
       <xsl:when test="@name">
-	<xsl:value-of select="@name"/>
+        <xsl:value-of select="@name"/>
       </xsl:when>
       <xsl:otherwise>
-	<emphasis>Any attribute</emphasis>
+        <emphasis>Any attribute</emphasis>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -1252,52 +1252,52 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <listitem>
     <para>
       <xsl:choose>
-	<xsl:when test="$optional">
-	  <xsl:copy-of select="$name"/>
-	</xsl:when>
-	<xsl:otherwise>
-	  <emphasis role="bold">
-	    <xsl:copy-of select="$name"/>
-	  </emphasis>
-	</xsl:otherwise>
+        <xsl:when test="$optional">
+          <xsl:copy-of select="$name"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <emphasis role="bold">
+            <xsl:copy-of select="$name"/>
+          </emphasis>
+        </xsl:otherwise>
       </xsl:choose>
 
       <xsl:choose>
-	<xsl:when test="rng:choice|rng:value">
-	  <xsl:text> (enumeration)</xsl:text>
-	  <phrase condition="compact">
-	    <xsl:text> = </xsl:text>
-	    <xsl:for-each
-		select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
-	      <xsl:if test="position() &gt; 1"> | </xsl:if>
-	      <xsl:apply-templates select="." mode="value-enum"/>
-	    </xsl:for-each>
-	  </phrase>
-	</xsl:when>
-	<xsl:when test="rng:data">
-	  <xsl:text> (</xsl:text>
-	  <xsl:value-of select="rng:data/@type"/>
-	  <xsl:text>)</xsl:text>
-	</xsl:when>
+        <xsl:when test="rng:choice|rng:value">
+          <xsl:text> (enumeration)</xsl:text>
+          <phrase condition="compact">
+            <xsl:text> = </xsl:text>
+            <xsl:for-each
+                select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
+              <xsl:if test="position() &gt; 1"> | </xsl:if>
+              <xsl:apply-templates select="." mode="value-enum"/>
+            </xsl:for-each>
+          </phrase>
+        </xsl:when>
+        <xsl:when test="rng:data">
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="rng:data/@type"/>
+          <xsl:text>)</xsl:text>
+        </xsl:when>
       </xsl:choose>
 
       <xsl:if test="@a:defaultValue">
-	<xsl:text> [default=“</xsl:text>
-	<xsl:value-of select="@a:defaultValue"/>
-	<xsl:text>”]</xsl:text>
+        <xsl:text> [default=“</xsl:text>
+        <xsl:value-of select="@a:defaultValue"/>
+        <xsl:text>”]</xsl:text>
       </xsl:if>
     </para>
 
     <xsl:if test="rng:choice|rng:value">
       <itemizedlist spacing='compact' role="element-synopsis" condition="expanded">
-	<xsl:for-each
-	    select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
-	  <listitem>
-	    <para>
-	      <xsl:apply-templates select="." mode="value-enum"/>
-	    </para>
-	  </listitem>
-	</xsl:for-each>
+        <xsl:for-each
+            select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
+          <listitem>
+            <para>
+              <xsl:apply-templates select="." mode="value-enum"/>
+            </para>
+          </listitem>
+        </xsl:for-each>
       </itemizedlist>
     </xsl:if>
   </listitem>
@@ -1329,11 +1329,11 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
     <itemizedlist spacing='compact' role="element-synopsis">
       <xsl:for-each select=".//s:assert">
-	<listitem>
-	  <para>
-	    <xsl:value-of select="."/>
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            <xsl:value-of select="."/>
+          </para>
+        </listitem>
       </xsl:for-each>
     </itemizedlist>
   </refsection>
@@ -1351,7 +1351,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 <xsl:template match="rng:ref">
   <xsl:param name="li" select="1"/>
   <xsl:variable name="elemName"
-		select="(key('define', @name)/rng:element)[1]/@name"/>
+                select="(key('define', @name)/rng:element)[1]/@name"/>
   <xsl:variable name="xdefs" select="key('elemdef', $elemName)"/>
 
   <!--
@@ -1361,43 +1361,43 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="content">
     <xsl:choose>
       <xsl:when test="@name = 'db._any.mml'">
-	<tag>mml:*</tag>
-	<xsl:if test="parent::rng:optional">?</xsl:if>
+        <tag>mml:*</tag>
+        <xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:when test="@name = 'db._any.svg'">
-	<tag>svg:*</tag>
-	<xsl:if test="parent::rng:optional">?</xsl:if>
+        <tag>svg:*</tag>
+        <xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:when test="@name = 'db._any'">
-	<tag>*:*</tag>
-	<xsl:if test="parent::rng:optional">?</xsl:if>
+        <tag>*:*</tag>
+        <xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:when test="$elemName">
-	<tag>
-	  <xsl:value-of select="key('define', @name)/rng:element/@name"/>
-	</tag>
-	<xsl:if test="parent::rng:optional">?</xsl:if>
+        <tag>
+          <xsl:value-of select="key('define', @name)/rng:element/@name"/>
+        </tag>
+        <xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:message>
-	  <xsl:text>Failed to find </xsl:text>
-	  <xsl:value-of select="$elemName"/>
-	  <xsl:text> for "</xsl:text>
-	  <xsl:value-of select="."/>
-	  <xsl:value-of select="@name"/>
-	  <xsl:text>"</xsl:text>
-	</xsl:message>
-	<xsl:value-of select="@name"/>
-	<xsl:if test="parent::rng:optional">?</xsl:if>
+        <xsl:message>
+          <xsl:text>Failed to find </xsl:text>
+          <xsl:value-of select="$elemName"/>
+          <xsl:text> for "</xsl:text>
+          <xsl:value-of select="."/>
+          <xsl:value-of select="@name"/>
+          <xsl:text>"</xsl:text>
+        </xsl:message>
+        <xsl:value-of select="@name"/>
+        <xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:otherwise>
     </xsl:choose>
 
     <xsl:if test="count($xdefs) &gt; 1">
       <xsl:text>&#160;</xsl:text>
       <phrase role="pattern">
-	<xsl:text>(</xsl:text>
-	<xsl:value-of select="@name"/>
-	<xsl:text>)</xsl:text>
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="@name"/>
+        <xsl:text>)</xsl:text>
       </phrase>
     </xsl:if>
   </xsl:variable>
@@ -1405,9 +1405,9 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:choose>
     <xsl:when test="$li = 1">
       <listitem>
-	<para>
-	  <xsl:copy-of select="$content"/>
-	</para>
+        <para>
+          <xsl:copy-of select="$content"/>
+        </para>
       </listitem>
     </xsl:when>
     <xsl:otherwise>
@@ -1441,34 +1441,34 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
     <para>
       <xsl:text>Any element from any namespace</xsl:text>
       <xsl:choose>
-	<xsl:when test="rng:except">
-	  <xsl:text> except:</xsl:text>
-	</xsl:when>
-	<xsl:otherwise>.</xsl:otherwise>
+        <xsl:when test="rng:except">
+          <xsl:text> except:</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>.</xsl:otherwise>
       </xsl:choose>
     </para>
     <xsl:if test="rng:except">
       <itemizedlist>
-	<xsl:for-each select="rng:except/rng:nsName">
-	  <listitem>
-	    <para>
-	      <xsl:choose>
-		<xsl:when test="@ns">
-		  <xsl:text>Elements from the </xsl:text>
-		  <uri>
-		    <xsl:value-of select="@ns"/>
-		  </uri>
-		  <xsl:text> namespace.</xsl:text>
-		</xsl:when>
-		<xsl:otherwise>
-		  <xsl:text>Elements from the </xsl:text>
-		  <uri>http://docbook.org/ns/docbook</uri>
-		  <xsl:text> namespace.</xsl:text>
-		</xsl:otherwise>
-	      </xsl:choose>
-	    </para>
-	  </listitem>
-	</xsl:for-each>
+        <xsl:for-each select="rng:except/rng:nsName">
+          <listitem>
+            <para>
+              <xsl:choose>
+                <xsl:when test="@ns">
+                  <xsl:text>Elements from the </xsl:text>
+                  <uri>
+                    <xsl:value-of select="@ns"/>
+                  </uri>
+                  <xsl:text> namespace.</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:text>Elements from the </xsl:text>
+                  <uri>http://docbook.org/ns/docbook</uri>
+                  <xsl:text> namespace.</xsl:text>
+                </xsl:otherwise>
+              </xsl:choose>
+            </para>
+          </listitem>
+        </xsl:for-each>
       </itemizedlist>
     </xsl:if>
   </listitem>
@@ -1484,7 +1484,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="contains" as="xs:string*">
     <xsl:for-each select="$test.patterns">
       <xsl:if test="f:containsPattern($context, .)">
-	<xsl:sequence select="."/>
+        <xsl:sequence select="."/>
       </xsl:if>
     </xsl:for-each>
   </xsl:variable>
@@ -1492,15 +1492,15 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="trimmed" as="element()*">
     <xsl:for-each select="*">
       <xsl:choose>
-	<xsl:when test="not(self::rng:ref)">
-	  <xsl:sequence select="."/>
-	</xsl:when>
-	<xsl:when test="f:isContained($context,.,$contains)">
-	  <!-- drop it -->
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:sequence select="."/>
-	</xsl:otherwise>
+        <xsl:when test="not(self::rng:ref)">
+          <xsl:sequence select="."/>
+        </xsl:when>
+        <xsl:when test="f:isContained($context,.,$contains)">
+          <!-- drop it -->
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:sequence select="."/>
+        </xsl:otherwise>
       </xsl:choose>
     </xsl:for-each>
   </xsl:variable>
@@ -1510,15 +1510,15 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
 
     <itemizedlist spacing='compact' role="element-synopsis">
       <xsl:apply-templates select="$trimmed">
-	<xsl:sort select="key('define',@name)/rng:element/@name"/>
-	<xsl:sort select="@name"/>
+        <xsl:sort select="key('define',@name)/rng:element/@name"/>
+        <xsl:sort select="@name"/>
       </xsl:apply-templates>
 
       <xsl:for-each select="$contains">
-	<xsl:call-template name="format-pattern">
-	  <xsl:with-param name="context" select="$context"/>
-	  <xsl:with-param name="pattern" select="."/>
-	</xsl:call-template>
+        <xsl:call-template name="format-pattern">
+          <xsl:with-param name="context" select="$context"/>
+          <xsl:with-param name="pattern" select="."/>
+        </xsl:call-template>
       </xsl:for-each>
 
     </itemizedlist>
@@ -1559,11 +1559,11 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       <xsl:variable name="patname" select="."/>
       <!-- work around apparent bug in Saxon -->
       <xsl:variable name="def"
-		    select="root($context)//rng:define[@name = $patname]"/>
+                    select="root($context)//rng:define[@name = $patname]"/>
       <xsl:for-each select="$def//rng:ref">
-	<xsl:if test="@name = $ref/@name">
-	  <xsl:sequence select="1"/>
-	</xsl:if>
+        <xsl:if test="@name = $ref/@name">
+          <xsl:sequence select="1"/>
+        </xsl:if>
       </xsl:for-each>
     </xsl:for-each>
   </xsl:variable>
@@ -1576,36 +1576,36 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:param name="pattern"/>
 
   <xsl:variable name="def"
-		select="root($context)//rng:define[@name = $pattern]"/>
+                select="root($context)//rng:define[@name = $pattern]"/>
 
   <xsl:if test="$def//rng:ref">
     <listitem xml:id="{generate-id($context)}-{$pattern}">
       <para>
         <emphasis role="patnlink">
-	  <xsl:attribute name="linkend"
-		         select="concat('ipatn.', $pattern)"/>
-	  <xsl:choose>
-	    <xsl:when test="$choice-patterns/patterns/pattern[@name=$pattern]">
-	      <xsl:value-of
-		  select="$choice-patterns/patterns/pattern[@name=$pattern]"/>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <xsl:message>
-	        <xsl:text>Warning: no prose for </xsl:text>
-	        <xsl:value-of select="$pattern"/>
-	      </xsl:message>
-	      <xsl:value-of select="$pattern"/>
-	    </xsl:otherwise>
-	  </xsl:choose>
+          <xsl:attribute name="linkend"
+                         select="concat('ipatn.', $pattern)"/>
+          <xsl:choose>
+            <xsl:when test="$choice-patterns/patterns/pattern[@name=$pattern]">
+              <xsl:value-of
+                  select="$choice-patterns/patterns/pattern[@name=$pattern]"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:message>
+                <xsl:text>Warning: no prose for </xsl:text>
+                <xsl:value-of select="$pattern"/>
+              </xsl:message>
+              <xsl:value-of select="$pattern"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </emphasis>
       </para>
 
       <itemizedlist role="patnlist {$pattern}"
-		    xml:id="l.{generate-id($context)}-{$pattern}">
+                    xml:id="l.{generate-id($context)}-{$pattern}">
         <xsl:for-each select="$def//rng:ref">
-	  <xsl:sort select="key('define',@name)/rng:element/@name"/>
-	  <xsl:sort select="@name"/>
-	  <xsl:apply-templates select="."/>
+          <xsl:sort select="key('define',@name)/rng:element/@name"/>
+          <xsl:sort select="@name"/>
+          <xsl:apply-templates select="."/>
         </xsl:for-each>
       </itemizedlist>
     </listitem>
@@ -1618,7 +1618,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="contains" as="xs:string*">
     <xsl:for-each select="$test.patterns">
       <xsl:if test="f:containsPattern($context, .)">
-	<xsl:sequence select="."/>
+        <xsl:sequence select="."/>
       </xsl:if>
     </xsl:for-each>
   </xsl:variable>
@@ -1626,15 +1626,15 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="trimmed" as="element()*">
     <xsl:for-each select="*">
       <xsl:choose>
-	<xsl:when test="not(self::rng:ref)">
-	  <xsl:sequence select="."/>
-	</xsl:when>
-	<xsl:when test="f:isContained($context,.,$contains)">
-	  <!-- drop it -->
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:sequence select="."/>
-	</xsl:otherwise>
+        <xsl:when test="not(self::rng:ref)">
+          <xsl:sequence select="."/>
+        </xsl:when>
+        <xsl:when test="f:isContained($context,.,$contains)">
+          <!-- drop it -->
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:sequence select="."/>
+        </xsl:otherwise>
       </xsl:choose>
     </xsl:for-each>
   </xsl:variable>
@@ -1642,25 +1642,25 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <listitem>
     <para>
       <xsl:choose>
-	<xsl:when test="parent::rng:optional">
-	  <xsl:text>Optional one or more of:</xsl:text>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:text>One or more of:</xsl:text>
-	</xsl:otherwise>
+        <xsl:when test="parent::rng:optional">
+          <xsl:text>Optional one or more of:</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>One or more of:</xsl:text>
+        </xsl:otherwise>
       </xsl:choose>
     </para>
     <itemizedlist spacing='compact' role="element-synopsis">
       <xsl:apply-templates select="$trimmed">
-	<xsl:sort select="key('define',@name)/rng:element/@name"/>
-	<xsl:sort select="@name"/>
+        <xsl:sort select="key('define',@name)/rng:element/@name"/>
+        <xsl:sort select="@name"/>
       </xsl:apply-templates>
 
       <xsl:for-each select="$contains">
-	<xsl:call-template name="format-pattern">
-	  <xsl:with-param name="context" select="$context"/>
-	  <xsl:with-param name="pattern" select="."/>
-	</xsl:call-template>
+        <xsl:call-template name="format-pattern">
+          <xsl:with-param name="context" select="$context"/>
+          <xsl:with-param name="pattern" select="."/>
+        </xsl:call-template>
       </xsl:for-each>
     </itemizedlist>
   </listitem>
@@ -1670,12 +1670,12 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <listitem>
     <para>
       <xsl:choose>
-	<xsl:when test="parent::rng:optional">
-	  <xsl:text>Optional sequence of:</xsl:text>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:text>Sequence of:</xsl:text>
-	</xsl:otherwise>
+        <xsl:when test="parent::rng:optional">
+          <xsl:text>Optional sequence of:</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>Sequence of:</xsl:text>
+        </xsl:otherwise>
       </xsl:choose>
     </para>
     <itemizedlist spacing='compact' role="element-synopsis">
@@ -1688,12 +1688,12 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <listitem>
     <para>
       <xsl:choose>
-	<xsl:when test="parent::rng:optional">
-	  <xsl:text>Optional interleave of:</xsl:text>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:text>Interleave of:</xsl:text>
-	</xsl:otherwise>
+        <xsl:when test="parent::rng:optional">
+          <xsl:text>Optional interleave of:</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>Interleave of:</xsl:text>
+        </xsl:otherwise>
       </xsl:choose>
     </para>
     <itemizedlist spacing='compact' role="element-synopsis">
@@ -1706,18 +1706,18 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <listitem>
     <para>
       <xsl:choose>
-	<xsl:when test="parent::rng:optional">
-	  <xsl:text>Optionally one of: </xsl:text>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:text>One of: </xsl:text>
-	</xsl:otherwise>
+        <xsl:when test="parent::rng:optional">
+          <xsl:text>Optionally one of: </xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>One of: </xsl:text>
+        </xsl:otherwise>
       </xsl:choose>
     </para>
     <itemizedlist spacing='compact' role="element-synopsis">
       <xsl:apply-templates>
-	<xsl:sort select="key('define',@name)/rng:element/@name"/>
-	<xsl:sort select="@name"/>
+        <xsl:sort select="key('define',@name)/rng:element/@name"/>
+        <xsl:sort select="@name"/>
       </xsl:apply-templates>
     </itemizedlist>
   </listitem>
