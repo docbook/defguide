@@ -7,7 +7,7 @@ buildscript {
   }
 
   dependencies {
-    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.0.18'
+    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.0.19'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.4'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.1.2'
   }
@@ -165,6 +165,7 @@ task copyFiles(dependsOn: ['copyCss', 'copyJs', 'copyHtaccess', 'copyFigs']) {
 task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   inputs.file "build/book.xml"
   outputs.dir "build/html"
+  inputs.file "../stylesheets/chunk.xsl"
 
   input "build/book.xml"
   style "../stylesheets/chunk.xsl"
