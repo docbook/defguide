@@ -9,14 +9,14 @@ $base00:    #657b83;
 $base0:     #839496;
 $base1:     #93a1a1;
 $base2:     #eee8d5;
-$base3:     #fdf6e3;
+$base3:     #fffff8;
 $yellow:    #b58900;
 $orange:    #cb4b16;
 $red:       #dc322f;
 $magenta:   #d33682;
 $violet:    #6c71c4;
 $blue:      #268bd2;
-$cyan:      #2aa198;
+$cyan:      #00706b;
 $green:     #859900;
 
 div.covergraphic div.mediaobject img {
@@ -62,25 +62,29 @@ p.publisher {
 }
 
 ul.toc {
-    list-style-type: none;
-    padding-left: 0px;
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 ul.toc
 ul.toc {
-    padding-left: 1.5em;
+  padding-left: 1.5em;
 }
 
 a,
 a:visited {
-    color: $cyan;
+  color: $cyan;
+}
+
+a.callout-link, a:visited.callout-link {
+  text-decoration: none;
 }
 
 ul.toc a,
 ul.toc a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 div.component-title {
@@ -167,7 +171,7 @@ div.infofooter {
 }
 
 span.githash {
-    font-size: 90%;
+  font-size: 90%;
 }
 
 div.copyrightfooter {
@@ -232,7 +236,7 @@ th, td {
 }
 
 div.informaltable {
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }
 
 .pattern { font-size: small; }
@@ -241,45 +245,52 @@ div.informaltable {
    Annotations
 */
 
-div.annotation-list  { visibility: hidden;
-                     }
+div.annotation-list  {
+  visibility: hidden;
+}
 
-div.annotation-nocss { position: absolute;
-                       visibility: hidden;
-                     }
+div.annotation-nocss {
+  position: absolute;
+  visibility: hidden;
+}
 
-div.annotation-popup { position: absolute;
-                       z-index: 4;
-                       background-color: $base3;
-                       visibility: hidden;
-                       padding: 0px;
-                       margin: 2px;
-                       border: solid black 1px;
-                       width: 200px
-                     }
+div.annotation-popup {
+  position: absolute;
+  z-index: 4;
+  background-color: $base3;
+  visibility: hidden;
+  padding: 0px;
+  margin: 2px;
+  border: solid black 1px;
+  width: 200px
+}
 
-div.annotation-title { padding: 1px;
-                       background-color: $base1;
-                       font-weight: bold;
-                       border-bottom-color: $base02;
-                       border-bottom-style: solid;
-                       border-bottom-width: 1px;
-                     }
+div.annotation-title {
+  padding: 1px;
+  background-color: $base1;
+  font-weight: bold;
+  border-bottom-color: $base02;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
 
-div.annotation-body  { padding: 2px;
-                     }
+div.annotation-body  {
+  padding: 2px;
+}
 
-div.annotation-body p { margin-top: 0px;
-                        padding-top: 0px;
-                      }
+div.annotation-body p {
+  margin-top: 0px;
+  padding-top: 0px;
+}
 
-div.annotation-close { position: absolute;
-                       top: 2px;
-                       right: 2px;
-                     }
+div.annotation-close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
 
 div.caution {
-  background: url(figs/web/caution.gif) no-repeat;
+  background: url(../figs/web/caution.gif) no-repeat;
   min-height: 80px;
   padding-left: 100px;
 }
@@ -309,24 +320,24 @@ div.note h3 {
 }
 
 div.fu {
-    border: 1px $red solid;
-    border-radius: 0.5em;
-    min-height: 80px;
-    margin-left: 1em;
-    margin-right: 1em;
-    padding-top: 0.5em;
-    padding-left: 0.5em;
-    background-color: $base2;
+  border: 1px $red solid;
+  border-radius: 0.5em;
+  min-height: 80px;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  background-color: $base2;
 }
 
 div.fu h3 {
-    padding-top: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    color: $red;
-    font-style: italic;
-    text-decoration: underline;
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  color: $red;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 /* ============================================================
@@ -339,33 +350,34 @@ body
     .content
       .body
     .footers
- ============================================================ */
+
+============================================================ */
 
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .page {
-    height: 100%;
+  height: 100%;
 }
 
 .content {
-    min-height: 100%;
+  min-height: 100%;
 }
 
 .body {
-    overflow: auto;
-    padding-bottom: 110px;
-    padding-right: 2em;
+  overflow: auto;
+  padding-bottom: 110px;
+  padding-right: 2em;
 }
 
 .footers {
-    position: relative;
-    background-color: $base1;
-    margin-top: -110px; /* negative value of footer height */
-    height: 110px;
-    bottom: 0px;
-    clear: both;
+  position: relative;
+  background-color: $base1;
+  margin-top: -110px; /* negative value of footer height */
+  height: 110px;
+  bottom: 0px;
+  clear: both;
 }
