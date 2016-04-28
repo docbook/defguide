@@ -519,6 +519,7 @@
         </xsl:when>
         <xsl:otherwise>
           <para>None.</para>
+<!--
           <para>
             <xsl:value-of select="$CMN_COUNT"/>
             <xsl:text>,</xsl:text>
@@ -533,10 +534,11 @@
             <xsl:text>,</xsl:text>
             <xsl:value-of select="count($cmnLinkAttr)"/>
           </para>
+-->
         </xsl:otherwise>
       </xsl:choose>
 
-      <xsl:variable name="allAttrNS" as="element(rng:attribute)*">
+      <xsl:variable name="allAttrNS-x" as="element(rng:attribute)*">
         <xsl:for-each select="$elem/doc:attributes//rng:attribute">
           <!-- In the case where there are two patterns for the same -->
           <!-- attribute, this odd sort clause forces the one with the -->
@@ -551,6 +553,12 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
+      </xsl:variable>
+
+      <xsl:variable name="allAttrNS" as="element(rng:attribute)*">
+        <xsl:call-template name="fix-dup-atts">
+          <xsl:with-param name="attrs" select="$allAttrNS-x"/>
+        </xsl:call-template>
       </xsl:variable>
 
       <xsl:if test="$allAttrNS">
@@ -645,6 +653,46 @@
       </xsl:if>
     </refsection>
   </xsl:if>
+</xsl:template>
+
+<xsl:template name="fix-dup-atts">
+  <xsl:param name="attrs" required="yes"/>
+  <xsl:param name="seen" select="()"/>
+  <xsl:param name="newatts" select="()"/>
+
+  <xsl:choose>
+    <xsl:when test="empty($attrs)">
+      <xsl:sequence select="$newatts"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:variable name="first" select="$attrs[1]"/>
+      <xsl:variable name="rest" select="$attrs[position() &gt; 1]"/>
+      <xsl:variable name="name" as="xs:string">
+        <xsl:choose>
+          <xsl:when test="$first/@name">
+            <xsl:value-of select="$first/@name"/>
+          </xsl:when>
+          <xsl:otherwise>any attribute</xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:choose>
+        <xsl:when test="$name = $seen">
+          <xsl:call-template name="fix-dup-atts">
+            <xsl:with-param name="attrs" select="$rest"/>
+            <xsl:with-param name="seen" select="$seen"/>
+            <xsl:with-param name="newatts" select="$newatts"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="fix-dup-atts">
+            <xsl:with-param name="attrs" select="$rest"/>
+            <xsl:with-param name="seen" select="($seen, $name)"/>
+            <xsl:with-param name="newatts" select="($newatts, $first)"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="processing-instruction('tdg-seealso')">
