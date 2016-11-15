@@ -13,7 +13,7 @@
 
 <!-- this stylesheet somewhat dangerously does its own profiling -->
 
-<xsl:import href="/projects/docbook/xslt20/stylesheets/base/html/docbook.xsl"/>
+<xsl:import href="../defguide5/build/docbook/xslt/base/html/docbook.xsl.xsl"/>
 <xsl:include href="custom.xsl"/>
 
 </xsl:stylesheet>
