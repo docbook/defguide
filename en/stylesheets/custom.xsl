@@ -54,7 +54,7 @@
 
 <xsl:template match="*" mode="m:javascript-head">
   <script type="text/javascript"
-          src="{concat($resource.root, 'js/dbmodnizr.js')}"/>
+          src="{concat($resource.root, 'js/prism.js')}"/>
   <script type="text/javascript"
           src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
   <script type="text/javascript"
@@ -89,6 +89,15 @@
         </xsl:message>
       </xsl:when>
 
+      <xsl:when test="$revision='5.2' and empty($arch)">
+        <img src="figs/web/rev_5.2.png" alt="[5.2]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
       <xsl:when test="$revision='5.1' and empty($arch)">
         <img src="figs/web/rev_5.1.png" alt="[5.1]">
           <xsl:if test="$align != ''">
