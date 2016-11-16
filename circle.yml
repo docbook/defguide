@@ -8,3 +8,13 @@ machine:
 
 general:
   build_dir: en/defguide5
+
+deployment:
+  v52:
+    branch: master
+    commands:
+      - ./en/bin/circle-ci-deploy.sh
+  v51:
+    branch: docbook-5.1
+    commands:
+      - ./en/bin/circle-ci-deploy.sh
