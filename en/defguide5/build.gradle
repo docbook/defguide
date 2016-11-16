@@ -221,7 +221,11 @@ task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   param("resource.root", "")
 }
 
-task test(dependsOn: ['tdg']) {
+task tdg_fake(dependsOn: ['copyFiles']) {
+  // nothing to see here
+}
+
+task test(dependsOn: ['tdg_fake']) {
   // nothing to see here
 }
 
