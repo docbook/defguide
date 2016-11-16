@@ -221,6 +221,10 @@ task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   param("resource.root", "")
 }
 
+task test(dependsOn: ['tdg']) {
+  // nothing to see here
+}
+
 task clean
 task clean.doFirst {
   delete "build"
