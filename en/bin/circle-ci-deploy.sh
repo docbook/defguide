@@ -9,9 +9,13 @@ BUILD=`pwd`/build
 
 mkdir /home/ubuntu/staging
 cd /home/ubuntu/staging
+git config --global user.email "ndw@nwalsh.com"
+git config --global user.name "Norman Walsh"
 git clone --branch=gh-pages git@github.com:ndw/defguide.git gh-pages
 cd gh-pages
-git rm -rf ./${DBVERSION}
+if [ -d ./{$DBVERSION} ]; then
+    git rm -rf ./${DBVERSION}
+fi
 mkdir -p ./${DBVERSION}
 cp -Rf $BUILD/html/* ./${DBVERSION}/
 git add -f .
