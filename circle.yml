@@ -10,11 +10,7 @@ general:
   build_dir: en/defguide5
 
 deployment:
-  v52:
-    branch: master
-    commands:
-      - ../bin/circle-ci-deploy.sh
-  v51:
-    branch: docbook-5.1
+  release:
+    tag: /^V5.*/
     commands:
       - ../bin/circle-ci-deploy.sh
