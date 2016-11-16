@@ -10,6 +10,7 @@ BUILD=`pwd`/build
 mkdir /home/ubuntu/staging
 cd /home/ubuntu/staging
 git clone --branch=gh-pages git@github.com:ndw/defguide.git gh-pages
+cd gh-pages
 git rm -rf ./${DBVERSION}
 mkdir -p ./${DBVERSION}
 cp -Rf $BUILD/html/* ./${DBVERSION}/
