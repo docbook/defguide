@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$CIRCLE_TAG" = "" ]; then
-    echo "Only tagged builds are deployed to gh-pages"
-    exit 0
-fi
-
 BOOKVERSION=`cat gradle.properties | grep "^bookVersion" | cut -f2 -d=`
 DBVERSION=`cat gradle.properties | grep "^docbookVersion" | cut -f2 -d=`
 DBVERSION=`echo $DBVERSION | cut -f1 -db` # ignore b1, b2, ... suffixes
@@ -26,4 +21,3 @@ cp -Rf $BUILD/html/* ./tdg/${DBVERSION}/
 git add -f .
 git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
 git push -fq origin gh-pages
-
