@@ -1,8 +1,10 @@
 machine:
   timezone:
     America/Chicago
-  gradle:
-    version: 2.4.7
+  pre:
+    sudo add-apt-repository ppa:cwchien/gradle
+    sudo apt-get update
+    sudo apt-get install gradle
 
 general:
   build_dir: en/defguide5
