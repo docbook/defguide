@@ -1,0 +1,19 @@
+machine:
+  timezone:
+    America/Chicago
+  pre:
+    - sudo add-apt-repository -y ppa:cwchien/gradle
+    - sudo apt-get -y update
+    - sudo apt-get -y install gradle
+
+general:
+  branches:
+    ignore:
+      - gh-pages
+  build_dir: en/defguide5
+
+deployment:
+  release:
+    tag: /^V5.*/
+    commands:
+      - ../bin/circle-ci-deploy.sh
