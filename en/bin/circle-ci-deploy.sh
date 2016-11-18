@@ -10,9 +10,9 @@ BUILD=`pwd`/build
 mkdir $HOME/staging
 cd $HOME/staging
 
-git config --global user.email "ndw@nwalsh.com"
-git config --global user.name "Norman Walsh"
-git clone --branch=gh-pages git@github.com:ndw/defguide.git gh-pages
+git config --global user.email $GIT_EMAIL
+git config --global user.name $GIT_USER
+git clone --branch=gh-pages git@github.com:${CIRCLE_PROJECT_USERNAME}/defguide.git gh-pages
 
 cd gh-pages
 
