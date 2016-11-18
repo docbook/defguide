@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>imageobject</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="figs/web/publishers-icon.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.21"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook Publishers: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-publishers.png" alt="Home" border="0"></a>&nbsp;<a href="imagedata.svg.html" title="imagedata (db.imagedata.svg)"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="imageobjectco" href="imageobjectco.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook Publishers: The Definitive Guide</i> (Version <a href="ch00-online.html">1.1.2 for DocBook Publishers V5.1</a>)</td></tr></table></div><div class="body"><article id="element.db.imageobject" class="refentry"><div class="content"><a class="indexterm" name="element.db.imageobject.1"></a><div class="refnamediv"><h2>imageobject</h2><p><span class="refname">imageobject</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">A wrapper for image data and its associated meta-information</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">imageobject&nbsp;<span class="cceq">::=</span></p><div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="titleforbidden.info.html"><code class="tag-element">info</code></a>?&nbsp;<span class="pattern">(db.titleforbidden.info)</span></li><li>One of: <div class="itemizedlist element-synopsis"><ul><li>One or more of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="imagedata.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata)</span></li></ul></div></li><li>One or more of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="imagedata.svg.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata.svg)</span></li></ul></div></li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="imagedata.mathml.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata.mathml)</span></li></ul></div></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">An <a href="imageobject.html"><code class="tag-element">imageobject</code></a> is a wrapper containing
+      <a href="imagedata.html"><code class="tag-element">imagedata</code></a> and its associated meta-information.</p>
+
+      <p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If the SVG Module is used, <a href="imageobject.html"><code class="tag-element">imageobject</code></a> can also
+      contain the svg:svg element.</p>
+
+      
+
+      <div id="dbreproc.imageobject" class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div><div class="content">
+        
+
+        <p xmlns:mp="http://docbook.org/xslt/ns/mode/private">May be formatted inline or as a displayed block, depending on
+        context. It might not be rendered at all, depending on its placement
+        within a <a href="mediaobject.html"><code class="tag-element">mediaobject</code></a> or
+        <a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a> and the constraints on the
+        publishing system. For a more detailed description of the semantics
+        involved, see <a href="mediaobject.html"><code class="tag-element">mediaobject</code></a>.</p>
+</div></div>
+
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">These elements contain <a href="imageobject.html"><code class="tag-element">imageobject</code></a>: <span class="simplelist"><span class="member"><a href="imageobjectco.html"><code class="tag-element">imageobjectco</code></a></span>, <span class="member"><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></span>, <span class="member"><a href="mediaobject.html"><code class="tag-element">mediaobject</code></a></span></span>.</p></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Children</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The following elements occur in imageobject: <span class="simplelist"><span class="member"><a href="imagedata.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata)</span></span>, <span class="member"><a href="imagedata.mathml.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata.mathml)</span></span>, <span class="member"><a href="imagedata.svg.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata.svg)</span></span>, <span class="member"><a href="titleforbidden.info.html"><code class="tag-element">info</code></a>&nbsp;<span class="pattern">(db.titleforbidden.info)</span></span></span>.</p></div></div>
+
+</div></div><div class="refsection"><div class="refsection-titlepage"><h2>See Also</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><span class="simplelist"><span class="member"><a href="audioobject.html"><code class="tag-element">audioobject</code></a></span>, <span class="member"><a href="caption.html"><code class="tag-element">caption</code></a></span>, <span class="member"><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></span>, <span class="member"><a href="mediaobject.html"><code class="tag-element">mediaobject</code></a></span>, <span class="member"><a href="textobject.html"><code class="tag-element">textobject</code></a></span>, <span class="member"><a href="videoobject.html"><code class="tag-element">videoobject</code></a></span></span></p></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div><div class="content">
+
+
+<pre class="programlisting language-none line-numbers"><code>&lt;article xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;Example imageobject&lt;/title&gt;
+
+&lt;mediaobject&gt;
+  &lt;imageobject condition="web"&gt;
+    &lt;imagedata fileref="figs/web/db5d_ref09.png" format="PNG" scale="70"/&gt;
+  &lt;/imageobject&gt;
+  &lt;imageobject condition="print"&gt;
+    &lt;imagedata fileref="figs/print/db5d_ref09.pdf" format="PDF"/&gt;
+  &lt;/imageobject&gt;
+  &lt;textobject&gt;
+    &lt;phrase&gt;The Eiffel Tower&lt;/phrase&gt;
+  &lt;/textobject&gt;
+  &lt;caption&gt;
+    &lt;para&gt;Designed by Gustave Eiffel in 1889, The Eiffel Tower is one
+          of the most widely recognized buildings in the world.
+    &lt;/para&gt;
+  &lt;/caption&gt;
+&lt;/mediaobject&gt;
+
+&lt;/article&gt;
+</code></pre>
+
+<figure id="element.db.imageobject.8.3" class="informalexample-wrapper example-output"><div class="informalexample example-output"><div id="element.db.imageobject.8.3.1" class="mediaobject"><img src="figs/web/db5d_ref09.png" width="393.4" alt="The Eiffel Tower"><div class="caption"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Designed by Gustave Eiffel in 1889, The Eiffel Tower is one
+          of the most widely recognized buildings in the world.
+    </p></div></div></div></figure>
+
+</div></div></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="imagedata (db.imagedata.svg)" href="imagedata.svg.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook Publishers: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-publishers.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="imageobjectco" href="imageobjectco.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">imagedata (db.imagedata.svg)&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;imageobjectco</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on  <span class="githash">(git hash: 8efbb30ec1f2a59299576c057927c2032216aea4 f2da477a142b88c50ef9ceb6f54ce6b54fca5836)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2015, 2016 Norman Walsh.</p></div></div></div></body></html>
