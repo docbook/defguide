@@ -10,14 +10,18 @@ general:
   branches:
     ignore:
       - gh-pages
-  build_dir: en/defguide5
+  build_dir: en/publishers
 
 deployment:
-  v52:
-    branch: master
+  v50:
+    branch: publishers-5.0
     commands:
-      - ../bin/circle-ci-deploy.sh
+      - ../bin/circle-ci-deploy-publishers.sh
   v51:
-    branch: docbook-5.1
+    branch: publishers-5.1
     commands:
-      - ../bin/circle-ci-deploy.sh
+      - ../bin/circle-ci-deploy-publishers.sh
+  v52:
+    branch: publishers
+    commands:
+      - ../bin/circle-ci-deploy-publishers.sh
