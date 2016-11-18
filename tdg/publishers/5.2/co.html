@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>co</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="figs/web/publishers-icon.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.21"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook Publishers: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-publishers.png" alt="Home" border="0"></a>&nbsp;<a href="city.html" title="city"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="collab" href="collab.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook Publishers: The Definitive Guide</i> (Version <a href="ch00-online.html">1.2.0 for DocBook Publishers V5.2b1</a>)</td></tr></table></div><div class="body"><article id="element.db.co" class="refentry"><div class="content"><a class="indexterm" name="element.db.co.1"></a><div class="refnamediv"><h2>co</h2><p><span class="refname">co</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">The location of a callout embedded in text</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">co&nbsp;<span class="cceq">::=</span></p><div class="itemizedlist element-synopsis"><ul><li><em>empty</em></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a href="ref-elements.html#common.attributes">Common attributes</a> (ID required).</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>label</li></ul></div><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Required attributes are shown in <strong class="emphasis">bold</strong>.</p></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
+
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A <a href="co.html"><code class="tag-element">co</code></a> identifies (by its location) a point of
+reference for a callout. See <a href="callout.html"><code class="tag-element">callout</code></a>.</p>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div><div class="content">
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Formatted inline.</p>
+</div></div>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a href="ref-elements.html#common.attributes">Common attributes</a> (ID required).</p><div class="variablelist"><dl><dt><span class="term attname">label</span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Specifies an identifying string for presentation purposes</p></dd></dl></div></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">These elements contain <a href="co.html"><code class="tag-element">co</code></a>: <span class="simplelist"><span class="member"><a href="literallayout.html"><code class="tag-element">literallayout</code></a></span></span>.</p></div></div>
+
+
+</div></div><div class="refsection"><div class="refsection-titlepage"><h2>See Also</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><span class="simplelist"><span class="member"><a href="areaspec.html"><code class="tag-element">areaspec</code></a></span>, <span class="member"><a href="calloutlist.html"><code class="tag-element">calloutlist</code></a></span>, <span class="member"><a href="coref.html"><code class="tag-element">coref</code></a></span>, <span class="member"><a href="imageobjectco.html"><code class="tag-element">imageobjectco</code></a></span>, <span class="member"><code class="tag-element">programlistingco</code></span>, <span class="member"><code class="tag-element">screenco</code></span></span></p></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div><div class="content">
+
+
+<pre class="programlisting language-none line-numbers"><code>&lt;article xmlns='http://docbook.org/ns/docbook' version="5.0"&gt;
+&lt;title&gt;Example co&lt;/title&gt;
+
+&lt;informalexample&gt;
+&lt;screen&gt; Volume in drive C is SYSTEM         Serial number is 2350:717C
+ Directory of  C:\
+
+10/17/97   9:04         &amp;lt;DIR&gt;    bin
+10/16/97  14:11         &amp;lt;DIR&gt;    DOS            &lt;co xml:id="co.dos"/&gt;
+10/16/97  14:40         &amp;lt;DIR&gt;    Program Files
+10/16/97  14:46         &amp;lt;DIR&gt;    TEMP
+10/17/97   9:04         &amp;lt;DIR&gt;    tmp
+10/16/97  14:37         &amp;lt;DIR&gt;    WINNT
+10/16/97  14:25             119  AUTOEXEC.BAT   &lt;co xml:id="co.autoexec.bat"/&gt;
+ 2/13/94   6:21          54,619  COMMAND.COM    &lt;co xml:id="co.command.com"/&gt;
+10/16/97  14:25             115  CONFIG.SYS     &lt;co xml:id="co.config.sys"/&gt;
+11/16/97  17:17      61,865,984  pagefile.sys
+ 2/13/94   6:21           9,349  WINA20.386     &lt;co xml:id="co.wina20.386"/&gt;&lt;/screen&gt;
+&lt;calloutlist&gt;
+&lt;callout arearefs="co.dos"&gt;
+&lt;para&gt;This directory holds &lt;trademark&gt;MS-DOS&lt;/trademark&gt;, the
+operating system that was installed before &lt;trademark&gt;Windows
+NT&lt;/trademark&gt;.
+&lt;/para&gt;
+&lt;/callout&gt;
+
+&lt;callout arearefs="co.autoexec.bat co.command.com co.config.sys"&gt;
+&lt;para&gt;System startup code for DOS.
+&lt;/para&gt;
+&lt;/callout&gt;
+
+&lt;callout arearefs="co.wina20.386"&gt;
+&lt;para&gt;Some sort of &lt;trademark&gt;Windows 3.1&lt;/trademark&gt; hack for some
+386 processors, as I recall.
+&lt;/para&gt;
+&lt;/callout&gt;
+&lt;/calloutlist&gt;
+&lt;/informalexample&gt;
+
+&lt;/article&gt;
+</code></pre>
+
+<figure id="element.db.co.8.3" class="informalexample-wrapper example-output"><div class="informalexample example-output"><figure id="element.db.co.8.3.1" class="informalexample-wrapper"><div class="informalexample"><pre class="screen language-none line-numbers"><code> Volume in drive C is SYSTEM         Serial number is 2350:717C
+ Directory of  C:\
+
+10/17/97   9:04         &lt;DIR&gt;    bin
+10/16/97  14:11         &lt;DIR&gt;    DOS            <a name="co.dos" id="co.dos"></a><span data-number="3" class="callout-bug callout-bug-unicode">❸</span>
+10/16/97  14:40         &lt;DIR&gt;    Program Files
+10/16/97  14:46         &lt;DIR&gt;    TEMP
+10/17/97   9:04         &lt;DIR&gt;    tmp
+10/16/97  14:37         &lt;DIR&gt;    WINNT
+10/16/97  14:25             119  AUTOEXEC.BAT   <a name="co.autoexec.bat" id="co.autoexec.bat"></a><span data-number="4" class="callout-bug callout-bug-unicode">❹</span>
+ 2/13/94   6:21          54,619  COMMAND.COM    <a name="co.command.com" id="co.command.com"></a><span data-number="5" class="callout-bug callout-bug-unicode">❺</span>
+10/16/97  14:25             115  CONFIG.SYS     <a name="co.config.sys" id="co.config.sys"></a><span data-number="6" class="callout-bug callout-bug-unicode">❻</span>
+11/16/97  17:17      61,865,984  pagefile.sys
+ 2/13/94   6:21           9,349  WINA20.386     <a name="co.wina20.386" id="co.wina20.386"></a><span data-number="7" class="callout-bug callout-bug-unicode">❼</span></code></pre><div class="calloutlist"><dl><dt class="callout"><a href="co.html#co.dos" class="callout-link"><span data-number="3" class="callout-bug callout-bug-unicode">❸</span></a>&nbsp;</dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This directory holds <span class="trademark">MS-DOS™</span>, the
+operating system that was installed before <span class="trademark">Windows
+NT™</span>.
+</p></dd><dt class="callout"><a href="co.html#co.autoexec.bat" class="callout-link"><span data-number="4" class="callout-bug callout-bug-unicode">❹</span></a>&nbsp;<a href="co.html#co.command.com" class="callout-link"><span data-number="5" class="callout-bug callout-bug-unicode">❺</span></a>&nbsp;<a href="co.html#co.config.sys" class="callout-link"><span data-number="6" class="callout-bug callout-bug-unicode">❻</span></a>&nbsp;</dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">System startup code for DOS.
+</p></dd><dt class="callout"><a href="co.html#co.wina20.386" class="callout-link"><span data-number="7" class="callout-bug callout-bug-unicode">❼</span></a>&nbsp;</dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Some sort of <span class="trademark">Windows 3.1™</span> hack for some
+386 processors, as I recall.
+</p></dd></dl></div></div></figure></div></figure>
+
+
+
+</div></div></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="city" href="city.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook Publishers: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-publishers.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="collab" href="collab.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">city&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;collab</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on  <span class="githash">(git hash: 8efbb30ec1f2a59299576c057927c2032216aea4 f2da477a142b88c50ef9ceb6f54ce6b54fca5836)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2015, 2016 Norman Walsh.</p></div></div></div></body></html>

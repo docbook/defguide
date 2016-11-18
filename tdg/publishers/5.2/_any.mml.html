@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>mml:*</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="figs/web/publishers-icon.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.21"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook Publishers: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-publishers.png" alt="Home" border="0"></a>&nbsp;<a href="_any.html" title="*:*"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="svg:*" href="_any.svg.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook Publishers: The Definitive Guide</i> (Version <a href="ch00-online.html">1.2.0 for DocBook Publishers V5.2b1</a>)</td></tr></table></div><div class="body"><article id="element.db._any.mml" class="refentry"><div class="content"><a class="indexterm" name="element.db._any.mml.1"></a><div class="refnamediv"><h2>mml:*</h2><p><span class="refname">mml:*</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">Any element from the MathML namespace</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><em>mml:*</em>&nbsp;<span class="cceq">::=</span></p><div class="itemizedlist element-synopsis"><ul><li>Any element from the http://www.w3.org/1998/Math/MathML namespace.</li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Attributes:</p><div class="itemizedlist element-synopsis"><ul><li><em>Zero or more:</em><div class="itemizedlist element-synopsis"><ul><li><em>Any attribute</em></li></ul></div></li></ul></div></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This position in a content model can be occupied by any element in
+      the MathML namespace.</p>
+
+      <p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <a href="http://www.w3.org/TR/MathML2/">Mathematical Markup
+      Language</a> Recommendation from the W3C defines the Mathematical
+      Markup Language, or MathML. MathML is an XML application for describing
+      mathematical notation and capturing both its structure and its
+      content.</p>
+
+      <p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A complete description of MathML is outside the scope of this
+      reference.</p>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">None.</p><div class="variablelist"><dl><dt><span class="term attname">any attribute</span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Any attribute, including any attribute in any namespace.</p></dd></dl></div></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">These elements contain <a href="_any.mml.html"><code class="tag-element">mml:*</code></a>: <span class="simplelist"><span class="member"><a href="equation.html"><code class="tag-element">equation</code></a></span>, <span class="member"><a href="imagedata.mathml.html"><code class="tag-element">imagedata</code></a>&nbsp;<span class="pattern">(db.imagedata.mathml)</span></span>, <span class="member"><a href="informalequation.html"><code class="tag-element">informalequation</code></a></span>, <span class="member"><a href="inlineequation.html"><code class="tag-element">inlineequation</code></a></span></span>.</p></div></div>
+
+</div></div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div><div class="content">
+
+
+<pre class="programlisting language-none line-numbers"><code>&lt;article xmlns='http://docbook.org/ns/docbook'
+	 xmlns:mml="http://www.w3.org/1998/Math/MathML"&gt;
+&lt;title&gt;Example mml-math&lt;/title&gt;
+
+&lt;informalequation&gt;
+&lt;mml:math&gt;
+  &lt;mml:msup&gt;
+    &lt;mml:mi&gt;x&lt;/mml:mi&gt;
+    &lt;mml:mn&gt;3&lt;/mml:mn&gt;
+  &lt;/mml:msup&gt;
+&lt;/mml:math&gt;
+&lt;/informalequation&gt;
+
+&lt;/article&gt;
+</code></pre>
+
+<figure id="element.db._any.mml.7.3" class="informalexample-wrapper example-output"><div class="informalexample example-output"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><code class="literal">x<sup>3</sup></code></p></div></figure>
+
+</div></div></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="*:*" href="_any.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook Publishers: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-publishers.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="svg:*" href="_any.svg.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">*:*&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;svg:*</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on  <span class="githash">(git hash: 8efbb30ec1f2a59299576c057927c2032216aea4 f2da477a142b88c50ef9ceb6f54ce6b54fca5836)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2015, 2016 Norman Walsh.</p></div></div></div></body></html>
