@@ -9,7 +9,7 @@
 <p:option name="arch" select="'defguide5'"/>
 <p:option name="revision" required="true"/>
 
-<p:import href="../../../xslt20/xslt/base/pipelines/docbook.xpl"/>
+<p:import href="../defguide5/build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
 <p:variable name="srcbase" select="base-uri(/)"/>
 
