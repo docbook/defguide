@@ -264,9 +264,9 @@ the relationship is specified with a <tag class="attribute">type</tag>
 attribute. For example:</para>
 
 <programlisting><![CDATA[<relationship type="seealso">
-  <instance resourceref="tut1"/>
-  <instance resourceref="tut2"/>
-  <instance resourceref="task1"/>
+  <instance linkend="tut1"/>
+  <instance linkend="tut2"/>
+  <instance linkend="task1"/>
 </relationship>]]></programlisting>
 
 <para>This asserts that there is a “seealso” relationship between these
@@ -280,10 +280,10 @@ relationship establishes a path through a set of resources:</para>
   <info>
     <title>New User Introduction</title>
   </info>
-  <instance resourceref="over1"/>
-  <instance resourceref="over2"/>
-  <instance resourceref="task3"/>
-  <instance resourceref="cleanup"/>
+  <instance linkend="over1"/>
+  <instance linkend="over2"/>
+  <instance linkend="task3"/>
+  <instance linkend="cleanup"/>
 </relationship>]]></programlisting>
 
 <para>A sophisticated help system could use this path to guide a new
@@ -301,11 +301,11 @@ DocBook), or with a module (to address requirements beyond the limited
 transformation capabilities of the assembly).</para>
 
 <programlisting><![CDATA[<transforms>
-  <transform name="dita2docbook" type="text/xsl" href="dita2db.xsl"/>
-  <transform name="tutorial" type="text/xsl" href="db2tutorial.xsl"/>
-  <transform name="art2pi" type="text/xsl" href="art2pi.xsl"/>
-  <transform name="office" type="application/xproc+xml" href="office2db.xpl"/>
-  <transform name="office" type="text/xsl" href="extractoffice.xsl"/>
+  <transform name="dita2docbook" grammar="text/xsl" href="dita2db.xsl"/>
+  <transform name="tutorial" grammar="text/xsl" href="db2tutorial.xsl"/>
+  <transform name="art2pi" grammar="text/xsl" href="art2pi.xsl"/>
+  <transform name="office" grammar="application/xproc+xml" href="office2db.xpl"/>
+  <transform name="office" grammar="text/xsl" href="extractoffice.xsl"/>
 </transforms>]]></programlisting>
 
 <para>If there are several ways to provide a transformation, they may
@@ -564,10 +564,10 @@ the help system:</para>
 <programlisting linenumbering="numbered"><![CDATA[  <structure type="help.system">
     <title>XIDI Build System Help</title>
     <titleabbrev>XIDI Help</titleabbrev>
-    <output format="pdf" file="sys-book.pdf" renderas="book"/>
+    <output outputformat="pdf" file="sys-book.pdf" renderas="book"/>
     <!-- The PDF output will be rendered into a file expected by the help
          system for the printable version of the help system. -->
-    <output format="webhelp" chunk="false" renderas="topic"/>
+    <output outputformat="webhelp" chunk="false" renderas="topic"/>
     <!-- The webhelp output will NOT be chunked and the default render
          (wherever a file name is specified) is as a topic.   IF the
          renderas on an output that is a child of structure is not treated as
@@ -596,15 +596,15 @@ in the back.</para>
 <example>
 <title>The Front End</title>
 <programlisting><![CDATA[    <module>
-      <output format="webhelp" file="sys-toc.html" renderas="topic"/>
+      <output outputformat="webhelp" file="sys-toc.html" renderas="topic"/>
       <toc/>
       <!-- By convention, there is a ToC at the beginning of a help system and
            of the PDF of the help system.  The delivery system expects the file
            to be named sys-toc.html. -->
     </module>
     <module>
-      <output format="webhelp" file="sys-index.html"/>
-      <output format="pdf" suppress="true"/>
+      <output outputformat="webhelp" file="sys-index.html"/>
+      <output outputformat="pdf" suppress="true"/>
       <index/>
       <!-- By convention, there is an index at the beginning of a help system
            but it is expected to be at the end of a book.  The delivery system
@@ -632,45 +632,45 @@ deal with things like Wizards and related screens and dialogs.</para>
 <example>
 <title>Middles Section of Help System</title>
 <programlisting><![CDATA[    <module resourceref="overview">
-      <output format="webhelp" file="overview.html"/>
-      <output format="pdf" renderas="chapter"/>
+      <output outputformat="webhelp" file="overview.html"/>
+      <output outputformat="pdf" renderas="chapter"/>
     </module>
     <module resourceref="task.build.doc">
-      <output format="webhelp" file="tsk-build-doc.html"/>
-      <output format="pdf" renderas="section"/>
+      <output outputformat="webhelp" file="tsk-build-doc.html"/>
+      <output outputformat="pdf" renderas="section"/>
     </module>
     <module>
-      <output format="webhelp" file="pckg-intro.html"/>
-      <output format="pdf" renderas="chapter"/>
+      <output outputformat="webhelp" file="pckg-intro.html"/>
+      <output outputformat="pdf" renderas="chapter"/>
       <title>Packaging</title>
       <module resourceref="pckg.intro" contentonly="true" omittitles="true"/>
 
       <module resourceref="task.package.book.pub">
-        <output format="webhelp" file="tsk-pckg-book-pub.html"/>
-        <output format="pdf" renderas="section"/>
+        <output outputformat="webhelp" file="tsk-pckg-book-pub.html"/>
+        <output outputformat="pdf" renderas="section"/>
       </module>
       <module resourceref="task.package.help">
-        <output format="webhelp" file="tsk-pckg-help.html"/>
-        <output format="pdf" renderas="section"/>
+        <output outputformat="webhelp" file="tsk-pckg-help.html"/>
+        <output outputformat="pdf" renderas="section"/>
       </module>
       <module resourceref="task.package.l10n">
-        <output format="webhelp" file="tsk-pckg-l10n.html"/>
-        <output format="pdf" renderas="section"/>
+        <output outputformat="webhelp" file="tsk-pckg-l10n.html"/>
+        <output outputformat="pdf" renderas="section"/>
       </module>
     </module>
     <module>
-      <output format="webhelp" file="scr-overvw.html"/>
-      <output format="pdf" renderas="chapter"/>
+      <output outputformat="webhelp" file="scr-overvw.html"/>
+      <output outputformat="pdf" renderas="chapter"/>
       <title>Screens</title>
       <module resourceref="screen.overview" contentonly="true"
       omittitles="true"/>
       <module resourceref="screen.build.doc">
-        <output format="webhelp" file="scr-build.html"/>
-        <output format="pdf" renderas="section"/>
+        <output outputformat="webhelp" file="scr-build.html"/>
+        <output outputformat="pdf" renderas="section"/>
       </module>
       <module resourceref="screen.package">
-        <output format="webhelp" file="scr-package.html"/>
-        <output format="pdf" renderas="section"/>
+        <output outputformat="webhelp" file="scr-package.html"/>
+        <output outputformat="pdf" renderas="section"/>
       </module>
     </module>]]></programlisting>
 </example>
@@ -685,26 +685,26 @@ back end components are added.</para>
 <example>
 <title>Back End of Help System</title>
 <programlisting><![CDATA[    <module>
-      <output format="webhelp"/> 
+      <output outputformat="webhelp"/> 
       <!-- No file, just want the link in the navigation. -->
-      <output format="pdf" suppress="true"/>
+      <output outputformat="pdf" suppress="true"/>
       <!-- Nothing in PDF. -->
-      <title xmlns:ns1="http://www.w3.org/1999/xlink" ns1:href="sys-book.pdf">Printable Version (PDF)</title>
+      <title xmlns:xl="http://www.w3.org/1999/xlink" xl:href="sys-book.pdf">Printable Version (PDF)</title>
     </module>
     <module resourceref="glossary">
-      <output format="webhelp" file="sys-glossary.html"/>
+      <output outputformat="webhelp" file="sys-glossary.html"/>
       <!-- The help delivery system expects the glossary to be in a file named
            sys-glossary.html.-->
     </module>
     <module>
-      <output format="webhelp" suppress="true"/>
+      <output outputformat="webhelp" suppress="true"/>
       <index/>
       <!-- By conventions, the index is at the back of a book, but it has
            already been presented at the front of the help system. -->
     </module>
     <module resourceref="help.on.help">
-      <output format="webhelp" file="help-on-help.html"/>
-      <output format="pdf" suppress="true"/>
+      <output outputformat="webhelp" file="help-on-help.html"/>
+      <output outputformat="pdf" suppress="true"/>
       <!-- By convention help on how to use the help system is not included in
            the printable version of the help system and is stock, pulled from a
            library. -->
