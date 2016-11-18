@@ -1,0 +1,199 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>%*.attrib; Parameter Entities</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-paraments-x.html" title="DocBook Parameter Entity Reference"><link rel="previous" href="pe-attlist-x.html" title="%*.attlist; Parameter Entities"><link rel="next" href="pe-attval-x.html" title="%*.attval; Parameter Entities"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="%*.attlist; Parameter Entities" href="pe-attlist-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Parameter Entity Reference" href="ref-paraments-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="%*.attval; Parameter Entities" href="pe-attval-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="pe-attrib"></a><div><div><div><h1 class="title"><code class="sgmltag-paramentity">%*.attrib;</code> Parameter Entities</h1></div></div></div><div class="refnamediv"><p><code class="sgmltag-paramentity">%*.attrib;</code> Parameter Entities &#8212; Define attributes on selected elements
+</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><p>
+These entities parameterize the attribute declarations on
+selected elements.
+</p></div><div class="refsect1" lang="en"><a name="d0e195835"></a><h2>Description</h2><p>
+Each of the following sections describes an individual parameter entity.
+</p><div class="refsect2" lang="en"><a name="bibliorelation.type.attrib.parament"></a><h3>%bibliorelation.type.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">type    (isversionof
+                         |hasversion
+                         |isreplacedby
+                         |replaces
+                         |isrequiredby
+                         |requires
+                         |ispartof
+                         |haspart
+                         |isreferencedby
+                         |references
+                         |isformatof
+                         |hasformat
+                         |othertype
+                         %local.bibliorelation.types;)       #IMPLIED
+		othertype	CDATA	#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">type    (isversionof
+                         |hasversion
+                         |isreplacedby
+                         |replaces
+                         |isrequiredby
+                         |requires
+                         |ispartof
+                         |haspart
+                         |isreferencedby
+                         |references
+                         |isformatof
+                         |hasformat
+                         |othertype
+                         )       #IMPLIED
+		othertype	CDATA	#IMPLIED</pre><p><b><span class="bold"><strong>%bibliorelation.type.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%bibliorelation.type.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="bibliorelation-x.html"><code class="sgmltag-element">bibliorelation</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="common.table.attribs.parament"></a><h3>%common.table.attribs;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">%bodyatt;
+	%secur;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+		floatstyle	CDATA			#IMPLIED
+		rowheader	(firstcol|norowheader)	#IMPLIED
+                label		CDATA		#IMPLIED
+	
+	id		ID		#IMPLIED
+	lang		CDATA		#IMPLIED
+	remap		CDATA		#IMPLIED
+	xreflabel	CDATA		#IMPLIED
+	revisionflag	(changed
+			|added
+			|deleted
+			|off)		#IMPLIED
+	arch		CDATA		#IMPLIED
+        condition	CDATA		#IMPLIED
+	conformance	NMTOKENS	#IMPLIED
+	os		CDATA		#IMPLIED
+	revision	CDATA		#IMPLIED
+        security	CDATA		#IMPLIED
+	userlevel	CDATA		#IMPLIED
+	vendor		CDATA		#IMPLIED
+	wordsize	CDATA		#IMPLIED
+	
+	dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED
+	xml:base	CDATA		#IMPLIED
+	
+	class       CDATA          #IMPLIED
+	style       CDATA          #IMPLIED
+	title       CDATA         #IMPLIED
+	xml:lang    NMTOKEN        #IMPLIED
+	onclick     CDATA       #IMPLIED
+  ondblclick  CDATA       #IMPLIED
+  onmousedown CDATA       #IMPLIED
+  onmouseup   CDATA       #IMPLIED
+  onmouseover CDATA       #IMPLIED
+  onmousemove CDATA       #IMPLIED
+  onmouseout  CDATA       #IMPLIED
+  onkeypress  CDATA       #IMPLIED
+  onkeydown   CDATA       #IMPLIED
+  onkeyup     CDATA       #IMPLIED
+	role		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%common.table.attribs; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%common.table.attribs; appears in:</strong></span></td></tr><tr><td style=""><a href="informaltable-x.html"><code class="sgmltag-element">informaltable</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="condition.attrib.parament"></a><h3>%condition.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">condition	CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">condition	CDATA		#IMPLIED</pre></div><div class="refsect2" lang="en"><a name="dir.attrib.parament"></a><h3>%dir.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED</pre></div><div class="refsect2" lang="en"><a name="graphics.attrib.parament"></a><h3>%graphics.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+	entityref	ENTITY		#IMPLIED
+	fileref 	CDATA		#IMPLIED
+	format		(%notation.class;) #IMPLIED
+	srccredit	CDATA		#IMPLIED
+	width		CDATA		#IMPLIED
+	contentwidth	CDATA		#IMPLIED
+	depth		CDATA		#IMPLIED
+	contentdepth	CDATA		#IMPLIED
+	align		(left
+			|right
+			|center)	#IMPLIED
+	valign		(top
+			|middle
+			|bottom)	#IMPLIED
+	scale		CDATA		#IMPLIED
+	scalefit	%yesorno.attvals;
+					#IMPLIED
+	%local.graphics.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+	entityref	ENTITY		#IMPLIED
+	fileref 	CDATA		#IMPLIED
+	format		(BMP| CGM-CHAR | CGM-BINARY | CGM-CLEAR | DITROFF | DVI
+		| EPS | EQN | FAX | GIF | GIF87a | GIF89a
+		| JPG | JPEG | IGES | PCX
+		| PIC | PNG | PS | SGML | TBL | TEX | TIFF | WMF | WPG
+                | SVG | PDF | SWF
+		| linespecific
+		) #IMPLIED
+	srccredit	CDATA		#IMPLIED
+	width		CDATA		#IMPLIED
+	contentwidth	CDATA		#IMPLIED
+	depth		CDATA		#IMPLIED
+	contentdepth	CDATA		#IMPLIED
+	align		(left
+			|right
+			|center)	#IMPLIED
+	valign		(top
+			|middle
+			|bottom)	#IMPLIED
+	scale		CDATA		#IMPLIED
+	scalefit	CDATA
+					#IMPLIED</pre><p><b><span class="bold"><strong>%graphics.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%graphics.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="graphic-x.html"><code class="sgmltag-element">graphic</code></a></td><td style=""><a href="inlinegraphic-x.html"><code class="sgmltag-element">inlinegraphic</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="keyaction.attrib.parament"></a><h3>%keyaction.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+	action		(click
+			|double-click
+			|press
+			|seq
+			|simul
+			|other)		#IMPLIED
+	otheraction	CDATA		#IMPLIED
+	%local.keyaction.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+	action		(click
+			|double-click
+			|press
+			|seq
+			|simul
+			|other)		#IMPLIED
+	otheraction	CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%keyaction.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%keyaction.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="keycombo-x.html"><code class="sgmltag-element">keycombo</code></a></td><td style=""><a href="shortcut-x.html"><code class="sgmltag-element">shortcut</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="label.attrib.parament"></a><h3>%label.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">label		CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">label		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%label.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%label.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="appendix-x.html"><code class="sgmltag-element">appendix</code></a></td><td style=""><a href="area-x.html"><code class="sgmltag-element">area</code></a></td><td style=""><a href="areaset-x.html"><code class="sgmltag-element">areaset</code></a></td></tr><tr><td style=""><a href="book-x.html"><code class="sgmltag-element">book</code></a></td><td style=""><a href="chapter-x.html"><code class="sgmltag-element">chapter</code></a></td><td style=""><a href="cmdsynopsis-x.html"><code class="sgmltag-element">cmdsynopsis</code></a></td></tr><tr><td style=""><a href="co-x.html"><code class="sgmltag-element">co</code></a></td><td style=""><a href="coref-x.html"><code class="sgmltag-element">coref</code></a></td><td style=""><a href="equation-x.html"><code class="sgmltag-element">equation</code></a></td></tr><tr><td style=""><a href="example-x.html"><code class="sgmltag-element">example</code></a></td><td style=""><a href="figure-x.html"><code class="sgmltag-element">figure</code></a></td><td style=""><a href="footnote-x.html"><code class="sgmltag-element">footnote</code></a></td></tr><tr><td style=""><a href="footnoteref-x.html"><code class="sgmltag-element">footnoteref</code></a></td><td style=""><a href="funcsynopsis-x.html"><code class="sgmltag-element">funcsynopsis</code></a></td><td style=""><a href="informalfigure-x.html"><code class="sgmltag-element">informalfigure</code></a></td></tr><tr><td style=""><a href="lot-x.html"><code class="sgmltag-element">lot</code></a></td><td style=""><a href="part-x.html"><code class="sgmltag-element">part</code></a></td><td style=""><a href="partintro-x.html"><code class="sgmltag-element">partintro</code></a></td></tr><tr><td style=""><a href="reference-x.html"><code class="sgmltag-element">reference</code></a></td><td style=""><a href="sect1-x.html"><code class="sgmltag-element">sect1</code></a></td><td style=""><a href="sect2-x.html"><code class="sgmltag-element">sect2</code></a></td></tr><tr><td style=""><a href="sect3-x.html"><code class="sgmltag-element">sect3</code></a></td><td style=""><a href="sect4-x.html"><code class="sgmltag-element">sect4</code></a></td><td style=""><a href="sect5-x.html"><code class="sgmltag-element">sect5</code></a></td></tr><tr><td style=""><a href="section-x.html"><code class="sgmltag-element">section</code></a></td><td style=""><a href="synopsis-x.html"><code class="sgmltag-element">synopsis</code></a></td><td style=""><a href="tocback-x.html"><code class="sgmltag-element">tocback</code></a></td></tr><tr><td style=""><a href="tocchap-x.html"><code class="sgmltag-element">tocchap</code></a></td><td style=""><a href="tocfront-x.html"><code class="sgmltag-element">tocfront</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="linespecific.attrib.parament"></a><h3>%linespecific.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">format		NOTATION
+			(linespecific)	'linespecific'
+         %xml-space.attrib;
+         linenumbering	(numbered|unnumbered) 	#IMPLIED
+         continuation	(continues|restarts)	#IMPLIED
+         startinglinenumber	CDATA		#IMPLIED
+         language	CDATA			#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">format		NOTATION
+			(linespecific)	'linespecific'
+         xml:space	(preserve)		#IMPLIED
+         linenumbering	(numbered|unnumbered) 	#IMPLIED
+         continuation	(continues|restarts)	#IMPLIED
+         startinglinenumber	CDATA		#IMPLIED
+         language	CDATA			#IMPLIED</pre><p><b><span class="bold"><strong>%linespecific.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%linespecific.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="address-x.html"><code class="sgmltag-element">address</code></a></td><td style=""><a href="classsynopsisinfo-x.html"><code class="sgmltag-element">classsynopsisinfo</code></a></td><td style=""><a href="funcsynopsisinfo-x.html"><code class="sgmltag-element">funcsynopsisinfo</code></a></td></tr><tr><td style=""><a href="literallayout-x.html"><code class="sgmltag-element">literallayout</code></a></td><td style=""><a href="programlisting-x.html"><code class="sgmltag-element">programlisting</code></a></td><td style=""><a href="screen-x.html"><code class="sgmltag-element">screen</code></a></td></tr><tr><td style=""><a href="synopsis-x.html"><code class="sgmltag-element">synopsis</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="linkend.attrib.parament"></a><h3>%linkend.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">linkend	IDREF		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">linkend	IDREF		#IMPLIED</pre><p><b><span class="bold"><strong>%linkend.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%linkend.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="firstterm-x.html"><code class="sgmltag-element">firstterm</code></a></td><td style=""><a href="glossterm-x.html"><code class="sgmltag-element">glossterm</code></a></td><td style=""><a href="lotentry-x.html"><code class="sgmltag-element">lotentry</code></a></td></tr><tr><td style=""><a href="seeie-x.html"><code class="sgmltag-element">seeie</code></a></td><td style=""><a href="tocback-x.html"><code class="sgmltag-element">tocback</code></a></td><td style=""><a href="tocentry-x.html"><code class="sgmltag-element">tocentry</code></a></td></tr><tr><td style=""><a href="tocfront-x.html"><code class="sgmltag-element">tocfront</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="linkendreq.attrib.parament"></a><h3>%linkendreq.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">linkend	IDREF		#REQUIRED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">linkend	IDREF		#REQUIRED</pre><p><b><span class="bold"><strong>%linkendreq.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%linkendreq.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="biblioref-x.html"><code class="sgmltag-element">biblioref</code></a></td><td style=""><a href="coref-x.html"><code class="sgmltag-element">coref</code></a></td><td style=""><a href="footnoteref-x.html"><code class="sgmltag-element">footnoteref</code></a></td></tr><tr><td style=""><a href="link-x.html"><code class="sgmltag-element">link</code></a></td><td style=""><a href="synopfragmentref-x.html"><code class="sgmltag-element">synopfragmentref</code></a></td><td style=""><a href="xref-x.html"><code class="sgmltag-element">xref</code></a></td></tr></table></div><div class="refsect2" lang="en"><a name="linkends.attrib.parament"></a><h3>%linkends.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">linkends	IDREFS		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">linkends	IDREFS		#IMPLIED</pre><p><b><span class="bold"><strong>%linkends.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%linkends.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="area-x.html"><code class="sgmltag-element">area</code></a></td><td style=""><a href="co-x.html"><code class="sgmltag-element">co</code></a></td><td style=""><a href="primaryie-x.html"><code class="sgmltag-element">primaryie</code></a></td></tr><tr><td style=""><a href="secondaryie-x.html"><code class="sgmltag-element">secondaryie</code></a></td><td style=""><a href="seealsoie-x.html"><code class="sgmltag-element">seealsoie</code></a></td><td style=""><a href="tertiaryie-x.html"><code class="sgmltag-element">tertiaryie</code></a></td></tr></table></div><div class="refsect2" lang="en"><a name="mark.attrib.parament"></a><h3>%mark.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">mark		CDATA		#IMPLIED
+	%local.mark.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">mark		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%mark.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%mark.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="itemizedlist-x.html"><code class="sgmltag-element">itemizedlist</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="moreinfo.attrib.parament"></a><h3>%moreinfo.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">moreinfo	(refentry|none)	'none</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">moreinfo	(refentry|none)	'none</pre><p><b><span class="bold"><strong>%moreinfo.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%moreinfo.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="action-x.html"><code class="sgmltag-element">action</code></a></td><td style=""><a href="application-x.html"><code class="sgmltag-element">application</code></a></td><td style=""><a href="command-x.html"><code class="sgmltag-element">command</code></a></td></tr><tr><td style=""><a href="computeroutput-x.html"><code class="sgmltag-element">computeroutput</code></a></td><td style=""><a href="database-x.html"><code class="sgmltag-element">database</code></a></td><td style=""><a href="errorcode-x.html"><code class="sgmltag-element">errorcode</code></a></td></tr><tr><td style=""><a href="filename-x.html"><code class="sgmltag-element">filename</code></a></td><td style=""><a href="function-x.html"><code class="sgmltag-element">function</code></a></td><td style=""><a href="guibutton-x.html"><code class="sgmltag-element">guibutton</code></a></td></tr><tr><td style=""><a href="guiicon-x.html"><code class="sgmltag-element">guiicon</code></a></td><td style=""><a href="guilabel-x.html"><code class="sgmltag-element">guilabel</code></a></td><td style=""><a href="guimenu-x.html"><code class="sgmltag-element">guimenu</code></a></td></tr><tr><td style=""><a href="guimenuitem-x.html"><code class="sgmltag-element">guimenuitem</code></a></td><td style=""><a href="guisubmenu-x.html"><code class="sgmltag-element">guisubmenu</code></a></td><td style=""><a href="hardware-x.html"><code class="sgmltag-element">hardware</code></a></td></tr><tr><td style=""><a href="interface-x.html"><code class="sgmltag-element">interface</code></a></td><td style=""><a href="keycap-x.html"><code class="sgmltag-element">keycap</code></a></td><td style=""><a href="keycombo-x.html"><code class="sgmltag-element">keycombo</code></a></td></tr><tr><td style=""><a href="literal-x.html"><code class="sgmltag-element">literal</code></a></td><td style=""><a href="menuchoice-x.html"><code class="sgmltag-element">menuchoice</code></a></td><td style=""><a href="mousebutton-x.html"><code class="sgmltag-element">mousebutton</code></a></td></tr><tr><td style=""><a href="parameter-x.html"><code class="sgmltag-element">parameter</code></a></td><td style=""><a href="prompt-x.html"><code class="sgmltag-element">prompt</code></a></td><td style=""><a href="property-x.html"><code class="sgmltag-element">property</code></a></td></tr><tr><td style=""><a href="shortcut-x.html"><code class="sgmltag-element">shortcut</code></a></td><td style=""><a href="systemitem-x.html"><code class="sgmltag-element">systemitem</code></a></td><td style=""><a href="userinput-x.html"><code class="sgmltag-element">userinput</code></a></td></tr></table></div><div class="refsect2" lang="en"><a name="objectdata.attrib.parament"></a><h3>%objectdata.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+	entityref	ENTITY		#IMPLIED
+	fileref 	CDATA		#IMPLIED
+	format		(%notation.class;)
+					#IMPLIED
+	srccredit	CDATA		#IMPLIED
+	%local.objectdata.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+	entityref	ENTITY		#IMPLIED
+	fileref 	CDATA		#IMPLIED
+	format		(BMP| CGM-CHAR | CGM-BINARY | CGM-CLEAR | DITROFF | DVI
+		| EPS | EQN | FAX | GIF | GIF87a | GIF89a
+		| JPG | JPEG | IGES | PCX
+		| PIC | PNG | PS | SGML | TBL | TEX | TIFF | WMF | WPG
+                | SVG | PDF | SWF
+		| linespecific
+		)
+					#IMPLIED
+	srccredit	CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%objectdata.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%objectdata.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="audiodata-x.html"><code class="sgmltag-element">audiodata</code></a></td><td style=""><a href="imagedata-x.html"><code class="sgmltag-element">imagedata</code></a></td><td style=""><a href="textdata-x.html"><code class="sgmltag-element">textdata</code></a></td></tr><tr><td style=""><a href="videodata-x.html"><code class="sgmltag-element">videodata</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="pagenum.attrib.parament"></a><h3>%pagenum.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">pagenum	CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">pagenum	CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%pagenum.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%pagenum.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="anchor-x.html"><code class="sgmltag-element">anchor</code></a></td><td style=""><a href="beginpage-x.html"><code class="sgmltag-element">beginpage</code></a></td><td style=""><a href="indexterm-x.html"><code class="sgmltag-element">indexterm</code></a></td></tr><tr><td style=""><a href="lotentry-x.html"><code class="sgmltag-element">lotentry</code></a></td><td style=""><a href="title-x.html"><code class="sgmltag-element">title</code></a></td><td style=""><a href="toc-x.html"><code class="sgmltag-element">toc</code></a></td></tr><tr><td style=""><a href="tocback-x.html"><code class="sgmltag-element">tocback</code></a></td><td style=""><a href="tocentry-x.html"><code class="sgmltag-element">tocentry</code></a></td><td style=""><a href="tocfront-x.html"><code class="sgmltag-element">tocfront</code></a></td></tr></table></div><div class="refsect2" lang="en"><a name="required-IDREF-to-constraintdef-ID.parament"></a><h3>%required-IDREF-to-constraintdef-ID;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">linkend IDREF #REQUIRED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">linkend IDREF #REQUIRED</pre><p><b><span class="bold"><strong>%required-IDREF-to-constraintdef-ID; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%required-IDREF-to-constraintdef-ID; appears in:</strong></span></td></tr><tr><td style=""><a href="constraint-x.html"><code class="sgmltag-element">constraint</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="required-IDREF-to-production-ID.parament"></a><h3>%required-IDREF-to-production-ID;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">linkend IDREF #REQUIRED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">linkend IDREF #REQUIRED</pre><p><b><span class="bold"><strong>%required-IDREF-to-production-ID; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%required-IDREF-to-production-ID; appears in:</strong></span></td></tr><tr><td style=""><a href="productionrecap-x.html"><code class="sgmltag-element">productionrecap</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="required-XLink-to-production-ID.parament"></a><h3>%required-XLink-to-production-ID;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">def CDATA #REQUIRED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">def CDATA #REQUIRED</pre><p><b><span class="bold"><strong>%required-XLink-to-production-ID; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%required-XLink-to-production-ID; appears in:</strong></span></td></tr><tr><td style=""><a href="nonterminal-x.html"><code class="sgmltag-element">nonterminal</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="role.attrib.parament"></a><h3>%role.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">role		CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">role		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%role.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%role.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="constraint-x.html"><code class="sgmltag-element">constraint</code></a></td><td style=""><a href="constraintdef-x.html"><code class="sgmltag-element">constraintdef</code></a></td><td style=""><a href="lhs-x.html"><code class="sgmltag-element">lhs</code></a></td></tr><tr><td style=""><a href="nonterminal-x.html"><code class="sgmltag-element">nonterminal</code></a></td><td style=""><a href="production-x.html"><code class="sgmltag-element">production</code></a></td><td style=""><a href="productionrecap-x.html"><code class="sgmltag-element">productionrecap</code></a></td></tr><tr><td style=""><a href="productionset-x.html"><code class="sgmltag-element">productionset</code></a></td><td style=""><a href="rhs-x.html"><code class="sgmltag-element">rhs</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="security.attrib.parament"></a><h3>%security.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">security	CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">security	CDATA		#IMPLIED</pre></div><div class="refsect2" lang="en"><a name="status.attrib.parament"></a><h3>%status.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">status		CDATA		#IMPLIED
+	%local.status.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">status		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%status.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%status.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="appendix-x.html"><code class="sgmltag-element">appendix</code></a></td><td style=""><a href="article-x.html"><code class="sgmltag-element">article</code></a></td><td style=""><a href="bibliodiv-x.html"><code class="sgmltag-element">bibliodiv</code></a></td></tr><tr><td style=""><a href="bibliography-x.html"><code class="sgmltag-element">bibliography</code></a></td><td style=""><a href="book-x.html"><code class="sgmltag-element">book</code></a></td><td style=""><a href="chapter-x.html"><code class="sgmltag-element">chapter</code></a></td></tr><tr><td style=""><a href="colophon-x.html"><code class="sgmltag-element">colophon</code></a></td><td style=""><a href="dedication-x.html"><code class="sgmltag-element">dedication</code></a></td><td style=""><a href="glossary-x.html"><code class="sgmltag-element">glossary</code></a></td></tr><tr><td style=""><a href="glossdiv-x.html"><code class="sgmltag-element">glossdiv</code></a></td><td style=""><a href="part-x.html"><code class="sgmltag-element">part</code></a></td><td style=""><a href="preface-x.html"><code class="sgmltag-element">preface</code></a></td></tr><tr><td style=""><a href="refentry-x.html"><code class="sgmltag-element">refentry</code></a></td><td style=""><a href="reference-x.html"><code class="sgmltag-element">reference</code></a></td><td style=""><a href="refsect1-x.html"><code class="sgmltag-element">refsect1</code></a></td></tr><tr><td style=""><a href="refsect2-x.html"><code class="sgmltag-element">refsect2</code></a></td><td style=""><a href="refsect3-x.html"><code class="sgmltag-element">refsect3</code></a></td><td style=""><a href="refsection-x.html"><code class="sgmltag-element">refsection</code></a></td></tr><tr><td style=""><a href="sect1-x.html"><code class="sgmltag-element">sect1</code></a></td><td style=""><a href="sect2-x.html"><code class="sgmltag-element">sect2</code></a></td><td style=""><a href="sect3-x.html"><code class="sgmltag-element">sect3</code></a></td></tr><tr><td style=""><a href="sect4-x.html"><code class="sgmltag-element">sect4</code></a></td><td style=""><a href="sect5-x.html"><code class="sgmltag-element">sect5</code></a></td><td style=""><a href="section-x.html"><code class="sgmltag-element">section</code></a></td></tr><tr><td style=""><a href="set-x.html"><code class="sgmltag-element">set</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="width.attrib.parament"></a><h3>%width.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">width		CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">width		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%width.attrib; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%width.attrib; appears in:</strong></span></td></tr><tr><td style=""><a href="example-x.html"><code class="sgmltag-element">example</code></a></td><td style=""><a href="informalexample-x.html"><code class="sgmltag-element">informalexample</code></a></td><td style=""><a href="literallayout-x.html"><code class="sgmltag-element">literallayout</code></a></td></tr><tr><td style=""><a href="programlisting-x.html"><code class="sgmltag-element">programlisting</code></a></td><td style=""><a href="screen-x.html"><code class="sgmltag-element">screen</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="wordsize.attrib.parament"></a><h3>%wordsize.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">wordsize	CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">wordsize	CDATA		#IMPLIED</pre></div><div class="refsect2" lang="en"><a name="xml-base.attrib.parament"></a><h3>%xml-base.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">xml:base	CDATA		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">xml:base	CDATA		#IMPLIED</pre></div><div class="refsect2" lang="en"><a name="xml-space.attrib.parament"></a><h3>%xml-space.attrib;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">xml:space	(preserve)		#IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">xml:space	(preserve)		#IMPLIED</pre></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="%*.attlist; Parameter Entities" href="pe-attlist-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="%*.attval; Parameter Entities" href="pe-attval-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">%*.attlist; Parameter Entities&nbsp;</td><td width="20%" align="center"><a title="DocBook Parameter Entity Reference" href="ref-paraments-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;%*.attval; Parameter Entities</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

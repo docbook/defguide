@@ -1,0 +1,308 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Glossary</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="docbook.html" title="DocBook"><link rel="previous" href="appi.html" title="ChangeLog"><link rel="next" href="ix01.html" title="Index"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="ChangeLog" href="appi.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="Index" href="ix01.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="glossary"><div class="titlepage"><div><div><a name="glossary"></a><div class="component-title"><h1 class="label"></h1><h1 class="title">Glossary</h1></div></div></div></div><dl><dt><a name="gloss-attribute"></a>attribute</dt><dd><p>
+<a class="indexterm" name="d0e293034"></a>
+<a class="indexterm" name="d0e293038"></a>
+
+Attributes augment the element on which they appear; they also
+provide additional information about the element.
+</p><p>
+<a class="indexterm" name="d0e293046"></a>
+
+Attributes appear as name-value pairs in the element's start-tag.
+For example, to assign the value <code class="literal">hostname</code> to the
+<code class="sgmltag-attribute">Role</code> attribute of <a href="systemitem.html"><code class="sgmltag-element">SystemItem</code></a>,
+you would use the mark up:
+<code class="sgmltag-starttag">&lt;systemitem role="hostname"&gt;</code>.
+</p></dd><dt><a name="gloss-callout"></a>callout</dt><dd><p>
+<a class="indexterm" name="d0e293070"></a>
+A pointer, verbal or graphical or both, to a 
+<span class="emphasis"><em>component</em></span> of an illustration 
+or a text object.</p></dd><dt><a name="gloss-cooked"></a>cooked</dt><dd><p>
+<a class="indexterm" name="d0e293083"></a>
+<a class="indexterm" name="d0e293087"></a>
+
+&#8220;<span class="quote">Cooked</span>&#8221; data, as distinct from &#8220;<span class="quote">raw,</span>&#8221; is a collection
+of elements and character data that's ready for presentation. The processor
+is not expected to rearrange, select, or suppress any of the elements, but
+simply present them as specified.
+</p><p>See Also Raw.</p></dd><dt><a name="gloss-dtd"></a>document type declaration (<acronym class="acronym">DTD</acronym>)</dt><dd><p>
+<a class="indexterm" name="d0e293110"></a>
+<a class="indexterm" name="d0e293114"></a>
+
+A set of declarations that defines the names of the elements 
+and their attributes, and that specifies rules for their combination
+or sequence.
+</p></dd><dt><a name="gloss-dsssl"></a><acronym class="acronym">DSSSL</acronym></dt><dd><p>
+<a class="indexterm" name="d0e293127"></a>
+<a class="indexterm" name="d0e293131"></a>
+
+Document Style Semantics and Specification Language
+(<acronym class="acronym">ISO</acronym>/<acronym class="acronym">IEC</acronym> 10179:1996). An international standard stylesheet language
+for <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> documents.
+</p></dd><dt><a name="gloss-element"></a>element</dt><dd><p>
+<a class="indexterm" name="d0e293157"></a>
+<a class="indexterm" name="d0e293161"></a>
+<a class="indexterm" name="d0e293167"></a>
+<a class="indexterm" name="d0e293171"></a>
+
+Elements define the hierarchical structure of a document.
+Most elements have start and end tags and contain some part of the
+document content. Empty elements have only a start tag and have no content. 
+</p></dd><dt><a name="gloss-entity"></a>entity</dt><dd><p>
+<a class="indexterm" name="d0e293183"></a>
+<a class="indexterm" name="d0e293187"></a>
+
+A name assigned (by means of a declaration) to some chunk of 
+data so it can be referred to by that name; the data can be 
+of various kinds (a special character or a chapter or a set of
+declarations in a <acronym class="acronym">DTD</acronym>, for instance), and the way in which it is referred 
+to depends on the type of data and where it is being referenced: 
+<acronym class="acronym">SGML</acronym> has parameter, general, external, internal, and data entities.</p></dd><dt><a name="gloss-excl"></a>exclusion</dt><dd><p>
+<a class="indexterm" name="d0e293203"></a>
+<a class="indexterm" name="d0e293207"></a>
+<a class="indexterm" name="d0e293213"></a>
+
+An exclusion is used in a <acronym class="acronym">DTD</acronym> to indicate that, within the element on 
+which the exclusion occurs, the excluded elements are not valid anywhere
+within the content of the element.
+</p><p>
+<a class="indexterm" name="d0e293224"></a>
+<a class="indexterm" name="d0e293230"></a>
+
+For example, in DocBook, <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a> excludes <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a>.
+This means that footnotes cannot nest, even though <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a>
+contains <a href="para.html"><code class="sgmltag-element">Para</code></a>, and <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a> occurs in the proper
+content model of <a href="para.html"><code class="sgmltag-element">Para</code></a>.
+</p><p>
+See <a href="ch01.html#s-ms" title="Marked sections">the section called &#8220;Marked sections&#8221;</a>.</p></dd><dt><a name="gloss-extentity"></a>external entity</dt><dd><p>
+<a class="indexterm" name="d0e293264"></a>
+<a class="indexterm" name="d0e293268"></a>
+<a class="indexterm" name="d0e293274"></a>
+<a class="indexterm" name="d0e293280"></a>
+
+An external entity is a general entity that refers to another
+document. External entities are often used to incorporate 
+parsable text documents, like legal notices or chapters, into larger
+units, like chapters or books.</p></dd><dt><a name="gloss-extsub"></a>external subset</dt><dd><p>
+<a class="indexterm" name="d0e293292"></a>
+<a class="indexterm" name="d0e293296"></a>
+<a class="indexterm" name="d0e293302"></a>
+<a class="indexterm" name="d0e293308"></a>
+<a class="indexterm" name="d0e293314"></a>
+
+
+Element, attribute, and other declarations that compose
+(part of) a document type definition that are stored in an
+external entity, and referenced from a document's document type
+declaration using a public or system identifier.</p></dd><dt><a name="gloss-float"></a>float</dt><dd><p>
+<a class="indexterm" name="d0e293326"></a>
+<a class="indexterm" name="d0e293330"></a>
+
+Text objects like sidebars, figures, tables, and graphics are said
+to float when their actual place in the document is not fixed. For presentation
+on a printed page, for instance, a graphic may float to the top of the next page if it
+is too tall to fit on the page in which it actually falls, in the sequence of words and the sequence of
+other like objects in a document.</p></dd><dt><a name="gloss-fpi"></a>formal public identifier</dt><dd><p>
+<a class="indexterm" name="d0e293342"></a>
+<a class="indexterm" name="d0e293346"></a>
+A public identifier that conforms to the specification of formal
+public identifers in <acronym class="acronym">ISO</acronym> 8879.</p></dd><dt><a name="gloss-fosi"></a><acronym class="acronym">FOSI</acronym></dt><dd><p>
+
+<a class="indexterm" name="d0e293362"></a>
+
+Formatting Output Specification Instance, an <acronym class="acronym">SGML</acronym> document that 
+specifies the appearance or presentation of another <acronym class="acronym">SGML</acronym> document in 
+accordance 
+with the Output Specification <acronym class="acronym">DTD</acronym> defined by <acronym class="acronym">MIL-STD-28001C</acronym>.</p></dd><dt><a name="gloss-gentity"></a>general entity</dt><dd><p>
+<a class="indexterm" name="d0e293384"></a>
+<a class="indexterm" name="d0e293388"></a>
+<a class="indexterm" name="d0e293394"></a>
+<a class="indexterm" name="d0e293398"></a>
+
+An entity referenced by a name that starts with an 
+ampersand (&amp;) and ends with a semicolon. Most of the
+time general entities are used in <acronym class="acronym">SGML</acronym> documents, not in the <acronym class="acronym">DTD</acronym>. 
+There are two types, external and internal entities, and they 
+refer either to special characters or to text objects 
+like commonly repeated phrases or names or chapters.</p></dd><dt><a name="gloss-gi"></a><acronym class="acronym">GI</acronym></dt><dd><p>
+<a class="indexterm" name="d0e293415"></a>
+<a class="indexterm" name="d0e293419"></a>
+<a class="indexterm" name="d0e293423"></a>
+<a class="indexterm" name="d0e293427"></a>
+<a class="indexterm" name="d0e293433"></a>
+
+Generic identifier, proper term for the actual name of an element;
+<code class="literal">Para</code> is the generic identifier of the <a href="para.html"><code class="sgmltag-element">para</code></a> element.</p></dd><dt><a name="gloss-incl"></a>inclusion</dt><dd><p>
+<a class="indexterm" name="d0e293451"></a>
+<a class="indexterm" name="d0e293455"></a>
+<a class="indexterm" name="d0e293461"></a>
+<a class="indexterm" name="d0e293467"></a>
+
+An inclusion is used in a <acronym class="acronym">DTD</acronym> to indicate that, within the element on 
+which the inclusion occurs, the included elements are valid anywhere
+within the content of the element.
+</p><p>
+For example, in DocBook, <a href="chapter.html"><code class="sgmltag-element">Chapter</code></a> includes <a href="indexterm.html"><code class="sgmltag-element">IndexTerm</code></a>.
+This means that <a href="indexterm.html"><code class="sgmltag-element">IndexTerm</code></a>s can occur anywhere inside chapters,
+even inside elements that do not have <a href="indexterm.html"><code class="sgmltag-element">IndexTerm</code></a>s in their
+proper content models.
+</p><p>
+See <a href="ch01.html#s-ms" title="Marked sections">the section called &#8220;Marked sections&#8221;</a>.
+</p></dd><dt><a name="gloss-intentity"></a>internal entity</dt><dd><p>
+<a class="indexterm" name="d0e293500"></a>
+<a class="indexterm" name="d0e293504"></a>
+<a class="indexterm" name="d0e293510"></a>
+
+A general entity that references a piece of text (including
+its markup and even other internal entities), usually as a
+keyboard shortcut.</p></dd><dt><a name="gloss-intsub"></a>internal subset</dt><dd><p>
+<a class="indexterm" name="d0e293522"></a>
+<a class="indexterm" name="d0e293526"></a>
+<a class="indexterm" name="d0e293532"></a>
+
+Element, attribute, and other declarations that compose
+(part of) a document type definition that are stored in a document,
+within the document type declaration.
+</p></dd><dt><a name="gloss-metainfo"></a>meta-information</dt><dd><p>
+<a class="indexterm" name="d0e293544"></a>
+<a class="indexterm" name="d0e293548"></a>
+
+Meta-information is information about a document, such as the 
+specification of its author or its date of composition, as opposed 
+to the content of a document itself.</p></dd><dt><a name="gloss-pentity"></a>parameter entity</dt><dd><p>
+<a class="indexterm" name="d0e293560"></a>
+<a class="indexterm" name="d0e293564"></a>
+<a class="indexterm" name="d0e293572"></a>
+<a class="indexterm" name="d0e293578"></a>
+
+An entity usually referenced in the <acronym class="acronym">DTD</acronym> by a name that 
+starts with a percent sign (%) and ends with a semicolon. 
+In DocBook, parameter entities are mainly used to facilitate 
+customization of the <acronym class="acronym">DTD</acronym>, but they can also be used to control
+marked sections of a document.</p></dd><dt><a name="gloss-pi"></a>processing instruction</dt><dd><p>
+<a class="indexterm" name="d0e293596"></a>
+
+An essentially arbitrary string preceded by a question mark and
+delimited by angle brackets that is intended to convey
+information to an application that processes an <acronym class="acronym">SGML</acronym> instance.
+For example, the processing instruction <code class="literal">&lt;?linebreak&gt;</code>
+might cause the formatter to introduce a line break at the position where
+the processing instruction occurs.
+</p><p>
+<a class="indexterm" name="d0e293608"></a>
+<a class="indexterm" name="d0e293614"></a>
+
+In <acronym class="acronym">XML</acronym> documents, processing instructions should have the form:
+<pre class="screen">
+&lt;?<em class="replaceable"><code>pitarget</code></em> param1="value1" param2="value2"?&gt;
+</pre>
+</p><p>
+The <em class="replaceable"><code>pitarget</code></em> should be a name that the processing application
+will recognize. Additional information in the <acronym class="acronym">PI</acronym> should be added using
+&#8220;<span class="quote">attribute syntax.</span>&#8221;
+</p></dd><dt><a name="gloss-pubid"></a>public identifier</dt><dd><p>
+<a class="indexterm" name="d0e293646"></a>
+<a class="indexterm" name="d0e293650"></a>
+<a class="indexterm" name="d0e293656"></a>
+<a class="indexterm" name="d0e293662"></a>
+<a class="indexterm" name="d0e293668"></a>
+
+An abstract identifier for an <acronym class="acronym">SGML</acronym> or <acronym class="acronym">XML</acronym> document, <acronym class="acronym">DTD</acronym>, or 
+external entity.</p></dd><dt><a name="gloss-raw"></a>raw</dt><dd><p>
+<a class="indexterm" name="d0e293689"></a>
+<a class="indexterm" name="d0e293693"></a>
+<a class="indexterm" name="d0e293699"></a>
+<a class="indexterm" name="d0e293705"></a>
+
+&#8220;<span class="quote">Raw</span>&#8221; data is just a collection of elements, with no additional
+punctation or information about presentation. To continue the cooking
+metaphor, raw data is just a set of ingredients. It's up to the processor
+to select appropriate elements, arrange them for display, and add
+required presentational information.
+</p><p>See Also Cooked.</p></dd><dt><a name="gloss-sgml"></a><acronym class="acronym">SGML</acronym></dt><dd><p>
+<a class="indexterm" name="d0e293723"></a>
+<a class="indexterm" name="d0e293727"></a>
+
+Standard Generalized Markup Language, an international standard (<acronym class="acronym">ISO</acronym> 8879) that specifies 
+the rules for the creation of platform-independent markup languages for electronic texts.
+</p></dd><dt><a name="gloss-stylesheet"></a>stylesheet</dt><dd><p>
+<a class="indexterm" name="d0e293742"></a>
+<a class="indexterm" name="d0e293746"></a>
+
+A file that specifies the presentation or appearance of a document;
+there are several standards for such stylesheets, including
+<acronym class="acronym">CSS</acronym>, <acronym class="acronym">FOSI</acronym>s, <acronym class="acronym">DSSSL</acronym>, and, most recently, <acronym class="acronym">XSL</acronym>. Vendors often have proprietary
+stylesheet formats as well.
+</p></dd><dt><a name="gloss-sysid"></a>system identifier</dt><dd><p>
+<a class="indexterm" name="d0e293770"></a>
+<a class="indexterm" name="d0e293776"></a>
+
+In <acronym class="acronym">SGML</acronym>, a local, system-dependent identifier for a document,
+<acronym class="acronym">DTD</acronym>, or external entity. Usually a filename on the local system.</p><p>
+<a class="indexterm" name="d0e293790"></a>
+<a class="indexterm" name="d0e293796"></a>
+<a class="indexterm" name="d0e293802"></a>
+
+In <acronym class="acronym">XML</acronym>, a system identifer is required to be a <acronym class="acronym">URI</acronym>.
+</p></dd><dt><a name="gloss-tag"></a>tag</dt><dd><p>
+<a class="indexterm" name="d0e293820"></a>
+<a class="indexterm" name="d0e293824"></a>
+<a class="indexterm" name="d0e293830"></a>
+<a class="indexterm" name="d0e293836"></a>
+
+An <acronym class="acronym">SGML</acronym> element name enclosed in angle brackets
+(&lt;&gt;), used to mark up the semantics or structure of a
+document. <code class="sgmltag-starttag">&lt;Para&gt;</code> is a tag in DocBook
+used to mark the beginning of a paragraph.</p></dd><dt><a name="gloss-uri"></a><acronym class="acronym">URI</acronym></dt><dd><p>
+<a class="indexterm" name="d0e293855"></a>
+<a class="indexterm" name="d0e293859"></a>
+<a class="indexterm" name="d0e293863"></a>
+<a class="indexterm" name="d0e293867"></a>
+
+Uniform Resource Identifier, the <acronym class="acronym">W3C</acronym>'s codification of the name and 
+address syntax of present and future objects on the Internet. In its most basic 
+form, a <acronym class="acronym">URI</acronym> consists of a scheme name (such as file, http, ftp, news, mailto, 
+gopher) followed by a colon, followed by a path whose nature is determined 
+by the scheme that precedes it (see <acronym class="acronym">RFC</acronym> 1630). 
+</p><p>
+<a class="indexterm" name="d0e293884"></a>
+<a class="indexterm" name="d0e293888"></a>
+
+<acronym class="acronym">URI</acronym> is the umbrella term for <acronym class="acronym">URN</acronym>s, <acronym class="acronym">URL</acronym>s, and all other Uniform Resource
+Identifiers.
+</p></dd><dt><a name="gloss-url"></a><acronym class="acronym">URL</acronym></dt><dd><p>Uniform Resource Locator, a name and address for an existing object
+accessible over the Internet. <code class="literal">http://www.docbook.org</code>
+is an example of a <acronym class="acronym">URL</acronym> (see <acronym class="acronym">RFC</acronym> 1738).</p></dd><dt><a name="gloss-urn"></a><acronym class="acronym">URN</acronym></dt><dd><p>Uniform Resource Name, the result of an evolving attempt to
+define a name and address syntax for <span class="emphasis"><em>persistent</em></span>
+objects accessible over the Internet; <code class="literal">urn:foo:a123,456</code>
+is a legal <acronym class="acronym">URN</acronym> consisting of three colon-separated fields: 
+<code class="literal">urn</code> 
+followed by a namespace identifier, followed by a namespace specifier
+(see <acronym class="acronym">RFC</acronym> 1737 and <acronym class="acronym">RFC</acronym> 2141 for details).</p></dd><dt><a name="gloss-w3c"></a><acronym class="acronym">W3C</acronym></dt><dd><p>
+<a class="indexterm" name="d0e293949"></a>
+<a class="indexterm" name="d0e293953"></a>
+
+The World Wide Web Consortium (<a href="http://www.w3.org/" target="_top">http://www.w3.org/</a>).</p></dd><dt><a name="gloss-wrapper"></a>wrapper</dt><dd><p>
+<a class="indexterm" name="d0e293966"></a>
+<a class="indexterm" name="d0e293970"></a>
+<a class="indexterm" name="d0e293976"></a>
+
+Some elements, such as <a href="chapter.html"><code class="sgmltag-element">Chapter</code></a>, have important semantic
+significance.  Other elements serve no obvious purpose except to contain
+a number of other elements. For example, <a href="bookinfo.html"><code class="sgmltag-element">BookInfo</code></a> has no
+important semantics; it merely serves as a container for the meta-information
+about a book.  Elements that are just containers are sometimes called
+&#8220;<span class="quote">wrappers.</span>&#8221; 
+</p></dd><dt><a name="gloss-xml"></a><acronym class="acronym">XML</acronym></dt><dd><p>
+<a class="indexterm" name="d0e293998"></a>
+<a class="indexterm" name="d0e294002"></a>
+<a class="indexterm" name="d0e294008"></a>
+
+The <a href="http://www.w3.org/TR/REC-xml" target="_top">Extensible Markup Language</a>, a subset of <acronym class="acronym">SGML</acronym> 
+designed specifically for use over the Web.</p></dd><dt><a name="gloss-xsl"></a><acronym class="acronym">XSL</acronym></dt><dd><p>
+<a class="indexterm" name="d0e294027"></a>
+<a class="indexterm" name="d0e294031"></a>
+<acronym class="acronym">XML</acronym> Style Language, an evolving language for stylesheets 
+to be attached to <acronym class="acronym">XML</acronym> documents. The stylesheet is itself an <acronym class="acronym">XML</acronym>
+document.</p></dd></dl></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="ChangeLog" href="appi.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Index" href="ix01.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">ChangeLog&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Index</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

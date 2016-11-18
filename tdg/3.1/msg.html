@@ -1,0 +1,373 @@
+<HTML
+><HEAD
+><TITLE
+>Msg</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="MouseButton"
+HREF="mousebutton.html"><LINK
+REL="NEXT"
+TITLE="MsgAud"
+HREF="msgaud.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="mousebutton.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="msgaud.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>Msg</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN69052"
+></A
+><H2
+>Name</H2
+>Msg&nbsp;--&nbsp;A message in a message set</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN69055"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>Msg ::=
+(<A
+HREF="title.html"
+>Title</A
+>?,<A
+HREF="msgmain.html"
+>MsgMain</A
+>,
+ (<A
+HREF="msgsub.html"
+>MsgSub</A
+>|<A
+HREF="msgrel.html"
+>MsgRel</A
+>)*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69084"
+></A
+><H2
+>Description</H2
+><P
+>In a <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>, each <A
+HREF="msgentry.html"
+><TT
+CLASS="SGMLTAG"
+>MsgEntry</TT
+></A
+> contains at least
+one <A
+HREF="msg.html"
+><TT
+CLASS="SGMLTAG"
+>Msg</TT
+></A
+>.  A <A
+HREF="msg.html"
+><TT
+CLASS="SGMLTAG"
+>Msg</TT
+></A
+> consists of a main message
+(<A
+HREF="msgmain.html"
+><TT
+CLASS="SGMLTAG"
+>MsgMain</TT
+></A
+>), 
+and optionally one or more submessages (<A
+HREF="msgsub.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSub</TT
+></A
+>) 
+or related messages (<A
+HREF="msgrel.html"
+><TT
+CLASS="SGMLTAG"
+>MsgRel</TT
+></A
+>).</P
+><P
+>Additional information or explanation for the message is contained
+in the siblings of <A
+HREF="msg.html"
+><TT
+CLASS="SGMLTAG"
+>Msg</TT
+></A
+> within the <A
+HREF="msgentry.html"
+><TT
+CLASS="SGMLTAG"
+>MsgEntry</TT
+></A
+>.</P
+><P
+>See <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN69099"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. Sometimes suppressed. </P
+><P
+>On the whole, the semantics of <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>
+are not clearly defined.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN69104"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain Msg:
+<A
+HREF="msgentry.html"
+><TT
+CLASS="SGMLTAG"
+>MsgEntry</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN69111"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in Msg:
+<A
+HREF="msgmain.html"
+><TT
+CLASS="SGMLTAG"
+>MsgMain</TT
+></A
+>, <A
+HREF="msgrel.html"
+><TT
+CLASS="SGMLTAG"
+>MsgRel</TT
+></A
+>, <A
+HREF="msgsub.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSub</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69135"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="mousebutton.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="msgaud.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>MouseButton</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>MsgAud</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

@@ -1,0 +1,867 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Creating DocBook Documents</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="ch01.html" title="Getting Started with DocBook"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="Part  I .  Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="Validating DocBook Documents" href="ch03.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="ch-create" class="chapter"><header class="chapter-titlepage"><h2>Creating DocBook Documents</h2><p class="releaseinfo">$Revision$</p></header><p><a class="indexterm" name="documentsDocBookch02"></a>This chapter explains in concrete, practical terms how to make
+  DocBook documents. It’s an overview of all the kinds of markup that are
+  possible in DocBook documents. It explains how to create several kinds of
+  DocBook documents: books, sets of books, chapters, articles, and reference
+  manual entries. The idea is to give you enough basic information to actually
+  start writing. The information here is intentionally skeletal; you can find
+  the details in the reference section of this book.</p><section id="ch02-makexml" class="section"><div class="section-titlepage"><h3>1. Making an <span class="acronym">XML</span> Document</h3></div><p><a class="indexterm" name="ch02-makexml.2.1"></a><a class="indexterm" name="ch02-makexml.2.2"></a><a class="indexterm" name="ch02-makexml.2.3"></a>An <span class="acronym">XML</span> document consists of an optional
+    <span class="acronym">XML</span> declaration, an optional Document Type Declaration,
+    which includes an optional internal subset, and a document (or root)
+    element. We’ll discuss each of these in turn.</p><p>In <span class="acronym">XML</span> vocabularies like DocBook, which are
+    defined with RELAX NG (and also in the case of vocabularies defined with
+    W3C’s <span class="acronym">XML</span> Schema), it is common to omit the Document
+    Type Declaration entirely. The Document Type Declaration associates a
+    document with a particular Document Type Definition
+    (<span class="acronym">DTD</span>).</p><section id="s.xmldecl" class="section"><div class="section-titlepage"><h4>1.1. An <span class="acronym">XML</span> Declaration</h4></div><p><a class="indexterm" name="s.xmldecl.2.1"></a><a class="indexterm" name="s.xmldecl.2.2"></a><a class="indexterm" name="s.xmldecl.2.3"></a><span class="acronym">XML</span> documents often begin with an
+      <span class="acronym">XML</span> declaration that identifies a few simple aspects
+      of the document, for example:</p><div class="screen"><pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;</pre></div><p>Identifying the version of <span class="acronym">XML</span> ensures that
+      future changes to the <span class="acronym">XML</span> specification will not
+      alter the semantics of this document. The encoding declaration tells the
+      processor what character encoding this document uses. It must match the
+      actual encoding that you use. The complete details of the
+      <span class="acronym">XML</span> declaration are described in the W3C standard,
+      <em class="citetitle">Extensible Markup Language (<span class="acronym">XML</span>)
+      1.0</em> [<a href="appc.html#XML"><span class="abbrev">XML</span></a>].</p><p>If your document uses <span class="acronym">XML</span> 1.0 and an encoding
+      of either <code class="literal encoding">utf-8</code> or <code class="literal encoding">utf-16</code>, the <span class="acronym">XML</span> declaration
+      is not required. But it is never wrong to include it. If you do not
+      include an <span class="acronym">XML</span> declaration, your document must
+      conform to <span class="acronym">XML</span> 1.0. If you want to use
+      <span class="acronym">XML</span> 1.1, you must include an <span class="acronym">XML</span>
+      declaration and specify <code class="code">version="1.1"</code> in it.</p><p>The <span class="acronym">XML</span> declaration is syntactically similar to
+      a processing instruction, but it is not one. The <span class="acronym">XML</span>
+      declaration, if it is present, must be absolutely the first thing in
+      your document and it may not appear anywhere else.</p></section><section id="s.doctypedecl" class="section"><div class="section-titlepage"><h4>1.2. A Document Type Declaration</h4></div><p><a class="indexterm" name="s.doctypedecl.2.1"></a><a class="indexterm" name="s.doctypedecl.2.2"></a><a class="indexterm" name="s.doctypedecl.2.3"></a><a class="indexterm" name="s.doctypedecl.2.4"></a><span class="acronym">XML</span> documents don’t require a
+      <span class="acronym">DTD</span>, and if you are using RELAX NG, often they will
+      not include one. Historically, DocBook <span class="acronym">XML</span> documents
+      have almost always had one.</p><p><a class="indexterm" name="s.doctypedecl.3.1"></a><a class="indexterm" name="s.doctypedecl.3.2"></a>The Document Type Declaration identifies what the root
+      element of the document will be and may specify the
+      <span class="acronym">DTD</span> that should be used when parsing the document. A
+      typical Document Type Declaration for a DocBook <span class="acronym">V4.5</span>
+      document looks like this:</p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version='1.0'?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>               "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"&gt;</pre></div><p><a class="indexterm" name="s.doctypedecl.5.1"></a><a class="indexterm" name="s.doctypedecl.5.2"></a><a class="indexterm" name="s.doctypedecl.5.3"></a>This declaration indicates that the root element will be
+      <a href="book.html"><code class="tag-element">book</code></a> and that the <span class="acronym">DTD</span> used will be
+      DocBook <span class="acronym">V4.5</span>, identified with both its public and
+      system identifiers. In this example, the <span class="acronym">DTD</span> is
+      identified with an <span class="acronym">HTTP</span> <span class="acronym">URI</span>.
+      <a class="indexterm" name="s.doctypedecl.5.10"></a>System identifiers in <span class="acronym">XML</span> must be
+      <span class="acronym">URI</span>s. Almost all systems accept filenames and
+      interpret them locally as <code class="literal">file:</code>
+      <span class="acronym">URL</span>s, but it’s always correct to fully qualify
+      them.</p><p>You can specify a <span class="acronym">DTD</span> for DocBook
+      <span class="acronym">V5.0</span> documents:</p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version='1.0'?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0//EN"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>               "http://www.oasis-open.org/docbook/xml/5.0/docbook.dtd"&gt;</pre></div><p>But the limited constraints that can be expressed in
+      <span class="acronym">DTD</span>s mean that the resultant document may or may not
+      <em>really</em> be valid DocBook <span class="acronym">V5.0</span>.
+      The normative schema for DocBook <span class="acronym">V5.0</span> is the RELAX NG
+      grammar with its Schematron annotations.</p><p>The only reason to use a <span class="acronym">DTD</span> with DocBook
+      <span class="acronym">V5.0</span> is if your editing environment (or other tool)
+      requires one, for example, for syntax-directed editing. If you’re using
+      a tool that requires <span class="acronym">DTD</span>s, check with the vendor, as
+      maybe a more recent version is available that supports RELAX NG.</p></section><section id="s.internalsubset" class="section"><div class="section-titlepage"><h4>1.3. An Internal Subset</h4></div><p><a class="indexterm" name="s.internalsubset.2.1"></a><a class="indexterm" name="s.internalsubset.2.2"></a><a class="indexterm" name="s.internalsubset.2.3"></a><a class="indexterm" name="idx.entities-1"></a><a class="indexterm" name="idx.entities-2"></a><a class="indexterm" name="s.internalsubset.2.6"></a>Even if you aren’t using the DTD version of DocBook
+      <span class="acronym">V5.0</span>, you may still want to use a Document Type
+      Declaration to provide local declarations such as entities:<a class="indexterm" name="s.internalsubset.2.8"></a><a class="indexterm" name="s.internalsubset.2.9"></a></p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version='1.0'?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE book [
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>]&gt;</pre></div><p>These declarations form what is known as the internal subset. In
+      this example, the <span class="acronym">DTD</span> has been omitted, but the two
+      are not mutually exclusive. If you are using a <span class="acronym">DTD</span>
+      (which is technically known as the <em class="firstterm">external
+      subset</em>), you can include the internal subset immediately
+      after the <span class="acronym">DTD</span>:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version='1.0'?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0/EN"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>               "http://www.oasis-open.org/docbook/xml/5.0/docbook.dtd" [
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>]&gt;</pre></div><p><a class="indexterm" name="s.internalsubset.6.1"></a><a class="indexterm" name="s.internalsubset.6.2"></a>When both are specified, the internal subset is parsed
+      <em>first</em>. If multiple declarations for an entity
+      occur, the first declaration is used. This means that declarations in
+      the internal subset override declarations in the external subset.</p></section><section id="s.rootelem" class="section"><div class="section-titlepage"><h4>1.4. The Document (or Root) Element</h4></div><p><a class="indexterm" name="s.rootelem.2.1"></a><a class="indexterm" name="s.rootelem.2.2"></a>All <span class="acronym">XML</span> documents must have exactly one
+      root element, although it may have sibling comments and processing
+      instructions. If the document has a Document Type Declaration, the root
+      element usually immediately follows it:</p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version='1.0'?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE book [
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY nwalsh "Norman Walsh"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>]&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;book xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;…&lt;/book&gt;</pre></div><p>The important point is that the root element must be physically
+      present immediately after the Document Type Declaration. You cannot
+      place the root element of the document in an external entity.</p></section></section><section id="ch02-physdiv" class="section"><div class="section-titlepage"><h3>2. Physical Divisions: Breaking a Document into Separate Files</h3></div><p><a class="indexterm" name="ch02-physdiv.2.1"></a><a class="indexterm" name="ch02-physdiv.2.2"></a>The rest of this chapter describes how you can break
+    documents into logical chunks, such as books, chapters, sections, and so
+    on. Before we begin, and while the subject of the internal subset is fresh
+    in your mind, let’s take a quick look at how to break documents into
+    separate files.</p><p>Actually, we’ve already told you how to do it. If you recall, in the
+    preceding sections we had declarations of the form:</p><div class="screen"><pre>&lt;!ENTITY <em class="replaceable"><code>name</code></em> SYSTEM "<em class="replaceable"><code>filename</code></em>"&gt;</pre></div><p><a class="indexterm" name="ch02-physdiv.5.1"></a>If you refer to the entity <em class="replaceable"><code>name</code></em>
+    in your document after this declaration, the system will insert the
+    contents of the file <em class="replaceable"><code>filename</code></em> into your
+    document at that point. So, if you’ve got a book that consists of three
+    chapters and two appendixes, you might create a file called
+    <code class="filename">book.xml</code>, which looks like this:<a class="indexterm" name="ch02-physdiv.5.5"></a><a class="indexterm" name="ch02-physdiv.5.6"></a></p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE book [
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!ENTITY chap1 SYSTEM "chap1.xml"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY chap2 SYSTEM "chap2.xml"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;!ENTITY chap3 SYSTEM "chap3.xml"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY appa SYSTEM "appa.xml"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;!ENTITY appb SYSTEM "appb.xml"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>]&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;book xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;title&gt;My First Book&lt;/title&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&amp;chap1;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&amp;chap2;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&amp;chap3;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&amp;appa;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&amp;appb;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/book&gt;</pre></div><p><a class="indexterm" name="ch02-physdiv.7.1"></a>You can then write the chapters and appendixes conveniently
+    in separate files.</p><p>Documents that you reference with external parsed entities cannot
+    have a Document Type Declaration. For example, Chapter 1 might begin like
+    this:</p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter xml:id="ch1"&gt;&lt;title&gt;My First Chapter&lt;/title&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;para&gt;My first paragraph.&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>…</pre></div><p>But it must not begin with its own Document Type Declaration:</p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE chapter&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;chapter xmlns="http://docbook.org/ns/docbook"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>         xml:id="ch1"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;title&gt;My First Chapter&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;My first paragraph.&lt;/para&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>…</pre></div><p>It is also possible to construct documents from different files
+    using XInclude. Recasting the previous example using XInclude
+    yields:<a class="indexterm" name="ch02-physdiv.12.1"></a><a class="indexterm" name="ch02-physdiv.12.2"></a></p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;book xmlns="http://docbook.org/ns/docbook"
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>      xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;title&gt;My First Book&lt;/title&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;xi:include href="chap1.xml"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;xi:include href="chap2.xml"/&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;xi:include href="chap3.xml"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;xi:include href="appa.xml"/&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;xi:include href="appb.xml"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/book&gt;</pre></div><p>Notice that we can completely omit the Document Type Declaration in
+    this case, but we must declare the XInclude namespace.<a class="indexterm" name="ch02-physdiv.14.1"></a></p><p>The essential trade-offs between external parsed entities and
+    XInclude are:</p><div class="itemizedlist"><ul><li><p>XInclude can be used in a document that does not have a Document
+        Type Declaration. Many web services applications (ones that rely on
+        SOAP, anyway) forbid a Document Type Declaration and therefore cannot
+        use entities of any sort.</p></li><li><p>The documents <em>referenced by</em> XInclude are
+        complete, free-standing <span class="acronym">XML</span> documents. They can
+        declare their own local entities using a Document Type Declaration.
+        Documents referenced by external parsed entities cannot have a
+        Document Type Declaration. If they use entities, those entities must
+        be declared in the document that does the including.</p></li><li><p>External parsed entities can have multiple top-level elements.
+        They are not required to be “<span class="quote">single rooted.</span>” XIncluded
+        documents must be wholly well-formed <span class="acronym">XML</span>.</p></li><li><p>All <span class="acronym">XML</span> validators support external parsed
+        entities. (Validators that do not <em>are not</em>
+        conformant <span class="acronym">XML</span> processors.) XInclude is a separate
+        specification and may or may not be supported by tools.</p></li><li><p>The <span class="acronym">XML</span> validator expands entities and
+        therefore “<span class="quote">sees</span>” the entire document. This means that
+        ID/IDREF links can freely cross entity boundaries. Because XIncluded
+        documents are free-standing, a document containing an IDREF that
+        crosses a document boundary cannot be valid. It can be well-formed,
+        and processors can do the right thing, but the validator cannot
+        determine that the document is valid. What’s more, the same ID value
+        can occur in several XIncluded documents without causing a validity
+        error. This may cause subsequent processing to fail.</p></li><li><p>As time passes, the use of <span class="acronym">DTD</span>-based
+        mechanisms like entities is diminishing. If you have an eye on the
+        future, to the extent that it is practical, it is probably better to
+        use XInclude than entities.<a class="indexterm" name="ch02-physdiv.16.6.1.2"></a><a class="indexterm" name="ch02-physdiv.16.6.1.3"></a></p></li></ul></div></section><section id="ch02-logdiv" class="section"><div class="section-titlepage"><h3>3. Logical Divisions: The Categories of Elements in DocBook</h3></div><p><a class="indexterm" name="ch02-logdiv.2.1"></a><a class="indexterm" name="ch02-logdiv.2.2"></a><a class="indexterm" name="ch02-logdiv.2.3"></a>DocBook elements can be divided broadly into these
+    categories:</p><table border="0" summary="Simple list" class="simplelist"><tr><td><span class="member">Sets</span></td></tr><tr><td><span class="member">Books</span></td></tr><tr><td><span class="member">Divisions, which divide books</span></td></tr><tr><td><span class="member">Components, which divide books or divisions</span></td></tr><tr><td><span class="member">Sections, which subdivide components</span></td></tr><tr><td><span class="member">Meta-information elements</span></td></tr><tr><td><span class="member">Block elements</span></td></tr><tr><td><span class="member">Inline elements</span></td></tr></table><p>In the rest of this section, we’ll describe briefly the elements
+    that make up these categories. This section is designed to give you an
+    overview. It is not an exhaustive list of every element in DocBook.</p><p>For more information about any specific element and the elements
+    that it may contain, consult the reference page for the element in
+    question.</p><section id="s.sets" class="section"><div class="section-titlepage"><h4>3.1. Sets</h4></div><p><a class="indexterm" name="s.sets.2.1"></a>A <a href="set.html"><code class="tag-element">set</code></a> contains two or more
+      <a href="book.html"><code class="tag-element">book</code></a>s. It’s the hierarchical top of DocBook. You use
+      the <a href="set.html"><code class="tag-element">set</code></a> tag, for example, for a series of books on a
+      single subject that you want to access and maintain as a single unit,
+      such as the manuals for series of computer systems or the documentation
+      (tutorial, reference, etc.) for a programming language. Sets are allowed
+      to contain other sets, though this is not common.</p></section><section id="s.books" class="section"><div class="section-titlepage"><h4>3.2. Books</h4></div><p><a class="indexterm" name="s.books.2.1"></a><a class="indexterm" name="s.books.2.2"></a><a class="indexterm" name="s.books.2.3"></a>A <a href="book.html"><code class="tag-element">book</code></a> is probably the most common
+      top-level element in a document. The DocBook definition of a book is
+      very loose and general. Given the variety of books authored with DocBook
+      and the number of different conventions for book organization used
+      around the world, any attempt to impose a strict ordering of elements
+      would make the content model extremely complex. Therefore, DocBook gives
+      you free rein. You can use a local customization (see <a href="ch05.html" title="Customizing DocBook">Chapter 5, <i>Customizing DocBook</i></a>) if you want to impose a more strict
+      ordering for your applications.</p><p>A <a href="book.html"><code class="tag-element">book</code></a> consists of a mixture of the following
+      elements:</p><div class="variablelist"><dl><dt><span class="term">Dedication</span></dt><dd><p>The <a href="dedication.html"><code class="tag-element">dedication</code></a> pages almost always occur
+            at the front of a book.<a class="indexterm" name="s.books.4.1.2.1.2"></a></p></dd><dt><span class="term">Navigational components</span></dt><dd><p><a class="indexterm" name="s.books.4.2.2.1.1"></a><a class="indexterm" name="s.books.4.2.2.1.2"></a><a class="indexterm" name="s.books.4.2.2.1.3"></a><a class="indexterm" name="s.books.4.2.2.1.4"></a><a class="indexterm" name="s.books.4.2.2.1.5"></a>There are a couple of component-level elements
+            designed for navigation: <a href="toc.html"><code class="tag-element">toc</code></a>, for Tables of
+            Contents and Lists of Titles (for lists of figures, tables,
+            examples, etc.); and <a href="index.html"><code class="tag-element">index</code></a>, for indexes.</p></dd><dt><span class="term">Divisions</span></dt><dd><p><a class="indexterm" name="s.books.4.3.2.1.1"></a><a class="indexterm" name="s.books.4.3.2.1.2"></a><a class="indexterm" name="s.books.4.3.2.1.3"></a><a class="indexterm" name="s.books.4.3.2.1.4"></a><a class="indexterm" name="s.books.4.3.2.1.5"></a>Divisions are the first hierarchical level below
+            <a href="book.html"><code class="tag-element">book</code></a>. Divisions contain
+            <a href="part.html"><code class="tag-element">part</code></a>s and <a href="reference.html"><code class="tag-element">reference</code></a>s. A
+            <a href="part.html"><code class="tag-element">part</code></a> contains components. A
+            <a href="reference.html"><code class="tag-element">reference</code></a> contains
+            <a href="refentry.html"><code class="tag-element">refentry</code></a>s. These are discussed more thoroughly
+            in <a href="ch02.html#making-refentry" title="Making a Reference Page">Section 8, “Making a Reference Page”</a>.</p><p>Books can contain components directly and are not required
+            to contain divisions.</p></dd><dt><span class="term">Components</span></dt><dd><p><a class="indexterm" name="s.books.4.4.2.1.1"></a>These are the chapter-like elements of a
+            <a href="book.html"><code class="tag-element">book</code></a>.</p></dd></dl></div></section><section id="s.components" class="section"><div class="section-titlepage"><h4>3.3. Components</h4></div><p><a class="indexterm" name="s.components.2.1"></a><a class="indexterm" name="s.components.2.2"></a><a class="indexterm" name="s.components.2.3"></a><a class="indexterm" name="s.components.2.4"></a><a class="indexterm" name="s.components.2.5"></a><a class="indexterm" name="s.components.2.6"></a><a class="indexterm" name="s.components.2.7"></a><a class="indexterm" name="s.components.2.8"></a><a class="indexterm" name="s.components.2.9"></a><a class="indexterm" name="s.components.2.10"></a>Components are the chapter-like elements of a
+      <a href="book.html"><code class="tag-element">book</code></a> or <a href="part.html"><code class="tag-element">part</code></a>:
+      <a href="preface.html"><code class="tag-element">preface</code></a>, <a href="chapter.html"><code class="tag-element">chapter</code></a>, <a href="appendix.html"><code class="tag-element keep-together">appendix</code></a>, <a href="glossary.html"><code class="tag-element">glossary</code></a>,
+      and <a href="bibliography.html"><code class="tag-element">bibliography</code></a>. An <a href="article.html"><code class="tag-element">article</code></a> can
+      also occur at the component level. We describe
+      <a href="article.html"><code class="tag-element">article</code></a>s in more detail in <a href="ch02.html#making-article" title="Making an Article">Section 7, “Making an Article”</a>. Components generally contain block elements
+      and/or sections, and some can contain navigational components and
+      <a href="refentry.html"><code class="tag-element">refentry</code></a>s.</p></section><section id="s.sections" class="section"><div class="section-titlepage"><h4>3.4. Sections</h4></div><p><a class="indexterm" name="s.sections.2.1"></a><a class="indexterm" name="s.sections.2.2"></a><a class="indexterm" name="s.sections.2.3"></a>There are several flavors of sectioning elements in
+      DocBook:</p><div class="variablelist"><dl><dt><span class="term"><a href="sect1.html"><code class="tag-element">sect1</code></a></span>, <span class="term"><a href="sect2.html"><code class="tag-element">sect2</code></a></span>, <span class="term"><a href="sect3.html"><code class="tag-element">sect3</code></a></span>, <span class="term"><a href="sect4.html"><code class="tag-element">sect4</code></a></span>, <span class="term"><a href="sect5.html"><code class="tag-element">sect5</code></a></span></dt><dd><p>The <a href="sect1.html"><code class="tag-element">sect1</code></a>…<a href="sect5.html"><code class="tag-element">sect5</code></a>
+            elements are sectioning elements. They can occur in most <span class="keep-together">component-level</span> elements. These
+            numbered section elements must be properly nested
+            (<a href="sect2.html"><code class="tag-element">sect2</code></a>s can only occur inside
+            <a href="sect1.html"><code class="tag-element">sect1</code></a>s, <a href="sect3.html"><code class="tag-element">sect3</code></a>s can only
+            occur inside <a href="sect2.html"><code class="tag-element">sect2</code></a>s, and so on). There are five
+            levels of numbered sections.</p></dd><dt><span class="term"><a href="section.html"><code class="tag-element">section</code></a></span></dt><dd><p><a class="indexterm" name="s.sections.3.2.2.1.1"></a>The <a href="section.html"><code class="tag-element">section</code></a> element is an
+            alternative to numbered sections. The <a href="section.html"><code class="tag-element">section</code></a>
+            element is recursive, meaning that you can nest it to any depth
+            desired.</p></dd><dt><span class="term"><a href="simplesect.html"><code class="tag-element">simplesect</code></a></span></dt><dd><p><a class="indexterm" name="s.sections.3.3.2.1.1"></a>In addition to numbered sections, there is the
+            <a href="simplesect.html"><code class="tag-element">simplesect</code></a> element. It is a terminal section
+            that can occur at any level, but it cannot have any other
+            sectioning element nested within it.</p><p>A distinguishing feature of <a href="simplesect.html"><code class="tag-element">simplesect</code></a> is
+            that it does not occur in the Table of Contents.</p></dd><dt><span class="term"><a href="bridgehead.html"><code class="tag-element">bridgehead</code></a></span></dt><dd><p><a class="indexterm" name="s.sections.3.4.2.1.1"></a>A <a href="bridgehead.html"><code class="tag-element">bridgehead</code></a> provides a section
+            title without any containing section.</p></dd><dt><span class="term"><a href="refsect1.html"><code class="tag-element">refsect1</code></a>…<a href="refsect3.html"><code class="tag-element">refsect3</code></a></span></dt><dd><p><a class="indexterm" name="s.sections.3.5.2.1.1"></a>These elements, which occur only in
+            <a href="refentry.html"><code class="tag-element">refentry</code></a>s, are analogous to the numbered
+            section elements in components. There are only three levels of
+            numbered section elements in a <a href="refentry.html"><code class="tag-element">refentry</code></a>.</p></dd><dt><span class="term"><a href="refsection.html"><code class="tag-element">refsection</code></a></span></dt><dd><p><a class="indexterm" name="s.sections.3.6.2.1.1"></a>The <a href="refsection.html"><code class="tag-element">refsection</code></a> element is a
+            recursive division in a <a href="refentry.html"><code class="tag-element">refentry</code></a>. It is an
+            alternative to the numbered reference section tags
+            (<a href="refsect1.html"><code class="tag-element">refsect1</code></a>…<a href="refsect3.html"><code class="tag-element">refsect3</code></a>). Like
+            the <a href="section.html"><code class="tag-element">section</code></a> element, the
+            <a href="refsection.html"><code class="tag-element">refsection</code></a> element is recursive.</p></dd><dt><span class="term"><a href="glossdiv.html"><code class="tag-element">glossdiv</code></a>, <a href="bibliodiv.html"><code class="tag-element">bibliodiv</code></a>, and
+          <a href="indexdiv.html"><code class="tag-element">indexdiv</code></a></span></dt><dd><p><a class="indexterm" name="s.sections.3.7.2.1.1"></a><a class="indexterm" name="s.sections.3.7.2.1.2"></a><a class="indexterm" name="s.sections.3.7.2.1.3"></a><a class="indexterm" name="s.sections.3.7.2.1.4"></a><a class="indexterm" name="s.sections.3.7.2.1.5"></a>The <a href="glossary.html"><code class="tag-element">glossary</code></a>,
+            <a href="bibliography.html"><code class="tag-element">bibliography</code></a>, and <a href="index.html"><code class="tag-element">index</code></a>
+            elements can be broken into top-level <span class="keep-together">divisions</span>, but not sections. Unlike
+            sections, these elements do not nest.</p></dd></dl></div></section><section id="s.meta" class="section"><div class="section-titlepage"><h4>3.5. Meta-Information</h4></div><p><a class="indexterm" name="s.meta.2.1"></a><a class="indexterm" name="s.meta.2.2"></a>All of the elements at the section level and above, and
+      many other elements, include a wrapper for meta-information about the
+      content. That element is named <a href="info.html"><code class="tag-element">info</code></a>. In earlier
+      versions of DocBook, there were many similarly named elements for this
+      purpose: <code class="literal">bookinfo</code>, <code class="literal">chapterinfo</code>,
+      etc. In DocBook <span class="acronym">V5.0</span>, there is only one.</p><p><a class="indexterm" name="s.meta.3.1"></a><a class="indexterm" name="s.meta.3.2"></a><a class="indexterm" name="s.meta.3.3"></a><a class="indexterm" name="s.meta.3.4"></a><a class="indexterm" name="s.meta.3.5"></a><a class="indexterm" name="s.meta.3.6"></a>The meta-information wrapper is designed to contain
+      bibliographic information about the content (<a href="author.html"><code class="tag-element">author</code></a>,
+      <a href="title.html"><code class="tag-element">title</code></a>, <a href="publisher.html"><code class="tag-element">publisher</code></a>, and so on) as
+      well as other meta-information such as revision histories, keyword sets,
+      and index terms.</p><p>An <a href="info.html"><code class="tag-element">info</code></a> can contain:</p><div class="variablelist"><dl><dt><span class="term"><a href="title.html"><code class="tag-element">title</code></a></span></dt><dd><p>The text of the title of a section of a document or of a
+            formal block-level element</p></dd><dt><span class="term"><a href="titleabbrev.html"><code class="tag-element">titleabbrev</code></a></span></dt><dd><p>The abbreviation of a title</p></dd><dt><span class="term"><a href="subtitle.html"><code class="tag-element">subtitle</code></a></span></dt><dd><p>The subtitle of a document</p></dd><dt><span class="term"><a href="abstract.html"><code class="tag-element">abstract</code></a></span></dt><dd><p>A summary</p></dd><dt><span class="term"><a href="address.html"><code class="tag-element">address</code></a></span></dt><dd><p>A real-world address, generally a postal address</p></dd><dt><span class="term"><a href="annotation.html"><code class="tag-element">annotation</code></a></span></dt><dd><p>An annotation</p></dd><dt><span class="term"><a href="artpagenums.html"><code class="tag-element">artpagenums</code></a></span></dt><dd><p>The page numbers of an article as published</p></dd><dt><span class="term"><a href="author.html"><code class="tag-element">author</code></a></span></dt><dd><p>The name of an individual author</p></dd><dt><span class="term"><a href="authorgroup.html"><code class="tag-element">authorgroup</code></a></span></dt><dd><p>A wrapper for author information when a document has
+            multiple authors or <span class="keep-together">collaborators</span></p></dd><dt><span class="term"><a href="authorinitials.html"><code class="tag-element">authorinitials</code></a></span></dt><dd><p>The initials or other short identifier for an author</p></dd><dt><span class="term"><a href="bibliocoverage.html"><code class="tag-element">bibliocoverage</code></a></span></dt><dd><p>The spatial or temporal coverage of a document</p></dd><dt><span class="term"><a href="biblioid.html"><code class="tag-element">biblioid</code></a></span></dt><dd><p>An identifier for a document</p></dd><dt><span class="term"><a href="bibliomisc.html"><code class="tag-element">bibliomisc</code></a></span></dt><dd><p>Untyped bibliographic information</p></dd><dt><span class="term"><a href="bibliomset.html"><code class="tag-element">bibliomset</code></a></span></dt><dd><p>A cooked container for related bibliographic
+            information</p></dd><dt><span class="term"><a href="bibliorelation.html"><code class="tag-element">bibliorelation</code></a></span></dt><dd><p>The relationship of a document to another</p></dd><dt><span class="term"><a href="biblioset.html"><code class="tag-element">biblioset</code></a></span></dt><dd><p>A raw container for related bibliographic information</p></dd><dt><span class="term"><a href="bibliosource.html"><code class="tag-element">bibliosource</code></a></span></dt><dd><p>The source of a document</p></dd><dt><span class="term"><a href="collab.html"><code class="tag-element">collab</code></a></span></dt><dd><p>Identifies a collaborator</p></dd><dt><span class="term"><a href="confgroup.html"><code class="tag-element">confgroup</code></a></span></dt><dd><p>A wrapper for document meta-information about a
+            conference</p></dd><dt><span class="term"><a href="contractnum.html"><code class="tag-element">contractnum</code></a></span></dt><dd><p>The contract number of a document</p></dd><dt><span class="term"><a href="contractsponsor.html"><code class="tag-element">contractsponsor</code></a></span></dt><dd><p>The sponsor of a contract</p></dd><dt><span class="term"><a href="copyright.html"><code class="tag-element">copyright</code></a></span></dt><dd><p>Copyright information about a document</p></dd><dt><span class="term"><a href="date.html"><code class="tag-element">date</code></a></span></dt><dd><p>The date of publication or revision of a document</p></dd><dt><span class="term"><a href="edition.html"><code class="tag-element">edition</code></a></span></dt><dd><p>The name or number of an edition of a document</p></dd><dt><span class="term"><a href="editor.html"><code class="tag-element">editor</code></a></span></dt><dd><p>The name of the editor of a document</p></dd><dt><span class="term"><a href="extendedlink.html"><code class="tag-element">extendedlink</code></a></span></dt><dd><p>An XLink extended link</p></dd><dt><span class="term"><a href="issuenum.html"><code class="tag-element">issuenum</code></a></span></dt><dd><p>The number of an issue of a journal</p></dd><dt><span class="term"><a href="itermset.html"><code class="tag-element">itermset</code></a></span></dt><dd><p>A set of index terms in the meta-information of a
+            document</p></dd><dt><span class="term"><a href="keywordset.html"><code class="tag-element">keywordset</code></a></span></dt><dd><p>A set of keywords describing the content of a
+            document</p></dd><dt><span class="term"><a href="legalnotice.html"><code class="tag-element">legalnotice</code></a></span></dt><dd><p>A statement of legal obligations or requirements</p></dd><dt><span class="term"><a href="mediaobject.html"><code class="tag-element">mediaobject</code></a></span></dt><dd><p>A displayed media object (video, audio, image, etc.)</p></dd><dt><span class="term"><a href="orgname.html"><code class="tag-element">orgname</code></a></span></dt><dd><p>The name of an organization</p></dd><dt><span class="term"><a href="othercredit.html"><code class="tag-element">othercredit</code></a></span></dt><dd><p>A person or entity, other than an author or editor, credited
+            in a document</p></dd><dt><span class="term"><a href="pagenums.html"><code class="tag-element">pagenums</code></a></span></dt><dd><p>The numbers of the pages in a book, for use in a
+            bibliographic entry</p></dd><dt><span class="term"><a href="printhistory.html"><code class="tag-element">printhistory</code></a></span></dt><dd><p>The printing history of a document</p></dd><dt><span class="term"><a href="productname.html"><code class="tag-element">productname</code></a></span></dt><dd><p>The formal name of a product</p></dd><dt><span class="term"><a href="productnumber.html"><code class="tag-element">productnumber</code></a></span></dt><dd><p>A number assigned to a product</p></dd><dt><span class="term"><a href="pubdate.html"><code class="tag-element">pubdate</code></a></span></dt><dd><p>The date of publication of a document</p></dd><dt><span class="term"><a href="publisher.html"><code class="tag-element">publisher</code></a></span></dt><dd><p>The publisher of a document</p></dd><dt><span class="term"><a href="publishername.html"><code class="tag-element">publishername</code></a></span></dt><dd><p>The name of the publisher of a document</p></dd><dt><span class="term"><a href="releaseinfo.html"><code class="tag-element">releaseinfo</code></a></span></dt><dd><p>Information about a particular release of a document</p></dd><dt><span class="term"><a href="revhistory.html"><code class="tag-element">revhistory</code></a></span></dt><dd><p>A history of the revisions to a document</p></dd><dt><span class="term"><a href="seriesvolnums.html"><code class="tag-element">seriesvolnums</code></a></span></dt><dd><p>Numbers of the volumes in a series of books</p></dd><dt><span class="term"><a href="subjectset.html"><code class="tag-element">subjectset</code></a></span></dt><dd><p>A set of terms describing the subject matter of a
+            document</p></dd><dt><span class="term"><a href="volumenum.html"><code class="tag-element">volumenum</code></a></span></dt><dd><p>The volume number of a document in a set (as of books in a
+            set or articles in a journal)</p></dd></dl></div><p>The <a href="title.html"><code class="tag-element">title</code></a>, <a href="titleabbrev.html"><code class="tag-element">titleabbrev</code></a>, and
+      <a href="subtitle.html"><code class="tag-element">subtitle</code></a> elements can usually appear either
+      immediately before or inside the <a href="info.html"><code class="tag-element">info</code></a> wrapper (but
+      not both). This means you don’t need the extra wrapper in the common
+      case where all you want to specify is a title.</p></section><section id="s.block" class="section"><div class="section-titlepage"><h4>3.6. Block Elements</h4></div><p><a class="indexterm" name="s.block.2.1"></a><a class="indexterm" name="s.block.2.2"></a><a class="indexterm" name="s.block.2.3"></a><a class="indexterm" name="s.block.2.4"></a><a class="indexterm" name="s.block.2.5"></a><a class="indexterm" name="s.block.2.6"></a><a class="indexterm" name="s.block.2.7"></a><a class="indexterm" name="s.block.2.8"></a><a class="indexterm" name="s.block.2.9"></a>The block elements occur immediately below the component
+      and sectioning elements. These are the (roughly) paragraph-level
+      elements in DocBook. They can be divided into a number of categories:
+      lists, admonitions, line-specific environments, synopses of several
+      sorts, tables, figures, examples, and a dozen or more miscellaneous
+      elements.</p><section id="s.block.3" class="section"><div class="section-titlepage"><h5>3.6.1. Block versus inline elements</h5></div><p><a class="indexterm" name="s.block.3.2.1"></a><a class="indexterm" name="s.block.3.2.2"></a>At the paragraph level, it’s convenient to divide
+        elements into two classes, <em class="firstterm">block</em> and
+        <em class="firstterm">inline</em>. From a structural point of view, this
+        distinction is based loosely on their relative size, but it’s easiest
+        to describe the difference in terms of their presentation.</p><p><a class="indexterm" name="s.block.3.3.1"></a><a class="indexterm" name="s.block.3.3.2"></a><a class="indexterm" name="s.block.3.3.3"></a>Block elements are usually presented with a paragraph
+        (or larger) break before and after them. Most can contain other block
+        elements, and many can contain character data and inline elements.
+        Paragraphs, lists, sidebars, tables, and block quotations are all
+        common examples of block elements.</p><p><a class="indexterm" name="s.block.3.4.1"></a><a class="indexterm" name="s.block.3.4.2"></a><a class="indexterm" name="s.block.3.4.3"></a><a class="indexterm" name="s.block.3.4.4"></a><a class="indexterm" name="s.block.3.4.5"></a><a class="indexterm" name="s.block.3.4.6"></a><a class="indexterm" name="s.block.3.4.7"></a><a class="indexterm" name="s.block.3.4.8"></a>Inline elements are generally represented without any
+        obvious breaks. The most common distinguishing mark of inline elements
+        is a font change, but inline elements may present no visual
+        distinction at all. Inline elements contain character data and
+        possibly other inline elements, but they never contain block elements.
+        Inline elements are used to mark up data such as cross-references,
+        filenames, commands, options, subscripts and superscripts, and
+        glossary terms.</p></section><section id="s.lists" class="section"><div class="section-titlepage"><h5>3.6.2. Lists</h5></div><p><a class="indexterm" name="s.lists.2.1"></a><a class="indexterm" name="s.lists.2.2"></a>There are eight list elements in DocBook:</p><div class="variablelist"><dl><dt><span class="term"><a href="calloutlist.html"><code class="tag-element">calloutlist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.1.2.1.1"></a><a class="indexterm" name="s.lists.3.1.2.1.2"></a>A list of <a href="callout.html"><code class="tag-element">callout</code></a>s and their
+              descriptions. The <a href="callout.html"><code class="tag-element">callout</code></a>s are marks,
+              frequently <span class="keep-together">numbered</span> and
+              typically on a graphic (<a href="imageobjectco.html"><code class="tag-element">imageobjectco</code></a>) or
+              verbatim environment (<a href="programlistingco.html"><code class="tag-element keep-together">programlistingco</code></a> or
+              <a href="screenco.html"><code class="tag-element">screenco</code></a>), that are described in a
+              <a href="calloutlist.html"><code class="tag-element">calloutlist</code></a>.</p></dd><dt><span class="term"><a href="bibliolist.html"><code class="tag-element">bibliolist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.2.2.1.1"></a>A list of bibliography entries
+              (<a href="biblioentry.html"><code class="tag-element">biblioentry</code></a> or
+              <a href="bibliomixed.html"><code class="tag-element">bibliomixed</code></a> elements).</p></dd><dt><span class="term"><a href="glosslist.html"><code class="tag-element">glosslist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.3.2.1.1"></a>A list of glossary terms and their
+              definitions.</p></dd><dt><span class="term"><a href="itemizedlist.html"><code class="tag-element">itemizedlist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.4.2.1.1"></a>An unordered (bulleted) list. There are attributes
+              to control the marks used.</p></dd><dt><span class="term"><a href="orderedlist.html"><code class="tag-element">orderedlist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.5.2.1.1"></a>A numbered list. There are attributes to control
+              the type of enumeration.</p></dd><dt><span class="term"><a href="segmentedlist.html"><code class="tag-element">segmentedlist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.6.2.1.1"></a>A repeating set of named items. For example, a
+              list of states and their capitals might be represented as a
+              <a href="segmentedlist.html"><code class="tag-element">segmentedlist</code></a>. Segmented lists consist of
+              <a href="segtitle.html"><code class="tag-element">segtitle</code></a>s, <a href="seglistitem.html"><code class="tag-element keep-together">seglistitem</code></a>s, and
+              <a href="seg.html"><code class="tag-element">seg</code></a>s.</p></dd><dt><span class="term"><a href="simplelist.html"><code class="tag-element">simplelist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.7.2.1.1"></a>An unadorned list of items.
+              <a href="simplelist.html"><code class="tag-element">simplelist</code></a>s can be inline or arranged in
+              columns.</p></dd><dt><span class="term"><a href="variablelist.html"><code class="tag-element">variablelist</code></a></span></dt><dd><p><a class="indexterm" name="s.lists.3.8.2.1.1"></a>A list of terms and definitions or descriptions.
+              (This list of list types is a <a href="variablelist.html"><code class="tag-element keep-together">variablelist</code></a>.)</p></dd></dl></div></section><section id="s.admonitions" class="section"><div class="section-titlepage"><h5>3.6.3. Admonitions</h5></div><p><a class="indexterm" name="s.admonitions.2.1"></a><a class="indexterm" name="s.admonitions.2.2"></a><a class="indexterm" name="s.admonitions.2.3"></a><a class="indexterm" name="s.admonitions.2.4"></a><a class="indexterm" name="s.admonitions.2.5"></a><a class="indexterm" name="s.admonitions.2.6"></a>There are five types of admonitions in DocBook:
+        <a href="caution.html"><code class="tag-element">caution</code></a>, <a href="important.html"><code class="tag-element">important</code></a>,
+        <a href="note.html"><code class="tag-element">note</code></a>, <a href="tip.html"><code class="tag-element">tip</code></a>, and
+        <a href="warning.html"><code class="tag-element">warning</code></a>.</p><p>All of the admonitions have the same structure: an optional
+        <a href="title.html"><code class="tag-element">title</code></a> followed by paragraph-level elements. DocBook
+        does not impose any specific semantics on the individual admonitions.
+        For example, DocBook does not mandate that <a href="warning.html"><code class="tag-element">warning</code></a>s
+        be reserved for cases where bodily harm can result.</p></section><section id="s.line-specific" class="section"><div class="section-titlepage"><h5>3.6.4. Line-specific environments</h5></div><p><a class="indexterm" name="s.line-specific.2.1"></a><a class="indexterm" name="s.line-specific.2.2"></a><a class="indexterm" name="s.line-specific.2.3"></a>These environments preserve whitespace and line breaks
+        in the source text. DocBook does not provide the equivalent of
+        <span class="acronym">HTML</span>’s br tag, so there’s
+        no way to interject a line break into normal running text.</p><div class="variablelist"><dl><dt><span class="term"><a href="address.html"><code class="tag-element">address</code></a></span></dt><dd><p><a class="indexterm" name="s.line-specific.3.1.2.1.1"></a>The <a href="address.html"><code class="tag-element">address</code></a> element is intended
+              for postal addresses. In addition to being line-specific,
+              <a href="address.html"><code class="tag-element">address</code></a> contains additional elements suitable
+              for marking up names and addresses: <a href="city.html"><code class="tag-element">city</code></a>,
+              <a href="country.html"><code class="tag-element">country</code></a>, <a href="fax.html"><code class="tag-element">fax</code></a>,
+              <a href="otheraddr.html"><code class="tag-element">otheraddr</code></a>, <a href="personname.html"><code class="tag-element">personname</code></a>,
+              <a href="phone.html"><code class="tag-element">phone</code></a>, <a href="pob.html"><code class="tag-element">pob</code></a>,
+              <a href="postcode.html"><code class="tag-element">postcode</code></a>, <a href="state.html"><code class="tag-element">state</code></a>, and
+              <a href="street.html"><code class="tag-element">street</code></a>.</p></dd><dt><span class="term"><a href="literallayout.html"><code class="tag-element">literallayout</code></a></span></dt><dd><p><a class="indexterm" name="s.line-specific.3.2.2.1.1"></a>A <a href="literallayout.html"><code class="tag-element">literallayout</code></a> does not have
+              any semantic association beyond the preservation of whitespace
+              and line breaks. In particular, while
+              <a href="programlisting.html"><code class="tag-element">programlisting</code></a> and <a href="screen.html"><code class="tag-element">screen</code></a>
+              are frequently presented in a fixed-width font, a change of
+              fonts is not ordinarily <span class="keep-together">implied</span> by
+              <a href="literallayout.html"><code class="tag-element">literallayout</code></a>.</p></dd><dt><span class="term"><a href="programlisting.html"><code class="tag-element">programlisting</code></a> and
+            <a href="programlistingco.html"><code class="tag-element">programlistingco</code></a></span></dt><dd><p><a class="indexterm" name="s.line-specific.3.3.2.1.1"></a><a class="indexterm" name="s.line-specific.3.3.2.1.2"></a><a class="indexterm" name="s.line-specific.3.3.2.1.3"></a>The <a href="programlisting.html"><code class="tag-element">programlisting</code></a> and
+              <a href="programlistingco.html"><code class="tag-element">programlistingco</code></a> elements are verbatim
+              environments, usually presented in Courier or some other
+              fixed-width font, for program sources, code fragments, and
+              similar listings. The two elements are the same, except that
+              <a href="programlistingco.html"><code class="tag-element">programlistingco</code></a> supports markup for
+              callouts.</p></dd><dt><span class="term"><a href="screen.html"><code class="tag-element">screen</code></a> and
+            <a href="screenco.html"><code class="tag-element">screenco</code></a></span></dt><dd><p><a class="indexterm" name="s.line-specific.3.4.2.1.1"></a><a class="indexterm" name="s.line-specific.3.4.2.1.2"></a><a class="indexterm" name="s.line-specific.3.4.2.1.3"></a>The <a href="screen.html"><code class="tag-element">screen</code></a> and
+              <a href="screenco.html"><code class="tag-element">screenco</code></a> elements are verbatim or literal
+              environments for text screen captures, other fragments of an
+              <span class="acronym">ASCII</span> display, and similar things.
+              <a href="screen.html"><code class="tag-element">screen</code></a> is also a frequent catchall for any
+              verbatim text. The two elements are the same, except that
+              <a href="screenco.html"><code class="tag-element">screenco</code></a> supports markup for callouts.</p></dd><dt><span class="term"><a href="screenshot.html"><code class="tag-element">screenshot</code></a></span></dt><dd><p><a class="indexterm" name="s.line-specific.3.5.2.1.1"></a><a href="screenshot.html"><code class="tag-element">screenshot</code></a> is actually a
+              wrapper for a <a href="mediaobject.html"><code class="tag-element">mediaobject</code></a> intended for
+              screenshots of a <span class="acronym">GUI</span>, for example.</p></dd><dt><span class="term"><a href="synopsis.html"><code class="tag-element">synopsis</code></a></span></dt><dd><p><a class="indexterm" name="s.line-specific.3.6.2.1.1"></a>A <a href="synopsis.html"><code class="tag-element">synopsis</code></a> is a verbatim
+              environment for command and function synopses.</p></dd></dl></div></section><section id="s.formal" class="section"><div class="section-titlepage"><h5>3.6.5. Examples, figures, and tables</h5></div><p><a class="indexterm" name="s.formal.2.1"></a><a class="indexterm" name="s.formal.2.2"></a><a class="indexterm" name="s.formal.2.3"></a><a class="indexterm" name="s.formal.2.4"></a><a class="indexterm" name="s.formal.2.5"></a><a class="indexterm" name="s.formal.2.6"></a><a class="indexterm" name="s.formal.2.7"></a><a class="indexterm" name="s.formal.2.8"></a>Examples, figures, and tables are supported with the
+        block-level elements: <a href="example.html"><code class="tag-element">example</code></a>,
+        <a href="informalexample.html"><code class="tag-element">informalexample</code></a>, <a href="figure.html"><code class="tag-element">figure</code></a>,
+        <a href="informalfigure.html"><code class="tag-element">informalfigure</code></a>, <a href="html.table.html"><code class="tag-element">table</code></a>, and
+        <a href="html.informaltable.html"><code class="tag-element">informaltable</code></a>.</p><p><a class="indexterm" name="s.formal.3.1"></a>The distinction between formal and informal elements is
+        that formal elements have titles while informal ones do not.</p><p><a class="indexterm" name="s.formal.4.1"></a>DocBook supports CALS tables (defined with
+        <a href="tgroup.html"><code class="tag-element">tgroup</code></a>, <a href="colspec.html"><code class="tag-element">colspec</code></a>,
+        <a href="spanspec.html"><code class="tag-element">spanspec</code></a>, <a href="html.thead.html"><code class="tag-element">thead</code></a>,
+        <a href="html.tfoot.html"><code class="tag-element">tfoot</code></a>, <a href="html.tbody.html"><code class="tag-element">tbody</code></a>,
+        <a href="row.html"><code class="tag-element">row</code></a>, <a href="entry.html"><code class="tag-element">entry</code></a>,
+        <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a>, and <a href="caption.html"><code class="tag-element">caption</code></a>) and HTML
+        tables<a class="indexterm" name="s.formal.4.12"></a> (defined with <a href="html.col.html"><code class="tag-element">col</code></a>,
+        <a href="html.colgroup.html"><code class="tag-element">colgroup</code></a>, <a href="html.thead.html"><code class="tag-element">thead</code></a>,
+        <a href="html.tfoot.html"><code class="tag-element">tfoot</code></a>, <a href="html.tbody.html"><code class="tag-element">tbody</code></a>,
+        <a href="html.tr.html"><code class="tag-element">tr</code></a>, <a href="html.td.html"><code class="tag-element">td</code></a>, and
+        <a href="caption.html"><code class="tag-element">caption</code></a>).</p></section><section id="s.paras" class="section"><div class="section-titlepage"><h5>3.6.6. Paragraphs</h5></div><p><a class="indexterm" name="s.paras.2.1"></a>There are three paragraph elements:
+        <a href="para.html"><code class="tag-element">para</code></a>, <a href="simpara.html"><code class="tag-element">simpara</code></a> (simple paragraphs
+        may not contain other block-level elements), and
+        <a href="formalpara.html"><code class="tag-element">formalpara</code></a> (formal paragraphs have titles).</p></section><section id="s.equations" class="section"><div class="section-titlepage"><h5>3.6.7. Equations</h5></div><p><a class="indexterm" name="s.equations.2.1"></a><a class="indexterm" name="s.equations.2.2"></a><a class="indexterm" name="s.equations.2.3"></a>There are two block-equation elements,
+        <a href="equation.html"><code class="tag-element">equation</code></a> and <a href="informalequation.html"><code class="tag-element">informalequation</code></a>
+        (for inline equations, use <a href="inlineequation.html"><code class="tag-element">inlineequation</code></a>).</p><p>Informal equations don’t have titles. For reasons of backward
+        compatibility, <a href="equation.html"><code class="tag-element">equation</code></a>s are not required to have
+        titles. However, it may be more difficult for some stylesheet
+        languages to properly enumerate <a href="equation.html"><code class="tag-element">equation</code></a>s if they
+        lack titles.</p></section><section id="s.graphics" class="section"><div class="section-titlepage"><h5>3.6.8. Graphics and media</h5></div><p><a class="indexterm" name="s.graphics.2.1"></a><a class="indexterm" name="s.graphics.2.2"></a><a class="indexterm" name="s.graphics.2.3"></a><a class="indexterm" name="s.graphics.2.4"></a><a class="indexterm" name="s.graphics.2.5"></a>Graphics occur most frequently in
+        <a href="figure.html"><code class="tag-element">figure</code></a>s and <a href="screenshot.html"><code class="tag-element">screenshot</code></a>s, but
+        they can also occur outside those wrappers. DocBook considers a
+        <a href="mediaobject.html"><code class="tag-element">mediaobject</code></a> a block element, even if it occurs in
+        an inline context. For graphics that you want to be represented
+        inline, use <a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a>.</p><p><a class="indexterm" name="s.graphics.3.1"></a><a class="indexterm" name="s.graphics.3.2"></a>Media objects (and inline media objects) can contain
+        five kinds of content:</p><div class="variablelist"><dl><dt><span class="term"><a href="audioobject.html"><code class="tag-element">audioobject</code></a></span></dt><dd><p>A wrapper for audio data and its associated
+              meta-information. (Which contains
+              <a href="audiodata.html"><code class="tag-element">audiodata</code></a>.)</p></dd><dt><span class="term"><a href="imageobject.html"><code class="tag-element">imageobject</code></a></span></dt><dd><p>A wrapper for image data and its associated
+              meta-information. (Which contains
+              <a href="imagedata.html"><code class="tag-element">imagedata</code></a>.)</p></dd><dt><span class="term"><a href="imageobjectco.html"><code class="tag-element">imageobjectco</code></a></span></dt><dd><p>A wrapper for an image object with callouts. (Which
+              contains <a href="imagedata.html"><code class="tag-element">imagedata</code></a> and <span class="keep-together">callout-related</span>
+              information).</p></dd><dt><span class="term"><a href="videoobject.html"><code class="tag-element">videoobject</code></a></span></dt><dd><p>A wrapper for video data and its associated
+              meta-information. (Which contains
+              <a href="videodata.html"><code class="tag-element">videodata</code></a>.)</p></dd><dt><span class="term"><a href="textobject.html"><code class="tag-element">textobject</code></a></span></dt><dd><p>A wrapper for a text description of an object and its
+              associated meta-information. (Which contains
+              <a href="textdata.html"><code class="tag-element">textdata</code></a>.)</p></dd></dl></div><p>The audio, image, video, and text data in a media object are, by
+        definition, alternatives.</p></section><section id="s.qanda" class="section"><div class="section-titlepage"><h5>3.6.9. Questions and answers</h5></div><p><a class="indexterm" name="s.qanda.2.1"></a><a class="indexterm" name="s.qanda.2.2"></a><a class="indexterm" name="s.qanda.2.3"></a><a class="indexterm" name="s.qanda.2.4"></a><a class="indexterm" name="s.qanda.2.5"></a>The <a href="qandaset.html"><code class="tag-element">qandaset</code></a> element is suitable for
+        <span class="acronym">FAQ</span>s (Frequently Asked Questions) and other similar
+        collections of questions and answers. Each
+        <a href="qandaentry.html"><code class="tag-element">qandaentry</code></a> contains a <a href="question.html"><code class="tag-element">question</code></a>
+        and its <a href="answer.html"><code class="tag-element">answer</code></a>(s). The set of questions and answers
+        can be divided into sections with <a href="qandadiv.html"><code class="tag-element keep-together">qandadiv</code></a>.</p></section><section id="s.tasks" class="section"><div class="section-titlepage"><h5>3.6.10. Procedures and tasks</h5></div><p><a class="indexterm" name="s.tasks.2.1"></a>A <a href="procedure.html"><code class="tag-element">procedure</code></a> contains
+        <a href="step.html"><code class="tag-element">step</code></a>s, which may contain
+        <a href="substeps.html"><code class="tag-element">substeps</code></a> or
+        <a href="stepalternatives.html"><code class="tag-element">stepalternatives</code></a>.</p><p><a class="indexterm" name="s.tasks.3.1"></a>The <a href="task.html"><code class="tag-element">task</code></a> element is a wrapper around
+        the <a href="procedure.html"><code class="tag-element">procedure</code></a> element that provides additional,
+        optional elements, including <a href="tasksummary.html"><code class="tag-element">tasksummary</code></a>,
+        <a href="taskprerequisites.html"><code class="tag-element">taskprerequisites</code></a>, <a href="example.html"><code class="tag-element">example</code></a>, and
+        <a href="taskrelated.html"><code class="tag-element keep-together">taskrelated</code></a>.</p></section><section id="s.synopses" class="section"><div class="section-titlepage"><h5>3.6.11. Synopses</h5></div><p>DocBook provides a number of elements for describing command,
+        function, and class synopses:</p><div class="variablelist"><dl><dt><span class="term"><a href="cmdsynopsis.html"><code class="tag-element">cmdsynopsis</code></a></span></dt><dd><p><a class="indexterm" name="s.synopses.3.1.2.1.1"></a><a class="indexterm" name="s.synopses.3.1.2.1.2"></a><a class="indexterm" name="s.synopses.3.1.2.1.3"></a><a class="indexterm" name="s.synopses.3.1.2.1.4"></a>A syntax summary for a software command. A
+              <a href="cmdsynopsis.html"><code class="tag-element">cmdsynopsis</code></a> contains <a href="arg.html"><code class="tag-element">arg</code></a>,
+              <a href="command.html"><code class="tag-element">command</code></a>, and <a href="group.html"><code class="tag-element">group</code></a>
+              elements. For long synopses, the <a href="sbr.html"><code class="tag-element">sbr</code></a> tag can
+              be used to indicate where a break should occur. Complex synopses
+              can be composed from <a href="synopfragment.html"><code class="tag-element">synopfragment</code></a>s.</p></dd><dt><span class="term"><a href="funcsynopsis.html"><code class="tag-element">funcsynopsis</code></a></span></dt><dd><p><a class="indexterm" name="s.synopses.3.2.2.1.1"></a>The syntax summary for a function definition. A
+              function synopsis consists of one or more
+              <a href="funcprototype.html"><code class="tag-element">funcprototype</code></a>s and may include additional,
+              literal information in a <a href="funcsynopsisinfo.html"><code class="tag-element">funcsynopsisinfo</code></a>.
+              Each prototype consists of <a href="modifier.html"><code class="tag-element">modifier</code></a>s, a
+              <a href="funcdef.html"><code class="tag-element">funcdef</code></a>, and a collection of
+              <a href="paramdef.html"><code class="tag-element">paramdef</code></a>, <a href="varargs.html"><code class="tag-element">varargs</code></a>, and/or
+              <a href="void.html"><code class="tag-element">void</code></a> elements.</p></dd><dt><span class="term"><a href="classsynopsis.html"><code class="tag-element">classsynopsis</code></a></span></dt><dd><p><a class="indexterm" name="s.synopses.3.3.2.1.1"></a>The syntax summary for a class definition. A class
+              synopsis consists of one or more <a href="ooclass.html"><code class="tag-element">ooclass</code></a>,
+              <a href="ooexception.html"><code class="tag-element">ooexception</code></a>, or
+              <a href="oointerface.html"><code class="tag-element">oointerface</code></a> elements followed by zero or more
+              <a href="constructorsynopsis.html"><code class="tag-element">constructorsynopsis</code></a>,
+              <a href="destructorsynopsis.html"><code class="tag-element">destructorsynopsis</code></a>,
+              <a href="fieldsynopsis.html"><code class="tag-element">fieldsynopsis</code></a>, and
+              <a href="methodsynopsis.html"><code class="tag-element">methodsynopsis</code></a> elements Like
+              <a href="funcsynopsis.html"><code class="tag-element">funcsynopsis</code></a>, it may include additional,
+              literal information, in this case, in a
+              <a href="classsynopsisinfo.html"><code class="tag-element">classsynopsisinfo</code></a>.</p></dd></dl></div></section><section id="s.misc" class="section"><div class="section-titlepage"><h5>3.6.12. Miscellaneous block elements</h5></div><p>The following block elements are also available:</p><div class="variablelist"><dl><dt><span class="term"><a href="blockquote.html"><code class="tag-element">blockquote</code></a></span></dt><dd><p><a class="indexterm" name="s.misc.3.1.2.1.1"></a><a class="indexterm" name="s.misc.3.1.2.1.2"></a>A block quotation. Block quotations may have
+              <a href="attribution.html"><code class="tag-element">attribution</code></a>s.</p></dd><dt><span class="term"><a href="epigraph.html"><code class="tag-element">epigraph</code></a></span></dt><dd><p><a class="indexterm" name="s.misc.3.2.2.1.1"></a>A short introduction, typically a quotation, at
+              the beginning of a document or component. The
+              <a href="epigraph.html"><code class="tag-element">epigraph</code></a> element may include an
+              <a href="attribution.html"><code class="tag-element">attribution</code></a> element.</p></dd><dt><span class="term"><a href="msgset.html"><code class="tag-element">msgset</code></a></span></dt><dd><p><a class="indexterm" name="s.misc.3.3.2.1.1"></a>A set of related error messages.</p></dd><dt><span class="term"><a href="sidebar.html"><code class="tag-element">sidebar</code></a></span></dt><dd><p>A sidebar.</p></dd></dl></div></section></section><section id="s.inline" class="section"><div class="section-titlepage"><h4>3.7. Inline Elements</h4></div><p><a class="indexterm" name="s.inline.2.1"></a><a class="indexterm" name="s.inline.2.2"></a>Users of DocBook are provided with a surfeit of inline
+      elements. Inline elements are used to mark up running text. In published
+      documents, inline elements often cause a font change or other small
+      change, but they do not cause line or paragraph breaks.</p><p>In practice, writers generally settle on the tagging of inline
+      elements that suits their time and subject matter. This may be a large
+      number of elements or only a handful. What is important is that you
+      choose to mark up not every possible item, but only those for which
+      distinctive tagging will be useful in the production of the finished
+      document for the readers who will search through it.</p><p>The following comprehensive list may be a useful tool for the
+      process of narrowing down the elements that you will choose to mark up;
+      it is not intended to overwhelm you by its sheer length. For
+      convenience, we’ve divided the inlines into several <span class="keep-together">subcategories</span>.</p><p>The classification used here is not meant to be authoritative,
+      only helpful in providing a feel for the nature of the inlines. Several
+      elements appear in more than one category, and arguments could be made
+      to support the placement of additional elements in other categories or
+      entirely new categories.</p><section id="s.inline.tradpub" class="section"><div class="section-titlepage"><h5>3.7.1. Traditional publishing inlines</h5></div><p><a class="indexterm" name="s.inline.tradpub.2.1"></a><a class="indexterm" name="s.inline.tradpub.2.2"></a>These inlines identify things that commonly occur in
+        general writing:</p><div class="variablelist"><dl><dt><span class="term"><a href="abbrev.html"><code class="tag-element">abbrev</code></a></span></dt><dd><p>An abbreviation, especially one followed by a
+              period.<a class="indexterm" name="s.inline.tradpub.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="acronym.html"><code class="tag-element">acronym</code></a></span></dt><dd><p>An often pronounceable word made from the initial (or
+              selected) letters of a name or phrase.<a class="indexterm" name="s.inline.tradpub.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="emphasis.html"><code class="tag-element">emphasis</code></a></span></dt><dd><p>Emphasized text.<a class="indexterm" name="s.inline.tradpub.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="footnote.html"><code class="tag-element">footnote</code></a></span></dt><dd><p>A footnote. The location of the
+              <a href="footnote.html"><code class="tag-element">footnote</code></a> element identifies the location of
+              the first reference to the footnote. Additional references to
+              the same footnote can be inserted with
+              <a href="footnoteref.html"><code class="tag-element">footnoteref</code></a>.<a class="indexterm" name="s.inline.tradpub.3.4.2.1.3"></a><a class="indexterm" name="s.inline.tradpub.3.4.2.1.4"></a></p></dd><dt><span class="term"><a href="phrase.html"><code class="tag-element">phrase</code></a></span></dt><dd><p>A span of text.<a class="indexterm" name="s.inline.tradpub.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="quote.html"><code class="tag-element">quote</code></a></span></dt><dd><p>An inline quotation.<a class="indexterm" name="s.inline.tradpub.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="trademark.html"><code class="tag-element">trademark</code></a></span></dt><dd><p>A trademark.<a class="indexterm" name="s.inline.tradpub.3.7.2.1.1"></a></p></dd></dl></div></section><section id="s.inline.xref" class="section"><div class="section-titlepage"><h5>3.7.2. Cross-references</h5></div><p><a class="indexterm" name="s.inline.xref.2.1"></a><a class="indexterm" name="s.inline.xref.2.2"></a><a class="indexterm" name="s.inline.xref.2.3"></a><a class="indexterm" name="s.inline.xref.2.4"></a>The cross-reference inlines identify both explicit
+        cross-references, such as <a href="link.html"><code class="tag-element">link</code></a>, and implicit
+        cross-references, such as <a href="glossterm.html"><code class="tag-element">glossterm</code></a>. You can make
+        most of the implicit references explicit with a <code class="tag-attribute">linkend</code> attribute.</p><div class="variablelist"><dl><dt><span class="term"><a href="anchor.html"><code class="tag-element">anchor</code></a></span></dt><dd><p>A spot in the document<a class="indexterm" name="s.inline.xref.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="citation.html"><code class="tag-element">citation</code></a></span></dt><dd><p>An inline bibliographic reference to another published
+              work<a class="indexterm" name="s.inline.xref.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="citerefentry.html"><code class="tag-element">citerefentry</code></a></span></dt><dd><p>A citation to a reference page<a class="indexterm" name="s.inline.xref.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="citetitle.html"><code class="tag-element">citetitle</code></a></span></dt><dd><p>The title of a cited work<a class="indexterm" name="s.inline.xref.3.4.2.1.1"></a></p></dd><dt><span class="term"><a href="firstterm.html"><code class="tag-element">firstterm</code></a></span></dt><dd><p>The first occurrence of a term<a class="indexterm" name="s.inline.xref.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="glossterm.html"><code class="tag-element">glossterm</code></a></span></dt><dd><p>A glossary term<a class="indexterm" name="s.inline.xref.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="link.html"><code class="tag-element">link</code></a></span></dt><dd><p>A hypertext link<a class="indexterm" name="s.inline.xref.3.7.2.1.1"></a></p></dd><dt><span class="term"><a href="olink.html"><code class="tag-element">olink</code></a></span></dt><dd><p>A link that addresses its target indirectly<a class="indexterm" name="s.inline.xref.3.8.2.1.1"></a></p></dd><dt><span class="term"><a href="xref.html"><code class="tag-element">xref</code></a></span></dt><dd><p>A cross-reference to another part of the
+              document<a class="indexterm" name="s.inline.xref.3.9.2.1.1"></a></p></dd></dl></div></section><section id="s.inline.markup" class="section"><div class="section-titlepage"><h5>3.7.3. Markup</h5></div><p><a class="indexterm" name="s.inline.markup.2.1"></a>These inlines are used to mark up text for special
+        presentation:</p><div class="variablelist"><dl><dt><span class="term"><a href="foreignphrase.html"><code class="tag-element">foreignphrase</code></a></span></dt><dd><p>A word or phrase in a language other than the primary
+              language of the document<a class="indexterm" name="s.inline.markup.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="wordasword.html"><code class="tag-element">wordasword</code></a></span></dt><dd><p>A word meant specifically as a word and not representing
+              anything else<a class="indexterm" name="s.inline.markup.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="computeroutput.html"><code class="tag-element">computeroutput</code></a></span></dt><dd><p>Data, generally text, displayed or presented by a
+              computer<a class="indexterm" name="s.inline.markup.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="literal.html"><code class="tag-element">literal</code></a></span></dt><dd><p>Inline text that is some literal value<a class="indexterm" name="s.inline.markup.3.4.2.1.1"></a></p></dd><dt><span class="term"><a href="markup.html"><code class="tag-element">markup</code></a></span></dt><dd><p>A string of formatting markup in text that is to be
+              represented literally<a class="indexterm" name="s.inline.markup.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="prompt.html"><code class="tag-element">prompt</code></a></span></dt><dd><p>A character or string indicating the start of an input
+              field in a computer display<a class="indexterm" name="s.inline.markup.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="replaceable.html"><code class="tag-element">replaceable</code></a></span></dt><dd><p>Content that may or must be replaced by the user<a class="indexterm" name="s.inline.markup.3.7.2.1.1"></a></p></dd><dt><span class="term"><a href="tag.html"><code class="tag-element">tag</code></a></span></dt><dd><p>A component of XML (or SGML) markup<a class="indexterm" name="s.inline.markup.3.8.2.1.1"></a></p></dd><dt><span class="term"><a href="userinput.html"><code class="tag-element">userinput</code></a></span></dt><dd><p>Data entered by the user<a class="indexterm" name="s.inline.markup.3.9.2.1.1"></a></p></dd></dl></div></section><section id="s.inline.math" class="section"><div class="section-titlepage"><h5>3.7.4. Mathematics</h5></div><p><a class="indexterm" name="s.inline.math.2.1"></a><a class="indexterm" name="s.inline.math.2.2"></a><a class="indexterm" name="s.inline.math.2.3"></a><a class="indexterm" name="s.inline.math.2.4"></a><a class="indexterm" name="s.inline.math.2.5"></a>DocBook does not define a complete set of elements for
+        representing equations. The <em class="citetitle">Mathematical Markup Language
+        (<span class="acronym">MathML</span>)</em> [<a href="appc.html#MathML"><span class="abbrev">MathML</span></a>]
+        is a standard that defines a comprehensive grammar for representing
+        equations. <span class="acronym">MathML</span> markup may be used in any of the
+        equation elements
+        (<a href="equation.html"><code class="tag-element">equation</code></a>,<a href="informalequation.html"><code class="tag-element">informalequation</code></a>, and
+        <a href="inlineequation.html"><code class="tag-element">inlineequation</code></a>). For simple mathematics equations
+        that do not require extensive markup, the
+        <a href="mathphrase.html"><code class="tag-element">mathphrase</code></a> element is an alternative.</p><div class="variablelist"><dl><dt><span class="term"><a href="inlineequation.html"><code class="tag-element">inlineequation</code></a></span></dt><dd><p>A mathematical equation or expression occurring
+              inline<a class="indexterm" name="s.inline.math.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="mathphrase.html"><code class="tag-element">mathphrase</code></a></span></dt><dd><p>A mathematical phrase that can be represented with
+              ordinary text and a small amount of markup<a class="indexterm" name="s.inline.math.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="subscript.html"><code class="tag-element">subscript</code></a></span></dt><dd><p>A subscript (as in H<sub>2</sub>O, the
+              molecular formula for water)<a class="indexterm" name="s.inline.math.3.3.2.1.2"></a></p></dd><dt><span class="term"><a href="superscript.html"><code class="tag-element">superscript</code></a></span></dt><dd><p>A superscript (as in x<sup>2</sup>, the
+              mathematical notation for x multiplied by itself)<a class="indexterm" name="s.inline.math.3.4.2.1.2"></a></p></dd></dl></div></section><section id="s.inline.ui" class="section"><div class="section-titlepage"><h5>3.7.5. User interfaces</h5></div><p>These elements describe aspects of a user interface:<a class="indexterm" name="s.inline.ui.2.1"></a><a class="indexterm" name="s.inline.ui.2.2"></a></p><div class="variablelist"><dl><dt><span class="term"><a href="accel.html"><code class="tag-element">accel</code></a></span></dt><dd><p>A graphical user interface (GUI) keyboard
+              shortcut<a class="indexterm" name="s.inline.ui.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="guibutton.html"><code class="tag-element">guibutton</code></a></span></dt><dd><p>The text on a button in a GUI<a class="indexterm" name="s.inline.ui.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="guiicon.html"><code class="tag-element">guiicon</code></a></span></dt><dd><p>A graphic and/or text appearing as an icon in a
+              GUI<a class="indexterm" name="s.inline.ui.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="guilabel.html"><code class="tag-element">guilabel</code></a></span></dt><dd><p>The text of a label in a GUI</p></dd><dt><span class="term"><a href="guimenu.html"><code class="tag-element">guimenu</code></a></span></dt><dd><p>The name of a menu in a GUI<a class="indexterm" name="s.inline.ui.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="guimenuitem.html"><code class="tag-element">guimenuitem</code></a></span></dt><dd><p>The name of a terminal menu item in a GUI<a class="indexterm" name="s.inline.ui.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="guisubmenu.html"><code class="tag-element">guisubmenu</code></a></span></dt><dd><p>The name of a submenu in a GUI<a class="indexterm" name="s.inline.ui.3.7.2.1.1"></a></p></dd><dt><span class="term"><a href="keycap.html"><code class="tag-element">keycap</code></a></span></dt><dd><p>The text printed on a key on a keyboard<a class="indexterm" name="s.inline.ui.3.8.2.1.1"></a></p></dd><dt><span class="term"><a href="keycode.html"><code class="tag-element">keycode</code></a></span></dt><dd><p>The internal, frequently numeric, identifier for a key on
+              a keyboard<a class="indexterm" name="s.inline.ui.3.9.2.1.1"></a></p></dd><dt><span class="term"><a href="keycombo.html"><code class="tag-element">keycombo</code></a></span></dt><dd><p>A combination of input actions<a class="indexterm" name="s.inline.ui.3.10.2.1.1"></a></p></dd><dt><span class="term"><a href="keysym.html"><code class="tag-element">keysym</code></a></span></dt><dd><p>The symbolic name of a key on a keyboard<a class="indexterm" name="s.inline.ui.3.11.2.1.1"></a></p></dd><dt><span class="term"><a href="menuchoice.html"><code class="tag-element">menuchoice</code></a></span></dt><dd><p>A selection or series of selections from a menu<a class="indexterm" name="s.inline.ui.3.12.2.1.1"></a></p></dd><dt><span class="term"><a href="mousebutton.html"><code class="tag-element">mousebutton</code></a></span></dt><dd><p>The conventional name of a mouse button<a class="indexterm" name="s.inline.ui.3.13.2.1.1"></a></p></dd><dt><span class="term"><a href="shortcut.html"><code class="tag-element">shortcut</code></a></span></dt><dd><p>A key combination for an action that is also accessible
+              through a menu<a class="indexterm" name="s.inline.ui.3.14.2.1.1"></a></p></dd></dl></div></section><section id="s.inline.prog" class="section"><div class="section-titlepage"><h5>3.7.6. Programming languages and constructs</h5></div><p><a class="indexterm" name="s.inline.prog.2.1"></a><a class="indexterm" name="s.inline.prog.2.2"></a><a class="indexterm" name="s.inline.prog.2.3"></a><a class="indexterm" name="s.inline.prog.2.4"></a><a class="indexterm" name="s.inline.prog.2.5"></a>Many of the technical inlines in DocBook are related to
+        programming:</p><div class="variablelist"><dl><dt><span class="term"><a href="classname.html"><code class="tag-element">classname</code></a></span></dt><dd><p>The name of a class, in the object-oriented programming
+              sense<a class="indexterm" name="s.inline.prog.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="constant.html"><code class="tag-element">constant</code></a></span></dt><dd><p>A programming or system constant<a class="indexterm" name="s.inline.prog.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="errorcode.html"><code class="tag-element">errorcode</code></a></span></dt><dd><p>An error code<a class="indexterm" name="s.inline.prog.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="errorname.html"><code class="tag-element">errorname</code></a></span></dt><dd><p>An error name<a class="indexterm" name="s.inline.prog.3.4.2.1.1"></a></p></dd><dt><span class="term"><a href="errortype.html"><code class="tag-element">errortype</code></a></span></dt><dd><p>The classification of an error message<a class="indexterm" name="s.inline.prog.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="function.html"><code class="tag-element">function</code></a></span></dt><dd><p>The name of a function or subroutine, as in a programming
+              language<a class="indexterm" name="s.inline.prog.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="literal.html"><code class="tag-element">literal</code></a></span></dt><dd><p>Inline text that is some literal value<a class="indexterm" name="s.inline.prog.3.7.2.1.1"></a></p></dd><dt><span class="term"><a href="msgtext.html"><code class="tag-element">msgtext</code></a></span></dt><dd><p>The actual text of a message component in a message
+              set<a class="indexterm" name="s.inline.prog.3.8.2.1.1"></a></p></dd><dt><span class="term"><a href="parameter.html"><code class="tag-element">parameter</code></a></span></dt><dd><p>A value or a symbolic reference to a value<a class="indexterm" name="s.inline.prog.3.9.2.1.1"></a></p></dd><dt><span class="term"><a href="property.html"><code class="tag-element">property</code></a></span></dt><dd><p>A unit of data associated with some part of a computer
+              system<a class="indexterm" name="s.inline.prog.3.10.2.1.1"></a></p></dd><dt><span class="term"><a href="replaceable.html"><code class="tag-element">replaceable</code></a></span></dt><dd><p>Content that may or must be replaced by the user<a class="indexterm" name="s.inline.prog.3.11.2.1.1"></a></p></dd><dt><span class="term"><a href="returnvalue.html"><code class="tag-element">returnvalue</code></a></span></dt><dd><p>The value returned by a function<a class="indexterm" name="s.inline.prog.3.12.2.1.1"></a></p></dd><dt><span class="term"><a href="symbol.html"><code class="tag-element">symbol</code></a></span></dt><dd><p>A name that is replaced by a value before
+              processing<a class="indexterm" name="s.inline.prog.3.13.2.1.1"></a></p></dd><dt><span class="term"><a href="token.html"><code class="tag-element">token</code></a></span></dt><dd><p>A unit of information<a class="indexterm" name="s.inline.prog.3.14.2.1.1"></a></p></dd><dt><span class="term"><a href="type.html"><code class="tag-element">type</code></a></span></dt><dd><p>The classification of a value<a class="indexterm" name="s.inline.prog.3.15.2.1.1"></a></p></dd><dt><span class="term"><a href="varname.html"><code class="tag-element">varname</code></a></span></dt><dd><p>The name of a variable<a class="indexterm" name="s.inline.prog.3.16.2.1.1"></a></p></dd></dl></div></section><section id="s.inline.os" class="section"><div class="section-titlepage"><h5>3.7.7. Operating systems</h5></div><p><a class="indexterm" name="s.inline.os.2.1"></a>These inlines identify parts of an operating system, or
+        an operating environment:</p><div class="variablelist"><dl><dt><span class="term"><a href="application.html"><code class="tag-element">application</code></a></span></dt><dd><p>The name of a software program<a class="indexterm" name="s.inline.os.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="command.html"><code class="tag-element">command</code></a></span></dt><dd><p>The name of an executable program or other software
+              command<a class="indexterm" name="s.inline.os.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="envar.html"><code class="tag-element">envar</code></a></span></dt><dd><p>A software environment variable<a class="indexterm" name="s.inline.os.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="filename.html"><code class="tag-element">filename</code></a></span></dt><dd><p>The name of a file<a class="indexterm" name="s.inline.os.3.4.2.1.1"></a></p></dd><dt><span class="term"><a href="msgtext.html"><code class="tag-element">msgtext</code></a></span></dt><dd><p>The actual text of a message component in a message
+              set<a class="indexterm" name="s.inline.os.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="option.html"><code class="tag-element">option</code></a></span></dt><dd><p>An option for a software command<a class="indexterm" name="s.inline.os.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="parameter.html"><code class="tag-element">parameter</code></a></span></dt><dd><p>A value or a symbolic reference to a value<a class="indexterm" name="s.inline.os.3.7.2.1.1"></a></p></dd><dt><span class="term"><a href="prompt.html"><code class="tag-element">prompt</code></a></span></dt><dd><p>A character or string indicating the start of an input
+              field in a computer display<a class="indexterm" name="s.inline.os.3.8.2.1.1"></a></p></dd><dt><span class="term"><a href="systemitem.html"><code class="tag-element">systemitem</code></a></span></dt><dd><p>A system-related item or term<a class="indexterm" name="s.inline.os.3.9.2.1.1"></a></p></dd></dl></div></section><section id="s.inline.general" class="section"><div class="section-titlepage"><h5>3.7.8. General purpose</h5></div><p><a class="indexterm" name="s.inline.general.2.1"></a><a class="indexterm" name="s.inline.general.2.2"></a>There are also a number of general-purpose technical
+        inlines:</p><div class="variablelist"><dl><dt><span class="term"><a href="application.html"><code class="tag-element">application</code></a></span></dt><dd><p>The name of a software program<a class="indexterm" name="s.inline.general.3.1.2.1.1"></a></p></dd><dt><span class="term"><a href="database.html"><code class="tag-element">database</code></a></span></dt><dd><p>The name of a database, or part of a database<a class="indexterm" name="s.inline.general.3.2.2.1.1"></a></p></dd><dt><span class="term"><a href="email.html"><code class="tag-element">email</code></a></span></dt><dd><p>An email address<a class="indexterm" name="s.inline.general.3.3.2.1.1"></a></p></dd><dt><span class="term"><a href="filename.html"><code class="tag-element">filename</code></a></span></dt><dd><p>The name of a file<a class="indexterm" name="s.inline.general.3.4.2.1.1"></a></p></dd><dt><span class="term"><a href="hardware.html"><code class="tag-element">hardware</code></a></span></dt><dd><p>A physical part of a computer system<a class="indexterm" name="s.inline.general.3.5.2.1.1"></a></p></dd><dt><span class="term"><a href="literal.html"><code class="tag-element">literal</code></a></span></dt><dd><p>Inline text that is some literal value<a class="indexterm" name="s.inline.general.3.6.2.1.1"></a></p></dd><dt><span class="term"><a href="option.html"><code class="tag-element">option</code></a></span></dt><dd><p>An option for a software command<a class="indexterm" name="s.inline.general.3.7.2.1.1"></a></p></dd><dt><span class="term"><a href="optional.html"><code class="tag-element">optional</code></a></span></dt><dd><p>Optional information<a class="indexterm" name="s.inline.general.3.8.2.1.1"></a></p></dd><dt><span class="term"><a href="replaceable.html"><code class="tag-element">replaceable</code></a></span></dt><dd><p>Content that may or must be replaced by the user<a class="indexterm" name="s.inline.general.3.9.2.1.1"></a></p></dd><dt><span class="term"><a href="symbol.html"><code class="tag-element">symbol</code></a></span></dt><dd><p>A name that is replaced by a value before
+              processing<a class="indexterm" name="s.inline.general.3.10.2.1.1"></a></p></dd><dt><span class="term"><a href="token.html"><code class="tag-element">token</code></a></span></dt><dd><p>A unit of information<a class="indexterm" name="s.inline.general.3.11.2.1.1"></a></p></dd><dt><span class="term"><a href="type.html"><code class="tag-element">type</code></a></span></dt><dd><p>The classification of a value<a class="indexterm" name="s.inline.general.3.12.2.1.1"></a></p></dd></dl></div></section></section></section><section id="roots" class="section"><div class="section-titlepage"><h3>4. Roots: Starting Your DocBook Document</h3></div><p>There’s one final detail of the physical and logical structures of
+    DocBook that we’ve left out: where can your document begin? In other
+    words, what are the valid “<span class="quote">document elements</span>” of DocBook
+    documents? Naturally, you can start at <a href="set.html"><code class="tag-element">set</code></a> and
+    <a href="book.html"><code class="tag-element">book</code></a>, but can you also start at
+    <a href="chapter.html"><code class="tag-element">chapter</code></a>? What about <a href="para.html"><code class="tag-element">para</code></a> or
+    <a href="personname.html"><code class="tag-element">personname</code></a>?</p><p>If you come to DocBook from the <span class="acronym">DTD</span> days, this
+    question may seem odd. A <span class="acronym">DTD</span> doesn’t provide any
+    facility to impose constraints on where a document can begin. If the
+    element occurs in the <span class="acronym">DTD</span>, you can start with
+    it.</p><p>RELAX NG does give us the ability to impose such constraints. In
+    fact, it <em>requires</em> that we do. Of course, we could
+    make the constraint vacuous by listing every possible element as a
+    potential document element.</p><p>But, on reflection, that’s not necessarily the best choice. It’s
+    valuable to have metadata associated with documents, so only elements with
+    an <a href="info.html"><code class="tag-element">info</code></a> element can be root elements, but not every
+    element with an <a href="info.html"><code class="tag-element">info</code></a> element is currently included. In
+    DocBook <span class="acronym">V5.0</span> the following elements are available:
+    <a href="acknowledgements.html"><code class="tag-element">acknowledgements</code></a>, <a href="appendix.html"><code class="tag-element">appendix</code></a>,
+    <a href="article.html"><code class="tag-element">article</code></a>, <a href="bibliography.html"><code class="tag-element keep-together">bibliography</code></a>, <a href="book.html"><code class="tag-element">book</code></a>,
+    <a href="chapter.html"><code class="tag-element">chapter</code></a>, <a href="colophon.html"><code class="tag-element">colophon</code></a>,
+    <a href="dedication.html"><code class="tag-element">dedication</code></a>, <a href="glossary.html"><code class="tag-element">glossary</code></a>,
+    <a href="index.html"><code class="tag-element">index</code></a>, <a href="para.html"><code class="tag-element">para</code></a>,
+    <a href="part.html"><code class="tag-element">part</code></a>, <a href="preface.html"><code class="tag-element keep-together">preface</code></a>,
+    <a href="refentry.html"><code class="tag-element">refentry</code></a>, <a href="reference.html"><code class="tag-element">reference</code></a>,
+    <a href="refsect1.html"><code class="tag-element">refsect1</code></a>, <a href="refsect2.html"><code class="tag-element">refsect2</code></a>,
+    <a href="refsect3.html"><code class="tag-element">refsect3</code></a>, <a href="refsection.html"><code class="tag-element">refsection</code></a>,
+    <a href="sect1.html"><code class="tag-element">sect1</code></a>, <a href="sect2.html"><code class="tag-element">sect2</code></a>,
+    <a href="sect3.html"><code class="tag-element">sect3</code></a>, <a href="sect4.html"><code class="tag-element">sect4</code></a>,
+    <a href="sect5.html"><code class="tag-element">sect5</code></a>, <a href="section.html"><code class="tag-element">section</code></a>,
+    <a href="set.html"><code class="tag-element">set</code></a>, <a href="setindex.html"><code class="tag-element">setindex</code></a>, and
+    <a href="toc.html"><code class="tag-element">toc</code></a>.</p><p>With the next point release of DocBook, <span class="acronym">V5.1</span>, the
+    technical committee may take the position that any element that can
+    contain an <a href="info.html"><code class="tag-element">info</code></a> wrapper can be a document <span class="keep-together">element</span>. This would dramatically expand the
+    list of valid root elements.</p></section><section id="ch02-makebook" class="section"><div class="section-titlepage"><h3>5. Making a DocBook Book</h3></div><p><a class="indexterm" name="ch02-makebook.2.1"></a><a class="indexterm" name="ch02-makebook.2.2"></a><a class="indexterm" name="ch02-makebook.2.3"></a>A typical <a href="book.html"><code class="tag-element">book</code></a>, in English at least,
+    consists of some meta-information in an <a href="info.html"><code class="tag-element">info</code></a>
+    (<a href="title.html"><code class="tag-element">title</code></a>, <a href="author.html"><code class="tag-element">author</code></a>,
+    <a href="copyright.html"><code class="tag-element">copyright</code></a>, etc.), one or more
+    <a href="preface.html"><code class="tag-element">preface</code></a>s, several <a href="chapter.html"><code class="tag-element">chapter</code></a>s, and
+    perhaps a few <a href="appendix.html"><code class="tag-element">appendix</code></a>es. A <a href="book.html"><code class="tag-element">book</code></a> may
+    also contain <a href="bibliography.html"><code class="tag-element">bibliography</code></a>s,
+    <a href="glossary.html"><code class="tag-element">glossary</code></a>s, <a href="index.html"><code class="tag-element">index</code></a>es, and a <a href="colophon.html"><code class="tag-element keep-together">colophon</code></a>.</p><p><a href="ch02.html#ex-typicalbook" title="A typical book">Example 2.1, “A typical book”</a> shows the structure of a typical
+    book. Additional content is required where the ellipses occur.<a class="indexterm" name="ch02-makebook.3.2"></a><a class="indexterm" name="ch02-makebook.3.3"></a><a class="indexterm" name="ch02-makebook.3.4"></a></p><figure id="ex-typicalbook" class="example-wrapper"><div class="title">Example 2.1. A typical book</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;book&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;info&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;title&gt;My First Book&lt;/title&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  &lt;author&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;personname&gt;&lt;firstname&gt;Jane&lt;/firstname&gt;&lt;surname&gt;Doe&lt;/surname&gt;&lt;/personname&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;/author&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;copyright&gt;&lt;year&gt;2010&lt;/year&gt;&lt;holder&gt;Jane Doe&lt;/holder&gt;&lt;/copyright&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;/info&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;preface&gt;&lt;title&gt;Foreword&lt;/title&gt; ... &lt;/preface&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;chapter&gt; ... &lt;/chapter&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;chapter&gt; ... &lt;/chapter&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;chapter&gt; ... &lt;/chapter&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;appendix&gt; ... &lt;/appendix&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&lt;appendix&gt; ... &lt;/appendix&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;index&gt; ... &lt;/index&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>&lt;/book&gt;</pre></div></div></figure></section><section id="ch02-makechap" class="section"><div class="section-titlepage"><h3>6. Making a Chapter</h3></div><p><a class="indexterm" name="ch02-makechap.2.1"></a><a class="indexterm" name="ch02-makechap.2.2"></a><a class="indexterm" name="ch02-makechap.2.3"></a><a href="chapter.html"><code class="tag-element">chapter</code></a>s, <a href="preface.html"><code class="tag-element">preface</code></a>s,
+    and <a href="appendix.html"><code class="tag-element">appendix</code></a>es all have a similar structure. They
+    consist of a <a href="title.html"><code class="tag-element">title</code></a>, possibly some additional
+    meta-information, and any number of block-level elements followed by any
+    number of top-level sections. Each section may in turn contain any number
+    of block-level elements followed by any number from the next section
+    level, as shown in <a href="ch02.html#ex-typicalchap" title="A typical chapter">Example 2.2, “A typical chapter”</a>.</p><figure id="ex-typicalchap" class="example-wrapper"><div class="title">Example 2.2. A typical chapter</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter&gt;&lt;title&gt;My Chapter&lt;/title&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;para&gt; ... &lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;section&gt;&lt;title&gt;First Section&lt;/title&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    &lt;para&gt; ... &lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;example&gt; ... &lt;/example&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;/section&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/chapter&gt;</pre></div></div></figure></section><section id="making-article" class="section"><div class="section-titlepage"><h3>7. Making an Article</h3></div><p><a class="indexterm" name="making-article.2.1"></a><a class="indexterm" name="making-article.2.2"></a><a class="indexterm" name="making-article.2.3"></a><a class="indexterm" name="making-article.2.4"></a><a class="indexterm" name="making-article.2.5"></a>For documents smaller than a book, such as journal articles,
+    white papers, or technical notes, <a href="article.html"><code class="tag-element">article</code></a> is frequently
+    the most logical starting point. The body of an <a href="article.html"><code class="tag-element">article</code></a>
+    is essentially the same as the body of a <a href="chapter.html"><code class="tag-element">chapter</code></a> or any
+    other component-level element, as shown in <a href="ch02.html#ex-typicalart" title="A typical article">Example 2.3, “A typical article”</a>.</p><p><a href="article.html"><code class="tag-element">article</code></a>s may include
+    <a href="appendix.html"><code class="tag-element">appendix</code></a>es, <a href="bibliography.html"><code class="tag-element">bibliography</code></a>s,
+    <a href="index.html"><code class="tag-element">index</code></a>es, and <a href="glossary.html"><code class="tag-element">glossary</code></a>s.<a class="indexterm" name="making-article.3.6"></a><a class="indexterm" name="making-article.3.7"></a></p><figure id="ex-typicalart" class="example-wrapper"><div class="title">Example 2.3. A typical article</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;article&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;info&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;title&gt;My Article&lt;/title&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    &lt;author&gt;&lt;honorific&gt;Dr&lt;/honorific&gt;&lt;firstname&gt;Emilio&lt;/firstname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;surname&gt;Lizardo&lt;/surname&gt;&lt;/author&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;/info&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;para&gt; ... &lt;/para&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;section&gt;&lt;title&gt;On the Possibility of Going Home&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;para&gt; ... &lt;/para&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;/section&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;bibliography&gt; ... &lt;/bibliography&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;/article&gt;</pre></div></div></figure></section><section id="making-refentry" class="section"><div class="section-titlepage"><h3>8. Making a Reference Page</h3></div><p><a class="indexterm" name="making-refentry.2.1"></a><a class="indexterm" name="making-refentry.2.2"></a><a class="indexterm" name="making-refentry.2.3"></a><a class="indexterm" name="making-refentry.2.4"></a>The reference page or manual page in DocBook was inspired
+    by, and in fact designed to reproduce, the common <span class="acronym">UNIX</span>
+    “<span class="quote">manpage</span>” concept. (We use the word “<span class="quote">page</span>”
+    loosely here to mean a document of variable length containing reference
+    material on a specific topic.) DocBook is rich in markup tailored for such
+    documents, which often vary greatly in content, however well structured
+    they may be. To reflect both the structure and the variability of such
+    texts, DocBook specifies that reference pages have a strict sequence of
+    parts, even though several of them are actually optional.</p><p><a class="indexterm" name="making-refentry.3.1"></a><a class="indexterm" name="making-refentry.3.2"></a><a class="indexterm" name="making-refentry.3.3"></a>Of the following sequence of elements that may appear in a
+    <a href="refentry.html"><code class="tag-element">refentry</code></a>, only two are obligatory:
+    <a href="refnamediv.html"><code class="tag-element">refnamediv</code></a> and either <a href="refsect1.html"><code class="tag-element">refsect1</code></a> or <a href="refsection.html"><code class="tag-element">refsection</code></a>.</p><div class="variablelist"><dl><dt><span class="term"><a href="info.html"><code class="tag-element">info</code></a></span></dt><dd><p><a class="indexterm" name="making-refentry.4.1.2.1.1"></a><a class="indexterm" name="making-refentry.4.1.2.1.2"></a>The <a href="info.html"><code class="tag-element">info</code></a> element
+          contains meta-information about the reference page (which should not
+          be confused with <a href="refmeta.html"><code class="tag-element">refmeta</code></a>, which
+          it precedes). It marks up information about the author of the
+          document, or the product to which it pertains, or the document’s
+          revision history, or other such information.</p></dd><dt><span class="term"><a href="refmeta.html"><code class="tag-element">refmeta</code></a></span></dt><dd><p><a class="indexterm" name="making-refentry.4.2.2.1.1"></a><a class="indexterm" name="making-refentry.4.2.2.1.2"></a><a class="indexterm" name="making-refentry.4.2.2.1.3"></a><a class="indexterm" name="making-refentry.4.2.2.1.4"></a><a class="indexterm" name="making-refentry.4.2.2.1.5"></a><a class="indexterm" name="making-refentry.4.2.2.1.6"></a><a href="refmeta.html"><code class="tag-element">refmeta</code></a> contains a
+          title for the reference page (which may be inferred if the
+          <a href="refmeta.html"><code class="tag-element">refmeta</code></a> element is not present) and an indication
+          of the volume number in which this reference page occurs. The
+          <a href="manvolnum.html"><code class="tag-element">manvolnum</code></a> is a very
+          <span class="acronym">UNIX</span>-centric concept. In traditional
+          <span class="acronym">UNIX</span> documentation, the subject of a reference
+          page is typically identified by name and volume number; this allows
+          you to distinguish between the <strong class="command">uname</strong> command,
+          “<span class="quote">uname(1)</span>” in volume 1 of the documentation, and the
+          <code class="function">uname</code> function, “<span class="quote">uname(3)</span>” in
+          volume 3.</p><p><a class="indexterm" name="making-refentry.4.2.2.2.1"></a>Additional information of this sort, such as
+          conformance or vendor information specific to the particular
+          environment you are working in, may be stored in
+          <a href="refmiscinfo.html"><code class="tag-element">refmiscinfo</code></a>.</p></dd><dt><span class="term"><a href="refnamediv.html"><code class="tag-element">refnamediv</code></a></span></dt><dd><p><a class="indexterm" name="making-refentry.4.3.2.1.1"></a><a class="indexterm" name="making-refentry.4.3.2.1.2"></a><a class="indexterm" name="making-refentry.4.3.2.1.3"></a><a class="indexterm" name="making-refentry.4.3.2.1.4"></a><a class="indexterm" name="making-refentry.4.3.2.1.5"></a><a class="indexterm" name="making-refentry.4.3.2.1.6"></a><a class="indexterm" name="making-refentry.4.3.2.1.7"></a>The first obligatory element is <a href="refnamediv.html"><code class="tag-element">refnamediv</code></a>, which is a wrapper for
+          information about whatever you’re documenting, rather than the
+          document itself. It can begin with a <a href="refdescriptor.html"><code class="tag-element">refdescriptor</code></a> if several items are being
+          documented as a group and the group has a name. The <a href="refnamediv.html"><code class="tag-element">refnamediv</code></a> must contain at least one
+          <a href="refname.html"><code class="tag-element">refname</code></a>, that is, the name of
+          whatever you’re documenting, and a single short statement that sums
+          up the use or function of the item(s) at a glance: its <a href="refpurpose.html"><code class="tag-element">refpurpose</code></a>. Also available is the <a href="refclass.html"><code class="tag-element">refclass</code></a>, intended to detail the operating
+          system configurations that the software element in question
+          supports.</p><p><a class="indexterm" name="making-refentry.4.3.2.2.1"></a><a class="indexterm" name="making-refentry.4.3.2.2.2"></a>If no <a href="refentrytitle.html"><code class="tag-element">refentrytitle</code></a> is given in the
+          <a href="refmeta.html"><code class="tag-element">refmeta</code></a>, the title of the reference page is the
+          <a href="refdescriptor.html"><code class="tag-element">refdescriptor</code></a>, if present, or the first
+          <a href="refname.html"><code class="tag-element">refname</code></a>.</p></dd><dt><span class="term"><a href="refsynopsisdiv.html"><code class="tag-element">refsynopsisdiv</code></a></span></dt><dd><p><a class="indexterm" name="making-refentry.4.4.2.1.1"></a><a class="indexterm" name="making-refentry.4.4.2.1.2"></a><a class="indexterm" name="making-refentry.4.4.2.1.3"></a><a class="indexterm" name="making-refentry.4.4.2.1.4"></a><a class="indexterm" name="making-refentry.4.4.2.1.5"></a>A <a href="refsynopsisdiv.html"><code class="tag-element">refsynopsisdiv</code></a> is
+          intended to provide a quick synopsis of the topic covered by the
+          reference page. For commands, this is generally a syntax summary of
+          the command, and for functions, the function prototype, but other
+          options are possible. A <a href="title.html"><code class="tag-element">title</code></a> is
+          allowed, but not required, presumably because the application that
+          processes reference pages will generate the appropriate title if it
+          is not given. In traditional <span class="acronym">UNIX</span> documentation,
+          its title is always “<span class="quote">Synopsis.</span>”</p></dd><dt><span class="term"><a href="refsect1.html"><code class="tag-element">refsect1</code></a>…<a href="refsect3.html"><code class="tag-element">refsect3</code></a></span></dt><dd><p><a class="indexterm" name="making-refentry.4.5.2.1.1"></a><a class="indexterm" name="making-refentry.4.5.2.1.2"></a>Within <a href="refentry.html"><code class="tag-element">refentry</code></a>s, there are only
+          three levels of sectioning elements: <a href="refsect1.html"><code class="tag-element">refsect1</code></a>,
+          <a href="refsect2.html"><code class="tag-element">refsect2</code></a>, and <a href="refsect3.html"><code class="tag-element">refsect3</code></a>.</p></dd><dt><span class="term"><a href="refsection.html"><code class="tag-element">refsection</code></a></span></dt><dd><p><a class="indexterm" name="making-refentry.4.6.2.1.1"></a>As with <a href="sect1.html"><code class="tag-element">sect1</code></a>,
+          <a href="sect2.html"><code class="tag-element">sect2</code></a>, etc., there is a recursive version of the
+          reference section <span class="keep-together">elements</span>:
+          <a href="refsection.html"><code class="tag-element">refsection</code></a>.</p></dd></dl></div><p><a href="ch02.html#ex-samprefpage" title="A sample reference page">Example 2.4, “A sample reference page”</a> shows the beginning of a <a href="refentry.html"><code class="tag-element">refentry</code></a> that illustrates one possible reference
+    page.<a class="indexterm" name="making-refentry.5.3"></a></p><figure id="ex-samprefpage" class="example-wrapper"><div class="title">Example 2.4. A sample reference page</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;refentry xml:id="printf"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;refmeta&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refentrytitle&gt;printf&lt;/refentrytitle&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>      &lt;manvolnum&gt;3S&lt;/manvolnum&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/refmeta&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;refnamediv&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;refname&gt;printf&lt;/refname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refname&gt;fprintf&lt;/refname&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    &lt;refname&gt;sprintf&lt;/refname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refpurpose&gt;print formatted output&lt;/refpurpose&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  &lt;/refnamediv&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>  &lt;refsynopsisdiv&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;funcsynopsis&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>      &lt;funcsynopsisinfo&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        #include &lt;stdio.h&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>      &lt;/funcsynopsisinfo&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>      &lt;funcprototype&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>        &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;varargs/&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>      &lt;/funcprototype&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>      &lt;funcprototype&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;funcdef&gt;int &lt;function&gt;fprintf&lt;/function&gt;&lt;/funcdef&gt;
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>        &lt;paramdef&gt;FILE *&lt;parameter&gt;strm&lt;/parameter&gt;&lt;/paramdef&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>        &lt;varargs/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;/funcprototype&gt;
+<span class="linenumber"> 32</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;funcprototype&gt;
+<span class="linenumber"> 34</span><span class="linenumber-separator"> </span>        &lt;funcdef&gt;int &lt;function&gt;sprintf&lt;/function&gt;&lt;/funcdef&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;paramdef&gt;char *&lt;parameter&gt;s&lt;/parameter&gt;&lt;/paramdef&gt;
+<span class="linenumber"> 36</span><span class="linenumber-separator"> </span>        &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;varargs/&gt;
+<span class="linenumber"> 38</span><span class="linenumber-separator"> </span>      &lt;/funcprototype&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/funcsynopsis&gt;
+<span class="linenumber"> 40</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/refsynopsisdiv&gt;
+<span class="linenumber"> 42</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;refsect1&gt;&lt;title&gt;Description&lt;/title&gt;
+<span class="linenumber"> 44</span><span class="linenumber-separator"> </span>    &lt;para&gt;&lt;indexterm&gt;&lt;primary&gt;functions&lt;/primary&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                     &lt;secondary&gt;printf&lt;/secondary&gt;&lt;/indexterm&gt;
+<span class="linenumber"> 46</span><span class="linenumber-separator"> </span>          &lt;indexterm&gt;&lt;primary&gt;printing function&lt;/primary&gt;&lt;/indexterm&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 48</span><span class="linenumber-separator"> </span>      &lt;function&gt;printf&lt;/function&gt; places output on the standard
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      output stream stdout.
+<span class="linenumber"> 50</span><span class="linenumber-separator"> </span>    &lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/refsect1&gt;
+<span class="linenumber"> 52</span><span class="linenumber-separator"> </span>&lt;/refentry&gt;</pre></div></div></figure></section><section id="ch02-makefrontback" class="section"><div class="section-titlepage"><h3>9. Making Front and Back Matter</h3></div><p><a class="indexterm" name="ch02-makefrontback.2.1"></a><a class="indexterm" name="ch02-makefrontback.2.2"></a><a class="indexterm" name="ch02-makefrontback.2.3"></a><a class="indexterm" name="ch02-makefrontback.2.4"></a><a class="indexterm" name="ch02-makefrontback.2.5"></a>DocBook contains markup for the usual variety of front and
+    back matter necessary for books and articles: indexes, glossaries,
+    bibliographies, and tables of contents. In many cases, these components
+    are generated automatically, at least in part, from your document by an
+    external processor, but you can create them by hand, and in either case,
+    store them in DocBook.</p><p><a class="indexterm" name="ch02-makefrontback.3.1"></a>Some forms of back matter, such as indexes and glossaries,
+    usually require additional markup <em>in the document</em> to
+    make generation by an application possible. Bibliographies are usually
+    composed by hand like the rest of your text, unless you are automatically
+    selecting bibliographic entries out of some larger database. Our principal
+    concern here is to acquaint you with the kind of markup you need to
+    include in your documents if you want to construct these
+    components.</p><p>Front matter, like the table of contents, is almost always generated
+    automatically from the text of a document by the processing application.
+    If you need information about how to mark up a table of contents in
+    DocBook, please consult the reference page for
+    <a href="toc.html"><code class="tag-element">toc</code></a>.</p><section id="makeindex" class="section"><div class="section-titlepage"><h4>9.1. Making an Index</h4></div><p><a class="indexterm" name="makeindex.2.1"></a> <a class="indexterm" name="idx.makeindex"></a>In some highly structured documents such as reference
+      manuals, you can automate the whole process of generating an index
+      successfully without altering or adding to the original source. You can
+      design a processing application to select the information and compile it
+      into an adequate index. But this is rare.</p><p>In most cases—and even in the case of some reference manuals—a
+      useful index still requires human intervention to mark occurrences of
+      words or concepts that will appear in the text of the index.</p><section id="s.indexterms" class="section"><div class="section-titlepage"><h5>9.1.1. Marking index terms</h5></div><p><a class="indexterm" name="s.indexterms.2.1"></a><a class="indexterm" name="s.indexterms.2.2"></a>DocBook distinguishes two kinds of index markers: those
+        that are singular and result in a single page entry in the index
+        itself, and those that are multiple and refer to a range of
+        pages.</p><p>You put a singular index marker where the subject it refers to
+        actually occurs in your text:<a class="indexterm" name="s.indexterms.3.1"></a></p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;indexterm&gt;&lt;primary&gt;Big Cats&lt;/primary&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  The tiger is a very large cat indeed.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/para&gt;</pre></div><p><a class="indexterm" name="s.indexterms.5.1"></a><a class="indexterm" name="s.indexterms.5.2"></a><a class="indexterm" name="s.indexterms.5.3"></a>This index term has two levels,
+        <a href="primary.html"><code class="tag-element">primary</code></a> and <a href="secondary.html"><code class="tag-element">secondary</code></a>. They
+        correspond to an increasing amount of indented text in the resultant
+        index. DocBook allows for three levels of index terms, with the third
+        labeled <a href="tertiary.html"><code class="tag-element">tertiary</code></a>.</p><p><a class="indexterm" name="s.indexterms.6.1"></a><a class="indexterm" name="s.indexterms.6.2"></a>There are two ways that you can index a range of text.
+        The first is to put index marks at both the beginning and end of the
+        discussion. The mark at the beginning asserts that it is the start of
+        a range, and the mark at the end refers back to the beginning. In this
+        way, the processing application can determine what range of text is
+        indexed. Here’s the previous tiger example recast as starting and
+        ending index terms:<a class="indexterm" name="s.indexterms.6.3"></a></p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;indexterm xml:id="tiger-desc" class="startofrange"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;primary&gt;Big Cats&lt;/primary&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  &lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  The tiger is a very large cat indeed…
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>⋮
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>So much for tigers&lt;indexterm startref="tiger-desc" class="endofrange"/&gt;.
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>Let's talk about leopards.  
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/para&gt;</pre></div><p><a class="indexterm" name="s.indexterms.8.1"></a><a class="indexterm" name="s.indexterms.8.2"></a>Note that the mark at the start of the range identifies
+        itself as the start of a range with the <code class="tag-attribute">class</code> attribute, and provides an <code class="tag-attribute">xml:id</code>. The mark at the end of the range
+        points back to the start.</p><p><a class="indexterm" name="s.indexterms.9.1"></a><a class="indexterm" name="s.indexterms.9.2"></a>Another way to mark up a range of text is to specify
+        that the entire content of an element, such as a chapter or section,
+        is the complete range. In this case, all you need is for the index
+        term to point to the <code class="tag-attribute">xml:id</code> of
+        the element that contains the content in question. The <code class="tag-attribute">zone</code> attribute of
+        <a href="indexterm.singular.html"><code class="tag-element">indexterm</code></a> provides this functionality.</p><p>One of the interesting features of this method is that the
+        actual index marks do not have to occur anywhere near the text being
+        indexed. It is possible to collect all of them together, for example,
+        in one file, but it is not invalid to have the index marker occur near
+        the element it indexes.</p><p>Suppose the discussion of tigers in your document comprises a
+        whole text object (such as a <a href="sect1.html"><code class="tag-element">sect1</code></a>
+        or a <a href="chapter.html"><code class="tag-element">chapter</code></a>) with an <code class="tag-attribute">xml:id</code> value of
+        <code class="literal">tiger-desc</code>. You can put the following tag anywhere
+        in your document to index that range of text:<a class="indexterm" name="s.indexterms.11.5"></a></p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;indexterm zone="tiger-desc"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;primary&gt;Big Cats&lt;/primary&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt;</pre></div><p><a class="indexterm" name="s.indexterms.13.1"></a>DocBook also contains markup for index hits that point
+        to other index hits (e.g., “See Cats, big” or “See also Lions”). See
+        the reference pages for <a href="see.html"><code class="tag-element">see</code></a> and
+        <a href="seealso.html"><code class="tag-element">seealso</code></a>.<a class="indexterm" name="s.indexterms.13.4"></a></p></section><section id="s.printindex" class="section"><div class="section-titlepage"><h5>9.1.2. Printing an index</h5></div><p><a class="indexterm" name="s.printindex.2.1"></a>After you have added the appropriate markup to your
+        document, an external application can use this information to build an
+        index. The resultant index must have <span class="keep-together">information</span> about the page numbers on
+        which the concepts appear. It’s usually the document formatter that
+        builds the index. In this case, it may never be instantiated in
+        <span class="keep-together">DocBook</span>.</p><p><a class="indexterm" name="s.printindex.3.1"></a><a class="indexterm" name="s.printindex.3.2"></a>However, there are applications that can produce an
+        index marked up in DocBook. The following example includes some one-
+        and two-level <a href="indexentry.html"><code class="tag-element">indexentry</code></a> elements
+        (which correspond to the primary and secondary levels in the
+        <a href="indexterm.singular.html"><code class="tag-element">indexterm</code></a>s themselves) that begin with the letter
+        D:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;index&gt;&lt;title&gt;Index&lt;/title&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;indexdiv&gt;&lt;title&gt;D&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;indexentry&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>      &lt;primaryie&gt;database (bibliographic), 253, 255&lt;/primaryie&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>         &lt;secondaryie&gt;structure, 255&lt;/secondaryie&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>         &lt;secondaryie&gt;tools, 259&lt;/secondaryie&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/indexentry&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;indexentry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;primaryie&gt;dates (language specific), 179&lt;/primaryie&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    &lt;/indexentry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;indexentry&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>      &lt;primaryie&gt;DC fonts, &lt;emphasis&gt;172&lt;/emphasis&gt;, 177&lt;/primaryie&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>         &lt;secondaryie&gt;Math fonts, 177&lt;/secondaryie&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>    &lt;/indexentry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/indexdiv&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>&lt;/index&gt;</pre></div><p>The structure of <a href="indexentry.html"><code class="tag-element">indexentry</code></a> is parallel to
+        the structure of <a href="indexterm.singular.html"><code class="tag-element">indexterm</code></a>. Where
+        <a href="indexterm.singular.html"><code class="tag-element">indexterm</code></a> has <a href="primary.html"><code class="tag-element">primary</code></a>,
+        <a href="secondary.html"><code class="tag-element">secondary</code></a>, <a href="tertiary.html"><code class="tag-element">tertiary</code></a>,
+        <a href="see.html"><code class="tag-element">see</code></a>, and <a href="seealso.html"><code class="tag-element">seealso</code></a>,
+        <a href="indexentry.html"><code class="tag-element">indexentry</code></a> has <a href="primaryie.html"><code class="tag-element">primaryie</code></a>,
+        <a href="secondaryie.html"><code class="tag-element keep-together">secondaryie</code></a>,
+        <a href="tertiaryie.html"><code class="tag-element">tertiaryie</code></a>, <a href="seeie.html"><code class="tag-element">seeie</code></a>, and
+        <a href="seealsoie.html"><code class="tag-element">seealsoie</code></a>.</p></section></section><section id="s.glossary" class="section"><div class="section-titlepage"><h4>9.2. Making a Glossary</h4></div><p><a class="indexterm" name="idx.s.glossary"></a>A <a href="glossary.html"><code class="tag-element">glossary</code></a>, like a
+      <a href="bibliography.html"><code class="tag-element">bibliography</code></a>, is often constructed by hand. However,
+      some applications are capable of building a skeletal index from glossary
+      term markup in the document. If all of your terms are defined in some
+      glossary database, it may even be possible to construct the complete
+      glossary automatically.</p><p><a class="indexterm" name="s.glossary.3.1"></a><a class="indexterm" name="s.glossary.3.2"></a><a class="indexterm" name="s.glossary.3.3"></a><a class="indexterm" name="s.glossary.3.4"></a><a class="indexterm" name="s.glossary.3.5"></a><a class="indexterm" name="s.glossary.3.6"></a>To enable automatic glossary generation, or simply
+      automatic linking from glossary terms in the text to glossary entries,
+      you must add markup to your documents. In the text, you mark up a term
+      for compilation later with the inline <a href="glossterm.html"><code class="tag-element">glossterm</code></a> tag.
+      This tag can have a <code class="tag-attribute">linkend</code>
+      attribute whose value is the ID of the actual entry in the
+      glossary.<sup class="footnote"><span class="osq">[</span><a name="s.glossary.3.9" href="#ftn.s.glossary.3.9">1</a><span class="csq">]</span></sup></p><p>For instance, if you have this markup in your document:</p><div class="programlisting"><pre>&lt;glossterm linkend="xml"&gt;Extensible Markup Language&lt;/glossterm&gt; is a new standard… </pre></div><p><a class="indexterm" name="s.glossary.6.1"></a> <a class="indexterm" name="s.glossary.6.2"></a>your glossary might look like this:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;glossary&gt;&lt;title&gt;Example Glossary&lt;/title&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>⋮
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;glossdiv&gt;&lt;title&gt;E&lt;/title&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;glossentry xml:id="xml"&gt;&lt;glossterm&gt;Extensible Markup Language&lt;/glossterm&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>      &lt;acronym&gt;XML&lt;/acronym&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;glossdef&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>       &lt;para&gt;Some reasonable definition here.&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>       &lt;glossseealso otherterm="sgml"&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>      &lt;/glossdef&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/glossentry&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/glossdiv&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>⋮
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/glossary&gt;</pre></div><p>Note that the <a href="glossterm.html"><code class="tag-element">glossterm</code></a> tag
+      reappears in the glossary to mark up the term and distinguish it from
+      its definition within the <a href="glossentry.html"><code class="tag-element">glossentry</code></a>.
+      The <code class="tag-attribute">xml:id</code> that the <a href="glossentry.html"><code class="tag-element">glossentry</code></a> referenced in the text is the
+      <span class="acronym">ID</span> of the <a href="glossentry.html"><code class="tag-element">glossentry</code></a> in the <a href="glossary.html"><code class="tag-element">glossary</code></a>
+      itself. You can use the link between source and glossary to create a
+      link in electronic formats, as we have done with the HTML and PDF forms
+      of the glossary in this book.</p><p>You can use the <code class="tag-attribute">baseform</code>
+      attribute on <a href="glossterm.html"><code class="tag-element">glossterm</code></a> and
+      <a href="firstterm.html"><code class="tag-element">firstterm</code></a> when the term marked up in context is in a
+      different form, for example, plural. Here is an example:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  Using &lt;glossterm baseform="DTD"&gt;DTDs&lt;/glossterm&gt; can
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  be hazardous to your sanity.
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;/para&gt;</pre></div></section><section id="s.bibliography" class="section"><div class="section-titlepage"><h4>9.3. Making a Bibliography</h4></div><p><a class="indexterm" name="s.bibliography.2.1"></a><a class="indexterm" name="s.bibliography.2.2"></a><a class="indexterm" name="s.bibliography.2.3"></a><a class="indexterm" name="s.bibliography.2.4"></a>There are two ways to set up a bibliography in DocBook:
+      you can have the data <em class="firstterm">raw</em> or
+      <em class="firstterm">cooked</em>. When you use “<span class="quote">raw</span>” data, you
+      wrap your entry in the <a href="biblioentry.html"><code class="tag-element">biblioentry</code></a> element and mark
+      up each item individually. The processor determines the display order
+      and <span class="keep-together">supplies</span> punctuation. When you
+      use “<span class="quote">cooked</span>” data, you wrap your entry in the <a href="bibliomixed.html"><code class="tag-element keep-together">bibliomixed</code></a> and provide the data in the
+      order in which you want it displayed, and you include the
+      punctuation.</p><p>Here’s an example of a raw bibliographical item, wrapped in the
+      <a href="biblioentry.html"><code class="tag-element">biblioentry</code></a> element:<a class="indexterm" name="s.bibliography.3.2"></a></p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;biblioentry xreflabel="Kites75"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;authorgroup&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;author&gt;&lt;firstname&gt;Andrea&lt;/firstname&gt;&lt;surname&gt;Bahadur&lt;/surname&gt;&lt;/author&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    &lt;author&gt;&lt;firstname&gt;Mark&lt;/firstname&gt;&lt;surname&gt;Shwarek&lt;/surname&gt;&lt;/author&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/authorgroup&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;copyright&gt;&lt;year&gt;1974&lt;/year&gt;&lt;year&gt;1975&lt;/year&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>     &lt;holder&gt;Product Development International Holding N. V.&lt;/holder&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>     &lt;/copyright&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;isbn&gt;0-88459-021-6&lt;/isbn&gt;    
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;publisher&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;publishername&gt;Plenary Publications International, Inc.&lt;/publishername&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  &lt;/publisher&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;title&gt;Kites&lt;/title&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>  &lt;subtitle&gt;Ancient Craft to Modern Sport&lt;/subtitle&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;pagenums&gt;988-999&lt;/pagenums&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>  &lt;seriesinfo&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;title&gt;The Family Creative Workshop&lt;/title&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>    &lt;seriesvolnums&gt;1-22&lt;/seriesvolnums&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;editor&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>      &lt;firstname&gt;Allen&lt;/firstname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;othername role=middle&gt;Davenport&lt;/othername&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>      &lt;surname&gt;Bragdon&lt;/surname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;contrib&gt;Editor in Chief&lt;/contrib&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>    &lt;/editor&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/seriesinfo&gt;
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>&lt;/biblioentry&gt;</pre></div><p>The “<span class="quote">raw</span>” data in a <a href="biblioentry.html"><code class="tag-element">biblioentry</code></a> is comprehensive to a fault—there
+      are enough fields to suit a host of different bibliographical styles,
+      and that is the point. An abundance of data requires processing
+      applications to select, punctuate, order, and format the <span class="keep-together">bibliographical</span> data, and it is unlikely
+      that all the information provided will actually be output.</p><p><a class="indexterm" name="s.bibliography.6.1"></a>All the “<span class="quote">cooked</span>” data in a <a href="bibliomixed.html"><code class="tag-element">bibliomixed</code></a> entry in a bibliography, on the
+      other hand, is intended to be presented to the reader in the form and
+      sequence in which it is provided. It even includes punctuation between
+      the fields of data:<a class="indexterm" name="s.bibliography.6.4"></a></p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;bibliomixed&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;bibliomset relation="article"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;surname&gt;Walsh&lt;/surname&gt;, &lt;firstname&gt;Norman&lt;/firstname&gt;.
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    &lt;title role="article"&gt;Introduction to Cascading Style Sheets&lt;/title&gt;.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/bibliomset&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;bibliomset relation="journal"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;title&gt;The World Wide Web Journal&lt;/title&gt; 
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;volumenum&gt;2&lt;/volumenum&gt;&lt;issuenum&gt;1&lt;/issuenum&gt;.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;publishername&gt;O'Reilly &amp; Associates, Inc.&lt;/publishername&gt; and
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    &lt;corpname&gt;The World Wide Web Consortium&lt;/corpname&gt;.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;pubdate&gt;Winter, 1996&lt;/pubdate&gt;&lt;/bibliomset&gt;.
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;/bibliomixed&gt;</pre></div><p>Clearly, these two ways of marking up bibliographical entries are
+      suited to different circumstances. You should use one or the other for
+      your bibliography, not both. Strictly speaking, mingling the raw and the
+      cooked may be “<span class="quote">kosher</span>” as far as the schema is concerned,
+      but it will almost certainly cause problems for most processing
+      applications.<a class="indexterm" name="s.bibliography.8.2"></a><a class="indexterm" name="s.bibliography.8.3"></a></p></section></section><div class="footnotes"><hr width="100" align="left" class="footnotes-divider" /><div class="footnote"><p><sup><span class="osq">[</span><a href="#s.glossary.3.9" name="ftn.s.glossary.3.9">1</a><span class="csq">]</span></sup>Some formatters are able to establish the link by examining
+          the content of the terms and the glossary. In that case, the author
+          does not need to make explicit links.</p></div></div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Getting Started with DocBook" href="ch01.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="Validating DocBook Documents" href="ch03.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">Getting Started with DocBook </td><td width="20%" align="center"><a title="Part  I .  Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> Validating DocBook Documents</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

@@ -1,0 +1,559 @@
+<HTML
+><HEAD
+><TITLE
+>Set</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="SeriesVolNums"
+HREF="seriesvolnums.html"><LINK
+REL="NEXT"
+TITLE="SetIndex"
+HREF="setindex.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="seriesvolnums.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="setindex.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>Set</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN104687"
+></A
+><H2
+>Name</H2
+>Set&nbsp;--&nbsp;A collection of books</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN104690"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>Set ::=
+((<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ <A
+HREF="setinfo.html"
+>SetInfo</A
+>?,<A
+HREF="toc.html"
+>ToC</A
+>?,
+ (<A
+HREF="book.html"
+>Book</A
+>)+,
+ <A
+HREF="setindex.html"
+>SetIndex</A
+>?)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Status</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>FPI</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN104742"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+> is a collection of <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>s. Placing multiple
+<A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>s in a <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>, as opposed to publishing each
+of them separately, has the advantage that ID/IDREF links can then
+be used across all books.</P
+><P
+><A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+> is the very top of the DocBook structural hierarchy.
+There's nothing that contains a <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN104752"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. A <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+> may generate additional front and back
+matter (tables of contents and <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>s, for example) around
+the <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>s it contains.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN104758"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in Set:
+<A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="setinfo.html"
+><TT
+CLASS="SGMLTAG"
+>SetInfo</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN104783"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>FPI</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>FPI</SPAN
+> holds the Formal Public Identifier for
+the <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>.</P
+></DD
+><DT
+><B
+>Status</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Status</SPAN
+> identifies the editorial or publication 
+status of the <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>.</P
+><P
+>Publication status might be used to control formatting (for example, 
+printing a <SPAN
+CLASS="QUOTE"
+>"draft"</SPAN
+> watermark on drafts) or processing (perhaps
+a document with a status of <SPAN
+CLASS="QUOTE"
+>"final"</SPAN
+> should not include any
+components that are not final).</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN104801"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+>, <A
+HREF="dedication.html"
+><TT
+CLASS="SGMLTAG"
+>Dedication</TT
+></A
+>, <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN104832"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE set PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+
+&#60;set&#62;&#60;title&#62;The Perl Series&#60;/title&#62;
+&#60;setinfo&#62;
+  &#60;corpauthor&#62;O'Reilly &#38;amp; Associates, Inc.&#60;/corpauthor&#62;
+&#60;/setinfo&#62;
+&#60;book&#62;&#60;title&#62;Learning Perl&#60;/title&#62; ... &#60;/book&#62;
+&#60;book&#62;&#60;title&#62;Programming Perl&#60;/title&#62; ... &#60;/book&#62;
+&#60;book&#62;&#60;title&#62;Advanced Perl Programming&#60;/title&#62; ... &#60;/book&#62;
+&#60;/set&#62;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="seriesvolnums.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="setindex.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>SeriesVolNums</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SetIndex</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

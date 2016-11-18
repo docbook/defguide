@@ -1,0 +1,187 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>refentry</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="ref-elements.html" title="DocBook Element Reference"><link rel="previous" href="refdescriptor.html" title="refdescriptor"><link rel="next" href="refentryinfo.html" title="refentryinfo"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="refdescriptor" href="refdescriptor.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="refentryinfo" href="refentryinfo.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="refentry.element"></a><div><div><div><h1 class="title">refentry</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>refentry &#8212; A reference page (originally a UNIX man-style reference page)</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">refentry ::=
+(<a href="beginpage.html"><code class="sgmltag-element">beginpage</code></a>?,
+ (<a href="indexterm.html"><code class="sgmltag-element">indexterm</code></a>)*,
+ <a href="refentryinfo.html"><code class="sgmltag-element">refentryinfo</code></a>?,<a href="refmeta.html"><code class="sgmltag-element">refmeta</code></a>?,
+ (<a href="remark.html"><code class="sgmltag-element">remark</code></a>|<a href="link.html"><code class="sgmltag-element">link</code></a>|<a href="olink.html"><code class="sgmltag-element">olink</code></a>|<a href="ulink.html"><code class="sgmltag-element">ulink</code></a>)*,
+ <a href="refnamediv.html"><code class="sgmltag-element">refnamediv</code></a>+,<a href="refsynopsisdiv.html"><code class="sgmltag-element">refsynopsisdiv</code></a>?,
+ (<a href="refsect1.html"><code class="sgmltag-element">refsect1</code></a>+|<a href="refsection.html"><code class="sgmltag-element">refsection</code></a>+))</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements.html#common.attributes" title="Common Attributes">Common attributes</a></p><table border="0" width="100%" cellpadding="2" style="border-collapse: collapse; border-left: 0.5pt solid black; border-right: 0.5pt solid black; border-bottom: 0.5pt solid black;" summary="Attributes"><thead><tr><td class="th" style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Name</strong></span></p></td><td class="th" style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Type</strong></span></p></td><td class="th" style="border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Default</strong></span></p></td></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">status</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">CDATA</td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div><div class="refsect1" lang="en"><a name="d0e153099"></a><h2>Description</h2><p>
+A <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a> is a reference page.  In <acronym class="acronym">UNIX</acronym> parlance this has
+historically been called a &#8220;man page&#8221; (short for manual page).
+</p><p>
+<a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a> is an appropriate wrapper for any small unit of
+reference documentation describing a single topic.  Canonical examples
+are programming language functions and user commands 
+(one <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a> per function or command).<sup>[<a name="d0e153118" href="#ftn.d0e153118">20</a>]</sup>
+</p><p>
+On some projects, the structure of reference pages may be rigorously 
+defined right down to the number, order, and title of individual sections
+(some or all of which may be required).
+</p><div class="refsect2" lang="en"><a name="d0e153127"></a><h3>Processing expectations</h3><p>
+Formatted as a displayed block. It is not uncommon for <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a>s to introduce
+a forced page break in print media.
+</p><p>
+Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a>.
+</p><p>
+Common presentational features, such as titles and running
+heads, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</p></div><div class="refsect2" lang="en"><a name="d0e153142"></a><h3>Parents</h3><p>These elements contain refentry:
+<span class="simplelist"><a href="appendix.html"><code class="sgmltag-element">appendix</code></a>, <a href="article.html"><code class="sgmltag-element">article</code></a>, <a href="chapter.html"><code class="sgmltag-element">chapter</code></a>, <a href="part.html"><code class="sgmltag-element">part</code></a>, <a href="partintro.html"><code class="sgmltag-element">partintro</code></a>, <a href="preface.html"><code class="sgmltag-element">preface</code></a>, <a href="reference.html"><code class="sgmltag-element">reference</code></a>, <a href="sect1.html"><code class="sgmltag-element">sect1</code></a>, <a href="sect2.html"><code class="sgmltag-element">sect2</code></a>, <a href="sect3.html"><code class="sgmltag-element">sect3</code></a>, <a href="sect4.html"><code class="sgmltag-element">sect4</code></a>, <a href="sect5.html"><code class="sgmltag-element">sect5</code></a>, <a href="section.html"><code class="sgmltag-element">section</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e153188"></a><h3>Children</h3><p>The following elements occur in refentry:
+<span class="simplelist"><a href="beginpage.html"><code class="sgmltag-element">beginpage</code></a>, <a href="indexterm.html"><code class="sgmltag-element">indexterm</code></a>, <a href="link.html"><code class="sgmltag-element">link</code></a>, <a href="olink.html"><code class="sgmltag-element">olink</code></a>, <a href="refentryinfo.html"><code class="sgmltag-element">refentryinfo</code></a>, <a href="refmeta.html"><code class="sgmltag-element">refmeta</code></a>, <a href="refnamediv.html"><code class="sgmltag-element">refnamediv</code></a>, <a href="refsect1.html"><code class="sgmltag-element">refsect1</code></a>, <a href="refsection.html"><code class="sgmltag-element">refsection</code></a>, <a href="refsynopsisdiv.html"><code class="sgmltag-element">refsynopsisdiv</code></a>, <a href="remark.html"><code class="sgmltag-element">remark</code></a>, <a href="ulink.html"><code class="sgmltag-element">ulink</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e153231"></a><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">status</span></dt><dd><p>
+<code class="sgmltag-attribute">Status</code> identifies the editorial or publication 
+status of the <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a>.
+</p><p>
+Publication status might be used to control formatting (for example,
+printing a &#8220;<span class="quote">draft</span>&#8221; watermark on drafts) or processing (perhaps
+a document with a status of &#8220;<span class="quote">final</span>&#8221; should not include any
+components that are not final).
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a name="d0e153255"></a><h2>Examples</h2><p>
+A typical reference page for a command:
+</p><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;refentry id="ls"&gt;
+
+&lt;refmeta&gt;
+&lt;refentrytitle&gt;ls&lt;/refentrytitle&gt;
+&lt;manvolnum&gt;1&lt;/manvolnum&gt;
+&lt;/refmeta&gt;
+
+&lt;refnamediv&gt;
+&lt;refname&gt;ls&lt;/refname&gt;
+&lt;refpurpose&gt;list contents of a directory&lt;/refpurpose&gt;
+&lt;/refnamediv&gt;
+
+&lt;refsynopsisdiv&gt;
+&lt;cmdsynopsis&gt;
+&lt;command&gt;/usr/bin/ls&lt;/command&gt;
+&lt;arg choice="opt"&gt;
+  &lt;option&gt;aAbcCdfFgilLmnopqrRstux1&lt;/option&gt;
+&lt;/arg&gt;
+&lt;arg choice="opt" rep="repeat"&gt;file&lt;/arg&gt;
+&lt;/cmdsynopsis&gt;
+&lt;/refsynopsisdiv&gt;
+
+&lt;refsect1&gt;&lt;title&gt;Description&lt;/title&gt;
+&lt;para&gt;
+For each file that is a directory, &lt;command&gt;ls&lt;/command&gt; lists the contents of
+the directory; for each file that is an ordinary file, &lt;command&gt;ls&lt;/command&gt;
+repeats its name and any other information requested.
+&lt;/para&gt;
+&lt;para&gt;&amp;hellip;&lt;/para&gt;
+&lt;/refsect1&gt;
+&lt;/refentry&gt;</pre></div><p>
+A typical reference page for a function:
+</p><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;refentry id="printf"&gt;
+
+&lt;refmeta&gt;
+&lt;refentrytitle&gt;printf&lt;/refentrytitle&gt;
+&lt;manvolnum&gt;3S&lt;/manvolnum&gt;
+&lt;/refmeta&gt;
+
+&lt;refnamediv&gt;
+&lt;refname&gt;printf&lt;/refname&gt;
+&lt;refname&gt;fprintf&lt;/refname&gt;
+&lt;refname&gt;sprintf&lt;/refname&gt;
+&lt;refpurpose&gt;print formatted output&lt;/refpurpose&gt;
+&lt;/refnamediv&gt;
+
+&lt;refsynopsisdiv&gt;
+
+&lt;funcsynopsis&gt;
+&lt;funcsynopsisinfo&gt;
+#include &amp;lt;stdio.h&amp;gt;
+&lt;/funcsynopsisinfo&gt;
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;int &lt;function&gt;printf&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;...&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;int &lt;function&gt;fprintf&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;paramdef&gt;FILE *&lt;parameter&gt;strm&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;...&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+
+&lt;funcprototype&gt;
+  &lt;funcdef&gt;int &lt;function&gt;sprintf&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;paramdef&gt;char *&lt;parameter&gt;s&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;const char *&lt;parameter&gt;format&lt;/parameter&gt;&lt;/paramdef&gt;
+  &lt;paramdef&gt;...&lt;/paramdef&gt;
+&lt;/funcprototype&gt;
+&lt;/funcsynopsis&gt;
+
+&lt;/refsynopsisdiv&gt;
+
+&lt;refsect1&gt;&lt;title&gt;Description&lt;/title&gt;
+&lt;para&gt;
+&lt;function&gt;printf&lt;/function&gt; places output on the standard
+output stream stdout.
+&lt;/para&gt;
+&lt;para&gt;&amp;hellip;&lt;/para&gt;
+&lt;/refsect1&gt;
+&lt;/refentry&gt;</pre></div><p>
+A reference page for a data structure:
+</p><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;refentry id="iovec"&gt;
+
+&lt;refmeta&gt;
+&lt;refentrytitle&gt;iovec&lt;/refentrytitle&gt;
+&lt;manvolnum&gt;9S&lt;/manvolnum&gt;
+&lt;/refmeta&gt;
+
+&lt;refnamediv&gt;
+&lt;refname&gt;iovec&lt;/refname&gt;
+&lt;refpurpose&gt;data storage structure for I/O using uio&lt;/refpurpose&gt;
+&lt;/refnamediv&gt;
+
+&lt;refsynopsisdiv&gt;
+&lt;synopsis&gt;
+#include &amp;lt;sys/uio.h&amp;gt;
+&lt;/synopsis&gt;
+&lt;/refsynopsisdiv&gt;
+
+&lt;refsect1&gt;&lt;title&gt;Interface Level&lt;/title&gt;
+&lt;para&gt;
+Architecture independent level 1 (DDI/DKI).
+&lt;/para&gt;
+&lt;/refsect1&gt;
+
+&lt;refsect1&gt;&lt;title&gt;Description&lt;/title&gt;
+
+&lt;para&gt;
+An &lt;structname&gt;iovec&lt;/structname&gt; structure describes a data
+storage area for transfer in a
+&lt;citerefentry&gt;&lt;refentrytitle&gt;uio&lt;/refentrytitle&gt;
+  &lt;manvolnum&gt;9S&lt;/manvolnum&gt;
+&lt;/citerefentry&gt;
+structure. Conceptually,
+it may be thought of as a base address and length specification.
+&lt;/para&gt;
+
+&lt;/refsect1&gt;
+&lt;refsect1&gt;&lt;title&gt;Structure Members&lt;/title&gt;
+
+&lt;programlisting&gt;
+     caddr_t  iov_base;  /* base address of the data storage area */
+                         /* represented by the iovec structure */
+     int      iov_len;   /* size of the data storage area in bytes */
+&lt;/programlisting&gt;
+
+&lt;para&gt;&amp;hellip;&lt;/para&gt;
+&lt;/refsect1&gt;
+&lt;/refentry&gt;</pre></div><p>For additional examples, see also
+<span class="simplelist"><a href="reference.html"><code class="sgmltag-element">reference</code></a></span>.
+</p></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.d0e153118" href="#d0e153118">20</a>] </sup>
+You're reading a <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a> right now.</p></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="refdescriptor" href="refdescriptor.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="refentryinfo" href="refentryinfo.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">refdescriptor&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;refentryinfo</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

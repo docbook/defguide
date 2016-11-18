@@ -1,0 +1,498 @@
+<HTML
+><HEAD
+><TITLE
+>RefNameDiv</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="RefName"
+HREF="refname.html"><LINK
+REL="NEXT"
+TITLE="RefPurpose"
+HREF="refpurpose.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="refname.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="refpurpose.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>RefNameDiv</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN88450"
+></A
+><H2
+>Name</H2
+>RefNameDiv&nbsp;--&nbsp;The name, purpose, and classification of a reference page</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN88453"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>RefNameDiv ::=
+(<A
+HREF="refdescriptor.html"
+>RefDescriptor</A
+>?,<A
+HREF="refname.html"
+>RefName</A
+>+,<A
+HREF="refpurpose.html"
+>RefPurpose</A
+>,<A
+HREF="refclass.html"
+>RefClass</A
+>*,
+ (<A
+HREF="comment.html"
+>Comment</A
+>|<A
+HREF="link.html"
+>Link</A
+>|<A
+HREF="olink.html"
+>OLink</A
+>|<A
+HREF="ulink.html"
+>ULink</A
+>)*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN88486"
+></A
+><H2
+>Description</H2
+><P
+><A
+HREF="refnamediv.html"
+><TT
+CLASS="SGMLTAG"
+>RefNameDiv</TT
+></A
+> is the first mandatory section in a
+<A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.  It is a peer to
+<A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+> and <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>.</P
+><P
+>The elements in <A
+HREF="refnamediv.html"
+><TT
+CLASS="SGMLTAG"
+>RefNameDiv</TT
+></A
+> identify the topic of the
+reference page (<A
+HREF="refdescriptor.html"
+><TT
+CLASS="SGMLTAG"
+>RefDescriptor</TT
+></A
+> or <A
+HREF="refname.html"
+><TT
+CLASS="SGMLTAG"
+>RefName</TT
+></A
+>), provide a
+concise summary (<A
+HREF="refpurpose.html"
+><TT
+CLASS="SGMLTAG"
+>RefPurpose</TT
+></A
+>), and classify the
+page (<A
+HREF="refclass.html"
+><TT
+CLASS="SGMLTAG"
+>RefClass</TT
+></A
+>).</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN88499"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. <A
+HREF="refnamediv.html"
+><TT
+CLASS="SGMLTAG"
+>RefNameDiv</TT
+></A
+> usually generates a
+section heading, in the same typographic style as a
+<A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+> <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, called <SPAN
+CLASS="QUOTE"
+>"Name."</SPAN
+></P
+><P
+>The content of this section is traditionally the <A
+HREF="refdescriptor.html"
+><TT
+CLASS="SGMLTAG"
+>RefDescriptor</TT
+></A
+>
+or <A
+HREF="refname.html"
+><TT
+CLASS="SGMLTAG"
+>RefName</TT
+></A
+>, and the <A
+HREF="refpurpose.html"
+><TT
+CLASS="SGMLTAG"
+>RefPurpose</TT
+></A
+>, separated by an
+em dash.</P
+><P
+>The <A
+HREF="refclass.html"
+><TT
+CLASS="SGMLTAG"
+>RefClass</TT
+></A
+> may be presented, or it may be suppressed and used
+only to select a group of reference pages to process.  You might use the value of <A
+HREF="refclass.html"
+><TT
+CLASS="SGMLTAG"
+>RefClass</TT
+></A
+> to print all the reference pages
+appropriate to <SPAN
+CLASS="PRODUCTNAME"
+>Solaris</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>UNIX</SPAN
+>, for example.</P
+><P
+>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.</P
+><P
+>Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN88518"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain RefNameDiv:
+<A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN88525"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in RefNameDiv:
+<A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="link.html"
+><TT
+CLASS="SGMLTAG"
+>Link</TT
+></A
+>, <A
+HREF="olink.html"
+><TT
+CLASS="SGMLTAG"
+>OLink</TT
+></A
+>, <A
+HREF="refclass.html"
+><TT
+CLASS="SGMLTAG"
+>RefClass</TT
+></A
+>, <A
+HREF="refdescriptor.html"
+><TT
+CLASS="SGMLTAG"
+>RefDescriptor</TT
+></A
+>, <A
+HREF="refname.html"
+><TT
+CLASS="SGMLTAG"
+>RefName</TT
+></A
+>, <A
+HREF="refpurpose.html"
+><TT
+CLASS="SGMLTAG"
+>RefPurpose</TT
+></A
+>, <A
+HREF="ulink.html"
+><TT
+CLASS="SGMLTAG"
+>ULink</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN88561"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN88571"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="refname.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="refpurpose.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>RefName</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>RefPurpose</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

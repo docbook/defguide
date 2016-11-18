@@ -1,0 +1,1110 @@
+<HTML
+><HEAD
+><TITLE
+>Installation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Appendixes"
+HREF="part3.html"><LINK
+REL="PREVIOUS"
+TITLE="Appendixes"
+HREF="part3.html"><LINK
+REL="NEXT"
+TITLE="DocBook and XML"
+HREF="appb.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="part3.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="appb.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="APP-INSTALL"
+>Appendix A. Installation</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>A.1. <A
+HREF="appa.html#S-INSTALLDTD"
+>Installing the DocBook DTD</A
+></DT
+><DT
+>A.2. <A
+HREF="appa.html#S-INSTALLJADE"
+>Installing Jade</A
+></DT
+><DT
+>A.3. <A
+HREF="appa.html#XINSTMDS"
+>Installing the ModularDocBook Stylesheets</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="S-INSTALLDTD"
+>A.1. Installing the DocBook DTD</A
+></H1
+><P
+>&#13;
+This appendix describes how to install the DocBook DTD on your system
+so that popular command-line tools like <SPAN
+CLASS="APPLICATION"
+>SP</SPAN
+> can
+use it. If you are installing DocBook for use with a commercial application,
+consult the documentation for your application as well.</P
+><P
+>This appendix describes the installation of DocBook V3.1. If you are using
+another distribution, the process should be about the same, but there
+may be minor differences.  DocBook V3.1 is backward compatible with DocBook
+V3.0, and is the recommended distribution at the time of this writing.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193244"
+>A.1.1. Unpacking the DocBook V3.1 Distribution</A
+></H2
+><P
+>&#13;DocBook is distributed on the <A
+HREF="http://www.oasis-open.org/docbook/"
+TARGET="_top"
+>DocBook web
+site</A
+>. You will also find a copy of the distribution on
+the <A
+HREF="appe.html"
+>CD-ROM</A
+>.</P
+><P
+>&#13;
+The distribution consists of 14 files:</P
+><DIV
+CLASS="INFORMALTABLE"
+><P
+></P
+><TABLE
+BORDER="0"
+CLASS="CALSTABLE"
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>31chg.txt</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Describes the changes in DocBook
+V3.1 from the preceding version (3.0)</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>40issues.txt</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Summarizes backwards-incompatible
+changes planned for DocBook V4.0</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>50issues.txt</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Summarizes backwards-incompatible
+changes planned for DocBook V5.0</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>cals-tbl.dtd</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The CALS Table Model DTD</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>ChangeLog</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>A GNU-style ChangeLog
+summarizing the individual edits made on each file in the distribution
+since V3.0.</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>dbcent.mod</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The character entity module</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>dbgenent.mod</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The general entity module</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>dbhier.mod</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The document hierarchy module</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>dbnotn.mod</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The notations module</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>dbpool.mod</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The information pool module</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>docbook.cat</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>A sample OASIS catalog
+for DocBook</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>docbook.dcl</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>An SGML Declaration suitable
+for DocBook</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>docbook.dtd</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The DocBook DTD</TD
+></TR
+><TR
+><TD
+WIDTH="1"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="FILENAME"
+>readme.txt</TT
+></TD
+><TD
+WIDTH="4"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The DocBook V3.1 <SPAN
+CLASS="QUOTE"
+>"readme"</SPAN
+> file</TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><P
+>Unpack the distribution into a directory on your system. The exact location
+is irrelevant. On UNIX systems it's common to put it somewhere under <TT
+CLASS="FILENAME"
+>/usr/local</TT
+> or <TT
+CLASS="FILENAME"
+>/share</TT
+> (for example, <TT
+CLASS="FILENAME"
+>/usr/local/sgml/docbook</TT
+> or <TT
+CLASS="FILENAME"
+>/share/sgml/docbook</TT
+>).
+On a PC, perhaps <TT
+CLASS="FILENAME"
+>c:\sgml\docbook</TT
+>.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193324"
+>A.1.2. Getting the ISO Entity Sets</A
+></H2
+><P
+>&#13;
+
+
+
+DocBook refers to a number of standard entity sets that
+are not distributed with DocBook. (They aren't distributed with
+DocBook because they aren't maintained by the DocBook
+TC. They're maintained by ISO.) If you've installed other SGML
+DTDs or tools, they may already be on your system.</P
+><P
+>If you are missing some of them, they are available from
+Robin Cover's pages at OASIS: <A
+HREF="http://www.oasis-open.org/cover/ISOEnts.zip"
+TARGET="_top"
+>http://www.oasis-open.org/cover/ISOEnts.zip</A
+>.<A
+NAME="AEN193343"
+HREF="#FTN.AEN193343"
+>[1]</A
+> See <A
+HREF="http://www.oasis-open.org/cover/topics.html#entities"
+TARGET="_top"
+>http://www.oasis-open.org/cover/topics.html#entities</A
+>
+for more information.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DBCATALOG"
+>A.1.3. The DocBook Catalog</A
+></H2
+><P
+>&#13;
+
+DocBook uses public identifiers to refer to its
+constituent parts. In some sense, DocBook <I
+CLASS="EMPHASIS"
+>is</I
+>
+DocBook because it has the formal public
+identifier <SPAN
+CLASS="QUOTE"
+>"<TT
+CLASS="LITERAL"
+>-//OASIS//DTD DocBook V3.1//EN</TT
+>"</SPAN
+>.
+In order for tools on your system to
+find your locally installed copy of DocBook, you must map these
+public identifiers into system identifiers, i.e., filenames, on
+your system. For a complete discussion of catalog files, 
+see <A
+HREF="ch02.html#S-PID-SID-CATALOGS"
+>Section 2.3</A
+>.</P
+><P
+>&#13;
+The DocBook distribution includes a sample catalog, <TT
+CLASS="FILENAME"
+>docbook.cat</TT
+>, which provides a mapping for all of the public identifiers referenced
+by DocBook. This mapping won't work <SPAN
+CLASS="QUOTE"
+>"out of the box"</SPAN
+> for two
+reasons: first, your tools won't be able to find it, and second, the mappings
+for the ISO entity sets probably don't point to the right place on your system.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN193367"
+>A.1.3.1. Finding the Catalog</A
+></H3
+><P
+>If you've already got some other SGML DTDs installed, you probably already
+have a catalog file. In this case, the easiest thing to do is append
+the DocBook catalog entries to the end of your existing catalog and then change
+them to point to the files on your system.</P
+><P
+>If DocBook is the first DTD that you're installing, make a
+copy of <TT
+CLASS="FILENAME"
+>docbook.cat</TT
+> and call it
+<TT
+CLASS="FILENAME"
+>catalog</TT
+>. Put this file in a higher-level
+directory and edit the relative pathnames that it contains to point to
+the actual locations of the files on your system. For example, if you installed DocBook
+in <TT
+CLASS="FILENAME"
+>/share/sgml/docbk30/</TT
+>, put the
+<TT
+CLASS="FILENAME"
+>catalog</TT
+> in <TT
+CLASS="FILENAME"
+>/share/sgml/</TT
+>.</P
+><P
+>&#13;
+
+In order for applications to find your catalog file(s), you may have
+to change the application preferences or set an environment variable. For <SPAN
+CLASS="APPLICATION"
+>SP</SPAN
+> and <SPAN
+CLASS="APPLICATION"
+>Jade</SPAN
+>, set the environment
+variable <TT
+CLASS="ENVAR"
+>SGML_CATALOG_FILES</TT
+> to the delimited list of catalog
+filenames. On my system, this looks like:</P
+><PRE
+CLASS="SCREEN"
+>SGML_CATALOG_FILES=./catalog;n:/share/sgml/catalog;n:/adept80/doctypes/catalog.jade;j:/jade/catalog</PRE
+><P
+>(On a UNIX machine, use colons instead of semicolons to delimit the
+filenames.)</P
+><P
+>If you don't wish to set the environment variable, you can explicitly
+pass the name of each catalog to the <SPAN
+CLASS="APPLICATION"
+>SP</SPAN
+> application
+with the <TT
+CLASS="OPTION"
+>-c</TT
+> option, like this:</P
+><PRE
+CLASS="SCREEN"
+>nsgmls -c ./catalog -c n:/share/sgml/catalog <TT
+CLASS="REPLACEABLE"
+><I
+>-c othercatalogs</I
+></TT
+> ...</PRE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN193392"
+>A.1.3.2. Fixing the Catalog</A
+></H3
+><P
+>&#13;
+The basic format of each entry in the DocBook catalog is:</P
+><PRE
+CLASS="SCREEN"
+>PUBLIC "some public id" "some filename"</PRE
+><P
+>What you have to do is change each of the <SPAN
+CLASS="QUOTE"
+>"some filenames"</SPAN
+>
+to point to the actual name of the file on your system.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="figures/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;
+Filenames should be supplied using absolute filenames,
+or paths relative to the location of
+the <I
+CLASS="EMPHASIS"
+>catalog</I
+> file.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>To continue with the example above, let's say that you've got:</P
+><P
+></P
+><UL
+><LI
+><P
+>DocBook in <TT
+CLASS="FILENAME"
+>/share/sgml/docbk30/</TT
+>,</P
+></LI
+><LI
+><P
+>The ISO entities in <TT
+CLASS="FILENAME"
+>/share/sgml/entities/8879/</TT
+>,
+and</P
+></LI
+><LI
+><P
+>Your catalog in <TT
+CLASS="FILENAME"
+>/share/sgml/catalog</TT
+></P
+></LI
+></UL
+><P
+>Then you would change the catalog entry for the DTD to be:</P
+><PRE
+CLASS="SCREEN"
+>PUBLIC "-//OASIS//DTD DocBook V3.1//EN" "docbk30/docbook.dtd"</PRE
+><P
+>You would change the catalog entry for the general technical character entities to:</P
+><PRE
+CLASS="SCREEN"
+>PUBLIC "ISO 8879:1986//ENTITIES General Technical//EN" "entities/8879/iso-tech.gml"</PRE
+><P
+>And similarly for the other public identifiers used by DocBook. In each
+case, the filename specified for the public identifier should be the name
+of the file on your system, specified as an absolute filename, or 
+relative to the location of the <TT
+CLASS="FILENAME"
+>catalog</TT
+>
+in which it occurs.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN193424"
+>A.1.3.3. Mapping System Identifiers for XML</A
+></H3
+><P
+>&#13;
+Since XML documents are required to have system identifiers, but are not
+required to have public identifiers, it's likely that some of the documents
+you want to process will only have system identifiers.</P
+><P
+>It turns out that you can still take advantage of the catalog in this case.
+The <TT
+CLASS="LITERAL"
+>SYSTEM</TT
+> directive allows you to map the system
+identifier used in the document to the actual location on your system.</P
+><P
+>Suppose that you work with a colleague who uses the system identifier
+<SPAN
+CLASS="QUOTE"
+>"file:///c:/sgml/db3xml/db3xml.dtd"</SPAN
+> to identify the XML version
+of DocBook on her system.  On your system, you want to map that to
+<SPAN
+CLASS="QUOTE"
+>"/share/sgml/db3xml/db3xml.dtd"</SPAN
+>.  The following entry in
+your catalog will do the trick:</P
+><PRE
+CLASS="SCREEN"
+>SYSTEM "http://docbook.org/docbook/xml/1.4/db3xml.dtd" "/share/sgml/db3xml/db3xml.dtd"</PRE
+><P
+>Unfortunately, this technique only works with applications that read and
+understand catalog files.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193442"
+>A.1.4. Testing Your Installation</A
+></H2
+><P
+>&#13;
+
+
+The best way to test your installation is with a simple command-line
+parser like <I
+CLASS="COMMAND"
+>nsgmls</I
+> from <SPAN
+CLASS="APPLICATION"
+>SP</SPAN
+>.
+Create a small test document, like this:</P
+><PRE
+CLASS="SCREEN"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&lt;chapter&#62;&lt;title&#62;Test Chapter&lt;/title&#62;
+&lt;para&#62;
+This is a test document.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+><P
+>and run the following command:</P
+><PRE
+CLASS="SCREEN"
+>nsgmls -sv test.sgm</PRE
+><P
+>&#13;
+
+If the <I
+CLASS="COMMAND"
+>nsgmls</I
+> command produces errors, review your
+catalog and resolve the errors. You can ignore warnings about <TT
+CLASS="LITERAL"
+>DTDDECL</TT
+> being unsupported. It is unsupported, and there's no way to disable
+the warning message. Note, however, that this may also affect which SGML declaration
+gets used. When in doubt, pass the correct declaration explicitly and see
+if that corrects any problems. (To parse <TT
+CLASS="FILENAME"
+>test.sgm</TT
+> with
+the declaration <TT
+CLASS="FILENAME"
+>docbook.dcl</TT
+> explicitly, run <I
+CLASS="COMMAND"
+>nsgmls -sv docbook.dcl test.sgm</I
+>.)</P
+><P
+>For some suggestions about how to work around these problems in <SPAN
+CLASS="APPLICATION"
+>SP</SPAN
+> and <SPAN
+CLASS="APPLICATION"
+>Jade</SPAN
+>, see the next section,
+<A
+HREF="appa.html#S-INSTALLJADE"
+>Section A.2</A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="S-INSTALLJADE"
+>A.2. Installing Jade</A
+></H1
+><P
+>&#13;
+For simplicity, the instructions assume that you are working with
+Jade on a Microsoft Windows machine. These instructions should be just as
+useful if you are working on another platform, except for the normal cross-platform
+idiosyncracies (path and filename separator characters, use of drive letters,
+etc.).</P
+><P
+>Download and unpack the <A
+HREF="http://www.jclark.com/jade/"
+TARGET="_top"
+>Jade</A
+> distribution. Binary distributions are available for some platforms,
+which makes installation a simple matter of unpacking the distribution. Or
+you can build Jade from the source (consult the documentation that comes with
+Jade for more detail about building it from source).</P
+><P
+>You may wish to add the directory where you installed Jade to your <TT
+CLASS="ENVAR"
+>PATH</TT
+>. If not, make sure that you use the fully qualified name of the
+executable when you run the commands below.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193486"
+>A.2.1. Setting Up the Catalog</A
+></H2
+><P
+>&#13;
+First, the catalog needs to be set up as described in
+<A
+HREF="appa.html#DBCATALOG"
+>Section A.1.3</A
+>
+in order for Jade to be able to parse your DocBook documents. In addition,
+Jade comes with its own <TT
+CLASS="FILENAME"
+>catalog</TT
+> file that you must add
+to the <TT
+CLASS="ENVAR"
+>SGML_CATALOG_FILES</TT
+> environment variable or otherwise
+make available to Jade.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193495"
+>A.2.2. Testing Jade</A
+></H2
+><P
+>&#13;
+Download <A
+HREF="http://nwalsh.com/docbook/dsssl/doc/testdata/jtest.sgm"
+TARGET="_top"
+><TT
+CLASS="FILENAME"
+>jtest.sgm</TT
+></A
+> and <A
+HREF="http://nwalsh.com/docbook/dsssl/doc/testdata/jtest.dsl"
+TARGET="_top"
+><TT
+CLASS="FILENAME"
+>jtest.dsl</TT
+></A
+>. (Or get them off the CD-ROM in
+FIXME.) These are self-contained
+test documents. Test Jade by running:</P
+><PRE
+CLASS="SCREEN"
+>jade -t rtf -d jtest.dsl jtest.sgm</PRE
+><P
+>This command should silently produce <A
+HREF="http://nwalsh.com/docbook/dsssl/doc/testdata/jtest.rtf"
+TARGET="_top"
+>jtest.rtf</A
+>. If you encounter warnings or errors here, Jade is not installed
+correctly. One possible culprit is your catalog setup. See <A
+HREF="ch04.html#JADEMULTDECL"
+>Section 4.5</A
+>.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN193509"
+>A.2.2.1. DTDDECL Warnings</A
+></H3
+><P
+>&#13;
+One annoying shortcoming in Jade is that it does not support the <TT
+CLASS="LITERAL"
+>DTDDECL</TT
+> catalog directive and it complains loudly if it encounters
+one. In Jade, it's almost always possible to work around the problems that <TT
+CLASS="LITERAL"
+>DTDDECL</TT
+> would solve, so you can generally ignore the warnings.</P
+><P
+>If you also use applications that do understand <TT
+CLASS="LITERAL"
+>DTDDECL</TT
+>,
+and find the warnings too distracting to bear, setup alternate catalogs
+for <SPAN
+CLASS="APPLICATION"
+>SP</SPAN
+> applications, <TT
+CLASS="FILENAME"
+>catalog.jade</TT
+>,
+that are identical to your normal catalogs but do not contain any <TT
+CLASS="LITERAL"
+>DTDDECL</TT
+> entries. You can then avoid the warnings by putting <TT
+CLASS="FILENAME"
+>catalog.jade</TT
+> in your <TT
+CLASS="ENVAR"
+>SGML_CATALOG_FILES</TT
+> path, instead of <TT
+CLASS="FILENAME"
+>catalog</TT
+>.</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="XINSTMDS"
+>A.3. Installing the ModularDocBook Stylesheets</A
+></H1
+><P
+>&#13;
+
+<A
+HREF="http://nwalsh.com/~ndw/"
+TARGET="_top"
+>Norman Walsh</A
+> (one of your
+intrepid authors ;-) maintains two DSSSL stylesheets for DocBook, one for
+print and one for online (HTML) output. You can obtain both of these stylesheets
+from <A
+HREF="http://nwalsh.com/docbook/dsssl/"
+TARGET="_top"
+>http://nwalsh.com/docbook/dsssl/</A
+>. (A recent version is also on
+the CD-ROM.)</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>If you have not already done so, download and install the DocBook
+DTD as described in <A
+HREF="appa.html#S-INSTALLDTD"
+>Section A.1</A
+>.</P
+></LI
+><LI
+><P
+>Likewise, if Jade is not installed on your system, download
+and install it as described in <A
+HREF="appa.html#S-INSTALLJADE"
+>Section A.2</A
+>.</P
+></LI
+><LI
+><P
+>Download and unpack the <A
+HREF="http://nwalsh.com/docbook/dsssl/"
+TARGET="_top"
+>stylesheet distribution</A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+Test the installation by processing <TT
+CLASS="FILENAME"
+>test.sgm</TT
+>
+(from the previous section) with Jade:</P
+><PRE
+CLASS="SCREEN"
+>jade -t rtf -d d:\where-you-unpacked-the-stylesheets\docbook\print\docbook.dsl test.sgm</PRE
+><P
+>This command should silently produce <A
+HREF="http://nwalsh.com/docbook/dsssl/doc/testdata/test.rtf"
+TARGET="_top"
+><TT
+CLASS="FILENAME"
+>test.rtf</TT
+></A
+>. If not, and the preceding test succeeded, something
+has gone wrong--<A
+HREF="http://nwalsh.com/~ndw/contact.html"
+TARGET="_top"
+>contact
+the maintainer</A
+>.</P
+><P
+>To test the HTML stylesheet, run:</P
+><PRE
+CLASS="SCREEN"
+>jade -t sgml -d d:\where-you-unpacked-the-stylesheets\docbook\html\docbook.dsl test.sgm</PRE
+><P
+>This command should silently produce <A
+HREF="http://nwalsh.com/docbook/dsssl/doc/testdata/c01.htm"
+TARGET="_top"
+><TT
+CLASS="FILENAME"
+>c01.htm</TT
+></A
+>. If not, and the preceding test succeeded, something
+has gone wrong--<A
+HREF="http://nwalsh.com/~ndw/contact.html"
+TARGET="_top"
+>contact
+the maintainer</A
+>.&#62;</P
+></LI
+></OL
+></DIV
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN193343"
+HREF="appa.html#AEN193343"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The names of the entity files in this distribution do not
+exactly match the names of the files used in the catalog file
+distributed with DocBook (<TT
+CLASS="FILENAME"
+>docbook.cat</TT
+>). Make sure your
+catalog file points to the right files.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="part3.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="appb.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Appendixes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part3.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>DocBook and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

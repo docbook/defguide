@@ -1,0 +1,41 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>subject</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="structname-x.html" title="structname"><link rel="next" href="subjectset-x.html" title="subjectset"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="structname" href="structname-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="subjectset" href="subjectset-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="subject.element"></a><div><div><div><h1 class="title">subject</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>subject &#8212; One of a group of terms describing the subject matter of a document</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">subject ::=
+(<a href="subjectterm-x.html"><code class="sgmltag-element">subjectterm</code></a>+)</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p><table border="0" width="100%" cellpadding="2" style="border-collapse: collapse; border-left: 0.5pt solid black; border-right: 0.5pt solid black; border-bottom: 0.5pt solid black;" summary="Attributes"><thead><tr><td class="th" style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Name</strong></span></p></td><td class="th" style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Type</strong></span></p></td><td class="th" style="border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Default</strong></span></p></td></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; " align="left" valign="top">weight</td><td style="border-right: 0.5pt solid ; " align="left" valign="top">CDATA</td><td style="" align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div><div class="refsect1" lang="en"><a name="d0e159407"></a><h2>Description</h2><p>
+A &#8220;<span class="quote">subject</span>&#8221; categorizes or describes the topic of a
+document, or section of a document. In DocBook, a <a href="subject-x.html"><code class="sgmltag-element">Subject</code></a>
+is defined by the <a href="subjectterm-x.html"><code class="sgmltag-element">SubjectTerm</code></a>s that it contains.
+</p><p>
+Subject terms should be drawn from a controlled vocabulary, such
+as the <span class="emphasis"><em>Library of Congress Subject Headings</em></span>. If an outside
+vocabulary is not appropriate, a local or institutional subject set
+should be created.
+</p><p>
+The advantage of a controlled vocabulary is that it places the document
+into a known subject space. Searching the subject space with a particular
+subject term will find <span class="emphasis"><em>all</em></span> of the documents that claim
+to have that subject. There's no need to worry about terms that are
+synonymous with the search item, or homophones of the search term.
+</p><p>
+All of the <a href="subjectterm-x.html"><code class="sgmltag-element">SubjectTerm</code></a>s in a <a href="subject-x.html"><code class="sgmltag-element">Subject</code></a> should
+describe the same subject, and be from the <span class="emphasis"><em>same controlled
+vocabulary</em></span>.
+</p><div class="refsect2" lang="en"><a name="d0e159442"></a><h3>Processing expectations</h3><p>
+May be formatted inline or as a displayed block, depending on context. Subjects are rarely displayed to a reader. Usually, they
+are reserved for searching and retrieval purposes.
+</p><p>
+Unlike <a href="keyword-x.html"><code class="sgmltag-element">Keyword</code></a>s, which may be chosen freely, 
+subject terms should come from a controlled vocabulary.
+</p><p>
+In order to assure that typographic or other errors are not introduced
+into the subject terms, they should be compared against the controlled
+vocabulary by an external process.
+</p></div><div class="refsect2" lang="en"><a name="d0e159454"></a><h3>Parents</h3><p>These elements contain subject:
+<span class="simplelist"><a href="subjectset-x.html"><code class="sgmltag-element">subjectset</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e159464"></a><h3>Children</h3><p>The following elements occur in subject:
+<span class="simplelist"><a href="subjectterm-x.html"><code class="sgmltag-element">subjectterm</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e159474"></a><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">weight</span></dt><dd><p>
+<code class="sgmltag-attribute">Weight</code> specifies a ranking for this 
+<a href="subject-x.html"><code class="sgmltag-element">Subject</code></a> relative to other subjects in the same set.
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a name="d0e159490"></a><h2>See Also</h2><p><span class="simplelist"><a href="keyword-x.html"><code class="sgmltag-element">keyword</code></a>, <a href="keywordset-x.html"><code class="sgmltag-element">keywordset</code></a>, <a href="subjectset-x.html"><code class="sgmltag-element">subjectset</code></a>, <a href="subjectterm-x.html"><code class="sgmltag-element">subjectterm</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e159508"></a><h2>Examples</h2><p>For examples, see
+<span class="simplelist"><a href="subjectset-x.html"><code class="sgmltag-element">subjectset</code></a></span>.
+</p></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="structname" href="structname-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="subjectset" href="subjectset-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">structname&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;subjectset</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

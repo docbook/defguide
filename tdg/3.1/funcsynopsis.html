@@ -1,0 +1,1469 @@
+<HTML
+><HEAD
+><TITLE
+>FuncSynopsis</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="FuncPrototype"
+HREF="funcprototype.html"><LINK
+REL="NEXT"
+TITLE="FuncSynopsisInfo"
+HREF="funcsynopsisinfo.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="funcprototype.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="funcsynopsisinfo.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>FuncSynopsis</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN41630"
+></A
+><H2
+>Name</H2
+>FuncSynopsis&nbsp;--&nbsp;The syntax summary for a function definition</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN41633"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>FuncSynopsis ::=
+(<A
+HREF="funcsynopsisinfo.html"
+>FuncSynopsisInfo</A
+>?,
+ (<A
+HREF="funcprototype.html"
+>FuncPrototype</A
+>+|
+  (<A
+HREF="funcdef.html"
+>FuncDef</A
+>,
+   (<A
+HREF="void.html"
+>Void</A
+>|<A
+HREF="varargs.html"
+>VarArgs</A
+>|<A
+HREF="paramdef.html"
+>ParamDef</A
+>+))+),
+ <A
+HREF="funcsynopsisinfo.html"
+>FuncSynopsisInfo</A
+>?)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Label</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.ADMON.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%admon.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.COMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%component.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.DIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%divcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.EXAMPLE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%example.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FIGURE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%figure.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FOOTNOTE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%footnote.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.GLOSSDEF.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%glossdef.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.INDEXDIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%indexdivcomponent.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARA.CHAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%para.char.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.PROGRAMLISTING.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%programlisting.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.QANDASET.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%qandaset.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.REFCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.SCREEN.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%screen.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.SIDEBAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%sidebar.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.SYNOP.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%synop.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ENTRY.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.entry.mdl;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN41724"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+> contains the syntax summary of a function prototype
+or a set of function prototypes.  The content model of this element
+was designed specifically to capture the semantics of most C-language
+function prototypes (for use in <SPAN
+CLASS="ACRONYM"
+>UNIX</SPAN
+> reference pages).</P
+><P
+>This is one of the few places where DocBook attempts to model as well
+as describe.  Using <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+> for languages that are
+unrelated to C may prove difficult.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41731"
+></A
+><H3
+>Processing expectations</H3
+><P
+>For the most part, the processing application is expected to
+generate all of the parenthesis, semicolons, commas,
+and so on. required in the rendered synopsis.  The exception to this
+rule is that the spacing and other punctuation inside a
+parameter that is a pointer to a function must be provided in
+the source markup.</P
+><P
+>With sufficient author cooperation, it should be possible to markup
+a function synopsis with enough clarity so that a processing system can
+generate either <SPAN
+CLASS="ACRONYM"
+>K&amp;R</SPAN
+>-style or <SPAN
+CLASS="ACRONYM"
+>ANSI</SPAN
+>-style renderings.</P
+><DIV
+CLASS="REFSECT3"
+><A
+NAME="AEN41737"
+></A
+><H4
+>A Note on the Use of <A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+></H4
+><P
+>The content model of <A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+> is such that you
+cannot use <A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+> in a function prototype in which the
+first few parameters to the function are given explicitly before
+the variable arguments (generally rendered as an ellipsis).</P
+><P
+>In other words, the following synopsis cannot be rendered with
+<A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+>:
+
+<PRE
+CLASS="SYNOPSIS"
+>int printf(char *format, ...)</PRE
+></P
+><P
+>Instead, you can enclose the ellipsis in a final <A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>,
+like this:
+
+<PRE
+CLASS="SCREEN"
+>&#60;funcsynopsis&#62;
+&#60;funcprototype&#62;&#60;funcdef&#62;int &#60;function&#62;printf&#60;/function&#62;&#60;/funcdef&#62;
+&#60;paramdef&#62;
+  &#60;parameter&#62;char *format&#60;/parameter&#62;
+  &#60;parameter&#62;...&#60;/parameter&#62;
+&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41749"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>&#13;In DocBook <SPAN
+CLASS="ACRONYM"
+>V4.0</SPAN
+>, the content model fragment beginning with
+<A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+> will be removed from the content
+model of <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>.  Instead
+<A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+> will become a mixture of
+<A
+HREF="funcsynopsisinfo.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsisInfo</TT
+></A
+>s and <A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>s.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41762"
+></A
+><H3
+>Future Changes</H3
+><P
+>Future versions of DocBook may provide additional environments for
+describing the syntax summaries of functions in other programming
+languages.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41765"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain FuncSynopsis:
+<A
+HREF="answer.html"
+><TT
+CLASS="SGMLTAG"
+>Answer</TT
+></A
+>, <A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="application.html"
+><TT
+CLASS="SGMLTAG"
+>Application</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="attribution.html"
+><TT
+CLASS="SGMLTAG"
+>Attribution</TT
+></A
+>, <A
+HREF="bibliodiv.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioDiv</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="bibliomisc.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioMisc</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="citation.html"
+><TT
+CLASS="SGMLTAG"
+>Citation</TT
+></A
+>, <A
+HREF="citetitle.html"
+><TT
+CLASS="SGMLTAG"
+>CiteTitle</TT
+></A
+>, <A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+>, <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, <A
+HREF="foreignphrase.html"
+><TT
+CLASS="SGMLTAG"
+>ForeignPhrase</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+>, <A
+HREF="glossdiv.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDiv</TT
+></A
+>, <A
+HREF="glosssee.html"
+><TT
+CLASS="SGMLTAG"
+>GlossSee</TT
+></A
+>, <A
+HREF="glossseealso.html"
+><TT
+CLASS="SGMLTAG"
+>GlossSeeAlso</TT
+></A
+>, <A
+HREF="glossterm.html"
+><TT
+CLASS="SGMLTAG"
+>GlossTerm</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="lineannotation.html"
+><TT
+CLASS="SGMLTAG"
+>LineAnnotation</TT
+></A
+>, <A
+HREF="link.html"
+><TT
+CLASS="SGMLTAG"
+>Link</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>, <A
+HREF="lotentry.html"
+><TT
+CLASS="SGMLTAG"
+>LoTentry</TT
+></A
+>, <A
+HREF="member.html"
+><TT
+CLASS="SGMLTAG"
+>Member</TT
+></A
+>, <A
+HREF="msgaud.html"
+><TT
+CLASS="SGMLTAG"
+>MsgAud</TT
+></A
+>, <A
+HREF="msgexplan.html"
+><TT
+CLASS="SGMLTAG"
+>MsgExplan</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="olink.html"
+><TT
+CLASS="SGMLTAG"
+>OLink</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="phrase.html"
+><TT
+CLASS="SGMLTAG"
+>Phrase</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="productname.html"
+><TT
+CLASS="SGMLTAG"
+>ProductName</TT
+></A
+>, <A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+>, <A
+HREF="qandadiv.html"
+><TT
+CLASS="SGMLTAG"
+>QandADiv</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="question.html"
+><TT
+CLASS="SGMLTAG"
+>Question</TT
+></A
+>, <A
+HREF="quote.html"
+><TT
+CLASS="SGMLTAG"
+>Quote</TT
+></A
+>, <A
+HREF="refentrytitle.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntryTitle</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, <A
+HREF="screeninfo.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenInfo</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="seg.html"
+><TT
+CLASS="SGMLTAG"
+>Seg</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simpara.html"
+><TT
+CLASS="SGMLTAG"
+>SimPara</TT
+></A
+>, <A
+HREF="simplesect.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleSect</TT
+></A
+>, <A
+HREF="step.html"
+><TT
+CLASS="SGMLTAG"
+>Step</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+>, <A
+HREF="term.html"
+><TT
+CLASS="SGMLTAG"
+>Term</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="tocback.html"
+><TT
+CLASS="SGMLTAG"
+>ToCback</TT
+></A
+>, <A
+HREF="tocentry.html"
+><TT
+CLASS="SGMLTAG"
+>ToCentry</TT
+></A
+>, <A
+HREF="tocfront.html"
+><TT
+CLASS="SGMLTAG"
+>ToCfront</TT
+></A
+>, <A
+HREF="ulink.html"
+><TT
+CLASS="SGMLTAG"
+>ULink</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN42012"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in FuncSynopsis:
+<A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+>, <A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>, <A
+HREF="funcsynopsisinfo.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsisInfo</TT
+></A
+>, <A
+HREF="paramdef.html"
+><TT
+CLASS="SGMLTAG"
+>ParamDef</TT
+></A
+>, <A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+>, <A
+HREF="void.html"
+><TT
+CLASS="SGMLTAG"
+>Void</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN42042"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Label</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> specifies an identifying number or string
+that may be used in presentation.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN42050"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN42060"
+></A
+><H2
+>Examples</H2
+><P
+>The function <TT
+CLASS="FUNCTION"
+>max</TT
+> returns the larger of two integers:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;funcsynopsis&#62;
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;int &#60;function&#62;max&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;paramdef&#62;int &#60;parameter&#62;int1&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;int &#60;parameter&#62;int2&#60;/parameter&#62;&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>int max</CODE
+>(int int1, int int2);</CODE
+></P
+><P
+></P
+></DIV
+></DIV><P
+>One can imagine a more flexible <TT
+CLASS="FUNCTION"
+>max</TT
+> function that takes
+any number of integer arguments and returns the largest integer in 
+the list:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;funcsynopsis&#62;
+&#60;funcsynopsisinfo&#62;
+#include &#38;lt;varargs.h&#38;gt;
+&#60;/funcsynopsisinfo&#62;
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;int &#60;function&#62;max&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;varargs&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><PRE
+CLASS="FUNCSYNOPSISINFO"
+>#include &lt;varargs.h&gt;</PRE
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>int max</CODE
+>(...);</CODE
+></P
+><P
+></P
+></DIV
+></DIV><P
+>The <TT
+CLASS="FUNCTION"
+>rand</TT
+> function takes no arguments and returns a 
+pseudorandom integer between 0 and 2<SUP
+>31</SUP
+>-1:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;funcsynopsis&#62;
+&#60;funcprototype&#62;
+&#60;funcdef&#62;int &#60;function&#62;rand&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;void&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>int rand</CODE
+>(void);</CODE
+></P
+><P
+></P
+></DIV
+></DIV><P
+>The <TT
+CLASS="FUNCTION"
+>qsort</TT
+> function takes several arguments, including
+a pointer to a function (the function that should perform the
+comparison between two elements in order to sort them).</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;funcsynopsis&#62;
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;void &#60;function&#62;qsort&#60;/function&#62;&#60;/funcdef&#62;
+    &#60;paramdef&#62;void *&#60;parameter&#62;dataptr&#60;/parameter&#62;[]&#60;/paramdef&#62;
+    &#60;paramdef&#62;int &#60;parameter&#62;left&#60;/parameter&#62;&#60;/paramdef&#62;
+    &#60;paramdef&#62;int &#60;parameter&#62;right&#60;/parameter&#62;&#60;/paramdef&#62;
+    &#60;paramdef&#62;int &#60;parameter&#62;(* comp)&#60;/parameter&#62;
+      &#60;funcparams&#62;void *, void *&#60;/funcparams&#62;&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void qsort</CODE
+>(void *dataptr[], int left, int right, int (* comp)
+      (void *, void *));</CODE
+></P
+><P
+></P
+></DIV
+></DIV><P
+>For additional examples, see also <A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+>,
+<A
+HREF="paramdef.html"
+><TT
+CLASS="SGMLTAG"
+>ParamDef</TT
+></A
+>,
+<A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="funcprototype.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="funcsynopsisinfo.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>FuncPrototype</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>FuncSynopsisInfo</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

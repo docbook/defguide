@@ -1,0 +1,2197 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Publishing DocBook Documents</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="part1.html" title="Part&nbsp;I.&nbsp;Introduction"><link rel="previous" href="ch03.html" title="Parsing DocBook Documents"><link rel="next" href="ch05.html" title="Customizing DocBook"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="Parsing DocBook Documents" href="ch03.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp;I.&nbsp;Introduction" href="part1.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="Customizing DocBook" href="ch05.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="chapter" lang="en"><div><div><div><a name="ch-publish"></a><div class="component-title"><h1 class="label">4</h1><h1 class="title">Publishing DocBook Documents</h1></div></div><div><p class="releaseinfo">$Revision: 5449 $</p></div><div><p class="pubdate">$Date: 2005-11-12 16:36:21 -0500 (Sat, 12 Nov 2005) $</p></div></div><hr xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0" t:class="component-separator"></div><p>
+<a class="indexterm" name="publishDocBookch04"></a>
+<a class="indexterm" name="DocBookpublishch04"></a>
+<a class="indexterm" name="d0e9153"></a>
+<a class="indexterm" name="d0e9159"></a>
+
+Creating and editing <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> documents is usually only half the
+battle. After you've composed your document, you'll want to publish
+it. Publishing, for our purposes, means either print or web
+publishing. For <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> documents, this is usually
+accomplished with some kind of <em class="glossterm">stylesheet</em>.  In
+some environments, it is now possible to publish an <acronym class="acronym">XML</acronym>
+document on the Web simply by putting it online with a stylesheet.
+</p><p>
+<a class="indexterm" name="d0e9185"></a>
+<a class="indexterm" name="d0e9191"></a>
+<a class="indexterm" name="d0e9195"></a>
+
+There are many ways, using both free and commercial tools, to publish
+<acronym class="acronym">SGML</acronym> documents. In this chapter, we're going to survey a number of
+possibilities, and then look at just one solution in detail: <a href="http://www.jclark.com/jade/" target="_top">Jade</a> and the <a href="http://nwalsh.com/docbook/dsssl/" target="_top">Modular DocBook
+Stylesheets.</a> We used jade to produce this
+book and to produce the online versions on the
+<acronym class="acronym">CD-ROM</acronym>; it is also being deployed in other projects
+such as <a href="http://www.sgmltools.org/" target="_top"><code class="literal">&lt;SGML&gt;&amp;tools;</code>,</a>
+which originated with the Linux Documentation Project.
+</p><p>
+For a brief survey of other tools, see <a href="appd.html" title="Resources">Appendix&nbsp;D, <i>Resources</i></a>.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e9220"></a>The MIME Type for DocBook</h2></div></div></div><p>When published on the web, documents must be identified with a MIME type.
+The MIME type for SGML DocBook documents published directly on the web
+is &#8220;<code class="literal">application/sgml</code>&#8221;.
+The most appropriate MIME type for XML DocBook documents published directly on
+the web is currently
+&#8220;<code class="literal">application/xml</code>&#8221;, however the DocBook Technical Committee
+may choose to register a more specific MIME type in the future.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e9231"></a>A Survey of Stylesheet Languages</h2></div></div></div><p>
+<a class="indexterm" name="d0e9236"></a>
+<a class="indexterm" name="d0e9242"></a>
+
+Over the years, a number of attempts have been made to produce a
+standard stylesheet language and, failing that, a large number of
+proprietary languages have been developed.
+</p><div class="variablelist"><dl><dt><span class="term">FOSIs</span></dt><dd><p>
+<a class="indexterm" name="d0e9255"></a>
+<a class="indexterm" name="d0e9259"></a>
+<a class="indexterm" name="d0e9265"></a>
+
+First, the U.S. Department of Defense, in an attempt to
+standardize stylesheets across military branches, created the
+<em class="citetitle">Output Specification</em>, which is defined in
+<acronym class="acronym">MIL-PRF-28001C</acronym>, <em class="citetitle">Markup Requirements and
+Generic Style Specification for Electronic Printed Output and Exchange
+of Text</em>.<sup>[<a name="d0e9278" href="#ftn.d0e9278">14</a>]</sup>
+</p><p>
+<a class="indexterm" name="d0e9288"></a>
+<a class="indexterm" name="d0e9292"></a>
+
+Commonly called FOSIs (for Formatting Output Specification Instances),
+they are supported by a few products including ADEPT Publisher by
+<a href="http://www.arbortext.com/" target="_top">Arbortext</a> and DL
+Composer by <a href="http://www.datalogics.com/" target="_top">Datalogics</a>.
+</p></dd><dt><span class="term">DSSSL</span></dt><dd><p>
+<a class="indexterm" name="d0e9308"></a>
+<a class="indexterm" name="d0e9312"></a>
+<a class="indexterm" name="d0e9318"></a>
+<a class="indexterm" name="d0e9324"></a>
+
+Next, the International Organization for Standardization
+(<acronym class="acronym">ISO</acronym>) created <acronym class="acronym">DSSSL</acronym>, the
+Document Style Semantics and Specification Language. Subsets of
+<acronym class="acronym">DSSSL</acronym> are supported by Jade and a few other tools,
+but it never achieved widespread support.
+</p></dd><dt><span class="term">CSS</span></dt><dd><p>
+<a class="indexterm" name="d0e9345"></a>
+<a class="indexterm" name="d0e9349"></a>
+<a class="indexterm" name="d0e9355"></a>
+
+The <acronym class="acronym">W3C</acronym> CSS Working Group created
+<acronym class="acronym">CSS</acronym> as a style attachment language for <acronym class="acronym">HTML</acronym>, and,
+more recently, <acronym class="acronym">XML</acronym>.
+</p></dd><dt><span class="term">XSL</span></dt><dd><p>
+<a class="indexterm" name="d0e9379"></a>
+<a class="indexterm" name="d0e9383"></a>
+<a class="indexterm" name="d0e9389"></a>
+Most recently, the <acronym class="acronym">XML</acronym> effort has identified a standard Extensible Style
+Language (<acronym class="acronym">XSL</acronym>) as a requirement. The
+<acronym class="acronym">W3C</acronym> <acronym class="acronym">XSL</acronym> Working Group is
+currently pursuing that effort.
+</p></dd></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9407"></a>Stylesheet Examples</h3></div></div></div><p>
+<a class="indexterm" name="stylsheetsch04"></a>
+
+
+
+By way of comparison, here's an example of each of the standard style
+languages. In each case, the stylesheet fragment shown contains the
+rules that reasonably formatted the following paragraph:
+</p><pre class="screen">
+&lt;para&gt;
+This is an example paragraph. It should be presented in a
+reasonable body font. &lt;emphasis&gt;Emphasized&lt;/emphasis&gt; words
+should be printed in italics. A single level of 
+&lt;emphasis&gt;Nested &lt;emphasis&gt;emphasis&lt;/emphasis&gt; should also
+be supported.&lt;/emphasis&gt;
+&lt;/para&gt;
+</pre><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e9420"></a><acronym class="acronym">FOSI</acronym> stylesheet</h4></div></div></div><p>
+<a class="indexterm" name="d0e9427"></a>
+<a class="indexterm" name="d0e9433"></a>
+<a class="indexterm" name="d0e9439"></a>
+<a class="indexterm" name="d0e9443"></a>
+
+<acronym class="acronym">FOSI</acronym>s are <acronym class="acronym">SGML</acronym> documents. The element in the
+<acronym class="acronym">FOSI</acronym> that controls the presentation of specific
+elements is the <code class="sgmltag-element">e-i-c</code> (element in context) element.
+A sample <acronym class="acronym">FOSI</acronym> fragment is shown in <a href="ch04.html#ex-fosi" title="Example&nbsp;4.1.&nbsp;A Fragment of a FOSI Stylesheet">Example&nbsp;4.1, &#8220;A Fragment of a <acronym class="acronym">FOSI</acronym> Stylesheet&#8221;</a>.
+</p><div class="example"><a name="ex-fosi"></a><p class="title"><b>Example&nbsp;4.1.&nbsp;A Fragment of a <acronym class="acronym">FOSI</acronym> Stylesheet</b></p><div class="example-contents"><pre class="programlisting">&lt;e-i-c gi="para"&gt;
+  &lt;charlist&gt;
+    &lt;textbrk startln="1" endln="1"&gt;
+  &lt;/charlist&gt;
+&lt;/e-i-c&gt;
+
+&lt;e-i-c gi="emphasis"&gt;
+  &lt;charlist inherit="1"&gt;
+    &lt;font posture="italic"&gt;
+  &lt;/charlist&gt;
+&lt;/e-i-c&gt;
+
+&lt;e-i-c gi="emphasis" context="emphasis"&gt;
+  &lt;charlist inherit="1"&gt;
+    &lt;font posture="upright"&gt;
+  &lt;/charlist&gt;
+&lt;/e-i-c&gt;
+</pre></div></div><br class="example-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e9472"></a><acronym class="acronym">DSSSL</acronym> stylesheet</h4></div></div></div><p>
+<a class="indexterm" name="d0e9479"></a>
+<a class="indexterm" name="d0e9487"></a>
+
+<acronym class="acronym">DSSSL</acronym> stylesheets are written in a Scheme-like
+language (see <a href="ch04.html#scheme" title="Scheme">the section called &#8220;Scheme&#8221;</a> later in this chapter). It is the
+<code class="function">element</code> function that controls the presentation of
+individual elements. See the example in <a href="ch04.html#ex-dsssl" title="Example&nbsp;4.2.&nbsp;A Fragment of a DSSSL Stylesheet">Example&nbsp;4.2, &#8220;A Fragment of a <acronym class="acronym">DSSSL</acronym> Stylesheet&#8221;</a>.
+</p><div class="example"><a name="ex-dsssl"></a><p class="title"><b>Example&nbsp;4.2.&nbsp;A Fragment of a <acronym class="acronym">DSSSL</acronym> Stylesheet</b></p><div class="example-contents"><pre class="programlisting">(element para
+  (make paragraph
+    (process-children)))
+
+(element emphasis
+  (make sequence
+    font-posture: 'italic
+    (process-children)))
+
+(element (emphasis emphasis)
+  (make sequence
+    font-posture: 'upright
+    (process-children)))
+</pre></div></div><br class="example-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e9511"></a><acronym class="acronym">CSS</acronym> stylesheet</h4></div></div></div><p>
+<a class="indexterm" name="d0e9518"></a>
+
+<acronym class="acronym">CSS</acronym> stylesheets consist of selectors and formatting
+properties, as shown in <a href="ch04.html#ex-css" title="Example&nbsp;4.3.&nbsp;A Fragment of a CSS Stylesheet">Example&nbsp;4.3, &#8220;A Fragment of a <acronym class="acronym">CSS</acronym> Stylesheet&#8221;</a>.
+</p><div class="example"><a name="ex-css"></a><p class="title"><b>Example&nbsp;4.3.&nbsp;A Fragment of a <acronym class="acronym">CSS</acronym> Stylesheet</b></p><div class="example-contents"><pre class="programlisting">para              { display: block }
+emphasis          { display: inline;
+                    font-style: italic; }
+emphasis emphasis { display: inline;
+                    font-style: upright; }
+</pre></div></div><br class="example-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e9537"></a><acronym class="acronym">XSL</acronym> stylesheet</h4></div></div></div><p>
+<a class="indexterm" name="d0e9544"></a>
+
+<acronym class="acronym">XSL</acronym> stylesheets are <acronym class="acronym">XML</acronym> documents, as shown in
+<a href="ch04.html#ex-xsl" title="Example&nbsp;4.4.&nbsp;A Fragment of an XSL Stylesheet">Example&nbsp;4.4, &#8220;A Fragment of an <acronym class="acronym">XSL</acronym> Stylesheet&#8221;</a>. The element in the <acronym class="acronym">XSL</acronym>
+stylesheet that controls the presentation of specific elements is the
+<code class="sgmltag-element">xsl:template</code> element.
+</p><div class="example"><a name="ex-xsl"></a><p class="title"><b>Example&nbsp;4.4.&nbsp;A Fragment of an <acronym class="acronym">XSL</acronym> Stylesheet</b></p><div class="example-contents"><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"
+                xmlns:fo="http://www.w3.org/XSL/Format/1.0"&gt;
+
+&lt;xsl:template match="para"&gt;   
+  &lt;fo:block&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:block&gt;
+&lt;/xsl:template&gt;  
+
+&lt;xsl:template match="emphasis"&gt;
+  &lt;fo:sequence font-style="italic"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:sequence&gt;
+&lt;/xsl:template&gt;  
+
+&lt;xsl:template match="emphasis/emphasis"&gt;
+  &lt;fo:sequence font-style="upright"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:sequence&gt;
+&lt;/xsl:template&gt;  
+
+&lt;/xsl:stylesheet&gt;
+</pre></div></div><br class="example-break"></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="jade"></a>Using Jade and <acronym class="acronym">DSSSL</acronym> to Publish DocBook Documents</h2></div></div></div><p>
+<a class="indexterm" name="d0e9580"></a>
+<a class="indexterm" name="d0e9586"></a>
+<a class="indexterm" name="d0e9592"></a>
+<a class="indexterm" name="d0e9598"></a>
+<a class="indexterm" name="d0e9606"></a>
+
+Jade is a free tool that applies <a href="http://www.jclark.com/dsssl/" target="_top"> <acronym class="acronym">DSSSL</acronym></a>
+stylesheets to <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> documents. As distributed, Jade can
+output <acronym class="acronym">RTF</acronym>, TeX, <acronym class="acronym">MIF</acronym>, and
+<acronym class="acronym">SGML</acronym>. The <acronym class="acronym">SGML</acronym> backend can be used for <acronym class="acronym">SGML</acronym> to <acronym class="acronym">SGML</acronym>
+transformations (for example, DocBook to <acronym class="acronym">HTML</acronym>).
+</p><p>
+A complete set of <acronym class="acronym">DSSSL</acronym> stylesheets for creating
+print and <acronym class="acronym">HTML</acronym> output from DocBook is included on the
+<acronym class="acronym">CD-ROM</acronym>.  More information about obtaining and
+installing Jade appears in <a href="appa.html" title="Installation">Appendix&nbsp;A, <i>Installation</i></a>.
+<a class="indexterm" name="d0e9657"></a>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="dsssl"></a>A Brief Introduction to <acronym class="acronym">DSSSL</acronym></h2></div></div></div><p>
+<acronym class="acronym">DSSSL</acronym> is a stylesheet language for both print and
+online rendering.  The acronym stands for <em class="citetitle">Document Style
+Semantics and Specification Language</em>. It is defined by
+<acronym class="acronym">ISO</acronym>/<acronym class="acronym">IEC</acronym> 10179:1996. For more
+general information about <acronym class="acronym">DSSSL</acronym>, see <a href="http://www.jclark.com/dsssl/" target="_top">the <acronym class="acronym">DSSSL</acronym>
+Page</a>.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="scheme"></a>Scheme</h3></div></div></div><p>
+<a class="indexterm" name="d0e9692"></a>
+<a class="indexterm" name="d0e9698"></a>
+<a class="indexterm" name="d0e9702"></a>
+
+The <acronym class="acronym">DSSSL</acronym> expression language is Scheme, a variant
+of Lisp. Lisp is a functional programming language with a remarkably
+regular syntax. Every expression looks like this:
+<pre class="screen">
+(<em class="replaceable"><code>operator</code></em> [<span class="optional">arg1</span>] [<span class="optional">arg2</span>] ... [<span class="optional">arg<em class="replaceable"><code>n</code></em></span>] )
+</pre>
+<a class="indexterm" name="d0e9728"></a>
+This is called &#8220;<span class="quote">prefix</span>&#8221; syntax because the operator comes
+before its arguments.</p><p>In Scheme, the expression that
+subtracts 2 from 3, is <code class="literal">(- 3 2)</code>. And <code class="literal">(+ (-
+3 2) (* 2 4))</code> is 9. While the prefix syntax and the
+parentheses may take a bit of getting used to, Scheme is not hard to
+learn, in part because there are no exceptions to the syntax.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9745"></a><acronym class="acronym">DSSSL</acronym> Stylesheets</h3></div></div></div><p>
+<a class="indexterm" name="d0e9752"></a>
+<a class="indexterm" name="d0e9758"></a>
+
+A complete <acronym class="acronym">DSSSL</acronym> stylesheet is shown in <a href="ch04.html#dsssl.stylesheet" title="Example&nbsp;4.5.&nbsp;A Complete DSSSL Stylesheet">Example&nbsp;4.5, &#8220;A Complete <acronym class="acronym">DSSSL</acronym> Stylesheet&#8221;</a>.  After only a brief examination of the
+stylesheet, you'll probably begin to have a feel for how it works. For
+each element in the document, there is an element rule that describes
+how you should format that element. The goal of the rest of this
+chapter is to make it possible for you to read, understand, and even
+write stylesheets at this level of complexity.
+</p><div class="example"><a name="dsssl.stylesheet"></a><p class="title"><b>Example&nbsp;4.5.&nbsp;A Complete <acronym class="acronym">DSSSL</acronym> Stylesheet</b></p><div class="example-contents"><pre class="programlisting">&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN"&gt;
+
+&lt;style-sheet&gt;
+&lt;style-specification&gt;
+&lt;style-specification-body&gt;
+
+(element chapter
+  (make simple-page-sequence
+    top-margin: 1in
+    bottom-margin: 1in
+    left-margin: 1in
+    right-margin: 1in
+    font-size: 12pt
+    line-spacing: 14pt
+    min-leading: 0pt
+    (process-children)))
+
+(element title
+  (make paragraph
+    font-weight: 'bold
+    font-size: 18pt
+    (process-children)))
+
+(element para
+  (make paragraph
+    space-before: 8pt
+    (process-children)))
+
+(element emphasis
+  (if (equal? (attribute-string "role") "strong")
+      (make sequence
+	font-weight: 'bold
+	(process-children))
+      (make sequence
+	font-posture: 'italic
+	(process-children))))
+
+(element (emphasis emphasis)
+  (make sequence
+    font-posture: 'upright
+    (process-children)))
+
+(define (super-sub-script plus-or-minus
+               #!optional (sosofo (process-children)))
+  (make sequence
+    font-size: (* (inherited-font-size) 0.8)
+    position-point-shift: (plus-or-minus (* (inherited-font-size) 0.4))
+    sosofo))
+
+(element superscript (super-sub-script +))
+(element subscript (super-sub-script -))
+
+&lt;/style-specification-body&gt;
+&lt;/style-specification&gt;
+&lt;/style-sheet&gt;
+</pre></div></div><br class="example-break"><p>
+<a class="indexterm" name="d0e9779"></a>
+
+This stylesheet is capable of formatting simple DocBook documents like
+the one shown in <a href="ch04.html#simple.document" title="Example&nbsp;4.6.&nbsp;A Simple DocBook Document">Example&nbsp;4.6, &#8220;A Simple DocBook Document&#8221;</a>.
+</p><div class="example"><a name="simple.document"></a><p class="title"><b>Example&nbsp;4.6.&nbsp;A Simple DocBook Document</b></p><div class="example-contents"><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD Docbook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;emphasis role="bold"&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+</pre></div></div><br class="example-break"><p>
+The result of formatting a simple document with this stylesheet can be
+seen in <a href="ch04.html#simple.document.formatted" title="Figure&nbsp;4.1.&nbsp;The formatted simple document">Figure&nbsp;4.1, &#8220;The formatted simple document&#8221;</a>.
+</p><div class="figure"><a name="simple.document.formatted"></a><p class="title"><b>Figure&nbsp;4.1.&nbsp;The formatted simple document</b></p><div class="figure-contents"><div><img src="figures/simple-page.png" alt="The formatted simple document"></div></div></div><br class="figure-break"><p>
+We'll take a closer look at this stylesheet after you've learned a
+little more <acronym class="acronym">DSSSL</acronym>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9807"></a><acronym class="acronym">DSSSL</acronym> Stylesheets Are <acronym class="acronym">SGML</acronym> Documents</h3></div></div></div><p>
+<a class="indexterm" name="d0e9817"></a>
+<a class="indexterm" name="d0e9823"></a>
+<a class="indexterm" name="d0e9829"></a>
+
+One of the first things that may strike you about
+<acronym class="acronym">DSSSL</acronym> stylesheets (aside from all the parentheses),
+is the fact that the stylesheet itself is an <acronym class="acronym">SGML</acronym> document! This
+means that you have all the power of <acronym class="acronym">SGML</acronym> documents at your disposal
+in <acronym class="acronym">DSSSL</acronym> stylesheets. In particular, you can use
+entities and marked sections to build a modular stylesheet.
+</p><p>
+<a class="indexterm" name="d0e9849"></a>
+<a class="indexterm" name="d0e9855"></a>
+
+In fact, <acronym class="acronym">DSSSL</acronym> stylesheets are defined so that they
+correspond to a particular <em class="glossterm">architecture</em>. This
+means that you can change the <acronym class="acronym">DTD</acronym> used by stylesheets within the
+bounds of the architecture. A complete discussion of document
+architectures is beyond the scope of this book, but we'll show you one
+way to take advantage of them in your <acronym class="acronym">DSSSL</acronym>
+stylesheets in <a href="ch04.html#dsssl.arch" title="The DSSSL Architecture">the section called &#8220;The <acronym class="acronym">DSSSL</acronym> Architecture&#8221;</a> later in the
+chapter.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9875"></a><acronym class="acronym">DSSSL</acronym> Processing Model</h3></div></div></div><p>
+<a class="indexterm" name="d0e9882"></a>
+<a class="indexterm" name="d0e9886"></a>
+<a class="indexterm" name="d0e9890"></a>
+
+A <acronym class="acronym">DSSSL</acronym> processor builds a tree out of the source
+document. Each element in the source document becomes a node in the
+tree (processing instructions and other constructs become nodes as
+well). Processing the source tree begins with the root rule and
+continues until there are no more nodes to process.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9897"></a>Global Variables and Side Effects</h3></div></div></div><p>
+<a class="indexterm" name="d0e9902"></a>
+<a class="indexterm" name="d0e9908"></a>
+
+There aren't any global variables or side effects. It can be difficult
+to come to grips with this, especially if you're just starting out.
+</p><p>
+<a class="indexterm" name="d0e9914"></a>
+<a class="indexterm" name="d0e9920"></a>
+
+It is possible to <a href="ch04.html#dsssl.expr.define" title="Define expressions">define constants
+and functions</a> and to create local variables with <a href="ch04.html#dsssl.expr.let" title="Let expressions"> <code class="literal">let</code> expressions</a>,
+but you can't create any global variables or change anything after
+you've defined it.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9933"></a><acronym class="acronym">DSSSL</acronym> Expressions</h3></div></div></div><p>
+<a class="indexterm" name="d0e9940"></a>
+
+<acronym class="acronym">DSSSL</acronym> has a rich vocabulary of expressions for
+dealing with all of the intricacies of formatting. Many, but by no
+means all of them, are supported by Jade. In this introduction, we'll
+cover only a few of the most common.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.element"></a>Element expressions</h4></div></div></div><p>
+<a class="indexterm" name="d0e9952"></a>
+<a class="indexterm" name="d0e9960"></a>
+<a class="indexterm" name="d0e9966"></a>
+
+Element expressions, which define the rules for formatting particular
+elements, make up the bulk of most <acronym class="acronym">DSSSL</acronym>
+stylesheets. A simple element rule can be seen in <a href="ch04.html#ex.d.simple" title="Example&nbsp;4.7.&nbsp;A Simple DSSSL Rule">Example&nbsp;4.7, &#8220;A Simple <acronym class="acronym">DSSSL</acronym> Rule&#8221;</a>. This rule says that a <a href="para.html"><code class="sgmltag-element"> para</code></a>
+element should be formatted by making a paragraph (see <a href="ch04.html#dsssl.expr.make" title="Make expressions">the section called &#8220;Make expressions&#8221;</a>).
+</p><div class="example"><a name="ex.d.simple"></a><p class="title"><b>Example&nbsp;4.7.&nbsp;A Simple <acronym class="acronym">DSSSL</acronym> Rule</b></p><div class="example-contents"><pre class="screen">
+(element para
+  (make paragraph
+    space-before: 8pt
+    (process-children)))</pre></div></div><br class="example-break"><p>
+<a class="indexterm" name="d0e9992"></a>
+
+An element expression can be made more specific by specifying an
+element and its ancestors instead of just specifying an element. The
+rule <code class="literal">(element title ...)</code> applies to all
+<a href="title.html"><code class="sgmltag-element">Title</code></a> elements, but a rule that begins
+<code class="literal">(element (figure title) ...)</code> applies only to
+<a href="title.html"><code class="sgmltag-element">Title</code></a> elements that are immediate children of
+<a href="figure.html"><code class="sgmltag-element">Figure</code></a> elements.
+</p><p>
+If several rules apply, the most specific rule is used.
+</p><p>
+When a rule is used, the node in the source tree that was matched
+becomes the &#8220;<span class="quote">current node</span>&#8221; while that element expression
+is being processed.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.make"></a>Make expressions</h4></div></div></div><p>
+<a class="indexterm" name="d0e10023"></a>
+<a class="indexterm" name="d0e10027"></a>
+
+A make expression specifies the characteristics of a &#8220;<span class="quote">flow
+object.</span>&#8221; Flow objects are abstract representations of content
+(paragraphs, rules, tables, and so on). The expression:
+<pre class="screen">
+(make paragraph
+  font-size: 12pt
+  line-spacing: 14pt ...)
+</pre>
+specifies that the content that goes &#8220;<span class="quote">here</span>&#8221; is to be
+placed into a paragraph flow object with a font-size of 12pt and a
+line-spacing of 14pt (all of the unspecified characteristics of the
+flow object are defaulted in the appropriate way).
+</p><p>
+They're called flow objects because <acronym class="acronym">DSSSL</acronym>, in its
+full generality, allows you to specify the characteristics of a
+sequence of flow objects and a set of areas on the physical page where
+you can place content. The content of the flow objects is then
+&#8220;<span class="quote">poured on to</span>&#8221; (or flows in to) the areas on the page(s).
+</p><p>
+<a class="indexterm" name="d0e10052"></a>
+<a class="indexterm" name="d0e10056"></a>
+
+In most cases, it's sufficient to think of the make expressions as
+constructing the flow objects, but they really only specify the
+<span class="emphasis"><em>characteristics</em></span> of the flow objects. This detail
+is apparent in one of the most common and initially confusing pieces
+of <acronym class="acronym">DSSSL</acronym> jargon: the
+<em class="firstterm">sosofo</em>. Sosofo stands for a
+&#8220;<span class="quote">specification of a sequence of flow objects.</span>&#8221; All this
+means is that processing a document may result in a nested set of 
+<code class="literal">make</code> expressions (in other words, the paragraph may contain a table that
+contains rows that contain cells that contain paragraphs, and so on).
+</p><p>
+The general form of a <code class="literal">make</code> expression is:
+<pre class="screen">
+(make <em class="replaceable"><code>flow-object-name</code></em>
+  <em class="replaceable"><code>keyword1:</code></em> <em class="replaceable"><code>value1</code></em>
+  <em class="replaceable"><code>keyword2:</code></em> <em class="replaceable"><code>value2</code></em>
+  ...
+  <em class="replaceable"><code>keywordn:</code></em> <em class="replaceable"><code>valuen</code></em>
+  (<em class="replaceable"><code>content-expression</code></em>))
+</pre>
+</p><p>
+<a class="indexterm" name="d0e10109"></a>
+
+Keyword arguments specify the characteristics of the flow object. The
+specific characteristics you use depends on the flow object. The
+<em class="replaceable"><code>content-expression</code></em> can vary; it is usually
+another make expression or one of the <a href="ch04.html#dsssl.expr.proc" title="Processing expressions">processing expressions</a>.
+</p><p>
+<a class="indexterm" name="d0e10123"></a>
+
+Some common flow objects in the print stylesheet are:
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">simple-page-sequence</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10135"></a>
+Contains a sequence of pages. The keyword arguments of this flow
+object let you specify margins, headers and footers, and other
+page-related characteristics.  Print stylesheets should always produce
+one or more <code class="literal">simple-page-sequence </code> flow objects.
+</p><p>
+Nesting <code class="literal">simple-page-sequence</code> does not
+work. Characteristics on the inner sequences are ignored.
+</p></dd><dt><span class="term"><code class="literal">paragraph</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10156"></a>
+<a class="indexterm" name="d0e10162"></a>
+
+A paragraph is used for any block of text. This may include not only
+paragraphs in the source document, but also titles, the terms in a
+definition list, glossary entries, and so on. Paragraphs in
+<acronym class="acronym">DSSSL</acronym> can be nested.
+</p></dd><dt><span class="term"><code class="literal">sequence</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10178"></a>
+
+A sequence is a wrapper. It is most frequently used to change
+inherited characteristics (like font style) of a set of flow objects
+without introducing other semantics (such as line breaks).
+</p></dd><dt><span class="term"><code class="literal">score</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10191"></a>
+
+A score flow object creates underlining, strike-throughs, or
+overlining.
+</p></dd><dt><span class="term"><code class="literal">table</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10202"></a>
+
+A table flow object creates a table of rows and cells.</p></dd></dl></div><p>
+<a class="indexterm" name="d0e10210"></a>
+
+The <acronym class="acronym">HTML</acronym> stylesheet uses the <acronym class="acronym">SGML</acronym> backend, which has a different
+selection of flow objects.
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">element</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10230"></a>
+<a class="indexterm" name="d0e10234"></a>
+
+Creates an element. The content of this <code class="literal">make</code>
+expression will appear between the start and end tags. The expression:
+</p><pre class="screen">
+(make element gi: "H1" 
+	    (literal "Title"))
+</pre><p>produces <code class="literal">&lt;H1&gt;Title&lt;/H1&gt;</code>.</p></dd><dt><span class="term"><code class="literal">empty-element</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10257"></a>
+Creates an empty element that may not have content. The expression:</p><pre class="screen">
+(make empty-element gi: "BR"
+     attributes: '(("CLEAR" "ALL")))
+</pre><p>produces <code class="literal">&lt;BR CLEAR="ALL"&gt;</code>.</p></dd><dt><span class="term"><code class="literal">sequence</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10277"></a>
+
+Produces no output in of itself as a wrapper, but is still
+required in <acronym class="acronym">DSSSL</acronym> contexts in which you want to
+output several flow objects but only one object top-level object may
+be returned.
+</p></dd><dt><span class="term"><code class="literal">entity-ref</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10293"></a>
+<a class="indexterm" name="d0e10299"></a>
+<a class="indexterm" name="d0e10305"></a>
+
+Inserts an entity reference. The expression:</p><pre class="screen">(make entity-ref name: "nbsp")</pre><p>produces <code class="literal">&amp;nbsp;</code>.</p></dd></dl></div><p>
+<a class="indexterm" name="d0e10318"></a>
+<a class="indexterm" name="d0e10326"></a>
+<a class="indexterm" name="d0e10330"></a>
+
+In both stylesheets, a completely empty flow object is constructed
+with <code class="literal">(empty-sosofo)</code>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.data"></a>Selecting data</h4></div></div></div><p>
+<a class="indexterm" name="d0e10344"></a>
+<a class="indexterm" name="d0e10348"></a>
+
+Extracting parts of the source document can be accomplished with these
+functions:
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">(data <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>
+Returns all of the character data from <em class="replaceable"><code>nd</code></em> as a
+string.
+</p></dd><dt><span class="term"><code class="literal">(attribute-string "<em class="replaceable"><code>attr</code></em>" <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>
+Returns the value of the <em class="replaceable"><code>attr</code></em> attribute of <em class="replaceable"><code>nd</code></em>.
+</p></dd><dt><span class="term"><code class="literal">(inherited-attribute-string "<em class="replaceable"><code>attr</code></em>" <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>
+Returns the value of the <em class="replaceable"><code>attr</code></em> attribute of
+<em class="replaceable"><code>nd</code></em>.  If that attribute is not specified on
+<em class="replaceable"><code>nd</code></em>, it searches up the hierarchy for the first
+ancestor element that does set the attribute, and returns its value.
+</p></dd></dl></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.nodes"></a>Selecting elements</h4></div></div></div><p>
+<a class="indexterm" name="d0e10412"></a>
+<a class="indexterm" name="d0e10418"></a>
+<a class="indexterm" name="d0e10422"></a>
+<a class="indexterm" name="d0e10428"></a>
+<a class="indexterm" name="d0e10436"></a>
+
+A common requirement of formatting is the ability to reorder content.
+In order to do this, you must be able to select other elements in the
+tree for processing. <acronym class="acronym">DSSSL</acronym> provides a number of
+functions that select other elements.  These functions all return a
+list of nodes.
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">(current-node)</code></span></dt><dd><p>Returns the current node.</p></dd><dt><span class="term"><code class="literal">(children <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>Returns the children of <em class="replaceable"><code>nd</code></em>.</p></dd><dt><span class="term"><code class="literal">(descendants <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>
+Returns the descendants of <em class="replaceable"><code>nd</code></em> (the children of
+<em class="replaceable"><code>nd</code></em> and all their children's children, and so on).
+</p></dd><dt><span class="term"><code class="literal">(parent <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>Returns the parent of <em class="replaceable"><code>nd</code></em>.</p></dd><dt><span class="term"><code class="literal">(ancestor "<em class="replaceable"><code>name</code></em>" <em class="replaceable"><code>nd</code></em>)</code></span></dt><dd><p>
+Returns the first ancestor of <em class="replaceable"><code>nd</code></em> named
+<em class="replaceable"><code>name</code></em>.
+</p></dd><dt><span class="term"><code class="literal">(element-with-id "<em class="replaceable"><code>id</code></em>")</code></span></dt><dd><p>
+Returns the element in the document with the <acronym class="acronym">ID</acronym>
+<em class="replaceable"><code>id</code></em>, if such an element exists.
+</p></dd><dt><span class="term"><code class="literal">(select-elements <em class="replaceable"><code>node-list</code></em> "<em class="replaceable"><code>name</code></em>")</code></span></dt><dd><p>
+Returns all of the elements of the <em class="replaceable"><code>node-list</code></em> that have
+the name <em class="replaceable"><code>name</code></em>. For example, <code class="literal">(select-elements
+(descendants (current-node)) "para")</code> returns a list of all
+the paragraphs that are descendants of the current node.
+</p></dd><dt><span class="term"><code class="literal">(empty-node-list)</code></span></dt><dd><p>
+Returns a node list that contains no nodes.</p></dd></dl></div><p>
+Other functions allow you to manipulate node lists.
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">(node-list-empty? <em class="replaceable"><code>nl</code></em>)</code></span></dt><dd><p>
+Returns true if (and only if) <em class="replaceable"><code>nl</code></em> is an empty node
+list.
+</p></dd><dt><span class="term"><code class="literal">(node-list-length <em class="replaceable"><code>nl</code></em>)</code></span></dt><dd><p>Returns the number of nodes in <em class="replaceable"><code>nl</code></em>.</p></dd><dt><span class="term"><code class="literal">(node-list-first <em class="replaceable"><code>nl</code></em>)</code></span></dt><dd><p>
+Returns a node list that consists of the single node that is the first
+node in <em class="replaceable"><code>nl</code></em>.
+</p></dd><dt><span class="term"><code class="literal">(node-list-rest <em class="replaceable"><code>nl</code></em>)</code></span></dt><dd><p>
+Returns a node list that contains all of the nodes in
+<em class="replaceable"><code>nl</code></em> except the first node.
+</p></dd></dl></div><p>
+<a class="indexterm" name="d0e10614"></a>
+<a class="indexterm" name="d0e10620"></a>
+<a class="indexterm" name="d0e10626"></a>
+
+There are many other expressions for manipulating nodes and node
+lists.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.proc"></a>Processing expressions</h4></div></div></div><p>
+<a class="indexterm" name="d0e10637"></a>
+
+Processing expressions control which elements in the document will be
+processed and in what order. Processing an element is performed by
+finding a matching element rule and using that rule.
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">(process-children)</code></span></dt><dd><p>
+Processes all of the children of the current node. In most cases, if
+no process expression is given, processing the children is the default
+behavior.
+</p></dd><dt><span class="term"><code class="literal">(process-node-list <em class="replaceable"><code>nl</code></em>)</code></span></dt><dd><p>Processes each of the elements in <em class="replaceable"><code>nl</code></em>.</p></dd></dl></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.define"></a>Define expressions</h4></div></div></div><p>
+<a class="indexterm" name="d0e10667"></a>
+<a class="indexterm" name="d0e10673"></a>
+<a class="indexterm" name="d0e10677"></a>
+
+You can declare your own functions and constants in
+<acronym class="acronym">DSSSL</acronym>. The general form of a function declaration
+is:
+<pre class="screen">
+(define (<em class="replaceable"><code>function</code></em> <em class="replaceable"><code>args</code></em>)
+  <em class="replaceable"><code>function-body</code></em>)
+</pre>
+A constant declaration is:
+<pre class="screen">(define <em class="replaceable"><code>constant</code></em>
+  <em class="replaceable"><code>constant-function-body</code></em>)
+</pre>
+</p><p>
+The distinction between constants and functions is that the body of a
+constant is evaluated when the definition occurs, while functions are
+evaluated when they are used.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.conditional"></a>Conditionals</h4></div></div></div><p>
+<a class="indexterm" name="d0e10714"></a>
+<a class="indexterm" name="d0e10718"></a>
+<a class="indexterm" name="d0e10722"></a>
+<a class="indexterm" name="d0e10726"></a>
+
+In <acronym class="acronym">DSSSL</acronym>, the constant <code class="literal">#t</code>
+represents true and <code class="literal">#f</code> false. There are several
+ways to test conditions and take action in <acronym class="acronym">DSSSL</acronym>.
+</p><div class="variablelist"><dl><dt><span class="term"><code class="literal">if</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10752"></a>
+
+The form of an <code class="literal">if</code> expression is:
+<pre class="screen">
+(if <em class="replaceable"><code>condition</code></em>
+  <em class="replaceable"><code>true-expression</code></em>
+  <em class="replaceable"><code>false-expression</code></em>)
+</pre>
+</p><p>
+If the condition is true, the
+<em class="replaceable"><code>true-expression</code></em> is evaluated, otherwise the
+<em class="replaceable"><code>false-expression</code></em> is evaluated. You must
+always provide an expression to be evaluated when the condition is not
+met. If you want to produce nothing, use
+<code class="literal">(empty-sosofo)</code>.
+</p></dd><dt><span class="term"><code class="literal">case</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10789"></a>
+
+<code class="literal">case</code> selects from among several alternatives:
+<pre class="screen">
+(case <em class="replaceable"><code>expression</code></em>
+  ((<em class="replaceable"><code>constant1</code></em>) (<em class="replaceable"><code>expression1</code></em>)
+  ((<em class="replaceable"><code>constant2</code></em>) (<em class="replaceable"><code>expression2</code></em>)
+  ((<em class="replaceable"><code>constant3</code></em>) (<em class="replaceable"><code>expression3</code></em>)
+  (else <em class="replaceable"><code>else-expression</code></em>))
+</pre>
+</p><p>
+The value of the expression is compared against each of the constants
+in turn and the expression associated with the first matching constant
+is evaulated.
+</p></dd><dt><span class="term"><code class="literal">cond</code></span></dt><dd><p>
+<a class="indexterm" name="d0e10832"></a>
+
+<code class="literal">cond</code> also selects from among several alternatives,
+but the selection is performed by evaluating each expression:
+<pre class="screen">
+(cond
+  ((<em class="replaceable"><code>condition1</code></em>) (<em class="replaceable"><code>expression1</code></em>)
+  ((<em class="replaceable"><code>condition2</code></em>) (<em class="replaceable"><code>expression2</code></em>)
+  ((<em class="replaceable"><code>condition3</code></em>) (<em class="replaceable"><code>expression3</code></em>)
+  (else <em class="replaceable"><code>else-expression</code></em>))
+</pre>
+</p><p>
+The value of each conditional is calculated in turn. The expression
+associated with the first condition that is true is evaluated.
+</p></dd></dl></div><p>
+<a class="indexterm" name="d0e10867"></a>
+
+Any expression that returns <code class="literal">#f</code> is false; all other
+expressions are true. This can be somewhat counterintuitive.  In many
+programming languages, it's common to assume that &#8220;<span class="quote">empty</span>&#8221;
+things are false (0 is false, a null pointer is false, an empty set is
+false, for example.) In <acronym class="acronym">DSSSL</acronym>, this isn't the case;
+note, for example, that an empty node list is not
+<code class="literal">#f</code> and is therefore true.  To avoid these
+difficulties, always use functions that return true or false in
+conditionals. To test for an empty node list, use
+<code class="literal">(node-list-empty?)</code>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.let"></a>Let expressions</h4></div></div></div><p>
+<a class="indexterm" name="d0e10891"></a>
+
+The way to create local variables in <acronym class="acronym">DSSSL</acronym> is with
+<code class="literal">(let)</code>. The general form of a <code class="literal">let</code>
+expression is:
+<pre class="screen">
+(let ((<em class="replaceable"><code>var1</code></em> <abbr class="abbrev">expression1</abbr>)
+      (<em class="replaceable"><code>var2</code></em> <abbr class="abbrev">expression2</abbr>)
+      ...
+      (<em class="replaceable"><code>varn</code></em> <abbr class="abbrev">expressionn</abbr>))
+  <em class="replaceable"><code>let-body</code></em>)
+</pre>
+</p><p>
+<a class="indexterm" name="d0e10930"></a>
+In a <code class="literal">let</code>; expression, all of the variables are
+defined &#8220;<span class="quote">simultaneously.</span>&#8221; The expression that defines
+<em class="replaceable"><code> var2</code></em> cannot contain any references to any
+other variables defined in the same <code class="literal">let</code>
+expression. A <code class="literal">let*</code> expression allows variables to
+refer to each other, but runs slightly slower.
+</p><p>
+<a class="indexterm" name="d0e10953"></a>
+Variables are available only within the
+<em class="replaceable"><code>let-body</code></em>.  A common use of
+<code class="literal">let</code> is within a <code class="literal">define</code>
+expression:
+<pre class="screen">
+(define (cals-rule-default nd)
+   (let* ((table (ancestor "table" nd))
+          (frame (if (attribute-string "frame" table)
+                     (attribute-string "frame" table)
+                     "all")))
+    (equal? frame "all")))
+</pre>
+</p><p>
+This function creates two local variables <code class="literal">table</code> and
+<code class="literal">frame</code>. <code class="literal">let</code> returns the value of
+the last expression in the body, so this function returns true if the
+<code class="sgmltag-attribute">frame</code> attribute on the table is
+<code class="literal"> all</code> or if no <code class="sgmltag-attribute">frame</code> attribute is present.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.expr.loop"></a>Loops</h4></div></div></div><p>
+<a class="indexterm" name="d0e10994"></a>
+<a class="indexterm" name="d0e10998"></a>
+<a class="indexterm" name="d0e11002"></a>
+
+<acronym class="acronym">DSSSL</acronym> doesn't have any construct that resembles the
+&#8220;<span class="quote">for loop</span>&#8221; that occurs in most imperative languages like C
+and Java. Instead, <acronym class="acronym">DSSSL</acronym> employs a common trick in
+functional languages for implementing a loop: tail recursion.
+</p><p>
+Loops in <acronym class="acronym">DSSSL</acronym> use a special form of
+<code class="literal">let</code>. This loop counts from 1 to 10:
+<pre class="screen">
+(let <a name="dl1"></a><img src="figures/callouts/1.png" alt="1" border="0">loopvar <a name="dl2"></a><img src="figures/callouts/2.png" alt="2" border="0">((count 1))
+  <a name="dl3"></a><img src="figures/callouts/3.png" alt="3" border="0">(if (&gt; count 10)
+    <a name="dl4"></a><img src="figures/callouts/4.png" alt="4" border="0">#t
+    (<a name="dl5"></a><img src="figures/callouts/5.png" alt="5" border="0">loopvar <a name="dl6"></a><img src="figures/callouts/6.png" alt="6" border="0">(+ count 1))))</pre></p><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#dl1"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>This variable controls the loop. It is declared without an
+initial value, immediately after the <code class="literal">let</code>
+operand.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#dl2"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>
+<a class="indexterm" name="d0e11047"></a>
+
+Any number of additional local variables can be defined after
+the loop variable, just as they can in any other
+<code class="literal">let</code> expression.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#dl3"><img src="figures/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>If you ever want the loop to end, you have to put some sort of a
+test in it.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#dl4"><img src="figures/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>This is the value that will be returned.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#dl5"><img src="figures/callouts/5.png" alt="5" border="0"></a> </td><td valign="top" align="left"><p>Note that you iterate the loop by using the loop variable as if
+it was a function name.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#dl6"><img src="figures/callouts/6.png" alt="6" border="0"></a> </td><td valign="top" align="left"><p>The arguments to this &#8220;<span class="quote">function</span>&#8221; are the values that
+you want the local variables declared in <a href="ch04.html#dl2"><img src="figures/callouts/2.png" alt="2" border="0"></a> to have
+in the next iteration.</p></td></tr></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e11073"></a>A Closer Look at <a href="ch04.html#dsssl.stylesheet" title="Example&nbsp;4.5.&nbsp;A Complete DSSSL Stylesheet">Example&nbsp;4.5, &#8220;A Complete <acronym class="acronym">DSSSL</acronym> Stylesheet&#8221;</a></h3></div></div></div><p>
+<a class="indexterm" name="d0e11079"></a>
+<a href="ch04.html#dsssl.stylesheet" title="Example&nbsp;4.5.&nbsp;A Complete DSSSL Stylesheet">Example&nbsp;4.5, &#8220;A Complete <acronym class="acronym">DSSSL</acronym> Stylesheet&#8221;</a> is a style sheet that contains a
+style specification. Stylesheets may consist of multiple
+specifications, as we'll see in <a href="ch04.html#dsssl.twostylesheets" title="A Single Stylesheet for Both Print and HTML">the section called &#8220;A Single Stylesheet for Both Print and <acronym class="acronym">HTML</acronym>&#8221;</a>.
+</p><p>
+The actual <acronym class="acronym">DSSSL</acronym> code goes in the style
+specification body, within the style specification.  Each construction
+rule processes different elements from the source document.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11096"></a>Processing chapters</h4></div></div></div><p>
+<a class="indexterm" name="d0e11101"></a>
+<a class="indexterm" name="d0e11105"></a>
+<a class="indexterm" name="d0e11111"></a>
+
+<a href="chapter.html"><code class="sgmltag-element">Chapter</code></a>s are processed by the <code class="literal">chapter</code>
+construction rule. Each <a href="chapter.html"><code class="sgmltag-element">Chapter</code></a> is formatted as a
+<code class="literal">simple-page-sequence</code>. Every print stylesheet should format
+a document as one or more simple page sequences.  Characteristics on
+the simple page sequence can specify headers and footers as well as
+margins and other page parameters.
+</p><p>
+<a class="indexterm" name="d0e11131"></a>
+
+One important note about simple page sequences: they cannot nest.
+This means that you cannot blindly process divisions
+(<a href="part.html"><code class="sgmltag-element">Part</code></a>s, <a href="reference.html"><code class="sgmltag-element">Reference</code></a>) and the elements they
+contain (<a href="chapter.html"><code class="sgmltag-element">Chapter</code></a>s, <a href="refentry.html"><code class="sgmltag-element">RefEntry</code></a>s) as simple page
+sequences. This sometimes involves a little creativity.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11149"></a>Processing titles</h4></div></div></div><p>
+<a class="indexterm" name="d0e11154"></a>
+
+The <code class="literal">make</code> expression in the <code class="literal">title</code> element rule
+ensures that <a href="title.html"><code class="sgmltag-element">Title</code></a>s are formatted in large, bold print.
+</p><p>
+This construction rule applies equally to <a href="chapter.html"><code class="sgmltag-element">Chapter</code></a> titles,
+<a href="figure.html"><code class="sgmltag-element">Figure</code></a> titles, and <a href="book.html"><code class="sgmltag-element">Book</code></a> titles.  It's unlikely
+that you'd want all of these titles to be presented in the same way,
+so a more robust stylesheet would have to arrange the processing of
+titles with more context.  This might be achieved in the way that
+nested <a href="emphasis.html"><code class="sgmltag-element">Emphasis</code></a> elements are handled in <a href="ch04.html#dsssl.nestedemph" title="Processing emphasis">the section called &#8220;Processing emphasis&#8221;</a>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11185"></a>Processing paragraphs</h4></div></div></div><p>
+<a href="para.html"><code class="sgmltag-element">Para</code></a> elements are simply formatted as paragraphs.
+<a class="indexterm" name="d0e11193"></a>
+
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.nestedemph"></a>Processing emphasis</h4></div></div></div><p>
+<a class="indexterm" name="d0e11204"></a>
+<a class="indexterm" name="d0e11210"></a>
+
+Processing <a href="emphasis.html"><code class="sgmltag-element">Emphasis</code></a> elements is made a little more
+interesting because we want to consider an attribute value and the
+possibility that <a href="emphasis.html"><code class="sgmltag-element">Emphasis</code></a> elements can be nested.
+</p><p>
+In the simple case, in which we're processing an <a href="emphasis.html"><code class="sgmltag-element">Emphasis</code></a>
+element that is not nested, we begin by testing the value of the
+<code class="sgmltag-attribute">role</code> attribute.  If the content of that
+attribute is the string <code class="literal">strong</code>, it is formatted
+in bold; otherwise, it is formatted in italic.
+</p><p>
+The nested case is handled by the <code class="literal">(emphasis emphasis)</code>
+rule. This rule simply formats the content using an upright
+(nonitalic) font.  This rule, like the rule for <a href="title.html"><code class="sgmltag-element">Title</code></a>s, is
+not robust. <a href="emphasis.html"><code class="sgmltag-element">Emphasis</code></a> nested inside
+<code class="literal">strong</code> <a href="emphasis.html"><code class="sgmltag-element">Emphasis</code></a> won't be distinguished,
+for example, and nestings more than two elements deep will be handled
+just as nestings that are two deep.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11250"></a>Processing subscripts and superscripts</h4></div></div></div><p>
+<a class="indexterm" name="d0e11255"></a>
+<a class="indexterm" name="d0e11261"></a>
+
+Processing <a href="subscript.html"><code class="sgmltag-element">Subscript</code></a> and <a href="superscript.html"><code class="sgmltag-element">Superscript</code></a> elements
+is really handled by the <code class="literal">super-sub-script</code> function.
+There are several interesting things about this function:
+</p><div class="variablelist"><dl><dt><span class="term">The <code class="literal">plus-or-minus</code> argument</span></dt><dd><p>
+<a class="indexterm" name="d0e11286"></a>
+<a class="indexterm" name="d0e11292"></a>
+
+You might ordinarily think of passing a keyword or boolean argument to
+the <code class="function">super-sub-script</code> function to indicate whether
+subscripts or superscripts are desired.  But with Scheme, it's
+possible to pass the actual function as an argument!
+</p><p>
+Note that in the element construction rules for
+<a href="superscript.html"><code class="sgmltag-element">Superscript</code></a> and <a href="subscript.html"><code class="sgmltag-element">Subscript</code></a>, we pass the actual
+functions <code class="literal">+</code> and <code class="literal">-</code>. In the body of
+<code class="function">super-sub-script</code>, we use the
+<code class="literal">plus-or-minus</code> argument as a function name (it
+appears immediately after an open parenthesis).
+</p></dd><dt><span class="term">The optional argument</span></dt><dd><p>
+<a class="indexterm" name="d0e11327"></a>
+
+<code class="literal">optional</code> arguments are indicated by
+<code class="literal">#!optional</code> in the function declaration.  Any number of
+<code class="literal">optional</code> arguments may be given, but each must
+specify a default value.  This is accomplished by listing each
+argument and default value (an expression) as a pair.
+</p><p>
+In <code class="function">super-sub-script</code>, the optional argument
+<code class="literal">sosofo</code> is initialized to <code class="literal">process-children</code>.
+This means that at the point where the function is
+<span class="emphasis"><em>called</em></span>, <code class="literal">process-children</code> is evaluated and the
+resulting <code class="literal">sosofo</code> is passed to the function.
+</p></dd><dt><span class="term">Use of inherited characteristics</span></dt><dd><p>
+<a class="indexterm" name="d0e11366"></a>
+
+It is possible to use the &#8220;<span class="quote">current</span>&#8221; value of an inherited
+characteristic to calculate a new value.  Using this technique,
+superscripts and subscripts will be presented at 80 percent of the
+current font size.
+</p></dd></dl></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e11373"></a>Customizing the Stylesheets</h3></div></div></div><p>
+<a class="indexterm" name="d0e11378"></a>
+<a class="indexterm" name="d0e11386"></a>
+<a class="indexterm" name="d0e11392"></a>
+
+The best way to customize the stylesheets is to write your own
+&#8220;<span class="quote">driver</span>&#8221; file; this is a stylesheet that contains your
+local modifications and then includes the appropriate stylesheet from
+the standard distribution by reference.  This allows you to make local
+changes and extensions without modifying the distributed files, which
+makes upgrading to the next release much simpler.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.driver"></a>Writing Your Own Driver</h4></div></div></div><p>
+A basic driver file looks like this:
+<pre class="screen">
+&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+&lt;!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL&gt;
+]&gt;
+
+&lt;style-sheet&gt;
+&lt;style-specification use="docbook"&gt;
+&lt;style-specification-body&gt;
+
+;; your changes go here...
+
+&lt;/style-specification-body&gt;
+&lt;/style-specification&gt;
+&lt;external-specification id="docbook" document="dbstyle"&gt;
+&lt;/style-sheet&gt;
+</pre>
+</p><p>
+<a class="indexterm" name="d0e11411"></a>
+<a class="indexterm" name="d0e11417"></a>
+
+There are two public identifiers associated with the Modular DocBook
+Stylesheets:
+<div class="itemizedlist"><ul type="disc"><li><p><code class="literal">-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN</code></p></li><li><p><code class="literal">-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN</code></p></li></ul></div>
+<a class="indexterm" name="d0e11433"></a>
+<a class="indexterm" name="d0e11439"></a>
+<a class="indexterm" name="d0e11447"></a>
+
+The former selects the print stylesheet and the latter selects the
+<acronym class="acronym">HTML</acronym> stylesheet. There is an <acronym class="acronym">SGML</acronym> Open catalog file in the
+distribution that maps these public identifiers to the stylesheet
+files.</p><p>You can add your own definitions, or
+redefinitions, of stylesheet rules and parameters so that
+<pre class="screen">
+;; your changes go here...
+</pre>
+occurs in the previous example.
+</p><p>
+<a class="indexterm" name="d0e11466"></a>
+
+For a concrete example of a driver file, see
+<code class="filename">plain.dsl</code> in the
+<code class="filename">docbook/print</code> directory in the stylesheet
+distribution (or on the <a href="appe.html" title="What's on the CD-ROM?"><acronym class="acronym">CD-ROM</acronym></a>).  This is a
+customization of the print stylesheet, which turns off title page and
+<acronym class="acronym">TOC</acronym> generation.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11485"></a>Changing the Localization</h4></div></div></div><p>
+<a class="indexterm" name="d0e11490"></a>
+<a class="indexterm" name="d0e11498"></a>
+
+As distributed, the stylesheets use English for all generated text,
+but other localization files are also provided. The languages supported
+at the time of this writing are summarized in
+<a href="ch04.html#tbl.lang" title="Table&nbsp;4.1.&nbsp;DocBook Stylesheet Language Codes">Table&nbsp;4.1, &#8220;DocBook Stylesheet Language Codes&#8221;</a>.
+(If you can write a localization for another language,
+<span class="emphasis"><em>please</em></span> contribute it.)
+</p><p>
+<a class="indexterm" name="d0e11511"></a>
+<a class="indexterm" name="d0e11515"></a>
+
+There are two ways to switch languages: by specifying a <code class="sgmltag-attribute">lang</code> attribute, or by changing the
+default language in a customization.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e11526"></a>Using the <code class="sgmltag-attribute">lang</code> attribute</h5></div></div></div><p>
+<a class="indexterm" name="d0e11534"></a>
+<a class="indexterm" name="d0e11540"></a>
+
+One of the DocBook common attributes is <code class="sgmltag-attribute">
+lang</code>. If you specify a language, the DocBook stylesheets
+will use that language (and all its descendants, if no other language
+is specified) for generated text within that element.
+</p><p>
+<a href="ch04.html#tbl.lang" title="Table&nbsp;4.1.&nbsp;DocBook Stylesheet Language Codes">Table&nbsp;4.1, &#8220;DocBook Stylesheet Language Codes&#8221;</a> summarizes the language codes for the
+supported languages.<sup>[<a name="d0e11553" href="#ftn.d0e11553">15</a>]</sup>
+<a class="indexterm" name="d0e11563"></a>
+
+The following chapter uses text generated in French:
+<pre class="screen">
+&lt;chapter lang="fr"&gt;&lt;title&gt;B&ecirc;tises&lt;/title&gt;
+&lt;para&gt;Pierre qui roule n'amasse pas de mousse.&lt;/para&gt;
+&lt;/chapter&gt;
+</pre>
+</p><div class="table"><a name="tbl.lang"></a><p class="title"><b>Table&nbsp;4.1.&nbsp;DocBook Stylesheet Language Codes</b></p><div class="table-contents"><table summary="DocBook Stylesheet Language Codes" cellpadding="2px" border="0" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="33%"><col width="67%"></colgroup><thead><tr><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">Language Code</th><th style="border-bottom: 0.5pt solid ; " align="left">Language</th></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">af</code></td><td style="border-bottom: 0.5pt solid ; ">Afrikaans</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">ca</code></td><td style="border-bottom: 0.5pt solid ; ">Catalan</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">cs</code></td><td style="border-bottom: 0.5pt solid ; ">Czech</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">da</code></td><td style="border-bottom: 0.5pt solid ; ">Danish</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">de</code></td><td style="border-bottom: 0.5pt solid ; ">German</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">el</code></td><td style="border-bottom: 0.5pt solid ; ">Greek</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">en</code></td><td style="border-bottom: 0.5pt solid ; ">English</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">es</code></td><td style="border-bottom: 0.5pt solid ; ">Spanish</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">et</code></td><td style="border-bottom: 0.5pt solid ; ">Estonian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">eu</code></td><td style="border-bottom: 0.5pt solid ; ">Basque</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">fi</code></td><td style="border-bottom: 0.5pt solid ; ">Finnish</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">fr</code></td><td style="border-bottom: 0.5pt solid ; ">French</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">he</code></td><td style="border-bottom: 0.5pt solid ; ">Hebrew</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">hu</code></td><td style="border-bottom: 0.5pt solid ; ">Hungarian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">id</code></td><td style="border-bottom: 0.5pt solid ; ">Indonesian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">it</code></td><td style="border-bottom: 0.5pt solid ; ">Italian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">ja</code></td><td style="border-bottom: 0.5pt solid ; ">Japanese</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">ko</code></td><td style="border-bottom: 0.5pt solid ; ">Korean</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">nl</code></td><td style="border-bottom: 0.5pt solid ; ">Dutch</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">nn</code></td><td style="border-bottom: 0.5pt solid ; ">Nyorsk</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">no</code></td><td style="border-bottom: 0.5pt solid ; ">Norwegian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">pl</code></td><td style="border-bottom: 0.5pt solid ; ">Polish</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">pt</code></td><td style="border-bottom: 0.5pt solid ; ">Portuguese</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">pt-br</code></td><td style="border-bottom: 0.5pt solid ; ">Portuguese (Brazil)</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">ro</code></td><td style="border-bottom: 0.5pt solid ; ">Romanian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">ru</code></td><td style="border-bottom: 0.5pt solid ; ">Russian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">sk</code></td><td style="border-bottom: 0.5pt solid ; ">Slovak</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">sl</code></td><td style="border-bottom: 0.5pt solid ; ">Slovenian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">sv</code></td><td style="border-bottom: 0.5pt solid ; ">Swedish</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">th</code></td><td style="border-bottom: 0.5pt solid ; ">Thai</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">tr</code></td><td style="border-bottom: 0.5pt solid ; ">Turkish</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">uk</code></td><td style="border-bottom: 0.5pt solid ; ">Ukranian</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">xh</code></td><td style="border-bottom: 0.5pt solid ; ">Xhosa</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="literal">zh-cn</code></td><td style="border-bottom: 0.5pt solid ; ">Chinese (Continental)</td></tr><tr><td style="border-right: 0.5pt solid ; "><code class="literal">zh-tw</code></td><td style="">Chinese (Traditional)</td></tr></tbody></table></div></div><br class="table-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e11794"></a>Changing the default language</h5></div></div></div><p>
+<a class="indexterm" name="d0e11799"></a>
+<a class="indexterm" name="d0e11805"></a>
+
+If no <code class="sgmltag-attribute">lang</code> attribute is
+specified, the default language is used. You can change the default
+language with a <a href="ch04.html#dsssl.driver" title="Writing Your Own Driver">driver</a>.
+</p><p>
+In the driver, define the default language. <a href="ch04.html#tbl.lang" title="Table&nbsp;4.1.&nbsp;DocBook Stylesheet Language Codes">Table&nbsp;4.1, &#8220;DocBook Stylesheet Language Codes&#8221;</a>
+summarizes the language codes for the supported languages. The
+following driver makes German the default language:
+<pre class="screen">
+&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+&lt;!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL&gt;
+]&gt;
+
+&lt;style-sheet&gt;
+&lt;style-specification use="docbook"&gt;
+&lt;style-specification-body&gt;
+
+(define %default-language% "dege")
+
+&lt;/style-specification-body&gt;
+&lt;/style-specification&gt;
+&lt;external-specification id="docbook" document="dbstyle"&gt;
+&lt;/style-sheet&gt;
+</pre>
+</p><p>
+<a class="indexterm" name="d0e11826"></a>
+
+There are two other settings that can be changed only in a driver. Both
+of these settings are turned off in the distributed stylesheet:
+<div class="variablelist"><dl><dt><span class="term"><code class="literal">%gentext-language%</code></span></dt><dd><p>
+If a language code is specified in
+<code class="literal">%gentext-language%</code>, then that language will be used
+for all generated text, regardless of any <code class="sgmltag-attribute">lang</code> attribute settings in the
+document.
+</p></dd><dt><span class="term"><code class="literal">%gentext-use-xref-language%</code></span></dt><dd><p>
+<a class="indexterm" name="d0e11851"></a>
+<a class="indexterm" name="d0e11855"></a>
+
+If turned on (defined as <code class="literal">#t</code>), then the stylesheets
+will generate the text associated with a cross reference using the
+language of the target, not the current language. Consider the
+following book:
+</p><pre class="screen">
+&lt;book&gt;&lt;title&gt;A Test Book&lt;/title&gt;
+&lt;preface&gt;
+&lt;para&gt;There are three chapters in this book: &lt;xref linkend="c1"&gt;, 
+&lt;xref linkend="c2"&gt;, and &lt;xref linkend="c3"&gt;.
+&lt;/para&gt;
+&lt;/preface&gt;
+&lt;chapter lang="usen"&gt;&lt;title&gt;English&lt;/title&gt; ... &lt;/chapter&gt;
+&lt;chapter lang="fr"&gt;&lt;title&gt;French&lt;/title&gt; ... &lt;/chapter&gt;
+&lt;chapter lang="dege"&gt;&lt;title&gt;Deutsch&lt;/title&gt; ... &lt;/chapter&gt;
+&lt;/book&gt;
+</pre><p>
+The standard stylesheets render the Preface as something like this:
+</p><div class="blockquote"><blockquote class="blockquote"><p>There are three chapters in this book: Chapter 1, Chapter 2, and Chapter
+3.</p></blockquote></div><p>
+With <code class="literal">%gentext-use-xref-language%</code> turned on, it
+would render like this:
+</p><div class="blockquote"><blockquote class="blockquote"><p>There are are three chapters in this book: Chapter 1, Chapitre 2, and
+Kapitel 3.</p></blockquote></div></dd></dl></div></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="dsssl.twostylesheets"></a>A Single Stylesheet for Both Print and <acronym class="acronym">HTML</acronym></h4></div></div></div><p>
+<a class="indexterm" name="d0e11886"></a>
+<a class="indexterm" name="d0e11892"></a>
+<a class="indexterm" name="d0e11898"></a>
+
+A <acronym class="acronym">DSSSL</acronym> stylesheet consists of one or more
+&#8220;<span class="quote">style specifications.</span>&#8221; Using more than one style
+specification allows you to build a single stylesheet file that can
+format with either the print or <acronym class="acronym">SGML</acronym> backends.  <a href="ch04.html#ex-twostyles" title="Example&nbsp;4.8.&nbsp;both.dsl: A Stylesheet with Two Style Specifications">Example&nbsp;4.8, &#8220;<code class="filename">both.dsl</code>: A Stylesheet with Two Style Specifications&#8221;</a> shows a stylesheet with two style
+specifications.
+<a class="indexterm" name="d0e11915"></a>
+</p><div class="example"><a name="ex-twostyles"></a><p class="title"><b>Example&nbsp;4.8.&nbsp;<code class="filename">both.dsl</code>: A Stylesheet with Two Style Specifications</b></p><div class="example-contents"><pre class="screen">
+&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+&lt;!ENTITY html-ss 
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA dsssl&gt;
+&lt;!ENTITY print-ss
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA dsssl&gt;
+]&gt;
+&lt;style-sheet&gt;
+&lt;style-specification id="print" use="print-stylesheet"&gt;
+&lt;style-specification-body&gt; 
+
+;; customize the print stylesheet
+
+&lt;/style-specification-body&gt;
+&lt;/style-specification&gt;
+&lt;style-specification id="html" use="html-stylesheet"&gt;
+&lt;style-specification-body&gt; 
+
+;; customize the html stylesheet
+
+&lt;/style-specification-body&gt;
+&lt;/style-specification&gt;
+&lt;external-specification id="print-stylesheet" document="print-ss"&gt;
+&lt;external-specification id="html-stylesheet"  document="html-ss"&gt;
+&lt;/style-sheet&gt;
+
+</pre></div></div><br class="example-break"><p>
+<a class="indexterm" name="d0e11934"></a>
+
+Once you have stylesheets with more than one style specification, you
+have to be able to indicate which style specification you want to
+use. In Jade, you indicate this by providing the <acronym class="acronym">ID</acronym>
+of the style specification after the stylesheet filename, separated
+with a hash mark: <code class="literal">#</code>.
+</p><p>
+Using the code from <a href="ch04.html#ex-twostyles" title="Example&nbsp;4.8.&nbsp;both.dsl: A Stylesheet with Two Style Specifications">Example&nbsp;4.8, &#8220;<code class="filename">both.dsl</code>: A Stylesheet with Two Style Specifications&#8221;</a>, you can format a
+document using the print stylesheet by running:
+</p><pre class="screen">
+jade -t rtf -d both.dsl#print file.sgm
+</pre><p>
+and using the <acronym class="acronym">HTML</acronym> stylesheet by running:
+</p><pre class="screen">
+jade -t sgml -d both.dsl#html file.sgm
+</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="jademultdecl"></a>Dealing with Multiple Declarations</h3></div></div></div><p>
+<a class="indexterm" name="d0e11964"></a>
+
+The DocBook <acronym class="acronym">SGML</acronym> <acronym class="acronym">DTD</acronym> and the DocBook <acronym class="acronym">DSSSL</acronym>
+Stylesheets happen to use the same <acronym class="acronym">SGML</acronym> declaration. This makes it
+very easy to run Jade with DocBook.  However, you may sometimes wish
+to use Jade with other document types, for example the DocBook <acronym class="acronym">XML</acronym>
+<acronym class="acronym">DTD</acronym>, which has a different declaration. There are a couple of ways
+to do this.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11988"></a>Pass the Declaration Explicitly</h4></div></div></div><p>
+
+If your stylesheets parse fine with the default declaration, but you
+want to use an alternate declaration with a particular document, just
+pass the declaration on the command line:
+<pre class="screen">
+jade <em class="replaceable"><code>options</code></em> the-declaration the-document
+</pre>
+Note that there's no option required before the declaration; it simply
+occurs before the first filename.  Jade concatenates all of the files
+that you give it together, and parses them as if they were one
+document.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e11999"></a>Use the Catalogs</h4></div></div></div><p>
+The other way to fix this is with a little catalog trickery.
+</p><p>
+<a class="indexterm" name="d0e12006"></a>
+
+First, note that Jade always looks in the file called
+<code class="filename">catalog</code> in the same directory as the document
+that it is loading, and uses settings in that file in preference to
+settings in other catalogs.
+</p><p>
+With this fact, we can employ the following trick:
+</p><div class="itemizedlist"><ul type="disc"><li><p>Put a <code class="filename">catalog</code> file in the directory that
+contains your stylesheets, which contain an
+<code class="literal">SGMLDECL</code> directive.  Jade understands the
+directive, which points to the <acronym class="acronym">SGML</acronym> declaration that you should use
+when parsing the stylesheets. For the DocBook stylesheets, the DocBook
+declaration works fine.</p></li><li><p>In the directory that contains the document you want to process,
+create a <code class="filename">catalog</code> file that contains an
+<code class="literal">SGMLDECL</code> directive that points to the <acronym class="acronym">SGML</acronym>
+declaration that should be used when parsing the document.</p></li></ul></div><p>
+There's no easy way to have both the stylesheet and the document in
+the same directory if they must be processed with different
+declarations.  But this is usually not too inconvenient.
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="dsssl.arch"></a>The <acronym class="acronym">DSSSL</acronym> Architecture</h3></div></div></div><p>
+<a class="indexterm" name="d0e12052"></a>
+<a class="indexterm" name="d0e12058"></a>
+<a class="indexterm" name="d0e12064"></a>
+<a class="indexterm" name="d0e12070"></a>
+
+The concept of an architecture was promoted by HyTime. In some ways,
+it takes the standard <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> notions of the role of elements and
+attributes and inverts them. Instead of relying on the name of an
+element to assign its primary semantics, it uses the values of a small
+set of fixed attributes.
+</p><p>
+While this may be counterintuitive initially, it has an interesting
+benefit. An architecture-aware processor can work transparently with
+many different <acronym class="acronym">DTD</acronym>s. A small example will help illustrate this
+point.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following example demonstrates the concept behind
+architectures, but for the sake of simplicity, it does not properly
+implement an architecture as defined in HyTime.</p></div><p>
+Imagine that you wrote an application that can read an <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym>
+document containing a letter (conforming to some letter <acronym class="acronym">DTD</acronym>), and
+automatically print an envelope for the letter. It's easy to envision
+how this works.  The application reads the content of the letter,
+extracts the address and return address elements from the source, and
+uses them to generate an envelope:
+</p><pre class="screen">&lt;?xml version='1.0'&gt;
+&lt;!DOCTYPE letter "/share/sgml/letter/letter.dtd" [
+&lt;!ENTITY myaddress "/share/sgml/entities/myaddress.xml"&gt;
+]&gt;
+&lt;letter&gt;
+&lt;returnaddress&gt;&amp;myaddress;&lt;/returnaddress&gt;
+&lt;address&gt;
+&lt;name&gt;Leonard Muellner&lt;/name&gt;
+&lt;company&gt;O'Reilly &amp;amp; Associates&lt;/company&gt;
+&lt;street&gt;90 Sherman Street&lt;/street&gt;
+&lt;city&gt;Cambridge&lt;/city&gt;&lt;state&gt;MA&lt;/state&gt;&lt;zip&gt;02140&lt;/zip&gt;
+&lt;/address&gt;
+&lt;body&gt;
+&lt;salutation&gt;Hi Lenny&lt;/salutation&gt;
+...
+&lt;/body&gt;</pre><p>
+The processor extracts the <code class="sgmltag-element">Returnaddress</code> and
+<a href="address.html"><code class="sgmltag-element">Address</code></a> elements and their children
+and prints the envelope accordingly.
+</p><p>
+Now suppose that a colleague from payroll comes by and asks you to
+adapt the application to print envelopes for mailing checks, using the
+information in the payroll database, which has a different <acronym class="acronym">DTD</acronym>. And
+a week later, someone from sales comes by and asks if you can modify
+the application to use the contact information <acronym class="acronym">DTD</acronym>. After a while,
+you would have 11 versions of this program to maintain.
+</p><p>
+<a class="indexterm" name="d0e12121"></a>
+
+Suppose that instead of using the actual element names to locate the addresses
+in the documents, you asked each person to add a few attributes to their <acronym class="acronym">DTD</acronym>.
+By forcing the attributes to have fixed values, they'd automatically be present
+in each document, but authors would never have to worry about them.
+</p><p>
+For example, the address part of the letter <acronym class="acronym">DTD</acronym> might look like
+this:
+</p><pre class="screen">
+&lt;!ELEMENT address (name, company? street*, city, state, zip)&gt;
+&lt;!ATTLIST address
+	ADDRESS	CDATA	#FIXED "START"
+&gt;
+
+&lt;!ELEMENT name (#PCDATA)*&gt;
+&lt;!ATTLIST name
+	ADDRESS	CDATA	#FIXED "NAME"
+&gt;
+
+&lt;!ELEMENT company (#PCDATA)*&gt;
+&lt;!ATTLIST company
+	ADDRESS	CDATA	#FIXED "COMPANY"
+&gt;
+
+&lt;!ELEMENT street (#PCDATA)*&gt;
+&lt;!ATTLIST street
+	ADDRESS	CDATA	#FIXED "STREET"
+&gt;
+
+&lt;!ELEMENT city (#PCDATA)*&gt;
+&lt;!ATTLIST city
+	ADDRESS	CDATA	#FIXED "CITY"
+&gt;
+
+&lt;!ELEMENT state (#PCDATA)*&gt;
+&lt;!ATTLIST state
+	ADDRESS	CDATA	#FIXED "STATE"
+&gt;
+
+&lt;!ELEMENT zip (#PCDATA)*&gt;
+&lt;!ATTLIST zip
+	ADDRESS	CDATA	#FIXED "ZIP"
+&gt;
+
+</pre><p>
+Effectively, each address in a letter would look like this:
+</p><pre class="screen">
+&lt;address ADDRESS="START"&gt;
+&lt;name ADDRESS="NAME"&gt;Leonard Muellner&lt;/name&gt;
+&lt;company ADDRESS="COMPANY"&gt;O'Reilly &amp;amp;amp; Associates&lt;/company&gt;
+&lt;street&gt; ADDRESS="STREET"&gt;90 Sherman Street&lt;/street&gt;
+&lt;city ADDRESS="CITY"&gt;Cambridge&lt;/city&gt;&lt;state ADDRESS="STATE"&gt;MA&lt;/state&gt;
+&lt;zip ADDRESS="ZIP"&gt;02140&lt;/zip&gt;
+&lt;/address&gt;
+
+</pre><p>
+In practice, the author would not include the <code class="sgmltag-attribute">ADDRESS</code> attributes; they are automatically
+provided by the <acronym class="acronym">DTD</acronym> because they are
+<code class="literal">#FIXED</code>.<sup>[<a name="d0e12154" href="#ftn.d0e12154">16</a>]</sup>
+</p><p>
+Now the address portion of the payroll <acronym class="acronym">DTD</acronym> might look like this:
+</p><pre class="screen">
+&lt;!ELEMENT employee (name, mailingaddress)&gt;
+
+&lt;!ELEMENT name (#PCDATA)*&gt;
+&lt;!ATTLIST name
+	ADDRESS	CDATA	#FIXED "NAME"
+&gt;
+
+&lt;!ELEMENT mailingaddress (addrline1, addrline2, 
+                          city, state.or.province, postcode)&gt;
+&lt;!ATTLIST mailingaddress
+	ADDRESS	CDATA	#FIXED "START"
+&gt;
+
+&lt;!ELEMENT addrline1 (#PCDATA)*&gt;
+&lt;!ATTLIST addrline1
+	ADDRESS	CDATA	#FIXED "STREET"
+&gt;
+
+&lt;!ELEMENT addrline2 (#PCDATA)*&gt;
+&lt;!ATTLIST addrline2
+	ADDRESS	CDATA	#FIXED "STREET"
+&gt;
+
+&lt;!ELEMENT city (#PCDATA)*&gt;
+&lt;!ATTLIST city
+	ADDRESS	CDATA	#FIXED "CITY"
+&gt;
+
+&lt;!ELEMENT state.or.province (#PCDATA)*&gt;
+&lt;!ATTLIST state.or.province
+	ADDRESS	CDATA	#FIXED "STATE"
+&gt;
+
+&lt;!ELEMENT postcode (#PCDATA)*&gt;
+&lt;!ATTLIST postcode
+	ADDRESS	CDATA	#FIXED "ZIP"
+&gt;
+
+</pre><p>
+The employee records will look like this:
+</p><pre class="screen">
+&lt;employee&gt;&lt;name ADDRESS="NAME"&gt;Leonard Muellner&lt;/name&gt;
+&lt;mailingaddress ADDRESS="START"&gt;
+&lt;addrline1 ADDRESS="STREET"&gt;90 Sherman Street&lt;/addrline1&gt;
+&lt;city ADDRESS="CITY"&gt;Cambridge&lt;/city&gt;
+&lt;state.or.province ADDRESS="STATE"&gt;MA&lt;/state.or.province&gt;
+&lt;postcode ADDRESS="ZIP"&gt;02140&lt;/postcode&gt;
+&lt;/mailingaddress&gt;
+&lt;/employee&gt;
+
+</pre><p>
+Your application no longer cares about the actual element names.  It
+simply looks for the elements with the correct attributes and uses
+them. This is the power of an architecture: it provides a level of
+abstraction that processing applications can use to their
+advantage. In practice, architectural forms are a bit more complex to
+set up because they have facilities for dealing with attribute name
+conflicts, among other things.
+</p><p>
+Why have we told you all this? Because <acronym class="acronym">DSSSL</acronym> is an
+architecture. This means you can modify the stylesheet <acronym class="acronym">DTD</acronym> and still
+run your stylesheets through Jade.
+</p><p>
+Consider the case presented earlier in <a href="ch04.html#ex-twostyles" title="Example&nbsp;4.8.&nbsp;both.dsl: A Stylesheet with Two Style Specifications">Example&nbsp;4.8, &#8220;<code class="filename">both.dsl</code>: A Stylesheet with Two Style Specifications&#8221;</a>.
+In order to use this stylesheet, you must specify three things: the
+backend you want to use, the stylesheet you want to use, and the
+style specification you want to use.  If you mismatch any of the
+parameters, you'll get the wrong results.  In practice, the problem is
+compounded further:
+</p><div class="itemizedlist"><ul type="disc"><li><p>Some stylesheets support several backends
+(<acronym class="acronym">RTF</acronym>, TeX, and <acronym class="acronym">SGML</acronym>).
+<a class="indexterm" name="d0e12206"></a>
+<a class="indexterm" name="d0e12210"></a>
+
+</p></li><li><p>Some stylesheets support only some backends
+(<acronym class="acronym">RTF</acronym> and <acronym class="acronym">SGML</acronym>, but not TeX or
+<acronym class="acronym">MIF</acronym>).</p></li><li><p>Some stylesheets support multiple outputs using the same
+backend (several kinds of <acronym class="acronym">HTML</acronym> output, for example, using the
+<acronym class="acronym">SGML</acronym> backend: <acronym class="acronym">HTML</acronym>, <acronym class="acronym">HTML</acronym>Help, JavaHelp, and so on).</p></li><li><p>If you have complex stylesheets, some backends may require
+additional options to define parameter entities or stylesheet
+options.</p></li></ul></div><p>
+None of this complexity is really necessary, after all, the options
+don't change&#8212;you just have to use the correct combinations. The
+mental model is really something like this: &#8220;<span class="quote">I want a certain
+kind of output, TeX say, so I have to use this combination of
+parameters.</span>&#8221;
+</p><p>
+You can summarize this information in a table to help keep track of
+it:
+</p><div class="informaltable"><table border="0" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="20%"><col align="center" width="20%"><col width="20%"><col width="20%"><col align="center" width="20%"></colgroup><thead><tr><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Desired Output</th><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="center">Backend</th><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Style specification</th><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Options</th><th style="border-bottom: 0.5pt solid ; " align="center">Supported?</th></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">rtf</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="center">rtf</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">print</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">-V rtf-backend</td><td style="border-bottom: 0.5pt solid ; " align="center">yes</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">tex</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="center">tex</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">print</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">-V tex-backend -i tex</td><td style="border-bottom: 0.5pt solid ; " align="center">yes</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">html</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="center">sgml</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">htmlweb</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">-i html</td><td style="border-bottom: 0.5pt solid ; " align="center">yes</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">javahelp</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="center">sgml</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">help</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">-i help</td><td style="border-bottom: 0.5pt solid ; " align="center">yes</td></tr><tr><td style="border-right: 0.5pt solid ; ">htmlhelp</td><td style="border-right: 0.5pt solid ; " align="center">&nbsp;</td><td style="border-right: 0.5pt solid ; ">&nbsp;</td><td style="border-right: 0.5pt solid ; ">&nbsp;</td><td style="" align="center">no</td></tr></tbody></table></div><p>
+Putting this information in a table will help you keep track of it,
+but it's not the best solution. The ideal solution is to keep this
+information on your system, and let the software figure it all
+out. You'd like to be able to run a command, tell it what output you
+want from what stylesheet, what file you want to process, and then let
+it figure everything else out.  For example:
+</p><pre class="screen">
+format html mybook.dsl mydoc.sgm
+</pre><p>
+<a class="indexterm" name="d0e12331"></a>
+<a class="indexterm" name="d0e12337"></a>
+
+One way to do this is to put the configuration data in a separate
+file, and have the <span><strong class="command">format</strong></span> command load it out of this other
+file.  The disadvantage of this solution is that it introduces another
+file that you have to maintain and it's independent from the stylesheet so
+it isn't easy to keep it up-to-date.
+</p><p>
+In the <acronym class="acronym">DSSSL</acronym> case, a better alternative is to
+modify the stylesheet <acronym class="acronym">DTD</acronym> so you can store the configuration
+data <span class="emphasis"><em>in the stylesheet</em></span>. Using this alternate <acronym class="acronym">DTD</acronym>, your
+<code class="filename">mybook.dsl</code> stylesheets might look like this:
+</p><pre class="screen">
+&lt;!DOCTYPE style-sheet 
+  PUBLIC "-//Norman Walsh//DTD Annotated DSSSL Style Sheet V1.2//EN" [
+&lt;!-- perhaps additional declarations here --&gt;
+]&gt;
+&lt;style-sheet&gt;
+&lt;title&gt;DocBook Stylesheet&lt;/title&gt;
+&lt;doctype pubid="-//OASIS//DTD DocBook V3.1//EN"&gt;
+&lt;doctype pubid="-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;doctype pubid="-//Norman Walsh//DTD Website V1.4//EN"&gt;
+&lt;backend name="rtf"  backend="rtf"  fragid="print"
+         options="-V rtf-backend" default="true"&gt;
+&lt;backend name="tex"  backend="tex"  fragid="print"
+         options="-V tex-backend -i tex"&gt;
+&lt;backend name="html" backend="sgml" fragid="htmlweb" options="-i html"&gt;
+&lt;backend name="javahelp" backend="sgml" fragid="help"  options="-i help"&gt;
+&lt;backend name="htmlhelp" supported="no"&gt;
+&lt;style-specification id="print" use="docbook"&gt;
+&lt;style-specification-body&gt;
+.
+.
+.
+
+</pre><p>
+In this example, the stylesheet has been annotated with a title, a
+list of the public <acronym class="acronym">ID</acronym>s to which it is applicable,
+and a table that provides information about the output formats that it
+supports.
+</p><p>
+Using this information, the <span><strong class="command">format</strong></span> command can get all the
+information it needs to construct the appropriate call to Jade.  To
+make <acronym class="acronym">HTML</acronym> from <code class="filename">myfile.sgm</code>,
+<span><strong class="command">format</strong></span> would run the following:
+</p><pre class="screen">
+jade -t sgml -d mybook.dsl#htmlweb -i html myfile.sgm
+</pre><p>
+The additional information, titles and public <acronym class="acronym">ID</acronym>s,
+can be used as part of a <acronym class="acronym">GUI</acronym> interface to simplify
+the selection of stylesheets for an author.
+</p><p>
+The complete annotated stylesheet <acronym class="acronym">DTD</acronym>, and an example of the
+<span><strong class="command">format</strong></span> command script, are provided on <a href="appe.html" title="What's on the CD-ROM?">the <acronym class="acronym">CD-ROM</acronym></a>.
+<a class="indexterm" name="d0e12407"></a>
+<a class="indexterm" name="d0e12409"></a>
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xsl"></a>A Brief Introduction to XSL</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Bob</span> <span class="surname">Stayton</span></h3></div></div><div><br clear="all"></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e12425"></a>Using XSL tools to publish DocBook
+   documents</h3></div></div></div><p>There is a growing list of tools to process DocBook
+   documents using XSL stylesheets. Each tool implements parts
+   or all of the XSL standard, which actually has several
+   components:
+   <div class="variablelist"><dl><dt><span class="term">Extensible Stylesheet Language (XSL)</span></dt><dd><p>A language for expressing stylesheets written
+       in <acronym class="acronym">XML</acronym>. It includes the formatting object language, but
+       refers to separate documents for the transformation
+       language and the path language.</p></dd><dt><span class="term">XSL Transformation (XSLT)</span></dt><dd><p>The part of XSL for transforming <acronym class="acronym">XML</acronym> documents
+       into other <acronym class="acronym">XML</acronym> documents, HTML, or text. It can be used to
+       rearrange the content and generate new content.</p></dd><dt><span class="term">XML Path Language (XPath)</span></dt><dd><p>A language for addressing parts of an <acronym class="acronym">XML</acronym>
+       document. It is used to find the parts of your document to
+       apply different styles to. All XSL processors use this
+       component.</p></dd></dl></div></p><p>To publish HTML from your <acronym class="acronym">XML</acronym> documents, you just
+   need an XSLT engine. To get to print, you need an XSLT
+   engine to produce formatting objects (FO), which then must
+   be processed with a formatting object processor to produce
+   PostScript or PDF output.</p><p>James Clark's XT was the first useful XSLT engine,
+   and it is still in wide use. It is written in Java, so it
+   runs on many platforms, and it is free (
+   <a href="http://www.jclark.com" target="_top">http://www.jclark.com</a>).
+   XT comes with James Clark's nonvalidating parser XP, but
+   you can substitute a different Java parser. Here is a
+   simple example of using XT from the Unix command line to
+   produce HTML: You'll need to alter your
+   <em class="parameter"><code>CLASSPATH</code></em> environment variable to
+   include the path to where you put the
+   <code class="filename">.jar</code> files from the XT
+   distribution.</p><pre class="screen">CLASSPATH=xt.jar:xp.jar:sax.jar
+export CLASSPATH
+java  com.jclark.xsl.sax.Driver <em class="replaceable"><code>filename.xml</code></em> <em class="replaceable"><code>docbook/html/docbook.xsl</code></em> &gt; <em class="replaceable"><code>output.html</code></em></pre><p>If you replace the HTML stylesheet with a
+   formatting object stylesheet, XT will produce a formatting
+   object file. Then you can convert that to PDF using FOP, a
+   formatting object processor available for free from the
+   Apache <acronym class="acronym">XML</acronym> Project (
+   <a href="http://xml.apache.org" target="_top">http://xml.apache.org</a>).
+   Here is an example of that two stage processing:</p><pre class="screen">CLASSPATH=xt.jar:xp.jar:sax.jar:fop.jar
+export CLASSPATH
+java  com.jclark.xsl.sax.Driver <em class="replaceable"><code>filename.xml</code></em> <em class="replaceable"><code>docbook/fo/docbook.xsl</code></em> &gt; <em class="replaceable"><code>output.fo</code></em>
+java  org.apache.fop.apps.CommandLine <em class="replaceable"><code>output.fo</code></em> <em class="replaceable"><code>output.pdf</code></em></pre><p>As of this writing, some other XSLT processors to
+   choose from include:</p><div class="itemizedlist"><ul type="disc"><li><p>4XSLT, written in Python, from FourThought LLC (
+     <a href="http://www.fourthought.com" target="_top">http://www.fourthought.com</a>)</p></li><li><p>Sablotron, written in C++, from Ginger Alliance (
+
+     <a href="http://www.gingerall.com" target="_top">http://www.gingerall.com</a>)</p></li><li><p>Saxon, written in Java, from Michael Kay (
+     <a href="http://users.iclway.co.uk/mhkay/saxon" target="_top">http://users.iclway.co.uk/mhkay/saxon</a>)</p></li><li><p>Xalan, written in Java, from the Apache <acronym class="acronym">XML</acronym>
+     Project (
+     <a href="http://xml.apache.org" target="_top">http://xml.apache.org</a>)</p></li><li><p>XML::XSLT,written in Perl, from Geert Josten and
+     Egon Willighagen (
+     <a href="http://www.cpan.org" target="_top">http://www.cpan.org</a>)</p></li></ul></div><p>For print output, these additional tools are available for processing formatting objects:</p><div class="itemizedlist"><ul type="disc"><li><p>XEP (written in Java) from
+   RenderX (
+  <a href="http://www.renderx.com" target="_top">http://www.renderx.com</a>).</p></li><li><p>PassiveTeX from Sebastian Rahtz (<a href="http://users.ox.ac.uk/~rahtz/passivetex/" target="_top">http://users.ox.ac.uk/~rahtz/passivetex/</a>).</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e12562"></a>A brief introduction to XSL</h3></div></div></div><p>XSL is both a transformation language and a
+ formatting language. The XSLT transformation part lets you
+ scan through a document's structure and rearrange its
+ content any way you like. You can write out the content
+ using a different set of <acronym class="acronym">XML</acronym> tags, and generate text as
+ needed. For example, you can scan through a document to
+ locate all headings and then insert a generated table of
+ contents at the beginning of the document, at the same time
+ writing out the content marked up as HTML. XSL is also a
+ rich formatting language, letting you apply typesetting
+ controls to all components of your output. With a good
+ formatting backend, it is capable of producing high quality
+ printed pages.</p><p>An XSL stylesheet is written using <acronym class="acronym">XML</acronym> syntax, and is
+ itself a well-formed <acronym class="acronym">XML</acronym> document. That makes the basic
+ syntax familiar, and enables an <acronym class="acronym">XML</acronym> processor to check for
+ basic syntax errors. The stylesheet instructions use
+ special element names, which typically begin with
+ <code class="sgmltag-element">xsl:</code> to distinguish them from any <acronym class="acronym">XML</acronym>
+ tags you want to appear in the output. The XSL namespace is
+ identified at the top of the stylesheet file. As with other
+ <acronym class="acronym">XML</acronym>, any XSL elements that are not empty will require a
+ closing tag. And some XSL elements have specific attributes
+ that control their behavior. It helps to keep a good XSL
+ reference book handy.</p><p>Here is an example of a simple XSL stylesheet applied
+ to a simple <acronym class="acronym">XML</acronym> file to generate HTML output.</p><div class="example"><a name="d0e12595"></a><p class="title"><b>Example&nbsp;4.9.&nbsp;Simple <acronym class="acronym">XML</acronym> file</b></p><div class="example-contents"><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;document&gt;
+&lt;title&gt;Using a mouse&lt;/title&gt;
+&lt;para&gt;It's easy to use a mouse. Just roll it
+around and click the buttons.&lt;/para&gt;
+&lt;/document&gt;</pre></div></div><br class="example-break"><div class="example"><a name="d0e12603"></a><p class="title"><b>Example&nbsp;4.10.&nbsp;Simple XSL stylesheet</b></p><div class="example-contents"><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'&gt;
+&lt;xsl:output method="html"/&gt;
+
+&lt;xsl:template match="document"&gt;
+  &lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;
+    &lt;xsl:value-of select="./title"/&gt;
+  &lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/BODY&gt;
+  &lt;/HTML&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="title"&gt;
+  &lt;H1&gt;&lt;xsl:apply-templates/&gt;&lt;/H1&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="para"&gt;
+  &lt;P&gt;&lt;xsl:apply-templates/&gt;&lt;/P&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d0e12608"></a><p class="title"><b>Example&nbsp;4.11.&nbsp;HTML output</b></p><div class="example-contents"><pre class="programlisting">&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Using a mouse&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;H1&gt;Using a mouse&lt;/H1&gt;
+&lt;P&gt;It's easy to use a mouse. Just roll it
+around and click the buttons.&lt;/P&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre></div></div><br class="example-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e12613"></a>XSL processing model</h3></div></div></div><p>XSL is a template language, not a procedural
+language. That means a stylesheet specifies a sample of the
+output, not a sequence of programming steps to generate it.
+A stylesheet consists of a mixture of output samples with
+instructions of what to put in each sample. Each bit of
+output sample and instructions is called
+a  <span class="emphasis"><em>template</em></span>.</p><p>In general, you write a template for each element
+type in your document. That lets you concentrate on
+handling just one element at a time, and keeps a stylesheet
+modular. The power of XSL comes from processing the
+templates recursively. That is, each template handles the
+processing of its own element, and then calls other
+templates to process its children, and so on. Since an <acronym class="acronym">XML</acronym>
+document is always a single root element at the top level
+that contains all of the nested descendent elements, the
+XSL templates also start at the top and work their way down
+through the hierarchy of elements.</p><p>Take the
+DocBook <code class="sgmltag-element">&lt;para&gt;</code> paragraph element as
+an example. To convert this to HTML, you want to wrap the
+paragraph content with the HTML
+tags <code class="sgmltag-starttag">&lt;p&gt;</code> and <code class="sgmltag-endtag">&lt;//p&gt;</code>.
+But a DocBook <code class="sgmltag-element">&lt;para&gt;</code>  can contain
+any number of in-line DocBook elements marking up the text.
+Fortunately, you can let other templates take care of those
+elements, so your XSL template
+for <code class="sgmltag-element">&lt;para&gt;</code> can be quite
+simple:</p><pre class="programlisting">&lt;xsl:template match="para"&gt;
+  &lt;p&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/p&gt;
+&lt;/xsl:template&gt;
+</pre><p>The <code class="sgmltag-element">&lt;xsl:template&gt;</code> element
+starts a new template, and
+its <code class="sgmltag-attribute">match</code> attribute indicates where to
+apply the template, in this case to
+any <code class="sgmltag-element">&lt;para&gt;</code> elements. The template
+says to output a literal <code class="sgmltag-starttag">&lt;p&gt;</code> string
+and then execute
+the <code class="sgmltag-element">&lt;xsl:apply-templates/&gt;</code> instruction.
+This tells the XSL processor to look among all the
+templates in the stylesheet for any that should be applied
+to the content of the paragraph. If each template in the
+stylesheet includes
+an <code class="sgmltag-element">&lt;xsl:apply-templates/&gt;</code> instruction,
+then all descendents will eventually be processed. When it
+is through recursively applying templates to the paragraph
+content, it outputs the <code class="sgmltag-endtag">&lt;//p&gt;</code> closing
+tag.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e12668"></a>Context is important</h4></div></div></div><p>Since you aren't writing a linear procedure to
+process your document, the context of where and how to
+apply each modular template is important.
+The <code class="sgmltag-attribute">match</code> attribute
+of <code class="sgmltag-element">&lt;xsl:template&gt;</code> provides that
+context for most templates. There is an entire expression
+language, XPath, for identifying what parts of your
+document should be handled by each template. The simplest
+context is just an element name, as in the example above.
+But you can also specify elements as children of other
+elements, elements with certain attribute values, the first
+or last elements in a sequence, and so on. Here is how the
+DocBook <code class="sgmltag-element">&lt;formalpara&gt;</code> element is
+handled:</p><pre class="programlisting">&lt;xsl:template match="formalpara"&gt;
+  &lt;p&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/p&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="formalpara/title"&gt;
+  &lt;b&gt;&lt;xsl:apply-templates/&gt;&lt;/b&gt;
+  &lt;xsl:text&gt; &lt;/xsl:text&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="formalpara/para"&gt;
+  &lt;xsl:apply-templates/&gt;
+&lt;/xsl:template&gt;
+</pre><p>There are three templates defined, one for
+the <code class="sgmltag-element">&lt;formalpara&gt;</code> element itself,
+ and one for each of its children elements. The <code class="sgmltag-attribute">match</code> attribute
+value <code class="literal">formalpara/title</code>    in the second
+template is an XPath expression indicating
+a <code class="sgmltag-element">&lt;title&gt;</code> element that is an
+immediate child of
+a <code class="sgmltag-element">&lt;formalpara&gt;</code> element. This
+distinguishes such titles from
+other <code class="sgmltag-element">&lt;title&gt;</code> elements used in
+DocBook. XPath expressions are the key to controlling how
+your templates are applied.</p><p>In general, the XSL processor has internal rules that
+apply templates that are more specific before templates
+that are less specific. That lets you control the details,
+but also provides a fallback mechanism to a less specific
+template when you don't supply the full context for every
+combination of elements. This feature is illustrated by the
+third template, for <code class="literal">formalpara/para</code>. By
+including this template, the stylesheet processes a <code class="sgmltag-element">&lt;para&gt;</code> within <code class="sgmltag-element">&lt;formalpara&gt;</code> in
+a special way, in this case by not outputting the HTML <code class="sgmltag-element">&lt;p&gt;</code> tags already output by its parent. If this template had not been included, then the processor would have fallen back to the template
+specified by <code class="sgmltag-attribute">match="para"</code> described
+above, which would have output a second set of <code class="sgmltag-element">&lt;p&gt;</code> tags.</p><p>You can also control template context with
+XSL <span class="emphasis"><em>modes</em></span>, which are used extensively
+in the DocBook stylesheets. Modes let you process the same
+input more than once in different ways.
+A <code class="sgmltag-attribute">mode</code> attribute in
+an <code class="sgmltag-element">&lt;xsl:template&gt;</code> definition adds a
+specific mode name to that template. When the same mode
+name is used
+in <code class="sgmltag-element">&lt;xsl:apply-templates/&gt;</code>, it acts
+as a filter to narrow the selection of templates to only
+those selected by
+the <code class="sgmltag-attribute">match</code> expression <span class="emphasis"><em>and</em></span> that
+have that mode name. This lets you define two different
+templates for the same element match that are applied under
+different contexts. For example, there are two templates
+defined for
+DocBook <code class="sgmltag-element">&lt;listitem&gt;</code>  elements:</p><pre class="programlisting">&lt;xsl:template match="listitem"&gt;
+  &lt;li&gt;&lt;xsl:apply-templates/&gt;&lt;/li&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="listitem" mode="xref"&gt;
+  &lt;xsl:number format="1"/&gt;
+&lt;/xsl:template&gt;
+</pre><p>The first template is for the normal list item
+context where you want to output the
+HTML <code class="sgmltag-element">&lt;li&gt;</code> tags. The second template
+is called with <code class="sgmltag-element">&lt;xsl:apply-templates
+select="$target" mode="xref"/&gt;</code> in the context
+of processing <code class="sgmltag-element">&lt;xref&gt;</code> elements. In
+this case the <code class="sgmltag-attribute">select</code> attribute locates
+the ID of the specific list item and
+the <code class="sgmltag-attribute">mode</code> attribute selects the second
+template, whose effect is to output its item number when it
+is in an ordered list. Because there are many such special
+needs when
+processing <code class="sgmltag-element">&lt;xref&gt;</code> elements, it is
+convenient to define a mode name <code class="literal">xref</code> to
+handle them all. Keep in mind that mode settings
+do <span class="emphasis"><em>not</em></span> automatically get passed down to
+other templates
+through <code class="sgmltag-element">&lt;xsl:apply-templates/&gt;</code>.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e12778"></a>Programming features</h4></div></div></div><p>Although XSL is template-driven, it also has some
+features of traditional programming languages. Here are
+some examples from the DocBook stylesheets. </p><pre class="programlisting"><em class="lineannotation"><span class="lineannotation">Assign a value to a variable:</span></em>
+&lt;xsl:variable name="refelem" select="name($target)"/&gt;
+
+<em class="lineannotation"><span class="lineannotation">If statement:</span></em>
+&lt;xsl:if test="$show.comments"&gt;
+    &lt;i&gt;&lt;xsl:call-template name="inline.charseq"/&gt;&lt;/i&gt;
+&lt;/xsl:if&gt;
+
+<em class="lineannotation"><span class="lineannotation">Case statement:</span></em>
+&lt;xsl:choose&gt;
+    &lt;xsl:when test="@columns"&gt;
+        &lt;xsl:value-of select="@columns"/&gt;
+    &lt;/xsl:when&gt;
+    &lt;xsl:otherwise&gt;1&lt;/xsl:otherwise&gt;
+&lt;/xsl:choose&gt;
+
+<em class="lineannotation"><span class="lineannotation">Call a template by name like a subroutine, passing parameter values and accepting a return value:</span></em>
+&lt;xsl:call-template name="xref.xreflabel"&gt;
+   &lt;xsl:with-param name="target" select="$target"/&gt;
+&lt;/xsl:call-template&gt;
+</pre><p>However, you can't always use these constructs as you
+do in other programming languages. Variables in particular
+have very different behavior.</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e12798"></a>Using variables and parameters</h5></div></div></div><p>XSL provides two elements that let you assign a value
+to a
+name: <code class="sgmltag-element">&lt;xsl:variable&gt;</code> and <code class="sgmltag-element">&lt;xsl:param&gt;</code>.
+These share the same name space and syntax for assigning
+names and values. Both can be referred to using
+the <code class="literal">$name</code> syntax. The main difference
+between these two elements is that a param's value acts as
+a default value that can be overridden when a template is
+called using
+a <code class="sgmltag-element">&lt;xsl:with-param&gt;</code> element as in the
+last example above.</p><p>Here are two examples from DocBook:</p><pre class="programlisting">&lt;xsl:param name="cols"&gt;1&lt;/xsl:param&gt;
+&lt;xsl:variable name="segnum" select="position()"/&gt;
+</pre><p>In both elements, the name of the parameter or
+variable is specified with
+the <code class="sgmltag-attribute">name</code> attribute. So the name of
+the <code class="sgmltag-element">param</code> here
+is <code class="sgmltag-attvalue">cols</code> and the name of
+the <code class="sgmltag-element">variable</code> is <code class="sgmltag-attvalue">segnum</code>.
+The value of either can be supplied in two ways. The value
+of the first example is the text node "1" and is supplied
+as the content of the element. The value of the second
+example is supplied as the result of the expression in
+its <code class="sgmltag-attribute">select</code> attribute, and the element
+itself has no content.</p><p>The feature of XSL variables that is odd to new users
+is that once you assign a value to a variable, you cannot
+assign a new value within the same scope. Doing so will
+generate an error. So variables are not used as dynamic
+storage bins they way they are in other languages. They
+hold a fixed value within their scope of application, and
+then disappear when the scope is exited. This feature is a
+result of the design of XSL, which is template-driven and
+not procedural. This means there is no definite order of
+processing, so you can't rely on the values of changing
+variables. To use variables in XSL, you need to understand
+how their scope is defined.</p><p>Variables defined outside of all templates are
+considered global variables, and they are readable within
+all templates. The value of a global variable is fixed, and
+its global value can't be altered from within any template.
+However, a template can create a local variable of the same
+name and give it a different value. That local value
+remains in effect only within the scope of the local
+variable.</p><p>Variables defined within a template remain in effect
+only within their permitted scope, which is defined as all
+following siblings and their descendants. To understand
+such a scope, you have to remember that XSL instructions
+are true <acronym class="acronym">XML</acronym> elements that are embedded in an <acronym class="acronym">XML</acronym> family
+hierarchy of XSL elements, often referred to as parents,
+children, siblings, ancestors and descendants. Taking the
+family analogy a step further, think of a variable
+assignment as a piece of advice that you are allowed to
+give to certain family members. You can give your advice
+only to your younger siblings (those that follow you) and
+their descendents. Your older siblings won't listen,
+neither will your parents or any of your ancestors. To
+stretch the analogy a bit, it is an error to try to give
+different advice under the same name to the same group of
+listeners (in other words, to redefine the variable). Keep
+in mind that this family is not the elements of your
+document, but just the XSL instructions in your stylesheet.
+To help you keep track of such scopes in hand-written
+stylesheets, it helps to indent nested XSL elements. Here
+is an edited snippet from the DocBook stylesheet
+file <code class="filename">pi.xsl</code> that illustrates different
+scopes for two variables:</p><pre class="programlisting">
+ 1 &lt;xsl:template name="dbhtml-attribute"&gt;
+ 2 ...
+ 3    &lt;xsl:choose&gt;
+ 4       &lt;xsl:when test="$count&gt;count($pis)"&gt;
+ 5          &lt;!-- not found --&gt;
+ 6       &lt;/xsl:when&gt;
+ 7       &lt;xsl:otherwise&gt;
+ 8          &lt;xsl:variable name="pi"&gt;
+ 9             &lt;xsl:value-of select="$pis[$count]"/&gt;
+10          &lt;/xsl:variable&gt;
+11          &lt;xsl:choose&gt;
+12             &lt;xsl:when test="contains($pi,concat($attribute, '='))"&gt;
+13                &lt;xsl:variable name="rest" select="substring-after($pi,concat($attribute,'='))"/&gt;
+14                &lt;xsl:variable name="quote" select="substring($rest,1,1)"/&gt;
+15                &lt;xsl:value-of select="substring-before(substring($rest,2),$quote)"/&gt;
+16             &lt;/xsl:when&gt;
+17             &lt;xsl:otherwise&gt;
+18             ...
+19             &lt;/xsl:otherwise&gt;
+20          &lt;/xsl:choose&gt;
+21       &lt;/xsl:otherwise&gt;
+22    &lt;/xsl:choose&gt;
+23 &lt;/xsl:template&gt;
+
+</pre><p>The scope of the variable <code class="varname">pi</code> begins
+on line 8 where it is defined in this template, and ends on
+line 20 when its last sibling ends.<sup>[<a name="d0e12861" href="#ftn.d0e12861">17</a>]</sup>     The scope of the
+variable <code class="varname">rest</code> begins on line 13 and ends
+on line 15. Fortunately, line 15 outputs an expression
+using the value before it goes out of scope.</p><p>What happens when
+an <code class="sgmltag-element">&lt;xsl:apply-templates/&gt;</code> element
+is used within the scope of a local variable? Do the
+templates that are applied to the document children get the
+variable? The answer is no. The templates that are applied
+are not actually within the scope of the variable. They
+exist elsewhere in the stylesheet and are not following
+siblings or their descendants. </p><p>To pass a value to another template, you pass a
+parameter using
+the <code class="sgmltag-element">&lt;xsl:with-param&gt;</code> element. This
+parameter passing is usually done with calls to a specific
+named template
+using <code class="sgmltag-element">&lt;xsl:call-template&gt;</code>, although
+it works
+with <code class="sgmltag-element">&lt;xsl:apply-templates&gt;</code> too.
+That's because the called template must be expecting the
+parameter by defining it using
+a <code class="sgmltag-element">&lt;xsl:param&gt;</code> element with the same
+parameter name. Any passed parameters whose names are not
+defined in the called template are ignored.</p><p>Here is an example of parameter passing
+from <code class="filename">docbook.xsl</code>:</p><pre class="programlisting">&lt;xsl:call-template name="head.content"&gt;
+   &lt;xsl:with-param name="node" select="$doc"/&gt;
+&lt;/xsl:call-template&gt;
+</pre><p>Here a template
+named <code class="literal">head.content</code> is being called and
+passed a parameter named <em class="parameter"><code>node</code></em> whose
+content is the value of the <code class="varname">$doc</code> variable
+in the current context. The top of that template looks like
+this:</p><pre class="programlisting">&lt;xsl:template name="head.content"&gt;
+   &lt;xsl:param name="node" select="."/&gt;
+</pre><p>The template is expecting the parameter because it
+has a <code class="sgmltag-element">&lt;xsl:param&gt;</code> defined with the
+same name. The value in this definition is the default
+value. This would be the parameter value used in the
+template if the template was called without passing that
+parameter.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e12915"></a>Generating HTML output.</h4></div></div></div><p>You generate HTML from your DocBook <acronym class="acronym">XML</acronym> files by
+applying the HTML version of the stylesheets. This is done
+by using the HTML driver
+file <code class="filename">docbook/html/docbook.xsl</code> as your
+stylesheet. That is the master stylesheet file that
+uses <code class="sgmltag-element">&lt;xsl:include&gt;</code> to pull in the
+component files it needs to assemble a complete stylesheet
+for producing HTML. </p><p>The way the DocBook stylesheet generates HTML is to
+apply templates that output a mix of text content and HTML
+elements. Starting at the top level in the main
+file <code class="filename">docbook.xsl</code>:</p><pre class="programlisting">&lt;xsl:template match="/"&gt;
+  &lt;xsl:variable name="doc" select="*[1]"/&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+    &lt;xsl:call-template name="head.content"&gt;
+      &lt;xsl:with-param name="node" select="$doc"/&gt;
+    &lt;/xsl:call-template&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/xsl:template&gt;
+</pre><p>This template matches the root element of your input
+document, and starts the process of recursively applying
+templates. It first defines a variable
+named <code class="varname">doc</code> and then outputs two literal
+HTML elements <code class="sgmltag-element">&lt;html&gt;</code> and <code class="sgmltag-element">&lt;head&gt;</code>.
+Then it calls a named
+template <code class="literal">head.content</code> to process the
+content of the HTML <code class="sgmltag-element">&lt;head&gt;</code>, closes
+the <code class="sgmltag-element">&lt;head&gt;</code> and starts
+the <code class="sgmltag-element">&lt;body&gt;</code>. There it
+uses <code class="sgmltag-emptytag">&lt;&lt;xsl:apply-templates/&gt;/&gt;</code> to
+recursively process the entire input document. Then it just
+closes out the HTML file.</p><p>Simple HTML elements can generated as literal
+elements as shown here. But if the HTML being output
+depends on the context, you need something more powerful to
+select the element name and possibly add attributes and
+their values. Here is a fragment
+from <code class="filename">sections.xsl</code> that shows how a
+heading tag is generated using
+the <code class="sgmltag-element">&lt;xsl:element&gt;</code> and <code class="sgmltag-element">&lt;xsl:attribute&gt;</code> elements:</p><pre class="programlisting">
+ 1 &lt;xsl:element name="h{$level}"&gt;
+ 2   &lt;xsl:attribute name="class"&gt;title&lt;/xsl:attribute&gt;
+ 3   &lt;xsl:if test="$level&lt;3"&gt;
+ 4     &lt;xsl:attribute name="style"&gt;clear: all&lt;/xsl:attribute&gt;
+ 5   &lt;/xsl:if&gt;
+ 6   &lt;a&gt;
+ 7     &lt;xsl:attribute name="name"&gt;
+ 8       &lt;xsl:call-template name="object.id"/&gt;
+ 9     &lt;/xsl:attribute&gt;
+10     &lt;b&gt;&lt;xsl:copy-of select="$title"/&gt;&lt;/b&gt;
+11   &lt;/a&gt;
+12 &lt;/xsl:element&gt;
+</pre><p>This whole example is generating a single HTML
+heading element. Line 1 begins the HTML element definition
+by identifying the name of the element. In this case, the
+name is an expression that includes the
+variable <em class="parameter"><code>$level</code></em> passed as a parameter to
+this template. Thus a single template can
+generate <code class="sgmltag-element">&lt;h1&gt;</code>, <code class="sgmltag-element">&lt;h2&gt;</code>,
+etc. depending on the context in which it is called. Line 2
+defines a <code class="sgmltag-attribute">class="title"</code> attribute that is
+added to this element. Lines 3 to 5 add
+a <code class="sgmltag-attribute">style="clear all"</code> attribute, but only
+if the heading level is less than 3. Line 6 opens
+an <code class="sgmltag-element">&lt;a&gt;</code> anchor element. Although this
+looks like a literal output string, it is actually modified
+by lines 7 to 9 that insert
+the <code class="sgmltag-attribute">name</code> attribute into
+the <code class="sgmltag-element">&lt;a&gt;</code> element. This illustrates
+that XSL is managing output elements as active element
+nodes, not just text strings. Line 10 outputs the text of
+the heading title, also passed as a parameter to the
+template, enclosed in HTML boldface tags. Line 11 closes
+the anchor tag with the
+literal <code class="sgmltag-endtag">&lt;//a&gt;</code> syntax, while line 12
+closes the heading tag by closing the element definition.
+Since the actual element name is a variable, it couldn't
+use the literal syntax.</p><p>As you follow the sequence of nested templates
+processing elements, you might be wondering how the
+ordinary text of your input document gets to the output. In
+the file <code class="filename">docbook.xsl</code> you will find
+this template that handles any text not processed by any
+other template:</p><pre class="programlisting">&lt;xsl:template match="text()"&gt;
+  &lt;xsl:value-of select="."/&gt;
+&lt;/xsl:template&gt;
+</pre><p>This template's body consists of the "value" of the text node,
+which is just its text. In general, all XSL processors have
+some built-in templates to handle any content for which
+your stylesheet doesn't supply a matching template. This
+template serves the same function but appears explicitly in
+the stylesheet.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13013"></a>Generating formatting objects.</h4></div></div></div><p>You generate formatting objects from your DocBook <acronym class="acronym">XML</acronym>
+files by applying the fo version of the stylesheets. This
+is done by using the fo driver
+file <code class="filename">docbook/fo/docbook.xsl</code> as your
+stylesheet. That is the master stylesheet file that
+uses <code class="sgmltag-element">&lt;xsl:include&gt;</code> to pull in the
+component files it needs to assemble a complete stylesheet
+for producing formatting objects. Generating a formatting
+objects file is only half the process of producing typeset
+output. You also need a formatting object processor such as
+the Apache <acronym class="acronym">XML</acronym> Project's FOP as described in an earlier
+section.</p><p>The DocBook fo stylesheet works in a similar manner
+to the HTML stylesheet. Instead of outputting HTML tags, it
+outputs text marked up
+with <code class="sgmltag-element">&lt;fo:<em class="replaceable"><code>something</code></em>&gt;</code> tags.
+For example, to indicate that some text should be kept
+in-line and typeset with a monospace font, it might look
+like this:</p><pre class="programlisting">&lt;fo:inline-sequence font-family="monospace"&gt;/usr/man&lt;/fo:inline-sequence&gt;</pre><p>The templates
+in <code class="filename">docbook/fo/inline.xsl</code>      that produce
+this output for a
+DocBook   <code class="sgmltag-element">&lt;filename&gt;</code>     element look
+like this:</p><pre class="programlisting">&lt;xsl:template match="filename"&gt;
+  &lt;xsl:call-template name="inline.monoseq"/&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name="inline.monoseq"&gt;
+  &lt;xsl:param name="content"&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/xsl:param&gt;
+  &lt;fo:inline-sequence font-family="monospace"&gt;
+    &lt;xsl:copy-of select="$content"/&gt;
+  &lt;/fo:inline-sequence&gt;
+&lt;/xsl:template&gt;
+</pre><p>There are dozens of fo tags and attributes specified
+in the XSL standard. It is beyond the scope of this
+document to cover how all of them are used in the DocBook
+stylesheets. Fortunately, this is only an intermediate
+format that you probably won't have to deal with very much
+directly unless you are writing your own
+stylesheets.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e13052"></a>Customizing DocBook XSL stylesheets</h3></div></div></div><p>The DocBook XSL stylesheets are written in a modular
+fashion. Each of the HTML and FO stylesheets starts with a
+driver file that assembles a collection of component files
+into a complete stylesheet. This modular design puts similar things together into smaller files that are easier to write and maintain than one big stylesheet. The modular stylesheet files
+are distributed among four directories:</p><div class="variablelist"><dl><dt><span class="term">common/</span></dt><dd><p>contains code common to both stylesheets, including localization data
+</p></dd><dt><span class="term">fo/</span></dt><dd><p>a stylesheet that produces XSL FO result trees
+</p></dd><dt><span class="term">html/</span></dt><dd><p>a stylesheet that produces HTML/XHTML result trees
+</p></dd><dt><span class="term">lib/</span></dt><dd><p>contains schema-independent functions
+</p></dd></dl></div><p>The driver files for each of HTML and FO stylesheets
+are <code class="filename">html/docbook.xsl</code> and <code class="filename">fo/docbook.xsl</code>,
+respectively. A driver file consists mostly of a bunch
+of <code class="sgmltag-element">&lt;xsl:include&gt;</code> instructions to
+pull in the component templates, and then defines some
+top-level templates. For example:</p><pre class="programlisting">&lt;xsl:include href="../VERSION"/&gt;
+&lt;xsl:include href="../lib/lib.xsl"/&gt;
+&lt;xsl:include href="../common/l10n.xsl"/&gt;
+&lt;xsl:include href="../common/common.xsl"/&gt;
+&lt;xsl:include href="autotoc.xsl"/&gt;
+&lt;xsl:include href="lists.xsl"/&gt;
+&lt;xsl:include href="callout.xsl"/&gt;
+...
+&lt;xsl:include href="param.xsl"/&gt;
+&lt;xsl:include href="pi.xsl"/&gt;
+</pre><p>The first four modules are shared with the FO
+stylesheet and are referenced using relative pathnames to
+the common directories. Then the long list of component
+stylesheets starts. Pathnames in include statements are
+always taken to be relative to the including file. Each
+included file must be a valid XSL stylesheet, which means
+its root element must
+be <code class="sgmltag-element">&lt;xsl:stylesheet&gt;</code>.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13100"></a>Stylesheet inclusion vs. importing</h4></div></div></div><p>XSL actually provides two inclusion
+mechanisms: <code class="sgmltag-element">&lt;xsl:include&gt;</code> and <code class="sgmltag-element">&lt;xsl:import&gt;</code>.
+Of the two, <code class="sgmltag-element">&lt;xsl:include&gt;</code> is
+the simpler. It treats the included content as if it were
+actually typed into the file at that point, and doesn't
+give it any more or less precedence relative to the
+surrounding text. It is best used when assembling
+dissimilar templates that don't overlap what they match.
+The DocBook driver files use this instruction to assemble a
+set of modules into a stylesheet.</p><p>In contrast, <code class="sgmltag-element">&lt;xsl:import&gt;</code> lets
+you manage the precedence of templates and variables. It is
+the preferred mode of customizing another stylesheet because
+it lets you override definitions in the distributed
+stylesheet with your own, without altering the distribution
+files at all. You simply import the whole stylesheet and
+add whatever changes you want.</p><p>The precedence rules for import are detailed and
+rigorously defined in the XSL standard. The basic rule is
+that any templates and variables in the importing
+stylesheet have precedence over equivalent templates and
+variables in the imported stylesheet. Think of the imported stylesheet elements as a fallback collection, to be used only if a match is not found in the current stylesheet. You can customize the templates you want to change in your stylesheet file, and let the imported stylesheet handle the rest.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Customizing a DocBook XSL stylesheet is the opposite
+of customizing a DocBook DTD. When you customize a DocBook
+DTD, the rules of <acronym class="acronym">XML</acronym> and <acronym class="acronym">SGML</acronym> dictate that
+the <span class="emphasis"><em>first</em></span> of any duplicate declarations
+wins. Any subsequent declarations of the same element or
+entity are ignored. The architecture of the DTD provides
+slots for inserting your own custom declarations early
+enough in the DTD for them to override the standard
+declarations. In contrast, customizing an XSL stylesheet is
+simpler because your definitions have precedence over imported ones.</p></div><p>You can carry modularization to deeper levels because
+module files can also include or import other modules.
+You'll need to be careful to maintain the precedence that
+you want as the modules get rolled up into a complete
+stylesheet. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13135"></a>Customizing
+with <code class="sgmltag-element">&lt;xsl:import&gt;</code></h4></div></div></div><p>There is currently one example of customizing
+with <code class="sgmltag-element">&lt;xsl:import&gt;</code> in the HTML
+version of the DocBook stylesheets.
+The <code class="filename">xtchunk.xsl</code> stylesheet modifies the
+HTML processing to output many smaller HTML files rather
+than a single large file per input document. It uses XSL
+extensions defined only in the XSL
+processor <span><strong class="command">XT</strong></span>. In the driver
+file <code class="filename">xtchunk.xsl</code>, the first instruction
+is <code class="sgmltag-element">&lt;xsl:import
+href="docbook.xsl"/&gt;</code>. That instruction imports
+the original driver file, which in turn uses
+many <code class="sgmltag-element">&lt;xsl:include&gt;</code> instructions to
+include all the modules. That single import instruction
+gives the new stylesheet the complete set of DocBook
+templates to start with.</p><p>After the
+import, <code class="filename">xtchunk.xsl</code> redefines some of
+the templates and adds some new ones. Here is one example
+of a redefined template:</p><pre class="programlisting"><em class="lineannotation"><span class="lineannotation">Original template in autotoc.xsl</span></em>
+&lt;xsl:template name="href.target"&gt;
+  &lt;xsl:param name="object" select="."/&gt;
+  &lt;xsl:text&gt;#&lt;/xsl:text&gt;
+  &lt;xsl:call-template name="object.id"&gt;
+    &lt;xsl:with-param name="object" select="$object"/&gt;
+  &lt;/xsl:call-template&gt;
+&lt;/xsl:template&gt;
+
+<em class="lineannotation"><span class="lineannotation">New template in xtchunk.xsl</span></em>
+&lt;xsl:template name="href.target"&gt;
+  &lt;xsl:param name="object" select="."/&gt;
+  &lt;xsl:variable name="ischunk"&gt;
+    &lt;xsl:call-template name="chunk"&gt;
+      &lt;xsl:with-param name="node" select="$object"/&gt;
+    &lt;/xsl:call-template&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:apply-templates mode="chunk-filename" select="$object"/&gt;
+
+  &lt;xsl:if test="$ischunk='0'"&gt;
+    &lt;xsl:text&gt;#&lt;/xsl:text&gt;
+    &lt;xsl:call-template name="object.id"&gt;
+      &lt;xsl:with-param name="object" select="$object"/&gt;
+    &lt;/xsl:call-template&gt;
+  &lt;/xsl:if&gt;
+&lt;/xsl:template&gt;
+</pre><p>The new template handles the more complex processing
+of HREFs when the output is split into many HTML files.
+Where the old template could simply
+output <code class="literal">#<em class="replaceable"><code>object.id</code></em></code>,
+the new one outputs <code class="literal"><em class="replaceable"><code>filename</code></em>#<em class="replaceable"><code>object.id</code></em></code>.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13186"></a>Setting stylesheet variables</h4></div></div></div><p>You may not have to define any new templates,
+however. The DocBook stylesheets are parameterized using
+XSL variables rather than hard-coded values for many of the
+formatting features. Since
+the <code class="sgmltag-element">&lt;xsl:import&gt;</code> mechanism also
+lets you redefine global variables, this gives you an easy
+way to customize many features of the DocBook
+stylesheets. Over time, more features will be parameterized to permit customization. If you find hardcoded values in the stylesheets that would be useful to customize, please let the maintainer know.</p><p>Near the end of the list of includes in the main
+DocBook driver file is the
+instruction <code class="sgmltag-element">&lt;xsl:include
+href="param.xsl"/&gt;</code>.
+The <code class="filename">param.xsl</code> file is the most
+important module for customizing a DocBook XSL stylesheet.
+This module contains no templates, only definitions of
+stylesheet variables. Since these variables are defined
+outside of any template, they are global variables and
+apply to the entire stylesheet. By redefining these
+variables in an importing stylesheet, you can change the
+behavior of the stylesheet.</p><p>To create a customized DocBook stylesheet, you simply
+create a new stylesheet file such
+as <code class="filename">mystyle.xsl</code> that imports the standard
+stylesheet and adds your own new variable definitions. Here
+is an example of a complete custom stylesheet that changes
+the depth of sections listed in the table of contents from
+two to three:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                version='1.0'
+                xmlns="http://www.w3.org/TR/xhtml1/transitional"
+                exclude-result-prefixes="#default"&gt;
+
+&lt;xsl:import href="docbook.xsl"/&gt;
+
+&lt;xsl:variable name="toc.section.depth"&gt;3&lt;/xsl:variable&gt;
+&lt;!-- Add other variable definitions here --&gt;
+
+&lt;/xsl:stylesheet&gt;
+</pre><p>Following the opening stylesheet element are the
+import instruction and one variable definition. The
+variable <code class="varname">toc.section.depth</code> was defined
+in <code class="filename">param.xsl</code> with value "2", and here
+it is defined as "3". Since the importing stylesheet takes
+precedence, this new value is used. Thus documents
+processed with <code class="filename">mystyle.xsl</code> instead
+of <code class="filename">docbook.xsl</code> will have three levels
+of sections in the tables of contents, and all other
+processing will be the same.</p><p>Use the list of variables
+in <code class="filename">param.xsl</code> as your guide for creating
+a custom stylesheet. If the changes you want are controlled
+by a variable there, then customizing is easy. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13228"></a>Writing your own templates</h4></div></div></div><p>If the changes you want are more extensive than what
+is supported by variables, you can write new templates. You
+can put your new templates directly in your importing
+stylesheet, or you can modularize your importing stylesheet
+as well. You can write your own stylesheet module
+containing a collection of templates for processing lists,
+for example, and put them in a file
+named <code class="filename">mylists.xsl</code>. Then your importing
+stylesheet can pull in your list templates with
+a <code class="sgmltag-element">&lt;xsl:include
+href="mylists.xsl"/&gt;</code> instruction. Since your
+included template definitions appear after the main import
+instruction, your templates will take precedence.</p><p>You'll need to make sure your new templates are
+compatible with the remaining modules, which means:</p><div class="itemizedlist"><ul type="disc"><li><p>Any named templates should use the same name so
+calling templates in other modules can find them.</p></li><li><p>Your template set should process the same elements
+matched by templates in the original module, to ensure
+complete coverage.</p></li><li><p>Include the same set
+of <code class="sgmltag-element">&lt;xsl:param&gt;</code> elements in each
+template to interface properly with any calling templates,
+although you can set different values for your
+parameters.</p></li><li><p>Any templates that are used like subroutines to
+return a value should return the same data type.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13257"></a>Writing your own driver</h4></div></div></div><p>Another approach to customizing the stylesheets is to
+write your own driver file. Instead of
+using <code class="sgmltag-element">&lt;xsl:import
+href="docbook.xsl"/&gt;</code>, you copy that file to a
+new name and rewrite any of
+the <code class="sgmltag-element">&lt;xsl:include/&gt;</code> instructions to
+assemble a custom collection of stylesheet modules. One
+reason to do this is to speed up processing by reducing the
+size of the stylesheet. If you are using a customized
+DocBook DTD that omits many elements you never use, you
+might be able to omit those modules of the
+stylesheet.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e13268"></a>Localization</h4></div></div></div><p>The DocBook stylesheets include features for
+localizing generated text, that is, printing any generated
+text in a language other than the default English. In
+general, the stylesheets will switch to the language
+identified by a <code class="sgmltag-attribute">lang</code> attribute when
+processing elements in your documents. If your documents
+use the <code class="sgmltag-attribute">lang</code> attribute, then you don't
+need to customize the stylesheets at all for
+localization.</p><p>As far as the stylesheets go,
+a <code class="sgmltag-attribute">lang</code> attribute is inherited by the
+descendents of a document element. The stylesheet searches
+for a <code class="sgmltag-attribute">lang</code> attribute using this XPath
+expression:</p><pre class="programlisting">&lt;xsl:variable name="lang-attr"
+         select="($target/ancestor-or-self::*/@lang
+                  |$target/ancestor-or-self::*/@xml:lang)[last()]"/&gt;</pre><p>This locates the attribute on the current element or
+its most recent ancestor. Thus
+a <code class="sgmltag-attribute">lang</code> attribute is in effect for an
+element and all of its descendents, unless it is reset in
+one of those descendents. If you define it in only your
+document root element, then it applies to the whole
+document:</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.0//EN" "docbook.dtd"&gt;
+&lt;book lang="fr"&gt;
+...
+&lt;/book&gt;</pre><p>When text is being generated, the stylesheet checks
+the most recent <code class="sgmltag-attribute">lang</code> attribute and looks
+up the generated text strings for that language in a
+localization <acronym class="acronym">XML</acronym> file. These are located in
+the <code class="filename">common</code> directory of the
+stylesheets, one file per language. Here is the top of the
+file <code class="filename">fr.xml</code>:</p><pre class="programlisting">&lt;localization language="fr"&gt;
+
+&lt;gentext key="abstract"                 text="R&amp;#x00E9;sum&amp;#x00E9;"/&gt;
+&lt;gentext key="answer"                   text="R:"/&gt;
+&lt;gentext key="appendix"                 text="Annexe"/&gt;
+&lt;gentext key="article"                  text="Article"/&gt;
+&lt;gentext key="bibliography"             text="Bibliographie"/&gt;
+...
+</pre><p>The stylesheet templates use the gentext key names,
+and then the stylesheet looks up the associated text value
+when the document is processed with that lang setting. The
+file <code class="filename">l10n.xml</code> (note
+the <code class="filename">.xml</code> suffix) lists the filenames of
+all the supported languages.</p><p>You can also create a custom stylesheet that sets the
+language. That might be useful if your documents don't make
+appropriate use of the <code class="sgmltag-attribute">lang</code> attribute.
+The module <code class="filename">l10n.xsl</code> defines two global
+variables that can be overridden with an importing
+stylesheet as described above. Here are their default
+definitions:</p><pre class="programlisting">&lt;xsl:variable name="l10n.gentext.language"&gt;&lt;/xsl:variable&gt;
+&lt;xsl:variable name="l10n.gentext.default.language"&gt;en&lt;/xsl:variable&gt;
+</pre><p>The first one sets the language for all elements,
+regardless of an element's <code class="sgmltag-attribute">lang</code> attribute
+value. The second just sets a default language for any
+elements that haven't got a <code class="sgmltag-attribute">lang</code> setting
+of their own (or their ancestors).</p></div></div></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.d0e9278" href="#d0e9278">14</a>] </sup>
+See <em class="citetitle"><a href="http://www-cals.itsi.disa.mil/core/formal/fps.htm" target="_top">Formally
+Published CALS Standards</a></em> for more information.
+</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e11553" href="#d0e11553">15</a>] </sup>
+Language codes should conform to <acronym class="acronym">IETF</acronym>
+<acronym class="acronym">RFC</acronym> 3066.
+</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e12154" href="#d0e12154">16</a>] </sup>
+The use of uppercase names here is intentional. These are not
+attributes that an author is ever expected to type. In <acronym class="acronym">XML</acronym>, which is
+case-sensitive, using uppercase for things like this reduces the
+likelihood of collision with &#8220;<span class="quote">real</span>&#8221; attribute names in the
+<acronym class="acronym">DTD</acronym>.
+</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e12861" href="#d0e12861">17</a>] </sup>Technically, the scope extends to the end tag of the parent of the <code class="sgmltag-element">&lt;xsl:variable&gt;</code> element. That is effectively the last sibling.</p></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Parsing DocBook Documents" href="ch03.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Customizing DocBook" href="ch05.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Parsing DocBook Documents&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp;I.&nbsp;Introduction" href="part1.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Customizing DocBook</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

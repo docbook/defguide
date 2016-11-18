@@ -1,0 +1,95 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>synopfragment</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="symbol-x.html" title="symbol"><link rel="next" href="synopfragmentref-x.html" title="synopfragmentref"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="symbol" href="symbol-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="synopfragmentref" href="synopfragmentref-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="synopfragment.element"></a><div><div><div><h1 class="title">synopfragment</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>synopfragment &#8212; A portion of a <a href="cmdsynopsis-x.html"><code class="sgmltag-element">CmdSynopsis</code></a> broken out from the main body of the synopsis</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">synopfragment ::=
+((<a href="arg-x.html"><code class="sgmltag-element">arg</code></a>|<a href="group-x.html"><code class="sgmltag-element">group</code></a>)+)</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p></div><div class="refsect1" lang="en"><a name="d0e162855"></a><h2>Description</h2><p>
+A complex <a href="cmdsynopsis-x.html"><code class="sgmltag-element">CmdSynopsis</code></a> can be made more manageable
+with <a href="synopfragment-x.html"><code class="sgmltag-element">SynopFragment</code></a>s.  Rather than attempting to
+present the entire synopsis in one large
+piece, parts of the synopsis can be extracted out and presented
+elsewhere. These extracted pieces are placed in <a href="synopfragment-x.html"><code class="sgmltag-element">SynopFragment</code></a>s
+at the end of the <a href="cmdsynopsis-x.html"><code class="sgmltag-element">CmdSynopsis</code></a>.
+</p><p>
+At the point in which each piece was extracted, insert a
+<a href="synopfragmentref-x.html"><code class="sgmltag-element">SynopFragmentRef</code></a> that points to the fragment. The
+content of the reference element will be presented inline.
+</p><div class="refsect2" lang="en"><a name="d0e162877"></a><h3>Processing expectations</h3><p>
+Formatted as a displayed block. 
+</p><p>
+The presentation system is responsible for generating text that
+makes the reader aware of the link. This can be done with
+numbered bullets, or any other appropriate mechanism. Whatever
+mark is generated for the reference must also be generated for
+the fragment.
+</p><p>
+Online systems have additional flexibility. They may generate
+hot links between the references and the fragments, for example,
+or place the fragments in pop-up windows.
+</p></div><div class="refsect2" lang="en"><a name="d0e162886"></a><h3>Parents</h3><p>These elements contain synopfragment:
+<span class="simplelist"><a href="cmdsynopsis-x.html"><code class="sgmltag-element">cmdsynopsis</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e162896"></a><h3>Children</h3><p>The following elements occur in synopfragment:
+<span class="simplelist"><a href="arg-x.html"><code class="sgmltag-element">arg</code></a>, <a href="group-x.html"><code class="sgmltag-element">group</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e162909"></a><h2>See Also</h2><p><span class="simplelist"><a href="arg-x.html"><code class="sgmltag-element">arg</code></a>, <a href="cmdsynopsis-x.html"><code class="sgmltag-element">cmdsynopsis</code></a>, <a href="group-x.html"><code class="sgmltag-element">group</code></a>, <a href="refsynopsisdiv-x.html"><code class="sgmltag-element">refsynopsisdiv</code></a>, <a href="sbr-x.html"><code class="sgmltag-element">sbr</code></a>, <a href="synopfragmentref-x.html"><code class="sgmltag-element">synopfragmentref</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e162933"></a><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE cmdsynopsis PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;cmdsynopsis&gt;
+  &lt;command&gt;cccp&lt;/command&gt;
+  &lt;arg&gt;-$&lt;/arg&gt;
+  &lt;arg&gt;-C&lt;/arg&gt;
+  &lt;arg rep='repeat'&gt;-D&lt;replaceable&gt;name&lt;/replaceable&gt;
+       &lt;arg&gt;=&lt;replaceable&gt;definition&lt;/replaceable&gt;&lt;/arg&gt;&lt;/arg&gt;
+  &lt;arg&gt;-dD&lt;/arg&gt;
+  &lt;arg&gt;-dM&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg rep='repeat'&gt;-I &lt;replaceable&gt;directory&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;arg&gt;-H&lt;/arg&gt;
+  &lt;arg&gt;-I-&lt;/arg&gt;
+  &lt;arg rep='repeat'&gt;-imacros &lt;replaceable&gt;file&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg rep='repeat'&gt;-include &lt;replaceable&gt;file&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;group&gt;
+    &lt;synopfragmentref linkend="langs"&gt;languages&lt;/synopfragmentref&gt;
+  &lt;/group&gt;
+  &lt;arg&gt;-lint&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;group&gt;
+    &lt;arg&gt;-M&lt;/arg&gt;
+    &lt;arg&gt;-MD&lt;/arg&gt;
+    &lt;arg&gt;-MM&lt;/arg&gt;
+    &lt;arg&gt;-MMD&lt;/arg&gt;
+  &lt;/group&gt;
+  &lt;arg&gt;-nostdinc&lt;/arg&gt;
+  &lt;arg&gt;-P&lt;/arg&gt;
+  &lt;arg&gt;-pedantic&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg&gt;-pedantic-errors&lt;/arg&gt;
+  &lt;arg&gt;-trigraphs&lt;/arg&gt;
+  &lt;arg&gt;-U&lt;replaceable&gt;name&lt;/replaceable&gt;&lt;/arg&gt;
+  &lt;sbr/&gt;
+  &lt;arg&gt;-undef&lt;/arg&gt;
+  &lt;arg choice="plain"&gt;&lt;synopfragmentref linkend="warn"&gt;warnings
+    &lt;/synopfragmentref&gt;&lt;/arg&gt;
+  &lt;group choice='req'&gt;
+    &lt;arg&gt;&lt;replaceable&gt;infile&lt;/replaceable&gt;&lt;/arg&gt;
+    &lt;arg&gt;-&lt;/arg&gt;
+  &lt;/group&gt;
+  &lt;group choice='req'&gt;
+    &lt;arg&gt;&lt;replaceable&gt;outfile&lt;/replaceable&gt;&lt;/arg&gt;
+    &lt;arg&gt;-&lt;/arg&gt;
+  &lt;/group&gt;
+
+  &lt;synopfragment id="langs"&gt;
+    &lt;group choice="plain"&gt;
+      &lt;arg&gt;-lang-c&lt;/arg&gt;
+      &lt;arg&gt;-lang-c++&lt;/arg&gt;
+      &lt;arg&gt;-lang-objc&lt;/arg&gt;
+    &lt;/group&gt;
+  &lt;/synopfragment&gt;
+
+  &lt;synopfragment id="warn"&gt;
+    &lt;arg&gt;-Wtrigraphs&lt;/arg&gt;
+    &lt;arg&gt;-Wcomment&lt;/arg&gt;
+    &lt;arg&gt;-Wall&lt;/arg&gt;
+    &lt;arg&gt;-Wtraditional&lt;/arg&gt;
+  &lt;/synopfragment&gt;
+
+&lt;/cmdsynopsis&gt;</pre></div><div class="example-output"><div class="cmdsynopsis"><p><code class="command">cccp</code>  [-$] [-C] [-D<em class="replaceable"><code>name</code></em>
+        [=<em class="replaceable"><code>definition</code></em>]...] [-dD] [-dM]<br> [-I <em class="replaceable"><code>directory</code></em>...] [-H] [-I-] [-imacros <em class="replaceable"><code>file</code></em>...]<br> [-include <em class="replaceable"><code>file</code></em>...] [<i><a href="#langs">(1)</a>&nbsp;languages</i>] [-lint]<br> [[-M] |  [-MD] |  [-MM] |  [-MMD]] [-nostdinc] [-P] [-pedantic]<br> [-pedantic-errors] [-trigraphs] [-U<em class="replaceable"><code>name</code></em>]<br> [-undef]  <i><a href="#warn">(2)</a>&nbsp;warnings
+    </i>  {[<em class="replaceable"><code>infile</code></em>] |  [-]} {[<em class="replaceable"><code>outfile</code></em>] |  [-]}<p><a name="langs">(1)</a>  [-lang-c] |  [-lang-c++] |  [-lang-objc] </p><p><a name="warn">(2)</a> [-Wtrigraphs] [-Wcomment] [-Wall] [-Wtraditional]</p></p></div></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="symbol" href="symbol-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="synopfragmentref" href="synopfragmentref-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">symbol&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;synopfragmentref</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

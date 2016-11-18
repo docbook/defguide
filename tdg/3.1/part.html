@@ -1,0 +1,711 @@
+<HTML
+><HEAD
+><TITLE
+>Part</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Parameter"
+HREF="parameter.html"><LINK
+REL="NEXT"
+TITLE="PartIntro"
+HREF="partintro.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="parameter.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="partintro.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>Part</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN77537"
+></A
+><H2
+>Name</H2
+>Part&nbsp;--&nbsp;A division in a book</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN77540"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>Part ::=
+((<A
+HREF="docinfo.html"
+>DocInfo</A
+>?,<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?),
+ <A
+HREF="partintro.html"
+>PartIntro</A
+>?,
+ (<A
+HREF="appendix.html"
+>Appendix</A
+>|<A
+HREF="chapter.html"
+>Chapter</A
+>|<A
+HREF="toc.html"
+>ToC</A
+>|<A
+HREF="lot.html"
+>LoT</A
+>|<A
+HREF="index.html"
+>Index</A
+>|<A
+HREF="glossary.html"
+>Glossary</A
+>|<A
+HREF="bibliography.html"
+>Bibliography</A
+>|<A
+HREF="article.html"
+>Article</A
+>|
+  <A
+HREF="preface.html"
+>Preface</A
+>|<A
+HREF="refentry.html"
+>RefEntry</A
+>|<A
+HREF="reference.html"
+>Reference</A
+>)+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Label</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Status</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN77601"
+></A
+><H2
+>Description</H2
+><P
+><A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>s segment a book into divisions.  Each division can
+contain a number of component-level elements, such as <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>s.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN77606"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>s almost always introduce a forced page
+break.  Sometimes starts on the next recto page.
+Frequently, they also produce a part separator page, on which may
+be printed the content of the <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN77611"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>&#13;In DocBook <SPAN
+CLASS="ACRONYM"
+>V4.0</SPAN
+>, the <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+> element in the content model
+will be replaced by <A
+HREF="tocchap.html"
+><TT
+CLASS="SGMLTAG"
+>TocChap</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN77621"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain Part:
+<A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN77628"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in Part:
+<A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="lot.html"
+><TT
+CLASS="SGMLTAG"
+>LoT</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>, <A
+HREF="reference.html"
+><TT
+CLASS="SGMLTAG"
+>Reference</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN77688"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Label</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> specifies an identifying string for presentation purposes. The first <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+> in a 
+<A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> might be labeled "Part I", for example.</P
+><P
+>Generally, an explicit <SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.</P
+></DD
+><DT
+><B
+>Status</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Status</SPAN
+> identifies the editorial or publication 
+status of the <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>.</P
+><P
+>Publication status might be used to control formatting (for example, 
+printing a <SPAN
+CLASS="QUOTE"
+>"draft"</SPAN
+> watermark on drafts) or processing (perhaps
+a document with a status of <SPAN
+CLASS="QUOTE"
+>"final"</SPAN
+> should not include any
+components that are not final).</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN77710"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+>, <A
+HREF="dedication.html"
+><TT
+CLASS="SGMLTAG"
+>Dedication</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN77741"
+></A
+><H2
+>Examples</H2
+><P
+>The following example comes from <I
+CLASS="CITETITLE"
+>Java in a Nutshell</I
+>:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE part PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;part label="II"&#62;
+&#60;title&#62;Programming with the Java API&#60;/title&#62;
+&#60;partintro&#62;
+&#60;para&#62;
+The sections in Part II present real-world examples of 
+programming with Java.  You can study and learn from the
+examples, and you can adapt them for use in your own programs.
+&#60;/para&#62;
+
+&#60;para&#62;
+The example code in these chapters is available for downloading.  
+See &#60;systemitem role=url&#62;http://www.ora.com/catalog/books/javanut&#60;/&#62;.
+&#60;/para&#62;
+
+&#60;literallayout&#62;
+&#60;xref linkend="jnut-ch-04"&#62;
+&#60;xref linkend="jnut-ch-05"&#62;
+&#60;xref linkend="jnut-ch-06"&#62;
+&#60;xref linkend="jnut-ch-07"&#62;
+&#60;xref linkend="jnut-ch-08"&#62;
+&#60;xref linkend="jnut-ch-09"&#62;
+&#60;/literallayout&#62;
+&#60;/partintro&#62;
+&#60;chapter id="jnut-ch-04"&#62;&#60;para&#62;...content...&#60;/para&#62;&#60;/chapter&#62;
+&#60;chapter id="jnut-ch-05"&#62;&#60;para&#62;...content...&#60;/para&#62;&#60;/chapter&#62;
+&#60;chapter id="jnut-ch-06"&#62;&#60;para&#62;...content...&#60;/para&#62;&#60;/chapter&#62;
+&#60;chapter id="jnut-ch-07"&#62;&#60;para&#62;...content...&#60;/para&#62;&#60;/chapter&#62;
+&#60;chapter id="jnut-ch-08"&#62;&#60;para&#62;...content...&#60;/para&#62;&#60;/chapter&#62;
+&#60;chapter id="jnut-ch-09"&#62;&#60;para&#62;...content...&#60;/para&#62;&#60;/chapter&#62;
+&#60;/part&#62;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="parameter.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="partintro.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Parameter</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>PartIntro</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

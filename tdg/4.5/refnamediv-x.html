@@ -1,0 +1,42 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>refnamediv</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="refname-x.html" title="refname"><link rel="next" href="refpurpose-x.html" title="refpurpose"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="refname" href="refname-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="refpurpose" href="refpurpose-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="refnamediv.element"></a><div><div><div><h1 class="title">refnamediv</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>refnamediv &#8212; The name, purpose, and classification of a reference page</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">refnamediv ::=
+(<a href="refdescriptor-x.html"><code class="sgmltag-element">refdescriptor</code></a>?,<a href="refname-x.html"><code class="sgmltag-element">refname</code></a>+,<a href="refpurpose-x.html"><code class="sgmltag-element">refpurpose</code></a>,<a href="refclass-x.html"><code class="sgmltag-element">refclass</code></a>*,
+ (<a href="remark-x.html"><code class="sgmltag-element">remark</code></a>|<a href="pe-class-x.html#link.char.class.parament"><code class="sgmltag-paramentity">%link.char.class;</code></a>)*)</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p></div><div class="refsect1" lang="en"><a name="d0e132006"></a><h2>Description</h2><p>
+<a href="refnamediv-x.html"><code class="sgmltag-element">RefNameDiv</code></a> is the first mandatory section in a
+<a href="refentry-x.html"><code class="sgmltag-element">RefEntry</code></a>.  It is a peer to
+<a href="refsynopsisdiv-x.html"><code class="sgmltag-element">RefSynopsisDiv</code></a> and <a href="refsect1-x.html"><code class="sgmltag-element">RefSect1</code></a>.
+</p><p>
+The elements in <a href="refnamediv-x.html"><code class="sgmltag-element">RefNameDiv</code></a> identify the topic of the
+reference page (<a href="refdescriptor-x.html"><code class="sgmltag-element">RefDescriptor</code></a> or <a href="refname-x.html"><code class="sgmltag-element">RefName</code></a>), provide a
+concise summary (<a href="refpurpose-x.html"><code class="sgmltag-element">RefPurpose</code></a>), and classify the
+page (<a href="refclass-x.html"><code class="sgmltag-element">RefClass</code></a>).
+</p><div class="refsect2" lang="en"><a name="d0e132040"></a><h3>Processing expectations</h3><p>
+Formatted as a displayed block. <a href="refnamediv-x.html"><code class="sgmltag-element">RefNameDiv</code></a> usually generates a
+section heading, in the same typographic style as a
+<a href="refsect1-x.html"><code class="sgmltag-element">RefSect1</code></a> <a href="title-x.html"><code class="sgmltag-element">Title</code></a>, called &#8220;<span class="quote">Name.</span>&#8221;
+</p><p>
+The content of this section is traditionally the <a href="refdescriptor-x.html"><code class="sgmltag-element">RefDescriptor</code></a>
+or <a href="refname-x.html"><code class="sgmltag-element">RefName</code></a>, and the <a href="refpurpose-x.html"><code class="sgmltag-element">RefPurpose</code></a>, separated by an
+em dash.
+</p><p>
+The <a href="refclass-x.html"><code class="sgmltag-element">RefClass</code></a> may be presented, or it may be suppressed and used
+only to select a group of reference pages to process.  You might use the value of <a href="refclass-x.html"><code class="sgmltag-element">RefClass</code></a> to print all the reference pages
+appropriate to <span class="productname">Solaris</span>&#8482; <acronym class="acronym">UNIX</acronym>, for example.
+</p><p>
+Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <a href="refentry-x.html"><code class="sgmltag-element">RefEntry</code></a>.
+</p><p>
+Common presentational features, such as titles and running
+headers, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.
+</p></div><div class="refsect2" lang="en"><a name="d0e132089"></a><h3>Parents</h3><p>These elements contain refnamediv:
+<span class="simplelist"><a href="refentry-x.html"><code class="sgmltag-element">refentry</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e132099"></a><h3>Children</h3><p>The following elements occur in refnamediv:
+<span class="simplelist"><a href="link-x.html"><code class="sgmltag-element">link</code></a>, <a href="olink-x.html"><code class="sgmltag-element">olink</code></a>, <a href="refclass-x.html"><code class="sgmltag-element">refclass</code></a>, <a href="refdescriptor-x.html"><code class="sgmltag-element">refdescriptor</code></a>, <a href="refname-x.html"><code class="sgmltag-element">refname</code></a>, <a href="refpurpose-x.html"><code class="sgmltag-element">refpurpose</code></a>, <a href="remark-x.html"><code class="sgmltag-element">remark</code></a>, <a href="ulink-x.html"><code class="sgmltag-element">ulink</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e132130"></a><h2>See Also</h2><p><span class="simplelist"><a href="refsect1-x.html"><code class="sgmltag-element">refsect1</code></a>, <a href="refsect2-x.html"><code class="sgmltag-element">refsect2</code></a>, <a href="refsect3-x.html"><code class="sgmltag-element">refsect3</code></a>, <a href="refsection-x.html"><code class="sgmltag-element">refsection</code></a>, <a href="refsynopsisdiv-x.html"><code class="sgmltag-element">refsynopsisdiv</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e132151"></a><h2>Examples</h2><p>For examples, see
+<span class="simplelist"><a href="refentry-x.html"><code class="sgmltag-element">refentry</code></a>, <a href="reference-x.html"><code class="sgmltag-element">reference</code></a></span>.
+</p></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="refname" href="refname-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="refpurpose" href="refpurpose-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">refname&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;refpurpose</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

@@ -1,0 +1,538 @@
+<HTML
+><HEAD
+><TITLE
+>SubjectSet</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Subject"
+HREF="subject.html"><LINK
+REL="NEXT"
+TITLE="SubjectTerm"
+HREF="subjectterm.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="subject.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="subjectterm.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SubjectSet</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN109924"
+></A
+><H2
+>Name</H2
+>SubjectSet&nbsp;--&nbsp;A set of terms describing the subject matter of a document</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN109927"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SubjectSet ::=
+(<A
+HREF="subject.html"
+>Subject</A
+>+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Scheme</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NAME</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN109968"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+> is a container for a set of
+<A
+HREF="subject.html"
+><TT
+CLASS="SGMLTAG"
+>Subject</TT
+></A
+>s.  All of the <A
+HREF="subject.html"
+><TT
+CLASS="SGMLTAG"
+>Subject</TT
+></A
+>s within a
+<A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+> should come from the <I
+CLASS="EMPHASIS"
+>same</I
+>
+controlled vocabulary.</P
+><P
+>A document can be described using terms from more than one controlled
+vocabulary.  In order to do this, you should use the
+<SPAN
+CLASS="SGMLTAG"
+>Scheme</SPAN
+> attribute to distinguish between
+controlled vocabularies.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN109978"
+></A
+><H3
+>Processing expectations</H3
+><P
+>May be formatted inline or as a displayed block, depending on context. Subjects are rarely displayed to a reader. Usually, they
+are reserved for searching and retrieval purposes.</P
+><P
+>DocBook does not specify a relationship between <A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+>s
+in different parts of a document or between a <A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+> and
+the <A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+>s of enclosing parts of the document.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN109985"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SubjectSet:
+<A
+HREF="artheader.html"
+><TT
+CLASS="SGMLTAG"
+>ArtHeader</TT
+></A
+>, <A
+HREF="bookinfo.html"
+><TT
+CLASS="SGMLTAG"
+>BookInfo</TT
+></A
+>, <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="objectinfo.html"
+><TT
+CLASS="SGMLTAG"
+>ObjectInfo</TT
+></A
+>, <A
+HREF="refsect1info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1Info</TT
+></A
+>, <A
+HREF="refsect2info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2Info</TT
+></A
+>, <A
+HREF="refsect3info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3Info</TT
+></A
+>, <A
+HREF="refsynopsisdivinfo.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDivInfo</TT
+></A
+>, <A
+HREF="sect1info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1Info</TT
+></A
+>, <A
+HREF="sect2info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2Info</TT
+></A
+>, <A
+HREF="sect3info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3Info</TT
+></A
+>, <A
+HREF="sect4info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4Info</TT
+></A
+>, <A
+HREF="sect5info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5Info</TT
+></A
+>, <A
+HREF="sectioninfo.html"
+><TT
+CLASS="SGMLTAG"
+>SectionInfo</TT
+></A
+>, <A
+HREF="setinfo.html"
+><TT
+CLASS="SGMLTAG"
+>SetInfo</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN110034"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in SubjectSet:
+<A
+HREF="subject.html"
+><TT
+CLASS="SGMLTAG"
+>Subject</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN110049"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Scheme</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Scheme</SPAN
+> identifies the controlled vocabulary 
+used by this <A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+>'s terms.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN110058"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="keyword.html"
+><TT
+CLASS="SGMLTAG"
+>Keyword</TT
+></A
+>, <A
+HREF="keywordset.html"
+><TT
+CLASS="SGMLTAG"
+>KeywordSet</TT
+></A
+>, <A
+HREF="subject.html"
+><TT
+CLASS="SGMLTAG"
+>Subject</TT
+></A
+>, <A
+HREF="subjectterm.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectTerm</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN110074"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE subjectset PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;subjectset scheme="libraryofcongress"&#62;
+&#60;subject&#62;
+  &#60;subjectterm&#62;Electronic Publishing&#60;/subjectterm&#62;
+&#60;/subject&#62;
+&#60;subject&#62;
+  &#60;subjectterm&#62;SGML (Computer program language)&#60;/subjectterm&#62;
+&#60;/subject&#62;
+&#60;/subjectset&#62;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="subject.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="subjectterm.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Subject</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SubjectTerm</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

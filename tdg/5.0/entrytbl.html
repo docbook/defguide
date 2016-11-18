@@ -1,0 +1,101 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>entrytbl</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="entry.html" title="entry"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="envar" href="envar.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="element.db.entrytbl" class="refentry"><a class="indexterm" name="element.db.entrytbl.1"></a><div class="refnamediv"><h2>entrytbl</h2><p><span class="refname">entrytbl</span><span class="refpurpose"><span class="refpurpose-sep"> — </span><span class="refpurpose-text">A subtable appearing in place of an Entry in a table</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li>Zero or more of:<div class="itemizedlist element-synopsis"><ul><li><a href="colspec.html"><code class="tag-element">colspec</code></a></li></ul></div></li><li>Zero or more of:<div class="itemizedlist element-synopsis"><ul><li><a href="spanspec.html"><code class="tag-element">spanspec</code></a></li></ul></div></li><li><a href="cals.entrytbl.thead.html"><code class="tag-element">thead</code></a>? <span class="pattern">(db.cals.entrytbl.thead)</span></li><li><a href="cals.entrytbl.tbody.html"><code class="tag-element">tbody</code></a> <span class="pattern">(db.cals.entrytbl.tbody)</span></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p><p>Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>align (enumeration)<div class="itemizedlist element-synopsis"><ul><li>“center”</li><li>“char”</li><li>“justify”</li><li>“left”</li><li>“right”</li></ul></div></li><li>char</li><li>charoff (decimal)</li><li><em>At most one of:</em><div class="itemizedlist element-synopsis"><ul><li>colname</li><li>namest</li><li>spanname</li><li><em>All or none of:</em><div class="itemizedlist element-synopsis"><ul><li>namest</li><li>nameend</li></ul></div></li></ul></div></li><li>cols (positiveInteger)</li><li>colsep (enumeration)<div class="itemizedlist element-synopsis"><ul><li>“0”</li><li>“1”</li></ul></div></li><li>rowsep (enumeration)<div class="itemizedlist element-synopsis"><ul><li>“0”</li><li>“1”</li></ul></div></li><li>tgroupstyle</li></ul></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div>
+<p>The <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a> element allows for a single level
+      of nesting within <span class="acronym">CALS</span> tables.</p>
+
+      <p>An entry table may occur in a row instead of an
+      <a href="entry.html"><code class="tag-element">entry</code></a>. An <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a> has most of the
+      elements of a table but may not include itself, thus limiting nesting to
+      a single level.</p>
+
+      <div class="note admonition"><h3>Note</h3><p>An <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a> can span horizontally (across
+        columns), but it cannot span across rows. Whether this is by accident
+        or by design is unclear, but it has always been that way in
+        CALS.</p></div>
+
+      <div class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div>
+        
+
+        <p>This element is expected to obey the semantics of the
+        <em class="citetitle">CALS Table Model Document Type Definition</em>
+        [<a href="appc.html#calsdtd"><span class="abbrev">calsdtd</span></a>].</p>
+
+        <p>The content of <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a> is formatted,
+        <em>as a table</em>, to fit within the table cell that it
+        occupies. Horizontal and vertical spanning may allow an
+        <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a> to occupy several physical cells in the
+        table that contains it.</p>
+
+        <p>If multiple <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a>s occur in a single row,
+        formatters that support <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a> are not required
+        to ensure that subrows within the various tables are vertically
+        aligned.</p>
+
+        <p>Many formatters are incapable of supporting
+        <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a>s. This is an interchange issue. See <a href="appd.html" title="Interchanging DocBook Documents">Appendix D, <i>Interchanging DocBook Documents</i></a>.</p>
+</div>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p><div class="variablelist"><dl><dt><span class="term attname">align</span></dt><dd><p>Specifies the horizontal alignment of text in an entry.</p><figure id="element.db.entrytbl.6.6.3.1.2.2" class="informaltable-wrapper"><div class="informaltable"><table border="0" style="border-collapse: collapse;"><colgroup><col width="20.74%" align="left" /><col align="left" width="79.26%" /></colgroup><thead><tr><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " colspan="2" align="left">Enumerated values:</th></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">“center”</td><td style="border-bottom: 0.5pt solid ; "><p>Centered.</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">“char”</td><td style="border-bottom: 0.5pt solid ; "><p>Aligned on a particular character.</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">“justify”</td><td style="border-bottom: 0.5pt solid ; "><p>Left and right justified.</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">“left”</td><td style="border-bottom: 0.5pt solid ; "><p>Left justified.</p></td></tr><tr><td style="border-right: 0.5pt solid ; " align="left">“right”</td><td><p>Right justified.</p></td></tr></tbody></table></div></figure></dd><dt><span class="term attname">char</span></dt><dd><p>Specifies the alignment character when <code class="tag-attribute">align</code>
+ is set to “<span class="quote">char</span>”
+.</p></dd><dt><span class="term attname">charoff</span></dt><dd><p>Specifies the percentage of the column's total width that should appear to the left of the first occurance of the character identified in <code class="tag-attribute">char</code>
+ when <code class="tag-attribute">align</code>
+ is set to “<span class="quote">char</span>”
+.</p></dd><dt><span class="term attname">colname</span></dt><dd><p>Specifies a column specification by name.</p></dd><dt><span class="term attname">cols</span></dt><dd><p>The number of columns in the entry table. Must be an integer greater than zero.</p></dd><dt><span class="term attname">colsep</span></dt><dd><p>Specifies the presence or absence of the column separator</p><figure id="element.db.entrytbl.6.6.3.6.2.2" class="informaltable-wrapper"><div class="informaltable"><table border="0" style="border-collapse: collapse;"><colgroup><col width="20.74%" align="left" /><col align="left" width="79.26%" /></colgroup><thead><tr><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " colspan="2" align="left">Enumerated values:</th></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">“0”</td><td style="border-bottom: 0.5pt solid ; "><p>No column separator rule.</p></td></tr><tr><td style="border-right: 0.5pt solid ; " align="left">“1”</td><td><p>Provide a column separator rule on the right</p></td></tr></tbody></table></div></figure></dd><dt><span class="term attname">nameend</span></dt><dd><p>Specifies an ending column by name.</p></dd><dt><span class="term attname">namest</span></dt><dd><p>Specifies a starting column by name.</p></dd><dt><span class="term attname">namest</span></dt><dd><p>Specifies a starting column by name.</p></dd><dt><span class="term attname">rowsep</span></dt><dd><p>Specifies the presence or absence of the row separator</p><figure id="element.db.entrytbl.6.6.3.10.2.2" class="informaltable-wrapper"><div class="informaltable"><table border="0" style="border-collapse: collapse;"><colgroup><col width="20.74%" align="left" /><col align="left" width="79.26%" /></colgroup><thead><tr><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " colspan="2" align="left">Enumerated values:</th></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left">“0”</td><td style="border-bottom: 0.5pt solid ; "><p>No row separator rule.</p></td></tr><tr><td style="border-right: 0.5pt solid ; " align="left">“1”</td><td><p>Provide a row separator rule below</p></td></tr></tbody></table></div></figure></dd><dt><span class="term attname">spanname</span></dt><dd><p>Specifies a span by name.</p></dd><dt><span class="term attname">tgroupstyle</span></dt><dd><p>Additional style information for downstream processing; typically the name of a style.</p></dd></dl></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><p>These elements contain <a href="entrytbl.html"><code class="tag-element">entrytbl</code></a>: <span class="simplelist"><span class="member"><a href="row.html"><code class="tag-element">row</code></a> <span class="pattern">(db.row)</span></span></span>.</p></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Children</h3></div><p>The following elements occur in entrytbl: <span class="simplelist"><span class="member"><a href="colspec.html"><code class="tag-element">colspec</code></a></span>, <span class="member"><a href="spanspec.html"><code class="tag-element">spanspec</code></a></span>, <span class="member"><a href="cals.entrytbl.tbody.html"><code class="tag-element">tbody</code></a> <span class="pattern">(db.cals.entrytbl.tbody)</span></span>, <span class="member"><a href="cals.entrytbl.thead.html"><code class="tag-element">thead</code></a> <span class="pattern">(db.cals.entrytbl.thead)</span></span></span>.</p></div>
+
+</div><div class="refsection"><div class="refsection-titlepage"><h2>See Also</h2></div><p><span class="simplelist"><span class="member"><a href="colspec.html"><code class="tag-element">colspec</code></a></span>, <span class="member"><a href="entry.html"><code class="tag-element">entry</code></a></span>, <span class="member"><a href="html.informaltable.html"><code class="tag-element">informaltable</code></a></span>, <span class="member"><a href="row.html"><code class="tag-element">row</code></a></span>, <span class="member"><a href="spanspec.html"><code class="tag-element">spanspec</code></a></span>, <span class="member"><a href="html.table.html"><code class="tag-element">table</code></a></span>, <span class="member"><a href="html.tbody.html"><code class="tag-element">tbody</code></a></span>, <span class="member"><a href="html.tfoot.html"><code class="tag-element">tfoot</code></a></span>, <span class="member"><a href="tgroup.html"><code class="tag-element">tgroup</code></a></span>, <span class="member"><a href="html.thead.html"><code class="tag-element">thead</code></a></span></span></p></div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div>
+
+
+<div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;article xmlns='http://docbook.org/ns/docbook'&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;title&gt;Example entrytbl&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;informaltable frame='all'&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;tgroup cols='3'&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;tbody&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;row&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;entry&gt;a1&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;entry&gt;b1&lt;/entry&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;entry&gt;c1&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/row&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;row&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;entry&gt;a2&lt;/entry&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>  &lt;entrytbl cols='3'&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;tbody&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>      &lt;row&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2a1&lt;/entry&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2b1&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2c1&lt;/entry&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>      &lt;/row&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;row&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2a2&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2b2&lt;/entry&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2c2&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;/row&gt;
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>      &lt;row&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2a3&lt;/entry&gt;
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2b3&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;entry&gt;b2c3&lt;/entry&gt;
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>      &lt;/row&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/tbody&gt;
+<span class="linenumber"> 32</span><span class="linenumber-separator"> </span>  &lt;/entrytbl&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;entry&gt;c2&lt;/entry&gt;
+<span class="linenumber"> 34</span><span class="linenumber-separator"> </span>&lt;/row&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;row&gt;
+<span class="linenumber"> 36</span><span class="linenumber-separator"> </span>  &lt;entry&gt;a3&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;entry&gt;b3&lt;/entry&gt;
+<span class="linenumber"> 38</span><span class="linenumber-separator"> </span>  &lt;entry&gt;c3&lt;/entry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/row&gt;
+<span class="linenumber"> 40</span><span class="linenumber-separator"> </span>&lt;/tbody&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/tgroup&gt;
+<span class="linenumber"> 42</span><span class="linenumber-separator"> </span>&lt;/informaltable&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 44</span><span class="linenumber-separator"> </span>&lt;/article&gt;</pre></div>
+
+<div class="example-output">
+<figure id="element.db.entrytbl.8.3.1" class="informaltable-wrapper"><div class="informaltable"><table border="0" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="33%" /><col width="33%" /><col width="33%" /></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">a1</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">b1</td><td style="border-bottom: 0.5pt solid ; ">c1</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">a2</td><td><table border="0" width="100%" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="33%" /><col width="33%" /><col width="33%" /></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">b2a1</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">b2b1</td><td style="border-bottom: 0.5pt solid ; ">b2c1</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">b2a2</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">b2b2</td><td style="border-bottom: 0.5pt solid ; ">b2c2</td></tr><tr><td style="border-right: 0.5pt solid ; ">b2a3</td><td style="border-right: 0.5pt solid ; ">b2b3</td><td>b2c3</td></tr></tbody></table></td><td style="border-bottom: 0.5pt solid ; ">c2</td></tr><tr><td style="border-right: 0.5pt solid ; ">a3</td><td style="border-right: 0.5pt solid ; ">b3</td><td>c3</td></tr></tbody></table></div></figure>
+</div>
+
+</div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="entry" href="entry.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="envar" href="envar.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">entry </td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> envar</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on 6 Jun 2011 <span class="githash">(git hash: 6ffcc7640bbc5f852a318e452c9f210f03292cb9)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

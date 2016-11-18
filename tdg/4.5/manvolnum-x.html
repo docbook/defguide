@@ -1,0 +1,36 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>manvolnum</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="lotentry-x.html" title="lotentry"><link rel="next" href="markup-x.html" title="markup"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="lotentry" href="lotentry-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="markup" href="markup-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="manvolnum.element"></a><div><div><div><h1 class="title">manvolnum</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>manvolnum &#8212; A reference volume number</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Mixed Content Model</strong></span></h3><pre class="synopsis">manvolnum ::=
+(<a href="pe-mix-x.html#word.char.mix.parament"><code class="sgmltag-paramentity">%word.char.mix;</code></a>)*</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p></div><div class="refsect1" lang="en"><a name="d0e98963"></a><h2>Description</h2><p>
+In a DocBook reference page, the <a href="manvolnum-x.html"><code class="sgmltag-element">ManVolNum</code></a> holds
+the number of the volume in which the <a href="refentry-x.html"><code class="sgmltag-element">RefEntry</code></a> belongs.
+</p><p>
+The notion of a volume number is historical.  <acronym class="acronym">UNIX</acronym> manual pages (&#8220;<span class="quote">man
+pages</span>&#8221;), for which <a href="refentry-x.html"><code class="sgmltag-element">RefEntry</code></a> was devised, were typically
+stored in three ring binders.  Each bound manual was a volume in a set
+and contained information about a particular class of things.  For
+example, volume 1 was for user commands, and volume 8 was for administrator
+commands.
+</p><p>
+Volume numbers need not be strictly numerical; volume
+&#8220;<span class="quote">l</span>&#8221; frequently held manual pages for local
+additions to the system, and the X Window System manual pages
+had an &#8220;<span class="quote">x</span>&#8221; in the volume number: for example,
+1x.
+</p><div class="refsect2" lang="en"><a name="d0e98993"></a><h3>Processing expectations</h3><p>
+The content of <a href="manvolnum-x.html"><code class="sgmltag-element">ManVolNum</code></a> is usually printed in parentheses
+after the element title or citation.
+</p></div><div class="refsect2" lang="en"><a name="d0e99001"></a><h3>Parents</h3><p>These elements contain manvolnum:
+<span class="simplelist"><a href="citerefentry-x.html"><code class="sgmltag-element">citerefentry</code></a>, <a href="refmeta-x.html"><code class="sgmltag-element">refmeta</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e99014"></a><h3>Children</h3><p>The following elements occur in manvolnum:
+<span class="simplelist"><a href="acronym-x.html"><code class="sgmltag-element">acronym</code></a>, <a href="anchor-x.html"><code class="sgmltag-element">anchor</code></a>, <a href="beginpage-x.html"><code class="sgmltag-element">beginpage</code></a>, <a href="emphasis-x.html"><code class="sgmltag-element">emphasis</code></a>, <a href="indexterm-x.html"><code class="sgmltag-element">indexterm</code></a>, <a href="inlinegraphic-x.html"><code class="sgmltag-element">inlinegraphic</code></a>, <a href="inlinemediaobject-x.html"><code class="sgmltag-element">inlinemediaobject</code></a>, <a href="link-x.html"><code class="sgmltag-element">link</code></a>, <a href="olink-x.html"><code class="sgmltag-element">olink</code></a>, <a href="remark-x.html"><code class="sgmltag-element">remark</code></a>, <a href="subscript-x.html"><code class="sgmltag-element">subscript</code></a>, <a href="superscript-x.html"><code class="sgmltag-element">superscript</code></a>, <a href="trademark-x.html"><code class="sgmltag-element">trademark</code></a>, <a href="ulink-x.html"><code class="sgmltag-element">ulink</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e99063"></a><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;para&gt;
+For a further description of print formats, consult the
+&lt;citerefentry&gt;&lt;refentrytitle&gt;printf&lt;/refentrytitle&gt;
+&lt;manvolnum&gt;3S&lt;/manvolnum&gt;&lt;/citerefentry&gt; manual page.
+&lt;/para&gt;</pre></div><div class="example-output"><p>
+For a further description of print formats, consult the
+<span class="citerefentry"><span class="refentrytitle">printf</span>(3S)</span> manual page.
+</p></div><p>For additional examples, see also
+<span class="simplelist"><a href="citerefentry-x.html"><code class="sgmltag-element">citerefentry</code></a>, <a href="refentry-x.html"><code class="sgmltag-element">refentry</code></a></span>.
+</p></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="lotentry" href="lotentry-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="markup" href="markup-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">lotentry&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;markup</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

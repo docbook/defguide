@@ -1,0 +1,1289 @@
+<HTML
+><HEAD
+><TITLE
+>entrytbl</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="entry"
+HREF="entry.html"><LINK
+REL="NEXT"
+TITLE="EnVar"
+HREF="envar.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="entry.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="envar.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>entrytbl</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN34888"
+></A
+><H2
+>Name</H2
+>entrytbl&nbsp;--&nbsp;A subtable appearing in place of an <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+> in a table</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN34892"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>entrytbl ::=
+(<A
+HREF="colspec.html"
+>colspec</A
+>*,<A
+HREF="spanspec.html"
+>spanspec</A
+>*,<A
+HREF="thead.html"
+>thead</A
+>?,<A
+HREF="tbody.html"
+>tbody</A
+>)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>rowsep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colsep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>namest</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>align</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>center<BR>char<BR>justify<BR>left<BR>right</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>cols</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>Required</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>tgroupstyle</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>spanname</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>nameend</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>charoff</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>char</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colname</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ENTRYTBL.EXCEP"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.entrytbl.excep;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.HDFT.EXCEP"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.hdft.excep;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ROW.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.row.mdl;</NOBR
+></TT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN35004"
+></A
+><H2
+>Description</H2
+><P
+>The <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+> element allows for a single level of nesting
+within tables.
+This element is expected to obey the semantics
+of the <A
+HREF="appd.html#CALSDTD"
+><I
+CLASS="CITETITLE"
+>CALS Table Model
+Document Type Definition</I
+></A
+>, as specified by <I
+CLASS="CITETITLE"
+><A
+HREF="http://www.oasis-open.org/html/a502.htm"
+TARGET="_top"
+>OASIS
+Technical Memorandum TM 9502:1995</A
+></I
+>.</P
+><P
+>An entry table may occur in a row instead of an <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>.
+<A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s have most of the elements of a table but
+may not include themselves, thus limiting nesting to a single
+level.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN35015"
+></A
+><H3
+>Processing expectations</H3
+><P
+>The content of <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+> is formatted, <I
+CLASS="EMPHASIS"
+>as a table</I
+>,
+to fit within the table cell that it occupies.  Horizontal and vertical
+spanning may allow an <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+> to occupy several physical cells
+in the table that contains it.</P
+><P
+>If multiple <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s occur in a single row, formatters
+that support <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+> are not required to ensure that subrows
+within the various tables are vertically aligned.</P
+><P
+>Many formatters are incapable of supporting <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s.
+This is an interchange issue. See <A
+HREF="appf.html"
+>Appendix F, <I
+>Interchanging DocBook Documents</I
+>,</A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN35027"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain entrytbl:
+<A
+HREF="row.html"
+><TT
+CLASS="SGMLTAG"
+>row</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN35034"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in entrytbl:
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>colspec</TT
+></A
+>, <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>spanspec</TT
+></A
+>, <A
+HREF="tbody.html"
+><TT
+CLASS="SGMLTAG"
+>tbody</TT
+></A
+>, <A
+HREF="thead.html"
+><TT
+CLASS="SGMLTAG"
+>thead</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN35058"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>align</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Align</SPAN
+> specifies the horizontal alignment
+of the <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+> in the cell in which it occurs. If no
+alignment is specified, it is inherited from the <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>
+for the current column, or the <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>SpanSpec</TT
+></A
+> if this entry
+occurs in a span.</P
+></DD
+><DT
+><B
+>char</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Char</SPAN
+> specifies the alignment character when
+the <SPAN
+CLASS="SGMLTAG"
+>Align</SPAN
+> attribute is set to <TT
+CLASS="LITERAL"
+>Char</TT
+>.</P
+></DD
+><DT
+><B
+>charoff</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>CharOff</SPAN
+> specifies the percentage of the
+column's total width that should appear to the left of the first
+occurance of the character identified in <SPAN
+CLASS="SGMLTAG"
+>Char</SPAN
+> when the <SPAN
+CLASS="SGMLTAG"
+>Align</SPAN
+>
+attribute is set to <TT
+CLASS="LITERAL"
+>Char</TT
+>. This attribute is inherited from
+the relevant <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> or <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>SpanSpec</TT
+></A
+>.</P
+></DD
+><DT
+><B
+>colname</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>ColName</SPAN
+> identifies the column in which
+this entry table should appear; it must have been previously defined in
+a <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>. <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s cannot be given out of order,
+the column referenced must be to the right of the last <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>
+or <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+> placed in the current row. It is an error
+to specify both a <SPAN
+CLASS="SGMLTAG"
+>ColName</SPAN
+> and a
+<SPAN
+CLASS="SGMLTAG"
+>SpanName</SPAN
+>.</P
+></DD
+><DT
+><B
+>cols</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Cols</SPAN
+> specifies the number of columns 
+in the <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>.</P
+></DD
+><DT
+><B
+>colsep</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>ColSep</SPAN
+> has the value 1 (true), then
+a rule will be drawn to the right of this <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>.
+A value of 0 (false) suppresses the rule.
+The rule to the right of the last column in the table is controlled by the
+<SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+> attribute of the enclosing 
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> or <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+> and the 
+<SPAN
+CLASS="SGMLTAG"
+>ColSep</SPAN
+> of an entry in the last column in the table
+is ignored. If unspecified, this attribute is inherited from the
+the corresponding <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> or <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>SpanSpec</TT
+></A
+> and
+enclosing elements.</P
+></DD
+><DT
+><B
+>nameend</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>NameEnd</SPAN
+> is the name (defined in a 
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>) of the rightmost column of a span. 
+On <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>, specifying both <SPAN
+CLASS="SGMLTAG"
+>NameSt</SPAN
+> 
+and <SPAN
+CLASS="SGMLTAG"
+>NameEnd</SPAN
+> defines a horizontal span for the
+current <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>.
+(See also <SPAN
+CLASS="SGMLTAG"
+>SpanName</SPAN
+>.)</P
+></DD
+><DT
+><B
+>namest</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>NameSt</SPAN
+> ("name start") is the name
+(defined in a <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>) of the leftmost column of a span.
+On <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>, specifying both <SPAN
+CLASS="SGMLTAG"
+>NameSt</SPAN
+> and <SPAN
+CLASS="SGMLTAG"
+>NameEnd</SPAN
+>
+defines a horizontal span for the current <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>. (See
+also <SPAN
+CLASS="SGMLTAG"
+>SpanName</SPAN
+>.)</P
+></DD
+><DT
+><B
+>rowsep</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>RowSep</SPAN
+> has the value 1 (true), then a
+rule will be drawn below the <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>. A value of 0 (false)
+suppresses the rule. The rule below the last row in the table is
+controlled by the <SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+> attribute of the
+enclosing <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> or <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+> and the
+<SPAN
+CLASS="SGMLTAG"
+>RowSep</SPAN
+> of the last row is ignored. If
+unspecified, this attribute is inherited from enclosing elements.</P
+></DD
+><DT
+><B
+>spanname</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>SpanName</SPAN
+> is the name (defined in a 
+<A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>SpanSpec</TT
+></A
+>) of a span. This cell will be rendered with the
+specified horizontal span.</P
+></DD
+><DT
+><B
+>tgroupstyle</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>TGroupstyle</SPAN
+> holds the name of a
+table group style defined in a stylesheet that
+will be used to process this document.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN35158"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>colspec</TT
+></A
+>, <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>, <A
+HREF="row.html"
+><TT
+CLASS="SGMLTAG"
+>row</TT
+></A
+>, <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>spanspec</TT
+></A
+>, <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>, <A
+HREF="tbody.html"
+><TT
+CLASS="SGMLTAG"
+>tbody</TT
+></A
+>, <A
+HREF="tfoot.html"
+><TT
+CLASS="SGMLTAG"
+>tfoot</TT
+></A
+>, <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>tgroup</TT
+></A
+>, <A
+HREF="thead.html"
+><TT
+CLASS="SGMLTAG"
+>thead</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN35192"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE informaltable PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;!-- entrytbl not supported, fake it in descrip.1 --&#62;
+&#60;informaltable frame=all&#62;
+&#60;tgroup cols=3&#62;
+&#60;tbody&#62;
+&#60;row&#62;
+  &#60;entry&#62;a1&#60;/entry&#62;
+  &#60;entry&#62;b1&#60;/entry&#62;
+  &#60;entry&#62;c1&#60;/entry&#62;
+&#60;/row&#62;
+&#60;row&#62;
+  &#60;entry&#62;a2&#60;/entry&#62;
+  &#60;entrytbl cols=3&#62;
+    &#60;tbody&#62;
+      &#60;row&#62;
+        &#60;entry&#62;b2a1&#60;/entry&#62;
+        &#60;entry&#62;b2b1&#60;/entry&#62;
+        &#60;entry&#62;b2c1&#60;/entry&#62;
+      &#60;/row&#62;
+      &#60;row&#62;
+        &#60;entry&#62;b2a2&#60;/entry&#62;
+        &#60;entry&#62;b2b2&#60;/entry&#62;
+        &#60;entry&#62;b2c2&#60;/entry&#62;
+      &#60;/row&#62;
+      &#60;row&#62;
+        &#60;entry&#62;b2a3&#60;/entry&#62;
+        &#60;entry&#62;b2b3&#60;/entry&#62;
+        &#60;entry&#62;b2c3&#60;/entry&#62;
+      &#60;/row&#62;
+    &#60;/tbody&#62;
+  &#60;/entrytbl&#62;
+  &#60;entry&#62;c2&#60;/entry&#62;
+&#60;/row&#62;
+&#60;row&#62;
+  &#60;entry&#62;a3&#60;/entry&#62;
+  &#60;entry&#62;b3&#60;/entry&#62;
+  &#60;entry&#62;c3&#60;/entry&#62;
+&#60;/row&#62;
+&#60;/tbody&#62;
+&#60;/tgroup&#62;
+&#60;/informaltable&#62;</PRE
+></DIV
+><P
+>The preceding table would look something like this when formatted:</P
+><DIV
+CLASS="INFORMALTABLE"
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>a1</TD
+><TD
+COLSPAN="3"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b1</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>c1</TD
+></TR
+><TR
+><TD
+ROWSPAN="3"
+ALIGN="LEFT"
+VALIGN="TOP"
+>a2</TD
+><TD
+WIDTH="50%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2a1</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2b1</TD
+><TD
+WIDTH="50%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2c1</TD
+><TD
+ROWSPAN="3"
+ALIGN="LEFT"
+VALIGN="TOP"
+>c2</TD
+></TR
+><TR
+><TD
+WIDTH="50%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2a2</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2b2</TD
+><TD
+WIDTH="50%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2c2</TD
+></TR
+><TR
+><TD
+WIDTH="50%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2a3</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2b3</TD
+><TD
+WIDTH="50%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2c3</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>a3</TD
+><TD
+COLSPAN="3"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b3</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>c3</TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="entry.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="envar.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>entry</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>EnVar</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

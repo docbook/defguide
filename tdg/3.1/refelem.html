@@ -1,0 +1,3813 @@
+<HTML
+><HEAD
+><TITLE
+>DocBook Element Reference</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Reference"
+HREF="part2.html"><LINK
+REL="PREVIOUS"
+TITLE="Reference"
+HREF="part2.html"><LINK
+REL="NEXT"
+TITLE="Abbrev"
+HREF="abbrev.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFERENCE"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="part2.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="abbrev.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="REFERENCE"
+><A
+NAME="REF-ELEMENT"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+>I. DocBook Element Reference</H1
+><DIV
+CLASS="PARTINTRO"
+><A
+NAME="AEN6986"
+></A
+><P
+>&#13;
+This reference describes every element in the DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>.
+Elements marked <IMG
+SRC="figures/rev_3.1.gif"> are new
+in DocBook <SPAN
+CLASS="ACRONYM"
+>V3.1</SPAN
+>, which was released in February, 1999.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN6994"
+>1. Organization of Reference Pages</A
+></H1
+><P
+>The description of each element in this reference is divided into the
+following sections:</P
+><P
+></P
+><DL
+><DT
+><B
+>Synopsis</B
+></DT
+><DD
+><P
+>&#13;
+
+
+Provides a quick synopsis of the element. The content of the synopsis
+table varies according to the nature of the element described, but may include
+any or all of the following sections:</P
+><P
+></P
+><DL
+><DT
+><B
+>Content Model or Declared Content</B
+></DT
+><DD
+><P
+>Describes the content model of the element in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> terms. See <A
+HREF="refelem.html#S2-CMINTRO"
+>Section 1.1</A
+>."</P
+></DD
+><DT
+><B
+>Inclusions</B
+></DT
+><DD
+><P
+>&#13;
+Lists <SPAN
+CLASS="QUOTE"
+>"inclusions."</SPAN
+>  Inclusions are an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> feature.
+Included elements can appear anywhere inside the element
+that includes them, even in places that aren't ordinarily
+valid.  For example, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+> includes <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.
+This means that within a <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+> can
+appear inside <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+>, for instance, even though the
+content model of <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+> does not explicitly allow
+<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>s.</P
+></DD
+><DT
+><B
+>Exclusions</B
+></DT
+><DD
+><P
+>&#13;
+
+Lists <SPAN
+CLASS="QUOTE"
+>"exclusions."</SPAN
+> Exclusions are an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> feature.
+Excluded elements cannot appear anywhere inside the element that
+excludes them, even in places that are ordinarily valid.  For
+example, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+> excludes <TT
+CLASS="SGMLTAG"
+>Fotnote</TT
+>. This
+means that a <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+> cannot appear inside a
+<A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+> inside a <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, even though
+<A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+> appears in the content model of <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>.</P
+><P
+>Lists elements that are excluded from appearing at any level below
+the element described.</P
+></DD
+><DT
+><B
+>Attributes</B
+></DT
+><DD
+><P
+>&#13;
+Provides a synopsis of the attributes on the element. For brevity, common
+attributes are described only once, <A
+HREF="refelem.html#DBRE.X.COMMON"
+>in this
+introduction</A
+>.</P
+></DD
+><DT
+><B
+>Tag Minimization</B
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+Indicates if start- or end-tags may be omitted.  Tag omission is
+dependent on both the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> and your <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> declaration.  If a tag is described
+as ommissable here, it is ommissible if your declaration allows tag 
+omission.  The standard DocBook declaration does not.</P
+></DD
+><DT
+><B
+>Parameter Entities</B
+></DT
+><DD
+><P
+>&#13;
+Lists the parameter entities in which the element described appears.
+Parameter entities are important when you are <A
+HREF="ch05.html"
+>customizing the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+></A
+>.</P
+></DD
+></DL
+></DD
+><DT
+><B
+>Description</B
+></DT
+><DD
+><P
+>&#13;
+
+Describes the semantics of the element in detail.</P
+><P
+></P
+><DL
+><DT
+><B
+>Processing expectations</B
+></DT
+><DD
+><P
+>&#13;
+Summarizes specific formatting expectations of the element. Many
+processing expectations are influenced by attribute values. Be sure to
+consult the
+description of element attributes as well.</P
+></DD
+><DT
+><B
+>Future changes</B
+></DT
+><DD
+><P
+>&#13;
+
+
+Identifies changes that are scheduled for future versions of the
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. These changes are highlighted because they involve some 
+backward-incompatability that may make currently valid DocBook documents
+no longer valid under the new version.</P
+></DD
+></DL
+></DD
+><DT
+><B
+>Attributes</B
+></DT
+><DD
+><P
+>&#13;
+Describes the semantics of each attribute in detail.</P
+></DD
+><DT
+><B
+>See Also</B
+></DT
+><DD
+><P
+>Lists similar or related elements.&#13;</P
+></DD
+><DT
+><B
+>Examples</B
+></DT
+><DD
+><P
+>&#13;Provides examples of proper usage for the
+element. Generally, the smallest example required to reasonably
+demonstrate the element is used. In many cases, a formatted
+version of the example is also shown.</P
+><P
+>All of the examples printed in the book use the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> version of
+DocBook.  The <A
+HREF="appe.html"
+><SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+></A
+> includes the full
+text of all of the examples.</P
+><P
+>Formatted examples are indicated using a vertical bar.</P
+></DD
+></DL
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="S2-CMINTRO"
+>1.1. Understanding Content Models</A
+></H2
+><P
+>&#13;
+Each element synopsis begins with a concise description of the
+elements it can contain.  This description is in <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>
+"content model" syntax, with all parameter entities
+expanded.</P
+><P
+>Content models are the way that <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>s describe the name, number,
+and order of other elements that may be used inside an element.
+The primary feature of content model syntax is that it is concise,
+but this conciseness comes at the cost of legibility until you
+are familiar with the syntax.</P
+><P
+>&#13;
+
+
+
+
+There are six components to content model syntax: <I
+CLASS="FIRSTTERM"
+>element
+names</I
+>, <I
+CLASS="FIRSTTERM"
+>keywords</I
+>,
+<I
+CLASS="FIRSTTERM"
+>repetitions</I
+>, <I
+CLASS="FIRSTTERM"
+>sequences</I
+>,
+<I
+CLASS="FIRSTTERM"
+>alternatives</I
+>, and
+<I
+CLASS="FIRSTTERM"
+>groups</I
+>.</P
+><P
+></P
+><DL
+><DT
+><B
+>Element names</B
+></DT
+><DD
+><P
+>&#13;
+An element name in a content model indicates that an element of that
+type may (or must) occur at that position.</P
+><P
+>&#13;A content model of <TT
+CLASS="LITERAL"
+>Para</TT
+> indicates
+that the element must contain a single paragraph.</P
+></DD
+><DT
+><B
+>Keywords</B
+></DT
+><DD
+><P
+>&#13;
+There are two keywords that occur in the content models of DocBook
+elements: <TT
+CLASS="LITERAL"
+>EMPTY</TT
+>, and <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+>.</P
+><P
+>A content model that consists of the single keyword <TT
+CLASS="LITERAL"
+>EMPTY</TT
+>
+identifes an element as an empty element.  Empty elements are not allowed
+to have any content.  In order for the word "EMPTY" to have
+this special meaning, it must be the first and only word in the content
+model.  The word "EMPTY" at any other place is treated as
+an element name.</P
+><P
+>&#13;
+
+The <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+> keyword indicates that text may
+occur at that position.  The text may consist of entity references and
+any characters that are legal in the document character set.  For <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+documents, the document character set is always Unicode. In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> the
+declaration can identify character sets and ranges that are allowed.
+DocBook <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents use the <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> Latin 1 character set.</P
+></DD
+><DT
+><B
+>Repetitions</B
+></DT
+><DD
+><P
+>&#13;
+An unadorned element name indicates that an element must occur exactly
+once at that position. A content model can also specify that an element
+may occur zero or more times, one or more times, or exactly zero or one
+time.  This is accomplished by following the element name with one of
+the following characters: <TT
+CLASS="LITERAL"
+>*</TT
+> for zero or more times,
+<TT
+CLASS="LITERAL"
+>+</TT
+> for one or more times, or <TT
+CLASS="LITERAL"
+>?</TT
+> for exactly
+zero or one times.</P
+><P
+>A content model of <TT
+CLASS="LITERAL"
+>Para+</TT
+> indicates
+that the element must contain at least one paragraph and may contain
+many.</P
+></DD
+><DT
+><B
+>Sequences</B
+></DT
+><DD
+><P
+>&#13;If element names in a content model are separated by commas,
+then they must occur in sequence.</P
+><P
+>A content model of <TT
+CLASS="LITERAL"
+>Title, Para</TT
+> indicates
+that the element must contain a single title followed by a single paragraph.</P
+></DD
+><DT
+><B
+>Alternatives</B
+></DT
+><DD
+><P
+>&#13;If element names in a content model are separated by vertical bars (|),
+then they are alternatives.  These are sometimes called "or
+groups" because they require the selection of one or another element.</P
+><P
+>A content model of <TT
+CLASS="LITERAL"
+>Phrase | Para</TT
+> indicates
+that the element must contain either a single phrase or a single paragraph.</P
+><P
+>&#13;
+
+
+In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, there is another connector: the ampersand (&amp;). The
+ampersand is a kind of combination of alternative and sequence,
+which means that all of the elements must occur, but they can occur
+in any order.  DocBook does not have any content models that use
+the ampersand connector.  <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> does not allow it.</P
+></DD
+><DT
+><B
+>Groups</B
+></DT
+><DD
+><P
+>&#13;
+Finally, parenthesis may be used around part of a content model.  A group
+formed this way can have repetition indicators and may occur as part of
+a sequence.</P
+><P
+>A content model of <TT
+CLASS="LITERAL"
+>(Literal | Replaceable)+</TT
+>
+indicates that either <A
+HREF="literal.html"
+><TT
+CLASS="SGMLTAG"
+>Literal</TT
+></A
+> or <A
+HREF="replaceable.html"
+><TT
+CLASS="SGMLTAG"
+>Replaceable</TT
+></A
+>
+must occur and they can be repeated (and mixed) any number of times.</P
+></DD
+></DL
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN7282"
+>1.1.1. Content models and validity</A
+></H3
+><P
+>&#13;
+
+A parser uses the content models to determine if a given document is valid.
+In order for a document to be valid, the content of every element in the
+document must <SPAN
+CLASS="QUOTE"
+>"match"</SPAN
+> the content model for that element.</P
+><P
+>In practical terms, match means that it must be possible to expand the
+content model until it exactly matches the sequence of elements in the
+document.</P
+><P
+>For example, consider the content model of the <A
+HREF="epigraph.html"
+><TT
+CLASS="SGMLTAG"
+>Epigraph</TT
+></A
+> element:
+<TT
+CLASS="LITERAL"
+>Attribution?, (FormalPara | Para | SimPara)+</TT
+>.
+This indicates that the following document fragment is valid:
+
+
+<PRE
+CLASS="SCREEN"
+>&#60;epigraph&#62;
+&#60;para&#62;Some text&#60;/para&#62;
+&#60;/epigraph&#62;</PRE
+></P
+><P
+>It is valid because the following expansion of the content model exactly
+matches the actual content: choose zero occurances of
+<A
+HREF="attribution.html"
+><TT
+CLASS="SGMLTAG"
+>Attribution</TT
+></A
+>, choose the alternative <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+> from
+the group, and choose to let the "+" match once.</P
+><P
+>By the same token, this example is not valid because there is no 
+expansion of the content model that can match it:
+<PRE
+CLASS="SCREEN"
+>&#60;epigraph&#62;
+&#60;para&#62;Some text&#60;/para&#62;
+&#60;attribution&#62;John Doe&#60;/attribution&#62;
+&#60;/epigraph&#62;</PRE
+></P
+><P
+>&#13;
+There is one additional restriction on the matching ability of the
+parser: it is not allowed to <SPAN
+CLASS="QUOTE"
+>"look ahead."</SPAN
+>  This means that
+there are many useful content models that are ambiguous.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN7309"
+>1.1.2. Ambiguity</A
+></H3
+><P
+>Ambiguity is not allowed. The parser must always be able to choose 
+exactly what to match based upon the next input token. 
+Consider the
+following content model:
+<TT
+CLASS="LITERAL"
+>Meta*, Title?, Meta*</TT
+>.</P
+><P
+>The intent is clear: to allow some meta-information and a single,
+optional <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>.  But this content model is ambiguous
+for the following reason: if the document content begins with a
+<TT
+CLASS="SGMLTAG"
+>Meta</TT
+> element, it is impossible to tell if it matches
+the <TT
+CLASS="SGMLTAG"
+>Meta</TT
+> before the <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+> or after
+without looking ahead.</P
+><P
+>Ambiguous content models are detected by the parser when it reads the
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. It is not sufficient that your document simply be unambiguous;
+it must not be possible to construct any ambiguous document.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN7320"
+>1.1.3. #PCDATA and repetition</A
+></H3
+><P
+>&#13;
+
+The <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+> keyword can always match the empty string.  This
+makes it impossible to force an element that may contain
+characters not to be empty. In other words, the following content
+model <I
+CLASS="EMPHASIS"
+>does not</I
+> guarantee that the element is not
+empty: <TT
+CLASS="LITERAL"
+>(#PCDATA)+</TT
+>.</P
+><P
+>&#13;
+In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, the <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+> keyword is only allowed in optional, repeatable
+<SPAN
+CLASS="QUOTE"
+>"or groups"</SPAN
+>, and it must be the first member of the
+group.</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="DBRE.X.COMMON"
+>2. Common Attributes</A
+></H1
+><P
+>&#13;
+
+The following attributes occur on all elements. They are summarized
+here once for brevity and to make the additional attributes that occur on
+many elements stand out.</P
+><DIV
+CLASS="INFORMALTABLE"
+><P
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+CLASS="CALSTABLE"
+><TR
+><TH
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Name</P
+></TH
+><TH
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Default</TH
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Arch</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Conformance</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>NMTOKENS</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>ID</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+><I
+CLASS="EMPHASIS"
+>None/Required</I
+><SUP
+>a</SUP
+></P
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Lang</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>OS</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Remap</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Revision</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>RevisionFlag</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumerated:</I
+><BR>Changed<BR>Added<BR>Deleted<BR>Off</P
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>UserLevel</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>Vendor</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><SPAN
+CLASS="SGMLTAG"
+>XrefLabel</SPAN
+></TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>CDATA</TD
+><TD
+WIDTH="33%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+COLSPAN="3"
+>Notes:<BR><A
+NAME="FTN.AEN7379"
+>a. </A
+>On a
+few elements, the <SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+> is required,
+but on most it is not.<BR></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><P
+></P
+><DL
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Arch</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+
+
+<SPAN
+CLASS="SGMLTAG"
+>Arch</SPAN
+> designates the
+computer or chip architecture to which the element applies.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Conformance</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+<SPAN
+CLASS="SGMLTAG"
+>Conformance</SPAN
+> indicates
+standards conformance characteristics of the item contained in the
+element. These characteristics are application-specific.  DocBook
+provides no defaults.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+<SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+> is an identifying string
+for the element.  It must be unique at least within the document and
+must begin with a letter.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Lang</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+<SPAN
+CLASS="SGMLTAG"
+>Lang</SPAN
+> should be a language
+code drawn from <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 639 (perhaps extended with a
+country code drawn from <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 3166, as
+<TT
+CLASS="LITERAL"
+>en_US</TT
+>).  Use it when you need to signal your
+application to change hyphenation and other display
+characteristics.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>OS</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+<SPAN
+CLASS="SGMLTAG"
+>OS</SPAN
+> indicates the operating
+system to which the element is applicable.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Remap</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+<SPAN
+CLASS="SGMLTAG"
+>Remap</SPAN
+> contains an element
+name or similar semantic identifier assigned to the content in a
+previous markup scheme.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+
+<SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+> contains a string used
+to classify or subclassify an element.</P
+><P
+>While Role is a common attribute in the sense that it occurs on
+almost all elements, it is not part of either of the common attributes
+parameter entities (<A
+HREF="pe-common-attrib.html#DBRE.PENT.COMMON.ATTRIB"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%common.attrib;</NOBR
+></TT
+></A
+> or <A
+HREF="pe-common-attrib.html#DBRE.PENT.IDREQ.COMMON.ATTRIB"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%idreq.common.attrib;</NOBR
+></TT
+></A
+>).  It is
+parameterized differently because it is useful to be able to subclass
+<SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+> independently on different
+elements.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Revision</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+<SPAN
+CLASS="SGMLTAG"
+>Revision</SPAN
+> indicates the
+editorial revision to which the element belongs.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>RevisionFlag</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+<SPAN
+CLASS="SGMLTAG"
+>RevisionFlag</SPAN
+> indicates the
+revision status of element; the default is that the element hasn't
+been revised.  <SPAN
+CLASS="SGMLTAG"
+>RevisionFlag</SPAN
+> is
+intended only for simple revision management: to track the entire
+history of a document use a proper revision control system.  Use
+<SPAN
+CLASS="SGMLTAG"
+>RevisionFlag</SPAN
+> for indicating
+changes from one version to the next, no more.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>UserLevel</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+<SPAN
+CLASS="SGMLTAG"
+>UserLevel</SPAN
+> indicates the
+level of user experience to which element applies.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>Vendor</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+
+<SPAN
+CLASS="SGMLTAG"
+>Vendor</SPAN
+> indicates the
+computer vendor to which the element applies.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="SGMLTAG"
+>XrefLabel</SPAN
+></B
+></DT
+><DD
+><P
+>&#13;
+<SPAN
+CLASS="SGMLTAG"
+>XrefLabel</SPAN
+> holds text to be
+used when a cross reference (<A
+HREF="xref.html"
+><TT
+CLASS="SGMLTAG"
+>XRef</TT
+></A
+>) is made to the
+element.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN7590"
+>3. Attribute Types</A
+></H1
+><P
+>&#13;
+
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> offers a small selection of attribute types. (<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+offers a subset of these.) For convenience, a brief description of
+each of these types is provided here:</P
+><P
+></P
+><DL
+><DT
+><A
+NAME="AT.CDATA"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>CDATA</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+A string of characters.</P
+></DD
+><DT
+><A
+NAME="AT.NUMBER"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>NUMBER</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+A number.  Numbers must begin with a hyphen or digit and can include
+the decimal point.</P
+></DD
+><DT
+><A
+NAME="AT.NMTOKEN"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>NMTOKEN</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+A sequence of name characters (letters, digits, hyphens, and
+periods).  This differs from a <SPAN
+CLASS="SGMLTAG"
+>CDATA</SPAN
+> attribute because it cannot
+contain spaces, punctuation, or other non-name characters.</P
+></DD
+><DT
+><A
+NAME="AT.NMTOKENS"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>NMTOKENS</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>A sequence of one or more space-delimited <SPAN
+CLASS="SGMLTAG"
+>NMTOKEN</SPAN
+> values.</P
+></DD
+><DT
+><A
+NAME="AT.NUTOKEN"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>NUTOKEN</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+A sequence of number characters (digits, hyphens, and periods).
+This differs from a <SPAN
+CLASS="SGMLTAG"
+>NUMBER</SPAN
+>
+field because it is not required to begin with a digit or a
+hyphen.</P
+></DD
+><DT
+><A
+NAME="AT.ENTITY"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>ENTITY</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+An entity name.  The value of an <SPAN
+CLASS="SGMLTAG"
+>ENTITY</SPAN
+> attribute must be the name of
+a declared entity.</P
+></DD
+><DT
+><A
+NAME="AT.NAME"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>NAME</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+A name.  A name must begin with a letter and can consist of
+letters, digits, hyphens, and periods.</P
+></DD
+><DT
+><A
+NAME="AT.NAMES"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>NAMES</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>A sequence of one or more space-delimited <SPAN
+CLASS="SGMLTAG"
+>NAME</SPAN
+> values.</P
+></DD
+><DT
+><A
+NAME="AT.ID"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+An <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>.  <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>s are names that
+must be globally unique within the document.  The <SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+> attribute declares the
+<SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>.</P
+></DD
+><DT
+><A
+NAME="AT.IDREF"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>IDREF</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+An single <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>.  <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>s are
+names that must be globally unique within the document. The value of
+an <SPAN
+CLASS="SGMLTAG"
+>IDREF</SPAN
+> attribute must be
+the name of an <SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+> attribute
+defined in the document.</P
+></DD
+><DT
+><A
+NAME="AT.IDREFS"
+><B
+><SPAN
+CLASS="SGMLTAG"
+>IDREFS</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+A sequence of one or more space-delimited <SPAN
+CLASS="SGMLTAG"
+>ID</SPAN
+> values.&#13;</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="abbrev.html"
+>Abbrev</A
+> — An abbreviation, especially one followed by a period</DT
+><DT
+><A
+HREF="abstract.html"
+>Abstract</A
+> — A summary</DT
+><DT
+><A
+HREF="accel.html"
+>Accel</A
+> — A graphical user interface (GUI) keyboard shortcut</DT
+><DT
+><A
+HREF="ackno.html"
+>Ackno</A
+> — Acknowledgements in an <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+></DT
+><DT
+><A
+HREF="acronym.html"
+>Acronym</A
+> — An often pronounceable word made from the initial (or selected) letters of a name or phrase</DT
+><DT
+><A
+HREF="action.html"
+>Action</A
+> — A response to a user event</DT
+><DT
+><A
+HREF="address.html"
+>Address</A
+> — A real-world address, generally a postal address</DT
+><DT
+><A
+HREF="affiliation.html"
+>Affiliation</A
+> — The institutional affiliation of an individual</DT
+><DT
+><A
+HREF="alt.html"
+>Alt</A
+> — Text representation for a graphical element</DT
+><DT
+><A
+HREF="anchor.html"
+>Anchor</A
+> — A spot in the document</DT
+><DT
+><A
+HREF="answer.html"
+>Answer</A
+> — An answer to a question posed in a <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+></DT
+><DT
+><A
+HREF="appendix.html"
+>Appendix</A
+> — An appendix in a <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> or <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+></DT
+><DT
+><A
+HREF="application.html"
+>Application</A
+> — The name of a software program</DT
+><DT
+><A
+HREF="area.html"
+>Area</A
+> — A region defined for a <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+> in a graphic or code example</DT
+><DT
+><A
+HREF="areaset.html"
+>AreaSet</A
+> — A set of related areas in a graphic or code example</DT
+><DT
+><A
+HREF="areaspec.html"
+>AreaSpec</A
+> — A collection of regions in a graphic or code example</DT
+><DT
+><A
+HREF="arg.html"
+>Arg</A
+> — An argument in a <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+></DT
+><DT
+><A
+HREF="artheader.html"
+>ArtHeader</A
+> — Meta-information for an <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+></DT
+><DT
+><A
+HREF="article.html"
+>Article</A
+> — An article</DT
+><DT
+><A
+HREF="artpagenums.html"
+>ArtPageNums</A
+> — The page numbers of an article as published</DT
+><DT
+><A
+HREF="attribution.html"
+>Attribution</A
+> — The source of a block quote or epigraph</DT
+><DT
+><A
+HREF="audiodata.html"
+>AudioData</A
+> — Pointer to external audio data</DT
+><DT
+><A
+HREF="audioobject.html"
+>AudioObject</A
+> — A wrapper for audio data and its associated meta-information</DT
+><DT
+><A
+HREF="author.html"
+>Author</A
+> — The name of an individual author</DT
+><DT
+><A
+HREF="authorblurb.html"
+>AuthorBlurb</A
+> — A short description or note about an author</DT
+><DT
+><A
+HREF="authorgroup.html"
+>AuthorGroup</A
+> — Wrapper for author information when a document has multiple authors or collabarators</DT
+><DT
+><A
+HREF="authorinitials.html"
+>AuthorInitials</A
+> — The initials or other short identifier for an author</DT
+><DT
+><A
+HREF="beginpage.html"
+>BeginPage</A
+> — The location of a page break in a print version of the document</DT
+><DT
+><A
+HREF="bibliodiv.html"
+>BiblioDiv</A
+> — A section of a <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+></DT
+><DT
+><A
+HREF="biblioentry.html"
+>BiblioEntry</A
+> — An entry in a <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+></DT
+><DT
+><A
+HREF="bibliography.html"
+>Bibliography</A
+> — A bibliography</DT
+><DT
+><A
+HREF="bibliomisc.html"
+>BiblioMisc</A
+> — Untyped bibliographic information</DT
+><DT
+><A
+HREF="bibliomixed.html"
+>BiblioMixed</A
+> — An entry in a <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+></DT
+><DT
+><A
+HREF="bibliomset.html"
+>BiblioMSet</A
+> — A <SPAN
+CLASS="QUOTE"
+>"cooked"</SPAN
+> container for related bibliographic information</DT
+><DT
+><A
+HREF="biblioset.html"
+>BiblioSet</A
+> — A <SPAN
+CLASS="QUOTE"
+>"raw"</SPAN
+> container for related bibliographic information</DT
+><DT
+><A
+HREF="blockquote.html"
+>BlockQuote</A
+> — A quotation set off from the main text</DT
+><DT
+><A
+HREF="book.html"
+>Book</A
+> — A book</DT
+><DT
+><A
+HREF="bookbiblio.html"
+>BookBiblio</A
+> — Meta-information about a book used in a bibliographical citation</DT
+><DT
+><A
+HREF="bookinfo.html"
+>BookInfo</A
+> — Meta-information for a Book</DT
+><DT
+><A
+HREF="bridgehead.html"
+>BridgeHead</A
+> — A free-floating heading</DT
+><DT
+><A
+HREF="callout.html"
+>Callout</A
+> — A "called out" description of a marked <A
+HREF="area.html"
+><TT
+CLASS="SGMLTAG"
+>Area</TT
+></A
+></DT
+><DT
+><A
+HREF="calloutlist.html"
+>CalloutList</A
+> — A list of <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>s</DT
+><DT
+><A
+HREF="caption.html"
+>Caption</A
+> — A caption</DT
+><DT
+><A
+HREF="caution.html"
+>Caution</A
+> — A note of caution</DT
+><DT
+><A
+HREF="chapter.html"
+>Chapter</A
+> — A chapter, as of a book</DT
+><DT
+><A
+HREF="citation.html"
+>Citation</A
+> — An inline bibliographic reference to another published work</DT
+><DT
+><A
+HREF="citerefentry.html"
+>CiteRefEntry</A
+> — A citation to a reference page</DT
+><DT
+><A
+HREF="citetitle.html"
+>CiteTitle</A
+> — The title of a cited work</DT
+><DT
+><A
+HREF="city.html"
+>City</A
+> — The name of a city in an address</DT
+><DT
+><A
+HREF="classname.html"
+>ClassName</A
+> — The name of a class, in the object-oriented programming sense</DT
+><DT
+><A
+HREF="cmdsynopsis.html"
+>CmdSynopsis</A
+> — A syntax summary for a software command</DT
+><DT
+><A
+HREF="co.html"
+>CO</A
+> — The location of a callout embedded in text</DT
+><DT
+><A
+HREF="collab.html"
+>Collab</A
+> — Identifies a collaborator</DT
+><DT
+><A
+HREF="collabname.html"
+>CollabName</A
+> — The name of a collaborator</DT
+><DT
+><A
+HREF="colophon.html"
+>Colophon</A
+> — Text at the back of a book describing facts about its production</DT
+><DT
+><A
+HREF="colspec.html"
+>colspec</A
+> — Specifications for a column in a table</DT
+><DT
+><A
+HREF="command.html"
+>Command</A
+> — The name of an executable program or other software command</DT
+><DT
+><A
+HREF="comment.html"
+>Comment</A
+> — A comment intended for presentation in a draft manuscript</DT
+><DT
+><A
+HREF="computeroutput.html"
+>ComputerOutput</A
+> — Data, generally text, displayed or presented by a computer</DT
+><DT
+><A
+HREF="confdates.html"
+>ConfDates</A
+> — The dates of a conference for which a document was written</DT
+><DT
+><A
+HREF="confgroup.html"
+>ConfGroup</A
+> — A wrapper for document meta-information about a conference</DT
+><DT
+><A
+HREF="confnum.html"
+>ConfNum</A
+> — An identifier, frequently numerical, associated with a conference for which a document was written</DT
+><DT
+><A
+HREF="confsponsor.html"
+>ConfSponsor</A
+> — The sponsor of a conference for which a document was written</DT
+><DT
+><A
+HREF="conftitle.html"
+>ConfTitle</A
+> — The title of a conference for which a document was written</DT
+><DT
+><A
+HREF="constant.html"
+>Constant</A
+> — A programming or system constant</DT
+><DT
+><A
+HREF="contractnum.html"
+>ContractNum</A
+> — The contract number of a document</DT
+><DT
+><A
+HREF="contractsponsor.html"
+>ContractSponsor</A
+> — The sponsor of a contract</DT
+><DT
+><A
+HREF="contrib.html"
+>Contrib</A
+> — A summary of the contributions made to a document by a credited source</DT
+><DT
+><A
+HREF="copyright.html"
+>Copyright</A
+> — Copyright information about a document</DT
+><DT
+><A
+HREF="corpauthor.html"
+>CorpAuthor</A
+> — A corporate author, as opposed to an individual</DT
+><DT
+><A
+HREF="corpname.html"
+>CorpName</A
+> — The name of a corporation</DT
+><DT
+><A
+HREF="country.html"
+>Country</A
+> — The name of a country</DT
+><DT
+><A
+HREF="database.html"
+>Database</A
+> — The name of a database, or part of a database</DT
+><DT
+><A
+HREF="date.html"
+>Date</A
+> — The date of publication or revision of a document</DT
+><DT
+><A
+HREF="dedication.html"
+>Dedication</A
+> — A wrapper for the dedication section of a book</DT
+><DT
+><A
+HREF="docinfo.html"
+>DocInfo</A
+> — Meta-data for a book component</DT
+><DT
+><A
+HREF="edition.html"
+>Edition</A
+> — The name or number of an edition of a document</DT
+><DT
+><A
+HREF="editor.html"
+>Editor</A
+> — The name of the editor of a document</DT
+><DT
+><A
+HREF="email.html"
+>Email</A
+> — An email address</DT
+><DT
+><A
+HREF="emphasis.html"
+>Emphasis</A
+> — Emphasized text</DT
+><DT
+><A
+HREF="entry.html"
+>entry</A
+> — A cell in a table</DT
+><DT
+><A
+HREF="entrytbl.html"
+>entrytbl</A
+> — A subtable appearing in place of an <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+> in a table</DT
+><DT
+><A
+HREF="envar.html"
+>EnVar</A
+> — A software environment variable</DT
+><DT
+><A
+HREF="epigraph.html"
+>Epigraph</A
+> — A short inscription at the beginning of a document or component</DT
+><DT
+><A
+HREF="equation.html"
+>Equation</A
+> — A displayed mathematical equation</DT
+><DT
+><A
+HREF="errorcode.html"
+>ErrorCode</A
+> — An error code</DT
+><DT
+><A
+HREF="errorname.html"
+>ErrorName</A
+> — An error message</DT
+><DT
+><A
+HREF="errortype.html"
+>ErrorType</A
+> — The classification of an error message</DT
+><DT
+><A
+HREF="example.html"
+>Example</A
+> — A formal example, with a title</DT
+><DT
+><A
+HREF="fax.html"
+>Fax</A
+> — A fax number</DT
+><DT
+><A
+HREF="figure.html"
+>Figure</A
+> — A formal figure, generally an illustration, with a title</DT
+><DT
+><A
+HREF="filename.html"
+>Filename</A
+> — The name of a file</DT
+><DT
+><A
+HREF="firstname.html"
+>FirstName</A
+> — The first name of a person</DT
+><DT
+><A
+HREF="firstterm.html"
+>FirstTerm</A
+> — The first occurrence of a term</DT
+><DT
+><A
+HREF="footnote.html"
+>Footnote</A
+> — A footnote</DT
+><DT
+><A
+HREF="footnoteref.html"
+>FootnoteRef</A
+> — A cross reference to a footnote (a footnote mark)</DT
+><DT
+><A
+HREF="foreignphrase.html"
+>ForeignPhrase</A
+> — A word or phrase in a language other than the primary language of the document</DT
+><DT
+><A
+HREF="formalpara.html"
+>FormalPara</A
+> — A paragraph with a title</DT
+><DT
+><A
+HREF="funcdef.html"
+>FuncDef</A
+> — A function (subroutine) name and its return type</DT
+><DT
+><A
+HREF="funcparams.html"
+>FuncParams</A
+> — Parameters for a function referenced through a function pointer in a synopsis</DT
+><DT
+><A
+HREF="funcprototype.html"
+>FuncPrototype</A
+> — The prototype of a function</DT
+><DT
+><A
+HREF="funcsynopsis.html"
+>FuncSynopsis</A
+> — The syntax summary for a function definition</DT
+><DT
+><A
+HREF="funcsynopsisinfo.html"
+>FuncSynopsisInfo</A
+> — Information supplementing the <TT
+CLASS="SGMLTAG"
+>FuncDefs</TT
+> of a <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+></DT
+><DT
+><A
+HREF="function.html"
+>Function</A
+> — The name of a function or subroutine, as in a programming language</DT
+><DT
+><A
+HREF="glossary.html"
+>Glossary</A
+> — A glossary</DT
+><DT
+><A
+HREF="glossdef.html"
+>GlossDef</A
+> — A definition in a <A
+HREF="glossentry.html"
+><TT
+CLASS="SGMLTAG"
+>GlossEntry</TT
+></A
+></DT
+><DT
+><A
+HREF="glossdiv.html"
+>GlossDiv</A
+> — A division in a <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+></DT
+><DT
+><A
+HREF="glossentry.html"
+>GlossEntry</A
+> — An entry in a <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+> or <A
+HREF="glosslist.html"
+><TT
+CLASS="SGMLTAG"
+>GlossList</TT
+></A
+></DT
+><DT
+><A
+HREF="glosslist.html"
+>GlossList</A
+> — A wrapper for a set of <A
+HREF="glossentry.html"
+><TT
+CLASS="SGMLTAG"
+>GlossEntry</TT
+></A
+>s</DT
+><DT
+><A
+HREF="glosssee.html"
+>GlossSee</A
+> — A cross-reference from one <A
+HREF="glossentry.html"
+><TT
+CLASS="SGMLTAG"
+>GlossEntry</TT
+></A
+> to another</DT
+><DT
+><A
+HREF="glossseealso.html"
+>GlossSeeAlso</A
+> — A cross-reference from one <A
+HREF="glossentry.html"
+><TT
+CLASS="SGMLTAG"
+>GlossEntry</TT
+></A
+> to another</DT
+><DT
+><A
+HREF="glossterm.html"
+>GlossTerm</A
+> — A glossary term</DT
+><DT
+><A
+HREF="graphic.html"
+>Graphic</A
+> — A displayed graphical object (not an inline)</DT
+><DT
+><A
+HREF="graphicco.html"
+>GraphicCO</A
+> — A graphic that contains callout areas</DT
+><DT
+><A
+HREF="group.html"
+>Group</A
+> — A group of elements in a <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+></DT
+><DT
+><A
+HREF="guibutton.html"
+>GUIButton</A
+> — The text on a button in a GUI</DT
+><DT
+><A
+HREF="guiicon.html"
+>GUIIcon</A
+> — Graphic and/or text appearing as a icon in a GUI</DT
+><DT
+><A
+HREF="guilabel.html"
+>GUILabel</A
+> — The text of a label in a GUI</DT
+><DT
+><A
+HREF="guimenu.html"
+>GUIMenu</A
+> — The name of a menu in a GUI</DT
+><DT
+><A
+HREF="guimenuitem.html"
+>GUIMenuItem</A
+> — The name of a terminal menu item in a GUI</DT
+><DT
+><A
+HREF="guisubmenu.html"
+>GUISubmenu</A
+> — The name of a submenu in a GUI</DT
+><DT
+><A
+HREF="hardware.html"
+>Hardware</A
+> — A physical part of a computer system</DT
+><DT
+><A
+HREF="highlights.html"
+>Highlights</A
+> — A summary of the main points of the discussed component</DT
+><DT
+><A
+HREF="holder.html"
+>Holder</A
+> — The name of the individual or organization that holds a copyright</DT
+><DT
+><A
+HREF="honorific.html"
+>Honorific</A
+> — The title of a person</DT
+><DT
+><A
+HREF="imagedata.html"
+>ImageData</A
+> — Pointer to external image data</DT
+><DT
+><A
+HREF="imageobject.html"
+>ImageObject</A
+> — A wrapper for image data and its associated meta-information</DT
+><DT
+><A
+HREF="imageobjectco.html"
+>ImageObjectCO</A
+> — A wrapper for an image object with callouts</DT
+><DT
+><A
+HREF="important.html"
+>Important</A
+> — An admonition set off from the text</DT
+><DT
+><A
+HREF="index.html"
+>Index</A
+> — An index</DT
+><DT
+><A
+HREF="indexdiv.html"
+>IndexDiv</A
+> — A division in an index</DT
+><DT
+><A
+HREF="indexentry.html"
+>IndexEntry</A
+> — An entry in an index</DT
+><DT
+><A
+HREF="indexterm.html"
+>IndexTerm</A
+> — A wrapper for terms to be indexed</DT
+><DT
+><A
+HREF="informalequation.html"
+>InformalEquation</A
+> — A displayed mathematical equation without a title</DT
+><DT
+><A
+HREF="informalexample.html"
+>InformalExample</A
+> — A displayed example without a title</DT
+><DT
+><A
+HREF="informalfigure.html"
+>InformalFigure</A
+> — A untitled figure</DT
+><DT
+><A
+HREF="informaltable.html"
+>InformalTable</A
+> — A table without a title</DT
+><DT
+><A
+HREF="inlineequation.html"
+>InlineEquation</A
+> — A mathematical equation or expression occurring inline</DT
+><DT
+><A
+HREF="inlinegraphic.html"
+>InlineGraphic</A
+> — An object containing or pointing to graphical data that will be rendered inline</DT
+><DT
+><A
+HREF="inlinemediaobject.html"
+>InlineMediaObject</A
+> — An inline media object (video, audio, image, and so on)</DT
+><DT
+><A
+HREF="interface.html"
+>Interface</A
+> — An element of a GUI</DT
+><DT
+><A
+HREF="interfacedefinition.html"
+>InterfaceDefinition</A
+> — The name of a formal specification of a GUI</DT
+><DT
+><A
+HREF="invpartnumber.html"
+>InvPartNumber</A
+> — An inventory part number</DT
+><DT
+><A
+HREF="isbn.html"
+>ISBN</A
+> — The International Standard Book Number of a document</DT
+><DT
+><A
+HREF="issn.html"
+>ISSN</A
+> — The International Standard Serial Number of a periodical</DT
+><DT
+><A
+HREF="issuenum.html"
+>IssueNum</A
+> — The number of an issue of a journal</DT
+><DT
+><A
+HREF="itemizedlist.html"
+>ItemizedList</A
+> — A list in which each entry is marked with a bullet or other dingbat</DT
+><DT
+><A
+HREF="itermset.html"
+>ITermSet</A
+> — A set of index terms in the meta-information of a document</DT
+><DT
+><A
+HREF="jobtitle.html"
+>JobTitle</A
+> — The title of an individual in an organization</DT
+><DT
+><A
+HREF="keycap.html"
+>KeyCap</A
+> — The text printed on a key on a keyboard</DT
+><DT
+><A
+HREF="keycode.html"
+>KeyCode</A
+> — The internal, frequently numeric, identifier for a key on a keyboard</DT
+><DT
+><A
+HREF="keycombo.html"
+>KeyCombo</A
+> — A combination of input actions</DT
+><DT
+><A
+HREF="keysym.html"
+>KeySym</A
+> — The symbolic name of a key on a keyboard</DT
+><DT
+><A
+HREF="keyword.html"
+>Keyword</A
+> — One of a set of keywords describing the content of a document</DT
+><DT
+><A
+HREF="keywordset.html"
+>KeywordSet</A
+> — A set of keywords describing the content of a document</DT
+><DT
+><A
+HREF="label.html"
+>Label</A
+> — A label on a <A
+HREF="question.html"
+><TT
+CLASS="SGMLTAG"
+>Question</TT
+></A
+> or <A
+HREF="answer.html"
+><TT
+CLASS="SGMLTAG"
+>Answer</TT
+></A
+></DT
+><DT
+><A
+HREF="legalnotice.html"
+>LegalNotice</A
+> — A statement of legal obligations or requirements</DT
+><DT
+><A
+HREF="lineage.html"
+>Lineage</A
+> — The portion of a person's name indicating a relationship to ancestors</DT
+><DT
+><A
+HREF="lineannotation.html"
+>LineAnnotation</A
+> — A comment on a line in a verbatim listing</DT
+><DT
+><A
+HREF="link.html"
+>Link</A
+> — A hypertext link</DT
+><DT
+><A
+HREF="listitem.html"
+>ListItem</A
+> — A wrapper for the elements of a list item</DT
+><DT
+><A
+HREF="literal.html"
+>Literal</A
+> — Inline text that is some literal value</DT
+><DT
+><A
+HREF="literallayout.html"
+>LiteralLayout</A
+> — A block of text in which line breaks and white space are to be reproduced faithfully</DT
+><DT
+><A
+HREF="lot.html"
+>LoT</A
+> — A list of the titles of formal objects (as tables or figures) in a document</DT
+><DT
+><A
+HREF="lotentry.html"
+>LoTentry</A
+> — An entry in a list of titles</DT
+><DT
+><A
+HREF="manvolnum.html"
+>ManVolNum</A
+> — A reference volume number</DT
+><DT
+><A
+HREF="markup.html"
+>Markup</A
+> — A string of formatting markup in text that is to be represented literally</DT
+><DT
+><A
+HREF="medialabel.html"
+>MediaLabel</A
+> — A name that identifies the physical medium on which some information resides</DT
+><DT
+><A
+HREF="mediaobject.html"
+>MediaObject</A
+> — A displayed media object (video, audio, image, etc.)</DT
+><DT
+><A
+HREF="mediaobjectco.html"
+>MediaObjectCO</A
+> — A media object that contains callouts</DT
+><DT
+><A
+HREF="member.html"
+>Member</A
+> — An element of a simple list</DT
+><DT
+><A
+HREF="menuchoice.html"
+>MenuChoice</A
+> — A selection or series of selections from a menu</DT
+><DT
+><A
+HREF="modespec.html"
+>ModeSpec</A
+> — Application-specific information necessary for the completion of an OLink</DT
+><DT
+><A
+HREF="mousebutton.html"
+>MouseButton</A
+> — The conventional name of a mouse button</DT
+><DT
+><A
+HREF="msg.html"
+>Msg</A
+> — A message in a message set</DT
+><DT
+><A
+HREF="msgaud.html"
+>MsgAud</A
+> — The audience to which a message in a message set is relevant</DT
+><DT
+><A
+HREF="msgentry.html"
+>MsgEntry</A
+> — A wrapper for an entry in a message set</DT
+><DT
+><A
+HREF="msgexplan.html"
+>MsgExplan</A
+> — Explanatory material relating to a message in a message set</DT
+><DT
+><A
+HREF="msginfo.html"
+>MsgInfo</A
+> — Information about a message in a message set</DT
+><DT
+><A
+HREF="msglevel.html"
+>MsgLevel</A
+> — The level of importance or severity of a message in a message set</DT
+><DT
+><A
+HREF="msgmain.html"
+>MsgMain</A
+> — The primary component of a message in a message set </DT
+><DT
+><A
+HREF="msgorig.html"
+>MsgOrig</A
+> — The origin of a message in a message set</DT
+><DT
+><A
+HREF="msgrel.html"
+>MsgRel</A
+> — A related component of a message in a message set</DT
+><DT
+><A
+HREF="msgset.html"
+>MsgSet</A
+> — A detailed set of messages, usually error messages</DT
+><DT
+><A
+HREF="msgsub.html"
+>MsgSub</A
+> — A subcomponent of a message in a message set</DT
+><DT
+><A
+HREF="msgtext.html"
+>MsgText</A
+> — The actual text of a message component in a message set</DT
+><DT
+><A
+HREF="note.html"
+>Note</A
+> — A message set off from the text</DT
+><DT
+><A
+HREF="objectinfo.html"
+>ObjectInfo</A
+> — Meta-information for an object</DT
+><DT
+><A
+HREF="olink.html"
+>OLink</A
+> — A link that addresses its target indirectly, through an entity</DT
+><DT
+><A
+HREF="option.html"
+>Option</A
+> — An option for a software command</DT
+><DT
+><A
+HREF="optional.html"
+>Optional</A
+> — Optional information</DT
+><DT
+><A
+HREF="orderedlist.html"
+>OrderedList</A
+> — A list in which each entry is marked with a sequentially incremented label</DT
+><DT
+><A
+HREF="orgdiv.html"
+>OrgDiv</A
+> — A division of an organization</DT
+><DT
+><A
+HREF="orgname.html"
+>OrgName</A
+> — The name of an organization other than a corporation </DT
+><DT
+><A
+HREF="otheraddr.html"
+>OtherAddr</A
+> — Uncategorized information in address</DT
+><DT
+><A
+HREF="othercredit.html"
+>OtherCredit</A
+> — A person or entity, other than an author or editor, credited in a document</DT
+><DT
+><A
+HREF="othername.html"
+>OtherName</A
+> — A component of a persons name that is not a first name, surname, or lineage</DT
+><DT
+><A
+HREF="pagenums.html"
+>PageNums</A
+> — The numbers of the pages in a book, for use in a bibliographic entry</DT
+><DT
+><A
+HREF="para.html"
+>Para</A
+> — A paragraph</DT
+><DT
+><A
+HREF="paramdef.html"
+>ParamDef</A
+> — Information about a function parameter in a programming language</DT
+><DT
+><A
+HREF="parameter.html"
+>Parameter</A
+> — A value or a symbolic reference to a value</DT
+><DT
+><A
+HREF="part.html"
+>Part</A
+> — A division in a book</DT
+><DT
+><A
+HREF="partintro.html"
+>PartIntro</A
+> — An introduction to the contents of a part</DT
+><DT
+><A
+HREF="phone.html"
+>Phone</A
+> — A telephone number</DT
+><DT
+><A
+HREF="phrase.html"
+>Phrase</A
+> — A span of text</DT
+><DT
+><A
+HREF="pob.html"
+>POB</A
+> — A post office box in an address</DT
+><DT
+><A
+HREF="postcode.html"
+>Postcode</A
+> — A postal code in an address</DT
+><DT
+><A
+HREF="preface.html"
+>Preface</A
+> — Introductory matter preceding the first chapter of a book</DT
+><DT
+><A
+HREF="primary.html"
+>Primary</A
+> — The primary word or phrase under which an index term should be sorted</DT
+><DT
+><A
+HREF="primaryie.html"
+>PrimaryIE</A
+> — A primary term in an index entry, not in the text</DT
+><DT
+><A
+HREF="printhistory.html"
+>PrintHistory</A
+> — The printing history of a document</DT
+><DT
+><A
+HREF="procedure.html"
+>Procedure</A
+> — A list of operations to be performed in a well-defined sequence</DT
+><DT
+><A
+HREF="productname.html"
+>ProductName</A
+> — The formal name of a product</DT
+><DT
+><A
+HREF="productnumber.html"
+>ProductNumber</A
+> — A number assigned to a product</DT
+><DT
+><A
+HREF="programlisting.html"
+>ProgramListing</A
+> — A literal listing of all or part of a program</DT
+><DT
+><A
+HREF="programlistingco.html"
+>ProgramListingCO</A
+> — A program listing with associated areas used in callouts</DT
+><DT
+><A
+HREF="prompt.html"
+>Prompt</A
+> — A character or string indicating the start of an input field in a  computer display</DT
+><DT
+><A
+HREF="property.html"
+>Property</A
+> — A unit of data associated with some part of a computer system</DT
+><DT
+><A
+HREF="pubdate.html"
+>PubDate</A
+> — The date of publication of a document</DT
+><DT
+><A
+HREF="publisher.html"
+>Publisher</A
+> — The publisher of a document</DT
+><DT
+><A
+HREF="publishername.html"
+>PublisherName</A
+> — The name of the publisher of a document</DT
+><DT
+><A
+HREF="pubsnumber.html"
+>PubsNumber</A
+> — A number assigned to a publication other than an <SPAN
+CLASS="ACRONYM"
+>ISBN</SPAN
+> or <SPAN
+CLASS="ACRONYM"
+>ISSN</SPAN
+> or inventory part number</DT
+><DT
+><A
+HREF="qandadiv.html"
+>QandADiv</A
+> — A titled division in a <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+></DT
+><DT
+><A
+HREF="qandaentry.html"
+>QandAEntry</A
+> — A question/answer set within a <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+></DT
+><DT
+><A
+HREF="qandaset.html"
+>QandASet</A
+> — A question-and-answer set</DT
+><DT
+><A
+HREF="question.html"
+>Question</A
+> — A question in a <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+></DT
+><DT
+><A
+HREF="quote.html"
+>Quote</A
+> — An inline quotation</DT
+><DT
+><A
+HREF="refclass.html"
+>RefClass</A
+> — The scope or other indication of applicability of a reference entry</DT
+><DT
+><A
+HREF="refdescriptor.html"
+>RefDescriptor</A
+> — A description of the topic of a reference page</DT
+><DT
+><A
+HREF="refentry.html"
+>RefEntry</A
+> — A reference page (originally a UNIX man-style reference page)</DT
+><DT
+><A
+HREF="refentrytitle.html"
+>RefEntryTitle</A
+> — The title of a reference page</DT
+><DT
+><A
+HREF="reference.html"
+>Reference</A
+> — A collection of reference entries</DT
+><DT
+><A
+HREF="refmeta.html"
+>RefMeta</A
+> — Meta-information for a reference entry</DT
+><DT
+><A
+HREF="refmiscinfo.html"
+>RefMiscInfo</A
+> — Meta-information for a reference entry other than the title and volume number</DT
+><DT
+><A
+HREF="refname.html"
+>RefName</A
+> — The name of (one of) the subject(s) of a reference page</DT
+><DT
+><A
+HREF="refnamediv.html"
+>RefNameDiv</A
+> — The name, purpose, and classification of a reference page</DT
+><DT
+><A
+HREF="refpurpose.html"
+>RefPurpose</A
+> — A short (one sentence) synopsis of the topic of a reference page</DT
+><DT
+><A
+HREF="refsect1.html"
+>RefSect1</A
+> — A major subsection of a reference entry</DT
+><DT
+><A
+HREF="refsect1info.html"
+>RefSect1Info</A
+> — Meta-information for a <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+></DT
+><DT
+><A
+HREF="refsect2.html"
+>RefSect2</A
+> — A subsection of a <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+></DT
+><DT
+><A
+HREF="refsect2info.html"
+>RefSect2Info</A
+> — Meta-information for a <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+></DT
+><DT
+><A
+HREF="refsect3.html"
+>RefSect3</A
+> — A subsection of a <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+></DT
+><DT
+><A
+HREF="refsect3info.html"
+>RefSect3Info</A
+> — Meta-information for a <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+></DT
+><DT
+><A
+HREF="refsynopsisdiv.html"
+>RefSynopsisDiv</A
+> — A syntactic synopsis of the subject of the reference page</DT
+><DT
+><A
+HREF="refsynopsisdivinfo.html"
+>RefSynopsisDivInfo</A
+> — Meta-information for a RefSynopsisDiv</DT
+><DT
+><A
+HREF="releaseinfo.html"
+>ReleaseInfo</A
+> — Information about a particular release of a document</DT
+><DT
+><A
+HREF="replaceable.html"
+>Replaceable</A
+> — Content that may or must be replaced by the user</DT
+><DT
+><A
+HREF="returnvalue.html"
+>ReturnValue</A
+> — The value returned by a function</DT
+><DT
+><A
+HREF="revhistory.html"
+>RevHistory</A
+> — A history of the revisions to a document</DT
+><DT
+><A
+HREF="revision.html"
+>Revision</A
+> — An entry describing a single revision in the history of the revisions to a document</DT
+><DT
+><A
+HREF="revnumber.html"
+>RevNumber</A
+> — A document revision number</DT
+><DT
+><A
+HREF="revremark.html"
+>RevRemark</A
+> — A description of a revision to a document</DT
+><DT
+><A
+HREF="row.html"
+>row</A
+> — A row in a table</DT
+><DT
+><A
+HREF="sbr.html"
+>SBR</A
+> — An explicit line break in a command synopsis</DT
+><DT
+><A
+HREF="screen.html"
+>Screen</A
+> — Text that a user sees or might see on a computer screen</DT
+><DT
+><A
+HREF="screenco.html"
+>ScreenCO</A
+> — A screen with associated areas used in callouts</DT
+><DT
+><A
+HREF="screeninfo.html"
+>ScreenInfo</A
+> — Information about how a screen shot was produced</DT
+><DT
+><A
+HREF="screenshot.html"
+>ScreenShot</A
+> — A representation of what the user sees or might see on a computer screen</DT
+><DT
+><A
+HREF="secondary.html"
+>Secondary</A
+> — A secondary word or phrase in an index term</DT
+><DT
+><A
+HREF="secondaryie.html"
+>SecondaryIE</A
+> — A secondary term in an index entry, rather than in the text</DT
+><DT
+><A
+HREF="sect1.html"
+>Sect1</A
+> — A top-level section of document</DT
+><DT
+><A
+HREF="sect1info.html"
+>Sect1Info</A
+> — Meta-information for a <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+></DT
+><DT
+><A
+HREF="sect2.html"
+>Sect2</A
+> — A subsection within a <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+></DT
+><DT
+><A
+HREF="sect2info.html"
+>Sect2Info</A
+> — Meta-information for a <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+></DT
+><DT
+><A
+HREF="sect3.html"
+>Sect3</A
+> — A subsection within a <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+></DT
+><DT
+><A
+HREF="sect3info.html"
+>Sect3Info</A
+> — Meta-information for a <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+></DT
+><DT
+><A
+HREF="sect4.html"
+>Sect4</A
+> — A subsection within a <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+></DT
+><DT
+><A
+HREF="sect4info.html"
+>Sect4Info</A
+> — Meta-information for a <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+></DT
+><DT
+><A
+HREF="sect5.html"
+>Sect5</A
+> — A subsection within a <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+></DT
+><DT
+><A
+HREF="sect5info.html"
+>Sect5Info</A
+> — Meta-information for a <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+></DT
+><DT
+><A
+HREF="section.html"
+>Section</A
+> — A recursive section</DT
+><DT
+><A
+HREF="sectioninfo.html"
+>SectionInfo</A
+> — Meta-information for a recursive section</DT
+><DT
+><A
+HREF="see.html"
+>See</A
+> — Part of an index term directing the reader instead to another entry in the index</DT
+><DT
+><A
+HREF="seealso.html"
+>SeeAlso</A
+> — Part of an index term directing the reader also to another entry in the index</DT
+><DT
+><A
+HREF="seealsoie.html"
+>SeeAlsoIE</A
+> — A <SPAN
+CLASS="QUOTE"
+>"See also"</SPAN
+> entry in an index, rather than in the text</DT
+><DT
+><A
+HREF="seeie.html"
+>SeeIE</A
+> — A <SPAN
+CLASS="QUOTE"
+>"See"</SPAN
+> entry in an index, rather than in the text</DT
+><DT
+><A
+HREF="seg.html"
+>Seg</A
+> — An element of a list item in a segmented list</DT
+><DT
+><A
+HREF="seglistitem.html"
+>SegListItem</A
+> — A list item in a segmented list</DT
+><DT
+><A
+HREF="segmentedlist.html"
+>SegmentedList</A
+> — A segmented list, a list of sets of elements</DT
+><DT
+><A
+HREF="segtitle.html"
+>SegTitle</A
+> — The title of an element of a list item in a segmented list</DT
+><DT
+><A
+HREF="seriesinfo.html"
+>SeriesInfo</A
+> — Information about the publication series of which a book is a part</DT
+><DT
+><A
+HREF="seriesvolnums.html"
+>SeriesVolNums</A
+> — Numbers of the volumes in a series of books</DT
+><DT
+><A
+HREF="set.html"
+>Set</A
+> — A collection of books</DT
+><DT
+><A
+HREF="setindex.html"
+>SetIndex</A
+> — An index to a set of books</DT
+><DT
+><A
+HREF="setinfo.html"
+>SetInfo</A
+> — Meta-information for a <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+></DT
+><DT
+><A
+HREF="sgmltag.html"
+>SGMLTag</A
+> — A component of SGML markup</DT
+><DT
+><A
+HREF="shortaffil.html"
+>ShortAffil</A
+> — A brief description of an affiliation</DT
+><DT
+><A
+HREF="shortcut.html"
+>Shortcut</A
+> — A key combination for an action that is also accessible through a menu</DT
+><DT
+><A
+HREF="sidebar.html"
+>Sidebar</A
+> — A portion of a document that is isolated from the main narrative flow</DT
+><DT
+><A
+HREF="simpara.html"
+>SimPara</A
+> — A paragraph that contains only text and inline markup, no block elements</DT
+><DT
+><A
+HREF="simplelist.html"
+>SimpleList</A
+> — An undecorated list of single words or short phrases</DT
+><DT
+><A
+HREF="simplesect.html"
+>SimpleSect</A
+> — A section of a document with no subdivisions</DT
+><DT
+><A
+HREF="spanspec.html"
+>spanspec</A
+> — Formatting information for a spanned column in a table</DT
+><DT
+><A
+HREF="state.html"
+>State</A
+> — A state or province in an address</DT
+><DT
+><A
+HREF="step.html"
+>Step</A
+> — A unit of action in a procedure</DT
+><DT
+><A
+HREF="street.html"
+>Street</A
+> — A street address in an address</DT
+><DT
+><A
+HREF="structfield.html"
+>StructField</A
+> — A field in a structure (in the programming language sense)</DT
+><DT
+><A
+HREF="structname.html"
+>StructName</A
+> — The name of a structure (in the programming language sense)</DT
+><DT
+><A
+HREF="subject.html"
+>Subject</A
+> — One of a group of terms describing the subject matter of a document</DT
+><DT
+><A
+HREF="subjectset.html"
+>SubjectSet</A
+> — A set of terms describing the subject matter of a document</DT
+><DT
+><A
+HREF="subjectterm.html"
+>SubjectTerm</A
+> — A term in a group of terms describing the subject matter of a document</DT
+><DT
+><A
+HREF="subscript.html"
+>Subscript</A
+> — A subscript (as in H<SUB
+>2</SUB
+>O, the molecular formula for water)</DT
+><DT
+><A
+HREF="substeps.html"
+>SubSteps</A
+> — A wrapper for steps that occur within steps in a procedure</DT
+><DT
+><A
+HREF="subtitle.html"
+>Subtitle</A
+> — The subtitle of a document</DT
+><DT
+><A
+HREF="superscript.html"
+>Superscript</A
+> — A superscript (as in x<SUP
+>2</SUP
+>, the mathematical notation for x multiplied by itself)</DT
+><DT
+><A
+HREF="surname.html"
+>Surname</A
+> — A family name; in western cultures the <SPAN
+CLASS="QUOTE"
+>"last name"</SPAN
+></DT
+><DT
+><A
+HREF="symbol.html"
+>Symbol</A
+> — A name that is replaced by a value before processing</DT
+><DT
+><A
+HREF="synopfragment.html"
+>SynopFragment</A
+> — A portion of a <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+> broken out from the main body of the synopsis</DT
+><DT
+><A
+HREF="synopfragmentref.html"
+>SynopFragmentRef</A
+> — A reference to a fragment of a command synopsis</DT
+><DT
+><A
+HREF="synopsis.html"
+>Synopsis</A
+> — A general-purpose element for representing the syntax of commands or functions</DT
+><DT
+><A
+HREF="systemitem.html"
+>SystemItem</A
+> — A system-related item or term</DT
+><DT
+><A
+HREF="table.html"
+>Table</A
+> — A formal table in a document</DT
+><DT
+><A
+HREF="tbody.html"
+>tbody</A
+> — A wrapper for the rows of a table or informal table</DT
+><DT
+><A
+HREF="term.html"
+>Term</A
+> — The word or phrase being defined or described in a variable list</DT
+><DT
+><A
+HREF="tertiary.html"
+>Tertiary</A
+> — A tertiary word or phrase in an index term</DT
+><DT
+><A
+HREF="tertiaryie.html"
+>TertiaryIE</A
+> — A tertiary term in an index entry, rather than in the text</DT
+><DT
+><A
+HREF="textobject.html"
+>TextObject</A
+> — A wrapper for a text description of an object and its associated meta-information</DT
+><DT
+><A
+HREF="tfoot.html"
+>tfoot</A
+> — A table footer consisting of one or more rows</DT
+><DT
+><A
+HREF="tgroup.html"
+>tgroup</A
+> — A wrapper for the main content of a table, or part of a table</DT
+><DT
+><A
+HREF="thead.html"
+>thead</A
+> — A table header consisting of one or more rows</DT
+><DT
+><A
+HREF="tip.html"
+>Tip</A
+> — A suggestion to the user, set off from the text</DT
+><DT
+><A
+HREF="title.html"
+>Title</A
+> — The text of the title of a section of a document or of a formal block-level element</DT
+><DT
+><A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+> — The abbreviation of a <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+></DT
+><DT
+><A
+HREF="toc.html"
+>ToC</A
+> — A table of contents</DT
+><DT
+><A
+HREF="tocback.html"
+>ToCback</A
+> — An entry in a table of contents for a back matter component</DT
+><DT
+><A
+HREF="tocchap.html"
+>ToCchap</A
+> — An entry in a table of contents for a component in the body of a document</DT
+><DT
+><A
+HREF="tocentry.html"
+>ToCentry</A
+> — A component title in a table of contents</DT
+><DT
+><A
+HREF="tocfront.html"
+>ToCfront</A
+> — An entry in a table of contents for a front matter component</DT
+><DT
+><A
+HREF="toclevel1.html"
+>ToClevel1</A
+> — A top-level entry within a table of contents entry for a chapter-like component</DT
+><DT
+><A
+HREF="toclevel2.html"
+>ToClevel2</A
+> — A second-level entry within a table of contents entry for a chapter-like component</DT
+><DT
+><A
+HREF="toclevel3.html"
+>ToClevel3</A
+> — A third-level entry within a table of contents entry for a chapter-like component</DT
+><DT
+><A
+HREF="toclevel4.html"
+>ToClevel4</A
+> — A fourth-level entry within a table of contents entry for a chapter-like component</DT
+><DT
+><A
+HREF="toclevel5.html"
+>ToClevel5</A
+> — A fifth-level entry within a table of contents entry for a chapter-like component</DT
+><DT
+><A
+HREF="tocpart.html"
+>ToCpart</A
+> — An entry in a table of contents for a part of a book</DT
+><DT
+><A
+HREF="token.html"
+>Token</A
+> — A unit of information</DT
+><DT
+><A
+HREF="trademark.html"
+>Trademark</A
+> — A trademark</DT
+><DT
+><A
+HREF="type.html"
+>Type</A
+> — The classification of a value</DT
+><DT
+><A
+HREF="ulink.html"
+>ULink</A
+> — A link that addresses its target by means of a URL (Uniform Resource Locator)</DT
+><DT
+><A
+HREF="userinput.html"
+>UserInput</A
+> — Data entered by the user</DT
+><DT
+><A
+HREF="varargs.html"
+>VarArgs</A
+> — An empty element in a function synopsis indicating a variable number of arguments</DT
+><DT
+><A
+HREF="variablelist.html"
+>VariableList</A
+> — A list in which each entry is composed of a set of one or more terms and an associated description</DT
+><DT
+><A
+HREF="varlistentry.html"
+>VarListEntry</A
+> — A wrapper for a set of terms and the associated description in a variable list</DT
+><DT
+><A
+HREF="varname.html"
+>VarName</A
+> — The name of a variable</DT
+><DT
+><A
+HREF="videodata.html"
+>VideoData</A
+> — Pointer to external video data</DT
+><DT
+><A
+HREF="videoobject.html"
+>VideoObject</A
+> — A wrapper for video data and its associated meta-information</DT
+><DT
+><A
+HREF="void.html"
+>Void</A
+> — An empty element in a function synopsis indicating that the function in question takes no arguments</DT
+><DT
+><A
+HREF="volumenum.html"
+>VolumeNum</A
+> — The volume number of a document in a set (as of books in a set or articles in a journal)</DT
+><DT
+><A
+HREF="warning.html"
+>Warning</A
+> — An admonition set off from the text</DT
+><DT
+><A
+HREF="wordasword.html"
+>WordAsWord</A
+> — A word meant specifically as a word and not representing anything else</DT
+><DT
+><A
+HREF="xref.html"
+>XRef</A
+> — A cross reference to another part of the document</DT
+><DT
+><A
+HREF="year.html"
+>Year</A
+> — The year of publication of a document</DT
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="part2.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="abbrev.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Reference</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part2.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Abbrev</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

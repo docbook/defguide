@@ -1,0 +1,630 @@
+<HTML
+><HEAD
+><TITLE
+>Group</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="GraphicCO"
+HREF="graphicco.html"><LINK
+REL="NEXT"
+TITLE="GUIButton"
+HREF="guibutton.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="graphicco.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="guibutton.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>Group</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN46902"
+></A
+><H2
+>Name</H2
+>Group&nbsp;--&nbsp;A group of elements in a <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+></DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN46906"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>Group ::=
+((<A
+HREF="arg.html"
+>Arg</A
+>|<A
+HREF="group.html"
+>Group</A
+>|<A
+HREF="option.html"
+>Option</A
+>|<A
+HREF="synopfragmentref.html"
+>SynopFragmentRef</A
+>|<A
+HREF="replaceable.html"
+>Replaceable</A
+>|<A
+HREF="sbr.html"
+>SBR</A
+>)+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Rep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>Norepeat<BR>Repeat</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>"Norepeat"</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Choice</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>Opt<BR>Optmult<BR>Plain<BR>Req<BR>Reqmult</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>"Opt"</TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN46968"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+> surrounds several related items. Usually, they are
+grouped because they are mutually exclusive. The user is expected to select
+one of the items.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN46972"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted inline. The additional processing expectations of a
+<A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+> are significant.  For a complete discussion,
+see <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>.</P
+><P
+></P
+><UL
+><LI
+><P
+>Multiple arguments within a group are considered exclusive and are
+separated by vertical bars.</P
+></LI
+><LI
+><P
+>Brackets are used to distinguish between optional, required, or plain
+arguments.  Usually square brackets are placed around optional
+arguments, <TT
+CLASS="OPTION"
+>[-f | -g]</TT
+>, and curly brackets are placed
+around required arguments, <TT
+CLASS="OPTION"
+>{-f | -g}</TT
+>.  Plain
+arguments are required, but are not decorated with brackets.</P
+></LI
+><LI
+><P
+>Repeatable arguments are followed by an ellipsis.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN46986"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>&#13;The <TT
+CLASS="LITERAL"
+>OptMult</TT
+> and <TT
+CLASS="LITERAL"
+>ReqMult</TT
+> values for the
+<SPAN
+CLASS="SGMLTAG"
+>Choice</SPAN
+> attribute will be removed in
+DocBook <SPAN
+CLASS="ACRONYM"
+>V4.0</SPAN
+>.  Use the <SPAN
+CLASS="SGMLTAG"
+>Rep</SPAN
+> attribute
+instead to indicate that the choice is repeatable.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN46998"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain Group:
+<A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>, <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN47014"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in Group:
+<A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>, <A
+HREF="option.html"
+><TT
+CLASS="SGMLTAG"
+>Option</TT
+></A
+>, <A
+HREF="replaceable.html"
+><TT
+CLASS="SGMLTAG"
+>Replaceable</TT
+></A
+>, <A
+HREF="sbr.html"
+><TT
+CLASS="SGMLTAG"
+>SBR</TT
+></A
+>, <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN47044"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Choice</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Choice</SPAN
+> indicates whether the <A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>
+is required (<TT
+CLASS="LITERAL"
+>Req</TT
+> or <TT
+CLASS="LITERAL"
+>Plain</TT
+>) or
+optional (<TT
+CLASS="LITERAL"
+>Opt</TT
+>). Arguments identified as <TT
+CLASS="LITERAL"
+>Plain</TT
+>
+are required, but are shown without additional decoration. The
+<TT
+CLASS="LITERAL"
+>OptMult</TT
+> and <TT
+CLASS="LITERAL"
+>ReqMult</TT
+> choices will
+be removed in DocBook V4.0; use the <SPAN
+CLASS="SGMLTAG"
+>Rep</SPAN
+>
+attribute instead.</P
+></DD
+><DT
+><B
+>Rep</B
+></DT
+><DD
+><P
+>A <SPAN
+CLASS="SGMLTAG"
+>Rep</SPAN
+> value of <TT
+CLASS="LITERAL"
+>Repeat</TT
+> indicates that
+the <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+> is reapeatable. This is frequently rendered with an
+ellipsis.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN47067"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sbr.html"
+><TT
+CLASS="SGMLTAG"
+>SBR</TT
+></A
+>, <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>, <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN47089"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>,
+<A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="graphicco.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="guibutton.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>GraphicCO</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>GUIButton</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

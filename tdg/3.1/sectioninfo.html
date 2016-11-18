@@ -1,0 +1,908 @@
+<HTML
+><HEAD
+><TITLE
+>SectionInfo</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Section"
+HREF="section.html"><LINK
+REL="NEXT"
+TITLE="See"
+HREF="see.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="section.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="see.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SectionInfo</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN100749"
+></A
+><H2
+>Name</H2
+>SectionInfo&nbsp;--&nbsp;Meta-information for a recursive section</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN100752"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SectionInfo ::=
+((<A
+HREF="graphic.html"
+>Graphic</A
+>|<A
+HREF="mediaobject.html"
+>MediaObject</A
+>|<A
+HREF="legalnotice.html"
+>LegalNotice</A
+>|<A
+HREF="modespec.html"
+>ModeSpec</A
+>|<A
+HREF="subjectset.html"
+>SubjectSet</A
+>|<A
+HREF="keywordset.html"
+>KeywordSet</A
+>|
+  <A
+HREF="itermset.html"
+>ITermSet</A
+>|<A
+HREF="abbrev.html"
+>Abbrev</A
+>|<A
+HREF="abstract.html"
+>Abstract</A
+>|<A
+HREF="address.html"
+>Address</A
+>|<A
+HREF="artpagenums.html"
+>ArtPageNums</A
+>|<A
+HREF="author.html"
+>Author</A
+>|<A
+HREF="authorgroup.html"
+>AuthorGroup</A
+>|
+  <A
+HREF="authorinitials.html"
+>AuthorInitials</A
+>|<A
+HREF="bibliomisc.html"
+>BiblioMisc</A
+>|<A
+HREF="biblioset.html"
+>BiblioSet</A
+>|<A
+HREF="collab.html"
+>Collab</A
+>|<A
+HREF="confgroup.html"
+>ConfGroup</A
+>|
+  <A
+HREF="contractnum.html"
+>ContractNum</A
+>|<A
+HREF="contractsponsor.html"
+>ContractSponsor</A
+>|<A
+HREF="copyright.html"
+>Copyright</A
+>|<A
+HREF="corpauthor.html"
+>CorpAuthor</A
+>|<A
+HREF="corpname.html"
+>CorpName</A
+>|<A
+HREF="date.html"
+>Date</A
+>|
+  <A
+HREF="edition.html"
+>Edition</A
+>|<A
+HREF="editor.html"
+>Editor</A
+>|<A
+HREF="invpartnumber.html"
+>InvPartNumber</A
+>|<A
+HREF="isbn.html"
+>ISBN</A
+>|<A
+HREF="issn.html"
+>ISSN</A
+>|<A
+HREF="issuenum.html"
+>IssueNum</A
+>|<A
+HREF="orgname.html"
+>OrgName</A
+>|
+  <A
+HREF="othercredit.html"
+>OtherCredit</A
+>|<A
+HREF="pagenums.html"
+>PageNums</A
+>|<A
+HREF="printhistory.html"
+>PrintHistory</A
+>|<A
+HREF="productname.html"
+>ProductName</A
+>|<A
+HREF="productnumber.html"
+>ProductNumber</A
+>|
+  <A
+HREF="pubdate.html"
+>PubDate</A
+>|<A
+HREF="publisher.html"
+>Publisher</A
+>|<A
+HREF="publishername.html"
+>PublisherName</A
+>|<A
+HREF="pubsnumber.html"
+>PubsNumber</A
+>|<A
+HREF="releaseinfo.html"
+>ReleaseInfo</A
+>|
+  <A
+HREF="revhistory.html"
+>RevHistory</A
+>|<A
+HREF="seriesvolnums.html"
+>SeriesVolNums</A
+>|<A
+HREF="subtitle.html"
+>Subtitle</A
+>|<A
+HREF="title.html"
+>Title</A
+>|<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>|<A
+HREF="volumenum.html"
+>VolumeNum</A
+>|
+  <A
+HREF="citetitle.html"
+>CiteTitle</A
+>|<A
+HREF="honorific.html"
+>Honorific</A
+>|<A
+HREF="firstname.html"
+>FirstName</A
+>|<A
+HREF="surname.html"
+>Surname</A
+>|<A
+HREF="lineage.html"
+>Lineage</A
+>|<A
+HREF="othername.html"
+>OtherName</A
+>|
+  <A
+HREF="affiliation.html"
+>Affiliation</A
+>|<A
+HREF="authorblurb.html"
+>AuthorBlurb</A
+>|<A
+HREF="contrib.html"
+>Contrib</A
+>|<A
+HREF="indexterm.html"
+>IndexTerm</A
+>)+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN100834"
+></A
+><H2
+>Description</H2
+><P
+>Like the other "info" elements, <A
+HREF="sectioninfo.html"
+><TT
+CLASS="SGMLTAG"
+>SectionInfo</TT
+></A
+> contains
+meta-information about the section of the document in which it occurs.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN100838"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Suppressed. Many of the elements in this wrapper may be
+used in presentation, but they are not generally printed as part
+of the formatting of the wrapper. The wrapper merely serves to identify
+where they occur.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN100841"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>&#13;<A
+HREF="authorblurb.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorBlurb</TT
+></A
+> and <A
+HREF="affiliation.html"
+><TT
+CLASS="SGMLTAG"
+>Affiliation</TT
+></A
+> will be removed
+from the inline content of <A
+HREF="sectioninfo.html"
+><TT
+CLASS="SGMLTAG"
+>SectionInfo</TT
+></A
+> in DocBook <SPAN
+CLASS="ACRONYM"
+>V4.0</SPAN
+>.
+A new wrapper element will be created to associate this information with
+authors, editors, and other contributors.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN100852"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SectionInfo:
+<A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN100859"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in SectionInfo:
+<A
+HREF="abbrev.html"
+><TT
+CLASS="SGMLTAG"
+>Abbrev</TT
+></A
+>, <A
+HREF="abstract.html"
+><TT
+CLASS="SGMLTAG"
+>Abstract</TT
+></A
+>, <A
+HREF="address.html"
+><TT
+CLASS="SGMLTAG"
+>Address</TT
+></A
+>, <A
+HREF="affiliation.html"
+><TT
+CLASS="SGMLTAG"
+>Affiliation</TT
+></A
+>, <A
+HREF="artpagenums.html"
+><TT
+CLASS="SGMLTAG"
+>ArtPageNums</TT
+></A
+>, <A
+HREF="author.html"
+><TT
+CLASS="SGMLTAG"
+>Author</TT
+></A
+>, <A
+HREF="authorblurb.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorBlurb</TT
+></A
+>, <A
+HREF="authorgroup.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorGroup</TT
+></A
+>, <A
+HREF="authorinitials.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorInitials</TT
+></A
+>, <A
+HREF="bibliomisc.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioMisc</TT
+></A
+>, <A
+HREF="biblioset.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioSet</TT
+></A
+>, <A
+HREF="citetitle.html"
+><TT
+CLASS="SGMLTAG"
+>CiteTitle</TT
+></A
+>, <A
+HREF="collab.html"
+><TT
+CLASS="SGMLTAG"
+>Collab</TT
+></A
+>, <A
+HREF="confgroup.html"
+><TT
+CLASS="SGMLTAG"
+>ConfGroup</TT
+></A
+>, <A
+HREF="contractnum.html"
+><TT
+CLASS="SGMLTAG"
+>ContractNum</TT
+></A
+>, <A
+HREF="contractsponsor.html"
+><TT
+CLASS="SGMLTAG"
+>ContractSponsor</TT
+></A
+>, <A
+HREF="contrib.html"
+><TT
+CLASS="SGMLTAG"
+>Contrib</TT
+></A
+>, <A
+HREF="copyright.html"
+><TT
+CLASS="SGMLTAG"
+>Copyright</TT
+></A
+>, <A
+HREF="corpauthor.html"
+><TT
+CLASS="SGMLTAG"
+>CorpAuthor</TT
+></A
+>, <A
+HREF="corpname.html"
+><TT
+CLASS="SGMLTAG"
+>CorpName</TT
+></A
+>, <A
+HREF="date.html"
+><TT
+CLASS="SGMLTAG"
+>Date</TT
+></A
+>, <A
+HREF="edition.html"
+><TT
+CLASS="SGMLTAG"
+>Edition</TT
+></A
+>, <A
+HREF="editor.html"
+><TT
+CLASS="SGMLTAG"
+>Editor</TT
+></A
+>, <A
+HREF="firstname.html"
+><TT
+CLASS="SGMLTAG"
+>FirstName</TT
+></A
+>, <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>, <A
+HREF="honorific.html"
+><TT
+CLASS="SGMLTAG"
+>Honorific</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>, <A
+HREF="invpartnumber.html"
+><TT
+CLASS="SGMLTAG"
+>InvPartNumber</TT
+></A
+>, <A
+HREF="isbn.html"
+><TT
+CLASS="SGMLTAG"
+>ISBN</TT
+></A
+>, <A
+HREF="issn.html"
+><TT
+CLASS="SGMLTAG"
+>ISSN</TT
+></A
+>, <A
+HREF="issuenum.html"
+><TT
+CLASS="SGMLTAG"
+>IssueNum</TT
+></A
+>, <A
+HREF="itermset.html"
+><TT
+CLASS="SGMLTAG"
+>ITermSet</TT
+></A
+>, <A
+HREF="keywordset.html"
+><TT
+CLASS="SGMLTAG"
+>KeywordSet</TT
+></A
+>, <A
+HREF="legalnotice.html"
+><TT
+CLASS="SGMLTAG"
+>LegalNotice</TT
+></A
+>, <A
+HREF="lineage.html"
+><TT
+CLASS="SGMLTAG"
+>Lineage</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="modespec.html"
+><TT
+CLASS="SGMLTAG"
+>ModeSpec</TT
+></A
+>, <A
+HREF="orgname.html"
+><TT
+CLASS="SGMLTAG"
+>OrgName</TT
+></A
+>, <A
+HREF="othercredit.html"
+><TT
+CLASS="SGMLTAG"
+>OtherCredit</TT
+></A
+>, <A
+HREF="othername.html"
+><TT
+CLASS="SGMLTAG"
+>OtherName</TT
+></A
+>, <A
+HREF="pagenums.html"
+><TT
+CLASS="SGMLTAG"
+>PageNums</TT
+></A
+>, <A
+HREF="printhistory.html"
+><TT
+CLASS="SGMLTAG"
+>PrintHistory</TT
+></A
+>, <A
+HREF="productname.html"
+><TT
+CLASS="SGMLTAG"
+>ProductName</TT
+></A
+>, <A
+HREF="productnumber.html"
+><TT
+CLASS="SGMLTAG"
+>ProductNumber</TT
+></A
+>, <A
+HREF="pubdate.html"
+><TT
+CLASS="SGMLTAG"
+>PubDate</TT
+></A
+>, <A
+HREF="publisher.html"
+><TT
+CLASS="SGMLTAG"
+>Publisher</TT
+></A
+>, <A
+HREF="publishername.html"
+><TT
+CLASS="SGMLTAG"
+>PublisherName</TT
+></A
+>, <A
+HREF="pubsnumber.html"
+><TT
+CLASS="SGMLTAG"
+>PubsNumber</TT
+></A
+>, <A
+HREF="releaseinfo.html"
+><TT
+CLASS="SGMLTAG"
+>ReleaseInfo</TT
+></A
+>, <A
+HREF="revhistory.html"
+><TT
+CLASS="SGMLTAG"
+>RevHistory</TT
+></A
+>, <A
+HREF="seriesvolnums.html"
+><TT
+CLASS="SGMLTAG"
+>SeriesVolNums</TT
+></A
+>, <A
+HREF="subjectset.html"
+><TT
+CLASS="SGMLTAG"
+>SubjectSet</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="surname.html"
+><TT
+CLASS="SGMLTAG"
+>Surname</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="volumenum.html"
+><TT
+CLASS="SGMLTAG"
+>VolumeNum</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN101039"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="artheader.html"
+><TT
+CLASS="SGMLTAG"
+>ArtHeader</TT
+></A
+>, <A
+HREF="bookbiblio.html"
+><TT
+CLASS="SGMLTAG"
+>BookBiblio</TT
+></A
+>, <A
+HREF="bookinfo.html"
+><TT
+CLASS="SGMLTAG"
+>BookInfo</TT
+></A
+>, <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="objectinfo.html"
+><TT
+CLASS="SGMLTAG"
+>ObjectInfo</TT
+></A
+>, <A
+HREF="refsynopsisdivinfo.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDivInfo</TT
+></A
+>, <A
+HREF="screeninfo.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenInfo</TT
+></A
+>, <A
+HREF="sect1info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1Info</TT
+></A
+>, <A
+HREF="sect2info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2Info</TT
+></A
+>, <A
+HREF="sect3info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3Info</TT
+></A
+>, <A
+HREF="sect4info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4Info</TT
+></A
+>, <A
+HREF="sect5info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5Info</TT
+></A
+>, <A
+HREF="setinfo.html"
+><TT
+CLASS="SGMLTAG"
+>SetInfo</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN101082"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="section.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="see.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Section</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>See</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

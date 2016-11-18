@@ -1,0 +1,349 @@
+<HTML
+><HEAD
+><TITLE
+>SBR</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="row"
+HREF="row.html"><LINK
+REL="NEXT"
+TITLE="Screen"
+HREF="screen.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="row.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="screen.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SBR</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN93648"
+></A
+><H2
+>Name</H2
+>SBR&nbsp;--&nbsp;An explicit line break in a command synopsis</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN93651"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SBR ::=
+EMPTY</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN93676"
+></A
+><H2
+>Description</H2
+><P
+>For the most part, DocBook attempts to describe document
+structure rather than presentation.  However, in some complex
+environments, it is possible to demonstrate that there is no
+reasonable set of processing expectations that can guarantee
+correct formatting.</P
+><P
+><A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+> is one of those environments.  Within a long
+synopsis, it may be necessary to specify the location of a line break
+explicitly.</P
+><P
+>The <A
+HREF="sbr.html"
+><TT
+CLASS="SGMLTAG"
+>SBR</TT
+></A
+> element indicates the position of such a
+line break in a <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>. It is purely
+presentational.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN93684"
+></A
+><H3
+>Processing expectations</H3
+><P
+><A
+HREF="sbr.html"
+><TT
+CLASS="SGMLTAG"
+>SBR</TT
+></A
+> causes a line break.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN93688"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SBR:
+<A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN93701"
+></A
+><H3
+>Children</H3
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN93711"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>, <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN93733"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="row.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="screen.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>row</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Screen</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

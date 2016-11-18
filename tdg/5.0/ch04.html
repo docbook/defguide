@@ -1,0 +1,125 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Publishing DocBook Documents</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="ch03.html" title="Validating DocBook Documents"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="Part  I .  Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="Customizing DocBook" href="ch05.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="ch-publish" class="chapter"><header class="chapter-titlepage"><h2>Publishing DocBook Documents</h2><p class="releaseinfo">$Revision$</p></header><p><a class="indexterm" name="ch-publish.2.1"></a><a class="indexterm" name="ch-publish.2.2"></a><a class="indexterm" name="ch-publish.2.3"></a><a class="indexterm" name="ch-publish.2.4"></a>Creating and validating <span class="acronym">XML</span> documents is
+  usually only half the battle. After you’ve composed your document, you’ll
+  want to publish it. Publishing, for our purposes, means either print or web
+  publishing. For <span class="acronym">XML</span> documents, this is usually
+  accomplished with some kind of <em class="glossterm">stylesheet</em>. In some
+  environments, it is now possible to publish an <span class="acronym">XML</span>
+  document on the Web simply by putting it online with a stylesheet.</p><section id="stylesurvey" class="section"><div class="section-titlepage"><h3>1. A Survey of Stylesheet Languages</h3></div><p><a class="indexterm" name="idx.stylesheets"></a><a class="indexterm" name="stylesurvey.2.2"></a>Over the years, a number of attempts have been made to
+    produce a standard stylesheet language and, failing that, a large number
+    of proprietary languages have been developed. Since this book was first
+    written, three standards have emerged as the clear <span class="keep-together">frontrunners</span>:</p><div class="variablelist"><dl><dt><span class="term"><span class="acronym">CSS</span></span></dt><dd><p><a class="indexterm" name="stylesurvey.3.1.2.1.1"></a><a class="indexterm" name="stylesurvey.3.1.2.1.2"></a><a class="indexterm" name="stylesurvey.3.1.2.1.3"></a>The <span class="acronym">W3C</span> <span class="acronym">CSS</span>
+          Working Group created <span class="acronym">CSS</span> as a style attachment
+          language for <span class="acronym">HTML</span>. It has also been advanced as a
+          stylesheet language for <span class="acronym">XML</span>. Some browsers will
+          style arbitrary <span class="acronym">XML</span> with <span class="acronym">CSS</span>
+          and some commercial products exist that will render
+          <span class="acronym">XML</span>+<span class="acronym">CSS</span> either online or in
+          print.</p></dd><dt><span class="term"><span class="acronym">XSL</span></span></dt><dd><p><a class="indexterm" name="stylesurvey.3.2.2.1.1"></a><a class="indexterm" name="stylesurvey.3.2.2.1.2"></a><a class="indexterm" name="stylesurvey.3.2.2.1.3"></a><span class="acronym">XSLT</span> 1.0 is well established and is
+          probably the most common styling technology for DocBook.
+          <span class="acronym">XSLT</span> 2.0 offers a number of important new
+          features (at the expense of some complexity, naturally) and is
+          growing in popularity.</p><p>It’s worth observing that there are two, related technologies
+          in play here. <span class="acronym">XSLT</span> 1.0 and 2.0, the
+          transformation languages, and <span class="acronym">XSL</span> Formatting
+          Objects (<span class="acronym">XSL-FO</span>). <span class="acronym">XSL</span>-FO is an
+          <span class="acronym">XML</span> vocabulary for describing constraints on page
+          layout.</p></dd><dt><span class="term">XQuery</span></dt><dd><p><a class="indexterm" name="stylesurvey.3.3.2.1.1"></a><a class="indexterm" name="stylesurvey.3.3.2.1.2"></a><a class="indexterm" name="stylesurvey.3.3.2.1.3"></a>XQuery 1.0, developed in parallel with
+          <span class="acronym">XPath</span> 2.0, provides a different set of features
+          than <span class="acronym">XSL</span>, but can be used to transform DocBook
+          into other formats.</p></dd></dl></div><section id="styleexamples" class="section"><div class="section-titlepage"><h4>1.1. Stylesheet Examples</h4></div><p><a class="indexterm" name="styleexamples.2.1"></a>By way of comparison, here’s an example of each of the
+      standard style languages. In each case, the stylesheet fragment shown
+      contains the rules that reasonably formatted the following
+      paragraph:</p><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;para&gt;This is an example paragraph. It should be presented in a
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>reasonable body font. &lt;emphasis&gt;Emphasized&lt;/emphasis&gt; words
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>should be printed in italics. A single level of 
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;emphasis&gt;Nested &lt;emphasis&gt;emphasis&lt;/emphasis&gt; should also
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>be supported.&lt;/emphasis&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;/para&gt;</pre></div><section id="s.css" class="section"><div class="section-titlepage"><h5>1.1.1. <span class="acronym">CSS</span> stylesheet</h5></div><p><a class="indexterm" name="s.css.2.1"></a><span class="acronym">CSS</span> stylesheets consist of selectors
+        and formatting properties, as shown in <a href="ch04.html#ex-css" title="A fragment of a CSS stylesheet">Example 4.1, “A fragment of a <span class="acronym">CSS</span> stylesheet”</a>.</p><figure id="ex-css" class="example-wrapper"><div class="title">Example 4.1. A fragment of a <span class="acronym">CSS</span> stylesheet</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@namespace "http://docbook.org/ns/docbook"
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>para              { display: block }
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>emphasis          { display: inline;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                    font-style: italic; }
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>emphasis emphasis { display: inline;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                    font-style: normal; }</pre></div></div></figure><p>As this edition is being written, namespace selection in
+        <span class="acronym">CSS</span>, while widely supported, is still a Candidate
+        Recommendation at W3C.</p></section><section id="s.xsl" class="section"><div class="section-titlepage"><h5>1.1.2. <span class="acronym">XSL</span> stylesheet</h5></div><p><a class="indexterm" name="s.xsl.2.1"></a><span class="acronym">XSL</span> stylesheets are
+        <span class="acronym">XML</span> documents, as shown in <a href="ch04.html#ex-xsl" title="A fragment of an XSL stylesheet">Example 4.2, “A fragment of an <span class="acronym">XSL</span> stylesheet”</a>. The element in the <span class="acronym">XSL</span>
+        stylesheet that controls the presentation of specific elements is the
+        xsl:template
+        <span class="keep-together">element</span>.</p><figure id="ex-xsl" class="example-wrapper"><div class="title">Example 4.2. A fragment of an <span class="acronym">XSL</span> stylesheet</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version='1.0'?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                xmlns:fo="http://www.w3.org/1999/XSL/Format"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>                xmlns:db="http://docbook.org/ns/docbook"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                version="1.0"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;xsl:template match="db:para"&gt;   
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;fo:block&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:apply-templates/&gt;  
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;/fo:block&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;  
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;xsl:template match="db:emphasis"&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>  &lt;fo:inline font-style="italic"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:apply-templates/&gt;  
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>  &lt;/fo:inline&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;  
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;xsl:template match="db:emphasis/db:emphasis"&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>  &lt;fo:inline font-style="normal"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:apply-templates/&gt;  
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>  &lt;/fo:inline&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;  
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:stylesheet&gt;</pre></div></div></figure><p>A complete stylesheet for generating an entire
+        <span class="acronym">XSL</span>-FO document would require additional
+        boilerplate text not shown.</p></section><section id="s.xquery" class="section"><div class="section-titlepage"><h5>1.1.3. XQuery</h5></div><p><a class="indexterm" name="s.xquery.2.1"></a><span class="acronym">XQuery</span> is expressed in a mixture of
+        text and <span class="acronym">XML</span> fragments, as shown in <a href="ch04.html#ex-xquery" title="A fragment of XQuery">Example 4.3, “A fragment of XQuery”</a>.</p><figure id="ex-xquery" class="example-wrapper"><div class="title">Example 4.3. A fragment of XQuery</div><div class="example"><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>xquery version "1.0";
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>declare default function namespace "http://www.w3.org/2005/xpath-functions";
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>declare namespace db="http://docbook.org/ns/docbook";
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>declare namespace fo="http://www.w3.org/1999/XSL/Format";
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>declare function local:convert($node as node()) as node()* {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  if (empty($node))
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  then
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    ()
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  else
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    typeswitch ($node)
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>      case text() return $node
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      case document-node() return local:convert($node/node())
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>      case element(db:para) return local:para($node)
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      case element(db:emphasis) return local:emphasis($node)
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>      default return ("ERROR: UNEXPECTED NODE", local:convert($node/node()))
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>};
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>declare function local:para($node as element()) as element() {
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>  &lt;fo:block&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    { local:convert($node/node()) }
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>  &lt;/fo:block&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>};
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>declare function local:emphasis($node as element()) as element() {
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>  if ($node/parent::db:emphasis)
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  then
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>    &lt;fo:inline font-style="normal"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      { local:convert($node/node()) }
+<span class="linenumber"> 32</span><span class="linenumber-separator"> </span>    &lt;/fo:inline&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  else
+<span class="linenumber"> 34</span><span class="linenumber-separator"> </span>    &lt;fo:inline font-style="italic"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      { local:convert($node/node()) }
+<span class="linenumber"> 36</span><span class="linenumber-separator"> </span>    &lt;/fo:inline&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>};</pre></div></div></figure><p>A complete query for generating an <span class="acronym">XSL</span>-FO
+        document would require additional boilerplate text not shown.</p></section></section></section><section id="xsl" class="section"><div class="section-titlepage"><h3>2. Using <span class="acronym">XSL</span> to Publish DocBook Documents</h3></div><p><a class="indexterm" name="xsl.2.1"></a>The community of people using DocBook has created a set of
+    open source <span class="acronym">XSL</span> stylesheets that are maintained at
+    <a href="http://sourceforge.net/projects/docbook">Sourceforge.net</a>.
+    These stylesheets can be used to transform DocBook <span class="acronym">XML</span>
+    into a wide variety of formats, including <span class="acronym">HTML</span>,
+    Javahelp, <span class="acronym">XSL-FO</span> (for processing into print), ePub, and
+    <span class="acronym">HTML</span> help.</p><p>For a detailed discussion of using <span class="acronym">XSL</span> to publish
+    DocBook documents, see <em class="citetitle">DocBook XSL: The Complete
+    Guide</em> [<a href="appc.html#Stayton07"><span class="abbrev">Stayton07</span></a>].</p><a class="indexterm" name="xsl.4"></a></section></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Validating DocBook Documents" href="ch03.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="Customizing DocBook" href="ch05.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">Validating DocBook Documents </td><td width="20%" align="center"><a title="Part  I .  Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> Customizing DocBook</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

@@ -1,0 +1,662 @@
+<HTML
+><HEAD
+><TITLE
+>MsgSet</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="MsgRel"
+HREF="msgrel.html"><LINK
+REL="NEXT"
+TITLE="MsgSub"
+HREF="msgsub.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="msgrel.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="msgsub.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>MsgSet</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN70364"
+></A
+><H2
+>Name</H2
+>MsgSet&nbsp;--&nbsp;A detailed set of messages, usually error messages</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN70367"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>MsgSet ::=
+((<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ <A
+HREF="msgentry.html"
+>MsgEntry</A
+>+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.COMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%component.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.COMPOUND.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%compound.class;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.DIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%divcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.REFCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN70411"
+></A
+><H2
+>Description</H2
+><P
+><A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+> is a complex structure designed to hold a detailed
+set of messages, usually error messages.  In addition to the actual text
+of each message, it can contain 
+additional information about each message and the messages related to it.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN70415"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block.</P
+><P
+>On the whole, the semantics of <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>
+are not clearly defined.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN70420"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain MsgSet:
+<A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="bibliodiv.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioDiv</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="glossdiv.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDiv</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="msgexplan.html"
+><TT
+CLASS="SGMLTAG"
+>MsgExplan</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="simplesect.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleSect</TT
+></A
+>, <A
+HREF="step.html"
+><TT
+CLASS="SGMLTAG"
+>Step</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN70511"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in MsgSet:
+<A
+HREF="msgentry.html"
+><TT
+CLASS="SGMLTAG"
+>MsgEntry</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN70532"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="errorcode.html"
+><TT
+CLASS="SGMLTAG"
+>ErrorCode</TT
+></A
+>, <A
+HREF="errorname.html"
+><TT
+CLASS="SGMLTAG"
+>ErrorName</TT
+></A
+>, <A
+HREF="errortype.html"
+><TT
+CLASS="SGMLTAG"
+>ErrorType</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN70545"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE msgset PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;msgset&#62;
+  &#60;msgentry&#62;
+    &#60;msg&#62;
+       &#60;msgmain&#62;
+          &#60;msgtext&#62;&#60;para&#62;Record failed CRC&#60;/para&#62;&#60;/msgtext&#62;
+       &#60;/msgmain&#62;
+       &#60;msgsub&#62;
+          &#60;msgtext&#62;&#60;para&#62;Record &#60;replaceable&#62;n&#60;/replaceable&#62;
+                    in &#60;replaceable&#62;database&#60;/replaceable&#62;&#60;/para&#62;&#60;/msgtext&#62;
+       &#60;/msgsub&#62;
+       &#60;msgrel&#62;
+          &#60;msgtext&#62;&#60;para&#62;File read error on 
+                   &#60;replaceable&#62;database&#60;/replaceable&#62;&#60;/para&#62;&#60;/msgtext&#62;
+       &#60;/msgrel&#62;
+       &#60;msgrel&#62;
+          &#60;msgtext&#62;&#60;para&#62;Panic! Corrupt record!&#60;/para&#62;&#60;/msgtext&#62;
+       &#60;/msgrel&#62;
+     &#60;/msg&#62;
+     &#60;msginfo&#62;
+        &#60;msglevel&#62;severe&#60;/msglevel&#62;
+        &#60;msgorig&#62;server&#60;/msgorig&#62;
+        &#60;msgaud&#62;all&#60;/msgaud&#62;
+     &#60;/msginfo&#62;
+     &#60;msgexplan&#62;
+        &#60;para&#62;
+        Indicates that some sort of error occurred while attempting to load
+        a record from the database.  Retry.  If failure persists,
+        contact the database administrator.
+        &#60;/para&#62;
+     &#60;/msgexplan&#62;
+ &#60;/msgentry&#62;
+ &#60;!-- more entries --&#62;
+&#60;/msgset&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="MSGENTRY"
+><A
+NAME="AEN70551"
+></A
+><DIV
+CLASS="MSG"
+><A
+NAME="AEN70552"
+></A
+><P
+>Record failed CRC</P
+><P
+>Record <TT
+CLASS="REPLACEABLE"
+><I
+>n</I
+></TT
+>
+                    in <TT
+CLASS="REPLACEABLE"
+><I
+>database</I
+></TT
+></P
+></DIV
+><BLOCKQUOTE
+CLASS="MSGINFO"
+><P
+><B
+>Level: </B
+>severe</P
+><P
+><B
+>Origin: </B
+>server</P
+><P
+><B
+>Audience: </B
+>all</P
+></BLOCKQUOTE
+><BLOCKQUOTE
+CLASS="MSGEXPLAN"
+>        Indicates that some sort of error occurred while attempting to load
+        a record from the database.  Retry.  If failure persists,
+        contact the database administrator.
+        </BLOCKQUOTE
+></DIV
+></DIV></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="msgrel.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="msgsub.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>MsgRel</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>MsgSub</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

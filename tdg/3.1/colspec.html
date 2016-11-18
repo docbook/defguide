@@ -1,0 +1,993 @@
+<HTML
+><HEAD
+><TITLE
+>colspec</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Colophon"
+HREF="colophon.html"><LINK
+REL="NEXT"
+TITLE="Command"
+HREF="command.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="colophon.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="command.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>colspec</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN25751"
+></A
+><H2
+>Name</H2
+>colspec&nbsp;--&nbsp;Specifications for a column in a table</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN25754"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>colspec ::=
+EMPTY</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>rowsep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colsep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>charoff</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>align</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>center<BR>char<BR>justify<BR>left<BR>right</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colnum</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colwidth</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>char</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colname</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ENTRYTBL.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.entrytbl.mdl;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.HDFT.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.hdft.mdl;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.TGROUP.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.tgroup.mdl;</NOBR
+></TT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN25846"
+></A
+><H2
+>Description</H2
+><P
+>The attributes of this empty element specify the presentation characteristics
+of entries in a column of a table.</P
+><P
+>Each <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> refers to a single column.  Columns are numbered
+sequentially from left to right in the table.  If the 
+<SPAN
+CLASS="SGMLTAG"
+>ColNum</SPAN
+> attribute is not specified, the
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> is for the next column after the preceeding
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> or column 1 if it is the first <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN25855"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Suppressed. This element is expected to obey the semantics
+of the <A
+HREF="appd.html#CALSDTD"
+><I
+CLASS="CITETITLE"
+>CALS Table Model
+Document Type Definition</I
+></A
+>, as specified by <I
+CLASS="CITETITLE"
+><A
+HREF="http://www.oasis-open.org/html/a502.htm"
+TARGET="_top"
+>OASIS
+Technical Memorandum TM 9502:1995</A
+></I
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN25862"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain colspec:
+<A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>entrytbl</TT
+></A
+>, <A
+HREF="tfoot.html"
+><TT
+CLASS="SGMLTAG"
+>tfoot</TT
+></A
+>, <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>tgroup</TT
+></A
+>, <A
+HREF="thead.html"
+><TT
+CLASS="SGMLTAG"
+>thead</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN25878"
+></A
+><H3
+>Children</H3
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN25888"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>align</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Align</SPAN
+> specifies the horizontal alignment
+of <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>s (or <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s) in the column. The
+default alignment is inherited from the enclosing <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>TGroup</TT
+></A
+>. 
+If <TT
+CLASS="LITERAL"
+>Char</TT
+> is specified, see also 
+<SPAN
+CLASS="SGMLTAG"
+>Char</SPAN
+> and
+<SPAN
+CLASS="SGMLTAG"
+>CharOff</SPAN
+>.
+Individual <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>s and
+<A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s can specify an alternate alignment.</P
+></DD
+><DT
+><B
+>char</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Char</SPAN
+> specifies the alignment character when
+the <SPAN
+CLASS="SGMLTAG"
+>Align</SPAN
+> attribute is set to <TT
+CLASS="LITERAL"
+>Char</TT
+>.</P
+></DD
+><DT
+><B
+>charoff</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>CharOff</SPAN
+> specifies the percentage of the
+column's total width that should appear to the left of the first
+occurance of the character identified in <SPAN
+CLASS="SGMLTAG"
+>Char</SPAN
+> when the <SPAN
+CLASS="SGMLTAG"
+>Align</SPAN
+>
+attribute is set to <TT
+CLASS="LITERAL"
+>Char</TT
+>. This attribute is inherited from
+the enclosing <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>TGroup</TT
+></A
+>.</P
+></DD
+><DT
+><B
+>colname</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>ColName</SPAN
+> gives a symbolic name to a column.
+The symbolic name can then be used in subsequent <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>s and
+<A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>SpanSpec</TT
+></A
+>s to identify the column.</P
+></DD
+><DT
+><B
+>colnum</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>ColNum</SPAN
+> gives the number of the column defined
+by this <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>. If not specified, this <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>
+describes the next column to the right of the column defined by the previous
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> or the first column (column 1) if this is the first
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>.</P
+></DD
+><DT
+><B
+>colsep</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>ColSep</SPAN
+> has the value 1 (true), then
+a rule will be drawn to the right of the column described by this
+<A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+>. A value of 0 (false) suppresses the rule.
+The rule to the right of the last column in the table is controlled by the
+<SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+> attribute of the enclosing 
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> or <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+> and the 
+<SPAN
+CLASS="SGMLTAG"
+>ColSep</SPAN
+> of the last column in the table
+is ignored. If unspecified, this attribute is inherited from 
+enclosing elements. Individual <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>s or <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s
+can override the <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> setting of this attribute.</P
+></DD
+><DT
+><B
+>colwidth</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>ColWidth</SPAN
+> specifies the desired width of the
+relevant column. It can be either a fixed measure using one of the
+<SPAN
+CLASS="ACRONYM"
+>CALS</SPAN
+> units (36pt, 10pc, etc.) or a proportional measure. Proportional
+measures have the form "<I
+CLASS="EMPHASIS"
+>number</I
+><TT
+CLASS="LITERAL"
+>*</TT
+>", meaning
+this column should be <I
+CLASS="EMPHASIS"
+>number</I
+> times wider than a column with
+the measure "<TT
+CLASS="LITERAL"
+>1*</TT
+>" (or just "<TT
+CLASS="LITERAL"
+>*</TT
+>"). These two
+forms can be mixed, as in "<TT
+CLASS="LITERAL"
+>3*+1pc</TT
+>".</P
+></DD
+><DT
+><B
+>rowsep</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>RowSep</SPAN
+> has the value 1 (true), then a
+rule will be drawn below the cells in the specified column. A value
+of 0 (false) suppresses the rule. The rule below the last row in the
+table is controlled by the <SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+> attribute
+of the enclosing <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> or <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+> and
+the <SPAN
+CLASS="SGMLTAG"
+>RowSep</SPAN
+> of the last row is ignored. If
+unspecified, this attribute is inherited from enclosing elements.
+Individual <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>Entry</TT
+></A
+>s or <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s
+can override the <A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>ColSpec</TT
+></A
+> setting of this attribute.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN25973"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>entrytbl</TT
+></A
+>, <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>, <A
+HREF="row.html"
+><TT
+CLASS="SGMLTAG"
+>row</TT
+></A
+>, <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>spanspec</TT
+></A
+>, <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>, <A
+HREF="tbody.html"
+><TT
+CLASS="SGMLTAG"
+>tbody</TT
+></A
+>, <A
+HREF="tfoot.html"
+><TT
+CLASS="SGMLTAG"
+>tfoot</TT
+></A
+>, <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>tgroup</TT
+></A
+>, <A
+HREF="thead.html"
+><TT
+CLASS="SGMLTAG"
+>thead</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN26007"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>,
+<A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>,
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="colophon.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="command.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Colophon</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Command</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

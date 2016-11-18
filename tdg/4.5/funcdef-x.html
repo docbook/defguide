@@ -1,0 +1,34 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>funcdef</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="formalpara-x.html" title="formalpara"><link rel="next" href="funcparams-x.html" title="funcparams"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="formalpara" href="formalpara-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="funcparams" href="funcparams-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="funcdef.element"></a><div><div><div><h1 class="title">funcdef</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>funcdef &#8212; A function (subroutine) name and its return type</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Mixed Content Model</strong></span></h3><pre class="synopsis">funcdef ::=
+(#PCDATA|<a href="type-x.html"><code class="sgmltag-element">type</code></a>|<a href="replaceable-x.html"><code class="sgmltag-element">replaceable</code></a>|<a href="function-x.html"><code class="sgmltag-element">function</code></a>)*</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p></div><div class="refsect1" lang="en"><a name="d0e66857"></a><h2>Description</h2><p>
+A <a href="funcdef-x.html"><code class="sgmltag-element">FuncDef</code></a> contains the name of a programming language function,
+and its return type.
+</p><p>
+Within the <a href="funcdef-x.html"><code class="sgmltag-element">FuncDef</code></a>, the function name is identified with 
+<a href="function-x.html"><code class="sgmltag-element">Function</code></a>, and the rest of the content is assumed to be the
+return type.
+</p><p>
+In the following definition, <code class="function">max</code> is the name of the 
+function and <span class="type">int</span> is the return type:
+<pre class="screen">
+
+&lt;funcdef&gt;int &lt;function&gt;max&lt;/function&gt;&lt;/funcdef&gt;
+
+</pre>
+</p><div class="refsect2" lang="en"><a name="d0e66884"></a><h3>Processing expectations</h3><p>
+Formatted inline. For a complete description of the processing expecations,
+see <a href="funcsynopsis-x.html"><code class="sgmltag-element">FuncSynopsis</code></a>.
+</p></div><div class="refsect2" lang="en"><a name="d0e66892"></a><h3>Parents</h3><p>These elements contain funcdef:
+<span class="simplelist"><a href="funcprototype-x.html"><code class="sgmltag-element">funcprototype</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e66902"></a><h3>Children</h3><p>The following elements occur in funcdef:
+<span class="simplelist"><a href="function-x.html"><code class="sgmltag-element">function</code></a>, <a href="replaceable-x.html"><code class="sgmltag-element">replaceable</code></a>, <a href="type-x.html"><code class="sgmltag-element">type</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e66918"></a><h2>See Also</h2><p><span class="simplelist"><a href="funcparams-x.html"><code class="sgmltag-element">funcparams</code></a>, <a href="funcprototype-x.html"><code class="sgmltag-element">funcprototype</code></a>, <a href="funcsynopsisinfo-x.html"><code class="sgmltag-element">funcsynopsisinfo</code></a>, <a href="function-x.html"><code class="sgmltag-element">function</code></a>, <a href="paramdef-x.html"><code class="sgmltag-element">paramdef</code></a>, <a href="parameter-x.html"><code class="sgmltag-element">parameter</code></a>, <a href="returnvalue-x.html"><code class="sgmltag-element">returnvalue</code></a>, <a href="varargs-x.html"><code class="sgmltag-element">varargs</code></a>, <a href="void-x.html"><code class="sgmltag-element">void</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e66951"></a><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;funcsynopsis&gt;
+&lt;funcprototype&gt;
+&lt;funcdef&gt;int &lt;function&gt;rand&lt;/function&gt;&lt;/funcdef&gt;
+  &lt;void/&gt;
+&lt;/funcprototype&gt;
+&lt;/funcsynopsis&gt;</pre></div><div class="example-output"><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" style="padding-bottom: 1em"><tr><td><code class="funcdef">int <b class="fsfunc">rand</b>(</code></td><td><code>)</code>;</td><td>&nbsp;</td></tr></table></div></div><p>For additional examples, see also
+<span class="simplelist"><a href="funcparams-x.html"><code class="sgmltag-element">funcparams</code></a>, <a href="funcsynopsis-x.html"><code class="sgmltag-element">funcsynopsis</code></a>, <a href="paramdef-x.html"><code class="sgmltag-element">paramdef</code></a>, <a href="refentry-x.html"><code class="sgmltag-element">refentry</code></a>, <a href="varargs-x.html"><code class="sgmltag-element">varargs</code></a></span>.
+</p></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="formalpara" href="formalpara-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="funcparams" href="funcparams-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">formalpara&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;funcparams</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

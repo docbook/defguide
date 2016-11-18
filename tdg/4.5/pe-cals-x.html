@@ -1,0 +1,170 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>CALS Table Model Parameter Entities</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-paraments-x.html" title="DocBook Parameter Entity Reference"><link rel="previous" href="pe-attval-x.html" title="%*.attval; Parameter Entities"><link rel="next" href="pe-class-x.html" title="%*.class; Parameter Entities"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="%*.attval; Parameter Entities" href="pe-attval-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Parameter Entity Reference" href="ref-paraments-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="%*.class; Parameter Entities" href="pe-class-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="pe-cals"></a><div><div><div><h1 class="title">CALS Table Model Parameter Entities</h1></div></div></div><div class="refnamediv"><p>CALS Table Model Parameter Entities &#8212; Parameter entities which control the CALS Table Model
+</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><p>
+The CALS Table Model is incorporated into DocBook by reference
+to the standard CALS Table Model DTD.  The CALS Table Model DTD,
+like DocBook, can be customized by defining a number of
+parameter entities before including it.  The parameter entities
+in the following sections are the table-model related parameter
+entities defined by DocBook for use in the CALS Table Model.
+</p></div><div class="refsect1" lang="en"><a name="d0e197205"></a><h2>Description</h2><p>
+The following parameter entities are related to the CALS Table Model:
+</p><div class="refsect2" lang="en"><a name="bodyatt.parament"></a><h3>%bodyatt;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+		floatstyle	CDATA			#IMPLIED
+		rowheader	(firstcol|norowheader)	#IMPLIED
+                %label.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+		floatstyle	CDATA			#IMPLIED
+		rowheader	(firstcol|norowheader)	#IMPLIED
+                label		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%bodyatt; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%bodyatt; appears in:</strong></span></td></tr><tr><td style=""><a href="table-x.html"><code class="sgmltag-element">table</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="informal.tbl.table.mdl.parament"></a><h3>%informal.tbl.table.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">(textobject*,
+          (graphic+|mediaobject+|tgroup+))
+         | ((col*|colgroup*), thead?, tfoot?, (tbody+|tr</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">(textobject*,
+          (graphic+|mediaobject+|tgroup+))
+         | ((col*|colgroup*), thead?, tfoot?, (tbody+|tr</pre><p><b><span class="bold"><strong>%informal.tbl.table.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%informal.tbl.table.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="informaltable-x.html"><code class="sgmltag-element">informaltable</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="paracon.parament"></a><h3>%paracon;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">#PCDATA</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">#PCDATA</pre></div><div class="refsect2" lang="en"><a name="secur.parament"></a><h3>%secur;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+	%common.attrib;
+	class       CDATA          #IMPLIED
+	style       CDATA          #IMPLIED
+	title       CDATA         #IMPLIED
+	%i18n;
+	%events;
+	%tables.role.attrib;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+	id		ID		#IMPLIED
+	lang		CDATA		#IMPLIED
+	remap		CDATA		#IMPLIED
+	xreflabel	CDATA		#IMPLIED
+	revisionflag	(changed
+			|added
+			|deleted
+			|off)		#IMPLIED
+	arch		CDATA		#IMPLIED
+        condition	CDATA		#IMPLIED
+	conformance	NMTOKENS	#IMPLIED
+	os		CDATA		#IMPLIED
+	revision	CDATA		#IMPLIED
+        security	CDATA		#IMPLIED
+	userlevel	CDATA		#IMPLIED
+	vendor		CDATA		#IMPLIED
+	wordsize	CDATA		#IMPLIED
+	
+	dir		(ltr
+			|rtl
+			|lro
+			|rlo)		#IMPLIED
+	xml:base	CDATA		#IMPLIED
+	
+	class       CDATA          #IMPLIED
+	style       CDATA          #IMPLIED
+	title       CDATA         #IMPLIED
+	xml:lang    NMTOKEN        #IMPLIED
+	onclick     CDATA       #IMPLIED
+  ondblclick  CDATA       #IMPLIED
+  onmousedown CDATA       #IMPLIED
+  onmouseup   CDATA       #IMPLIED
+  onmouseover CDATA       #IMPLIED
+  onmousemove CDATA       #IMPLIED
+  onmouseout  CDATA       #IMPLIED
+  onkeypress  CDATA       #IMPLIED
+  onkeydown   CDATA       #IMPLIED
+  onkeyup     CDATA       #IMPLIED
+	role		CDATA		#IMPLIED</pre><p><b><span class="bold"><strong>%secur; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%secur; appears in:</strong></span></td></tr><tr><td style=""><a href="entry-x.html"><code class="sgmltag-element">entry</code></a></td><td style=""><a href="entrytbl-x.html"><code class="sgmltag-element">entrytbl</code></a></td><td style=""><a href="row-x.html"><code class="sgmltag-element">row</code></a></td></tr><tr><td style=""><a href="table-x.html"><code class="sgmltag-element">table</code></a></td><td style=""><a href="tbody-x.html"><code class="sgmltag-element">tbody</code></a></td><td style=""><a href="tfoot-x.html"><code class="sgmltag-element">tfoot</code></a></td></tr><tr><td style=""><a href="tgroup-x.html"><code class="sgmltag-element">tgroup</code></a></td><td style=""><a href="thead-x.html"><code class="sgmltag-element">thead</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tabentry.mix.parament"></a><h3>%tabentry.mix;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">%list.class;		|%admon.class;
+		|%linespecific.class;
+		|%para.class;		|graphic|mediaobject
+		%forms.hook;
+		%local.tabentry.mix;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">calloutlist|glosslist|bibliolist|itemizedlist|orderedlist|segmentedlist
+		|simplelist|variablelist 		|caution|important|note|tip|warning 
+		|literallayout|programlisting|programlistingco|screen
+		|screenco|screenshot 
+		|formalpara|para|simpara 		|graphic|mediaobject</pre><p><b><span class="bold"><strong>%tabentry.mix; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tabentry.mix; appears in:</strong></span></td></tr><tr><td style=""><a href="td-x.html"><code class="sgmltag-element">td</code></a></td><td style=""><a href="th-x.html"><code class="sgmltag-element">th</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tablemodel.parament"></a><h3>%tablemodel;</h3><p><b>Parameter entity content:</b></p><p><span class="bold"><strong>Public identifier</strong></span>: -//OASIS//DTD DocBook CALS Table Model V4.5//EN
+</p><p><span class="bold"><strong>System identifier</strong></span>: calstblx.dtd
+</p></div><div class="refsect2" lang="en"><a name="tbl.entry.mdl.parament"></a><h3>%tbl.entry.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">%para.char.mix; | %tabentry.mix;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">#PCDATA
+		|footnoteref|xref|biblioref 	|abbrev|acronym|citation|citerefentry|citetitle|citebiblioid|emphasis
+		|firstterm|foreignphrase|glossterm|termdef|footnote|phrase
+		|orgname|quote|trademark|wordasword
+		|personname 
+		|link|olink|ulink 	|action|application
+                |classname|methodname|interfacename|exceptionname
+                |ooclass|oointerface|ooexception
+                |package
+                |command|computeroutput
+		|database|email|envar|errorcode|errorname|errortype|errortext|filename
+		|function|guibutton|guiicon|guilabel|guimenu|guimenuitem
+		|guisubmenu|hardware|interface|keycap
+		|keycode|keycombo|keysym|literal|code|constant|markup|medialabel
+		|menuchoice|mousebutton|option|optional|parameter
+		|prompt|property|replaceable|returnvalue|sgmltag|structfield
+		|structname|symbol|systemitem|uri|token|type|userinput|varname
+                |nonterminal
+		
+		|anchor 	|author|authorinitials|corpauthor|corpcredit|modespec|othercredit
+		|productname|productnumber|revhistory
+		
+		|remark|subscript|superscript 	|inlinegraphic|inlinemediaobject|inlineequation 
+		|synopsis|cmdsynopsis|funcsynopsis
+                 |classsynopsis|fieldsynopsis
+                 |constructorsynopsis
+                 |destructorsynopsis
+                 |methodsynopsis  
+		|indexterm         |beginpage
+                
+		 | calloutlist|glosslist|bibliolist|itemizedlist|orderedlist|segmentedlist
+		|simplelist|variablelist 		|caution|important|note|tip|warning 
+		|literallayout|programlisting|programlistingco|screen
+		|screenco|screenshot 
+		|formalpara|para|simpara 		|graphic|mediaobject</pre><p><b><span class="bold"><strong>%tbl.entry.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.entry.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="entry-x.html"><code class="sgmltag-element">entry</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.entrytbl.mdl.parament"></a><h3>%tbl.entrytbl.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">colspec*,spanspec*,thead?,tbody</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">colspec*,spanspec*,thead?,tbody</pre><p><b><span class="bold"><strong>%tbl.entrytbl.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.entrytbl.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="entrytbl-x.html"><code class="sgmltag-element">entrytbl</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.hdft.mdl.parament"></a><h3>%tbl.hdft.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">(tr+|(colspec*,row</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">(tr+|(colspec*,row</pre><p><b><span class="bold"><strong>%tbl.hdft.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.hdft.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="tfoot-x.html"><code class="sgmltag-element">tfoot</code></a></td><td style=""><a href="thead-x.html"><code class="sgmltag-element">thead</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.row.mdl.parament"></a><h3>%tbl.row.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">(entry|entrytbl</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">(entry|entrytbl</pre><p><b><span class="bold"><strong>%tbl.row.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.row.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="row-x.html"><code class="sgmltag-element">row</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.table-main.mdl.parament"></a><h3>%tbl.table-main.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">(tgroup+|graphic</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">(tgroup+|graphic</pre></div><div class="refsect2" lang="en"><a name="tbl.table-titles.mdl.parament"></a><h3>%tbl.table-titles.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">%titles;</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">title</pre></div><div class="refsect2" lang="en"><a name="tbl.table.att.parament"></a><h3>%tbl.table.att;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+    tabstyle    CDATA           #IMPLIED
+    tocentry    %yesorno.attvals;       #IMPLIED
+    shortentry  %yesorno.attvals;       #IMPLIED
+    orient      (port|land)     #IMPLIED
+    pgwide      %yesorno.attvals;       #IMPLIED 
+    summary     CDATA          #IMPLIED
+    width       CDATA        #IMPLIED
+    border      CDATA        #IMPLIED
+    rules       CDATA		#IMPLIED
+    cellspacing CDATA        #IMPLIED
+    cellpadding CDATA        #IMPLIED
+    align       (left|center|right)   #IMPLIED
+    bgcolor     CDATA         #IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+    tabstyle    CDATA           #IMPLIED
+    tocentry    CDATA       #IMPLIED
+    shortentry  CDATA       #IMPLIED
+    orient      (port|land)     #IMPLIED
+    pgwide      CDATA       #IMPLIED 
+    summary     CDATA          #IMPLIED
+    width       CDATA        #IMPLIED
+    border      CDATA        #IMPLIED
+    rules       CDATA		#IMPLIED
+    cellspacing CDATA        #IMPLIED
+    cellpadding CDATA        #IMPLIED
+    align       (left|center|right)   #IMPLIED
+    bgcolor     CDATA         #IMPLIED</pre><p><b><span class="bold"><strong>%tbl.table.att; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.table.att; appears in:</strong></span></td></tr><tr><td style=""><a href="informaltable-x.html"><code class="sgmltag-element">informaltable</code></a></td><td style=""><a href="table-x.html"><code class="sgmltag-element">table</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.table.mdl.parament"></a><h3>%tbl.table.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">((blockinfo?,
+           (%formalobject.title.content;),
+           (%ndxterm.class;)*,
+           textobject*,
+           (graphic+|mediaobject+|tgroup+))
+         |(caption, (col*|colgroup*), thead?, tfoot?, (tbody+|tr</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">((blockinfo?,
+           (title, titleabbrev?),
+           (indexterm )*,
+           textobject*,
+           (graphic+|mediaobject+|tgroup+))
+         |(caption, (col*|colgroup*), thead?, tfoot?, (tbody+|tr</pre><p><b><span class="bold"><strong>%tbl.table.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.table.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="table-x.html"><code class="sgmltag-element">table</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.table.name.parament"></a><h3>%tbl.table.name;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">(table|chart</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">(table|chart</pre></div><div class="refsect2" lang="en"><a name="tbl.tbody.mdl.parament"></a><h3>%tbl.tbody.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">(tr+|row</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">(tr+|row</pre><p><b><span class="bold"><strong>%tbl.tbody.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.tbody.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="tbody-x.html"><code class="sgmltag-element">tbody</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.tgroup.att.parament"></a><h3>%tbl.tgroup.att;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">
+    tgroupstyle CDATA           #IMPLIED</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">
+    tgroupstyle CDATA           #IMPLIED</pre><p><b><span class="bold"><strong>%tbl.tgroup.att; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.tgroup.att; appears in:</strong></span></td></tr><tr><td style=""><a href="entrytbl-x.html"><code class="sgmltag-element">entrytbl</code></a></td><td style=""><a href="tgroup-x.html"><code class="sgmltag-element">tgroup</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="tbl.tgroup.mdl.parament"></a><h3>%tbl.tgroup.mdl;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">colspec*,spanspec*,thead?,tfoot?,tbody</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">colspec*,spanspec*,thead?,tfoot?,tbody</pre><p><b><span class="bold"><strong>%tbl.tgroup.mdl; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%tbl.tgroup.mdl; appears in:</strong></span></td></tr><tr><td style=""><a href="tgroup-x.html"><code class="sgmltag-element">tgroup</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div><div class="refsect2" lang="en"><a name="titles.parament"></a><h3>%titles;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">title</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">title</pre></div><div class="refsect2" lang="en"><a name="yesorno.parament"></a><h3>%yesorno;</h3><p><b>Parameter entity content:</b></p><pre class="synopsis">CDATA</pre><h3><span class="bold"><strong>Parameter Entity (Expanded)
+</strong></span></h3><pre class="synopsis">CDATA</pre><p><b><span class="bold"><strong>%yesorno; appears in:</strong></span></b></p><table border="0" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>%yesorno; appears in:</strong></span></td></tr><tr><td style=""><a href="colspec-x.html"><code class="sgmltag-element">colspec</code></a></td><td style=""><a href="entry-x.html"><code class="sgmltag-element">entry</code></a></td><td style=""><a href="entrytbl-x.html"><code class="sgmltag-element">entrytbl</code></a></td></tr><tr><td style=""><a href="row-x.html"><code class="sgmltag-element">row</code></a></td><td style=""><a href="spanspec-x.html"><code class="sgmltag-element">spanspec</code></a></td><td style=""><a href="table-x.html"><code class="sgmltag-element">table</code></a></td></tr><tr><td style=""><a href="tgroup-x.html"><code class="sgmltag-element">tgroup</code></a></td><td style="">&nbsp;</td><td style="">&nbsp;</td></tr></table></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="%*.attval; Parameter Entities" href="pe-attval-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="%*.class; Parameter Entities" href="pe-class-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">%*.attval; Parameter Entities&nbsp;</td><td width="20%" align="center"><a title="DocBook Parameter Entity Reference" href="ref-paraments-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;%*.class; Parameter Entities</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

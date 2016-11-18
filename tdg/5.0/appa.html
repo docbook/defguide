@@ -1,0 +1,146 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Installation</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="part3.html" title="Part  III .  Appendixes"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="Part  III .  Appendixes" href="part3.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="DocBook Variants and Future Directions" href="variants.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="app-install" class="appendix"><header class="appendix-titlepage"><h2>Installation</h2><p class="releaseinfo">$Revision$</p></header><section id="s-install" class="section"><div class="section-titlepage"><h3>1. Installing DocBook</h3></div><p><a class="indexterm" name="idx.installingdb-1"></a><a class="indexterm" name="idx.installingdb-2"></a>If you use editing software that already supports DocBook,
+    then DocBook should be installed with that software. Although at this
+    writing, DocBook <span class="acronym">V5.0</span> is new, many tools already
+    support <span class="acronym">V5.0</span>. The <a href="http://wiki.docbook.org/">DocBook Wiki</a> has a list of editing
+    and other tools that support DocBook, along with other relevant
+    information and links to further information.</p><p>If you are not using a tool that directly supports DocBook, then you
+    will need to install one or more of the DocBook schemas directly. This
+    appendix describes how to do that.</p><p>The most recent version of the DocBook <span class="acronym">V5.x</span>
+    schemas can be found at <code class="uri"><a href="http://docbook.org/schemas/5x.html">http://docbook.org/schemas/5x.html</a></code>. At the time this was
+    written the most recent version was <span class="acronym">V5.0</span>. The directory
+    for <span class="acronym">V5.0</span> (<code class="uri"><a href="http://docbook.org/xml/5.0/">http://docbook.org/xml/5.0/</a></code>) contains the RELAX NG schema,
+    DTD, W3C XML schema, Schematron rules, tools to convert DocBook
+    <span class="acronym">V4.x</span> to <span class="acronym">V5.0</span>, and a sample catalog
+    file.</p><section id="s-installrng" class="section"><div class="section-titlepage"><h4>1.1. Installing the DocBook Schemas</h4></div><p>The schemas may be installed in any convenient directory. If you
+      download the file <code class="filename">docbook-5.0.zip</code> and unpack it, it
+      will create a directory structure that puts each schema in its own
+      directory. This directory structure matches the structure in the sample
+      <code class="filename keep-together">catalog.xml</code> file, so you
+      should be able to set up the catalog file (described in <a href="appa.html#dbcatalog" title="XML Catalogs and DocBook">Section 1.2, “XML Catalogs and DocBook”</a>) with minimal effort.</p><p>Once you have unpacked the schemas, you will need to set them up
+      so that your tools can use them. While each tool has its own procedure
+      for accessing schemas, many use <em class="citetitle"><span class="acronym">XML</span>
+      Catalogs: OASIS Standard V1.1</em> [<a href="appc.html#XML-CAT"><span class="abbrev">XML-CAT</span></a>] as a common means to locate schemas, stylesheets,
+      and other files. The next section describes how to set up a catalog for
+      DocBook using the sample <code class="filename">catalog.xml</code> file from the
+      distribution.<a class="indexterm" name="s-installrng.3.4"></a><a class="indexterm" name="s-installrng.3.5"></a></p></section><section id="dbcatalog" class="section"><div class="section-titlepage"><h4>1.2. XML Catalogs and DocBook</h4></div><p><a class="indexterm" name="dbcatalog.2.1"></a> <a class="indexterm" name="dbcatalog.2.2"></a> <a class="indexterm" name="dbcatalog.2.3"></a>SGML instances require either a public or system
+      identifier to specify the schema. Public identifiers are abstract
+      identifiers that must be mapped to a schema file to be useful. For the
+      <span class="acronym">SGML</span> versions of DocBook, the distribution included a
+      catalog file, <code class="filename">docbook.cat</code> that provided mappings
+      for all of the public identifiers referenced by DocBook. Unlike
+      <span class="acronym">SGML</span>, which allows an instance to use only a public
+      identifier, <span class="acronym">XML</span> requires a system identifier in the
+      form of a <span class="acronym">URI</span>. For the <span class="acronym">XML</span> version
+      of DocBook, the distribution contains a sample catalog file using the
+      <em class="citetitle"><span class="acronym">XML</span> Catalogs: OASIS Standard
+      V1.1</em> [<a href="appc.html#XML-CAT"><span class="abbrev">XML-CAT</span></a>], which is used by many
+      <span class="acronym">XML</span> tools.<a class="indexterm" name="dbcatalog.2.13"></a></p><p>To quote the standard, an <span class="acronym">XML</span> catalog
+      “<span class="quote">defines an entity catalog that maps both external identifiers and
+      arbitrary <span class="acronym">URI</span> references to <span class="acronym">URI</span>
+      references.</span>” This means that you can define mappings through an
+      <span class="acronym">XML</span> catalog that tell tools where you have put the
+      schemas (and other files, like the stylesheets) on your system. Those
+      tools can then access them without having to resolve a remote
+      <span class="acronym">URL</span>.</p><section id="s.installingcatalog" class="section"><div class="section-titlepage"><h5>1.2.1. Installing and setting up the DocBook XML catalog</h5></div><p>One way to set up a catalog for DocBook is install the DocBook
+        stylesheets (see <a href="appa.html#s.stylesheetinstall" title="Installing the DocBook Stylesheets">Section 1.3, “Installing the DocBook Stylesheets”</a>), which also
+        sets up a catalog. You can also use the sample catalog from the schema
+        distribution, which can be found at: <code class="uri"><a href="http://docbook.org/xml/5.0/catalog.xml">http://docbook.org/xml/5.0/catalog.xml</a></code>. The sample is a
+        starting place, but it will almost surely not work “<span class="quote">out of the
+        box.</span>” To make it work, you need to make the catalog available
+        to your tools, and you will also need to update the catalog entries to
+        point to the right location on your system. Here is an example based
+        on the sample file:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;catalog prefer="public"
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>       xml:base="file:///usr/share/xml/docbook/schema/rng/5.0/"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;public publicId="-//OASIS//DTD DocBook XML 5.0//EN"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>          uri="dtd/docbook.dtd"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;system systemId="http://docbook.org/xml/5.0/dtd/docbook.dtd"
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>          uri="dtd/docbook.dtd"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;uri name="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng"
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>       uri="rng/docbook.rng"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/catalog&gt;</pre></div><p>In this example, the public and
+        system elements describe where to find the
+        <span class="acronym">DTD</span> associated with named public and system
+        identifiers. The uri element describes where to
+        find the RELAX NG schema. In all three cases, the <code class="tag-attribute">uri</code> attribute identifies a relative path
+        to the file. The absolute path is constructed by concatenating the
+        value of the <code class="tag-attribute">xml:base</code> attribute
+        on the catalog element to the value of the <code class="tag-attribute">uri</code> attribute. If there is no <code class="tag-attribute">xml:base</code> attribute, the value of the
+        <code class="tag-attribute">uri</code> attribute is used as
+        is.</p><p>To make the catalog work on your system, set the <code class="tag-attribute">xml:base</code> attribute to the directory on
+        your system that contains the schema directories. That should be the
+        only change you need to make to the sample catalog.</p><p>If you already have other <span class="acronym">XML</span> schemas
+        installed, you probably already have a catalog file. On Linux systems,
+        this is often in <code class="filename">/etc/xml/catalog.xml</code>. In that
+        case, you can add the following line to that file, replacing
+        <code class="filename">/usr/share/xml/docbook/catalog.xml</code> with the
+        location of the DocBook catalog file on your system:</p><div class="programlisting"><pre>&lt;nextCatalog catalog="file:///usr/share/xml/docbook/catalog.xml"&gt; 
+  </pre></div><p><a class="indexterm" name="s.installingcatalog.8.1"></a> <a class="indexterm" name="s.installingcatalog.8.2"></a>Some <span class="acronym">XML</span> and <span class="acronym">XSL</span>
+        applications use the environment variable
+        <code class="envar">XML_CATALOG_FILES</code>, which contains a delimited list of
+        catalog filenames. Here is an example:</p><div class="screen"><pre>XML_CATALOG_FILES=/usr/share/xml/docbook/catalog.xml:/etc/xml/catalog
+  </pre></div><p>(On a Windows system, use semicolons instead of colons to
+        delimit the filenames.)</p><p>Many applications also provide a configuration option that
+        allows you to set the location of a catalog file. Check the
+        documentation for your tool for details.</p><p>This description only scratches the surface of
+        <span class="acronym">XML</span> Catalogs. For a full description, go to the
+        <em class="citetitle"><span class="acronym">XML</span> Catalogs: OASIS Standard
+        V1.1</em> [<a href="appc.html#XML-CAT"><span class="abbrev">XML-CAT</span></a>] or Bob Stayton’s
+        <em class="citetitle">DocBook XSL: The Complete Guide</em> [<a href="appc.html#Stayton07"><span class="abbrev">Stayton07</span></a>].</p></section><section id="s.getting-iso-entities" class="section"><div class="section-titlepage"><h5>1.2.2. Getting the ISO entity sets</h5></div><p><a class="indexterm" name="s.getting-iso-entities.2.1"></a> <a class="indexterm" name="s.getting-iso-entities.2.2"></a> <a class="indexterm" name="s.getting-iso-entities.2.3"></a> <a class="indexterm" name="s.getting-iso-entities.2.4"></a>Modern schema languages (including RELAX NG and
+        <span class="acronym">W3X</span> <span class="acronym">XML</span> Schema) do not include
+        the <span class="acronym">ISO</span> Entity Sets. Therefore, you need to use
+        other means if you want to use these or other sets of entities. For
+        the ISO Entity Sets, some editors give you the ability to easily
+        select needed characters and insert them into a document.</p><p>You can also directly include entity definitions in the prolog
+        of your document. The World Wide Web Consortium
+        (<span class="acronym">W3C</span>) maintains the <a href="http://www.w3.org/2003/entities/">ISO Entity Set
+        Definitions</a> and you can reference them from the document
+        prolog as shown here:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE article [
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY % isopub SYSTEM "http://www.w3.org/2003/entities/iso8879/isopub.ent"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>%isopub;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>]&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;article xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;title&gt;DocBook V5.0 &amp;ndash; the superb documentation format&lt;/title&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>…
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/article&gt;</pre></div><p>For your convenience there is also a flattened entity definition
+        file which contains all entity definitions.</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE article [
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY % allent SYSTEM "http://www.w3.org/2003/entities/2007/w3centities-f.ent"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>%allent;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>]&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;article xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;title&gt;DocBook V5.0 &amp;ndash; the superb documentation format&lt;/title&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>…
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/article&gt;</pre></div></section></section><section id="s.stylesheetinstall" class="section"><div class="section-titlepage"><h4>1.3. Installing the DocBook Stylesheets</h4></div><p><a class="indexterm" name="s.stylesheetinstall.2.1"></a>Members of the <span class="acronym">OASIS</span> DocBook Technical
+      Committee and other interested people have developed a set of XSL
+      stylesheets that can be used to transform DocBook into various forms,
+      including: HTML, FO (for print), HTML Help, Java Help, ePub, and other
+      formats.</p><p>The definitive guide to using the stylesheets is Bob Stayton’s
+      <em class="citetitle">DocBook XSL: The Complete Guide</em> [<a href="appc.html#Stayton07"><span class="abbrev">Stayton07</span></a>]. The description below is sufficient to install
+      and run the stylesheets in their standard form. However, to do any
+      serious work with the stylesheets or to customize them, you should read
+      Stayton’s book.</p><figure id="s.stylesheetinstall.4" class="procedure-wrapper"><div class="title">Procedure for Installing DocBook XSL Stylesheets</div><div class="procedure"><ol type="1"><li class="step"><div><p>Download the latest stylesheets from <code class="uri"><a href="http://sourceforge.net/projects/docbook/">http://sourceforge.net/projects/docbook/</a></code>. Look for a
+          file with the name:
+          docbook-xsl-ns-<em class="replaceable"><code>X.YY.Z</code></em>.zip, where
+          <em class="replaceable"><code>X.YY.Z</code></em> is the version number of the
+          latest stable release of the stylesheets.</p></div></li><li class="step"><div><p>Unpack the distribution into a directory on your system. The
+          exact location is your choice. On Windows systems you might use a
+          folder named: <code class="filename">C:\docbook\stylesheets</code>. On a
+          Linux/UNIX-based system you might use a directory named <code class="filename">/usr/share/xml/docbook/stylesheets</code>, or
+          a directory under your home directory. As long as you have
+          permissions to create and write in the directory, it doesn’t matter
+          where it is.</p></div></li><li class="step"><div><p>When you unpack the distribution, it will create a directory
+          named <code class="filename">docbook-xsl-ns-<em class="replaceable"><code>X.YY.Z</code></em></code>
+          that will contain the stylesheets.</p></div></li><li class="step"><div><p>This is all you need to do to install the distribution,
+          however, on Linux/UNIX systems, you can run an install script that
+          will set up catalogs for you. Look for a file named
+          <code class="filename">INSTALL</code> for details.</p></div></li></ol></div></figure><p>You will also need an <span class="acronym">XSLT</span> processor. If you
+      are running Linux, you may already have
+      <span class="application">xsltproc</span> or <span class="application">Saxon</span>
+      installed on your system. If not, most Linux distributions will let you
+      install one of these packages through their application
+      installer.</p><p>If you are running Windows or Mac, you can find information about
+      these applications at:</p><div class="itemizedlist"><ul><li><p><span class="application">xsltproc</span>: <code class="uri"><a href="http://xmlsoft.org/XSLT/xsltproc2.html">http://xmlsoft.org/XSLT/xsltproc2.html</a></code></p></li><li><p><span class="application">Saxon</span>: <code class="uri"><a href="http://saxon.sourceforge.net/">http://saxon.sourceforge.net/</a></code></p></li></ul></div></section></section></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Part  III .  Appendixes" href="part3.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="DocBook Variants and Future Directions" href="variants.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">Part  III .  Appendixes </td><td width="20%" align="center"><a title="Part  III .  Appendixes" href="part3.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> DocBook Variants and Future Directions</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

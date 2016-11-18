@@ -1,0 +1,1084 @@
+<HTML
+><HEAD
+><TITLE
+>Glossary</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="PREVIOUS"
+TITLE="DocBook V3.1 Quick Reference"
+HREF="quickref.html"><LINK
+REL="NEXT"
+TITLE="Index"
+HREF="dbindex.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="GLOSSARY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="quickref.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="dbindex.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="GLOSSARY"
+><H1
+><A
+NAME="GLOSSARY"
+>Glossary</A
+></H1
+><DL
+><DT
+><A
+NAME="GLOSS-ATTRIBUTE"
+><B
+>attribute</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+Attributes augment the element on which they appear; they also
+provide additional information about the element.</P
+><P
+>&#13;
+Attributes appear as name-value pairs in the element's start-tag.
+For example, to assign the value <TT
+CLASS="LITERAL"
+>hostname</TT
+> to the
+<SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+> attribute of <A
+HREF="systemitem.html"
+><TT
+CLASS="SGMLTAG"
+>SystemItem</TT
+></A
+>,
+you would use the mark up:
+<TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;systemitem role="hostname"&#62;</NOBR
+></TT
+>.</P
+></DD
+><DT
+><A
+NAME="GLOSS-CALLOUT"
+><B
+>callout</B
+></A
+></DT
+><DD
+><P
+>&#13;A pointer, verbal or graphical or both, to a 
+<I
+CLASS="EMPHASIS"
+>component</I
+> of an illustration 
+or a text object.</P
+></DD
+><DT
+><A
+NAME="GLOSS-COOKED"
+><B
+>cooked</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+<SPAN
+CLASS="QUOTE"
+>"Cooked"</SPAN
+> data, as distinct from <SPAN
+CLASS="QUOTE"
+>"raw,"</SPAN
+> is a collection
+of elements and character data that's ready for presentation. The processor
+is not expected to rearrange, select, or suppress any of the elements, but
+simply present them as specified.</P
+><P
+><EM
+>See Also: </EM
+>Raw.</P
+></DD
+><DT
+><A
+NAME="GLOSS-DTD"
+><B
+>document type declaration (<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>)</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+A set of declarations that defines the names of the elements 
+and their attributes, and that specifies rules for their combination
+or sequence.</P
+></DD
+><DT
+><A
+NAME="GLOSS-DSSSL"
+><B
+><SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+Document Style Semantics and Specification Language
+(<SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>IEC</SPAN
+> 10179:1996). An international standard stylesheet language
+for <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents.</P
+></DD
+><DT
+><A
+NAME="GLOSS-ELEMENT"
+><B
+>element</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+Elements define the hierarchical structure of a document.
+Most elements have start and end tags and contain some part of the
+document content. Empty elements have only a start tag and have no content. </P
+></DD
+><DT
+><A
+NAME="GLOSS-ENTITY"
+><B
+>entity</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+A name assigned (by means of a declaration) to some chunk of 
+data so it can be referred to by that name; the data can be 
+of various kinds (a special character or a chapter or a set of
+declarations in a <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, for instance), and the way in which it is referred 
+to depends on the type of data and where it is being referenced: 
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> has parameter, general, external, internal, and data entities.</P
+></DD
+><DT
+><A
+NAME="GLOSS-EXCL"
+><B
+>exclusion</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+An exclusion is used in a <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> to indicate that, within the element on 
+which the exclusion occurs, the excluded elements are not valid anywhere
+within the content of the element.</P
+><P
+>&#13;
+
+For example, in DocBook, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+> excludes <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>.
+This means that footnotes cannot nest, even though <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>
+contains <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, and <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+> occurs in the proper
+content model of <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>.</P
+><P
+>See <A
+HREF="ch01.html#S-MS"
+>Section 1.4.2.1</A
+>.</P
+></DD
+><DT
+><A
+NAME="GLOSS-EXTENTITY"
+><B
+>external entity</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+An external entity is a general entity that refers to another
+document. External entities are often used to incorporate 
+parsable text documents, like legal notices or chapters, into larger
+units, like chapters or books.</P
+></DD
+><DT
+><A
+NAME="GLOSS-EXTSUB"
+><B
+>external subset</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+
+Element, attribute, and other declarations that compose
+(part of) a document type definition that are stored in an
+external entity, and referenced from a document's document type
+declaration using a public or system identifier.</P
+></DD
+><DT
+><A
+NAME="GLOSS-FLOAT"
+><B
+>float</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+Text objects like sidebars, figures, tables, and graphics are said
+to float when their actual place in the document is not fixed. For presentation
+on a printed page, for instance, a graphic may float to the top of the next page if it
+is too tall to fit on the page in which it actually falls, in the sequence of words and the sequence of
+other like objects in a document.</P
+></DD
+><DT
+><A
+NAME="GLOSS-FPI"
+><B
+>formal public identifier</B
+></A
+></DT
+><DD
+><P
+>&#13;
+A public identifier that conforms to the specification of formal
+public identifers in <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 8879.</P
+></DD
+><DT
+><A
+NAME="GLOSS-FOSI"
+><B
+><SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+Formatting Output Specification Instance, an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document that 
+specifies the appearance or presentation of another <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document in 
+accordance 
+with the Output Specification <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> defined by <SPAN
+CLASS="ACRONYM"
+>MIL-STD-28001C</SPAN
+>.</P
+></DD
+><DT
+><A
+NAME="GLOSS-GENTITY"
+><B
+>general entity</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+An entity referenced by a name that starts with an 
+ampersand (&amp;) and ends with a semicolon. Most of the
+time general entities are used in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents, not in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. 
+There are two types, external and internal entities, and they 
+refer either to special characters or to text objects 
+like commonly repeated phrases or names or chapters.</P
+></DD
+><DT
+><A
+NAME="GLOSS-GI"
+><B
+><SPAN
+CLASS="ACRONYM"
+>GI</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+Generic identifier, proper term for the actual name of an element;
+<TT
+CLASS="LITERAL"
+>Para</TT
+> is the generic identifier of the <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>para</TT
+></A
+> element.</P
+></DD
+><DT
+><A
+NAME="GLOSS-INCL"
+><B
+>inclusion</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+An inclusion is used in a <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> to indicate that, within the element on 
+which the inclusion occurs, the included elements are valid anywhere
+within the content of the element.</P
+><P
+>For example, in DocBook, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+> includes <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.
+This means that <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>s can occur anywhere inside chapters,
+even inside elements that do not have <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>s in their
+proper content models.</P
+><P
+>See <A
+HREF="ch01.html#S-MS"
+>Section 1.4.2.1</A
+>.</P
+></DD
+><DT
+><A
+NAME="GLOSS-INTENTITY"
+><B
+>internal entity</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+A general entity that references a piece of text (including
+its markup and even other internal entities), usually as a
+keyboard shortcut.</P
+></DD
+><DT
+><A
+NAME="GLOSS-INTSUB"
+><B
+>internal subset</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+Element, attribute, and other declarations that compose
+(part of) a document type definition that are stored in a document,
+within the document type declaration.</P
+></DD
+><DT
+><A
+NAME="GLOSS-METAINFO"
+><B
+>meta-information</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+Meta-information is information about a document, such as the 
+specification of its author or its date of composition, as opposed 
+to the content of a document itself.</P
+></DD
+><DT
+><A
+NAME="GLOSS-PENTITY"
+><B
+>parameter entity</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+An entity usually referenced in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> by a name that 
+starts with a percent sign (%) and ends with a semicolon. 
+In DocBook, parameter entities are mainly used to facilitate 
+customization of the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, but they can also be used to control
+marked sections of a document.</P
+></DD
+><DT
+><A
+NAME="GLOSS-PI"
+><B
+>processing instruction</B
+></A
+></DT
+><DD
+><P
+>&#13;
+An essentially arbitrary string preceded by a question mark and
+delimited by angle brackets that is intended to convey
+information to an application that processes an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> instance.
+For example, the processing instruction <TT
+CLASS="LITERAL"
+>&lt;?linebreak&gt;</TT
+>
+might cause the formatter to introduce a line break at the position where
+the processing instruction occurs.</P
+><P
+>&#13;
+
+In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents, processing instructions should have the form:
+<PRE
+CLASS="SCREEN"
+>&lt;?<TT
+CLASS="REPLACEABLE"
+><I
+>pitarget</I
+></TT
+> param1="value1" param2="value2"?&gt;</PRE
+></P
+><P
+>The <TT
+CLASS="REPLACEABLE"
+><I
+>pitarget</I
+></TT
+> should be a name that the processing application
+will recognize. Additional information in the <SPAN
+CLASS="ACRONYM"
+>PI</SPAN
+> should be added using
+<SPAN
+CLASS="QUOTE"
+>"attribute syntax."</SPAN
+></P
+></DD
+><DT
+><A
+NAME="GLOSS-PUBID"
+><B
+>public identifier</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+An abstract identifier for an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> or <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document, <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, or 
+external entity.</P
+></DD
+><DT
+><A
+NAME="GLOSS-RAW"
+><B
+>raw</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+<SPAN
+CLASS="QUOTE"
+>"Raw"</SPAN
+> data is just a collection of elements, with no additional
+punctation or information about presentation. To continue the cooking
+metaphor, raw data is just a set of ingredients. It's up to the processor
+to select appropriate elements, arrange them for display, and add
+required presentational information.</P
+><P
+><EM
+>See Also: </EM
+>Cooked.</P
+></DD
+><DT
+><A
+NAME="GLOSS-SGML"
+><B
+><SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+Standard Generalized Markup Language, an international standard (<SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 8879) that specifies 
+the rules for the creation of platform-independent markup languages for electronic texts.</P
+></DD
+><DT
+><A
+NAME="GLOSS-STYLESHEET"
+><B
+>stylesheet</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+A file that specifies the presentation or appearance of a document;
+there are several standards for such stylesheets, including
+<SPAN
+CLASS="ACRONYM"
+>CSS</SPAN
+>, <SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+>s, <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>, and, most recently, <SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+>. Vendors often have proprietary
+stylesheet formats as well.</P
+></DD
+><DT
+><A
+NAME="GLOSS-SYSID"
+><B
+>system identifier</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, a local, system-dependent identifier for a document,
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, or external entity. Usually a filename on the local system.</P
+><P
+>&#13;
+
+
+In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, a system identifer is required to be a <SPAN
+CLASS="ACRONYM"
+>URI</SPAN
+>.</P
+></DD
+><DT
+><A
+NAME="GLOSS-TAG"
+><B
+>tag</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+An <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> element name enclosed in angle brackets
+(&lt;&gt;), used to mark up the semantics or structure of a
+document. <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;Para&#62;</NOBR
+></TT
+> is a tag in DocBook
+used to mark the beginning of a paragraph.</P
+></DD
+><DT
+><A
+NAME="GLOSS-URI"
+><B
+><SPAN
+CLASS="ACRONYM"
+>URI</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+
+Uniform Resource Identifier, the <SPAN
+CLASS="ACRONYM"
+>W3C</SPAN
+>'s codification of the name and 
+address syntax of present and future objects on the Internet. In its most basic 
+form, a <SPAN
+CLASS="ACRONYM"
+>URI</SPAN
+> consists of a scheme name (such as file, http, ftp, news, mailto, 
+gopher) followed by a colon, followed by a path whose nature is determined 
+by the scheme that precedes it (see <SPAN
+CLASS="ACRONYM"
+>RFC</SPAN
+> 1630). </P
+><P
+>&#13;
+
+<SPAN
+CLASS="ACRONYM"
+>URI</SPAN
+> is the umbrella term for <SPAN
+CLASS="ACRONYM"
+>URN</SPAN
+>s, <SPAN
+CLASS="ACRONYM"
+>URL</SPAN
+>s, and all other Uniform Resource
+Identifiers.</P
+></DD
+><DT
+><A
+NAME="GLOSS-URL"
+><B
+><SPAN
+CLASS="ACRONYM"
+>URL</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>Uniform Resource Locator, a name and address for an existing object
+accessible over the Internet. <TT
+CLASS="LITERAL"
+>http://www.docbook.org</TT
+>
+is an example of a <SPAN
+CLASS="ACRONYM"
+>URL</SPAN
+> (see <SPAN
+CLASS="ACRONYM"
+>RFC</SPAN
+> 1738).</P
+></DD
+><DT
+><A
+NAME="GLOSS-URN"
+><B
+><SPAN
+CLASS="ACRONYM"
+>URN</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>Uniform Resource Name, the result of an evolving attempt to
+define a name and address syntax for <I
+CLASS="EMPHASIS"
+>persistent</I
+>
+objects accessible over the Internet; <TT
+CLASS="LITERAL"
+>urn:foo:a123,456</TT
+>
+is a legal <SPAN
+CLASS="ACRONYM"
+>URN</SPAN
+> consisting of three colon-separated fields: 
+<TT
+CLASS="LITERAL"
+>urn</TT
+> 
+followed by a namespace identifier, followed by a namespace specifier
+(see <SPAN
+CLASS="ACRONYM"
+>RFC</SPAN
+> 1737 and <SPAN
+CLASS="ACRONYM"
+>RFC</SPAN
+> 2141 for details).</P
+></DD
+><DT
+><A
+NAME="GLOSS-W3C"
+><B
+><SPAN
+CLASS="ACRONYM"
+>W3C</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+The World Wide Web Consortium (<A
+HREF="http://www.w3.org/"
+TARGET="_top"
+>http://www.w3.org/</A
+>).</P
+></DD
+><DT
+><A
+NAME="GLOSS-WRAPPER"
+><B
+>wrapper</B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+Some elements, such as <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, have important semantic
+significance.  Other elements serve no obvious purpose except to contain
+a number of other elements. For example, <A
+HREF="bookinfo.html"
+><TT
+CLASS="SGMLTAG"
+>BookInfo</TT
+></A
+> has no
+important semantics; it merely serves as a container for the meta-information
+about a book.  Elements that are just containers are sometimes called
+<SPAN
+CLASS="QUOTE"
+>"wrappers."</SPAN
+> </P
+></DD
+><DT
+><A
+NAME="GLOSS-XML"
+><B
+><SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+
+
+The <A
+HREF="http://www.w3.org/TR/REC-xml"
+TARGET="_top"
+>Extensible Markup Language</A
+>, a subset of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> 
+designed specifically for use over the Web.</P
+></DD
+><DT
+><A
+NAME="GLOSS-XSL"
+><B
+><SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+></B
+></A
+></DT
+><DD
+><P
+>&#13;
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> Style Language, an evolving language for stylesheets 
+to be attached to <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents. The stylesheet is itself an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+document.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="quickref.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="dbindex.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>DocBook <SPAN
+CLASS="ACRONYM"
+>V3.1</SPAN
+> Quick Reference</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Index</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

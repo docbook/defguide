@@ -1,0 +1,691 @@
+<HTML
+><HEAD
+><TITLE
+>Interchanging DocBook Documents</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Appendixes"
+HREF="part3.html"><LINK
+REL="PREVIOUS"
+TITLE="What's on theCD-ROM?"
+HREF="appe.html"><LINK
+REL="NEXT"
+TITLE="DocBook V3.1 Quick Reference"
+HREF="quickref.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="appe.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="quickref.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="APP-INTERCHANGE"
+>Appendix F. Interchanging DocBook Documents</A
+></H1
+><P
+>One of the early factors that motivated the development of the DocBook
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> was the desire for companies to interchange documents.  In particular,
+<SPAN
+CLASS="ACRONYM"
+>UNIX</SPAN
+> vendors wanted to be able to interchange common <SPAN
+CLASS="ACRONYM"
+>UNIX</SPAN
+> documentation.</P
+><P
+>A great deal of effort went into making sure that DocBook could handle
+most (probably all) of the documents that were likely to be exchanged.
+This avoids the guaranteed interchange problem of <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> extension.</P
+><P
+>However, simply using DocBook or a subset of it is not
+enough to ensure successful interchange. If you send someone
+your DocBook files, you must also tell the recipient about the
+markup your documents use and any of your additional markup
+conventions and processing expectations that impose constraints
+on processing.</P
+><P
+>This appendix provides a sample interchange questionnaire to
+help draw your attention to those areas that might be problematic.</P
+><P
+>For maximum portability, delivered DocBook documents
+should be accompanied by a filled-out interchange
+questionnaire. Because each situation is unique, you may need to
+supply additional information (such as layout specifications) in
+order to deliver a complete package.</P
+><H2
+CLASS="BRIDGEHEAD"
+>DocBook and <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> Usage</H2
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>What version of the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> are you using?</P
+></LI
+><LI
+><P
+>Did you use any markup features of the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> that
+have been flagged as obsolete (to be removed at the next major version
+of DocBook)? If so, which ones?</P
+></LI
+><LI
+><P
+>Did you extend DocBook in any way, inside or outside
+the provided customization mechanisms? How? All extensions must be negotiated
+with the recipient.</P
+></LI
+><LI
+><P
+>Did you remove markup from DocBook to create a
+subset? If you used a subset of DocBook, supply the subset you used. (Note
+that even the removal of references to <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> entity sets creates a subset.)</P
+></LI
+><LI
+><P
+>Did you use the supplied <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> declaration or another
+one? If you used another one, provide it.</P
+></LI
+><LI
+><P
+>Did you use the supplied catalog or another one,
+or none at all? If you used a catalog other than the one supplied, provide
+it.</P
+></LI
+><LI
+><P
+>If your documents bear no document type declaration,
+and you parsed them with a document declaration (with or without an internal
+subset), supply it.</P
+></LI
+><LI
+><P
+>Did you add <TT
+CLASS="LITERAL"
+>NOTATION</TT
+> declarations?
+If so, what are they? List all data content notations used in your documents.</P
+></LI
+><LI
+><P
+>Did you use the <TT
+CLASS="LITERAL"
+>SUBDOC</TT
+> feature?
+If so, how did you manage the name spaces of their <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>s, if you managed
+them at all?</P
+></LI
+><LI
+><P
+>Did you use character sets other than <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 8859-1
+(Latin 1)? If so, which ones? How did you use them?</P
+></LI
+><LI
+><P
+>Did you declare and use character entities and
+other general entities besides the <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> entity sets? If so, supply the entity
+declarations and the desired appearance of the additional character entities.</P
+></LI
+><LI
+><P
+>Are your document files normalized to include all
+markup explicitly?</P
+></LI
+><LI
+><P
+>Are you supplying a document fragment? If so, have
+you provided any necessary auxiliary information (such as meta-information)
+for the fragment? Are there any attribute values that haven't been specified
+that you expect to inherit from a parent that isn't present?</P
+></LI
+></OL
+><H2
+CLASS="BRIDGEHEAD"
+>Processing Requirements and Markup Interpretation</H2
+><P
+></P
+><OL
+START="14"
+TYPE="1"
+><LI
+><P
+>What formatting that you applied do you
+require your interchange partner to apply? For example,
+where and how must text be generated in order for the documents to make sense?</P
+></LI
+><LI
+><P
+>Did you supply your stylesheet and
+information regarding its format and version?</P
+></LI
+><LI
+><P
+>How did you create tables of contents,
+lists of titles, and indexes? Are they stored in DocBook form? If so,
+did you generate them (and according to what rules) or create them by
+hand?</P
+></LI
+><LI
+><P
+>If you used the <SPAN
+CLASS="SGMLTAG"
+>Lang</SPAN
+> common attribute, why, and to what
+effect?</P
+></LI
+><LI
+><P
+>If you used the <SPAN
+CLASS="SGMLTAG"
+>Remap</SPAN
+> common attribute, why, and to what
+effect?</P
+></LI
+><LI
+><P
+>If you used the <SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+> common attribute, why, and to what
+effect?</P
+></LI
+><LI
+><P
+>If you used the effectivity
+attributes, which did you use, why, and to what effect?</P
+></LI
+><LI
+><P
+>What values did you give to the <SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> attribute and how are they to be
+interpreted for rendering?</P
+></LI
+><LI
+><P
+>What
+values did you give to the <SPAN
+CLASS="SGMLTAG"
+>Mark</SPAN
+>
+and <SPAN
+CLASS="SGMLTAG"
+>Override</SPAN
+> attributes for lists
+and how are they to be interpreted for rendering?</P
+></LI
+><LI
+><P
+>Did you use the <SPAN
+CLASS="SGMLTAG"
+>Renderas</SPAN
+> attribute on sections and/or
+<A
+HREF="bridgehead.html"
+><TT
+CLASS="SGMLTAG"
+>BridgeHead</TT
+></A
+>s?</P
+></LI
+><LI
+><P
+>Did you supply all keyword values you used for
+attributes whose declared values are not enumerated tokens, along with
+the expected processing for the occurrence of each keyword?</P
+></LI
+><LI
+><P
+>Did you use markup to control width, size,
+and/or positioning settings (such as <SPAN
+CLASS="QUOTE"
+>"fold-out"</SPAN
+> or
+<SPAN
+CLASS="QUOTE"
+>"centered"</SPAN
+>) for graphics, line specific regions, and
+tables? If so, how?</P
+></LI
+><LI
+><P
+>For rendering of
+<A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>s, must these appear in the flow of the text
+where they appear in your files, or may they float?</P
+></LI
+><LI
+><P
+>Did you use <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>s? If so, what are the
+processing expectations for callout marks?</P
+></LI
+><LI
+><P
+>Did you use <A
+HREF="itemizedlist.html"
+><TT
+CLASS="SGMLTAG"
+>ItemizedList</TT
+></A
+>s? If so, what are the
+processing expectations for the marks on list items and nested lists?</P
+></LI
+><LI
+><P
+>For <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+> and <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+>, what method(s) did
+you use for providing graphic data: element content, <SPAN
+CLASS="SGMLTAG"
+>Fileref</SPAN
+> attribute, or
+<SPAN
+CLASS="SGMLTAG"
+>Entityref</SPAN
+> attribute?</P
+></LI
+><LI
+><P
+>For <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+> and <A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+>,
+what method(s) did
+you use for selecting between alternative presentations?</P
+></LI
+><LI
+><P
+>How did you specify column widths in tables? Did
+you use vertical spans? Did you use horizontal spans?</P
+></LI
+><LI
+><P
+>Did you use <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s?</P
+></LI
+><LI
+><P
+>If you used the <SPAN
+CLASS="SGMLTAG"
+>Type</SPAN
+> attribute on the link elements,
+why, and to what effect?</P
+></LI
+><LI
+><P
+>If you used <A
+HREF="xref.html"
+><TT
+CLASS="SGMLTAG"
+>XRef</TT
+></A
+>, do your interchange
+partners need additional information about the semantic of the link?
+Have you provided it, perhaps with <SPAN
+CLASS="SGMLTAG"
+>Role</SPAN
+>?</P
+></LI
+><LI
+><P
+>Did you use the <SPAN
+CLASS="SGMLTAG"
+>Subject</SPAN
+> attribute on <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+>?
+If so, did you use a thesaurus of terms? If so, what is it?</P
+></LI
+><LI
+><P
+>If you used the <SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> attribute on <A
+HREF="refmiscinfo.html"
+><TT
+CLASS="SGMLTAG"
+>RefMiscInfo</TT
+></A
+>,
+why and to what effect?</P
+></LI
+><LI
+><P
+>If you used <A
+HREF="ulink.html"
+><TT
+CLASS="SGMLTAG"
+>ULink</TT
+></A
+> and provided <SPAN
+CLASS="ACRONYM"
+>URL</SPAN
+>s that are queries,
+what back-end processing is required to resolve those queries?</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="SGMLTAG"
+>FileRef</SPAN
+> or 
+<SPAN
+CLASS="SGMLTAG"
+>EntityRef</SPAN
+> is supplied on every
+<A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>,
+<A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+>,
+<A
+HREF="audiodata.html"
+><TT
+CLASS="SGMLTAG"
+>AudioData</TT
+></A
+>, 
+<A
+HREF="imagedata.html"
+><TT
+CLASS="SGMLTAG"
+>ImageData</TT
+></A
+>, and
+<A
+HREF="videodata.html"
+><TT
+CLASS="SGMLTAG"
+>VideoData</TT
+></A
+> element.  If one is not present, what is the expectation?</P
+></LI
+><LI
+><P
+>If your <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>s or
+<A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>s have special processing expectations,
+such as the ability to display only those entries that are cited,
+have you described them?</P
+></LI
+><LI
+><P
+>If your <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>s contain
+<A
+HREF="biblioentry.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioEntry</TT
+></A
+>s, what are the processing expectations?
+Which fields are selected for display?
+What punctuation is added, and where?</P
+></LI
+><LI
+><P
+>Do <A
+HREF="glossterm.html"
+><TT
+CLASS="SGMLTAG"
+>GlossTerm</TT
+></A
+>s or other elements have
+implicit linking relationships that must be obeyed or handled in
+presentation?</P
+></LI
+><LI
+><P
+>Did you use any processing instructions? Why and what for?
+Are they in entities?</P
+></LI
+><LI
+><P
+>What copyfitting have you already done, and for what outputs?</P
+></LI
+></OL
+><H2
+CLASS="BRIDGEHEAD"
+>Miscellaneous</H2
+><P
+></P
+><OL
+START="44"
+TYPE="1"
+><LI
+><P
+>Have you checked your
+files for viruses?</P
+></LI
+><LI
+><P
+>If you used <A
+HREF="bridgehead.html"
+><TT
+CLASS="SGMLTAG"
+>BridgeHead</TT
+></A
+>, have you joined a recovery
+support group?</P
+></LI
+></OL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="appe.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="quickref.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>What's on the<SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+>?</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part3.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>DocBook <SPAN
+CLASS="ACRONYM"
+>V3.1</SPAN
+> Quick Reference</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

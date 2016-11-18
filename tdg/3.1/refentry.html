@@ -1,0 +1,829 @@
+<HTML
+><HEAD
+><TITLE
+>RefEntry</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="RefDescriptor"
+HREF="refdescriptor.html"><LINK
+REL="NEXT"
+TITLE="RefEntryTitle"
+HREF="refentrytitle.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="refdescriptor.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="refentrytitle.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>RefEntry</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN87168"
+></A
+><H2
+>Name</H2
+>RefEntry&nbsp;--&nbsp;A reference page (originally a UNIX man-style reference page)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN87171"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>RefEntry ::=
+(<A
+HREF="docinfo.html"
+>DocInfo</A
+>?,<A
+HREF="refmeta.html"
+>RefMeta</A
+>?,
+ (<A
+HREF="comment.html"
+>Comment</A
+>|<A
+HREF="link.html"
+>Link</A
+>|<A
+HREF="olink.html"
+>OLink</A
+>|<A
+HREF="ulink.html"
+>ULink</A
+>)*,
+ <A
+HREF="refnamediv.html"
+>RefNameDiv</A
+>,<A
+HREF="refsynopsisdiv.html"
+>RefSynopsisDiv</A
+>?,<A
+HREF="refsect1.html"
+>RefSect1</A
+>+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Status</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-attrib.html#DBRE.PENT.MOREINFO.ATTRIB"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%moreinfo.attrib;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARTCONTENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%partcontent.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.REFENTRY.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refentry.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN87235"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+> is a reference page.  In <SPAN
+CLASS="ACRONYM"
+>UNIX</SPAN
+> parlance this has
+historically been called a "man page" (short for manual page).</P
+><P
+><A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+> is an appropriate wrapper for any small unit of
+reference documentation describing a single topic.  Canonical examples
+are programming language functions and user commands 
+(one <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+> per function or command).<A
+NAME="AEN87243"
+HREF="#FTN.AEN87243"
+>[1]</A
+></P
+><P
+>On some projects, the structure of reference pages may be rigorously 
+defined right down to the number, order, and title of individual sections
+(some or all of which may be required).</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN87247"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. It is not uncommon for <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>s to introduce
+a forced page break in print media.</P
+><P
+>Formatting reference pages may require a fairly sophisticated
+processing system.  Much of the meta-information about a
+reference page (its name, type, purpose, title, and
+classification) is stored in wrappers near the beginning of
+the <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.</P
+><P
+>Common presentational features, such as titles and running
+heads, may require data from several of these wrappers plus
+some generated text. Other formatting often requires that
+these elements be reordered.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN87254"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain RefEntry:
+<A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="reference.html"
+><TT
+CLASS="SGMLTAG"
+>Reference</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN87297"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in RefEntry:
+<A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="link.html"
+><TT
+CLASS="SGMLTAG"
+>Link</TT
+></A
+>, <A
+HREF="olink.html"
+><TT
+CLASS="SGMLTAG"
+>OLink</TT
+></A
+>, <A
+HREF="refmeta.html"
+><TT
+CLASS="SGMLTAG"
+>RefMeta</TT
+></A
+>, <A
+HREF="refnamediv.html"
+><TT
+CLASS="SGMLTAG"
+>RefNameDiv</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="ulink.html"
+><TT
+CLASS="SGMLTAG"
+>ULink</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN87336"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Status</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Status</SPAN
+> identifies the editorial or publication 
+status of the <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.</P
+><P
+>Publication status might be used to control formatting (for example, 
+printing a <SPAN
+CLASS="QUOTE"
+>"draft"</SPAN
+> watermark on drafts) or processing (perhaps
+a document with a status of <SPAN
+CLASS="QUOTE"
+>"final"</SPAN
+> should not include any
+components that are not final).</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN87348"
+></A
+><H2
+>Examples</H2
+><P
+>A typical reference page for a command:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;refentry id="ls"&#62;
+
+&#60;refmeta&#62;
+&#60;refentrytitle&#62;ls&#60;/refentrytitle&#62;
+&#60;manvolnum&#62;1&#60;/manvolnum&#62;
+&#60;/refmeta&#62;
+
+&#60;refnamediv&#62;
+&#60;refname&#62;ls&#60;/refname&#62;
+&#60;refpurpose&#62;list contents of a directory&#60;/refpurpose&#62;
+&#60;/refnamediv&#62;
+
+&#60;refsynopsisdiv&#62;
+&#60;cmdsynopsis&#62;
+&#60;command&#62;/usr/bin/ls&#60;/command&#62;
+&#60;arg choice="opt"&#62;
+  &#60;option&#62;aAbcCdfFgilLmnopqrRstux1&#60;/option&#62;
+&#60;/arg&#62;
+&#60;arg choice="opt" rep="repeat"&#62;file&#60;/arg&#62;
+&#60;/cmdsynopsis&#62;
+
+&#60;refsect1&#62;&#60;title&#62;Description&#60;/title&#62;
+&#60;para&#62;
+For each file that is a directory, &#60;command&#62;ls&#60;/&#62; lists the contents of
+the directory; for each file that is an ordinary file, &#60;command&#62;ls&#60;/&#62;
+repeats its name and any other information requested.
+&#60;/para&#62;
+&#60;para&#62;&#38;hellip;&#60;/para&#62;
+&#60;/refsect1&#62;
+&#60;/refentry&#62;</PRE
+></DIV
+><P
+>A typical reference page for a function:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;refentry id="printf"&#62;
+
+&#60;refmeta&#62;
+&#60;refentrytitle&#62;printf&#60;/refentrytitle&#62;
+&#60;manvolnum&#62;3S&#60;/manvolnum&#62;
+&#60;/refmeta&#62;
+
+&#60;refnamediv&#62;
+&#60;refname&#62;printf&#60;/refname&#62;
+&#60;refname&#62;fprintf&#60;/refname&#62;
+&#60;refname&#62;sprintf&#60;/refname&#62;
+&#60;refpurpose&#62;print formatted output&#60;/refpurpose&#62;
+&#60;/refnamediv&#62;
+
+&#60;refsynopsisdiv&#62;
+
+&#60;funcsynopsis&#62;
+&#60;funcsynopsisinfo&#62;
+#include &#38;lt;stdio.h&#38;gt;
+&#60;/funcsynopsisinfo&#62;
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;int &#60;function&#62;printf&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;paramdef&#62;const char *&#60;parameter&#62;format&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;...&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;int &#60;function&#62;fprintf&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;paramdef&#62;FILE *&#60;parameter&#62;strm&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;const char *&#60;parameter&#62;format&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;...&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;int &#60;function&#62;sprintf&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;paramdef&#62;char *&#60;parameter&#62;s&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;const char *&#60;parameter&#62;format&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;...&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;
+
+&#60;/refsynopsisdiv&#62;
+
+&#60;refsect1&#62;&#60;title&#62;Description&#60;/title&#62;
+&#60;para&#62;
+&#60;function&#62;printf&#60;/function&#62; places output on the standard
+output stream stdout.
+&#60;/para&#62;
+&#60;para&#62;&#38;hellip;&#60;/para&#62;
+&#60;/refsect1&#62;
+&#60;/refentry&#62;</PRE
+></DIV
+><P
+>A reference page for a data structure:</P
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;refentry id="iovec"&#62;
+
+&#60;refmeta&#62;
+&#60;refentrytitle&#62;iovec&#60;/refentrytitle&#62;
+&#60;manvolnum&#62;9S&#60;/manvolnum&#62;
+&#60;/refmeta&#62;
+
+&#60;refnamediv&#62;
+&#60;refname&#62;iovec&#60;/refname&#62;
+&#60;refpurpose&#62;data storage structure for I/O using uio&#60;/refpurpose&#62;
+&#60;/refnamediv&#62;
+
+&#60;refsynopsisdiv&#62;
+&#60;synopsis&#62;
+#include &#38;lt;sys/uio.h&#38;gt;
+&#60;/synopsis&#62;
+&#60;/refsynopsisdiv&#62;
+
+&#60;refsect1&#62;&#60;title&#62;Interface Level&#60;/title&#62;
+&#60;para&#62;
+Architecture independent level 1 (DDI/DKI).
+&#60;/para&#62;
+&#60;/refsect1&#62;
+
+&#60;refsect1&#62;&#60;title&#62;Description&#60;/title&#62;
+
+&#60;para&#62;
+An &#60;structname&#62;iovec&#60;/structname&#62; structure describes a data
+storage area for transfer in a
+&#60;citerefentry&#62;&#60;refentrytitle&#62;uio&#60;/refentrytitle&#62;
+  &#60;manvolnum&#62;9S&#60;/manvolnum&#62;
+&#60;/citerefentry&#62;
+structure. Conceptually,
+it may be thought of as a base address and length specification.
+&#60;/para&#62;
+
+&#60;/refsect1&#62;
+&#60;refsect1&#62;&#60;title&#62;Structure Members&#60;/title&#62;
+
+&#60;programlisting&#62;
+     caddr_t  iov_base;  /* base address of the data storage area */
+                         /* represented by the iovec structure */
+     int      iov_len;   /* size of the data storage area in bytes */
+&#60;/programlisting&#62;
+
+&#60;para&#62;&#38;hellip;&#60;/para&#62;
+&#60;/refsect1&#62;
+&#60;/refentry&#62;</PRE
+></DIV
+><P
+>For additional examples, see also <A
+HREF="reference.html"
+><TT
+CLASS="SGMLTAG"
+>Reference</TT
+></A
+>.</P
+></DIV
+><H2
+CLASS="FOOTNOTES"
+>Notes</H2
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN87243"
+HREF="refentry.html#AEN87243"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>You're reading a <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+> right now.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="refdescriptor.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="refentrytitle.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>RefDescriptor</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>RefEntryTitle</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

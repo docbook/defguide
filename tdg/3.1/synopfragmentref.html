@@ -1,0 +1,536 @@
+<HTML
+><HEAD
+><TITLE
+>SynopFragmentRef</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="SynopFragment"
+HREF="synopfragment.html"><LINK
+REL="NEXT"
+TITLE="Synopsis"
+HREF="synopsis.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="synopfragment.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="synopsis.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SynopFragmentRef</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN112735"
+></A
+><H2
+>Name</H2
+>SynopFragmentRef&nbsp;--&nbsp;A reference to a fragment of a command synopsis</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN112738"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Declared Content</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SynopFragmentRef ::=
+RCDATA</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Linkend</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>IDREF</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>Required</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112778"
+></A
+><H2
+>Description</H2
+><P
+>A complex <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+> can be made more manageable
+with <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>s.  Rather than attempting to
+present the entire synopsis in one large
+piece, parts of the synopsis can be extracted out and presented
+elsewhere. </P
+><P
+>At the point where each piece was extracted, insert a
+<A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> that points to the fragment. The
+content of the <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> will be presented inline.</P
+><P
+>The extracted pieces are placed in <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>s
+at the end of the <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="figures/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The content model of <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> is unique in
+the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> version of DocBook because it contains <TT
+CLASS="LITERAL"
+>RCDATA</TT
+>
+declared content. What this means is that all markup inside a
+<A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> is ignored, except for entity references.</P
+><P
+>How, you might ask, is this different from a content model that
+includes only <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+>?  The difference is only
+apparent when you consider inclusions.  Recall that an inclusion
+provides a list of elements that can occur <I
+CLASS="EMPHASIS"
+>anywhere</I
+>
+inside an element.  So, for example, the fact that
+<A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+> lists <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+> as an inclusion
+means that <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+> can legally occur inside of a
+<A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> that's nested inside a chapter,
+even if the content model of <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> does
+not explicitly allow <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>s. Making the content
+<TT
+CLASS="LITERAL"
+>RCDATA</TT
+> ensures that the markup will not be recognized,
+even if it's allowed by inclusion. A neat trick.</P
+><P
+><SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> does not support <TT
+CLASS="LITERAL"
+>RCDATA</TT
+>.</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN112808"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. </P
+><P
+>The presentation system is responsible for generating text that
+makes the reader aware of the link. This can be done with
+numbered bullets, or any other appropriate mechanism.</P
+><P
+>Online systems have additional flexibility. They may generate
+hot links between the references and the fragments, for example,
+or place the fragments in pop-up windows.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN112813"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SynopFragmentRef:
+<A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112823"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Linkend</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Linkend</SPAN
+> points to the <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+> referenced.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112832"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sbr.html"
+><TT
+CLASS="SGMLTAG"
+>SBR</TT
+></A
+>, <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112854"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="synopfragment.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="synopsis.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>SynopFragment</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Synopsis</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

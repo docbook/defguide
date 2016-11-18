@@ -1,0 +1,1533 @@
+<HTML
+><HEAD
+><TITLE
+>Table</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="SystemItem"
+HREF="systemitem.html"><LINK
+REL="NEXT"
+TITLE="tbody"
+HREF="tbody.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="systemitem.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tbody.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>Table</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN114317"
+></A
+><H2
+>Name</H2
+>Table&nbsp;--&nbsp;A formal table in a document</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN114320"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>Table ::=
+(((<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?),
+  (<A
+HREF="indexterm.html"
+>IndexTerm</A
+>)*,
+  (<A
+HREF="graphic.html"
+>Graphic</A
+>+|<A
+HREF="mediaobject.html"
+>MediaObject</A
+>+|<A
+HREF="tgroup.html"
+>TGroup</A
+>+)))</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Label</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>pgwide</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>rowsep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>shortentry</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>colsep</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>tabstyle</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NMTOKEN</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>frame</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>all<BR>bottom<BR>none<BR>sides<BR>top<BR>topbot</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>orient</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>land<BR>port</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>tocentry</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.ADMON.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%admon.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.COMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%component.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.DIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%divcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-exclusion.html#DBRE.PENT.FOOTNOTE.EXCLUSION"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%footnote.exclusion;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.FORMAL.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%formal.class;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-exclusion.html#DBRE.PENT.FORMAL.EXCLUSION"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%formal.exclusion;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.GLOSSDEF.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%glossdef.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-exclusion.html#DBRE.PENT.HIGHLIGHTS.EXCLUSION"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%highlights.exclusion;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARA.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%para.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.QANDASET.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%qandaset.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.REFCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refcomponent.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.SIDEBAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%sidebar.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.TABLE.EXCEP"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.table.excep;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.TABLE.NAME"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.table.name;</NOBR
+></TT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN114458"
+></A
+><H2
+>Description</H2
+><P
+>The <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> element identifies a formal table.  DocBook uses the
+<SPAN
+CLASS="ACRONYM"
+>CALS</SPAN
+> table model, which describes tables geometrically using rows, columns,
+and cells.</P
+><P
+>Tables may include column headers and footers, but there is no provision for
+row headers.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN114464"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. This element is expected to obey the semantics
+of the <A
+HREF="appd.html#CALSDTD"
+><I
+CLASS="CITETITLE"
+>CALS Table Model
+Document Type Definition</I
+></A
+>, as specified by <I
+CLASS="CITETITLE"
+><A
+HREF="http://www.oasis-open.org/html/a502.htm"
+TARGET="_top"
+>OASIS
+Technical Memorandum TM 9502:1995</A
+></I
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN114471"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain Table:
+<A
+HREF="answer.html"
+><TT
+CLASS="SGMLTAG"
+>Answer</TT
+></A
+>, <A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="bibliodiv.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioDiv</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+>, <A
+HREF="glossdiv.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDiv</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="msgexplan.html"
+><TT
+CLASS="SGMLTAG"
+>MsgExplan</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="qandadiv.html"
+><TT
+CLASS="SGMLTAG"
+>QandADiv</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="question.html"
+><TT
+CLASS="SGMLTAG"
+>Question</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simplesect.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleSect</TT
+></A
+>, <A
+HREF="step.html"
+><TT
+CLASS="SGMLTAG"
+>Step</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN114598"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in Table:
+<A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>tgroup</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+excluded:
+<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN114633"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Label</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> specifies an identifying string for presentation purposes.</P
+><P
+>Generally, an explicit <SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.</P
+></DD
+><DT
+><B
+>colsep</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>ColSep</SPAN
+> has the value 1 (true), then
+a rule will be drawn to the right of all columns in this table.
+A value of 0 (false) suppresses the rule.
+The rule to the right of the last column in the table is controlled by the
+<SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+> attribute, not the
+<SPAN
+CLASS="SGMLTAG"
+>ColSep</SPAN
+>.</P
+></DD
+><DT
+><B
+>frame</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+> specifies how the table is to be framed.</P
+></DD
+><DT
+><B
+>orient</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Orient</SPAN
+> specifies the orientation of the 
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>. An orientation of <TT
+CLASS="LITERAL"
+>Port</TT
+> is
+the "upright", the same orientation as the rest of the text flow.
+An orientation of <TT
+CLASS="LITERAL"
+>Land</TT
+> is 90 degrees counterclockwise
+from the upright orientation.</P
+></DD
+><DT
+><B
+>pgwide</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>Pgwide</SPAN
+> has the value 0 (false), then the
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> is rendered in the current text flow (with flow
+column width). A value of 1 (true) specifies that the table should be
+rendered across the full text page.</P
+></DD
+><DT
+><B
+>rowsep</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>RowSep</SPAN
+> has the value 1 (true), then a
+rule will be drawn below all the rows in the <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>
+(unless other, interior elements, suppress some or all of the rules).
+A value of 0 (false) suppresses the rule. The rule below the last row
+in the table is controlled by the <SPAN
+CLASS="SGMLTAG"
+>Frame</SPAN
+>
+attribute and the <SPAN
+CLASS="SGMLTAG"
+>RowSep</SPAN
+>
+of the last row is ignored.</P
+></DD
+><DT
+><B
+>shortentry</B
+></DT
+><DD
+><P
+>If <TT
+CLASS="SGMLTAG"
+>ShortEntry</TT
+> has the value 1 (true), then the 
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>'s <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+> will be used in the
+<A
+HREF="lot.html"
+><TT
+CLASS="SGMLTAG"
+>LoT</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, etc. A value of 0 (false) indicates
+that the full <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+> should be used in those places.</P
+></DD
+><DT
+><B
+>tabstyle</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>TabStyle</SPAN
+> holds the name of a table style
+defined in a stylesheet (e.g., a <SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+>) that will be used
+to process this document.</P
+></DD
+><DT
+><B
+>tocentry</B
+></DT
+><DD
+><P
+>If <SPAN
+CLASS="SGMLTAG"
+>ToCEntry</SPAN
+> has the value 1 (true), then the
+<A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+> will appear in a generated List of Tables.
+The default value of 0 (false) indicates that it will not.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN114700"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="colspec.html"
+><TT
+CLASS="SGMLTAG"
+>colspec</TT
+></A
+>, <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>entrytbl</TT
+></A
+>, <A
+HREF="equation.html"
+><TT
+CLASS="SGMLTAG"
+>Equation</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>, <A
+HREF="informalequation.html"
+><TT
+CLASS="SGMLTAG"
+>InformalEquation</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>, <A
+HREF="row.html"
+><TT
+CLASS="SGMLTAG"
+>row</TT
+></A
+>, <A
+HREF="spanspec.html"
+><TT
+CLASS="SGMLTAG"
+>spanspec</TT
+></A
+>, <A
+HREF="tbody.html"
+><TT
+CLASS="SGMLTAG"
+>tbody</TT
+></A
+>, <A
+HREF="tfoot.html"
+><TT
+CLASS="SGMLTAG"
+>tfoot</TT
+></A
+>, <A
+HREF="tgroup.html"
+><TT
+CLASS="SGMLTAG"
+>tgroup</TT
+></A
+>, <A
+HREF="thead.html"
+><TT
+CLASS="SGMLTAG"
+>thead</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN114752"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE table PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;table frame=all&#62;&#60;title&#62;Sample Table&#60;/title&#62;
+&#60;tgroup cols=5 align=left colsep=1 rowsep=1&#62;
+&#60;colspec colname=c1&#62;
+&#60;colspec colname=c2&#62;
+&#60;colspec colname=c3&#62;
+&#60;colspec colnum=5 colname=c5&#62;
+&#60;spanspec spanname=hspan namest=c1 nameend=c2 align=center&#62;
+&#60;spanspec spanname=bspan namest=c2 nameend=c3 align=center&#62;
+&#60;thead&#62;
+&#60;row&#62;
+  &#60;entry spanname=hspan&#62;Horizontal Span&#60;/entry&#62;
+  &#60;entry&#62;a3&#60;/entry&#62;
+  &#60;entry&#62;a4&#60;/entry&#62;
+  &#60;entry&#62;a5&#60;/entry&#62;
+&#60;/row&#62;
+&#60;/thead&#62;
+&#60;tfoot&#62;
+&#60;row&#62;
+  &#60;entry&#62;f1&#60;/entry&#62;
+  &#60;entry&#62;f2&#60;/entry&#62;
+  &#60;entry&#62;f3&#60;/entry&#62;
+  &#60;entry&#62;f4&#60;/entry&#62;
+  &#60;entry&#62;f5&#60;/entry&#62;
+&#60;/row&#62;
+&#60;/tfoot&#62;
+&#60;tbody&#62;
+&#60;row&#62;
+  &#60;entry&#62;b1&#60;/entry&#62;
+  &#60;entry&#62;b2&#60;/entry&#62;
+  &#60;entry&#62;b3&#60;/entry&#62;
+  &#60;entry&#62;b4&#60;/entry&#62;
+  &#60;entry morerows=1 valign=middle&#62;&#60;para&#62;  &#60;!-- Pernicous Mixed Content --&#62;
+  Vertical Span&#60;/para&#62;&#60;/entry&#62;
+&#60;/row&#62;
+&#60;row&#62;
+  &#60;entry&#62;c1&#60;/entry&#62;
+  &#60;entry spanname=bspan morerows=1 valign=bottom&#62;Span Both&#60;/entry&#62;
+  &#60;entry&#62;c4&#60;/entry&#62;
+&#60;/row&#62;
+&#60;row&#62;
+  &#60;entry&#62;d1&#60;/entry&#62;
+  &#60;entry&#62;d4&#60;/entry&#62;
+  &#60;entry&#62;d5&#60;/entry&#62;
+&#60;/row&#62;
+&#60;/tbody&#62;
+&#60;/tgroup&#62;
+&#60;/table&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="TABLE"
+><P
+><B
+>Table 1. Sample Table</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+COLSPAN="2"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Horizontal Span</TH
+><TH
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>a3</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>a4</TH
+><TH
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>a5</TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b1</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b2</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>b3</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>b4</TD
+><TD
+ROWSPAN="2"
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><P
+>  
+  Vertical Span</P
+></TD
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>c1</TD
+><TD
+COLSPAN="2"
+ROWSPAN="2"
+ALIGN="CENTER"
+VALIGN="BOTTOM"
+>Span Both</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>c4</TD
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>d1</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>d4</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>d5</TD
+></TR
+><TR
+><TH
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>f1</TH
+><TH
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>f2</TH
+><TH
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>f3</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>f4</TH
+><TH
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>f5</TH
+></TR
+></TABLE
+></DIV
+></DIV></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="systemitem.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tbody.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>SystemItem</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>tbody</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

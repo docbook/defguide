@@ -1,0 +1,525 @@
+<HTML
+><HEAD
+><TITLE
+>LoT</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="LiteralLayout"
+HREF="literallayout.html"><LINK
+REL="NEXT"
+TITLE="LoTentry"
+HREF="lotentry.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="literallayout.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="lotentry.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>LoT</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN65203"
+></A
+><H2
+>Name</H2
+>LoT&nbsp;--&nbsp;A list of the titles of formal objects (as tables or figures) in a document</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN65206"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>LoT ::=
+((<A
+HREF="docinfo.html"
+>DocInfo</A
+>?,<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ <A
+HREF="lotentry.html"
+>LoTentry</A
+>*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Label</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.NAV.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%nav.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARTCONTENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%partcontent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN65260"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="lot.html"
+><TT
+CLASS="SGMLTAG"
+>LoT</TT
+></A
+> is a <I
+CLASS="EMPHASIS"
+>list of titles</I
+>.  It can be used
+to generate lists of <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>s, <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>s,
+<A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>s, or <A
+HREF="equation.html"
+><TT
+CLASS="SGMLTAG"
+>Equation</TT
+></A
+>s.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN65269"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. A list of titles in a <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> usually
+introduces a forced page break.</P
+><P
+>Most often, lists of titles are generated automatically
+by the presentation system and never have to be represented explicitly
+in the document source.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN65274"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain LoT:
+<A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN65305"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in LoT:
+<A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="lotentry.html"
+><TT
+CLASS="SGMLTAG"
+>LoTentry</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN65332"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Label</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Label</SPAN
+> specifies an identifying number or string
+that may be used in presentation.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN65340"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE lot PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;lot&#62;&#60;title&#62;List of Figures&#60;/title&#62;
+&#60;lotentry pagenum=5&#62;The Letters &#38;ldquo;g&#38;rdquo; and &#38;ldquo;h&#38;rdquo; 
+   inside their boxes&#60;/lotentry&#62;
+&#60;lotentry pagenum=15&#62;Example figure produced by both TeX and
+   troff&#60;/lotentry&#62;
+&#60;!-- ... --&#62;
+&#60;/lot&#62;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="literallayout.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="lotentry.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>LiteralLayout</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>LoTentry</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

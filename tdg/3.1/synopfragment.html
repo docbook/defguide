@@ -1,0 +1,512 @@
+<HTML
+><HEAD
+><TITLE
+>SynopFragment</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Symbol"
+HREF="symbol.html"><LINK
+REL="NEXT"
+TITLE="SynopFragmentRef"
+HREF="synopfragmentref.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="symbol.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="synopfragmentref.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SynopFragment</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN112572"
+></A
+><H2
+>Name</H2
+>SynopFragment&nbsp;--&nbsp;A portion of a <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+> broken out from the main body of the synopsis</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN112576"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SynopFragment ::=
+((<A
+HREF="arg.html"
+>Arg</A
+>|<A
+HREF="group.html"
+>Group</A
+>)+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112603"
+></A
+><H2
+>Description</H2
+><P
+>A complex <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+> can be made more manageable
+with <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>s.  Rather than attempting to
+present the entire synopsis in one large
+piece, parts of the synopsis can be extracted out and presented
+elsewhere. These extracted pieces are placed in <A
+HREF="synopfragment.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragment</TT
+></A
+>s
+at the end of the <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>.</P
+><P
+>At the point in which each piece was extracted, insert a
+<A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+> that points to the fragment. The
+content of the reference element will be presented inline.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN112612"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. </P
+><P
+>The presentation system is responsible for generating text that
+makes the reader aware of the link. This can be done with
+numbered bullets, or any other appropriate mechanism. Whatever
+mark is generated for the reference must also be generated for
+the fragment.</P
+><P
+>Online systems have additional flexibility. They may generate
+hot links between the references and the fragments, for example,
+or place the fragments in pop-up windows.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN112617"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SynopFragment:
+<A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN112624"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in SynopFragment:
+<A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112642"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="arg.html"
+><TT
+CLASS="SGMLTAG"
+>Arg</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sbr.html"
+><TT
+CLASS="SGMLTAG"
+>SBR</TT
+></A
+>, <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN112664"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE cmdsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;cmdsynopsis&#62;
+  &#60;command&#62;cccp&#60;/command&#62;
+  &#60;arg&#62;-$&#60;/arg&#62;
+  &#60;arg&#62;-C&#60;/arg&#62;
+  &#60;arg rep=repeat&#62;-D&#60;replaceable&#62;name&#60;/replaceable&#62;
+       &#60;arg&#62;=&#60;replaceable&#62;definition&#60;/replaceable&#62;&#60;/arg&#62;&#60;/arg&#62;
+  &#60;arg&#62;-dD&#60;/arg&#62;
+  &#60;arg&#62;-dM&#60;/arg&#62;
+  &#60;sbr&#62;
+  &#60;arg rep=repeat&#62;-I &#60;replaceable&#62;directory&#60;/replaceable&#62;&#60;/arg&#62;
+  &#60;arg&#62;-H&#60;/arg&#62;
+  &#60;arg&#62;-I-&#60;/arg&#62;
+  &#60;arg rep=repeat&#62;-imacros &#60;replaceable&#62;file&#60;/replaceable&#62;&#60;/arg&#62;
+  &#60;sbr&#62;
+  &#60;arg rep=repeat&#62;-include &#60;replaceable&#62;file&#60;/replaceable&#62;&#60;/arg&#62;
+  &#60;group&#62;
+    &#60;synopfragmentref linkend="langs"&#62;languages&#60;/synopfragmentref&#62;
+  &#60;/group&#62;
+  &#60;arg&#62;-lint&#60;/arg&#62;
+  &#60;sbr&#62;
+  &#60;group&#62;
+    &#60;arg&#62;-M&#60;/arg&#62;
+    &#60;arg&#62;-MD&#60;/arg&#62;
+    &#60;arg&#62;-MM&#60;/arg&#62;
+    &#60;arg&#62;-MMD&#60;/arg&#62;
+  &#60;/group&#62;
+  &#60;arg&#62;-nostdinc&#60;/arg&#62;
+  &#60;arg&#62;-P&#60;/arg&#62;
+  &#60;arg&#62;-pedantic&#60;/arg&#62;
+  &#60;sbr&#62;
+  &#60;arg&#62;-pedantic-errors&#60;/arg&#62;
+  &#60;arg&#62;-trigraphs&#60;/arg&#62;
+  &#60;arg&#62;-U&#60;replaceable&#62;name&#60;/replaceable&#62;&#60;/arg&#62;
+  &#60;sbr&#62;
+  &#60;arg&#62;-undef&#60;/arg&#62;
+  &#60;arg choice="plain"&#62;&#60;synopfragmentref linkend="warn"&#62;warnings
+    &#60;/synopfragmentref&#62;&#60;/arg&#62;
+  &#60;group choice=req&#62;
+    &#60;arg&#62;&#60;replaceable&#62;infile&#60;/replaceable&#62;&#60;/arg&#62;
+    &#60;arg&#62;-&#60;/arg&#62;
+  &#60;/group&#62;
+  &#60;group choice=req&#62;
+    &#60;arg&#62;&#60;replaceable&#62;outfile&#60;/replaceable&#62;&#60;/arg&#62;
+    &#60;arg&#62;-&#60;/arg&#62;
+  &#60;/group&#62;
+
+  &#60;synopfragment id="langs"&#62;
+    &#60;group choice="plain"&#62;
+      &#60;arg&#62;-lang-c&#60;/arg&#62;
+      &#60;arg&#62;-lang-c++&#60;/arg&#62;
+      &#60;arg&#62;-lang-objc&#60;/arg&#62;
+    &#60;/group&#62;
+  &#60;/synopfragment&#62;
+
+  &#60;synopfragment id="warn"&#62;
+    &#60;arg&#62;-Wtrigraphs&#60;/arg&#62;
+    &#60;arg&#62;-Wcomment&#60;/arg&#62;
+    &#60;arg&#62;-Wall&#60;/arg&#62;
+    &#60;arg&#62;-Wtraditional&#60;/arg&#62;
+  &#60;/synopfragment&#62;
+
+&#60;/cmdsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><P
+><I
+CLASS="COMMAND"
+>cccp</I
+> [-$] [-C] [-D<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>
+        [=<TT
+CLASS="REPLACEABLE"
+><I
+>definition</I
+></TT
+>]...] [-dD] [-dM]<BR> [-I <TT
+CLASS="REPLACEABLE"
+><I
+>directory</I
+></TT
+>...] [-H] [-I-] [-imacros <TT
+CLASS="REPLACEABLE"
+><I
+>file</I
+></TT
+>...]<BR> [-include <TT
+CLASS="REPLACEABLE"
+><I
+>file</I
+></TT
+>...] [<I
+><A
+HREF="synopfragment.html#LANGS"
+>(1)</A
+>languages</I
+>] [-lint]<BR> [-M | -MD | -MM | -MMD] [-nostdinc] [-P] [-pedantic]<BR> [-pedantic-errors] [-trigraphs] [-U<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>]<BR> [-undef]  <I
+><A
+HREF="synopfragment.html#WARN"
+>(2)</A
+>warnings
+    </I
+>  {<TT
+CLASS="REPLACEABLE"
+><I
+>infile</I
+></TT
+> | -} {<TT
+CLASS="REPLACEABLE"
+><I
+>outfile</I
+></TT
+> | -}<P
+><A
+NAME="LANGS"
+>(1)</A
+>&nbsp; -lang-c | -lang-c++ | -lang-objc </P
+><P
+><A
+NAME="WARN"
+>(2)</A
+>&nbsp;[-Wtrigraphs] [-Wcomment] [-Wall] [-Wtraditional]</P
+></P
+></DIV><P
+>For additional examples, see also <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="symbol.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="synopfragmentref.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Symbol</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SynopFragmentRef</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

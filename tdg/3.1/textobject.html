@@ -1,0 +1,710 @@
+<HTML
+><HEAD
+><TITLE
+>TextObject</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="TertiaryIE"
+HREF="tertiaryie.html"><LINK
+REL="NEXT"
+TITLE="tfoot"
+HREF="tfoot.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tertiaryie.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tfoot.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>TextObject</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN116320"
+></A
+><H2
+>Name</H2
+>TextObject&nbsp;--&nbsp;A wrapper for a text description of an object and its associated meta-information</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN116323"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>TextObject ::=
+(<A
+HREF="objectinfo.html"
+>ObjectInfo</A
+>?,
+ (<A
+HREF="phrase.html"
+>Phrase</A
+>|
+  (<A
+HREF="calloutlist.html"
+>CalloutList</A
+>|<A
+HREF="glosslist.html"
+>GlossList</A
+>|<A
+HREF="itemizedlist.html"
+>ItemizedList</A
+>|<A
+HREF="orderedlist.html"
+>OrderedList</A
+>|<A
+HREF="segmentedlist.html"
+>SegmentedList</A
+>|
+   <A
+HREF="simplelist.html"
+>SimpleList</A
+>|<A
+HREF="variablelist.html"
+>VariableList</A
+>|<A
+HREF="caution.html"
+>Caution</A
+>|<A
+HREF="important.html"
+>Important</A
+>|<A
+HREF="note.html"
+>Note</A
+>|<A
+HREF="tip.html"
+>Tip</A
+>|<A
+HREF="warning.html"
+>Warning</A
+>|
+   <A
+HREF="literallayout.html"
+>LiteralLayout</A
+>|<A
+HREF="programlisting.html"
+>ProgramListing</A
+>|<A
+HREF="programlistingco.html"
+>ProgramListingCO</A
+>|<A
+HREF="screen.html"
+>Screen</A
+>|<A
+HREF="screenco.html"
+>ScreenCO</A
+>|
+   <A
+HREF="screenshot.html"
+>ScreenShot</A
+>|<A
+HREF="formalpara.html"
+>FormalPara</A
+>|<A
+HREF="para.html"
+>Para</A
+>|<A
+HREF="simpara.html"
+>SimPara</A
+>|<A
+HREF="blockquote.html"
+>BlockQuote</A
+>)+))</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN116372"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+> is a wrapper containing a textual description
+of a media object, and its associated meta-information.
+<A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+>s are only allowed in <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>s as
+a fall-back option, they cannot be the primary content.</P
+><P
+>There are two different forms of <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+>, and it is
+not unreasonable for a media object to contain both of them.</P
+><P
+>In the first form, the content of a <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+> is
+simply a <A
+HREF="phrase.html"
+><TT
+CLASS="SGMLTAG"
+>Phrase</TT
+></A
+>. This form is a mechanism for
+providing a simple <SPAN
+CLASS="QUOTE"
+>"alt text"</SPAN
+> for a media object. The
+phrase might be used, for example, as the value of the
+<SPAN
+CLASS="SGMLTAG"
+>ALT</SPAN
+> attribute on an <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> <TT
+CLASS="SGMLTAG"
+>IMG</TT
+>,
+with the primary content of the image coming from one of the other
+objects in the media object.</P
+><P
+>In the second form, the content of <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+> is a longer,
+prose description.  This form could be used when rendering to devices
+that are incapable of displaying any of the other alternatives.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="DBREPROC.TEXTOBJECT"
+></A
+><H3
+>Processing expectations</H3
+><P
+>May be formatted inline or as a displayed block, depending on context. It might not be rendered at all, depending on its placement
+within a <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+> or <A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+> and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN116395"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain TextObject:
+<A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN116408"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in TextObject:
+<A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="formalpara.html"
+><TT
+CLASS="SGMLTAG"
+>FormalPara</TT
+></A
+>, <A
+HREF="glosslist.html"
+><TT
+CLASS="SGMLTAG"
+>GlossList</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="itemizedlist.html"
+><TT
+CLASS="SGMLTAG"
+>ItemizedList</TT
+></A
+>, <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="objectinfo.html"
+><TT
+CLASS="SGMLTAG"
+>ObjectInfo</TT
+></A
+>, <A
+HREF="orderedlist.html"
+><TT
+CLASS="SGMLTAG"
+>OrderedList</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="phrase.html"
+><TT
+CLASS="SGMLTAG"
+>Phrase</TT
+></A
+>, <A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+>, <A
+HREF="programlistingco.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListingCO</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+>, <A
+HREF="screenshot.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenShot</TT
+></A
+>, <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>, <A
+HREF="simpara.html"
+><TT
+CLASS="SGMLTAG"
+>SimPara</TT
+></A
+>, <A
+HREF="simplelist.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleList</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="variablelist.html"
+><TT
+CLASS="SGMLTAG"
+>VariableList</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+excluded:
+<A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN116509"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="alt.html"
+><TT
+CLASS="SGMLTAG"
+>Alt</TT
+></A
+>, <A
+HREF="audioobject.html"
+><TT
+CLASS="SGMLTAG"
+>AudioObject</TT
+></A
+>, <A
+HREF="caption.html"
+><TT
+CLASS="SGMLTAG"
+>Caption</TT
+></A
+>, <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>, <A
+HREF="imageobject.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObject</TT
+></A
+>, <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+>, <A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="videoobject.html"
+><TT
+CLASS="SGMLTAG"
+>VideoObject</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN116540"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="audioobject.html"
+><TT
+CLASS="SGMLTAG"
+>AudioObject</TT
+></A
+>,
+<A
+HREF="imageobject.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObject</TT
+></A
+>,
+<A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>,
+<A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+>,
+<A
+HREF="videoobject.html"
+><TT
+CLASS="SGMLTAG"
+>VideoObject</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tertiaryie.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tfoot.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>TertiaryIE</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>tfoot</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

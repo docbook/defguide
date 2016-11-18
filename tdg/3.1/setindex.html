@@ -1,0 +1,855 @@
+<HTML
+><HEAD
+><TITLE
+>SetIndex</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Set"
+HREF="set.html"><LINK
+REL="NEXT"
+TITLE="SetInfo"
+HREF="setinfo.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="set.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="setinfo.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SetIndex</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN104840"
+></A
+><H2
+>Name</H2
+>SetIndex&nbsp;--&nbsp;An index to a set of books</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN104843"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SetIndex ::=
+((<A
+HREF="docinfo.html"
+>DocInfo</A
+>?,<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ (<A
+HREF="calloutlist.html"
+>CalloutList</A
+>|<A
+HREF="glosslist.html"
+>GlossList</A
+>|<A
+HREF="itemizedlist.html"
+>ItemizedList</A
+>|<A
+HREF="orderedlist.html"
+>OrderedList</A
+>|<A
+HREF="segmentedlist.html"
+>SegmentedList</A
+>|
+  <A
+HREF="simplelist.html"
+>SimpleList</A
+>|<A
+HREF="variablelist.html"
+>VariableList</A
+>|<A
+HREF="caution.html"
+>Caution</A
+>|<A
+HREF="important.html"
+>Important</A
+>|<A
+HREF="note.html"
+>Note</A
+>|<A
+HREF="tip.html"
+>Tip</A
+>|<A
+HREF="warning.html"
+>Warning</A
+>|
+  <A
+HREF="literallayout.html"
+>LiteralLayout</A
+>|<A
+HREF="programlisting.html"
+>ProgramListing</A
+>|<A
+HREF="programlistingco.html"
+>ProgramListingCO</A
+>|<A
+HREF="screen.html"
+>Screen</A
+>|<A
+HREF="screenco.html"
+>ScreenCO</A
+>|
+  <A
+HREF="screenshot.html"
+>ScreenShot</A
+>|<A
+HREF="synopsis.html"
+>Synopsis</A
+>|<A
+HREF="cmdsynopsis.html"
+>CmdSynopsis</A
+>|<A
+HREF="funcsynopsis.html"
+>FuncSynopsis</A
+>|<A
+HREF="formalpara.html"
+>FormalPara</A
+>|<A
+HREF="para.html"
+>Para</A
+>|
+  <A
+HREF="simpara.html"
+>SimPara</A
+>|<A
+HREF="address.html"
+>Address</A
+>|<A
+HREF="blockquote.html"
+>BlockQuote</A
+>|<A
+HREF="graphic.html"
+>Graphic</A
+>|<A
+HREF="graphicco.html"
+>GraphicCO</A
+>|<A
+HREF="mediaobject.html"
+>MediaObject</A
+>|
+  <A
+HREF="mediaobjectco.html"
+>MediaObjectCO</A
+>|<A
+HREF="informalequation.html"
+>InformalEquation</A
+>|<A
+HREF="informalexample.html"
+>InformalExample</A
+>|<A
+HREF="informalfigure.html"
+>InformalFigure</A
+>|
+  <A
+HREF="informaltable.html"
+>InformalTable</A
+>|<A
+HREF="equation.html"
+>Equation</A
+>|<A
+HREF="example.html"
+>Example</A
+>|<A
+HREF="figure.html"
+>Figure</A
+>|<A
+HREF="table.html"
+>Table</A
+>|<A
+HREF="msgset.html"
+>MsgSet</A
+>|<A
+HREF="procedure.html"
+>Procedure</A
+>|
+  <A
+HREF="sidebar.html"
+>Sidebar</A
+>|<A
+HREF="qandaset.html"
+>QandASet</A
+>|<A
+HREF="anchor.html"
+>Anchor</A
+>|<A
+HREF="bridgehead.html"
+>BridgeHead</A
+>|<A
+HREF="comment.html"
+>Comment</A
+>|<A
+HREF="highlights.html"
+>Highlights</A
+>|<A
+HREF="abstract.html"
+>Abstract</A
+>|
+  <A
+HREF="authorblurb.html"
+>AuthorBlurb</A
+>|<A
+HREF="epigraph.html"
+>Epigraph</A
+>|<A
+HREF="indexterm.html"
+>IndexTerm</A
+>)*,
+ (<A
+HREF="indexdiv.html"
+>IndexDiv</A
+>*|<A
+HREF="indexentry.html"
+>IndexEntry</A
+>*))</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.INDEX.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%index.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN104932"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+> contains the formatted index of a complete
+<A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+> of <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>s.
+An index may begin with introductory material, followed by
+any number of <A
+HREF="indexentry.html"
+><TT
+CLASS="SGMLTAG"
+>IndexEntry</TT
+></A
+>s or <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>s.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN104940"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. An <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+> in a <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>
+usually causes a forced page break in print media.</P
+><P
+>In many processing systems, indexes are generated automatically or 
+semiautomatically and never appear instantiated as DocBook markup.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN104946"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SetIndex:
+<A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN104956"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in SetIndex:
+<A
+HREF="abstract.html"
+><TT
+CLASS="SGMLTAG"
+>Abstract</TT
+></A
+>, <A
+HREF="address.html"
+><TT
+CLASS="SGMLTAG"
+>Address</TT
+></A
+>, <A
+HREF="anchor.html"
+><TT
+CLASS="SGMLTAG"
+>Anchor</TT
+></A
+>, <A
+HREF="authorblurb.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorBlurb</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="bridgehead.html"
+><TT
+CLASS="SGMLTAG"
+>BridgeHead</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="epigraph.html"
+><TT
+CLASS="SGMLTAG"
+>Epigraph</TT
+></A
+>, <A
+HREF="equation.html"
+><TT
+CLASS="SGMLTAG"
+>Equation</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>, <A
+HREF="formalpara.html"
+><TT
+CLASS="SGMLTAG"
+>FormalPara</TT
+></A
+>, <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>, <A
+HREF="glosslist.html"
+><TT
+CLASS="SGMLTAG"
+>GlossList</TT
+></A
+>, <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>, <A
+HREF="graphicco.html"
+><TT
+CLASS="SGMLTAG"
+>GraphicCO</TT
+></A
+>, <A
+HREF="highlights.html"
+><TT
+CLASS="SGMLTAG"
+>Highlights</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>, <A
+HREF="indexentry.html"
+><TT
+CLASS="SGMLTAG"
+>IndexEntry</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>, <A
+HREF="informalequation.html"
+><TT
+CLASS="SGMLTAG"
+>InformalEquation</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>, <A
+HREF="itemizedlist.html"
+><TT
+CLASS="SGMLTAG"
+>ItemizedList</TT
+></A
+>, <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>, <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="orderedlist.html"
+><TT
+CLASS="SGMLTAG"
+>OrderedList</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+>, <A
+HREF="programlistingco.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListingCO</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+>, <A
+HREF="screenshot.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenShot</TT
+></A
+>, <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simpara.html"
+><TT
+CLASS="SGMLTAG"
+>SimPara</TT
+></A
+>, <A
+HREF="simplelist.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleList</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+>, <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="variablelist.html"
+><TT
+CLASS="SGMLTAG"
+>VariableList</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN105133"
+></A
+><H2
+>Examples</H2
+><P
+>See <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="set.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="setinfo.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Set</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SetInfo</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

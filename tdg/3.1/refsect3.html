@@ -1,0 +1,917 @@
+<HTML
+><HEAD
+><TITLE
+>RefSect3</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="RefSect2Info"
+HREF="refsect2info.html"><LINK
+REL="NEXT"
+TITLE="RefSect3Info"
+HREF="refsect3info.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="refsect2info.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="refsect3info.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>RefSect3</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN90246"
+></A
+><H2
+>Name</H2
+>RefSect3&nbsp;--&nbsp;A subsection of a <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+></DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN90250"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>RefSect3 ::=
+(<A
+HREF="refsect3info.html"
+>RefSect3Info</A
+>?,
+ (<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?),
+ (<A
+HREF="calloutlist.html"
+>CalloutList</A
+>|<A
+HREF="glosslist.html"
+>GlossList</A
+>|<A
+HREF="itemizedlist.html"
+>ItemizedList</A
+>|<A
+HREF="orderedlist.html"
+>OrderedList</A
+>|<A
+HREF="segmentedlist.html"
+>SegmentedList</A
+>|
+  <A
+HREF="simplelist.html"
+>SimpleList</A
+>|<A
+HREF="variablelist.html"
+>VariableList</A
+>|<A
+HREF="caution.html"
+>Caution</A
+>|<A
+HREF="important.html"
+>Important</A
+>|<A
+HREF="note.html"
+>Note</A
+>|<A
+HREF="tip.html"
+>Tip</A
+>|<A
+HREF="warning.html"
+>Warning</A
+>|
+  <A
+HREF="literallayout.html"
+>LiteralLayout</A
+>|<A
+HREF="programlisting.html"
+>ProgramListing</A
+>|<A
+HREF="programlistingco.html"
+>ProgramListingCO</A
+>|<A
+HREF="screen.html"
+>Screen</A
+>|<A
+HREF="screenco.html"
+>ScreenCO</A
+>|
+  <A
+HREF="screenshot.html"
+>ScreenShot</A
+>|<A
+HREF="synopsis.html"
+>Synopsis</A
+>|<A
+HREF="cmdsynopsis.html"
+>CmdSynopsis</A
+>|<A
+HREF="funcsynopsis.html"
+>FuncSynopsis</A
+>|<A
+HREF="formalpara.html"
+>FormalPara</A
+>|<A
+HREF="para.html"
+>Para</A
+>|
+  <A
+HREF="simpara.html"
+>SimPara</A
+>|<A
+HREF="address.html"
+>Address</A
+>|<A
+HREF="blockquote.html"
+>BlockQuote</A
+>|<A
+HREF="graphic.html"
+>Graphic</A
+>|<A
+HREF="graphicco.html"
+>GraphicCO</A
+>|<A
+HREF="mediaobject.html"
+>MediaObject</A
+>|
+  <A
+HREF="mediaobjectco.html"
+>MediaObjectCO</A
+>|<A
+HREF="informalequation.html"
+>InformalEquation</A
+>|<A
+HREF="informalexample.html"
+>InformalExample</A
+>|<A
+HREF="informalfigure.html"
+>InformalFigure</A
+>|
+  <A
+HREF="informaltable.html"
+>InformalTable</A
+>|<A
+HREF="equation.html"
+>Equation</A
+>|<A
+HREF="example.html"
+>Example</A
+>|<A
+HREF="figure.html"
+>Figure</A
+>|<A
+HREF="table.html"
+>Table</A
+>|<A
+HREF="msgset.html"
+>MsgSet</A
+>|<A
+HREF="procedure.html"
+>Procedure</A
+>|
+  <A
+HREF="sidebar.html"
+>Sidebar</A
+>|<A
+HREF="qandaset.html"
+>QandASet</A
+>|<A
+HREF="anchor.html"
+>Anchor</A
+>|<A
+HREF="bridgehead.html"
+>BridgeHead</A
+>|<A
+HREF="comment.html"
+>Comment</A
+>|<A
+HREF="highlights.html"
+>Highlights</A
+>|<A
+HREF="abstract.html"
+>Abstract</A
+>|
+  <A
+HREF="authorblurb.html"
+>AuthorBlurb</A
+>|<A
+HREF="epigraph.html"
+>Epigraph</A
+>|<A
+HREF="indexterm.html"
+>IndexTerm</A
+>)+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Status</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN90344"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+> is a third level section in a
+<A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>, analogous to a <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+> elsewhere
+in the document. See <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>.</P
+><P
+>In DocBook, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+> is the lowest-level section allowed in a 
+<A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>.  There is no element analogous to a <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN90355"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN90358"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain RefSect3:
+<A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN90365"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in RefSect3:
+<A
+HREF="abstract.html"
+><TT
+CLASS="SGMLTAG"
+>Abstract</TT
+></A
+>, <A
+HREF="address.html"
+><TT
+CLASS="SGMLTAG"
+>Address</TT
+></A
+>, <A
+HREF="anchor.html"
+><TT
+CLASS="SGMLTAG"
+>Anchor</TT
+></A
+>, <A
+HREF="authorblurb.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorBlurb</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="bridgehead.html"
+><TT
+CLASS="SGMLTAG"
+>BridgeHead</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="epigraph.html"
+><TT
+CLASS="SGMLTAG"
+>Epigraph</TT
+></A
+>, <A
+HREF="equation.html"
+><TT
+CLASS="SGMLTAG"
+>Equation</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>, <A
+HREF="formalpara.html"
+><TT
+CLASS="SGMLTAG"
+>FormalPara</TT
+></A
+>, <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>, <A
+HREF="glosslist.html"
+><TT
+CLASS="SGMLTAG"
+>GlossList</TT
+></A
+>, <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>, <A
+HREF="graphicco.html"
+><TT
+CLASS="SGMLTAG"
+>GraphicCO</TT
+></A
+>, <A
+HREF="highlights.html"
+><TT
+CLASS="SGMLTAG"
+>Highlights</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>, <A
+HREF="informalequation.html"
+><TT
+CLASS="SGMLTAG"
+>InformalEquation</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>, <A
+HREF="itemizedlist.html"
+><TT
+CLASS="SGMLTAG"
+>ItemizedList</TT
+></A
+>, <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>, <A
+HREF="msgset.html"
+><TT
+CLASS="SGMLTAG"
+>MsgSet</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="orderedlist.html"
+><TT
+CLASS="SGMLTAG"
+>OrderedList</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+>, <A
+HREF="programlistingco.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListingCO</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="refsect3info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3Info</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+>, <A
+HREF="screenshot.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenShot</TT
+></A
+>, <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simpara.html"
+><TT
+CLASS="SGMLTAG"
+>SimPara</TT
+></A
+>, <A
+HREF="simplelist.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleList</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+>, <A
+HREF="table.html"
+><TT
+CLASS="SGMLTAG"
+>Table</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="variablelist.html"
+><TT
+CLASS="SGMLTAG"
+>VariableList</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN90539"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Status</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Status</SPAN
+> identifies the editorial or publication 
+status of the <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>.</P
+><P
+>Publication status might be used to control formatting (for example, 
+printing a <SPAN
+CLASS="QUOTE"
+>"draft"</SPAN
+> watermark on drafts) or processing (perhaps
+a document with a status of <SPAN
+CLASS="QUOTE"
+>"final"</SPAN
+> should not include any
+components that are not final).</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN90551"
+></A
+><H2
+>Examples</H2
+><P
+>See <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+> and <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+> in 
+<A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+> for analogous examples.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="refsect2info.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="refsect3info.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>RefSect2Info</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>RefSect3Info</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

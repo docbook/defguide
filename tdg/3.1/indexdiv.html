@@ -1,0 +1,627 @@
+<HTML
+><HEAD
+><TITLE
+>IndexDiv</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Index"
+HREF="index.html"><LINK
+REL="NEXT"
+TITLE="IndexEntry"
+HREF="indexentry.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="index.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="indexentry.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>IndexDiv</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN52071"
+></A
+><H2
+>Name</H2
+>IndexDiv&nbsp;--&nbsp;A division in an index</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN52074"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>IndexDiv ::=
+((<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ ((<A
+HREF="itemizedlist.html"
+>ItemizedList</A
+>|<A
+HREF="orderedlist.html"
+>OrderedList</A
+>|<A
+HREF="variablelist.html"
+>VariableList</A
+>|<A
+HREF="simplelist.html"
+>SimpleList</A
+>|<A
+HREF="literallayout.html"
+>LiteralLayout</A
+>|
+   <A
+HREF="programlisting.html"
+>ProgramListing</A
+>|<A
+HREF="programlistingco.html"
+>ProgramListingCO</A
+>|<A
+HREF="screen.html"
+>Screen</A
+>|<A
+HREF="screenco.html"
+>ScreenCO</A
+>|<A
+HREF="screenshot.html"
+>ScreenShot</A
+>|
+   <A
+HREF="synopsis.html"
+>Synopsis</A
+>|<A
+HREF="cmdsynopsis.html"
+>CmdSynopsis</A
+>|<A
+HREF="funcsynopsis.html"
+>FuncSynopsis</A
+>|<A
+HREF="formalpara.html"
+>FormalPara</A
+>|<A
+HREF="para.html"
+>Para</A
+>|<A
+HREF="simpara.html"
+>SimPara</A
+>|
+   <A
+HREF="address.html"
+>Address</A
+>|<A
+HREF="blockquote.html"
+>BlockQuote</A
+>|<A
+HREF="graphic.html"
+>Graphic</A
+>|<A
+HREF="graphicco.html"
+>GraphicCO</A
+>|<A
+HREF="mediaobject.html"
+>MediaObject</A
+>|<A
+HREF="mediaobjectco.html"
+>MediaObjectCO</A
+>|
+   <A
+HREF="informalequation.html"
+>InformalEquation</A
+>|<A
+HREF="informalexample.html"
+>InformalExample</A
+>|<A
+HREF="informalfigure.html"
+>InformalFigure</A
+>|<A
+HREF="informaltable.html"
+>InformalTable</A
+>|
+   <A
+HREF="anchor.html"
+>Anchor</A
+>|<A
+HREF="comment.html"
+>Comment</A
+>|<A
+HREF="link.html"
+>Link</A
+>|<A
+HREF="olink.html"
+>OLink</A
+>|<A
+HREF="ulink.html"
+>ULink</A
+>)*,
+  (<A
+HREF="indexentry.html"
+>IndexEntry</A
+>+|<A
+HREF="segmentedlist.html"
+>SegmentedList</A
+>)))</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN52135"
+></A
+><H2
+>Description</H2
+><P
+>An <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+> identifies a section of an <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>.
+An index
+might be divided into sections in order to group entries, usually
+alphabetically.</P
+><P
+>An index may
+contain any number of <A
+HREF="indexentry.html"
+><TT
+CLASS="SGMLTAG"
+>IndexEntry</TT
+></A
+> or <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>
+elements, but it cannot
+contain a mixture of both at the same level. </P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN52143"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN52146"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain IndexDiv:
+<A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN52156"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in IndexDiv:
+<A
+HREF="address.html"
+><TT
+CLASS="SGMLTAG"
+>Address</TT
+></A
+>, <A
+HREF="anchor.html"
+><TT
+CLASS="SGMLTAG"
+>Anchor</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="formalpara.html"
+><TT
+CLASS="SGMLTAG"
+>FormalPara</TT
+></A
+>, <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>, <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+>, <A
+HREF="graphicco.html"
+><TT
+CLASS="SGMLTAG"
+>GraphicCO</TT
+></A
+>, <A
+HREF="indexentry.html"
+><TT
+CLASS="SGMLTAG"
+>IndexEntry</TT
+></A
+>, <A
+HREF="informalequation.html"
+><TT
+CLASS="SGMLTAG"
+>InformalEquation</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>, <A
+HREF="itemizedlist.html"
+><TT
+CLASS="SGMLTAG"
+>ItemizedList</TT
+></A
+>, <A
+HREF="link.html"
+><TT
+CLASS="SGMLTAG"
+>Link</TT
+></A
+>, <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>, <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>, <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>, <A
+HREF="olink.html"
+><TT
+CLASS="SGMLTAG"
+>OLink</TT
+></A
+>, <A
+HREF="orderedlist.html"
+><TT
+CLASS="SGMLTAG"
+>OrderedList</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+>, <A
+HREF="programlistingco.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListingCO</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+>, <A
+HREF="screenshot.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenShot</TT
+></A
+>, <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>, <A
+HREF="simpara.html"
+><TT
+CLASS="SGMLTAG"
+>SimPara</TT
+></A
+>, <A
+HREF="simplelist.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleList</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="ulink.html"
+><TT
+CLASS="SGMLTAG"
+>ULink</TT
+></A
+>, <A
+HREF="variablelist.html"
+><TT
+CLASS="SGMLTAG"
+>VariableList</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN52276"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="index.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="indexentry.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Index</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>IndexEntry</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

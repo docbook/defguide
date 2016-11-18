@@ -1,0 +1,44 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>otheraddr</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="orgname-x.html" title="orgname"><link rel="next" href="othercredit-x.html" title="othercredit"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="orgname" href="orgname-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="othercredit" href="othercredit-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="otheraddr.element"></a><div><div><div><h1 class="title">otheraddr</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>otheraddr &#8212; Uncategorized information in address</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Mixed Content Model</strong></span></h3><pre class="synopsis">otheraddr ::=
+(<a href="pe-mix-x.html#docinfo.char.mix.parament"><code class="sgmltag-paramentity">%docinfo.char.mix;</code></a>)*</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p></div><div class="refsect1" lang="en"><a name="d0e112821"></a><h2>Description</h2><p>
+Within an <a href="address-x.html"><code class="sgmltag-element">Address</code></a>, <a href="otheraddr-x.html"><code class="sgmltag-element">OtherAddr</code></a> is a wrapper for
+parts of an address other than <a href="street-x.html"><code class="sgmltag-element">Street</code></a>, <a href="pob-x.html"><code class="sgmltag-element">POB</code></a>,
+<a href="postcode-x.html"><code class="sgmltag-element">Postcode</code></a>, <a href="city-x.html"><code class="sgmltag-element">City</code></a>, <a href="state-x.html"><code class="sgmltag-element">State</code></a>,
+<a href="country-x.html"><code class="sgmltag-element">Country</code></a>, <a href="phone-x.html"><code class="sgmltag-element">Phone</code></a>, <a href="fax-x.html"><code class="sgmltag-element">Fax</code></a>, and
+<a href="email-x.html"><code class="sgmltag-element">Email</code></a>, all of which have elements specific to their
+content.
+</p><p>
+In early versions of DocBook, <a href="address-x.html"><code class="sgmltag-element">Address</code></a> was not allowed to
+contain character data (it was a database-like collection of fields).
+In that context, a wrapper was necessary for any random pieces of information
+that might be required for an address.
+With the introduction of character data directly in the <a href="address-x.html"><code class="sgmltag-element">Address</code></a> 
+element, <a href="otheraddr-x.html"><code class="sgmltag-element">OtherAddr</code></a> may have lost most of its
+<span class="foreignphrase"><em class="foreignphrase">raison d'&ecirc;tre</em></span>.
+</p><div class="refsect2" lang="en"><a name="d0e112873"></a><h3>Processing expectations</h3><p>
+Formatted inline.
+This element may inherit the verbatim qualities of an <a href="address-x.html"><code class="sgmltag-element">Address</code></a>.
+</p></div><div class="refsect2" lang="en"><a name="d0e112881"></a><h3>Parents</h3><p>These elements contain otheraddr:
+<span class="simplelist"><a href="address-x.html"><code class="sgmltag-element">address</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e112891"></a><h3>Children</h3><p>The following elements occur in otheraddr:
+<span class="simplelist"><a href="emphasis-x.html"><code class="sgmltag-element">emphasis</code></a>, <a href="indexterm-x.html"><code class="sgmltag-element">indexterm</code></a>, <a href="inlinegraphic-x.html"><code class="sgmltag-element">inlinegraphic</code></a>, <a href="inlinemediaobject-x.html"><code class="sgmltag-element">inlinemediaobject</code></a>, <a href="link-x.html"><code class="sgmltag-element">link</code></a>, <a href="olink-x.html"><code class="sgmltag-element">olink</code></a>, <a href="remark-x.html"><code class="sgmltag-element">remark</code></a>, <a href="replaceable-x.html"><code class="sgmltag-element">replaceable</code></a>, <a href="subscript-x.html"><code class="sgmltag-element">subscript</code></a>, <a href="superscript-x.html"><code class="sgmltag-element">superscript</code></a>, <a href="trademark-x.html"><code class="sgmltag-element">trademark</code></a>, <a href="ulink-x.html"><code class="sgmltag-element">ulink</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e112934"></a><h2>See Also</h2><p><span class="simplelist"><a href="address-x.html"><code class="sgmltag-element">address</code></a>, <a href="city-x.html"><code class="sgmltag-element">city</code></a>, <a href="country-x.html"><code class="sgmltag-element">country</code></a>, <a href="email-x.html"><code class="sgmltag-element">email</code></a>, <a href="fax-x.html"><code class="sgmltag-element">fax</code></a>, <a href="phone-x.html"><code class="sgmltag-element">phone</code></a>, <a href="pob-x.html"><code class="sgmltag-element">pob</code></a>, <a href="postcode-x.html"><code class="sgmltag-element">postcode</code></a>, <a href="state-x.html"><code class="sgmltag-element">state</code></a>, <a href="street-x.html"><code class="sgmltag-element">street</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e112970"></a><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;para&gt;Please deliver to:
+&lt;address&gt;
+&lt;othername&gt;The Law Offices of Dewey, Cheatem, and Howe&lt;/othername&gt;
+&lt;street&gt;100 Main Street&lt;/street&gt;
+&lt;otheraddr&gt;Third Floor&lt;/otheraddr&gt;
+&lt;city&gt;Anytown&lt;/city&gt;, &lt;state&gt;NY&lt;/state&gt; &lt;postcode&gt;12345&lt;/postcode&gt;
+&lt;country&gt;USA&lt;/country&gt;
+&lt;/address&gt;
+&lt;/para&gt;
+</pre></div><div class="example-output"><p>Please deliver to:
+<div class="address"><p><br>
+<span class="othername">The&nbsp;Law&nbsp;Offices&nbsp;of&nbsp;Dewey,&nbsp;Cheatem,&nbsp;and&nbsp;Howe</span><br>
+<span class="street">100&nbsp;Main&nbsp;Street</span><br>
+<span class="otheraddr">Third&nbsp;Floor</span><br>
+<span class="city">Anytown</span>,&nbsp;<span class="state">NY</span>&nbsp;<span class="postcode">12345</span><br>
+<span class="country">USA</span><br>
+</p></div>
+</p></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="orgname" href="orgname-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="othercredit" href="othercredit-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">orgname&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;othercredit</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

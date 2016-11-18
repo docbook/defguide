@@ -1,0 +1,429 @@
+<HTML
+><HEAD
+><TITLE
+>FuncDef</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="FormalPara"
+HREF="formalpara.html"><LINK
+REL="NEXT"
+TITLE="FuncParams"
+HREF="funcparams.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="formalpara.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="funcparams.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>FuncDef</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN41030"
+></A
+><H2
+>Name</H2
+>FuncDef&nbsp;--&nbsp;A function (subroutine) name and its return type</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN41033"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Mixed Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>FuncDef ::=
+((#PCDATA|<A
+HREF="replaceable.html"
+>Replaceable</A
+>|<A
+HREF="function.html"
+>Function</A
+>)*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN41060"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+> contains the name of a programming language function,
+and its return type.</P
+><P
+>Within the <A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+>, the function name is identified with 
+<A
+HREF="function.html"
+><TT
+CLASS="SGMLTAG"
+>Function</TT
+></A
+>, and the rest of the content is assumed to be the
+return type.</P
+><P
+>In the following definition, <TT
+CLASS="FUNCTION"
+>max</TT
+> is the name of the 
+function and <SPAN
+CLASS="TYPE"
+>int</SPAN
+> is the return type:
+<PRE
+CLASS="SCREEN"
+>&#60;funcdef&#62;int &#60;function&#62;max&#60;/function&#62;&#60;/funcdef&#62;</PRE
+></P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41071"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted inline. For a complete description of the processing expecations,
+see <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41075"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain FuncDef:
+<A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>, <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN41085"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in FuncDef:
+<A
+HREF="function.html"
+><TT
+CLASS="SGMLTAG"
+>Function</TT
+></A
+>, <A
+HREF="replaceable.html"
+><TT
+CLASS="SGMLTAG"
+>Replaceable</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN41103"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="funcparams.html"
+><TT
+CLASS="SGMLTAG"
+>FuncParams</TT
+></A
+>, <A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>, <A
+HREF="funcsynopsisinfo.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsisInfo</TT
+></A
+>, <A
+HREF="function.html"
+><TT
+CLASS="SGMLTAG"
+>Function</TT
+></A
+>, <A
+HREF="paramdef.html"
+><TT
+CLASS="SGMLTAG"
+>ParamDef</TT
+></A
+>, <A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>, <A
+HREF="returnvalue.html"
+><TT
+CLASS="SGMLTAG"
+>ReturnValue</TT
+></A
+>, <A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+>, <A
+HREF="void.html"
+><TT
+CLASS="SGMLTAG"
+>Void</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN41134"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;funcsynopsis&#62;
+&#60;funcprototype&#62;
+&#60;funcdef&#62;int &#60;function&#62;rand&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;void&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>int rand</CODE
+>(void);</CODE
+></P
+><P
+></P
+></DIV
+></DIV><P
+>For additional examples, see also <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>,
+<A
+HREF="paramdef.html"
+><TT
+CLASS="SGMLTAG"
+>ParamDef</TT
+></A
+>,
+<A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="formalpara.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="funcparams.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>FormalPara</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>FuncParams</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

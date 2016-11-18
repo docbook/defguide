@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>reference</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="refentrytitle.html" title="refentrytitle"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="refmeta" href="refmeta.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="element.db.reference" class="refentry"><a class="indexterm" name="element.db.reference.1"></a><div class="refnamediv"><h2>reference</h2><p><span class="refname">reference</span><span class="refpurpose"><span class="refpurpose-sep"> — </span><span class="refpurpose-text">A collection of reference entries</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li>One of: <div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li>Interleave of:<div class="itemizedlist element-synopsis"><ul><li><a href="title.html"><code class="tag-element">title</code></a></li><li><a href="titleabbrev.html"><code class="tag-element">titleabbrev</code></a>?</li><li><a href="subtitle.html"><code class="tag-element">subtitle</code></a>?</li></ul></div></li><li><a href="titleforbidden.info.html"><code class="tag-element">info</code></a>? <span class="pattern">(db.titleforbidden.info)</span></li></ul></div></li><li><a href="titlereq.info.html"><code class="tag-element">info</code></a> <span class="pattern">(db.titlereq.info)</span></li></ul></div></li><li><a href="partintro.html"><code class="tag-element">partintro</code></a>?</li><li>One or more of:<div class="itemizedlist element-synopsis"><ul><li><a href="refentry.html"><code class="tag-element">refentry</code></a></li></ul></div></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p><p>Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>label</li><li>status</li></ul></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Additional Constraints</h2></div><div class="itemizedlist element-synopsis"><ul><li>The root element must have a version attribute.</li></ul></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div>
+<p>A <a href="reference.html"><code class="tag-element">reference</code></a> is a collection of
+      <a href="refentry.html"><code class="tag-element">refentry</code></a>s. In a <a href="book.html"><code class="tag-element">book</code></a>, a
+      <a href="reference.html"><code class="tag-element">reference</code></a> can occur at either the
+      <a href="part.html"><code class="tag-element">part</code></a> or the <a href="chapter.html"><code class="tag-element">chapter</code></a> level.</p>
+
+      <p>Reference pages are usually bound together by topic; in
+      traditional <span class="acronym">UNIX</span> documentation they are most
+      frequently bound into volumes. See <a href="manvolnum.html"><code class="tag-element">manvolnum</code></a>.</p>
+
+      <div class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div>
+        
+
+        <p>Formatted as a displayed block. A <a href="reference.html"><code class="tag-element">reference</code></a>
+        often introduces a forced page break and may start on the next recto
+        page. Frequently, it also produces a separator page, on which may be
+        printed the content of the <a href="partintro.html"><code class="tag-element">partintro</code></a>.</p>
+</div>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p><div class="variablelist"><dl><dt><span class="term attname">label</span></dt><dd><p>Specifies an identifying string for presentation purposes</p></dd><dt><span class="term attname">status</span></dt><dd><p>Identifies the editorial or publication status of the element on which it occurs</p></dd></dl></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><p>These elements contain <a href="reference.html"><code class="tag-element">reference</code></a>: <span class="simplelist"><span class="member"><a href="book.html"><code class="tag-element">book</code></a></span>, <span class="member"><a href="part.html"><code class="tag-element">part</code></a></span></span>.</p></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Children</h3></div><p>The following elements occur in reference: <span class="simplelist"><span class="member"><a href="titleforbidden.info.html"><code class="tag-element">info</code></a> <span class="pattern">(db.titleforbidden.info)</span></span>, <span class="member"><a href="titlereq.info.html"><code class="tag-element">info</code></a> <span class="pattern">(db.titlereq.info)</span></span>, <span class="member"><a href="partintro.html"><code class="tag-element">partintro</code></a></span>, <span class="member"><a href="refentry.html"><code class="tag-element">refentry</code></a></span>, <span class="member"><a href="subtitle.html"><code class="tag-element">subtitle</code></a></span>, <span class="member"><a href="title.html"><code class="tag-element">title</code></a></span>, <span class="member"><a href="titleabbrev.html"><code class="tag-element">titleabbrev</code></a></span></span>.</p></div>
+
+</div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div>
+
+
+<div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;reference xmlns='http://docbook.org/ns/docbook'&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;title&gt;Reference Pages&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  &lt;refentry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refnamediv&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>      &lt;refdescriptor&gt;GNU as&lt;/refdescriptor&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;refname&gt;as&lt;/refname&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>      &lt;refpurpose&gt;the portable GNU assembler&lt;/refpurpose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/refnamediv&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    &lt;refsynopsisdiv&gt;&lt;title&gt;SYNOPSIS&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;synopsis&gt;...&lt;/synopsis&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>    &lt;/refsynopsisdiv&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refsect1&gt;&lt;title&gt;DESCRIPTION&lt;/title&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>    &lt;para&gt;...&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/refsect1&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>  &lt;/refentry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>  &lt;refentry&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refnamediv&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>      &lt;refname&gt;awk&lt;/refname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;refpurpose&gt;pattern scanning and text processing language&lt;/refpurpose&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>    &lt;/refnamediv&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;refsynopsisdiv&gt;&lt;title&gt;SYNOPSIS&lt;/title&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>    &lt;synopsis&gt;...&lt;/synopsis&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/refsynopsisdiv&gt;
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>    &lt;refsect1&gt;&lt;title&gt;DESCRIPTION&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;para&gt;...&lt;/para&gt;
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>    &lt;/refsect1&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/refentry&gt;
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;!-- ... --&gt;
+<span class="linenumber"> 32</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/reference&gt;</pre></div>
+
+</div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="refentrytitle" href="refentrytitle.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="refmeta" href="refmeta.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">refentrytitle </td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> refmeta</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on 6 Jun 2011 <span class="githash">(git hash: 6ffcc7640bbc5f852a318e452c9f210f03292cb9)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

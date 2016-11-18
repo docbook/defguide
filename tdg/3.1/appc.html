@@ -1,0 +1,1335 @@
+<HTML
+><HEAD
+><TITLE
+>DocBook Versions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Appendixes"
+HREF="part3.html"><LINK
+REL="PREVIOUS"
+TITLE="DocBook and XML"
+HREF="appb.html"><LINK
+REL="NEXT"
+TITLE="Resources"
+HREF="appd.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="appb.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="appd.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="APP-VERSIONS"
+>Appendix C. DocBook Versions</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>C.1. <A
+HREF="appc.html#AEN194214"
+>DocBook V3.0</A
+></DT
+><DT
+>C.2. <A
+HREF="appc.html#AEN194223"
+>DocBook V3.1</A
+></DT
+><DT
+>C.3. <A
+HREF="appc.html#AEN194341"
+>DocBook V4.0</A
+></DT
+><DT
+>C.4. <A
+HREF="appc.html#AEN194611"
+>DocBook 5.0</A
+></DT
+><DT
+>C.5. <A
+HREF="appc.html#AEN194699"
+>DocBk <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></DT
+></DL
+></DIV
+><P
+>&#13;
+
+
+
+
+The <SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> DocBook Technical Committee (<SPAN
+CLASS="ACRONYM"
+>TC</SPAN
+>) is committed to the continued
+evolution of DocBook.  As new needs are expressed by the DocBook-user
+community, the committee will adapt DocBook so it
+continues to meet the needs of its users.</P
+><P
+>&#13;The <SPAN
+CLASS="ACRONYM"
+>TC</SPAN
+> observes a very cautious policy regarding changes to the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>.
+Backward-incompatible changes can only be introduced:
+<P
+></P
+><UL
+><LI
+><P
+>&#13;
+In major releases (4.0, 5.0, 6.0, and so on)</P
+></LI
+><LI
+><P
+>&#13;
+Only if the change was described in comments in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> in the
+previous major release</P
+></LI
+></UL
+>
+
+
+Changes made at point-releases are always backward-compatible to the
+previous major release. This policy assures that DocBook users always
+have time to prepare for any coming changes.</P
+><P
+>This appendix describes the changes planned for
+DocBook.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN194214"
+>C.1. DocBook V3.0</A
+></H1
+><P
+>&#13;&#62;
+
+DocBook <SPAN
+CLASS="ACRONYM"
+>V3.0</SPAN
+> was released in 1997. It has been widely adopted and
+integrated into several commercial products. It is likely that
+DocBook <SPAN
+CLASS="ACRONYM"
+>V3.0</SPAN
+> will be in wide use for a while.</P
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN194223"
+>C.2. DocBook V3.1</A
+></H1
+><P
+>DocBook <SPAN
+CLASS="ACRONYM"
+>V3.1</SPAN
+>, released in February 1999
+introduced a number of new elements:
+
+
+
+
+
+&#13;</P
+><P
+></P
+><DL
+><DT
+><B
+><A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+></B
+></DT
+><DD
+><P
+><A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+> is a wrapper around
+<A
+HREF="videoobject.html"
+><TT
+CLASS="SGMLTAG"
+>VideoObject</TT
+></A
+>, <A
+HREF="audioobject.html"
+><TT
+CLASS="SGMLTAG"
+>AudioObject</TT
+></A
+>,
+<A
+HREF="imageobject.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObject</TT
+></A
+>, and <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+>.  The
+purpose of <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+> is twofold: first, it introduces
+new element types to include video and audio content; second, it
+provides the option of alternative representations, including text, for
+objects in a document.  <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>s also allow
+<A
+HREF="caption.html"
+><TT
+CLASS="SGMLTAG"
+>Caption</TT
+></A
+>s that may be longer than a simple title.</P
+><P
+>&#13;
+
+
+Parallel to <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+> are <A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+>,
+an inline version, and <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>, a media object
+with <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>s.</P
+><P
+>&#13;
+For now, media objects and graphics exist together
+in version 5.0. <A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+> and <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+> will
+be removed from DocBook.</P
+></DD
+><DT
+><B
+><A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+></B
+></DT
+><DD
+><P
+>&#13;
+A figure wrapper without a title. This element was added
+largely for symmetry.</P
+></DD
+><DT
+><B
+><A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+></B
+></DT
+><DD
+><P
+>&#13;
+
+An end-of-the-book <A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+>.</P
+></DD
+><DT
+><B
+><A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+></B
+></DT
+><DD
+><P
+>&#13;<A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+> is a recursive section.  It exists
+parallel to, and must be used as an alternative to,
+<A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>.</P
+></DD
+><DT
+><B
+><A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+></B
+></DT
+><DD
+><P
+>&#13;
+A set of questions and answers.</P
+></DD
+><DT
+><B
+><A
+HREF="constant.html"
+><TT
+CLASS="SGMLTAG"
+>Constant</TT
+></A
+></B
+></DT
+><DD
+><P
+>&#13;
+
+
+The <A
+HREF="constant.html"
+><TT
+CLASS="SGMLTAG"
+>Constant</TT
+></A
+> inline is for identifying
+constants.  It has a <SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> attribute for
+identifying "limits" as a specific kind of constant.</P
+></DD
+><DT
+><B
+><A
+HREF="varname.html"
+><TT
+CLASS="SGMLTAG"
+>VarName</TT
+></A
+></B
+></DT
+><DD
+><P
+>&#13;
+
+
+Many authors have requested a tag for identifying
+variable names.  Most often <A
+HREF="literal.html"
+><TT
+CLASS="SGMLTAG"
+>Literal</TT
+></A
+> (with or without a role)
+has been chosen as a compromise, but you can't question the utility of identifying variable
+names, so <A
+HREF="varname.html"
+><TT
+CLASS="SGMLTAG"
+>VarName</TT
+></A
+> was added.</P
+><P
+>A tag for identifying variable values does not seem as necessary.
+For immutable values, a specific tag other than <A
+HREF="literal.html"
+><TT
+CLASS="SGMLTAG"
+>Literal</TT
+></A
+>
+seems unnecessary, and <A
+HREF="replaceable.html"
+><TT
+CLASS="SGMLTAG"
+>Replaceable</TT
+></A
+> exists for values that
+are supposed to be filled in by the user.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN194341"
+>C.3. DocBook V4.0</A
+></H1
+><P
+>&#13;
+
+DocBook <SPAN
+CLASS="ACRONYM"
+>V4.0</SPAN
+> will introduce a number of backward-incompatible
+changes.</P
+><P
+>The policy of the DocBook <SPAN
+CLASS="ACRONYM"
+>TC</SPAN
+> is that backward-incompatible changes
+can only be introduced in a full version release.  They must also be described
+in comments in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> at least one full version earlier.  In other words,
+all the planned version 4.0 incompatibilities were announced with version 3.0.</P
+><P
+>Backward-incompatible changes to DocBook that are planned for version 4.0:</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;
+
+
+
+
+
+
+
+
+The <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+> element will be split out into <TT
+CLASS="SGMLTAG"
+>ChapterInfo</TT
+>, <TT
+CLASS="SGMLTAG"
+>AppendixInfo</TT
+>,
+  and so on. <A
+HREF="artheader.html"
+><TT
+CLASS="SGMLTAG"
+>ArtHeader</TT
+></A
+> will be renamed to <TT
+CLASS="SGMLTAG"
+>ArticleInfo</TT
+>.  <A
+HREF="seriesinfo.html"
+><TT
+CLASS="SGMLTAG"
+>SeriesInfo</TT
+></A
+> may be
+  discarded because it has become a special case of <A
+HREF="biblioset.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioSet</TT
+></A
+>.
+  <A
+HREF="bookbiblio.html"
+><TT
+CLASS="SGMLTAG"
+>BookBiblio</TT
+></A
+> will be discarded in favor of a new, more inclusive,
+  structure for <A
+HREF="bookinfo.html"
+><TT
+CLASS="SGMLTAG"
+>BookInfo</TT
+></A
+> (and for <TT
+CLASS="SGMLTAG"
+>ArticleInfo</TT
+>, whose earlier <A
+HREF="artheader.html"
+><TT
+CLASS="SGMLTAG"
+>ArtHeader</TT
+></A
+>
+  form contained <A
+HREF="bookbiblio.html"
+><TT
+CLASS="SGMLTAG"
+>BookBiblio</TT
+></A
+>).</P
+></LI
+><LI
+><P
+>&#13;
+
+The <A
+HREF="pe-class.html#DBRE.PENT.ARTICLE.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%article.class;</NOBR
+></TT
+></A
+> entity may be removed from the <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> content model,
+  and made part of a new top-level document hierarchy.</P
+></LI
+><LI
+><P
+>&#13;
+
+The <A
+HREF="pe-class.html#DBRE.PENT.NAV.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%nav.class;</NOBR
+></TT
+></A
+> entity, which appears in several divisions, will allow
+  <A
+HREF="tocchap.html"
+><TT
+CLASS="SGMLTAG"
+>ToCchap</TT
+></A
+> instead of <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+<A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+> will be moved from <A
+HREF="pe-class.html#DBRE.PENT.TECH.CHAR.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tech.char.class;</NOBR
+></TT
+></A
+> to a more appropriate
+  parameter entity.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+
+
+
+
+
+
+
+
+
+
+The following elements will have their content constrained to the
+  <A
+HREF="pe-mix.html#DBRE.PENT.SMALLCPTR.CHAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%smallcptr.char.mix;</NOBR
+></TT
+></A
+> mixture: <A
+HREF="action.html"
+><TT
+CLASS="SGMLTAG"
+>Action</TT
+></A
+>, <A
+HREF="command.html"
+><TT
+CLASS="SGMLTAG"
+>Command</TT
+></A
+>, <A
+HREF="database.html"
+><TT
+CLASS="SGMLTAG"
+>Database</TT
+></A
+>, <A
+HREF="filename.html"
+><TT
+CLASS="SGMLTAG"
+>Filename</TT
+></A
+>,
+  <A
+HREF="hardware.html"
+><TT
+CLASS="SGMLTAG"
+>Hardware</TT
+></A
+>, <A
+HREF="interface.html"
+><TT
+CLASS="SGMLTAG"
+>Interface</TT
+></A
+>, <A
+HREF="keycap.html"
+><TT
+CLASS="SGMLTAG"
+>KeyCap</TT
+></A
+>, <A
+HREF="literal.html"
+><TT
+CLASS="SGMLTAG"
+>Literal</TT
+></A
+>, <A
+HREF="option.html"
+><TT
+CLASS="SGMLTAG"
+>Option</TT
+></A
+>, <A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>, <A
+HREF="property.html"
+><TT
+CLASS="SGMLTAG"
+>Property</TT
+></A
+>, and
+  <A
+HREF="systemitem.html"
+><TT
+CLASS="SGMLTAG"
+>SystemItem</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+
+<A
+HREF="authorblurb.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorBlurb</TT
+></A
+> and <A
+HREF="affiliation.html"
+><TT
+CLASS="SGMLTAG"
+>Affiliation</TT
+></A
+> will be removed from <A
+HREF="pe-mix.html#DBRE.PENT.PERSON.IDENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%person.ident.mix;</NOBR
+></TT
+></A
+>
+  and a new wrapper element will be created to allow association of those two
+  elements with <A
+HREF="author.html"
+><TT
+CLASS="SGMLTAG"
+>Author</TT
+></A
+> name information.</P
+></LI
+><LI
+><P
+>&#13;
+
+<A
+HREF="epigraph.html"
+><TT
+CLASS="SGMLTAG"
+>Epigraph</TT
+></A
+> will not be appearing in <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+<A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+> will be renamed to <TT
+CLASS="SGMLTAG"
+>Remark</TT
+> and will be excluded from itself.</P
+></LI
+><LI
+><P
+>&#13;
+
+<A
+HREF="glossterm.html"
+><TT
+CLASS="SGMLTAG"
+>GlossTerm</TT
+></A
+> will be excluded from itself, and may be split into an
+  element that appears in a <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+> and an element that can appear in
+  the main text.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+The <SPAN
+CLASS="SGMLTAG"
+>Subject</SPAN
+> attribute on <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+> will be renamed <SPAN
+CLASS="SGMLTAG"
+>Keyword</SPAN
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+Two <A
+HREF="segtitle.html"
+><TT
+CLASS="SGMLTAG"
+>SegTitle</TT
+></A
+> elements will be required in <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+
+
+<A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+> and <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+> will be declared EMPTY.  This change will
+  require that end tags be removed and that any embedded graphic content
+  be stored outside the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> source and pointed to from an <SPAN
+CLASS="SGMLTAG"
+>Entityref</SPAN
+> or
+  <SPAN
+CLASS="SGMLTAG"
+>Fileref</SPAN
+> attribute.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+
+
+The <TT
+CLASS="LITERAL"
+>OptMult</TT
+> and <TT
+CLASS="LITERAL"
+>ReqMult</TT
+> values for the <SPAN
+CLASS="SGMLTAG"
+>Choice</SPAN
+> attribute on <A
+HREF="group.html"
+><TT
+CLASS="SGMLTAG"
+>Group</TT
+></A
+>
+  will be removed.  Use the <SPAN
+CLASS="SGMLTAG"
+>Rep</SPAN
+> attribute instead to indicate that the
+  choice is repeatable.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+
+The content model group inside <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+> starting with <A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+>
+  will not be available; you will have to use <A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>.  Also, you
+  will be able to have a mixture of <TT
+CLASS="SGMLTAG"
+>FuncPrototypes</TT
+> and <TT
+CLASS="SGMLTAG"
+>FuncSynopsisInfos</TT
+>
+  (this is not backward-incompatible all by itself).</P
+></LI
+><LI
+><P
+>&#13;
+
+
+
+
+The <TT
+CLASS="LITERAL"
+>EnvironVar</TT
+> and <TT
+CLASS="LITERAL"
+>Prompt</TT
+> values for the <SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> attribute on <A
+HREF="systemitem.html"
+><TT
+CLASS="SGMLTAG"
+>SystemItem</TT
+></A
+>
+  will be eliminated; use the <A
+HREF="envar.html"
+><TT
+CLASS="SGMLTAG"
+>EnVar</TT
+></A
+> and <A
+HREF="prompt.html"
+><TT
+CLASS="SGMLTAG"
+>Prompt</TT
+></A
+> elements instead.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN194611"
+>C.4. DocBook 5.0</A
+></H1
+><P
+>&#13;
+
+
+DocBook <SPAN
+CLASS="ACRONYM"
+>v5.0</SPAN
+> will also introduce backward-incompatible changes.</P
+><P
+>These changes will be announced in version 4.0, although several
+were announced with version 3.1 as well.</P
+><P
+>Backward-incompatible changes to DocBook that are planned for version 4.0:</P
+><P
+></P
+><UL
+><LI
+><P
+>DocBook 5.0 will be <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> compliant. This will introduce a lot of changes.</P
+></LI
+><LI
+><P
+>The <SPAN
+CLASS="SGMLTAG"
+>Coords</SPAN
+> attribute will be removed from <A
+HREF="areaset.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSet</TT
+></A
+>.</P
+></LI
+><LI
+><P
+><A
+HREF="artheader.html"
+><TT
+CLASS="SGMLTAG"
+>ArtHeader</TT
+></A
+> will be dropped from <A
+HREF="biblioentry.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioEntry</TT
+></A
+>.
+
+&#13;</P
+></LI
+><LI
+><P
+>&#13;
+
+
+The <SPAN
+CLASS="SGMLTAG"
+>Contents</SPAN
+> attribute will be removed from <A
+HREF="bookinfo.html"
+><TT
+CLASS="SGMLTAG"
+>BookInfo</TT
+></A
+> and <A
+HREF="setinfo.html"
+><TT
+CLASS="SGMLTAG"
+>SetInfo</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+
+The <A
+HREF="pe-mix.html#DBRE.PENT.INDEXDIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%indexdivcomponent.mix;</NOBR
+></TT
+></A
+> entity will be restricted.
+Numbered figures and other elements inappropriate for an
+<A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+> or <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+> will be removed.</P
+></LI
+><LI
+><P
+>&#13;
+
+<A
+HREF="revhistory.html"
+><TT
+CLASS="SGMLTAG"
+>RevHistory</TT
+></A
+> will be removed from <A
+HREF="glossterm.html"
+><TT
+CLASS="SGMLTAG"
+>GlossTerm</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+The <TT
+CLASS="LITERAL"
+>Constant</TT
+> <SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+>
+will be removed from <A
+HREF="systemitem.html"
+><TT
+CLASS="SGMLTAG"
+>SystemItem</TT
+></A
+>.</P
+></LI
+><LI
+><P
+>&#13;
+
+<A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+> and <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+> will be removed.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN194699"
+>C.5. DocBk <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></H1
+><P
+>&#13;
+The DocBk <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> is an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> version of DocBook produced by
+Norman Walsh. It is a faithful translation of DocBook, as described
+in <A
+HREF="appb.html#S-DOCBOOKXML"
+>Section B.2</A
+>.</P
+><P
+>&#13;
+
+Although it has not been officially adopted by the DocBook
+Technical Committee, the <SPAN
+CLASS="ACRONYM"
+>TC</SPAN
+> does have concrete plans to produce
+an official <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> version of DocBook in version 5.0. This is likely to be based
+on the DocBk <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, or very closely resemble it.</P
+><P
+>The DocBk <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> is supplied on the <A
+HREF="appe.html"
+><SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+></A
+>.
+It is also available from 
+<A
+HREF="http://nwalsh.com/docbook/xml/"
+TARGET="_top"
+>http://nwalsh.com/docbook/xml/</A
+>.
+&#62;
+&#62;</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="appb.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="appd.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>DocBook and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part3.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Resources</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

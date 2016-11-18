@@ -1,0 +1,4504 @@
+<HTML
+><HEAD
+><TITLE
+>Publishing DocBook Documents</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Introduction"
+HREF="part1.html"><LINK
+REL="PREVIOUS"
+TITLE="Parsing DocBook Documents"
+HREF="ch03.html"><LINK
+REL="NEXT"
+TITLE="Customizing DocBook"
+HREF="ch05.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="ch03.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="ch05.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="CH-PUBLISH"
+>Chapter 4. Publishing DocBook Documents</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>4.1. <A
+HREF="ch04.html#AEN4448"
+>A Survey of Stylesheet Languages</A
+></DT
+><DT
+>4.2. <A
+HREF="ch04.html#AEN4615"
+>Using Jade and <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> to Publish DocBook Documents</A
+></DT
+><DT
+>4.3. <A
+HREF="ch04.html#AEN4652"
+>A Brief Introduction to <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+></A
+></DT
+><DT
+>4.4. <A
+HREF="ch04.html#AEN5447"
+>Customizing the Stylesheets</A
+></DT
+><DT
+>4.5. <A
+HREF="ch04.html#JADEMULTDECL"
+>Dealing with Multiple Declarations</A
+></DT
+><DT
+>4.6. <A
+HREF="ch04.html#DSSSL.ARCH"
+>The <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Architecture</A
+></DT
+></DL
+></DIV
+><P
+>&#13;
+
+
+
+Creating and editing <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents is usually only half the
+battle. After you've composed your document, you'll want to publish
+it. Publishing, for our purposes, means either print or web
+publishing. For <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents, this is usually
+accomplished with some kind of <I
+CLASS="GLOSSTERM"
+>stylesheet</I
+>.  In
+the (not too distant) future, you may be able to publish an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+document on the Web by simply putting it online with a stylesheet, but
+for now you'll probably have to translate your document into <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>.</P
+><P
+>&#13;
+
+
+There are many ways, using both free and commercial tools, to publish
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents. In this chapter, we're going to survey a number of
+possibilities, and then look at just one solution in detail: <A
+HREF="http://www.jclark.com/jade/"
+TARGET="_top"
+>Jade</A
+> and the <A
+HREF="http://nwalsh.com/docbook/dsssl/"
+TARGET="_top"
+>Modular DocBook
+Stylesheets.</A
+> We used jade to produce this
+book and to produce the online versions on the
+<SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+>; it is also being deployed in other projects
+such as <A
+HREF="http://www.sgmltools.org/"
+TARGET="_top"
+><TT
+CLASS="LITERAL"
+>&lt;SGML&gt;&amp;tools;</TT
+>,</A
+>
+which originated with the Linux Documentation Project.</P
+><P
+>For a brief survey of other tools, see <A
+HREF="appd.html"
+>Appendix D, <I
+>Resources</I
+>,</A
+>.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN4448"
+>4.1. A Survey of Stylesheet Languages</A
+></H1
+><P
+>&#13;
+
+Over the years, a number of attempts have been made to produce a
+standard stylesheet language and, failing that, a large number of
+proprietary languages have been developed.</P
+><P
+></P
+><DL
+><DT
+><B
+>FOSIs</B
+></DT
+><DD
+><P
+>&#13;
+
+
+First, the U.S. Department of Defense, in an attempt to
+standardize stylesheets across military branches, created the
+<I
+CLASS="CITETITLE"
+>Output Specification</I
+>, which is defined in
+<SPAN
+CLASS="ACRONYM"
+>MIL-PRF-28001C</SPAN
+>, <I
+CLASS="CITETITLE"
+>Markup Requirements and
+Generic Style Specification for Electronic Printed Output and Exchange
+of Text</I
+>.<A
+NAME="AEN4472"
+HREF="#FTN.AEN4472"
+>[1]</A
+></P
+><P
+>&#13;
+
+Commonly called FOSIs (for Formatting Output Specification Instances),
+they are supported by a few products including ADEPT Publisher by
+<A
+HREF="http://www.arbortext.com/"
+TARGET="_top"
+>Arbortext</A
+> and DL
+Composer by <A
+HREF="http://www.datalogics.com/"
+TARGET="_top"
+>Datalogics</A
+>.</P
+></DD
+><DT
+><B
+>DSSSL</B
+></DT
+><DD
+><P
+>&#13;
+
+
+
+Next, the International Organization for Standardization
+(<SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+>) created <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>, the
+Document Style Semantics and Specification Language. Subsets of
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> are supported by Jade and a few other tools,
+but it never achieved widespread support.</P
+></DD
+><DT
+><B
+>CSS</B
+></DT
+><DD
+><P
+>&#13;
+
+
+The <SPAN
+CLASS="ACRONYM"
+>W3C</SPAN
+> CSS Working Group created
+<SPAN
+CLASS="ACRONYM"
+>CSS</SPAN
+> as a style attachment language for <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>, and,
+more recently, <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>.</P
+></DD
+><DT
+><B
+>XSL</B
+></DT
+><DD
+><P
+>&#13;
+
+Most recently, the <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> effort has identified a standard Extensible Style
+Language (<SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+>) as a requirement. The
+<SPAN
+CLASS="ACRONYM"
+>W3C</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+> Working Group is
+currently pursuing that effort.</P
+></DD
+></DL
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4533"
+>4.1.1. Stylesheet Examples</A
+></H2
+><P
+>&#13;
+
+
+By way of comparison, here's an example of each of the standard style
+languages. In each case, the stylesheet fragment shown contains the
+rules that reasonably formatted the following paragraph:</P
+><PRE
+CLASS="SCREEN"
+>&lt;para&#62;
+This is an example paragraph. It should be presented in a
+reasonable body font. &lt;emphasis&#62;Emphasized&lt;/emphasis&#62; words
+should be printed in italics. A single level of 
+&lt;emphasis&#62;Nested &lt;emphasis&#62;emphasis&lt;/emphasis&#62; should also
+be supported.&lt;/emphasis&#62;
+&lt;/para&#62;</PRE
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4540"
+>4.1.1.1. <SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+> stylesheet</A
+></H3
+><P
+>&#13;
+
+
+
+<SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+>s are <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents. The element in the
+<SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+> that controls the presentation of specific
+elements is the <TT
+CLASS="SGMLTAG"
+>e-i-c</TT
+> (element in context) element.
+A sample <SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+> fragment is shown in <A
+HREF="ch04.html#EX-FOSI"
+>Example 4-1</A
+>.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="EX-FOSI"
+></A
+><P
+><B
+>Example 4-1. A Fragment of a <SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+> Stylesheet</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;e-i-c gi="para"&#62;
+  &#60;charlist&#62;
+    &#60;textbrk startln="1" endln="1"&#62;
+  &#60;/charlist&#62;
+&#60;/e-i-c&#62;
+
+&#60;e-i-c gi="emphasis"&#62;
+  &#60;charlist inherit="1"&#62;
+    &#60;font posture="italic"&#62;
+  &#60;/charlist&#62;
+&#60;/e-i-c&#62;
+
+&#60;e-i-c gi="emphasis" context="emphasis"&#62;
+  &#60;charlist inherit="1"&#62;
+    &#60;font posture="upright"&#62;
+  &#60;/charlist&#62;
+&#60;/e-i-c&#62;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4565"
+>4.1.1.2. <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheet</A
+></H3
+><P
+>&#13;
+
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheets are written in a Scheme-like
+language (see "Scheme" later in this chapter). It is the
+<TT
+CLASS="FUNCTION"
+>element</TT
+> function that controls the presentation of
+individual elements. See the example in <A
+HREF="ch04.html#EX-DSSSL"
+>Example 4-2</A
+>.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="EX-DSSSL"
+></A
+><P
+><B
+>Example 4-2. A Fragment of a <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Stylesheet</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>(element para
+  (make paragraph
+    (process-children)))
+
+(element emphasis
+  (make sequence
+    font-posture: 'italic
+    (process-children)))
+
+(element (emphasis emphasis)
+  (make sequence
+    font-posture: 'upright
+    (process-children)))</PRE
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4584"
+>4.1.1.3. <SPAN
+CLASS="ACRONYM"
+>CSS</SPAN
+> stylesheet</A
+></H3
+><P
+>&#13;
+<SPAN
+CLASS="ACRONYM"
+>CSS</SPAN
+> stylesheets consist of selectors and formatting
+properties, as shown in <A
+HREF="ch04.html#EX-CSS"
+>Example 4-3</A
+>.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="EX-CSS"
+></A
+><P
+><B
+>Example 4-3. A Fragment of a <SPAN
+CLASS="ACRONYM"
+>CSS</SPAN
+> Stylesheet</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>para              { display: block }
+emphasis          { display: inline;
+                    font-style: italic; }
+emphasis emphasis { display: inline;
+                    font-style: upright; }</PRE
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4598"
+>4.1.1.4. <SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+> stylesheet</A
+></H3
+><P
+>&#13;
+<SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+> stylesheets are <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents, as shown in
+<A
+HREF="ch04.html#EX-XSL"
+>Example 4-4</A
+>. The element in the <SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+>
+stylesheet that controls the presentation of specific elements is the
+<TT
+CLASS="SGMLTAG"
+>xsl:template</TT
+> element.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="EX-XSL"
+></A
+><P
+><B
+>Example 4-4. A Fragment of an <SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+> Stylesheet</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;?xml version='1.0'?&#62;
+&#60;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format"&#62;
+
+&#60;xsl:template match="para"&#62;   
+  &#60;fo:block&#62;
+    &#60;xsl:apply-templates/&#62;  
+  &#60;/fo:block&#62;
+&#60;/xsl:template&#62;  
+
+&#60;xsl:template match="emphasis"&#62;
+  &#60;fo:sequence font-style="italic"&#62;
+    &#60;xsl:apply-templates/&#62;  
+  &#60;/fo:sequence&#62;
+&#60;/xsl:template&#62;  
+
+&#60;xsl:template match="emphasis/emphasis"&#62;
+  &#60;fo:sequence font-style="upright"&#62;
+    &#60;xsl:apply-templates/&#62;  
+  &#60;/fo:sequence&#62;
+&#60;/xsl:template&#62;  
+
+&#60;/xsl:stylesheet&#62;</PRE
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN4615"
+>4.2. Using Jade and <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> to Publish DocBook Documents</A
+></H1
+><P
+>&#13;
+
+
+
+
+Jade is a free tool that applies <A
+HREF="http://www.jclark.com/dsssl/"
+TARGET="_top"
+> <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+></A
+>
+stylesheets to <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents. As distributed, Jade can
+output <SPAN
+CLASS="ACRONYM"
+>RTF</SPAN
+>, TeX, <SPAN
+CLASS="ACRONYM"
+>MIF</SPAN
+>, and
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>. The <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> backend can be used for <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> to <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>
+transformations (for example, DocBook to <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>).</P
+><P
+>A complete set of <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheets for creating
+print and <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> output from DocBook is included on the
+<SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+>.  More information about obtaining and
+installing Jade appears in <A
+HREF="appa.html"
+>Appendix A, <I
+>Installation</I
+>,</A
+>.
+&#62;</P
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN4652"
+>4.3. A Brief Introduction to <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+></A
+></H1
+><P
+><SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> is a stylesheet language for both print and
+online rendering.  The acronym stands for <I
+CLASS="CITETITLE"
+>Document Style
+Semantics and Specification Language</I
+>. It is defined by
+<SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>IEC</SPAN
+> 10179:1996. For more
+general information about <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>, see <A
+HREF="http://www.jclark.com/dsssl/"
+TARGET="_top"
+>the <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>
+Page</A
+>.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4663"
+>4.3.1. Scheme</A
+></H2
+><P
+>&#13;
+
+
+The <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> expression language is Scheme, a variant
+of Lisp. Lisp is a functional programming language with a remarkably
+regular syntax. Every expression looks like this:
+<PRE
+CLASS="SCREEN"
+>(<TT
+CLASS="REPLACEABLE"
+><I
+>operator</I
+></TT
+> [<SPAN
+CLASS="OPTIONAL"
+>arg1</SPAN
+>] [<SPAN
+CLASS="OPTIONAL"
+>arg2</SPAN
+>] ... [<SPAN
+CLASS="OPTIONAL"
+>arg<TT
+CLASS="REPLACEABLE"
+><I
+>n</I
+></TT
+></SPAN
+>] )</PRE
+>
+
+This is called "prefix" syntax because the operator comes
+before its arguments.</P
+><P
+>In Scheme, the expression that
+subtracts 2 from 3, is <TT
+CLASS="LITERAL"
+>(- 3 2)</TT
+>. And <TT
+CLASS="LITERAL"
+>(+ (-
+3 2) (* 2 4))</TT
+> is 9. While the prefix syntax and the
+parentheses may take a bit of getting used to, Scheme is not hard to
+learn, in part because there are no exceptions to the syntax.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4687"
+>4.3.2. <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Stylesheets</A
+></H2
+><P
+>&#13;
+
+A complete <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheet is shown in <A
+HREF="ch04.html#DSSSL.STYLESHEET"
+>Example 4-5</A
+>.  After only a brief examination of the
+stylesheet, you'll probably begin to have a feel for how it works. For
+each element in the document, there is an element rule that describes
+how you should format that element. The goal of the rest of this
+chapter is to make it possible for you to read, understand, and even
+write stylesheets at this level of complexity.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="DSSSL.STYLESHEET"
+></A
+><P
+><B
+>Example 4-5. A Complete <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Stylesheet</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN"&#62;
+
+&#60;style-sheet&#62;
+&#60;style-specification&#62;
+&#60;style-specification-body&#62;
+
+(element chapter
+  (make simple-page-sequence
+    top-margin: 1in
+    bottom-margin: 1in
+    left-margin: 1in
+    right-margin: 1in
+    font-size: 12pt
+    line-spacing: 14pt
+    min-leading: 0pt
+    (process-children)))
+
+(element title
+  (make paragraph
+    font-weight: 'bold
+    font-size: 18pt
+    (process-children)))
+
+(element para
+  (make paragraph
+    space-before: 8pt
+    (process-children)))
+
+(element emphasis
+  (if (equal? (attribute-string "role") "strong")
+      (make sequence
+	font-weight: 'bold
+	(process-children))
+      (make sequence
+	font-posture: 'italic
+	(process-children))))
+
+(element (emphasis emphasis)
+  (make sequence
+    font-posture: 'upright
+    (process-children)))
+
+(define (super-sub-script plus-or-minus
+               #!optional (sosofo (process-children)))
+  (make sequence
+    font-size: (* (inherited-font-size) 0.8)
+    position-point-shift: (plus-or-minus (* (inherited-font-size) 0.4))
+    sosofo))
+
+(element superscript (super-sub-script +))
+(element subscript (super-sub-script -))
+
+&#60;/style-specification-body&#62;
+&#60;/style-specification&#62;
+&#60;/style-sheet&#62;</PRE
+></DIV
+><P
+>&#13;
+This stylesheet is capable of formatting simple DocBook documents like
+the one shown in <A
+HREF="ch04.html#SIMPLE.DOCUMENT"
+>Example 4-6</A
+>.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="SIMPLE.DOCUMENT"
+></A
+><P
+><B
+>Example 4-6. A Simple DocBook Document</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;chapter&#62;&#60;title&#62;Test Chapter&#60;/title&#62;
+&#60;para&#62;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&#60;/para&#62;
+&#60;para&#62;
+&#60;emphasis role=strong&#62;This&#60;/emphasis&#62; paragraph contains
+&#60;emphasis&#62;some &#60;emphasis&#62;emphasized&#60;/emphasis&#62; text&#60;/emphasis&#62;
+and a &#60;superscript&#62;super&#60;/superscript&#62;script
+and a &#60;subscript&#62;sub&#60;/subscript&#62;script.
+&#60;/para&#62;
+&#60;para&#62;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&#60;/para&#62;
+&#60;/chapter&#62;
+</PRE
+></DIV
+><P
+>The result of formatting a simple document with this stylesheet can be
+seen in <A
+HREF="ch04.html#SIMPLE.DOCUMENT.FORMATTED"
+>Figure 4-1</A
+>.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="SIMPLE.DOCUMENT.FORMATTED"
+></A
+><P
+><B
+>Figure 4-1. The formatted simple document</B
+></P
+><P
+><IMG
+SRC="figures/simple-page.gif"></P
+></DIV
+><P
+>We'll take a closer look at this stylesheet after you've learned a
+little more <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4721"
+>4.3.3. <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Stylesheets Are <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> Documents</A
+></H2
+><P
+>&#13;
+
+
+One of the first things that may strike you about
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheets (aside from all the parentheses),
+is the fact that the stylesheet itself is an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document! This
+means that you have all the power of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents at your disposal
+in <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheets. In particular, you can use
+entities and marked sections to build a modular stylesheet.</P
+><P
+>&#13;
+
+In fact, <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheets are defined so that they
+correspond to a particular <I
+CLASS="GLOSSTERM"
+>architecture</I
+>. This
+means that you can change the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> used by stylesheets within the
+bounds of the architecture. A complete discussion of document
+architectures is beyond the scope of this book, but we'll show you one
+way to take advantage of them in your <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>
+stylesheets in <A
+HREF="ch04.html#DSSSL.ARCH"
+>Section 4.6</A
+>" later in the
+chapter.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4751"
+>4.3.4. <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Processing Model</A
+></H2
+><P
+>&#13;
+
+
+A <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> processor builds a tree out of the source
+document. Each element in the source document becomes a node in the
+tree (processing instructions and other constructs become nodes as
+well). Processing the source tree begins with the root rule and
+continues until there are no more nodes to process.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4762"
+>4.3.5. Global Variables and Side Effects</A
+></H2
+><P
+>&#13;
+
+There aren't any global variables or side effects. It can be difficult
+to come to grips with this, especially if you're just starting out.</P
+><P
+>&#13;
+
+It is possible to <A
+HREF="ch04.html#DSSSL.EXPR.DEFINE"
+>define constants
+and functions</A
+> and to create local variables with <A
+HREF="ch04.html#DSSSL.EXPR.LET"
+> <TT
+CLASS="LITERAL"
+>let</TT
+> expressions</A
+>,
+but you can't create any global variables or change anything after
+you've defined it.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4779"
+>4.3.6. <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Expressions</A
+></H2
+><P
+>&#13;
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> has a rich vocabulary of expressions for
+dealing with all of the intricacies of formatting. Many, but by no
+means all of them, are supported by Jade. In this introduction, we'll
+cover only a few of the most common.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.ELEMENT"
+>4.3.6.1. Element expressions</A
+></H3
+><P
+>&#13;
+
+
+Element expressions, which define the rules for formatting particular
+elements, make up the bulk of most <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>
+stylesheets. A simple element rule can be seen in <A
+HREF="ch04.html#EX.D.SIMPLE"
+>Example 4-7</A
+>. This rule says that a <TT
+CLASS="SGMLTAG"
+> para</TT
+>
+element should be formatted by making a paragraph (see <A
+HREF="ch04.html#DSSSL.EXPR.MAKE"
+>Section 4.3.6.2</A
+>").</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="EX.D.SIMPLE"
+></A
+><P
+><B
+>Example 4-7. A Simple <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Rule</B
+></P
+><PRE
+CLASS="SCREEN"
+>(element para
+  (make paragraph
+    space-before: 8pt
+    (process-children)))</PRE
+></DIV
+><P
+>&#13;
+An element expression can be made more specific by specifying an
+element and its ancestors instead of just specifying an element. The
+rule <TT
+CLASS="LITERAL"
+>(element title ...)</TT
+> applies to all
+<A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+> elements, but a rule that begins
+<TT
+CLASS="LITERAL"
+>(element (figure title) ...)</TT
+> applies only to
+<A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+> elements that are immediate children of
+<A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+> elements.</P
+><P
+>If several rules apply, the most specific rule is used.</P
+><P
+>When a rule is used, the node in the source tree that was matched
+becomes the "current node" while that element expression
+is being processed.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.MAKE"
+>4.3.6.2. Make expressions</A
+></H3
+><P
+>&#13;
+
+A make expression specifies the characteristics of a "flow
+object." Flow objects are abstract representations of content
+(paragraphs, rules, tables, and so on). The expression:
+<PRE
+CLASS="SCREEN"
+>(make paragraph
+  font-size: 12pt
+  line-spacing: 14pt ...)</PRE
+>
+specifies that the content that goes "here" is to be
+placed into a paragraph flow object with a font-size of 12pt and a
+line-spacing of 14pt (all of the unspecified characteristics of the
+flow object are defaulted in the appropriate way).</P
+><P
+>They're called flow objects because <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>, in its
+full generality, allows you to specify the characteristics of a
+sequence of flow objects and a set of areas on the physical page where
+you can place content. The content of the flow objects is then
+"poured on to" (or flows in to) the areas on the page(s).</P
+><P
+>&#13;
+
+In most cases, it's sufficient to think of the make expressions as
+constructing the flow objects, but they really only specify the
+<I
+CLASS="EMPHASIS"
+>characteristics</I
+> of the flow objects. This detail
+is apparent in one of the most common and initially confusing pieces
+of <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> jargon: the
+<I
+CLASS="FIRSTTERM"
+>sosofo</I
+>. Sosofo stands for a
+"specification of a sequence of flow objects." All this
+means is that processing a document may result in a nested set of 
+<TT
+CLASS="LITERAL"
+>make</TT
+> expressions (in other words, the paragraph may contain a table that
+contains rows that contain cells that contain paragraphs, and so on).</P
+><P
+>The general form of a <TT
+CLASS="LITERAL"
+>make</TT
+> expression is:
+<PRE
+CLASS="SCREEN"
+>(make <TT
+CLASS="REPLACEABLE"
+><I
+>flow-object-name</I
+></TT
+>
+  <TT
+CLASS="REPLACEABLE"
+><I
+>keyword1:</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value1</I
+></TT
+>
+  <TT
+CLASS="REPLACEABLE"
+><I
+>keyword2:</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value2</I
+></TT
+>
+  ...
+  <TT
+CLASS="REPLACEABLE"
+><I
+>keywordn:</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>valuen</I
+></TT
+>
+  (<TT
+CLASS="REPLACEABLE"
+><I
+>content-expression</I
+></TT
+>))</PRE
+></P
+><P
+>&#13;
+Keyword arguments specify the characteristics of the flow object. The
+specific characteristics you use depends on the flow object. The
+<TT
+CLASS="REPLACEABLE"
+><I
+>content-expression</I
+></TT
+> can vary; it is usually
+another make expression or one of the <A
+HREF="ch04.html#DSSSL.EXPR.PROC"
+>processing expressions</A
+>.</P
+><P
+>&#13;
+Some common flow objects in the print stylesheet are:</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>simple-page-sequence</TT
+></B
+></DT
+><DD
+><P
+>&#13;Contains a sequence of pages. The keyword arguments of this flow
+object let you specify margins, headers and footers, and other
+page-related characteristics.  Print stylesheets should always produce
+one or more <TT
+CLASS="LITERAL"
+>simple-page-sequence </TT
+> flow objects.</P
+><P
+>Nesting <TT
+CLASS="LITERAL"
+>simple-page-sequence</TT
+> does not
+work. Characteristics on the inner sequences are ignored.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>paragraph</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+
+A paragraph is used for any block of text. This may include not only
+paragraphs in the source document, but also titles, the terms in a
+definition list, glossary entries, and so on. Paragraphs in
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> can be nested.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>sequence</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+A sequence is a wrapper. It is most frequently used to change
+inherited characteristics (like font style) of a set of flow objects
+without introducing other semantics (such as line breaks).</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>score</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+A score flow object creates underlining, strike-throughs, or
+overlining.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>table</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+A table flow object creates a table of rows and cells.</P
+></DD
+></DL
+><P
+>&#13;
+The <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> stylesheet uses the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> backend, which has a different
+selection of flow objects.</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>element</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+
+Creates an element. The content of this <TT
+CLASS="LITERAL"
+>make</TT
+>
+expression will appear between the start and end tags. The expression:</P
+><PRE
+CLASS="SCREEN"
+>(make element gi: "H1" 
+	    (literal "Title"))</PRE
+><P
+>produces <TT
+CLASS="LITERAL"
+>&lt;H1&#62;Title&lt;/H1&#62;</TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>empty-element</TT
+></B
+></DT
+><DD
+><P
+>&#13;Creates an empty element that may not have content. The expression:</P
+><PRE
+CLASS="SCREEN"
+>(make empty-element gi: "BR"
+     attributes: '(("CLEAR" "ALL")))</PRE
+><P
+>produces <TT
+CLASS="LITERAL"
+>&lt;BR CLEAR="ALL"&#62;</TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>sequence</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+Produces no output in of itself as a wrapper, but is still
+required in <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> contexts in which you want to
+output several flow objects but only one object top-level object may
+be returned.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>entity-ref</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+
+
+Inserts an entity reference. The expression:</P
+><PRE
+CLASS="SCREEN"
+>(make entity-ref name: "nbsp")</PRE
+><P
+>produces <TT
+CLASS="LITERAL"
+>&amp;nbsp;</TT
+>.</P
+></DD
+></DL
+><P
+>&#13;
+
+
+In both stylesheets, a completely empty flow object is constructed
+with <TT
+CLASS="LITERAL"
+>(empty-sosofo)</TT
+>.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.DATA"
+>4.3.6.3. Selecting data</A
+></H3
+><P
+>&#13;
+
+Extracting parts of the source document can be accomplished with these
+functions:</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(data <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns all of the character data from <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+> as a
+string.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(attribute-string "<TT
+CLASS="REPLACEABLE"
+><I
+>attr</I
+></TT
+>" <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the value of the <TT
+CLASS="REPLACEABLE"
+><I
+>attr</I
+></TT
+> attribute of <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(inherited-attribute-string "<TT
+CLASS="REPLACEABLE"
+><I
+>attr</I
+></TT
+>" <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the value of the <TT
+CLASS="REPLACEABLE"
+><I
+>attr</I
+></TT
+> attribute of
+<TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>.  If that attribute is not specified on
+<TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>, it searches up the hierarchy for the first
+ancestor element that does set the attribute, and returns its value.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.NODES"
+>4.3.6.4. Selecting elements</A
+></H3
+><P
+>&#13;
+
+
+
+
+A common requirement of formatting is the ability to reorder content.
+In order to do this, you must be able to select other elements in the
+tree for processing. <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> provides a number of
+functions that select other elements.  These functions all return a
+list of nodes.</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(current-node)</TT
+></B
+></DT
+><DD
+><P
+>Returns the current node.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(children <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the children of <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(descendants <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the descendants of <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+> (the children of
+<TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+> and all their children's children, and so on).</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(parent <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the parent of <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(ancestor "<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>" <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the first ancestor of <TT
+CLASS="REPLACEABLE"
+><I
+>nd</I
+></TT
+> named
+<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(element-with-id "<TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+>")</TT
+></B
+></DT
+><DD
+><P
+>Returns the element in the document with the <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>
+<TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+>, if such an element exists.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(select-elements <TT
+CLASS="REPLACEABLE"
+><I
+>node-list</I
+></TT
+> "<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>")</TT
+></B
+></DT
+><DD
+><P
+>Returns all of the elements of the <TT
+CLASS="REPLACEABLE"
+><I
+>node-list</I
+></TT
+> that have
+the name <TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>. For example, <TT
+CLASS="LITERAL"
+>(select-elements
+(descendants (current-node)) "para")</TT
+> returns a list of all
+the paragraphs that are descendants of the current node.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(empty-node-list)</TT
+></B
+></DT
+><DD
+><P
+>Returns a node list that contains no nodes.</P
+></DD
+></DL
+><P
+>Other functions allow you to manipulate node lists.</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(node-list-empty? <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns true if (and only if) <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+> is an empty node
+list.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(node-list-length <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns the number of nodes in <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(node-list-first <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns a node list that consists of the single node that is the first
+node in <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(node-list-rest <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Returns a node list that contains all of the nodes in
+<TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+> except the first node.</P
+></DD
+></DL
+><P
+>&#13;
+
+
+There are many other expressions for manipulating nodes and node
+lists.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.PROC"
+>4.3.6.5. Processing expressions</A
+></H3
+><P
+>&#13;
+Processing expressions control which elements in the document will be
+processed and in what order. Processing an element is performed by
+finding a matching element rule and using that rule.</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(process-children)</TT
+></B
+></DT
+><DD
+><P
+>Processes all of the children of the current node. In most cases, if
+no process expression is given, processing the children is the default
+behavior.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>(process-node-list <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>)</TT
+></B
+></DT
+><DD
+><P
+>Processes each of the elements in <TT
+CLASS="REPLACEABLE"
+><I
+>nl</I
+></TT
+>.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.DEFINE"
+>4.3.6.6. Define expressions</A
+></H3
+><P
+>&#13;
+
+
+You can declare your own functions and constants in
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>. The general form of a function declaration
+is:
+<PRE
+CLASS="SCREEN"
+>(define (<TT
+CLASS="REPLACEABLE"
+><I
+>function</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>args</I
+></TT
+>)
+  <TT
+CLASS="REPLACEABLE"
+><I
+>function-body</I
+></TT
+>)</PRE
+>
+A constant declaration is:
+<PRE
+CLASS="SCREEN"
+>(define <TT
+CLASS="REPLACEABLE"
+><I
+>constant</I
+></TT
+>
+  <TT
+CLASS="REPLACEABLE"
+><I
+>constant-function-body</I
+></TT
+>)</PRE
+></P
+><P
+>The distinction between constants and functions is that the body of a
+constant is evaluated when the definition occurs, while functions are
+evaluated when they are used.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.CONDITIONAL"
+>4.3.6.7. Conditionals</A
+></H3
+><P
+>&#13;
+
+
+
+In <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>, the constant <TT
+CLASS="LITERAL"
+>#t</TT
+>
+represents true and <TT
+CLASS="LITERAL"
+>#f</TT
+> false. There are several
+ways to test conditions and take action in <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>.</P
+><P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>if</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+The form of an <TT
+CLASS="LITERAL"
+>if</TT
+> expression is:
+<PRE
+CLASS="SCREEN"
+>(if <TT
+CLASS="REPLACEABLE"
+><I
+>condition</I
+></TT
+>
+  <TT
+CLASS="REPLACEABLE"
+><I
+>true-expression</I
+></TT
+>
+  <TT
+CLASS="REPLACEABLE"
+><I
+>false-expression</I
+></TT
+>)</PRE
+></P
+><P
+>If the condition is true, the
+<TT
+CLASS="REPLACEABLE"
+><I
+>true-expression</I
+></TT
+> is evaluated, otherwise the
+<TT
+CLASS="REPLACEABLE"
+><I
+>false-expression</I
+></TT
+> is evaluated. You must
+always provide an expression to be evaulated when the condition is not
+met. If you want to produce nothing, use
+<TT
+CLASS="LITERAL"
+>(empty-sosofo)</TT
+>.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>case</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+<TT
+CLASS="LITERAL"
+>case</TT
+> selects from among several alternatives:
+<PRE
+CLASS="SCREEN"
+>(case <TT
+CLASS="REPLACEABLE"
+><I
+>expression</I
+></TT
+>
+  ((<TT
+CLASS="REPLACEABLE"
+><I
+>constant1</I
+></TT
+>) (<TT
+CLASS="REPLACEABLE"
+><I
+>expression1</I
+></TT
+>))
+  ((<TT
+CLASS="REPLACEABLE"
+><I
+>constant2</I
+></TT
+>) (<TT
+CLASS="REPLACEABLE"
+><I
+>expression2</I
+></TT
+>))
+  ((<TT
+CLASS="REPLACEABLE"
+><I
+>constant3</I
+></TT
+>) (<TT
+CLASS="REPLACEABLE"
+><I
+>expression3</I
+></TT
+>))
+  (else <TT
+CLASS="REPLACEABLE"
+><I
+>else-expression</I
+></TT
+>))</PRE
+></P
+><P
+>The value of the expression is compared against each of the constants
+in turn and the expression associated with the first matching constant
+is evaulated.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>cond</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+<TT
+CLASS="LITERAL"
+>cond</TT
+> also selects from among several alternatives,
+but the selection is performed by evaluating each expression:
+<PRE
+CLASS="SCREEN"
+>(cond
+  ((<TT
+CLASS="REPLACEABLE"
+><I
+>condition1</I
+></TT
+>) (<TT
+CLASS="REPLACEABLE"
+><I
+>expression1</I
+></TT
+>))
+  ((<TT
+CLASS="REPLACEABLE"
+><I
+>condition2</I
+></TT
+>) (<TT
+CLASS="REPLACEABLE"
+><I
+>expression2</I
+></TT
+>))
+  ((<TT
+CLASS="REPLACEABLE"
+><I
+>condition3</I
+></TT
+>) (<TT
+CLASS="REPLACEABLE"
+><I
+>expression3</I
+></TT
+>))
+  (else <TT
+CLASS="REPLACEABLE"
+><I
+>else-expression</I
+></TT
+>))</PRE
+></P
+><P
+>The value of each conditional is calculated in turn. The expression
+associated with the first condition that is true is evaluated.</P
+></DD
+></DL
+><P
+>&#13;
+Any expression that returns <TT
+CLASS="LITERAL"
+>#f</TT
+> is false; all other
+expressions are true. This can be somewhat counterintuitive.  In many
+programming languages, it's common to assume that "empty"
+things are false (0 is false, a null pointer is false, an empty set is
+false, for example.) In <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>, this isn't the case;
+note, for example, that an empty node list is not
+<TT
+CLASS="LITERAL"
+>#f</TT
+> and is therefore true.  To avoid these
+difficulties, always use functions that return true or false in
+conditionals. To test for an empty node list, use
+<TT
+CLASS="LITERAL"
+>(node-list-empty?)</TT
+>.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.LET"
+>4.3.6.8. Let expressions</A
+></H3
+><P
+>&#13;
+The way to create local variables in <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> is with
+<TT
+CLASS="LITERAL"
+>(let)</TT
+>. The general form of a <TT
+CLASS="LITERAL"
+>let</TT
+>
+expression is:
+<PRE
+CLASS="SCREEN"
+>(let ((<TT
+CLASS="REPLACEABLE"
+><I
+>var1</I
+></TT
+> <SPAN
+CLASS="ABBREV"
+>expression1</SPAN
+>)
+      (<TT
+CLASS="REPLACEABLE"
+><I
+>var2</I
+></TT
+> <SPAN
+CLASS="ABBREV"
+>expression2</SPAN
+>)
+      ...
+      (<TT
+CLASS="REPLACEABLE"
+><I
+>varn</I
+></TT
+> <SPAN
+CLASS="ABBREV"
+>expressionn</SPAN
+>))
+  <TT
+CLASS="REPLACEABLE"
+><I
+>let-body</I
+></TT
+>)</PRE
+></P
+><P
+>&#13;In a <TT
+CLASS="LITERAL"
+>let</TT
+>; expression, all of the variables are
+defined "simultaneously." The expression that defines
+<TT
+CLASS="REPLACEABLE"
+><I
+> var2</I
+></TT
+> cannot contain any references to any
+other variables defined in the same <TT
+CLASS="LITERAL"
+>let</TT
+>
+expression. A <TT
+CLASS="LITERAL"
+>let*</TT
+> expression allows variables to
+refer to each other, but runs slightly slower.</P
+><P
+>&#13;Variables are available only within the
+<TT
+CLASS="REPLACEABLE"
+><I
+>let-body</I
+></TT
+>.  A common use of
+<TT
+CLASS="LITERAL"
+>let</TT
+> is within a <TT
+CLASS="LITERAL"
+>define</TT
+>
+expression:
+<PRE
+CLASS="SCREEN"
+>(define (cals-rule-default nd)
+   (let* ((table (ancestor "table" nd))
+          (frame (if (attribute-string "frame" table)
+                     (attribute-string "frame" table)
+                     "all")))
+    (equal? frame "all")))</PRE
+></P
+><P
+>This function creates two local variables <TT
+CLASS="LITERAL"
+>table</TT
+> and
+<TT
+CLASS="LITERAL"
+>frame</TT
+>. <TT
+CLASS="LITERAL"
+>let</TT
+> returns the value of
+the last expression in the body, so this function returns true if the
+<SPAN
+CLASS="SGMLTAG"
+>frame</SPAN
+> attribute on the table is
+<TT
+CLASS="LITERAL"
+> all</TT
+> or if no <SPAN
+CLASS="SGMLTAG"
+>frame</SPAN
+> attribute is present.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.EXPR.LOOP"
+>4.3.6.9. Loops</A
+></H3
+><P
+>&#13;
+
+
+<SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> doesn't have any construct that resembles the
+"for loop" that occurs in most imperative languages like C
+and Java. Instead, <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> employs a common trick in
+functional languages for implementing a loop: tail recursion.</P
+><P
+>Loops in <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> use a special form of
+<TT
+CLASS="LITERAL"
+>let</TT
+>. This loop counts from 1 to 10:
+<PRE
+CLASS="SCREEN"
+>(let <A
+NAME="DL1"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>loopvar <A
+NAME="DL2"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>((count 1))
+  <A
+NAME="DL3"
+><IMG
+SRC="figures/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>(if (&#62; count 10)
+    <A
+NAME="DL4"
+><IMG
+SRC="figures/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>#t
+    (<A
+NAME="DL5"
+><IMG
+SRC="figures/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>loopvar <A
+NAME="DL6"
+><IMG
+SRC="figures/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+>(+ count 1))))</PRE
+></P
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="ch04.html#DL1"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>This variable controls the loop. It is declared without an
+initial value, immediately after the <TT
+CLASS="LITERAL"
+>let</TT
+>
+operand.</DD
+><DT
+><A
+HREF="ch04.html#DL2"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>&#13;
+Any number of additional local variables can be defined after
+the loop variable, just as they can in any other
+<TT
+CLASS="LITERAL"
+>let</TT
+> expression.</DD
+><DT
+><A
+HREF="ch04.html#DL3"
+><IMG
+SRC="figures/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>If you ever want the loop to end, you have to put some sort of a
+test in it.</DD
+><DT
+><A
+HREF="ch04.html#DL4"
+><IMG
+SRC="figures/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>This is the value that will be returned.</DD
+><DT
+><A
+HREF="ch04.html#DL5"
+><IMG
+SRC="figures/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>Note that you iterate the loop by using the loop variable as if
+it was a function name.</DD
+><DT
+><A
+HREF="ch04.html#DL6"
+><IMG
+SRC="figures/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+></DT
+><DD
+>The arguments to this "function" are the values that
+you want the local variables declared in <A
+HREF="ch04.html#DL2"
+><A
+HREF="ch04.html#DL2"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></A
+> to have
+in the next iteration.</DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN5315"
+>4.3.7. A Closer Look at <A
+HREF="ch04.html#DSSSL.STYLESHEET"
+>Example 4-5</A
+></A
+></H2
+><P
+>&#13;<A
+HREF="ch04.html#DSSSL.STYLESHEET"
+>Example 4-5</A
+> is a style sheet that contains a
+style specification. Stylesheets may consist of multiple
+specifications, as we'll see in <A
+HREF="ch04.html#DSSSL.TWOSTYLESHEETS"
+>Section 4.4.3</A
+>."</P
+><P
+>The actual <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> code goes in the style
+specification body, within the style specification.  Each construction
+rule processes different elements from the source document.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN5327"
+>4.3.7.1. Processing chapters</A
+></H3
+><P
+>&#13;
+
+
+<A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>s are processed by the <TT
+CLASS="LITERAL"
+>chapter</TT
+>
+construction rule. Each <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+> is formatted as a
+<TT
+CLASS="LITERAL"
+>simple-page-sequence</TT
+>. Every print stylesheet should format
+a document as one or more simple page sequences.  Characteristics on
+the simple page sequence can specify headers and footers as well as
+margins and other page parameters.</P
+><P
+>&#13;
+One important note about simple page sequences: they cannot nest.
+This means that you cannot blindly process divisions
+(<A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>s, <A
+HREF="reference.html"
+><TT
+CLASS="SGMLTAG"
+>Reference</TT
+></A
+>) and the elements they
+contain (<A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>s, <A
+HREF="refentry.html"
+><TT
+CLASS="SGMLTAG"
+>RefEntry</TT
+></A
+>s) as simple page
+sequences. This sometimes involves a little creativity.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN5350"
+>4.3.7.2. Processing titles</A
+></H3
+><P
+>&#13;
+The <TT
+CLASS="LITERAL"
+>make</TT
+> expression in the <TT
+CLASS="LITERAL"
+>title</TT
+> element rule
+ensures that <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>s are formatted in large, bold print.</P
+><P
+>This construction rule applies equally to <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+> titles,
+<A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+> titles, and <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> titles.  It's unlikely
+that you'd want all of these titles to be presented in the same way,
+so a more robust stylesheet would have to arrange the processing of
+titles with more context.  This might be achieved in the way that
+nested <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+> elements are handled in <A
+HREF="ch04.html#DSSSL.NESTEDEMPH"
+>Section 4.3.7.4</A
+>".</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN5365"
+>4.3.7.3. Processing paragraphs</A
+></H3
+><P
+><A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+> elements are simply formatted as paragraphs.
+&#13;</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="DSSSL.NESTEDEMPH"
+>4.3.7.4. Processing emphasis</A
+></H3
+><P
+>&#13;
+
+Processing <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+> elements is made a little more
+interesting because we want to consider an attribute value and the
+possibility that <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+> elements can be nested.</P
+><P
+>In the simple case, in which we're processing an <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+>
+element that is not nested, we begin by testing the value of the
+<SPAN
+CLASS="SGMLTAG"
+>role</SPAN
+> attribute.  If the content of that
+attribute is the string <TT
+CLASS="LITERAL"
+>strong</TT
+>, it is formatted
+in bold; otherwise, it is formatted in italic.</P
+><P
+>The nested case is handled by the <TT
+CLASS="LITERAL"
+>(emphasis emphasis)</TT
+>
+rule. This rule simply formats the content using an upright
+(nonitalic) font.  This rule, like the rule for <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>s, is
+not robust. <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+> nested inside
+<TT
+CLASS="LITERAL"
+>strong</TT
+> <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+> won't be distinguished,
+for example, and nestings more than two elements deep will be handled
+just as nestings that are two deep.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN5393"
+>4.3.7.5. Processing subscripts and superscripts</A
+></H3
+><P
+>&#13;
+
+Processing <A
+HREF="subscript.html"
+><TT
+CLASS="SGMLTAG"
+>Subscript</TT
+></A
+> and <A
+HREF="superscript.html"
+><TT
+CLASS="SGMLTAG"
+>Superscript</TT
+></A
+> elements
+is really handled by the <TT
+CLASS="LITERAL"
+>super-sub-script</TT
+> function.
+There are several interesting things about this function:</P
+><P
+></P
+><DL
+><DT
+><B
+>The <TT
+CLASS="LITERAL"
+>plus-or-minus</TT
+> argument</B
+></DT
+><DD
+><P
+>&#13;
+
+You might ordinarily think of passing a keyword or boolean argument to
+the <TT
+CLASS="FUNCTION"
+>super-sub-script</TT
+> function to indicate whether
+subscripts or superscripts are desired.  But with Scheme, it's
+possible to pass the actual function as an argument!</P
+><P
+>Note that in the element construction rules for
+<A
+HREF="superscript.html"
+><TT
+CLASS="SGMLTAG"
+>Superscript</TT
+></A
+> and <A
+HREF="subscript.html"
+><TT
+CLASS="SGMLTAG"
+>Subscript</TT
+></A
+>, we pass the actual
+functions <TT
+CLASS="LITERAL"
+>+</TT
+> and <TT
+CLASS="LITERAL"
+>-</TT
+>. In the body of
+<TT
+CLASS="FUNCTION"
+>super-sub-script</TT
+>, we use the
+<TT
+CLASS="LITERAL"
+>plus-or-minus</TT
+> argument as a function name (it
+appears immediately after an open parenthesis).</P
+></DD
+><DT
+><B
+>The optional argument</B
+></DT
+><DD
+><P
+>&#13;
+<TT
+CLASS="LITERAL"
+>optional</TT
+> arguments are indicated by
+<TT
+CLASS="LITERAL"
+>#!optional</TT
+> in the function declaration.  Any number of
+<TT
+CLASS="LITERAL"
+>optional</TT
+> arguments may be given, but each must
+specify a default value.  This is accomplished by listing each
+argument and default value (an expression) as a pair.</P
+><P
+>In <TT
+CLASS="FUNCTION"
+>super-sub-script</TT
+>, the optional argument
+<TT
+CLASS="LITERAL"
+>sosofo</TT
+> is initialized to <TT
+CLASS="LITERAL"
+>process-children</TT
+>.
+This means that at the point where the function is
+<I
+CLASS="EMPHASIS"
+>called</I
+>, <TT
+CLASS="LITERAL"
+>process-children</TT
+> is evaluated and the
+resulting <TT
+CLASS="LITERAL"
+>sosofo</TT
+> is passed to the function.</P
+></DD
+><DT
+><B
+>Use of inherited characteristics</B
+></DT
+><DD
+><P
+>&#13;
+It is possible to use the "current" value of an inherited
+characteristic to calculate a new value.  Using this technique,
+superscripts and subscripts will be presented at 80 percent of the
+current font size.</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN5447"
+>4.4. Customizing the Stylesheets</A
+></H1
+><P
+>&#13;
+
+
+The best way to customize the stylesheets is to write your own
+"driver" file; this is a stylesheet that contains your
+local modifications and then includes the appropriate stylesheet from
+the standard distribution by reference.  This allows you to make local
+changes and extensions without modifying the distributed files, which
+makes upgrading to the next release much simpler.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DSSSL.DRIVER"
+>4.4.1. Writing Your Own Driver</A
+></H2
+><P
+>A basic driver file looks like this:
+<PRE
+CLASS="SCREEN"
+>&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+&lt;!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL&#62;
+]&#62;
+
+&lt;style-sheet&#62;
+&lt;style-specification use="docbook"&#62;
+&lt;style-specification-body&#62;
+
+;; your changes go here...
+
+&lt;/style-specification-body&#62;
+&lt;/style-specification&#62;
+&lt;external-specification id="docbook" document="dbstyle"&#62;
+&lt;/style-sheet&#62;</PRE
+></P
+><P
+>&#13;
+
+There are two public identifiers associated with the Modular DocBook
+Stylesheets:
+<P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="LITERAL"
+>-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="LITERAL"
+>-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN</TT
+></P
+></LI
+></UL
+>
+
+
+
+
+The former selects the print stylesheet and the latter selects the
+<SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> stylesheet. There is an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> Open catalog file in the
+distribution that maps these public identifiers to the stylesheet
+files.</P
+><P
+>You can add your own definitions, or
+redefinitions, of stylesheet rules and parameters so that
+<PRE
+CLASS="SCREEN"
+>;; your changes go here...</PRE
+>
+occurs in the previous example.</P
+><P
+>&#13;
+For a concrete example of a driver file, see
+<TT
+CLASS="FILENAME"
+>plain.dsl</TT
+> in the
+<TT
+CLASS="FILENAME"
+>docbook/print</TT
+> directory in the stylesheet
+distribution (or on the <A
+HREF="appe.html"
+><SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+></A
+>).  This is a
+customization of the print stylesheet, which turns off title page and
+<SPAN
+CLASS="ACRONYM"
+>TOC</SPAN
+> generation.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN5501"
+>4.4.2. Changing the Localization</A
+></H2
+><P
+>&#13;
+
+As distributed, the stylesheets use English for all generated text,
+but other localization files are also provided. At the time of this
+writing, the stylesheets support Dutch, French, German, Italian,
+Norwegian, Polish, Portuguese, Russian, and Spanish. (If you can write
+a localization for another language, <I
+CLASS="EMPHASIS"
+>please</I
+> contribute
+it.)</P
+><P
+>&#13;
+
+There are two ways to switch languages: by specifying a <SPAN
+CLASS="SGMLTAG"
+>lang</SPAN
+> attribute, or by changing the
+default language in a customization.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="LANG-ATTR"
+>4.4.2.1. Using the <SPAN
+CLASS="SGMLTAG"
+>lang</SPAN
+> attribute</A
+></H3
+><P
+>&#13;
+
+One of the DocBook common attributes is <SPAN
+CLASS="SGMLTAG"
+>lang</SPAN
+>. If you specify a language, the DocBook stylesheets
+will use that language (and all its descendants, if no other language
+is specified) for generated text within that element.</P
+><P
+><A
+HREF="ch04.html#TBL.LANG"
+>Table 4-1</A
+> summarizes the language codes for the
+supported languages.<A
+NAME="AEN5533"
+HREF="#FTN.AEN5533"
+>[2]</A
+>
+
+
+The following chapter uses text generated in French:
+<PRE
+CLASS="SCREEN"
+>&lt;chapter lang="fr"&#62;&lt;title&#62;B&ecirc;tises&lt;/title&#62;
+&lt;para&#62;Pierre qui roule n'amasse pas mousse.&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+></P
+><DIV
+CLASS="TABLE"
+><A
+NAME="TBL.LANG"
+></A
+><P
+><B
+>Table 4-1. DocBook Stylesheet Language Codes</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Language Code</TH
+><TH
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Language</TH
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>da</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Danish</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>de</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>German</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>en</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>English</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>es</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Spanish</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>fi</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Finnish</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>fr</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>French</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>it</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Italian</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>nl</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Dutch</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>no</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Norwegian</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>pl</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Polish</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>pt</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Portuguese</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>ru</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Russian</TD
+></TR
+><TR
+><TD
+WIDTH="192"
+ALIGN="LEFT"
+VALIGN="TOP"
+><TT
+CLASS="LITERAL"
+>sv</TT
+></TD
+><TD
+WIDTH="100%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Swedish</TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN5602"
+>4.4.2.2. Changing the default language</A
+></H3
+><P
+>&#13;
+
+If no <SPAN
+CLASS="SGMLTAG"
+>lang</SPAN
+> attribute is
+specified, the default language is used. You can change the default
+language with a <A
+HREF="ch04.html#DSSSL.DRIVER"
+>driver</A
+>.</P
+><P
+>In the driver, define the default language. <A
+HREF="ch04.html#TBL.LANG"
+>Table 4-1</A
+>
+summarizes the language codes for the supported languages. The
+following driver makes German the default language:
+<PRE
+CLASS="SCREEN"
+>&lt;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+&lt;!ENTITY dbstyle PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL&#62;
+]&#62;
+
+&lt;style-sheet&#62;
+&lt;style-specification use="docbook"&#62;
+&lt;style-specification-body&#62;
+
+(define %default-language% "dege")
+
+&lt;/style-specification-body&#62;
+&lt;/style-specification&#62;
+&lt;external-specification id="docbook" document="dbstyle"&#62;
+&lt;/style-sheet&#62;</PRE
+></P
+><P
+>&#13;
+There are two other settings that can be changed only in a driver. Both
+of these settings are turned off in the distributed stylesheet:
+<P
+></P
+><DL
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>%gentext-language%</TT
+></B
+></DT
+><DD
+><P
+>If a language code is specified in
+<TT
+CLASS="LITERAL"
+>%gentext-language%</TT
+>, then that language will be used
+for all generated text, regardless of any <SPAN
+CLASS="SGMLTAG"
+>lang</SPAN
+> attribute settings in the
+document.</P
+></DD
+><DT
+><B
+><TT
+CLASS="LITERAL"
+>%gentext-use-xref-language%</TT
+></B
+></DT
+><DD
+><P
+>&#13;
+
+If turned on (defined as <TT
+CLASS="LITERAL"
+>#t</TT
+>), then the stylesheets
+will generate the text associated with a cross reference using the
+language of the target, not the current language. Consider the
+following book:</P
+><PRE
+CLASS="SCREEN"
+>&lt;book&#62;&lt;title&#62;A Test Book&lt;/title&#62;
+&lt;preface&#62;
+&lt;para&#62;There are three chapters in this book: &lt;xref linkend=c1&#62;, 
+&lt;xref linkend=c2&#62;, and &lt;xref linkend=c3&#62;.
+&lt;/para&#62;
+&lt;/preface&#62;
+&lt;chapter lang=usen&#62;&lt;title&#62;English&lt;/title&#62; ... &lt;/chapter&#62;
+&lt;chapter lang=fr&#62;&lt;title&#62;French&lt;/title&#62; ... &lt;/chapter&#62;
+&lt;chapter lang=dege&#62;&lt;title&#62;Deutsch&lt;/title&#62; ... &lt;/chapter&#62;
+&lt;/book&#62;</PRE
+><P
+>The standard stylesheets render the Preface as something like this:</P
+><BLOCKQUOTE
+CLASS="BLOCKQUOTE"
+><P
+>There are three chapters in this book: Chapter 1, Chapter 2, and Chapter
+3.</P
+></BLOCKQUOTE
+><P
+>With <TT
+CLASS="LITERAL"
+>%gentext-use-xref-language%</TT
+> turned on, it
+would render like this:</P
+><BLOCKQUOTE
+CLASS="BLOCKQUOTE"
+><P
+>There are are three chapters in this book: Chapter 1, Chapitre 2, and
+Kapitel 3.</P
+></BLOCKQUOTE
+></DD
+></DL
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DSSSL.TWOSTYLESHEETS"
+>4.4.3. A Single Stylesheet for Both Print and <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+></A
+></H2
+><P
+>&#13;
+
+
+A <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> stylesheet consists of one or more
+"style specifications." Using more than one style
+specification allows you to build a single stylesheet file that can
+format with either the print or <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> backends.  <A
+HREF="ch04.html#EX-TWOSTYLES"
+>Example 4-8</A
+> shows a stylesheet with two style
+specifications.&#13;</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="EX-TWOSTYLES"
+></A
+><P
+><B
+>Example 4-8. <TT
+CLASS="FILENAME"
+>both.dsl</TT
+>: A Stylesheet with Two Style Specifications</B
+></P
+><PRE
+CLASS="SCREEN"
+>&#60;!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+&#60;!ENTITY html-ss 
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA dsssl&#62;
+&#60;!ENTITY print-ss
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA dsssl&#62;
+]&#62;
+&#60;style-sheet&#62;
+&#60;style-specification id="print" use="print-stylesheet"&#62;
+&#60;style-specification-body&#62; 
+
+;; customize the print stylesheet
+
+&#60;/style-specification-body&#62;
+&#60;/style-specification&#62;
+&#60;style-specification id="html" use="html-stylesheet"&#62;
+&#60;style-specification-body&#62; 
+
+;; customize the html stylesheet
+
+&#60;/style-specification-body&#62;
+&#60;/style-specification&#62;
+&#60;external-specification id="print-stylesheet" document="print-ss"&#62;
+&#60;external-specification id="html-stylesheet"  document="html-ss"&#62;
+&#60;/style-sheet&#62;</PRE
+></DIV
+><P
+>&#13;
+Once you have stylesheets with more than one style specification, you
+have to be able to indicate which style specification you want to
+use. In Jade, you indicate this by providing the <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>
+of the style specification after the stylesheet filename, separated
+with a hash mark: <TT
+CLASS="LITERAL"
+>#</TT
+>.</P
+><P
+>Using the code from <A
+HREF="ch04.html#EX-TWOSTYLES"
+>Example 4-8</A
+>, you can format a
+document using the print stylesheet by running:</P
+><PRE
+CLASS="SCREEN"
+>jade -t rtf -d both.dsl#print file.sgm</PRE
+><P
+>and using the <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> stylesheet by running:</P
+><PRE
+CLASS="SCREEN"
+>jade -t sgml -d both.dsl#html file.sgm</PRE
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="JADEMULTDECL"
+>4.5. Dealing with Multiple Declarations</A
+></H1
+><P
+>&#13;
+The DocBook <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> and the DocBook <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>
+Stylesheets happen to use the same <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> declaration. This makes it
+very easy to run Jade with DocBook.  However, you may sometimes wish
+to use Jade with other document types, for example the DocBook <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, which has a different declaration. There are a couple of ways
+to do this.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN5695"
+>4.5.1. Pass the Declaration Explicitly</A
+></H2
+><P
+>&#13;If your stylesheets parse fine with the default declaration, but you
+want to use an alternate declaration with a particular document, just
+pass the declaration on the command line:
+<PRE
+CLASS="SCREEN"
+>jade <TT
+CLASS="REPLACEABLE"
+><I
+>options</I
+></TT
+> the-declaration the-document</PRE
+>
+Note that there's no option required before the declaration; it simply
+occurs before the first filename.  Jade concatenates all of the files
+that you give it together, and parses them as if they were one
+document.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN5700"
+>4.5.2. Use the Catalogs</A
+></H2
+><P
+>The other way to fix this is with a little catalog trickery.</P
+><P
+>&#13;
+First, note that Jade always looks in the file called
+<TT
+CLASS="FILENAME"
+>catalog</TT
+> in the same directory as the document
+that it is loading, and uses settings in that file in preference to
+settings in other catalogs.</P
+><P
+>With this fact, we can employ the following trick:</P
+><P
+></P
+><UL
+><LI
+><P
+>Put a <TT
+CLASS="FILENAME"
+>catalog</TT
+> file in the directory that
+contains your stylesheets, which contain an
+<TT
+CLASS="LITERAL"
+>SGMLDECL</TT
+> directive.  Jade understands the
+directive, which points to the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> declaration that you should use
+when parsing the stylesheets. For the DocBook stylesheets, the DocBook
+declaration works fine.</P
+></LI
+><LI
+><P
+>In the directory that contains the document you want to process,
+create a <TT
+CLASS="FILENAME"
+>catalog</TT
+> file that contains an
+<TT
+CLASS="LITERAL"
+>SGMLDECL</TT
+> directive that points to the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>
+declaration that should be used when parsing the document.</P
+></LI
+></UL
+><P
+>There's no easy way to have both the stylesheet and the document in
+the same directory if they must be processed with different
+declarations.  But this is usually not too inconvenient.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="DSSSL.ARCH"
+>4.6. The <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> Architecture</A
+></H1
+><P
+>&#13;
+
+
+
+The concept of an architecture was promoted by HyTime. In some ways,
+it takes the standard <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> notions of the role of elements and
+attributes and inverts them. Instead of relying on the name of an
+element to assign its primary semantics, it uses the values of a small
+set of fixed attributes.</P
+><P
+>While this may be counterintuitive initially, it has an interesting
+benefit. An architecture-aware processor can work transparently with
+many different <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>s. A small example will help illustrate this
+point.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="figures/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The following example demonstrates the concept behind
+architectures, but for the sake of simplicity, it does not properly
+implement an architecture as defined in HyTime.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>Imagine that you wrote an application that can read an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+document containing a letter (conforming to some letter <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>), and
+automatically print an envelope for the letter. It's easy to envision
+how this works.  The application reads the content of the letter,
+extracts the address and return address elements from the source, and
+uses them to generate an envelope:</P
+><PRE
+CLASS="SCREEN"
+>&lt;?xml version='1.0'&#62;
+&lt;!DOCTYPE letter "/share/sgml/letter/letter.dtd" [
+&lt;!ENTITY myaddress "/share/sgml/entities/myaddress.xml"&#62;
+]&#62;
+&lt;letter&#62;
+&lt;returnaddress&#62;&amp;myaddress;&lt;/returnaddress&#62;
+&lt;address&#62;
+&lt;name&#62;Leonard Muellner&lt;/name&#62;
+&lt;company&#62;O'Reilly &amp;amp; Associates&lt;/company&#62;
+&lt;street&#62;90 Sherman Street&lt;/street&#62;
+&lt;city&#62;Cambridge&lt;/city&#62;&lt;state&#62;MA&lt;/state&#62;&lt;zip&#62;02140&lt;/zip&#62;
+&lt;/address&#62;
+&lt;body&#62;
+&lt;salutation&#62;Hi Lenny&lt;/salutation&#62;
+...
+&lt;/body&#62;</PRE
+><P
+>The processor extracts the <TT
+CLASS="SGMLTAG"
+>Returnaddress</TT
+> and
+<A
+HREF="address.html"
+><TT
+CLASS="SGMLTAG"
+>Address</TT
+></A
+> elements and their children
+and prints the envelope accordingly.</P
+><P
+>Now suppose that a colleague from payroll comes by and asks you to
+adapt the application to print envelopes for mailing checks, using the
+information in the payroll database, which has a different <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. And
+a week later, someone from sales comes by and asks if you can modify
+the application to use the contact information <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. After a while,
+you would have 11 versions of this program to maintain.</P
+><P
+>&#13;
+Suppose that instead of using the actual element names to locate the addresses
+in the documents, you asked each person to add a few attributes to their <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>.
+By forcing the attributes to have fixed values, they'd automatically be present
+in each document, but authors would never have to worry about them.</P
+><P
+>For example, the address part of the letter <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> might look like
+this:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ELEMENT address (name, company? street*, city, state, zip)&#62;
+&#60;!ATTLIST address
+	ADDRESS	CDATA	#FIXED "START"
+&#62;
+
+&#60;!ELEMENT name (#PCDATA)*&#62;
+&#60;!ATTLIST name
+	ADDRESS	CDATA	#FIXED "NAME"
+&#62;
+
+&#60;!ELEMENT company (#PCDATA)*&#62;
+&#60;!ATTLIST company
+	ADDRESS	CDATA	#FIXED "COMPANY"
+&#62;
+
+&#60;!ELEMENT street (#PCDATA)*&#62;
+&#60;!ATTLIST street
+	ADDRESS	CDATA	#FIXED "STREET"
+&#62;
+
+&#60;!ELEMENT city (#PCDATA)*&#62;
+&#60;!ATTLIST city
+	ADDRESS	CDATA	#FIXED "CITY"
+&#62;
+
+&#60;!ELEMENT state (#PCDATA)*&#62;
+&#60;!ATTLIST state
+	ADDRESS	CDATA	#FIXED "STATE"
+&#62;
+
+&#60;!ELEMENT zip (#PCDATA)*&#62;
+&#60;!ATTLIST zip
+	ADDRESS	CDATA	#FIXED "ZIP"
+&#62;</PRE
+><P
+>Effectively, each address in a letter would look like this:</P
+><PRE
+CLASS="SCREEN"
+>&#60;address ADDRESS="START"&#62;
+&#60;name ADDRESS="NAME"&#62;Leonard Muellner&#60;/name&#62;
+&#60;company ADDRESS="COMPANY"&#62;O'Reilly &#38;amp;amp; Associates&#60;/company&#62;
+&#60;street&#62; ADDRESS="STREET"&#62;90 Sherman Street&#60;/street&#62;
+&#60;city ADDRESS="CITY"&#62;Cambridge&#60;/city&#62;&#60;state ADDRESS="STATE"&#62;MA&#60;/state&#62;
+&#60;zip ADDRESS="ZIP"&#62;02140&#60;/zip&#62;
+&#60;/address&#62;</PRE
+><P
+>In practice, the author would not include the <SPAN
+CLASS="SGMLTAG"
+>ADDRESS</SPAN
+> attributes; they are automatically
+provided by the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> because they are
+<TT
+CLASS="LITERAL"
+>#FIXED</TT
+>.<A
+NAME="AEN5769"
+HREF="#FTN.AEN5769"
+>[3]</A
+></P
+><P
+>Now the address portion of the payroll <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> might look like this:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ELEMENT employee (name, mailingaddress)&#62;
+
+&#60;!ELEMENT name (#PCDATA)*&#62;
+&#60;!ATTLIST name
+	ADDRESS	CDATA	#FIXED "NAME"
+&#62;
+
+&#60;!ELEMENT mailingaddress (addrline1, addrline2, 
+                          city, state.or.province, postcode)&#62;
+&#60;!ATTLIST mailingaddress
+	ADDRESS	CDATA	#FIXED "START"
+&#62;
+
+&#60;!ELEMENT addrline1 (#PCDATA)*&#62;
+&#60;!ATTLIST addrline1
+	ADDRESS	CDATA	#FIXED "STREET"
+&#62;
+
+&#60;!ELEMENT addrline2 (#PCDATA)*&#62;
+&#60;!ATTLIST addrline2
+	ADDRESS	CDATA	#FIXED "STREET"
+&#62;
+
+&#60;!ELEMENT city (#PCDATA)*&#62;
+&#60;!ATTLIST city
+	ADDRESS	CDATA	#FIXED "CITY"
+&#62;
+
+&#60;!ELEMENT state.or.province (#PCDATA)*&#62;
+&#60;!ATTLIST state.or.province
+	ADDRESS	CDATA	#FIXED "STATE"
+&#62;
+
+&#60;!ELEMENT postcode (#PCDATA)*&#62;
+&#60;!ATTLIST postcode
+	ADDRESS	CDATA	#FIXED "ZIP"
+&#62;</PRE
+><P
+>The employee records will look like this:</P
+><PRE
+CLASS="SCREEN"
+>&#60;employee&#62;&#60;name ADDRESS="NAME"&#62;Leonard Muellner&#60;/name&#62;
+&#60;mailingaddress ADDRESS="START"&#62;
+&#60;addrline1 ADDRESS="STREET"&#62;90 Sherman Street&#60;/addrline1&#62;
+&#60;city ADDRESS="CITY"&#62;Cambridge&#60;/city&#62;
+&#60;state.or.province ADDRESS="STATE"&#62;MA&#60;/state.or.province&#62;
+&#60;postcode ADDRESS="ZIP"&#62;02140&#60;/postcode&#62;
+&#60;/mailingaddress&#62;
+&#60;/employee&#62;</PRE
+><P
+>Your application no longer cares about the actual element names.  It
+simply looks for the elements with the correct attributes and uses
+them. This is the power of an architecture: it provides a level of
+abstraction that processing applications can use to their
+advantage. In practice, architectural forms are a bit more complex to
+set up because they have facilities for dealing with attribute name
+conflicts, among other things.</P
+><P
+>Why have we told you all this? Because <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> is an
+architecture. This means you can modify the stylesheet <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> and still
+run your stylesheets through Jade.</P
+><P
+>Consider the case presented earlier in <A
+HREF="ch04.html#EX-TWOSTYLES"
+>Example 4-8</A
+>.
+In order to use this stylesheet, you must specify three things: the
+backend you want to use, the stylesheet you want to use, and the
+style specification you want to use.  If you mismatch any of the
+parameters, you'll get the wrong results.  In practice, the problem is
+compounded further:</P
+><P
+></P
+><UL
+><LI
+><P
+>Some stylesheets support several backends
+(<SPAN
+CLASS="ACRONYM"
+>RTF</SPAN
+>, TeX, and <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>).
+
+&#13;</P
+></LI
+><LI
+><P
+>Some stylesheets support only some backends
+(<SPAN
+CLASS="ACRONYM"
+>RTF</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, but not TeX or
+<SPAN
+CLASS="ACRONYM"
+>MIF</SPAN
+>).</P
+></LI
+><LI
+><P
+>Some stylesheets support multiple outputs using the same
+backend (several kinds of <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> output, for example, using the
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> backend: <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>, <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>Help, JavaHelp, and so on).</P
+></LI
+><LI
+><P
+>If you have complex stylesheets, some backends may require
+additional options to define parameter entities or stylesheet
+options.</P
+></LI
+></UL
+><P
+>None of this complexity is really necessary, after all, the options
+don't change--you just have to use the correct combinations. The
+mental model is really something like this: <SPAN
+CLASS="QUOTE"
+>"I want a certain
+kind of output, TeX say, so I have to use this combination of
+parameters."</SPAN
+></P
+><P
+>You can summarize this information in a table to help keep track of
+it:</P
+><DIV
+CLASS="INFORMALTABLE"
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Desired Output</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Backend</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Style specification</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Options</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Supported?</TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>rtf</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>rtf</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>print</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>-V rtf-backend</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>tex</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>tex</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>print</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>-V tex-backend -i tex</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>html</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>sgml</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>htmlweb</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>-i html</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>javahelp</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>sgml</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>help</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>-i help</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>htmlhelp</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><P
+>Putting this information in a table will help you keep track of it,
+but it's not the best solution. The ideal solution is to keep this
+information on your system, and let the software figure it all
+out. You'd like to be able to run a command, tell it what output you
+want from what stylesheet, what file you want to process, and then let
+it figure everything else out.  For example:</P
+><PRE
+CLASS="SCREEN"
+>format html mybook.dsl mydoc.sgm</PRE
+><P
+>&#13;
+
+One way to do this is to put the configuration data in a separate
+file, and have the <I
+CLASS="COMMAND"
+>format</I
+> command load it out of this other
+file.  The disadvantage of this solution is that it introduces another
+file that you have to maintain and it's independent from the stylesheet so
+it isn't easy to keep it up-to-date.</P
+><P
+>In the <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+> case, a better alternative is to
+modify the stylesheet <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> so you can store the configuration
+data <I
+CLASS="EMPHASIS"
+>in the stylesheet</I
+>. Using this alternate <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, your
+<TT
+CLASS="FILENAME"
+>mybook.dsl</TT
+> stylesheets might look like this:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!DOCTYPE style-sheet 
+  PUBLIC "-//Norman Walsh//DTD Annotated DSSSL Style Sheet V1.2//EN" [
+&#60;!-- perhaps additional declarations here --&#62;
+]&#62;
+&#60;style-sheet&#62;
+&#60;title&#62;DocBook Stylesheet&#60;/title&#62;
+&#60;doctype pubid="-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;doctype pubid="-//Davenport//DTD DocBook V3.0//EN"&#62;
+&#60;doctype pubid="-//Norman Walsh//DTD Website V1.4//EN"&#62;
+&#60;backend name="rtf"  backend="rtf"  fragid="print"
+         options="-V rtf-backend" default="true"&#62;
+&#60;backend name="tex"  backend="tex"  fragid="print"
+         options="-V tex-backend -i tex"&#62;
+&#60;backend name="html" backend="sgml" fragid="htmlweb" options="-i html"&#62;
+&#60;backend name="javahelp" backend="sgml" fragid="help"  options="-i help"&#62;
+&#60;backend name="htmlhelp" supported="no"&#62;
+&#60;style-specification id="print" use="docbook"&#62;
+&#60;style-specification-body&#62;
+.
+.
+.</PRE
+><P
+>In this example, the stylesheet has been annotated with a title, a
+list of the public <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>s to which it is applicable,
+and a table that provides information about the output formats that it
+supports.</P
+><P
+>Using this information, the <I
+CLASS="COMMAND"
+>format</I
+> command can get all the
+information it needs to construct the appropriate call to Jade.  To
+make <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> from <TT
+CLASS="FILENAME"
+>myfile.sgm</TT
+>,
+<I
+CLASS="COMMAND"
+>format</I
+> would run the following:</P
+><PRE
+CLASS="SCREEN"
+>jade -t sgml -d mybook.dsl#htmlweb -i html myfile.sgm</PRE
+><P
+>The additional information, titles and public <SPAN
+CLASS="ACRONYM"
+>ID</SPAN
+>s,
+can be used as part of a <SPAN
+CLASS="ACRONYM"
+>GUI</SPAN
+> interface to simplify
+the selection of stylesheets for an author.</P
+><P
+>The complete annotated stylesheet <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, and an example of the
+<I
+CLASS="COMMAND"
+>format</I
+> command script, are provided on <A
+HREF="appe.html"
+>the <SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+></A
+>.
+&#62;
+&#62;</P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN4472"
+HREF="ch04.html#AEN4472"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>See <I
+CLASS="CITETITLE"
+><A
+HREF="http://www-cals.itsi.disa.mil/core/formal/fps.htm"
+TARGET="_top"
+>Formally
+Published CALS Standards</A
+></I
+> for more information.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN5533"
+HREF="ch04.html#AEN5533"
+>[2]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Language codes should conform to <SPAN
+CLASS="ACRONYM"
+>IETF</SPAN
+>
+<SPAN
+CLASS="ACRONYM"
+>RFC</SPAN
+> 1766.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN5769"
+HREF="ch04.html#AEN5769"
+>[3]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The use of uppercase names here is intentional. These are not
+attributes that an author is ever expected to type. In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, which is
+case-sensitive, using uppercase for things like this reduces the
+likelihood of collision with <SPAN
+CLASS="QUOTE"
+>"real"</SPAN
+> attribute names in the
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="ch03.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="ch05.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Parsing DocBook Documents</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part1.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Customizing DocBook</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>audioobject</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="audiodata.html" title="audiodata"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="author" href="author.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="element.db.audioobject" class="refentry"><a class="indexterm" name="element.db.audioobject.1"></a><div class="refnamediv"><h2>audioobject</h2><p><span class="refname">audioobject</span><span class="refpurpose"><span class="refpurpose-sep"> — </span><span class="refpurpose-text">A wrapper for audio data and its associated meta-information</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li><a href="titleforbidden.info.html"><code class="tag-element">info</code></a>? <span class="pattern">(db.titleforbidden.info)</span></li><li><a href="audiodata.html"><code class="tag-element">audiodata</code></a></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div>
+<p>An <a href="audioobject.html"><code class="tag-element">audioobject</code></a> is a wrapper for
+      <a href="audiodata.html"><code class="tag-element">audiodata</code></a>.</p>
+
+      <div id="dbreproc.audioobject" class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div>
+        
+
+        <p>Its content is rendered aurally or not at all. It might not be
+        rendered, depending on its placement within a
+        <a href="mediaobject.html"><code class="tag-element">mediaobject</code></a> or <a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a>
+        and the constraints on the publishing system. For a more detailed
+        description of the semantics involved, see <a href="mediaobject.html"><code class="tag-element keep-together">mediaobject</code></a>.</p>
+</div>
+
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><p>These elements contain <a href="audioobject.html"><code class="tag-element">audioobject</code></a>: <span class="simplelist"><span class="member"><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></span>, <span class="member"><a href="mediaobject.html"><code class="tag-element">mediaobject</code></a></span></span>.</p></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Children</h3></div><p>The following elements occur in audioobject: <span class="simplelist"><span class="member"><a href="audiodata.html"><code class="tag-element">audiodata</code></a></span>, <span class="member"><a href="titleforbidden.info.html"><code class="tag-element">info</code></a> <span class="pattern">(db.titleforbidden.info)</span></span></span>.</p></div>
+
+</div><div class="refsection"><div class="refsection-titlepage"><h2>See Also</h2></div><p><span class="simplelist"><span class="member"><a href="caption.html"><code class="tag-element">caption</code></a></span>, <span class="member"><a href="imageobject.html"><code class="tag-element">imageobject</code></a></span>, <span class="member"><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></span>, <span class="member"><a href="mediaobject.html"><code class="tag-element">mediaobject</code></a></span>, <span class="member"><a href="textobject.html"><code class="tag-element">textobject</code></a></span>, <span class="member"><a href="videoobject.html"><code class="tag-element">videoobject</code></a></span></span></p></div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div>
+
+
+<div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;article xmlns='http://docbook.org/ns/docbook'&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;title&gt;Example audioobject&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;mediaobject&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;audioobject&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    &lt;audiodata fileref="phaser.wav"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/audioobject&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;textobject&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;phrase&gt;A &lt;trademark&gt;Star Trek&lt;/trademark&gt; phaser sound effect&lt;/phrase&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;/textobject&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/mediaobject&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/article&gt;</pre></div>
+
+</div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="audiodata" href="audiodata.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="author" href="author.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">audiodata </td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> author</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on 6 Jun 2011 <span class="githash">(git hash: 6ffcc7640bbc5f852a318e452c9f210f03292cb9)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

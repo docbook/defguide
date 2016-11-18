@@ -1,0 +1,594 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Parsing DocBook Documents</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="part1.html" title="Part&nbsp;I.&nbsp;Introduction"><link rel="previous" href="ch02.html" title="Creating DocBook Documents"><link rel="next" href="ch04.html" title="Publishing DocBook Documents"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="Creating DocBook Documents" href="ch02.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp;I.&nbsp;Introduction" href="part1.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="Publishing DocBook Documents" href="ch04.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="chapter" lang="en"><div><div><div><a name="ch-parse"></a><div class="component-title"><h1 class="label">3</h1><h1 class="title">Parsing DocBook Documents</h1></div></div><div><p class="releaseinfo">$Revision: 1322 $</p></div><div><p class="pubdate">$Date: 2002-03-23 15:57:55 -0500 (Sat, 23 Mar 2002) $</p></div></div><hr xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0" t:class="component-separator"></div><p>
+<a class="indexterm" name="parsDocch4"></a>
+<a class="indexterm" name="docDTDparsch4"></a>
+
+A key feature of <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> markup is that you
+<span class="emphasis"><em>validate</em></span> it.  The DocBook <acronym class="acronym">DTD</acronym> is a precise description
+of valid nesting, the order of elements, and their content.  All
+DocBook documents must conform to this description or they are not
+DocBook documents (by definition).
+</p><p>
+<a class="indexterm" name="d0e8365"></a>
+<a class="indexterm" name="d0e8371"></a>
+
+A <em class="firstterm">validating parser</em> is a program that can read
+the <acronym class="acronym">DTD</acronym> and a particular document and determine whether the exact
+nesting and order of elements in the document is valid according to
+the <acronym class="acronym">DTD</acronym>.
+</p><p>
+<a class="indexterm" name="d0e8388"></a>
+
+If you are not using a structured editor that can enforce the markup
+as you type, validation with an external parser is a particularly
+important step in the document creation process.  You cannot expect
+to get rational results from subsequent processing (such as document
+publishing) if your documents are not valid.
+</p><p>
+<a class="indexterm" name="d0e8396"></a>
+The most popular free <acronym class="acronym">SGML</acronym> parser is <acronym class="acronym">SP</acronym> by James Clark,
+available at <a href="http://www.jclark.com/" target="_top">http://www.jclark.com/</a>.
+</p><p>
+<a class="indexterm" name="d0e8413"></a>
+<a class="indexterm" name="d0e8417"></a>
+<a class="indexterm" name="d0e8423"></a>
+<a class="indexterm" name="d0e8429"></a>
+
+<acronym class="acronym">SP</acronym> includes <span><strong class="command">nsgmls</strong></span>, a fast command-line
+parser. In the world of free validating <acronym class="acronym">XML</acronym> parsers,
+James
+Clark's <span><strong class="command">xp</strong></span> is a popular choice.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+<a class="indexterm" name="d0e8448"></a>
+
+Not all <acronym class="acronym">XML</acronym> parsers are validating, and although a
+non-validating parser may have many uses, it cannot ensure that your
+documents are valid according to the <acronym class="acronym">DTD</acronym>.</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch03-validate"></a>Validating Your Documents</h2></div></div></div><p>
+The exact way in which the parser is executed varies according to
+the parser in use, naturally.  For information about your particular
+parser, consult the documentation that came with it.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8465"></a>Using nsgmls</h3></div></div></div><p>
+<a class="indexterm" name="d0e8470"></a>
+
+The <span><strong class="command">nsgmls</strong></span> command from <acronym class="acronym">SP</acronym> is a
+validating <acronym class="acronym">SGML</acronym> parser.  The options used in the example below
+suppress the normal output (<code class="option">-s</code>), except for error messages,
+print the version number (<code class="option">-v</code>), and specify the catalog file
+that should be used to map public identifiers to system
+identifiers. Printing the version number guarantees that you always
+get <span class="emphasis"><em>some</em></span> output, so that you know the command ran
+successfully:
+</p><pre class="screen">
+[n:\dbtdg] nsgmls -sv -c \share\sgml\catalog test.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+</pre><p>
+<a class="indexterm" name="d0e8498"></a>
+<a class="indexterm" name="d0e8504"></a>
+
+Because no error messages were printed, we know our document is valid.
+If you're working with a document that you discover has many errors,
+the <code class="option">-f</code> option offers a handy way to direct the errors to a file
+so they don't all scroll off your screen.
+</p><p>
+<a class="indexterm" name="d0e8515"></a>
+<a class="indexterm" name="d0e8521"></a>
+<a class="indexterm" name="d0e8527"></a>
+<a class="indexterm" name="d0e8531"></a>
+
+If you want to validate an <acronym class="acronym">XML</acronym> document with <acronym class="acronym">SP</acronym>,
+you must make sure that <acronym class="acronym">SP</acronym> uses the correct
+declaration.  An <acronym class="acronym">XML</acronym> declaration called <code class="filename">xml.dcl</code> is
+included with <acronym class="acronym">SP</acronym>.
+</p><p>
+The easiest way to make sure that <acronym class="acronym">SP</acronym> uses <code class="filename">xml.dcl</code> is to
+include the declaration explicitly on the command line when you run
+<span><strong class="command">nsgmls</strong></span> (or Jade, or other <acronym class="acronym">SP</acronym> tools):
+</p><pre class="screen">
+[n:\dbtdg] nsgmls -sv -c \share\sgml\catalog m:\jade\xml.dcl test.xml
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8571"></a>Using xp</h3></div></div></div><p>
+<a class="indexterm" name="d0e8576"></a>
+<a class="indexterm" name="d0e8580"></a>
+
+The <span class="application">xp</span> distribution includes several sample programs.
+One of these programs, <span><strong class="command">Time</strong></span>, performs a validating parse
+of the document and prints the amount of time required to parse the
+<acronym class="acronym">DTD</acronym> and the document.  This program makes an excellent validity
+checker:
+</p><pre class="screen">
+java com.jclark.xml.apps.Time examples\simple.xml
+6.639
+</pre><p>
+The result states that it took 6.639 seconds to parse the <acronym class="acronym">DTD</acronym> and
+the document.  This indicates that the document is valid.  If the
+document is invalid, additional error messages are displayed.
+</p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch03-parseerr"></a>Understanding Parse Errors</h2></div></div></div><p>
+<a class="indexterm" name="errorparsech4"></a>
+
+<a class="indexterm" name="d0e8611"></a>
+<a class="indexterm" name="d0e8617"></a>
+
+Every parser produces slightly different error messages, but most
+indicate exactly (at least technically)<sup>[<a name="d0e8623" href="#ftn.d0e8623">12</a>]</sup> what is wrong and where the error occurred.  With a little
+experience, this information is all you'll need to quickly identify
+what's wrong.
+</p><p>
+
+<a class="indexterm" name="d0e8629"></a>
+
+In the rest of this section, we'll look at a number of common errors
+and the messages they produce in <acronym class="acronym">SP</acronym>.  We've
+chosen <acronym class="acronym">SP</acronym> for the rest of these examples because
+that is the same parser used by Jade, which we'll be discussing
+further in <a href="ch04.html" title="Publishing DocBook Documents">Chapter&nbsp;4, <i>Publishing DocBook Documents</i></a>.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8643"></a><acronym class="acronym">DTD</acronym> Cannot Be Found</h3></div></div></div><p>
+<a class="indexterm" name="d0e8650"></a>
+<a class="indexterm" name="d0e8654"></a>
+<a class="indexterm" name="d0e8660"></a>
+
+The telltale sign that SP could not find the <acronym class="acronym">DTD</acronym>, or some module of
+the <acronym class="acronym">DTD</acronym>, is the error message: "cannot generate system identifier
+for public text &#8230;".  Generally, the errors that occur after
+this are spurious; if SP couldn't find some part of the <acronym class="acronym">DTD</acronym>,
+it's likely to think that <span class="emphasis"><em>everything</em></span> is wrong.
+</p><p>
+Careful examination of the following document will show that we've
+introduced a simple typographic error into the public identifier (the
+word &#8220;<span class="quote">DocBook</span>&#8221; is misspelled with a lowercase &#8220;<span class="quote">b</span>&#8221;):
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD Docbook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;emphasis role="bold"&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><p>
+SP responds dramatically to this error:
+</p><pre class="screen">
+hermes:/documents/books/tdg/examples/errs$ nsgmls -sv -c cat1 /usr/lib/sgml/declaration/xml.dcl nodtd.sgm
+nsgmls:I: SP version "1.3.4"
+nsgmls:nodtd.sgm:2:76:E: could not resolve host "www.oasis-open.org" (try again later)
+nsgmls:nodtd.sgm:2:76:E: DTD did not contain element declaration for document type name
+nsgmls:nodtd.sgm:3:8:E: element "chapter" undefined
+nsgmls:nodtd.sgm:3:15:E: element "title" undefined
+nsgmls:nodtd.sgm:4:5:E: element "para" undefined
+nsgmls:nodtd.sgm:10:5:E: element "para" undefined
+nsgmls:nodtd.sgm:11:15:E: there is no attribute "role"
+nsgmls:nodtd.sgm:11:21:E: element "emphasis" undefined
+nsgmls:nodtd.sgm:12:9:E: element "emphasis" undefined
+nsgmls:nodtd.sgm:12:24:E: element "emphasis" undefined
+nsgmls:nodtd.sgm:13:18:E: element "superscript" undefined
+nsgmls:nodtd.sgm:14:16:E: element "subscript" undefined
+nsgmls:nodtd.sgm:16:5:E: element "para" undefined
+</pre><p>
+<a class="indexterm" name="d0e8696"></a>
+
+Other things to look for, if you haven't misspelled the public
+identifier, are typos in the catalog or failure to specify a catalog
+that resolves the public identifier that can't be found.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8702"></a><acronym class="acronym">ISO</acronym> Entity Set Missing</h3></div></div></div><p>
+
+<a class="indexterm" name="d0e8709"></a>
+
+A missing entity set is another example of either a misspelled public
+identifier, or a missing catalog or catalog entry.
+</p><p>
+In this case, there's nothing wrong with the document, but the catalog
+that's been specified is missing the public identifiers for the
+<acronym class="acronym">ISO</acronym> entity sets:
+</p><pre class="screen">
+[n:\dbtdg]nsgmls -sv -c examples\errs\cat2 examples\simple.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:53:65:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Arrow Relations//EN"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:54:8:E: reference to entity "ISOamsa" for which no system identifier could be generated
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:52:0: entity was defined here
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:60:66:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Binary Operators//EN"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:61:8:E: reference to entity "ISOamsb" for which no system identifier could be generated
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:59:0: entity was defined here
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:67:60:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Delimiters//EN"
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:68:8:E: reference to entity "ISOamsc" for which no system identifier could be generated
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:66:0: entity was defined here
+m:\jade\nsgmls.exe:n:/share/sgml/docbook/3.1/dbcent.mod:74:67:W: cannot generate system identifier for public text "ISO 8879:1986//ENTITIES Added Math Symbols:Negated Relations//EN"
+...
+</pre><p>
+<a class="indexterm" name="d0e8724"></a>
+
+The <acronym class="acronym">ISO</acronym> entity sets are required by the DocBook
+<acronym class="acronym">DTD</acronym>, but they are not distributed with it.  That's because they
+aren't maintained by <acronym class="acronym">OASIS</acronym>.<sup>[<a name="d0e8739" href="#ftn.d0e8739">13</a>]</sup>
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8746"></a>Character Data Not Allowed Here</h3></div></div></div><p>
+<a class="indexterm" name="d0e8751"></a>
+<a class="indexterm" name="d0e8757"></a>
+<a class="indexterm" name="d0e8763"></a>
+
+Out of context character data is frequently caused by a missing start
+tag, but sometimes it's just the result of typing in the wrong place!
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+You can't put character data here.
+&lt;para&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\dbtdg] nsgmls -sv -c \share\sgml\catalog examples\errs\badpcdata.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badpcdata.sgm:9:0:E: character data is not allowed here
+</pre><p>
+<a class="indexterm" name="d0e8777"></a>
+
+<a href="chapter.html"><code class="sgmltag-element">Chapter</code></a>s aren't allowed to contain character data
+directly. Here, a wrapper element, such as <a href="para.html"><code class="sgmltag-element">Para</code></a>, is
+missing around the sentence between the first two paragraphs.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8789"></a>Misspelled Start Tag</h3></div></div></div><p>
+<a class="indexterm" name="d0e8794"></a>
+
+If you spell it wrong, the parser gets confused.
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;paar&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\documents\books\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\misspe
+ll.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:9:5:E: element "PAAR" undefined
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:14:6:E: end tag for element "PARA" which is not open
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:21:9:E: end tag for "PAAR" omitted, but OMITTAG NO was specified
+m:\jade\nsgmls.exe:examples\errs\misspell.sgm:9:0: start tag was here
+</pre><p>
+Luckily, these are pretty easy to spot, unless you accidentally spell
+the name of another element.  In that case, your error might appear to
+be out of context.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8810"></a>Misspelled End Tag</h3></div></div></div><p>
+<a class="indexterm" name="d0e8815"></a>
+
+Spelling the end tag wrong is just as confusing.
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/titel&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\misspell2.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:2:35:E: end tag for element "TITEL" which is not open
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:3:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT" start-tag
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:9:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT" start-tag
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:15:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT" start-tag
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:21:9:E: end tag for "TITLE" omitted, but OMITTAG NO was specified
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:2:9: start tag was here
+m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:21:9:E: end tag for "CHAPTER" which is not finished
+</pre><p>
+These are pretty easy to spot as well, but look at how confused the
+parser became.  From the parser's point of view, failure to close the
+open <a href="title.html"><code class="sgmltag-element">Title</code></a> element means that all the following elements
+appear out of context.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8832"></a>Out of Context Start Tag</h3></div></div></div><p>
+<a class="indexterm" name="d0e8837"></a>
+<a class="indexterm" name="d0e8845"></a>
+
+Sometimes the problem isn't spelling, but placing a tag in the wrong
+context.  When this happens, the parser tries to figure out what it
+can add to your document to make it valid.  Then it proceeds as if it
+had seen what was added in order to recover from the error seen, which
+can cause future errors.
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;&lt;title&gt;Paragraph With Inlines&lt;/title&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badstarttag.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badstarttag.sgm:9:12:E: document type does not allow element "TITLE" here; missing one of "CALLOUTLIST", "SEGMENTEDLIST", "VARIABLELIST", "CAUTION", "IMPORTANT", "NOTE", "TIP", "WARNING", "BLOCKQUOTE", "EQUATION", "EXAMPLE", "FIGURE", "TABLE" start-tag
+</pre><p>
+<a class="indexterm" name="d0e8859"></a>
+<a class="indexterm" name="d0e8867"></a>
+
+In this example, we probably wanted a <a href="formalpara.html"><code class="sgmltag-element">FormalPara</code></a>, so that
+we could have a title on the paragraph.  But note that the parser
+didn't suggest this alternative.  The parser only tries to add
+additional elements, rather than rename elements that it's already
+seen.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8876"></a>Missing End Tag</h3></div></div></div><p>
+<a class="indexterm" name="d0e8881"></a>
+
+Leaving out an end tag is a lot like an out of context start tag.  In
+fact, they're really the same error.  The problem is never caused by
+the missing end tag per se, rather it's caused by the fact that
+something following it is now out of context.
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\noendtag.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:14:5:E: document type does not allow element "PARA" here; missing one of "FOOTNOTE", "MSGTEXT", "CAUTION", "IMPORTANT", "NOTE", "TIP", "WARNING", "BLOCKQUOTE", "INFORMALEXAMPLE" start-tag
+m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:20:9:E: end tag for "PARA" omitted, but OMITTAG NO was specified
+m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:9:0: start tag was here
+</pre><p>
+In this case, the parser figured out that the best thing it could do
+is end the paragraph.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8895"></a>Bad Entity Reference</h3></div></div></div><p>
+<a class="indexterm" name="d0e8900"></a>
+
+If you spell an entity name wrong, the parser will catch it.
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;
+There's no entity called &amp;xyzzy; defined in this document.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badent.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badent.sgm:10:26:E: general entity "xyzzy" not defined and no default entity
+</pre><p>
+More often than not, you'll see this when you misspell a character
+entity name.  For example, this happens when you type
+<code class="literal">&amp;ldqou;</code> instead of
+<code class="literal">&amp;ldquo;</code>.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e8920"></a>Invalid 8-Bit Character</h3></div></div></div><p>
+<a class="indexterm" name="d0e8925"></a>
+<a class="indexterm" name="d0e8933"></a>
+<a class="indexterm" name="d0e8937"></a>
+
+In <acronym class="acronym">XML</acronym>, the entire range of Unicode characters is available to you,
+but in <acronym class="acronym">SGML</acronym>, the declaration indicates what characters are valid.
+The distributed DocBook declaration doesn't allow a bunch of fairly
+common 8-bit characters.
+</p><pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//Davenport//DTD DocBook V3.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Test Chapter&lt;/title&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;para&gt;
+The DocBook declaration in use doesn't allow 8 bit characters
+like &#65533;this&#65533;.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;emphasis role=bold&gt;This&lt;/emphasis&gt; paragraph contains
+&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+and a &lt;superscript&gt;super&lt;/superscript&gt;script
+and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+&lt;/para&gt;
+&lt;para&gt;
+This is a paragraph in the test chapter. It is unremarkable in
+every regard. This is a paragraph in the test chapter. It is
+unremarkable in every regard. This is a paragraph in the test
+chapter. It is unremarkable in every regard.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+
+</pre><pre class="screen">
+[n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badchar.sgm
+m:\jade\nsgmls.exe:I: SP version "1.3.2"
+m:\jade\nsgmls.exe:examples\errs\badchar.sgm:11:0:E: non SGML character number 147
+m:\jade\nsgmls.exe:examples\errs\badchar.sgm:11:5:E: non SGML character number 148
+</pre><p>
+<a class="indexterm" name="d0e8957"></a>
+<a class="indexterm" name="d0e8963"></a>
+
+In this example, the Windows code page values for
+curly left and right quotes have been used, but they aren't in the
+declared character set.  Fix this by converting them to character
+entities.
+</p><p>
+<a class="indexterm" name="d0e8973"></a>
+
+You can also fix them by changing the declaration, but if you do that,
+make sure all your interchange partners are aware of, and have a copy of,
+the modified declaration. See <a href="appf.html" title="Interchanging DocBook Documents">Appendix&nbsp;F, <i>Interchanging DocBook Documents</i></a>.
+<a class="indexterm" name="d0e8979"></a>
+<a class="indexterm" name="d0e8981"></a>
+<a class="indexterm" name="d0e8983"></a>
+</p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch03-otherschema"></a>Considering Other Schema Languages</h2></div></div></div><p>Historically, <acronym class="acronym">DTD</acronym>s were the only way to describe the valid
+stricture of SGML and XML documents, but that is no longer the case.
+At the time of this writing (January, 2001), DocBook is experimentally
+available in three other schema languages:</p><div class="variablelist"><dl><dt><span class="term"><a href="http://www.w3.org/XML/Schema" target="_top">XML Schema</a></span></dt><dd><p>The schema language being defined by the
+<a href="http://www.w3.org/" target="_top">W3C</a> as the successor to <acronym class="acronym">DTD</acronym>s
+for describing the structure of <acronym class="acronym">XML</acronym>. XML Schema are likely to become
+a <a href="http://www.w3.org/" target="_top">W3C</a> Recommendation in 2001.
+</p></dd><dt><span class="term"><a href="http://www.xml.gr.jp/relax/" target="_top">RELAX</a></span></dt><dd><p>RELAX, the Regular Language description for XML) is a less
+complex alternative to XML Schemas. The RELAX Core module is defined by
+ISO in <em class="citetitle">ISO/IEC DTR 22250-1, Document Description and
+Processing Languages -- Regular Language Description for XML (RELAX)
+-- Part 1: RELAX Core, 2000</em>. The RELAX Namespaces module
+is currently under development.
+</p></dd><dt><span class="term"><a href="http://www.thaiopensource.com/trex/" target="_top">TREX</a></span></dt><dd><p>TREX, Tree Regular Expressions for XML, is another less complex
+alternative to XML Schemas. It is concise, powerful, and datatype
+neutral.</p></dd></dl></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9030"></a>Parsing and Validation</h3></div></div></div><p>Before we look closer at these new schema languages, there's one
+significant difference between <acronym class="acronym">DTD</acronym>s and all of them that we should
+get out of the way: <acronym class="acronym">XML</acronym> parsers (which may understand <acronym class="acronym">DTD</acronym>s) build an
+<acronym class="acronym">XML</acronym> information set out of a stream of characters, all of these other
+schema languages begin with an information set and perform validation
+on it.</p><p>What I mean by that is that an <acronym class="acronym">XML</acronym> parser reads a stream of
+bytes:
+
+<pre class="screen">"&lt;" "?" "x" "m" "l" " " "v" "e" ...
+"&lt;" "!" "D" "O" "C" "T" "Y" "P" "E" " " "b" "o" "o" "k" ...
+"&lt;" "b" "o" "o" "k" " " "i" "d" "=" "'" "f" "o" "o" "'" "&gt;"
+...
+"&lt;" "/" "b" "o" "o" "k" "&gt;"</pre>
+
+interprets them as a stream of characters (which may change the
+interpretation of some sequences of bytes) and constructs some
+representation of the <acronym class="acronym">XML</acronym> document. This representation is the set
+of all the <acronym class="acronym">XML</acronym> information items encountered: the information
+set of the document. The <a href="http://www.w3.org/" target="_top">W3C</a>
+<a href="http://www.w3.org/XML/" target="_top">XML Core Working Group</a>
+is in the process of defining what an
+<a href="http://www.w3.org/TR/xml-infoset" target="_top"><acronym class="acronym">XML</acronym> Information Set</a>
+contains.</p><p>The other schema languages are defined not in terms of the sequence
+of characters in the file but in terms of the information set of the
+<acronym class="acronym">XML</acronym> document. They have to work this way because the
+<a href="http://www.w3.org/TR/REC-xml" target="_top"><acronym class="acronym">XML</acronym> Recommendation</a>
+says what an <acronym class="acronym">XML</acronym> document is and they all want to work on top of
+<acronym class="acronym">XML</acronym>.</p><p>So what, you might ask? Well, it turns out that this has at least
+one very significant implication: there's no way for these languages to
+provide support for entity declarations.</p><p>An entity, like &#8220;<span class="quote"><code class="literal">&amp;ora;</code></span>&#8221;
+as a shortcut for &#8220;<span class="quote">O'Reilly &amp; Associates</span>&#8221; or
+&#8220;<span class="quote"><code class="literal">&amp;eacute;</code></span>&#8221; as a mnemonic for
+&#8220;<span class="quote">&eacute;</span>&#8221;, is a feature of the character stream seen by
+the <acronym class="acronym">XML</acronym> parser, it doesn't exist in the information set of valid
+<acronym class="acronym">XML</acronym> documents. More importantly, this means that even if the schema
+language had a syntax for declaring entities, it wouldn't help the <acronym class="acronym">XML</acronym>
+parser that needs to know the definitions long before the schema language
+processor comes into play.</p><p>There are a couple of other <acronym class="acronym">XML</acronym> features that are impacted,
+though not necessarily as significantly: notations and default
+attribute values.  One use for notations is on external entity
+declarations, and as we've already seen, the schema language is too
+late to be useful for anything entity related. Default attribute values
+are also problematic since you would like them to be in the information
+set produced by the parser so that the schema language sees them.</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e9120"></a>A Coarse Comparison of Three <acronym class="acronym">XML</acronym> Schema Languages</h3></div></div></div><p>FIXME: write a short synopsis of how these languages compare.</p></div></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.d0e8623" href="#d0e8623">12</a>] </sup>
+It is often the case that you can correct an error in the document in
+several ways.  The parser suggests one possible fix, but this is not
+always the right fix.  For example, the parser may suggest that you
+can correct out of context data by adding another element, when in
+fact it's &#8220;obvious&#8221; to human eyes that the problem is a
+missing end tag.
+</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e8739" href="#d0e8739">13</a>] </sup>
+If you need to locate the entity sets, consult <a href="http://www.oasis-open.org/cover/topics.html#entities" target="_top">http://www.oasis-open.org/cover/topics.html#entities</a>.
+</p></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Creating DocBook Documents" href="ch02.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Publishing DocBook Documents" href="ch04.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Creating DocBook Documents&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp;I.&nbsp;Introduction" href="part1.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Publishing DocBook Documents</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

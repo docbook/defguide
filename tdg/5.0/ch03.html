@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Validating DocBook Documents</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="ch02.html" title="Creating DocBook Documents"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="Part  I .  Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="Publishing DocBook Documents" href="ch04.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="ch-parse" class="chapter"><header class="chapter-titlepage"><h2>Validating DocBook Documents</h2><p class="releaseinfo">$Revision$</p></header><p><a class="indexterm" name="ch-parse.2.1"></a> <a class="indexterm" name="ch-parse.2.2"></a>A key feature of <span class="acronym">XML</span> markup is that you
+  <em>validate</em> it. The DocBook schema is a precise
+  description of valid nesting: the order of elements, and their content. All
+  DocBook documents must conform to this description or they are not DocBook
+  documents (by definition). <a class="indexterm" name="ch-parse.2.5"></a> <a class="indexterm" name="ch-parse.2.6"></a>The validation technology that is built into
+  <span class="acronym">XML</span> is the Document Type Definition or
+  <span class="acronym">DTD</span>. A <em class="firstterm">validating parser</em> is a
+  program that can read the <span class="acronym">DTD</span> and a particular document
+  and determine whether the exact nesting and order of elements in the
+  document is valid according to the <span class="acronym">DTD</span>.</p><p>DocBook is now defined by a RELAX NG grammar and Schematron rules, so
+  it is no longer necessary to validate with the <span class="acronym">DTD</span>. In
+  fact, it isn’t even very valuable since the <span class="acronym">DTD</span> version
+  doesn’t enforce many DocBook constraints. Instead, an external RELAX NG and
+  Schematron validator must be used.</p><p>Validation is performed on a document <em>after</em> it
+  has been parsed. It is possible for parsing errors to occur as well as
+  validation errors (if, for example, your document isn’t well-formed
+  <span class="acronym">XML</span>). We’re going to assume that your documents are
+  well-formed and not discuss <span class="acronym">XML</span> parsing errors.</p><p><a class="indexterm" name="ch-parse.5.1"></a>If you are not using a structured editor that can provide
+  guidance on the markup as you type, validation with an external tool is a
+  particularly important step in the document creation process. You cannot
+  expect to get rational results from subsequent processing (such as document
+  publishing) if your documents are not valid.</p><p>There are several free validators that will handle RELAX NG and
+  Schematron, including Jing and MSV. For more detail about available tools,
+  see <a href="appc.html#res-tools" title="XML Tools">Section 9, “<span class="acronym">XML</span> Tools”</a>.</p><section id="s.id-idref" class="section"><div class="section-titlepage"><h3>1. ID/IDREF Constraints and Validation</h3></div><p><a class="indexterm" name="s.id-idref.2.1"></a>In <span class="acronym">XML</span>, attributes of type ID and IDREF
+    provide a straightforward cross-referencing mechanism. In DocBook, the
+    <code class="tag-attribute">xml:id</code> attribute contains values of
+    type ID, and the <code class="tag-attribute">linkend</code> attribute
+    contains values of type IDREF.</p><p>Within any document, no two attributes of type ID may have the same
+    value. In addition, for any attribute of type IDREF, there must be one,
+    and only one, instance of an attribute of type ID with the same value in
+    the same document. In other words, you can’t have two elements with the
+    same ID, and every IDREF must match an ID that exists somewhere in the
+    same document.</p><div class="note admonition"><h3>Note</h3><p>Checking these constraints is not a core part of RELAX NG. If you
+      want RELAX NG to check them, you need to enable a set of “<span class="quote">DTD
+      compatibility</span>” extensions. Unfortunately, the DTD compatibility
+      extensions do not work well with the DocBook grammar. However, because
+      DocBook uses <code class="tag-attribute">xml:id</code> for its ID
+      attribute, it’s not necessary to enforce the constraints with RELAX NG.
+      You can either tell your processor not to perform the DTD compatibility
+      extension checks, or ignore the warning messages that they produce. You
+      could also use Schematron to check ID/IDREF constraints.</p></div></section><section id="ch03-validate" class="section"><div class="section-titlepage"><h3>2. Validating Your Documents</h3></div><p>RELAX NG validation is supported natively in some editing
+    environments, such as <span>&lt;oXygen/&gt;</span><a class="indexterm" name="ch03-validate.2.2"></a><a class="indexterm" name="ch03-validate.2.3"></a> (see <a href="ch03.html#fig.oxygen-validate" title="&lt;oXygen/&gt; XML Editor validation">Figure 3.1, “&lt;oXygen/&gt; XML Editor validation”</a>),
+    XMLmind,<a class="indexterm" name="ch03-validate.2.5"></a><a class="indexterm" name="ch03-validate.2.6"></a> and <span>Emacs</span> (with
+    <code class="literal">nxml-mode</code>). <span>&lt;oXygen/&gt;</span><a class="indexterm" name="ch03-validate.2.10"></a><a class="indexterm" name="ch03-validate.2.11"></a> and XMLmind<a class="indexterm" name="ch03-validate.2.12"></a> also support Schematron validation. There are also several
+    standalone validators—for example, <span>Jing</span><a class="indexterm" name="ch03-validate.2.14"></a> and Sun’s <span>Multi-Schema Validator</span>
+    (MSV)<a class="indexterm" name="ch03-validate.2.16"></a>.</p><p>If your documents make use of several namespaces (e.g.,
+    <span class="acronym">SVG</span> and <span class="acronym">MathML</span> embedded in DocBook),
+    tools that support <span class="acronym">NVDL</span>, <em class="citetitle">Namespace-based
+    Validation Dispatching Language</em> [<a href="appc.html#NVDL"><span class="abbrev">NVDL</span></a>]<a class="indexterm" name="ch03-validate.3.6"></a>, can greatly simplify complex validation scenarios.</p><figure id="fig.oxygen-validate" class="figure-wrapper"><div class="figure"><div id="fig.oxygen-validate.2" class="mediaobject"><img src="figs/web/db5d_0301.png" alt="&lt;oXygen/&gt; XML Editor validation" /></div></div><div class="title">Figure 3.1. &lt;oXygen/&gt; XML Editor validation</div></figure></section><section id="ch03-parseerr" class="section"><div class="section-titlepage"><h3>3. Understanding Validation Errors</h3></div><p><a class="indexterm" name="ch03-parseerr.2.1"></a><a class="indexterm" name="ch03-parseerr.2.2"></a> <a class="indexterm" name="ch03-parseerr.2.3"></a>Every validator produces slightly different error messages,
+    but most indicate exactly (at least technically<sup class="footnote"><span class="osq">[</span><a name="ch03-parseerr.2.4" href="#ftn.ch03-parseerr.2.4">2</a><span class="csq">]</span></sup>) what is wrong and where the error occurred. With a little
+    experience, this information is all you’ll need to quickly identify what’s
+    wrong.</p><p>In the rest of this section, we’ll look at a number of common errors
+    and the messages they produce in <span class="acronym">MSV</span>. We’ve chosen
+    <span class="acronym">MSV</span> because it generally produces informative error
+    messages.</p><section id="ch03-parseerr.4" class="section"><div class="section-titlepage"><h4>3.1. Character Data Not Allowed Here</h4></div><p><a class="indexterm" name="ch03-parseerr.4.2.1"></a><a class="indexterm" name="ch03-parseerr.4.2.2"></a><a class="indexterm" name="ch03-parseerr.4.2.3"></a>Out-of-context character data is frequently caused by a
+      missing start tag, but sometimes it’s just the result of typing in the
+      wrong place!</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;title&gt;Test Chapter&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>This is a paragraph in the test chapter. It is unremarkable in
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>every regard. This is a paragraph in the test chapter. It is
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>unremarkable in every regard. This is a paragraph in the test
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>chapter. It is unremarkable in every regard.
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>You can't put character data here.
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;emphasis role="bold"&gt;This&lt;/emphasis&gt; paragraph contains
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>and a &lt;superscript&gt;super&lt;/superscript&gt;script
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>This is a paragraph in the test chapter. It is unremarkable in
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>every regard. This is a paragraph in the test chapter. It is
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>unremarkable in every regard. This is a paragraph in the test
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>chapter. It is unremarkable in every regard.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>&lt;/chapter&gt;</pre></div><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>java -jar msv.jar docbook.rng badpcdata.xml
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>start parsing a grammar.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>warnings are found. use -warning switch to see all warnings.
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>validating badpcdata.xml
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>Error at line:10, column:7 of badpcdata.xml
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  unexpected character literal</pre></div><p><a class="indexterm" name="ch03-parseerr.4.5.1"></a>You can’t put character data directly in a
+      <a href="chapter.html"><code class="tag-element">chapter</code></a>. Here, a wrapper element, such as
+      <a href="para.html"><code class="tag-element">para</code></a>, is missing around the sentence between the
+      first two paragraphs.</p></section><section id="ch03-parseerr.5" class="section"><div class="section-titlepage"><h4>3.2. Misspelled Start Tag</h4></div><p><a class="indexterm" name="ch03-parseerr.5.2.1"></a>If you spell a start tag incorrectly, or use the wrong
+      namespace, the parser will get confused:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;title&gt;Test Chapter&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>This is a paragraph in the test chapter. It is unremarkable in
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>every regard. This is a paragraph in the test chapter. It is
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>unremarkable in every regard. This is a paragraph in the test
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>chapter. It is unremarkable in every regard.
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;paar&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;emphasis role="bold"&gt;This&lt;/emphasis&gt; paragraph contains
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>and a &lt;superscript&gt;super&lt;/superscript&gt;script
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>This is a paragraph in the test chapter. It is unremarkable in
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>every regard. This is a paragraph in the test chapter. It is
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>unremarkable in every regard. This is a paragraph in the test
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>chapter. It is unremarkable in every regard.
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/chapter&gt;</pre></div><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>java -jar msv.jar docbook.rng misspell.xml
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>start parsing a grammar.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>warnings are found. use -warning switch to see all warnings.
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>validating misspell.xml
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>Error at line:9, column:7 of misspell.xml
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  tag name "paar" is not allowed. Possible tag names are: &lt;address&gt;,&lt;anchor&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;annotation&gt;,&lt;bibliography&gt;,&lt;bibliolist&gt;,&lt;blockquote&gt;,&lt;bridgehead&gt;,
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;calloutlist&gt;,&lt;caution&gt;,&lt;classsynopsis&gt;,&lt;cmdsynopsis&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;constraintdef&gt;,&lt;constructorsynopsis&gt;,&lt;destructorsynopsis&gt;,&lt;epigraph&gt;,
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;equation&gt;,&lt;example&gt;,&lt;fieldsynopsis&gt;,&lt;figure&gt;,&lt;formalpara&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;funcsynopsis&gt;,&lt;glossary&gt;,&lt;glosslist&gt;,&lt;important&gt;,&lt;index&gt;,
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;indexterm&gt;,&lt;informalequation&gt;,&lt;informalexample&gt;,&lt;informalfigure&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;informaltable&gt;,&lt;itemizedlist&gt;,&lt;literallayout&gt;,&lt;mediaobject&gt;,
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&lt;methodsynopsis&gt;,&lt;msgset&gt;,&lt;note&gt;,&lt;orderedlist&gt;,&lt;para&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;procedure&gt;,&lt;productionset&gt;,&lt;programlisting&gt;,&lt;programlistingco&gt;,
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>&lt;qandaset&gt;,&lt;refentry&gt;,&lt;remark&gt;,&lt;revhistory&gt;,&lt;screen&gt;,&lt;screenco&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;screenshot&gt;,&lt;section&gt;,&lt;section&gt;,&lt;segmentedlist&gt;,&lt;sidebar&gt;,
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>&lt;simpara&gt;,&lt;simplelist&gt;,&lt;simplesect&gt;,&lt;synopsis&gt;,&lt;table&gt;,&lt;task&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;tip&gt;,&lt;toc&gt;,&lt;variablelist&gt;,&lt;warning&gt;</pre></div><p>Luckily, these are usually easy to spot, unless you accidentally
+      spell the name of another element. In that case, your error might appear
+      to be out of context.</p></section><section id="ch03-parseerr.6" class="section"><div class="section-titlepage"><h4>3.3. Out-of-Context Start Tag</h4></div><p><a class="indexterm" name="ch03-parseerr.6.2.1"></a> <a class="indexterm" name="ch03-parseerr.6.2.2"></a>Sometimes the problem isn’t spelling, but rather placing a
+      tag in the wrong context. When this happens, the validator tries to
+      figure out what it can add to your document to make it valid. Then it
+      tries to recover by continuing as if it had seen what it just added. Of
+      course, this may cause future errors:</p><div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;title&gt;Test Chapter&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>This is a paragraph in the test chapter. It is unremarkable in
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>every regard. This is a paragraph in the test chapter. It is
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>unremarkable in every regard. This is a paragraph in the test
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>chapter. It is unremarkable in every regard.
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;&lt;title&gt;Paragraph With Inlines&lt;/title&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;emphasis role="bold"&gt;This&lt;/emphasis&gt; paragraph contains
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;emphasis&gt;some &lt;emphasis&gt;emphasized&lt;/emphasis&gt; text&lt;/emphasis&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>and a &lt;superscript&gt;super&lt;/superscript&gt;script
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>and a &lt;subscript&gt;sub&lt;/subscript&gt;script.
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;para&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>This is a paragraph in the test chapter. It is unremarkable in
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>every regard. This is a paragraph in the test chapter. It is
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>unremarkable in every regard. This is a paragraph in the test
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>chapter. It is unremarkable in every regard.
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>&lt;/para&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/chapter&gt;</pre></div><div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>$ java -jar msv.jar docbook.rng context.xml
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>start parsing a grammar.
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>warnings are found. use -warning switch to see all warnings.
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>validating context.xml
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>Error at line:9, column:14 of context.xml
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  tag name "title" is not allowed. Possible tag names are: &lt;abbrev&gt;,&lt;accel&gt;,
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;acronym&gt;,&lt;address&gt;,…,&lt;varname&gt;,&lt;warning&gt;,&lt;wordasword&gt;,&lt;xref&gt;</pre></div><p><a class="indexterm" name="ch03-parseerr.6.5.1"></a> <a class="indexterm" name="ch03-parseerr.6.5.2"></a>In this example, we probably wanted a
+      <a href="formalpara.html"><code class="tag-element">formalpara</code></a> so that we could have a title on the
+      paragraph. But note that the validator didn’t suggest this alternative.
+      The validator only tries to add additional elements, rather than rename
+      elements that it’s already seen.</p></section></section><div class="footnotes"><hr width="100" align="left" class="footnotes-divider" /><div class="footnote"><p><sup><span class="osq">[</span><a href="#ch03-parseerr.2.4" name="ftn.ch03-parseerr.2.4">2</a><span class="csq">]</span></sup>It is often the case that you can correct an error in the
+        document in several ways. The validator suggests one possible fix, but
+        this is not always the right fix. For example, the validator may
+        suggest that you can correct out-of-context data by adding another
+        element, when in fact it’s “<span class="quote">obvious</span>” to human eyes that
+        the problem is a missing end tag.</p></div></div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Creating DocBook Documents" href="ch02.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="Publishing DocBook Documents" href="ch04.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">Creating DocBook Documents </td><td width="20%" align="center"><a title="Part  I .  Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> Publishing DocBook Documents</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

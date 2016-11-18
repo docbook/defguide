@@ -1,0 +1,1060 @@
+<HTML
+><HEAD
+><TITLE
+>SegmentedList</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="SegListItem"
+HREF="seglistitem.html"><LINK
+REL="NEXT"
+TITLE="SegTitle"
+HREF="segtitle.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="seglistitem.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="segtitle.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SegmentedList</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN103434"
+></A
+><H2
+>Name</H2
+>SegmentedList&nbsp;--&nbsp;A segmented list, a list of sets of elements</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN103437"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SegmentedList ::=
+((<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ <A
+HREF="segtitle.html"
+>SegTitle</A
+>*,<A
+HREF="seglistitem.html"
+>SegListItem</A
+>+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.ADMON.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%admon.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.COMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%component.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.DIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%divcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.EXAMPLE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%example.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FOOTNOTE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%footnote.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.GLOSSDEF.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%glossdef.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.HIGHLIGHTS.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%highlights.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.LEGALNOTICE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%legalnotice.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.LIST.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%list.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARA.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%para.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.QANDASET.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%qandaset.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.REFCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.SIDEBAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%sidebar.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TABENTRY.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tabentry.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ENTRY.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.entry.mdl;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.TEXTOBJECT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%textobject.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN103510"
+></A
+><H2
+>Description</H2
+><P
+> 
+A <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+> consists of a set of headings
+(<A
+HREF="segtitle.html"
+><TT
+CLASS="SGMLTAG"
+>SegTitle</TT
+></A
+>s) and a list of parallel sets of elements.
+Every <A
+HREF="seglistitem.html"
+><TT
+CLASS="SGMLTAG"
+>SegListItem</TT
+></A
+> contains a set of elements that
+have a one-to-one correspondence with the headings.  Each of these
+elements is contained in a <A
+HREF="seg.html"
+><TT
+CLASS="SGMLTAG"
+>Seg</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103517"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Segmented lists can be formatted in a number of ways.  Two popular
+formats are tabular and as a list of repeated headings and elements.
+In a tabular presentation, the <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+> is the table.
+In the list presentation, the <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+> surrounds the
+entire list of blocks of heading/element pairs.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103522"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>In DocBook <SPAN
+CLASS="ACRONYM"
+>V4.0</SPAN
+>, at least two <A
+HREF="segtitle.html"
+><TT
+CLASS="SGMLTAG"
+>SegTitle</TT
+></A
+>s will be required.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103527"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SegmentedList:
+<A
+HREF="answer.html"
+><TT
+CLASS="SGMLTAG"
+>Answer</TT
+></A
+>, <A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="bibliodiv.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioDiv</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>, <A
+HREF="caption.html"
+><TT
+CLASS="SGMLTAG"
+>Caption</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+>, <A
+HREF="dedication.html"
+><TT
+CLASS="SGMLTAG"
+>Dedication</TT
+></A
+>, <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+>, <A
+HREF="glossdiv.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDiv</TT
+></A
+>, <A
+HREF="highlights.html"
+><TT
+CLASS="SGMLTAG"
+>Highlights</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="legalnotice.html"
+><TT
+CLASS="SGMLTAG"
+>LegalNotice</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="msgexplan.html"
+><TT
+CLASS="SGMLTAG"
+>MsgExplan</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="qandadiv.html"
+><TT
+CLASS="SGMLTAG"
+>QandADiv</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="question.html"
+><TT
+CLASS="SGMLTAG"
+>Question</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simplesect.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleSect</TT
+></A
+>, <A
+HREF="step.html"
+><TT
+CLASS="SGMLTAG"
+>Step</TT
+></A
+>, <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103687"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in SegmentedList:
+<A
+HREF="seglistitem.html"
+><TT
+CLASS="SGMLTAG"
+>SegListItem</TT
+></A
+>, <A
+HREF="segtitle.html"
+><TT
+CLASS="SGMLTAG"
+>SegTitle</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN103711"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="itemizedlist.html"
+><TT
+CLASS="SGMLTAG"
+>ItemizedList</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="orderedlist.html"
+><TT
+CLASS="SGMLTAG"
+>OrderedList</TT
+></A
+>, <A
+HREF="simplelist.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleList</TT
+></A
+>, <A
+HREF="variablelist.html"
+><TT
+CLASS="SGMLTAG"
+>VariableList</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN103733"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;para&#62;
+The capitals of the states of the United States of America are:
+
+&#60;segmentedlist&#62;&#60;title&#62;State Capitals&#60;/title&#62;
+&#60;segtitle&#62;State&#60;/segtitle&#62;
+&#60;segtitle&#62;Capital&#60;/segtitle&#62;
+&#60;seglistitem&#62;&#60;seg&#62;Alabama&#60;/seg&#62;&#60;seg&#62;Montgomery&#60;/seg&#62;&#60;/seglistitem&#62;
+&#60;seglistitem&#62;&#60;seg&#62;Alaska&#60;/seg&#62;&#60;seg&#62;Anchorage&#60;/seg&#62;&#60;/seglistitem&#62;
+&#60;seglistitem&#62;&#60;seg&#62;Arkansas&#60;/seg&#62;&#60;seg&#62;Little Rock&#60;/seg&#62;&#60;/seglistitem&#62;
+&#60;/segmentedlist&#62;
+
+&#38;hellip;
+&#60;/para&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><P
+>The capitals of the states of the United States of America are:
+
+<P
+><B
+>State Capitals</B
+></P
+><P
+><B
+>State: </B
+>Alabama</P
+><P
+><B
+>Capital: </B
+>Montgomery</P
+><P
+><B
+>State: </B
+>Alaska</P
+><P
+><B
+>Capital: </B
+>Anchorage</P
+><P
+><B
+>State: </B
+>Arkansas</P
+><P
+><B
+>Capital: </B
+>Little Rock</P
+>
+
+&hellip;</P
+></DIV><P
+>Alternatively:</P
+><DIV
+CLASS="TABLE"
+><P
+><B
+>Table 1. State Capitals</B
+></P
+><TABLE
+BORDER="0"
+CLASS="CALSTABLE"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>State</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Capital</TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Alabama</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>???</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Alaska</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Anchorage</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Arkansas</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Little Rock</TD
+></TR
+></TABLE
+></DIV
+><P
+>&hellip;</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="seglistitem.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="segtitle.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>SegListItem</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SegTitle</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

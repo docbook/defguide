@@ -1,0 +1,2025 @@
+<HTML
+><HEAD
+><TITLE
+>LiteralLayout</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Literal"
+HREF="literal.html"><LINK
+REL="NEXT"
+TITLE="LoT"
+HREF="lot.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="literal.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="lot.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>LiteralLayout</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN64474"
+></A
+><H2
+>Name</H2
+>LiteralLayout&nbsp;--&nbsp;A block of text in which line breaks and white space are to be reproduced faithfully</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN64477"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Mixed Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>LiteralLayout ::=
+((<A
+HREF="lineannotation.html"
+>LineAnnotation</A
+>|#PCDATA|<A
+HREF="footnoteref.html"
+>FootnoteRef</A
+>|<A
+HREF="xref.html"
+>XRef</A
+>|<A
+HREF="abbrev.html"
+>Abbrev</A
+>|<A
+HREF="acronym.html"
+>Acronym</A
+>|<A
+HREF="citation.html"
+>Citation</A
+>|
+  <A
+HREF="citerefentry.html"
+>CiteRefEntry</A
+>|<A
+HREF="citetitle.html"
+>CiteTitle</A
+>|<A
+HREF="emphasis.html"
+>Emphasis</A
+>|<A
+HREF="firstterm.html"
+>FirstTerm</A
+>|<A
+HREF="foreignphrase.html"
+>ForeignPhrase</A
+>|
+  <A
+HREF="glossterm.html"
+>GlossTerm</A
+>|<A
+HREF="footnote.html"
+>Footnote</A
+>|<A
+HREF="phrase.html"
+>Phrase</A
+>|<A
+HREF="quote.html"
+>Quote</A
+>|<A
+HREF="trademark.html"
+>Trademark</A
+>|<A
+HREF="wordasword.html"
+>WordAsWord</A
+>|<A
+HREF="link.html"
+>Link</A
+>|<A
+HREF="olink.html"
+>OLink</A
+>|
+  <A
+HREF="ulink.html"
+>ULink</A
+>|<A
+HREF="action.html"
+>Action</A
+>|<A
+HREF="application.html"
+>Application</A
+>|<A
+HREF="classname.html"
+>ClassName</A
+>|<A
+HREF="command.html"
+>Command</A
+>|<A
+HREF="computeroutput.html"
+>ComputerOutput</A
+>|
+  <A
+HREF="database.html"
+>Database</A
+>|<A
+HREF="email.html"
+>Email</A
+>|<A
+HREF="envar.html"
+>EnVar</A
+>|<A
+HREF="errorcode.html"
+>ErrorCode</A
+>|<A
+HREF="errorname.html"
+>ErrorName</A
+>|<A
+HREF="errortype.html"
+>ErrorType</A
+>|<A
+HREF="filename.html"
+>Filename</A
+>|
+  <A
+HREF="function.html"
+>Function</A
+>|<A
+HREF="guibutton.html"
+>GUIButton</A
+>|<A
+HREF="guiicon.html"
+>GUIIcon</A
+>|<A
+HREF="guilabel.html"
+>GUILabel</A
+>|<A
+HREF="guimenu.html"
+>GUIMenu</A
+>|<A
+HREF="guimenuitem.html"
+>GUIMenuItem</A
+>|
+  <A
+HREF="guisubmenu.html"
+>GUISubmenu</A
+>|<A
+HREF="hardware.html"
+>Hardware</A
+>|<A
+HREF="interface.html"
+>Interface</A
+>|<A
+HREF="interfacedefinition.html"
+>InterfaceDefinition</A
+>|<A
+HREF="keycap.html"
+>KeyCap</A
+>|
+  <A
+HREF="keycode.html"
+>KeyCode</A
+>|<A
+HREF="keycombo.html"
+>KeyCombo</A
+>|<A
+HREF="keysym.html"
+>KeySym</A
+>|<A
+HREF="literal.html"
+>Literal</A
+>|<A
+HREF="constant.html"
+>Constant</A
+>|<A
+HREF="markup.html"
+>Markup</A
+>|<A
+HREF="medialabel.html"
+>MediaLabel</A
+>|
+  <A
+HREF="menuchoice.html"
+>MenuChoice</A
+>|<A
+HREF="mousebutton.html"
+>MouseButton</A
+>|<A
+HREF="msgtext.html"
+>MsgText</A
+>|<A
+HREF="option.html"
+>Option</A
+>|<A
+HREF="optional.html"
+>Optional</A
+>|<A
+HREF="parameter.html"
+>Parameter</A
+>|<A
+HREF="prompt.html"
+>Prompt</A
+>|
+  <A
+HREF="property.html"
+>Property</A
+>|<A
+HREF="replaceable.html"
+>Replaceable</A
+>|<A
+HREF="returnvalue.html"
+>ReturnValue</A
+>|<A
+HREF="sgmltag.html"
+>SGMLTag</A
+>|<A
+HREF="structfield.html"
+>StructField</A
+>|<A
+HREF="structname.html"
+>StructName</A
+>|
+  <A
+HREF="symbol.html"
+>Symbol</A
+>|<A
+HREF="systemitem.html"
+>SystemItem</A
+>|<A
+HREF="token.html"
+>Token</A
+>|<A
+HREF="type.html"
+>Type</A
+>|<A
+HREF="userinput.html"
+>UserInput</A
+>|<A
+HREF="varname.html"
+>VarName</A
+>|<A
+HREF="anchor.html"
+>Anchor</A
+>|<A
+HREF="author.html"
+>Author</A
+>|
+  <A
+HREF="authorinitials.html"
+>AuthorInitials</A
+>|<A
+HREF="corpauthor.html"
+>CorpAuthor</A
+>|<A
+HREF="modespec.html"
+>ModeSpec</A
+>|<A
+HREF="othercredit.html"
+>OtherCredit</A
+>|<A
+HREF="productname.html"
+>ProductName</A
+>|
+  <A
+HREF="productnumber.html"
+>ProductNumber</A
+>|<A
+HREF="revhistory.html"
+>RevHistory</A
+>|<A
+HREF="comment.html"
+>Comment</A
+>|<A
+HREF="subscript.html"
+>Subscript</A
+>|<A
+HREF="superscript.html"
+>Superscript</A
+>|
+  <A
+HREF="inlinegraphic.html"
+>InlineGraphic</A
+>|<A
+HREF="inlinemediaobject.html"
+>InlineMediaObject</A
+>|<A
+HREF="inlineequation.html"
+>InlineEquation</A
+>|<A
+HREF="synopsis.html"
+>Synopsis</A
+>|
+  <A
+HREF="cmdsynopsis.html"
+>CmdSynopsis</A
+>|<A
+HREF="funcsynopsis.html"
+>FuncSynopsis</A
+>|<A
+HREF="indexterm.html"
+>IndexTerm</A
+>)+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Width</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>NUMBER</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Class</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumeration:</I
+></P
+><P
+>Monospaced<BR>Normal</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>"Normal"</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Format</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><I
+CLASS="EMPHASIS"
+>Enumerated notation:</I
+></P
+><P
+>linespecific</P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>"linespecific"</TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.ADMON.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%admon.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.COMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%component.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.DIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%divcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.EXAMPLE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%example.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FIGURE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%figure.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FOOTNOTE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%footnote.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.GLOSSDEF.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%glossdef.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.INDEXDIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%indexdivcomponent.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.LEGALNOTICE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%legalnotice.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.LINESPECIFIC.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%linespecific.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARA.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%para.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.QANDASET.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%qandaset.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.REFCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.SIDEBAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%sidebar.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TABENTRY.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tabentry.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ENTRY.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.entry.mdl;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.TEXTOBJECT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%textobject.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN64667"
+></A
+><H2
+>Description</H2
+><P
+><A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+> is a verbatim environment. Unlike the other
+verbatim environments, it does not have strong semantic overtones and
+may not imply a font change.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN64671"
+></A
+><H3
+>Processing expectations</H3
+><P
+>This element is displayed "verbatim";
+whitespace and linebreaks within this element are significant.</P
+><P
+>Unlike 
+<A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+> and <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, which usually
+imply a font change, <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+> does not.
+How spaces are to be represented faithfully in a proportional
+font is not addressed by DocBook.</P
+><P
+>In DocBook <SPAN
+CLASS="ACRONYM"
+>V3.1</SPAN
+>, the <SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> attribute
+was added to give users control over the font used in
+<A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>s.  If the <SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> attribute is specified and its value is
+<TT
+CLASS="LITERAL"
+>Monospaced</TT
+>, then the <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>
+will be presented in a monospaced font, probably the same one
+used for other verbatim environments.  The default value for
+<SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> is <TT
+CLASS="LITERAL"
+>Normal</TT
+>, meaning
+that no font change will occur.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN64687"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>The <A
+HREF="interfacedefinition.html"
+><TT
+CLASS="SGMLTAG"
+>InterfaceDefinition</TT
+></A
+>
+element will be discarded in DocBook V4.0. It will no longer be available
+in the content model of this element.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN64691"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain LiteralLayout:
+<A
+HREF="answer.html"
+><TT
+CLASS="SGMLTAG"
+>Answer</TT
+></A
+>, <A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="bibliodiv.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioDiv</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>, <A
+HREF="caption.html"
+><TT
+CLASS="SGMLTAG"
+>Caption</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+>, <A
+HREF="dedication.html"
+><TT
+CLASS="SGMLTAG"
+>Dedication</TT
+></A
+>, <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+>, <A
+HREF="glossdiv.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDiv</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="legalnotice.html"
+><TT
+CLASS="SGMLTAG"
+>LegalNotice</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="msgexplan.html"
+><TT
+CLASS="SGMLTAG"
+>MsgExplan</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="qandadiv.html"
+><TT
+CLASS="SGMLTAG"
+>QandADiv</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="question.html"
+><TT
+CLASS="SGMLTAG"
+>Question</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simplesect.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleSect</TT
+></A
+>, <A
+HREF="step.html"
+><TT
+CLASS="SGMLTAG"
+>Step</TT
+></A
+>, <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN64854"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in LiteralLayout:
+<A
+HREF="abbrev.html"
+><TT
+CLASS="SGMLTAG"
+>Abbrev</TT
+></A
+>, <A
+HREF="acronym.html"
+><TT
+CLASS="SGMLTAG"
+>Acronym</TT
+></A
+>, <A
+HREF="action.html"
+><TT
+CLASS="SGMLTAG"
+>Action</TT
+></A
+>, <A
+HREF="anchor.html"
+><TT
+CLASS="SGMLTAG"
+>Anchor</TT
+></A
+>, <A
+HREF="application.html"
+><TT
+CLASS="SGMLTAG"
+>Application</TT
+></A
+>, <A
+HREF="author.html"
+><TT
+CLASS="SGMLTAG"
+>Author</TT
+></A
+>, <A
+HREF="authorinitials.html"
+><TT
+CLASS="SGMLTAG"
+>AuthorInitials</TT
+></A
+>, <A
+HREF="citation.html"
+><TT
+CLASS="SGMLTAG"
+>Citation</TT
+></A
+>, <A
+HREF="citerefentry.html"
+><TT
+CLASS="SGMLTAG"
+>CiteRefEntry</TT
+></A
+>, <A
+HREF="citetitle.html"
+><TT
+CLASS="SGMLTAG"
+>CiteTitle</TT
+></A
+>, <A
+HREF="classname.html"
+><TT
+CLASS="SGMLTAG"
+>ClassName</TT
+></A
+>, <A
+HREF="cmdsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>CmdSynopsis</TT
+></A
+>, <A
+HREF="command.html"
+><TT
+CLASS="SGMLTAG"
+>Command</TT
+></A
+>, <A
+HREF="comment.html"
+><TT
+CLASS="SGMLTAG"
+>Comment</TT
+></A
+>, <A
+HREF="computeroutput.html"
+><TT
+CLASS="SGMLTAG"
+>ComputerOutput</TT
+></A
+>, <A
+HREF="constant.html"
+><TT
+CLASS="SGMLTAG"
+>Constant</TT
+></A
+>, <A
+HREF="corpauthor.html"
+><TT
+CLASS="SGMLTAG"
+>CorpAuthor</TT
+></A
+>, <A
+HREF="database.html"
+><TT
+CLASS="SGMLTAG"
+>Database</TT
+></A
+>, <A
+HREF="email.html"
+><TT
+CLASS="SGMLTAG"
+>Email</TT
+></A
+>, <A
+HREF="emphasis.html"
+><TT
+CLASS="SGMLTAG"
+>Emphasis</TT
+></A
+>, <A
+HREF="envar.html"
+><TT
+CLASS="SGMLTAG"
+>EnVar</TT
+></A
+>, <A
+HREF="errorcode.html"
+><TT
+CLASS="SGMLTAG"
+>ErrorCode</TT
+></A
+>, <A
+HREF="errorname.html"
+><TT
+CLASS="SGMLTAG"
+>ErrorName</TT
+></A
+>, <A
+HREF="errortype.html"
+><TT
+CLASS="SGMLTAG"
+>ErrorType</TT
+></A
+>, <A
+HREF="filename.html"
+><TT
+CLASS="SGMLTAG"
+>Filename</TT
+></A
+>, <A
+HREF="firstterm.html"
+><TT
+CLASS="SGMLTAG"
+>FirstTerm</TT
+></A
+>, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, <A
+HREF="footnoteref.html"
+><TT
+CLASS="SGMLTAG"
+>FootnoteRef</TT
+></A
+>, <A
+HREF="foreignphrase.html"
+><TT
+CLASS="SGMLTAG"
+>ForeignPhrase</TT
+></A
+>, <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>, <A
+HREF="function.html"
+><TT
+CLASS="SGMLTAG"
+>Function</TT
+></A
+>, <A
+HREF="glossterm.html"
+><TT
+CLASS="SGMLTAG"
+>GlossTerm</TT
+></A
+>, <A
+HREF="guibutton.html"
+><TT
+CLASS="SGMLTAG"
+>GUIButton</TT
+></A
+>, <A
+HREF="guiicon.html"
+><TT
+CLASS="SGMLTAG"
+>GUIIcon</TT
+></A
+>, <A
+HREF="guilabel.html"
+><TT
+CLASS="SGMLTAG"
+>GUILabel</TT
+></A
+>, <A
+HREF="guimenu.html"
+><TT
+CLASS="SGMLTAG"
+>GUIMenu</TT
+></A
+>, <A
+HREF="guimenuitem.html"
+><TT
+CLASS="SGMLTAG"
+>GUIMenuItem</TT
+></A
+>, <A
+HREF="guisubmenu.html"
+><TT
+CLASS="SGMLTAG"
+>GUISubmenu</TT
+></A
+>, <A
+HREF="hardware.html"
+><TT
+CLASS="SGMLTAG"
+>Hardware</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>, <A
+HREF="inlineequation.html"
+><TT
+CLASS="SGMLTAG"
+>InlineEquation</TT
+></A
+>, <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+>, <A
+HREF="inlinemediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>InlineMediaObject</TT
+></A
+>, <A
+HREF="interface.html"
+><TT
+CLASS="SGMLTAG"
+>Interface</TT
+></A
+>, <A
+HREF="interfacedefinition.html"
+><TT
+CLASS="SGMLTAG"
+>InterfaceDefinition</TT
+></A
+>, <A
+HREF="keycap.html"
+><TT
+CLASS="SGMLTAG"
+>KeyCap</TT
+></A
+>, <A
+HREF="keycode.html"
+><TT
+CLASS="SGMLTAG"
+>KeyCode</TT
+></A
+>, <A
+HREF="keycombo.html"
+><TT
+CLASS="SGMLTAG"
+>KeyCombo</TT
+></A
+>, <A
+HREF="keysym.html"
+><TT
+CLASS="SGMLTAG"
+>KeySym</TT
+></A
+>, <A
+HREF="lineannotation.html"
+><TT
+CLASS="SGMLTAG"
+>LineAnnotation</TT
+></A
+>, <A
+HREF="link.html"
+><TT
+CLASS="SGMLTAG"
+>Link</TT
+></A
+>, <A
+HREF="literal.html"
+><TT
+CLASS="SGMLTAG"
+>Literal</TT
+></A
+>, <A
+HREF="markup.html"
+><TT
+CLASS="SGMLTAG"
+>Markup</TT
+></A
+>, <A
+HREF="medialabel.html"
+><TT
+CLASS="SGMLTAG"
+>MediaLabel</TT
+></A
+>, <A
+HREF="menuchoice.html"
+><TT
+CLASS="SGMLTAG"
+>MenuChoice</TT
+></A
+>, <A
+HREF="modespec.html"
+><TT
+CLASS="SGMLTAG"
+>ModeSpec</TT
+></A
+>, <A
+HREF="mousebutton.html"
+><TT
+CLASS="SGMLTAG"
+>MouseButton</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="olink.html"
+><TT
+CLASS="SGMLTAG"
+>OLink</TT
+></A
+>, <A
+HREF="option.html"
+><TT
+CLASS="SGMLTAG"
+>Option</TT
+></A
+>, <A
+HREF="optional.html"
+><TT
+CLASS="SGMLTAG"
+>Optional</TT
+></A
+>, <A
+HREF="othercredit.html"
+><TT
+CLASS="SGMLTAG"
+>OtherCredit</TT
+></A
+>, <A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>, <A
+HREF="phrase.html"
+><TT
+CLASS="SGMLTAG"
+>Phrase</TT
+></A
+>, <A
+HREF="productname.html"
+><TT
+CLASS="SGMLTAG"
+>ProductName</TT
+></A
+>, <A
+HREF="productnumber.html"
+><TT
+CLASS="SGMLTAG"
+>ProductNumber</TT
+></A
+>, <A
+HREF="prompt.html"
+><TT
+CLASS="SGMLTAG"
+>Prompt</TT
+></A
+>, <A
+HREF="property.html"
+><TT
+CLASS="SGMLTAG"
+>Property</TT
+></A
+>, <A
+HREF="quote.html"
+><TT
+CLASS="SGMLTAG"
+>Quote</TT
+></A
+>, <A
+HREF="replaceable.html"
+><TT
+CLASS="SGMLTAG"
+>Replaceable</TT
+></A
+>, <A
+HREF="returnvalue.html"
+><TT
+CLASS="SGMLTAG"
+>ReturnValue</TT
+></A
+>, <A
+HREF="revhistory.html"
+><TT
+CLASS="SGMLTAG"
+>RevHistory</TT
+></A
+>, <A
+HREF="sgmltag.html"
+><TT
+CLASS="SGMLTAG"
+>SGMLTag</TT
+></A
+>, <A
+HREF="structfield.html"
+><TT
+CLASS="SGMLTAG"
+>StructField</TT
+></A
+>, <A
+HREF="structname.html"
+><TT
+CLASS="SGMLTAG"
+>StructName</TT
+></A
+>, <A
+HREF="subscript.html"
+><TT
+CLASS="SGMLTAG"
+>Subscript</TT
+></A
+>, <A
+HREF="superscript.html"
+><TT
+CLASS="SGMLTAG"
+>Superscript</TT
+></A
+>, <A
+HREF="symbol.html"
+><TT
+CLASS="SGMLTAG"
+>Symbol</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+>, <A
+HREF="systemitem.html"
+><TT
+CLASS="SGMLTAG"
+>SystemItem</TT
+></A
+>, <A
+HREF="token.html"
+><TT
+CLASS="SGMLTAG"
+>Token</TT
+></A
+>, <A
+HREF="trademark.html"
+><TT
+CLASS="SGMLTAG"
+>Trademark</TT
+></A
+>, <A
+HREF="type.html"
+><TT
+CLASS="SGMLTAG"
+>Type</TT
+></A
+>, <A
+HREF="ulink.html"
+><TT
+CLASS="SGMLTAG"
+>ULink</TT
+></A
+>, <A
+HREF="userinput.html"
+><TT
+CLASS="SGMLTAG"
+>UserInput</TT
+></A
+>, <A
+HREF="varname.html"
+><TT
+CLASS="SGMLTAG"
+>VarName</TT
+></A
+>, <A
+HREF="wordasword.html"
+><TT
+CLASS="SGMLTAG"
+>WordAsWord</TT
+></A
+>, <A
+HREF="xref.html"
+><TT
+CLASS="SGMLTAG"
+>XRef</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+excluded:
+<A
+HREF="acronym.html"
+><TT
+CLASS="SGMLTAG"
+>Acronym</TT
+></A
+>, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN65141"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Class</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Class</SPAN
+> distinguishes between literal layout
+environments that are presented in a monospaced font and literal layout
+environments that have no implicit font change.</P
+></DD
+><DT
+><B
+>Format</B
+></DT
+><DD
+><P
+>The <SPAN
+CLASS="SGMLTAG"
+>Format</SPAN
+> attribute applies the 
+<TT
+CLASS="LITERAL"
+>linespecific</TT
+> notation to all <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+>s.
+All white space and line breaks must be preserved.</P
+></DD
+><DT
+><B
+>Width</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>Width</SPAN
+> specifies the width (in characters)
+of the longest line in this <A
+HREF="literallayout.html"
+><TT
+CLASS="SGMLTAG"
+>LiteralLayout</TT
+></A
+> (formatters may use
+this value to determine scaling or rotation).</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN65162"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="computeroutput.html"
+><TT
+CLASS="SGMLTAG"
+>ComputerOutput</TT
+></A
+>, <A
+HREF="lineannotation.html"
+><TT
+CLASS="SGMLTAG"
+>LineAnnotation</TT
+></A
+>, <A
+HREF="programlisting.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListing</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, <A
+HREF="screenshot.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenShot</TT
+></A
+>, <A
+HREF="synopsis.html"
+><TT
+CLASS="SGMLTAG"
+>Synopsis</TT
+></A
+>, <A
+HREF="userinput.html"
+><TT
+CLASS="SGMLTAG"
+>UserInput</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN65187"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE blockquote PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;blockquote&#62;
+&#60;attribution&#62;William Shakespeare, &#60;citetitle&#62;Henry V&#60;/citetitle&#62;&#60;/attribution&#62;
+&#60;literallayout&#62;
+  O, for a muse of fire, that would ascend
+The brightest heaven of invention!
+A kingdom for a stage, princes to act,
+And monarchs to behold the swelling scene!
+&#60;/literallayout&#62;
+&#60;/blockquote&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><TABLE
+BORDER="0"
+WIDTH="100%"
+CELLSPACING="0"
+CELLPADDING="0"
+CLASS="BLOCKQUOTE"
+><TR
+><TD
+WIDTH="10%"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="80%"
+VALIGN="TOP"
+><P
+CLASS="LITERALLAYOUT"
+>&nbsp;&nbsp;O,&nbsp;for&nbsp;a&nbsp;muse&nbsp;of&nbsp;fire,&nbsp;that&nbsp;would&nbsp;ascend<br>
+The&nbsp;brightest&nbsp;heaven&nbsp;of&nbsp;invention!<br>
+A&nbsp;kingdom&nbsp;for&nbsp;a&nbsp;stage,&nbsp;princes&nbsp;to&nbsp;act,<br>
+And&nbsp;monarchs&nbsp;to&nbsp;behold&nbsp;the&nbsp;swelling&nbsp;scene!</P
+></TD
+><TD
+WIDTH="10%"
+VALIGN="TOP"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="RIGHT"
+VALIGN="TOP"
+>--<SPAN
+CLASS="ATTRIBUTION"
+>William Shakespeare, <I
+CLASS="CITETITLE"
+>Henry V</I
+></SPAN
+></TD
+><TD
+WIDTH="10%"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV><P
+>For additional examples, see also <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="literal.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="lot.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Literal</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>LoT</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

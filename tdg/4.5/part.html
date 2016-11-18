@@ -1,0 +1,73 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>part</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="ref-elements.html" title="DocBook Element Reference"><link rel="previous" href="parameter.html" title="parameter"><link rel="next" href="partinfo.html" title="partinfo"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="parameter" href="parameter.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="partinfo" href="partinfo.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="part.element"></a><div><div><div><h1 class="title">part</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>part &#8212; A division in a book</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">part ::=
+(<a href="beginpage.html"><code class="sgmltag-element">beginpage</code></a>?,<a href="partinfo.html"><code class="sgmltag-element">partinfo</code></a>?,
+ (<a href="title.html"><code class="sgmltag-element">title</code></a>,<a href="subtitle.html"><code class="sgmltag-element">subtitle</code></a>?,<a href="titleabbrev.html"><code class="sgmltag-element">titleabbrev</code></a>?),
+ <a href="partintro.html"><code class="sgmltag-element">partintro</code></a>?,
+ (<a href="appendix.html"><code class="sgmltag-element">appendix</code></a>|<a href="chapter.html"><code class="sgmltag-element">chapter</code></a>|<a href="toc.html"><code class="sgmltag-element">toc</code></a>|<a href="lot.html"><code class="sgmltag-element">lot</code></a>|<a href="index.html"><code class="sgmltag-element">index</code></a>|<a href="glossary.html"><code class="sgmltag-element">glossary</code></a>|<a href="bibliography.html"><code class="sgmltag-element">bibliography</code></a>|<a href="article.html"><code class="sgmltag-element">article</code></a>|
+  <a href="preface.html"><code class="sgmltag-element">preface</code></a>|<a href="refentry.html"><code class="sgmltag-element">refentry</code></a>|<a href="reference.html"><code class="sgmltag-element">reference</code></a>)+)</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements.html#common.attributes" title="Common Attributes">Common attributes</a></p><table border="0" width="100%" cellpadding="2" style="border-collapse: collapse; border-left: 0.5pt solid black; border-right: 0.5pt solid black; border-bottom: 0.5pt solid black;" summary="Attributes"><thead><tr><td class="th" style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Name</strong></span></p></td><td class="th" style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Type</strong></span></p></td><td class="th" style="border-bottom: 0.5pt solid ; "><p><span class="bold"><strong>Default</strong></span></p></td></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">status</td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">CDATA</td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr><td style="border-right: 0.5pt solid ; " align="left" valign="top">label</td><td style="border-right: 0.5pt solid ; " align="left" valign="top">CDATA</td><td style="" align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div><div class="refsect1" lang="en"><a name="d0e136017"></a><h2>Description</h2><p>
+<a href="part.html"><code class="sgmltag-element">Part</code></a>s segment a book into divisions.  Each division can
+contain a number of component-level elements, such as <a href="chapter.html"><code class="sgmltag-element">Chapter</code></a>s.
+</p><div class="refsect2" lang="en"><a name="d0e136028"></a><h3>Processing expectations</h3><p>
+Formatted as a displayed block. <a href="part.html"><code class="sgmltag-element">Part</code></a>s almost always introduce a forced page
+break.  Sometimes starts on the next recto page.
+Frequently, they also produce a part separator page, on which may
+be printed the content of the <a href="partintro.html"><code class="sgmltag-element">PartIntro</code></a>.
+</p></div><div class="refsect2" lang="en"><a name="d0e136039"></a><h3>Future Changes</h3><p>
+<a class="indexterm" name="d0e136044"></a>
+In DocBook <acronym class="acronym">V4.0</acronym>, the <a href="toc.html"><code class="sgmltag-element">ToC</code></a> element in the content model
+will be replaced by <a href="tocchap.html"><code class="sgmltag-element">TocChap</code></a>.
+</p></div><div class="refsect2" lang="en"><a name="d0e136061"></a><h3>Parents</h3><p>These elements contain part:
+<span class="simplelist"><a href="book.html"><code class="sgmltag-element">book</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e136071"></a><h3>Children</h3><p>The following elements occur in part:
+<span class="simplelist"><a href="appendix.html"><code class="sgmltag-element">appendix</code></a>, <a href="article.html"><code class="sgmltag-element">article</code></a>, <a href="beginpage.html"><code class="sgmltag-element">beginpage</code></a>, <a href="bibliography.html"><code class="sgmltag-element">bibliography</code></a>, <a href="chapter.html"><code class="sgmltag-element">chapter</code></a>, <a href="glossary.html"><code class="sgmltag-element">glossary</code></a>, <a href="index.html"><code class="sgmltag-element">index</code></a>, <a href="lot.html"><code class="sgmltag-element">lot</code></a>, <a href="partinfo.html"><code class="sgmltag-element">partinfo</code></a>, <a href="partintro.html"><code class="sgmltag-element">partintro</code></a>, <a href="preface.html"><code class="sgmltag-element">preface</code></a>, <a href="refentry.html"><code class="sgmltag-element">refentry</code></a>, <a href="reference.html"><code class="sgmltag-element">reference</code></a>, <a href="subtitle.html"><code class="sgmltag-element">subtitle</code></a>, <a href="title.html"><code class="sgmltag-element">title</code></a>, <a href="titleabbrev.html"><code class="sgmltag-element">titleabbrev</code></a>, <a href="toc.html"><code class="sgmltag-element">toc</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e136129"></a><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">label</span></dt><dd><p>
+<code class="sgmltag-attribute">Label</code> specifies an identifying string for presentation purposes. The first <a href="part.html"><code class="sgmltag-element">Part</code></a> in a 
+<a href="book.html"><code class="sgmltag-element">Book</code></a> might be labeled &#8220;<span class="quote">Part I</span>&#8221;, for example.
+</p><p>
+Generally, an explicit <code class="sgmltag-attribute">Label</code> attribute is
+used only if the processing system is incapable of generating the label
+automatically. If present, the <code class="sgmltag-attribute">Label</code> 
+is normative; it will used even
+if the processing system is capable of automatic labelling.
+</p></dd><dt><span class="term">status</span></dt><dd><p>
+<code class="sgmltag-attribute">Status</code> identifies the editorial or publication 
+status of the <a href="part.html"><code class="sgmltag-element">Part</code></a>.
+</p><p>
+Publication status might be used to control formatting (for example,
+printing a &#8220;<span class="quote">draft</span>&#8221; watermark on drafts) or processing (perhaps
+a document with a status of &#8220;<span class="quote">final</span>&#8221; should not include any
+components that are not final).
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a name="d0e136179"></a><h2>See Also</h2><p><span class="simplelist"><a href="appendix.html"><code class="sgmltag-element">appendix</code></a>, <a href="article.html"><code class="sgmltag-element">article</code></a>, <a href="book.html"><code class="sgmltag-element">book</code></a>, <a href="chapter.html"><code class="sgmltag-element">chapter</code></a>, <a href="colophon.html"><code class="sgmltag-element">colophon</code></a>, <a href="dedication.html"><code class="sgmltag-element">dedication</code></a>, <a href="partintro.html"><code class="sgmltag-element">partintro</code></a>, <a href="preface.html"><code class="sgmltag-element">preface</code></a>, <a href="set.html"><code class="sgmltag-element">set</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e136212"></a><h2>Examples</h2><p>
+The following example comes from <em class="citetitle">Java in a Nutshell</em>:
+</p><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE part PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;part label="II"&gt;
+&lt;title&gt;Programming with the Java API&lt;/title&gt;
+&lt;partintro&gt;
+&lt;para&gt;
+The sections in Part II present real-world examples of 
+programming with Java.  You can study and learn from the
+examples, and you can adapt them for use in your own programs.
+&lt;/para&gt;
+
+&lt;para&gt;
+The example code in these chapters is available for downloading.  
+See &lt;systemitem role="url"&gt;http://www.ora.com/catalog/books/javanut&lt;/systemitem&gt;.
+&lt;/para&gt;
+
+&lt;literallayout&gt;
+&lt;xref linkend="jnut-ch-04"/&gt;
+&lt;xref linkend="jnut-ch-05"/&gt;
+&lt;xref linkend="jnut-ch-06"/&gt;
+&lt;xref linkend="jnut-ch-07"/&gt;
+&lt;xref linkend="jnut-ch-08"/&gt;
+&lt;xref linkend="jnut-ch-09"/&gt;
+&lt;/literallayout&gt;
+&lt;/partintro&gt;
+&lt;chapter id="jnut-ch-04"&gt;&lt;title/&gt;&lt;para&gt;...&lt;/para&gt;&lt;/chapter&gt;
+&lt;chapter id="jnut-ch-05"&gt;&lt;title/&gt;&lt;para&gt;...&lt;/para&gt;&lt;/chapter&gt;
+&lt;chapter id="jnut-ch-06"&gt;&lt;title/&gt;&lt;para&gt;...&lt;/para&gt;&lt;/chapter&gt;
+&lt;chapter id="jnut-ch-07"&gt;&lt;title/&gt;&lt;para&gt;...&lt;/para&gt;&lt;/chapter&gt;
+&lt;chapter id="jnut-ch-08"&gt;&lt;title/&gt;&lt;para&gt;...&lt;/para&gt;&lt;/chapter&gt;
+&lt;chapter id="jnut-ch-09"&gt;&lt;title/&gt;&lt;para&gt;...&lt;/para&gt;&lt;/chapter&gt;
+&lt;/part&gt;</pre></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="parameter" href="parameter.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="partinfo" href="partinfo.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">parameter&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;partinfo</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

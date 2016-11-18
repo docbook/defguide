@@ -1,0 +1,343 @@
+<HTML
+><HEAD
+><TITLE
+>SegListItem</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Seg"
+HREF="seg.html"><LINK
+REL="NEXT"
+TITLE="SegmentedList"
+HREF="segmentedlist.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="seg.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="segmentedlist.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>SegListItem</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN103356"
+></A
+><H2
+>Name</H2
+>SegListItem&nbsp;--&nbsp;A list item in a segmented list</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN103359"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>SegListItem ::=
+(<A
+HREF="seg.html"
+>Seg</A
+>,<A
+HREF="seg.html"
+>Seg</A
+>+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN103386"
+></A
+><H2
+>Description</H2
+><P
+> 
+A <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+> consists of a set of headings
+(<A
+HREF="segtitle.html"
+><TT
+CLASS="SGMLTAG"
+>SegTitle</TT
+></A
+>s) and a list of parallel sets of elements.
+Each set of elements is stored in a <A
+HREF="seglistitem.html"
+><TT
+CLASS="SGMLTAG"
+>SegListItem</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103392"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Segmented lists can be formatted in a number of ways.  Two popular
+formats are tabular and as a list of repeated headings and elements.
+In a tabular presentation, each <A
+HREF="seglistitem.html"
+><TT
+CLASS="SGMLTAG"
+>SegListItem</TT
+></A
+> is a row in
+the table.  In the list presentation, each <A
+HREF="seglistitem.html"
+><TT
+CLASS="SGMLTAG"
+>SegListItem</TT
+></A
+>
+contains a block of heading/element pairs.</P
+><P
+>DocBook cannot detect errors caused by too many or too few <A
+HREF="seg.html"
+><TT
+CLASS="SGMLTAG"
+>Seg</TT
+></A
+>s
+in a <A
+HREF="seglistitem.html"
+><TT
+CLASS="SGMLTAG"
+>SegListItem</TT
+></A
+>. You will have to rely on external processes
+to find those errors.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103400"
+></A
+><H3
+><IMG
+SRC="figures/rev_4.0.gif"
+ALT="(4.0)">&nbsp;Future Changes</H3
+><P
+>The <A
+HREF="interfacedefinition.html"
+><TT
+CLASS="SGMLTAG"
+>InterfaceDefinition</TT
+></A
+>
+element will be discarded in DocBook V4.0. It will no longer be available
+in the content model of this element.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103404"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain SegListItem:
+<A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103411"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in SegListItem:
+<A
+HREF="seg.html"
+><TT
+CLASS="SGMLTAG"
+>Seg</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN103426"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="segmentedlist.html"
+><TT
+CLASS="SGMLTAG"
+>SegmentedList</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="seg.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="segmentedlist.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Seg</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SegmentedList</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

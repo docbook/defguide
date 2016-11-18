@@ -1,0 +1,1200 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Customizing DocBook</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="part1-x.html" title="Part&nbsp;I.&nbsp;Introduction"><link rel="previous" href="ch04-x.html" title="Publishing DocBook Documents"><link rel="next" href="part2-x.html" title="Part&nbsp;II.&nbsp;Reference"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="Publishing DocBook Documents" href="ch04-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp;I.&nbsp;Introduction" href="part1-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="Part&nbsp;II.&nbsp;Reference" href="part2-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="chapter" lang="en"><div><div><div><a name="app-customizing"></a><div class="component-title"><h1 class="label">5</h1><h1 class="title">Customizing DocBook</h1></div></div><div><p class="releaseinfo">$Revision: 2359 $</p></div><div><p class="pubdate">$Date: 2002-12-29 15:28:39 -0500 (Sun, 29 Dec 2002) $</p></div></div><hr xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0" t:class="component-separator"></div><p>
+<a class="indexterm" name="customDocBookch05"></a>
+<a class="indexterm" name="DocBookcustomch05"></a>
+
+For the applications you have in mind, DocBook &#8220;<span class="quote">out of the
+box</span>&#8221; may not be exactly what you need. Perhaps you need
+additional inline elements or perhaps you want to remove elements that
+you never want your authors to use. By design, DocBook makes this sort
+of customization easy.
+</p><p>
+<a class="indexterm" name="d0e13370"></a>
+<a class="indexterm" name="d0e13376"></a>
+
+This chapter explains how to make your own <em class="firstterm">customization
+layer</em>. You might do this in order to:
+<div class="itemizedlist"><ul type="disc"><li><p>Add new elements</p></li><li><p>Remove elements</p></li><li><p>Change the structure of existing elements</p></li><li><p>Add new attributes</p></li><li><p>Remove attributes</p></li><li><p>Broaden the range of values allowed in an attribute</p></li><li><p>Narrow the range of values in an attribute to a specific list or a fixed value</p></li></ul></div>
+</p><p>
+<a class="indexterm" name="d0e13410"></a>
+<a class="indexterm" name="d0e13414"></a>
+
+You can use customization layers to extend DocBook or subset
+it. Creating a <acronym class="acronym">DTD</acronym> that is a strict subset of DocBook means that all
+of your instances are still completely valid DocBook instances, which
+may be important to your tools and stylesheets, and to other people
+with whom you share documents.  An <em class="firstterm">extension</em> adds new
+structures, or changes the <acronym class="acronym">DTD</acronym> in a way that is not compatible with
+DocBook. Extensions can be very useful, but might have a great impact
+on your environment.
+</p><p>
+Customization layers can be as small as restricting an attribute value
+or as large as adding an entirely different hierarchy on top of the
+inline elements.
+</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-shouldi"></a>Should You Do This?</h2></div></div></div><p>
+<a class="indexterm" name="d0e13436"></a>
+
+Changing a <acronym class="acronym">DTD</acronym> can have a wide-ranging impact on the tools and
+stylesheets that you use. It can have an impact on your authors and on
+your legacy documents.  This is especially true if you make an
+extension. If you rely on your support staff to install and maintain
+your authoring and publishing tools, check with them before you invest
+a lot of time modifying the <acronym class="acronym">DTD</acronym>. There may be additional issues that
+are outside your immediate control. Proceed with caution.
+</p><p>
+That said, DocBook is designed to be easy to modify. This chapter
+assumes that you are comfortable with <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> <acronym class="acronym">DTD</acronym> syntax, but
+the examples presented should be a good springboard to learning the
+syntax if it's not already familiar to you.
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="s-notdocbook"></a>If You Change DocBook, It's Not DocBook Anymore!</h2></div></div></div><p>
+<a class="indexterm" name="d0e13464"></a>The DocBook <acronym class="acronym">DTD</acronym> is usually referenced by its public identifier:
+</p><pre class="screen">  -//OASIS//DTD DocBook V3.1//EN</pre><p>
+Previous versions of DocBook, V3.0 and the V2 variants, used the owner
+identifier Davenport, rather than OASIS.
+</p><p>
+If you make any changes to the structure of the <acronym class="acronym">DTD</acronym>, it is
+imperative that you alter the public identifier that you use for the
+<acronym class="acronym">DTD</acronym> and the modules you changed.  The license agreement under which
+DocBook is distributed gives you complete freedom to change, modify,
+reuse, and generally hack the <acronym class="acronym">DTD</acronym> in any way you want, except that
+you must not call your alterations &#8220;<span class="quote">DocBook.</span>&#8221;
+</p><p>
+<a class="indexterm" name="d0e13495"></a>
+<a class="indexterm" name="d0e13501"></a>
+
+You should change both the owner identifier and the description. The
+original DocBook formal public identifiers use the following syntax:
+<pre class="screen">
+-//OASIS//<em class="replaceable"><code>text-class</code></em> DocBook <em class="replaceable"><code>description</code></em> V<em class="replaceable"><code>version</code></em>//EN
+</pre>
+</p><p>
+Your own formal public identifiers should use the following syntax in
+order to record their DocBook derivation:
+<pre class="screen">
+-//<em class="replaceable"><code>your-owner-ID</code></em>//<em class="replaceable"><code>text-class</code></em> DocBook V<em class="replaceable"><code>version</code></em>-Based [<span class="optional">Subset|Extension|Variant</span>] <em class="replaceable"><code>your-descrip-and-version</code></em>//<em class="replaceable"><code>lang</code></em>
+</pre>
+</p><p>For example:
+<pre class="screen">
+-//O'Reilly//DTD DocBook V3.0-Based Subset V1.1//EN
+</pre>
+</p><p>
+<a class="indexterm" name="d0e13547"></a>
+If your <acronym class="acronym">DTD</acronym> is a proper subset, you can advertise this status by
+using the <code class="literal">Subset</code> keyword in the description. If
+your <acronym class="acronym">DTD</acronym> contains any markup model extensions, you can advertise
+this status by using the <code class="literal">Extension</code> keyword. If
+you'd rather not characterize your variant specifically as a subset or
+an extension, you can leave out this field entirely, or, if you
+prefer, use the <code class="literal">Variant</code> keyword.
+</p><p>
+<a class="indexterm" name="d0e13568"></a>
+<a class="indexterm" name="d0e13572"></a>
+
+There is only one file that you may change without changing the public
+identifier: <code class="filename">dbgenent.mod</code>. And you can add only
+entity and notation declarations to that file. (You can add anything
+you want, naturally, but if you add anything other than entity and
+notation declarations, you must change the public identifier!)
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-layers"></a>Customization Layers</h2></div></div></div><p>
+<a class="indexterm" name="customlayerch05"></a>
+<a class="indexterm" name="layerscustomch05"></a>
+<a class="indexterm" name="d0e13598"></a>
+<a class="indexterm" name="d0e13604"></a>
+
+<acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> <acronym class="acronym">DTD</acronym>s are really just collections of
+declarations. These declarations are stored in one or more files. A
+complete <acronym class="acronym">DTD</acronym> is formed by combining these files together
+logically. Parameter entities are used for this purpose. Consider the
+following fragment:
+</p><pre class="screen">
+&lt;!ENTITY % dbpool SYSTEM "dbpool.mod"&gt; <a name="cl-dbpooldcl"></a><img src="figures/callouts/1.png" alt="1" border="0">
+&lt;!ENTITY % dbhier SYSTEM "dbhier.mod"&gt; <a name="cl-dbhierdcl"></a><img src="figures/callouts/2.png" alt="2" border="0">
+%dbpool;                               <a name="cl-dbpooluse"></a><img src="figures/callouts/3.png" alt="3" border="0">
+%dbhier;                               <a name="cl-dbhieruse"></a><img src="figures/callouts/4.png" alt="4" border="0">
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#cl-dbpooldcl"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>This line declares the
+parameter entity <code class="literal">dbpool</code> and associates it with the
+file <code class="filename"> dbpool.mod</code>.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#cl-dbhierdcl"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>This line declares the
+parameter entity <code class="literal">dbhier</code> and associates it with the
+file <code class="filename"> dbhier.mod</code>.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#cl-dbpooluse"><img src="figures/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>This line references <code class="literal">
+dbpool</code>, which loads the file <code class="filename">dbpool.mod</code>
+and inserts its content here.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#cl-dbhieruse"><img src="figures/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>Similarly, this line loads
+<code class="filename"> dbhier.mod</code>.</p></td></tr></table></div><p>
+<a class="indexterm" name="d0e13668"></a>
+
+It is an important feature of <acronym class="acronym">DTD</acronym> parsing that entity
+declarations can be repeated. If an entity is declared more than once,
+then the <span class="emphasis"><em> first</em></span> declaration is used. Given this
+fragment:
+</p><pre class="screen">
+&lt;!ENTITY foo "Lenny"&gt;
+&lt;!ENTITY foo "Norm"&gt;
+</pre><p>
+The replacement text for <code class="sgmltag-genentity">&amp;foo;</code> is
+&#8220;<span class="quote">Lenny.</span>&#8221;
+</p><p>
+<a class="indexterm" name="d0e13692"></a>
+<a class="indexterm" name="d0e13698"></a>
+
+These two notions, that you can break a <acronym class="acronym">DTD</acronym> into modules referenced
+with parameter entities and that the first entity declaration is the
+one that counts, are used to build &#8220;<span class="quote">customization layers.</span>&#8221;
+With customization layers you can write a <acronym class="acronym">DTD</acronym> that references some
+or all of DocBook, but adds your own modifications. Modifying the
+<acronym class="acronym">DTD</acronym> this way means that you never have to edit the DocBook modules
+directly, which is a tremendous boon to maintaining your modules. When
+the next release of DocBook comes out, you usually only have to make
+changes to your customization layer and your modification will be back
+in sync with the new version.
+</p><p>
+Customization layers work particularly well in DocBook because the
+base <acronym class="acronym">DTD</acronym> makes extensive use of parameter entities that can be
+redefined.
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="s-dbstruct"></a>Understanding DocBook Structure</h2></div></div></div><p>
+DocBook is a large and, at first glance, fairly complex <acronym class="acronym">DTD</acronym>. Much of
+the apparent complexity is caused by the prolific use of parameter
+entities.  This was an intentional choice on the part of the
+maintainers, who traded &#8220;<span class="quote">raw readability</span>&#8221; for customizability.
+This section provides a general overview of the structure of the
+<acronym class="acronym">DTD</acronym>. After you understand it, DocBook will probably seem much less
+complicated.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="db-modules"></a>DocBook Modules</h3></div></div></div><p>
+<a class="indexterm" name="d0e13740"></a>
+<a class="indexterm" name="d0e13746"></a>
+
+DocBook is composed of seven primary modules. These modules decompose
+the <acronym class="acronym">DTD</acronym> into large, related chunks. Most modifications are
+restricted to a single chunk.
+</p><p>
+<a href="ch05-x.html#fg-docbook-flowchart" title="Figure&nbsp;5.1.&nbsp;Structure of the DocBook DTD">Figure&nbsp;5.1, &#8220;Structure of the DocBook <acronym class="acronym">DTD</acronym>&#8221;</a> shows the module structure of
+DocBook as a flowchart.
+</p><div class="figure"><a name="fg-docbook-flowchart"></a><p class="title"><b>Figure&nbsp;5.1.&nbsp;Structure of the DocBook <acronym class="acronym">DTD</acronym></b></p><div class="figure-contents"><div><img src="figures/docbook-module-flowchart.png" alt="Structure of the DocBook DTD"></div></div></div><br class="figure-break"><p>
+The modules are:
+</p><div class="variablelist"><dl><dt><span class="term"><code class="filename">docbook.dtd</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13775"></a>
+
+The main driver file. This module declares and references the
+other top-level modules.
+</p></dd><dt><span class="term"><code class="filename">dbhier.mod</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13786"></a>
+<a class="indexterm" name="d0e13790"></a>
+
+The hierarchy. This module declares the elements that provide
+the hierarchical structure of DocBook (sets, books, chapters,
+articles, and so on).
+</p><p>Changes to this module alter the top-level structure of the
+<acronym class="acronym">DTD</acronym>. If you want to write a DocBook-derived <acronym class="acronym">DTD</acronym> with a different
+structure (something other than a book), but with the same paragraph
+and inline-level elements, you make most of your changes in this
+module.
+</p></dd><dt><span class="term"><code class="filename">dbpool.mod</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13811"></a>
+<a class="indexterm" name="d0e13815"></a>
+<a class="indexterm" name="d0e13821"></a>
+
+The information pool. This module declares the elements that
+describe content (inline elements, bibliographic data, block quotes,
+sidebars, and so on) but are not part of the large-scale hierarchy of
+a document. You can incorporate these elements into an entirely
+different element hierarchy.
+</p><p>The most common reason for changing this module is to add or
+remove inline elements.
+</p></dd><dt><span class="term"><code class="filename">dbnotn.mod</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13836"></a>
+<a class="indexterm" name="d0e13840"></a>
+
+The notation declarations. This module declares the notations
+used by DocBook.
+</p><p>This module can be changed to add or remove notations.
+</p></dd><dt><span class="term"><code class="filename">dbcent.mod</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13853"></a>
+<a class="indexterm" name="d0e13857"></a>
+<a class="indexterm" name="d0e13865"></a>
+<a class="indexterm" name="d0e13873"></a>
+
+The character entities. This module declares and references the
+<acronym class="acronym">ISO</acronym> entity sets used by DocBook.
+</p><p>Changes to this module can add or remove entity sets.
+</p></dd><dt><span class="term"><code class="filename">dbgenent.mod</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13893"></a>
+<a class="indexterm" name="d0e13897"></a>
+<a class="indexterm" name="d0e13905"></a>
+<a class="indexterm" name="d0e13911"></a>
+<a class="indexterm" name="d0e13919"></a>
+
+The general entities. This is a place where you can customize
+the general entities available in DocBook instances.
+</p><p>This is the place to add, for example, boiler plate text, logos
+for institutional identity, or additional notations understood by your
+local processing system.
+</p></dd><dt><span class="term"><code class="filename">cals-tbl.dtd</code></span></dt><dd><p>
+<a class="indexterm" name="d0e13934"></a>
+<a class="indexterm" name="d0e13938"></a>
+<a class="indexterm" name="d0e13942"></a>
+
+The <acronym class="acronym">CALS</acronym> Table Model. <acronym class="acronym">CALS</acronym> is an initiative by the United
+States Department of Defense to standardize the document types used
+across branches of the military. The <acronym class="acronym">CALS</acronym> table model, published in
+<acronym class="acronym">MIL-HDBK-28001</acronym>, was for a long time the most widely
+supported <acronym class="acronym">SGML</acronym> table model (one might now argue that the <acronym class="acronym">HTML</acronym>
+table model is more widely supported by some definitions of
+&#8220;<span class="quote">widely supported</span>&#8221;). In any event, it is the table model
+used by DocBook.
+</p><p>
+<a class="indexterm" name="d0e13969"></a>
+<a class="indexterm" name="d0e13975"></a>
+
+DocBook predates the publication of the <a href="http://www.oasis-open.org/html/a503.htm" target="_top">
+<acronym class="acronym">OASIS</acronym> Technical Resolution <acronym class="acronym">TR</acronym>
+9503:1995</a>, which defines an industry standard exchange table
+model and thus incorporates the <span class="emphasis"><em>full</em></span> <acronym class="acronym">CALS</acronym> Table
+Model.
+</p><p>
+<a class="indexterm" name="d0e13998"></a>
+
+Most changes to the <acronym class="acronym">CALS</acronym> table model can be accomplished by
+modifying parameter entities in <code class="filename">dbpool.mod</code>;
+changing this <acronym class="acronym">DTD</acronym> fragment is strongly discouraged. If you want to
+use a different table model, remove this one and add your own.
+</p></dd><dt><span class="term"><code class="filename">*.gml</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14020"></a>
+<a class="indexterm" name="d0e14024"></a>
+The <acronym class="acronym">ISO</acronym> standard character entity sets.
+These entity sets are not actually part of the official DocBook
+distribution, but are referenced by default.
+</p></dd></dl></div><p>
+There are some additional modules, initially undefined, that can be
+inserted at several places for &#8220;<span class="quote">redeclaration.</span>&#8221; This is
+described in more detail in <a href="ch05-x.html#s2-remvadmon" title="Removing Admonitions from Table Entries">the section called &#8220;Removing Admonitions from Table Entries&#8221;</a>.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="dbparam"></a>DocBook Parameterization</h3></div></div></div><p>
+<a class="indexterm" name="d0e14047"></a>
+
+Customization layers are possible because DocBook has been extensively
+parameterized so that it is possible to make any changes that might be
+desired without ever editing the actual distributed modules. The
+parameter entities come in several flavors:
+</p><div class="variablelist"><dl><dt><span class="term"><code class="sgmltag-paramentity">%*.class;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14061"></a>
+<a class="indexterm" name="d0e14065"></a>
+
+Classes group elements of a similar type: for example all the
+lists are in the <a href="pe-class-x.html#list.class.parament"><code class="sgmltag-paramentity">%list.class;</code></a>.
+</p><p>If you want to add a new kind of something (a new kind of list
+or a new kind of verbatim environment, for example), you generally
+want to add the name of the new element to the appropriate class.
+</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%*.mix;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14083"></a>
+<a class="indexterm" name="d0e14087"></a>
+
+Mixtures are collections of classes that appear in content
+models. For example, the content model of the
+<a href="example-x.html"><code class="sgmltag-element">Example</code></a> element includes <a href="pe-mix-x.html#example.mix.parament"><code class="sgmltag-paramentity">%example.mix;</code></a>. Not every element's content
+model is a single mixture, but elements in the same class tend to have
+the same mixture in their content model.
+</p><p>If you want to change the content model of some class of
+elements (lists or admonitions, perhaps), you generally want to change
+the definition of the appropriate mixture.
+</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%*.module;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14108"></a>
+
+<a class="indexterm" name="d0e14114"></a>
+<a class="indexterm" name="d0e14118"></a>
+
+The <code class="sgmltag-paramentity">%*.module;</code> parameter
+entities control <a href="ch01-x.html#s-ms" title="Marked sections">marked sections</a> around
+individual elements and their attribute lists.  For example, the
+element and attribute declarations for <a href="abbrev-x.html"><code class="sgmltag-element">Abbrev</code></a> occur
+within a marked section delimited by <a href="pe-module-x.html#abbrev.module.parament"><code class="sgmltag-paramentity">%abbrev.module;</code></a>.
+</p><p>
+If you want to remove or redefine an element or its attribute
+list, you generally want to change its module marked section to
+<code class="literal">IGNORE</code> and possibly add a new definition for it in
+your customization layer.
+</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%*.element;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14148"></a>
+<a class="indexterm" name="d0e14152"></a>
+The <code class="sgmltag-paramentity">%*.element;</code> parameter
+entities were introduced in DocBook <acronym class="acronym">V3.1</acronym>; they
+control marked sections around individual element declarations.
+</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%*.attlist;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14171"></a>
+<a class="indexterm" name="d0e14177"></a>
+<a class="indexterm" name="d0e14181"></a>
+
+The <code class="sgmltag-paramentity">%*.attlist;</code> parameter
+entities were introduced in DocBook <acronym class="acronym">V3.1</acronym>; they
+control marked sections around individual attribute list declarations.
+</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%*.inclusion;</code>, </span><span class="term"><code class="sgmltag-paramentity">%*.exclusion;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14203"></a>
+<a class="indexterm" name="d0e14211"></a>
+<a class="indexterm" name="d0e14217"></a>
+<a class="indexterm" name="d0e14223"></a>
+<a class="indexterm" name="d0e14227"></a>
+
+These parameter entities control the inclusion and exclusion
+markup in element declarations.
+</p><p>Changing these declarations allows you to make global changes to
+the inclusions and exclusions in the <acronym class="acronym">DTD</acronym>.
+</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%local.*;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e14243"></a>
+
+The <code class="sgmltag-paramentity">%local.*;</code> parameter
+entities are a local extension mechanism.  You can add markup to most
+entity declarations simply by declaring the appropriate local
+parameter entity.
+</p></dd></dl></div></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-genstruct"></a>The General Structure of<br>Customization Layers</h2></div></div></div><p>
+<a class="indexterm" name="d0e14257"></a>
+Although customization layers vary in complexity, most of them 
+have the same general structure as other customization layers of
+similar complexity.
+</p><p>
+In the most common case, you probably want to include the entire <acronym class="acronym">DTD</acronym>, but you
+want to make some small changes.  These customization layers tend
+to look like this:
+</p><div class="screenco"><pre class="screen"><span class="co"><img src="figures/callouts/1.png" alt="(1)"></span>
+ <em class="replaceable"><code>Overrides of Entity Declarations Here</code></em>
+<span class="co"><img src="figures/callouts/2.png" alt="(2)"></span>
+ &lt;!ENTITY % orig-docbook "-//OASIS//DTD DocBook V3.1//EN"&gt;
+ %orig-docbook;
+<span class="co"><img src="figures/callouts/3.png" alt="(3)"></span>
+ <em class="replaceable"><code>New/Modified Element and Attribute Declarations Here</code></em>
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><img src="figures/callouts/1.png" alt="1" border="0"></td><td valign="top" align="left"><p>
+Declare new values for parameter entities
+(<code class="sgmltag-paramentity">%local.*;</code>,
+<code class="sgmltag-paramentity">%*.element;</code>, 
+<code class="sgmltag-paramentity">%*.attlist;</code>)
+that you wish to modify.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><img src="figures/callouts/2.png" alt="2" border="0"></td><td valign="top" align="left"><p>
+Include the entire DocBook <acronym class="acronym">DTD</acronym> by parameter entity reference.
+<a class="indexterm" name="d0e14302"></a>
+
+</p></td></tr><tr><td width="5%" valign="top" align="left"><img src="figures/callouts/3.png" alt="3" border="0"></td><td valign="top" align="left"><p>
+Add new element and attribute declarations for any elements that you
+added to the <acronym class="acronym">DTD</acronym>.
+<a class="indexterm" name="d0e14314"></a>
+<a class="indexterm" name="d0e14322"></a>
+</p></td></tr></table></div></div><p>
+<a class="indexterm" name="d0e14332"></a>
+
+In slightly more complex customization layers, the changes that you
+want to make are influenced by the interactions between modules. In
+these cases, rather than including the whole <acronym class="acronym">DTD</acronym> at once, you
+include each of the modules separately, perhaps with entity or element
+declarations between them:
+</p><pre class="screen">
+<em class="replaceable"><code>Overrides of Most Entity Declarations Here</code></em>
+
+&lt;!ENTITY % orig-pool "-//OASIS//ELEMENTS DocBook Information Pool V3.1//EN"&gt;
+%orig-pool;
+
+<em class="replaceable"><code>Overrides of Document Hierarchy Entities Here</code></em>
+
+&lt;!ENTITY % orig-hier "-//OASIS//ELEMENTS DocBook Document Hierarchy V3.1//EN"&gt;
+%orig-hier;
+
+<em class="replaceable"><code>New/Modified Element and Attribute Declarations Here</code></em>
+
+&lt;!ENTITY % orig-notn "-//OASIS//ENTITIES DocBook Notations V3.1//EN"&gt;
+%orig-notn;
+
+&lt;!ENTITY % orig-cent "-//OASIS//ENTITIES DocBook Character Entities V3.1//EN"&gt;
+%orig-cent;
+
+&lt;!ENTITY % orig-gen  "-//OASIS//ENTITIES DocBook Additional General Entities V3.1//EN"&gt;
+%orig-gen;
+</pre><p>
+<a class="indexterm" name="d0e14354"></a>
+
+Finally, it's worth noting that in the rare case in which you
+need certain kinds of very simple, &#8220;<span class="quote">one-off</span>&#8221;
+customizations, you can do them in the document subset:
+</p><pre class="screen">
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<em class="replaceable"><code>Overrides of Entity Declarations Here</code></em>
+<em class="replaceable"><code>New/Modified Element and Attribute Declarations Here</code></em>
+]&gt;
+&lt;book&gt;...&lt;/book&gt;
+</pre></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-write"></a>Writing, Testing, and Using a Customization Layer</h2></div></div></div><p>
+<a class="indexterm" name="d0e14374"></a>
+<a class="indexterm" name="d0e14382"></a>
+The procedure for creating, testing, and using a customization layer
+is always about the same. In this section, we'll go through the
+process in some detail. The rest of the sections in this chapter
+describe a range of useful customization layers.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14390"></a>Deciding What to Change</h3></div></div></div><p>
+If you're considering writing a customization layer, there must be
+something that you want to change. Perhaps you want to add an element
+or attribute, remove one, or change some other aspect of the <acronym class="acronym">DTD</acronym>.
+</p><p>
+<a class="indexterm" name="d0e14400"></a>
+
+Adding an element, particularly an inline element, is one possibility.
+If you're writing documentation about an object-oriented system, you
+may have noticed that DocBook provides <a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a> but not
+<a href="methodname-x.html"><code class="sgmltag-element">MethodName</code></a>. Suppose you want to add
+<a href="methodname-x.html"><code class="sgmltag-element">MethodName</code></a>?
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14415"></a>Deciding How to Change a Customization Layer</h3></div></div></div><p>
+<a class="indexterm" name="d0e14420"></a>
+Figuring out what to change may be the hardest part of the process.
+The organization of the parameter entities is quite logical, and,
+bearing in mind the organization described in <a href="ch05-x.html#s-dbstruct" title="Understanding DocBook Structure">the section called &#8220;Understanding DocBook Structure&#8221;</a>, finding something similar usually
+provides a good model for new changes.
+</p><p>
+<a class="indexterm" name="d0e14432"></a>
+
+Two online resources may be useful. First, the 
+<a href="ref-paraments-x.html" title="DocBook Parameter Entity Reference">parameter entity reference section</a> of the
+online book provides more detail than the print version. Second, there
+is an alternate version of the book online that shows all of the element
+content models in terms of the parameter entities that define them, 
+rather than the &#8220;<span class="quote">flattened</span>&#8221; versions shown here.
+</p><p>
+<a class="indexterm" name="d0e14446"></a>
+One resource that may be useful is the alternate version of this
+book that shows all of the element content models in
+terms of the parameter entities which define them, rather than
+the &#8220;<span class="quote">flattened</span>&#8221; versions shown here. The alternate version
+is on the <acronym class="acronym">CD-ROM</acronym> and online at the book web site:
+<a href="http://docbook.org/" target="_top">http://docbook.org/</a>.
+</p><p>
+<a href="methodname-x.html"><code class="sgmltag-element">MethodName</code></a> is similar to <a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a>, so
+<a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a> is probably a good model.  <a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a>
+is an inline element, not a hierarchy element, so it's in
+<code class="filename">dbpool.mod</code>. Searching for &#8220;<span class="quote">classname</span>&#8221; in
+<code class="filename">dbpool.mod</code> reveals:
+</p><pre class="screen">
+&lt;!ENTITY % local.tech.char.class ""&gt;
+&lt;!ENTITY % tech.char.class
+        "Action|Application|<span class="bold"><strong>ClassName</strong></span>|Command|ComputerOutput
+        |Database|Email|EnVar|ErrorCode|ErrorName|ErrorType|Filename
+        |Function|GUIButton|GUIIcon|GUILabel|GUIMenu|GUIMenuItem
+        |GUISubmenu|Hardware|Interface|InterfaceDefinition|KeyCap
+        |KeyCode|KeyCombo|KeySym|Literal|Constant|Markup|MediaLabel
+        |MenuChoice|MouseButton|MsgText|Option|Optional|Parameter
+        |Prompt|Property|Replaceable|ReturnValue|SGMLTag|StructField
+        |StructName|Symbol|SystemItem|Token|Type|UserInput|VarName
+        %local.tech.char.class;"&gt;
+</pre><p>
+Searching further reveals the element and attribute declarations for
+<a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a>.
+</p><p>
+<a class="indexterm" name="d0e14496"></a>
+<a class="indexterm" name="d0e14500"></a>
+It would seem (and, in fact, it is the case) that adding
+<a href="methodname-x.html"><code class="sgmltag-element">MethodName</code></a> can be accomplished by adding it to the local
+extension mechanism for <a href="pe-class-x.html#tech.char.class.parament"><code class="sgmltag-paramentity">%tech.char.class;</code></a>, namely <a href="pe-l-class-x.html#local.tech.char.class.parament"><code class="sgmltag-paramentity">%local.tech.char.class;</code></a>, and adding element and
+attribute declarations for it. A customization layer that does this
+can be seen in <a href="ch05-x.html#ex-addmethodname" title="Example&nbsp;5.1.&nbsp;Adding MethodName with a Customization Layer">Example&nbsp;5.1, &#8220;Adding MethodName with a Customization Layer&#8221;</a>.
+<a class="indexterm" name="d0e14515"></a>
+
+</p><div class="example"><a name="ex-addmethodname"></a><p class="title"><b>Example&nbsp;5.1.&nbsp;Adding MethodName with a Customization Layer</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!ENTITY % local.tech.char.class "|MethodName"&gt;     <a name="add.methname.1"></a><img src="figures/callouts/1.png" alt="1" border="0">
+
+&lt;!-- load DocBook --&gt;                               <a name="add.methname.2"></a><img src="figures/callouts/2.png" alt="2" border="0">
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+
+&lt;!ELEMENT MethodName - - ((%smallcptr.char.mix;)+)  <a name="add.methname.3"></a><img src="figures/callouts/3.png" alt="3" border="0">&gt;
+&lt;!ATTLIST MethodName                                <a name="add.methname.4"></a><img src="figures/callouts/4.png" alt="4" border="0">
+        %common.attrib;
+        %classname.role.attrib;
+        %local.classname.attrib;
+&gt;
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#add.methname.1"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>Declare the appropriate
+parameter entity (these are described in <a href="ch05-x.html#dbparam" title="DocBook Parameterization">the section called &#8220;DocBook Parameterization&#8221;</a>).
+The declaration in your customization layer is encountered first, so
+it overrides the definition in the DocBook <acronym class="acronym">DTD</acronym> (all the local
+classes are defined as empty in the <acronym class="acronym">DTD</acronym>).</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#add.methname.2"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>Use a parameter entity to
+load the entire DocBook <acronym class="acronym">DTD</acronym>.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#add.methname.3"><img src="figures/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>Add an element declaration
+for the new element. The content model for this element is taken
+directly from the content model of <a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a>.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#add.methname.4"><img src="figures/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>Add an attribute list
+declaration for the new element. These are the same attributes as
+<a href="classname-x.html"><code class="sgmltag-element">ClassName</code></a>.
+</p></td></tr></table></div></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14562"></a>Using Your Customization Layer</h3></div></div></div><p>
+<a class="indexterm" name="d0e14567"></a>
+<a class="indexterm" name="d0e14575"></a>
+
+In order to use the new customization layer, you must save it in a
+file, for example <code class="filename">mydocbk.dtd</code>, and then you must use the
+new <acronym class="acronym">DTD</acronym> in your document.
+</p><p>
+The simplest way to use the new <acronym class="acronym">DTD</acronym> is to point to it with a system
+identifier:
+<a class="indexterm" name="d0e14594"></a>
+<a class="indexterm" name="d0e14598"></a>
+</p><pre class="screen">
+
+&lt;!DOCTYPE chapter SYSTEM "/path/to/mydocbk.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;My Chapter&lt;/title&gt;
+&lt;para&gt;
+The Java &lt;classname&gt;Math&lt;/classname&gt; class provides a 
+&lt;methodname&gt;abs&lt;/methodname&gt; method to compute absolute value of a number.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+</pre><p>
+<a class="indexterm" name="d0e14606"></a>
+If you plan to use your customization layer in many documents, or
+exchange it with interchange partners, consider giving your <acronym class="acronym">DTD</acronym> its
+own public identifier, as described in <a href="ch05-x.html#s-notdocbook" title="If You Change DocBook, It's Not DocBook Anymore!">the section called &#8220;If You Change DocBook, It's Not DocBook Anymore!&#8221;</a>
+</p><p>
+<a class="indexterm" name="d0e14621"></a>
+
+In order to use the new public identifier, you must add it to your
+catalog:
+<pre class="screen">
+PUBLIC "-//Your Organization//DTD DocBook V3.1-Based Extension V1.0//EN"
+       "/share/sgml/mydocbk.dtd"
+</pre>
+and use that public identifier in your documents:
+</p><pre class="screen">
+
+&lt;!DOCTYPE chapter 
+  PUBLIC "-//Your Organization//DTD DocBook V3.1-Based Extension V1.0//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;My Chapter&lt;/title&gt;
+&lt;para&gt;
+The Java &lt;classname&gt;Math&lt;/classname&gt; class provides a 
+&lt;methodname&gt;abs&lt;/methodname&gt; method to compute absolute value of a number.
+&lt;/para&gt;
+&lt;/chapter&gt;
+
+</pre><p>
+<a class="indexterm" name="d0e14634"></a>
+<a class="indexterm" name="d0e14642"></a>
+If you're using <acronym class="acronym">XML</acronym>, remember that you must provide a system
+identifier that satisfies the requirements of a Uniform Resource
+Identifier (<acronym class="acronym">URI</acronym>).
+</p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="cust.test"></a>Testing Your Work</h2></div></div></div><p>
+<a class="indexterm" name="d0e14659"></a>
+<a class="indexterm" name="d0e14667"></a>
+<a class="indexterm" name="d0e14673"></a>
+
+<acronym class="acronym">DTD</acronym>s, by their nature, contain many complex, interrelated elements.
+Whenever you make a change to the <acronym class="acronym">DTD</acronym>, it's always wise to use a
+validating parser to double-check your work. A parser like
+<span><strong class="command">nsgmls</strong></span> from James Clark's
+<span class="application"><acronym class="acronym">SP</acronym></span> can identify elements
+(attributes, parameter entities) that are declared but unused, as well
+as ones that are used but undeclared.
+</p><p>
+
+A comprehensive test can be accomplished with
+<span><strong class="command">nsgmls</strong></span> using the <code class="option">-wall</code>
+option. Create a simple test document and run:
+</p><pre class="screen">
+nsgmls <a name="nsgmls.opt.1"></a><img src="figures/callouts/1.png" alt="1" border="0">-sv <a name="nsgmls.opt.2"></a><img src="figures/callouts/2.png" alt="2" border="0">-wall test.sgm
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#nsgmls.opt.1"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>
+
+<a class="indexterm" name="d0e14710"></a>
+<a class="indexterm" name="d0e14714"></a>
+
+The <code class="option">-s</code> option
+tells <span><strong class="command">nsgmls</strong></span> to suppress its normal output (it will
+still show errors, if there are any). The <code class="option">-v</code> option
+tells <span><strong class="command">nsgmls</strong></span> to print its version number; this
+ensures that you always get <span class="emphasis"><em>some</em></span> output, even if
+there are no errors.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#nsgmls.opt.2"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>
+<a class="indexterm" name="d0e14738"></a>
+<a class="indexterm" name="d0e14744"></a>
+<a class="indexterm" name="d0e14748"></a>
+
+The <code class="option">-wall</code>
+option tells <span><strong class="command">nsgmls</strong></span> to provide a comprehensive list
+of all errors and warnings.  You can use less verbose, and more
+specific options instead; for example, <code class="option">-wundefined</code> to
+flag undefined elements or <code class="option">-wunused-param</code> to warn you
+about unused parameter entities. The <span><strong class="command">nsgmls</strong></span>
+documentation provides a complete list of warning types.</p></td></tr></table></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14769"></a>DocBook <acronym class="acronym">V3.1</acronym> Warnings</h3></div></div></div><p>
+<a class="indexterm" name="d0e14777"></a>
+If you run the preceding command over DocBook <acronym class="acronym">V3.1</acronym>,
+you'll discover one warning generated by the <acronym class="acronym">DTD</acronym>:
+</p><pre class="screen">
+nsgmls:I: SP version "1.3"
+nsgmls:cals-tbl.dtd:314:37:W: content model is mixed but does not allow #PCDATA everywhere
+</pre><p>
+<a class="indexterm" name="d0e14793"></a>
+
+This is not truly an error in the <acronym class="acronym">DTD</acronym>, and can safely be ignored.
+The warning is caused by &#8220;<span class="quote">pernicious mixed content</span>&#8221; in
+the content model of DocBook's <a href="entry-x.html"><code class="sgmltag-element">Entry</code></a> element.  See
+the <a href="entry-x.html"><code class="sgmltag-element">Entry</code></a> reference page for a complete discussion.
+</p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-remvelem"></a>Removing Elements</h2></div></div></div><p>
+<a class="indexterm" name="d0e14814"></a>
+
+DocBook has a large number of elements. In some authoring
+environments, it may be useful or necessary to remove some of these
+elements.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14820"></a>Removing MsgSet</h3></div></div></div><p>
+<a class="indexterm" name="d0e14825"></a>
+<a href="msgset-x.html"><code class="sgmltag-element">MsgSet</code></a> is a favorite target. It has a complex
+internal structure designed for describing interrelated error
+messages, especially on systems that may exhibit messages from several
+different components. Many technical documents can do without it, and
+removing it leaves one less complexity to explain to your authors.
+</p><p>
+<a href="ch05-x.html#ex.remvmsgset" title="Example&nbsp;5.2.&nbsp;Removing MsgSet">Example&nbsp;5.2, &#8220;Removing MsgSet&#8221;</a> shows a customization layer that removes the
+<a href="msgset-x.html"><code class="sgmltag-element">MsgSet</code></a> element from DocBook:
+</p><div class="example"><a name="ex.remvmsgset"></a><p class="title"><b>Example&nbsp;5.2.&nbsp;Removing MsgSet</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!ENTITY % compound.class "Procedure|SideBar"&gt; <a name="rmv.msgset.1"></a><img src="figures/callouts/1.png" alt="1" border="0">
+&lt;!ENTITY % msgset.content.module "IGNORE"&gt;     <a name="rmv.msgset.2"></a><img src="figures/callouts/2.png" alt="2" border="0">
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#rmv.msgset.1"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>Remove
+<a href="msgset-x.html"><code class="sgmltag-element">MsgSet</code></a> from the <a href="pe-class-x.html#compound.class.parament"><code class="sgmltag-paramentity">%compound.class;</code></a>. This is the only place
+in the <acronym class="acronym">DTD</acronym> where <a href="msgset-x.html"><code class="sgmltag-element">MsgSet</code></a> is referenced.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#rmv.msgset.2"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>Exclude the definition of
+<a href="msgset-x.html"><code class="sgmltag-element"> MsgSet</code></a> and all of its subelements from the
+<acronym class="acronym">DTD</acronym>.</p></td></tr></table></div></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14875"></a>Removing Computer Inlines</h3></div></div></div><p>
+<a class="indexterm" name="d0e14880"></a>
+<a class="indexterm" name="d0e14886"></a>
+<a class="indexterm" name="d0e14892"></a>
+
+DocBook contains a large number of computer inlines. The DocBook
+inlines define a domain-specific vocabulary.  If you're working in
+another domain, many of them may be unnecessary. You can remove a
+bunch of them by redefining the <a href="pe-class-x.html#tech.char.class.parament"><code class="sgmltag-paramentity">%tech.char.class;</code></a> parameter entity and
+then excluding the declarations for the elements removed. The initial
+definition of <a href="pe-class-x.html#tech.char.class.parament"><code class="sgmltag-paramentity">%tech.char.class;</code></a> is:
+</p><pre class="screen">
+&lt;!ENTITY % tech.char.class
+    "Action|Application|ClassName|Command|ComputerOutput
+    |Database|Email|EnVar|ErrorCode|ErrorName|ErrorType|Filename
+    |Function|GUIButton|GUIIcon|GUILabel|GUIMenu|GUIMenuItem
+    |GUISubmenu|Hardware|Interface|InterfaceDefinition|KeyCap
+    |KeyCode|KeyCombo|KeySym|Literal|Markup|MediaLabel|MenuChoice
+    |MouseButton|MsgText|Option|Optional|Parameter|Prompt|Property
+    |Replaceable|ReturnValue|SGMLTag|StructField|StructName
+    |Symbol|SystemItem|Token|Type|UserInput
+    %local.tech.char.class;"&gt;
+</pre><p>
+When examining this list, it seems that you can delete all of the
+inlines except, perhaps, <a href="application-x.html"><code class="sgmltag-element">Application</code></a>,
+<a href="command-x.html"><code class="sgmltag-element">Command</code></a>, <a href="email-x.html"><code class="sgmltag-element">Email</code></a>,
+<a href="filename-x.html"><code class="sgmltag-element">Filename</code></a>, <a href="literal-x.html"><code class="sgmltag-element">Literal</code></a>,
+<a href="replaceable-x.html"><code class="sgmltag-element">Replaceable</code></a>, <a href="symbol-x.html"><code class="sgmltag-element"> Symbol</code></a>, and
+<a href="systemitem-x.html"><code class="sgmltag-element">SystemItem</code></a>. The following customization layer
+removes them.
+</p><div class="example"><a name="d0e14932"></a><p class="title"><b>Example&nbsp;5.3.&nbsp;Removing Computer Inlines</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!ENTITY % tech.char.class
+        "Application|Command|Email|Filename|Literal
+        |Replaceable|Symbol|SystemItem"&gt;
+&lt;!ENTITY % action.module "IGNORE"&gt;
+&lt;!ENTITY % classname.module "IGNORE"&gt;
+&lt;!ENTITY % computeroutput.module "IGNORE"&gt;
+&lt;!ENTITY % database.module "IGNORE"&gt;
+&lt;!ENTITY % envar.module "IGNORE"&gt;
+&lt;!ENTITY % errorcode.module "IGNORE"&gt;
+&lt;!ENTITY % errorname.module "IGNORE"&gt;
+&lt;!ENTITY % errortype.module "IGNORE"&gt;
+&lt;!--&lt;!ENTITY % function.module "IGNORE"&gt;--&gt;
+&lt;!ENTITY % guibutton.module "IGNORE"&gt;
+&lt;!ENTITY % guiicon.module "IGNORE"&gt;
+&lt;!ENTITY % guilabel.module "IGNORE"&gt;
+&lt;!ENTITY % guimenu.module "IGNORE"&gt;
+&lt;!ENTITY % guimenuitem.module "IGNORE"&gt;
+&lt;!ENTITY % guisubmenu.module "IGNORE"&gt;
+&lt;!ENTITY % hardware.module "IGNORE"&gt;
+&lt;!ENTITY % interface.module "IGNORE"&gt;
+&lt;!ENTITY % interfacedefinition.module "IGNORE"&gt;
+&lt;!--&lt;!ENTITY % keycap.module "IGNORE"&gt;--&gt;
+&lt;!ENTITY % keycode.module "IGNORE"&gt;
+&lt;!--&lt;!ENTITY % keycombo.module "IGNORE"&gt;--&gt;
+&lt;!--&lt;!ENTITY % keysym.module "IGNORE"&gt;--&gt;
+&lt;!ENTITY % markup.module "IGNORE"&gt;
+&lt;!ENTITY % medialabel.module "IGNORE"&gt;
+&lt;!ENTITY % menuchoice.module "IGNORE"&gt;
+&lt;!--&lt;!ENTITY % mousebutton.module "IGNORE"&gt;--&gt;
+&lt;!--&lt;!ENTITY % msgtext.module "IGNORE"&gt;--&gt;
+&lt;!--&lt;!ENTITY % option.module "IGNORE"&gt;--&gt;
+&lt;!--&lt;!ENTITY % optional.module "IGNORE"&gt;--&gt;
+&lt;!--&lt;!ENTITY % parameter.module "IGNORE"&gt;--&gt;
+&lt;!ENTITY % prompt.module "IGNORE"&gt;
+&lt;!ENTITY % property.module "IGNORE"&gt;
+&lt;!ENTITY % returnvalue.module "IGNORE"&gt;
+&lt;!ENTITY % sgmltag.module "IGNORE"&gt;
+&lt;!ENTITY % structfield.module "IGNORE"&gt;
+&lt;!ENTITY % structname.module "IGNORE"&gt;
+&lt;!ENTITY % token.module "IGNORE"&gt;
+&lt;!ENTITY % type.module "IGNORE"&gt;
+&lt;!ENTITY % userinput.module "IGNORE"&gt;
+&lt;!-- load DocBook --&gt; 
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+</pre></div></div><br class="example-break"><p>
+Initially we removed several more elements from <a href="pe-class-x.html#tech.char.class.parament"><code class="sgmltag-paramentity">%tech.char.class;</code></a> (<a href="pe-module-x.html#function.module.parament"><code class="sgmltag-paramentity">%function.module;</code></a>, <a href="pe-module-x.html#keycap.module.parament"><code class="sgmltag-paramentity">%keycap.module;</code></a>), but using the testing procedure
+described in <a href="ch05-x.html#cust.test" title="Testing Your Work">the section called &#8220;Testing Your Work&#8221;</a>, we discovered that
+these elements are used in other content models.  Because they are
+used in other content modules, they cannot simply be removed from the
+<acronym class="acronym">DTD</acronym> by deleting them from <a href="pe-class-x.html#tech.char.class.parament"><code class="sgmltag-paramentity">%
+tech.char.class;</code></a>.  Even though they can't be deleted
+outright, we've taken them out of most inline contexts.
+</p><p>
+<a class="indexterm" name="d0e14958"></a>
+<a class="indexterm" name="d0e14964"></a>
+<a class="indexterm" name="d0e14970"></a>
+It's likely that a customization layer that removed this many
+technical inlines would also remove some larger technical structures
+(<a href="msgset-x.html"><code class="sgmltag-element">MsgSet</code></a>, <a href="funcsynopsis-x.html"><code class="sgmltag-element">FuncSynopsis</code></a>), which
+allows you to remove additional elements from the <acronym class="acronym">DTD</acronym>.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e14985"></a>Removing Synopsis Elements</h3></div></div></div><p>
+Another possibility is removing the complex Synopsis elements. The
+customization layer in <a href="ch05-x.html#ex.remvcmdsyn" title="Example&nbsp;5.4.&nbsp;Removing CmdSynopsis and FuncSynopsis">Example&nbsp;5.4, &#8220;Removing CmdSynopsis and FuncSynopsis&#8221;</a> removes
+<a href="cmdsynopsis-x.html"><code class="sgmltag-element">CmdSynopsis</code></a> and <a href="funcsynopsis-x.html"><code class="sgmltag-element">FuncSynopsis</code></a>.
+</p><div class="example"><a name="ex.remvcmdsyn"></a><p class="title"><b>Example&nbsp;5.4.&nbsp;Removing CmdSynopsis and FuncSynopsis</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!ENTITY % synop.class "Synopsis"&gt;
+&lt;!-- Instead of "Synopsis|CmdSynopsis|FuncSynopsis %local.synop.class;" --&gt;
+
+&lt;!ENTITY % funcsynopsis.content.module "IGNORE"&gt;
+&lt;!ENTITY % cmdsynsynopsis.content.module "IGNORE"&gt;
+
+&lt;!-- load DocBook --&gt; 
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+</pre></div></div><br class="example-break"><p>
+<a class="indexterm" name="d0e15005"></a>
+
+Completely removing all Synopsis elements would require a more
+extensive customization. You can't make any of the <code class="sgmltag-paramentity">%*.class;</code> parameter entities completely empty
+without changing all of the parameter entities that use them. See
+<a href="ch05-x.html#sect.remv.synop.class" title="Removing an Entire Class">the section called &#8220;Removing an Entire Class&#8221;</a>.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e15016"></a>Removing Sectioning Elements</h3></div></div></div><p>
+<a class="indexterm" name="d0e15021"></a>
+
+Perhaps you want to restrict your authors to only three levels of
+sectioning.  To do that, you must remove the <a href="sect4-x.html"><code class="sgmltag-element">Sect4</code></a>
+and <code class="sgmltag-element">Sect5 </code> elements, as shown in <a href="ch05-x.html#ex.remvsect4" title="Example&nbsp;5.5.&nbsp;Removing Sect4 and Sect5 Elements&#xA;">Example&nbsp;5.5, &#8220;Removing <a href="sect4-x.html"><code class="sgmltag-element">Sect4</code></a> and <a href="sect5-x.html"><code class="sgmltag-element">Sect5</code></a> Elements
+&#8221;</a>.
+</p><div class="example"><a name="ex.remvsect4"></a><p class="title"><b>Example&nbsp;5.5.&nbsp;Removing <a href="sect4-x.html"><code class="sgmltag-element">Sect4</code></a> and <a href="sect5-x.html"><code class="sgmltag-element">Sect5</code></a> Elements
+</b></p><div class="example-contents"><pre class="programlisting">&lt;!ENTITY % sect3.module "IGNORE"&gt;
+&lt;!ENTITY % sect4.module "IGNORE"&gt;
+&lt;!ENTITY % sect5.module "IGNORE"&gt;
+
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+
+&lt;!ENTITY % local.sect3.attrib ""&gt;
+&lt;!ENTITY % sect3.role.attrib "%role.attrib;"&gt;
+&lt;!ELEMENT Sect3 - O (Sect3Info?, (%sect.title.content;), (%nav.class;)*,
+		(((%divcomponent.mix;)+, 
+		((%refentry.class;)* | SimpleSect*))
+		| (%refentry.class;)+ | SimpleSect+), (%nav.class;)*)&gt;
+&lt;!ATTLIST Sect3
+		--
+		Renderas: Indicates the format in which the heading should
+		appear
+		--
+		Renderas	(Sect1
+				|Sect2
+				|Sect4
+				|Sect5)		#IMPLIED
+		%label.attrib;
+		%status.attrib;
+		%common.attrib;
+		%sect3.role.attrib;
+		%local.sect3.attrib;
+&gt;
+
+
+
+</pre></div></div><br class="example-break"><p>
+In order to completely remove an element that isn't in the information
+pool, it is usually necessary to redefine the elements that include
+it. In this case, because we're removing the <a href="sect4-x.html"><code class="sgmltag-element">Sect4</code></a>
+element, we must redefine the <a href="sect3-x.html"><code class="sgmltag-element">Sect3</code></a> element that
+uses it.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="s2-remvadmon"></a>Removing Admonitions from Table Entries</h3></div></div></div><p>
+<a class="indexterm" name="d0e15059"></a>
+<a class="indexterm" name="d0e15065"></a>
+
+All of the customization layers that we've examined so far have been
+fairly straightforward. This section describes a much more complex
+customization layer. Back in <a href="ch05-x.html#db-modules" title="DocBook Modules">the section called &#8220;DocBook Modules&#8221;</a> we
+mentioned that several additional modules existed for
+&#8220;<span class="quote">redeclaration.</span>&#8221; The customization layer developed in this
+section cannot be written without them.
+</p><p>
+<a class="indexterm" name="d0e15078"></a>
+<a class="indexterm" name="d0e15084"></a>
+
+The goal is to remove admonitions (<a href="warning-x.html"><code class="sgmltag-element">Warning</code></a>,
+<a href="caution-x.html"><code class="sgmltag-element">Caution</code></a>, <a href="note-x.html"><code class="sgmltag-element">Note</code></a>) from table
+entries.
+</p><p>
+<a href="ch05-x.html#ex.remvadmon.1" title="Example&nbsp;5.6.&nbsp;Removing Admonitions (First Attempt: Incorrect)">Example&nbsp;5.6, &#8220;Removing Admonitions (First Attempt: Incorrect)&#8221;</a> is a straightforward, and incorrect, attempt.
+<div class="example"><a name="ex.remvadmon.1"></a><p class="title"><b>Example&nbsp;5.6.&nbsp;Removing Admonitions (First Attempt: Incorrect)</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!-- THIS CUSTOMIZATION LAYER CONTAINS ERRORS --&gt;
+&lt;!ENTITY % tabentry.mix
+        "%list.class;
+        |%linespecific.class;
+        |%para.class;        |Graphic
+        %local.tabentry.mix;"&gt;
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+</pre></div></div><br class="example-break">
+Because the parameter entity <a href="pe-cals-x.html#tabentry.mix.parament"><code class="sgmltag-paramentity">%tabentry.mix;</code></a> defines the mixture of elements
+allowed in table entries, you should remove admonitions.
+<a class="indexterm" name="d0e15110"></a>
+<a class="indexterm" name="d0e15116"></a>
+
+</p><p>
+If you attempt to parse this <acronym class="acronym">DTD</acronym>, you'll find that the declaration
+of <a href="pe-cals-x.html#tabentry.mix.parament"><code class="sgmltag-paramentity">%tabentry.mix;</code></a> contains errors. While
+you can redefine parameter entities, you cannot make reference to
+entities that have not been defined yet, so the use of <a href="pe-class-x.html#list.class.parament"><code class="sgmltag-paramentity">%list.class;</code></a>, <a href="pe-class-x.html#linespecific.class.parament"><code class="sgmltag-paramentity">%linespecific.class;</code></a>, and so on, aren't allowed.
+</p><p>
+Your second attempt might look like <a href="ch05-x.html#ex.remvadmon.2" title="Example&nbsp;5.7.&nbsp;Removing Admonitions (Second Attempt: Incorrect)">Example&nbsp;5.7, &#8220;Removing Admonitions (Second Attempt: Incorrect)&#8221;</a>.
+<div class="example"><a name="ex.remvadmon.2"></a><p class="title"><b>Example&nbsp;5.7.&nbsp;Removing Admonitions (Second Attempt: Incorrect)</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!-- THIS CUSTOMIZATION LAYER DOESN'T WORK --&gt;
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+&lt;!ENTITY % tabentry.mix
+        "%list.class;
+        |%linespecific.class;
+        |%para.class;        |Graphic
+        %local.tabentry.mix;"&gt;
+</pre></div></div><br class="example-break">
+Declaring <a href="pe-cals-x.html#tabentry.mix.parament"><code class="sgmltag-paramentity">%tabentry.mix;</code></a> after the <acronym class="acronym">DTD</acronym>
+has been loaded removes the errors.
+</p><p>
+This example contains no errors, but it also doesn't have any effect.
+Remember, only the first entity declaration counts, so the declaration
+of <a href="pe-cals-x.html#tabentry.mix.parament"><code class="sgmltag-paramentity">%tabentry.mix;</code></a> in
+<code class="filename">dbpool.mod</code> is the one used, not your
+redeclaration.
+</p><p>
+<a class="indexterm" name="d0e15160"></a>
+<a class="indexterm" name="d0e15164"></a>
+
+The only way to fix this problem is to make use of one of the redeclaration
+placeholders in DocBook.
+</p><p>
+Redeclaration placeholders are spots in which you can insert
+definitions into the middle of the <acronym class="acronym">DTD</acronym>. There are four redeclaration
+placeholders in DocBook:
+<a class="indexterm" name="d0e15175"></a>
+
+<div class="variablelist"><dl><dt><span class="term"><code class="sgmltag-paramentity">%rdbmods;</code></span></dt><dd><p>Inserted in <code class="filename">docbook.dtd</code>, between
+<code class="filename">dbpool.mod</code> and
+<code class="filename">dbhier.mod</code>. This placeholder is controlled by the
+<a href="pe-module-x.html#intermod.redecl.module.parament"><code class="sgmltag-paramentity">%intermod.redecl.module;</code></a> marked
+section.</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%rdbpool;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e15206"></a>
+
+Inserted in the middle of <code class="filename">dbpool.mod</code>,
+between the <code class="sgmltag-paramentity">%*.class;</code> and <code class="sgmltag-paramentity">%*.mix;</code> entity declarations. This placeholder is
+controlled by the <a href="pe-dbmodules-x.html#dbpool.redecl.module.parament"><code class="sgmltag-paramentity">%dbpool.redecl.module;</code></a>
+marked section.</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%rdbhier;</code></span></dt><dd><p>
+<a class="indexterm" name="d0e15229"></a>
+
+Inserted in the middle of <code class="filename">dbhier.mod</code>,
+between the <code class="sgmltag-paramentity">%*.class;</code> and <code class="sgmltag-paramentity">%*.mix;</code> entity declarations. This placeholder is
+controlled by the <a href="pe-dbmodules-x.html#dbhier.redecl.module.parament"><code class="sgmltag-paramentity">%dbhier.redecl.module;</code></a> marked
+section.</p></dd><dt><span class="term"><code class="sgmltag-paramentity">%rdbhier2;</code></span></dt><dd><p>Also inserted into <code class="filename">dbhier.mod</code>, after the
+<code class="sgmltag-paramentity">%*.mix;</code> entity declarations. This
+placeholder is controlled by the <a href="pe-dbmodules-x.html#dbhier.redecl2.module.parament"><code class="sgmltag-paramentity">%dbhier.redecl2.module;</code></a> marked
+section.</p></dd></dl></div></p><p>Use the redeclaration placeholder that it occurs nearest to, but
+before the entity that you want to redeclare. In our case, this is
+<code class="sgmltag-paramentity">%rdbpool;</code>, as seen in <a href="ch05-x.html#ex.remvadmon.3" title="Example&nbsp;5.8.&nbsp;Removing Admonitions (Third Attempt: Correct, if confusing)">Example&nbsp;5.8, &#8220;Removing Admonitions (Third Attempt: Correct, if confusing)&#8221;</a>.
+<div class="example"><a name="ex.remvadmon.3"></a><p class="title"><b>Example&nbsp;5.8.&nbsp;Removing Admonitions (Third Attempt: Correct, if confusing)</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!ENTITY % dbpool.redecl.module "INCLUDE"&gt;
+&lt;!ENTITY % rdbpool
+'&lt;!ENTITY % local.tabentry.mix ""&gt;
+&lt;!ENTITY % tabentry.mix
+        "&amp;#37;list.class;
+        |&amp;#37;linespecific.class;
+        |&amp;#37;para.class;        |Graphic
+        &amp;#37;local.tabentry.mix;"&gt;'&gt;
+
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+</pre></div></div><br class="example-break">
+</p><p>
+<a class="indexterm" name="d0e15276"></a>
+
+<a href="ch05-x.html#ex.remvadmon.3" title="Example&nbsp;5.8.&nbsp;Removing Admonitions (Third Attempt: Correct, if confusing)">Example&nbsp;5.8, &#8220;Removing Admonitions (Third Attempt: Correct, if confusing)&#8221;</a> uses numeric character entity
+references to escape the <code class="literal">%</code> signs in the entity
+declarations and nests an entity declaration in another parameter
+entity. All of this is perfectly legal, but a bit confusing.  A
+clearer solution, and the only practical solution if you're doing
+anything more than a single redeclaration, is to place the new
+declarations in another file and include them in your customization
+layer by reference, like this:
+</p><div class="example"><a name="ex.remvadmon.4"></a><p class="title"><b>Example&nbsp;5.9.&nbsp;Removing Admonitions (Fourth Attempt: Correct)</b></p><div class="example-contents"><p>In your customization layer:</p><pre class="programlisting">
+
+&lt;!ENTITY % dbpool.redecl.module "INCLUDE"&gt;
+&lt;!ENTITY % rdbpool SYSTEM "rdbpool.mod"&gt;
+
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+
+</pre><p>In <code class="filename">rdbpool.mod</code>:</p><pre class="programlisting">&lt;!ENTITY % local.tabentry.mix ""&gt;
+&lt;!ENTITY % tabentry.mix
+        "%list.class;
+        |%linespecific.class;
+        |%para.class;        |Graphic
+        %local.tabentry.mix;"&gt;</pre></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sect.remv.synop.class"></a>Removing an Entire Class</h3></div></div></div><p>
+<a class="indexterm" name="d0e15304"></a>
+<a class="indexterm" name="d0e15310"></a>
+<a class="indexterm" name="d0e15316"></a>
+
+Perhaps the modification that you want to make is to completely remove
+an entire class of elements. (If you have no need for synopsis
+elements of any sort, why not remove them?) In order to remove an
+entire class of elements, you must not only redefine the class as
+empty, but you must also redefine all of the parameter entities that
+use that class. The customization layer below completely removes the
+<a href="pe-class-x.html#synop.class.parament"><code class="sgmltag-paramentity">% synop.class;</code></a> from DocBook. It
+requires a customization layer, shown in <a href="ch05-x.html#ex.remvclass" title="Example&nbsp;5.10.&nbsp;Removing %synop.class;">Example&nbsp;5.10, &#8220;Removing <a href="pe-class-x.html#synop.class.parament"><code class="sgmltag-paramentity">%synop.class;</code></a>&#8221;</a>, that includes both a redeclaration module in
+<code class="filename">dbpool.mod</code> and a redeclaration module in
+<code class="filename">dbhier.mod</code>.
+<a class="indexterm" name="d0e15333"></a>
+</p><div class="example"><a name="ex.remvclass"></a><p class="title"><b>Example&nbsp;5.10.&nbsp;Removing <a href="pe-class-x.html#synop.class.parament"><code class="sgmltag-paramentity">%synop.class;</code></a></b></p><div class="example-contents"><p>In the customization layer:</p><pre class="programlisting">&lt;!ENTITY % synop.class ""&gt;
+
+&lt;!ENTITY % dbpool.redecl.module "INCLUDE"&gt;
+&lt;!ENTITY % rdbpool SYSTEM "remv.synop.class.rdbpool.mod"&gt;
+
+&lt;!ENTITY % dbhier.redecl.module "INCLUDE"&gt;
+&lt;!ENTITY % rdbhier SYSTEM "remv.synop.class.rdbhier.mod"&gt;
+
+&lt;!-- load DocBook --&gt; 
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt; 
+%DocBookDTD;
+
+</pre><p>In <code class="filename">remv.synop.class.rdbpool.mod</code>:</p><pre class="programlisting">&lt;!ENTITY % local.component.mix ""&gt;
+&lt;!ENTITY % component.mix
+		"%list.class;		|%admon.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|%formal.class;		|%compound.class;
+		|%genobj.class;		|%descobj.class;
+		%local.component.mix;"&gt;
+
+&lt;!ENTITY % local.sidebar.mix ""&gt;
+&lt;!ENTITY % sidebar.mix
+		"%list.class;		|%admon.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|%formal.class;		|Procedure
+		|%genobj.class;
+		%local.sidebar.mix;"&gt;
+
+&lt;!ENTITY % local.footnote.mix ""&gt;
+&lt;!ENTITY % footnote.mix
+		"%list.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		%local.footnote.mix;"&gt;
+
+&lt;!ENTITY % local.example.mix ""&gt;
+&lt;!ENTITY % example.mix
+		"%list.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		%local.example.mix;"&gt;
+
+&lt;!ENTITY % local.admon.mix ""&gt;
+&lt;!ENTITY % admon.mix
+		"%list.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|%formal.class;		|Procedure|Sidebar
+		|Anchor|BridgeHead|Comment
+		%local.admon.mix;"&gt;
+
+&lt;!ENTITY % local.figure.mix ""&gt;
+&lt;!ENTITY % figure.mix
+		"%linespecific.class;
+					|%informal.class;
+		%local.figure.mix;"&gt;
+
+&lt;!ENTITY % local.glossdef.mix ""&gt;
+&lt;!ENTITY % glossdef.mix
+		"%list.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|%formal.class;
+		|Comment
+		%local.glossdef.mix;"&gt;
+
+&lt;!ENTITY % local.para.char.mix ""&gt;
+&lt;!ENTITY % para.char.mix
+		"#PCDATA
+		|%xref.char.class;	|%gen.char.class;
+		|%link.char.class;	|%tech.char.class;
+		|%base.char.class;	|%docinfo.char.class;
+		|%other.char.class;	|%inlineobj.char.class;
+		%local.para.char.mix;"&gt;
+</pre><p>In <code class="filename">remv.synop.class.rdbhier.mod</code>:</p><pre class="programlisting">&lt;!ENTITY % local.divcomponent.mix ""&gt;
+&lt;!ENTITY % divcomponent.mix
+		"%list.class;		|%admon.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|%formal.class;		|%compound.class;
+		|%genobj.class;		|%descobj.class;
+		%local.divcomponent.mix;"&gt;
+
+&lt;!ENTITY % local.refcomponent.mix ""&gt;
+&lt;!ENTITY % refcomponent.mix
+		"%list.class;		|%admon.class;
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|%formal.class;		|%compound.class;
+		|%genobj.class;		|%descobj.class;
+		%local.refcomponent.mix;"&gt;
+
+&lt;!ENTITY % local.indexdivcomponent.mix ""&gt;
+&lt;!ENTITY % indexdivcomponent.mix
+		"ItemizedList|OrderedList|VariableList|SimpleList
+		|%linespecific.class;
+		|%para.class;		|%informal.class;
+		|Anchor|Comment
+		|%link.char.class;
+		%local.indexdivcomponent.mix;"&gt;
+</pre></div></div><br class="example-break"></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-remvattr"></a>Removing Attributes</h2></div></div></div><p>Just as there may be more elements than you need, there may be more
+attributes.</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e15365"></a>Removing an Attribute</h3></div></div></div><p>
+<a class="indexterm" name="d0e15370"></a>
+<a class="indexterm" name="d0e15376"></a>
+
+Suppose you want to remove the <code class="sgmltag-attribute">RenderAs</code> attribute from the
+<a href="sect1-x.html"><code class="sgmltag-element">Sect1</code></a> element. <code class="sgmltag-attribute">RenderAs</code> allows the author to
+&#8220;<span class="quote">cheat</span>&#8221; in the presentation of hierarchy by specifying
+that the stylesheet should render a <a href="sect1-x.html"><code class="sgmltag-element">Sect1</code></a> as
+something else: a <a href="sect3-x.html"><code class="sgmltag-element">Sect3</code></a>, perhaps. <a href="ch05-x.html#ex.remvrendas" title="Example&nbsp;5.11.&nbsp;Removing RenderAs from Sect1">Example&nbsp;5.11, &#8220;Removing RenderAs from Sect1&#8221;</a> details the removal of <code class="sgmltag-attribute">RenderAs</code>.
+</p><div class="example"><a name="ex.remvrendas"></a><p class="title"><b>Example&nbsp;5.11.&nbsp;Removing RenderAs from Sect1</b></p><div class="example-contents"><pre class="programlisting">
+&lt;!ENTITY % sect1.module "IGNORE"&gt;                <a name="remvattr.1"></a><img src="figures/callouts/1.png" alt="1" border="0">
+
+&lt;!-- load DocBook --&gt;                            <a name="remvattr.2"></a><img src="figures/callouts/2.png" alt="2" border="0">
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+
+&lt;!ENTITY % local.sect1.attrib ""&gt;                <a name="remvattr.3"></a><img src="figures/callouts/3.png" alt="3" border="0">
+&lt;!ENTITY % sect1.role.attrib "%role.attrib;"&gt;    <a name="remvattr.4"></a><img src="figures/callouts/4.png" alt="4" border="0">
+&lt;!ELEMENT Sect1 - O (Sect1Info?, (%sect.title.content;), (%nav.class;)*,  <a name="remvattr.5"></a><img src="figures/callouts/5.png" alt="5" border="0">
+        (((%divcomponent.mix;)+, 
+        ((%refentry.class;)* | Sect2* | SimpleSect*))
+        | (%refentry.class;)+ | Sect2+ | SimpleSect+), (%nav.class;)*)
+        +(%ubiq.mix;)&gt;
+&lt;!ATTLIST Sect1                                  <a name="remvattr.6"></a><img src="figures/callouts/6.png" alt="6" border="0">
+        %label.attrib;
+        %status.attrib;
+        %common.attrib;
+        %sect1.role.attrib;
+        %local.sect1.attrib;
+&gt;
+</pre></div></div><br class="example-break"><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#remvattr.1"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>Turn off the
+<a href="sect1-x.html"><code class="sgmltag-element">Sect1</code></a> module so that the element and attribute
+declarations in the <acronym class="acronym">DTD</acronym> will be ignored.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#remvattr.2"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>Include the DocBook <acronym class="acronym">DTD</acronym>.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#remvattr.3"><img src="figures/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>By keeping the local attribute
+declaration, we leave open the possibility of a simple customization
+layer on top of our customization layer.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#remvattr.4"><img src="figures/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>Similarly, we keep the
+parameterized definition of the <code class="sgmltag-attribute">Role</code>
+attribute.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#remvattr.5"><img src="figures/callouts/5.png" alt="5" border="0"></a> </td><td valign="top" align="left"><p>We're changing the attribute
+list, not the element, so we've simply copied the
+<a href="sect1-x.html"><code class="sgmltag-element">Sect1</code></a> element declaration from the DocBook
+<acronym class="acronym">DTD</acronym>.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#remvattr.6"><img src="figures/callouts/6.png" alt="6" border="0"></a> </td><td valign="top" align="left"><p>Finally, we declare the attribute
+list, leaving out the <code class="sgmltag-attribute">RenderAs</code>.</p></td></tr></table></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e15460"></a>Subsetting the Common Attributes</h3></div></div></div><p>
+<a class="indexterm" name="d0e15465"></a>
+<a class="indexterm" name="d0e15473"></a>
+
+DocBook defines eleven common attributes; these attributes appear on
+<span class="emphasis"><em>every</em></span> element. Depending on how you're
+processing your documents, removing some of them can both simplify the
+authoring task and improve processing speed.
+</p><p>Some obvious candidates are:</p><div class="variablelist"><dl><dt><span class="term">Effectivity attributes (<code class="sgmltag-attribute">Arch
+</code>, <code class="sgmltag-attribute">OS</code>,...)</span></dt><dd><p>
+<a class="indexterm" name="d0e15495"></a>
+
+If you're not using all of the effectivity attributes in your
+documents, you can get rid of up to seven attributes in one fell
+swoop.</p></dd><dt><span class="term"><code class="sgmltag-attribute">Lang</code></span></dt><dd><p>
+<a class="indexterm" name="d0e15506"></a>
+
+If you're not producing multilingual documents, you can remove
+<code class="sgmltag-attribute">Lang</code>.</p></dd><dt><span class="term"><code class="sgmltag-attribute">Remap</code></span></dt><dd><p>
+<a class="indexterm" name="d0e15522"></a>
+The <code class="sgmltag-attribute">Remap</code> attribute is
+designed to hold the name of a semantically equivalent construct from
+a previous markup scheme (for example, a Microsoft Word style template
+name, if you're converting from Word).  If you're authoring from
+scratch, or not preserving previous constructs with <code class="sgmltag-attribute">Remap</code>, you can get rid of it.</p></dd><dt><span class="term"><code class="sgmltag-attribute">XrefLabel</code></span></dt><dd><p>
+<a class="indexterm" name="d0e15541"></a>
+If your processing system isn't using <code class="sgmltag-attribute">XrefLabel</code>, it's a candidate as
+well.</p></dd></dl></div><p>
+The customization layer in <a href="ch05-x.html#ex.remvcommon" title="Example&nbsp;5.12.&nbsp;Removing Common Attributes">Example&nbsp;5.12, &#8220;Removing Common Attributes&#8221;</a> reduces the
+common attributes to just <code class="sgmltag-attribute">ID</code> and
+<code class="sgmltag-attribute">Lang</code>.
+</p><div class="example"><a name="ex.remvcommon"></a><p class="title"><b>Example&nbsp;5.12.&nbsp;Removing Common Attributes</b></p><div class="example-contents"><pre class="programlisting">&lt;!ENTITY % common.attrib
+"ID   ID    #IMPLIED
+ Lang CDATA #IMPLIED"
+&gt;
+&lt;!ENTITY % idreq.common.attrib
+"ID   ID    #REQUIRED
+ Lang CDATA #IMPLIED"
+&gt;
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;</pre></div></div><br class="example-break"><p>
+<a class="indexterm" name="d0e15567"></a>
+<a class="indexterm" name="d0e15571"></a>
+
+By definition, whatever attributes you define in the <a href="pe-common-attrib-x.html#common.attrib.parament"><code class="sgmltag-paramentity">%common.attrib;</code></a> and <a href="pe-common-attrib-x.html#idreq.common.attrib.parament"><code class="sgmltag-paramentity">%idreq.common.attrib;</code></a> parameter entities
+are the common attributes. In <code class="filename">dbpool.mod </code>, these
+parameter entities are defined in terms of other parameter entities,
+but there's no way to preserve that structure in your customization
+layer.
+</p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-addelem"></a>Adding Elements: Adding a Sect6</h2></div></div></div><p>
+<a class="indexterm" name="d0e15589"></a>
+
+Adding a structural (as opposed to information pool) element generally
+requires adding its name to a class and then providing the appropriate
+definitions. <a href="ch05-x.html#ex.addsect6" title="Example&nbsp;5.13.&nbsp;Adding a Sect6 Element">Example&nbsp;5.13, &#8220;Adding a Sect6 Element&#8221;</a> extends DocBook by adding a
+<code class="sgmltag-element">Sect6</code> element.
+</p><div class="example"><a name="ex.addsect6"></a><p class="title"><b>Example&nbsp;5.13.&nbsp;Adding a Sect6 Element</b></p><div class="example-contents"><pre class="programlisting">&lt;!ENTITY % sect5.module "IGNORE"&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;
+&lt;!-- Add Sect6 to content model of Sect5 --&gt;
+&lt;!ENTITY % sect5.role.attrib "%role.attrib;"&gt;
+&lt;!ELEMENT Sect5 - O (Sect5Info?, (%sect.title.content;), (%nav.class;)*,
+        (((%divcomponent.mix;)+, 
+                ((%refentry.class;)* | Sect6* | SimpleSect*))
+        | (%refentry.class;)+ | Sect6+ | SimpleSect+), (%nav.class;)*)&gt;
+&lt;!ATTLIST Sect5
+        %label.attrib;
+        %status.attrib;
+        %common.attrib;
+        %sect5.role.attrib;
+&gt;
+&lt;!ENTITY % sect6.role.attrib "%role.attrib;"&gt;
+&lt;!ELEMENT Sect6 - O (Sect6Info?, (%sect.title.content;), (%nav.class;)*,
+        (((%divcomponent.mix;)+, ((%refentry.class;)* | SimpleSect*))
+        | (%refentry.class;)+ | SimpleSect+), (%nav.class;)*)&gt;
+&lt;!ATTLIST Sect6
+        %label.attrib;
+        %status.attrib;
+        %common.attrib;
+        %sect6.role.attrib;
+&gt;</pre></div></div><br class="example-break"><p>
+Here we've redefined <a href="sect5-x.html"><code class="sgmltag-element">Sect5</code></a> to include
+<code class="sgmltag-element">Sect6</code> and provided a declaration for
+<code class="sgmltag-element">Sect6</code>. Note that we didn't bother to provide
+<code class="sgmltag-attribute">RenderAs</code> attributes in our
+redefinitions. To properly support <code class="sgmltag-element">Sect6</code>, you might
+want to redefine all of the sectioning elements so that <code class="literal">
+Sect6</code> is a legal attribute value for <code class="sgmltag-attribute">RenderAs</code>.
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch05-classrole"></a>Other Modifications: Classifying a Role</h2></div></div></div><p>
+<a class="indexterm" name="d0e15633"></a>
+
+The <code class="sgmltag-attribute">Role</code> attribute, found on almost
+all of the elements in DocBook, is a <code class="literal">CDATA</code> attribute that
+can be used to subclass an element. In some applications, it may be useful
+to modify the definition of <code class="sgmltag-attribute">Role</code> so that
+authors must choose one of a specific set of possible values.</p><p>In <a href="ch05-x.html#ex.changerole" title="Example&nbsp;5.14.&nbsp;Changing Role on Procedure">Example&nbsp;5.14, &#8220;Changing Role on Procedure&#8221;</a>, <code class="sgmltag-attribute">Role</code> on the <a href="procedure-x.html"><code class="sgmltag-element">Procedure</code></a> element
+is constrained to the values <code class="literal">Required</code> or <code class="literal">
+Optional</code>.</p><div class="example"><a name="ex.changerole"></a><p class="title"><b>Example&nbsp;5.14.&nbsp;Changing Role on Procedure</b></p><div class="example-contents"><pre class="programlisting">&lt;!ENTITY % procedure.role.attrib "Role (Required|Optional) #IMPLIED"&gt;
+&lt;!-- load DocBook --&gt;
+&lt;!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+%DocBookDTD;<a class="indexterm" name="d0e15669"></a><a class="indexterm" name="d0e15670"></a></pre></div></div><br class="example-break"></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Publishing DocBook Documents" href="ch04-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Part&nbsp;II.&nbsp;Reference" href="part2-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Publishing DocBook Documents&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp;I.&nbsp;Introduction" href="part1-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Part&nbsp;II.&nbsp;Reference</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

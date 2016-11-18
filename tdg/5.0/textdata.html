@@ -1,0 +1,38 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>textdata</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="tertiaryie.html" title="tertiaryie"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="textobject" href="textobject.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="element.db.textdata" class="refentry"><a class="indexterm" name="element.db.textdata.1"></a><div class="refnamediv"><h2>textdata</h2><p><span class="refname">textdata</span><span class="refpurpose"><span class="refpurpose-sep"> — </span><span class="refpurpose-text">Pointer to external text data</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="itemizedlist element-synopsis"><ul><li><a href="titleforbidden.info.html"><code class="tag-element">info</code></a>? <span class="pattern">(db.titleforbidden.info)</span></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><p><a href="ref-elements.html#common.attributes">Common attributes</a>.</p><p>Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>encoding</li><li><em>Each of:</em><div class="itemizedlist element-synopsis"><ul><li>format</li><li><em>Exactly one of:</em><div class="itemizedlist element-synopsis"><ul><li><strong class="emphasis">fileref</strong> (anyURI)</li><li><strong class="emphasis">entityref</strong> (ENTITY)</li></ul></div></li></ul></div></li></ul></div><p>Required attributes are shown in <strong class="emphasis">bold</strong>.</p></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div>
+<p>This element points to an external entity containing text to be
+      inserted.</p>
+
+      <div class="note admonition"><h3>Note</h3><p>Any markup in the text identified with
+        <a href="textdata.html"><code class="tag-element">textdata</code></a> will be escaped. In other words, this
+        element is for inserting things like program listings, not parts of an
+        XML document. To break a document into separate physical files, use
+        XInclude or external parsed entities.</p></div>
+
+      <div id="dbreproc.textdata" class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div>
+        
+
+        <p>May be formatted inline or as a displayed block, depending on
+        context.</p>
+
+        <p>There are two ways to provide content for
+        <a href="textdata.html"><code class="tag-element">textdata</code></a>: <code class="tag-attribute">entityref</code> or <code class="tag-attribute">fileref</code>. It is best to use only one of
+        these methods; however, if multiple sources are provided, <code class="tag-attribute">entityref</code> will be used in favor of
+        <code class="tag-attribute">fileref</code>.</p>
+
+        <p>If the encoding is such that the processor will not be able to
+        determine the encoding of the text, the encoding can be specified in
+        the <code class="tag-attribute">encoding</code> attribute. For
+        encodings <a href="http://www.iana.org/assignments/character-sets">registered (as
+        charsets)</a> with the Internet Assigned Numbers Authority,
+        recommended best practice suggests that they be referred to using
+        their registered names.</p>
+</div>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><p><a href="ref-elements.html#common.attributes">Common attributes</a>.</p><div class="variablelist"><dl><dt><span class="term attname">encoding</span></dt><dd><p>Identifies the encoding of the text in the external file</p></dd><dt><span class="term attname">entityref</span></dt><dd><p>Identifies the location of the data by external identifier (entity name)</p></dd><dt><span class="term attname">fileref</span></dt><dd><p>Indentifies the location of the data by URI</p></dd><dt><span class="term attname">format</span></dt><dd><p>Specifies the format of the data</p></dd></dl></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><p>These elements contain <a href="textdata.html"><code class="tag-element">textdata</code></a>: <span class="simplelist"><span class="member"><a href="textobject.html"><code class="tag-element">textobject</code></a></span></span>.</p></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Children</h3></div><p>The following elements occur in textdata: <span class="simplelist"><span class="member"><a href="titleforbidden.info.html"><code class="tag-element">info</code></a> <span class="pattern">(db.titleforbidden.info)</span></span></span>.</p></div>
+
+</div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="tertiaryie" href="tertiaryie.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="textobject" href="textobject.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">tertiaryie </td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> textobject</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on 6 Jun 2011 <span class="githash">(git hash: 6ffcc7640bbc5f852a318e452c9f210f03292cb9)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

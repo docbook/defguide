@@ -1,0 +1,404 @@
+<HTML
+><HEAD
+><TITLE
+>ITermSet</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="ItemizedList"
+HREF="itemizedlist.html"><LINK
+REL="NEXT"
+TITLE="JobTitle"
+HREF="jobtitle.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="itemizedlist.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="jobtitle.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>ITermSet</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN59117"
+></A
+><H2
+>Name</H2
+>ITermSet&nbsp;--&nbsp;A set of index terms in the meta-information of a document</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN59120"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>ITermSet ::=
+(<A
+HREF="indexterm.html"
+>IndexTerm</A
+>+)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN59146"
+></A
+><H2
+>Description</H2
+><P
+>When <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>s use the <SPAN
+CLASS="SGMLTAG"
+>Zone</SPAN
+>
+attribute to point to index ranges, it may be handy to hoist them
+out of the flow and put them in the document meta-information.</P
+><P
+>The <A
+HREF="itermset.html"
+><TT
+CLASS="SGMLTAG"
+>ITermSet</TT
+></A
+> element, which occurs in the DocBook containers
+for meta-information, is one place to put them.  <A
+HREF="itermset.html"
+><TT
+CLASS="SGMLTAG"
+>ITermSet</TT
+></A
+> is
+simply a wrapper around a group of <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>s.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN59155"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Suppressed.</P
+><P
+>Although more than one <A
+HREF="itermset.html"
+><TT
+CLASS="SGMLTAG"
+>ITermSet</TT
+></A
+> may appear in the
+meta-information for a document, neither a relationship nor a specific
+facility for constructing a relationship is defined.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN59160"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain ITermSet:
+<A
+HREF="artheader.html"
+><TT
+CLASS="SGMLTAG"
+>ArtHeader</TT
+></A
+>, <A
+HREF="bookinfo.html"
+><TT
+CLASS="SGMLTAG"
+>BookInfo</TT
+></A
+>, <A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="objectinfo.html"
+><TT
+CLASS="SGMLTAG"
+>ObjectInfo</TT
+></A
+>, <A
+HREF="refsect1info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1Info</TT
+></A
+>, <A
+HREF="refsect2info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2Info</TT
+></A
+>, <A
+HREF="refsect3info.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3Info</TT
+></A
+>, <A
+HREF="refsynopsisdivinfo.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDivInfo</TT
+></A
+>, <A
+HREF="sect1info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1Info</TT
+></A
+>, <A
+HREF="sect2info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2Info</TT
+></A
+>, <A
+HREF="sect3info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3Info</TT
+></A
+>, <A
+HREF="sect4info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4Info</TT
+></A
+>, <A
+HREF="sect5info.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5Info</TT
+></A
+>, <A
+HREF="sectioninfo.html"
+><TT
+CLASS="SGMLTAG"
+>SectionInfo</TT
+></A
+>, <A
+HREF="setinfo.html"
+><TT
+CLASS="SGMLTAG"
+>SetInfo</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN59209"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in ITermSet:
+<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+excluded:
+<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN59229"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="itemizedlist.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="jobtitle.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>ItemizedList</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>JobTitle</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

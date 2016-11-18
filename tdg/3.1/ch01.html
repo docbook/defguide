@@ -1,0 +1,2284 @@
+<HTML
+><HEAD
+><TITLE
+>Getting Started with SGML/XML</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Introduction"
+HREF="part1.html"><LINK
+REL="PREVIOUS"
+TITLE="Introduction"
+HREF="part1.html"><LINK
+REL="NEXT"
+TITLE="Creating DocBook Documents"
+HREF="ch02.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="part1.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="ch02.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="CH-GSSGML"
+>Chapter 1. Getting Started with <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1.1. <A
+HREF="ch01.html#AEN281"
+><SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> vs. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></DT
+><DT
+>1.2. <A
+HREF="ch01.html#S1-BASIC-CONCEPTS"
+>Basic <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> Concepts</A
+></DT
+><DT
+>1.3. <A
+HREF="ch01.html#AEN643"
+>Elements and Attributes</A
+></DT
+><DT
+>1.4. <A
+HREF="ch01.html#S-ENTITIES"
+>Entities</A
+></DT
+><DT
+>1.5. <A
+HREF="ch01.html#AEN959"
+>How Does DocBook Fit In?</A
+></DT
+></DL
+></DIV
+><P
+>&#13;
+
+This chapter is intended to provide a quick introduction to structured
+markup (<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>). If you're already familiar with <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> or
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, you only need to skim this chapter.</P
+><P
+>To work with DocBook, you need to understand a few basic concepts of
+structured editing in general, and DocBook, in particular. That's
+covered here. You also need some concrete experience with the way a
+DocBook document is structured. That's covered in the next chapter.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN281"
+>1.1. <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> vs. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></H1
+><P
+>&#13;
+
+
+This chapter doesn't assume that you know what <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> is, but if you
+do, you have a starting point for understanding structured
+markup. <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> (Hypertext Markup Language) is a way of marking up text
+and graphics so that the most popular web browsers can interpret
+them. <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> consists of a set of markup tags with specific
+meanings. Moreover, <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> is a very basic type of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> markup that
+is easy to learn and easy for computer applications to generate. But
+the simplicity of <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> is both its virtue and its weakness. Because
+of <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>'s limitations, web users and programmers have had to extend
+and enhance it by a series of customizations and revisions that still
+fall short of accommodating current, to say nothing of future, needs.</P
+><P
+>&#13;
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, on the other hand, is an international standard that describes
+how markup languages are defined. <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> does not consist of
+particular tags or the rules for their usage. <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> is an example of
+a markup language defined in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>.</P
+><P
+>&#13;
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> promises an intelligent improvement over <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>, and
+compatibility with it is already being built into the most popular web
+browsers. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> is not a new markup language designed to compete with
+<SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>, and it's not designed to create conversion headaches for people
+with tons of <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> documents. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> is intended to alleviate
+compatibility problems with browser software; it's a new, easier
+version of the standard rules that govern the markup itself, or, in
+other words, a new version of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>. The rules of <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> are designed
+to make it easier to write both applications that interpret its type
+of markup and applications that generate its markup. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> was
+developed by a team of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> experts who understood and sought to
+correct the problems of learning and implementing <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> is
+also <I
+CLASS="EMPHASIS"
+>extensible</I
+> markup, which means that it is
+customizable. A browser or word processor that is <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>-capable will
+be able to read any <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>-based markup language that an individual
+user defines.</P
+><P
+>In this book, we tend to describe things in terms of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, but where
+there are differences between <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> (and there are only a
+few), we point them out. For our purposes, it doesn't really matter
+whether you use <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> or <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>.</P
+><P
+>During the coming months, we anticipate that <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>-aware web browsers
+and other tools will become available. Nevertheless, it's not
+unreasonable to do your authoring in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and your online publishing
+in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> or <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>. By the same token, it's not unreasonable to do
+your authoring in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>.</P
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="S1-BASIC-CONCEPTS"
+>1.2. Basic <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> Concepts</A
+></H1
+><P
+>&#13;
+
+
+
+
+Here are the basic <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> concepts you need to grasp:</P
+><P
+></P
+><UL
+><LI
+><P
+>structured, semantic markup</P
+></LI
+><LI
+><P
+>elements</P
+></LI
+><LI
+><P
+>attributes</P
+></LI
+><LI
+><P
+>entities</P
+></LI
+></UL
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN367"
+>1.2.1. Structured and Semantic Markup</A
+></H2
+><P
+>&#13;
+
+
+An essential characteristic of structured markup is that it explicitly
+distinguishes (and accordingly "marks up" within a
+document) the structure and semantic content of a document. It does
+not mark up the way in which the document will appear to the reader,
+in print or otherwise.</P
+><P
+>In the days before word processors it was common for a typed
+manuscript to be submitted to a publisher. The manuscript identified
+the logical structures of the documents (chapters, section titles, and
+so on), but said nothing about its appearance. Working independently
+of the author, a designer then developed a specification for the
+appearance of the document, and a typesetter marked up and applied the
+designer's format to the document.</P
+><P
+>&#13;
+
+Because presentation or appearance is usually based on structure and
+content, <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> markup logically precedes and generally determines the
+way a document will look to a reader. If you are familiar with strict,
+simple <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> markup, you know that a given document that is
+structurally the same can also look different on different
+computers. That's because the markup does not specify many aspects of
+a document's appearance, although it does specify many aspects of a
+document's structure.</P
+><P
+>&#13;
+Many writers type their text into a word processor, line-by-line and
+word-for-word, italicizing technical terms, underlining words for
+emphasis, or setting section headers in a font complementary to the
+body text, and finally, setting the headers off with a few carriage
+returns fore and aft. The format such a writer imposes on the words on
+the screen imparts structure to the document by changing its
+appearance in ways that a reader can more or less reliably decode.
+The reliability depends on how consistently and unambiguously the
+changes in type and layout are made. By contrast, an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+markup of a section header explicitly specifies that a specific piece
+of text is a section header. This assertion does not specify the
+presentation or appearance of the section header, but it makes the
+fact that the text is a section header completely unambiguous.</P
+><P
+>&#13;
+
+
+
+
+
+
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> use named elements, delimited by angle brackets
+("&lt;" and "&#62;") to identify the markup in a
+document. In DocBook, a top-level section is <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;sect1&#62;</NOBR
+></TT
+>, so the title of a top-level section
+named <I
+CLASS="EMPHASIS"
+>My First-Level Header</I
+> would be identified
+like this:</P
+><PRE
+CLASS="SCREEN"
+>&lt;sect1&#62;&lt;title&#62;My First-Level Header&lt;/title&#62; </PRE
+><P
+>Note the following features of this markup:</P
+><P
+></P
+><DL
+><DT
+><B
+>Clarity</B
+></DT
+><DD
+><P
+>A title begins with <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;title&#62;</NOBR
+></TT
+> and ends with <TT
+CLASS="SGMLTAG"
+>&#60;/title&#62;</TT
+>. The <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>sect1</TT
+></A
+> also has
+an ending <TT
+CLASS="SGMLTAG"
+>&#60;/sect1&#62;</TT
+>, but we haven't
+shown the whole section so it's not visible.</P
+></DD
+><DT
+><B
+>Hierarchy</B
+></DT
+><DD
+><P
+>"My First-Level
+Header" is the title of a top-level section because it occurs
+inside a title in a <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>sect1</TT
+></A
+>. A
+<A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>title</TT
+></A
+> element occurring somewhere else, say in a
+<A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+> element, would be the title of the
+chapter.</P
+></DD
+><DT
+><B
+>Plain text</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents can have varying character sets, but
+most are <SPAN
+CLASS="ACRONYM"
+>ASCII</SPAN
+>. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents use the Unicode
+character set. This makes <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents highly portable
+across systems and tools.</P
+></DD
+></DL
+><P
+>&#13;
+
+
+
+In an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document, there is no obligatory difference between the
+size or face of the type in a first-level section header and the title
+of a book in a footnote or the first sentence of a body paragraph. All
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> files are simple text files without font changes or special
+characters.<A
+NAME="AEN461"
+HREF="#FTN.AEN461"
+>[1]</A
+> Similarly, an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document
+does not specify the words in a text that are to be set in italic,
+bold, or roman type. Instead, <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> marks certain kinds of texts for
+their semantic content. For example, if a particular word is the name
+of a file, then the tags around it should specify that it is a
+filename:</P
+><PRE
+CLASS="SCREEN"
+>Many mail programs read configuration information from the
+users <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;filename&#62;</NOBR
+></TT
+>.mailrc<TT
+CLASS="SGMLTAG"
+>&#60;/filename&#62;</TT
+> file.</PRE
+><P
+>&#13;
+
+
+
+
+
+
+If the meaning of a phrase is particularly audacious, it might get
+tagged for boldness of thought instead of appearance. An <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>
+document contains all the information that a typesetter needs to lay
+out and typeset a printed page in the most effective and consistent
+way, but it does not specify the layout or the
+type.<A
+NAME="AEN490"
+HREF="#FTN.AEN490"
+>[2]</A
+></P
+><P
+>&#13;
+
+
+
+
+
+
+
+Not only is the structure of an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document explicit, but it
+is also carefully controlled. An <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document makes reference to a
+set of declarations--a document type definition
+(<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>)--that contains an inventory of tag names and specifies
+the combination rules for the various structural and semantic features
+that make up a document. What the distinctive features are and how
+they should be combined is "arbitrary" in the sense that
+almost any selection of features and rules of composition is
+theoretically possible. The DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> chooses a particular set of
+features and rules for its users.</P
+><P
+>&#13;Here is a specific example of how the DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> works. DocBook
+specifies that a third-level section can follow a second-level section
+but cannot follow a first-level section without an intervening
+second-level section.</P
+><DIV
+CLASS="INFORMALTABLE"
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TD
+WIDTH="240"
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>This is valid:</P
+><PRE
+CLASS="SCREEN"
+>&lt;sect1&#62;&lt;title&#62;...&lt;/title&#62;
+  &lt;sect2&#62;&lt;title&#62;...&lt;/title&#62;
+    &lt;sect3&#62;&lt;title&#62;...&lt;/title&#62;
+      ...
+    &lt;/sect3&#62;
+  &lt;/sect2&#62;
+&lt;/sect1&#62;</PRE
+></TD
+><TD
+WIDTH="240"
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>This is not:</P
+><PRE
+CLASS="SCREEN"
+>&lt;sect1&#62;&lt;title&#62;...&lt;/title&#62;
+  &lt;sect3&#62;&lt;title&#62;...&lt;/title&#62;
+    ...
+  &lt;/sect3&#62;
+&lt;/sect1&#62;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><P
+>&#13;
+
+
+
+Because an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document has an associated <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> that
+describes the valid, logical structures of the document, you can test
+the logical structure of any particular document against the
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. This process is performed by a <I
+CLASS="FIRSTTERM"
+>parser</I
+>. An
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> processor must begin by parsing the document and determining if
+it is valid, that is, if it conforms to the rules specified in the
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> processors are not required to
+check for validity, but it's always a good idea to check for validity
+when authoring. Because you can test and validate the
+structure of an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document with software, a DocBook
+document containing a first-level section followed immediately by a
+third-level section will be identified as invalid, meaning that it's
+not a valid <I
+CLASS="FIRSTTERM"
+>instance</I
+> or example of a document
+defined by the DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. Presumably, a document with a logical
+structure won't normally jump from a first- to a third-level section,
+so the rule is a safeguard--but not a guarantee--of good
+writing, or at the very least, reasonable structure. A parser also
+verifies that the names of the tags are correct and that tags
+requiring an ending tag have them. This means that a valid document is
+also one that should format correctly, without runs of paragraphs
+incorrectly appearing in bold type or similar monstrosities that
+everyone has seen in print at one time or another. For more
+information about <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> parsers, see <A
+HREF="ch03.html"
+>Chapter 3, <I
+>Parsing DocBook Documents</I
+>,</A
+>.</P
+><P
+>In general, adherence to the explicit rules of structure and markup in
+a <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> is a useful and reassuring guarantee of consistency and
+reliability within documents, across document sets, and over
+time. This makes <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> markup particularly desirable to
+corporations or governments that have large sets of documents to
+manage, but it is a boon to the individual writer as well.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN574"
+>1.2.1.1. How can this markup help you?</A
+></H3
+><P
+>&#13;Semantic markup makes your documents more amenable to interpretation
+by software, especially publishing software. You can publish a white
+paper, authored as a DocBook <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, in the
+following formats:
+
+&#13;</P
+><P
+></P
+><UL
+><LI
+><P
+>On the Web in <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+></P
+></LI
+><LI
+><P
+>As a standalone document on 8&frac12;&times;11 paper</P
+></LI
+><LI
+><P
+>As part of a quarterly journal, in a 6&times;9 format</P
+></LI
+><LI
+><P
+>In Braille</P
+></LI
+><LI
+><P
+>In audio</P
+></LI
+></UL
+><P
+>You can produce each of these publications from exactly the same
+source document using the presentational techniques best suited to
+both the content of the document and the presentation medium. This
+versatility also frees the author to concentrate on the document
+content. For example, as we write this book, we don't know exactly how
+O'Reilly will choose to present chapter headings, bulleted lists,
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> terms, or any of the other semantic features. And we don't
+care. It's irrelevant; whatever presentation is chosen, the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>
+sources will be transformed automatically into that style.</P
+><P
+>Semantic markup can relieve the author of other, more significant
+burdens as well (after all, careful use of paragraph and character
+styles in a word processor document theoretically allows us to change
+the presentation independently from the document). Using semantic
+markup opens up your documents to a world of possibilities. Documents
+become, in a loose sense, databases of information. Programs can
+compile, retrieve, and otherwise manipulate the documents in
+predictable, useful ways.</P
+><P
+>&#13;
+
+Consider the online version of this book: almost every element name
+(<A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, and so on) is a
+hyperlink to the reference page that describes that
+element. Maintaining these links by hand would be tedious and might be
+unreliable, as well. Instead, every element name is marked as an
+element using <A
+HREF="sgmltag.html"
+><TT
+CLASS="SGMLTAG"
+>SGMLTag</TT
+></A
+>: a <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> is
+a <TT
+CLASS="LITERAL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;sgmltag&#62;</NOBR
+></TT
+>Book<TT
+CLASS="SGMLTAG"
+>&#60;/sgmltag&#62;</TT
+></TT
+>.</P
+><P
+>Because each element name in this book is tagged semantically, the
+program that produces the online version can determine which
+occurrences of the word "book" in the text are actually
+references to the <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> element. The program can
+then automatically generate the appropriate hyperlink when it should.</P
+><P
+>There's one last point to make about the versatility of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>
+documents: how much you have depends on the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. If you take a good
+photo with a high resolution lens, you can print it and copy it and
+scan it and put it on the Web, and it will look good. If you start
+with a low-resolution picture it will not survive those
+transformations so well. DocBook <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> has this advantage over,
+say, <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>: DocBook has specific and unambiguous semantic and
+structural markup, because you can convert its documents with ease
+into other presentational forms, and search them more precisely. If
+you start with <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>, whose markup is at a lower resolution than
+DocBook's, your versatility and searchability is substantially
+restricted and cannot be improved.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN625"
+>1.2.1.2. What are the shortcomings to structural authoring?</A
+></H3
+><P
+>There are a few significant shortcomings to structured authoring:</P
+><P
+></P
+><UL
+><LI
+><P
+>It requires a significant change in the authoring
+process. Writing structured documents is very different from writing
+with a typical word processor, and change is difficult. In particular,
+authors don't like giving up control over the appearance of their
+words especially now that they have acquired it with the advent of
+word processors. But many publishing companies need authors to
+relinquish that control, because book design and production remains
+their job, not their authors'.</P
+></LI
+><LI
+><P
+>Because semantics are separate from appearance, in
+order to publish an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document, a stylesheet or other tool
+must create the presentational form from the structural form. Writing
+stylesheets is a skill in its own right, and though not every author
+among a group of authors has to learn how to write them, someone has
+to.</P
+></LI
+><LI
+><P
+>Authoring tools for <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> documents can generally be
+pretty expensive. While it's not entirely unreasonable to edit
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents with a simple text editor, it's a bit tedious
+to do so. However, there are a few free tools that are
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>-aware. The widespread interest in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> may well produce new,
+clever, and less expensive <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> editing tools.</P
+></LI
+></UL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN643"
+>1.3. Elements and Attributes</A
+></H1
+><P
+>&#13;
+
+
+
+
+
+
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> markup consists primarily of
+<I
+CLASS="FIRSTTERM"
+>elements</I
+>, <I
+CLASS="FIRSTTERM"
+>attributes</I
+>,
+and <I
+CLASS="FIRSTTERM"
+>entities</I
+>. Elements are the terms we have
+been speaking about most, like <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>sect1</TT
+></A
+>, that describe
+a document's content and structure. Most elements come in pairs and
+mark the start and end of the construct they surround--for
+example, the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> source for this particular paragraph begins with a
+<TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;para&#62;</NOBR
+></TT
+> tag and ends with a <TT
+CLASS="SGMLTAG"
+>&#60;/para&#62;</TT
+> tag. Some elements are
+"empty" (such as DocBook's cross-reference element,
+<TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;xref&#62;</NOBR
+></TT
+>) and require no end
+tag.<A
+NAME="AEN676"
+HREF="#FTN.AEN676"
+>[3]</A
+></P
+><P
+>&#13;
+
+
+
+Elements can, but don't necessarily, include one or more attributes,
+which are additional terms that extend the function or refine the
+content of a given element. For instance, in DocBook a <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;sect1&#62;</NOBR
+></TT
+> start tag can contain an
+identifier--an <SPAN
+CLASS="SGMLTAG"
+>id</SPAN
+>
+attribute--that will ultimately allow the writer to
+cross-reference it or enable a reader to retrieve it. End tags cannot
+contain attributes. A <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;sect1&#62;</NOBR
+></TT
+>
+element with an <SPAN
+CLASS="SGMLTAG"
+>id</SPAN
+> attribute
+looks like this:</P
+><PRE
+CLASS="SCREEN"
+>&lt;sect1 id="<TT
+CLASS="REPLACEABLE"
+><I
+>idvalue</I
+></TT
+>"&gt;</PRE
+><P
+>&#13;
+
+
+
+In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, the catalog of attributes that can occur on an element is
+predefined. You cannot add arbitrary attribute names to an
+element. Similarly, the values allowed for each attribute are
+predefined. In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, the use of <A
+HREF="http://www.w3.org/TR/REC-xml-names/"
+TARGET="_top"
+>namespaces</A
+> may allow you
+to add additional attributes to an element, but as of this writing,
+there's no way to perform validation on those attributes.</P
+><P
+>&#13;
+
+The <SPAN
+CLASS="SGMLTAG"
+>id</SPAN
+> attribute is one half of a
+cross reference. An <SPAN
+CLASS="SGMLTAG"
+>idref</SPAN
+>
+attribute on another element, for example <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;xref linkend="idvalue"&#62;</NOBR
+></TT
+>, provides the other half. These attributes provide whatever
+application might process the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> source with the data needed
+either to make a hypertext link or to substitute a named and/or numbered cross
+reference in place of the <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;xref&#62;</NOBR
+></TT
+>. Another use for attributes is to specify subclasses of
+certain elements. For instance, you can subdivide DocBook's <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;systemitem&#62;</NOBR
+></TT
+> into <SPAN
+CLASS="ACRONYM"
+>URL</SPAN
+>s and
+email addresses by making the content of the <SPAN
+CLASS="SGMLTAG"
+>role</SPAN
+> attribute the distinction between
+them, as in <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;systemitem role="URL"&#62;</NOBR
+></TT
+>
+versus <TT
+CLASS="SGMLTAG"
+><NOBR
+>&#60;systemitem
+role="emailaddr"&#62;</NOBR
+></TT
+>.</P
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="S-ENTITIES"
+>1.4. Entities</A
+></H1
+><P
+>&#13;
+
+
+
+Entities are a fundamental concept in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, and can be
+somewhat daunting at first. They serve a number of related, but
+slightly different functions, and this makes them a little bit
+complicated.</P
+><P
+>In the most general terms, entities allow you to assign a name to some
+chunk of data, and use that name to refer to that data. The complexity
+arises because there are two different contexts in which you can use
+entities (in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> and in your documents), two types of entities
+(parsed and unparsed), and two or three different ways in which the
+entities can point to the chunk of data that they name.</P
+><P
+>In the rest of this section, we'll describe each of the commonly
+encountered entity types. If you find the material in this section
+confusing, feel free to skip over it now and come back to it later.
+We'll refer to the different types of entities as the need arises in
+our discussion of DocBook. Come back to this section when you're
+looking for more detail.</P
+><P
+>Entities can be divided into two broad categories, <I
+CLASS="FIRSTTERM"
+>general
+entities</I
+> and <I
+CLASS="FIRSTTERM"
+>parameter entities</I
+>.
+Parameter entities are most often used in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, not in documents,
+so we'll describe them last. Before you can use any type of entity, it
+must be formally declared. This is typically done in the document
+prologue, as we'll explain in <A
+HREF="ch02.html"
+>Chapter 2, <I
+>Creating DocBook Documents</I
+>,</A
+>, but we will
+show you how to declare each of the entities discussed here.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN756"
+>1.4.1. General Entities</A
+></H2
+><P
+>&#13;
+In use, general entities are introduced with an ampersand (&amp;) and end with
+a semicolon (;). Within the category of general entities, there are
+two types: <I
+CLASS="FIRSTTERM"
+>internal general entities</I
+> and
+<I
+CLASS="FIRSTTERM"
+>external general entities</I
+>.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN767"
+>1.4.1.1. Internal general entities</A
+></H3
+><P
+>&#13;
+
+
+With internal entities, you can associate an essentially arbitrary
+piece of text (which may have other markup, including references to
+other entities) with a name. You can then include that text by
+referring to its name. For example, if your document frequently refers
+to, say, "O'Reilly &amp; Associates," you might declare it
+as an entity:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ENTITY ora "O'Reilly &#38;amp; Associates"&#62;</PRE
+><P
+>Then, instead of typing it out each time, you can insert it as needed
+in your document with the entity reference <TT
+CLASS="SGMLTAG"
+>&#38;ora;</TT
+>, simply to save time. Note that this
+entity declaration includes another entity reference within it.
+That's perfectly valid as long as the reference isn't directly or
+indirectly recursive.</P
+><P
+>&#13;
+If you find that you use a number of entities across many documents,
+you can add them directly to the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> and avoid having to include the
+declarations in each document. See the discussion of
+<TT
+CLASS="FILENAME"
+>dbgenent.mod</TT
+> in <A
+HREF="ch05.html"
+>Chapter 5, <I
+>Customizing DocBook</I
+>,</A
+>.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="S-EGENENT"
+>1.4.1.2. External general entities</A
+></H3
+><P
+>&#13;
+
+
+
+With external entities, you can reference other documents from within
+your document. If these entities contain document text (<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> or
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>), then references to them cause the parser to insert the text of
+the external file directly into your document (these are called parsed
+entities). In this way, you can use entities to divide your single,
+logical document into physically distinct chunks. For example, you
+might break your document into four chapters and store them in
+separate files. At the top of your document, you would include entity
+declarations to reference the four files:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ENTITY ch01 SYSTEM "ch01.sgm"&#62;
+&#60;!ENTITY ch02 SYSTEM "ch02.sgm"&#62;
+&#60;!ENTITY ch03 SYSTEM "ch03.sgm"&#62;
+&#60;!ENTITY ch04 SYSTEM "ch04.sgm"&#62;</PRE
+><P
+>Your <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> now consists simply of references to the
+entities:</P
+><PRE
+CLASS="SCREEN"
+>&lt;book&gt;
+&amp;ch01;
+&amp;ch02;
+&amp;ch03;
+&amp;ch04;
+&lt;/book&gt;</PRE
+><P
+>&#13;
+
+Sometimes it's useful to reference external files that don't contain
+document text. For example, you might want to reference an external
+graphic. You can do this with entities by declaring the type of data
+that's in the entity using a notation (these are called unparsed
+entities). For example, the following declaration declares the entity
+<TT
+CLASS="LITERAL"
+>tree</TT
+> as an encapsulated PostScript image:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ENTITY tree SYSTEM "tree.eps" NDATA EPS&#62;</PRE
+><P
+>&#13;
+Entities declared this way cannot be inserted directly into your
+document. Instead, they must be used as entity attributes to elements:</P
+><PRE
+CLASS="SCREEN"
+>&#60;graphic entityref="tree"&#62;&#60;/graphic&#62;</PRE
+><P
+>Conversely, you cannot use entities declared without a notation as the
+value of an entity attribute.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="S-SPECCHAR"
+>1.4.1.3. Special characters</A
+></H3
+><P
+>&#13;
+
+In order for the parser to recognize markup in your document, it must
+be able to distinguish markup from content. It does this with two
+special characters: "&lt;," which identifies the beginning
+of a start or end tag, and "&amp;," which identifies the
+beginning of an entity reference.<A
+NAME="AEN833"
+HREF="#FTN.AEN833"
+>[4]</A
+>
+If you want these characters to have their literal value, they must be
+encoded as entity references in your document. The entity reference
+<TT
+CLASS="SGMLTAG"
+>&#38;lt;</TT
+> produces a left angle bracket;
+<TT
+CLASS="SGMLTAG"
+>&#38;amp;</TT
+> produces the
+ampersand.<A
+NAME="AEN855"
+HREF="#FTN.AEN855"
+>[5]</A
+></P
+><P
+>&#13;
+If you do not encode each of these as their respective entity
+references, then an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> parser or application is likely to
+interpret them as characters introducing elements or entities (an
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> parser will always interpret them this way); consequently, they
+won't appear as you intended. If you wish to cite text that contains
+literal ampersands and less-than signs, you need to transform these
+two characters into entity references before they are included in a
+DocBook document. The only other alternative is to incorporate text
+that includes them in your document through some process that avoids
+the parser.</P
+><P
+>&#13;
+
+In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, character entities are frequently declared using a third
+entity category (one that we deliberately chose to overlook), called
+<I
+CLASS="FIRSTTERM"
+>data entities</I
+>. In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, these are declared using
+numeric character references. Numeric character references resemble
+entity references, but technically aren't the same. They have the form
+<TT
+CLASS="LITERAL"
+>&amp;#<TT
+CLASS="REPLACEABLE"
+><I
+>999</I
+></TT
+>;</TT
+>, in which
+"999" is the numeric character number.</P
+><P
+>&#13;
+
+In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, the numeric character number is always the Unicode character
+number. In addition, <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> allows hexadecimal numeric character
+references of the form
+<TT
+CLASS="LITERAL"
+>&amp;#x<TT
+CLASS="REPLACEABLE"
+><I
+>hhhh</I
+></TT
+>;</TT
+>. In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, the
+numeric character number is a number from the document character set
+that's declared in the <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> declaration.</P
+><P
+>&#13;
+Character entities are also used to give a name to special characters
+that can't otherwise be typed or are not portable across applications
+and operating systems. You can then include these characters in your
+document by refering to their entity name. Instead of using the often
+obscure and inconsistent key combinations of your particular word
+processor to type, say, an uppercase letter U with an umlaut (&Uuml;),
+you type in an entity for it instead. For instance, the entity for an
+uppercase letter U with an umlaut has been defined as the entity
+<TT
+CLASS="LITERAL"
+>Uuml</TT
+>, so you would type in <TT
+CLASS="SGMLTAG"
+>&#38;Uuml;</TT
+> to reference it instead of the actual
+character. The <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> application that eventually processes your
+document for presentation will match the entity to your platform's
+handling of special characters in order to render it
+appropriately.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN896"
+>1.4.2. Parameter Entities</A
+></H2
+><P
+>&#13;
+
+Parameter entities are only recognized in markup declarations (in the
+<SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, for example). Instead of beginning with an ampersand, they
+begin with a percent sign.  Parameter entities are most frequently
+used to customize the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>. For a detailed discussion of this topic,
+see <A
+HREF="ch05.html"
+>Chapter 5, <I
+>Customizing DocBook</I
+>,</A
+>. Following are some other uses for
+them.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="S-MS"
+>1.4.2.1. Marked sections</A
+></H3
+><P
+>&#13;
+
+
+You might use a parameter entity reference in an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document in a
+marked section. Marking sections is a mechanism for indicating that
+special processing should apply to a particular block of text.  Marked
+sections are introduced by the special sequence
+<TT
+CLASS="LITERAL"
+>&lt;![<TT
+CLASS="REPLACEABLE"
+><I
+>keyword</I
+></TT
+>[</TT
+> and end
+with <TT
+CLASS="LITERAL"
+>]]&gt;</TT
+>.  In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, marked sections can appear
+in both <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>s and document instances.  In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, they're only allowed
+in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>.<A
+NAME="AEN927"
+HREF="#FTN.AEN927"
+>[6]</A
+></P
+><P
+>&#13;
+
+
+The most common keywords are <TT
+CLASS="LITERAL"
+>INCLUDE</TT
+>, which
+indicates that the text in the marked section should be included in
+the document; <TT
+CLASS="LITERAL"
+>IGNORE</TT
+>, which indicates that the text
+in the marked section should be ignored (it completely disappears from
+the parsed document); and <TT
+CLASS="LITERAL"
+>CDATA</TT
+>, which indicates
+that all markup characters within that section should be ignored
+except for the closing characters <TT
+CLASS="LITERAL"
+>]]&gt;</TT
+>.</P
+><P
+>&#13;In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, these keywords can be parameter entities. For example, you
+might declare the following parameter entity in your document:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ENTITY % draft "INCLUDE"&#62;</PRE
+><P
+>Then you could put the sections of the document that are only applicable
+in a draft within marked sections:</P
+><PRE
+CLASS="SCREEN"
+>&lt;![%draft;[
+&lt;para&#62;
+This paragraph only appears in the draft version.
+&lt;/para&#62;
+]]&gt;</PRE
+><P
+>When you're ready to print the final version, simply change the 
+<TT
+CLASS="LITERAL"
+>draft</TT
+> parameter entity declaration:</P
+><PRE
+CLASS="SCREEN"
+>&#60;!ENTITY % draft "IGNORE"&#62;</PRE
+><P
+>and publish the document. None of the draft sections will appear.
+&#62;
+&#62;</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN959"
+>1.5. How Does DocBook Fit In?</A
+></H1
+><P
+>&#13;
+DocBook is a very popular set of tags for describing books, articles,
+and other prose documents, particularly technical
+documentation. DocBook is defined using the native <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> syntax of
+<SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>. Like <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>, DocBook is an example of a markup
+language defined in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN971"
+>1.5.1. A Short DocBook History</A
+></H2
+><P
+>DocBook is almost 10 years old. It began in 1991 as a joint project of
+HaL Computer Systems and O'Reilly. Its popularity grew, and eventually
+it spawned its own maintainance organization, the Davenport Group. In
+mid-1998, it became a Technical Committee (<SPAN
+CLASS="ACRONYM"
+>TC</SPAN
+>) of
+the Organization for the Advancement of Structured Information
+Standards (<SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+>).</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN976"
+>1.5.1.1. The HaL and O'Reilly era</A
+></H3
+><P
+>&#13;
+
+
+The DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> was originally designed and implemented by HaL
+Computer Systems and O'Reilly &amp; Associates around 1991. It was
+developed primarily to facilitate the exchange of <SPAN
+CLASS="ACRONYM"
+>UNIX</SPAN
+> documentation
+originally marked up in <I
+CLASS="COMMAND"
+>troff</I
+>. Its design appears
+to have been based partly on input from <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> interchange projects
+conducted by the Unix International and Open Software Foundation
+consortia.</P
+><P
+>&#13;When DocBook <SPAN
+CLASS="ACRONYM"
+>V1.1</SPAN
+> was published, discussion about
+its revision and maintenance began in earnest in the Davenport Group,
+a forum created by O'Reilly for computer documentation
+producers. Version 1.2 was influenced strongly by
+Novell and Digital.</P
+><P
+>In 1994, the Davenport Group became an officially chartered entity
+responsible for DocBook's maintenance. DocBook
+<SPAN
+CLASS="ACRONYM"
+>V1.2.2</SPAN
+> was published simultaneously. The founding
+sponsors of this incarnation of Davenport include the following
+people:
+<P
+></P
+><UL
+><LI
+><P
+>Jon Bosak, Novell</P
+></LI
+><LI
+><P
+>Dale Dougherty, O'Reilly &amp; Associates</P
+></LI
+><LI
+><P
+>Ralph Ferris, Fujitsu <SPAN
+CLASS="ACRONYM"
+>OSSI</SPAN
+></P
+></LI
+><LI
+><P
+>Dave Hollander, Hewlett-Packard</P
+></LI
+><LI
+><P
+>Eve Maler, Digital Equipment Corporation</P
+></LI
+><LI
+><P
+>Murray Maloney, <SPAN
+CLASS="ACRONYM"
+>SCO</SPAN
+></P
+></LI
+><LI
+><P
+>Conleth O'Connell, HaL Computer Systems</P
+></LI
+><LI
+><P
+>Nancy Paisner, Hitachi Computer Products</P
+></LI
+><LI
+><P
+>Mike Rogers, SunSoft</P
+></LI
+><LI
+><P
+>Jean Tappan, Unisys</P
+></LI
+></UL
+></P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN1019"
+>1.5.1.2. The Davenport era</A
+></H3
+><P
+>Under the auspices of the Davenport Group, the DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> began to
+widen its scope. It was now being used by a much wider audience, and
+for new purposes, such as direct authoring with <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>-aware tools,
+and publishing directly to paper. As the largest users of DocBook,
+Novell and Sun had a heavy influence on its design.</P
+><P
+>&#13;
+In order to help users manage change, the new Davenport charter established
+the following rules for DocBook releases:
+<P
+></P
+><UL
+><LI
+><P
+>Minor versions (<SPAN
+CLASS="QUOTE"
+>"point releases"</SPAN
+> such as
+<SPAN
+CLASS="ACRONYM"
+>V2.2</SPAN
+>) could add to the markup model, but could not
+change it in a backward-incompatible way. For example, a new kind of
+list element could be added, but it would not be acceptable for the
+existing itemized-list model to start requiring two list items inside
+it instead of only one. Thus, any document conforming to version
+<TT
+CLASS="REPLACEABLE"
+><I
+>n</I
+></TT
+>.0 would also conform to
+<TT
+CLASS="REPLACEABLE"
+><I
+>n</I
+></TT
+>.<TT
+CLASS="REPLACEABLE"
+><I
+>m</I
+></TT
+>.</P
+></LI
+><LI
+><P
+>Major versions (such as <SPAN
+CLASS="ACRONYM"
+>V3.0</SPAN
+>) could
+both add to the markup model and make backward-incompatible
+changes. However, the changes would have to be announced in the last
+major release.</P
+></LI
+><LI
+><P
+>Major-version introductions must be separated by at
+least a year.</P
+></LI
+></UL
+></P
+><P
+>&#13;
+
+<SPAN
+CLASS="ACRONYM"
+>V3.0</SPAN
+> was released in January 1997. After that time,
+although DocBook's audience continued to grow, many of the Davenport
+Group stalwarts became involved in the <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> effort, and development
+slowed dramatically. The idea of creating an official <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>-compliant
+version of DocBook was discussed, but not implemented. (For more
+detailed information about DocBook <SPAN
+CLASS="ACRONYM"
+>V3.0</SPAN
+> and plans
+for subsequent versions, see <A
+HREF="appc.html"
+>Appendix C, <I
+>DocBook Versions</I
+>,</A
+>.)</P
+><P
+>&#13;
+The sponsors wanted to close out Davenport in an orderly way to ensure
+that DocBook users would be supported. It was suggested that
+<SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> become DocBook's new home. An
+<SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> DocBook Technical Committee was formed in
+July, 1998, with Eduardo Gutentag of Sun Microsystems as chair.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN1060"
+>1.5.1.3. The <SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> era</A
+></H3
+><P
+>The DocBook Technical commitee is continuing the work started by the
+Davenport Group. The transition from Davenport to
+<SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> has been very smooth, in part because the
+core design team consists of essentially the same individuals (we all
+just changed hats).</P
+><P
+>DocBook <SPAN
+CLASS="ACRONYM"
+>V3.1</SPAN
+>, published in February 1999, was the
+first <SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> release.  It integrated a number of
+changes that had been <SPAN
+CLASS="QUOTE"
+>"in the wings"</SPAN
+> for some time.</P
+><P
+>The committee is undertaking new DocBook development to ensure
+that the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> continues to meet the needs of its users, and that it has
+concrete plans to publish an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>-compliant version.
+&#62;
+&#62;&#13;</P
+></DIV
+></DIV
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN461"
+HREF="ch01.html#AEN461"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Some structured editors apply style to the
+document while it's being edited, using fonts and color to make the
+editing task easier, but this stylistic information is not stored in
+the actual <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>/<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document. Instead, it is provided by the
+editing application.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN490"
+HREF="ch01.html#AEN490"
+>[2]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The distinction between appearance or
+presentation and structure or content is essential to <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, but
+there is a way to specify the appearance of an <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> document: attach
+a stylesheet to it. There are several standards for such stylesheets:
+<SPAN
+CLASS="ACRONYM"
+>CSS</SPAN
+>, <SPAN
+CLASS="ACRONYM"
+>XSL</SPAN
+>, <SPAN
+CLASS="ACRONYM"
+>FOSI</SPAN
+>s,
+and <SPAN
+CLASS="ACRONYM"
+>DSSSL</SPAN
+>.
+See <A
+HREF="ch04.html"
+>Chapter 4, <I
+>Publishing DocBook Documents</I
+>,</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN676"
+HREF="ch01.html#AEN676"
+>[3]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, this is written as
+<TT
+CLASS="LITERAL"
+>&lt;xref/&#62;</TT
+>, as we'll see in the section <A
+HREF="ch02.html#CH02-TYPEXML"
+>Section 2.1.5</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN833"
+HREF="ch01.html#AEN833"
+>[4]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>&#13;In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, these characters are fixed. In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, it is possible to
+change the markup start characters, but we won't consider that case
+here. If you change the markup start characters, you know what you're
+doing. While we're on the subject, in <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>, these characters only
+have their special meaning if they are followed by a name character.
+It is, in fact, valid in an <I
+CLASS="EMPHASIS"
+><SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+></I
+> (but not an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>)
+document to write "O'Reilly &#38; Associates" because the
+ampersand is not followed by a name character. Don't do this, however.
+
+&#13;</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN855"
+HREF="ch01.html#AEN855"
+>[5]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>&#13;
+The sequence of characters that end a marked section (see <A
+HREF="ch01.html#S-MS"
+>Section 1.4.2.1</A
+>), such as ]]&gt; must also be encoded with at least
+one entity reference if it is not being used to end a marked section.
+For this purpose, you can use the entity reference <TT
+CLASS="SGMLTAG"
+>&#38;gt;</TT
+> for the final right angle bracket.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN927"
+HREF="ch01.html#AEN927"
+>[6]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>&#13;Actually, CDATA marked sections are allowed in an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> document, but
+the keyword cannot be a parameter entity, and it must be typed
+literally. See the examples on this page.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="part1.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="ch02.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Introduction</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part1.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Creating DocBook Documents</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

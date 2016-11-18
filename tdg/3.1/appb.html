@@ -1,0 +1,1645 @@
+<HTML
+><HEAD
+><TITLE
+>DocBook and XML</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="Appendixes"
+HREF="part3.html"><LINK
+REL="PREVIOUS"
+TITLE="Installation"
+HREF="appa.html"><LINK
+REL="NEXT"
+TITLE="DocBook Versions"
+HREF="appc.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="appa.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="appc.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="APP-XML"
+>Appendix B. DocBook and <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>B.1. <A
+HREF="appb.html#AEN193627"
+>DocBook Instances as <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></DT
+><DT
+>B.2. <A
+HREF="appb.html#S-DOCBOOKXML"
+>The DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> as <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></DT
+></DL
+></DIV
+><P
+>&#13;
+
+
+
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, the <A
+HREF="http://www.w3.org/TR/REC-xml"
+TARGET="_top"
+>Extensible
+Markup Language</A
+>, is a simple dialect of <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>. In the words of the
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> specification, "the goal [of <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>] is to enable generic <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> to be
+served, received, and processed on the Web in the way that is now possible
+with <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+>."</P
+><P
+><SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> raises two issues with respect to DocBook:<P
+></P
+><UL
+><LI
+><P
+>Are DocBook <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> instances valid <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> instances?</P
+></LI
+><LI
+><P
+>Can the DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> be made into a valid <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>?</P
+></LI
+></UL
+></P
+><P
+>If you have an existing <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> system, and your primary goal is to serve
+DocBook documents over the Web as <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, only the first of these issues is relevant.
+As the popularity of <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> grows, we will see more and more <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>-aware tools
+that don't implement full <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 8879 <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+>. If your goal is to author DocBook
+documents with one of this new generation of tools, you will only be able
+to achieve validity with an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>.</P
+><P
+>&#13;
+Although not yet officially adopted by the <SPAN
+CLASS="ACRONYM"
+>OASIS</SPAN
+> DocBook Technical 
+Committee, an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> version of DocBook is available now and
+provided on the <SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+>.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN193627"
+>B.1. DocBook Instances as <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></H1
+><P
+>&#13;
+
+Most DocBook documents can be made into well-formed <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents very
+easily. With few exceptions, valid DocBook <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> instances are also well-formed
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> instances. The following areas may need to be addressed.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193640"
+>B.1.1. System Identifiers</A
+></H2
+><P
+>&#13;
+
+
+
+It is common for <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> instances to use only a public identifier in document
+type and parameter entity declarations:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+This &lt;emphasis&#62;paragraph&lt;/paragraph&#62; is important.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+><P
+><SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> requires a system identifier:
+<PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+This &lt;emphasis&#62;paragraph&lt;/paragraph&#62; is important.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+></P
+><P
+>&#13;
+
+
+If you're used to using catalog files to resolve system identifiers,
+you may be dismayed to learn that system identifiers are required. Because most
+tools favor system identifiers over public identifiers, all of the portability
+that was gained by the use of catalog files seems to have been lost. In the
+long run, it'll be regained by the fact that <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> system identifiers can be
+<SPAN
+CLASS="ACRONYM"
+>URN</SPAN
+>s, which will have a resolution scheme like catalogs, but what about the
+short run?</P
+><P
+>Luckily, there are a couple of options.  First, you can tell your tools to use the public identifiers even
+though system identifiers are present. Simply add:</P
+><PRE
+CLASS="SCREEN"
+>OVERRIDE YES</PRE
+><P
+>&#13;
+to your catalog files. Alternatively, you can remap system identifers
+with the <TT
+CLASS="LITERAL"
+>SYSTEM</TT
+> catalog directive.  If you are faced with 
+documents that don't use public identifiers at all, this is probably your
+only option.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193679"
+>B.1.2. Minimization</A
+></H2
+><P
+>&#13;
+
+If you have used <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> minimization features in your instances:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&lt;chapter id=<A
+NAME="XML-ATTRQUOTE"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>chap1&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+This &lt;emphasis&#62;paragraph<A
+NAME="XML-ENDTAG"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>&lt;/&#62; is important.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+><P
+>they will not be well-formed <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> instances. In particular, <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="appb.html#XML-ATTRQUOTE"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>&#13;
+
+
+Requires that all attribute values
+be quoted.</DD
+><DT
+><A
+HREF="appb.html#XML-ENDTAG"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Does not allow short tag minization.</DD
+></DL
+></DIV
+>
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> also forbids tag omission, and there are
+probably a half dozen or so more exotic
+examples of minimization that you have used. They're all illegal. The
+easiest way to remove these minimizations is probably with a tool like <I
+CLASS="COMMAND"
+>sgmlnorm</I
+> (included in the <SPAN
+CLASS="ACRONYM"
+>SP</SPAN
+> and Jade distributions, on
+the <A
+HREF="appe.html"
+><SPAN
+CLASS="ACRONYM"
+>CD-ROM</SPAN
+></A
+>).</P
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;chapter id="chap1"&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+This &lt;emphasis&#62;paragraph&lt;/emphasis&#62; is important.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193716"
+>B.1.3. Attribute Default Values</A
+></H2
+><P
+>&#13;
+Correct processing of this document may require access to the default
+attributes:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+Write to us at:
+&lt;address<A
+NAME="XML-DEFATTR"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>&#62;
+90 Sherman Street
+Cambridge, MA 02140
+&lt;/address&#62;
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="appb.html#XML-DEFATTR"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+><A
+HREF="address.html"
+><TT
+CLASS="SGMLTAG"
+>Address</TT
+></A
+> expresses
+that its content is line-specific with an attribute.</DD
+></DL
+></DIV
+><P
+>Some <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> processing environments are going to ignore the doctype declaration
+in your document, even if it's present. This is relevant when your instance
+uses elements that have attributes with default values. The default values
+are expressed in the <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, but may not be expressed in your instance. In the
+case of DocBook, there are relatively few of these, and your stylesheet can
+probably be constructed to do the right thing in either case. (It essentially
+treats the attributes as if they had implied values.)</P
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+Write to us at:
+&lt;address format="linespecific"&#62;
+90 Sherman Street
+Cambridge, MA 02140
+&lt;/address&#62;
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193733"
+>B.1.4. Character and <TT
+CLASS="LITERAL"
+>SDATA</TT
+> Entities</A
+></H2
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+This book was published by O'Reilly<A
+NAME="XML-SDATA"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>&amp;trade;.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="appb.html#XML-SDATA"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>&#13;
+
+
+
+
+
+
+The DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> defines all of the standard
+<SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> entities automatically, but the <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> definitions use <TT
+CLASS="LITERAL"
+>SDATA</TT
+>,
+which is not allowed in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>. Eventually, <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> (or someone else) will release
+official <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> standard entity sets that make reference to the appropriate Unicode
+character for each entity. Until then, DocBk XML DTD is distributed with an
+unofficial set.</DD
+><DD
+><P
+>&#13;
+
+If you use entities in your document, it may be wise to put declarations
+for them in the internal subset of each instance, because some
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> browsers are going to parse the internal subset but not the external subset.
+If the entity declarations are in your <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+>, and the browser does not parse
+the external subset, the browser won't know how to display the entities in
+your document.</P
+></DD
+></DL
+></DIV
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd" [
+&lt;!ENTITY trade "&amp;#x2122;"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+This book was published by O'Reilly&amp;trade;.
+&lt;/para&#62;
+&lt;/chapter&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193780"
+>B.1.5. Case-Sensitivity</A
+></H2
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+NAME="XML-NMCASEKEY"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>&lt;!DocType Book PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+<A
+NAME="XML-NAMECASE1"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>&lt;book&#62;&lt;title&#62;Book Title&lt;/title&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title<A
+NAME="XML-NAMECASE2"
+><IMG
+SRC="figures/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>&lt;/Title&#62;
+&lt;para&#62;
+Paragraph test.
+&lt;/para&#62;
+<A
+NAME="XML-WF1"
+><IMG
+SRC="figures/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>&lt;PARA&#62;
+A second paragraph.
+&lt;/PARA&#62;
+&lt;/chapter&#62;
+&lt;/book&#62;</PRE
+><P
+>&#13;
+
+
+
+With the standard DocBook <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> declaration, DocBook instances are not
+case-sensitive with respect to element and attribute names. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> is always
+case-sensitive. As long as you have used the same case consistently, your
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> instances will be well-formed, but it may still be advantageous to do some
+case-folding because it will simplify the construction of stylesheets.</P
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="appb.html#XML-NMCASEKEY"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Keywords in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> are case-sensitive,
+and must be in uppercase.&#13;</DD
+><DT
+><A
+HREF="appb.html#XML-NAMECASE1"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>The name declared in the document
+type declaration, like all other names, is case-sensitive.
+&#13;</DD
+><DT
+><A
+HREF="appb.html#XML-NAMECASE2"
+><IMG
+SRC="figures/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>Start and end tags must use the same
+case.
+&#13;</DD
+><DT
+><A
+HREF="appb.html#XML-WF1"
+><IMG
+SRC="figures/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>In <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+> is not the
+same as <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>PARA</TT
+></A
+>. Note that this is a validity error (against
+the DocBk XML DTD), but it is not an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> well-formedness error. The use of <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>para</TT
+></A
+> and <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>PARA</TT
+></A
+> as distinct names is as legitimate
+as using <TT
+CLASS="SGMLTAG"
+>foo</TT
+> and <TT
+CLASS="SGMLTAG"
+>bar</TT
+>, as long as they
+are properly nested.&#13;</DD
+></DL
+></DIV
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;book&#62;&lt;title&#62;Book Title&lt;/title&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+Paragraph test.
+&lt;/para&#62;
+&lt;para&#62;
+A second paragraph.
+&lt;/para&#62;
+&lt;/chapter&#62;
+&lt;/book&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193838"
+>B.1.6. No #CONREF Attributes</A
+></H2
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;indexterm id="idx-bor"&#62;&lt;primary&#62;Something&lt;/primary&#62;&lt;/indexterm&#62;<A
+NAME="XML-CONREFSTART"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+&lt;para&#62;
+Paragraph test.
+&lt;/para&#62;
+&lt;indexterm startref="idx-bor"&#62;<A
+NAME="XML-CONREF"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+&lt;/chapter&#62;</PRE
+><P
+>&#13;
+
+
+
+
+
+
+The <SPAN
+CLASS="SGMLTAG"
+>StartRef</SPAN
+> attribute on <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>indexterm</TT
+></A
+> and the <SPAN
+CLASS="SGMLTAG"
+>OtherTerm</SPAN
+>
+attribute on <A
+HREF="glosssee.html"
+><TT
+CLASS="SGMLTAG"
+>GlossSee</TT
+></A
+> and <A
+HREF="glossseealso.html"
+><TT
+CLASS="SGMLTAG"
+>GlossSeeAlso</TT
+></A
+>
+are <TT
+CLASS="LITERAL"
+>#CONREF</TT
+> attributes.</P
+><P
+>In <SPAN
+CLASS="ACRONYM"
+>SGML</SPAN
+> terms, this means that when these attributes are used, the content
+of the tag is taken to be the same as the content of the tag pointed to by
+the attribute. <DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="appb.html#XML-CONREFSTART"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+><A
+HREF="appb.html#XML-CONREF"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>If you
+have used these attributes, your instance will contain both empty and non-empty
+versions of these tags.</DD
+></DL
+></DIV
+></P
+><P
+>Your best bet is to transform the <TT
+CLASS="LITERAL"
+>#CONREF</TT
+>
+version into an empty tag and let your stylesheet deal with it appropriately.</P
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;indexterm id="idx-bor"&#62;&lt;primary&#62;Something&lt;/primary&#62;&lt;/indexterm&#62;
+&lt;para&#62;
+Paragraph test.
+&lt;/para&#62;
+&lt;indexterm startref="idx-bor"/&#62;
+&lt;/chapter&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193874"
+>B.1.7. Only Explicit CDATA-Marked Sections Are Allowed</A
+></H2
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY % draft "IGNORE"&#62;
+&lt;!ENTITY % sourcecode "CDATA"&#62;
+]&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+<A
+NAME="XML-IGNORE"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>&lt;![ %draft; [
+&lt;para&#62;
+Draft paragraph.
+&lt;/para&#62;
+]]&#62;
+&lt;para&#62;
+The following code is totally out of context:
+&lt;programlisting&#62;
+&lt;![ <A
+NAME="XML-CDATA"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>%sourcecode; [
+if (x &lt; 3) {
+  y = 3;
+}
+]]&#62;
+&lt;/programlisting&#62;
+&lt;/chapter&#62;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="appb.html#XML-IGNORE"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+><A
+HREF="appb.html#XML-CDATA"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>&#13;
+
+
+Parameter entities are not
+allowed in the body of <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> documents (they are allowed in the internal subset).</DD
+><DT
+><A
+HREF="appb.html#XML-IGNORE"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+><SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> instances cannot contain <TT
+CLASS="LITERAL"
+>IGNORE</TT
+>, <TT
+CLASS="LITERAL"
+>INCLUDE</TT
+>, <TT
+CLASS="LITERAL"
+>TEMP</TT
+>, or <TT
+CLASS="LITERAL"
+>RCDATA</TT
+> marked sections.
+
+
+
+&#13;</DD
+><DT
+><A
+HREF="appb.html#XML-CDATA"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+><TT
+CLASS="LITERAL"
+>CDATA</TT
+> marked sections
+must use the "<TT
+CLASS="LITERAL"
+>CDATA</TT
+>" keyword literally because
+parameter entities are not allowed.&#13;</DD
+></DL
+></DIV
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+The following code is totally out of context:
+&lt;programlisting&#62;
+&lt;![CDATA[
+if (x &lt; 3) {
+  y = 3;
+}
+]]&#62;
+&lt;/programlisting&#62;
+&lt;/chapter&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193920"
+>B.1.8. No SUBDOC or CDATA External Entities</A
+></H2
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY % sourcecode SYSTEM "program.c" CDATA&#62;
+]&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+The following code is totally out of context:
+&lt;programlisting&#62;
+&amp;sourcecode;
+&lt;/programlisting&#62;
+&lt;/chapter&#62;</PRE
+><P
+>&#13;
+
+<SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> instances cannot use <TT
+CLASS="LITERAL"
+>CDATA</TT
+> or <TT
+CLASS="LITERAL"
+>SUBDOC</TT
+> external entities. One option for integrating external <TT
+CLASS="LITERAL"
+>CDATA</TT
+> content into a document is to employ a pre-processing pass
+that inserts the content inline, wrapped in a <TT
+CLASS="LITERAL"
+>CDATA</TT
+> marked
+section.</P
+><P
+>&#13;
+
+<TT
+CLASS="LITERAL"
+>SUBDOC</TT
+> entities may be more problematic. If you do
+not require validation, it may be sufficient to simply put them inline. <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>
+namespaces may offer another possible solution.</P
+><P
+>The result will be something like this:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?xml version='1.0'?&#62;
+&lt;!DOCTYPE book PUBLIC "-//Norman Walsh//DTD DocBk XML V1.4//EN"
+                  "http://docbook.org/docbook/xml/1.4/db3xml.dtd"&#62;
+&lt;chapter&#62;&lt;title&#62;Chapter Title&lt;/title&#62;
+&lt;para&#62;
+The following code is totally out of context:
+&lt;programlisting&#62;
+&lt;![CDATA[
+int main () {
+..
+}
+]]&#62;
+&lt;/programlisting&#62;
+&lt;/chapter&#62;</PRE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193947"
+>B.1.9. No Data Attributes on Notations</A
+></H2
+><P
+>They're not allowed in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, so don't add any.
+&#13;</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN193953"
+>B.1.10. No Attribute Value Specifications onEntity Declarations</A
+></H2
+><P
+>&#13;
+
+
+They're not allowed in <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+>, so don't add any.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="S-DOCBOOKXML"
+>B.2. The DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> as <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+></A
+></H1
+><P
+>Converting the DocBook <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> to <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> is much more challenging
+than converting the instances. It is probably not possible to
+construct an <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> <SPAN
+CLASS="ACRONYM"
+>DTD</SPAN
+> that is identical to the validation power
+of DocBook. The list below identifies most of the issues that
+must be addressed, and describes how the DocBk XML DTD deals with
+them:</P
+><P
+></P
+><DL
+><DT
+><B
+>Comments are not allowed inside markup declarations</B
+></DT
+><DD
+><P
+>&#13;
+
+Most of them have been moved to comment declarations preceding the markup
+declaration that used to contain them. A few small, inline comments that seemed
+like they would be out of context if moved before the declaration were simply
+deleted.</P
+></DD
+><DT
+><B
+>Name groups are not allowed in element or attribute list
+declarations</B
+></DT
+><DD
+><P
+>&#13;
+
+
+The small number of places in which DocBook uses name groups have
+been expanded.</P
+><P
+>There's one downside: DocBook uses <TT
+CLASS="LITERAL"
+>%admon.class;</TT
+> in a name
+group to define the content model, and attribute lists for elements in the
+admonitions class. In DocBk XML DTD, this convenience cannot be expressed. If additional
+admonitions are added, the element and attribute list declarations will have
+to be copied for them.</P
+></DD
+><DT
+><B
+>No <TT
+CLASS="LITERAL"
+>CDATA</TT
+> or <TT
+CLASS="LITERAL"
+>RCDATA</TT
+>
+declared content</B
+></DT
+><DD
+><P
+>&#13;
+
+<A
+HREF="graphic.html"
+><TT
+CLASS="SGMLTAG"
+>Graphic</TT
+></A
+> and <A
+HREF="inlinegraphic.html"
+><TT
+CLASS="SGMLTAG"
+>InlineGraphic</TT
+></A
+> have
+been made <TT
+CLASS="LITERAL"
+>EMPTY</TT
+>. The content model for <A
+HREF="synopfragmentref.html"
+><TT
+CLASS="SGMLTAG"
+>SynopFragmentRef</TT
+></A
+>, the only <TT
+CLASS="LITERAL"
+>RCDATA</TT
+> element in DocBook, has been
+changed to <TT
+CLASS="LITERAL"
+>(arg | group)+</TT
+>.</P
+></DD
+><DT
+><B
+>No exclusions or inclusions on element declarations</B
+></DT
+><DD
+><P
+>&#13;
+
+They had to be removed.</P
+><P
+>&#13;
+In DocBook, exclusions are used to exclude the following:<P
+></P
+><UL
+><LI
+><P
+>Ubiquitous elements (<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>indexterm</TT
+></A
+>
+and <A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>) from a number of contexts in which they
+should not occur (such as metadata, for example).</P
+></LI
+><LI
+><P
+>&#13;
+Formal objects from <A
+HREF="highlights.html"
+><TT
+CLASS="SGMLTAG"
+>Highlights</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>s, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>s and <A
+HREF="legalnotice.html"
+><TT
+CLASS="SGMLTAG"
+>LegalNotice</TT
+></A
+>s.</P
+></LI
+><LI
+><P
+>&#13;
+
+Formal objects and <A
+HREF="informaltable.html"
+><TT
+CLASS="SGMLTAG"
+>InformalTable</TT
+></A
+>s
+from tables.</P
+></LI
+><LI
+><P
+>&#13;
+
+Block elements and <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>s
+from <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>s</P
+></LI
+><LI
+><P
+>Admonitions, <A
+HREF="entrytbl.html"
+><TT
+CLASS="SGMLTAG"
+>EntryTbl</TT
+></A
+>s, and <A
+HREF="acronym.html"
+><TT
+CLASS="SGMLTAG"
+>Acronym</TT
+></A
+>s from themselves.
+&#13;</P
+></LI
+></UL
+></P
+><P
+>Removing these exclusions from DocBk XML DTD means that it is now valid, in
+the <SPAN
+CLASS="ACRONYM"
+>XML</SPAN
+> sense, to do some things that don't make a lot of sense (like put
+a <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+> in a <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>). Be careful.</P
+><P
+>&#13;
+
+
+
+
+Inclusions in DocBook are used to add the ubiquitious elements (<A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>indexterm</TT
+></A
+> and <A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>) unconditionally to a
+large number of contexts. In order to make these elements available in DocBk XML DTD,
+they have been added to most of the parameter entities that include <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+>. If new locations are discovered where these terms are desired, DocBk XML DTD
+will be updated.</P
+></DD
+><DT
+><B
+>Elements with mixed content must have <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+> first.</B
+></DT
+><DD
+><P
+>&#13;
+
+The content models of many elements have been updated to make them a
+repeatable OR group beginning with <TT
+CLASS="LITERAL"
+>#PCDATA</TT
+>.</P
+></DD
+><DT
+><B
+>Many declared attribute types (<TT
+CLASS="LITERAL"
+>NAME</TT
+>, <TT
+CLASS="LITERAL"
+>NUMBER</TT
+>, <TT
+CLASS="LITERAL"
+>NUTOKEN</TT
+>, and so on) are not allowed</B
+></DT
+><DD
+><P
+>&#13;
+
+
+They have all been replaced by <TT
+CLASS="LITERAL"
+>NMTOKEN</TT
+> or <TT
+CLASS="LITERAL"
+>CDATA</TT
+>.</P
+></DD
+><DT
+><B
+>No <TT
+CLASS="LITERAL"
+>#CONREF</TT
+> attributes allowed.</B
+></DT
+><DD
+><P
+>&#13;
+
+
+
+
+The <TT
+CLASS="LITERAL"
+>#CONREF</TT
+> attributes on <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>indexterm</TT
+></A
+>, <A
+HREF="glosssee.html"
+><TT
+CLASS="SGMLTAG"
+>GlossSee</TT
+></A
+>, and <A
+HREF="glossseealso.html"
+><TT
+CLASS="SGMLTAG"
+>GlossSeeAlso</TT
+></A
+> were changed to <TT
+CLASS="LITERAL"
+>#IMPLIED</TT
+>. The content model of <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>indexterm</TT
+></A
+> was
+modified so that it can be empty.</P
+></DD
+><DT
+><B
+>Attribute default values must be quoted.</B
+></DT
+><DD
+><P
+>&#13;
+
+Quotes were added wherever necessary.
+&#62;
+&#62;</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="appa.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="appc.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part3.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>DocBook Versions</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

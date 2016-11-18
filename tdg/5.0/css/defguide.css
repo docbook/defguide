@@ -1,0 +1,269 @@
+/* CSS Stylesheet for _DocBook: The Definitive Guide_
+ * Copyright © 2010, 2011 Norman Walsh.
+ */
+
+div.covergraphic div.mediaobject img {
+  margin-right: 20px;
+  border: solid black 1px;
+}
+
+#backcover {
+  position: relative;
+  top: -40px;
+  height: 0px;
+  left: 380px;
+}
+
+div.example-output {
+  padding-left: 15px;
+  border-style: solid;
+  border-width: 0px;
+  border-left-width: 2px;
+  border-color: black;
+}
+
+pre.screen {
+  background: #E8E8E8;
+}
+
+pre.programlisting {
+  background: #E8E8E8;
+}
+
+div.example-source {
+  background: #E8E8E8;
+}
+
+p.publisher {
+  text-align: center;
+}
+
+div.note50 {
+  padding-left: 384px;
+  padding-right: 36pt;
+}
+
+div.note50 p {
+  border: 2px #ffaaaa solid;
+  padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+    padding-left: 0px;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+ul.toc
+ul.toc {
+    padding-left: 1.5em;
+}
+
+ul.toc a,
+ul.toc a:visited {
+    text-decoration: none;
+}
+
+div.component-title {
+  text-align: right;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: sans-serif;
+}
+
+h1.label {
+  font-size: 150pt;
+  font-weight: normal;
+  font-family: sans-serif;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+div.component-title h1.title {
+  font-family: sans-serif;
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-right: 20px;
+  font-size: 36pt;
+}
+
+p.alpha-version {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+hr.component-separator {
+  height: 1px;
+}
+
+div.refentry div.titlepage {
+  margin-left: 20px;
+}
+
+div.refentry div.titlepage h1.title {
+  margin-left: -20px;
+  margin-bottom: 0px;
+  font-size: 36pt;
+}
+
+body {
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+div.navheader {
+  padding-top: 2px;
+  background-color: #c6bec6;
+  padding-right: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+div.navfooter {
+  background-color: #c6bec6;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-top: 2px;
+}
+
+div.infofooter {
+  background-color: #c6bec6;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  border-top: solid 1px #aaaaaa;
+  font-size: 80%;
+}
+
+span.githash {
+    font-size: 90%;
+}
+
+div.copyrightfooter {
+  background-color: #c6bec6;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+}
+
+div.copyrightfooter p {
+  margin-top: 0px;
+  padding-top: 10px;
+}
+
+article {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.legalnotice {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.book {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+thead {
+  background-color: black;
+  color: white;
+}
+
+table,
+tbody,thead,tfoot,
+tr,td {
+  border-color: #8F8F8F;
+}
+
+div.informaltable   { padding-bottom: 1em;
+                    }
+
+.pattern { font-size: small; }
+
+/* ======================================================================
+   Annotations
+*/
+
+div.annotation-list  { visibility: hidden;
+                     }
+
+div.annotation-nocss { position: absolute;
+                       visibility: hidden;
+                     }
+
+div.annotation-popup { position: absolute;
+                       z-index: 4;
+                       background-color: white;
+                       visibility: hidden;
+                       padding: 0px;
+                       margin: 2px;
+                       border: solid black 1px;
+                       width: 200px
+                     }
+
+div.annotation-title { padding: 1px;
+                       background-color: #afcfcf;
+                       font-weight: bold;
+                       border-bottom-color: black;
+                       border-bottom-style: solid;
+                       border-bottom-width: 1px;
+                     }
+
+div.annotation-body  { padding: 2px;
+                     }
+
+div.annotation-body p { margin-top: 0px;
+                        padding-top: 0px;
+                      }
+
+div.annotation-close { position: absolute;
+                       top: 2px;
+                       right: 2px;
+                     }
+
+div.caution {
+  background: url(figs/web/caution.png) no-repeat;
+  min-height: 80px;
+  padding-left: 100px;
+}
+
+div.caution h3 {
+  display: none;
+}
+
+div.tip {
+  background: url(figs/web/tip.png) no-repeat;
+  min-height: 80px;
+  padding-left: 100px;
+}
+
+div.tip h3 {
+  display: none;
+}
+
+div.note {
+  background: url(figs/web/note.png) no-repeat;
+  min-height: 80px;
+  padding-left: 100px;
+}
+
+div.note h3 {
+  display: none;
+}

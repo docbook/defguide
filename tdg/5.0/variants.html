@@ -1,0 +1,54 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>DocBook Variants and Future Directions</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="appa.html" title="Installation"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="Part  III .  Appendixes" href="part3.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="Resources" href="appc.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="app-variants" class="appendix"><header class="appendix-titlepage"><h2>DocBook Variants and Future Directions</h2><p class="releaseinfo">$Revision: 205773 $</p></header><section id="s.variants" class="section"><div class="section-titlepage"><h3>1. DocBook Variants</h3></div><p><a class="indexterm" name="idx.s.variants"></a>The DocBook community has developed several variants that,
+    while not part of the normative specification, have proven to be useful.
+    These include:</p><div class="variablelist"><dl><dt><span class="term">Simplified DocBook</span></dt><dd><p><a class="indexterm" name="s.variants.3.1.2.1.1"></a><a class="indexterm" name="s.variants.3.1.2.1.2"></a>Simplified DocBook is a proper subset of DocBook.
+          Therefore, any valid instance will also be valid against the full
+          DocBook schema. The objective is to provide a significantly smaller
+          schema that is useful for articles and other small documents. As of
+          the publication of this book, the latest version of Simplified
+          DocBook was based on DocBook <span class="acronym">V4.5</span>. Further
+          information can be found at <code class="uri"><a href="http://www.docbook.org/schemas/simplified">http://www.docbook.org/schemas/simplified</a></code>.</p></dd><dt><span class="term">DocBook website</span></dt><dd><p><a class="indexterm" name="s.variants.3.2.2.1.1"></a><a class="indexterm" name="s.variants.3.2.2.1.2"></a>The DocBook website schema is a customization of the
+          schema designed for building websites. There is also support in the
+          DocBook stylesheets for this schema. As of the publication of this
+          book, there is a version of the schema based on DocBook
+          <span class="acronym">V5.0</span> under development. Information about the
+          DocBook website and how to use it can be found in <em class="citetitle">DocBook
+          XSL: The Complete Guide</em> [<a href="appc.html#Stayton07"><span class="abbrev">Stayton07</span></a>] and at <code class="uri"><a href="http://www.dpawson.co.uk/docbook/website/">http://www.dpawson.co.uk/docbook/website/</a></code>. The latter
+          has information about the DocBook <span class="acronym">V5.0</span> version of
+          the schema.</p></dd><dt><span class="term">DocBook slides</span></dt><dd><p><a class="indexterm" name="s.variants.3.3.2.1.1"></a>This schema is a customization for making slide sets.
+          The schema and stylesheets can be found at <code class="uri"><a href="http://docbook.sourceforge.net">http://docbook.sourceforge.net</a></code> as part of the open
+          source DocBook stylesheet distribution.<a class="indexterm" name="s.variants.3.3.2.1.3"></a></p></dd></dl></div></section><section id="app-variants.3" class="section"><div class="section-titlepage"><h3>2. Future Directions</h3></div><p><a class="indexterm" name="app-variants.3.2.1"></a>With the introduction of DocBook <span class="acronym">V5.0</span>,
+    there have been several new initiatives started to take advantage of the
+    increased flexibility and customizability of the standard. Two of these
+    initiatives have become subcommittees of the <span class="acronym">OASIS</span>
+    DocBook Technical Committee:</p><div class="variablelist"><dl><dt><span class="term"><span class="acronym">OASIS</span> DocBook Publisher’s Subcommittee</span></dt><dd><p><a class="indexterm" name="app-variants.3.3.1.2.1.1"></a><a class="indexterm" name="app-variants.3.3.1.2.1.2"></a>This subcommittee is chartered to develop and maintain
+          official variants of DocBook in support of the publishing industry.
+          In May, 2009, this subcommittee released <a href="http://docs.oasis-open.org/docbook/specs/publishers-1.0-spec-cd-01.html">The
+          DocBook Publishers Schema Version 1.0</a>, a draft based on the
+          DocBook <span class="acronym">V5.0</span> standard.</p></dd><dt><span class="term"><span class="acronym">OASIS</span> DocBook eLearning Subcommittee</span></dt><dd><p><a class="indexterm" name="app-variants.3.3.2.2.1.1"></a><a class="indexterm" name="app-variants.3.3.2.2.1.2"></a>This subcommittee will develop enhancements to the
+          DocBook standard for <span class="keep-together">eLearning</span>
+          applications, including materials for online learning,
+          instructor-led training and other related educational
+          activities.</p></dd></dl></div><section id="app-variants.3.4" class="section"><div class="section-titlepage"><h4>2.1. DocBook Assembly Mechanism</h4></div><p><a class="indexterm" name="app-variants.3.4.2.1"></a><a class="indexterm" name="app-variants.3.4.2.2"></a><a class="indexterm" name="app-variants.3.4.2.3"></a><a class="indexterm" name="app-variants.3.4.2.4"></a>In addition to these two subcommittees, there is a current
+      effort to create markup for an “<span class="quote">assembly</span>” capability to
+      better support development of documents using a modular approach.</p><p>Most modular methodologies use a topic-oriented approach, where
+      writers create independent units of information that are meant to stand
+      alone. Topics are then collected into a library in much the same way
+      that programmers create libraries of functions. Authors select the
+      topics they need to assemble the documentation for a particular system
+      from the library.</p><p>In order to support modular methodologies, you need support for
+      marking up individual topics, which DocBook does well. You also need
+      support for some kind of “<span class="quote">map</span>” or “<span class="quote">assembly</span>”
+      file that identifies which topics are required for a particular
+      deliverable, and at least for print deliverables, what order they should
+      be presented in.</p><p>The proposed DocBook assembly would serve this purpose. While
+      still under consideration as this book is being written, the general
+      outline of an assembly is clear. It would identify a collection of
+      resources (which could include topics and other modules), an ordering of
+      those resources for a particular document, a set of relationships
+      between resources, and the transformations that are to be applied to the
+      collection.</p><p>While DocBook already supports many aspects of topic-oriented
+      writing, the assembly mechanism is being designed to provide a more
+      capable and intuitive model for this type of methodology.</p></section></section></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Installation" href="appa.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="Resources" href="appc.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">Installation </td><td width="20%" align="center"><a title="Part  III .  Appendixes" href="part3.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> Resources</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

@@ -1,0 +1,452 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>DocBook and XML</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="part3.html" title="Part&nbsp;III.&nbsp;Appendixes"><link rel="previous" href="appa.html" title="Installation"><link rel="next" href="appc.html" title="DocBook Versions"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="Installation" href="appa.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp;III.&nbsp;Appendixes" href="part3.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="DocBook Versions" href="appc.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="appendix" lang="en"><div class="titlepage"><div><div><a name="app-xml"></a><div class="component-title"><h1 class="label">B</h1><h1 class="title">DocBook and <acronym class="acronym">XML</acronym></h1></div></div><div><p class="releaseinfo">$Revision: 546 $</p></div><div><p class="pubdate">$Date: 2001-08-02 06:27:50 -0400 (Thu, 02 Aug 2001) $</p></div></div></div><p>
+<a class="indexterm" name="xmldocbookappb"></a>
+<a class="indexterm" name="docbookxmlappa"></a>
+<a class="indexterm" name="d0e286713"></a>
+<a class="indexterm" name="d0e286719"></a>
+
+<acronym class="acronym">XML</acronym>, the <a href="http://www.w3.org/TR/REC-xml" target="_top">Extensible
+Markup Language</a>, is a simple dialect of <acronym class="acronym">SGML</acronym>. In the words of the
+<acronym class="acronym">XML</acronym> specification, &#8220;the goal [of <acronym class="acronym">XML</acronym>] is to enable generic <acronym class="acronym">SGML</acronym> to be
+served, received, and processed on the Web in the way that is now possible
+with <acronym class="acronym">HTML</acronym>.&#8221;</p><p><acronym class="acronym">XML</acronym> raises two issues with respect to DocBook:<div class="itemizedlist"><ul type="disc"><li><p>Are DocBook <acronym class="acronym">SGML</acronym> instances valid <acronym class="acronym">XML</acronym> instances?</p></li><li><p>Can the DocBook <acronym class="acronym">DTD</acronym> be made into a valid <acronym class="acronym">XML</acronym> <acronym class="acronym">DTD</acronym>?</p></li></ul></div></p><p>If you have an existing <acronym class="acronym">SGML</acronym> system, and your primary goal is
+to serve DocBook documents over the Web as <acronym class="acronym">XML</acronym>, only the first of
+these issues is relevant.  As the popularity of <acronym class="acronym">XML</acronym> grows, we will
+see more and more <acronym class="acronym">XML</acronym>-aware tools that don't implement full
+<acronym class="acronym">ISO</acronym> 8879 <acronym class="acronym">SGML</acronym>. If your goal is to author DocBook
+documents with one of this new generation of tools, you will only be
+able to achieve validity with an <acronym class="acronym">XML</acronym> DocBook <acronym class="acronym">DTD</acronym>.</p><p>
+<a class="indexterm" name="d0e286800"></a>
+
+Although not yet officially adopted by the <acronym class="acronym">OASIS</acronym> DocBook Technical 
+Committee, an <acronym class="acronym">XML</acronym> version of DocBook is available now and
+provided on the <acronym class="acronym">CD-ROM</acronym>.
+</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e286815"></a>DocBook Instances as <acronym class="acronym">XML</acronym></h2></div></div></div><p>
+<a class="indexterm" name="d0e286822"></a>
+<a class="indexterm" name="d0e286828"></a>
+
+Most DocBook documents can be made into well-formed <acronym class="acronym">XML</acronym> documents very
+easily. With few exceptions, valid DocBook <acronym class="acronym">SGML</acronym> instances are also well-formed
+<acronym class="acronym">XML</acronym> instances. The following areas may need to be addressed.</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e286843"></a>System Identifiers</h3></div></div></div><p>
+<a class="indexterm" name="d0e286848"></a>
+<a class="indexterm" name="d0e286854"></a>
+<a class="indexterm" name="d0e286860"></a>
+<a class="indexterm" name="d0e286866"></a>
+
+It is common for <acronym class="acronym">SGML</acronym> instances to use only a public identifier in document
+type and parameter entity declarations:</p><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+This &lt;emphasis&gt;paragraph&lt;/paragraph&gt; is important.
+&lt;/para&gt;
+&lt;/chapter&gt;</pre><p><acronym class="acronym">XML</acronym> requires a system identifier:
+<pre class="programlisting">
+&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+This &lt;emphasis&gt;paragraph&lt;/paragraph&gt; is important.
+&lt;/para&gt;
+&lt;/chapter&gt;</pre></p><p>
+<a class="indexterm" name="d0e286885"></a>
+<a class="indexterm" name="d0e286891"></a>
+<a class="indexterm" name="d0e286897"></a>
+
+If you're used to using catalog files to resolve system identifiers,
+you may be dismayed to learn that system identifiers are required. Because most
+tools favor system identifiers over public identifiers, all of the portability
+that was gained by the use of catalog files seems to have been lost. In the
+long run, it'll be regained by the fact that <acronym class="acronym">XML</acronym> system identifiers can be
+<acronym class="acronym">URN</acronym>s, which will have a resolution scheme like catalogs, but what about the
+short run?</p><p>Luckily, there are a couple of options.  First, you can tell your tools to use the public identifiers even
+though system identifiers are present. Simply add:</p><pre class="screen">OVERRIDE YES</pre><p>
+<a class="indexterm" name="d0e286915"></a>
+
+to your catalog files. Alternatively, you can remap system identifers
+with the <code class="literal">SYSTEM</code> catalog directive.  If you are faced with 
+documents that don't use public identifiers at all, this is probably your
+only option.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e286924"></a>Minimization</h3></div></div></div><p>
+<a class="indexterm" name="d0e286929"></a>
+<a class="indexterm" name="d0e286937"></a>
+
+If you have used <acronym class="acronym">SGML</acronym> minimization features in your instances:</p><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+&lt;chapter id=<a name="xml-attrquote"></a><img src="figures/callouts/1.png" alt="1" border="0">chap1&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+This &lt;emphasis&gt;paragraph<a name="xml-endtag"></a><img src="figures/callouts/2.png" alt="2" border="0">&lt;/&gt; is important.
+&lt;/para&gt;
+&lt;/chapter&gt;</pre><p>they will not be well-formed <acronym class="acronym">XML</acronym> instances. In particular, <acronym class="acronym">XML</acronym><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#xml-attrquote"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>
+
+<a class="indexterm" name="d0e286965"></a>
+<a class="indexterm" name="d0e286971"></a>
+
+Requires that all attribute values
+be quoted.</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#xml-endtag"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>Does not allow short tag minization.
+</p></td></tr></table></div>
+<acronym class="acronym">XML</acronym> also forbids tag omission, and there are
+probably a half dozen or so more exotic
+examples of minimization that you have used. They're all illegal. The
+easiest way to remove these minimizations is probably with a tool like <span><strong class="command">
+sgmlnorm</strong></span> (included in the <acronym class="acronym">SP</acronym> and Jade distributions, on
+the <a href="appe.html" title="What's on the CD-ROM?"><acronym class="acronym">CD-ROM</acronym></a>).</p><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter id="chap1"&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+This &lt;emphasis&gt;paragraph&lt;/emphasis&gt; is important.
+&lt;/para&gt;
+&lt;/chapter&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287000"></a>Attribute Default Values</h3></div></div></div><p>
+<a class="indexterm" name="d0e287005"></a>
+
+Correct processing of this document may require access to the default
+attributes:</p><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+Write to us at:
+&lt;address<a name="xml-defattr"></a><img src="figures/callouts/1.png" alt="1" border="0">&gt;
+90 Sherman Street
+Cambridge, MA 02140
+&lt;/address&gt;
+&lt;/para&gt;
+&lt;/chapter&gt;</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#xml-defattr"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p><a href="address.html"><code class="sgmltag-element">Address</code></a> expresses
+that its content is line-specific with an attribute.</p></td></tr></table></div><p>Some <acronym class="acronym">XML</acronym> processing environments are going to ignore the doctype declaration
+in your document, even if it's present. This is relevant when your instance
+uses elements that have attributes with default values. The default values
+are expressed in the <acronym class="acronym">DTD</acronym>, but may not be expressed in your instance. In the
+case of DocBook, there are relatively few of these, and your stylesheet can
+probably be constructed to do the right thing in either case. (It essentially
+treats the attributes as if they had implied values.)</p><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+Write to us at:
+&lt;address format="linespecific"&gt;
+90 Sherman Street
+Cambridge, MA 02140
+&lt;/address&gt;
+&lt;/para&gt;
+&lt;/chapter&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287033"></a>Character and <code class="literal">SDATA</code> Entities</h3></div></div></div><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+This book was published by O'Reilly<a name="xml-sdata"></a><img src="figures/callouts/1.png" alt="1" border="0">&amp;trade;.
+&lt;/para&gt;
+&lt;/chapter&gt;</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#xml-sdata"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>
+<a class="indexterm" name="d0e287047"></a>
+<a class="indexterm" name="d0e287053"></a>
+<a class="indexterm" name="d0e287057"></a>
+<a class="indexterm" name="d0e287063"></a>
+<a class="indexterm" name="d0e287069"></a>
+<a class="indexterm" name="d0e287075"></a>
+<a class="indexterm" name="d0e287083"></a>
+
+The DocBook <acronym class="acronym">DTD</acronym> defines all of the standard <acronym class="acronym">ISO</acronym>
+entities automatically, but the <acronym class="acronym">ISO</acronym> definitions use
+<code class="literal">SDATA</code>, which is not allowed in <acronym class="acronym">XML</acronym>. Eventually,
+<acronym class="acronym">ISO</acronym> (or someone else) will release official
+<acronym class="acronym">ISO</acronym> standard entity sets that make reference to the
+appropriate Unicode character for each entity. Until then, the <acronym class="acronym">XML</acronym>
+version of DocBook is
+distributed with an unofficial set.</p><p>
+<a class="indexterm" name="d0e287115"></a>
+<a class="indexterm" name="d0e287121"></a>
+
+If you use entities in your document, it may be wise to put declarations
+for them in the internal subset of each instance, because some
+<acronym class="acronym">XML</acronym> browsers are going to parse the internal subset but not the external subset.
+If the entity declarations are in your <acronym class="acronym">DTD</acronym>, and the browser does not parse
+the external subset, the browser won't know how to display the entities in
+your document.</p></td></tr></table></div><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+&lt;!ENTITY trade "&amp;#x2122;"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+This book was published by O'Reilly&amp;trade;.
+&lt;/para&gt;
+&lt;/chapter&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287137"></a>Case-Sensitivity</h3></div></div></div><pre class="programlisting"><a name="xml-nmcasekey"></a><img src="figures/callouts/1.png" alt="1" border="0">&lt;!DocType Book PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+<a name="xml-namecase1"></a><img src="figures/callouts/2.png" alt="2" border="0">&lt;book&gt;&lt;title&gt;Book Title&lt;/title&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title<a name="xml-namecase2"></a><img src="figures/callouts/3.png" alt="3" border="0">&lt;/Title&gt;
+&lt;para&gt;
+Paragraph test.
+&lt;/para&gt;
+<a name="xml-wf1"></a><img src="figures/callouts/4.png" alt="4" border="0">&lt;PARA&gt;
+A second paragraph.
+&lt;/PARA&gt;
+&lt;/chapter&gt;
+&lt;/book&gt;</pre><p>
+<a class="indexterm" name="d0e287151"></a>
+<a class="indexterm" name="d0e287157"></a>
+<a class="indexterm" name="d0e287163"></a>
+<a class="indexterm" name="d0e287169"></a>
+
+With the standard DocBook <acronym class="acronym">SGML</acronym> declaration, DocBook instances are not
+case-sensitive with respect to element and attribute names. <acronym class="acronym">XML</acronym> is always
+case-sensitive. As long as you have used the same case consistently, your
+<acronym class="acronym">XML</acronym> instances will be well-formed, but it may still be advantageous to do some
+case-folding because it will simplify the construction of stylesheets.</p><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#xml-nmcasekey"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>Keywords in <acronym class="acronym">XML</acronym> are case-sensitive,
+and must be in uppercase.
+<a class="indexterm" name="d0e287191"></a>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#xml-namecase1"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>The name declared in the document
+type declaration, like all other names, is case-sensitive.
+<a class="indexterm" name="d0e287200"></a>
+
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#xml-namecase2"><img src="figures/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>Start and end tags must use the same
+case.
+<a class="indexterm" name="d0e287209"></a>
+<a class="indexterm" name="d0e287215"></a>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#xml-wf1"><img src="figures/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>In <acronym class="acronym">XML</acronym>, <a href="para.html"><code class="sgmltag-element">Para</code></a> is not the
+same as <a href="para.html"><code class="sgmltag-element">PARA</code></a>. Note that this is a validity error (against
+the <acronym class="acronym">XML</acronym> version of DocBook), but it is not an <acronym class="acronym">XML</acronym> well-formedness error. The use of <a href="para.html"><code class="sgmltag-element">
+para</code></a> and <a href="para.html"><code class="sgmltag-element">PARA</code></a> as distinct names is as legitimate
+as using <code class="sgmltag-element">foo</code> and <code class="sgmltag-element">bar</code>, as long as they
+are properly nested.
+<a class="indexterm" name="d0e287251"></a>
+</p></td></tr></table></div><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;book&gt;&lt;title&gt;Book Title&lt;/title&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+Paragraph test.
+&lt;/para&gt;
+&lt;para&gt;
+A second paragraph.
+&lt;/para&gt;
+&lt;/chapter&gt;
+&lt;/book&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287261"></a>No #CONREF Attributes</h3></div></div></div><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;indexterm id="idx-bor"&gt;&lt;primary&gt;Something&lt;/primary&gt;&lt;/indexterm&gt;<a name="xml-conrefstart"></a><img src="figures/callouts/1.png" alt="1" border="0">
+&lt;para&gt;
+Paragraph test.
+&lt;/para&gt;
+&lt;indexterm startref="idx-bor"&gt;<a name="xml-conref"></a><img src="figures/callouts/2.png" alt="2" border="0">
+&lt;/chapter&gt;</pre><p>
+<a class="indexterm" name="d0e287272"></a>
+<a class="indexterm" name="d0e287276"></a>
+<a class="indexterm" name="d0e287280"></a>
+<a class="indexterm" name="d0e287284"></a>
+<a class="indexterm" name="d0e287288"></a>
+<a class="indexterm" name="d0e287292"></a>
+<a class="indexterm" name="d0e287296"></a>
+
+The <code class="sgmltag-attribute">StartRef</code> attribute on <a href="indexterm.html"><code class="sgmltag-element">
+indexterm</code></a> and the <code class="sgmltag-attribute">OtherTerm</code>
+attribute on <a href="glosssee.html"><code class="sgmltag-element">GlossSee</code></a> and <a href="glossseealso.html"><code class="sgmltag-element">GlossSeeAlso</code></a>
+are <code class="literal">#CONREF</code> attributes.</p><p>In <acronym class="acronym">SGML</acronym> terms, this means that when these attributes are used, the content
+of the tag is taken to be the same as the content of the tag pointed to by
+the attribute. <div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#xml-conrefstart"><img src="figures/callouts/1.png" alt="1" border="0"></a> <a href="#xml-conref"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>If you
+have used these attributes, your instance will contain both empty and non-empty
+versions of these tags.</p></td></tr></table></div></p><p>Your best bet is to transform the <code class="literal">#CONREF</code>
+version into an empty tag and let your stylesheet deal with it appropriately.
+</p><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;indexterm id="idx-bor"&gt;&lt;primary&gt;Something&lt;/primary&gt;&lt;/indexterm&gt;
+&lt;para&gt;
+Paragraph test.
+&lt;/para&gt;
+&lt;indexterm startref="idx-bor"/&gt;
+&lt;/chapter&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287338"></a>Only Explicit CDATA-Marked Sections Are Allowed</h3></div></div></div><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY % draft "IGNORE"&gt;
+&lt;!ENTITY % sourcecode "CDATA"&gt;
+]&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+<a name="xml-ignore"></a><img src="figures/callouts/1.png" alt="1" border="0">&lt;![ %draft; [
+&lt;para&gt;
+Draft paragraph.
+&lt;/para&gt;
+]]&gt;
+&lt;para&gt;
+The following code is totally out of context:
+&lt;programlisting&gt;
+&lt;![ <a name="xml-cdata"></a><img src="figures/callouts/2.png" alt="2" border="0">%sourcecode; [
+if (x &lt; 3) {
+  y = 3;
+}
+]]&gt;
+&lt;/programlisting&gt;
+&lt;/chapter&gt;</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#xml-ignore"><img src="figures/callouts/1.png" alt="1" border="0"></a> <a href="#xml-cdata"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>
+<a class="indexterm" name="d0e287351"></a>
+<a class="indexterm" name="d0e287357"></a>
+<a class="indexterm" name="d0e287363"></a>
+
+Parameter entities are not
+allowed in the body of <acronym class="acronym">XML</acronym> documents (they are allowed in the internal subset).
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#xml-ignore"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p><acronym class="acronym">XML</acronym> instances cannot contain <code class="literal">
+IGNORE</code>, <code class="literal">INCLUDE</code>, <code class="literal">TEMP</code>, or <code class="literal">
+RCDATA</code> marked sections.
+<a class="indexterm" name="d0e287389"></a>
+<a class="indexterm" name="d0e287395"></a>
+<a class="indexterm" name="d0e287399"></a>
+<a class="indexterm" name="d0e287405"></a>
+<a class="indexterm" name="d0e287409"></a>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#xml-cdata"><img src="figures/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p><code class="literal">CDATA</code> marked sections
+must use the &#8220;<code class="literal">CDATA</code>&#8221; keyword literally because
+parameter entities are not allowed.
+<a class="indexterm" name="d0e287421"></a>
+</p></td></tr></table></div><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+The following code is totally out of context:
+&lt;programlisting&gt;
+&lt;![CDATA[
+if (x &lt; 3) {
+  y = 3;
+}
+]]&gt;
+&lt;/programlisting&gt;
+&lt;/chapter&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287431"></a>No SUBDOC or CDATA External Entities</h3></div></div></div><pre class="programlisting">&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY % sourcecode SYSTEM "program.c" CDATA&gt;
+]&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+The following code is totally out of context:
+&lt;programlisting&gt;
+&amp;sourcecode;
+&lt;/programlisting&gt;
+&lt;/chapter&gt;</pre><p>
+<a class="indexterm" name="d0e287438"></a>
+<a class="indexterm" name="d0e287444"></a>
+<a class="indexterm" name="d0e287450"></a>
+<acronym class="acronym">XML</acronym> instances cannot use <code class="literal">CDATA</code> or <code class="literal">SUBDOC
+</code> external entities. One option for integrating external <code class="literal">
+CDATA</code> content into a document is to employ a pre-processing pass
+that inserts the content inline, wrapped in a <code class="literal">CDATA</code> marked
+section.</p><p>
+<a class="indexterm" name="d0e287473"></a>
+<a class="indexterm" name="d0e287477"></a>
+
+<code class="literal">SUBDOC</code> entities may be more problematic. If you do
+not require validation, it may be sufficient to simply put them inline. <acronym class="acronym">XML</acronym>
+namespaces may offer another possible solution.</p><p>The result will be something like this:</p><pre class="programlisting">&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;chapter&gt;&lt;title&gt;Chapter Title&lt;/title&gt;
+&lt;para&gt;
+The following code is totally out of context:
+&lt;programlisting&gt;
+&lt;![CDATA[
+int main () {
+..
+}
+]]&gt;
+&lt;/programlisting&gt;
+&lt;/chapter&gt;</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287491"></a>No Data Attributes on Notations</h3></div></div></div><p>They're not allowed in <acronym class="acronym">XML</acronym>, so don't add any.
+<a class="indexterm" name="d0e287499"></a>
+
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e287503"></a>No Attribute Value Specifications on<br>Entity Declarations</h3></div></div></div><p>
+<a class="indexterm" name="d0e287510"></a>
+<a class="indexterm" name="d0e287518"></a>
+<a class="indexterm" name="d0e287526"></a>
+
+They're not allowed in <acronym class="acronym">XML</acronym>, so don't add any.</p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="s-docbookxml"></a>The DocBook <acronym class="acronym">DTD</acronym> as <acronym class="acronym">XML</acronym></h2></div></div></div><a class="indexterm" name="d0e287543"></a><a class="indexterm" name="d0e287550"></a><p>Converting the DocBook <acronym class="acronym">DTD</acronym> to <acronym class="acronym">XML</acronym> is much more challenging
+than converting the instances. It is probably not possible to
+construct an <acronym class="acronym">XML</acronym> <acronym class="acronym">DTD</acronym> that is identical to the validation power
+of DocBook. The list below identifies most of the issues that
+must be addressed, and describes how the DocBook <acronym class="acronym">XML</acronym> <acronym class="acronym">DTD</acronym>; deals with
+them:</p><div class="variablelist"><dl><dt><span class="term">Comments are not allowed inside markup declarations</span></dt><dd><p>
+<a class="indexterm" name="d0e287582"></a>
+<a class="indexterm" name="d0e287588"></a>
+
+Most of them have been moved to comment declarations preceding the markup
+declaration that used to contain them. A few small, inline comments that seemed
+like they would be out of context if moved before the declaration were simply
+deleted.</p></dd><dt><span class="term">Name groups are not allowed in element or attribute list
+declarations</span></dt><dd><p>
+<a class="indexterm" name="d0e287600"></a>
+<a class="indexterm" name="d0e287604"></a>
+<a class="indexterm" name="d0e287612"></a>
+
+The small number of places in which DocBook uses name groups have
+been expanded.</p><p>There's one downside: DocBook uses <code class="literal">%admon.class;</code> in a name
+group to define the content model, and attribute lists for elements in the
+admonitions class. In DocBook XML, this convenience cannot be expressed. If additional
+admonitions are added, the element and attribute list declarations will have
+to be copied for them.</p></dd><dt><span class="term">No <code class="literal">CDATA</code> or <code class="literal">RCDATA</code>
+declared content</span></dt><dd><p>
+<a class="indexterm" name="d0e287637"></a>
+<a class="indexterm" name="d0e287643"></a>
+
+<a href="graphic.html"><code class="sgmltag-element">Graphic</code></a> and <a href="inlinegraphic.html"><code class="sgmltag-element">InlineGraphic</code></a> have
+been made <code class="literal">EMPTY</code>. The content model for <code class="sgmltag-element">SynopFragmentRef
+</code>, the only <code class="literal">RCDATA</code> element in DocBook, has been
+changed to <code class="literal">(arg | group)+</code>.</p></dd><dt><span class="term">No exclusions or inclusions on element declarations</span></dt><dd><p>
+<a class="indexterm" name="d0e287671"></a>
+<a class="indexterm" name="d0e287677"></a>
+
+They had to be removed.</p><p>
+<a class="indexterm" name="d0e287685"></a>
+
+In DocBook, exclusions are used to exclude the following:<div class="itemizedlist"><ul type="disc"><li><p>Ubiquitous elements (<a href="indexterm.html"><code class="sgmltag-element">indexterm</code></a>
+and <a href="beginpage.html"><code class="sgmltag-element">BeginPage</code></a>) from a number of contexts in which they
+should not occur (such as metadata, for example).</p></li><li><p>
+<a class="indexterm" name="d0e287704"></a>
+
+Formal objects from <a href="highlights.html"><code class="sgmltag-element">Highlights</code></a>, <a href="example.html"><code class="sgmltag-element">
+Example</code></a>s, <a href="figure.html"><code class="sgmltag-element">Figure</code></a>s and <a href="legalnotice.html"><code class="sgmltag-element">LegalNotice</code></a>s.
+</p></li><li><p>
+<a class="indexterm" name="d0e287723"></a>
+<a class="indexterm" name="d0e287729"></a>
+
+Formal objects and <a href="informaltable.html"><code class="sgmltag-element">InformalTable</code></a>s
+from tables.</p></li><li><p>
+<a class="indexterm" name="d0e287741"></a>
+<a class="indexterm" name="d0e287745"></a>
+
+Block elements and <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a>s
+from <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a>s</p></li><li><p>Admonitions, <a href="entrytbl.html"><code class="sgmltag-element">EntryTbl</code></a>s, and <a href="acronym.html"><code class="sgmltag-element">
+Acronym</code></a>s from themselves.
+<a class="indexterm" name="d0e287766"></a>
+<a class="indexterm" name="d0e287772"></a>
+</p></li></ul></div></p><p>Removing these exclusions from DocBook <acronym class="acronym">XML</acronym> means that it is now valid, in
+the <acronym class="acronym">XML</acronym> sense, to do some things that don't make a lot of sense (like put
+a <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a> in a <a href="footnote.html"><code class="sgmltag-element">Footnote</code></a>). Be careful.
+</p><p>
+<a class="indexterm" name="d0e287792"></a>
+<a class="indexterm" name="d0e287798"></a>
+<a class="indexterm" name="d0e287804"></a>
+<a class="indexterm" name="d0e287808"></a>
+<a class="indexterm" name="d0e287814"></a>
+
+Inclusions in DocBook are used to add the ubiquitious elements (<a href="indexterm.html"><code class="sgmltag-element">
+indexterm</code></a> and <a href="beginpage.html"><code class="sgmltag-element">BeginPage</code></a>) unconditionally to a
+large number of contexts. In order to make these elements available in
+DocBook <acronym class="acronym">XML</acronym>,
+they have been added to most of the parameter entities that include <code class="literal">
+#PCDATA</code>. If new locations are discovered where these terms are desired, DocBook <acronym class="acronym">XML</acronym>
+will be updated.</p></dd><dt><span class="term">Elements with mixed content must have <code class="literal">#PCDATA
+</code> first.</span></dt><dd><p>
+<a class="indexterm" name="d0e287844"></a>
+<a class="indexterm" name="d0e287850"></a>
+
+The content models of many elements have been updated to make them a
+repeatable OR group beginning with <code class="literal">#PCDATA</code>.</p></dd><dt><span class="term">Many declared attribute types (<code class="literal">NAME</code>, <code class="literal">
+NUMBER</code>, <code class="literal">NUTOKEN</code>, and so on) are not allowed</span></dt><dd><p>
+<a class="indexterm" name="d0e287874"></a>
+<a class="indexterm" name="d0e287880"></a>
+<a class="indexterm" name="d0e287886"></a>
+
+They have all been replaced by <code class="literal">NMTOKEN</code> or <code class="literal">
+CDATA</code>.</p></dd><dt><span class="term">No <code class="literal">#CONREF</code> attributes allowed.</span></dt><dd><p>
+<a class="indexterm" name="d0e287907"></a>
+<a class="indexterm" name="d0e287913"></a>
+<a class="indexterm" name="d0e287917"></a>
+<a class="indexterm" name="d0e287923"></a>
+<a class="indexterm" name="d0e287929"></a>
+
+The <code class="literal">#CONREF</code> attributes on <a href="indexterm.html"><code class="sgmltag-element">indexterm</code></a>, <a href="glosssee.html"><code class="sgmltag-element">
+GlossSee</code></a>, and <a href="glossseealso.html"><code class="sgmltag-element">GlossSeeAlso</code></a> were changed to <code class="literal">
+#IMPLIED</code>. The content model of <a href="indexterm.html"><code class="sgmltag-element">indexterm</code></a> was
+modified so that it can be empty.</p></dd><dt><span class="term">Attribute default values must be quoted.</span></dt><dd><p>
+<a class="indexterm" name="d0e287959"></a>
+<a class="indexterm" name="d0e287967"></a>
+
+Quotes were added wherever necessary.
+<a class="indexterm" name="d0e287975"></a>
+<a class="indexterm" name="d0e287977"></a>
+</p></dd></dl></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Installation" href="appa.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="DocBook Versions" href="appc.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Installation&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp;III.&nbsp;Appendixes" href="part3.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;DocBook Versions</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

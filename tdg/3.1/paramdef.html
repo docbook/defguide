@@ -1,0 +1,454 @@
+<HTML
+><HEAD
+><TITLE
+>ParamDef</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Para"
+HREF="para.html"><LINK
+REL="NEXT"
+TITLE="Parameter"
+HREF="parameter.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="para.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="parameter.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>ParamDef</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN76718"
+></A
+><H2
+>Name</H2
+>ParamDef&nbsp;--&nbsp;Information about a function parameter in a programming language</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN76721"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Mixed Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>ParamDef ::=
+((#PCDATA|<A
+HREF="replaceable.html"
+>Replaceable</A
+>|<A
+HREF="parameter.html"
+>Parameter</A
+>|<A
+HREF="funcparams.html"
+>FuncParams</A
+>)*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN76749"
+></A
+><H2
+>Description</H2
+><P
+>In the syntax summary for a function in a programming language,
+<A
+HREF="paramdef.html"
+><TT
+CLASS="SGMLTAG"
+>ParamDef</TT
+></A
+> provides the description of a parameter to the
+function.  Typically, this includes the data type of the parameter
+and its name.  For parameters that are pointers to functions, it also
+includes a summary of the nested parameters.</P
+><P
+>Within the <A
+HREF="paramdef.html"
+><TT
+CLASS="SGMLTAG"
+>ParamDef</TT
+></A
+>, the parameter name is identified with 
+<A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>, and the rest of the content is assumed to be the
+data type.</P
+><P
+>In the following definition, <TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+> is the name of the 
+parameter and <SPAN
+CLASS="TYPE"
+>char *</SPAN
+> is its type:
+<PRE
+CLASS="SCREEN"
+>&#60;paramdef&#62;char *&#60;parameter&#62;str&#60;/parameter&#62;&#60;/paramdef&#62;</PRE
+></P
+><P
+>Sometimes a data type requires punctuation on both sides of the
+parameter.  For example, the <TT
+CLASS="PARAMETER"
+><I
+>a</I
+></TT
+> parameter in this
+definition is an array of 
+<SPAN
+CLASS="TYPE"
+>char *</SPAN
+>:
+<PRE
+CLASS="SCREEN"
+>&#60;paramdef&#62;char *&#60;parameter&#62;a&#60;/parameter&#62;[]&#60;/paramdef&#62;</PRE
+></P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN76764"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted inline. For a complete description of the processing expectations,
+see <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN76768"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain ParamDef:
+<A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>, <A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN76778"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in ParamDef:
+<A
+HREF="funcparams.html"
+><TT
+CLASS="SGMLTAG"
+>FuncParams</TT
+></A
+>, <A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>, <A
+HREF="replaceable.html"
+><TT
+CLASS="SGMLTAG"
+>Replaceable</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN76799"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+>, <A
+HREF="funcparams.html"
+><TT
+CLASS="SGMLTAG"
+>FuncParams</TT
+></A
+>, <A
+HREF="funcprototype.html"
+><TT
+CLASS="SGMLTAG"
+>FuncPrototype</TT
+></A
+>, <A
+HREF="funcsynopsisinfo.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsisInfo</TT
+></A
+>, <A
+HREF="function.html"
+><TT
+CLASS="SGMLTAG"
+>Function</TT
+></A
+>, <A
+HREF="parameter.html"
+><TT
+CLASS="SGMLTAG"
+>Parameter</TT
+></A
+>, <A
+HREF="returnvalue.html"
+><TT
+CLASS="SGMLTAG"
+>ReturnValue</TT
+></A
+>, <A
+HREF="varargs.html"
+><TT
+CLASS="SGMLTAG"
+>VarArgs</TT
+></A
+>, <A
+HREF="void.html"
+><TT
+CLASS="SGMLTAG"
+>Void</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN76830"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE funcsynopsis PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;funcsynopsis&#62;
+&#60;funcprototype&#62;
+  &#60;funcdef&#62;int &#60;function&#62;max&#60;/function&#62;&#60;/funcdef&#62;
+  &#60;paramdef&#62;int &#60;parameter&#62;int1&#60;/parameter&#62;&#60;/paramdef&#62;
+  &#60;paramdef&#62;int &#60;parameter&#62;int2&#60;/parameter&#62;&#60;/paramdef&#62;
+&#60;/funcprototype&#62;
+&#60;/funcsynopsis&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>int max</CODE
+>(int int1, int int2);</CODE
+></P
+><P
+></P
+></DIV
+></DIV><P
+>For additional examples, see also <A
+HREF="funcdef.html"
+><TT
+CLASS="SGMLTAG"
+>FuncDef</TT
+></A
+>,
+<A
+HREF="funcsynopsis.html"
+><TT
+CLASS="SGMLTAG"
+>FuncSynopsis</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="para.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="parameter.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Para</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Parameter</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

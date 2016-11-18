@@ -1,0 +1,766 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Getting Started with SGML/XML</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="part1-x.html" title="Part&nbsp;I.&nbsp;Introduction"><link rel="previous" href="part1-x.html" title="Part&nbsp;I.&nbsp;Introduction"><link rel="next" href="ch02-x.html" title="Creating DocBook Documents"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="Part&nbsp;I.&nbsp;Introduction" href="part1-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp;I.&nbsp;Introduction" href="part1-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="Creating DocBook Documents" href="ch02-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="chapter" lang="en"><div><div><div><a name="ch-gssgml"></a><div class="component-title"><h1 class="label">1</h1><h1 class="title">Getting Started<br>with <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym></h1></div></div><div><p class="releaseinfo">$Revision: 2357 $</p></div><div><p class="pubdate">$Date: 2002-12-29 15:20:58 -0500 (Sun, 29 Dec 2002) $</p></div></div><hr xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0" t:class="component-separator"></div><p>
+<a class="indexterm" name="getstartSGML"></a>
+<a class="indexterm" name="XMLgetstart"></a>
+
+This chapter is intended to provide a quick introduction to structured
+markup (<acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym>). If you're already familiar with <acronym class="acronym">SGML</acronym> or
+<acronym class="acronym">XML</acronym>, you only need to skim this chapter.
+</p><p>
+To work with DocBook, you need to understand a few basic concepts of
+structured editing in general, and DocBook, in particular. That's
+covered here. You also need some concrete experience with the way a
+DocBook document is structured. That's covered in the next chapter.
+</p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch01-compare"></a><acronym class="acronym">HTML</acronym> and <acronym class="acronym">SGML</acronym> vs. <acronym class="acronym">XML</acronym></h2></div></div></div><p>
+<a class="indexterm" name="d0e588"></a>
+<a class="indexterm" name="d0e594"></a>
+<a class="indexterm" name="d0e600"></a>
+
+This chapter doesn't assume that you know what <acronym class="acronym">HTML</acronym> is, but if you
+do, you have a starting point for understanding structured
+markup. <acronym class="acronym">HTML</acronym> (Hypertext Markup Language) is a way of marking up text
+and graphics so that the most popular web browsers can interpret
+them. <acronym class="acronym">HTML</acronym> consists of a set of markup tags with specific
+meanings. Moreover, <acronym class="acronym">HTML</acronym> is a very basic type of <acronym class="acronym">SGML</acronym> markup that
+is easy to learn and easy for computer applications to generate. But
+the simplicity of <acronym class="acronym">HTML</acronym> is both its virtue and its weakness. Because
+of <acronym class="acronym">HTML</acronym>'s limitations, web users and programmers have had to extend
+and enhance it by a series of customizations and revisions that still
+fall short of accommodating current, to say nothing of future, needs.
+</p><p>
+
+
+<acronym class="acronym">SGML</acronym>, on the other hand, is an international standard that describes
+how markup languages are defined. <acronym class="acronym">SGML</acronym> does not consist of
+particular tags or the rules for their usage. <acronym class="acronym">HTML</acronym> is an example of
+a markup language defined in <acronym class="acronym">SGML</acronym>.
+</p><p>
+<a class="indexterm" name="d0e643"></a>
+
+<acronym class="acronym">XML</acronym> promises an intelligent improvement over <acronym class="acronym">HTML</acronym>, and
+compatibility with it is already being built into the most popular web
+browsers. <acronym class="acronym">XML</acronym> is not a new markup language designed to compete with
+<acronym class="acronym">HTML</acronym>, and it's not designed to create conversion headaches for people
+with tons of <acronym class="acronym">HTML</acronym> documents. <acronym class="acronym">XML</acronym> is intended to alleviate
+compatibility problems with browser software; it's a new, easier
+version of the standard rules that govern the markup itself, or, in
+other words, a new version of <acronym class="acronym">SGML</acronym>. The rules of <acronym class="acronym">XML</acronym> are designed
+to make it easier to write both applications that interpret its type
+of markup and applications that generate its markup. <acronym class="acronym">XML</acronym> was
+developed by a team of <acronym class="acronym">SGML</acronym> experts who understood and sought to
+correct the problems of learning and implementing <acronym class="acronym">SGML</acronym>. <acronym class="acronym">XML</acronym> is
+also <span class="emphasis"><em>extensible</em></span> markup, which means that it is
+customizable. A browser or word processor that is <acronym class="acronym">XML</acronym>-capable will
+be able to read any <acronym class="acronym">XML</acronym>-based markup language that an individual
+user defines.
+</p><p>
+In this book, we tend to describe things in terms of <acronym class="acronym">SGML</acronym>, but where
+there are differences between <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> (and there are only a
+few), we point them out. For our purposes, it doesn't really matter
+whether you use <acronym class="acronym">SGML</acronym> or <acronym class="acronym">XML</acronym>.
+</p><p>
+During the coming months, we anticipate that <acronym class="acronym">XML</acronym>-aware web browsers
+and other tools will become available. Nevertheless, it's not
+unreasonable to do your authoring in <acronym class="acronym">SGML</acronym> and your online publishing
+in <acronym class="acronym">XML</acronym> or <acronym class="acronym">HTML</acronym>. By the same token, it's not unreasonable to do
+your authoring in <acronym class="acronym">XML</acronym>.
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="s1-basic-concepts"></a>Basic <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> Concepts</h2></div></div></div><p>
+<a class="indexterm" name="SGMLbasicconceptch01"></a>
+<a class="indexterm" name="XMLbasicconceptch01"></a>
+
+<a class="indexterm" name="d0e751"></a>
+<a class="indexterm" name="d0e757"></a>
+
+Here are the basic <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> concepts you need to grasp:</p><div class="itemizedlist"><ul type="disc"><li><p>structured, semantic markup</p></li><li><p>elements</p></li><li><p>attributes</p></li><li><p>entities</p></li></ul></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e782"></a>Structured and Semantic Markup</h3></div></div></div><p>
+<a class="indexterm" name="d0e787"></a>
+<a class="indexterm" name="d0e793"></a>
+<a class="indexterm" name="d0e797"></a>
+
+An essential characteristic of structured markup is that it explicitly
+distinguishes (and accordingly &#8220;marks up&#8221; within a
+document) the structure and semantic content of a document. It does
+not mark up the way in which the document will appear to the reader,
+in print or otherwise.
+</p><p>
+In the days before word processors it was common for a typed
+manuscript to be submitted to a publisher. The manuscript identified
+the logical structures of the documents (chapters, section titles, and
+so on), but said nothing about its appearance. Working independently
+of the author, a designer then developed a specification for the
+appearance of the document, and a typesetter marked up and applied the
+designer's format to the document.
+</p><p>
+<a class="indexterm" name="d0e805"></a>
+<a class="indexterm" name="d0e811"></a>
+
+Because presentation or appearance is usually based on structure and
+content, <acronym class="acronym">SGML</acronym> markup logically precedes and generally determines the
+way a document will look to a reader. If you are familiar with strict,
+simple <acronym class="acronym">HTML</acronym> markup, you know that a given document that is
+structurally the same can also look different on different
+computers. That's because the markup does not specify many aspects of
+a document's appearance, although it does specify many aspects of a
+document's structure.
+</p><p>
+<a class="indexterm" name="d0e825"></a>
+<a class="indexterm" name="d0e831"></a>
+Many writers type their text into a word processor, line-by-line and
+word-for-word, italicizing technical terms, underlining words for
+emphasis, or setting section headers in a font complementary to the
+body text, and finally, setting the headers off with a few carriage
+returns fore and aft. The format such a writer imposes on the words on
+the screen imparts structure to the document by changing its
+appearance in ways that a reader can more or less reliably decode.
+The reliability depends on how consistently and unambiguously the
+changes in type and layout are made. By contrast, an <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym>
+markup of a section header explicitly specifies that a specific piece
+of text is a section header. This assertion does not specify the
+presentation or appearance of the section header, but it makes the
+fact that the text is a section header completely unambiguous.
+</p><p>
+<a class="indexterm" name="d0e843"></a>
+<a class="indexterm" name="d0e849"></a>
+<a class="indexterm" name="d0e855"></a>
+<a class="indexterm" name="d0e859"></a>
+<a class="indexterm" name="d0e867"></a>
+<a class="indexterm" name="d0e871"></a>
+<a class="indexterm" name="d0e877"></a>
+
+<acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> use named elements, delimited by angle brackets
+(&#8220;&lt;&#8221; and &#8220;&gt;&#8221;) to identify the markup in a
+document. In DocBook, a top-level section is <code class="sgmltag-starttag">&lt;sect1&gt;</code>, so the title of a top-level section
+named <span class="emphasis"><em>My First-Level Header</em></span> would be identified
+like this:
+</p><pre class="screen">&lt;sect1&gt;&lt;title&gt;My First-Level Header&lt;/title&gt; </pre><p>Note the following features of this markup:</p><div class="variablelist"><dl><dt><span class="term">Clarity</span></dt><dd><p>A title begins with <code class="sgmltag-starttag">&lt;
+title&gt;</code> and ends with <code class="sgmltag-endtag">&lt;/title&gt;</code>. The <a href="sect1-x.html"><code class="sgmltag-element">sect1</code></a> also has
+an ending <code class="sgmltag-endtag">&lt;/sect1&gt;</code>, but we haven't
+shown the whole section so it's not visible.</p></dd><dt><span class="term">Hierarchy</span></dt><dd><p>&#8220;My First-Level
+Header&#8221; is the title of a top-level section because it occurs
+inside a title in a <a href="sect1-x.html"><code class="sgmltag-element">sect1</code></a>. A
+<a href="title-x.html"><code class="sgmltag-element">title</code></a> element occurring somewhere else, say in a
+<a href="chapter-x.html"><code class="sgmltag-element">Chapter</code></a> element, would be the title of the
+chapter.</p></dd><dt><span class="term">Plain text</span></dt><dd><p><acronym class="acronym">SGML</acronym> documents can have varying character sets, but
+most are <acronym class="acronym">ASCII</acronym>. <acronym class="acronym">XML</acronym> documents use the Unicode
+character set. This makes <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym> documents highly portable
+across systems and tools.</p></dd></dl></div><p>
+<a class="indexterm" name="d0e955"></a>
+<a class="indexterm" name="d0e961"></a>
+<a class="indexterm" name="d0e967"></a>
+<a class="indexterm" name="d0e973"></a>
+
+In an <acronym class="acronym">SGML</acronym> document, there is no obligatory difference between the
+size or face of the type in a first-level section header and the title
+of a book in a footnote or the first sentence of a body paragraph. All
+<acronym class="acronym">SGML</acronym> files are simple text files without font changes or special
+characters.<sup>[<a name="d0e983" href="#ftn.d0e983">1</a>]</sup> Similarly, an <acronym class="acronym">SGML</acronym> document
+does not specify the words in a text that are to be set in italic,
+bold, or roman type. Instead, <acronym class="acronym">SGML</acronym> marks certain kinds of texts for
+their semantic content. For example, if a particular word is the name
+of a file, then the tags around it should specify that it is a
+filename:
+</p><pre class="screen">Many mail programs read configuration information from the
+users <code class="sgmltag-starttag">&lt;filename&gt;</code>.mailrc<code class="sgmltag-endtag">&lt;/filename&gt;</code> file.</pre><p>
+<a class="indexterm" name="d0e1009"></a>
+<a class="indexterm" name="d0e1015"></a>
+<a class="indexterm" name="d0e1021"></a>
+<a class="indexterm" name="d0e1025"></a>
+<a class="indexterm" name="d0e1029"></a>
+<a class="indexterm" name="d0e1035"></a>
+<a class="indexterm" name="d0e1039"></a>
+
+If the meaning of a phrase is particularly audacious, it might get
+tagged for boldness of thought instead of appearance. An <acronym class="acronym">SGML</acronym>
+document contains all the information that a typesetter needs to lay
+out and typeset a printed page in the most effective and consistent
+way, but it does not specify the layout or the
+type.<sup>[<a name="d0e1048" href="#ftn.d0e1048">2</a>]</sup>
+</p><p>
+<a class="indexterm" name="d0e1074"></a>
+<a class="indexterm" name="d0e1080"></a>
+<a class="indexterm" name="d0e1086"></a>
+<a class="indexterm" name="d0e1092"></a>
+<a class="indexterm" name="d0e1100"></a>
+<a class="indexterm" name="d0e1104"></a>
+<a class="indexterm" name="d0e1108"></a>
+
+
+Not only is the structure of an <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> document explicit, but it
+is also carefully controlled. An <acronym class="acronym">SGML</acronym> document makes reference to a
+set of declarations&#8212;a document type definition
+(<acronym class="acronym">DTD</acronym>)&#8212;that contains an inventory of tag names and specifies
+the combination rules for the various structural and semantic features
+that make up a document. What the distinctive features are and how
+they should be combined is &#8220;arbitrary&#8221; in the sense that
+almost any selection of features and rules of composition is
+theoretically possible. The DocBook <acronym class="acronym">DTD</acronym> chooses a particular set of
+features and rules for its users.
+</p><p>
+<a class="indexterm" name="d0e1133"></a>
+Here is a specific example of how the DocBook <acronym class="acronym">DTD</acronym> works. DocBook
+specifies that a third-level section can follow a second-level section
+but cannot follow a first-level section without an intervening
+second-level section.
+</p><div class="informaltable"><table border="0" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="240"><col width="240"></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; " valign="top"><p>This is valid:</p><pre class="screen">&lt;sect1&gt;&lt;title&gt;...&lt;/title&gt;
+  &lt;sect2&gt;&lt;title&gt;...&lt;/title&gt;
+    &lt;sect3&gt;&lt;title&gt;...&lt;/title&gt;
+      ...
+    &lt;/sect3&gt;
+  &lt;/sect2&gt;
+&lt;/sect1&gt;
+</pre></td><td style="" valign="top"><p>This is not:</p><pre class="screen">&lt;sect1&gt;&lt;title&gt;...&lt;/title&gt;
+  &lt;sect3&gt;&lt;title&gt;...&lt;/title&gt;
+    ...
+  &lt;/sect3&gt;
+&lt;/sect1&gt;
+</pre></td></tr></tbody></table></div><p>
+<a class="indexterm" name="d0e1160"></a>
+<a class="indexterm" name="d0e1166"></a>
+<a class="indexterm" name="d0e1172"></a>
+<a class="indexterm" name="d0e1178"></a>
+
+Because an <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> document has an associated <acronym class="acronym">DTD</acronym> that
+describes the valid, logical structures of the document, you can test
+the logical structure of any particular document against the
+<acronym class="acronym">DTD</acronym>. This process is performed by a <em class="firstterm">parser</em>. An
+<acronym class="acronym">SGML</acronym> processor must begin by parsing the document and determining if
+it is valid, that is, if it conforms to the rules specified in the
+<acronym class="acronym">DTD</acronym>. <acronym class="acronym">XML</acronym> processors are not required to
+check for validity, but it's always a good idea to check for validity
+when authoring. Because you can test and validate the
+structure of an <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> document with software, a DocBook
+document containing a first-level section followed immediately by a
+third-level section will be identified as invalid, meaning that it's
+not a valid <em class="firstterm">instance</em> or example of a document
+defined by the DocBook <acronym class="acronym">DTD</acronym>. Presumably, a document with a logical
+structure won't normally jump from a first- to a third-level section,
+so the rule is a safeguard&#8212;but not a guarantee&#8212;of good
+writing, or at the very least, reasonable structure. A parser also
+verifies that the names of the tags are correct and that tags
+requiring an ending tag have them. This means that a valid document is
+also one that should format correctly, without runs of paragraphs
+incorrectly appearing in bold type or similar monstrosities that
+everyone has seen in print at one time or another. For more
+information about <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> parsers, see <a href="ch03-x.html" title="Parsing DocBook Documents">Chapter&nbsp;3, <i>Parsing DocBook Documents</i></a>.
+</p><p>
+In general, adherence to the explicit rules of structure and markup in
+a <acronym class="acronym">DTD</acronym> is a useful and reassuring guarantee of consistency and
+reliability within documents, across document sets, and over
+time. This makes <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> markup particularly desirable to
+corporations or governments that have large sets of documents to
+manage, but it is a boon to the individual writer as well.
+</p><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1240"></a>How can this markup help you?</h4></div></div></div><p>
+<a class="indexterm" name="d0e1245"></a>
+Semantic markup makes your documents more amenable to interpretation
+by software, especially publishing software. You can publish a white
+paper, authored as a DocBook <a href="article-x.html"><code class="sgmltag-element">Article</code></a>, in the
+following formats:
+<a class="indexterm" name="d0e1254"></a>
+<a class="indexterm" name="d0e1260"></a>
+
+</p><div class="itemizedlist"><ul type="disc"><li><p>On the Web in <acronym class="acronym">HTML</acronym></p></li><li><p>As a standalone document on 8&frac12;&times;11 paper</p></li><li><p>As part of a quarterly journal, in a 6&times;9 format
+</p></li><li><p>In Braille</p></li><li><p>In audio</p></li></ul></div><p>
+You can produce each of these publications from exactly the same
+source document using the presentational techniques best suited to
+both the content of the document and the presentation medium. This
+versatility also frees the author to concentrate on the document
+content. For example, as we write this book, we don't know exactly how
+O'Reilly will choose to present chapter headings, bulleted lists,
+<acronym class="acronym">SGML</acronym> terms, or any of the other semantic features. And we don't
+care. It's irrelevant; whatever presentation is chosen, the <acronym class="acronym">SGML</acronym>
+sources will be transformed automatically into that style.
+</p><p>
+Semantic markup can relieve the author of other, more significant
+burdens as well (after all, careful use of paragraph and character
+styles in a word processor document theoretically allows us to change
+the presentation independently from the document). Using semantic
+markup opens up your documents to a world of possibilities. Documents
+become, in a loose sense, databases of information. Programs can
+compile, retrieve, and otherwise manipulate the documents in
+predictable, useful ways.
+</p><p>
+<a class="indexterm" name="d0e1294"></a>
+<a class="indexterm" name="d0e1300"></a>
+
+Consider the online version of this book: almost every element name
+(<a href="article-x.html"><code class="sgmltag-element">Article</code></a>, <a href="book-x.html"><code class="sgmltag-element">Book</code></a>, and so on) is a
+hyperlink to the reference page that describes that
+element. Maintaining these links by hand would be tedious and might be
+unreliable, as well. Instead, every element name is marked as an
+element using <a href="sgmltag-x.html"><code class="sgmltag-element">SGMLTag</code></a>: a <a href="book-x.html"><code class="sgmltag-element">Book</code></a> is
+a <code class="literal"><code class="sgmltag-starttag">&lt;sgmltag&gt;</code>Book<code class="sgmltag-endtag">&lt;/sgmltag&gt;</code></code>.
+</p><p>
+Because each element name in this book is tagged semantically, the
+program that produces the online version can determine which
+occurrences of the word &#8220;book&#8221; in the text are actually
+references to the <a href="book-x.html"><code class="sgmltag-element">Book</code></a> element. The program can
+then automatically generate the appropriate hyperlink when it should.
+</p><p>
+There's one last point to make about the versatility of <acronym class="acronym">SGML</acronym>
+documents: how much you have depends on the <acronym class="acronym">DTD</acronym>. If you take a good
+photo with a high resolution lens, you can print it and copy it and
+scan it and put it on the Web, and it will look good. If you start
+with a low-resolution picture it will not survive those
+transformations so well. DocBook <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> has this advantage over,
+say, <acronym class="acronym">HTML</acronym>: DocBook has specific and unambiguous semantic and
+structural markup, because you can convert its documents with ease
+into other presentational forms, and search them more precisely. If
+you start with <acronym class="acronym">HTML</acronym>, whose markup is at a lower resolution than
+DocBook's, your versatility and searchability is substantially
+restricted and cannot be improved.
+</p></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1350"></a>What are the shortcomings to structural authoring?</h4></div></div></div><p>
+There are a few significant shortcomings to structured authoring:
+</p><div class="itemizedlist"><ul type="disc"><li><p>It requires a significant change in the authoring
+process. Writing structured documents is very different from writing
+with a typical word processor, and change is difficult. In particular,
+authors don't like giving up control over the appearance of their
+words especially now that they have acquired it with the advent of
+word processors. But many publishing companies need authors to
+relinquish that control, because book design and production remains
+their job, not their authors'.</p></li><li><p>Because semantics are separate from appearance, in
+order to publish an <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> document, a stylesheet or other tool
+must create the presentational form from the structural form. Writing
+stylesheets is a skill in its own right, and though not every author
+among a group of authors has to learn how to write them, someone has
+to.</p></li><li><p>Authoring tools for <acronym class="acronym">SGML</acronym> documents can generally be
+pretty expensive. While it's not entirely unreasonable to edit
+<acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> documents with a simple text editor, it's a bit tedious
+to do so. However, there are a few free tools that are
+<acronym class="acronym">SGML</acronym>-aware. The widespread interest in <acronym class="acronym">XML</acronym> may well produce new,
+clever, and less expensive <acronym class="acronym">XML</acronym> editing tools.</p></li></ul></div></div></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch01-elemattr"></a>Elements and Attributes</h2></div></div></div><p>
+<a class="indexterm" name="d0e1394"></a>
+<a class="indexterm" name="d0e1400"></a>
+<a class="indexterm" name="d0e1406"></a>
+<a class="indexterm" name="d0e1414"></a>
+<a class="indexterm" name="d0e1418"></a>
+<a class="indexterm" name="d0e1424"></a>
+<a class="indexterm" name="d0e1428"></a>
+
+<acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> markup consists primarily of
+<em class="firstterm">elements</em>, <em class="firstterm">attributes</em>,
+and <em class="firstterm">entities</em>. Elements are the terms we have
+been speaking about most, like <a href="sect1-x.html"><code class="sgmltag-element">sect1</code></a>, that describe
+a document's content and structure. Most elements are represented by pairs
+of tags and
+mark the start and end of the construct they surround&#8212;for
+example, the <acronym class="acronym">SGML</acronym> source for this particular paragraph begins with a
+<code class="sgmltag-starttag">&lt;para&gt;</code> tag and ends with a <code class="sgmltag-endtag">&lt;/para&gt;</code> tag. Some elements are
+&#8220;empty&#8221; (such as DocBook's cross-reference element,
+<code class="sgmltag-starttag">&lt;xref&gt;</code>) and require no end
+tag.<sup>[<a name="d0e1464" href="#ftn.d0e1464">3</a>]</sup>
+</p><p>
+<a class="indexterm" name="d0e1478"></a>
+<a class="indexterm" name="d0e1484"></a>
+<a class="indexterm" name="d0e1490"></a>
+<a class="indexterm" name="d0e1496"></a>
+
+Elements can, but don't necessarily, include one or more attributes,
+which are additional terms that extend the function or refine the
+content of a given element. For instance, in DocBook a <code class="sgmltag-starttag">&lt;sect1&gt;</code> start tag can contain an
+identifier&#8212;an <code class="sgmltag-attribute">id</code>
+attribute&#8212;that will ultimately allow the writer to
+cross-reference it or enable a reader to retrieve it. End tags cannot
+contain attributes. A <code class="sgmltag-starttag">&lt;sect1&gt;</code>
+element with an <code class="sgmltag-attribute">id</code> attribute
+looks like this:
+</p><pre class="screen">&lt;sect1 id="<em class="replaceable"><code>idvalue</code></em>"&gt;</pre><p>
+<a class="indexterm" name="d0e1521"></a>
+<a class="indexterm" name="d0e1527"></a>
+<a class="indexterm" name="d0e1533"></a>
+<a class="indexterm" name="d0e1539"></a>
+
+In <acronym class="acronym">SGML</acronym>, the catalog of attributes that can occur on an element is
+predefined. You cannot add arbitrary attribute names to an
+element. Similarly, the values allowed for each attribute are
+predefined. In <acronym class="acronym">XML</acronym>, the use of <a href="http://www.w3.org/TR/REC-xml-names/" target="_top">namespaces</a> may allow you
+to add additional attributes to an element, but as of this writing,
+there's no way to perform validation on those attributes.
+</p><p>
+<a class="indexterm" name="d0e1556"></a>
+<a class="indexterm" name="d0e1562"></a>
+
+The <code class="sgmltag-attribute">id</code> attribute is one half of a
+cross reference. An <code class="sgmltag-attribute">idref</code>
+attribute on another element, for example <code class="sgmltag-starttag">&lt;xref linkend=&#8221;idvalue&#8221;
+&gt;</code>, provides the other half. These attributes provide whatever
+application might process the <acronym class="acronym">SGML</acronym> source with the data needed
+either to make a hypertext link or to substitute a named and/or numbered cross
+reference in place of the <code class="sgmltag-starttag">&lt;
+xref&gt;</code>. Another use for attributes is to specify subclasses of
+certain elements. For instance, you can subdivide DocBook's <code class="sgmltag-starttag">&lt;systemitem&gt;</code> into <acronym class="acronym">URL</acronym>s and
+email addresses by making the content of the <code class="sgmltag-attribute">role</code> attribute the distinction between
+them, as in <code class="sgmltag-starttag">&lt;systemitem role="URL"&gt;</code>
+versus <code class="sgmltag-starttag">&lt;systemitem
+role="emailaddr"&gt;</code>.
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="s-entities"></a>Entities</h2></div></div></div><p>
+<a class="indexterm" name="d0e1603"></a>
+<a class="indexterm" name="d0e1609"></a>
+<a class="indexterm" name="d0e1613"></a>
+<a class="indexterm" name="d0e1617"></a>
+
+Entities are a fundamental concept in <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym>, and can be
+somewhat daunting at first. They serve a number of related, but
+slightly different functions, and this makes them a little bit
+complicated.
+</p><p>
+In the most general terms, entities allow you to assign a name to some
+chunk of data, and use that name to refer to that data. The complexity
+arises because there are two different contexts in which you can use
+entities (in the <acronym class="acronym">DTD</acronym> and in your documents), two types of entities
+(parsed and unparsed), and two or three different ways in which the
+entities can point to the chunk of data that they name.
+</p><p>
+In the rest of this section, we'll describe each of the commonly
+encountered entity types. If you find the material in this section
+confusing, feel free to skip over it now and come back to it later.
+We'll refer to the different types of entities as the need arises in
+our discussion of DocBook. Come back to this section when you're
+looking for more detail.
+</p><p>
+Entities can be divided into two broad categories, <em class="firstterm">general
+entities</em> and <em class="firstterm">parameter entities</em>.
+Parameter entities are most often used in the <acronym class="acronym">DTD</acronym>, not in documents,
+so we'll describe them last. Before you can use any type of entity, it
+must be formally declared. This is typically done in the document
+prologue, as we'll explain in <a href="ch02-x.html" title="Creating DocBook Documents">Chapter&nbsp;2, <i>Creating DocBook Documents</i></a>, but we will
+show you how to declare each of the entities discussed here.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1649"></a>General Entities</h3></div></div></div><p>
+<a class="indexterm" name="d0e1654"></a>
+<a class="indexterm" name="d0e1660"></a>
+In use, general entities are introduced with an ampersand (&amp;) and end with
+a semicolon (;). Within the category of general entities, there are
+two types: <em class="firstterm">internal general entities</em> and
+<em class="firstterm">external general entities</em>.
+</p><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1672"></a>Internal general entities</h4></div></div></div><p>
+<a class="indexterm" name="d0e1677"></a>
+<a class="indexterm" name="d0e1681"></a>
+<a class="indexterm" name="d0e1687"></a>
+
+With internal entities, you can associate an essentially arbitrary
+piece of text (which may have other markup, including references to
+other entities) with a name. You can then include that text by
+referring to its name. For example, if your document frequently refers
+to, say, &#8220;O'Reilly &amp; Associates,&#8221; you might declare it
+as an entity:
+</p><pre class="screen">&lt;!ENTITY ora "O'Reilly &amp;amp; Associates"&gt;</pre><p>
+Then, instead of typing it out each time, you can insert it as needed
+in your document with the entity reference <code class="sgmltag-genentity">&amp;ora;</code>, simply to save time. Note that this
+entity declaration includes another entity reference within it.
+That's perfectly valid as long as the reference isn't directly or
+indirectly recursive.
+</p><p>
+<a class="indexterm" name="d0e1702"></a>
+
+If you find that you use a number of entities across many documents,
+you can add them directly to the <acronym class="acronym">DTD</acronym> and avoid having to include the
+declarations in each document. See the discussion of
+<code class="filename">dbgenent.mod</code> in <a href="ch05-x.html" title="Customizing DocBook">Chapter&nbsp;5, <i>Customizing DocBook</i></a>.
+</p></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="s-egenent"></a>External general entities</h4></div></div></div><p>
+<a class="indexterm" name="d0e1721"></a>
+<a class="indexterm" name="d0e1725"></a>
+<a class="indexterm" name="d0e1731"></a>
+<a class="indexterm" name="d0e1737"></a>
+
+With external entities, you can reference other documents from within
+your document. If these entities contain document text (<acronym class="acronym">SGML</acronym> or
+<acronym class="acronym">XML</acronym>), then references to them cause the parser to insert the text of
+the external file directly into your document (these are called parsed
+entities). In this way, you can use entities to divide your single,
+logical document into physically distinct chunks. For example, you
+might break your document into four chapters and store them in
+separate files. At the top of your document, you would include entity
+declarations to reference the four files:
+</p><pre class="screen">&lt;!ENTITY ch01 SYSTEM "ch01.sgm"&gt;
+&lt;!ENTITY ch02 SYSTEM "ch02.sgm"&gt;
+&lt;!ENTITY ch03 SYSTEM "ch03.sgm"&gt;
+&lt;!ENTITY ch04 SYSTEM "ch04.sgm"&gt;</pre><p>
+Your <a href="book-x.html"><code class="sgmltag-element">Book</code></a> now consists simply of references to the
+entities:
+</p><pre class="screen">&lt;book&gt;
+&amp;ch01;
+&amp;ch02;
+&amp;ch03;
+&amp;ch04;
+&lt;/book&gt;</pre><p>
+<a class="indexterm" name="d0e1760"></a>
+<a class="indexterm" name="d0e1764"></a>
+
+Sometimes it's useful to reference external files that don't contain
+document text. For example, you might want to reference an external
+graphic. You can do this with entities by declaring the type of data
+that's in the entity using a notation (these are called unparsed
+entities). For example, the following declaration declares the entity
+<code class="literal">tree</code> as an encapsulated PostScript image:
+</p><pre class="screen">&lt;!ENTITY tree SYSTEM "tree.eps" NDATA EPS&gt;</pre><p>
+<a class="indexterm" name="d0e1775"></a>
+
+Entities declared this way cannot be inserted directly into your
+document. Instead, they must be used as entity attributes to elements:
+</p><pre class="screen">&lt;graphic entityref="tree"&gt;&lt;/graphic&gt;</pre><p>
+Conversely, you cannot use entities declared without a notation as the
+value of an entity attribute.
+</p></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="s-specchar"></a>Special characters</h4></div></div></div><p>
+<a class="indexterm" name="d0e1790"></a>
+<a class="indexterm" name="d0e1796"></a>
+<a class="indexterm" name="d0e1802"></a>
+In order for the parser to recognize markup in your document, it must
+be able to distinguish markup from content. It does this with two
+special characters: &#8220;&lt;,&#8221; which identifies the beginning
+of a start or end tag, and &#8220;&amp;,&#8221; which identifies the
+beginning of an entity reference.<sup>[<a name="d0e1808" href="#ftn.d0e1808">4</a>]</sup>
+If you want these characters to have their literal value, they must be
+encoded as entity references in your document. The entity reference
+<code class="sgmltag-genentity">&amp;lt;</code> produces a left angle bracket;
+<code class="sgmltag-genentity">&amp;amp;</code> produces the
+ampersand.<sup>[<a name="d0e1858" href="#ftn.d0e1858">5</a>]</sup>
+</p><p>
+<a class="indexterm" name="d0e1875"></a>
+
+If you do not encode each of these as their respective entity
+references, then an <acronym class="acronym">SGML</acronym> parser or application is likely to
+interpret them as characters introducing elements or entities (an
+<acronym class="acronym">XML</acronym> parser will always interpret them this way); consequently, they
+won't appear as you intended. If you wish to cite text that contains
+literal ampersands and less-than signs, you need to transform these
+two characters into entity references before they are included in a
+DocBook document. The only other alternative is to incorporate text
+that includes them in your document through some process that avoids
+the parser.
+</p><p>
+<a class="indexterm" name="d0e1889"></a>
+<a class="indexterm" name="d0e1893"></a>
+
+In <acronym class="acronym">SGML</acronym>, character entities are frequently declared using a third
+entity category (one that we deliberately chose to overlook), called
+<em class="firstterm">data entities</em>. In <acronym class="acronym">XML</acronym>, these are declared using
+numeric character references. Numeric character references resemble
+entity references, but technically aren't the same. They have the form
+<code class="literal">&amp;#<em class="replaceable"><code>999</code></em>;</code>, in which
+&#8220;999&#8221; is the numeric character number.
+</p><p>
+<a class="indexterm" name="d0e1914"></a>
+<a class="indexterm" name="d0e1920"></a>
+
+In <acronym class="acronym">XML</acronym>, the numeric character number is always the Unicode character
+number. In addition, <acronym class="acronym">XML</acronym> allows hexadecimal numeric character
+references of the form
+<code class="literal">&amp;#x<em class="replaceable"><code>hhhh</code></em>;</code>. In <acronym class="acronym">SGML</acronym>, the
+numeric character number is a number from the document character set
+that's declared in the <acronym class="acronym">SGML</acronym> declaration.
+</p><p>
+<a class="indexterm" name="d0e1944"></a>
+
+Character entities are also used to give a name to special characters
+that can't otherwise be typed or are not portable across applications
+and operating systems. You can then include these characters in your
+document by refering to their entity name. Instead of using the often
+obscure and inconsistent key combinations of your particular word
+processor to type, say, an uppercase letter U with an umlaut (&Uuml;),
+you type in an entity for it instead. For instance, the entity for an
+uppercase letter U with an umlaut has been defined as the entity
+<code class="literal">Uuml</code>, so you would type in <code class="sgmltag-genentity">&amp;Uuml;</code> to reference it instead of the actual
+character. The <acronym class="acronym">SGML</acronym> application that eventually processes your
+document for presentation will match the entity to your platform's
+handling of special characters in order to render it
+appropriately.
+</p></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1958"></a>Parameter Entities</h3></div></div></div><p>
+<a class="indexterm" name="d0e1963"></a>
+<a class="indexterm" name="d0e1971"></a>
+
+Parameter entities are only recognized in markup declarations (in the
+<acronym class="acronym">DTD</acronym>, for example). Instead of beginning with an ampersand, they
+begin with a percent sign.  Parameter entities are most frequently
+used to customize the <acronym class="acronym">DTD</acronym>. For a detailed discussion of this topic,
+see <a href="ch05-x.html" title="Customizing DocBook">Chapter&nbsp;5, <i>Customizing DocBook</i></a>. Following are some other uses for
+them.
+</p><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="s-ms"></a>Marked sections</h4></div></div></div><p>
+<a class="indexterm" name="d0e1988"></a>
+<a class="indexterm" name="d0e1992"></a>
+<a class="indexterm" name="d0e1998"></a>
+
+You might use a parameter entity reference in an <acronym class="acronym">SGML</acronym> document in a
+marked section. Marking sections is a mechanism for indicating that
+special processing should apply to a particular block of text.  Marked
+sections are introduced by the special sequence
+<code class="literal">&lt;![<em class="replaceable"><code>keyword</code></em>[</code> and end
+with <code class="literal">]]&gt;</code>.  In <acronym class="acronym">SGML</acronym>, marked sections can appear
+in both <acronym class="acronym">DTD</acronym>s and document instances.  In <acronym class="acronym">XML</acronym>, they're only allowed
+in the <acronym class="acronym">DTD</acronym>.<sup>[<a name="d0e2028" href="#ftn.d0e2028">6</a>]</sup>
+</p><p>
+<a class="indexterm" name="d0e2043"></a>
+<a class="indexterm" name="d0e2049"></a>
+<a class="indexterm" name="d0e2053"></a>
+
+The most common keywords are <code class="literal">INCLUDE</code>, which
+indicates that the text in the marked section should be included in
+the document; <code class="literal">IGNORE</code>, which indicates that the text
+in the marked section should be ignored (it completely disappears from
+the parsed document); and <code class="literal">CDATA</code>, which indicates
+that all markup characters within that section should be ignored
+except for the closing characters <code class="literal">]]&gt;</code>.
+</p><p>
+<a class="indexterm" name="d0e2071"></a>
+In <acronym class="acronym">SGML</acronym>, these keywords can be parameter entities. For example, you
+might declare the following parameter entity in your document:
+</p><pre class="screen">&lt;!ENTITY % draft "INCLUDE"&gt;</pre><p>
+Then you could put the sections of the document that are only applicable
+in a draft within marked sections:
+</p><pre class="screen">&lt;![%draft;[
+&lt;para&gt;
+This paragraph only appears in the draft version.
+&lt;/para&gt;
+]]&gt;</pre><p>
+When you're ready to print the final version, simply change the 
+<code class="literal">draft</code> parameter entity declaration:
+</p><pre class="screen">&lt;!ENTITY % draft "IGNORE"&gt;</pre><p>
+and publish the document. None of the draft sections will appear.
+<a class="indexterm" name="d0e2095"></a>
+<a class="indexterm" name="d0e2097"></a>
+</p></div></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ch01-wheredocbook"></a>How Does DocBook Fit In?</h2></div></div></div><p>
+<a class="indexterm" name="d0e2104"></a>
+
+DocBook is a very popular set of tags for describing books, articles,
+and other prose documents, particularly technical
+documentation. DocBook is defined using the native <acronym class="acronym">DTD</acronym> syntax of
+<acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym>. Like <acronym class="acronym">HTML</acronym>, DocBook is an example of a markup
+language defined in <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym>.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2128"></a>A Short DocBook History</h3></div></div></div><p>
+DocBook is almost 10 years old. It began in 1991 as a joint project of
+HaL Computer Systems and O'Reilly. Its popularity grew, and eventually
+it spawned its own maintenance organization, the Davenport Group. In
+mid-1998, it became a Technical Committee (<acronym class="acronym">TC</acronym>) of
+the Organization for the Advancement of Structured Information
+Standards (<acronym class="acronym">OASIS</acronym>).
+</p><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2139"></a>The HaL and O'Reilly era</h4></div></div></div><p>
+<a class="indexterm" name="d0e2144"></a>
+<a class="indexterm" name="d0e2148"></a>
+<a class="indexterm" name="d0e2152"></a>
+
+The DocBook <acronym class="acronym">DTD</acronym> was originally designed and implemented by HaL
+Computer Systems and O'Reilly &amp; Associates around 1991. It was
+developed primarily to facilitate the exchange of <acronym class="acronym">UNIX</acronym> documentation
+originally marked up in <span><strong class="command">troff</strong></span>. Its design appears
+to have been based partly on input from <acronym class="acronym">SGML</acronym> interchange projects
+conducted by the Unix International and Open Software Foundation
+consortia.
+</p><p>
+<a class="indexterm" name="d0e2172"></a>
+When DocBook <acronym class="acronym">V1.1</acronym> was published, discussion about
+its revision and maintenance began in earnest in the Davenport Group,
+a forum created by O'Reilly for computer documentation
+producers. Version 1.2 was influenced strongly by
+Novell and Digital.
+</p><p>
+In 1994, the Davenport Group became an officially chartered entity
+responsible for DocBook's maintenance. DocBook
+<acronym class="acronym">V1.2.2</acronym> was published simultaneously. The founding
+sponsors of this incarnation of Davenport include the following
+people:
+<div class="itemizedlist"><ul type="disc" compact><li><p>Jon Bosak, Novell</p></li><li><p>Dale Dougherty, O'Reilly &amp; Associates</p></li><li><p>Ralph Ferris, Fujitsu <acronym class="acronym">OSSI</acronym></p></li><li><p>Dave Hollander, Hewlett-Packard</p></li><li><p>Eve Maler, Digital Equipment Corporation</p></li><li><p>Murray Maloney, <acronym class="acronym">SCO</acronym></p></li><li><p>Conleth O'Connell, HaL Computer Systems</p></li><li><p>Nancy Paisner, Hitachi Computer Products</p></li><li><p>Mike Rogers, SunSoft</p></li><li><p>Jean Tappan, Unisys</p></li></ul></div>
+</p></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2220"></a>The Davenport era</h4></div></div></div><p>
+Under the auspices of the Davenport Group, the DocBook <acronym class="acronym">DTD</acronym> began to
+widen its scope. It was now being used by a much wider audience, and
+for new purposes, such as direct authoring with <acronym class="acronym">SGML</acronym>-aware tools,
+and publishing directly to paper. As the largest users of DocBook,
+Novell and Sun had a heavy influence on its design.
+</p><p>
+<a class="indexterm" name="d0e2233"></a>
+
+In order to help users manage change, the new Davenport charter established
+the following rules for DocBook releases:
+<div class="itemizedlist"><ul type="disc"><li><p>Minor versions (&#8220;<span class="quote">point releases</span>&#8221; such as
+<acronym class="acronym">V2.2</acronym>) could add to the markup model, but could not
+change it in a backward-incompatible way. For example, a new kind of
+list element could be added, but it would not be acceptable for the
+existing itemized-list model to start requiring two list items inside
+it instead of only one. Thus, any document conforming to version
+<em class="replaceable"><code>n</code></em>.0 would also conform to
+<em class="replaceable"><code>n</code></em>.<em class="replaceable"><code>m</code></em>.</p></li><li><p>Major versions (such as <acronym class="acronym">V3.0</acronym>) could
+both add to the markup model and make backward-incompatible
+changes. However, the changes would have to be announced in the last
+major release.</p></li><li><p>Major-version introductions must be separated by at
+least a year.</p></li></ul></div>
+</p><p>
+<a class="indexterm" name="d0e2270"></a>
+<a class="indexterm" name="d0e2278"></a>
+
+<acronym class="acronym">V3.0</acronym> was released in January 1997. After that time,
+although DocBook's audience continued to grow, many of the Davenport
+Group stalwarts became involved in the <acronym class="acronym">XML</acronym> effort, and development
+slowed dramatically. The idea of creating an official <acronym class="acronym">XML</acronym>-compliant
+version of DocBook was discussed, but not implemented. (For more
+detailed information about DocBook <acronym class="acronym">V3.0</acronym> and plans
+for subsequent versions, see <a href="appc-x.html" title="DocBook Versions">Appendix&nbsp;C, <i>DocBook Versions</i></a>.)
+</p><p>
+<a class="indexterm" name="d0e2300"></a>
+
+The sponsors wanted to close out Davenport in an orderly way to ensure
+that DocBook users would be supported. It was suggested that
+<acronym class="acronym">OASIS</acronym> become DocBook's new home. An
+<acronym class="acronym">OASIS</acronym> DocBook Technical Committee was formed in
+July, 1998, with Eduardo Gutentag of Sun Microsystems as chair.
+</p></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2312"></a>The <acronym class="acronym">OASIS</acronym> era</h4></div></div></div><p>
+The <a href="http://www.oasis-open.org/docbook/" target="_top">DocBook Technical
+Commitee</a> is continuing the work started by the
+Davenport Group. The transition from Davenport to
+<acronym class="acronym">OASIS</acronym> has been very smooth, in part because the
+core design team consists of essentially the same individuals (we all
+just changed hats).
+</p><p>
+DocBook <acronym class="acronym">V3.1</acronym>, published in February 1999, was the
+first <acronym class="acronym">OASIS</acronym> release.  It integrated a number of
+changes that had been &#8220;<span class="quote">in the wings</span>&#8221; for some time.
+</p><p>In February of 2001, OASIS made DocBook SGML V4.1 and DocBook XML V4.1.2
+<a href="http://lists.oasis-open.org/archives/members/200102/msg00000.html" target="_top">official
+OASIS Specifications</a>.
+</p><p><a href="http://www.oasis-open.org/docbook/specs/cs-docbook-docbook-4.2.html" target="_top">Version 4.2</a> of the DocBook <acronym class="acronym">DTD</acronym>, for both <acronym class="acronym">SGML</acronym> and <acronym class="acronym">XML</acronym>, was
+released in July 2002.</p><p>
+The committee continues new DocBook development to ensure
+that the <acronym class="acronym">DTD</acronym> continues to meet the needs of its users.  Forthcoming
+and experimental work includes:
+</p><div class="itemizedlist"><ul type="disc"><li><p>A V5.0 DTD projected for release no earlier than the end of
+2002.
+</p></li><li><p>Experimental
+<a href="http://www.oasis-open.org/committees/relax-ng/" target="_top">RELAX NG</a> schemas
+<a href="http://www.oasis-open.org/docbook/relaxng" target="_top">available</a>.</p></li><li><p>Experimental
+<a href="http://www.w3.org/XML/Schema" target="_top">W3C XML Schema</a> versions
+<a href="http://www.oasis-open.org/docbook/xmlschema/" target="_top">available</a>.</p></li><li><p>Experimental
+<a href="http://www.xml.gr.jp/relax/" target="_top">RELAX</a> schemas
+<a href="http://www.oasis-open.org/docbook/relax/" target="_top">available</a>.</p></li><li><p>Experimental
+<a href="http://www.thaiopensource.com/trex/" target="_top">TREX</a> schemas
+<a href="http://www.oasis-open.org/docbook/trex/" target="_top">available</a>.</p></li></ul></div><a class="indexterm" name="d0e2400"></a><a class="indexterm" name="d0e2401"></a></div></div></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.d0e983" href="#d0e983">1</a>] </sup>Some structured editors apply style to the
+document while it's being edited, using fonts and color to make the
+editing task easier, but this stylistic information is not stored in
+the actual <acronym class="acronym">SGML</acronym>/<acronym class="acronym">XML</acronym> document. Instead, it is provided by the
+editing application.</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e1048" href="#d0e1048">2</a>] </sup>The distinction between appearance or
+presentation and structure or content is essential to <acronym class="acronym">SGML</acronym>, but
+there is a way to specify the appearance of an <acronym class="acronym">SGML</acronym> document: attach
+a stylesheet to it. There are several standards for such stylesheets:
+<acronym class="acronym">CSS</acronym>, <acronym class="acronym">XSL</acronym>, <acronym class="acronym">FOSI</acronym>s,
+and <acronym class="acronym">DSSSL</acronym>.
+See <a href="ch04-x.html" title="Publishing DocBook Documents">Chapter&nbsp;4, <i>Publishing DocBook Documents</i></a>.</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e1464" href="#d0e1464">3</a>] </sup>In <acronym class="acronym">XML</acronym>, this is written as
+<code class="literal">&lt;xref/&gt;</code>, as we'll see in the section <a href="ch02-x.html#ch02-typexml" title="Typing an SGML Document">the section called &#8220;Typing an <acronym class="acronym">SGML</acronym> Document&#8221;</a>.</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e1808" href="#d0e1808">4</a>] </sup>
+<a class="indexterm" name="d0e1811"></a>
+In <acronym class="acronym">XML</acronym>, these characters are fixed. In <acronym class="acronym">SGML</acronym>, it is possible to
+change the markup start characters, but we won't consider that case
+here. If you change the markup start characters, you know what you're
+doing. While we're on the subject, in <acronym class="acronym">SGML</acronym>, these characters only
+have their special meaning if they are followed by a name character.
+It is, in fact, valid in an <span class="emphasis"><em><acronym class="acronym">SGML</acronym></em></span> (but not an <acronym class="acronym">XML</acronym>)
+document to write &#8220;O'Reilly &amp; Associates&#8221; because the
+ampersand is not followed by a name character. Don't do this, however.
+<a class="indexterm" name="d0e1831"></a>
+<a class="indexterm" name="d0e1839"></a>
+<a class="indexterm" name="d0e1845"></a>
+</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e1858" href="#d0e1858">5</a>] </sup>
+<a class="indexterm" name="d0e1861"></a>
+
+The sequence of characters that end a marked section (see <a href="ch01-x.html#s-ms" title="Marked sections">the section called &#8220;Marked sections&#8221;</a>), such as ]]&gt; must also be encoded with at least
+one entity reference if it is not being used to end a marked section.
+For this purpose, you can use the entity reference <code class="sgmltag-genentity">&amp;gt;</code> for the final right angle bracket.
+</p></div><div class="footnote"><p><sup>[<a name="ftn.d0e2028" href="#d0e2028">6</a>] </sup>
+<a class="indexterm" name="d0e2031"></a>
+Actually, CDATA marked sections are allowed in an <acronym class="acronym">XML</acronym> document, but
+the keyword cannot be a parameter entity, and it must be typed
+literally. See the examples on this page.
+</p></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Part&nbsp;I.&nbsp;Introduction" href="part1-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Creating DocBook Documents" href="ch02-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Part&nbsp;I.&nbsp;Introduction&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp;I.&nbsp;Introduction" href="part1-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Creating DocBook Documents</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

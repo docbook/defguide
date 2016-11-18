@@ -1,0 +1,1229 @@
+<HTML
+><HEAD
+><TITLE
+>ScreenCO</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="Screen"
+HREF="screen.html"><LINK
+REL="NEXT"
+TITLE="ScreenInfo"
+HREF="screeninfo.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="screen.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="screeninfo.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>ScreenCO</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN94452"
+></A
+><H2
+>Name</H2
+>ScreenCO&nbsp;--&nbsp;A screen with associated areas used in callouts</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN94455"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>ScreenCO ::=
+(<A
+HREF="areaspec.html"
+>AreaSpec</A
+>,<A
+HREF="screen.html"
+>Screen</A
+>,<A
+HREF="calloutlist.html"
+>CalloutList</A
+>*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.ADMON.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%admon.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-content.html#DBRE.PENT.BOOKCOMPONENT.CONTENT"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%bookcomponent.content;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.COMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%component.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.DIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%divcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.EXAMPLE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%example.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FIGURE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%figure.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.FOOTNOTE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%footnote.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.GLOSSDEF.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%glossdef.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.INDEXDIVCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%indexdivcomponent.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.LEGALNOTICE.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%legalnotice.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.LINESPECIFIC.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%linespecific.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARA.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%para.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.QANDASET.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%qandaset.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.REFCOMPONENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%refcomponent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.SIDEBAR.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%sidebar.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TABENTRY.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tabentry.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-cals-table.html#DBRE.PENT.TBL.ENTRY.MDL"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%tbl.entry.mdl;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.TEXTOBJECT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%textobject.mix;</NOBR
+></TT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN94528"
+></A
+><H2
+>Description</H2
+><P
+><A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>s, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently <SPAN
+CLASS="QUOTE"
+>"hot,"</SPAN
+> and clicking on
+them navigates to the corresponding annotation.</P
+><P
+>A <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+> is a wrapper around an <A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+> and
+a <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>.  An <A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+> identifies the locations
+(coordinates)
+in the <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+> where the callouts occur.
+The <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+> may also contain the list of annotations in
+a <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, although the <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+> may also
+occur outside of the wrapper, elsewhere in the document.</P
+><P
+>It is also possible to embed <A
+HREF="co.html"
+><TT
+CLASS="SGMLTAG"
+>CO</TT
+></A
+> elements directly in the
+verbatim text, in order to avoid the overhead of calculating the
+correct coordinates.  If you decide to follow this route, use a 
+<A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+> and a <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+> without the
+<A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+> wrapper.  A <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+>
+must specify at least one coordinate.</P
+><P
+>For a complete description of callouts, see <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN94550"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. This element is displayed "verbatim";
+whitespace and linebreaks within this element are significant.</P
+><P
+>The mandatory processing expectations of a <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+> are
+minimal: a system is expected to render the program listing and the
+callout list, if present.</P
+><P
+>If explicit <A
+HREF="co.html"
+><TT
+CLASS="SGMLTAG"
+>CO</TT
+></A
+> elements are embedded in a
+<A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>, they must generate appropriate
+callout marks.</P
+><P
+>In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks in the program listing and
+the annotations.
+Some systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information,
+but this level of sophistication is not mandatory.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN94559"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain ScreenCO:
+<A
+HREF="answer.html"
+><TT
+CLASS="SGMLTAG"
+>Answer</TT
+></A
+>, <A
+HREF="appendix.html"
+><TT
+CLASS="SGMLTAG"
+>Appendix</TT
+></A
+>, <A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="bibliodiv.html"
+><TT
+CLASS="SGMLTAG"
+>BiblioDiv</TT
+></A
+>, <A
+HREF="bibliography.html"
+><TT
+CLASS="SGMLTAG"
+>Bibliography</TT
+></A
+>, <A
+HREF="blockquote.html"
+><TT
+CLASS="SGMLTAG"
+>BlockQuote</TT
+></A
+>, <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>, <A
+HREF="caption.html"
+><TT
+CLASS="SGMLTAG"
+>Caption</TT
+></A
+>, <A
+HREF="caution.html"
+><TT
+CLASS="SGMLTAG"
+>Caution</TT
+></A
+>, <A
+HREF="chapter.html"
+><TT
+CLASS="SGMLTAG"
+>Chapter</TT
+></A
+>, <A
+HREF="colophon.html"
+><TT
+CLASS="SGMLTAG"
+>Colophon</TT
+></A
+>, <A
+HREF="dedication.html"
+><TT
+CLASS="SGMLTAG"
+>Dedication</TT
+></A
+>, <A
+HREF="entry.html"
+><TT
+CLASS="SGMLTAG"
+>entry</TT
+></A
+>, <A
+HREF="example.html"
+><TT
+CLASS="SGMLTAG"
+>Example</TT
+></A
+>, <A
+HREF="figure.html"
+><TT
+CLASS="SGMLTAG"
+>Figure</TT
+></A
+>, <A
+HREF="footnote.html"
+><TT
+CLASS="SGMLTAG"
+>Footnote</TT
+></A
+>, <A
+HREF="glossary.html"
+><TT
+CLASS="SGMLTAG"
+>Glossary</TT
+></A
+>, <A
+HREF="glossdef.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDef</TT
+></A
+>, <A
+HREF="glossdiv.html"
+><TT
+CLASS="SGMLTAG"
+>GlossDiv</TT
+></A
+>, <A
+HREF="important.html"
+><TT
+CLASS="SGMLTAG"
+>Important</TT
+></A
+>, <A
+HREF="index.html"
+><TT
+CLASS="SGMLTAG"
+>Index</TT
+></A
+>, <A
+HREF="indexdiv.html"
+><TT
+CLASS="SGMLTAG"
+>IndexDiv</TT
+></A
+>, <A
+HREF="informalexample.html"
+><TT
+CLASS="SGMLTAG"
+>InformalExample</TT
+></A
+>, <A
+HREF="informalfigure.html"
+><TT
+CLASS="SGMLTAG"
+>InformalFigure</TT
+></A
+>, <A
+HREF="legalnotice.html"
+><TT
+CLASS="SGMLTAG"
+>LegalNotice</TT
+></A
+>, <A
+HREF="listitem.html"
+><TT
+CLASS="SGMLTAG"
+>ListItem</TT
+></A
+>, <A
+HREF="msgexplan.html"
+><TT
+CLASS="SGMLTAG"
+>MsgExplan</TT
+></A
+>, <A
+HREF="msgtext.html"
+><TT
+CLASS="SGMLTAG"
+>MsgText</TT
+></A
+>, <A
+HREF="note.html"
+><TT
+CLASS="SGMLTAG"
+>Note</TT
+></A
+>, <A
+HREF="para.html"
+><TT
+CLASS="SGMLTAG"
+>Para</TT
+></A
+>, <A
+HREF="partintro.html"
+><TT
+CLASS="SGMLTAG"
+>PartIntro</TT
+></A
+>, <A
+HREF="preface.html"
+><TT
+CLASS="SGMLTAG"
+>Preface</TT
+></A
+>, <A
+HREF="procedure.html"
+><TT
+CLASS="SGMLTAG"
+>Procedure</TT
+></A
+>, <A
+HREF="qandadiv.html"
+><TT
+CLASS="SGMLTAG"
+>QandADiv</TT
+></A
+>, <A
+HREF="qandaset.html"
+><TT
+CLASS="SGMLTAG"
+>QandASet</TT
+></A
+>, <A
+HREF="question.html"
+><TT
+CLASS="SGMLTAG"
+>Question</TT
+></A
+>, <A
+HREF="refsect1.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect1</TT
+></A
+>, <A
+HREF="refsect2.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect2</TT
+></A
+>, <A
+HREF="refsect3.html"
+><TT
+CLASS="SGMLTAG"
+>RefSect3</TT
+></A
+>, <A
+HREF="refsynopsisdiv.html"
+><TT
+CLASS="SGMLTAG"
+>RefSynopsisDiv</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="setindex.html"
+><TT
+CLASS="SGMLTAG"
+>SetIndex</TT
+></A
+>, <A
+HREF="sidebar.html"
+><TT
+CLASS="SGMLTAG"
+>Sidebar</TT
+></A
+>, <A
+HREF="simplesect.html"
+><TT
+CLASS="SGMLTAG"
+>SimpleSect</TT
+></A
+>, <A
+HREF="step.html"
+><TT
+CLASS="SGMLTAG"
+>Step</TT
+></A
+>, <A
+HREF="textobject.html"
+><TT
+CLASS="SGMLTAG"
+>TextObject</TT
+></A
+>, <A
+HREF="tip.html"
+><TT
+CLASS="SGMLTAG"
+>Tip</TT
+></A
+>, <A
+HREF="warning.html"
+><TT
+CLASS="SGMLTAG"
+>Warning</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN94722"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in ScreenCO:
+<A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN94743"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="co.html"
+><TT
+CLASS="SGMLTAG"
+>CO</TT
+></A
+>, <A
+HREF="graphicco.html"
+><TT
+CLASS="SGMLTAG"
+>GraphicCO</TT
+></A
+>, <A
+HREF="imageobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObjectCO</TT
+></A
+>, <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>, <A
+HREF="programlistingco.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListingCO</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN94768"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE informalexample PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;informalexample&#62;
+&#60;screen&#62;
+ Volume in drive C is SYSTEM         Serial number is 2350:717C
+ Directory of  C:\
+
+10/17/97   9:04         &#38;lt;DIR&#62;    bin
+10/16/97  14:11         &#38;lt;DIR&#62;    DOS            &#60;co id="dos"&#62;
+10/16/97  14:40         &#38;lt;DIR&#62;    Program Files
+10/16/97  14:46         &#38;lt;DIR&#62;    TEMP
+10/17/97   9:04         &#38;lt;DIR&#62;    tmp
+10/16/97  14:37         &#38;lt;DIR&#62;    WINNT
+10/16/97  14:25             119  AUTOEXEC.BAT   &#60;co id="autoexec.bat"&#62;
+ 2/13/94   6:21          54,619  COMMAND.COM    &#60;co id="command.com"&#62;
+10/16/97  14:25             115  CONFIG.SYS     &#60;co id="config.sys"&#62;
+11/16/97  17:17      61,865,984  pagefile.sys
+ 2/13/94   6:21           9,349  WINA20.386     &#60;co id="wina20.386"&#62;
+&#60;/screen&#62;
+&#60;calloutlist&#62;
+&#60;callout arearefs="dos"&#62;
+&#60;para&#62;
+This directory holds &#60;trademark&#62;MS-DOS&#60;/trademark&#62;, the
+operating system that was installed before &#60;trademark&#62;Windows
+NT&#60;/trademark&#62;.
+&#60;/para&#62;
+&#60;/callout&#62;
+
+&#60;callout arearefs="autoexec.bat command.com config.sys"&#62;
+&#60;para&#62;
+System startup code for DOS.
+&#60;/para&#62;
+&#60;/callout&#62;
+
+&#60;callout arearefs="wina20.386"&#62;
+&#60;para&#62;
+Some sort of &#60;trademark&#62;Windows 3.1&#60;/trademark&#62; hack for some 386 processors,
+as I recall.
+&#60;/para&#62;
+&#60;/callout&#62;
+&#60;/calloutlist&#62;
+&#60;/informalexample&#62;</PRE
+></DIV
+><DIV CLASS="example-output"><DIV
+CLASS="INFORMALEXAMPLE"
+><P
+></P
+><PRE
+CLASS="SCREEN"
+> Volume in drive C is SYSTEM         Serial number is 2350:717C
+ Directory of  C:\
+
+10/17/97   9:04         &lt;DIR&#62;    bin
+10/16/97  14:11         &lt;DIR&#62;    DOS            <A
+NAME="DOS"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+10/16/97  14:40         &lt;DIR&#62;    Program Files
+10/16/97  14:46         &lt;DIR&#62;    TEMP
+10/17/97   9:04         &lt;DIR&#62;    tmp
+10/16/97  14:37         &lt;DIR&#62;    WINNT
+10/16/97  14:25             119  AUTOEXEC.BAT   <A
+NAME="AUTOEXEC.BAT"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+ 2/13/94   6:21          54,619  COMMAND.COM    <A
+NAME="COMMAND.COM"
+><IMG
+SRC="figures/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+10/16/97  14:25             115  CONFIG.SYS     <A
+NAME="CONFIG.SYS"
+><IMG
+SRC="figures/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+11/16/97  17:17      61,865,984  pagefile.sys
+ 2/13/94   6:21           9,349  WINA20.386     <A
+NAME="WINA20.386"
+><IMG
+SRC="figures/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="screenco.html#DOS"
+><IMG
+SRC="figures/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>This directory holds <SPAN
+CLASS="TRADEMARK"
+>MS-DOS</SPAN
+>&trade;, the
+operating system that was installed before <SPAN
+CLASS="TRADEMARK"
+>Windows
+NT</SPAN
+>&trade;.</DD
+><DT
+><A
+HREF="screenco.html#AUTOEXEC.BAT"
+><IMG
+SRC="figures/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+><A
+HREF="screenco.html#COMMAND.COM"
+><IMG
+SRC="figures/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+><A
+HREF="screenco.html#CONFIG.SYS"
+><IMG
+SRC="figures/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>System startup code for DOS.</DD
+><DT
+><A
+HREF="screenco.html#WINA20.386"
+><IMG
+SRC="figures/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>Some sort of <SPAN
+CLASS="TRADEMARK"
+>Windows 3.1</SPAN
+>&trade; hack for some 386 processors,
+as I recall.</DD
+></DL
+></DIV
+><P
+></P
+></DIV
+></DIV><P
+>For additional examples, see also <A
+HREF="screen.html"
+><TT
+CLASS="SGMLTAG"
+>Screen</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="screen.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="screeninfo.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Screen</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ScreenInfo</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

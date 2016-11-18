@@ -1,0 +1,37 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>videoobject</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook.html" title="DocBook"><link rel="up" href="ref-elements.html" title="DocBook Element Reference"><link rel="previous" href="videodata.html" title="videodata"><link rel="next" href="void.html" title="void"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="videodata" href="videodata.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="void" href="void.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="videoobject.element"></a><div><div><div><h1 class="title">videoobject</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>videoobject &#8212; A wrapper for video data and its associated meta-information</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">videoobject ::=
+(<a href="objectinfo.html"><code class="sgmltag-element">objectinfo</code></a>?,<a href="videodata.html"><code class="sgmltag-element">videodata</code></a>)</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements.html#common.attributes" title="Common Attributes">Common attributes</a></p></div><div class="refsect1" lang="en"><a name="d0e224467"></a><h2>Description</h2><p>
+A <a href="videoobject.html"><code class="sgmltag-element">VideoObject</code></a> is a wrapper containing <a href="videodata.html"><code class="sgmltag-element">VideoData</code></a>
+and its associated meta-information.
+</p><div class="refsect2" lang="en"><a name="d0e224478"></a><h3>Processing expectations</h3><p>
+May be formatted inline or as a displayed block, depending on context. It might not be rendered at all, depending on its placement
+within a <a href="mediaobject.html"><code class="sgmltag-element">MediaObject</code></a> or <a href="inlinemediaobject.html"><code class="sgmltag-element">InlineMediaObject</code></a> and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <a href="mediaobject.html"><code class="sgmltag-element">MediaObject</code></a>.
+</p></div><div class="refsect2" lang="en"><a name="d0e224492"></a><h3>Parents</h3><p>These elements contain videoobject:
+<span class="simplelist"><a href="inlinemediaobject.html"><code class="sgmltag-element">inlinemediaobject</code></a>, <a href="mediaobject.html"><code class="sgmltag-element">mediaobject</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e224505"></a><h3>Children</h3><p>The following elements occur in videoobject:
+<span class="simplelist"><a href="objectinfo.html"><code class="sgmltag-element">objectinfo</code></a>, <a href="videodata.html"><code class="sgmltag-element">videodata</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e224518"></a><h2>See Also</h2><p><span class="simplelist"><a href="alt.html"><code class="sgmltag-element">alt</code></a>, <a href="audioobject.html"><code class="sgmltag-element">audioobject</code></a>, <a href="caption.html"><code class="sgmltag-element">caption</code></a>, <a href="graphic.html"><code class="sgmltag-element">graphic</code></a>, <a href="imageobject.html"><code class="sgmltag-element">imageobject</code></a>, <a href="inlinegraphic.html"><code class="sgmltag-element">inlinegraphic</code></a>, <a href="inlinemediaobject.html"><code class="sgmltag-element">inlinemediaobject</code></a>, <a href="mediaobject.html"><code class="sgmltag-element">mediaobject</code></a>, <a href="textobject.html"><code class="sgmltag-element">textobject</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e224551"></a><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE mediaobject PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;mediaobject&gt;
+&lt;videoobject&gt;
+&lt;videodata fileref='movie.avi'/&gt;
+&lt;/videoobject&gt;
+&lt;imageobject&gt;
+&lt;imagedata fileref='movie-frame.gif'/&gt;
+&lt;/imageobject&gt;
+&lt;textobject&gt;
+&lt;para&gt;This video illustrates the proper way to assemble an
+inverting time distortion device.
+&lt;/para&gt;
+&lt;warning&gt;
+&lt;para&gt;
+It is imperative that the primary and secondary temporal
+couplings not be mounted in the wrong order. Temporal
+catastrophe is the likely result. The future you destroy
+may be your own.
+&lt;/para&gt;
+&lt;/warning&gt;
+&lt;/textobject&gt;
+&lt;/mediaobject&gt;</pre></div><div class="example-output"><div class="mediaobject"><embed src="movie.avi"></embed></div></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="videodata" href="videodata.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="void" href="void.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">videodata&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;void</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

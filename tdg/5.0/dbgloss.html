@@ -1,0 +1,119 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Glossary</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="gfdl.html" title="GNU Free Documentation License"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="Index" href="chunk-index-d64e247877.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="glossary" class="glossary"><header class="glossary-titlepage"><h2>Glossary</h2></header><dl><dt id="gloss-attribute" class="glossentry"><span id="gloss-attribute.1" class="glossterm">attribute</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-attribute.2.1.1"></a><a class="indexterm" name="gloss-attribute.2.1.2"></a>Attributes augment the element on which they appear; they
+      also provide additional information about the element.</p><p><a class="indexterm" name="gloss-attribute.2.2.1"></a>Attributes appear as name-value pairs in the element’s
+      start tag. For example, to assign the value <code class="literal">hostname</code>
+      to the <code class="tag-attribute">role</code> attribute of
+      <a href="systemitem.html"><code class="tag-element">systemitem</code></a>, you would use the markup: <code class="tag-starttag">&lt;systemitem role="hostname"&gt;</code>.</p></dd><dt id="gloss-callout" class="glossentry"><span id="gloss-callout.1" class="glossterm">callout</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-callout.2.1.1"></a>A pointer, verbal or graphical or both, to a
+      <em>component</em> of an illustration or a text
+      object.</p></dd><dt id="gloss-character-reference" class="glossentry"><span id="gloss-character-reference.1" class="glossterm">character reference</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-character-reference.2.1.1"></a>A character reference is a mechanism for inserting an
+      arbitrary Unicode character into a document. They’re most often used for
+      characters that aren’t available on the author’s keyboard or font.
+      Syntactically, they have the form
+      <code class="literal">&amp;#</code><em class="replaceable"><code>number</code></em><code class="literal">;</code>
+      where “number” is the Unicode codepoint of the character expressed as a
+      decimal number. Hexadecimal numbers can also be used with character
+      references of the form
+      <code class="literal">&amp;#x</code><em class="replaceable"><code>number</code></em><code class="literal">;</code>.</p><p>For example, you can type <code class="literal">&amp;#169;</code> (or
+      <code class="literal">&amp;#xa9;</code>) to insert a © symbol.</p></dd><dt id="gloss-cooked" class="glossentry"><span id="gloss-cooked.1" class="glossterm">cooked</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-cooked.2.1.1"></a><a class="indexterm" name="gloss-cooked.2.1.2"></a>“<span class="quote">Cooked</span>” data, as distinct from
+      “<span class="quote">raw,</span>” is a collection of elements and character data
+      that’s ready for presentation. The processor is not expected to
+      rearrange, select, or suppress any of the elements, but simply present
+      them as specified.</p><p>See Also <a href="dbgloss.html#gloss-raw">raw</a>.</p></dd><dt id="gloss-dtd" class="glossentry"><span id="gloss-dtd.1" class="glossterm">Document Type Declaration (<span class="acronym">DTD</span>)</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-dtd.2.1.1"></a>A set of declarations that defines the names of the
+      elements and their attributes, and that specifies rules for their
+      combination or <span class="keep-together">sequence</span>.</p></dd><dt id="gloss-effectivity" class="glossentry"><span id="gloss-effectivity.1" class="glossterm">effectivity</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-effectivity.2.1.1"></a><a class="indexterm" name="gloss-effectivity.2.1.2"></a><a class="indexterm" name="gloss-effectivity.2.1.3"></a><a class="indexterm" name="gloss-effectivity.2.1.4"></a>A term used to identify attributes used for profiling or
+      conditional processing. DocBook contains a set of effectivity attributes
+      that allow you to flag elements as being “<span class="quote">effective</span>” under
+      particular conditions. For <span class="keep-together">example</span>, you might set the value of the
+      <code class="tag-attribute">os</code> effectivity attribute to
+      “<span class="quote">linux</span>” to indicate that this element is applicable to the
+      Linux operating system. With the DocBook stylesheets, if you set the
+      <em class="parameter"><code>profile.os</code></em> parameter to “<span class="quote">linux</span>” this
+      element will be included. If you set the parameter to some other value,
+      the element will be excluded. Further information about using the
+      DocBook stylesheets for profiling can be found in Bob Stayton’s
+      <em class="citetitle">DocBook XSL: The Complete Guide</em>.</p></dd><dt id="gloss-element" class="glossentry"><span id="gloss-element.1" class="glossterm">element</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-element.2.1.1"></a><a class="indexterm" name="gloss-element.2.1.2"></a><a class="indexterm" name="gloss-element.2.1.3"></a><a class="indexterm" name="gloss-element.2.1.4"></a>Elements define the hierarchical structure of a document.
+      Most elements have start and end tags and contain some part of the
+      document content. Empty elements have only a start tag and have no
+      content.</p></dd><dt id="gloss-entity" class="glossentry"><span id="gloss-entity.1" class="glossterm">entity</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-entity.2.1.1"></a>A name assigned (by means of a declaration) to some chunk
+      of data so that it can be referred to by that name; the data can be of
+      various kinds (e.g., a special character or a chapter or a set of
+      declarations in a <span class="acronym">DTD</span>), and the way in which it is
+      referred to depends on the type of data and where it is being
+      referenced.</p></dd><dt id="gloss-extentity" class="glossentry"><span id="gloss-extentity.1" class="glossterm">external entity</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-extentity.2.1.1"></a><a class="indexterm" name="gloss-extentity.2.1.2"></a><a class="indexterm" name="gloss-extentity.2.1.3"></a><a class="indexterm" name="gloss-extentity.2.1.4"></a>An external entity is a general entity that refers to
+      another document. External entities are often used to incorporate
+      parsable text documents, like legal notices or chapters, into larger
+      units, like chapters or books.</p></dd><dt id="gloss-extsub" class="glossentry"><span id="gloss-extsub.1" class="glossterm">external subset</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-extsub.2.1.1"></a><a class="indexterm" name="gloss-extsub.2.1.2"></a><a class="indexterm" name="gloss-extsub.2.1.3"></a><a class="indexterm" name="gloss-extsub.2.1.4"></a>Element, attribute, and other declarations that compose
+      (part of) a document type definition that are stored in an external
+      entity, and referenced from a document’s Document Type Declaration using
+      a system identifier and optionally a public identifier.</p></dd><dt id="gloss-float" class="glossentry"><span id="gloss-float.1" class="glossterm">float</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-float.2.1.1"></a><a class="indexterm" name="gloss-float.2.1.2"></a>Text objects such as sidebars, figures, tables, and
+      graphics are said to float when their actual place in the document is
+      not fixed. For presentation on a printed page, for instance, a graphic
+      may float to the top of the next page if it is too tall to fit on the
+      page in which it actually falls, in the sequence of words and the
+      sequence of other like objects in a <span class="keep-together">document</span>.</p></dd><dt id="gloss-fpi" class="glossentry"><span id="gloss-fpi.1" class="glossterm">formal public identifier</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-fpi.2.1.1"></a><a class="indexterm" name="gloss-fpi.2.1.2"></a><a class="indexterm" name="gloss-fpi.2.1.3"></a>A public identifier that conforms to the specification of
+      formal public identifiers in <span class="acronym">ISO</span> 8879.</p></dd><dt id="gloss-gentity" class="glossentry"><span id="gloss-gentity.1" class="glossterm">general entity</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-gentity.2.1.1"></a><a class="indexterm" name="gloss-gentity.2.1.2"></a><a class="indexterm" name="gloss-gentity.2.1.3"></a><a class="indexterm" name="gloss-gentity.2.1.4"></a>An entity referenced by a name that starts with an
+      ampersand (&amp;) and ends with a semicolon. Most of the time general
+      entities are used in document instances, not in the schema. There are
+      two types, external and internal entities, and they refer either to
+      special characters or to text objects such as commonly repeated phrases
+      or names or chapters.</p></dd><dt id="gloss-intentity" class="glossentry"><span id="gloss-intentity.1" class="glossterm">internal entity</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-intentity.2.1.1"></a><a class="indexterm" name="gloss-intentity.2.1.2"></a><a class="indexterm" name="gloss-intentity.2.1.3"></a>A general entity that references a piece of text
+      (including its markup and even other internal entities), usually as a
+      keyboard shortcut.</p></dd><dt id="gloss-intsub" class="glossentry"><span id="gloss-intsub.1" class="glossterm">internal subset</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-intsub.2.1.1"></a><a class="indexterm" name="gloss-intsub.2.1.2"></a>Element, attribute, and other declarations that compose
+      (part of) a document type definition that are stored in a document,
+      within the Document Type Declaration.</p></dd><dt id="gloss-metainfo" class="glossentry"><span id="gloss-metainfo.1" class="glossterm">meta-information</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-metainfo.2.1.1"></a><a class="indexterm" name="gloss-metainfo.2.1.2"></a>Meta-information is information about a document, such as
+      the specification of its author or its date of composition, as opposed
+      to the content of a document itself.</p></dd><dt id="gloss-NVDL" class="glossentry"><span id="gloss-NVDL.1" class="glossterm">NVDL</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-NVDL.2.1.1"></a>NVDL is the Namespace-based Validation Dispatching
+      Language; see <code class="uri"><a href="http://www.nvdl.org/">http://www.nvdl.org/</a></code>.</p></dd><dt id="gloss-pi" class="glossentry"><span id="gloss-pi.1" class="glossterm">processing instruction</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-pi.2.1.1"></a>An essentially arbitrary string preceded by a question
+      mark and delimited by angle brackets that is intended to convey
+      information to an application that processes an <span class="acronym">XML</span>
+      instance. For example, the processing instruction
+      <code class="literal">&lt;?linebreak&gt;</code> might cause the formatter to
+      introduce a line break at the position where the processing instruction
+      occurs.</p><p><a class="indexterm" name="gloss-pi.2.2.1"></a><a class="indexterm" name="gloss-pi.2.2.2"></a>In <span class="acronym">XML</span> documents, processing
+      instructions should have the form:</p><div class="screen"><pre>&lt;?<em class="replaceable"><code>pitarget</code></em> param1="value1" param2="value2"?&gt;</pre></div><p>The <em class="replaceable"><code>pitarget</code></em> should be a name that the
+      processing application will recognize. Additional information in the
+      processing instruction should be added using “<span class="quote">attribute <span class="keep-together">syntax</span>.</span>”</p></dd><dt id="gloss-pubid" class="glossentry"><span id="gloss-pubid.1" class="glossterm">public identifier</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-pubid.2.1.1"></a><a class="indexterm" name="gloss-pubid.2.1.2"></a><a class="indexterm" name="gloss-pubid.2.1.3"></a><a class="indexterm" name="gloss-pubid.2.1.4"></a>An abstract identifier for an <span class="acronym">XML</span>
+      document, <span class="acronym">DTD</span>, or external entity.</p></dd><dt id="gloss-raw" class="glossentry"><span id="gloss-raw.1" class="glossterm">raw</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-raw.2.1.1"></a><a class="indexterm" name="gloss-raw.2.1.2"></a><a class="indexterm" name="gloss-raw.2.1.3"></a><a class="indexterm" name="gloss-raw.2.1.4"></a>“<span class="quote">Raw</span>” data is just a collection of elements,
+      with no additional punctuation or information about presentation. To
+      continue the cooking metaphor, raw data is just a set of ingredients.
+      It’s up to the processor to select appropriate elements, arrange them
+      for <span class="keep-together">display</span>, and add required
+      presentational <span class="keep-together">information</span>.</p><p>See Also <a href="dbgloss.html#gloss-cooked">cooked</a>.</p></dd><dt id="gloss-RELAX-NG" class="glossentry"><span id="gloss-RELAX-NG.1" class="glossterm">RELAX NG</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-RELAX-NG.2.1.1"></a>RELAX NG is a grammar-based schema language for XML; see
+      <code class="uri"><a href="http://relaxng.org/">http://relaxng.org/</a></code>.</p></dd><dt id="gloss-Schematron" class="glossentry"><span id="gloss-Schematron.1" class="glossterm">Schematron</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-Schematron.2.1.1"></a>Schematron is a language for making assertions about
+      patterns found in XML documents; see <code class="uri"><a href="http://www.schematron.com/">http://www.schematron.com/</a></code>.</p></dd><dt id="gloss-sgml" class="glossentry"><span id="gloss-sgml.1" class="glossterm"><span class="acronym">SGML</span></span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-sgml.2.1.1"></a><a class="indexterm" name="gloss-sgml.2.1.2"></a>Standard Generalized Markup Language is an international
+      standard (<span class="acronym">ISO</span> 8879) that specifies the rules for the
+      creation of <span class="keep-together">platform-</span><span class="keep-together">independent</span> markup languages for
+      electronic texts.</p></dd><dt id="gloss-stylesheet" class="glossentry"><span id="gloss-stylesheet.1" class="glossterm">stylesheet</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-stylesheet.2.1.1"></a><a class="indexterm" name="gloss-stylesheet.2.1.2"></a>A file that specifies the presentation or appearance of a
+      document; there are several standards for such stylesheets, including
+      <span class="acronym">CSS</span>, <span class="acronym">FOSI</span>s,
+      <span class="acronym">DSSSL</span>, and <span class="acronym">XSL</span>.</p></dd><dt id="gloss-sysid" class="glossentry"><span id="gloss-sysid.1" class="glossterm">system identifier</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-sysid.2.1.1"></a><a class="indexterm" name="gloss-sysid.2.1.2"></a>In <span class="acronym">SGML</span>, a local, system-dependent
+      identifier for a document, <span class="acronym">DTD</span>, or external entity.
+      Usually a filename on the local system.</p><p><a class="indexterm" name="gloss-sysid.2.2.1"></a><a class="indexterm" name="gloss-sysid.2.2.2"></a><a class="indexterm" name="gloss-sysid.2.2.3"></a>In <span class="acronym">XML</span>, a system identifier is required
+      to be a <span class="acronym">URI</span>.</p></dd><dt id="gloss-tag" class="glossentry"><span id="gloss-tag.1" class="glossterm">tag</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-tag.2.1.1"></a><a class="indexterm" name="gloss-tag.2.1.2"></a><a class="indexterm" name="gloss-tag.2.1.3"></a><a class="indexterm" name="gloss-tag.2.1.4"></a>An <span class="acronym">XML</span> element name enclosed in angle
+      brackets (&lt;&gt;), used to mark up the semantics or structure of a
+      document. <code class="tag-starttag">&lt;para&gt;</code> is a tag in DocBook
+      used to mark the beginning of a paragraph.</p></dd><dt id="gloss-uri" class="glossentry"><span id="gloss-uri.1" class="glossterm"><span class="acronym">URI</span></span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-uri.2.1.1"></a><a class="indexterm" name="gloss-uri.2.1.2"></a><a class="indexterm" name="gloss-uri.2.1.3"></a><a class="indexterm" name="gloss-uri.2.1.4"></a>Uniform Resource Identifier, the <span class="acronym">W3C</span>’s
+      codification of the name and address syntax of present and future
+      objects on the Internet. In its most basic form, a
+      <span class="acronym">URI</span> consists of a scheme name (such as file, http,
+      ftp, news, mailto, gopher) followed by a colon, followed by a path whose
+      nature is determined by the scheme that precedes it (see
+      <span class="acronym">RFC</span> 1630).</p><p><a class="indexterm" name="gloss-uri.2.2.1"></a><span class="acronym">URI</span> is the umbrella term for
+      <span class="acronym">URN</span>s, <span class="acronym">URL</span>s, and all other Uniform
+      Resource Identifiers.</p></dd><dt id="gloss-url" class="glossentry"><span id="gloss-url.1" class="glossterm"><span class="acronym">URL</span></span></dt><dd class="glossdef"><p>Uniform Resource Locator, a name and address for an existing
+      object accessible over the Internet.
+      <code class="literal">http://www.docbook.org</code> is an example of a
+      <span class="acronym">URL</span> (see <span class="acronym">RFC</span> 1738).</p></dd><dt id="gloss-w3c" class="glossentry"><span id="gloss-w3c.1" class="glossterm"><span class="acronym">W3C</span></span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-w3c.2.1.1"></a><a class="indexterm" name="gloss-w3c.2.1.2"></a>The <a href="http://www.w3.org/">World Wide Web
+      Consortium</a>.</p></dd><dt id="gloss-wrapper" class="glossentry"><span id="gloss-wrapper.1" class="glossterm">wrapper</span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-wrapper.2.1.1"></a><a class="indexterm" name="gloss-wrapper.2.1.2"></a><a class="indexterm" name="gloss-wrapper.2.1.3"></a>Some elements, such as <a href="chapter.html"><code class="tag-element">chapter</code></a>, have
+      important semantic significance. Other elements serve no obvious purpose
+      except to contain a number of other elements. For example,
+      <a href="info.html"><code class="tag-element">info</code></a> has no important semantics; it merely serves as
+      a container for the meta-information about a book. Elements that <span class="keep-together">are just</span> containers are sometimes called
+      “<span class="quote"><span class="keep-together">wrappers</span>.</span>”</p></dd><dt id="gloss-xml" class="glossentry"><span id="gloss-xml.1" class="glossterm"><span class="acronym">XML</span></span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-xml.2.1.1"></a><a class="indexterm" name="gloss-xml.2.1.2"></a><a class="indexterm" name="gloss-xml.2.1.3"></a>The <a href="http://www.w3.org/TR/REC-xml">Extensible
+      Markup Language</a>, a subset of <span class="acronym">SGML</span> designed
+      specifically for use over the Web.</p></dd><dt id="gloss-xsl" class="glossentry"><span id="gloss-xsl.1" class="glossterm"><span class="acronym">XSL</span></span></dt><dd class="glossdef"><p><a class="indexterm" name="gloss-xsl.2.1.1"></a><a class="indexterm" name="gloss-xsl.2.1.2"></a>Extensible Stylesheet Language (<span class="acronym">XSL</span>),
+      an evolving language for stylesheets to be attached to
+      <span class="acronym">XML</span> documents. The stylesheet is itself an
+      <span class="acronym">XML</span> document.</p></dd></dl></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="GNU Free Documentation License" href="gfdl.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="Index" href="chunk-index-d64e247877.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">GNU Free Documentation License </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> Index</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>

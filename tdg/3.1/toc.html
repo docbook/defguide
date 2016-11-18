@@ -1,0 +1,591 @@
+<HTML
+><HEAD
+><TITLE
+>ToC</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="TitleAbbrev"
+HREF="titleabbrev.html"><LINK
+REL="NEXT"
+TITLE="ToCback"
+HREF="tocback.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="titleabbrev.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tocback.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>ToC</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN118890"
+></A
+><H2
+>Name</H2
+>ToC&nbsp;--&nbsp;A table of contents</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN118893"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>ToC ::=
+((<A
+HREF="docinfo.html"
+>DocInfo</A
+>?,<A
+HREF="title.html"
+>Title</A
+>,<A
+HREF="subtitle.html"
+>Subtitle</A
+>?,<A
+HREF="titleabbrev.html"
+>TitleAbbrev</A
+>?)?,
+ <A
+HREF="tocfront.html"
+>ToCfront</A
+>*,
+ (<A
+HREF="tocpart.html"
+>ToCpart</A
+>|<A
+HREF="tocchap.html"
+>ToCchap</A
+>)*,
+ <A
+HREF="tocback.html"
+>ToCback</A
+>*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><TABLE
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Name</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Type</B
+></P
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><P
+><B
+CLASS="EMPHASIS"
+>Default</B
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>Pagenum</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+>CDATA</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><I
+CLASS="EMPHASIS"
+>None</I
+></TD
+></TR
+></TABLE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>The start-tag is required for this element.  The end-tag is optional, if your SGML declaration allows minimization.</P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Parameter Entities</SPAN
+></H3
+><TABLE
+BORDER="0"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-class.html#DBRE.PENT.NAV.CLASS"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%nav.class;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+><A
+HREF="pe-mix.html#DBRE.PENT.PARTCONTENT.MIX"
+><TT
+CLASS="SGMLTAG"
+><NOBR
+>%partcontent.mix;</NOBR
+></TT
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="33%"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN118950"
+></A
+><H2
+>Description</H2
+><P
+>The <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+> element defines a <I
+CLASS="EMPHASIS"
+>table of
+contents</I
+> in a document.</P
+><P
+>The general structure of elements in a <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+> is analogous to the
+structure of the document described.  For example, a <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+> for
+a <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+> might contain <A
+HREF="tocfront.html"
+><TT
+CLASS="SGMLTAG"
+>TocFront</TT
+></A
+> elements for the
+front-matter of the book, <A
+HREF="tocchap.html"
+><TT
+CLASS="SGMLTAG"
+>TocChap</TT
+></A
+> elements for the body of the
+book, and <A
+HREF="tocback.html"
+><TT
+CLASS="SGMLTAG"
+>TocBack</TT
+></A
+> elements for the back matter.  Inside each
+of these are additional elements reflecting the structure of each
+component.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN118962"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block.</P
+><P
+>In real life, <A
+HREF="toc.html"
+><TT
+CLASS="SGMLTAG"
+>ToC</TT
+></A
+>s are usually generated automatically
+by the presentation system and never have to be represented explicitly
+in the document source.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN118967"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain ToC:
+<A
+HREF="article.html"
+><TT
+CLASS="SGMLTAG"
+>Article</TT
+></A
+>, <A
+HREF="book.html"
+><TT
+CLASS="SGMLTAG"
+>Book</TT
+></A
+>, <A
+HREF="part.html"
+><TT
+CLASS="SGMLTAG"
+>Part</TT
+></A
+>, <A
+HREF="sect1.html"
+><TT
+CLASS="SGMLTAG"
+>Sect1</TT
+></A
+>, <A
+HREF="sect2.html"
+><TT
+CLASS="SGMLTAG"
+>Sect2</TT
+></A
+>, <A
+HREF="sect3.html"
+><TT
+CLASS="SGMLTAG"
+>Sect3</TT
+></A
+>, <A
+HREF="sect4.html"
+><TT
+CLASS="SGMLTAG"
+>Sect4</TT
+></A
+>, <A
+HREF="sect5.html"
+><TT
+CLASS="SGMLTAG"
+>Sect5</TT
+></A
+>, <A
+HREF="section.html"
+><TT
+CLASS="SGMLTAG"
+>Section</TT
+></A
+>, <A
+HREF="set.html"
+><TT
+CLASS="SGMLTAG"
+>Set</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN119001"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in ToC:
+<A
+HREF="docinfo.html"
+><TT
+CLASS="SGMLTAG"
+>DocInfo</TT
+></A
+>, <A
+HREF="subtitle.html"
+><TT
+CLASS="SGMLTAG"
+>Subtitle</TT
+></A
+>, <A
+HREF="title.html"
+><TT
+CLASS="SGMLTAG"
+>Title</TT
+></A
+>, <A
+HREF="titleabbrev.html"
+><TT
+CLASS="SGMLTAG"
+>TitleAbbrev</TT
+></A
+>, <A
+HREF="tocback.html"
+><TT
+CLASS="SGMLTAG"
+>ToCback</TT
+></A
+>, <A
+HREF="tocchap.html"
+><TT
+CLASS="SGMLTAG"
+>ToCchap</TT
+></A
+>, <A
+HREF="tocfront.html"
+><TT
+CLASS="SGMLTAG"
+>ToCfront</TT
+></A
+>, <A
+HREF="tocpart.html"
+><TT
+CLASS="SGMLTAG"
+>ToCpart</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN119037"
+></A
+><H2
+>Attributes</H2
+><P
+></P
+><DL
+><DT
+><B
+>Pagenum</B
+></DT
+><DD
+><P
+><SPAN
+CLASS="SGMLTAG"
+>PageNum</SPAN
+> indicates the page on which this 
+Table of Contents appears in the printed document</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN119045"
+></A
+><H2
+>Examples</H2
+><DIV
+CLASS="example-source"
+><PRE
+CLASS="PROGRAMLISTING"
+>&#60;!DOCTYPE toc PUBLIC "-//OASIS//DTD DocBook V3.1//EN"&#62;
+&#60;toc&#62;
+&#60;tocfront pagenum="i"&#62;Preface&#60;/tocfront&#62;
+&#60;tocpart&#62;
+  &#60;tocchap&#62;
+    &#60;tocentry pagenum="1"&#62;Getting Started with SGML/XML&#60;/tocentry&#62;
+    &#60;toclevel1&#62;
+      &#60;tocentry pagenum="1"&#62;HTML and SGML vs. XML&#60;/tocentry&#62;
+    &#60;/toclevel1&#62;
+    &#60;toclevel1&#62;
+      &#60;tocentry pagenum="3"&#62;How Does DocBook Fit In?&#60;/tocentry&#62;
+      &#60;toclevel2&#62;
+        &#60;tocentry pagenum="3"&#62;A Short DocBook History&#60;/tocentry&#62;
+      &#60;/toclevel2&#62;
+    &#60;/toclevel1&#62;
+    &#60;!-- ... --&#62;
+  &#60;/tocchap&#62;
+&#60;/tocpart&#62;
+&#60;!-- ... --&#62;
+&#60;tocback pagenum="305"&#62;Bibliography&#60;/tocback&#62;
+&#60;/toc&#62;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="titleabbrev.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tocback.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>TitleAbbrev</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ToCback</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

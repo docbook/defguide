@@ -1,0 +1,112 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Interchanging DocBook Documents</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="part3-x.html" title="Part&nbsp;III.&nbsp;Appendixes"><link rel="previous" href="appe-x.html" title="What's on the CD-ROM?"><link rel="next" href="quickref-x.html" title="DocBook Quick Reference"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="What's on the CD-ROM?" href="appe-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp;III.&nbsp;Appendixes" href="part3-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="DocBook Quick Reference" href="quickref-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="appendix" lang="en"><div class="titlepage"><div><div><a name="app-interchange"></a><div class="component-title"><h1 class="label">F</h1><h1 class="title">Interchanging DocBook Documents</h1></div></div><div><p class="releaseinfo">$Revision: 625 $</p></div><div><p class="pubdate">$Date: 2001-08-13 17:42:26 -0400 (Mon, 13 Aug 2001) $</p></div></div></div><a class="indexterm" name="DocBookinterchangeappf"></a><a class="indexterm" name="questionappf"></a><p>
+One of the early factors that motivated the development of the DocBook
+<acronym class="acronym">DTD</acronym> was the desire for companies to interchange documents.  In particular,
+<acronym class="acronym">UNIX</acronym> vendors wanted to be able to interchange common <acronym class="acronym">UNIX</acronym> documentation.
+</p><p>
+A great deal of effort went into making sure that DocBook could handle
+most (probably all) of the documents that were likely to be exchanged.
+This avoids the guaranteed interchange problem of <acronym class="acronym">DTD</acronym> extension.
+</p><p>However, simply using DocBook or a subset of it is not
+enough to ensure successful interchange. If you send someone
+your DocBook files, you must also tell the recipient about the
+markup your documents use and any of your additional markup
+conventions and processing expectations that impose constraints
+on processing.
+</p><p>
+This appendix provides a sample interchange questionnaire to
+help draw your attention to those areas that might be problematic.
+</p><p>For maximum portability, delivered DocBook documents
+should be accompanied by a filled-out interchange
+questionnaire. Because each situation is unique, you may need to
+supply additional information (such as layout specifications) in
+order to deliver a complete package.</p><h2><a name="d0e258431"></a>DocBook and <acronym class="acronym">SGML</acronym> Usage</h2><div class="orderedlist"><ol type="1"><li><p>What version of the <acronym class="acronym">DTD</acronym> are you using?</p></li><li><p>Did you use any markup features of the <acronym class="acronym">DTD</acronym> that
+have been flagged as obsolete (to be removed at the next major version
+of DocBook)? If so, which ones?</p></li><li><p>Did you extend DocBook in any way, inside or outside
+the provided customization mechanisms? How? All extensions must be negotiated
+with the recipient.</p></li><li><p>Did you remove markup from DocBook to create a
+subset? If you used a subset of DocBook, supply the subset you used. (Note
+that even the removal of references to <acronym class="acronym">ISO</acronym> entity sets creates a subset.)
+</p></li><li><p>Did you use the supplied <acronym class="acronym">SGML</acronym> declaration or another
+one? If you used another one, provide it.</p></li><li><p>Did you use the supplied catalog or another one,
+or none at all? If you used a catalog other than the one supplied, provide
+it.</p></li><li><p>If your documents bear no document type declaration,
+and you parsed them with a document declaration (with or without an internal
+subset), supply it.</p></li><li><p>Did you add <code class="literal">NOTATION</code> declarations?
+If so, what are they? List all data content notations used in your documents.
+</p></li><li><p>Did you use the <code class="literal">SUBDOC</code> feature?
+If so, how did you manage the name spaces of their <acronym class="acronym">ID</acronym>s, if you managed
+them at all?</p></li><li><p>Did you use character sets other than <acronym class="acronym">ISO</acronym> 8859-1
+(Latin 1)? If so, which ones? How did you use them?</p></li><li><p>Did you declare and use character entities and
+other general entities besides the <acronym class="acronym">ISO</acronym> entity sets? If so, supply the entity
+declarations and the desired appearance of the additional character entities.
+</p></li><li><p>Are your document files normalized to include all
+markup explicitly?</p></li><li><p>Are you supplying a document fragment? If so, have
+you provided any necessary auxiliary information (such as meta-information)
+for the fragment? Are there any attribute values that haven't been specified
+that you expect to inherit from a parent that isn't present?</p></li></ol></div><h2><a name="d0e258503"></a>Processing Requirements and Markup Interpretation</h2><div class="orderedlist"><ol start="14" type="1"><li><p>What formatting that you applied do you
+require your interchange partner to apply? For example,
+where and how must text be generated in order for the documents to make sense?
+</p></li><li><p>Did you supply your stylesheet and
+information regarding its format and version?</p></li><li><p>How did you create tables of contents,
+lists of titles, and indexes? Are they stored in DocBook form? If so,
+did you generate them (and according to what rules) or create them by
+hand?</p></li><li><p>If you used the <code class="sgmltag-attribute">Lang</code> common attribute, why, and to what
+effect?</p></li><li><p>If you used the <code class="sgmltag-attribute">Remap</code> common attribute, why, and to what
+effect?</p></li><li><p>If you used the <code class="sgmltag-attribute">Role</code> common attribute, why, and to what
+effect?</p></li><li><p>If you used the effectivity
+attributes, which did you use, why, and to what effect?</p></li><li><p>What values did you give to the <code class="sgmltag-attribute">Label</code> attribute and how are they to be
+interpreted for rendering?</p></li><li><p>What
+values did you give to the <code class="sgmltag-attribute">Mark</code>
+and <code class="sgmltag-attribute">Override</code> attributes for lists
+and how are they to be interpreted for rendering?</p></li><li><p>Did you use the <code class="sgmltag-attribute">Renderas</code> attribute on sections and/or
+<a href="bridgehead-x.html"><code class="sgmltag-element">BridgeHead</code></a>s?</p></li><li><p>Did you supply all keyword values you used for
+attributes whose declared values are not enumerated tokens, along with
+the expected processing for the occurrence of each keyword?</p></li><li><p>Did you use markup to control width, size,
+and/or positioning settings (such as &#8220;<span class="quote">fold-out</span>&#8221; or
+&#8220;<span class="quote">centered</span>&#8221;) for graphics, line specific regions, and
+tables? If so, how?</p></li><li><p>For rendering of
+<a href="sidebar-x.html"><code class="sgmltag-element">Sidebar</code></a>s, must these appear in the flow of the text
+where they appear in your files, or may they float?</p></li><li><p>Did you use <a href="callout-x.html"><code class="sgmltag-element">Callout</code></a>s? If so, what are the
+processing expectations for callout marks?
+</p></li><li><p>Did you use <a href="itemizedlist-x.html"><code class="sgmltag-element">ItemizedList</code></a>s? If so, what are the
+processing expectations for the marks on list items and nested lists?
+</p></li><li><p>For <a href="graphic-x.html"><code class="sgmltag-element">Graphic</code></a> and <a href="inlinegraphic-x.html"><code class="sgmltag-element">InlineGraphic</code></a>, what method(s) did
+you use for providing graphic data: element content, <code class="sgmltag-attribute">Fileref</code> attribute, or
+<code class="sgmltag-attribute">Entityref</code> attribute?</p></li><li><p>For <a href="mediaobject-x.html"><code class="sgmltag-element">MediaObject</code></a> and <a href="inlinemediaobject-x.html"><code class="sgmltag-element">InlineMediaObject</code></a>,
+what method(s) did
+you use for selecting between alternative presentations?</p></li><li><p>How did you specify column widths in tables? Did
+you use vertical spans? Did you use horizontal spans?</p></li><li><p>Did you use <a href="entrytbl-x.html"><code class="sgmltag-element">EntryTbl</code></a>s?
+</p></li><li><p>If you used the <code class="sgmltag-attribute">Type</code> attribute on the link elements,
+why, and to what effect?</p></li><li><p>If you used <a href="xref-x.html"><code class="sgmltag-element">XRef</code></a>, do your interchange
+partners need additional information about the semantic of the link?
+Have you provided it, perhaps with <code class="sgmltag-attribute">Role</code>?</p></li><li><p>Did you use the <code class="sgmltag-attribute">Subject</code> attribute on <a href="glossdef-x.html"><code class="sgmltag-element">GlossDef</code></a>?
+If so, did you use a thesaurus of terms? If so, what is it?</p></li><li><p>If you used the <code class="sgmltag-attribute">Class</code> attribute on <a href="refmiscinfo-x.html"><code class="sgmltag-element">RefMiscInfo</code></a>,
+why and to what effect?</p></li><li><p>If you used <a href="ulink-x.html"><code class="sgmltag-element">ULink</code></a> and provided <acronym class="acronym">URL</acronym>s that are queries,
+what back-end processing is required to resolve those queries?</p></li><li><p><code class="sgmltag-attribute">FileRef</code> or 
+<code class="sgmltag-attribute">EntityRef</code> is supplied on every
+<a href="graphic-x.html"><code class="sgmltag-element">Graphic</code></a>,
+<a href="inlinegraphic-x.html"><code class="sgmltag-element">InlineGraphic</code></a>,
+<a href="audiodata-x.html"><code class="sgmltag-element">AudioData</code></a>, 
+<a href="imagedata-x.html"><code class="sgmltag-element">ImageData</code></a>, and
+<a href="videodata-x.html"><code class="sgmltag-element">VideoData</code></a> element.  If one is not present, what is the expectation?
+</p></li><li><p>If your <a href="bibliography-x.html"><code class="sgmltag-element">Bibliography</code></a>s or
+<a href="glossary-x.html"><code class="sgmltag-element">Glossary</code></a>s have special processing expectations,
+such as the ability to display only those entries that are cited,
+have you described them?
+</p></li><li><p>If your <a href="bibliography-x.html"><code class="sgmltag-element">Bibliography</code></a>s contain
+<a href="biblioentry-x.html"><code class="sgmltag-element">BiblioEntry</code></a>s, what are the processing expectations?
+Which fields are selected for display?
+What punctuation is added, and where?
+</p></li><li><p>Do <a href="glossterm-x.html"><code class="sgmltag-element">GlossTerm</code></a>s or other elements have
+implicit linking relationships that must be obeyed or handled in
+presentation?
+</p></li><li><p>Did you use any processing instructions? Why and what for?
+Are they in entities?
+</p></li><li><p>What copyfitting have you already done, and for what outputs?
+</p></li><li><p>Are the <a href="revision-x.html"><code class="sgmltag-element">Revision</code></a>s in your
+<a href="revhistory-x.html"><code class="sgmltag-element">RevHistory</code></a>s sorted in any particular way?
+</p></li></ol></div><h2><a name="d0e258727"></a>Miscellaneous</h2><div class="orderedlist"><ol start="45" type="1"><li><p>Have you checked your
+files for viruses?</p></li><li><p>If you used <a href="bridgehead-x.html"><code class="sgmltag-element">BridgeHead</code></a>, have you joined a recovery
+support group?</p></li></ol></div><a class="indexterm" name="d0e258739"></a><a class="indexterm" name="d0e258740"></a></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="What's on the CD-ROM?" href="appe-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="DocBook Quick Reference" href="quickref-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">What's on the CD-ROM?&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp;III.&nbsp;Appendixes" href="part3-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;DocBook Quick Reference</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

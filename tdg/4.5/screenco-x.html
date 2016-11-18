@@ -1,0 +1,117 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>screenco</title><link rel="stylesheet" href="defguide.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="home" href="docbook-x.html" title="DocBook"><link rel="up" href="ref-elements-x.html" title="DocBook Element Reference"><link rel="previous" href="screen-x.html" title="screen"><link rel="next" href="screeninfo-x.html" title="screeninfo"></head><body><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a>&nbsp;<a title="screen" href="screen-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a>&nbsp;<a title="screeninfo" href="screeninfo-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook: The Definitive Guide</i> 2.0.17 <span class="alpha-version">(<a href="co01-x.html"><em>Alpha</em></a>)</span> </td></tr></table></div><div class="refentry" lang="en"><a name="screenco.element"></a><div><div><div><h1 class="title">screenco</h1></div><div><p class="releaseinfo">$Revision: 1666 $</p></div><div><p class="pubdate">$Date: 2002-06-12 07:19:37 -0400 (Wed, 12 Jun 2002) $</p></div></div></div><div class="refnamediv"><p>screenco &#8212; A screen with associated areas used in callouts</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><h3><span class="bold"><strong>Content Model</strong></span></h3><pre class="synopsis">screenco ::=
+(<a href="areaspec-x.html"><code class="sgmltag-element">areaspec</code></a>,<a href="screen-x.html"><code class="sgmltag-element">screen</code></a>,<a href="calloutlist-x.html"><code class="sgmltag-element">calloutlist</code></a>*)</pre><h3><span class="bold"><strong>Attributes</strong></span></h3><p><a href="ref-elements-x.html#common.attributes" title="Common Attributes">Common attributes</a></p><h3><span class="bold"><strong>Parameter Entities</strong></span></h3><p>The following parameter entities contain screenco:</p><table border="1" width="100%" summary="Attributes"><tr><td style="" colspan="3" align="left"><span class="bold"><strong>Parameter Entities</strong></span></td></tr><tr><td style=""><a href="pe-mix-x.html#admon.mix.parament"><code class="sgmltag-paramentity">%admon.mix;</code></a></td><td style=""><a href="pe-content-x.html#bookcomponent.content.parament"><code class="sgmltag-paramentity">%bookcomponent.content;</code></a></td><td style=""><a href="pe-mix-x.html#component.mix.parament"><code class="sgmltag-paramentity">%component.mix;</code></a></td></tr><tr><td style=""><a href="pe-mix-x.html#divcomponent.mix.parament"><code class="sgmltag-paramentity">%divcomponent.mix;</code></a></td><td style=""><a href="pe-mix-x.html#example.mix.parament"><code class="sgmltag-paramentity">%example.mix;</code></a></td><td style=""><a href="pe-mix-x.html#figure.mix.parament"><code class="sgmltag-paramentity">%figure.mix;</code></a></td></tr><tr><td style=""><a href="pe-mix-x.html#footnote.mix.parament"><code class="sgmltag-paramentity">%footnote.mix;</code></a></td><td style=""><a href="pe-mix-x.html#glossdef.mix.parament"><code class="sgmltag-paramentity">%glossdef.mix;</code></a></td><td style=""><a href="pe-mix-x.html#indexdivcomponent.mix.parament"><code class="sgmltag-paramentity">%indexdivcomponent.mix;</code></a></td></tr><tr><td style=""><a href="pe-mix-x.html#legalnotice.mix.parament"><code class="sgmltag-paramentity">%legalnotice.mix;</code></a></td><td style=""><a href="pe-class-x.html#linespecific.class.parament"><code class="sgmltag-paramentity">%linespecific.class;</code></a></td><td style=""><a href="pe-mix-x.html#listpreamble.mix.parament"><code class="sgmltag-paramentity">%listpreamble.mix;</code></a></td></tr><tr><td style=""><a href="pe-mix-x.html#para.mix.parament"><code class="sgmltag-paramentity">%para.mix;</code></a></td><td style=""><a href="pe-mix-x.html#qandaset.mix.parament"><code class="sgmltag-paramentity">%qandaset.mix;</code></a></td><td style=""><a href="pe-mix-x.html#refcomponent.mix.parament"><code class="sgmltag-paramentity">%refcomponent.mix;</code></a></td></tr><tr><td style=""><a href="pe-mix-x.html#revdescription.mix.parament"><code class="sgmltag-paramentity">%revdescription.mix;</code></a></td><td style=""><a href="pe-mix-x.html#sidebar.mix.parament"><code class="sgmltag-paramentity">%sidebar.mix;</code></a></td><td style=""><a href="pe-cals-x.html#tabentry.mix.parament"><code class="sgmltag-paramentity">%tabentry.mix;</code></a></td></tr><tr><td style=""><a href="pe-cals-x.html#tbl.entry.mdl.parament"><code class="sgmltag-paramentity">%tbl.entry.mdl;</code></a></td><td style=""><a href="pe-mix-x.html#textobject.mix.parament"><code class="sgmltag-paramentity">%textobject.mix;</code></a></td><td style="">&nbsp;</td></tr></table></div><div class="refsect1" lang="en"><a name="d0e141347"></a><h2>Description</h2><p>
+<a href="callout-x.html"><code class="sgmltag-element">Callout</code></a>s, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently &#8220;<span class="quote">hot,</span>&#8221; and clicking on
+them navigates to the corresponding annotation.
+</p><p>
+A <a href="screenco-x.html"><code class="sgmltag-element">ScreenCO</code></a> is a wrapper around an <a href="areaspec-x.html"><code class="sgmltag-element">AreaSpec</code></a> and
+a <a href="screen-x.html"><code class="sgmltag-element">Screen</code></a>.  An <a href="areaspec-x.html"><code class="sgmltag-element">AreaSpec</code></a> identifies the locations
+(coordinates)
+in the <a href="screen-x.html"><code class="sgmltag-element">Screen</code></a> where the callouts occur.
+The <a href="screenco-x.html"><code class="sgmltag-element">ScreenCO</code></a> may also contain the list of annotations in
+a <a href="calloutlist-x.html"><code class="sgmltag-element">CalloutList</code></a>, although the <a href="calloutlist-x.html"><code class="sgmltag-element">CalloutList</code></a> may also
+occur outside of the wrapper, elsewhere in the document.
+</p><p>
+It is also possible to embed <a href="co-x.html"><code class="sgmltag-element">CO</code></a> elements directly in the
+verbatim text, in order to avoid the overhead of calculating the
+correct coordinates.  If you decide to follow this route, use a 
+<a href="screen-x.html"><code class="sgmltag-element">Screen</code></a> and a <a href="calloutlist-x.html"><code class="sgmltag-element">CalloutList</code></a> without the
+<a href="screenco-x.html"><code class="sgmltag-element">ScreenCO</code></a> wrapper.  A <a href="screenco-x.html"><code class="sgmltag-element">ScreenCO</code></a>
+must specify at least one coordinate.
+</p><p>
+For a complete description of callouts, see <a href="callout-x.html"><code class="sgmltag-element">Callout</code></a>.
+</p><div class="refsect2" lang="en"><a name="d0e141406"></a><h3>Processing expectations</h3><p>
+Formatted as a displayed block. This element is displayed &#8220;verbatim&#8221;;
+whitespace and linebreaks within this element are significant.
+</p><p>
+The mandatory processing expectations of a <a href="screenco-x.html"><code class="sgmltag-element">ScreenCO</code></a> are
+minimal: a system is expected to render the program listing and the
+callout list, if present.
+</p><p>
+If explicit <a href="co-x.html"><code class="sgmltag-element">CO</code></a> elements are embedded in a
+<a href="screen-x.html"><code class="sgmltag-element">Screen</code></a>, they must generate appropriate
+callout marks.
+</p><p>
+In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks in the program listing and
+the annotations.
+Some systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information,
+but this level of sophistication is not mandatory.
+</p></div><div class="refsect2" lang="en"><a name="d0e141426"></a><h3>Parents</h3><p>These elements contain screenco:
+<span class="simplelist"><a href="answer-x.html"><code class="sgmltag-element">answer</code></a>, <a href="appendix-x.html"><code class="sgmltag-element">appendix</code></a>, <a href="article-x.html"><code class="sgmltag-element">article</code></a>, <a href="bibliodiv-x.html"><code class="sgmltag-element">bibliodiv</code></a>, <a href="bibliography-x.html"><code class="sgmltag-element">bibliography</code></a>, <a href="blockquote-x.html"><code class="sgmltag-element">blockquote</code></a>, <a href="callout-x.html"><code class="sgmltag-element">callout</code></a>, <a href="caption-x.html"><code class="sgmltag-element">caption</code></a>, <a href="caution-x.html"><code class="sgmltag-element">caution</code></a>, <a href="chapter-x.html"><code class="sgmltag-element">chapter</code></a>, <a href="colophon-x.html"><code class="sgmltag-element">colophon</code></a>, <a href="constraintdef-x.html"><code class="sgmltag-element">constraintdef</code></a>, <a href="dedication-x.html"><code class="sgmltag-element">dedication</code></a>, <a href="entry-x.html"><code class="sgmltag-element">entry</code></a>, <a href="example-x.html"><code class="sgmltag-element">example</code></a>, <a href="figure-x.html"><code class="sgmltag-element">figure</code></a>, <a href="footnote-x.html"><code class="sgmltag-element">footnote</code></a>, <a href="glossary-x.html"><code class="sgmltag-element">glossary</code></a>, <a href="glossdef-x.html"><code class="sgmltag-element">glossdef</code></a>, <a href="glossdiv-x.html"><code class="sgmltag-element">glossdiv</code></a>, <a href="important-x.html"><code class="sgmltag-element">important</code></a>, <a href="index-x.html"><code class="sgmltag-element">index</code></a>, <a href="indexdiv-x.html"><code class="sgmltag-element">indexdiv</code></a>, <a href="informalexample-x.html"><code class="sgmltag-element">informalexample</code></a>, <a href="informalfigure-x.html"><code class="sgmltag-element">informalfigure</code></a>, <a href="itemizedlist-x.html"><code class="sgmltag-element">itemizedlist</code></a>, <a href="legalnotice-x.html"><code class="sgmltag-element">legalnotice</code></a>, <a href="listitem-x.html"><code class="sgmltag-element">listitem</code></a>, <a href="msgexplan-x.html"><code class="sgmltag-element">msgexplan</code></a>, <a href="msgtext-x.html"><code class="sgmltag-element">msgtext</code></a>, <a href="note-x.html"><code class="sgmltag-element">note</code></a>, <a href="orderedlist-x.html"><code class="sgmltag-element">orderedlist</code></a>, <a href="para-x.html"><code class="sgmltag-element">para</code></a>, <a href="partintro-x.html"><code class="sgmltag-element">partintro</code></a>, <a href="preface-x.html"><code class="sgmltag-element">preface</code></a>, <a href="procedure-x.html"><code class="sgmltag-element">procedure</code></a>, <a href="qandadiv-x.html"><code class="sgmltag-element">qandadiv</code></a>, <a href="qandaset-x.html"><code class="sgmltag-element">qandaset</code></a>, <a href="question-x.html"><code class="sgmltag-element">question</code></a>, <a href="refsect1-x.html"><code class="sgmltag-element">refsect1</code></a>, <a href="refsect2-x.html"><code class="sgmltag-element">refsect2</code></a>, <a href="refsect3-x.html"><code class="sgmltag-element">refsect3</code></a>, <a href="refsection-x.html"><code class="sgmltag-element">refsection</code></a>, <a href="refsynopsisdiv-x.html"><code class="sgmltag-element">refsynopsisdiv</code></a>, <a href="revdescription-x.html"><code class="sgmltag-element">revdescription</code></a>, <a href="sect1-x.html"><code class="sgmltag-element">sect1</code></a>, <a href="sect2-x.html"><code class="sgmltag-element">sect2</code></a>, <a href="sect3-x.html"><code class="sgmltag-element">sect3</code></a>, <a href="sect4-x.html"><code class="sgmltag-element">sect4</code></a>, <a href="sect5-x.html"><code class="sgmltag-element">sect5</code></a>, <a href="section-x.html"><code class="sgmltag-element">section</code></a>, <a href="setindex-x.html"><code class="sgmltag-element">setindex</code></a>, <a href="sidebar-x.html"><code class="sgmltag-element">sidebar</code></a>, <a href="simplesect-x.html"><code class="sgmltag-element">simplesect</code></a>, <a href="step-x.html"><code class="sgmltag-element">step</code></a>, <a href="taskprerequisites-x.html"><code class="sgmltag-element">taskprerequisites</code></a>, <a href="taskrelated-x.html"><code class="sgmltag-element">taskrelated</code></a>, <a href="tasksummary-x.html"><code class="sgmltag-element">tasksummary</code></a>, <a href="td-x.html"><code class="sgmltag-element">td</code></a>, <a href="textobject-x.html"><code class="sgmltag-element">textobject</code></a>, <a href="th-x.html"><code class="sgmltag-element">th</code></a>, <a href="tip-x.html"><code class="sgmltag-element">tip</code></a>, <a href="variablelist-x.html"><code class="sgmltag-element">variablelist</code></a>, <a href="warning-x.html"><code class="sgmltag-element">warning</code></a></span>.</p></div><div class="refsect2" lang="en"><a name="d0e141625"></a><h3>Children</h3><p>The following elements occur in screenco:
+<span class="simplelist"><a href="areaspec-x.html"><code class="sgmltag-element">areaspec</code></a>, <a href="calloutlist-x.html"><code class="sgmltag-element">calloutlist</code></a>, <a href="screen-x.html"><code class="sgmltag-element">screen</code></a></span>.</p></div></div><div class="refsect1" lang="en"><a name="d0e141641"></a><h2>See Also</h2><p><span class="simplelist"><a href="areaspec-x.html"><code class="sgmltag-element">areaspec</code></a>, <a href="calloutlist-x.html"><code class="sgmltag-element">calloutlist</code></a>, <a href="co-x.html"><code class="sgmltag-element">co</code></a>, <a href="coref-x.html"><code class="sgmltag-element">coref</code></a>, <a href="graphicco-x.html"><code class="sgmltag-element">graphicco</code></a>, <a href="imageobjectco-x.html"><code class="sgmltag-element">imageobjectco</code></a>, <a href="mediaobjectco-x.html"><code class="sgmltag-element">mediaobjectco</code></a>, <a href="programlistingco-x.html"><code class="sgmltag-element">programlistingco</code></a></span>.
+</p></div><div class="refsect1" lang="en"><a name="d0e141671"></a><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;!DOCTYPE screenco PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"&gt;
+&lt;screenco&gt;
+&lt;areaspec&gt;
+&lt;area id="dos" coords='5'/&gt;
+&lt;area id="autoexec.bat" coords='10'/&gt;
+&lt;area id="command.com" coords='11'/&gt;
+&lt;area id="config.sys" coords='12'/&gt;
+&lt;area id="wina20.386" coords='14'/&gt;
+&lt;/areaspec&gt;
+&lt;screen&gt; Volume in drive C is SYSTEM         Serial number is 2350:717C
+ Directory of  C:\
+
+10/17/97   9:04         &amp;lt;DIR&gt;    bin
+10/16/97  14:11         &amp;lt;DIR&gt;    DOS
+10/16/97  14:40         &amp;lt;DIR&gt;    Program Files
+10/16/97  14:46         &amp;lt;DIR&gt;    TEMP
+10/17/97   9:04         &amp;lt;DIR&gt;    tmp
+10/16/97  14:37         &amp;lt;DIR&gt;    WINNT
+10/16/97  14:25             119  AUTOEXEC.BAT
+ 2/13/94   6:21          54,619  COMMAND.COM
+10/16/97  14:25             115  CONFIG.SYS
+11/16/97  17:17      61,865,984  pagefile.sys
+ 2/13/94   6:21           9,349  WINA20.386&lt;/screen&gt;
+&lt;calloutlist&gt;
+&lt;callout arearefs="dos"&gt;
+&lt;para&gt;
+This directory holds &lt;trademark&gt;MS-DOS&lt;/trademark&gt;, the
+operating system that was installed before &lt;trademark&gt;Windows
+NT&lt;/trademark&gt;.
+&lt;/para&gt;
+&lt;/callout&gt;
+
+&lt;callout arearefs="autoexec.bat command.com config.sys"&gt;
+&lt;para&gt;
+System startup code for DOS.
+&lt;/para&gt;
+&lt;/callout&gt;
+
+&lt;callout arearefs="wina20.386"&gt;
+&lt;para&gt;
+Some sort of &lt;trademark&gt;Windows 3.1&lt;/trademark&gt; hack for some 386 processors,
+as I recall.
+&lt;/para&gt;
+&lt;/callout&gt;
+&lt;/calloutlist&gt;
+&lt;/screenco&gt;
+</pre></div><div class="example-output"><div class="informalexample"><pre class="screen">
+ Volume in drive C is SYSTEM         Serial number is 2350:717C
+ Directory of  C:\
+
+10/17/97   9:04         &lt;DIR&gt;    bin
+10/16/97  14:11         &lt;DIR&gt;    DOS            <a name="dos"></a><img src="figures/callouts/1.png" alt="1" border="0">
+10/16/97  14:40         &lt;DIR&gt;    Program Files
+10/16/97  14:46         &lt;DIR&gt;    TEMP
+10/17/97   9:04         &lt;DIR&gt;    tmp
+10/16/97  14:37         &lt;DIR&gt;    WINNT
+10/16/97  14:25             119  AUTOEXEC.BAT   <a name="autoexec.bat"></a><img src="figures/callouts/2.png" alt="2" border="0">
+ 2/13/94   6:21          54,619  COMMAND.COM    <a name="command.com"></a><img src="figures/callouts/3.png" alt="3" border="0">
+10/16/97  14:25             115  CONFIG.SYS     <a name="config.sys"></a><img src="figures/callouts/4.png" alt="4" border="0">
+11/16/97  17:17      61,865,984  pagefile.sys
+ 2/13/94   6:21           9,349  WINA20.386     <a name="wina20.386"></a><img src="figures/callouts/5.png" alt="5" border="0">
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#dos"><img src="figures/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>
+This directory holds <span class="trademark">MS-DOS</span>&#8482;, the
+operating system that was installed before <span class="trademark">Windows
+NT</span>&#8482;.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#autoexec.bat"><img src="figures/callouts/2.png" alt="2" border="0"></a> <a href="#command.com"><img src="figures/callouts/3.png" alt="3" border="0"></a> <a href="#config.sys"><img src="figures/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>
+System startup code for DOS.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#wina20.386"><img src="figures/callouts/5.png" alt="5" border="0"></a> </td><td valign="top" align="left"><p>
+Some sort of <span class="trademark">Windows 3.1</span>&#8482; hack for some 386 processors,
+as I recall.
+</p></td></tr></table></div></div></div></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="screen" href="screen-x.html"><img src="figures/nav-prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook" href="docbook-x.html"><img src="figures/nav-home.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="screeninfo" href="screeninfo-x.html"><img src="figures/nav-next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">screen&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements-x.html"><img src="figures/nav-up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;screeninfo</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright-x.html">Copyright</a> &copy; 1999, 2000, 2001, 2002, 2003 <a href="http://www.oreilly.com/">O'Reilly &amp; Associates, Inc.</a> All rights reserved.</p></div></body></html>

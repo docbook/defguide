@@ -1,0 +1,468 @@
+<HTML
+><HEAD
+><TITLE
+>ImageObjectCO</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.46"><LINK
+REL="HOME"
+TITLE="DocBook"
+HREF="docbook.html"><LINK
+REL="UP"
+TITLE="DocBook Element Reference"
+HREF="refelem.html"><LINK
+REL="PREVIOUS"
+TITLE="ImageObject"
+HREF="imageobject.html"><LINK
+REL="NEXT"
+TITLE="Important"
+HREF="important.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="dbtdg.css"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>DocBook: The Definitive Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="imageobject.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Version 1.0.3.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="important.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+>ImageObjectCO</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN51205"
+></A
+><H2
+>Name</H2
+>ImageObjectCO&nbsp;--&nbsp;A wrapper for an image object with callouts</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN51208"
+></A
+><H2
+>Synopsis</H2
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Content Model</SPAN
+></H3
+><PRE
+CLASS="SYNOPSIS"
+>ImageObjectCO ::=
+(<A
+HREF="areaspec.html"
+>AreaSpec</A
+>,<A
+HREF="imageobject.html"
+>ImageObject</A
+>,<A
+HREF="calloutlist.html"
+>CalloutList</A
+>*)</PRE
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Attributes</SPAN
+></H3
+><P
+><A
+HREF="refelem.html#DBRE.X.COMMON"
+>Common attributes</A
+></P
+><H3
+><SPAN
+CLASS="EMPHASIS"
+>Tag Minimization</SPAN
+></H3
+><P
+>Both the start- and end-tags are required for this element.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN51236"
+></A
+><H2
+>Description</H2
+><P
+><A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>s, such as numbered bullets, are an annotation mechanism.  In an
+online system, these bullets are frequently <SPAN
+CLASS="QUOTE"
+>"hot,"</SPAN
+> and clicking on
+them navigates to the corresponding annotation.</P
+><P
+>A <A
+HREF="imageobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObjectCO</TT
+></A
+> is a wrapper around an <A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+> and
+an <A
+HREF="imageobject.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObject</TT
+></A
+>.  An <A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+> identifies the locations
+(coordinates)
+on the image where the <A
+HREF="callout.html"
+><TT
+CLASS="SGMLTAG"
+>Callout</TT
+></A
+>s occur.
+The <A
+HREF="imageobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObjectCO</TT
+></A
+> may also contain the list of annotations in
+a <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, although the <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+> may also
+occur outside of the wrapper, elsewhere in the document.</P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN51250"
+></A
+><H3
+>Processing expectations</H3
+><P
+>Formatted as a displayed block. It may not be rendered at all, depending on its placement
+within the <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+> that contains it and
+the constraints on the publishing system.  For a more detailed description
+of the semantics involved, see <A
+HREF="mediaobject.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObject</TT
+></A
+>.</P
+><P
+>The mandatory processing expectations of a <A
+HREF="imageobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObjectCO</TT
+></A
+> are
+minimal: a system is expected to render the image, if possible, and the
+callout list, if present.</P
+><P
+>In online environments, the processing system may be able to instantiate
+the linking relationships between the callout marks on the image and
+the annotations.  For example, an <SPAN
+CLASS="ACRONYM"
+>HTML</SPAN
+> presentation system might use the
+coordinate information to construct a client-side image map.
+Some processing systems may even be able to go a step further and generate
+the callout marks automatically from the coordinate information.
+But this level of sophistication is not mandatory.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN51259"
+></A
+><H3
+><IMG
+SRC="figures/rev_5.0.gif"
+ALT="(5.0)">&nbsp;Future Changes</H3
+><P
+>&#13;In DocBook <SPAN
+CLASS="ACRONYM"
+>V5.0</SPAN
+>, <A
+HREF="imageobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObjectCO</TT
+></A
+> will be discarded. In its
+place, use <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN51269"
+></A
+><H3
+>Parents</H3
+><P
+>These elements contain ImageObjectCO:
+<A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN51276"
+></A
+><H3
+>Children</H3
+><P
+>The following elements occur in ImageObjectCO:
+<A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="imageobject.html"
+><TT
+CLASS="SGMLTAG"
+>ImageObject</TT
+></A
+>.</P
+><P
+>In some contexts, the following elements are
+allowed anywhere:
+<A
+HREF="beginpage.html"
+><TT
+CLASS="SGMLTAG"
+>BeginPage</TT
+></A
+>, <A
+HREF="indexterm.html"
+><TT
+CLASS="SGMLTAG"
+>IndexTerm</TT
+></A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN51297"
+></A
+><H2
+>See Also</H2
+><P
+><A
+HREF="areaspec.html"
+><TT
+CLASS="SGMLTAG"
+>AreaSpec</TT
+></A
+>, <A
+HREF="calloutlist.html"
+><TT
+CLASS="SGMLTAG"
+>CalloutList</TT
+></A
+>, <A
+HREF="co.html"
+><TT
+CLASS="SGMLTAG"
+>CO</TT
+></A
+>, <A
+HREF="graphicco.html"
+><TT
+CLASS="SGMLTAG"
+>GraphicCO</TT
+></A
+>, <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>, <A
+HREF="programlistingco.html"
+><TT
+CLASS="SGMLTAG"
+>ProgramListingCO</TT
+></A
+>, <A
+HREF="screenco.html"
+><TT
+CLASS="SGMLTAG"
+>ScreenCO</TT
+></A
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN51322"
+></A
+><H2
+>Examples</H2
+><P
+>For examples, see <A
+HREF="mediaobjectco.html"
+><TT
+CLASS="SGMLTAG"
+>MediaObjectCO</TT
+></A
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="imageobject.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="docbook.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="important.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>ImageObject</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="refelem.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Important</TD
+></TR
+></TABLE
+></DIV
+><P
+><A
+HREF="ln42.html"
+>Copyright</A
+> &copy; 1999 O'Reilly &amp; Associates, Inc. All rights reserved.</P
+></BODY
+></HTML
+>

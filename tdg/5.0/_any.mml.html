@@ -1,0 +1,43 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>mml:*</title><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.2" /><link rel="stylesheet" type="text/css" href="css/defguide.css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png" /></head><body><div class="page"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left"> <a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a> <a href="_any.html" title="*:*"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> <a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a> <a title="svg:*" href="_any.svg.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td><td align="right"><i>DocBook 5: The Definitive Guide</i> (Version <a href="ch00-online.html">1.0.4 for DocBook V5.0</a>)</td></tr></table></div><div class="body"><article id="element.db._any.mml" class="refentry"><a class="indexterm" name="element.db._any.mml.1"></a><div class="refnamediv"><h2>mml:*</h2><p><span class="refname">mml:*</span><span class="refpurpose"><span class="refpurpose-sep"> — </span><span class="refpurpose-text">Any element from the MathML namespace</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="itemizedlist element-synopsis"><ul><li>Any element from the http://www.w3.org/1998/Math/MathML namespace.</li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><p>Attributes:</p><div class="itemizedlist element-synopsis"><ul><li><em>Zero or more:</em><div class="itemizedlist element-synopsis"><ul><li><em>Any attribute</em></li></ul></div></li></ul></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div>
+<p>This position in a content model can be occupied by any element in
+      the MathML namespace.</p>
+
+      <p>The <a href="http://www.w3.org/TR/MathML2/">Mathematical Markup
+      Language</a> Recommendation from the W3C defines the Mathematical
+      Markup Language, or MathML. MathML is an XML application for describing
+      mathematical notation and capturing both its structure and its
+      content.</p>
+
+      <p>A complete description of MathML is outside the scope of this
+      reference.</p>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><div class="variablelist"><dl><dt><span class="term attname">any attribute</span></dt><dd><p>Any attribute including in any attribute in any namespace.</p></dd></dl></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><p>These elements contain <a href="_any.mml.html"><code class="tag-element">mml:*</code></a>: <span class="simplelist"><span class="member"><a href="equation.html"><code class="tag-element">equation</code></a></span>, <span class="member"><a href="imagedata.mathml.html"><code class="tag-element">imagedata</code></a> <span class="pattern">(db.imagedata.mathml)</span></span>, <span class="member"><a href="informalequation.html"><code class="tag-element">informalequation</code></a></span>, <span class="member"><a href="inlineequation.html"><code class="tag-element">inlineequation</code></a></span></span>.</p></div>
+
+</div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div>
+
+
+<div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;article xmlns='http://docbook.org/ns/docbook'
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>	 xmlns:mml="http://www.w3.org/1998/Math/MathML"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;title&gt;Example mml-math&lt;/title&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;informalequation&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;mml:math&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;mml:msup&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;mml:mi&gt;x&lt;/mml:mi&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;mml:mn&gt;3&lt;/mml:mn&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;/mml:msup&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/mml:math&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;/informalequation&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&lt;/article&gt;</pre></div>
+
+<div class="example-output">
+
+<p><code class="literal">x<sup>3</sup></code></p>
+</div>
+
+</div></article></div></div><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="*:*" href="_any.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0" /></a> </td><td width="20%" align="center"><a title="DocBook 5: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0" /></a></td><td width="40%" align="right"> <a title="svg:*" href="_any.svg.html"><img src="figs/web/nav/next.png" alt="Next" border="0" /></a></td></tr><tr><td width="40%" align="left">*:* </td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0" /></a></td><td width="40%" align="right"> svg:*</td></tr></table></div><div class="infofooter">Last revised by Norman Walsh on 6 Jun 2011 <span class="githash">(git hash: 6ffcc7640bbc5f852a318e452c9f210f03292cb9)</span></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011 Norman Walsh.</p></div></body></html>
