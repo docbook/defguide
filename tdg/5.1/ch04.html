@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter&nbsp;4.&nbsp;Publishing DocBook Documents</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.21"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.1: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch03.html" title="Chapter&nbsp; 3 .&nbsp; Validating DocBook Documents"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.1: The Definitive Guide</i> (Version <a href="ch00-online.html">1.4.18 for DocBook V5.1CS</a>)</td></tr></table></div><div class="body"><article id="ch-publish" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;4.&nbsp;Publishing DocBook Documents</h2><p class="releaseinfo">$Revision$</p></header><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch-publish.2.1"></a><a class="indexterm" name="ch-publish.2.2"></a><a class="indexterm" name="ch-publish.2.3"></a><a class="indexterm" name="ch-publish.2.4"></a>Creating and validating <span class="acronym">XML</span> documents is
+  usually only half the battle. After you’ve composed your document, you’ll
+  want to publish it. Publishing, for our purposes, means either print or web
+  publishing. For <span class="acronym">XML</span> documents, this is usually
+  accomplished with some kind of <em class="glossterm">stylesheet</em>. In some
+  environments, it is now possible to publish an <span class="acronym">XML</span>
+  document on the Web simply by putting it online with a stylesheet.</p><section id="stylesurvey" class="section"><div class="section-titlepage"><h2>1.&nbsp;A Survey of Stylesheet Languages</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="idx.stylesheets"></a><a class="indexterm" name="stylesurvey.2.2"></a>Over the years, a number of attempts have been made to
+    produce a standard stylesheet language and, failing that, a large number
+    of proprietary languages have been developed. Since this book was first
+    written, three standards have emerged as the clear <span class="keep-together">frontrunners</span>:</p><div class="variablelist"><dl><dt><span class="term"><span class="acronym">CSS</span></span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="stylesurvey.3.1.2.1.1"></a><a class="indexterm" name="stylesurvey.3.1.2.1.2"></a><a class="indexterm" name="stylesurvey.3.1.2.1.3"></a>The <span class="acronym">W3C</span> <span class="acronym">CSS</span>
+          Working Group created <span class="acronym">CSS</span> as a style attachment
+          language for <span class="acronym">HTML</span>. It has also been advanced as a
+          stylesheet language for <span class="acronym">XML</span>. Some browsers will
+          style arbitrary <span class="acronym">XML</span> with <span class="acronym">CSS</span>
+          and some commercial products exist that will render
+          <span class="acronym">XML</span>+<span class="acronym">CSS</span> either online or in
+          print.</p></dd><dt><span class="term"><span class="acronym">XSL</span></span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="stylesurvey.3.2.2.1.1"></a><a class="indexterm" name="stylesurvey.3.2.2.1.2"></a><a class="indexterm" name="stylesurvey.3.2.2.1.3"></a><span class="acronym">XSLT</span> 1.0 is well established and is
+          probably the most common styling technology for DocBook.
+          <span class="acronym">XSLT</span> 2.0 offers a number of important new
+          features (at the expense of some complexity, naturally) and is
+          growing in popularity.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">It’s worth observing that there are two, related technologies
+          in play here. <span class="acronym">XSLT</span> 1.0 and 2.0, the
+          transformation languages, and <span class="acronym">XSL</span> Formatting
+          Objects (<span class="acronym">XSL-FO</span>). <span class="acronym">XSL</span>-FO is an
+          <span class="acronym">XML</span> vocabulary for describing constraints on page
+          layout.</p></dd><dt><span class="term">XQuery</span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="stylesurvey.3.3.2.1.1"></a><a class="indexterm" name="stylesurvey.3.3.2.1.2"></a><a class="indexterm" name="stylesurvey.3.3.2.1.3"></a>XQuery 1.0, developed in parallel with
+          <span class="acronym">XPath</span> 2.0, provides a different set of features
+          than <span class="acronym">XSL</span>, but can be used to transform DocBook
+          into other formats.</p></dd></dl></div><section id="styleexamples" class="section"><div class="section-titlepage"><h3>1.1.&nbsp;Stylesheet Examples</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="styleexamples.2.1"></a>By way of comparison, here’s an example of each of the
+      standard style languages. In each case, the stylesheet fragment shown
+      contains the rules that reasonably formatted the following
+      paragraph:</p><pre class="screen language-none line-numbers"><code>&lt;para&gt;This is an example paragraph. It should be presented in a
+reasonable body font. &lt;emphasis&gt;Emphasized&lt;/emphasis&gt; words
+should be printed in italics. A single level of 
+&lt;emphasis&gt;Nested &lt;emphasis&gt;emphasis&lt;/emphasis&gt; should also
+be supported.&lt;/emphasis&gt;
+&lt;/para&gt;</code></pre><section id="s.css" class="section"><div class="section-titlepage"><h4>1.1.1.&nbsp;<span class="acronym">CSS</span> stylesheet</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="s.css.2.1"></a><span class="acronym">CSS</span> stylesheets consist of selectors
+        and formatting properties, as shown in <a href="ch04.html#ex-css" title="A fragment of a CSS stylesheet">Example&nbsp;4.1, “A fragment of a <span class="acronym">CSS</span> stylesheet”</a>.</p><figure id="ex-css" class="example-wrapper"><div class="title">Example&nbsp;4.1.&nbsp;A fragment of a <span class="acronym">CSS</span> stylesheet</div><div class="example"><pre class="programlisting language-none line-numbers"><code>@namespace "http://docbook.org/ns/docbook"
+
+para              { display: block }
+emphasis          { display: inline;
+                    font-style: italic; }
+emphasis emphasis { display: inline;
+                    font-style: normal; }</code></pre></div></figure><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">As this edition is being written, namespace selection in
+        <span class="acronym">CSS</span>, while widely supported, is still a Candidate
+        Recommendation at W3C.</p></div></section><section id="s.xsl" class="section"><div class="section-titlepage"><h4>1.1.2.&nbsp;<span class="acronym">XSL</span> stylesheet</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="s.xsl.2.1"></a><span class="acronym">XSL</span> stylesheets are
+        <span class="acronym">XML</span> documents, as shown in <a href="ch04.html#ex-xsl" title="A fragment of an XSL stylesheet">Example&nbsp;4.2, “A fragment of an <span class="acronym">XSL</span> stylesheet”</a>. The element in the <span class="acronym">XSL</span>
+        stylesheet that controls the presentation of specific elements is the
+        xsl:template
+        <span class="keep-together">element</span>.</p><figure id="ex-xsl" class="example-wrapper"><div class="title">Example&nbsp;4.2.&nbsp;A fragment of an <span class="acronym">XSL</span> stylesheet</div><div class="example"><pre class="programlisting language-none line-numbers"><code>&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                xmlns:db="http://docbook.org/ns/docbook"
+                version="1.0"&gt;
+
+&lt;xsl:template match="db:para"&gt;   
+  &lt;fo:block&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:block&gt;
+&lt;/xsl:template&gt;  
+
+&lt;xsl:template match="db:emphasis"&gt;
+  &lt;fo:inline font-style="italic"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:inline&gt;
+&lt;/xsl:template&gt;  
+
+&lt;xsl:template match="db:emphasis/db:emphasis"&gt;
+  &lt;fo:inline font-style="normal"&gt;
+    &lt;xsl:apply-templates/&gt;  
+  &lt;/fo:inline&gt;
+&lt;/xsl:template&gt;  
+
+&lt;/xsl:stylesheet&gt;</code></pre></div></figure><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A complete stylesheet for generating an entire
+        <span class="acronym">XSL</span>-FO document would require additional
+        boilerplate text not shown.</p></div></section><section id="s.xquery" class="section"><div class="section-titlepage"><h4>1.1.3.&nbsp;XQuery</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="s.xquery.2.1"></a><span class="acronym">XQuery</span> is expressed in a mixture of
+        text and <span class="acronym">XML</span> fragments, as shown in <a href="ch04.html#ex-xquery" title="A fragment of XQuery">Example&nbsp;4.3, “A fragment of XQuery”</a>.</p><figure id="ex-xquery" class="example-wrapper"><div class="title">Example&nbsp;4.3.&nbsp;A fragment of XQuery</div><div class="example"><pre class="programlisting language-none line-numbers"><code>xquery version "1.0";
+
+declare default function namespace "http://www.w3.org/2005/xpath-functions";
+
+declare namespace db="http://docbook.org/ns/docbook";
+declare namespace fo="http://www.w3.org/1999/XSL/Format";
+
+declare function local:convert($node as node()) as node()* {
+  if (empty($node))
+  then
+    ()
+  else
+    typeswitch ($node)
+      case text() return $node
+      case document-node() return local:convert($node/node())
+      case element(db:para) return local:para($node)
+      case element(db:emphasis) return local:emphasis($node)
+      default return ("ERROR: UNEXPECTED NODE", local:convert($node/node()))
+};
+
+declare function local:para($node as element()) as element() {
+  &lt;fo:block&gt;
+    { local:convert($node/node()) }
+  &lt;/fo:block&gt;
+};
+
+declare function local:emphasis($node as element()) as element() {
+  if ($node/parent::db:emphasis)
+  then
+    &lt;fo:inline font-style="normal"&gt;
+      { local:convert($node/node()) }
+    &lt;/fo:inline&gt;
+  else
+    &lt;fo:inline font-style="italic"&gt;
+      { local:convert($node/node()) }
+    &lt;/fo:inline&gt;
+};</code></pre></div></figure><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A complete query for generating an <span class="acronym">XSL</span>-FO
+        document would require additional boilerplate text not shown.</p></div></section></div></section></div></section><section id="xsl" class="section"><div class="section-titlepage"><h2>2.&nbsp;Using <span class="acronym">XSL</span> to Publish DocBook Documents</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="xsl.2.1"></a>The community of people using DocBook has created a set of
+    open source <span class="acronym">XSL</span> stylesheets that are maintained at
+    <a href="http://sourceforge.net/projects/docbook">Sourceforge.net</a>.
+    These stylesheets can be used to transform DocBook <span class="acronym">XML</span>
+    into a wide variety of formats, including <span class="acronym">HTML</span>,
+    Javahelp, <span class="acronym">XSL-FO</span> (for processing into print), ePub, and
+    <span class="acronym">HTML</span> help.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">For a detailed discussion of using <span class="acronym">XSL</span> to publish
+    DocBook documents, see <em class="citetitle">DocBook XSL: The Complete
+    Guide</em> [<a href="appd.html#Stayton07"><span class="abbrev">Stayton07</span></a>].</p><a class="indexterm" name="xsl.4"></a></div></section></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Chapter&nbsp; 3 .&nbsp; Validating DocBook Documents" href="ch03.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.1: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Chapter&nbsp; 3 .&nbsp; Validating DocBook Documents&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Chapter&nbsp; 5 .&nbsp; Customizing DocBook</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016 Norman Walsh.</p></div></div></div></body></html>
