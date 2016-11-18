@@ -1,0 +1,830 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter&nbsp;6.&nbsp;DocBook Assemblies</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.21"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch05.html" title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d6275e15276.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">1.4.17 for DocBook V5.2b1</a>)</td></tr></table></div><div class="body"><article id="assemblies" class="chapter rf-5.1"><header class="chapter-titlepage"><h2>Chapter&nbsp;6.&nbsp;DocBook Assemblies</h2></header><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">One modern school of thought on technical documentation stresses
+the development of independent units of documentation, often called
+topics, rather than a single narrative. Instead of writing something
+that DocBook users would easily recognize as a book consisting of a
+preface, several consecutive chapters, and a few appendixes, the
+author (or authors) write a set of discrete topics covering different aspects of
+the system as if they were wholly independent.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In a typical online presentation system, for example the world
+wide web or online help, each topic is a page that stands alone.
+Except, of course, that just as no man is an island, no topic is
+completely unrelated to the other topics that are available.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">From any given topic, there may be topics of obviously related
+interest. The nature of the relationships may vary. Some topics are
+related by physical proximity (if you're interested in the ink
+cartridges in a printer, you may also be interested in the print
+head), others by their procedural nature (adding or replacing memory,
+adding or replacing a hard drive, or even changing the CPU are all
+topics that might logically follow a topic that describes how to open
+the computer case).</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In a single narrative, it is the responsibility of the author to
+manage these relationships. He or she can reasonably assume that
+anyone reading chapter 4 has read chapters 1, 2, and 3. If the reader
+needs to be directed elsewhere, a cross reference can be used (for
+example, “for more information on paper jams, see Section 3.5,
+<em class="citetitle">The Paper Path</em>”).</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In a topic-oriented system, authors are explicitly instructed to
+write independent units. No linear order can be assumed and many forms
+of explicit cross-reference are discouraged.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Documentation managers treat the library of available topics
+very much as programmers treat libraries of available functions. Just
+as any given program can pick and choose from the available libraries,
+the documentation for any given system can pick and choose from the
+available topics.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If you imagine a large documentation group managing the documentation
+for several related systems (different models of printer, different
+configurations of a software system, computers assembled from
+different components, etc.) it's easy to see the appeal of topic-oriented
+authoring.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In a successful deployment, you might find a library of say 1,000
+topics which, taken together, document five or six related systems, each of
+which uses 700-800 topics. Some topics are used in every system, many are
+used in several systems, and a small number of topics are unique to a
+specific system.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In order to make such a documentation platform functional, you
+need not only the individual topics, but also some sort of “map” or
+“assembly” file that describes which topics from the library are used,
+what relationships exist between them and, at least for print
+presentation, what linear order should be imposed upon them.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">DocBook uses an <a href="assembly.html"><code class="tag-element">assembly</code></a> for this purpose.</p><section id="physical" class="section"><div class="section-titlepage"><h2>1.&nbsp;Physical structure</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The notion of a DocBook <a href="assembly.html"><code class="tag-element">assembly</code></a> is predicated on a few
+assumptions about the physical layout of the topics that are to be combined
+together into units of documentation. We call the units of documentation
+“structures” and the topics from which they are composed “resources”.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">For the most part, we assume that resources exist as stand alone
+documents accessible via URIs. The structures that result from assembling
+the resources together may be a single file (as in a single PDF book) or
+a collection of files (as in a web site or help system).</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Other arrangements are possible, but for simplicity, we assume
+that the resources are accessible via URIs and the resulting
+structures can be written to the local filesystem as one or more
+files.</p></div></section><section id="logical" class="section"><div class="section-titlepage"><h2>2.&nbsp;Logical structure</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Many features of an assembly allow the assembly process to
+update metadata associated with a document, for example changing the
+title or removing the metadata altogether. Throughout the description
+of assemblies, we assume that all metadata always occurs inside an
+<a href="info.html"><code class="tag-element">info</code></a> wrapper. In other words, although the following is
+perfectly legal:</p><pre class="programlisting language-none line-numbers"><code>&lt;chapter&gt;
+  &lt;title&gt;Chapter Title&lt;/title&gt;
+  &lt;info&gt;
+    &lt;pubdate&gt;2009-11-23&lt;/pubdate&gt;
+  &lt;/info&gt;
+  &lt;para&gt;Some chapter content.&lt;/para&gt;
+&lt;/chapter&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">we always assume that this is instead represented with a single
+<a href="info.html"><code class="tag-element">info</code></a> element:</p><pre class="programlisting language-none line-numbers"><code>&lt;chapter&gt;
+  &lt;info&gt;
+    &lt;title&gt;Chapter Title&lt;/title&gt;
+    &lt;pubdate&gt;2009-11-23&lt;/pubdate&gt;
+  &lt;/info&gt;
+  &lt;para&gt;Some chapter content.&lt;/para&gt;
+&lt;/chapter&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Even in cases where there is no <a href="info.html"><code class="tag-element">info</code></a> element:</p><pre class="programlisting language-none line-numbers"><code>&lt;section&gt;
+  &lt;title&gt;Section Title&lt;/title&gt;
+  &lt;para&gt;Some section content.&lt;/para&gt;
+&lt;/section&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">we assume one is present:</p><pre class="programlisting language-none line-numbers"><code>&lt;section&gt;
+  &lt;info&gt;
+    &lt;title&gt;Section Title&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;para&gt;Some section content.&lt;/para&gt;
+&lt;/section&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Authors <em>are not</em> required to author in this way
+in order to use assemblies. Processing systems are to behave <em>as
+if</em> they had.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The assumption that all metadata is always present in a single,
+explicit <a href="info.html"><code class="tag-element">info</code></a> wrapper <em>greatly</em> simplifies
+the exposition of assemblies without introducing any actual limitations.</p></div></section><section id="assemblies.14" class="section"><div class="section-titlepage"><h2>3.&nbsp;Assembly Files</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">An <a href="assembly.html"><code class="tag-element">assembly</code></a> has four major parts:</p><div class="variablelist"><dl><dt><span class="term"><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="resources.html"><code class="tag-element">resources</code></a></span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Identifies a collection of topics. An assembly may identify
+one or more collections.</p></dd><dt><span class="term"><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="structure.html"><code class="tag-element">structure</code></a></span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Identifies a single artifact to be assembled. At present, we
+assume that these artifacts are single documents, but that may change.
+A document in this case is the particular collection of topics that
+forms the documentation for a product or system. An assembly may
+identify one or more structures.</p></dd><dt><span class="term"><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="relationships.html"><code class="tag-element">relationships</code></a></span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Identifies relationships between resources. These relationships
+may be manifested in any number of structures during assembly. An assembly
+may identify any number of relationships.</p></dd><dt><span class="term"><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="transforms.html"><code class="tag-element">transforms</code></a></span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Identifies transformations that can be applied during assembly.
+An assembly may identify any number of transformations.</p></dd></dl></div><section id="resources" class="section"><div class="section-titlepage"><h3>3.1.&nbsp;Resources</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Individual resources are identified through a <a href="resource.html"><code class="tag-element">resource</code></a>
+element:</p><pre class="programlisting language-none"><code>&lt;resource xml:id="topicA" href="uri/for/topicA.xml"/&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Here the resource “<code class="literal">topicA</code>” is associated with
+the URI <code class="uri">uri/for/topicA.xml</code>. Relative URIs are made absolute
+with respect to the element on which they appear. An optional <code class="tag-attribute">description</code> attribute may also be used to
+provide a description of the resource.</p><div class="note admonition"><h3>Fragment Identifiers</h3><div class="admonition-body"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The URI specified in the <code class="tag-attribute">href</code> attribute
+may include a fragment identifier, such as <code class="uri">uri/for/topicA.xml#sectionid</code>.
+Which, if any, fragment identifier schemes are supported is implementation
+defined.</p></div></div><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A collection of resources may appear in a <a href="resources.html"><code class="tag-element">resources</code></a>
+wrapper. The primary motivation for the resources wrapper is to group
+physically and logically colocated resources together. The
+<a href="resources.html"><code class="tag-element">resources</code></a> wrapper is a convenient place, for example, to specify
+a common <code class="tag-attribute">xml:base</code> or
+<code class="tag-attribute">xml:lang</code> and
+<code class="tag-attribute">description</code>.</p></div></section><section id="structures" class="section"><div class="section-titlepage"><h3>3.2.&nbsp;Structures</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Structures are where the real work is performed. There is considerable
+tension between the goal of providing <a href="structure.html"><code class="tag-element">structure</code></a> elements that are
+simple for the simple cases and simultaneously allowing them to be complex
+enough to describe the full richness of possibility.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This inherent tension is compounded by the fact that the nature of
+<a href="structure.html"><code class="tag-element">structure</code></a> outputs is naturally open ended. The goal is that
+DocBook assemblies should be able to handle both the richness of the structures
+that we produce today as well as the structures we will want to produce
+tomorrow.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The principle task of the <a href="structure.html"><code class="tag-element">structure</code></a> element is to
+identify the resources that are to be combined for that structure.
+The resulting structure may be delivered in any number of ways: as a single document,
+help system, or web site, for example.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">It is important to observe that the realized structure is often,
+but not necessarily, a valid DocBook document. What is important is
+not it's validity from an authoring perspective, but rather it's
+validity with respect to what the downstream processor is
+expecting.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">For example, if the <a href="structure.html"><code class="tag-element">structure</code></a> is defining a book, then the
+realized structure should be a valid <a href="book.html"><code class="tag-element">book</code></a>. If, on the other hand,
+what is defined is a help system, then the realized structure may be a
+collection of nested <a href="topic.html"><code class="tag-element">topic</code></a> elements. Even though authors
+are not allowed to nest topics (per the currently proposed <a href="topic.html"><code class="tag-element">topic</code></a>
+element), the assembly process may be allowed to nest them.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A <a href="structure.html"><code class="tag-element">structure</code></a> consists mostly of <a href="module.html"><code class="tag-element">module</code></a> elements.
+</p></div></section><section id="modules" class="section"><div class="section-titlepage"><h3>3.3.&nbsp;Modules</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <a href="module.html"><code class="tag-element">module</code></a> element is a wrapper for a unit of structure.
+The attributes and children of a module provide facilities for selecting
+the content of the module and controlling its presentation.</p></div></section><section id="relationships" class="section"><div class="section-titlepage"><h3>3.4.&nbsp;Relationships</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A relationship, in the context of an assembly, is an assertion
+that a particular collection of resources are related. The nature of
+the relationship is specified with a <code class="tag-attribute">type</code>
+attribute. For example:</p><pre class="programlisting language-none line-numbers"><code>&lt;relationship type="seealso"&gt;
+  &lt;instance linkend="tut1"/&gt;
+  &lt;instance linkend="tut2"/&gt;
+  &lt;instance linkend="task1"/&gt;
+&lt;/relationship&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This asserts that there is a “seealso” relationship between these
+resources. The processor might use this information to automatically generate
+a “See Also” section at the end of any of these topics.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Relationships are often, but not necessarily, unordered. This
+relationship establishes a path through a set of resources:</p><pre class="programlisting language-none line-numbers"><code>&lt;relationship type="path"&gt;
+  &lt;info&gt;
+    &lt;title&gt;New User Introduction&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;instance linkend="over1"/&gt;
+  &lt;instance linkend="over2"/&gt;
+  &lt;instance linkend="task3"/&gt;
+  &lt;instance linkend="cleanup"/&gt;
+&lt;/relationship&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A sophisticated help system could use this path to guide a new
+user through a sequence of resources.</p></div></section><section id="transformations" class="section"><div class="section-titlepage"><h3>3.5.&nbsp;Transformations</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">An assembly can identify a collection of transformations that can
+be used during the assembly process. A transformation can be associated
+with a resource (for example, to translate from some other format into
+DocBook), or with a module (to address requirements beyond the limited
+transformation capabilities of the assembly).</p><pre class="programlisting language-none line-numbers"><code>&lt;transforms&gt;
+  &lt;transform name="dita2docbook" grammar="text/xsl" href="dita2db.xsl"/&gt;
+  &lt;transform name="tutorial" grammar="text/xsl" href="db2tutorial.xsl"/&gt;
+  &lt;transform name="art2pi" grammar="text/xsl" href="art2pi.xsl"/&gt;
+  &lt;transform name="office" grammar="application/xproc+xml" href="office2db.xpl"/&gt;
+  &lt;transform name="office" grammar="text/xsl" href="extractoffice.xsl"/&gt;
+&lt;/transforms&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If there are several ways to provide a transformation, they may
+all be listed provided that they have different types. In the example above,
+it may be that the XProc transformation from office documents to DocBook
+is superior to the XSLT-only transformation, but the XSLT-only transformation
+is better than nothing. If no type is specified, the default is implementation
+dependent.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Not all systems may support arbitrary transformations, nor can
+all systems support all possible transformation languages. To maximize
+interoperability it is best to use as few explicit transformations
+as possible, ideally none.</p></div></div><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Given the transformations above, a DITA resource might be
+included in the assembly:</p><pre class="programlisting language-none"><code>&lt;resource xml:id="overview" href="dita/over.xml"
+          transform="dita2docbook"/&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Whenever a module refers to this resource, it will receive the transformed,
+DocBook result.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If a module needs to perform a transformation to get from one DocBook
+format to another, it can name a transform as well:</p><pre class="programlisting language-none line-numbers"><code>&lt;module resourceref="overview"&gt;
+  &lt;transform name="art2pi"/&gt;
+  &lt;output type="book" renderas="partintro"/&gt;
+&lt;/module&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In this case, two transformations will occur. This can be generalized
+to an arbitrary number by listing more than one <a href="transform.html"><code class="tag-element">transform</code></a> in the
+<a href="module.html"><code class="tag-element">module</code></a>.
+The transforms are applied in the order specified.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If the <a href="output.html"><code class="tag-element">output</code></a> specifies a <code class="tag-attribute">renderas</code>, it is applied to the result of the
+last transformation.</p></div></section></div></section><section id="assemblies.15" class="section"><div class="section-titlepage"><h2>4.&nbsp;Describing Structural Relationships With Assemblies</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In addition to providing a mechanism for describing the
+structure of the classical DocBook products such as books and
+articles, the <a href="assembly.html"><code class="tag-element">assembly</code></a> element can be used
+to describe the relationships among non-linear collections of topics
+such as are presented in Web sites and help systems. While help
+systems can be produced by chunking a typical book into pieces; it is
+important to emphasize the non-linear nature of the content during the
+creation of it to avoid the presumption that a particular topic
+follows its predecessor in the document.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Another characteristic of collections of topics such as help
+systems and Web sites is that it can be, at times, important to
+maintain explicit control over file names (to produce consistent
+<span class="acronym">URI</span>s or to reduce churn in source control systems).
+The use of the assembly mechanism easily allows control over file
+names for the delivered products.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">It is also desirable, at times, to produce multiple output
+formats for some of the non-linear documents, with different locations
+for some portions of the content (the Index may go near the top of a
+navigational hierarchy of the HTML delivery of a help system, while it
+traditionally would be at the back of a printed version of a help
+system). The ability to specify specific outputs for elements and
+suppress them in other output formats supports this
+requirement.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">At this point, working through an example may be helpful.</p><section id="assemblies.15.6" class="section"><div class="section-titlepage"><h3>4.1.&nbsp;Describing a Help System with an Assembly</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This section describes the use of an assembly to describe the
+hierarchical relationship among pages in a help system, and the use of
+the <code class="tag-attribute">type</code> attribute on assemblies to carry
+information beyond the simple structure of a document. While there may
+be other specific considerations applying the <a href="assembly.html"><code class="tag-element">assembly</code></a> element to the description of a Web site, similar
+considerations are likely to apply.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This is a simplified example, but based on a real system.</p></div></div><section id="assemblies.15.6.4" class="section"><div class="section-titlepage"><h4>4.1.1.&nbsp;Background</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This is the help system for a simple documentation build system
+that has two Web-based screens that allow the user to build documents
+(books rendered into PDF and chunked HTML and help systems that are
+delivered with products using a Webhelp type system).</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">There are four tasks supported by the system. Two screens of
+help are provided for the screens in the user interface, and the help
+system organization has to comply with documentation standards.</p><div class="itemizedlist"><div class="title">Help System Structure</div><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Each entry in this list represents a node (HTML page) in the
+  help system.</p><ul><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">ToC</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Index</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Overview (Welcome)</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Tasks</p><div class="itemizedlist"><ul><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Building Documents</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Packaging Books for Publication</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Packaging Help for Submitting to Product Builds</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Packaging Documents (Books and Help) for
+        Localization</p></li></ul></div></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Screens and Menus</p><div class="itemizedlist"><ul><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Document Build Screen</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Document Packaging Screen</p></li></ul></div></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Printable Version (PDF)</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Glossary</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Help on Help</p></li></ul></div><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The Webhelp system delivers topics of help with a navigational
+hierarchy on the left-hand side of the content presented for each
+topic. The navigational hierarchy indicates the location of the topic
+in the hierarchy by highlighting it and can be used to navigate to
+other topics in the help system. Help is provided for each page in the
+interface. In addition, a glossary is provided, with links from
+glossterms in the body of the help system to the glossary along with
+an index and full text search, that must be build across all the
+topics in the help system.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In addition to being delivered using Webhelp, a printable
+version of the help system is delivered with the help system in the
+form of a PDF generated by walking the structure of the help system,
+collecting the individual topics to create a book with the structure
+derived from the hierarchical structure of the help system. However,
+the PDF follows the conventions of printed books, putting the index at
+the back of the book, and does not include the help on help
+content.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In addition to the files for the Webhelp HTML and JavaScript,
+supplementary files are delivered to allow merging with other help
+systems and to support integration of the help on screens with the
+product help buttons. Some of the HTML files are expected to have
+standard names.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The following example assumes that the Webhelp transform has
+been extended to support non-chunked generation of the system by
+passing in a topic for each page to be rendered. The navigational
+structure will be derived from the assembly.</p></div></section><section id="assemblies.15.6.5" class="section"><div class="section-titlepage"><h4>4.1.2.&nbsp;The Resources</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A very simple set of resources is specified for the help system.
+The file names are immaterial, and all the referenced file resources
+are presumed to be topics except the glossary, which is simply a
+glossary element (and usually derived from a glossary
+database).</p><figure id="assemblies.15.6.5.3" class="example-wrapper"><div class="title">Example&nbsp;6.1.&nbsp;Resources for a Help System</div><div class="example"><pre class="programlisting language-none line-numbers"><code>  &lt;resources xml:base="some/path"&gt;
+    &lt;description&gt;Resources for help system.&lt;/description&gt;
+    &lt;resource xml:id="overview" href="overview.xml"&gt;
+      &lt;description&gt;Overview of help system.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="task.build.doc"&gt;
+      &lt;description&gt;Describe how to build a document.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="pckg.intro" href="task-intro.xml"&gt;
+      &lt;description&gt;Introduction to the packaging tasks.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="task.package.book.pub"&gt;
+      &lt;description&gt;Describe how to package a document for publication.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="task.package.help"&gt;
+      &lt;description&gt;Describe how to package a help system for submission to product
+        build.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="task.package.l10n"&gt;
+      &lt;description&gt;Describe how to package source files for localization.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="screen.overview"&gt;
+      &lt;description&gt;Introductory text for screens and menus section.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="screen.build.doc"&gt;
+      &lt;description&gt;Displayed when question mark icon on document build screen is
+        clicked.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="screen.package"&gt;
+      &lt;description&gt;Displayed when question mark icon on packaging screen is clicked.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="glossary"&gt;
+      &lt;description&gt;Glossary for help system.&lt;/description&gt;
+    &lt;/resource&gt;
+    &lt;resource xml:id="help.on.help"&gt;
+      &lt;description&gt;How to use the help system.&lt;/description&gt;
+    &lt;/resource&gt;
+  &lt;/resources&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.6" class="section"><div class="section-titlepage"><h4>4.1.3.&nbsp;Setting Up the Structure</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The First few lines of the structure set up general things about
+the help system:</p><figure id="assemblies.15.6.6.3" class="example-wrapper"><div class="title">Example&nbsp;6.2.&nbsp;Defining the Basics of the Help System</div><div class="example"><pre class="programlisting language-none line-numbers"><code>  &lt;structure type="help.system"&gt;
+    &lt;title&gt;XIDI Build System Help&lt;/title&gt;
+    &lt;titleabbrev&gt;XIDI Help&lt;/titleabbrev&gt;
+    &lt;output outputformat="pdf" file="sys-book.pdf" renderas="book"/&gt;
+    &lt;!-- The PDF output will be rendered into a file expected by the help
+         system for the printable version of the help system. --&gt;
+    &lt;output outputformat="webhelp" chunk="false" renderas="topic"/&gt;
+    &lt;!-- The webhelp output will NOT be chunked and the default render
+         (wherever a file name is specified) is as a topic.   IF the
+         renderas on an output that is a child of structure is not treated as
+         a default for specified files, a renderas has to be added to each of
+         the webhelp output statements in the modules that specify a file. --&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <code class="tag-attribute">type</code> attribute provides
+information to the render system so that the auxiliary files for
+merging and integration are built in addition to the Webhelp system.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <a href="output.html"><code class="tag-element">output</code></a> element for <code class="tag-attvalue">pdf</code> specifies the name of the file to use
+and tells the render system to render a book as the printable
+version of the help system.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <a href="output.html"><code class="tag-element">output</code></a> element for <code class="tag-attvalue">webhelp</code> suppresses chunking and sets the
+default value for the webhelp output statements that do not have a
+renderas attribute.</p></div></figure></div></section><section id="assemblies.15.6.7" class="section"><div class="section-titlepage"><h4>4.1.4.&nbsp;Standard Front End</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">By convention, the first two pages in the help system are the
+table of contents and the index. However, in the book, the index goes
+in the back.</p><figure id="assemblies.15.6.7.3" class="example-wrapper"><div class="title">Example&nbsp;6.3.&nbsp;The Front End</div><div class="example"><pre class="programlisting language-none line-numbers"><code>    &lt;module&gt;
+      &lt;output outputformat="webhelp" file="sys-toc.html" renderas="topic"/&gt;
+      &lt;toc/&gt;
+      &lt;!-- By convention, there is a ToC at the beginning of a help system and
+           of the PDF of the help system.  The delivery system expects the file
+           to be named sys-toc.html. --&gt;
+    &lt;/module&gt;
+    &lt;module&gt;
+      &lt;output outputformat="webhelp" file="sys-index.html"/&gt;
+      &lt;output outputformat="pdf" suppress="true"/&gt;
+      &lt;index/&gt;
+      &lt;!-- By convention, there is an index at the beginning of a help system
+           but it is expected to be at the end of a book.  The delivery system
+           expects the file to be named sys-index.html --&gt;
+    &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.8" class="section"><div class="section-titlepage"><h4>4.1.5.&nbsp;Main Body of the Help System</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The main content of the help system is broken into an overview
+(Which can have lower-level topics below the main overview topic),
+task descriptions, which may be grouped together or appear at the top
+level if they are considered important enough to the user, and a set
+of help pages for screens.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Each task description has a task element with a summary,
+prerequisites, the procedure, and lists of related topics and tasks.
+Help on screens always includes standard information such as how to
+navigate to the screen and what tasks the screen is used to
+accomplish. In complex systems, screens can be grouped together to
+deal with things like Wizards and related screens and dialogs.</p><figure id="assemblies.15.6.8.4" class="example-wrapper"><div class="title">Example&nbsp;6.4.&nbsp;Middles Section of Help System</div><div class="example"><pre class="programlisting language-none line-numbers"><code>    &lt;module resourceref="overview"&gt;
+      &lt;output outputformat="webhelp" file="overview.html"/&gt;
+      &lt;output outputformat="pdf" renderas="chapter"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task.build.doc"&gt;
+      &lt;output outputformat="webhelp" file="tsk-build-doc.html"/&gt;
+      &lt;output outputformat="pdf" renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module&gt;
+      &lt;output outputformat="webhelp" file="pckg-intro.html"/&gt;
+      &lt;output outputformat="pdf" renderas="chapter"/&gt;
+      &lt;title&gt;Packaging&lt;/title&gt;
+      &lt;module resourceref="pckg.intro" contentonly="true" omittitles="true"/&gt;
+
+      &lt;module resourceref="task.package.book.pub"&gt;
+        &lt;output outputformat="webhelp" file="tsk-pckg-book-pub.html"/&gt;
+        &lt;output outputformat="pdf" renderas="section"/&gt;
+      &lt;/module&gt;
+      &lt;module resourceref="task.package.help"&gt;
+        &lt;output outputformat="webhelp" file="tsk-pckg-help.html"/&gt;
+        &lt;output outputformat="pdf" renderas="section"/&gt;
+      &lt;/module&gt;
+      &lt;module resourceref="task.package.l10n"&gt;
+        &lt;output outputformat="webhelp" file="tsk-pckg-l10n.html"/&gt;
+        &lt;output outputformat="pdf" renderas="section"/&gt;
+      &lt;/module&gt;
+    &lt;/module&gt;
+    &lt;module&gt;
+      &lt;output outputformat="webhelp" file="scr-overvw.html"/&gt;
+      &lt;output outputformat="pdf" renderas="chapter"/&gt;
+      &lt;title&gt;Screens&lt;/title&gt;
+      &lt;module resourceref="screen.overview" contentonly="true"
+      omittitles="true"/&gt;
+      &lt;module resourceref="screen.build.doc"&gt;
+        &lt;output outputformat="webhelp" file="scr-build.html"/&gt;
+        &lt;output outputformat="pdf" renderas="section"/&gt;
+      &lt;/module&gt;
+      &lt;module resourceref="screen.package"&gt;
+        &lt;output outputformat="webhelp" file="scr-package.html"/&gt;
+        &lt;output outputformat="pdf" renderas="section"/&gt;
+      &lt;/module&gt;
+    &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.9" class="section"><div class="section-titlepage"><h4>4.1.6.&nbsp;Standard Back End for the Help System</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Once the main body of the help system is built, the standard
+back end components are added.</p><figure id="assemblies.15.6.9.3" class="example-wrapper"><div class="title">Example&nbsp;6.5.&nbsp;Back End of Help System</div><div class="example"><pre class="programlisting language-none line-numbers"><code>    &lt;module&gt;
+      &lt;output outputformat="webhelp"/&gt; 
+      &lt;!-- No file, just want the link in the navigation. --&gt;
+      &lt;output outputformat="pdf" suppress="true"/&gt;
+      &lt;!-- Nothing in PDF. --&gt;
+      &lt;title xmlns:xl="http://www.w3.org/1999/xlink" xl:href="sys-book.pdf"&gt;Printable Version (PDF)&lt;/title&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="glossary"&gt;
+      &lt;output outputformat="webhelp" file="sys-glossary.html"/&gt;
+      &lt;!-- The help delivery system expects the glossary to be in a file named
+           sys-glossary.html.--&gt;
+    &lt;/module&gt;
+    &lt;module&gt;
+      &lt;output outputformat="webhelp" suppress="true"/&gt;
+      &lt;index/&gt;
+      &lt;!-- By conventions, the index is at the back of a book, but it has
+           already been presented at the front of the help system. --&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="help.on.help"&gt;
+      &lt;output outputformat="webhelp" file="help-on-help.html"/&gt;
+      &lt;output outputformat="pdf" suppress="true"/&gt;
+      &lt;!-- By convention help on how to use the help system is not included in
+           the printable version of the help system and is stock, pulled from a
+           library. --&gt;
+    &lt;/module&gt;
+  &lt;/structure&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.10" class="section"><div class="section-titlepage"><h4>4.1.7.&nbsp;What Happens</h4></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Presuming an Ant (or other target based) build system for this
+help system document, the following targets are meaningful for
+building the document described by this structure.</p><div class="variablelist"><div class="title">Targets for Building the Help System</div><dl><dt><span class="term">build.help</span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Builds a help system with the following:</p><table border="0" summary="Simple list" class="simplelist"><tr><td><span class="member">Webhelp files, including the full test search inverse
+        index files</span></td></tr><tr><td><span class="member">XML files for merging with other help systems</span></td></tr><tr><td><span class="member">Properties files for integrating into product</span></td></tr></table></dd><dt><span class="term">build.pdf</span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Build the PDF printable version</p></dd><dt><span class="term">build.all</span></dt><dd><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Build the help system and the printable version, packaged
+      into the same directory structure used to deliver the help
+      system with the product, so that it can be zipped up for
+      delivery into the product source control system.</p></dd></dl></div></div></section></div></section></div></section><section id="ex-book" class="section"><div class="section-titlepage"><h2>5.&nbsp;Example: Assembling a Printed Book</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">For the purposes of this section, let's
+assume that we have the following resources available:</p><pre class="programlisting language-none line-numbers"><code>&lt;resource xml:id="full-toc"&gt;
+  &lt;toc/&gt;
+  &lt;toc role="figures"/&gt;
+  &lt;toc role="tables"/&gt;
+  &lt;toc role="procedures"/&gt;
+&lt;/resource&gt;
+
+&lt;resource xml:id="index"&gt;
+  &lt;index/&gt;
+&lt;/resource&gt;
+
+&lt;resources xml:base="tutorial/"&gt;
+  &lt;resource xml:id="tut1" href="tut1.xml"/&gt;
+  &lt;resource xml:id="tut2" href="tut2.xml"/&gt;
+  &lt;resource xml:id="tut3" href="tut3.xml"/&gt;
+  &lt;resource xml:id="tut4" href="tut4.xml"/&gt;
+  &lt;resource xml:id="tut5" href="tut5.xml"/&gt;
+&lt;/resources&gt;
+
+&lt;resources xml:base="tasks/"&gt;
+  &lt;resource xml:id="task1" href="task1.xml"/&gt;
+  &lt;resource xml:id="task2" href="task2.xml"/&gt;
+  &lt;resource xml:id="task3" href="task3.xml"/&gt;
+  &lt;resource xml:id="task4" href="task4.xml"/&gt;
+&lt;/resources&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Further, let's assume that each of the tutorials and tasks is
+authored as a standalone <a href="topic.html"><code class="tag-element">topic</code></a>.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Our first challenge is to create a PDF user guide.
+A subject matter expert has informed us that the proper linear
+presentation for the user guide is tutorials 1 and 2, task 1, tutorial 3,
+task 4, and an index.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Our first attempt at a structure might look like this:</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output renderas="book"/&gt;
+  &lt;module resourceref="full-toc"/&gt;
+  &lt;module resourceref="tut1"/&gt;
+  &lt;module resourceref="tut2"/&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut3"/&gt;
+  &lt;module resourceref="task4"/&gt;
+  &lt;module resourceref="index"/&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <a href="output.html"><code class="tag-element">output</code></a> element identifies the kind of output to
+be generated. There may be more than one type.
+The <code class="tag-attribute">renderas</code> attribute on the
+<a href="output.html"><code class="tag-element">output</code></a> tells us that the realized structure should be a book.
+</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The <a href="module.html"><code class="tag-element">module</code></a> elements identify the resources to be included.
+That's fine as far as it goes. Processing this <a href="structure.html"><code class="tag-element">structure</code></a> will
+create a realized structure that is a <a href="book.html"><code class="tag-element">book</code></a> (because that's what
+the <code class="tag-attribute">renderas</code> on the <a href="output.html"><code class="tag-element">output</code></a> tells
+us) consisting of the tables of contents and the correct six topics:</p><pre class="programlisting language-none line-numbers"><code>&lt;book xmlns="http://docbook.org/ns/docbook"&gt;
+  &lt;toc/&gt;
+  &lt;toc role="figures"/&gt;
+  &lt;toc role="tables"/&gt;
+  &lt;toc role="procedures"/&gt;
+  &lt;topic xml:base="tutorial/tut1.xml"&gt;
+    &lt;title&gt;Introduction&lt;/title&gt;
+    ...
+  &lt;/topic&gt;
+  &lt;topic xml:base="tutorial/tut2.xml"&gt;
+    &lt;title&gt;Getting Started&lt;/title&gt;
+    ...
+  &lt;/topic&gt;
+  &lt;topic xml:base="tasks/task1.xml"&gt;
+    &lt;title&gt;Engaging the spindle&lt;/title&gt;
+    ...
+  &lt;/topic&gt;
+  &lt;topic xml:base="tutorial/tut3.xml"&gt;
+    &lt;title&gt;Troubleshooting&lt;/title&gt;
+    ...
+  &lt;/topic&gt;
+  &lt;topic xml:base="tasks/task4.xml"&gt;
+    &lt;title&gt;Diagnosing spindle problems&lt;/title&gt;
+    ...
+  &lt;/topic&gt;
+  &lt;index/&gt;
+&lt;/book&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The trouble is, that's not a valid <a href="book.html"><code class="tag-element">book</code></a>. Not only does it
+consist of topics instead of the expected chapters and such, but it's lacking
+necessary metadata like a title.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We can address the first problem by allowing
+<a href="output.html"><code class="tag-element">output</code></a> elements inside modules.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Most high-level elements (<a href="chapter.html"><code class="tag-element">chapter</code></a>, <a href="appendix.html"><code class="tag-element">appendix</code></a>,
+<a href="book.html"><code class="tag-element">book</code></a>, <a href="section.html"><code class="tag-element">section</code></a>, <a href="topic.html"><code class="tag-element">topic</code></a>, etc.) in DocBook have
+the same general structure: they contain an (optional) <a href="info.html"><code class="tag-element">info</code></a>
+element followed by a collection of block elements.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The semantic of <code class="tag-attribute">renderas</code> in a
+<a href="module.html"><code class="tag-element">module</code></a> that points to a resource is that it renames the
+root element of that resource. This simple transformation will allow us
+to turn all those topics into elements more appropriate for <a href="book.html"><code class="tag-element">book</code></a>
+content. (We'll consider how to address the situation where more complex
+transformation is necessary later.)</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We can address the problem of missing metadata by creating a new
+<a href="resource.html"><code class="tag-element">resource</code></a> that contains an <a href="info.html"><code class="tag-element">info</code></a> element containing
+the appropriate metadata and then pointing to it. But this case is so common,
+that we simply allow the <a href="info.html"><code class="tag-element">info</code></a> element to be placed in the
+<a href="structure.html"><code class="tag-element">structure</code></a>.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">With these amendments, here's our new structure:</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output renderas="book"/&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;module resourceref="full-toc"/&gt;
+  &lt;module resourceref="tut1"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut2"/&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="task4"/&gt;
+  &lt;module resourceref="index"/&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The realized structure that this produces is:</p><pre class="programlisting language-none line-numbers"><code>&lt;book xmlns="http://docbook.org/ns/docbook"&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;toc/&gt;
+  &lt;toc role="figures"/&gt;
+  &lt;toc role="tables"/&gt;
+  &lt;toc role="procedures"/&gt;
+  &lt;chapter xml:base="tutorial/tut1.xml"&gt;
+    &lt;title&gt;Introduction&lt;/title&gt;
+    ...
+  &lt;/chapter&gt;
+  &lt;chapter xml:base="tutorial/tut2.xml"&gt;
+    &lt;title&gt;Getting Started&lt;/title&gt;
+    ...
+  &lt;/chapter&gt;
+  &lt;chapter xml:base="tasks/task1.xml"&gt;
+    &lt;title&gt;Engaging the spindle&lt;/title&gt;
+    ...
+  &lt;/chapter&gt;
+  &lt;appendix xml:base="tutorial/tut3.xml"&gt;
+    &lt;title&gt;Troubleshooting&lt;/title&gt;
+    ...
+  &lt;/appendix&gt;
+  &lt;appendix xml:base="tasks/task4.xml"&gt;
+    &lt;title&gt;Diagnosing spindle problems&lt;/title&gt;
+    ...
+  &lt;/appendix&gt;
+  &lt;index/&gt;
+&lt;/book&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">That realized structure is a valid <a href="book.html"><code class="tag-element">book</code></a> so you would
+expect the processing system to produce the correct results.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Except that it's not the right book. Upon further review by our subject
+matter expert, it's been decided that tutorial 3 and task 4 shouldn't
+be separate appendixes, they should instead both be sections in a single
+appendix called “Troubleshooting”.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We can address this issue with nested modules. Instead of having
+separate top-level modules for the tutorial and task, we'll make them
+subordinate modules in a new top-level module:</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output renderas="book"/&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;module resourceref="full-toc"/&gt;
+  &lt;module resourceref="tut1"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut2"/&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module&gt;
+    &lt;output renderas="appendix"&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut3"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task4"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="index"/&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The semantics of <code class="tag-attribute">renderas</code> on a module
+that does not have a <code class="tag-attribute">resourceref</code> is that it
+simply generates that element.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The realized document is now:</p><pre class="programlisting language-none line-numbers"><code>&lt;book xmlns="http://docbook.org/ns/docbook"&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;toc/&gt;
+  &lt;toc role="figures"/&gt;
+  &lt;toc role="tables"/&gt;
+  &lt;toc role="procedures"/&gt;
+  &lt;chapter xml:base="tutorial/tut1.xml"&gt;
+    &lt;title&gt;Introduction&lt;/title&gt;
+    ...
+  &lt;/chapter&gt;
+  &lt;chapter xml:base="tutorial/tut2.xml"&gt;
+    &lt;title&gt;Getting Started&lt;/title&gt;
+    ...
+  &lt;/chapter&gt;
+  &lt;chapter xml:base="tasks/task1.xml"&gt;
+    &lt;title&gt;Engaging the spindle&lt;/title&gt;
+    ...
+  &lt;/chapter&gt;
+  &lt;appendix&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;section xml:base="tutorial/tut3.xml"&gt;
+      &lt;title&gt;Troubleshooting&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+    &lt;section xml:base="tasks/task4.xml"&gt;
+      &lt;title&gt;Diagnosing spindle problems&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+  &lt;/appendix&gt;
+  &lt;index/&gt;
+&lt;/book&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">That's probably not quite what was intended. Given that tutorial 3
+has the title “Troubleshooting”, what we probably wanted was to make that
+tutorial the <a href="appendix.html"><code class="tag-element">appendix</code></a> and make the task a subordinate section
+of that appendix.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We can achieve that by nesting the modules differently:</p><pre class="programlisting language-none line-numbers"><code>  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+  &lt;/module&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Now the <a href="appendix.html"><code class="tag-element">appendix</code></a> in the realized structure has the form
+that we want:</p><pre class="programlisting language-none line-numbers"><code>  &lt;appendix xml:base="tutorial/tut3.xml"&gt;
+    &lt;title&gt;Troubleshooting&lt;/title&gt;
+    ...
+    &lt;section xml:base="tasks/task4.xml"&gt;
+      &lt;title&gt;Diagnosing spindle problems&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+  &lt;/appendix&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If a module “A” is nested within a module “B” that refers to a
+resource, the result of processing “A” is inserted into “B” as the last
+child of “B”. (in the case of several nested modules, they are inserted
+as the last children in the order specified.)</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">After further review of the content, the subject matter expert decides
+that tutorial 5 and task 3 are also relevant to trouble shooting. Tutorial
+5 also has the title “Troubleshooting” and naturally follows tutorial 3.
+Task 3 is about diagnosing bearing issues.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">It's easy to combine them the new content into the appendix:</p><pre class="programlisting language-none line-numbers"><code>  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;module resourceref="tut5"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task4"/&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">but that doesn't produce a pleasing result:</p><pre class="programlisting language-none line-numbers"><code>  &lt;appendix xml:base="tutorial/tut3.xml"&gt;
+    &lt;title&gt;Troubleshooting&lt;/title&gt;
+    ...
+    &lt;section xml:base="tutorial/tut5.xml"&gt;
+      &lt;title&gt;Troubleshooting&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+    &lt;section xml:base="tasks/task4.xml"&gt;
+      &lt;title&gt;Diagnosing spindle problems&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+    &lt;section xml:base="tasks/task3.xml"&gt;
+      &lt;title&gt;Diagnosing bearing problems&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+  &lt;/appendix&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">What we really want to do is combine tutorials 3 and 5, not make 5
+a subordinate section of 3. While we're at it, let's change the title of
+the appendix to “Troubleshooting spindle and bearing problems” since that's
+what it's really about.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We can solve the first problem with the
+<code class="tag-attribute">contentonly</code> attribute on <a href="module.html"><code class="tag-element">module</code></a>:
+</p><pre class="programlisting language-none line-numbers"><code>  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If
+<code class="tag-attribute">contentonly</code> is <code class="literal">true</code>,
+then only the content of the document element, and not the document element
+itself, is included. Any metadata associated with the document element is
+also discarded. (If the referenced resource has several top-level element
+children, then this processing is applied to each, in turn.)</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The realized structure for this appendix is now:</p><pre class="programlisting language-none line-numbers"><code>  &lt;appendix xml:base="tutorial/tut3.xml"&gt;
+    &lt;title&gt;Troubleshooting&lt;/title&gt;
+    ...
+    ...content (only) of tutorial 5...
+    &lt;section xml:base="tasks/task4.xml"&gt;
+      &lt;title&gt;Diagnosing spindle problems&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+    &lt;section xml:base="tasks/task3.xml"&gt;
+      &lt;title&gt;Diagnosing bearing problems&lt;/title&gt;
+      ...
+    &lt;/section&gt;
+  &lt;/appendix&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">There are two ways that we can change the title. The first uses only
+semantics we've already encountered:</p><pre class="programlisting language-none line-numbers"><code>  &lt;module&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting spindle and bearing problems&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut3" contentonly="true"/&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The only disadvantage of this approach is that we lose all of the
+metadata associated with tutorials 3 and 5. This might include publication
+dates, copyright information, etc. We could add those fields to the <a href="info.html"><code class="tag-element">info</code></a>
+wrapper for the <a href="appendix.html"><code class="tag-element">appendix</code></a> in the assembly, but then it may have
+to be maintained in two places.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Instead, we introduce one more convention: if a <a href="module.html"><code class="tag-element">module</code></a>
+refers to another resource <em>and</em> contains an <a href="info.html"><code class="tag-element">info</code></a>
+element, then the elements within that <a href="info.html"><code class="tag-element">info</code></a> replace any elements
+of the same name in the referenced resource's metadata. (If the referenced
+resource has no metadata, then the specified <a href="info.html"><code class="tag-element">info</code></a> becomes the
+first child of the referenced resource.)</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The second approach uses this convention:</p><pre class="programlisting language-none line-numbers"><code>  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting spindle and bearing problems&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In the realized structure for this example, the appendix
+metadata includes everything in tutorial 3's metadata, with the title
+changed as indicated. Of course, all of the metadata for tutorial 5 is
+still lost, but there's nothing we can do about that because there's
+no where to put it.</p></div></section><section id="ex-html" class="section"><div class="section-titlepage"><h2>6.&nbsp;Example: Assembling an Online Book</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This example extends the book example, see <a href="ch06.html#ex-book" title="Example: Assembling a Printed Book">Section&nbsp;5, “Example: Assembling a Printed Book”</a>. In addition to the printed user guide, we want to
+produce an online user guide. The online guide is, by design, a
+straightforward, linear rendering of the book. We'll look at a more
+intricately structured example later.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We could create a separate assembly for the online guide, but it
+will be better in the long run if we can manage the structure of the user
+guide in one place.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The first step is to create a new output type:</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output type="book" renderas="book"/&gt;
+  &lt;output type="web" renderas="book"/&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;module resourceref="full-toc"/&gt;
+  &lt;module resourceref="tut1"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut2"/&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting spindle and bearing problems&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="index"/&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Now we can process this structure either as a “book” type structure
+or a “web” type structure. At the moment, there's no difference between them.
+Let's consider some of the changes we need to make for the
+online site:</p><div class="orderedlist"><ol style="list-style: decimal;"><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We want to control the names of the HTML documents produced.</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We want to control how chunking is performed.</p></li><li><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">We want to suppress some “print only” content.</p></li></ol></div><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The first two of these we can address with <a href="output.html"><code class="tag-element">output</code></a>
+elements:</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output type="book" renderas="book"/&gt;
+  &lt;output type="web" renderas="book" file="user-guide.html"/&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;module resourceref="full-toc"&gt;
+    &lt;output type="web" chunk="false"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut1"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut2"/&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting spindle and bearing problems&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+      &lt;output type="web" chunk="false"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="index"&gt;
+    &lt;output type="web" file="book-index.html"/&gt;
+  &lt;/module&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Specifying a <code class="tag-attribute">file</code> on an <a href="output.html"><code class="tag-element">output</code></a>
+tells the assembly where to write the chunk. (If it occurs on a module which
+is not chunked, it is simply ignored.) The <code class="tag-attribute">chunk</code>
+attribute can be used to specify which modules should (or should not) be
+placed in separate chunks. The implied value on modules where it is not
+specified depends on the name of the rendered element and the output type.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">When processing a module, all of the relevant output directives are
+combined. An <a href="output.html"><code class="tag-element">output</code></a> is relevant if it does not specify a
+type or if the type specified matches the type of processing that is being
+performed. If conflicting values are specified for any attribute, the last
+value specified (in document order) is used.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">To exclude (or include) content, we add the
+<a href="filterout.html"><code class="tag-element">filterout</code></a> (and <a href="filterin.html"><code class="tag-element">filterin</code></a>) elements to the assembly.
+Each may have a <code class="tag-attribute">type</code> and specifies some number
+of effectivity values.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If no conditions are specified on <a href="filterout.html"><code class="tag-element">filterout</code></a>, the
+module is unconditionally excluded. (Specifying no conditions on a
+<a href="filterin.html"><code class="tag-element">filterin</code></a> has no effect.)</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If filters are used at the <a href="structure.html"><code class="tag-element">structure</code></a> level, they apply to
+the entire document. If they are used at the <a href="module.html"><code class="tag-element">module</code></a> level, they
+apply only to that module.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">With filters, our <a href="structure.html"><code class="tag-element">structure</code></a> might look like this:</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output type="book" renderas="book"/&gt;
+  &lt;output type="web" renderas="book" file="user-guide.html"/&gt;
+  &lt;filterout type="web" condition="print"/&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget User Guide&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;module resourceref="full-toc"&gt;
+    &lt;output type="web" chunk="false"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut1"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut2"&gt;
+    &lt;filterin type="web" condition="print"/&gt;
+    &lt;filterout type="web" userlevel="advanced"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut3"&gt;
+    &lt;output renderas="appendix"/&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting spindle and bearing problems&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="section"/&gt;
+      &lt;output type="web" chunk="false"/&gt;
+    &lt;/module&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="index"&gt;
+    &lt;filterout type="web"/&gt;
+  &lt;/module&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This <a href="structure.html"><code class="tag-element">structure</code></a> applies the following filters when rendering
+for the web: print only content is excluded globally; in tutorial 2,
+print only content <em>is</em> included, but advanced material
+is excluded; and the entire index is excluded.</p></div></section><section id="ex-ref" class="section"><div class="section-titlepage"><h2>7.&nbsp;Example: Assembling an Online Reference</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The online reference differs from the preceding book-based examples
+in that no total, linear order is imposed on the content. Instead, navigation
+is performed either by search (which is outside the scope of assemblies)
+or through related links.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Using the resources defined in <a href="ch06.html#ex-book" title="Example: Assembling a Printed Book">Section&nbsp;5, “Example: Assembling a Printed Book”</a>, here's
+a plausible <a href="structure.html"><code class="tag-element">structure</code></a> for our online reference.</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
+  &lt;output renderas="topic"/&gt;
+  &lt;filterout type="web" condition="print"/&gt;
+  &lt;info&gt;
+    &lt;title&gt;Widget Reference&lt;/title&gt;
+  &lt;/info&gt;
+  &lt;module resourceref="tut1"/&gt;
+  &lt;module resourceref="tut2"/&gt;
+  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut3"&gt;
+    &lt;info&gt;
+      &lt;title&gt;Troubleshooting spindle and bearing problems&lt;/title&gt;
+    &lt;/info&gt;
+    &lt;module resourceref="tut5" contentonly="true"/&gt;
+    &lt;module resourceref="task4"/&gt;
+    &lt;module resourceref="task3"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="tut4"/&gt;
+  &lt;module resourceref="task2"/&gt;
+  &lt;module resourceref="index"/&gt;
+&lt;/structure&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">The resulting realized structure will be a nested set of
+<a href="topic.html"><code class="tag-element">topic</code></a> elements. Topics don't nest in DocBook (at least
+under the current proposal), so this isn't a valid DocBook document.
+However, the nested topics provide a navigational structure for the
+online presentation. The rendering system is, we assume, smart enough
+to render each of the topics separately, as if they were all top-level
+siblings.</p></div></section></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="docbook.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d6275e15276.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Chapter&nbsp; 5 .&nbsp; Customizing DocBook&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Part&nbsp; II .&nbsp; Reference</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016 Norman Walsh.</p></div></div></div></body></html>
