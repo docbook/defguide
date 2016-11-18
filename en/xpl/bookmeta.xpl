@@ -7,7 +7,7 @@
 <p:input port="source"/>
 <p:input port="parameters" kind="parameter"/>
 <p:output port="result"/>
-<p:serialization port="result" indent="true"/>
+<p:serialization port="result" indent="false"/>
 
 <p:template>
   <p:input port="template">
