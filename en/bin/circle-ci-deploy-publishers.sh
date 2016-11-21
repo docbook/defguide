@@ -26,7 +26,7 @@ if [ "$GITHUB_CNAME" != "" ]; then
 fi;
 
 mkdir -p ./tdg/publishers/${DBVERSION}
-rsync -var $BUILD/html/ ./tdg/publishers/${DBVERSION}/
+rsync -var --delete $BUILD/html/ ./tdg/publishers/${DBVERSION}/
 
 git add --all .
 git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
