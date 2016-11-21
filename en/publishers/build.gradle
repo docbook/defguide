@@ -170,11 +170,6 @@ task copyJs(type: Copy) {
   into "build/html/js"
 }
 
-task copyHtaccess(type: Copy) {
-  from "../resources/etc/"
-  into "build/html/"
-}
-
 task copySourceFigs(type: Copy) {
   from "../resources/figs/"
   from "figs/"
@@ -191,7 +186,7 @@ task copyFigs(dependsOn: ['copySourceFigs', 'copyWebFigs']) {
   // nothing to see here
 }
 
-task copyFiles(dependsOn: ['copyCss', 'copyJs', 'copyHtaccess', 'copyFigs']) {
+task copyFiles(dependsOn: ['copyCss', 'copyJs', 'copyFigs']) {
   // nothing to see here
 }
 
