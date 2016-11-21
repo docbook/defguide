@@ -25,13 +25,9 @@ if [ "$GITHUB_CNAME" != "" ]; then
     echo $GITHUB_CNAME > CNAME
 fi;
 
-if [ -d ./tdg/{$DBVERSION} ]; then
-    git rm -rf ./tdg/${DBVERSION}
-fi
-
 mkdir -p ./tdg/${DBVERSION}
-cp -Rf $BUILD/html/* ./tdg/${DBVERSION}/
+rsync -ar --delete $BUILD/html/ ./tdg/${DBVERSION}/
 
-git add -f .
+git add --all .
 git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
 git push -fq origin gh-pages
