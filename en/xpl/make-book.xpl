@@ -3,13 +3,9 @@
 <p:output port="result" />
 <p:input port="parameters" kind="parameter"/>
 
-<p:option name="not-condition" select="'compact print'"/>
 <p:option name="condition" select="''"/>
-<p:option name="not-arch" select="''"/>
 <p:option name="arch" select="'defguide5'"/>
 <p:option name="revision" required="true"/>
-
-<p:import href="../publishers/build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
 <p:variable name="srcbase" select="base-uri(/)"/>
 
@@ -21,13 +17,12 @@
 
 <p:xslt name="profiled">
   <p:input port="stylesheet">
-    <p:document href="../stylesheets/profile.xsl"/>
+    <p:document href="../publishers/build/docbook/xslt/base/preprocess/30-profile.xsl"/>
   </p:input>
-  <p:with-param name="condition" select="$condition"/>
-  <p:with-param name="not-condition" select="$not-condition"/>
-  <p:with-param name="arch" select="$arch"/>
-  <p:with-param name="not-arch" select="$not-arch"/>
-  <p:with-param name="revision" select="$revision"/>
+  <p:with-param name="profile.separator" select="' '"/>
+  <p:with-param name="profile.condition" select="$condition"/>
+  <p:with-param name="profile.arch"      select="$arch"/>
+  <p:with-param name="profile.revision"  select="$revision"/>
   <p:log port="result" href="/tmp/tdg-profile.xml"/>
 </p:xslt>
 
