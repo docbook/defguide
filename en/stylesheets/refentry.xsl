@@ -105,6 +105,9 @@
     <xsl:processing-instruction name="dbhtml">
       <xsl:text>filename="</xsl:text>
       <xsl:choose>
+        <xsl:when test="$pattern = 'db.index'">
+          <xsl:value-of select="'index-db'"/>
+        </xsl:when>
         <xsl:when test="starts-with($pattern, 'db.')">
           <xsl:value-of select="substring-after($pattern, 'db.')"/>
         </xsl:when>
