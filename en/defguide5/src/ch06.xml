@@ -225,14 +225,14 @@ DocBook assemblies should be able to handle both the richness of the structures
 that we produce today as well as the structures we will want to produce
 tomorrow.</para>
 
-<para>The principle task of the <tag>structure</tag> element is to
+<para>The principal task of the <tag>structure</tag> element is to
 identify the resources that are to be combined for that structure.
 The resulting structure may be delivered in any number of ways: as a single document,
 help system, or web site, for example.</para>
 
 <para>It is important to observe that the realized structure is often,
 but not necessarily, a valid DocBook document. What is important is
-not it's validity from an authoring perspective, but rather it's
+not its validity from an authoring perspective, but rather its
 validity with respect to what the downstream processor is
 expecting.</para>
 
@@ -240,7 +240,7 @@ expecting.</para>
 realized structure should be a valid <tag>book</tag>. If, on the other hand,
 what is defined is a help system, then the realized structure may be a
 collection of nested <tag>topic</tag> elements. Even though authors
-are not allowed to nest topics (per the currently proposed <tag>topic</tag>
+are not allowed to nest topics (per the DocBook 5.1 <tag>topic</tag>
 element), the assembly process may be allowed to nest them.</para>
 
 <para>A <tag>structure</tag> consists mostly of <tag>module</tag> elements.
@@ -556,14 +556,16 @@ database).</para>
 <section>
 <title>Setting Up the Structure</title>
 
-<para>The First few lines of the structure set up general things about
+<para>The first few lines of the structure set up general things about
 the help system:</para>
 
 <example>
 <title>Defining the Basics of the Help System</title>
 <programlisting linenumbering="numbered"><![CDATA[  <structure type="help.system">
-    <title>XIDI Build System Help</title>
-    <titleabbrev>XIDI Help</titleabbrev>
+    <info>
+      <title>XIDI Build System Help</title>
+      <titleabbrev>XIDI Help</titleabbrev>
+    </info>
     <output outputformat="pdf" file="sys-book.pdf" renderas="book"/>
     <!-- The PDF output will be rendered into a file expected by the help
          system for the printable version of the help system. -->
@@ -869,17 +871,20 @@ transformation is necessary later.)</para>
 
 <para>We can address the problem of missing metadata by creating a new
 <tag>resource</tag> that contains an <tag>info</tag> element containing
-the appropriate metadata and then pointing to it. But this case is so common,
-that we simply allow the <tag>info</tag> element to be placed in the
-<tag>structure</tag>.</para>
+the appropriate metadata and then pointing to it. Alternatively, you
+can supply a <tag>merge</tag> element containing metadata for the
+structure</para>. The <tag>merge</tag> element has the same content
+model as <tag>info</tag>. Metadata elements that you include in the
+<tag>merge</tag> element are applied to the output element for the
+<tag>structure</tag>.
 
 <para>With these amendments, here's our new structure:</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output renderas="book"/>
-  <info>
+  <merge>
     <title>Widget User Guide</title>
-  </info>
+  </merge>
   <module resourceref="full-toc"/>
   <module resourceref="tut1">
     <output renderas="chapter"/>
@@ -940,9 +945,9 @@ subordinate modules in a new top-level module:</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output renderas="book"/>
-  <info>
+  <merge>
     <title>Widget User Guide</title>
-  </info>
+  </merge>
   <module resourceref="full-toc"/>
   <module resourceref="tut1">
     <output renderas="chapter"/>
@@ -951,9 +956,9 @@ subordinate modules in a new top-level module:</para>
   <module resourceref="task1"/>
   <module>
     <output renderas="appendix">
-    <info>
+    <merge>
       <title>Troubleshooting</title>
-    </info>
+    </merge>
     <module resourceref="tut3">
       <output renderas="section"/>
     </module>
@@ -1032,7 +1037,7 @@ that we want:</para>
 
 <para>If a module “A” is nested within a module “B” that refers to a
 resource, the result of processing “A” is inserted into “B” as the last
-child of “B”. (in the case of several nested modules, they are inserted
+child of “B”. (In the case of several nested modules, they are inserted
 as the last children in the order specified.)</para>
 
 <para>After further review of the content, the subject matter expert decides
@@ -1116,9 +1121,9 @@ semantics we've already encountered:</para>
 
 <programlisting><![CDATA[  <module>
     <output renderas="appendix"/>
-    <info>
+    <merge>
       <title>Troubleshooting spindle and bearing problems</title>
-    </info>
+    </merge>
     <module resourceref="tut3" contentonly="true"/>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
@@ -1129,24 +1134,26 @@ semantics we've already encountered:</para>
 
 <para>The only disadvantage of this approach is that we lose all of the
 metadata associated with tutorials 3 and 5. This might include publication
-dates, copyright information, etc. We could add those fields to the <tag>info</tag>
+dates, copyright information, etc. We could add those fields to the <tag>merge</tag>
 wrapper for the <tag>appendix</tag> in the assembly, but then it may have
 to be maintained in two places.</para>
 
 <para>Instead, we introduce one more convention: if a <tag>module</tag>
-refers to another resource <emphasis>and</emphasis> contains an <tag>info</tag>
-element, then the elements within that <tag>info</tag> replace any elements
-of the same name in the referenced resource's metadata. (If the referenced
-resource has no metadata, then the specified <tag>info</tag> becomes the
-first child of the referenced resource.)</para>
+refers to another resource <emphasis>and</emphasis> contains a
+<tag>merge</tag> element, then the elements within that
+<tag>merge</tag> replace any elements of the same name in the
+referenced resource's metadata. (If the referenced resource has no
+metadata, then the specified <tag>merge</tag> becomes an
+<tag>info</tag> and is inserted as the first child of the referenced
+resource.)</para>
 
 <para>The second approach uses this convention:</para>
 
 <programlisting><![CDATA[  <module resourceref="tut3">
     <output renderas="appendix"/>
-    <info>
+    <merge>
       <title>Troubleshooting spindle and bearing problems</title>
-    </info>
+    </merge>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
       <output renderas="section"/>
@@ -1180,9 +1187,9 @@ guide in one place.</para>
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output type="book" renderas="book"/>
   <output type="web" renderas="book"/>
-  <info>
+  <merge>
     <title>Widget User Guide</title>
-  </info>
+  </merge>
   <module resourceref="full-toc"/>
   <module resourceref="tut1">
     <output renderas="chapter"/>
@@ -1191,9 +1198,9 @@ guide in one place.</para>
   <module resourceref="task1"/>
   <module resourceref="tut3">
     <output renderas="appendix"/>
-    <info>
+    <merge>
       <title>Troubleshooting spindle and bearing problems</title>
-    </info>
+    </merge>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
       <output renderas="section"/>
@@ -1226,9 +1233,9 @@ elements:</para>
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output type="book" renderas="book"/>
   <output type="web" renderas="book" file="user-guide.html"/>
-  <info>
+  <merge>
     <title>Widget User Guide</title>
-  </info>
+  </merge>
   <module resourceref="full-toc">
     <output type="web" chunk="false"/>
   </module>
@@ -1239,9 +1246,9 @@ elements:</para>
   <module resourceref="task1"/>
   <module resourceref="tut3">
     <output renderas="appendix"/>
-    <info>
+    <merge>
       <title>Troubleshooting spindle and bearing problems</title>
-    </info>
+    </merge>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
       <output renderas="section"/>
@@ -1286,9 +1293,9 @@ apply only to that module.</para>
   <output type="book" renderas="book"/>
   <output type="web" renderas="book" file="user-guide.html"/>
   <filterout type="web" condition="print"/>
-  <info>
+  <merge>
     <title>Widget User Guide</title>
-  </info>
+  </merge>
   <module resourceref="full-toc">
     <output type="web" chunk="false"/>
   </module>
@@ -1302,9 +1309,9 @@ apply only to that module.</para>
   <module resourceref="task1"/>
   <module resourceref="tut3">
     <output renderas="appendix"/>
-    <info>
+    <merge>
       <title>Troubleshooting spindle and bearing problems</title>
-    </info>
+    </merge>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
       <output renderas="section"/>
@@ -1338,16 +1345,16 @@ a plausible <tag>structure</tag> for our online reference.</para>
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output renderas="topic"/>
   <filterout type="web" condition="print"/>
-  <info>
+  <merge>
     <title>Widget Reference</title>
-  </info>
+  </merge>
   <module resourceref="tut1"/>
   <module resourceref="tut2"/>
   <module resourceref="task1"/>
   <module resourceref="tut3">
-    <info>
+    <merge>
       <title>Troubleshooting spindle and bearing problems</title>
-    </info>
+    </merge>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4"/>
     <module resourceref="task3"/>
@@ -1359,7 +1366,7 @@ a plausible <tag>structure</tag> for our online reference.</para>
 
 <para>The resulting realized structure will be a nested set of
 <tag>topic</tag> elements. Topics don't nest in DocBook (at least
-under the current proposal), so this isn't a valid DocBook document.
+in DocBook 5.1), so this isn't a valid DocBook document.
 However, the nested topics provide a navigational structure for the
 online presentation. The rendering system is, we assume, smart enough
 to render each of the topics separately, as if they were all top-level
