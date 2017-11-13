@@ -67,7 +67,7 @@ task refpageElements(dependsOn: ['gitLogSummary'], type: XMLCalabashTask) {
 
 task refpageListElements(type: XMLCalabashTask) {
   inputs.file "lib/$rnd"
-  inputs.file "../stylesheets/elemlist.xsl"
+  inputs.file "../stylesheets/elem-xi.xsl"
   inputs.file "../xpl/element-list.xpl"
   outputs.file "build/list-elements.xml"
 
@@ -82,7 +82,7 @@ task refpageListElements(type: XMLCalabashTask) {
 
 task refpageListAssembly(type: XMLCalabashTask) {
   inputs.file "lib/$rnd"
-  inputs.file "../stylesheets/elemlist.xsl"
+  inputs.file "../stylesheets/elem-xi.xsl"
   inputs.file "../xpl/element-list.xpl"
   outputs.file "build/list-assembly.xml"
 
@@ -233,6 +233,6 @@ task test(dependsOn: ['tdg']) {
 }
 
 task clean
-task clean.doFirst {
+clean.doFirst {
   delete "build"
 }
