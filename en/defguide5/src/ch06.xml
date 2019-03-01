@@ -149,18 +149,16 @@ the exposition of assemblies without introducing any actual limitations.</para>
 <varlistentry>
 <term><tag>resources</tag></term>
 <listitem>
-<para>Identifies a collection of topics. An assembly may identify
-one or more collections.</para>
+<para>Identifies a collection of topics. An assembly may have any number of
+<tag>resources</tag> elements each identifying a collection of resources.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>structure</tag></term>
 <listitem>
-<para>Identifies a single artifact to be assembled. At present, we
-assume that these artifacts are single documents, but that may change.
-A document in this case is the particular collection of topics that
-forms the documentation for a product or system. An assembly may
-identify one or more structures.</para>
+<para>Identifies a single artifact to be assembled. Such an artifact is a particular
+collection of topics. An assembly may have any number of <tag>structure</tag> elements,
+each identifying a single artifact.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -168,14 +166,15 @@ identify one or more structures.</para>
 <listitem>
 <para>Identifies relationships between resources. These relationships
 may be manifested in any number of structures during assembly. An assembly
-may identify any number of relationships.</para>
+may have any number of <tag>relationships</tag> elements.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><tag>transforms</tag></term>
 <listitem>
 <para>Identifies transformations that can be applied during assembly.
-An assembly may identify any number of transformations.</para>
+An assembly my have at most one <tag>transforms</tag> element, but it may contain
+any number of <tag>transform</tag> elements.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -250,9 +249,36 @@ element), the assembly process may be allowed to nest them.</para>
 <section xml:id="modules">
 <title>Modules</title>
 
-<para>The <tag>module</tag> element is a wrapper for a unit of structure.
-The attributes and children of a module provide facilities for selecting
-the content of the module and controlling its presentation.</para>
+<para>The <tag>module</tag> element identifies a unit of structure.
+The attributes and children of a module provide facilities for
+selecting the content of the module and controlling its presentation.</para>
+
+<para>A <tag>module</tag> with a <tag class="attribute">resourceref</tag>
+attribute will pull in the content of that resource at that point in
+the structure. If the module has a <tag class="attribute">renderas</tag> attribute,
+then its attribute value replaces the name of the root element of the
+resource during assembly. That allows you to convert a topic resource
+to a chapter or section in the assembled DocBook.</para>
+
+<para>A <tag>module</tag> without a <tag class="attribute">resourceref</tag>
+attribute will create a new element in the assembled DocBook. It
+should have a <tag class="attribute">renderas</tag> attribute to specify its
+element name, and a <tag>merge</tag> child element to specify a title and any
+other info data.</para>
+
+<para>Module elements can nest to form hierarchies of content. A
+nested module's content is added at the end of its parent module's
+content, before the closing tag. Modules can be nested to any depth
+needed. For example, if a set of resources are created as individual
+topic elements, one module could render a topic as a chapter, and its
+module children could render as sections within the chapter, with
+further nested modules becoming subsections.</para>
+
+<para>Keep in mind that nesting of content would normally be done in a
+way that results in valid DocBook in the assembled document. However,
+the output is not validated, so you can create invalid or custom
+content with assemblies for any specific application.</para>
+
 </section>
 
 <section xml:id="relationships">
@@ -295,25 +321,26 @@ user through a sequence of resources.</para>
 <title>Transformations</title>
 
 <para>An assembly can identify a collection of transformations that can
-be used during the assembly process. A transformation can be associated
-with a resource (for example, to translate from some other format into
-DocBook), or with a module (to address requirements beyond the limited
-transformation capabilities of the assembly).</para>
+be used during the assembly process. This is intended primarily to enable
+transforming sources that are not DocBook into DocBook so that they can
+be merged into the assembly. Other uses are application dependent.</para>
+
+<para>A transformation can be associated with a resource (for example,
+to translate from some other format into DocBook), or with a module
+(to address requirements beyond the limited transformation
+capabilities of the assembly).</para>
 
 <programlisting><![CDATA[<transforms>
-  <transform name="dita2docbook" grammar="text/xsl" href="dita2db.xsl"/>
-  <transform name="tutorial" grammar="text/xsl" href="db2tutorial.xsl"/>
-  <transform name="art2pi" grammar="text/xsl" href="art2pi.xsl"/>
-  <transform name="office" grammar="application/xproc+xml" href="office2db.xpl"/>
-  <transform name="office" grammar="text/xsl" href="extractoffice.xsl"/>
+  <transform grammar="dita" href="dita2db.xsl"/>
+  <transform name="tutorial" href="db2tutorial.xsl"/>
+  <transform name="art2pi" href="art2pi.xsl"/>
+  <transform name="office" href="extractoffice.xsl"/>
 </transforms>]]></programlisting>
 
-<para>If there are several ways to provide a transformation, they may
-all be listed provided that they have different types. In the example above,
-it may be that the XProc transformation from office documents to DocBook
-is superior to the XSLT-only transformation, but the XSLT-only transformation
-is better than nothing. If no type is specified, the default is implementation
-dependent.</para>
+<para>If there are two ways to provide a transformation. If a resource
+has a <tag class="attribute">grammar</tag> attribute, the matching transform
+will be selected. If a resource has a <tag class="attribute">transform</tag>
+attribute, the named transform will be selected.</para>
 
 <note>
 <para>Not all systems may support arbitrary transformations, nor can
@@ -334,20 +361,17 @@ DocBook result.</para>
 <para>If a module needs to perform a transformation to get from one DocBook
 format to another, it can name a transform as well:</para>
 
-<programlisting><![CDATA[<module resourceref="overview">
-  <transform name="art2pi"/>
-  <output type="book" renderas="partintro"/>
+<programlisting><![CDATA[<module resourceref="article">
+  <output transform="tutorial"/>
 </module>]]></programlisting>
 
-<para>In this case, two transformations will occur. This can be generalized
-to an arbitrary number by listing more than one <tag>transform</tag> in the
-<tag>module</tag>.
-The transforms are applied in the order specified.</para>
+<para>This will transform the module into a tutorial using the
+<uri>db2tutorial.xsl</uri> transform specified in the matching
+<tag>transform</tag> element.</para>
 
 <para>If the <tag>output</tag> specifies a <tag
 class="attribute">renderas</tag>, it is applied to the result of the
 last transformation.</para>
-
 </section>
 </section>
 
@@ -517,36 +541,36 @@ database).</para>
     <resource xml:id="overview" href="overview.xml">
       <description>Overview of help system.</description>
     </resource>
-    <resource xml:id="task.build.doc">
+    <resource xml:id="task.build.doc" href="build.xml">
       <description>Describe how to build a document.</description>
     </resource>
     <resource xml:id="pckg.intro" href="task-intro.xml">
       <description>Introduction to the packaging tasks.</description>
     </resource>
-    <resource xml:id="task.package.book.pub">
+    <resource xml:id="task.package.book.pub" href="package.xml">
       <description>Describe how to package a document for publication.</description>
     </resource>
-    <resource xml:id="task.package.help">
+    <resource xml:id="task.package.help" href="help-package.xml">
       <description>Describe how to package a help system for submission to product
         build.</description>
     </resource>
-    <resource xml:id="task.package.l10n">
+    <resource xml:id="task.package.l10n" href="l10n-package.xml">
       <description>Describe how to package source files for localization.</description>
     </resource>
-    <resource xml:id="screen.overview">
+    <resource xml:id="screen.overview" href="screen-intro.xml">
       <description>Introductory text for screens and menus section.</description>
     </resource>
-    <resource xml:id="screen.build.doc">
+    <resource xml:id="screen.build.doc" href="popup.xml">
       <description>Displayed when question mark icon on document build screen is
         clicked.</description>
     </resource>
-    <resource xml:id="screen.package">
+    <resource xml:id="screen.package" href="pkg-popup.xml">
       <description>Displayed when question mark icon on packaging screen is clicked.</description>
     </resource>
-    <resource xml:id="glossary">
+    <resource xml:id="glossary" href="glossary.xml">
       <description>Glossary for help system.</description>
     </resource>
-    <resource xml:id="help.on.help">
+    <resource xml:id="help.on.help" href="help-on-help.xml">
       <description>How to use the help system.</description>
     </resource>
   </resources>]]></programlisting>
@@ -599,18 +623,10 @@ in the back.</para>
 <title>The Front End</title>
 <programlisting><![CDATA[    <module>
       <output outputformat="webhelp" file="sys-toc.html" renderas="topic"/>
-      <toc/>
-      <!-- By convention, there is a ToC at the beginning of a help system and
-           of the PDF of the help system.  The delivery system expects the file
-           to be named sys-toc.html. -->
     </module>
     <module>
       <output outputformat="webhelp" file="sys-index.html"/>
       <output outputformat="pdf" suppress="true"/>
-      <index/>
-      <!-- By convention, there is an index at the beginning of a help system
-           but it is expected to be at the end of a book.  The delivery system
-           expects the file to be named sys-index.html -->
     </module>]]></programlisting>
 </example>
 </section>
@@ -644,7 +660,9 @@ deal with things like Wizards and related screens and dialogs.</para>
     <module>
       <output outputformat="webhelp" file="pckg-intro.html"/>
       <output outputformat="pdf" renderas="chapter"/>
-      <title>Packaging</title>
+      <merge>
+        <title>Packaging</title>
+      </merge>
       <module resourceref="pckg.intro" contentonly="true" omittitles="true"/>
 
       <module resourceref="task.package.book.pub">
@@ -663,7 +681,9 @@ deal with things like Wizards and related screens and dialogs.</para>
     <module>
       <output outputformat="webhelp" file="scr-overvw.html"/>
       <output outputformat="pdf" renderas="chapter"/>
-      <title>Screens</title>
+      <merge>
+        <title>Screens</title>
+      </merge>
       <module resourceref="screen.overview" contentonly="true"
       omittitles="true"/>
       <module resourceref="screen.build.doc">
@@ -691,7 +711,9 @@ back end components are added.</para>
       <!-- No file, just want the link in the navigation. -->
       <output outputformat="pdf" suppress="true"/>
       <!-- Nothing in PDF. -->
-      <title xmlns:xl="http://www.w3.org/1999/xlink" xl:href="sys-book.pdf">Printable Version (PDF)</title>
+      <merge>
+        <title xmlns:xl="http://www.w3.org/1999/xlink" xl:href="sys-book.pdf">Printable Version (PDF)</title>
+      </merge>
     </module>
     <module resourceref="glossary">
       <output outputformat="webhelp" file="sys-glossary.html"/>
@@ -700,9 +722,6 @@ back end components are added.</para>
     </module>
     <module>
       <output outputformat="webhelp" suppress="true"/>
-      <index/>
-      <!-- By conventions, the index is at the back of a book, but it has
-           already been presented at the front of the help system. -->
     </module>
     <module resourceref="help.on.help">
       <output outputformat="webhelp" file="help-on-help.html"/>
@@ -763,18 +782,7 @@ building the document described by this structure.</para>
 <para>For the purposes of this section, let's
 assume that we have the following resources available:</para>
 
-<programlisting><![CDATA[<resource xml:id="full-toc">
-  <toc/>
-  <toc role="figures"/>
-  <toc role="tables"/>
-  <toc role="procedures"/>
-</resource>
-
-<resource xml:id="index">
-  <index/>
-</resource>
-
-<resources xml:base="tutorial/">
+<programlisting><![CDATA[<resources xml:base="tutorial/">
   <resource xml:id="tut1" href="tut1.xml"/>
   <resource xml:id="tut2" href="tut2.xml"/>
   <resource xml:id="tut3" href="tut3.xml"/>
@@ -801,13 +809,11 @@ task 4, and an index.</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output renderas="book"/>
-  <module resourceref="full-toc"/>
   <module resourceref="tut1"/>
   <module resourceref="tut2"/>
   <module resourceref="task1"/>
   <module resourceref="tut3"/>
   <module resourceref="task4"/>
-  <module resourceref="index"/>
 </structure>]]></programlisting>
 
 <para>The <tag>output</tag> element identifies the kind of output to
@@ -823,7 +829,6 @@ the <tag class="attribute">renderas</tag> on the <tag>output</tag> tells
 us) consisting of the tables of contents and the correct six topics:</para>
 
 <programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
-  <toc/>
   <toc role="figures"/>
   <toc role="tables"/>
   <toc role="procedures"/>
@@ -847,7 +852,6 @@ us) consisting of the tables of contents and the correct six topics:</para>
     <title>Diagnosing spindle problems</title>
     ...
   </topic>
-  <index/>
 </book>]]></programlisting>
 
 <para>The trouble is, that's not a valid <tag>book</tag>. Not only does it
@@ -955,7 +959,7 @@ subordinate modules in a new top-level module:</para>
   <module resourceref="tut2"/>
   <module resourceref="task1"/>
   <module>
-    <output renderas="appendix">
+    <output renderas="appendix"/>
     <merge>
       <title>Troubleshooting</title>
     </merge>
@@ -1096,9 +1100,7 @@ what it's really about.</para>
 <para>If
 <tag class="attribute">contentonly</tag> is <literal>true</literal>,
 then only the content of the document element, and not the document element
-itself, is included. Any metadata associated with the document element is
-also discarded. (If the referenced resource has several top-level element
-children, then this processing is applied to each, in turn.)</para>
+itself, is included.</para>
 
 <para>The realized structure for this appendix is now:</para>
 
@@ -1132,12 +1134,6 @@ semantics we've already encountered:</para>
     <module resourceref="task3"/>
   </module>]]></programlisting>
 
-<para>The only disadvantage of this approach is that we lose all of the
-metadata associated with tutorials 3 and 5. This might include publication
-dates, copyright information, etc. We could add those fields to the <tag>merge</tag>
-wrapper for the <tag>appendix</tag> in the assembly, but then it may have
-to be maintained in two places.</para>
-
 <para>Instead, we introduce one more convention: if a <tag>module</tag>
 refers to another resource <emphasis>and</emphasis> contains a
 <tag>merge</tag> element, then the elements within that
@@ -1163,10 +1159,7 @@ resource.)</para>
 
 <para>In the realized structure for this example, the appendix
 metadata includes everything in tutorial 3's metadata, with the title
-changed as indicated. Of course, all of the metadata for tutorial 5 is
-still lost, but there's nothing we can do about that because there's
-no where to put it.</para>
-
+changed as indicated.</para>
 </section>
 
 <section xml:id="ex-html">
@@ -1185,8 +1178,8 @@ guide in one place.</para>
 <para>The first step is to create a new output type:</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
-  <output type="book" renderas="book"/>
-  <output type="web" renderas="book"/>
+  <output outputformat="book" renderas="book"/>
+  <output outputformat="web" renderas="book"/>
   <merge>
     <title>Widget User Guide</title>
   </merge>
@@ -1231,13 +1224,13 @@ online site:</para>
 elements:</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
-  <output type="book" renderas="book"/>
-  <output type="web" renderas="book" file="user-guide.html"/>
+  <output outputformat="book" renderas="book"/>
+  <output outputformat="web" renderas="book" file="user-guide.html"/>
   <merge>
     <title>Widget User Guide</title>
   </merge>
   <module resourceref="full-toc">
-    <output type="web" chunk="false"/>
+    <output outputformat="web" chunk="false"/>
   </module>
   <module resourceref="tut1">
     <output renderas="chapter"/>
@@ -1252,12 +1245,12 @@ elements:</para>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
       <output renderas="section"/>
-      <output type="web" chunk="false"/>
+      <output outputformat="web" chunk="false"/>
     </module>
     <module resourceref="task3"/>
   </module>
   <module resourceref="index">
-    <output type="web" file="book-index.html"/>
+    <output outputformat="web" file="book-index.html"/>
   </module>
 </structure>]]></programlisting>
 
@@ -1266,18 +1259,19 @@ tells the assembly where to write the chunk. (If it occurs on a module which
 is not chunked, it is simply ignored.) The <tag class="attribute">chunk</tag>
 attribute can be used to specify which modules should (or should not) be
 placed in separate chunks. The implied value on modules where it is not
-specified depends on the name of the rendered element and the output type.</para>
+specified depends on the name of the rendered element and the output format.</para>
 
 <para>When processing a module, all of the relevant output directives are
-combined. An <tag>output</tag> is relevant if it does not specify a
-type or if the type specified matches the type of processing that is being
+combined. An <tag>output</tag> is relevant if it does not specify an
+output format or if the format specified matches the processing that is being
 performed. If conflicting values are specified for any attribute, the last
 value specified (in document order) is used.</para>
 
 <para>To exclude (or include) content, we add the
 <tag>filterout</tag> (and <tag>filterin</tag>) elements to the assembly.
-Each may have a <tag class="attribute">type</tag> and specifies some number
-of effectivity values.</para>
+Each may have a <tag class="attribute">outputformat</tag> and specifies some number
+of effectivity values. (The processor will have to be configured to profile before
+assembling, of course.)</para>
 
 <para>If no conditions are specified on <tag>filterout</tag>, the
 module is unconditionally excluded. (Specifying no conditions on a
@@ -1290,21 +1284,21 @@ apply only to that module.</para>
 <para>With filters, our <tag>structure</tag> might look like this:</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
-  <output type="book" renderas="book"/>
-  <output type="web" renderas="book" file="user-guide.html"/>
-  <filterout type="web" condition="print"/>
+  <output outputformat="book" renderas="book"/>
+  <output outputformat="web" renderas="book" file="user-guide.html"/>
+  <filterout outputformat="web" condition="print"/>
   <merge>
     <title>Widget User Guide</title>
   </merge>
   <module resourceref="full-toc">
-    <output type="web" chunk="false"/>
+    <output outputformat="web" chunk="false"/>
   </module>
   <module resourceref="tut1">
     <output renderas="chapter"/>
   </module>
   <module resourceref="tut2">
-    <filterin type="web" condition="print"/>
-    <filterout type="web" userlevel="advanced"/>
+    <filterin outputformat="web" condition="print"/>
+    <filterout outputformat="web" userlevel="advanced"/>
   </module>
   <module resourceref="task1"/>
   <module resourceref="tut3">
@@ -1315,12 +1309,12 @@ apply only to that module.</para>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
       <output renderas="section"/>
-      <output type="web" chunk="false"/>
+      <output outputformat="web" chunk="false"/>
     </module>
     <module resourceref="task3"/>
   </module>
   <module resourceref="index">
-    <filterout type="web"/>
+    <filterout outputformat="web"/>
   </module>
 </structure>]]></programlisting>
 
@@ -1344,7 +1338,7 @@ a plausible <tag>structure</tag> for our online reference.</para>
 
 <programlisting><![CDATA[<structure xml:id="user-guide">
   <output renderas="topic"/>
-  <filterout type="web" condition="print"/>
+  <filterout outputformat="web" condition="print"/>
   <merge>
     <title>Widget Reference</title>
   </merge>

@@ -4,10 +4,20 @@ buildscript {
     maven { url "http://maven.restlet.org" }
   }
 
+  // Get rid of that [expletive deleted] warning about xml-apis 2.0.2/1.0.b2
+  configurations.all {
+    resolutionStrategy {
+      force 'xml-apis:xml-apis:1.4.01'
+    }
+  }
+
   dependencies {
     classpath group: 'org.docbook', name: 'docbook-xslt2', version: docbookXsltVersion
-    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.4'
-    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.1.2'
+    classpath group: 'org.docbook', name: 'docbook-schemas', version: '5.1-1'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.5'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.3.5'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.23-98'
+    classpath group: 'org.xmlresolver', name: 'xmlresolver', version: '0.13.2'
   }
 }
 
@@ -30,24 +40,6 @@ import de.undercouch.gradle.tasks.download.Download
 defaultTasks 'tdg'
 
 project.ext.docbookXslt = "docbook-xslt2-$docbookXsltVersion"
-
-task downloadDocBook(type: Download) {
-  src docbookXsltBaseUri + '/release/' + docbookXsltVersion + '/' + docbookXslt + '.zip'
-  dest new File(buildDir, docbookXslt + '.zip')
-}
-downloadDocBook.onlyIf { !file("$buildDir/${docbookXslt}.zip").exists() }
-
-task setupDocBook(dependsOn: downloadDocBook, type: Copy) {
-  from zipTree(downloadDocBook.dest)
-  into { "build" }
-  doLast {
-    copy {
-      from "build/$docbookXslt"
-      into 'build/docbook'
-    }
-  }
-}
-setupDocBook.onlyIf { !file("$buildDir/docbook").exists() }
 
 task gitLogSummary(type: Exec) {
   commandLine "../bin/git-log-summary"
@@ -106,7 +98,7 @@ task copyRefpages(type: Copy) {
   }
 }
 
-task refpages(dependsOn: ['setupDocBook', 'refpageElements', 'copyRefpages',
+task refpages(dependsOn: ['refpageElements', 'copyRefpages',
                           'refpageListElements', 'refpageListAssembly']) {
   // nothing to see here
 }
@@ -155,7 +147,7 @@ task tdgxml(dependsOn: ['bookmeta', 'patterns', 'refpages'], type: XMLCalabashTa
   pipeline "../xpl/xinclude.xpl"
 }
 
-task book(dependsOn: ['tdgxml', 'setupDocBook'], type: XMLCalabashTask) {
+task book(dependsOn: ['tdgxml'], type: XMLCalabashTask) {
   inputs.file file("build/tdg.xml")
   inputs.file file("../xpl/make-book.xpl")
   inputs.file file("build/docbook/xslt/base/preprocess/30-profile.xsl")
@@ -215,8 +207,8 @@ task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   outputs.dir "build/html"
   inputs.file "../stylesheets/chunk.xsl"
 
-  input "build/book.xml"
-  style "../stylesheets/chunk.xsl"
+  input("source", "build/book.xml")
+  option("style", "../stylesheets/chunk.xsl")
   param("output.dir", System.getProperty('user.dir') + "/build/")
   param("base.dir", "build/html/")
   param("html.ext", ".html")

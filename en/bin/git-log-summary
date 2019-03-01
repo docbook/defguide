@@ -91,6 +91,12 @@ while (<$LOG>) {
         die "???" if !$aftermsg;
         push (@files, $1);
     }
+
+    if (/^[R]\d+\s+(.+)\s+(.+)$/) {
+        die "???" if !$aftermsg;
+        push (@files, $1);
+        push (@files, $2);
+    }
 }
 close ($LOG);
 

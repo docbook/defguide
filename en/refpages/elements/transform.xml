@@ -21,6 +21,32 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
+
+<para>A <tag>transform</tag> can be applied in two different ways, one
+to convert non-DocBook content to DocBook, and the other to transform
+DocBook content into a different instance of DocBook.</para>
+
+<para>If the <tag class="attribute">grammar</tag> attribute is
+specified, then the <tag>transform</tag> specified by the
+<tag class="attribute">href</tag> attribute is applied to any
+<tag>resource</tag> elements with a matching
+<tag class="attribute">grammar</tag> attribute to convert them to
+DocBook for inclusion. This could be used to convert DITA files to
+DocBook, for example.</para>
+
+<para>If the <tag class="attribute">name</tag> attribute is specified
+instead, then the <tag>transform</tag> is applied to any
+<tag>module</tag> whose <tag>output</tag> element includes a <tag
+class="attribute">transform</tag> attribute whose value matches the name.
+This allows the content of a resource to be filtered or rearranged
+before being output to the assembled DocBook document.</para>
+
+Change the grammar attribute description to something like: "resource elements with a matching grammar attribute value will have this
+transform applied to them during assembly to convert them to DocBook".
+
+Change the name attribute description to something like: "output elements with a matching transform attribute value will have this
+transform applied to the content of its parent module element when outputting the assembly."
+
 <para>A <tag>transform</tag> specifies a mechanism for converting one format into
 another during the assembly process. For example, if a <tag>module</tag> identifies
 a resource in a foreign grammar, then a <tag>transform</tag> can be used to identify
@@ -44,8 +70,19 @@ the transformation that will convert the foreign grammar into DocBook.</para>
 <refsection condition="ref.examples">
 <title>Examples</title>
 
-<programlisting><xi:include href="../examples/transform.1.xml" parse="text"/></programlisting>
+<para>This example would apply the <uri>dita2docbook.xsl</uri>
+transform to any resources that have a <tag
+class="attribute">grammar</tag> attribute of
+“<literal>dita</literal>”.</para>
 
+<programlisting><![CDATA[<transform grammar="dita" href="dita2docbook.xsl"/>]]></programlisting>
+
+<para>This example would apply the <uri>flatten-sections.xsl</uri>
+transform to the content of any <tag>module</tag> that has an
+<tag>output</tag> child element that includes a <tag
+class="attribute">transform</tag> attribute with the value
+“<literal>flatten</literal>”.</para>
+
+<programlisting><![CDATA[<transform name="flatten" href="flatten-sections.xsl"/>]]></programlisting>
 </refsection>
-
 </refentry>

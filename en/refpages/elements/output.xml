@@ -21,8 +21,20 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>The <tag>output</tag> element specifies a set of options to be used when
-rendering the <tag>module</tag> or <tag>structure</tag> in which it occurs.</para>
+<para>The <tag>output</tag> element specifies a set of options to be
+used when rendering the module or structure in which it occurs.
+Multiple <tag>output</tag> elements can be specified and, if effectivity
+attributes and profiling are used, options can be selectively turned
+on and off for different renderings.</para>
+
+<para>The <tag class="attribute">grammar</tag> attribute on
+<tag>output</tag> was mistakenly included in DocBook version 5.1, and
+will be removed in version 5.2. The <tag
+class="attribute">grammar</tag> attribute appears on a
+<tag>resource</tag> element to specify its vocabulary if it is not
+DocBook, and on a <tag>transform</tag> element to specify a
+transformation to convert resources with that grammar to DocBook
+during assembly.</para>
 
 <refsection>
 <title>Processing expectations</title>
@@ -42,8 +54,25 @@ rendering the <tag>module</tag> or <tag>structure</tag> in which it occurs.</par
 <refsection condition="ref.examples">
 <title>Examples</title>
 
-<para>FIXME: TBD.</para>
+<para>This example has two <tag>output</tag> elements, each with a
+different value for the <tag class="attribute">outputformat</tag>
+effectivity attribute. During assembly, profiling should be used to
+select one of them.</para>
 
+<programlisting><![CDATA[<module resourceref="topic1">
+  <output renderas="section" outputformat="print"/>
+  <output renderas="topic" outputformat="help"/>
+  …]]></programlisting>
+
+<para>In this example, only the content of <literal>topic2</literal>,
+without its root element or titles, is inserted at the end of the
+<literal>topic1</literal> <tag>section</tag> as more content in the same section.
+</para>
+
+<programlisting><![CDATA[<module resourceref="topic1" renderas="section">
+  <module resourceref="topic2">
+    <output contentonly="true" omittitles="true"/>
+  </module>
+</module>]]></programlisting>
 </refsection>
-
 </refentry>
