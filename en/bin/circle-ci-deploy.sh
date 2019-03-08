@@ -22,14 +22,13 @@ cd gh-pages
 
 # Set this in the CircleCI "Settings/Environment Variables" section
 if [ "$GITHUB_CNAME" != "" ]; then
+    echo "Setting CNAME"
     echo $GITHUB_CNAME > CNAME
 fi;
 
 mkdir -p ./tdg/${DBVERSION}
 rsync -ar --delete $BUILD/html/ ./tdg/${DBVERSION}/
 
-echo "Would have done it"
-
-#git add --all .
-#git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
-#git push -fq origin gh-pages
+git add --all .
+git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
+git push -fq origin gh-pages
