@@ -1,11 +1,35 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>structure</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.21"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="resources.html" title="resources"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Assembly Element Reference" href="ref-assembly.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="transform" href="transform.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">1.4.19 for DocBook V5.2b1</a>)</td></tr></table></div><div class="body"><article id="element.db.structure" class="refentry rf-5.1"><div class="content"><a class="indexterm" name="element.db.structure.1"></a><div class="refnamediv"><h2><img xmlns:mp="http://docbook.org/xslt/ns/mode/private" src="figs/web/rev_5.1_assembly.png" alt="[5.1 Assembly]" align="right">structure</h2><p><span class="refname">structure</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">Describes the structure of a document</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">structure&nbsp;<span class="cceq">::=</span></p><div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li>Interleave of:<div class="itemizedlist element-synopsis"><ul><li>Zero or more of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="output.html"><code class="tag-element">output</code></a></li></ul></div></li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="filterin.html"><code class="tag-element">filterin</code></a>?</li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="filterout.html"><code class="tag-element">filterout</code></a>?</li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="info.html"><code class="tag-element">info</code></a>?&nbsp;<span class="pattern">(db.info)</span></li></ul></div></li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="merge.html"><code class="tag-element">merge</code></a>?</li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="revhistory.html"><code class="tag-element">revhistory</code></a>?</li><li>One or more of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="module.html"><code class="tag-element">module</code></a></li></ul></div></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a href="ref-elements.html#common.attributes">Common attributes</a>.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>defaultformat (NMTOKEN)</li><li>renderas (QName)</li><li>resourceref (IDREF)</li><li>type (NMTOKEN)</li></ul></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Additional Constraints</h2></div><div class="content"><div class="itemizedlist element-synopsis"><ul><li>The renderas attribute can be specified on either the structure or output, but not both.</li></ul></div></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>structure</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.3.11"><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="resources.html" title="resources"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Assembly Element Reference" href="ref-assembly.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="transform" href="transform.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">1.4.19 for DocBook V5.2b06b</a>)</td></tr></table></div><div class="body"><article id="element.db.structure" class="refentry rf-5.1"><div class="content"><a class="indexterm" name="element.db.structure.1"></a><div class="refnamediv"><h2><img xmlns:mp="http://docbook.org/xslt/ns/mode/private" src="figs/web/rev_5.1_assembly.png" alt="[5.1 Assembly]" align="right">structure</h2><p><span class="refname">structure</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">Describes the structure of a document</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">structure&nbsp;<span class="cceq">::=</span></p><div class="itemizedlist element-synopsis"><ul><li>Sequence of:<div class="itemizedlist element-synopsis"><ul><li>Interleave of:<div class="itemizedlist element-synopsis"><ul><li>Zero or more of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="output.html"><code class="tag-element">output</code></a></li></ul></div></li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="filterin.html"><code class="tag-element">filterin</code></a>?</li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="filterout.html"><code class="tag-element">filterout</code></a>?</li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="info.html"><code class="tag-element">info</code></a>?&nbsp;<span class="pattern">(db.info)</span></li></ul></div></li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="merge.html"><code class="tag-element">merge</code></a>?</li><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="revhistory.html"><code class="tag-element">revhistory</code></a>?</li><li>One or more of:<div class="itemizedlist element-synopsis"><ul><li><a xmlns:mp="http://docbook.org/xslt/ns/mode/private" href="module.html"><code class="tag-element">module</code></a></li></ul></div></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a href="ref-elements.html#common.attributes">Common attributes</a>.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>defaultformat (NMTOKEN)</li><li>renderas (QName)</li><li>resourceref (IDREF)</li><li>type (NMTOKEN)</li></ul></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Additional Constraints</h2></div><div class="content"><div class="itemizedlist element-synopsis"><ul><li>The renderas attribute can be specified on either the structure or output, but not both.</li></ul></div></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
 
 
 <p xmlns:mp="http://docbook.org/xslt/ns/mode/private">A <a href="structure.html"><code class="tag-element">structure</code></a> is the top-level unit of an <a href="assembly.html"><code class="tag-element">assembly</code></a>. A
 <a href="structure.html"><code class="tag-element">structure</code></a> represents the book, help system, web site, or other artifact
 to be produced by assembling <a href="module.html"><code class="tag-element">module</code></a>s, which are further composed
 of <a href="resource.html"><code class="tag-element">resource</code></a>s.</p>
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">An <a href="assembly.html"><code class="tag-element">assembly</code></a> can contain several <a href="structure.html"><code class="tag-element">structure</code></a> elements,
+but usually only one is specified for output at a time. For example,
+one structure could assemble a printed document, while a second
+structure could assemble an online help system from the same set of
+resources.</p>
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If a <a href="structure.html"><code class="tag-element">structure</code></a> element has a
+<code class="tag-attribute">resourceref</code> attribute, then the
+<a href="resource.html"><code class="tag-element">resource</code></a> that it points to becomes the root element and
+base content of the assembled document. If a <a href="structure.html"><code class="tag-element">structure</code></a> does
+not have a <code class="tag-attribute">resourceref</code> attribute, then it
+should have a <code class="tag-attribute">renderas</code> attribute to
+specify the root element generated to contain the modules in the
+structure. It should also have a <a href="merge.html"><code class="tag-element">merge</code></a> element to specify
+the <a href="title.html"><code class="tag-element">title</code></a> and any other <a href="info.html"><code class="tag-element">info</code></a> content of the
+generated root element.</p>
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">You can also create modular structures. If a <a href="module.html"><code class="tag-element">module</code></a>
+element within in a main structure has a
+<code class="tag-attribute">resourceref</code> attribute that matches the
+<code class="tag-attribute">xml:id</code> of another <a href="structure.html"><code class="tag-element">structure</code></a>,
+then the <a href="module.html"><code class="tag-element">module</code></a>s of that <a href="structure.html"><code class="tag-element">structure</code></a> are
+incorporated into the main <a href="structure.html"><code class="tag-element">structure</code></a>.</p>
 
 <div class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div><div class="content">
 
@@ -25,6 +49,47 @@ onto the output root element.</p>
 </div></div><div class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div><div class="content">
 
 
-<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">FIXME: TBD.</p>
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This <a href="structure.html"><code class="tag-element">structure</code></a> generates a <a href="book.html"><code class="tag-element">book</code></a> root element and
+incorporates two resources, one as a <a href="chapter.html"><code class="tag-element">chapter</code></a> and the other as an
+<a href="appendix.html"><code class="tag-element">appendix</code></a>.</p>
 
-</div></div></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="resources" href="resources.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="transform" href="transform.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">resources&nbsp;</td><td width="20%" align="center"><a title="DocBook Assembly Element Reference" href="ref-assembly.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;transform</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016 Norman Walsh.</p></div></div></div></body></html>
+<pre class="programlisting language-none line-numbers"><code>&lt;structure renderas="book"&gt;
+  &lt;merge&gt;
+    &lt;title&gt;Name of the book&lt;/title&gt;
+  &lt;/merge&gt;
+  &lt;module resourceref="topic1" renderas="chapter"/&gt;
+  &lt;module resourceref="topic2" renderas="appendix"/&gt;
+&lt;/structure&gt;</code></pre>
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This <a href="structure.html"><code class="tag-element">structure</code></a> uses a <a href="resource.html"><code class="tag-element">resource</code></a> to create
+the root <a href="article.html"><code class="tag-element">article</code></a> element, and incorporates two resources as
+<a href="section.html"><code class="tag-element">section</code></a>s in the <a href="article.html"><code class="tag-element">article</code></a>.</p>
+
+<pre class="programlisting language-none line-numbers"><code>&lt;structure resourceref="article-template"&gt;
+  &lt;module resourceref="topic1" renderas="section"/&gt;
+  &lt;module resourceref="topic2" renderas="section"/&gt;
+&lt;/structure&gt;</code></pre>
+
+<p xmlns:mp="http://docbook.org/xslt/ns/mode/private">This example assembles two substructures into a main structure:</p>
+
+<pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="chapter1-structure" resourceref="chap1"&gt;
+  &lt;module resourceref="topic1" renderas="chapter"&gt;
+    &lt;module resourceref="topic2" renderas="section"/&gt;
+  &lt;/module&gt;
+&lt;/structure&gt;</code></pre>
+
+<pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="chapter2-structure" resourceref="chap2"&gt;
+  &lt;module resourceref="topic3" renderas="chapter"&gt;
+    &lt;module resourceref="topic4" renderas="section"/&gt;
+  &lt;/module&gt;
+&lt;/structure&gt;</code></pre>
+
+<pre class="programlisting language-none line-numbers"><code>&lt;structure renderas="book"&gt;
+  &lt;merge&gt;
+    &lt;title&gt;Name of the book&lt;/title&gt;
+  &lt;/merge&gt;
+  &lt;module resourceref="chapter1-structure"/&gt;
+  &lt;module resourceref="chapter2-structure"/&gt;
+&lt;/structure&gt;</code></pre>
+
+</div></div></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="resources" href="resources.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="transform" href="transform.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">resources&nbsp;</td><td width="20%" align="center"><a title="DocBook Assembly Element Reference" href="ref-assembly.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;transform</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019 Norman Walsh.</p></div></div></div></body></html>
