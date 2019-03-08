@@ -26,7 +26,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: v1-dependencies-{{ checksum "en/defguide5/build.gradle" }}
 
       - run:
           working_directory: ~/defguide/en/defguide5
