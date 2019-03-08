@@ -1406,7 +1406,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="xdefs" select="key('elemdef', $elemName)"/>
 
   <!--
-  <xsl:message>name: "<xsl:value-of select="@name"/>"</xsl:message>
+  <xsl:message>name: "<xsl:value-of select="@name"/>": <xsl:value-of select="count($xdefs)"/></xsl:message>
   -->
 
   <xsl:variable name="content">

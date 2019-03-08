@@ -12,7 +12,7 @@
                 exclude-result-prefixes="ch db f fn h m t xs"
                 version="2.0">
 
-<xsl:import href="../defguide5/build/docbook/xslt/base/html/chunk.xsl"/>
+<xsl:import href="https://cdn.docbook.org/release/latest/xslt/base/html/chunk.xsl"/>
 
 <xsl:include href="custom.xsl"/>
 

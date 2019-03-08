@@ -99,6 +99,15 @@
         </xsl:message>
       </xsl:when>
 
+      <xsl:when test="$revision='5.2' and empty($arch)">
+        <img src="figs/web/rev_5.2.png" alt="[5.2]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
       <xsl:when test="$revision='5.1' and empty($arch)">
         <img src="figs/web/rev_5.1.png" alt="[5.1]">
           <xsl:if test="$align != ''">
@@ -405,7 +414,7 @@
       </a>
     </span>
     <span class='refpurpose'>
-      <xsl:if test="$annotate.toc != 0">
+      <xsl:if test="$annotate.toc">
         <xsl:text> — </xsl:text>
         <xsl:apply-templates select="db:refnamediv/db:refpurpose/node()"/>
       </xsl:if>
@@ -759,9 +768,9 @@
 
     <xsl:when test="$class = 'element'">
       <xsl:message>
-	<xsl:text>Failed to find </xsl:text>
+	<xsl:text>Failed to find “</xsl:text>
 	<xsl:value-of select="$elemidval"/>
-	<xsl:text> for "</xsl:text>
+	<xsl:text>” for "</xsl:text>
 	<xsl:value-of select="."/>
 	<xsl:text>" (2)</xsl:text>
       </xsl:message>

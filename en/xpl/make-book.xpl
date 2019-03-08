@@ -21,7 +21,10 @@
 
 <p:xslt name="profiled">
   <p:input port="stylesheet">
-    <p:document href="../defguide5/build/docbook/xslt/base/preprocess/30-profile.xsl"/>
+    <!-- FIXME: why doesn't the full URI work with the rewriter?
+    <p:document href="https://cdn.docbook.org/release/latest/xslt/base/preprocess/30-profile.xsl"/>
+    -->
+    <p:document href="../stylesheets/30-profile.xsl"/>
   </p:input>
   <p:with-param name="profile.separator" select="' '"/>
   <p:with-param name="profile.condition" select="$condition"/>
