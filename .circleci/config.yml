@@ -1,0 +1,39 @@
+# Java Gradle CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    machine: true
+    working_directory: ~/defguide
+
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx8g
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-
+
+      - run: gradle dependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+
+      - run:
+          working_directory: ~/defguide/en/defguide5
+          command: ./gradlew --no-daemon --stacktrace tdg
+
+      - run:
+          working_directory: ~/defguide/en/defguide5
+          command: ../bin/circle-ci-deploy.sh
+
+

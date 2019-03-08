@@ -28,6 +28,8 @@ fi;
 mkdir -p ./tdg/${DBVERSION}
 rsync -ar --delete $BUILD/html/ ./tdg/${DBVERSION}/
 
-git add --all .
-git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
-git push -fq origin gh-pages
+echo "Would have done it"
+
+#git add --all .
+#git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
+#git push -fq origin gh-pages
