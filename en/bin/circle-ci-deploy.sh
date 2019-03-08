@@ -22,7 +22,6 @@ cd gh-pages
 
 # Set this in the CircleCI "Settings/Environment Variables" section
 if [ "$GITHUB_CNAME" != "" ]; then
-    echo "Setting CNAME"
     echo $GITHUB_CNAME > CNAME
 fi;
 
