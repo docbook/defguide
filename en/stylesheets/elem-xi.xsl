@@ -19,7 +19,7 @@
 
   <xsl:variable name="includes" as="element(xi:include)*">
     <xsl:for-each select="$items">
-      <xsl:sort select="."/>
+      <xsl:sort select="@sort"/>
       <xsl:choose>
         <xsl:when test=". = 'dcterms.any'">
           <xi:include href="elements/dcterms.xml"/>
@@ -69,7 +69,7 @@
 <xsl:template match="rng:define">
   <xsl:variable name="rmi" select="../db:refmiscinfo[@class='manual']"/>
   <xsl:if test="($rmi eq $manual) or (empty($rmi) and ($manual eq ''))">
-    <item>
+    <xsl:variable name="content" as="xs:string">
       <!-- Work around the irregular naming conventions of the XML files -->
       <xsl:choose>
         <xsl:when test="starts-with(@name,'db.cals.')">
@@ -82,6 +82,9 @@
           <xsl:value-of select="@name"/>
         </xsl:otherwise>
       </xsl:choose>
+    </xsl:variable>
+    <item sort="{../db:refname} {$content}">
+      <xsl:value-of select="$content"/>
     </item>
   </xsl:if>
 </xsl:template>
