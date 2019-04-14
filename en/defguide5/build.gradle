@@ -172,7 +172,7 @@ task book(dependsOn: ['tdgxml'], type: XMLCalabashTask) {
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
-  // something else inthe reference pages. :-(
+  // something else in the reference pages. :-(
   option("condition", "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web")
   pipeline "../xpl/make-book.xpl"
 }
@@ -216,6 +216,7 @@ task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   inputs.file "build/book.xml"
   outputs.dir "build/html"
   inputs.file "../stylesheets/chunk.xsl"
+  inputs.file "../stylesheets/custom.xsl"
 
   input("source", "build/book.xml")
   option("style", "../stylesheets/chunk.xsl")
