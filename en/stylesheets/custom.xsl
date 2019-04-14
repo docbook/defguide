@@ -8,8 +8,9 @@
 		xmlns:t="http://docbook.org/xslt/ns/template"
 		xmlns:m="http://docbook.org/xslt/ns/mode"
 		xmlns:mp="http://docbook.org/xslt/ns/mode/private"
+                xmlns:tp="http://docbook.org/xslt/ns/template/private"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                exclude-result-prefixes="f rng html db m t xs"
+                exclude-result-prefixes="f rng html db m mp t tp xs"
                 version="2.0">
 
 <xsl:param name="output.media" select="'web'"/>
@@ -384,6 +385,25 @@
 
 <xsl:template match="db:othercredit/db:contrib" mode="titleblock">
   <xsl:apply-templates/>
+</xsl:template>
+
+<!-- Override this template in order to put the reference sections in the ToC -->
+<xsl:template match="db:part|db:reference" mode="mp:toc">
+  <xsl:param name="toc-context" select="."/>
+
+  <xsl:call-template name="tp:subtoc">
+    <xsl:with-param name="toc-context" select="$toc-context"/>
+    <xsl:with-param name="nodes" select="db:appendix|db:chapter|db:article
+                                         |db:partintro
+                                         |db:index|db:glossary|db:bibliography
+                                         |db:preface|db:reference|db:refentry
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
+  </xsl:call-template>
+</xsl:template>
+
+<!-- Override this template in order to avoid ToC issues for partintro -->
+<xsl:template match="db:partintro" mode="mp:toc">
+  <xsl:apply-templates select="db:section|db:sect1" mode="mp:toc"/>
 </xsl:template>
 
 <!-- Override this template in order to put revision graphics in the TOC -->
