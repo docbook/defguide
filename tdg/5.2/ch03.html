@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;3.&nbsp;Validating DocBook Documents</title><meta charset="utf-8"><link xmlns:mp="http://docbook.org/xslt/ns/mode/private" rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.3.11"><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/prism.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script xmlns:mp="http://docbook.org/xslt/ns/mode/private" type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch02.html" title="Chapter&nbsp; 2 .&nbsp; Creating DocBook Documents"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents" href="ch04.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">5.2.0 for DocBook V5.2b06b</a>)</td></tr></table></div><div class="body"><article id="ch-parse" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;3.&nbsp;Validating DocBook Documents</h2><p class="releaseinfo">$Revision$</p></header><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch-parse.2.1"></a> <a class="indexterm" name="ch-parse.2.2"></a>A key feature of <span class="acronym">XML</span> markup is that you
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;3.&nbsp;Validating DocBook Documents</title><meta charset="utf-8"><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.3.11"><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch02.html" title="Chapter&nbsp; 2 .&nbsp; Creating DocBook Documents"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents" href="ch04.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">5.2.0 for DocBook V5.2b06b</a>)</td></tr></table></div><div class="body"><article id="ch-parse" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;3.&nbsp;Validating DocBook Documents</h2><p class="releaseinfo">$Revision$</p></header><div class="content"><p><a class="indexterm" name="ch-parse.2.1"></a> <a class="indexterm" name="ch-parse.2.2"></a>A key feature of <span class="acronym">XML</span> markup is that you
   <em>validate</em> it. The DocBook schema is a precise
   description of valid nesting: the order of elements, and their content. All
   DocBook documents must conform to this description or they are not DocBook
@@ -8,30 +8,30 @@
   <span class="acronym">DTD</span>. A <em class="firstterm">validating parser</em> is a
   program that can read the <span class="acronym">DTD</span> and a particular document
   and determine whether the exact nesting and order of elements in the
-  document is valid according to the <span class="acronym">DTD</span>.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">DocBook is now defined by a RELAX NG grammar and Schematron rules, so
+  document is valid according to the <span class="acronym">DTD</span>.</p><p>DocBook is now defined by a RELAX NG grammar and Schematron rules, so
   it is no longer necessary to validate with the <span class="acronym">DTD</span>. In
   fact, it isn’t even very valuable since the <span class="acronym">DTD</span> version
   doesn’t enforce many DocBook constraints. Instead, an external RELAX NG and
-  Schematron validator must be used.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Validation is performed on a document <em>after</em> it
+  Schematron validator must be used.</p><p>Validation is performed on a document <em>after</em> it
   has been parsed. It is possible for parsing errors to occur as well as
   validation errors (if, for example, your document isn’t well-formed
   <span class="acronym">XML</span>). We’re going to assume that your documents are
-  well-formed and not discuss <span class="acronym">XML</span> parsing errors.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch-parse.5.1"></a>If you are not using a structured editor that can provide
+  well-formed and not discuss <span class="acronym">XML</span> parsing errors.</p><p><a class="indexterm" name="ch-parse.5.1"></a>If you are not using a structured editor that can provide
   guidance on the markup as you type, validation with an external tool is a
   particularly important step in the document creation process. You cannot
   expect to get rational results from subsequent processing (such as document
-  publishing) if your documents are not valid.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">There are several free validators that will handle RELAX NG and
+  publishing) if your documents are not valid.</p><p>There are several free validators that will handle RELAX NG and
   Schematron, including Jing and MSV. For more detail about available tools,
-  see <a href="appd.html#res-tools" title="XML Tools">Section&nbsp;9, “<span class="acronym">XML</span> Tools”</a>.</p><section id="s.id-idref" class="section"><div class="section-titlepage"><h2>1.&nbsp;ID/IDREF Constraints and Validation</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="s.id-idref.2.1"></a>In <span class="acronym">XML</span>, attributes of type ID and IDREF
+  see <a href="appd.html#res-tools" title="XML Tools">Section&nbsp;9, “<span class="acronym">XML</span> Tools”</a>.</p><section id="s.id-idref" class="section"><div class="section-titlepage"><h2>1.&nbsp;ID/IDREF Constraints and Validation</h2></div><div class="content"><p><a class="indexterm" name="s.id-idref.2.1"></a>In <span class="acronym">XML</span>, attributes of type ID and IDREF
     provide a straightforward cross-referencing mechanism. In DocBook, the
     <code class="tag-attribute">xml:id</code> attribute contains values of
     type ID, and the <code class="tag-attribute">linkend</code> attribute
-    contains values of type IDREF.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Within any document, no two attributes of type ID may have the same
+    contains values of type IDREF.</p><p>Within any document, no two attributes of type ID may have the same
     value. In addition, for any attribute of type IDREF, there must be one,
     and only one, instance of an attribute of type ID with the same value in
     the same document. In other words, you can’t have two elements with the
     same ID, and every IDREF must match an ID that exists somewhere in the
-    same document.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Checking these constraints is not a core part of RELAX NG. If you
+    same document.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p>Checking these constraints is not a core part of RELAX NG. If you
       want RELAX NG to check them, you need to enable a set of “<span class="quote">DTD
       compatibility</span>” extensions. Unfortunately, the DTD compatibility
       extensions do not work well with the DocBook grammar. However, because
@@ -39,21 +39,21 @@
       attribute, it’s not necessary to enforce the constraints with RELAX NG.
       You can either tell your processor not to perform the DTD compatibility
       extension checks, or ignore the warning messages that they produce. You
-      could also use Schematron to check ID/IDREF constraints.</p></div></div></div></section><section id="ch03-validate" class="section"><div class="section-titlepage"><h2>2.&nbsp;Validating Your Documents</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">RELAX NG validation is supported natively in some editing
+      could also use Schematron to check ID/IDREF constraints.</p></div></div></div></section><section id="ch03-validate" class="section"><div class="section-titlepage"><h2>2.&nbsp;Validating Your Documents</h2></div><div class="content"><p>RELAX NG validation is supported natively in some editing
     environments, such as <span>&lt;oXygen/&gt;</span><a class="indexterm" name="ch03-validate.2.2"></a><a class="indexterm" name="ch03-validate.2.3"></a> (see <a href="ch03.html#fig.oxygen-validate" title="<oXygen/&gt; XML Editor validation">Figure&nbsp;3.1, “&lt;oXygen/&gt; XML Editor validation”</a>),
     XMLmind,<a class="indexterm" name="ch03-validate.2.5"></a><a class="indexterm" name="ch03-validate.2.6"></a> and <span>Emacs</span> (with
     <code class="literal">nxml-mode</code>). <span>&lt;oXygen/&gt;</span><a class="indexterm" name="ch03-validate.2.10"></a><a class="indexterm" name="ch03-validate.2.11"></a> and XMLmind<a class="indexterm" name="ch03-validate.2.12"></a> also support Schematron validation. There are also several
     standalone validators—for example, <span>Jing</span><a class="indexterm" name="ch03-validate.2.14"></a> and Sun’s <span>Multi-Schema Validator</span>
-    (MSV)<a class="indexterm" name="ch03-validate.2.16"></a>.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">If your documents make use of several namespaces (e.g.,
+    (MSV)<a class="indexterm" name="ch03-validate.2.16"></a>.</p><p>If your documents make use of several namespaces (e.g.,
     <span class="acronym">SVG</span> and <span class="acronym">MathML</span> embedded in DocBook),
     tools that support <span class="acronym">NVDL</span>, <em class="citetitle">Namespace-based
-    Validation Dispatching Language</em> [<a href="appd.html#NVDL"><span class="abbrev">NVDL</span></a>]<a class="indexterm" name="ch03-validate.3.6"></a>, can greatly simplify complex validation scenarios.</p><figure id="fig.oxygen-validate" class="figure-wrapper"><div class="figure"><div id="fig.oxygen-validate.2" class="mediaobject"><img src="figs/web/db5d_0301.png" alt="<oXygen/&gt; XML Editor validation"></div></div><div class="title">Figure&nbsp;3.1.&nbsp;&lt;oXygen/&gt; XML Editor validation</div></figure></div></section><section id="ch03-parseerr" class="section"><div class="section-titlepage"><h2>3.&nbsp;Understanding Validation Errors</h2></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch03-parseerr.2.1"></a><a class="indexterm" name="ch03-parseerr.2.2"></a> <a class="indexterm" name="ch03-parseerr.2.3"></a>Every validator produces slightly different error messages,
+    Validation Dispatching Language</em> [<a href="appd.html#NVDL"><span class="abbrev">NVDL</span></a>]<a class="indexterm" name="ch03-validate.3.6"></a>, can greatly simplify complex validation scenarios.</p><figure id="fig.oxygen-validate" class="figure-wrapper"><div class="figure"><div id="fig.oxygen-validate.2" class="mediaobject"><img src="figs/web/db5d_0301.png" alt="<oXygen/&gt; XML Editor validation"></div></div><div class="title">Figure&nbsp;3.1.&nbsp;&lt;oXygen/&gt; XML Editor validation</div></figure></div></section><section id="ch03-parseerr" class="section"><div class="section-titlepage"><h2>3.&nbsp;Understanding Validation Errors</h2></div><div class="content"><p><a class="indexterm" name="ch03-parseerr.2.1"></a><a class="indexterm" name="ch03-parseerr.2.2"></a> <a class="indexterm" name="ch03-parseerr.2.3"></a>Every validator produces slightly different error messages,
     but most indicate exactly (at least technically<sup class="footnote"><span class="osq">[</span><a id="ch03-parseerr.2.4" href="#ftn.ch03-parseerr.2.4">2</a><span class="csq">]</span></sup>) what is wrong and where the error occurred. With a little
     experience, this information is all you’ll need to quickly identify what’s
-    wrong.</p><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">In the rest of this section, we’ll look at a number of common errors
+    wrong.</p><p>In the rest of this section, we’ll look at a number of common errors
     and the messages they produce in <span class="acronym">MSV</span>. We’ve chosen
     <span class="acronym">MSV</span> because it generally produces informative error
-    messages.</p><section id="ch03-parseerr.4" class="section"><div class="section-titlepage"><h3>3.1.&nbsp;Character Data Not Allowed Here</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch03-parseerr.4.2.1"></a><a class="indexterm" name="ch03-parseerr.4.2.2"></a><a class="indexterm" name="ch03-parseerr.4.2.3"></a>Out-of-context character data is frequently caused by a
+    messages.</p><section id="ch03-parseerr.4" class="section"><div class="section-titlepage"><h3>3.1.&nbsp;Character Data Not Allowed Here</h3></div><div class="content"><p><a class="indexterm" name="ch03-parseerr.4.2.1"></a><a class="indexterm" name="ch03-parseerr.4.2.2"></a><a class="indexterm" name="ch03-parseerr.4.2.3"></a>Out-of-context character data is frequently caused by a
       missing start tag, but sometimes it’s just the result of typing in the
       wrong place!</p><pre class="programlisting language-none line-numbers"><code>&lt;chapter xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
 &lt;title&gt;Test Chapter&lt;/title&gt;
@@ -83,10 +83,10 @@ start parsing a grammar.
 warnings are found. use -warning switch to see all warnings.
 validating badpcdata.xml
 Error at line:10, column:7 of badpcdata.xml
-  unexpected character literal</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch03-parseerr.4.5.1"></a>You can’t put character data directly in a
+  unexpected character literal</code></pre><p><a class="indexterm" name="ch03-parseerr.4.5.1"></a>You can’t put character data directly in a
       <a href="chapter.html"><code class="tag-element">chapter</code></a>. Here, a wrapper element, such as
       <a href="para.html"><code class="tag-element">para</code></a>, is missing around the sentence between the
-      first two paragraphs.</p></div></section><section id="ch03-parseerr.5" class="section"><div class="section-titlepage"><h3>3.2.&nbsp;Misspelled Start Tag</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch03-parseerr.5.2.1"></a>If you spell a start tag incorrectly, or use the wrong
+      first two paragraphs.</p></div></section><section id="ch03-parseerr.5" class="section"><div class="section-titlepage"><h3>3.2.&nbsp;Misspelled Start Tag</h3></div><div class="content"><p><a class="indexterm" name="ch03-parseerr.5.2.1"></a>If you spell a start tag incorrectly, or use the wrong
       namespace, the parser will get confused:</p><pre class="programlisting language-none line-numbers"><code>&lt;chapter xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
 &lt;title&gt;Test Chapter&lt;/title&gt;
 &lt;para&gt;
@@ -127,9 +127,9 @@ Error at line:9, column:7 of misspell.xml
 &lt;qandaset&gt;,&lt;refentry&gt;,&lt;remark&gt;,&lt;revhistory&gt;,&lt;screen&gt;,&lt;screenco&gt;,
 &lt;screenshot&gt;,&lt;section&gt;,&lt;section&gt;,&lt;segmentedlist&gt;,&lt;sidebar&gt;,
 &lt;simpara&gt;,&lt;simplelist&gt;,&lt;simplesect&gt;,&lt;synopsis&gt;,&lt;table&gt;,&lt;task&gt;,
-&lt;tip&gt;,&lt;toc&gt;,&lt;variablelist&gt;,&lt;warning&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">Luckily, these are usually easy to spot, unless you accidentally
+&lt;tip&gt;,&lt;toc&gt;,&lt;variablelist&gt;,&lt;warning&gt;</code></pre><p>Luckily, these are usually easy to spot, unless you accidentally
       spell the name of another element. In that case, your error might appear
-      to be out of context.</p></div></section><section id="ch03-parseerr.6" class="section"><div class="section-titlepage"><h3>3.3.&nbsp;Out-of-Context Start Tag</h3></div><div class="content"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch03-parseerr.6.2.1"></a> <a class="indexterm" name="ch03-parseerr.6.2.2"></a>Sometimes the problem isn’t spelling, but rather placing a
+      to be out of context.</p></div></section><section id="ch03-parseerr.6" class="section"><div class="section-titlepage"><h3>3.3.&nbsp;Out-of-Context Start Tag</h3></div><div class="content"><p><a class="indexterm" name="ch03-parseerr.6.2.1"></a> <a class="indexterm" name="ch03-parseerr.6.2.2"></a>Sometimes the problem isn’t spelling, but rather placing a
       tag in the wrong context. When this happens, the validator tries to
       figure out what it can add to your document to make it valid. Then it
       tries to recover by continuing as if it had seen what it just added. Of
@@ -161,11 +161,11 @@ warnings are found. use -warning switch to see all warnings.
 validating context.xml
 Error at line:9, column:14 of context.xml
   tag name "title" is not allowed. Possible tag names are: &lt;abbrev&gt;,&lt;accel&gt;,
-&lt;acronym&gt;,&lt;address&gt;,…,&lt;varname&gt;,&lt;warning&gt;,&lt;wordasword&gt;,&lt;xref&gt;</code></pre><p xmlns:mp="http://docbook.org/xslt/ns/mode/private"><a class="indexterm" name="ch03-parseerr.6.5.1"></a> <a class="indexterm" name="ch03-parseerr.6.5.2"></a>In this example, we probably wanted a
+&lt;acronym&gt;,&lt;address&gt;,…,&lt;varname&gt;,&lt;warning&gt;,&lt;wordasword&gt;,&lt;xref&gt;</code></pre><p><a class="indexterm" name="ch03-parseerr.6.5.1"></a> <a class="indexterm" name="ch03-parseerr.6.5.2"></a>In this example, we probably wanted a
       <a href="formalpara.html"><code class="tag-element">formalpara</code></a> so that we could have a title on the
       paragraph. But note that the validator didn’t suggest this alternative.
       The validator only tries to add additional elements, rather than rename
-      elements that it’s already seen.</p></div></section></div></section></div><div class="footnotes"><hr width="100" align="left" class="footnotes-divider"><div class="footnote"><div class="footnote-wrapper"><div class="footnote-symbol-wrapper"><p><sup><span class="osq">[</span><a href="#ch03-parseerr.2.4" id="ftn.ch03-parseerr.2.4">2</a><span class="csq">]</span></sup>&nbsp;</p></div><div class="footnote-body-wrapper"><p xmlns:mp="http://docbook.org/xslt/ns/mode/private">It is often the case that you can correct an error in the
+      elements that it’s already seen.</p></div></section></div></section></div><div class="footnotes"><hr width="100" align="left" class="footnotes-divider"><div class="footnote"><div class="footnote-wrapper"><div class="footnote-symbol-wrapper"><p><sup><span class="osq">[</span><a href="#ch03-parseerr.2.4" id="ftn.ch03-parseerr.2.4">2</a><span class="csq">]</span></sup>&nbsp;</p></div><div class="footnote-body-wrapper"><p>It is often the case that you can correct an error in the
         document in several ways. The validator suggests one possible fix, but
         this is not always the right fix. For example, the validator may
         suggest that you can correct out-of-context data by adding another
