@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;6.&nbsp;DocBook Assemblies</title><meta charset="utf-8"><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.3.11"><link href="css/prism.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch05.html" title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1013e16032.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">5.2.0 for DocBook V5.2b06b</a>)</td></tr></table></div><div class="body"><article id="assemblies" class="chapter rf-5.1"><header class="chapter-titlepage"><h2>Chapter&nbsp;6.&nbsp;DocBook Assemblies</h2></header><div class="content"><p>One modern school of thought on technical documentation stresses
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;6.&nbsp;DocBook Assemblies</title><meta charset="utf-8"><link rel="icon" href="http://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.4.1"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch05.html" title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1046e13112.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">5.2.0 for DocBook V5.2b07</a>)</td></tr></table></div><div class="body"><article id="assemblies" class="chapter rf-5.1"><header class="chapter-titlepage"><h2>Chapter&nbsp;6.&nbsp;DocBook Assemblies</h2></header><div class="content"><p>One modern school of thought on technical documentation stresses
 the development of independent units of documentation, often called
 topics, rather than a single narrative. Instead of writing something
 that DocBook users would easily recognize as a book consisting of a
@@ -167,15 +167,19 @@ capabilities of the assembly).</p><pre class="programlisting language-none line-
   &lt;transform name="tutorial" href="db2tutorial.xsl"/&gt;
   &lt;transform name="art2pi" href="art2pi.xsl"/&gt;
   &lt;transform name="office" href="extractoffice.xsl"/&gt;
-&lt;/transforms&gt;</code></pre><p>If there are two ways to provide a transformation. If a resource
-has a <code class="tag-attribute">grammar</code> attribute, the matching transform
-will be selected. If a resource has a <code class="tag-attribute">transform</code>
-attribute, the named transform will be selected.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p>Not all systems may support arbitrary transformations, nor can
+&lt;/transforms&gt;</code></pre><p>There are two ways to provide a transformation from a <a href="resource.html"><code class="tag-element">resource</code></a>:
+via the <code class="tag-attribute">grammar</code> attribute or the <code class="tag-attribute">transform</code> attribute. If a <a href="resource.html"><code class="tag-element">resource</code></a>
+has a <code class="tag-attribute">grammar</code> attribute, the
+<code class="tag-element">transformation</code> with the matching
+<code class="tag-attribute">grammar</code> attribute will be selected. If it does
+not have a <code class="tag-attribute">grammar</code> attribute but it does have a
+<code class="tag-attribute">transform</code> attribute, the <a href="transform.html"><code class="tag-element">transform</code></a> with
+the specified name will be selected.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p>Not all systems may support arbitrary transformations, nor can
 all systems support all possible transformation languages. To maximize
 interoperability it is best to use as few explicit transformations
 as possible, ideally none.</p></div></div><p>Given the transformations above, a DITA resource might be
 included in the assembly:</p><pre class="programlisting language-none"><code>&lt;resource xml:id="overview" href="dita/over.xml"
-          transform="dita2docbook"/&gt;</code></pre><p>Whenever a module refers to this resource, it will receive the transformed,
+          grammar="dita"/&gt;</code></pre><p>Whenever a module refers to this resource, it will receive the transformed,
 DocBook result.</p><p>If a module needs to perform a transformation to get from one DocBook
 format to another, it can name a transform as well:</p><pre class="programlisting language-none line-numbers"><code>&lt;module resourceref="article"&gt;
   &lt;output transform="tutorial"/&gt;
@@ -300,10 +304,10 @@ default value for the webhelp output statements that do not have a
 renderas attribute.</p></div></figure></div></section><section id="assemblies.15.6.7" class="section"><div class="section-titlepage"><h4>4.1.4.&nbsp;Standard Front End</h4></div><div class="content"><p>By convention, the first two pages in the help system are the
 table of contents and the index. However, in the book, the index goes
 in the back.</p><figure id="assemblies.15.6.7.3" class="example-wrapper"><div class="title">Example&nbsp;6.3.&nbsp;The Front End</div><div class="example"><pre class="programlisting language-none line-numbers"><code>    &lt;module&gt;
-      &lt;output outputformat="webhelp" file="sys-toc.html" renderas="topic"/&gt;
+      &lt;output outputformat="webhelp" file="sys-toc.html" renderas="toc"/&gt;
     &lt;/module&gt;
     &lt;module&gt;
-      &lt;output outputformat="webhelp" file="sys-index.html"/&gt;
+      &lt;output outputformat="webhelp" file="sys-index.html" renderas="index"/&gt;
       &lt;output outputformat="pdf" suppress="true"/&gt;
     &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.8" class="section"><div class="section-titlepage"><h4>4.1.5.&nbsp;Main Body of the Help System</h4></div><div class="content"><p>The main content of the help system is broken into an overview
 (Which can have lower-level topics below the main overview topic),
@@ -323,7 +327,7 @@ deal with things like Wizards and related screens and dialogs.</p><figure id="as
       &lt;output outputformat="pdf" renderas="section"/&gt;
     &lt;/module&gt;
     &lt;module&gt;
-      &lt;output outputformat="webhelp" file="pckg-intro.html"/&gt;
+      &lt;output outputformat="webhelp" file="pckg-intro.html" renderas="preface"/&gt;
       &lt;output outputformat="pdf" renderas="chapter"/&gt;
       &lt;merge&gt;
         &lt;title&gt;Packaging&lt;/title&gt;
@@ -479,7 +483,9 @@ model as <a href="info.html"><code class="tag-element">info</code></a>. Metadata
   &lt;module resourceref="tut3"&gt;
     &lt;output renderas="appendix"/&gt;
   &lt;/module&gt;
-  &lt;module resourceref="task4"/&gt;
+  &lt;module resourceref="task4"&gt;
+    &lt;output renderas="section"/&gt;
+  &lt;/module&gt;
   &lt;module resourceref="index"/&gt;
 &lt;/structure&gt;</code></pre><p>The realized structure that this produces is:</p><pre class="programlisting language-none line-numbers"><code>&lt;book xmlns="http://docbook.org/ns/docbook"&gt;
   &lt;info&gt;
@@ -525,8 +531,12 @@ subordinate modules in a new top-level module:</p><pre class="programlisting lan
   &lt;module resourceref="tut1"&gt;
     &lt;output renderas="chapter"/&gt;
   &lt;/module&gt;
-  &lt;module resourceref="tut2"/&gt;
-  &lt;module resourceref="task1"/&gt;
+  &lt;module resourceref="tut2"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
+  &lt;module resourceref="task1"&gt;
+    &lt;output renderas="chapter"/&gt;
+  &lt;/module&gt;
   &lt;module&gt;
     &lt;output renderas="appendix"/&gt;
     &lt;merge&gt;
@@ -535,7 +545,9 @@ subordinate modules in a new top-level module:</p><pre class="programlisting lan
     &lt;module resourceref="tut3"&gt;
       &lt;output renderas="section"/&gt;
     &lt;/module&gt;
-    &lt;module resourceref="task4"/&gt;
+    &lt;module resourceref="task4"&gt;
+      &lt;output renderas="chapter"/&gt;
+    &lt;/module&gt;
   &lt;/module&gt;
   &lt;module resourceref="index"/&gt;
 &lt;/structure&gt;</code></pre><p>The semantics of <code class="tag-attribute">renderas</code> on a module
@@ -821,4 +833,4 @@ in DocBook 5.1), so this isn't a valid DocBook document.
 However, the nested topics provide a navigational structure for the
 online presentation. The rendering system is, we assume, smart enough
 to render each of the topics separately, as if they were all top-level
-siblings.</p></div></section></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1013e16032.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Chapter&nbsp; 5 .&nbsp; Customizing DocBook&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Part&nbsp; II .&nbsp; Reference</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019 Norman Walsh.</p></div></div></div></body></html>
+siblings.</p></div></section></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1046e13112.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Chapter&nbsp; 5 .&nbsp; Customizing DocBook&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Part&nbsp; II .&nbsp; Reference</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019 Norman Walsh.</p></div></div></div></body></html>
