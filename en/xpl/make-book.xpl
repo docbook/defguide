@@ -22,7 +22,7 @@
 <p:xslt name="profiled">
   <p:input port="stylesheet">
     <!-- FIXME: why doesn't the full URI work with the rewriter?
-    <p:document href="https://cdn.docbook.org/release/latest/xslt/base/preprocess/30-profile.xsl"/>
+    <p:document href="https://cdn.docbook.org/release/xslt20/current/xslt/base/preprocess/30-profile.xsl"/>
     -->
     <p:document href="../stylesheets/30-profile.xsl"/>
   </p:input>
