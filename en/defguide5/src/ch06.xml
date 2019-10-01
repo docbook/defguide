@@ -337,10 +337,15 @@ capabilities of the assembly).</para>
   <transform name="office" href="extractoffice.xsl"/>
 </transforms>]]></programlisting>
 
-<para>If there are two ways to provide a transformation. If a resource
-has a <tag class="attribute">grammar</tag> attribute, the matching transform
-will be selected. If a resource has a <tag class="attribute">transform</tag>
-attribute, the named transform will be selected.</para>
+<para>There are two ways to provide a transformation from a <tag>resource</tag>:
+via the <tag class="attribute">grammar</tag> attribute or the <tag
+class="attribute">transform</tag> attribute. If a <tag>resource</tag>
+has a <tag class="attribute">grammar</tag> attribute, the
+<tag>transformation</tag> with the matching
+<tag class="attribute">grammar</tag> attribute will be selected. If it does
+not have a <tag class="attribute">grammar</tag> attribute but it does have a
+<tag class="attribute">transform</tag> attribute, the <tag>transform</tag> with
+the specified name will be selected.</para>
 
 <note>
 <para>Not all systems may support arbitrary transformations, nor can
@@ -353,7 +358,7 @@ as possible, ideally none.</para>
 included in the assembly:</para>
 
 <programlisting>&lt;resource xml:id="overview" href="dita/over.xml"
-          transform="dita2docbook"/></programlisting>
+          grammar="dita"/></programlisting>
 
 <para>Whenever a module refers to this resource, it will receive the transformed,
 DocBook result.</para>
@@ -622,10 +627,10 @@ in the back.</para>
 <example>
 <title>The Front End</title>
 <programlisting><![CDATA[    <module>
-      <output outputformat="webhelp" file="sys-toc.html" renderas="topic"/>
+      <output outputformat="webhelp" file="sys-toc.html" renderas="toc"/>
     </module>
     <module>
-      <output outputformat="webhelp" file="sys-index.html"/>
+      <output outputformat="webhelp" file="sys-index.html" renderas="index"/>
       <output outputformat="pdf" suppress="true"/>
     </module>]]></programlisting>
 </example>
@@ -658,7 +663,7 @@ deal with things like Wizards and related screens and dialogs.</para>
       <output outputformat="pdf" renderas="section"/>
     </module>
     <module>
-      <output outputformat="webhelp" file="pckg-intro.html"/>
+      <output outputformat="webhelp" file="pckg-intro.html" renderas="preface"/>
       <output outputformat="pdf" renderas="chapter"/>
       <merge>
         <title>Packaging</title>
@@ -898,7 +903,9 @@ model as <tag>info</tag>. Metadata elements that you include in the
   <module resourceref="tut3">
     <output renderas="appendix"/>
   </module>
-  <module resourceref="task4"/>
+  <module resourceref="task4">
+    <output renderas="section"/>
+  </module>
   <module resourceref="index"/>
 </structure>]]></programlisting>
 
@@ -956,8 +963,12 @@ subordinate modules in a new top-level module:</para>
   <module resourceref="tut1">
     <output renderas="chapter"/>
   </module>
-  <module resourceref="tut2"/>
-  <module resourceref="task1"/>
+  <module resourceref="tut2">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="task1">
+    <output renderas="chapter"/>
+  </module>
   <module>
     <output renderas="appendix"/>
     <merge>
@@ -966,7 +977,9 @@ subordinate modules in a new top-level module:</para>
     <module resourceref="tut3">
       <output renderas="section"/>
     </module>
-    <module resourceref="task4"/>
+    <module resourceref="task4">
+      <output renderas="chapter"/>
+    </module>
   </module>
   <module resourceref="index"/>
 </structure>]]></programlisting>
