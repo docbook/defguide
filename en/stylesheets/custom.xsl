@@ -21,6 +21,9 @@
 <xsl:param name="docbook.css">css/defguide.css</xsl:param>
 <xsl:param name="callout.graphics.path" select="'figs/web/callouts/'"/>
 
+<xsl:param name="docbookVersion" select="'UNKNOWN'"/>
+<xsl:param name="docbookXsltVersion" select="'UNKNOWN'"/>
+
 <xsl:param xmlns="http://docbook.org/ns/docbook"
            name="generate.toc" as="element()*">
   <tocparam path="book" toc="1" title="1" figure="1" table="1" example="1" equation="1"/>
@@ -269,39 +272,36 @@
 
     <h1><xsl:value-of select="db:info/db:title"/></h1>
 
-    <p class="titlepage-block">
-      <span class="authorgroup">
-        <xsl:text>by </xsl:text>
+    <div class="titlepage-block">
+      <div class="authorgroup">
+        <xsl:text>Author: </xsl:text>
         <xsl:apply-templates select="db:info/db:author" mode="titleblock"/>
-      </span>
-      <br/>
-      <span class="editor">
-        <xsl:text>Edited by </xsl:text>
+      </div>
+      <div class="editor">
+        <xsl:text>Editor: </xsl:text>
         <xsl:apply-templates select="db:info/db:editor" mode="titleblock"/>
-      </span>
-      <br/>
+      </div>
       <xsl:if test="$isbn">
-        <span class="isbn">
+        <div class="isbn">
           <xsl:text>ISBN: </xsl:text>
           <a href="http://oreilly.com/catalog/{$isbn}/">
             <xsl:value-of select="$isbn"/>
           </a>
-        </span>
-        <xsl:text>, published in conjunction with </xsl:text>
-        <a href="http://xmlpress.net/">XML Press</a>.
-        <br/>
+          <xsl:text>, published in conjunction with </xsl:text>
+          <a href="http://xmlpress.net/">XML Press</a>.
+        </div>
       </xsl:if>
-      <span class="version">
+      <div class="version">
         <xsl:text>Version </xsl:text>
         <xsl:apply-templates select="$version/node()"/>
-      </span>
-      <br/>
-      <span class="date">
-        <xsl:variable name="pubdate" select="$date cast as xs:date" as="xs:date"/>
+      </div>
+      <div class="date">
+        <xsl:variable name="pubdate"
+                      select="$date cast as xs:date" as="xs:date"/>
         <xsl:text>Updated: </xsl:text>
         <xsl:value-of select="format-date($pubdate, '[D1] [MNn], [Y0001]')"/>
-      </span>
-    </p>
+      </div>
+    </div>
 
     <p class="copyright">
       <a href="dbcpyright.html">Copyright</a>
@@ -880,6 +880,14 @@
 
 <xsl:template match="processing-instruction('lb')">
   <br/>
+</xsl:template>
+
+<xsl:template match="processing-instruction('docbookVersion')">
+  <xsl:value-of select="$docbookVersion"/>
+</xsl:template>
+
+<xsl:template match="processing-instruction('docbookXsltVersion')">
+  <xsl:value-of select="$docbookXsltVersion"/>
 </xsl:template>
 
 </xsl:stylesheet>

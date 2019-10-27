@@ -4,231 +4,94 @@
 	 version="5.0" xml:id="preface-online">
 <?dbhtml filename="ch00-online.html"?>
 <info>
-  <title>Preface to the DocBook V5.1 Edition</title>
+  <title>Preface to the DocBook V5.2 Edition</title>
 </info>
 
-<para><citetitle>DocBook 5: The Definitive Guide</citetitle> as you
-see it on this site tracks the most current development
-release of DocBook, at the moment, that's DocBook V5.1b3.</para>
+<para>This edition of
+<citetitle>DocBook 5: The Definitive Guide</citetitle> describes
+the DocBook V5.2 schema, currently version <?docbookVersion?>.</para>
 
 <para>The current
 <link xlink:href="http://oreilly.com/catalog/9780596805012/">O'Reilly
 edition</link> covers DocBook V5.0, the OASIS Standard.</para>
 
-<para>If you're using DocBook V5.0, you will find some things in this
-online text which are new or different from the OASIS Standard
-release.</para>
-
-<section xml:id="changes-in-51">
-<title>Summary of Changes in DocBook V5.1</title>
-
-<para>This section summarizes the changes made since DocBook V5.0.</para>
-
-<para>FIXME: This needs to be updated</para>
-
-<para>The largest change is the introduction of support for topic-based authoring
-through the addition of the <tag>topic</tag> element and the <tag>assembly</tag>
-structure. For more information about assemblies, see
-<xref linkend="assemblies"/>.</para>
-
-<para>DocBook V5.1 also addresses the following requests for enhancement:</para>
+<section xml:id="changes-in-52">
+<title>Summary of Changes in DocBook V5.2</title>
 
 <itemizedlist>
 <listitem>
-<para><rfe>1679665</rfe>
-Add better support for modular documentation.
+<para>Added a <tag class="attribute">transform</tag> attribute
+to the <tag>resource</tag> element (as an alternative to
+<tag class="attribute">grammar</tag>).
 </para>
 </listitem>
 <listitem>
-<para><rfe>1722935</rfe>
-Add a <tag class="attvalue">proofreader</tag> value to the <tag class="attribute">class</tag>
-attribute for <tag>othercredit</tag>.
+<para>Removed the <tag class="attribute">grammar</tag> attribute
+from <tag>output</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>1770787</rfe>
-Add <tag>givenname</tag> as an alternative for <tag>firstname</tag>.
+<para>Added a <tag>danger</tag> admonition.
 </para>
 </listitem>
 <listitem>
-<para><rfe>1899655</rfe>
-Allow more elements to be the root of a DocBook document.
+<para>Added a <tag>legalsection</tag> sectioning element. Allow
+<tag>legalsection</tag> in <tag>legalnotice</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2100736</rfe>
-Allow <tag>constant</tag> in <tag>initializer</tag>.
+<para>Added an <tag class="attribute">otherclass</tag> attribute
+to <tag>article</tag> as an alternative to the enumerated
+<tag class="attribute">class</tag> values.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2791288</rfe>
-Added several additional elements, including <tag>quote</tag>, to the ubiquitous inlines.
+<para>Added a <tag>formalgroup</tag> element to contain several
+formal objects (for example, subfigures in a figure).
 </para>
 </listitem>
 <listitem>
-<para><rfe>2820190</rfe>
-Add a <tag>topic</tag> element.
+<para>Relaxed the content model of <tag>abstract</tag> to
+include non-paragraph block elements.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2821653</rfe>
-Remove the constraint that <tag>indexterm</tag> elements must not appear in
-<tag>footnote</tag>s.
+<para>Added <tag>multimediaparam</tag>s to <tag>imagedata</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2907124</rfe>
-Allow personal name components directly in <tag>bibliomset</tag>.
+<para>Added a <tag>buildtarget</tag> inline.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2907125</rfe>
-Allow all inlines in <tag>remark</tag>.
+<para>Allow <tag>funcdef</tag> to contain an explicit <tag>void</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2907131</rfe>
-Allow <tag>simplesect</tag> in <tag>colophon</tag>.
+<para>Allow <tag>paramdef</tag> to contain <tag>modifier</tag>s.
 </para>
 </listitem>
 <listitem>
-<para><rfe>2964576</rfe>
-Fix the bug that allowed <tag>table</tag> to appear inside <tag>entry</tag>.
+<para>Allow <tag>fieldsynopsis</tag>, <tag>methodsynopsis</tag>,
+and <tag>methodparam</tag> to
+contain more than one <tag>type</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>3064674</rfe>
-Make sure <tag>abstract</tag> isn't lost during the DocBook 4-to-5 upgrade
-in <filename>db4-upgrade.xsl</filename>.
+<para>Extended the content model of <tag>type</tag> so that it
+can represent union and intersection types. Added a
+<tag class="attribute">class</tag> attribute to <tag>type</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>3150303</rfe>
-Broaden content model of <tag>contrib</tag>.
+<para>Allow numbered sections (<tag>sect1</tag>, <tag>sect2</tag>,
+etc.) to contain <tag>refentry</tag>.
 </para>
 </listitem>
 <listitem>
-<para><rfe>3171553</rfe>
-Allow <tag>dedication</tag> in <tag>article</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3174769</rfe>
-Added <tag class="attvalue">securitycontext</tag> and
-<tag class="attvalue">other</tag> to <tag>systemitem</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3199793</rfe> Allow XInclude to be used in <tag>set</tag>.
-Also allowed in more places. Tweaked XInclude pattern to allow
-foreign, namespace-qualified attributes in preparation for
-<citetitle>XInclude 1.1</citetitle>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3227210</rfe>
-Fix HTML <tag>informaltable</tag> attributes.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3274136</rfe>
-Allow <tag>production</tag> to contain more than one <tag>rhs</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3287339</rfe>
-Support “<literal>istc</literal> as a <att>class</att> attribute value
-on <tag>biblioid</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3368279</rfe>
-Make content optional in components and sections.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3384939</rfe>
-Fix XLink support. Allow extended links and other link types.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3390036</rfe>
-Allow <tag>tag</tag> elements to nest.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3406169</rfe>
-Allow multiple <tag>procedure</tag> elements in <tag>task</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3500814</rfe>
-Added <att>pgwide</att> attribute to <tag>informalexample</tag> and
-<tag>informalequation</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3517981</rfe>
-Remove spurious, duplicate “<literal>other</literal> value from <tag>othercredit</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3530659</rfe>
-Allow admonitions in formal objects.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3531365</rfe>
-Allow navigation components at the beginnings of sections.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3540409</rfe>
-Added <tag class="attvalue">altgr</tag> and <tag class="attvalue">return</tag> values
-to the <att>function</att> attribute on <tag>keycap</tag>
-</para>
-</listitem>
-<listitem>
-<para><rfe>3547943</rfe>
-Don't allow <tag>secondary</tag> without a <tag>primary</tag> in <tag>indexterm</tag>.
-</para>
-</listitem>
-<listitem>
-<para><rfe>3571149</rfe>
-Allow <tag>article</tag> in <tag>set</tag>.
-</para>
-</listitem>
-</itemizedlist>
-
-<para>The following issues are also addressed:</para>
-
-<itemizedlist>
-<listitem>
-<para>Added accessibility attributes to CALS tables.
-</para>
-</listitem>
-<listitem>
-<para>Added <att>outputformat</att> as a common effectivity attribute.
-</para>
-</listitem>
-<listitem>
-<para>Fixed bug in Schematron assertions (several conditions were reversed).
-</para>
-</listitem>
-<listitem>
-<para>Improve support for multimedia. Added <att>autoplay</att> and
-<att>classid</att> attributes to <tag>audiodata</tag> and <tag>videodata</tag>.
-Added <tag>multimediaparam</tag>, allowed in <tag>audioobject</tag> and
-<tag>videoobject</tag>.
-</para>
-</listitem>
-<listitem>
-<para>Allow <tag>link</tag> in <tag>extendedlink</tag>. See backwards incompatible
-changes planned for DocBook V6.0; <tag>arc</tag> and <tag>locator</tag> will
-be removed.</para>
-</listitem>
-<listitem>
-<para>Changed Schematron namespace to official ISO Schematron URI.
+<para>Added <literal>interface</literal> to the enumerated values
+in the <tag class="attribute">class</tag> attribute of
+<tag>systemitem</tag>.
 </para>
 </listitem>
 </itemizedlist>
@@ -275,8 +138,10 @@ that points to it.</para>
 <section xml:id="formatting-note">
 <title>About the formatting…</title>
 
-<para>Starting with this edition of the guide, publication is being performed by
-the XSLT 2.0 stylesheets. Please report any formatting errors you notice.</para>
+<para>Published with the
+<link xlink:href="https://github.com/docbook/xslt20-stylesheets">DocBook
+XSLT 2.0 Stylesheets</link>, version <?docbookXsltVersion?>.
+Please report any formatting errors that you notice.</para>
 </section>
 
 </preface>

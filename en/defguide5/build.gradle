@@ -224,6 +224,8 @@ task tdg(dependsOn: ['book', 'copyFiles'], type: DocBookTask) {
   param("base.dir", "build/html/")
   param("html.ext", ".html")
   param("rngfile", "lib/$rnd")
+  param("docbookVersion", docbookVersion)
+  param("docbookXsltVersion", docbookXsltVersion)
   param("resource.root", "")
 }
 
