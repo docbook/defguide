@@ -34,7 +34,8 @@ jobs:
 
       - run:
           working_directory: ~/defguide/en/defguide5
-          command: ./gradlew --no-daemon --stacktrace tdg
+          command: ./gradlew --no-daemon tdg
+          no_output_timeout: 30m
 
       - run:
           working_directory: ~/defguide/en/defguide5
