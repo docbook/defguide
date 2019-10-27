@@ -306,10 +306,9 @@
     <p class="copyright">
       <a href="dbcpyright.html">Copyright</a>
       <xsl:text> &#xA9; </xsl:text>
-      <xsl:for-each select="/db:book/db:info/db:copyright/db:year">
-        <xsl:if test="position() &gt; 1">, </xsl:if>
-        <xsl:value-of select="."/>
-      </xsl:for-each>
+      <xsl:value-of select="/db:book/db:info/db:copyright/db:year[1]"/>
+      <xsl:text>–</xsl:text>
+      <xsl:value-of select="/db:book/db:info/db:copyright/db:year[last()]"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="/db:book/db:info/db:copyright/db:holder"/>
       <xsl:text>.</xsl:text>
