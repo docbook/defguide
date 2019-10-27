@@ -165,9 +165,6 @@
   </xsl:copy>
 </xsl:template>
 
-<xsl:template match="db:pubdate[. = '$Date$']"/>
-<xsl:template match="db:releaseinfo[. = '$Revision$']"/>
-
 <xsl:template match="db:refmeta">
   <xsl:element name="{name(.)}">
     <xsl:copy-of select="@*"/>

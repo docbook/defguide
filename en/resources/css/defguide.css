@@ -45,7 +45,9 @@ ul.toc {
   list-style-type: none;
   padding-left: 0px;
   margin-top: 0.25em;
-  margin-bottom: 0.25em; }
+  margin-bottom: 0.25em;
+  line-height: 1.0;
+}
 
 ul.toc
 ul.toc {
@@ -99,21 +101,31 @@ div.refentry div.titlepage h1.title {
   margin-bottom: 0px;
   font-size: 36pt; }
 
+html {
+    font-size: 1.3rem;
+}
+
 body {
-  margin-top: 0px;
-  padding-top: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  background-color: #fffff8; }
+    max-width: 50em;
+    margin: 0 auto;
+    padding: 1.6em 1.5em 2em 50px;
+    line-height: 1.5;
+    widows: 2;
+    orphans: 2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+    background-color: #fffff8;
+}
 
 div.navheader {
   padding-top: 2px;
   background-color: #93a1a1;
   padding-right: 2px;
   border-bottom-style: solid;
-  border-bottom-width: 1px; }
+  border-bottom-width: 1px;
+  font-size: 12pt;
+}
 
 div.navfooter {
   background-color: #93a1a1;
@@ -307,6 +319,11 @@ body {
 
 /* Improve the formatting of the copyright page */
 .body > p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.body > pre {
   margin-left: 1em;
   margin-right: 1em;
 }
