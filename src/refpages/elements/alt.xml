@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">alt</refmiscinfo>
+  <refmiscinfo role="pattern">db.alt</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>The <tag>alt</tag> element was originally added to DocBook to
+provide an alternative, usually text, presentation for graphical
+elements. In DocBook V5.0, it was made a “ubiquitous” element so that
+it's available almost everywhere. The semantic intent of
+<tag>alt</tag> is simply that it provides alternative text, often for
+accessibility.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>May be formatted inline or as a displayed block, depending on
+context. It is not usually rendered where it occurs, rather it is used
+to annotate some other aspect of the presentation.</para>
+
+<para>For example, in an HTML presentation, the <tag>alt</tag> for a
+media object would likely provide the text of the
+<tag class="attribute">alt</tag> attribute for the HTML
+<tag namespace="http://www.w3.org/1999/xhtml">img</tag> element.</para>
+
+<para>In the context of an <tag>acronym</tag>, the <tag>alt</tag> could
+provide the <tag class="attribute">title</tag> attribute for the HTML
+<tag namespace="http://www.w3.org/1999/xhtml">abbr</tag> element allowing
+the expansion to be presented appropriately to the user (as a “tooltip”,
+for example, or read aloud).</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+</refentry>
