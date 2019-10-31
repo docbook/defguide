@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>alt</title><meta charset="utf-8"><link rel="icon" href="figs/web/icon-slides.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.4.3"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook Slides: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-slides.png" alt="Home" border="0"></a>&nbsp;<a href="affiliation.html" title="affiliation"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="attribution" href="attribution.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook Slides: The Definitive Guide</i> (Version <a href="ch00-online.html">0.9.0 for DocBook Slides 5.2b07</a>)</td></tr></table></div><div class="body"><article id="element.db.alt" class="refentry"><div class="content"><a class="indexterm" name="element.db.alt.1"></a><div class="refnamediv"><h2>alt</h2><p><span class="refname">alt</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">A text-only annotation, often used for accessibility</span><span class="refpurpose-punc">.</span></span></p></div><div class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p>alt&nbsp;<span class="cceq">::=</span><span id="cmshow" style="display: none;">&nbsp;<a href="javascript:showAll()"><img src="figs/web/nav/right.gif" border="0" alt="[+]"></a></span><span id="cmhide">&nbsp;<a href="javascript:hideAll()"><img src="figs/web/nav/down.gif" border="0" alt="[-]"></a></span></p><div class="itemizedlist element-synopsis"><ul><li>Zero or more of:<div class="itemizedlist element-synopsis"><ul><li><em>text</em></li><li id="d404e72614-db.graphic.inlines"><em title="inlinemediaobject" class="patnlink">Graphic&nbsp;inlines</em><span id="pls.d404e72614-db.graphic.inlines" style="display: none;">&nbsp;<a href="javascript:show('d404e72614-db.graphic.inlines')"><img src="figs/web/nav/right.gif" border="0" alt="[+]"></a></span><span id="plh.d404e72614-db.graphic.inlines">&nbsp;<a href="javascript:hide('d404e72614-db.graphic.inlines')"><img src="figs/web/nav/down.gif" border="0" alt="[-]"></a></span><div class="patnlist" id="l.d404e72614-db.graphic.inlines"><div class="patnlist db.graphic.inlines"><ul type="disc"><li><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></li></ul></div></div></li></ul></div></li></ul></div><div class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p><a href="ref-elements.html#common.attributes">Common attributes</a>.</p></div></div></div><div class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
+
+
+<p>The <a href="alt.html"><code class="tag-element">alt</code></a> element was originally added to DocBook to
+provide an alternative, usually text, presentation for graphical
+elements. In DocBook V5.0, it was made a “ubiquitous” element so that
+it's available almost everywhere. The semantic intent of
+<a href="alt.html"><code class="tag-element">alt</code></a> is simply that it provides alternative text, often for
+accessibility.</p>
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div><div class="content">
+
+
+<p>May be formatted inline or as a displayed block, depending on
+context. It is not usually rendered where it occurs, rather it is used
+to annotate some other aspect of the presentation.</p>
+
+<p>For example, in an HTML presentation, the <a href="alt.html"><code class="tag-element">alt</code></a> for a
+media object would likely provide the text of the
+<code class="tag-attribute">alt</code> attribute for the HTML
+img element.</p>
+
+<p>In the context of an <a href="acronym.html"><code class="tag-element">acronym</code></a>, the <a href="alt.html"><code class="tag-element">alt</code></a> could
+provide the <code class="tag-attribute">title</code> attribute for the HTML
+abbr element allowing
+the expansion to be presented appropriately to the user (as a “tooltip”,
+for example, or read aloud).</p>
+</div></div>
+
+
+<div class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><div class="content"><p>These elements contain <a href="alt.html"><code class="tag-element">alt</code></a>: <span class="simplelist"><span class="member"><a href="cals.informaltable.html"><code class="tag-element">informaltable</code></a>&nbsp;<span class="pattern">(db.cals.informaltable)</span></span>, <span class="member"><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></span>, <span class="member"><a href="mediaobject.html"><code class="tag-element">mediaobject</code></a></span>, <span class="member"><a href="cals.table.html"><code class="tag-element">table</code></a>&nbsp;<span class="pattern">(db.cals.table)</span></span></span>.</p></div></div>
+<div class="refsection"><div class="refsection-titlepage"><h3>Children</h3></div><div class="content"><p>The following elements occur in alt: <span class="simplelist"><span class="member"><em>text</em></span>, <span class="member"><a href="inlinemediaobject.html"><code class="tag-element">inlinemediaobject</code></a></span></span>.</p></div></div>
+
+</div></div></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="affiliation" href="affiliation.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook Slides: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-slides.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="attribution" href="attribution.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">affiliation&nbsp;</td><td width="20%" align="center"><a title="DocBook Element Reference" href="ref-elements.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;attribution</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Norman Walsh.</p></div></div></div></body></html>
