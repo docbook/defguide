@@ -230,6 +230,7 @@
             <xsl:when test="$element = '_any.svg'">svg:*</xsl:when>
             <xsl:when test="$element = '_any.mml'">mml:*</xsl:when>
             <xsl:when test="$element = '_any'">*:*</xsl:when>
+            <xsl:when test="$element = 'sl._any.html'">html:*</xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="$element"/>
             </xsl:otherwise>
@@ -342,6 +343,9 @@
                   </xsl:when>
                   <xsl:when test="@name = 'db._any'">
                     <xsl:text>*:*</xsl:text>
+                  </xsl:when>
+                  <xsl:when test="@name = 'sl._any.html'">
+                    <xsl:text>html:*</xsl:text>
                   </xsl:when>
                   <xsl:when test="count($defs) = 0">
                     <xsl:message>Failed to find text for: <xsl:value-of select="@name"/></xsl:message>
@@ -1429,6 +1433,10 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       </xsl:when>
       <xsl:when test="@name = 'db._any'">
         <tag>*:*</tag>
+        <xsl:if test="parent::rng:optional">?</xsl:if>
+      </xsl:when>
+      <xsl:when test="@name = 'sl._any.html'">
+        <tag>html:*</tag>
         <xsl:if test="parent::rng:optional">?</xsl:if>
       </xsl:when>
       <xsl:when test="$elemName">

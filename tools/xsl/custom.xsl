@@ -23,6 +23,7 @@
 
 <xsl:param name="docbookVersion" select="'UNKNOWN'"/>
 <xsl:param name="docbookXsltVersion" select="'UNKNOWN'"/>
+<xsl:param name="rngfile" required="yes"/>
 
 <xsl:param xmlns="http://docbook.org/ns/docbook"
            name="generate.toc" as="element()*">
@@ -51,9 +52,6 @@
 <ln path="address" everyNth="0"/>
 <ln path="epigraph/literallayout" everyNth="0"/>
 </xsl:param>
-
-<xsl:variable name="rngfile"
-	      select="'../tools/lib/defguide.rnd'"/>
 
 <xsl:variable name="rng" select="document($rngfile)"/>
 
@@ -85,12 +83,14 @@
   <xsl:param name="large" select="'0'"/>
   <xsl:param name="align" select="''"/>
 
-  <xsl:variable name="revision" as="xs:string?" select="$node/@revision"/>
   <xsl:variable name="arch" as="xs:string?" select="$node/@arch"/>
+  <xsl:variable name="tag" as="xs:string?" select="local-name(.)"/>
 
-  <xsl:if test="$revision or $arch">
+  <xsl:for-each select="tokenize($node/@revision, '\s+')">
+    <xsl:variable name="revision" select="."/>
     <xsl:choose>
-      <xsl:when test="($arch = 'defguide5' or $arch = 'publishers')
+      <xsl:when test="($arch = 'defguide' or $arch = 'publishers'
+                      or $arch = 'sdocbook')
                       and empty($revision)">
         <!-- nop, expected -->
       </xsl:when>
@@ -130,8 +130,26 @@
           </xsl:if>
         </img>
       </xsl:when>
-      <xsl:when test="$revision='5.0' and $arch='publishers'">
-        <img src="figs/web/rev_5.0p.png" alt="[5.0 Publishers]">
+      <xsl:when test="$revision='1.0' and $arch='publishers'">
+        <img src="figs/web/rev_1.0_pub.png" alt="[1.0 Publishers]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
+      <xsl:when test="$revision='1.1' and $arch='publishers'">
+        <img src="figs/web/rev_1.1_pub.png" alt="[1.1 Publishers]">
+          <xsl:if test="$align != ''">
+            <xsl:attribute name="align">
+              <xsl:value-of select="$align"/>
+            </xsl:attribute>
+          </xsl:if>
+        </img>
+      </xsl:when>
+      <xsl:when test="$revision='1.2' and $arch='publishers'">
+        <img src="figs/web/rev_1.2_pub.png" alt="[1.2 Publishers]">
           <xsl:if test="$align != ''">
             <xsl:attribute name="align">
               <xsl:value-of select="$align"/>
@@ -239,11 +257,11 @@
           <xsl:text>/</xsl:text>
           <xsl:value-of select="$arch"/>
           <xsl:text>' on </xsl:text>
-          <xsl:value-of select="local-name(.)"/>
+          <xsl:value-of select="$tag"/>
         </xsl:message>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:if>
+  </xsl:for-each>
 </xsl:template>
 
 <xsl:template match="db:book">
@@ -292,6 +310,14 @@
         </div>
       </xsl:if>
       <div class="version">
+        <xsl:if test="$rng/*/@buildhash">
+          <xsl:variable name="hash" select="string($rng/*/@buildhash)"/>
+          <xsl:attribute name="title">
+            <xsl:text>Schema commit </xsl:text>
+            <xsl:value-of select="substring($hash, 1, 6)"/>
+            <xsl:text>…</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
         <xsl:text>Version </xsl:text>
         <xsl:apply-templates select="$version/node()"/>
       </div>
@@ -592,12 +618,14 @@
 
       <xsl:choose>
         <xsl:when test="contains($conforms, '0')">
+          <!--
           <xsl:message>
             <xsl:text>Suppressing inschema (</xsl:text>
             <xsl:value-of select="local-name(.)"/>
             <xsl:text>): </xsl:text>
             <xsl:value-of select="$conforms"/>
           </xsl:message>
+          -->
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-imports/>
@@ -649,12 +677,14 @@
 
       <xsl:choose>
         <xsl:when test="contains($conforms, '0')">
+          <!--
           <xsl:message>
             <xsl:text>Suppressing inschema (</xsl:text>
             <xsl:value-of select="local-name(.)"/>
             <xsl:text>): </xsl:text>
             <xsl:value-of select="$conforms"/>
           </xsl:message>
+          -->
         </xsl:when>
         <xsl:otherwise>
           <p>
@@ -705,14 +735,6 @@
       <xsl:when test="$lcname = 'indexterm'">
 	<xsl:value-of select="'element.db.indexterm.singular'"/>
       </xsl:when>
-<!--
-      <xsl:when test="$lcname = 'resource'">
-	<xsl:value-of select="'element.db.file.resource'"/>
-      </xsl:when>
-      <xsl:when test="$lcname = 'module'">
-	<xsl:value-of select="'element.db.resource.module'"/>
-      </xsl:when>
--->
       <xsl:when test="$lcname = 'mml.*'">
 	<xsl:value-of select="'element.db._any.mml'"/>
       </xsl:when>
@@ -728,6 +750,15 @@
       <xsl:when test="count(key('id', concat('element.db.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.', $lcname)"/>
       </xsl:when>
+      <xsl:when test="count(key('id', concat('element.sl.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('element.sl.', $lcname)"/>
+      </xsl:when>
+      <xsl:when test="count(key('id', concat('element.ws.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('element.ws.', $lcname)"/>
+      </xsl:when>
+      <xsl:when test="count(key('id', concat('element.ws.rddl.', $lcname))) &gt; 0">
+	<xsl:value-of select="concat('element.ws.', $lcname)"/>
+      </xsl:when>
       <xsl:when test="count(key('id', concat('element.db.html.', $lcname))) &gt; 0">
 	<xsl:value-of select="concat('element.db.html.', $lcname)"/>
       </xsl:when>
@@ -742,7 +773,7 @@
 
   <xsl:choose>
     <xsl:when test="$class = 'element'
-		    and following-sibling::*[1]/self::db:phrase
+		    and following-sibling::*[1]/self::db:phrase[not(@conformance)]
 		    and contains(following-sibling::db:phrase[1], '(')">
       <!-- handle <tag>phrase</tag> (<phrase>db._phrase</phrase>) -->
       <xsl:variable name="pattern"
