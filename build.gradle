@@ -92,12 +92,6 @@ def bookVersion = ["defguide": defguideBookVersion,
                    "slides": slidesBookVersion,
                    "website": websiteBookVersion ]
 
-def bookDocBookVersion = ["defguide": defguideDocBookVersion,
-                          "publishers": publishersDocBookVersion,
-                          "sdocbook": sdocbookDocBookVersion,
-                          "slides": slidesDocBookVersion,
-                          "website": websiteDocBookVersion ]
-
 // ======================================================================
 
 task hello() {
@@ -155,7 +149,7 @@ books.each { vocab ->
     input("source", "src/${vocab}/bookinfo.xml")
     output("result", "build/${vocab}/bookinfo.xml")
     param("bookVersion", bookVersion[vocab])
-    param("docbookVersion", bookDocBookVersion[vocab])
+    param("docbookVersion", docbookVersion)
     pipeline "tools/xpl/bookmeta.xpl"
     doFirst {
       mkdir("build/${vocab}")
@@ -215,11 +209,13 @@ books.each { vocab ->
   }
 
   task "${vocab}_refpages"(dependsOn: ["${vocab}_refpageListElements",
-                                       "${vocab}_refpageExamples"],
+                                       "${vocab}_refpageExamples",
+                                       "gitLogSummary"],
                            type: XMLCalabashTask) {
     inputs.dir "src/refpages/elements"
     inputs.file "tools/xsl/refentry.xsl"
     inputs.file "tools/xpl/refpages.xpl"
+    inputs.file "src/${vocab}/seealso.xml"
     outputs.dir "build/${vocab}/refpages"
     option("rnd", rndFile)
     option("src", absuri("src/${vocab}/"))
@@ -297,7 +293,7 @@ task publishers_xml(dependsOn: ['publishers_tdgxml'], type: XMLCalabashTask) {
   input("source", "build/publishers/tdg.xml")
   output("result", "build/publishers/book.xml")
   option("arch", "publishers")
-  option("revision", "5.0 5.1 5.2")
+  option("revision", "5.0 5.1 5.2 1.0 1.1 1.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
   // something else in the reference pages. :-(
@@ -334,7 +330,7 @@ task slides_xml(dependsOn: ['slides_tdgxml'], type: XMLCalabashTask) {
 
   input("source", "build/slides/tdg.xml")
   output("result", "build/slides/book.xml")
-  option("arch", "slides")
+  option("arch", "sdocbook slides")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
@@ -353,7 +349,7 @@ task website_xml(dependsOn: ['website_tdgxml'], type: XMLCalabashTask) {
 
   input("source", "build/website/tdg.xml")
   output("result", "build/website/book.xml")
-  option("arch", "website")
+  option("arch", "slides website")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
