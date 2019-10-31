@@ -35,4 +35,4 @@ done
 
 git add --all .
 git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
-#git push -fq origin gh-pages
+git push -fq origin gh-pages
