@@ -17,13 +17,20 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>A <tag>section</tag> is one of the top-level sectioning elements
-in a component. There are
-<phrase arch="defguide5">three</phrase><phrase arch="publishers">two</phrase>
-types of sectioning elements in DocBook:</para>
+<!-- This is complicated because defguide, publishers, and sdocbook
+     have different numbers of sectioning elements. -->
 
-<itemizedlist>
-  <listitem arch="defguide5">
+<para arch="defguide publishers">A <tag>section</tag>
+is one of the top-level sectioning elements in a component. There are
+<phrase arch="defguide">three</phrase><phrase
+arch="publishers">two</phrase> types of sectioning elements in
+DocBook:</para>
+
+<para arch="sdocbook">A <tag>section</tag> is the
+top-level sectioning elements in a component.</para>
+
+<itemizedlist arch="defguide publishers">
+  <listitem arch="defguide">
     <para>Explicitly numbered sections,
     <tag>sect1</tag>…<tag>sect5</tag>, which must be properly nested
     and can only be five levels deep.</para>
