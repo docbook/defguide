@@ -1,14 +1,15 @@
-<grammar xmlns="http://relaxng.org/ns/structure/1.0"
-         xmlns:rng="http://relaxng.org/ns/structure/1.0"
+<grammar xmlns:rng="http://relaxng.org/ns/structure/1.0"
          xmlns:s="http://purl.oclc.org/dsdl/schematron"
          xmlns:db="http://docbook.org/ns/docbook"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-         xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
          xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
          xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://docbook.org/ns/docbook">
+         ns="http://docbook.org/ns/docbook"
+         buildhash="9a36eb27813877aaaadbe74b1fa8d753cdbd7ddf">
    <define name="db.status.attribute">
       <attribute name="status">
          <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
@@ -14088,6 +14089,8 @@
             <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
             <value>groupname</value>
             <a:documentation>A group name (wheel)</a:documentation>
+            <value>interface</value>
+            <a:documentation>A network interface (eth0)</a:documentation>
             <value>ipaddress</value>
             <a:documentation>An IP address (127.0.0.1)</a:documentation>
             <value>library</value>
@@ -14139,6 +14142,8 @@
                   <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                   <value>groupname</value>
                   <a:documentation>A group name (wheel)</a:documentation>
+                  <value>interface</value>
+                  <a:documentation>A network interface (eth0)</a:documentation>
                   <value>ipaddress</value>
                   <a:documentation>An IP address (127.0.0.1)</a:documentation>
                   <value>library</value>
@@ -14212,6 +14217,8 @@
                      <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                      <value>groupname</value>
                      <a:documentation>A group name (wheel)</a:documentation>
+                     <value>interface</value>
+                     <a:documentation>A network interface (eth0)</a:documentation>
                      <value>ipaddress</value>
                      <a:documentation>An IP address (127.0.0.1)</a:documentation>
                      <value>library</value>
@@ -14391,6 +14398,8 @@
                            <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                            <value>groupname</value>
                            <a:documentation>A group name (wheel)</a:documentation>
+                           <value>interface</value>
+                           <a:documentation>A network interface (eth0)</a:documentation>
                            <value>ipaddress</value>
                            <a:documentation>An IP address (127.0.0.1)</a:documentation>
                            <value>library</value>
@@ -14569,6 +14578,8 @@
                                  <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                                  <value>groupname</value>
                                  <a:documentation>A group name (wheel)</a:documentation>
+                                 <value>interface</value>
+                                 <a:documentation>A network interface (eth0)</a:documentation>
                                  <value>ipaddress</value>
                                  <a:documentation>An IP address (127.0.0.1)</a:documentation>
                                  <value>library</value>
@@ -19764,7 +19775,32 @@
                      <ref name="db.titleonly.info"/>
                   </choice>
                   <oneOrMore>
+                     <ref name="db.itemizedlist"/>
+                     <ref name="db.orderedlist"/>
+                     <ref name="db.variablelist"/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
+                     <ref name="db.example"/>
+                     <ref name="db.figure"/>
+                     <ref name="db.cals.table"/>
+                     <ref name="db.html.table"/>
+                     <ref name="db.cals.informaltable"/>
+                     <ref name="db.html.informaltable"/>
+                     <ref name="db.blockquote"/>
+                     <ref name="db.sidebar"/>
+                     <ref name="db.epigraph"/>
+                     <ref name="db.mediaobject"/>
+                     <ref name="db.literallayout"/>
+                     <ref name="db.programlisting"/>
+                     <empty/>
+                     <ref name="db.revhistory"/>
+                     <empty/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
                      <ref name="db.para"/>
+                     <ref name="sl.speakernotes"/>
                   </oneOrMore>
                </rng:group>
             </doc:content-model>
@@ -27488,9 +27524,14 @@
                </interleave>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <ref name="db.titleforbidden.info"/>
-               </optional>
+               <rng:group>
+                  <optional>
+                     <ref name="db.titleforbidden.info"/>
+                  </optional>
+                  <zeroOrMore>
+                     <ref name="db.multimediaparam"/>
+                  </zeroOrMore>
+               </rng:group>
             </doc:content-model>
          </element>
       </define>
@@ -39379,8 +39420,7 @@
    </div>
    <div>
       <db:refname>subscript</db:refname>
-      <db:refpurpose>A subscript (as in H<db:subscript>2</db:subscript>
-O, the molecular formula for water)</db:refpurpose>
+      <db:refpurpose>A subscript (as in H₂O, the molecular formula for water)</db:refpurpose>
       <define name="db.subscript.role.attribute">
          <attribute name="role"/>
       </define>
@@ -39623,8 +39663,7 @@ O, the molecular formula for water)</db:refpurpose>
    </div>
    <div>
       <db:refname>superscript</db:refname>
-      <db:refpurpose>A superscript (as in x<db:superscript>2</db:superscript>
-, the mathematical notation for x multiplied by itself)</db:refpurpose>
+      <db:refpurpose>A superscript (as in x², the mathematical notation for x multiplied by itself)</db:refpurpose>
       <define name="db.superscript.role.attribute">
          <attribute name="role"/>
       </define>
@@ -41382,7 +41421,7 @@ O, the molecular formula for water)</db:refpurpose>
             </doc:content-model>
             <doc:rules xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <s:pattern>
-                  <title>Root must have version</title>
+                  <s:title>Root must have version</s:title>
                   <s:rule context="/db:slides">
                      <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                   </s:rule>
@@ -41817,21 +41856,33 @@ O, the molecular formula for water)</db:refpurpose>
          </element>
       </define>
    </div>
-   <define name="sl._any.html">
-      <element>
-         <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-            <zeroOrMore>
-               <choice>
-                  <attribute>
-                     <anyName/>
-                  </attribute>
-                  <text/>
-               </choice>
-            </zeroOrMore>
-         </doc:attributes>
-         <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-            <nsName ns="http://www.w3.org/1999/xhtml"/>
-         </doc:content-model>
-      </element>
-   </define>
+   <div>
+      <db:refname>html:*</db:refname>
+      <db:refpurpose>Any element from the HTML namespace</db:refpurpose>
+      <define name="sl._any.attribute">
+         <attribute>
+            <db:refpurpose>Any attribute, including any attribute in any namespace.</db:refpurpose>
+            <anyName/>
+         </attribute>
+      </define>
+      <define name="sl._any.html">
+         <element>
+            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <zeroOrMore>
+                  <choice>
+                     <attribute>
+                        <db:refpurpose>Any attribute, including any attribute in any namespace.</db:refpurpose>
+                        <anyName/>
+                     </attribute>
+                     <text/>
+                     <ref name="sl._any.html"/>
+                  </choice>
+               </zeroOrMore>
+            </doc:attributes>
+            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <nsName ns="http://www.w3.org/1999/xhtml"/>
+            </doc:content-model>
+         </element>
+      </define>
+   </div>
 </grammar>

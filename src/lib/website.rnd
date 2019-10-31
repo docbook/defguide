@@ -1,15 +1,16 @@
-<grammar xmlns="http://relaxng.org/ns/structure/1.0"
-         xmlns:rng="http://relaxng.org/ns/structure/1.0"
+<grammar xmlns:rng="http://relaxng.org/ns/structure/1.0"
          xmlns:s="http://purl.oclc.org/dsdl/schematron"
          xmlns:db="http://docbook.org/ns/docbook"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-         xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
          xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
          xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:rddl="http://www.rddl.org/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://docbook.org/ns/docbook">
+         ns="http://docbook.org/ns/docbook"
+         buildhash="9a36eb27813877aaaadbe74b1fa8d753cdbd7ddf">
    <define name="db.status.attribute">
       <attribute name="status">
          <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
@@ -14746,6 +14747,8 @@
             <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
             <value>groupname</value>
             <a:documentation>A group name (wheel)</a:documentation>
+            <value>interface</value>
+            <a:documentation>A network interface (eth0)</a:documentation>
             <value>ipaddress</value>
             <a:documentation>An IP address (127.0.0.1)</a:documentation>
             <value>library</value>
@@ -14797,6 +14800,8 @@
                   <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                   <value>groupname</value>
                   <a:documentation>A group name (wheel)</a:documentation>
+                  <value>interface</value>
+                  <a:documentation>A network interface (eth0)</a:documentation>
                   <value>ipaddress</value>
                   <a:documentation>An IP address (127.0.0.1)</a:documentation>
                   <value>library</value>
@@ -14870,6 +14875,8 @@
                      <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                      <value>groupname</value>
                      <a:documentation>A group name (wheel)</a:documentation>
+                     <value>interface</value>
+                     <a:documentation>A network interface (eth0)</a:documentation>
                      <value>ipaddress</value>
                      <a:documentation>An IP address (127.0.0.1)</a:documentation>
                      <value>library</value>
@@ -15049,6 +15056,8 @@
                            <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                            <value>groupname</value>
                            <a:documentation>A group name (wheel)</a:documentation>
+                           <value>interface</value>
+                           <a:documentation>A network interface (eth0)</a:documentation>
                            <value>ipaddress</value>
                            <a:documentation>An IP address (127.0.0.1)</a:documentation>
                            <value>library</value>
@@ -15227,6 +15236,8 @@
                                  <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                                  <value>groupname</value>
                                  <a:documentation>A group name (wheel)</a:documentation>
+                                 <value>interface</value>
+                                 <a:documentation>A network interface (eth0)</a:documentation>
                                  <value>ipaddress</value>
                                  <a:documentation>An IP address (127.0.0.1)</a:documentation>
                                  <value>library</value>
@@ -20475,7 +20486,33 @@
                      <ref name="db.titleonly.info"/>
                   </choice>
                   <oneOrMore>
+                     <ref name="db.itemizedlist"/>
+                     <ref name="db.orderedlist"/>
+                     <ref name="db.variablelist"/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
+                     <ref name="db.example"/>
+                     <ref name="db.figure"/>
+                     <ref name="db.cals.table"/>
+                     <ref name="db.html.table"/>
+                     <ref name="db.cals.informaltable"/>
+                     <ref name="db.html.informaltable"/>
+                     <ref name="db.blockquote"/>
+                     <ref name="db.sidebar"/>
+                     <ref name="db.epigraph"/>
+                     <ref name="db.mediaobject"/>
+                     <ref name="db.literallayout"/>
+                     <ref name="db.programlisting"/>
+                     <empty/>
+                     <ref name="db.revhistory"/>
+                     <empty/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
                      <ref name="db.para"/>
+                     <ref name="db.html.form"/>
+                     <ref name="ws.webtoc"/>
                   </oneOrMore>
                </rng:group>
             </doc:content-model>
@@ -28251,9 +28288,14 @@
                </interleave>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <ref name="db.titleforbidden.info"/>
-               </optional>
+               <rng:group>
+                  <optional>
+                     <ref name="db.titleforbidden.info"/>
+                  </optional>
+                  <zeroOrMore>
+                     <ref name="db.multimediaparam"/>
+                  </zeroOrMore>
+               </rng:group>
             </doc:content-model>
          </element>
       </define>
@@ -40180,8 +40222,7 @@
    </div>
    <div>
       <db:refname>subscript</db:refname>
-      <db:refpurpose>A subscript (as in H<db:subscript>2</db:subscript>
-O, the molecular formula for water)</db:refpurpose>
+      <db:refpurpose>A subscript (as in H₂O, the molecular formula for water)</db:refpurpose>
       <define name="db.subscript.role.attribute">
          <attribute name="role"/>
       </define>
@@ -40424,8 +40465,7 @@ O, the molecular formula for water)</db:refpurpose>
    </div>
    <div>
       <db:refname>superscript</db:refname>
-      <db:refpurpose>A superscript (as in x<db:superscript>2</db:superscript>
-, the mathematical notation for x multiplied by itself)</db:refpurpose>
+      <db:refpurpose>A superscript (as in x², the mathematical notation for x multiplied by itself)</db:refpurpose>
       <define name="db.superscript.role.attribute">
          <attribute name="role"/>
       </define>
@@ -42075,11 +42115,22 @@ O, the molecular formula for water)</db:refpurpose>
       <define name="ws.webpage.role.attribute">
          <attribute name="role"/>
       </define>
+      <define name="ws.webpage.navto.enumeration">
+         <choice>
+            <value>yes</value>
+            <a:documentation>This page should appear in tables of contents, site maps, etc.</a:documentation>
+            <value>no</value>
+            <a:documentation>The page can only be reached from pages that directly link to it.</a:documentation>
+         </choice>
+      </define>
       <define name="ws.webpage.navto.attribute">
          <attribute name="navto">
+            <db:refpurpose>Does this page appear in the navigation flow?</db:refpurpose>
             <choice>
                <value>yes</value>
+               <a:documentation>This page should appear in tables of contents, site maps, etc.</a:documentation>
                <value>no</value>
+               <a:documentation>The page can only be reached from pages that directly link to it.</a:documentation>
             </choice>
          </attribute>
       </define>
@@ -42100,9 +42151,12 @@ O, the molecular formula for water)</db:refpurpose>
             </optional>
             <optional>
                <attribute name="navto">
+                  <db:refpurpose>Does this page appear in the navigation flow?</db:refpurpose>
                   <choice>
                      <value>yes</value>
+                     <a:documentation>This page should appear in tables of contents, site maps, etc.</a:documentation>
                      <value>no</value>
+                     <a:documentation>The page can only be reached from pages that directly link to it.</a:documentation>
                   </choice>
                </attribute>
             </optional>
@@ -42141,9 +42195,12 @@ O, the molecular formula for water)</db:refpurpose>
                   </optional>
                   <optional>
                      <attribute name="navto">
+                        <db:refpurpose>Does this page appear in the navigation flow?</db:refpurpose>
                         <choice>
                            <value>yes</value>
+                           <a:documentation>This page should appear in tables of contents, site maps, etc.</a:documentation>
                            <value>no</value>
+                           <a:documentation>The page can only be reached from pages that directly link to it.</a:documentation>
                         </choice>
                      </attribute>
                   </optional>
@@ -42228,7 +42285,7 @@ O, the molecular formula for water)</db:refpurpose>
             </doc:content-model>
             <doc:rules xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <s:pattern>
-                  <title>Root must have version</title>
+                  <s:title>Root must have version</s:title>
                   <s:rule context="/db:webpage">
                      <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                   </s:rule>
@@ -42360,13 +42417,19 @@ O, the molecular formula for water)</db:refpurpose>
          <attribute name="role"/>
       </define>
       <define name="ws.meta.http-equiv.attribute">
-         <attribute name="http-equiv"/>
+         <attribute name="http-equiv">
+            <db:refpurpose>The name of the equivalent HTTP header</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.meta.name.attribute">
-         <attribute name="name"/>
+         <attribute name="name">
+            <db:refpurpose>The name of the metadata property</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.meta.content.attribute">
-         <attribute name="content"/>
+         <attribute name="content">
+            <db:refpurpose>The value of the metadata property</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.meta.attlist">
          <interleave>
@@ -42374,10 +42437,16 @@ O, the molecular formula for water)</db:refpurpose>
                <attribute name="role"/>
             </optional>
             <choice>
-               <attribute name="http-equiv"/>
-               <attribute name="name"/>
+               <attribute name="http-equiv">
+                  <db:refpurpose>The name of the equivalent HTTP header</db:refpurpose>
+               </attribute>
+               <attribute name="name">
+                  <db:refpurpose>The name of the metadata property</db:refpurpose>
+               </attribute>
             </choice>
-            <attribute name="content"/>
+            <attribute name="content">
+               <db:refpurpose>The value of the metadata property</db:refpurpose>
+            </attribute>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
                   <attribute name="xml:id">
@@ -42414,10 +42483,16 @@ O, the molecular formula for water)</db:refpurpose>
                      <attribute name="role"/>
                   </optional>
                   <choice>
-                     <attribute name="http-equiv"/>
-                     <attribute name="name"/>
+                     <attribute name="http-equiv">
+                        <db:refpurpose>The name of the equivalent HTTP header</db:refpurpose>
+                     </attribute>
+                     <attribute name="name">
+                        <db:refpurpose>The name of the metadata property</db:refpurpose>
+                     </attribute>
                   </choice>
-                  <attribute name="content"/>
+                  <attribute name="content">
+                     <db:refpurpose>The value of the metadata property</db:refpurpose>
+                  </attribute>
                   <optional>
                      <attribute name="xml:id">
                         <data type="ID"/>
@@ -42457,28 +42532,44 @@ O, the molecular formula for water)</db:refpurpose>
          <attribute name="role"/>
       </define>
       <define name="ws.headlink.href.attribute">
-         <attribute name="href"/>
+         <attribute name="href">
+            <db:refpurpose>The link href</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.media.attribute">
-         <attribute name="media"/>
+         <attribute name="media">
+            <db:refpurpose>The media type of the link</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.name.attribute">
-         <attribute name="name"/>
+         <attribute name="name">
+            <db:refpurpose>The link name</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.rel.attribute">
-         <attribute name="rel"/>
+         <attribute name="rel">
+            <db:refpurpose>The link rel</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.rev.attribute">
-         <attribute name="rev"/>
+         <attribute name="rev">
+            <db:refpurpose>The link rev</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.src.attribute">
-         <attribute name="src"/>
+         <attribute name="src">
+            <db:refpurpose>The link src</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.title.attribute">
-         <attribute name="title"/>
+         <attribute name="title">
+            <db:refpurpose>The link title</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.type.attribute">
-         <attribute name="type"/>
+         <attribute name="type">
+            <db:refpurpose>The link type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.attlist">
          <interleave>
@@ -42486,28 +42577,44 @@ O, the molecular formula for water)</db:refpurpose>
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="href"/>
+               <attribute name="href">
+                  <db:refpurpose>The link href</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="media"/>
+               <attribute name="media">
+                  <db:refpurpose>The media type of the link</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="name"/>
+               <attribute name="name">
+                  <db:refpurpose>The link name</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="rel"/>
+               <attribute name="rel">
+                  <db:refpurpose>The link rel</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="rev"/>
+               <attribute name="rev">
+                  <db:refpurpose>The link rev</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="src"/>
+               <attribute name="src">
+                  <db:refpurpose>The link src</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="title"/>
+               <attribute name="title">
+                  <db:refpurpose>The link title</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="type"/>
+               <attribute name="type">
+                  <db:refpurpose>The link type</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42545,28 +42652,44 @@ O, the molecular formula for water)</db:refpurpose>
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="href"/>
+                     <attribute name="href">
+                        <db:refpurpose>The link href</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="media"/>
+                     <attribute name="media">
+                        <db:refpurpose>The media type of the link</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="name"/>
+                     <attribute name="name">
+                        <db:refpurpose>The link name</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="rel"/>
+                     <attribute name="rel">
+                        <db:refpurpose>The link rel</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="rev"/>
+                     <attribute name="rev">
+                        <db:refpurpose>The link rev</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="src"/>
+                     <attribute name="src">
+                        <db:refpurpose>The link src</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="title"/>
+                     <attribute name="title">
+                        <db:refpurpose>The link title</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="type"/>
+                     <attribute name="type">
+                        <db:refpurpose>The link type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -42607,13 +42730,19 @@ O, the molecular formula for water)</db:refpurpose>
          <attribute name="role"/>
       </define>
       <define name="ws.script.src.attribute">
-         <attribute name="src"/>
+         <attribute name="src">
+            <db:refpurpose>The script src</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.script.language.attribute">
-         <attribute name="language"/>
+         <attribute name="language">
+            <db:refpurpose>The script language</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.script.type.attribute">
-         <attribute name="type"/>
+         <attribute name="type">
+            <db:refpurpose>The script type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.script.attlist">
          <interleave>
@@ -42621,10 +42750,14 @@ O, the molecular formula for water)</db:refpurpose>
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="language"/>
+               <attribute name="language">
+                  <db:refpurpose>The script language</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="type"/>
+               <attribute name="type">
+                  <db:refpurpose>The script type</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42667,10 +42800,14 @@ O, the molecular formula for water)</db:refpurpose>
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="language"/>
+                     <attribute name="language">
+                        <db:refpurpose>The script language</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="type"/>
+                     <attribute name="type">
+                        <db:refpurpose>The script type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -42698,7 +42835,9 @@ O, the molecular formula for water)</db:refpurpose>
                   </optional>
                </interleave>
                <optional>
-                  <attribute name="src"/>
+                  <attribute name="src">
+                     <db:refpurpose>The script src</db:refpurpose>
+                  </attribute>
                </optional>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -42714,10 +42853,14 @@ O, the molecular formula for water)</db:refpurpose>
          <attribute name="role"/>
       </define>
       <define name="ws.style.src.attribute">
-         <attribute name="src"/>
+         <attribute name="src">
+            <db:refpurpose>The style src</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.style.type.attribute">
-         <attribute name="type"/>
+         <attribute name="type">
+            <db:refpurpose>The style type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.style.attlist">
          <interleave>
@@ -42725,7 +42868,9 @@ O, the molecular formula for water)</db:refpurpose>
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="type"/>
+               <attribute name="type">
+                  <db:refpurpose>The style type</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42768,7 +42913,9 @@ O, the molecular formula for water)</db:refpurpose>
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="type"/>
+                     <attribute name="type">
+                        <db:refpurpose>The style type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -42796,7 +42943,9 @@ O, the molecular formula for water)</db:refpurpose>
                   </optional>
                </interleave>
                <optional>
-                  <attribute name="src"/>
+                  <attribute name="src">
+                     <db:refpurpose>The style src</db:refpurpose>
+                  </attribute>
                </optional>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -42806,19 +42955,25 @@ O, the molecular formula for water)</db:refpurpose>
       </define>
    </div>
    <div>
-      <db:refname>style</db:refname>
-      <db:refpurpose>A style section in the head of a webpage</db:refpurpose>
+      <db:refname>config</db:refname>
+      <db:refpurpose>A website configuration parameter</db:refpurpose>
       <define name="ws.config.role.attribute">
          <attribute name="role"/>
       </define>
       <define name="ws.config.param.attribute">
-         <attribute name="param"/>
+         <attribute name="param">
+            <db:refpurpose>Configuration parameter name</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.config.value.attribute">
-         <attribute name="value"/>
+         <attribute name="value">
+            <db:refpurpose>Configuration parameter value</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.config.altvalue.attribute">
-         <attribute name="altvalue"/>
+         <attribute name="altvalue">
+            <db:refpurpose>Configuration parameter alternative value</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.config.attlist">
          <interleave>
@@ -42826,13 +42981,19 @@ O, the molecular formula for water)</db:refpurpose>
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="param"/>
+               <attribute name="param">
+                  <db:refpurpose>Configuration parameter name</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="value"/>
+               <attribute name="value">
+                  <db:refpurpose>Configuration parameter value</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="altvalue"/>
+               <attribute name="altvalue">
+                  <db:refpurpose>Configuration parameter alternative value</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42870,13 +43031,19 @@ O, the molecular formula for water)</db:refpurpose>
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="param"/>
+                     <attribute name="param">
+                        <db:refpurpose>Configuration parameter name</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="value"/>
+                     <attribute name="value">
+                        <db:refpurpose>Configuration parameter value</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="altvalue"/>
+                     <attribute name="altvalue">
+                        <db:refpurpose>Configuration parameter alternative value</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">

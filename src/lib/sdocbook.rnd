@@ -1,14 +1,15 @@
-<grammar xmlns="http://relaxng.org/ns/structure/1.0"
-         xmlns:rng="http://relaxng.org/ns/structure/1.0"
+<grammar xmlns:rng="http://relaxng.org/ns/structure/1.0"
          xmlns:s="http://purl.oclc.org/dsdl/schematron"
          xmlns:db="http://docbook.org/ns/docbook"
          xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://docbook.org/ns/docbook">
+         ns="http://docbook.org/ns/docbook"
+         buildhash="9a36eb27813877aaaadbe74b1fa8d753cdbd7ddf">
    <start>
       <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/"/>
       <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -1054,6 +1055,9 @@
             <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
          </attribute>
       </define>
+      <ctrl:other-attribute name="db.article.class.attribute"
+                            enum-name="db.article.class-enum.attribute"
+                            other-name="db.article.class-other.attributes"/>
       <define name="db.article.class.enumeration">
          <choice>
             <value>faq</value>
@@ -1070,7 +1074,7 @@
             <a:documentation>A white paper.</a:documentation>
          </choice>
       </define>
-      <define name="db.article.class.attribute">
+      <define name="db.article.class-enum.attribute">
          <attribute name="class">
             <db:refpurpose>Identifies the nature of the article</db:refpurpose>
             <choice>
@@ -1088,6 +1092,57 @@
                <a:documentation>A white paper.</a:documentation>
             </choice>
          </attribute>
+      </define>
+      <define name="db.article.class-other.attribute">
+         <attribute name="otherclass">
+            <db:refpurpose>Identifies the nature of the non-standard article</db:refpurpose>
+            <data type="NMTOKEN"/>
+         </attribute>
+      </define>
+      <define name="db.article.class-other.attributes">
+         <interleave>
+            <attribute name="class">
+               <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+               <value>other</value>
+               <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+            </attribute>
+            <attribute name="otherclass">
+               <db:refpurpose>Identifies the nature of the non-standard article</db:refpurpose>
+               <data type="NMTOKEN"/>
+            </attribute>
+         </interleave>
+      </define>
+      <define name="db.article.class.attribute">
+         <choice>
+            <attribute name="class">
+               <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+               <choice>
+                  <value>faq</value>
+                  <a:documentation>A collection of frequently asked questions.</a:documentation>
+                  <value>journalarticle</value>
+                  <a:documentation>An article in a journal or other periodical.</a:documentation>
+                  <value>productsheet</value>
+                  <a:documentation>A description of a product.</a:documentation>
+                  <value>specification</value>
+                  <a:documentation>A specification.</a:documentation>
+                  <value>techreport</value>
+                  <a:documentation>A technical report.</a:documentation>
+                  <value>whitepaper</value>
+                  <a:documentation>A white paper.</a:documentation>
+               </choice>
+            </attribute>
+            <interleave>
+               <attribute name="class">
+                  <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+                  <value>other</value>
+                  <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+               </attribute>
+               <attribute name="otherclass">
+                  <db:refpurpose>Identifies the nature of the non-standard article</db:refpurpose>
+                  <data type="NMTOKEN"/>
+               </attribute>
+            </interleave>
+         </choice>
       </define>
       <define name="db.article.role.attribute">
          <attribute name="role"/>
@@ -1213,23 +1268,36 @@
                </attribute>
             </optional>
             <optional>
-               <attribute name="class">
-                  <db:refpurpose>Identifies the nature of the article</db:refpurpose>
-                  <choice>
-                     <value>faq</value>
-                     <a:documentation>A collection of frequently asked questions.</a:documentation>
-                     <value>journalarticle</value>
-                     <a:documentation>An article in a journal or other periodical.</a:documentation>
-                     <value>productsheet</value>
-                     <a:documentation>A description of a product.</a:documentation>
-                     <value>specification</value>
-                     <a:documentation>A specification.</a:documentation>
-                     <value>techreport</value>
-                     <a:documentation>A technical report.</a:documentation>
-                     <value>whitepaper</value>
-                     <a:documentation>A white paper.</a:documentation>
-                  </choice>
-               </attribute>
+               <choice>
+                  <attribute name="class">
+                     <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+                     <choice>
+                        <value>faq</value>
+                        <a:documentation>A collection of frequently asked questions.</a:documentation>
+                        <value>journalarticle</value>
+                        <a:documentation>An article in a journal or other periodical.</a:documentation>
+                        <value>productsheet</value>
+                        <a:documentation>A description of a product.</a:documentation>
+                        <value>specification</value>
+                        <a:documentation>A specification.</a:documentation>
+                        <value>techreport</value>
+                        <a:documentation>A technical report.</a:documentation>
+                        <value>whitepaper</value>
+                        <a:documentation>A white paper.</a:documentation>
+                     </choice>
+                  </attribute>
+                  <interleave>
+                     <attribute name="class">
+                        <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+                        <value>other</value>
+                        <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+                     </attribute>
+                     <attribute name="otherclass">
+                        <db:refpurpose>Identifies the nature of the non-standard article</db:refpurpose>
+                        <data type="NMTOKEN"/>
+                     </attribute>
+                  </interleave>
+               </choice>
             </optional>
          </interleave>
       </define>
@@ -1373,23 +1441,36 @@
                      </attribute>
                   </optional>
                   <optional>
-                     <attribute name="class">
-                        <db:refpurpose>Identifies the nature of the article</db:refpurpose>
-                        <choice>
-                           <value>faq</value>
-                           <a:documentation>A collection of frequently asked questions.</a:documentation>
-                           <value>journalarticle</value>
-                           <a:documentation>An article in a journal or other periodical.</a:documentation>
-                           <value>productsheet</value>
-                           <a:documentation>A description of a product.</a:documentation>
-                           <value>specification</value>
-                           <a:documentation>A specification.</a:documentation>
-                           <value>techreport</value>
-                           <a:documentation>A technical report.</a:documentation>
-                           <value>whitepaper</value>
-                           <a:documentation>A white paper.</a:documentation>
-                        </choice>
-                     </attribute>
+                     <choice>
+                        <attribute name="class">
+                           <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+                           <choice>
+                              <value>faq</value>
+                              <a:documentation>A collection of frequently asked questions.</a:documentation>
+                              <value>journalarticle</value>
+                              <a:documentation>An article in a journal or other periodical.</a:documentation>
+                              <value>productsheet</value>
+                              <a:documentation>A description of a product.</a:documentation>
+                              <value>specification</value>
+                              <a:documentation>A specification.</a:documentation>
+                              <value>techreport</value>
+                              <a:documentation>A technical report.</a:documentation>
+                              <value>whitepaper</value>
+                              <a:documentation>A white paper.</a:documentation>
+                           </choice>
+                        </attribute>
+                        <interleave>
+                           <attribute name="class">
+                              <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+                              <value>other</value>
+                              <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+                           </attribute>
+                           <attribute name="otherclass">
+                              <db:refpurpose>Identifies the nature of the non-standard article</db:refpurpose>
+                              <data type="NMTOKEN"/>
+                           </attribute>
+                        </interleave>
+                     </choice>
                   </optional>
                </interleave>
             </doc:attributes>
@@ -1463,7 +1544,7 @@
             </doc:content-model>
             <doc:rules xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <s:pattern>
-                  <title>Root must have version</title>
+                  <s:title>Root must have version</s:title>
                   <s:rule context="/db:article">
                      <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                   </s:rule>
@@ -3069,7 +3150,7 @@
             </doc:content-model>
             <doc:rules xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <s:pattern>
-                  <title>Root must have version</title>
+                  <s:title>Root must have version</s:title>
                   <s:rule context="/db:bibliodiv">
                      <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                   </s:rule>
@@ -15154,6 +15235,8 @@
             <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
             <value>groupname</value>
             <a:documentation>A group name (wheel)</a:documentation>
+            <value>interface</value>
+            <a:documentation>A network interface (eth0)</a:documentation>
             <value>ipaddress</value>
             <a:documentation>An IP address (127.0.0.1)</a:documentation>
             <value>library</value>
@@ -15205,6 +15288,8 @@
                   <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                   <value>groupname</value>
                   <a:documentation>A group name (wheel)</a:documentation>
+                  <value>interface</value>
+                  <a:documentation>A network interface (eth0)</a:documentation>
                   <value>ipaddress</value>
                   <a:documentation>An IP address (127.0.0.1)</a:documentation>
                   <value>library</value>
@@ -15278,6 +15363,8 @@
                      <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                      <value>groupname</value>
                      <a:documentation>A group name (wheel)</a:documentation>
+                     <value>interface</value>
+                     <a:documentation>A network interface (eth0)</a:documentation>
                      <value>ipaddress</value>
                      <a:documentation>An IP address (127.0.0.1)</a:documentation>
                      <value>library</value>
@@ -15457,6 +15544,8 @@
                            <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                            <value>groupname</value>
                            <a:documentation>A group name (wheel)</a:documentation>
+                           <value>interface</value>
+                           <a:documentation>A network interface (eth0)</a:documentation>
                            <value>ipaddress</value>
                            <a:documentation>An IP address (127.0.0.1)</a:documentation>
                            <value>library</value>
@@ -15635,6 +15724,8 @@
                                  <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
                                  <value>groupname</value>
                                  <a:documentation>A group name (wheel)</a:documentation>
+                                 <value>interface</value>
+                                 <a:documentation>A network interface (eth0)</a:documentation>
                                  <value>ipaddress</value>
                                  <a:documentation>An IP address (127.0.0.1)</a:documentation>
                                  <value>library</value>
@@ -16556,7 +16647,7 @@
                   </s:rule>
                </s:pattern>
                <s:pattern>
-                  <title>Root must have version</title>
+                  <s:title>Root must have version</s:title>
                   <s:rule context="/db:note">
                      <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                   </s:rule>
@@ -20823,6 +20914,30 @@
                      <ref name="db.titleonly.info"/>
                   </choice>
                   <oneOrMore>
+                     <ref name="db.itemizedlist"/>
+                     <ref name="db.orderedlist"/>
+                     <ref name="db.variablelist"/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
+                     <ref name="db.example"/>
+                     <ref name="db.figure"/>
+                     <ref name="db.cals.table"/>
+                     <ref name="db.html.table"/>
+                     <ref name="db.cals.informaltable"/>
+                     <ref name="db.html.informaltable"/>
+                     <ref name="db.blockquote"/>
+                     <ref name="db.sidebar"/>
+                     <ref name="db.epigraph"/>
+                     <ref name="db.mediaobject"/>
+                     <ref name="db.literallayout"/>
+                     <ref name="db.programlisting"/>
+                     <empty/>
+                     <ref name="db.revhistory"/>
+                     <empty/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
                      <ref name="db.para"/>
                   </oneOrMore>
                </rng:group>
@@ -28538,9 +28653,14 @@
                </interleave>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <ref name="db.titleforbidden.info"/>
-               </optional>
+               <rng:group>
+                  <optional>
+                     <ref name="db.titleforbidden.info"/>
+                  </optional>
+                  <zeroOrMore>
+                     <ref name="db.multimediaparam"/>
+                  </zeroOrMore>
+               </rng:group>
             </doc:content-model>
          </element>
       </define>
@@ -40426,8 +40546,7 @@
    </div>
    <div>
       <db:refname>subscript</db:refname>
-      <db:refpurpose>A subscript (as in H<db:subscript>2</db:subscript>
-O, the molecular formula for water)</db:refpurpose>
+      <db:refpurpose>A subscript (as in H₂O, the molecular formula for water)</db:refpurpose>
       <define name="db.subscript.role.attribute">
          <attribute name="role"/>
       </define>
@@ -40670,8 +40789,7 @@ O, the molecular formula for water)</db:refpurpose>
    </div>
    <div>
       <db:refname>superscript</db:refname>
-      <db:refpurpose>A superscript (as in x<db:superscript>2</db:superscript>
-, the mathematical notation for x multiplied by itself)</db:refpurpose>
+      <db:refpurpose>A superscript (as in x², the mathematical notation for x multiplied by itself)</db:refpurpose>
       <define name="db.superscript.role.attribute">
          <attribute name="role"/>
       </define>
