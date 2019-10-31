@@ -193,8 +193,8 @@ books.each { vocab ->
     from "src/resources"
     into "build/dist/${vocab}"
     include "**/*"
-    exclude "src/resources/figs/src"
-    exclude "src/resources/figs/print"
+    exclude "figs/src"
+    exclude "figs/print"
   }
 
   task "${vocab}_tdgxml"(dependsOn: ["${vocab}_copysrc",
