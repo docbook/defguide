@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1" arch="assembly">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">assembly</refmiscinfo>
+  <refmiscinfo role="pattern">db.assembly</refmiscinfo>
+  <refmiscinfo role="class">assembly</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>An <tag>assembly</tag> describes how a set of resources are
+combined together to form a new structure. In topic-oriented authoring scenarios,
+a set of topics (perhaps, but not necessarily, in <tag>topic</tag> elements)
+is used to assemble a <tag>structure</tag>, a new document composed from
+those topics.</para>
+
+<para>The assembly imposes a structure on the topics that may never
+have been conceived by the topic authors.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>An <tag>assembly</tag> is a container, it is not expected to produce any
+particular output. When an assembly is processed, one or more of its
+<tag>structure</tag> elements is rendered.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>See <xref linkend="assemblies"/>.</para>
+
+</refsection>
+
+</refentry>

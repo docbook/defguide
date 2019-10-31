@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1" arch="assembly">
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">transform</refmiscinfo>
+  <refmiscinfo role="pattern">db.transform</refmiscinfo>
+  <refmiscinfo role="class">assembly</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A <tag>transform</tag> specifies a mechanism for converting one
+format into another during the assembly process. A transform can be
+applied in two different ways: to convert non-DocBook content to
+DocBook, or to transform DocBook content into a different instance of
+DocBook. In either case, the transformation identified by the <tag
+class="attribute">href</tag> attribute is applied.
+</para>
+
+<para>If the <tag class="attribute">grammar</tag> attribute is
+specified, then the <tag>transform</tag> is applied to any
+<tag>resource</tag> elements with a matching
+<tag class="attribute">grammar</tag> attribute. In this way, a document
+in some other schema can be transformed into DocBook during assembly.</para>
+
+<para>If the <tag class="attribute">name</tag> attribute is specified
+instead, then the <tag>transform</tag> is applied to any
+<tag>module</tag> whose <tag>output</tag> element includes a
+<tag class="attribute">transform</tag> attribute whose value matches the name.
+This allows the content of a resource to be filtered or rearranged
+before being output to the assembled DocBook document.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>Never rendered.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>This example would apply the <uri>dita2docbook.xsl</uri>
+transform to any resources that have a <tag
+class="attribute">grammar</tag> attribute of
+“<literal>dita</literal>”.</para>
+
+<programlisting><![CDATA[<transform grammar="dita" href="dita2docbook.xsl"/>]]></programlisting>
+
+<para>This example would apply the <uri>flatten-sections.xsl</uri>
+transform to the content of any <tag>module</tag> that has an
+<tag>output</tag> child element that includes a <tag
+class="attribute">transform</tag> attribute with the value
+“<literal>flatten</literal>”.</para>
+
+<programlisting><![CDATA[<transform name="flatten" href="flatten-sections.xsl"/>]]></programlisting>
+</refsection>
+</refentry>

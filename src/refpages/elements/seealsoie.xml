@@ -1,0 +1,51 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">seealsoie</refmiscinfo>
+  <refmiscinfo role="pattern">db.seealsoie</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>seealsoie</tag> identifies a <quote>See
+      also</quote> cross-reference in an <tag>indexentry</tag>. The
+      <tag>indexentry</tag>s occur in an <tag>index</tag>, not
+      in the flow of the text. They are part of a formatted index, not markers
+      for indexing.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted as a displayed block. The
+        <tag>indexentry</tag>s that include a
+        <tag>seealsoie</tag> should be formatted normally, with the
+        <quote>See also</quote> indented below the term.</para>
+
+        <para>A <tag>seealsoie</tag> is usually expected to generate
+        the text <quote>See also</quote>.</para>
+
+        <para>The <tag class="attribute">linkends</tag> attribute
+        should point other <tag>indexentry</tag>s in the same
+        <tag>index</tag>. Online systems may use them to form
+        hypertext links.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

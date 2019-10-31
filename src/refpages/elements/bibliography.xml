@@ -1,0 +1,90 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">bibliography</refmiscinfo>
+  <refmiscinfo role="pattern">db.bibliography</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A bibliography. A DocBook bibliography may contain some
+introductory information, but its main content is a set of
+bibliography entries
+<phrase arch="sdocbook">
+(<tag>bibliomixed</tag> elements in Simplified DocBook).</phrase>
+<phrase arch="publishers defguide">
+(either <tag>biblioentry</tag> or
+<tag>bibliomixed</tag>).</phrase>
+These may occur directly inside the
+<tag>bibliography</tag> element or inside <tag>bibliodiv</tag>
+elements.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>Formatted as a displayed block.
+<phrase conformance="inschema">A <tag>bibliography</tag> in a
+<tag>book</tag> frequently causes a forced page break in print
+media.</phrase></para>
+
+<para>Some systems may display only those entries within a
+<tag>bibliography</tag> that are cited in the containing document.
+This may be an interchange issue.
+See <xref linkend="app-interchange"/>.</para>
+
+<para conformance="inschema">The two styles of bibliography entry have
+quite different processing expectations. A <tag>biblioentry</tag> is
+<quote>raw</quote>; it contains a database-like collection of named
+fields. A <tag>bibliomixed</tag> entry is <quote>cooked</quote>; the
+fields occur in the order in which they will be presented and
+additional punctuation may be sprinkled between the fields.</para>
+
+<para conformance="inschema">See <tag>biblioentry</tag> and
+<tag>bibliomixed</tag> for further discussion.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples" arch="publishers defguide">
+<title>Examples</title>
+
+<para>The entries in a <tag>bibliography</tag> come in two general
+forms, “raw” and “cooked”. A raw entry is a database-like collection
+of named fields:</para>
+
+<programlisting><xi:include href="../examples/bibliography.1.xml" parse="text"/></programlisting>
+
+<para>A cooked entry is formatted, including additional text, so that
+it is easy to render.</para>
+
+<programlisting><xi:include href="../examples/bibliography.2.xml" parse="text"/></programlisting>
+
+</refsection>
+
+<refsection condition="ref.examples" arch="sdocbook">
+<title>Examples</title>
+
+<para>Simplified DocBook supports only the “cooked” form of
+bibliography entry where additional text is included so that it is
+easy to render.</para>
+
+<programlisting><xi:include href="../examples/bibliography.2.xml" parse="text"/></programlisting>
+
+</refsection>
+</refentry>

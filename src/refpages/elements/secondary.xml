@@ -1,0 +1,47 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">secondary</refmiscinfo>
+  <refmiscinfo role="pattern">db.secondary</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>secondary</tag> contains a secondary word or phrase
+      in an <tag>indexterm</tag>. The text of a <tag role="keep-together">secondary</tag> term is less significant than
+      the <tag>primary</tag> term, but more significant than the
+      <tag role="keep-together">tertiary</tag> term for sorting and
+      display purposes.</para>
+
+      <para>In <tag>indexterm</tag>s, you can only have one primary,
+      secondary, and tertiary term. If you want to index multiple secondary
+      terms for the same primary, you must repeat the primary in another
+      <tag>indexterm</tag>. You cannot place several
+      <tag>secondary</tag>s in the same primary.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Suppressed. This element provides data for processing but is not
+        rendered in the primary flow of text.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

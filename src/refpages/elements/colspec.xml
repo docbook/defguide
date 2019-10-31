@@ -1,0 +1,46 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">colspec</refmiscinfo>
+  <refmiscinfo role="pattern">db.colspec</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>The attributes of this empty element specify the presentation
+      characteristics of entries in a column of a table.</para>
+
+      <para>Each <tag>colspec</tag> refers to a single column. Columns
+      are numbered sequentially from left to right in the table. If the
+      <tag class="attribute">colnum</tag> attribute is not specified,
+      the <tag>colspec</tag> is for the next column after the
+      preceding <tag>colspec</tag> or column 1 if it is the first
+      <tag>colspec</tag>.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Suppressed. This element is expected to obey the semantics of
+        the <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

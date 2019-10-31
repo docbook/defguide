@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">videoobject</refmiscinfo>
+  <refmiscinfo role="pattern">db.videoobject</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A <tag>videoobject</tag> is a wrapper containing
+<tag>videodata</tag> and its associated meta-information.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>May be formatted inline or as a displayed block, depending on
+context. It might not be rendered at all, depending on its placement
+within a <tag>mediaobject</tag> or <tag>inlinemediaobject</tag> and
+the constraints on the publishing system. For a more detailed
+description of the semantics involved, see
+<tag>mediaobject</tag>.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<programlisting><xi:include href="../examples/videoobject.1.xml" parse="text"/></programlisting>
+
+<para>DocBook V5.1 introduces new controls providing greater control
+over the features of the media player in environments like a web browser.
+</para>
+
+<programlisting><xi:include href="../examples/videoobject.2.xml" parse="text"/></programlisting>
+
+<para>DocBook V5.1 also introduces the possibility of having more than one
+<tag>videodata</tag> in a <tag>videoobject</tag>.</para>
+
+<programlisting><xi:include href="../examples/videoobject.3.xml" parse="text"/></programlisting>
+
+</refsection>
+
+</refentry>

@@ -1,0 +1,58 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">glossterm</refmiscinfo>
+  <refmiscinfo role="pattern">db.glossterm</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>glossterm</tag> identifies a term that appears in a
+      <tag>glossary</tag> or <tag>glosslist</tag>. This
+      element occurs in two very different places: it is both an inline, and a
+      structure element of a <tag>glossentry</tag>. As an inline, it
+      identifies a term defined in a glossary, and may point to it. Within a
+      <tag>glossentry</tag>, it identifies the term defined by that
+      particular entry.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>As an inline, <tag>glossterm</tag>s frequently get
+        special typographic treatment, such as italics. In an online
+        environment, they may also form a link (explicitly or implicitly) to
+        the corresponding definition in a glossary.</para>
+
+        <para>The <tag>glossterm</tag>s must not be nested within
+        other <tag>glossterm</tag>s. The processing of nested
+        <tag>glossterm</tag>s is undefined.</para>
+
+        <para>As part of a <tag>glossentry</tag>,
+        <tag>glossterm</tag>s are usually set as a block and separated
+        from the definition.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+<para>See <tag>glossary</tag> for an example using this element.</para>
+</refsection>
+
+
+
+</refentry>

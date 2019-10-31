@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">indexterm</refmiscinfo>
+  <refmiscinfo role="pattern">db.indexterm.endofrange</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>An “end of range” <tag>indexterm</tag> marks the end of a range.
+It must have an associated “start of range” <tag>indexterm</tag>. The
+resultant index entry applies to the entire range. See <xref
+linkend="element.db.indexterm.singular"/>.</para>
+
+<important role="fu">
+<para>A Schematron constraint will be added to assert that for every
+“start of range” index term, there is exactly one “end of range” index
+term that points to it.
+</para>
+</important>
+
+<refsection>
+<title>Processing expectations</title>
+<para>See <xref linkend="element.db.indexterm.singular"/>.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+</refentry>
+

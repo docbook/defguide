@@ -1,0 +1,43 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">classsynopsisinfo</refmiscinfo>
+  <refmiscinfo role="pattern">db.classsynopsisinfo</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>Supplementary information in a <tag>classsynopsis</tag>.
+      See <tag>classsynopsis</tag>.</para>
+
+      <para>Unlike the other info elements,
+      <tag>classsynopsisinfo</tag> is not a container for <phrase role="keep-together">meta-</phrase><phrase role="keep-together">information</phrase>. Instead,
+      <tag>classsynopsisinfo</tag> is a verbatim environment for
+      adding additional information to a class synopsis.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>This element is displayed “verbatim”; whitespace and line breaks
+        within this element are significant.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

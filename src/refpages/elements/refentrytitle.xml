@@ -1,0 +1,52 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">refentrytitle</refmiscinfo>
+  <refmiscinfo role="pattern">db.refentrytitle</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>refentrytitle</tag> is the title of a reference
+      page. It is frequently the same as the first <tag>refname</tag>
+      or the <tag>refdescriptor</tag>, although it may also be a
+      longer, more general title.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted as a displayed block.</para>
+
+        <para>Formatting reference pages may require a fairly sophisticated
+        processing system. Much of the meta-information about a reference page
+        (its name, type, purpose, title, and classification) is stored in
+        wrappers near the beginning of the <tag>refentry</tag>.</para>
+
+        <para>Common presentational features, such as titles and running
+        heads, may require data from several of these wrappers plus some
+        generated text. Other formatting often requires that these elements be
+        reordered.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+<para>See <tag>refentry</tag> for examples that use this element.</para>
+</refsection>
+
+</refentry>

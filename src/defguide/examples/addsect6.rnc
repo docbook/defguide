@@ -1,0 +1,28 @@
+namespace db = "http://docbook.org/ns/docbook"
+default namespace = "http://docbook.org/ns/docbook"
+
+include "docbook.rnc" {
+   db.sect5.sections = (db.sect6+, db.simplesect*) | db.simplesect+
+}
+
+db.sect6.sections = db.simplesect+
+
+db.sect6.status.attribute = db.status.attribute
+db.sect6.role.attribute = attribute role { text }
+db.sect6.attlist =
+   db.sect6.role.attribute?
+ & db.common.attributes
+ & db.common.linking.attributes
+ & db.label.attribute?
+ & db.sect6.status.attribute?
+
+db.sect6.info = db._info.title.req
+
+db.sect6 =
+   element sect6 {
+      db.sect6.attlist,
+      db.sect6.info,
+      ((db.all.blocks+, db.sect6.sections?)
+       | db.sect6.sections),
+      db.navigation.components*
+   }

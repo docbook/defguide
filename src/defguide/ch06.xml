@@ -1,0 +1,1383 @@
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         version="5.0" xml:id="assemblies"
+         revision="5.1">
+<?dbhtml filename="ch06.html"?>
+<info>
+<title>DocBook Assemblies</title>
+</info>
+
+<para>One modern school of thought on technical documentation stresses
+the development of independent units of documentation, often called
+topics, rather than a single narrative. Instead of writing something
+that DocBook users would easily recognize as a book consisting of a
+preface, several consecutive chapters, and a few appendixes, the
+author (or authors) write a set of discrete topics covering different aspects of
+the system as if they were wholly independent.</para>
+
+<para>In a typical online presentation system, for example the world
+wide web or online help, each topic is a page that stands alone.
+Except, of course, that just as no man is an island, no topic is
+completely unrelated to the other topics that are available.</para>
+
+<para>From any given topic, there may be topics of obviously related
+interest. The nature of the relationships may vary. Some topics are
+related by physical proximity (if you're interested in the ink
+cartridges in a printer, you may also be interested in the print
+head), others by their procedural nature (adding or replacing memory,
+adding or replacing a hard drive, or even changing the CPU are all
+topics that might logically follow a topic that describes how to open
+the computer case).</para>
+
+<para>In a single narrative, it is the responsibility of the author to
+manage these relationships. He or she can reasonably assume that
+anyone reading chapter 4 has read chapters 1, 2, and 3. If the reader
+needs to be directed elsewhere, a cross reference can be used (for
+example, “for more information on paper jams, see Section 3.5,
+<citetitle>The Paper Path</citetitle>”).</para>
+
+<para>In a topic-oriented system, authors are explicitly instructed to
+write independent units. No linear order can be assumed and many forms
+of explicit cross-reference are discouraged.</para>
+
+<para>Documentation managers treat the library of available topics
+very much as programmers treat libraries of available functions. Just
+as any given program can pick and choose from the available libraries,
+the documentation for any given system can pick and choose from the
+available topics.</para>
+
+<para>If you imagine a large documentation group managing the documentation
+for several related systems (different models of printer, different
+configurations of a software system, computers assembled from
+different components, etc.) it's easy to see the appeal of topic-oriented
+authoring.</para>
+
+<para>In a successful deployment, you might find a library of say 1,000
+topics which, taken together, document five or six related systems, each of
+which uses 700-800 topics. Some topics are used in every system, many are
+used in several systems, and a small number of topics are unique to a
+specific system.</para>
+
+<para>In order to make such a documentation platform functional, you
+need not only the individual topics, but also some sort of “map” or
+“assembly” file that describes which topics from the library are used,
+what relationships exist between them and, at least for print
+presentation, what linear order should be imposed upon them.</para>
+
+<para>DocBook uses an <tag>assembly</tag> for this purpose.</para>
+
+<section xml:id="physical">
+<title>Physical structure</title>
+
+<para>The notion of a DocBook <tag>assembly</tag> is predicated on a few
+assumptions about the physical layout of the topics that are to be combined
+together into units of documentation. We call the units of documentation
+“structures” and the topics from which they are composed “resources”.</para>
+
+<para>For the most part, we assume that resources exist as stand alone
+documents accessible via URIs. The structures that result from assembling
+the resources together may be a single file (as in a single PDF book) or
+a collection of files (as in a web site or help system).</para>
+
+<para>Other arrangements are possible, but for simplicity, we assume
+that the resources are accessible via URIs and the resulting
+structures can be written to the local filesystem as one or more
+files.</para>
+</section>
+
+<section xml:id="logical">
+<title>Logical structure</title>
+
+<para>Many features of an assembly allow the assembly process to
+update metadata associated with a document, for example changing the
+title or removing the metadata altogether. Throughout the description
+of assemblies, we assume that all metadata always occurs inside an
+<tag>info</tag> wrapper. In other words, although the following is
+perfectly legal:</para>
+
+<programlisting><![CDATA[<chapter>
+  <title>Chapter Title</title>
+  <info>
+    <pubdate>2009-11-23</pubdate>
+  </info>
+  <para>Some chapter content.</para>
+</chapter>]]></programlisting>
+
+<para>we always assume that this is instead represented with a single
+<tag>info</tag> element:</para>
+
+<programlisting><![CDATA[<chapter>
+  <info>
+    <title>Chapter Title</title>
+    <pubdate>2009-11-23</pubdate>
+  </info>
+  <para>Some chapter content.</para>
+</chapter>]]></programlisting>
+
+<para>Even in cases where there is no <tag>info</tag> element:</para>
+
+<programlisting><![CDATA[<section>
+  <title>Section Title</title>
+  <para>Some section content.</para>
+</section>]]></programlisting>
+
+<para>we assume one is present:</para>
+
+<programlisting><![CDATA[<section>
+  <info>
+    <title>Section Title</title>
+  </info>
+  <para>Some section content.</para>
+</section>]]></programlisting>
+
+<para>Authors <emphasis>are not</emphasis> required to author in this way
+in order to use assemblies. Processing systems are to behave <emphasis>as
+if</emphasis> they had.</para>
+
+<para>The assumption that all metadata is always present in a single,
+explicit <tag>info</tag> wrapper <emphasis>greatly</emphasis> simplifies
+the exposition of assemblies without introducing any actual limitations.</para>
+
+</section>
+
+<section>
+<title>Assembly Files</title>
+
+<para>An <tag>assembly</tag> has four major parts:</para>
+
+<variablelist>
+<varlistentry>
+<term><tag>resources</tag></term>
+<listitem>
+<para>Identifies a collection of topics. An assembly may have any number of
+<tag>resources</tag> elements each identifying a collection of resources.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>structure</tag></term>
+<listitem>
+<para>Identifies a single artifact to be assembled. Such an artifact is a particular
+collection of topics. An assembly may have any number of <tag>structure</tag> elements,
+each identifying a single artifact.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>relationships</tag></term>
+<listitem>
+<para>Identifies relationships between resources. These relationships
+may be manifested in any number of structures during assembly. An assembly
+may have any number of <tag>relationships</tag> elements.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>transforms</tag></term>
+<listitem>
+<para>Identifies transformations that can be applied during assembly.
+An assembly my have at most one <tag>transforms</tag> element, but it may contain
+any number of <tag>transform</tag> elements.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<section xml:id="resources">
+<title>Resources</title>
+
+<para>Individual resources are identified through a <tag>resource</tag>
+element:</para>
+
+<programlisting>&lt;resource xml:id="topicA" href="uri/for/topicA.xml"/&gt;</programlisting>
+
+<para>Here the resource “<literal>topicA</literal>” is associated with
+the URI <uri>uri/for/topicA.xml</uri>. Relative URIs are made absolute
+with respect to the element on which they appear. An optional <tag
+class="attribute">description</tag> attribute may also be used to
+provide a description of the resource.</para>
+
+<note>
+<title>Fragment Identifiers</title>
+<para>The URI specified in the <tag class="attribute">href</tag> attribute
+may include a fragment identifier, such as <uri>uri/for/topicA.xml#sectionid</uri>.
+Which, if any, fragment identifier schemes are supported is implementation
+defined.</para>
+</note>
+
+<para>A collection of resources may appear in a <tag>resources</tag>
+wrapper. The primary motivation for the resources wrapper is to group
+physically and logically colocated resources together. The
+<tag>resources</tag> wrapper is a convenient place, for example, to specify
+a common <tag class="attribute">xml:base</tag> or
+<tag class="attribute">xml:lang</tag> and
+<tag class="attribute">description</tag>.</para>
+</section>
+
+<section xml:id="structures">
+<title>Structures</title>
+
+<para>Structures are where the real work is performed. There is considerable
+tension between the goal of providing <tag>structure</tag> elements that are
+simple for the simple cases and simultaneously allowing them to be complex
+enough to describe the full richness of possibility.</para>
+
+<para>This inherent tension is compounded by the fact that the nature of
+<tag>structure</tag> outputs is naturally open ended. The goal is that
+DocBook assemblies should be able to handle both the richness of the structures
+that we produce today as well as the structures we will want to produce
+tomorrow.</para>
+
+<para>The principal task of the <tag>structure</tag> element is to
+identify the resources that are to be combined for that structure.
+The resulting structure may be delivered in any number of ways: as a single document,
+help system, or web site, for example.</para>
+
+<para>It is important to observe that the realized structure is often,
+but not necessarily, a valid DocBook document. What is important is
+not its validity from an authoring perspective, but rather its
+validity with respect to what the downstream processor is
+expecting.</para>
+
+<para>For example, if the <tag>structure</tag> is defining a book, then the
+realized structure should be a valid <tag>book</tag>. If, on the other hand,
+what is defined is a help system, then the realized structure may be a
+collection of nested <tag>topic</tag> elements. Even though authors
+are not allowed to nest topics (per the DocBook 5.1 <tag>topic</tag>
+element), the assembly process may be allowed to nest them.</para>
+
+<para>A <tag>structure</tag> consists mostly of <tag>module</tag> elements.
+</para>
+</section>
+
+<section xml:id="modules">
+<title>Modules</title>
+
+<para>The <tag>module</tag> element identifies a unit of structure.
+The attributes and children of a module provide facilities for
+selecting the content of the module and controlling its presentation.</para>
+
+<para>A <tag>module</tag> with a <tag class="attribute">resourceref</tag>
+attribute will pull in the content of that resource at that point in
+the structure. If the module has a <tag class="attribute">renderas</tag> attribute,
+then its attribute value replaces the name of the root element of the
+resource during assembly. That allows you to convert a topic resource
+to a chapter or section in the assembled DocBook.</para>
+
+<para>A <tag>module</tag> without a <tag class="attribute">resourceref</tag>
+attribute will create a new element in the assembled DocBook. It
+should have a <tag class="attribute">renderas</tag> attribute to specify its
+element name, and a <tag>merge</tag> child element to specify a title and any
+other info data.</para>
+
+<para>Module elements can nest to form hierarchies of content. A
+nested module's content is added at the end of its parent module's
+content, before the closing tag. Modules can be nested to any depth
+needed. For example, if a set of resources are created as individual
+topic elements, one module could render a topic as a chapter, and its
+module children could render as sections within the chapter, with
+further nested modules becoming subsections.</para>
+
+<para>Keep in mind that nesting of content would normally be done in a
+way that results in valid DocBook in the assembled document. However,
+the output is not validated, so you can create invalid or custom
+content with assemblies for any specific application.</para>
+
+</section>
+
+<section xml:id="relationships">
+<title>Relationships</title>
+
+<para>A relationship, in the context of an assembly, is an assertion
+that a particular collection of resources are related. The nature of
+the relationship is specified with a <tag class="attribute">type</tag>
+attribute. For example:</para>
+
+<programlisting><![CDATA[<relationship type="seealso">
+  <instance linkend="tut1"/>
+  <instance linkend="tut2"/>
+  <instance linkend="task1"/>
+</relationship>]]></programlisting>
+
+<para>This asserts that there is a “seealso” relationship between these
+resources. The processor might use this information to automatically generate
+a “See Also” section at the end of any of these topics.</para>
+
+<para>Relationships are often, but not necessarily, unordered. This
+relationship establishes a path through a set of resources:</para>
+
+<programlisting><![CDATA[<relationship type="path">
+  <info>
+    <title>New User Introduction</title>
+  </info>
+  <instance linkend="over1"/>
+  <instance linkend="over2"/>
+  <instance linkend="task3"/>
+  <instance linkend="cleanup"/>
+</relationship>]]></programlisting>
+
+<para>A sophisticated help system could use this path to guide a new
+user through a sequence of resources.</para>
+
+</section>
+
+<section xml:id="transformations">
+<title>Transformations</title>
+
+<para>An assembly can identify a collection of transformations that can
+be used during the assembly process. This is intended primarily to enable
+transforming sources that are not DocBook into DocBook so that they can
+be merged into the assembly. Other uses are application dependent.</para>
+
+<para>A transformation can be associated with a resource (for example,
+to translate from some other format into DocBook), or with a module
+(to address requirements beyond the limited transformation
+capabilities of the assembly).</para>
+
+<programlisting><![CDATA[<transforms>
+  <transform grammar="dita" href="dita2db.xsl"/>
+  <transform name="tutorial" href="db2tutorial.xsl"/>
+  <transform name="art2pi" href="art2pi.xsl"/>
+  <transform name="office" href="extractoffice.xsl"/>
+</transforms>]]></programlisting>
+
+<para>There are two ways to provide a transformation from a <tag>resource</tag>:
+via the <tag class="attribute">grammar</tag> attribute or the <tag
+class="attribute">transform</tag> attribute. If a <tag>resource</tag>
+has a <tag class="attribute">grammar</tag> attribute, the
+<tag>transform</tag> with the matching
+<tag class="attribute">grammar</tag> attribute will be selected. If it does
+not have a <tag class="attribute">grammar</tag> attribute but it does have a
+<tag class="attribute">transform</tag> attribute, the <tag>transform</tag> with
+the specified name will be selected.</para>
+
+<note>
+<para>Not all systems may support arbitrary transformations, nor can
+all systems support all possible transformation languages. To maximize
+interoperability it is best to use as few explicit transformations
+as possible, ideally none.</para>
+</note>
+
+<para>Given the transformations above, a DITA resource might be
+included in the assembly:</para>
+
+<programlisting>&lt;resource xml:id="overview" href="dita/over.xml"
+          grammar="dita"/></programlisting>
+
+<para>Whenever a module refers to this resource, it will receive the transformed,
+DocBook result.</para>
+
+<para>If a module needs to perform a transformation to get from one DocBook
+format to another, it can name a transform as well:</para>
+
+<programlisting><![CDATA[<module resourceref="article">
+  <output transform="tutorial"/>
+</module>]]></programlisting>
+
+<para>This will transform the module into a tutorial using the
+<uri>db2tutorial.xsl</uri> transform specified in the matching
+<tag>transform</tag> element.</para>
+
+<para>If the <tag>output</tag> specifies a <tag
+class="attribute">renderas</tag>, it is applied to the result of the
+last transformation.</para>
+</section>
+</section>
+
+<section>
+<info>
+<title>Describing Structural Relationships With Assemblies</title>
+<author>
+  <personname>
+    <firstname>Larry</firstname>
+    <surname>Roland</surname>
+  </personname>
+</author>
+</info>
+
+<para>In addition to providing a mechanism for describing the
+structure of the classical DocBook products such as books and
+articles, the <tag class="element">assembly</tag> element can be used
+to describe the relationships among non-linear collections of topics
+such as are presented in Web sites and help systems. While help
+systems can be produced by chunking a typical book into pieces; it is
+important to emphasize the non-linear nature of the content during the
+creation of it to avoid the presumption that a particular topic
+follows its predecessor in the document.</para>
+
+<para>Another characteristic of collections of topics such as help
+systems and Web sites is that it can be, at times, important to
+maintain explicit control over file names (to produce consistent
+<acronym>URI</acronym>s or to reduce churn in source control systems).
+The use of the assembly mechanism easily allows control over file
+names for the delivered products.</para>
+
+<para>It is also desirable, at times, to produce multiple output
+formats for some of the non-linear documents, with different locations
+for some portions of the content (the Index may go near the top of a
+navigational hierarchy of the HTML delivery of a help system, while it
+traditionally would be at the back of a printed version of a help
+system). The ability to specify specific outputs for elements and
+suppress them in other output formats supports this
+requirement.</para>
+
+<para>At this point, working through an example may be helpful.</para>
+
+<section>
+<title>Describing a Help System with an Assembly</title>
+
+<para>This section describes the use of an assembly to describe the
+hierarchical relationship among pages in a help system, and the use of
+the <tag class="attribute">type</tag> attribute on assemblies to carry
+information beyond the simple structure of a document. While there may
+be other specific considerations applying the <tag class="element"
+>assembly</tag> element to the description of a Web site, similar
+considerations are likely to apply.</para>
+
+<note>
+<para>This is a simplified example, but based on a real system.</para>
+</note>
+
+<section>
+<title>Background</title>
+
+<para>This is the help system for a simple documentation build system
+that has two Web-based screens that allow the user to build documents
+(books rendered into PDF and chunked HTML and help systems that are
+delivered with products using a Webhelp type system).</para>
+
+<para>There are four tasks supported by the system. Two screens of
+help are provided for the screens in the user interface, and the help
+system organization has to comply with documentation standards.</para>
+
+<itemizedlist spacing="compact">
+  <title>Help System Structure</title>
+  <para>Each entry in this list represents a node (HTML page) in the
+  help system.</para>
+  <listitem>
+    <para>ToC</para>
+  </listitem>
+  <listitem>
+    <para>Index</para>
+  </listitem>
+  <listitem>
+    <para>Overview (Welcome)</para>
+  </listitem>
+  <listitem>
+    <para>Tasks</para>
+    <itemizedlist>
+      <listitem>
+        <para>Building Documents</para>
+      </listitem>
+      <listitem>
+        <para>Packaging Books for Publication</para>
+      </listitem>
+      <listitem>
+        <para>Packaging Help for Submitting to Product Builds</para>
+      </listitem>
+      <listitem>
+        <para>Packaging Documents (Books and Help) for
+        Localization</para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+  <listitem>
+    <para>Screens and Menus</para>
+    <itemizedlist>
+      <listitem>
+        <para>Document Build Screen</para>
+      </listitem>
+      <listitem>
+        <para>Document Packaging Screen</para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+  <listitem>
+    <para>Printable Version (PDF)</para>
+  </listitem>
+  <listitem>
+    <para>Glossary</para>
+  </listitem>
+  <listitem>
+    <para>Help on Help</para>
+  </listitem>
+</itemizedlist>
+
+<para>The Webhelp system delivers topics of help with a navigational
+hierarchy on the left-hand side of the content presented for each
+topic. The navigational hierarchy indicates the location of the topic
+in the hierarchy by highlighting it and can be used to navigate to
+other topics in the help system. Help is provided for each page in the
+interface. In addition, a glossary is provided, with links from
+glossterms in the body of the help system to the glossary along with
+an index and full text search, that must be build across all the
+topics in the help system.</para>
+
+<para>In addition to being delivered using Webhelp, a printable
+version of the help system is delivered with the help system in the
+form of a PDF generated by walking the structure of the help system,
+collecting the individual topics to create a book with the structure
+derived from the hierarchical structure of the help system. However,
+the PDF follows the conventions of printed books, putting the index at
+the back of the book, and does not include the help on help
+content.</para>
+
+<para>In addition to the files for the Webhelp HTML and JavaScript,
+supplementary files are delivered to allow merging with other help
+systems and to support integration of the help on screens with the
+product help buttons. Some of the HTML files are expected to have
+standard names.</para>
+
+<para>The following example assumes that the Webhelp transform has
+been extended to support non-chunked generation of the system by
+passing in a topic for each page to be rendered. The navigational
+structure will be derived from the assembly.</para>
+</section>
+
+<section>
+<title>The Resources</title>
+
+<para>A very simple set of resources is specified for the help system.
+The file names are immaterial, and all the referenced file resources
+are presumed to be topics except the glossary, which is simply a
+glossary element (and usually derived from a glossary
+database).</para>
+
+<example>
+<title>Resources for a Help System</title>
+<programlisting><![CDATA[  <resources xml:base="some/path">
+    <description>Resources for help system.</description>
+    <resource xml:id="overview" href="overview.xml">
+      <description>Overview of help system.</description>
+    </resource>
+    <resource xml:id="task.build.doc" href="build.xml">
+      <description>Describe how to build a document.</description>
+    </resource>
+    <resource xml:id="pckg.intro" href="task-intro.xml">
+      <description>Introduction to the packaging tasks.</description>
+    </resource>
+    <resource xml:id="task.package.book.pub" href="package.xml">
+      <description>Describe how to package a document for publication.</description>
+    </resource>
+    <resource xml:id="task.package.help" href="help-package.xml">
+      <description>Describe how to package a help system for submission to product
+        build.</description>
+    </resource>
+    <resource xml:id="task.package.l10n" href="l10n-package.xml">
+      <description>Describe how to package source files for localization.</description>
+    </resource>
+    <resource xml:id="screen.overview" href="screen-intro.xml">
+      <description>Introductory text for screens and menus section.</description>
+    </resource>
+    <resource xml:id="screen.build.doc" href="popup.xml">
+      <description>Displayed when question mark icon on document build screen is
+        clicked.</description>
+    </resource>
+    <resource xml:id="screen.package" href="pkg-popup.xml">
+      <description>Displayed when question mark icon on packaging screen is clicked.</description>
+    </resource>
+    <resource xml:id="glossary" href="glossary.xml">
+      <description>Glossary for help system.</description>
+    </resource>
+    <resource xml:id="help.on.help" href="help-on-help.xml">
+      <description>How to use the help system.</description>
+    </resource>
+  </resources>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>Setting Up the Structure</title>
+
+<para>The first few lines of the structure set up general things about
+the help system:</para>
+
+<example>
+<title>Defining the Basics of the Help System</title>
+<programlisting linenumbering="numbered"><![CDATA[  <structure type="help.system">
+    <info>
+      <title>XIDI Build System Help</title>
+      <titleabbrev>XIDI Help</titleabbrev>
+    </info>
+    <output outputformat="pdf" file="sys-book.pdf" renderas="book"/>
+    <!-- The PDF output will be rendered into a file expected by the help
+         system for the printable version of the help system. -->
+    <output outputformat="webhelp" chunk="false" renderas="topic"/>
+    <!-- The webhelp output will NOT be chunked and the default render
+         (wherever a file name is specified) is as a topic.   IF the
+         renderas on an output that is a child of structure is not treated as
+         a default for specified files, a renderas has to be added to each of
+         the webhelp output statements in the modules that specify a file. -->]]></programlisting>
+<para>The <tag class="attribute">type</tag> attribute provides
+information to the render system so that the auxiliary files for
+merging and integration are built in addition to the Webhelp system.</para>
+<para>The <tag class="element">output</tag> element for <tag
+class="attvalue">pdf</tag> specifies the name of the file to use
+and tells the render system to render a book as the printable
+version of the help system.</para>
+<para>The <tag class="element">output</tag> element for <tag
+class="attvalue">webhelp</tag> suppresses chunking and sets the
+default value for the webhelp output statements that do not have a
+renderas attribute.</para>
+</example>
+</section>
+
+<section>
+<title>Standard Front End</title>
+<para>By convention, the first two pages in the help system are the
+table of contents and the index. However, in the book, the index goes
+in the back.</para>
+
+<example>
+<title>The Front End</title>
+<programlisting><![CDATA[    <module>
+      <output outputformat="webhelp" file="sys-toc.html" renderas="toc"/>
+    </module>
+    <module>
+      <output outputformat="webhelp" file="sys-index.html" renderas="index"/>
+      <output outputformat="pdf" suppress="true"/>
+    </module>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>Main Body of the Help System</title>
+
+<para>The main content of the help system is broken into an overview
+(Which can have lower-level topics below the main overview topic),
+task descriptions, which may be grouped together or appear at the top
+level if they are considered important enough to the user, and a set
+of help pages for screens.</para>
+
+<para>Each task description has a task element with a summary,
+prerequisites, the procedure, and lists of related topics and tasks.
+Help on screens always includes standard information such as how to
+navigate to the screen and what tasks the screen is used to
+accomplish. In complex systems, screens can be grouped together to
+deal with things like Wizards and related screens and dialogs.</para>
+
+<example>
+<title>Middles Section of Help System</title>
+<programlisting><![CDATA[    <module resourceref="overview">
+      <output outputformat="webhelp" file="overview.html"/>
+      <output outputformat="pdf" renderas="chapter"/>
+    </module>
+    <module resourceref="task.build.doc">
+      <output outputformat="webhelp" file="tsk-build-doc.html"/>
+      <output outputformat="pdf" renderas="section"/>
+    </module>
+    <module>
+      <output outputformat="webhelp" file="pckg-intro.html" renderas="preface"/>
+      <output outputformat="pdf" renderas="chapter"/>
+      <merge>
+        <title>Packaging</title>
+      </merge>
+      <module resourceref="pckg.intro" contentonly="true" omittitles="true"/>
+
+      <module resourceref="task.package.book.pub">
+        <output outputformat="webhelp" file="tsk-pckg-book-pub.html"/>
+        <output outputformat="pdf" renderas="section"/>
+      </module>
+      <module resourceref="task.package.help">
+        <output outputformat="webhelp" file="tsk-pckg-help.html"/>
+        <output outputformat="pdf" renderas="section"/>
+      </module>
+      <module resourceref="task.package.l10n">
+        <output outputformat="webhelp" file="tsk-pckg-l10n.html"/>
+        <output outputformat="pdf" renderas="section"/>
+      </module>
+    </module>
+    <module>
+      <output outputformat="webhelp" file="scr-overvw.html"/>
+      <output outputformat="pdf" renderas="chapter"/>
+      <merge>
+        <title>Screens</title>
+      </merge>
+      <module resourceref="screen.overview" contentonly="true"
+      omittitles="true"/>
+      <module resourceref="screen.build.doc">
+        <output outputformat="webhelp" file="scr-build.html"/>
+        <output outputformat="pdf" renderas="section"/>
+      </module>
+      <module resourceref="screen.package">
+        <output outputformat="webhelp" file="scr-package.html"/>
+        <output outputformat="pdf" renderas="section"/>
+      </module>
+    </module>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>Standard Back End for the Help System</title>
+
+<para>Once the main body of the help system is built, the standard
+back end components are added.</para>
+
+<example>
+<title>Back End of Help System</title>
+<programlisting><![CDATA[    <module>
+      <output outputformat="webhelp"/> 
+      <!-- No file, just want the link in the navigation. -->
+      <output outputformat="pdf" suppress="true"/>
+      <!-- Nothing in PDF. -->
+      <merge>
+        <title xmlns:xl="http://www.w3.org/1999/xlink" xl:href="sys-book.pdf">Printable Version (PDF)</title>
+      </merge>
+    </module>
+    <module resourceref="glossary">
+      <output outputformat="webhelp" file="sys-glossary.html"/>
+      <!-- The help delivery system expects the glossary to be in a file named
+           sys-glossary.html.-->
+    </module>
+    <module>
+      <output outputformat="webhelp" suppress="true"/>
+    </module>
+    <module resourceref="help.on.help">
+      <output outputformat="webhelp" file="help-on-help.html"/>
+      <output outputformat="pdf" suppress="true"/>
+      <!-- By convention help on how to use the help system is not included in
+           the printable version of the help system and is stock, pulled from a
+           library. -->
+    </module>
+  </structure>]]></programlisting>
+</example>
+</section>
+
+<section>
+<title>What Happens</title>
+
+<para>Presuming an Ant (or other target based) build system for this
+help system document, the following targets are meaningful for
+building the document described by this structure.</para>
+
+<variablelist>
+  <title>Targets for Building the Help System</title>
+  <varlistentry>
+    <term>build.help</term>
+    <listitem>
+      <para>Builds a help system with the following:</para>
+      <simplelist columns="1" type="vert">
+        <member>Webhelp files, including the full test search inverse
+        index files</member>
+        <member>XML files for merging with other help systems</member>
+        <member>Properties files for integrating into product</member>
+      </simplelist>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>build.pdf</term>
+    <listitem>
+      <para>Build the PDF printable version</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>build.all</term>
+    <listitem>
+      <para>Build the help system and the printable version, packaged
+      into the same directory structure used to deliver the help
+      system with the product, so that it can be zipped up for
+      delivery into the product source control system.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</section>
+</section>
+</section>
+
+<section xml:id="ex-book">
+<title>Example: Assembling a Printed Book</title>
+
+<para>For the purposes of this section, let's
+assume that we have the following resources available:</para>
+
+<programlisting><![CDATA[<resources xml:base="tutorial/">
+  <resource xml:id="tut1" href="tut1.xml"/>
+  <resource xml:id="tut2" href="tut2.xml"/>
+  <resource xml:id="tut3" href="tut3.xml"/>
+  <resource xml:id="tut4" href="tut4.xml"/>
+  <resource xml:id="tut5" href="tut5.xml"/>
+</resources>
+
+<resources xml:base="tasks/">
+  <resource xml:id="task1" href="task1.xml"/>
+  <resource xml:id="task2" href="task2.xml"/>
+  <resource xml:id="task3" href="task3.xml"/>
+  <resource xml:id="task4" href="task4.xml"/>
+</resources>]]></programlisting>
+
+<para>Further, let's assume that each of the tutorials and tasks is
+authored as a standalone <tag>topic</tag>.</para>
+
+<para>Our first challenge is to create a PDF user guide.
+A subject matter expert has informed us that the proper linear
+presentation for the user guide is tutorials 1 and 2, task 1, tutorial 3,
+task 4, and an index.</para>
+
+<para>Our first attempt at a structure might look like this:</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output renderas="book"/>
+  <module resourceref="tut1"/>
+  <module resourceref="tut2"/>
+  <module resourceref="task1"/>
+  <module resourceref="tut3"/>
+  <module resourceref="task4"/>
+</structure>]]></programlisting>
+
+<para>The <tag>output</tag> element identifies the kind of output to
+be generated. There may be more than one type.
+The <tag class="attribute">renderas</tag> attribute on the
+<tag>output</tag> tells us that the realized structure should be a book.
+</para>
+
+<para>The <tag>module</tag> elements identify the resources to be included.
+That's fine as far as it goes. Processing this <tag>structure</tag> will
+create a realized structure that is a <tag>book</tag> (because that's what
+the <tag class="attribute">renderas</tag> on the <tag>output</tag> tells
+us) consisting of the tables of contents and the correct six topics:</para>
+
+<programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
+  <toc role="figures"/>
+  <toc role="tables"/>
+  <toc role="procedures"/>
+  <topic xml:base="tutorial/tut1.xml">
+    <title>Introduction</title>
+    ...
+  </topic>
+  <topic xml:base="tutorial/tut2.xml">
+    <title>Getting Started</title>
+    ...
+  </topic>
+  <topic xml:base="tasks/task1.xml">
+    <title>Engaging the spindle</title>
+    ...
+  </topic>
+  <topic xml:base="tutorial/tut3.xml">
+    <title>Troubleshooting</title>
+    ...
+  </topic>
+  <topic xml:base="tasks/task4.xml">
+    <title>Diagnosing spindle problems</title>
+    ...
+  </topic>
+</book>]]></programlisting>
+
+<para>The trouble is, that's not a valid <tag>book</tag>. Not only does it
+consist of topics instead of the expected chapters and such, but it's lacking
+necessary metadata like a title.</para>
+
+<para>We can address the first problem by allowing
+<tag>output</tag> elements inside modules.</para>
+
+<para>Most high-level elements (<tag>chapter</tag>, <tag>appendix</tag>,
+<tag>book</tag>, <tag>section</tag>, <tag>topic</tag>, etc.) in DocBook have
+the same general structure: they contain an (optional) <tag>info</tag>
+element followed by a collection of block elements.</para>
+
+<para>The semantic of <tag class="attribute">renderas</tag> in a
+<tag>module</tag> that points to a resource is that it renames the
+root element of that resource. This simple transformation will allow us
+to turn all those topics into elements more appropriate for <tag>book</tag>
+content. (We'll consider how to address the situation where more complex
+transformation is necessary later.)</para>
+
+<para>We can address the problem of missing metadata by creating a new
+<tag>resource</tag> that contains an <tag>info</tag> element containing
+the appropriate metadata and then pointing to it. Alternatively, you
+can supply a <tag>merge</tag> element containing metadata for the
+structure. The <tag>merge</tag> element has the same content
+model as <tag>info</tag>. Metadata elements that you include in the
+<tag>merge</tag> element are applied to the output element for the
+<tag>structure</tag>.</para>
+
+<para>With these amendments, here's our new structure:</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output renderas="book"/>
+  <merge>
+    <title>Widget User Guide</title>
+  </merge>
+  <module resourceref="full-toc"/>
+  <module resourceref="tut1">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="tut2"/>
+  <module resourceref="task1"/>
+  <module resourceref="tut3">
+    <output renderas="appendix"/>
+  </module>
+  <module resourceref="task4">
+    <output renderas="section"/>
+  </module>
+  <module resourceref="index"/>
+</structure>]]></programlisting>
+
+<para>The realized structure that this produces is:</para>
+
+<programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
+  <info>
+    <title>Widget User Guide</title>
+  </info>
+  <toc/>
+  <toc role="figures"/>
+  <toc role="tables"/>
+  <toc role="procedures"/>
+  <chapter xml:base="tutorial/tut1.xml">
+    <title>Introduction</title>
+    ...
+  </chapter>
+  <chapter xml:base="tutorial/tut2.xml">
+    <title>Getting Started</title>
+    ...
+  </chapter>
+  <chapter xml:base="tasks/task1.xml">
+    <title>Engaging the spindle</title>
+    ...
+  </chapter>
+  <appendix xml:base="tutorial/tut3.xml">
+    <title>Troubleshooting</title>
+    ...
+  </appendix>
+  <appendix xml:base="tasks/task4.xml">
+    <title>Diagnosing spindle problems</title>
+    ...
+  </appendix>
+  <index/>
+</book>]]></programlisting>
+
+<para>That realized structure is a valid <tag>book</tag> so you would
+expect the processing system to produce the correct results.</para>
+
+<para>Except that it's not the right book. Upon further review by our subject
+matter expert, it's been decided that tutorial 3 and task 4 shouldn't
+be separate appendixes, they should instead both be sections in a single
+appendix called “Troubleshooting”.</para>
+
+<para>We can address this issue with nested modules. Instead of having
+separate top-level modules for the tutorial and task, we'll make them
+subordinate modules in a new top-level module:</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output renderas="book"/>
+  <merge>
+    <title>Widget User Guide</title>
+  </merge>
+  <module resourceref="full-toc"/>
+  <module resourceref="tut1">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="tut2">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="task1">
+    <output renderas="chapter"/>
+  </module>
+  <module>
+    <output renderas="appendix"/>
+    <merge>
+      <title>Troubleshooting</title>
+    </merge>
+    <module resourceref="tut3">
+      <output renderas="section"/>
+    </module>
+    <module resourceref="task4">
+      <output renderas="chapter"/>
+    </module>
+  </module>
+  <module resourceref="index"/>
+</structure>]]></programlisting>
+
+<para>The semantics of <tag class="attribute">renderas</tag> on a module
+that does not have a <tag class="attribute">resourceref</tag> is that it
+simply generates that element.</para>
+
+<para>The realized document is now:</para>
+
+<programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
+  <info>
+    <title>Widget User Guide</title>
+  </info>
+  <toc/>
+  <toc role="figures"/>
+  <toc role="tables"/>
+  <toc role="procedures"/>
+  <chapter xml:base="tutorial/tut1.xml">
+    <title>Introduction</title>
+    ...
+  </chapter>
+  <chapter xml:base="tutorial/tut2.xml">
+    <title>Getting Started</title>
+    ...
+  </chapter>
+  <chapter xml:base="tasks/task1.xml">
+    <title>Engaging the spindle</title>
+    ...
+  </chapter>
+  <appendix>
+    <info>
+      <title>Troubleshooting</title>
+    </info>
+    <section xml:base="tutorial/tut3.xml">
+      <title>Troubleshooting</title>
+      ...
+    </section>
+    <section xml:base="tasks/task4.xml">
+      <title>Diagnosing spindle problems</title>
+      ...
+    </section>
+  </appendix>
+  <index/>
+</book>]]></programlisting>
+
+<para>That's probably not quite what was intended. Given that tutorial 3
+has the title “Troubleshooting”, what we probably wanted was to make that
+tutorial the <tag>appendix</tag> and make the task a subordinate section
+of that appendix.</para>
+
+<para>We can achieve that by nesting the modules differently:</para>
+
+<programlisting><![CDATA[  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+    </module>
+  </module>]]></programlisting>
+
+<para>Now the <tag>appendix</tag> in the realized structure has the form
+that we want:</para>
+
+<programlisting><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
+    <title>Troubleshooting</title>
+    ...
+    <section xml:base="tasks/task4.xml">
+      <title>Diagnosing spindle problems</title>
+      ...
+    </section>
+  </appendix>]]></programlisting>
+
+<para>If a module “A” is nested within a module “B” that refers to a
+resource, the result of processing “A” is inserted into “B” as the last
+child of “B”. (In the case of several nested modules, they are inserted
+as the last children in the order specified.)</para>
+
+<para>After further review of the content, the subject matter expert decides
+that tutorial 5 and task 3 are also relevant to trouble shooting. Tutorial
+5 also has the title “Troubleshooting” and naturally follows tutorial 3.
+Task 3 is about diagnosing bearing issues.</para>
+
+<para>It's easy to combine them the new content into the appendix:</para>
+
+<programlisting><![CDATA[  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <module resourceref="tut5">
+      <output renderas="section"/>
+    </module>
+    <module resourceref="task4"/>
+    <module resourceref="task3"/>
+  </module>]]></programlisting>
+
+<para>but that doesn't produce a pleasing result:</para>
+
+<programlisting><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
+    <title>Troubleshooting</title>
+    ...
+    <section xml:base="tutorial/tut5.xml">
+      <title>Troubleshooting</title>
+      ...
+    </section>
+    <section xml:base="tasks/task4.xml">
+      <title>Diagnosing spindle problems</title>
+      ...
+    </section>
+    <section xml:base="tasks/task3.xml">
+      <title>Diagnosing bearing problems</title>
+      ...
+    </section>
+  </appendix>]]></programlisting>
+
+<para>What we really want to do is combine tutorials 3 and 5, not make 5
+a subordinate section of 3. While we're at it, let's change the title of
+the appendix to “Troubleshooting spindle and bearing problems” since that's
+what it's really about.</para>
+
+<para>We can solve the first problem with the
+<tag class="attribute">contentonly</tag> attribute on <tag>module</tag>:
+</para>
+
+<programlisting><![CDATA[  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+    </module>
+    <module resourceref="task3"/>
+  </module>]]></programlisting>
+
+<para>If
+<tag class="attribute">contentonly</tag> is <literal>true</literal>,
+then only the content of the document element, and not the document element
+itself, is included.</para>
+
+<para>The realized structure for this appendix is now:</para>
+
+<programlisting><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
+    <title>Troubleshooting</title>
+    ...
+    ...content (only) of tutorial 5...
+    <section xml:base="tasks/task4.xml">
+      <title>Diagnosing spindle problems</title>
+      ...
+    </section>
+    <section xml:base="tasks/task3.xml">
+      <title>Diagnosing bearing problems</title>
+      ...
+    </section>
+  </appendix>]]></programlisting>
+
+<para>There are two ways that we can change the title. The first uses only
+semantics we've already encountered:</para>
+
+<programlisting><![CDATA[  <module>
+    <output renderas="appendix"/>
+    <merge>
+      <title>Troubleshooting spindle and bearing problems</title>
+    </merge>
+    <module resourceref="tut3" contentonly="true"/>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+    </module>
+    <module resourceref="task3"/>
+  </module>]]></programlisting>
+
+<para>Instead, we introduce one more convention: if a <tag>module</tag>
+refers to another resource <emphasis>and</emphasis> contains a
+<tag>merge</tag> element, then the elements within that
+<tag>merge</tag> replace any elements of the same name in the
+referenced resource's metadata. (If the referenced resource has no
+metadata, then the specified <tag>merge</tag> becomes an
+<tag>info</tag> and is inserted as the first child of the referenced
+resource.)</para>
+
+<para>The second approach uses this convention:</para>
+
+<programlisting><![CDATA[  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <merge>
+      <title>Troubleshooting spindle and bearing problems</title>
+    </merge>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+    </module>
+    <module resourceref="task3"/>
+  </module>]]></programlisting>
+
+<para>In the realized structure for this example, the appendix
+metadata includes everything in tutorial 3's metadata, with the title
+changed as indicated.</para>
+</section>
+
+<section xml:id="ex-html">
+<title>Example: Assembling an Online Book</title>
+
+<para>This example extends the book example, see <xref
+linkend="ex-book"/>. In addition to the printed user guide, we want to
+produce an online user guide. The online guide is, by design, a
+straightforward, linear rendering of the book. We'll look at a more
+intricately structured example later.</para>
+
+<para>We could create a separate assembly for the online guide, but it
+will be better in the long run if we can manage the structure of the user
+guide in one place.</para>
+
+<para>The first step is to create a new output type:</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output outputformat="book" renderas="book"/>
+  <output outputformat="web" renderas="book"/>
+  <merge>
+    <title>Widget User Guide</title>
+  </merge>
+  <module resourceref="full-toc"/>
+  <module resourceref="tut1">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="tut2"/>
+  <module resourceref="task1"/>
+  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <merge>
+      <title>Troubleshooting spindle and bearing problems</title>
+    </merge>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+    </module>
+    <module resourceref="task3"/>
+  </module>
+  <module resourceref="index"/>
+</structure>]]></programlisting>
+
+<para>Now we can process this structure either as a “book” type structure
+or a “web” type structure. At the moment, there's no difference between them.
+Let's consider some of the changes we need to make for the
+online site:</para>
+
+<orderedlist>
+<listitem>
+<para>We want to control the names of the HTML documents produced.</para>
+</listitem>
+<listitem>
+<para>We want to control how chunking is performed.</para>
+</listitem>
+<listitem>
+<para>We want to suppress some “print only” content.</para>
+</listitem>
+</orderedlist>
+
+<para>The first two of these we can address with <tag>output</tag>
+elements:</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output outputformat="book" renderas="book"/>
+  <output outputformat="web" renderas="book" file="user-guide.html"/>
+  <merge>
+    <title>Widget User Guide</title>
+  </merge>
+  <module resourceref="full-toc">
+    <output outputformat="web" chunk="false"/>
+  </module>
+  <module resourceref="tut1">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="tut2"/>
+  <module resourceref="task1"/>
+  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <merge>
+      <title>Troubleshooting spindle and bearing problems</title>
+    </merge>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+      <output outputformat="web" chunk="false"/>
+    </module>
+    <module resourceref="task3"/>
+  </module>
+  <module resourceref="index">
+    <output outputformat="web" file="book-index.html"/>
+  </module>
+</structure>]]></programlisting>
+
+<para>Specifying a <tag class="attribute">file</tag> on an <tag>output</tag>
+tells the assembly where to write the chunk. (If it occurs on a module which
+is not chunked, it is simply ignored.) The <tag class="attribute">chunk</tag>
+attribute can be used to specify which modules should (or should not) be
+placed in separate chunks. The implied value on modules where it is not
+specified depends on the name of the rendered element and the output format.</para>
+
+<para>When processing a module, all of the relevant output directives are
+combined. An <tag>output</tag> is relevant if it does not specify an
+output format or if the format specified matches the processing that is being
+performed. If conflicting values are specified for any attribute, the last
+value specified (in document order) is used.</para>
+
+<para>To exclude (or include) content, we add the
+<tag>filterout</tag> (and <tag>filterin</tag>) elements to the assembly.
+Each may have a <tag class="attribute">outputformat</tag> and specifies some number
+of effectivity values. (The processor will have to be configured to profile before
+assembling, of course.)</para>
+
+<para>If no conditions are specified on <tag>filterout</tag>, the
+module is unconditionally excluded. (Specifying no conditions on a
+<tag>filterin</tag> has no effect.)</para>
+
+<para>If filters are used at the <tag>structure</tag> level, they apply to
+the entire document. If they are used at the <tag>module</tag> level, they
+apply only to that module.</para>
+
+<para>With filters, our <tag>structure</tag> might look like this:</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output outputformat="book" renderas="book"/>
+  <output outputformat="web" renderas="book" file="user-guide.html"/>
+  <filterout outputformat="web" condition="print"/>
+  <merge>
+    <title>Widget User Guide</title>
+  </merge>
+  <module resourceref="full-toc">
+    <output outputformat="web" chunk="false"/>
+  </module>
+  <module resourceref="tut1">
+    <output renderas="chapter"/>
+  </module>
+  <module resourceref="tut2">
+    <filterin outputformat="web" condition="print"/>
+    <filterout outputformat="web" userlevel="advanced"/>
+  </module>
+  <module resourceref="task1"/>
+  <module resourceref="tut3">
+    <output renderas="appendix"/>
+    <merge>
+      <title>Troubleshooting spindle and bearing problems</title>
+    </merge>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4">
+      <output renderas="section"/>
+      <output outputformat="web" chunk="false"/>
+    </module>
+    <module resourceref="task3"/>
+  </module>
+  <module resourceref="index">
+    <filterout outputformat="web"/>
+  </module>
+</structure>]]></programlisting>
+
+<para>This <tag>structure</tag> applies the following filters when rendering
+for the web: print only content is excluded globally; in tutorial 2,
+print only content <emphasis>is</emphasis> included, but advanced material
+is excluded; and the entire index is excluded.</para>
+
+</section>
+
+<section xml:id="ex-ref">
+<title>Example: Assembling an Online Reference</title>
+
+<para>The online reference differs from the preceding book-based examples
+in that no total, linear order is imposed on the content. Instead, navigation
+is performed either by search (which is outside the scope of assemblies)
+or through related links.</para>
+
+<para>Using the resources defined in <xref linkend="ex-book"/>, here's
+a plausible <tag>structure</tag> for our online reference.</para>
+
+<programlisting><![CDATA[<structure xml:id="user-guide">
+  <output renderas="topic"/>
+  <filterout outputformat="web" condition="print"/>
+  <merge>
+    <title>Widget Reference</title>
+  </merge>
+  <module resourceref="tut1"/>
+  <module resourceref="tut2"/>
+  <module resourceref="task1"/>
+  <module resourceref="tut3">
+    <merge>
+      <title>Troubleshooting spindle and bearing problems</title>
+    </merge>
+    <module resourceref="tut5" contentonly="true"/>
+    <module resourceref="task4"/>
+    <module resourceref="task3"/>
+  </module>
+  <module resourceref="tut4"/>
+  <module resourceref="task2"/>
+  <module resourceref="index"/>
+</structure>]]></programlisting>
+
+<para>The resulting realized structure will be a nested set of
+<tag>topic</tag> elements. Topics don't nest in DocBook (at least
+in DocBook 5.1), so this isn't a valid DocBook document.
+However, the nested topics provide a navigational structure for the
+online presentation. The rendering system is, we assume, smart enough
+to render each of the topics separately, as if they were all top-level
+siblings.</para>
+
+</section>
+</chapter>

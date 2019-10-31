@@ -1,0 +1,48 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">question</refmiscinfo>
+  <refmiscinfo role="pattern">db.question</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>question</tag> in a <tag>qandaentry</tag>
+      poses a question or states a problem that is addressed by the following
+      <tag>answer</tag>(s). The <tag>answer</tag>s are
+      optional (some questions have no answers) and may be repeated (some
+      questions have more than one answer).</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>The <tag>question</tag>s are frequently introduced with
+        a label, such as <quote>A:</quote>. If a <tag>question</tag>
+        has a <tag>label</tag> child element, the content of that
+        <tag>label</tag> is used as the label for the
+        <tag>question</tag>. The <tag class="attribute">defaultlabel</tag> attribute on the nearest
+        ancestor <tag>qandaset</tag> of a <tag>question</tag>
+        can be used to indicate that a processing application should
+        automatically generate a label for the
+        <tag>question</tag>.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.0">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">biblioid</refmiscinfo>
+  <refmiscinfo role="pattern">db.biblioid</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A bibliographic identifier, such as an <acronym>ISBN</acronym>
+number, Library of Congress identifier, or URI.</para>
+
+<para>This element supersedes the <tag role="nonexistant">isbn</tag>,
+<tag role="nonexistant">issn</tag>, and <tag
+role="nonexistant">pubsnumber</tag> elements.</para>
+
+<important role="fu">
+<para>The linking attributes will be removed from <tag>biblioid</tag> in DocBook V6.0.
+They are inappropriate for an element that's intended to be simply an identifier.
+</para>
+</important>
+
+<refsection>
+<title>Processing expectations</title>
+<para>Formatted inline. Sometimes suppressed.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

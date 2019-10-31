@@ -1,0 +1,51 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">segtitle</refmiscinfo>
+  <refmiscinfo role="pattern">db.segtitle</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>Each heading in a <tag>segmentedlist</tag> is contained in
+      its own <tag>segtitle</tag>.</para>
+
+      <para>The relationship between <tag>segtitle</tag>s and
+      <tag>seg</tag>s is implicit in the document; the first
+      <tag>segtitle</tag> goes with the first <tag>seg</tag>
+      in each <tag>seglistitem</tag>, the second
+      <tag>segtitle</tag> goes with the second <tag>seg</tag>,
+      and so on.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Segmented lists can be formatted in a number of ways. Two
+        popular formats are tabular and as a list of repeated headings and
+        elements. In a tabular presentation, each <tag role="keep-together">segtitle</tag> is a column heading. In the
+        list presentation, each <tag>segtitle</tag> is repeated before
+        the corresponding <tag>seg</tag>.</para>
+      </refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+<para>See <tag>segmentedlist</tag> for an example that uses this element.</para>
+</refsection>
+
+</refentry>

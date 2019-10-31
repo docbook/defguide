@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1" arch="assembly">
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">structure</refmiscinfo>
+  <refmiscinfo role="pattern">db.structure</refmiscinfo>
+  <refmiscinfo role="class">assembly</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A <tag>structure</tag> is the top-level unit of an <tag>assembly</tag>. A
+<tag>structure</tag> represents the book, help system, web site, or other artifact
+to be produced by assembling <tag>module</tag>s, which are further composed
+of <tag>resource</tag>s.</para>
+
+<para>An <tag>assembly</tag> can contain several <tag>structure</tag> elements,
+but usually only one is specified for output at a time. For example,
+one structure could assemble a printed document, while a second
+structure could assemble an online help system from the same set of
+resources.</para>
+
+<para>If a <tag>structure</tag> element has a
+<tag class="attribute">resourceref</tag> attribute, then the
+<tag>resource</tag> that it points to becomes the root element and
+base content of the assembled document. If a <tag>structure</tag> does
+not have a <tag class="attribute">resourceref</tag> attribute, then it
+should have a <tag class="attribute">renderas</tag> attribute to
+specify the root element generated to contain the modules in the
+structure. It should also have a <tag>merge</tag> element to specify
+the <tag>title</tag> and any other <tag>info</tag> content of the
+generated root element.</para>
+
+<para>You can also create modular structures. If a <tag>module</tag>
+element within in a main structure has a
+<tag class="attribute">resourceref</tag> attribute that matches the
+<tag class="attribute">xml:id</tag> of another <tag>structure</tag>,
+then the <tag>module</tag>s of that <tag>structure</tag> are
+incorporated into the main <tag>structure</tag>.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>A <tag>structure</tag> is rendered by assembling the <tag>module</tag>s that
+it contains into a new, assembled document.</para>
+
+<para>Common attributes on the <tag>structure</tag> element are generally copied
+onto the output root element.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>This <tag>structure</tag> generates a <tag>book</tag> root element and
+incorporates two resources, one as a <tag>chapter</tag> and the other as an
+<tag>appendix</tag>.</para>
+
+<programlisting><![CDATA[<structure renderas="book">
+  <merge>
+    <title>Name of the book</title>
+  </merge>
+  <module resourceref="topic1" renderas="chapter"/>
+  <module resourceref="topic2" renderas="appendix"/>
+</structure>]]></programlisting>
+
+<para>This <tag>structure</tag> uses a <tag>resource</tag> to create
+the root <tag>article</tag> element, and incorporates two resources as
+<tag>section</tag>s in the <tag>article</tag>.</para>
+
+<programlisting><![CDATA[<structure resourceref="article-template">
+  <module resourceref="topic1" renderas="section"/>
+  <module resourceref="topic2" renderas="section"/>
+</structure>]]></programlisting>
+
+<para>This example assembles two substructures into a main structure:</para>
+
+<programlisting><![CDATA[<structure xml:id="chapter1-structure" resourceref="chap1">
+  <module resourceref="topic1" renderas="chapter">
+    <module resourceref="topic2" renderas="section"/>
+  </module>
+</structure>]]></programlisting>
+
+<programlisting><![CDATA[<structure xml:id="chapter2-structure" resourceref="chap2">
+  <module resourceref="topic3" renderas="chapter">
+    <module resourceref="topic4" renderas="section"/>
+  </module>
+</structure>]]></programlisting>
+
+<programlisting><![CDATA[<structure renderas="book">
+  <merge>
+    <title>Name of the book</title>
+  </merge>
+  <module resourceref="chapter1-structure"/>
+  <module resourceref="chapter2-structure"/>
+</structure>]]></programlisting>
+
+</refsection>
+</refentry>

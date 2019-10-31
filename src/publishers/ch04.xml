@@ -1,0 +1,1189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 version="5.0" xml:id="ch-exclusions">
+<?dbhtml filename="ch04.html"?>
+<info>
+  <title>Exclusions from Core DocBook</title>
+</info>
+
+<para>In the interest of providing a schema that meets the needs of
+the Publishing industry, the following considerations were made with
+regard to the modular approach to the schema and the exclusion of
+certain core DocBook elements:</para>
+
+<variablelist>
+  <varlistentry>
+    <term>Simplified markup</term>
+    <listitem>
+      <para>The focus should be on the structural, presentational and semantic
+      markup that meets the needs of Publishers.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>No technical elements</term>
+    <listitem>
+      <para>The vast majority of Publishers will not need the technical elements
+      from core DocBook. For those titles that require technical markup, the
+      inlines can easily be added as a module to the Publishers schema.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Generated text</term>
+    <listitem>
+      <para>With the robust DocBook toolchain, most Publishers will want to
+      automate the creation of a Table of Contents and Index.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para>The following 149 elements from full DocBook have been excluded from the
+Publishers schema:</para>
+
+<note>
+  <para>Because the Publishers schema is written in RelaxNG Compact syntax, it is very
+  easy to add elements back into a customization of the Publishers schema. For
+  example, if the elements in the programming module were needed, it is very
+  simple to use an include statement for the programming.rnc file from the source
+  DocBook distribution.</para>
+  <para>in favor of generated text, removed tech writing specific, simplify the markup
+  burden</para>
+</note>
+
+            <table>
+                <title>Excluded DocBook elements</title>
+                <tgroup cols="5">
+                    <colspec colname="xxx1"/>
+                    <colspec colname="xxx2"/>
+                    <colspec colname="xxx3"/>
+                    <colspec colname="xxx4"/>
+                    <colspec colname="xxx5"/>
+		    <thead>
+                        <row>
+                            <entry>Element Name</entry>
+                            <entry>Definition</entry>
+                            <entry>Group</entry>
+                            <entry>Module</entry>
+                            <entry>Description</entry>
+                        </row>
+		    </thead>
+                    <tbody>
+                        <row>
+                            <entry>accel </entry>
+                            <entry>db.accel </entry>
+                            <entry>db.keyboard.inlines </entry>
+                            <entry>keyboard.rnc </entry>
+                            <entry>A graphical user interface (GUI) keyboard shortcut </entry>
+                        </row>
+                        <row>
+                            <entry>annotation </entry>
+                            <entry>db.annotation </entry>
+                            <entry>db.ubiq.inlines </entry>
+                            <entry>annotations.rnc </entry>
+                            <entry>An annotation </entry>
+                        </row>
+                        <row>
+                            <entry>application </entry>
+                            <entry>db.application </entry>
+                            <entry>db.product.inlines </entry>
+                            <entry>product.rnc </entry>
+                            <entry>The name of a software program </entry>
+                        </row>
+                        <row>
+                            <entry>arc </entry>
+                            <entry>db.arc </entry>
+                            <entry>db.extendedlink </entry>
+                            <entry>xlink.rnc </entry>
+                            <entry>An XLink arc in an extendedlink </entry>
+                        </row>
+                        <row>
+                            <entry>arg </entry>
+                            <entry>db.arg </entry>
+                            <entry>db.cmdsynopsis </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>An argument in a CmdSynopsis </entry>
+                        </row>
+                        <row>
+                            <entry>caution </entry>
+                            <entry>db.caution </entry>
+                            <entry>db.admonition.blocks </entry>
+                            <entry>admonitions.rnc </entry>
+                            <entry>A note of caution </entry>
+                        </row>
+                        <row>
+                            <entry>citerefentry </entry>
+                            <entry>db.citerefentry </entry>
+                            <entry>db.bibliography.inlines </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A citation to a reference page </entry>
+                        </row>
+                        <row>
+                            <entry>classname </entry>
+                            <entry>db.classname </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The name of a class, in the object-oriented programming sense
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>classsynopsis </entry>
+                            <entry>db.classsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The syntax summary for a class definition </entry>
+                        </row>
+                        <row>
+                            <entry>classsynopsisinfo </entry>
+                            <entry>db.classsynopsisinfo </entry>
+                            <entry>db.classsynopsis </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>Information supplementing the contents of a ClassSynopsis
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>cmdsynopsis </entry>
+                            <entry>db.cmdsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A syntax summary for a software command </entry>
+                        </row>
+                        <row>
+                            <entry>code </entry>
+                            <entry>db.code </entry>
+                            <entry>db.markup.inlines </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>An inline code fragment </entry>
+                        </row>
+                        <row>
+                            <entry>col </entry>
+                            <entry>db.html.col </entry>
+                            <entry>db.html.table.model </entry>
+                            <entry>htmltbl.rnc </entry>
+                            <entry>Specifications for a column in an HTML table </entry>
+                        </row>
+                        <row>
+                            <entry>colgroup </entry>
+                            <entry>db.html.colgroup </entry>
+                            <entry>db.html.table.model </entry>
+                            <entry>htmltbl.rnc </entry>
+                            <entry>A group of columns in an HTML table </entry>
+                        </row>
+                        <row>
+                            <entry>command </entry>
+                            <entry>db.command </entry>
+                            <entry>db.os.inlines </entry>
+                            <entry>os.rnc </entry>
+                            <entry>The name of an executable program or other software command
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>computeroutput </entry>
+                            <entry>db.computeroutput </entry>
+                            <entry>db.os.inlines </entry>
+                            <entry>os.rnc </entry>
+                            <entry>Data, generally text, displayed or presented by a computer
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>constant </entry>
+                            <entry>db.constant </entry>
+                            <entry>db.markup.inlines </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A programming or system constant </entry>
+                        </row>
+                        <row>
+                            <entry>constraint </entry>
+                            <entry>db.constraint </entry>
+                            <entry>db.production </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>A constraint in an EBNF production </entry>
+                        </row>
+                        <row>
+                            <entry>constraintdef </entry>
+                            <entry>db.constraintdef </entry>
+                            <entry>db.technical.blocks </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>The definition of a constraint in an EBNF production </entry>
+                        </row>
+                        <row>
+                            <entry>constructorsynopsis </entry>
+                            <entry>db.constructorsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A syntax summary for a constructor </entry>
+                        </row>
+                        <row>
+                            <entry>database </entry>
+                            <entry>db.database </entry>
+                            <entry>db.product.inlines </entry>
+                            <entry>product.rnc </entry>
+                            <entry>The name of a database, or part of a database </entry>
+                        </row>
+                        <row>
+                            <entry>destructorsynopsis </entry>
+                            <entry>db.destructorsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A syntax summary for a destructor </entry>
+                        </row>
+                        <row>
+                            <entry>envar </entry>
+                            <entry>db.envar </entry>
+                            <entry>db.os.inlines </entry>
+                            <entry>os.rnc </entry>
+                            <entry>A software environment variable </entry>
+                        </row>
+                        <row>
+                            <entry>errorcode </entry>
+                            <entry>db.errorcode </entry>
+                            <entry>db.error.inlines </entry>
+                            <entry>error.rnc </entry>
+                            <entry>An error code </entry>
+                        </row>
+                        <row>
+                            <entry>errorname </entry>
+                            <entry>db.errorname </entry>
+                            <entry>db.error.inlines </entry>
+                            <entry>error.rnc </entry>
+                            <entry>An error name </entry>
+                        </row>
+                        <row>
+                            <entry>errortext </entry>
+                            <entry>db.errortext </entry>
+                            <entry>db.error.inlines </entry>
+                            <entry>error.rnc </entry>
+                            <entry>An error message. </entry>
+                        </row>
+                        <row>
+                            <entry>errortype </entry>
+                            <entry>db.errortype </entry>
+                            <entry>db.error.inlines </entry>
+                            <entry>error.rnc </entry>
+                            <entry>The classification of an error message </entry>
+                        </row>
+                        <row>
+                            <entry>exceptionname </entry>
+                            <entry>db.exceptionname </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The name of an exception </entry>
+                        </row>
+                        <row>
+                            <entry>extendedlink </entry>
+                            <entry>db.extendedlink </entry>
+                            <entry>db.info.elements </entry>
+                            <entry>xlink.rnc </entry>
+                            <entry>An XLink extended link </entry>
+                        </row>
+                        <row>
+                            <entry>fieldsynopsis </entry>
+                            <entry>db.fieldsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The name of a field in a class definition </entry>
+                        </row>
+                        <row>
+                            <entry>filename </entry>
+                            <entry>db.filename </entry>
+                            <entry>db.os.inlines </entry>
+                            <entry>os.rnc </entry>
+                            <entry>The name of a file </entry>
+                        </row>
+                        <row>
+                            <entry>funcdef </entry>
+                            <entry>db.funcdef </entry>
+                            <entry>db.funcprototype </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A function (subroutine) name and its return type </entry>
+                        </row>
+                        <row>
+                            <entry>funcparams </entry>
+                            <entry>db.funcparams </entry>
+                            <entry>db.paramdef </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>Parameters for a function referenced through a function
+                                    pointer in a synopsis </entry>
+                        </row>
+                        <row>
+                            <entry>funcprototype </entry>
+                            <entry>db.funcprototype </entry>
+                            <entry>db.funcsynopsis </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The prototype of a function </entry>
+                        </row>
+                        <row>
+                            <entry>funcsynopsis </entry>
+                            <entry>db.funcsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The syntax summary for a function definition </entry>
+                        </row>
+                        <row>
+                            <entry>funcsynopsisinfo </entry>
+                            <entry>db.funcsynopsisinfo </entry>
+                            <entry>db.funcsynopsis </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>Information supplementing the FuncDefs of a FuncSynopsis
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>function </entry>
+                            <entry>db.function </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The name of a function or subroutine, as in a programming
+                                    language </entry>
+                        </row>
+                        <row>
+                            <entry>group </entry>
+                            <entry>db.group </entry>
+                            <entry>db.cmdsynopsis </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A group of elements in a CmdSynopsis </entry>
+                        </row>
+                        <row>
+                            <entry>guibutton </entry>
+                            <entry>db.guibutton </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>The text on a button in a GUI </entry>
+                        </row>
+                        <row>
+                            <entry>guiicon </entry>
+                            <entry>db.guiicon </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>Graphic and/or text appearing as a icon in a GUI </entry>
+                        </row>
+                        <row>
+                            <entry>guilabel </entry>
+                            <entry>db.guilabel </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>The text of a label in a GUI </entry>
+                        </row>
+                        <row>
+                            <entry>guimenu </entry>
+                            <entry>db.guimenu </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>The name of a menu in a GUI </entry>
+                        </row>
+                        <row>
+                            <entry>guimenuitem </entry>
+                            <entry>db.guimenuitem </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>The name of a terminal menu item in a GUI </entry>
+                        </row>
+                        <row>
+                            <entry>guisubmenu </entry>
+                            <entry>db.guisubmenu </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>The name of a submenu in a GUI </entry>
+                        </row>
+                        <row>
+                            <entry>hardware </entry>
+                            <entry>db.hardware </entry>
+                            <entry>db.product.inlines </entry>
+                            <entry>product.rnc </entry>
+                            <entry>A physical part of a computer system </entry>
+                        </row>
+                        <row>
+                            <entry>important </entry>
+                            <entry>db.important </entry>
+                            <entry>db.admonition.blocks </entry>
+                            <entry>admonitions.rnc </entry>
+                            <entry>An admonition set off from the text </entry>
+                        </row>
+                        <row>
+                            <entry>indexdiv </entry>
+                            <entry>db.indexdiv </entry>
+                            <entry>db.index </entry>
+                            <entry>index.rnc </entry>
+                            <entry>A division in an index </entry>
+                        </row>
+                        <row>
+                            <entry>indexentry </entry>
+                            <entry>db.indexentry </entry>
+                            <entry>db.index </entry>
+                            <entry>index.rnc </entry>
+                            <entry>An entry in an index </entry>
+                        </row>
+                        <row>
+                            <entry>initializer </entry>
+                            <entry>db.initializer </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The initializer for a FieldSynopsis </entry>
+                        </row>
+                        <row>
+                            <entry>interfacename </entry>
+                            <entry>db.interfacename </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The name of an interface </entry>
+                        </row>
+                        <row>
+                            <entry>keycap </entry>
+                            <entry>db.keycap </entry>
+                            <entry>db.keyboard.inlines </entry>
+                            <entry>keyboard.rnc </entry>
+                            <entry>The text printed on a key on a keyboard </entry>
+                        </row>
+                        <row>
+                            <entry>keycode </entry>
+                            <entry>db.keycode </entry>
+                            <entry>db.keyboard.inlines </entry>
+                            <entry>keyboard.rnc </entry>
+                            <entry>The internal, frequently numeric, identifier for a key on a
+                                    keyboard </entry>
+                        </row>
+                        <row>
+                            <entry>keycombo </entry>
+                            <entry>db.keycombo </entry>
+                            <entry>db.keyboard.inlines </entry>
+                            <entry>keyboard.rnc </entry>
+                            <entry>A combination of input actions </entry>
+                        </row>
+                        <row>
+                            <entry>keysym </entry>
+                            <entry>db.keysym </entry>
+                            <entry>db.keyboard.inlines </entry>
+                            <entry>keyboard.rnc </entry>
+                            <entry>The symbolic name of a key on a keyboard </entry>
+                        </row>
+                        <row>
+                            <entry>lhs </entry>
+                            <entry>db.lhs </entry>
+                            <entry>db.production </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>The left-hand side of an EBNF production </entry>
+                        </row>
+                        <row>
+                            <entry>locator </entry>
+                            <entry>db.locator </entry>
+                            <entry>db.extendedlink </entry>
+                            <entry>xlink.rnc </entry>
+                            <entry>An XLink locator in an extendedlink </entry>
+                        </row>
+                        <row>
+                            <entry>manvolnum </entry>
+                            <entry>db.manvolnum </entry>
+                            <entry>db.citerefentry </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A reference volume number </entry>
+                        </row>
+                        <row>
+                            <entry>markup </entry>
+                            <entry>db.markup </entry>
+                            <entry>db.markup.inlines </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A string of formatting markup in text that is to be
+                                    represented literally </entry>
+                        </row>
+                        <row>
+                            <entry>lineannotation </entry>
+                            <entry>db.lineannotation </entry>
+                            <entry>db.verbatim.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A comment on a line in a verbatim listing </entry>
+                        </row>
+                        <row>
+                            <entry>menuchoice </entry>
+                            <entry>db.menuchoice </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>A selection or series of selections from a menu </entry>
+                        </row>
+                        <row>
+                            <entry>methodname </entry>
+                            <entry>db.methodname </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>The name of a method </entry>
+                        </row>
+                        <row>
+                            <entry>methodparam </entry>
+                            <entry>db.methodparam </entry>
+                            <entry>db.constructorsynopsis </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>Parameters to a method </entry>
+                        </row>
+                        <row>
+                            <entry>methodsynopsis </entry>
+                            <entry>db.methodsynopsis </entry>
+                            <entry>db.synopsis.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A syntax summary for a method </entry>
+                        </row>
+                        <row>
+                            <entry>modifier </entry>
+                            <entry>db.modifier </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>Modifiers in a synopsis </entry>
+                        </row>
+                        <row>
+                            <entry>mousebutton </entry>
+                            <entry>db.mousebutton </entry>
+                            <entry>db.gui.inlines </entry>
+                            <entry>gui.rnc </entry>
+                            <entry>The conventional name of a mouse button </entry>
+                        </row>
+                        <row>
+                            <entry>msg </entry>
+                            <entry>db.msg </entry>
+                            <entry>db.msgentry </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>A message in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msgaud </entry>
+                            <entry>db.msgaud </entry>
+                            <entry>db.msginfo </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>The audience to which a message in a message set is relevant
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>msgentry </entry>
+                            <entry>db.msgentry </entry>
+                            <entry>db.msgset </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>A wrapper for an entry in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msgexplan </entry>
+                            <entry>db.msgexplan </entry>
+                            <entry>db.msgentry </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>Explanatory material relating to a message in a message set
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>msginfo </entry>
+                            <entry>db.msginfo </entry>
+                            <entry>db.msgentry </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>Information about a message in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msglevel </entry>
+                            <entry>db.msglevel </entry>
+                            <entry>db.msginfo </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>The level of importance or severity of a message in a message
+                                    set </entry>
+                        </row>
+                        <row>
+                            <entry>msgmain </entry>
+                            <entry>db.msgmain </entry>
+                            <entry>db.msg </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>The primary component of a message in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msgorig </entry>
+                            <entry>db.msgorig </entry>
+                            <entry>db.msginfo </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>The origin of a message in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msgrel </entry>
+                            <entry>db.msgrel </entry>
+                            <entry>db.msg </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>A related component of a message in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msgset </entry>
+                            <entry>db.msgset </entry>
+                            <entry>db.technical.blocks </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>A detailed set of messages, usually error messages </entry>
+                        </row>
+                        <row>
+                            <entry>msgsub </entry>
+                            <entry>db.msgsub </entry>
+                            <entry>db.msg </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>A subcomponent of a message in a message set </entry>
+                        </row>
+                        <row>
+                            <entry>msgtext </entry>
+                            <entry>db.msgtext </entry>
+                            <entry>db.simplemsgentry </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>The actual text of a message component in a message set
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>nonterminal </entry>
+                            <entry>db.nonterminal </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>A non-terminal in an EBNF production </entry>
+                        </row>
+                        <row>
+                            <entry>ooclass </entry>
+                            <entry>db.ooclass </entry>
+                            <entry>db.oo.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A class in an object-oriented programming language </entry>
+                        </row>
+                        <row>
+                            <entry>ooexception </entry>
+                            <entry>db.ooexception </entry>
+                            <entry>db.oo.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>An exception in an object-oriented programming language
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>oointerface </entry>
+                            <entry>db.oointerface </entry>
+                            <entry>db.oo.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>An interface in an object-oriented programming language
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>option </entry>
+                            <entry>db.option </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>An option for a software command </entry>
+                        </row>
+                        <row>
+                            <entry>package </entry>
+                            <entry>db.package </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>A software or application package </entry>
+                        </row>
+                        <row>
+                            <entry>paramdef </entry>
+                            <entry>db.paramdef </entry>
+                            <entry>db.funcprototype </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>Information about a function parameter in a programming
+                                    language </entry>
+                        </row>
+                        <row>
+                            <entry>parameter </entry>
+                            <entry>db.parameter </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A value or a symbolic reference to a value </entry>
+                        </row>
+                        <row>
+                            <entry>primaryie </entry>
+                            <entry>db.primaryie </entry>
+                            <entry>db.indexentry </entry>
+                            <entry>index.rnc </entry>
+                            <entry>A primary term in an index entry, not in the text </entry>
+                        </row>
+                        <row>
+                            <entry>production </entry>
+                            <entry>db.production </entry>
+                            <entry>db.productionset </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>A production in a set of EBNF productions </entry>
+                        </row>
+                        <row>
+                            <entry>productionrecap </entry>
+                            <entry>db.productionrecap </entry>
+                            <entry>db.productionset </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>A cross-reference to an EBNF production </entry>
+                        </row>
+                        <row>
+                            <entry>productionset </entry>
+                            <entry>db.productionset </entry>
+                            <entry>db.technical.blocks </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>A set of EBNF productions </entry>
+                        </row>
+                        <row>
+                            <entry>programlisting </entry>
+                            <entry>db.programlisting </entry>
+                            <entry>db.verbatim.blocks </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A literal listing of all or part of a program </entry>
+                        </row>
+                        <row>
+                            <entry>programlistingco </entry>
+                            <entry>db.programlistingco </entry>
+                            <entry>db.verbatim.blocks </entry>
+                            <entry>callouts.rnc </entry>
+                            <entry>A program listing with associated areas used in callouts
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>prompt </entry>
+                            <entry>db.prompt </entry>
+                            <entry>db.os.inlines </entry>
+                            <entry>os.rnc </entry>
+                            <entry>A character or string indicating the start of an input field
+                                    in a computer display </entry>
+                        </row>
+                        <row>
+                            <entry>property </entry>
+                            <entry>db.property </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>A unit of data associated with some part of a computer system
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>refclass </entry>
+                            <entry>db.refclass </entry>
+                            <entry>db.refnamediv </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>The scope or other indication of applicability of a reference
+                                    entry </entry>
+                        </row>
+                        <row>
+                            <entry>refdescriptor </entry>
+                            <entry>db.refdescriptor </entry>
+                            <entry>db.refnamediv </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A description of the topic of a reference page </entry>
+                        </row>
+                        <row>
+                            <entry>refentry </entry>
+                            <entry>db.refentry </entry>
+                            <entry>db.toplevel.sections </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A reference page (originally a UNIX man-style reference page)
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>refentrytitle </entry>
+                            <entry>db.refentrytitle </entry>
+                            <entry>db.citerefentry </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>The title of a reference page </entry>
+                        </row>
+                        <row>
+                            <entry>reference </entry>
+                            <entry>db.reference </entry>
+                            <entry>db.divisions </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A collection of reference entries </entry>
+                        </row>
+                        <row>
+                            <entry>refmeta </entry>
+                            <entry>db.refmeta </entry>
+                            <entry>db.refentry </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>Meta-information for a reference entry </entry>
+                        </row>
+                        <row>
+                            <entry>refmiscinfo </entry>
+                            <entry>db.refmiscinfo </entry>
+                            <entry>db.refmeta </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>Meta-information for a reference entry other than the title
+                                    and volume number </entry>
+                        </row>
+                        <row>
+                            <entry>refname </entry>
+                            <entry>db.refname </entry>
+                            <entry>db.refnamediv </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>The name of (one of) the subject(s) of a reference page
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>refnamediv </entry>
+                            <entry>db.refnamediv </entry>
+                            <entry>db.refentry </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>The name, purpose, and classification of a reference page
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>refpurpose </entry>
+                            <entry>db.refpurpose </entry>
+                            <entry>db.refnamediv </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A short (one sentence) synopsis of the topic of a reference
+                                    page </entry>
+                        </row>
+                        <row>
+                            <entry>refsect1 </entry>
+                            <entry>db.refsect1 </entry>
+                            <entry>db.toplevel.sections </entry>
+                            <entry>refsect1.rnc </entry>
+                            <entry>A major subsection of a reference entry </entry>
+                        </row>
+                        <row>
+                            <entry>refsect2 </entry>
+                            <entry>db.refsect2 </entry>
+                            <entry>db.secondlevel.refsection </entry>
+                            <entry>refsect1.rnc </entry>
+                            <entry>A subsection of a refsect1 </entry>
+                        </row>
+                        <row>
+                            <entry>refsect3 </entry>
+                            <entry>db.refsect3 </entry>
+                            <entry>db.refsect2.sections </entry>
+                            <entry>refsect1.rnc </entry>
+                            <entry>A subsection of a refsect2 </entry>
+                        </row>
+                        <row>
+                            <entry>refsection </entry>
+                            <entry>db.refsection </entry>
+                            <entry>db.toplevel.refsection </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A recursive section in a refentry </entry>
+                        </row>
+                        <row>
+                            <entry>refsynopsisdiv </entry>
+                            <entry>db.refsynopsisdiv </entry>
+                            <entry>db.refentry </entry>
+                            <entry>refentry.rnc </entry>
+                            <entry>A syntactic synopsis of the subject of the reference page
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>replaceable </entry>
+                            <entry>replaceable </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>returnvalue </entry>
+                            <entry>db.returnvalue </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>rhs </entry>
+                            <entry>db.rhs </entry>
+                            <entry>db.production </entry>
+                            <entry>ebnf.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>sbr </entry>
+                            <entry> db.sbr </entry>
+                            <entry>
+                                </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>screen </entry>
+                            <entry> db.screen </entry>
+                            <entry>
+                                </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>Text that a user sees or might see on a computer screen
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>screenco </entry>
+                            <entry> db.screenco </entry>
+                            <entry>db.verbatim.blocks </entry>
+                            <entry>callouts.rnc </entry>
+                            <entry>A screen with associated areas used in callouts </entry>
+                        </row>
+                        <row>
+                            <entry>screenshot </entry>
+                            <entry> db.screenshot </entry>
+                            <entry>
+                                </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>A representation of what the user sees or might see on a
+                                    computer screen </entry>
+                        </row>
+                        <row>
+                            <entry>sect1 </entry>
+                            <entry>db.sect1 </entry>
+                            <entry>db.toplevel.sections </entry>
+                            <entry>sect1.rnc </entry>
+                            <entry>A top-level section of the document </entry>
+                        </row>
+                        <row>
+                            <entry>sect2 </entry>
+                            <entry>db.sect2 </entry>
+                            <entry>db.sect1.sections </entry>
+                            <entry>sect1.rnc </entry>
+                            <entry>A subsection within a Sect1 </entry>
+                        </row>
+                        <row>
+                            <entry>sect3 </entry>
+                            <entry>db.sect3 </entry>
+                            <entry>db.sect2.sections </entry>
+                            <entry>sect1.rnc </entry>
+                            <entry>A subsection within a Sect2 </entry>
+                        </row>
+                        <row>
+                            <entry>sect4 </entry>
+                            <entry>db.sect4 </entry>
+                            <entry>db.sect3.sections </entry>
+                            <entry>sect1.rnc </entry>
+                            <entry>A subsection within a Sect3 </entry>
+                        </row>
+                        <row>
+                            <entry>sect5 </entry>
+                            <entry>db.sect5 </entry>
+                            <entry>db.sect4.sections </entry>
+                            <entry>sect1.rnc </entry>
+                            <entry>A subsection within a Sect4 </entry>
+                        </row>
+                        <row>
+                            <entry>seealsoie </entry>
+                            <entry>seealsoie </entry>
+                            <entry>
+                                </entry>
+                            <entry>index.rnc </entry>
+                            <entry>A "See also" ] " entry in an index, rather than in the text
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>seeie </entry>
+                            <entry>seeie </entry>
+                            <entry>
+                                </entry>
+                            <entry>index.rnc </entry>
+                            <entry>A "See" entry in an index, rather than in the text </entry>
+                        </row>
+                        <row>
+                            <entry>seg </entry>
+                            <entry>db.seg </entry>
+                            <entry>
+                                </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>An element of a list item in a segmented list </entry>
+                        </row>
+                        <row>
+                            <entry>seglistitem </entry>
+                            <entry>db.seglistitem </entry>
+                            <entry>
+                                </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A list item in a segmented list </entry>
+                        </row>
+                        <row>
+                            <entry>segmentedlist </entry>
+                            <entry>db.segmentedlist </entry>
+                            <entry>
+                                </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A segmented list, a list of sets of elements </entry>
+                        </row>
+                        <row>
+                            <entry>segtitle </entry>
+                            <entry>db.segtitle </entry>
+                            <entry>
+                                </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>The title of an element of a list item in a segmented list
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>shortcut </entry>
+                            <entry>db.shortcut </entry>
+                            <entry>
+                                </entry>
+                            <entry>keyboard.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>simplemsgentry </entry>
+                            <entry>db.simplemsgentry </entry>
+                            <entry>db.msgset </entry>
+                            <entry>msgset.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>symbol </entry>
+                            <entry>symbol </entry>
+                            <entry>db.markup.inlines </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A name that is replaced by a value before processing </entry>
+                        </row>
+                        <row>
+                            <entry>synopfragment </entry>
+                            <entry> db.synopfragment </entry>
+                            <entry>
+                                </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>synopfragmentref </entry>
+                            <entry> db.synopfragmentref </entry>
+                            <entry>
+                                </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>synopsis </entry>
+                            <entry> db.synopsis </entry>
+                            <entry>
+                                </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>A general-purpose element for representing the syntax of
+                                    commands or functions </entry>
+                        </row>
+                        <row>
+                            <entry>systemitem </entry>
+                            <entry> db.systemitem </entry>
+                            <entry>db.technical.inlines </entry>
+                            <entry>technical.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>tag </entry>
+                            <entry>db.tag </entry>
+                            <entry>db.markup.inlines </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A component of XML (or SGML) markup </entry>
+                        </row>
+                        <row>
+                            <entry>td </entry>
+                            <entry>db.html.informaltable </entry>
+                            <entry>
+                                </entry>
+                            <entry>htmltbl.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>tertiaryie </entry>
+                            <entry>tertiaryie </entry>
+                            <entry>
+                                </entry>
+                            <entry>index.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>th </entry>
+                            <entry>db.html.informaltable </entry>
+                            <entry>
+                                </entry>
+                            <entry>htmltbl.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>tip </entry>
+                            <entry>tip </entry>
+                            <entry>
+                                </entry>
+                            <entry>admonitions.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>tocdiv </entry>
+                            <entry>
+                                </entry>
+                            <entry>
+                                </entry>
+                            <entry>toc.rnc </entry>
+                            <entry>A division in a table of contents </entry>
+                        </row>
+                        <row>
+                            <entry>tocentry </entry>
+                            <entry>
+                                </entry>
+                            <entry>
+                                </entry>
+                            <entry>toc.rnc </entry>
+                            <entry>A component title in a table of contents </entry>
+                        </row>
+                        <row>
+                            <entry>token </entry>
+                            <entry>db.token </entry>
+                            <entry>db.markup.inlines </entry>
+                            <entry>markup.rnc </entry>
+                            <entry>A unit of information </entry>
+                        </row>
+                        <row>
+                            <entry>tr </entry>
+                            <entry>db.html.informaltable </entry>
+                            <entry>
+                                </entry>
+                            <entry>htmltbl.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>type </entry>
+                            <entry>db.type </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>userinput </entry>
+                            <entry> db.userinput </entry>
+                            <entry>db.os.inlines </entry>
+                            <entry>os.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>varargs </entry>
+                            <entry>varargs </entry>
+                            <entry>
+                                </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>varname </entry>
+                            <entry>varname </entry>
+                            <entry>db.programming.inlines </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>void </entry>
+                            <entry> db.void </entry>
+                            <entry>
+                                </entry>
+                            <entry>programming.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                        <row>
+                            <entry>warning </entry>
+                            <entry> db.warning </entry>
+                            <entry>
+                                </entry>
+                            <entry>admonitions.rnc </entry>
+                            <entry>
+                                </entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+</chapter>
+
+
+

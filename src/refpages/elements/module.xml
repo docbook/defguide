@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1" arch="assembly">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">module</refmiscinfo>
+  <refmiscinfo role="pattern">db.module</refmiscinfo>
+  <refmiscinfo role="class">assembly</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>Within a <tag>structure</tag>, the <tag>module</tag> elements
+describe the subunits of the structure. If the structure represents a
+book, then the modules are effectively the chapters, appendixes, etc.
+If the structure represents an interactive help system or web site,
+then the modules may be pages or sets of pages within that
+system.</para>
+
+<para>In the simplest case, a <tag>module</tag> points to the
+<tag>resource</tag> that is the body of the module. To point to a
+resourse, set the <tag>module</tag> element’s
+<tag class="attribute">resourceref</tag> attribute to the value of the
+<tag class="attribute">xml:id</tag> on the <tag>resource</tag>
+element. In more complex cases, a <tag>module</tag> may impose more structure
+through nested modules.</para>
+
+<para>You can also create structures that serve as modular components
+of a larger structure. A <tag>module</tag> in a larger structure can
+set its <tag class="attribute">resourceref</tag> attribute to the
+value of the <tag class="attribute">xml:id</tag> of a modular
+structure element in the same assembly to incorporate it.</para>
+
+<para>You can also create new empty container elements within a
+structure by specifying a <tag>module</tag> element without a
+<tag class="attribute">resourceref</tag> attribute, and with a <tag
+class="attribute">renderas</tag> attribute to define the element’s
+name. Any modules contained in the <tag>module</tag> element will be inserted
+into the newly created container element during assembly.</para>
+
+<para>If <tag class="attribute">contentonly</tag> is <literal>true</literal>, then
+only the content of the referenced resource is included (that is, the children of
+the root element, but not the root element itself).</para>
+
+<para>If <tag class="attribute">omittitles</tag> is <literal>true</literal>, then
+the title elements of the referenced resource are not included.</para>
+
+<note>
+<para>If the <tag class="attribute">omittitles</tag> attribute is
+combined with the <tag class="attribute">contentonly</tag> attribute,
+then both the root element and titles are stripped and the remaining
+raw content can be placed where the root element and titles are not
+allowed. For example, the remaining content can be added to the end of
+a section element taken from another resource.</para>
+</note>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>Never rendered directly. The content that results from processing a module
+is generally rendered in the normal fashion.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>This module renders the <tag>resource</tag> whose
+<tag class="attribute">xml:id</tag> is “<literal>topic1</literal>” as
+a <tag>chapter</tag>, and includes the resources whose <tag
+class="attribute">xml:id</tag> values are “<literal>topic2</literal>”
+and “<literal>topic3</literal>” as sections within the chapter, added
+after any content in “<literal>topic1</literal>”.</para>
+
+<programlisting><![CDATA[<module resourceref="topic1" renderas="chapter">
+  <module resourceref="topic2" renderas="section"/>
+  <module resourceref="topic3" renderas="section"/>
+</module>]]></programlisting>
+
+<para>This module without a <tag class="attribute">renderas</tag>
+attribute does not point to a <tag>resource</tag>, but can create a
+new element whose name is specified by its <tag
+class="attribute">renderas</tag> attribute, and whose <tag>title</tag>
+and other <tag>info</tag> data are specified in its <tag>merge</tag>
+element. Other modules contained within this <tag>module</tag> will be
+assembled as descendants of this new element.</para>
+
+<programlisting><![CDATA[<module renderas="section">
+  <merge>
+    <title>Using a mouse</title>
+  </merge>
+  <module>
+    ...
+  </module>
+</module>]]></programlisting>
+
+</refsection>
+
+</refentry>

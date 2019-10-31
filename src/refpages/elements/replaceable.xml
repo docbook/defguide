@@ -1,0 +1,52 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">replaceable</refmiscinfo>
+  <refmiscinfo role="pattern">db.replaceable</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>replaceable</tag> is used to mark text that
+      describes <emphasis>what</emphasis> a user is supposed to enter, but not
+      the <emphasis>actual text</emphasis> that the user is supposed to
+      enter.</para>
+
+      <para>It is used to identify a class of object in the document, in which
+      the user is expected to replace the text that identifies the class with
+      some specific instance of that class. A canonical example is:</para>
+
+      <screen>&lt;replaceable&gt;filename&lt;/replaceable&gt;</screen>
+
+      <para>in which the user is expected to provide the name of some specific
+      file to replace the text <quote>filename.</quote></para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted inline. Usually, the text is given special typographic
+        treatment, such as italics, as a clue to the user that this is
+        replaceable text. Often the font used is described in a
+        <quote>conventions</quote> section at the beginning of the
+        document.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

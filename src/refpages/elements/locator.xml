@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.0">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">locator</refmiscinfo>
+  <refmiscinfo role="pattern">db.locator</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A locator in an <tag>extendedlink</tag>. See <citetitle>XML
+Linking Language (XLink) Version 1.0 </citetitle><biblioref
+linkend="XLink"/> for more details.</para>
+
+<important role="fu">
+<para>The <tag>arc</tag> element will be removed in DocBook V6.0.
+The attributes (<tag class="attribute">xlink:label</tag> and
+<tag class="attribute">xlink:type</tag>)
+necessary to form an XLink locator are now
+<link linkend="common.linking.attributes">common linking attributes</link>.
+Any element may be used to construct an XLink locator.</para>
+</important>
+
+<refsection>
+<title>Processing expectations</title>
+<para>Suppressed.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

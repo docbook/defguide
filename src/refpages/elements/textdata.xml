@@ -1,0 +1,59 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">textdata</refmiscinfo>
+  <refmiscinfo role="pattern">db.textdata</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>This element points to an external entity containing text to be
+      inserted.</para>
+
+      <note>
+        <para>Any markup in the text identified with
+        <tag>textdata</tag> will be escaped. In other words, this
+        element is for inserting things like program listings, not parts of an
+        XML document. To break a document into separate physical files, use
+        XInclude or external parsed entities.</para>
+      </note>
+
+      <refsection xml:id="dbreproc.textdata"><info><title>Processing expectations</title></info>
+        
+
+        <para>May be formatted inline or as a displayed block, depending on
+        context.</para>
+
+        <para>There are two ways to provide content for
+        <tag>textdata</tag>: <tag class="attribute">entityref</tag> or <tag class="attribute">fileref</tag>. It is best to use only one of
+        these methods; however, if multiple sources are provided, <tag class="attribute">entityref</tag> will be used in favor of
+        <tag class="attribute">fileref</tag>.</para>
+
+        <para>If the encoding is such that the processor will not be able to
+        determine the encoding of the text, the encoding can be specified in
+        the <tag class="attribute">encoding</tag> attribute. For
+        encodings <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.iana.org/assignments/character-sets">registered (as
+        charsets)</link> with the Internet Assigned Numbers Authority,
+        recommended best practice suggests that they be referred to using
+        their registered names.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,60 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">refsynopsisdiv</refmiscinfo>
+  <refmiscinfo role="pattern">db.refsynopsisdiv</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>refsynopsisdiv</tag> contains a syntactic synopsis
+      of the function or command described by the <tag>refentry</tag>.
+      When <tag>refentry</tag>s are used to describe other sorts of
+      things, <tag>refsynopsisdiv</tag> should be used for whatever
+      succinct, synopsis information seems appropriate.<footnote>
+          <para>In this book, each element of the schema is described on a
+          reference page, and the <tag>refsynopsisdiv</tag> is used
+          for the synopsis at the beginning of each entry.</para>
+        </footnote></para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted as a displayed block. A
+        <tag>refsynopsisdiv</tag> usually generates a section heading,
+        in the same typographic style as a <tag>refsect1</tag>
+        <tag>title</tag>, called <quote>Synopsis.</quote></para>
+
+        <para>Formatting reference pages may require a fairly sophisticated
+        processing system. Much of the meta-information about a reference page
+        (its name, type, purpose, title, and classification) is stored in
+        wrappers near the beginning of the <tag>refentry</tag>.</para>
+
+        <para>Common presentational features, such as titles and running
+        headers, may require data from several of these wrappers plus some
+        generated text. Other formatting often requires that these elements be
+        reordered.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+<para>See <tag>refentry</tag> for an example using this element.</para>
+</refsection>
+
+</refentry>

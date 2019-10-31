@@ -1,0 +1,51 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">tfoot</refmiscinfo>
+  <refmiscinfo role="pattern">db.cals.tfoot</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>The <tag>tfoot</tag> wrapper identifies the
+      <tag>row</tag>s of a table that form the foot of the table, as
+      distinct from the header (<tag>thead</tag>) and body
+      (<tag>tbody</tag>) rows.</para>
+
+      <para>Footer rows are always rendered at the end of the table, despite
+      their logical placement near the beginning.</para>
+
+      <refsection xml:id="dbreproc.cals.tfoot"><info><title>Processing expectations</title></info>
+        
+
+        <para>This element is expected to obey the semantics of the
+        <citetitle>CALS Table Model Document Type Definition</citetitle>
+        <biblioref linkend="calsdtd"/>. Footer rows are often presented in an
+        alternate typographic style, such as boldface.</para>
+
+        <para>In paged media, if a table spans across multiple pages, footer
+        rows are printed on the bottom of each page.</para>
+
+        <para>In our experience, relatively few formatters handle footer rows
+        correctly.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

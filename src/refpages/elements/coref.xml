@@ -1,0 +1,47 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">coref</refmiscinfo>
+  <refmiscinfo role="pattern">db.coref</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>The <tag>coref</tag> element plays a role for callouts
+      that is analogous to the role of <tag role="keep-together">footnoteref</tag> for footnotes.</para>
+
+      <para>Use one <tag>co</tag> and one or more
+      <tag>coref</tag> elements when you want to indicate that the
+      same callout should appear in several places.</para>
+
+      <note>
+        <para>A <tag>coref</tag> is not a cross-reference to a callout
+        (use <tag>xref</tag> for that); rather, it is an indication
+        that the callout appears semantically in more than one place.</para>
+      </note>
+
+      <refsection><info><title>Processing expectations</title></info>
+        
+
+        <para>Formatted inline.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

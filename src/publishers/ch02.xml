@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 version="5.0" xml:id="ch-additions">
+<?dbhtml filename="ch02.html"?>
+<info>
+  <title>Additions to Core DocBook</title>
+</info>
+
+        <para>The DocBook Publishers schema includes the following elements above and beyond those
+            currently provided by the core DocBook standard. These are considered "official
+            customizations".</para>
+
+        <section>
+            <title>Explicit support for Dublin Core metadata</title>
+            <para>While DocBook already includes many of the elements that are defined by the Dublin
+                Core, it is not inherently interoperable with DC metadata. The Publisher's SC has
+                decided to formally adopt Dublin Core metadata (issued 2008-01-14) as a formal
+                metadata model for info elements. The Publishers schema will continue to support the
+                base DocBook info metadata, but will allow Dublin Core elements as an alternative
+                for capturing metadata in this widely adopted schema. In <tag>info</tag>, authors
+                will be allowed to use <emphasis>either</emphasis> the standard DocBook elements
+                    <emphasis>or</emphasis> Dublin Core elements, and <tag>info</tag> may not
+                contain a mix of the two element sets.</para>
+            <para>As the Dublin Core standard does not provide a RelaxNG or RelaxNG Compact version
+                of their schema, the Publishers SC has endeavored to create Dublin Core in RNC
+                format. The Publishers SC plans to contribute the dcterms.rnc, and dcmitypes.rnc
+                back to the Dublin Core standard.</para>
+            <para>The following Dublin Core elements from the <uri type="namespace"
+                    >http://purl.org/dc/terms/</uri> namespace have been defined and included in the
+                Publishers schema:</para>
+            <variablelist>
+                <varlistentry>
+                    <term>title</term>
+                    <listitem>
+                        <para>A name given to the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>creator</term>
+                    <listitem>
+                        <para>An entity primarily responsible for making the resource. Examples of a
+                            Creator include a person, an organization, or a service. Typically, the
+                            name of a Creator should be used to indicate the entity.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>subject</term>
+                    <listitem>
+                        <para>The topic of the resource. Typically, the subject will be represented
+                            using keywords, key phrases, or classification codes. Recommended best
+                            practice is to use a controlled vocabulary. To describe the spatial or
+                            temporal topic of the resource, use the Coverage element.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>description</term>
+                    <listitem>
+                        <para>An account of the resource. Description may include but is not limited
+                            to: an abstract, a table of contents, a graphical representation, or a
+                            free-text account of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>publisher</term>
+                    <listitem>
+                        <para>An entity responsible for making the resource available. Examples of a
+                            Publisher include a person, an organization, or a service. Typically,
+                            the name of a Publisher should be used to indicate the entity.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>contributor</term>
+                    <listitem>
+                        <para>An entity responsible for making contributions to the resource.
+                            Examples of a Contributor include a person, an organization, or a
+                            service. Typically, the name of a Contributor should be used to indicate
+                            the entity.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>date</term>
+                    <listitem>
+                        <para>A point or period of time associated with an event in the lifecycle of
+                            the resource. Date may be used to express temporal information at any
+                            level of granularity. Recommended best practice is to use an encoding
+                            scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>type</term>
+                    <listitem>
+                        <para>The nature or genre of the resource. Recommended best practice is to
+                            use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE].
+                            To describe the file format, physical medium, or dimensions of the
+                            resource, use the Format element.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>format</term>
+                    <listitem>
+                        <para>The file format, physical medium, or dimensions of the resource.
+                            Examples of dimensions include size and duration. Recommended best
+                            practice is to use a controlled vocabulary such as the list of Internet
+                            Media Types [MIME].</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>identifier</term>
+                    <listitem>
+                        <para>An unambiguous reference to the resource within a given context.
+                            Recommended best practice is to identify the resource by means of a
+                            string conforming to a formal identification system. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>source</term>
+                    <listitem>
+                        <para>A related resource from which the described resource is derived. The
+                            described resource may be derived from the related resource in whole or
+                            in part. Recommended best practice is to identify the related resource
+                            by means of a string conforming to a formal identification
+                        system.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>language</term>
+                    <listitem>
+                        <para>A language of the resource. Recommended best practice is to use a
+                            controlled vocabulary such as RFC 4646 [RFC4646].</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>relation</term>
+                    <listitem>
+                        <para>A related resource. Recommended best practice is to identify the
+                            related resource by means of a string conforming to a formal
+                            identification system. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>coverage</term>
+                    <listitem>
+                        <para>The spatial or temporal topic of the resource, the spatial
+                            applicability of the resource, or the jurisdiction under which the
+                            resource is relevant. Spatial topic and spatial applicability may be a
+                            named place or a location specified by its geographic coordinates.
+                            Temporal topic may be a named period, date, or date range. A
+                            jurisdiction may be a named administrative entity or a geographic place
+                            to which the resource applies. Recommended best practice is to use a
+                            controlled vocabulary such as the Thesaurus of Geographic Names [TGN].
+                            Where appropriate, named places or time periods can be used in
+                            preference to numeric identifiers such as sets of coordinates or date
+                            ranges.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>rights</term>
+                    <listitem>
+                        <para>Information about rights held in and over the resource. Typically,
+                            rights information includes a statement about various property rights
+                            associated with the resource, including intellectual property
+                        rights.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>alternative</term>
+                    <listitem>
+                        <para>An alternative name for the resource. The distinction between titles
+                            and alternative titles is application-specific.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>tableOfContents</term>
+                    <listitem>
+                        <para>A list of subunits of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>abstract</term>
+                    <listitem>
+                        <para>A summary of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>created</term>
+                    <listitem>
+                        <para>Date of creation of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>valid</term>
+                    <listitem>
+                        <para>Date (often a range) of validity of a resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>available</term>
+                    <listitem>
+                        <para>Date (often a range) that the resource became or will become
+                            available.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>issued</term>
+                    <listitem>
+                        <para>Date of formal issuance (e.g., publication) of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>modified</term>
+                    <listitem>
+                        <para>Date on which the resource was changed.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>dateAccepted</term>
+                    <listitem>
+                        <para>Date of acceptance of the resource. Examples of resources to which a
+                            Date Accepted may be relevant are a thesis (accepted by a university
+                            department) or an article (accepted by a journal).</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>dateCopyrighted</term>
+                    <listitem>
+                        <para>Date of copyright.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>dateSubmitted</term>
+                    <listitem>
+                        <para>Date of submission of the resource. Examples of resources to which a
+                            Date Submitted may be relevant are a thesis (submitted to a university
+                            department) or an article (submitted to a journal).</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>extent</term>
+                    <listitem>
+                        <para>The size or duration of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>medium</term>
+                    <listitem>
+                        <para>The material or physical carrier of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>isVersionOf</term>
+                    <listitem>
+                        <para>A related resource of which the described resource is a version,
+                            edition, or adaptation. Changes in version imply substantive changes in
+                            content rather than differences in format.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>hasVersion</term>
+                    <listitem>
+                        <para>A related resource that is a version, edition, or adaptation of the
+                            described resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>isReplacedBy</term>
+                    <listitem>
+                        <para>A related resource that supplants, displaces, or supersedes the
+                            described resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>replaces</term>
+                    <listitem>
+                        <para>A related resource that is supplanted, displaced, or superseded by the
+                            described resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>isRequiredBy</term>
+                    <listitem>
+                        <para>A related resource that requires the described resource to support its
+                            function, delivery, or coherence.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>requires</term>
+                    <listitem>
+                        <para>A related resource that is required by the described resource to
+                            support its function, delivery, or coherence.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>isPartOf</term>
+                    <listitem>
+                        <para>A related resource in which the described resource is physically or
+                            logically included.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>hasPart</term>
+                    <listitem>
+                        <para>A related resource that is included either physically or logically in
+                            the described resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>isReferencedBy</term>
+                    <listitem>
+                        <para>A related resource that references, cites, or otherwise points to the
+                            described resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>references</term>
+                    <listitem>
+                        <para>A related resource that is referenced, cited, or otherwise pointed to
+                            by the described resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>isFormatOf</term>
+                    <listitem>
+                        <para>A related resource that is substantially the same as the described
+                            resource, but in another format.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>hasFormat</term>
+                    <listitem>
+                        <para>A related resource that is substantially the same as the pre-existing
+                            described resource, but in another format.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>conformsTo</term>
+                    <listitem>
+                        <para>An established standard to which the described resource
+                        conforms.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>spatial</term>
+                    <listitem>
+                        <para>Spatial characteristics of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>temporal</term>
+                    <listitem>
+                        <para>Temporal characteristics of the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>audience</term>
+                    <listitem>
+                        <para>A class of entity for whom the resource is intended or useful.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>accrualMethod</term>
+                    <listitem>
+                        <para>The method by which items are added to a collection.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>accrualPeriodicity</term>
+                    <listitem>
+                        <para>The frequency with which items are added to a collection.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>accrualPolicy</term>
+                    <listitem>
+                        <para>The policy governing the addition of items to a collection.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>instructionalMethod</term>
+                    <listitem>
+                        <para>A process, used to engender knowledge, attitudes and skills, that the
+                            described resource is designed to support. Instructional Method will
+                            typically include ways of presenting instructional materials or
+                            conducting instructional activities, patterns of learner-to-learner and
+                            learner-to-instructor interactions, and mechanisms by which group and
+                            individual levels of learning are measured. Instructional methods
+                            include all aspects of the instruction and learning processes from
+                            planning and implementation through evaluation and feedback.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>provenance</term>
+                    <listitem>
+                        <para>A statement of any changes in ownership and custody of the resource
+                            since its creation that are significant for its authenticity, integrity,
+                            and interpretation. The statement may include a description of any
+                            changes successive custodians made to the resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>rightsHolder</term>
+                    <listitem>
+                        <para>A person or organization owning or managing rights over the
+                        resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>mediator</term>
+                    <listitem>
+                        <para>An entity that mediates access to the resource and for whom the
+                            resource is intended or useful. In an educational context, a mediator
+                            might be a parent, teacher, teaching assistant, or care-giver.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>educationLevel</term>
+                    <listitem>
+                        <para>A class of entity, defined in terms of progression through an
+                            educational or training context, for which the described resource is
+                            intended.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>accessRights</term>
+                    <listitem>
+                        <para>Information about who can access the resource or an indication of its
+                            security status. Access Rights may include information regarding access
+                            or restrictions based on privacy, security, or other policies.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>license</term>
+                    <listitem>
+                        <para>A legal document giving official permission to do something with the
+                            resource.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>bibliographicCitation</term>
+                    <listitem>
+                        <para>A bibliographic reference for the resource. Recommended practice is to
+                            include sufficient bibliographic detail to identify the resource as
+                            unambiguously as possible.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+
+<para>The following table provides a comparison of the Dublin Core
+metadata elements and equivalent elements from core DocBook. As the
+Publishers schema provides for an "either-or" approach to metadata,
+authors will have to provide metadata in either Dublin Core or in
+DocBook, but not a mix of the two. In some cases, additional <tag
+class="attribute">role</tag> attributes or other logic may be required
+to determine the best mapping for core DocBook elements.</para>
+
+            <table frame="all">
+                <title>Comparison of Dublin Core and core DocBook metadata elements</title>
+                <tgroup cols="2">
+                    <colspec colname="c1" colnum="1"/>
+                    <colspec colname="c2" colnum="2"/>
+                    <thead>
+                        <row>
+                            <entry>Dublin Core element</entry>
+                            <entry>Core DocBook element</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">title</tag></entry>
+                            <entry><tag>title</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">creator</tag></entry>
+                            <entry><tag>author</tag>,<tag>editor</tag>,<tag>othercredit</tag><footnote><para>Best practice would be to only use author for creator. Use contributor for other roles.</para></footnote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">subject</tag></entry>
+                            <entry><tag>keywordset</tag>,<tag>subjectset</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">description</tag></entry>
+                            <entry><tag>abstract</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">publisher</tag></entry>
+                            <entry><tag>publisher</tag>,<tag>publishername</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">contributor</tag></entry>
+                            <entry><tag>author</tag>,<tag>editor</tag>,<tag>othercredit</tag>,<tag>collab</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">date</tag></entry>
+                            <entry><tag>date</tag>,<tag>pubdate</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">type</tag></entry>
+                            <entry>Derived from document element and <tag class="attribute">status</tag>
+                            attribute</entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">format</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>format</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">identifier</tag></entry>
+                            <entry><tag>biblioid</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">source</tag></entry>
+                            <entry><tag>bibliosource</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">language</tag></entry>
+                            <entry><tag class="attribute">lang</tag> or <tag class="attribute">xml:lang</tag> attribute</entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">relation</tag></entry>
+                            <entry><tag>bibliorelation</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">coverage</tag></entry>
+                            <entry><tag>bibliocoverage</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">rights</tag></entry>
+                            <entry><tag>copyright</tag>,<tag>legalnotice</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">alternative</tag></entry>
+                            <entry><tag>titleabbrev</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">tableOfContents</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>toc</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">abstract</tag></entry>
+                            <entry><tag>abstract</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">created</tag></entry>
+                            <entry><tag>date</tag> with a <tag class="attribute">role</tag> value of <quote><literal>created</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">valid</tag></entry>
+                            <entry><tag>date</tag> with a <tag class="attribute">role</tag> value of <quote><literal>valid</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">available</tag></entry>
+                            <entry><tag>date</tag> with a <tag class="attribute">role</tag> value of <quote><literal>available</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">issued</tag></entry>
+                            <entry><tag>pubdate</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">modified</tag></entry>
+                            <entry><tag>date</tag> with a <tag class="attribute">role</tag> value of <quote><literal>modified</literal></quote>,<tag>revhistory</tag>/<tag>revision</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">dateAccepted</tag></entry>
+                            <entry><tag>date</tag> with a <tag class="attribute">role</tag> value of <quote><literal>accepted</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">dateCopyrighted</tag></entry>
+                            <entry><tag>copyright</tag>/<tag>year</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">dateSubmitted</tag></entry>
+                            <entry><tag>date</tag> with a <tag class="attribute">role</tag> value of <quote><literal>submitted</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">extent</tag></entry>
+                            <entry><tag>releaseinfo</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">medium</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>medium</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">isVersionOf</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>isversionof</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">hasVersion</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>hasversion</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">isReplacedBy</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>isreplacedby</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">replaces</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>replaces</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">isRequriedBy</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>isrequiredby</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">requires</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>requires</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">isPartOf</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>ispartof</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">hasPart</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>haspart</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">isReferencedBy</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>isreferencedby</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">references</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>references</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">isFormatOf</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>isformatof</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">hasFormat</tag></entry>
+                            <entry><tag>bibliorelation</tag> with a <tag class="attribute">type</tag> value of <quote><literal>hasformat</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">conformsTo</tag></entry>
+                            <entry><tag class="attribute">version</tag> attribute</entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">spatial</tag></entry>
+                            <entry><tag>bibliocoverage</tag> with a <tag class="attribute">spatial</tag> attribute.</entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">temporal</tag></entry>
+                            <entry><tag>bibliocoverage</tag> with a <tag class="attribute">temporal</tag> attribute.</entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">audience</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>audience</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">accrualMethod</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>accrualMethod</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">accrualPeriodicity</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>accrualPeriodicity</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">instructionalMethod</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>instructionalMethod</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">provenance</tag></entry>
+                            <entry><tag>copyright</tag>/<tag>holder</tag>,<tag>publisher</tag>/<tag>publishername</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">rightsHolder</tag></entry>
+                            <entry><tag>copyright</tag>/<tag>holder</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">mediator</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>mediator</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">educationLevel</tag></entry>
+                            <entry><tag>bibliomisc</tag> with a <tag class="attribute">role</tag> value of <quote><literal>educationLevel</literal></quote></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">accessRights</tag></entry>
+                            <entry><tag>legalnotice</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">license</tag></entry>
+                            <entry><tag>legalnotice</tag></entry>
+                        </row>
+                        <row>
+                            <entry><tag namespace="http://purl.org/dc/terms/">bibliographicCitation</tag></entry>
+                            <entry><tag>bibliomset</tag>,<tag>bibliomixed</tag></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+
+        <section>
+            <title>New Element Definitions</title>
+            <para>The following elements have been added to support the needs of publishers:</para>
+            <variablelist>
+                <varlistentry>
+                    <term>speaker</term>
+                    <listitem>
+                        <para>Designates a person who is giving a speech or lecture.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>line</term>
+                    <listitem>
+                        <para>A line of dialogue or other form of communication.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>linegroup</term>
+                    <listitem>
+                        <para>A grouping of lines in dialogue or other form of communication.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>poetry</term>
+                    <listitem>
+                        <para>A container for poetry.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>dialogue</term>
+                    <listitem>
+                        <para>A container for speeches and other forms of communication involving
+                            dialogue.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>drama</term>
+                    <listitem>
+                        <para>A container for plays and other forms of dramatic presentation.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            <example>
+                <title>Example Drama</title>
+                <para>The following provides an example usage of the newly added elements:</para>
+                <literallayout class="monospaced">&lt;drama &gt;
+  &lt;linegroup&gt;
+    &lt;speaker&gt;HAMLET&lt;/speaker&gt;
+    &lt;line&gt;To be, or not to be: that is the 
+      question:&lt;/line&gt;
+    &lt;line&gt;Whether 'tis nobler in the mind to 
+      suffer&lt;/line&gt;
+    &lt;line&gt;The slings and arrows of outrageous 
+      fortune,&lt;/line&gt;
+    &lt;line&gt;Or to take arms against a sea of 
+      troubles,&lt;/line&gt;
+    &lt;line&gt;And by opposing end them?
+      &lt;/line&gt;
+  &lt;/linegroup&gt;
+&lt;/drama&gt;</literallayout>
+            </example>
+            <example>
+                <title>Example Dialogue</title>
+                <para>The following provides an example usage of the newly added elements:</para>
+                <literallayout class="monospaced">&lt;dialogue &gt;
+  &lt;linegroup&gt;
+    &lt;speaker&gt;President John F. 
+      Kennedy&lt;/speaker&gt;
+    &lt;line&gt;And so, my fellow Americans, ask 
+      not what your country can do for you; ask what you can 
+      do for your country.&lt;/line>
+    &lt;line&gt;My fellow citizens of the world, 
+      ask not what America will do for you, but what together 
+      we can do for the freedom of man.&lt;/line&gt;
+    &lt;line&gt;Finally, whether you are citizens 
+      of America or citizens of the world, ask of us here the 
+      same high standards of strength and sacrifice which we 
+      ask of you. With a good conscience our only sure reward, 
+      with history the final judge of our deeds, let us go 
+      forth to lead the land we love, asking His blessing and 
+      His help, but knowing that here on earth God's work must 
+      truly be our own.&lt;/line&gt;
+  &lt;/linegroup&gt;
+&lt;/dialogue&gt;</literallayout>
+            </example>
+            <example>
+                <title>Example Poetry</title>
+                <para>The following provides an example usage of the newly added elements:</para>
+                <literallayout class="monospaced">&lt;poetry&gt;
+  &lt;title&gt;Auld Lang Syne&lt;/title&gt;
+  &lt;info&gt;
+    &lt;creator xmlns="http://purl.org/dc/terms/"&gt;Robert 
+      Burns&lt;/creator&gt;
+  &lt;/info&gt;
+  &lt;linegroup&gt;
+    &lt;line&gt;Should auld acquaintance be 
+      forgot,&lt;/line&gt;
+    &lt;line&gt;And never brought to mind?&lt;/line&gt;
+    &lt;line&gt;Should auld acquaintance be forgot,&lt;/line&gt;
+    &lt;line&gt;And auld lang syne?&lt;/line&gt;
+  &lt;/linegroup&gt;                
+  &lt;linegroup&gt;
+    &lt;line&gt;For auld lang syne, my dear,&lt;/line&gt;
+    &lt;line&gt;For auld lang syne,&lt;/line&gt;
+    &lt;line&gt;We'll tak a cup o' kindness yet,&lt;/line&gt;
+    &lt;line&gt;For auld lang syne.&lt;/line&gt;
+  &lt;/linegroup&gt;
+&lt;/poetry&gt;</literallayout>
+            </example>
+        </section>
+
+
+        </section>
+</chapter>
+

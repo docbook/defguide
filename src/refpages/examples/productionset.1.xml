@@ -1,0 +1,49 @@
+<article xmlns='http://docbook.org/ns/docbook'>
+<title>Example productionset</title>
+
+<simplesect><title>EBNF Grammar</title>
+
+<productionset><title>Arithemetic Expressions</title>
+<production xml:id="ebnf.expression">
+  <lhs>Expression</lhs>
+  <rhs><nonterminal def="#ebnf.arith">ArithExpression</nonterminal> |
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal>
+  <lineannotation>Does this grammar actually get precedence right?
+  </lineannotation>
+  </rhs>
+</production>
+<production xml:id="ebnf.arith">
+  <lhs>ArithExpression</lhs>
+  <rhs><nonterminal def="#ebnf.expression">Expression</nonterminal>
+       '+'
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="#ebnf.expression">Expression</nonterminal>
+       '-'
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal>
+  </rhs>
+</production>
+<production xml:id="ebnf.mult">
+  <lhs>MultExpression</lhs>
+  <rhs><nonterminal def="#ebnf.mult">MultExpression</nonterminal>
+       '*'
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal>
+       '/'
+       <nonterminal def="#ebnf.mult">MultExpression</nonterminal> |
+       <nonterminal def="#ebnf.number">Number</nonterminal>
+  </rhs>
+  <constraint linkend="div0"/>
+</production>
+<production xml:id="ebnf.number">
+  <lhs>Number</lhs>
+  <rhs>[0-9]+</rhs>
+</production>
+</productionset>
+
+<constraintdef xml:id="div0">
+<title>Division by Zero</title>
+<para>Division by zero is an error.</para>
+</constraintdef>
+</simplesect>
+
+</article>

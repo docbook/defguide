@@ -1,0 +1,65 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">textobject</refmiscinfo>
+  <refmiscinfo role="pattern">db.textobject</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>textobject</tag> is a wrapper containing a textual
+      description of a media object and its associated meta-information. A
+      <tag>textobject</tag> is only allowed in
+      <tag>mediaobject</tag> as a fallback. It cannot be the primary
+      content.</para>
+
+      <para>There are two different forms of <tag>textobject</tag>,
+      and it is not unreasonable for a media object to contain both of
+      them.</para>
+
+      <para>In the first form, the content of a <tag>textobject</tag>
+      is simply a <tag>phrase</tag>. This form is a mechanism for
+      providing a simple <quote>alt text</quote> for a media object. The
+      phrase might be used, for example, as the value of the <tag class="attribute">alt</tag> attribute on an <acronym>HTML</acronym>
+      <tag namespace="http://www.w3.org/1999/xhtml">img</tag>, with
+      the primary content of the image coming from one of the other objects in
+      the media object.</para>
+
+      <para>In the second form, the content of <tag>textobject</tag>
+      is a longer, prose description. This form could be used when rendering
+      to devices that are incapable of displaying any of the other
+      alternatives.</para>
+
+      <?dbfo-need height=”2in”
+?>
+
+      <refsection xml:id="dbreproc.textobject"><info><title>Processing expectations</title></info>
+        
+
+        <para>May be formatted inline or as a displayed block, depending on
+        context. It might not be rendered at all, depending on its placement
+        within a <tag>mediaobject</tag> or
+        <tag>inlinemediaobject</tag> and the constraints on the
+        publishing system. For a more detailed description of the semantics
+        involved, see <tag>mediaobject</tag>.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1" arch="assembly">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">resource</refmiscinfo>
+  <refmiscinfo role="pattern">db.resource</refmiscinfo>
+  <refmiscinfo role="class">assembly</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A file <tag>resource</tag> identifies a resource by URI. If a
+<tag class="attribute">grammar</tag> is specified, then the resource is assumed to
+be authored in the grammar named.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>A <tag>resource</tag> is a pointer to another document. It's never rendered directly,
+though the resource identified may be rendered in one or more <tag>structure</tag>s.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>FIXME: TBD.</para>
+
+</refsection>
+
+</refentry>

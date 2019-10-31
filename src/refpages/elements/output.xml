@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.0" revision="5.1" arch="assembly">
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">output</refmiscinfo>
+  <refmiscinfo role="pattern">db.output</refmiscinfo>
+  <refmiscinfo role="class">assembly</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>The <tag>output</tag> element specifies a set of options to be
+used when rendering the module or structure in which it occurs.
+Multiple <tag>output</tag> elements can be specified and, if effectivity
+attributes and profiling are used, options can be selectively turned
+on and off for different renderings.</para>
+
+<para>The <tag class="attribute">grammar</tag> attribute on
+<tag>output</tag> was mistakenly included in DocBook version 5.1, and
+will be removed in version 5.2. The <tag
+class="attribute">grammar</tag> attribute appears on a
+<tag>resource</tag> element to specify its vocabulary if it is not
+DocBook, and on a <tag>transform</tag> element to specify a
+transformation to convert resources with that grammar to DocBook
+during assembly.</para>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>Never rendered.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>This example has two <tag>output</tag> elements, each with a
+different value for the <tag class="attribute">outputformat</tag>
+effectivity attribute. During assembly, profiling should be used to
+select one of them.</para>
+
+<programlisting><![CDATA[<module resourceref="topic1">
+  <output renderas="section" outputformat="print"/>
+  <output renderas="topic" outputformat="help"/>
+  …]]></programlisting>
+
+<para>In this example, only the content of <literal>topic2</literal>,
+without its root element or titles, is inserted at the end of the
+<literal>topic1</literal> <tag>section</tag> as more content in the same section.
+</para>
+
+<programlisting><![CDATA[<module resourceref="topic1" renderas="section">
+  <module resourceref="topic2">
+    <output contentonly="true" omittitles="true"/>
+  </module>
+</module>]]></programlisting>
+</refsection>
+</refentry>

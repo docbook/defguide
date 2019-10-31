@@ -1,0 +1,57 @@
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">simplemsgentry</refmiscinfo>
+  <refmiscinfo role="pattern">db.simplemsgentry</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title><para>A <tag>simplemsgentry</tag> is a simpler alternative to
+      <tag>msgentry</tag>. In a <tag>msgset</tag>, each
+      <tag>simplemsgentry</tag> contains the text of a message and its
+      explanation.</para>
+
+      <refsection><info><title>Processing expectations</title></info>
+        <para>Formatted as a displayed block.</para>
+      </refsection>
+
+<refsection>
+<title>Backward incompatibilities</title>
+
+<para>In DocBook V5.0, the <tag class="attribute">audience</tag>, <tag
+class="attribute">level</tag>, and <tag class="attribute">origin</tag>
+attributes are accidentally misspelled. The attribute
+“<literal>msgaud</literal>” should be spelled
+“<literal>audience</literal>”; the attribute
+“<literal>msglevel</literal>” should be spelled
+“<literal>level</literal>”; and the attribute
+“<literal>msgorig</literal>” should be spelled
+“<literal>origin</literal>”. Those are the spellings in DocBook
+V4.5.</para>
+
+<para>Unfortunately, the attribute name <quote>audience</quote> has
+subsequently been added to all elements as an effectivity attribute.
+Because there’s no way to resolve that conflict now, the DocBook
+Technical Committee has decided to accept the error and leave the
+misspelled attribute names in place going forward.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<!-- FIXME: add examples -->
+
+</refentry>
