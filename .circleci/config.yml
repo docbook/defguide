@@ -30,15 +30,13 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "en/defguide5/build.gradle" }}
+          key: v1-dependencies-{{ checksum "build.gradle" }}
 
       - run:
-          working_directory: ~/defguide/en/defguide5
-          command: ./gradlew --no-daemon tdg
-          no_output_timeout: 30m
+          working_directory: ~/defguide
+          command: ./gradlew --no-daemon
+          no_output_timeout: 60m
 
       - run:
-          working_directory: ~/defguide/en/defguide5
-          command: ../bin/circle-ci-deploy.sh
-
-
+          working_directory: ~/defguide
+          command: tools/bin/circle-ci-deploy.sh
