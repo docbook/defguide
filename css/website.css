@@ -1,12 +1,24 @@
 /* Website CSS */
 
+html {
+    font-size: 16pt;
+}
+
 body {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    widows: 2;
+    orphans: 2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: black;
+}
+
+article {
+    max-width: 50em;
+    margin: 0 auto;
+    border-bottom: 1px solid #7f7f7f;
 }
 
 div.header {
@@ -14,6 +26,7 @@ div.header {
     font-family: arial, helvetica, sans-serif;
     margin-top: 0;
     padding-top: 10px;
+    padding-left: 1rem;
 }
 
 div.header h1 {
@@ -81,4 +94,9 @@ img[align="left"] {
 dd {
     padding-bottom: 1em;
     padding-top: 0.5em;
+}
+
+ul.toc {
+    margin-top: 0;
+    padding-top: 0;
 }
