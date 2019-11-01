@@ -20,7 +20,6 @@
 <xsl:param name="css.decoration" select="1"/>
 <xsl:param name="docbook.css">css/defguide.css</xsl:param>
 <xsl:param name="callout.graphics.path" select="'figs/web/callouts/'"/>
-
 <xsl:param name="docbookVersion" select="'UNKNOWN'"/>
 <xsl:param name="docbookXsltVersion" select="'UNKNOWN'"/>
 <xsl:param name="rngfile" required="yes"/>
@@ -63,6 +62,14 @@
   <xsl:param name="thickness" select="$table.cell.border.thickness"/>
   <!-- nop -->
 </xsl:template>
+
+<xsl:function name="f:mediaobject-href" as="xs:string">
+  <xsl:param name="filename" as="xs:string"/>
+  <!-- Total, unmitigated hack. -->
+  <xsl:value-of
+      select="concat('figs/web/',
+                     substring-after($filename, '/figs/web/'))"/>
+</xsl:function>
 
 <xsl:template match="*" mode="m:javascript-head">
   <script type="text/javascript"
