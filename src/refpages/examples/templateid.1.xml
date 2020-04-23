@@ -1,0 +1,59 @@
+<article xmlns='http://docbook.org/ns/docbook'
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         version="5.2">
+<title>Java generics</title>
+
+<para>An example inspired by
+<link xlink:href="https://docs.julialang.org/en/v1/manual/types/index.html#Parametric-Types-1">Julia’s documentation</link>.</para>
+    
+<classsynopsis>
+  <classname>Point</classname>
+  <template>
+    <templateid>T</templateid>
+  </template>
+        
+  <fieldsynopsis>
+    <templateid>T</templateid>
+    <varname>x</varname>
+  </fieldsynopsis>
+        
+  <fieldsynopsis>
+    <templateid>T</templateid>
+    <varname>y</varname>
+  </fieldsynopsis>
+        
+  <para>Class Point.</para>
+</classsynopsis>
+    
+<classsynopsis>
+  <classname>Point</classname>
+  <template>
+    <specializedtemplate>Float64</specializedtemplate>
+  </template>
+        
+  <fieldsynopsis>
+    <type>Float64</type>
+    <varname>x</varname>
+  </fieldsynopsis>
+        
+  <fieldsynopsis>
+    <type>Float64</type>
+    <varname>y</varname>
+  </fieldsynopsis>
+        
+  <para>Specialized class Point.</para>
+</classsynopsis>
+    
+<methodsynopsis>
+  <methodname>translate_point</methodname>
+  <methodparam>
+    <type>
+      <classname>Point</classname>{<templateid>T</templateid>}
+    </type>
+    <parameter>p</parameter>
+  </methodparam>
+  <template>
+    where <templateid>T</templateid>
+  </template>
+</methodsynopsis>
+</article>
