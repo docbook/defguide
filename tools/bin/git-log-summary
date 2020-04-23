@@ -1,0 +1,134 @@
+#!/usr/bin/perl -- # -*- Perl -*-
+
+use strict;
+use English;
+use Getopt::Std;
+use vars qw($opt_o);
+
+my %MONTHS = ('Jan' => 1, 'Feb' => 2, 'Mar' => 3, 'Apr' => 4, 'May' => 5, 'Jun' => 6,
+              'Jul' => 7, 'Aug' => 8, 'Sep' => 9, 'Oct' => 10, 'Nov' => 11, 'Dec' => 12);
+
+my $usage = "Usage: $0 [-o output]\n";
+
+die $usage if ! getopts('o:');
+
+my $inmsg = 0;
+my $aftermsg = 0;
+my $hash = undef;
+my $date = undef;
+my $committer = undef;
+my $committer_email = undef;
+my $message = undef;
+my @files = ();
+my $LOG;
+my $output = $opt_o || "-";
+
+open (OUTPUT, ">$output");
+
+print OUTPUT "<git-repo-info xmlns='http://nwalsh.com/ns/git-repo-info'>\n";
+
+open ($LOG, "git log --name-status |");
+while (<$LOG>) {
+    chop;
+
+    if (/^commit (.*)$/) {
+        if (defined($hash)) {
+            print OUTPUT "<commit>\n";
+            print OUTPUT "<hash>$hash</hash>\n";
+            foreach my $file (@files) {
+                print OUTPUT "<file>$file</file>\n";
+            }
+            print OUTPUT "<date>$date</date>\n";
+            if (defined($committer_email)) {
+                print OUTPUT "<committer-name>", esc($committer), "</committer-name>\n";
+                print OUTPUT "<committer-email>", esc($committer_email), "</committer-email>\n";
+            } else {
+                print OUTPUT "<committer>", esc($committer), "</committer>\n";
+            }
+            print OUTPUT "<message>", esc($message), "</message>\n";
+            print OUTPUT "</commit>\n\n";
+        }
+
+        $hash = $1;
+        $date = undef;
+        $committer = undef;
+        $committer_email = undef;
+        $message = "";
+        $inmsg = 0;
+        $aftermsg = 0;
+        @files = ();
+        next;
+    }
+
+    if (/^Author:\s+(.*)$/) {
+        $committer = $1;
+        if ($committer =~ /^(\S+)\s<(.*?)>\s*$/) {
+            $committer_email = $2;
+            $committer = $1;
+        }
+    }
+
+    if (/^Date:\s+(.*)$/) {
+        $date = $1;
+        die unless $date =~ /... (...) (\d+) (\d+:\d+:\d+) (\d+) ([\+\-]\d\d)(\d\d)/;
+        my $year = $4;
+        my $month = $MONTHS{$1} || die "Not a month? $1\n";
+        my $day = $2;
+        my $time = $3;
+        my $tz = "$5:$6";
+        $date = sprintf ("%04d-%02d-%02dT%s%s", $year, $month, $day, $time, $tz);
+    }
+
+    if ($_ eq '') {
+        if ($inmsg) {
+            $inmsg = 0;
+            $aftermsg = 1;
+        } else {
+            $inmsg = 1;
+        }
+    }
+
+    if (/^\s+(.*)$/) {
+        if ($inmsg) {
+            $message = $1 if $message eq '';
+        } else {
+            die "???";
+        }
+    }
+
+    if (/^[AMD]\s+(.*)$/) {
+        die "???" if !$aftermsg;
+        push (@files, $1);
+    }
+
+    if (/^[R]\d+\s+(\S+)\s+(\S+)$/) {
+        die "???" if !$aftermsg;
+        push (@files, $1);
+        push (@files, $2);
+    }
+}
+close ($LOG);
+
+print OUTPUT "<commit>\n";
+print OUTPUT "<hash>$hash</hash>\n";
+foreach my $file (@files) {
+    print OUTPUT "<file>$file</file>\n";
+}
+print OUTPUT "<date>$date</date>\n";
+print OUTPUT "<committer>", esc($committer), "</committer>\n";
+print OUTPUT "<message>", esc($message), "</message>\n";
+print OUTPUT "</commit>\n\n";
+
+print OUTPUT "</git-repo-info>\n";
+
+close (OUTPUT);
+
+sub esc {
+    local $_ = shift;
+
+    s/&/&amp;/sg;
+    s/</&lt;/sg;
+    s/>/&gt;/sg;
+
+    return $_;
+}

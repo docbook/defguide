@@ -1,0 +1,505 @@
+@charset "UTF-8";
+
+/* CSS Stylesheet for _DocBook: The Definitive Guide_
+ * Copyright © 2010, 2011, 2020 Norman Walsh.
+ */
+
+:root {
+    --body-family: "EB Garamond";
+    --title-family: "Montserrat";
+    --mono-family: "PT Mono";
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div.covergraphic div.mediaobject img {
+  margin-right: 20px;
+  border: solid black 1px; }
+
+#backcover {
+  position: relative;
+  top: -40px;
+  height: 0px;
+  left: 380px; }
+
+div.example-output {
+  padding-left: 15px;
+  border-style: solid;
+  border-width: 0px;
+  border-left-width: 2px;
+  border-color: #073642; }
+
+pre {
+    font-family: var(--mono-family), monospace;
+}
+
+code {
+    font-family: var(--mono-family), monospace;
+}
+
+.screen pre {
+  background-color: #eee8d5;
+  border: 1px #93a1a1 solid;
+  border-radius: 3px; }
+
+.programlisting pre {
+  background-color: #eee8d5;
+  border: 1px #93a1a1 solid;
+  border-radius: 3px; }
+
+.example-source pre {
+  background-color: #eee8d5;
+  border: 1px #93a1a1 solid;
+  border-radius: 3px; }
+
+.literallayout {
+    background-color: inherit;
+}
+
+p.publisher {
+  text-align: center; }
+
+ul.toc {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+ul.toc
+ul.toc {
+  padding-left: 1.5em; }
+
+a,
+a:visited {
+  color: #00706b; }
+
+a.callout-link, a:visited.callout-link {
+  text-decoration: none; }
+
+ul.toc a,
+ul.toc a:visited {
+  text-decoration: none; }
+
+div.component-title {
+  text-align: right; }
+
+/* html.css (in Firefox?) fiddles with heading sizes when
+   the parent is a article, aside, nav, or section. WTF? */
+h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.25em;
+}
+h4 {
+    font-size: 1.1em;
+}
+h5 {
+    font-size: 1.0em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--title-family), sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+h1.label {
+  font-size: 150pt;
+  font-weight: normal;
+  font-family: var(--title-family), sans-serif;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px; }
+
+div.component-title h1.title {
+ font-family: var(--title-family), sans-serif;
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-right: 20px;
+  font-size: 36pt; }
+
+p.alpha-version {
+  margin-top: 0px;
+  padding-top: 0px; }
+
+hr.component-separator {
+  height: 1px; }
+
+div.refentry div.titlepage {
+  margin-left: 20px; }
+
+div.refentry div.titlepage h1.title {
+  margin-left: -20px;
+  margin-bottom: 0px;
+  font-size: 36pt; }
+
+html {
+    font-size: 1.3rem;
+    font-family: var(--body-family), serif;
+    width: 100%;
+    height: 100%;
+    widows: 2;
+    orphans: 2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+    background-color: #fffff8;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body > article {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+}
+
+header {
+  padding-top: 2px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #00706b;
+  color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  font-size: 12pt;
+  display: grid;
+  grid-template-columns: auto 2fr;
+}
+
+header .navigation {
+    grid-column: 1;
+    text-align: left;
+    padding-left: 0;
+}
+
+header .title {
+    grid-column: 2;
+    text-align: right;
+    font-size: 11pt;
+}
+
+header .version {
+    display: none;
+}
+
+header a,
+header a:visited,
+footer a,
+footer a:visited {
+  color: #eee8d5;
+}
+
+header .inactive {
+    color: #7f7f7f;
+}
+
+header i.fas {
+  font-size: 1.1rem;
+}
+
+header img {
+    vertical-align: text-bottom;
+}
+
+#bookhome header {
+    display: none;
+}
+
+main article header {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: #fffff8;
+  color: black;
+  border-bottom-style: none;
+  font-size: 1.3rem;
+  display: block;
+}
+
+footer {
+  background-color: #00706b;
+  color: white;
+  margin-bottom: 0px;
+  padding-top: 2px;
+  padding-bottom: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top-style: solid;
+  border-top-width: 1px;
+  display: grid;
+  font-size: 1.0rem;
+}
+
+.navrow {
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+.navleft {
+    text-align: left;
+    grid-column: 1;
+}
+
+.navmiddle {
+    text-align: center;
+    grid-column: 2;
+}
+
+.navright {
+    text-align: right;
+    grid-column: 3;
+}
+
+.infofooter {
+    margin-top: 0.5rem;
+    border-top: solid 1px #aaaaaa;
+    padding-top: 0.5rem;
+    font-size: 12px;
+    display: none;
+}
+
+footer img {
+    vertical-align: text-bottom;
+}
+
+span.githash {
+  font-size: 90%; }
+
+div.copyrightfooter {
+  margin-top: 0px;
+  padding-top: 5px;
+  padding-bottom: 1rem;
+  font-size: 12px;
+}
+
+#bookhome footer {
+    display: none;
+}
+
+#bookhome main {
+    padding-bottom: 4em;
+}
+
+article {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+div.legalnotice {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+div.book {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px; }
+
+thead {
+  background-color: #073642;
+  color: #93a1a1; }
+
+th {
+  font-weight: normal;
+  text-align: left; }
+
+table {
+  border: 1px #93a1a1 solid;
+  border-collapse: collapse; }
+
+th, td {
+  border-right: 1px #93a1a1 solid;
+  border-bottom: 1px #93a1a1 solid; }
+
+div.informaltable {
+  padding-bottom: 1em; }
+
+.pattern {
+  font-size: small;
+}
+
+.sincerev {
+  background-color: black;
+  color: white;
+  font-family: var(--title-family), sans-serif;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+  padding-bottom: 1px;
+  border-radius: 4px;
+}
+
+h1 .sincerev,
+h2 .sincerev {
+  position: absolute;
+  top: 3.5rem;
+  right: 3.5rem;
+  font-size: 0.75rem;
+  display: none;
+}  
+
+li .sincerev {
+    margin-left: 0.5em;
+    display: inline-block;
+    font-size: 50%;
+    font-weight: bold;
+}
+
+/* ======================================================================
+   Annotations
+*/
+div.annotation-list {
+  visibility: hidden; }
+
+div.annotation-nocss {
+  position: absolute;
+  visibility: hidden; }
+
+div.annotation-popup {
+  position: absolute;
+  z-index: 4;
+  background-color: #fffff8;
+  visibility: hidden;
+  padding: 0px;
+  margin: 2px;
+  border: solid black 1px;
+  width: 200px; }
+
+div.annotation-title {
+  padding: 1px;
+  background-color: #93a1a1;
+  font-weight: bold;
+  border-bottom-color: #073642;
+  border-bottom-style: solid;
+  border-bottom-width: 1px; }
+
+div.annotation-body {
+  padding: 2px; }
+
+div.annotation-body p {
+  margin-top: 0px;
+  padding-top: 0px; }
+
+div.annotation-close {
+  position: absolute;
+  top: 2px;
+  right: 2px; }
+
+div.caution {
+  background: url(../figs/web/caution.gif) no-repeat;
+  min-height: 80px;
+  padding-left: 100px; }
+
+div.caution h3 {
+  display: none; }
+
+div.tip {
+  background: url(../figs/web/tip.gif) no-repeat;
+  min-height: 80px;
+  padding-left: 100px; }
+
+div.tip h3 {
+  display: none; }
+
+div.note {
+  background: url(../figs/web/note.gif) no-repeat;
+  min-height: 80px;
+  padding-left: 100px; }
+
+div.note h3 {
+  display: none; }
+
+div.fu {
+  border: 1px #dc322f solid;
+  border-radius: 0.5em;
+  min-height: 80px;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  background-color: #eee8d5; }
+
+div.fu h3 {
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  color: #dc322f;
+  font-style: italic;
+  text-decoration: underline; }
+
+main {
+  margin-left: 4rem;
+  margin-right: auto;
+  max-width: 50rem;
+  overflow: auto;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+/* Improve the formatting of the copyright page */
+.body > p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.body > pre {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.footers {
+  position: relative;
+  background-color: #93a1a1;
+  margin-top: -110px;
+  /* negative value of footer height */
+  height: 110px;
+  bottom: 0px;
+  clear: both; }
+
+
+@media screen and (min-width: 800px)
+{
+    header .version {
+        display: inline;
+    }
+
+    .infofooter {
+        display: block;
+    }
+
+    header {
+        padding-right: 2rem;
+    }
+
+    footer {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media screen and (min-width: 600px)
+{
+    h1 .sincerev,
+    h2 .sincerev {
+        display: inline-block;
+    }  
+}
