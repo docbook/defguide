@@ -7,12 +7,16 @@
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 xmlns:h="http://www.w3.org/1999/xhtml"
                 xmlns:m="http://docbook.org/xslt/ns/mode"
+                xmlns:mp="http://docbook.org/xslt/ns/mode/private"
                 xmlns:t="http://docbook.org/xslt/ns/template"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                exclude-result-prefixes="ch db f fn h m t xs"
+                exclude-result-prefixes="ch db f fn h m mp t xs"
                 version="2.0">
 
+<!--
 <xsl:import href="https://cdn.docbook.org/release/xsl20/current/xslt/base/html/chunk.xsl"/>
+-->
+<xsl:import href="../../../xslt20/build/xslt/base/html/chunk.xsl"/>
 
 <xsl:include href="custom.xsl"/>
 
@@ -25,62 +29,63 @@
   <xsl:param name="up" select="()"/>
   <xsl:variable name="home" select="root($node)/*"/>
 
-  <div class="navheader">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%"
-           summary="Navigation table">
-      <tr>
-        <td align="left">
-          <xsl:text>&#160;</xsl:text>
-          <a title="{/db:book/db:info/db:title}" href="{f:href($node, $home)}">
-            <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}" alt="Home" border="0"/>
-          </a>
-          <xsl:text>&#160;</xsl:text>
+  <div class="navigation">
+    <a title="{/db:book/db:info/db:title}" href="{f:href($node, $home)}">
+      <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}" alt="Home" border="0"/>
+    </a>
+    <xsl:text>&#160;</xsl:text>
 
-          <xsl:choose>
-            <xsl:when test="count($prev)>0">
-              <a href="{f:href($node, $prev)}" title="{f:title-content($prev, false())}">
-                <img src="figs/web/nav/prev.png" alt="Prev" border="0"/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>
-              <img src="figs/web/nav/xprev.png" alt="Prev" border="0"/>
-            </xsl:otherwise>
-          </xsl:choose>
-          <xsl:text>&#160;</xsl:text>
+    <xsl:choose>
+      <xsl:when test="count($prev)>0">
+        <a href="{f:href($node, $prev)}" title="{f:title-content($prev, false())}">
+          <i class="fas fa-arrow-alt-square-left"></i>
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="inactive">
+          <i class="fas fa-arrow-alt-square-left"></i>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>&#160;</xsl:text>
 
-          <xsl:choose>
-            <xsl:when test="count($up)>0">
-              <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-                <img src="figs/web/nav/up.png" alt="Up" border="0"/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>
-              <img src="figs/web/nav/xup.png" alt="Up" border="0"/>
-            </xsl:otherwise>
-          </xsl:choose>
-          <xsl:text>&#160;</xsl:text>
+    <xsl:choose>
+      <xsl:when test="count($up)>0">
+        <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
+          <i class="fas fa-arrow-alt-square-up"></i>
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="inactive">
+          <i class="fas fa-arrow-alt-square-up"></i>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>&#160;</xsl:text>
 
-          <xsl:choose>
-            <xsl:when test="count($next)>0">
-              <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-                <img src="figs/web/nav/next.png" alt="Next" border="0"/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>
-              <img src="figs/web/nav/xnext.png" alt="Next" border="0"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </td>
-        <td align="right">
-          <i><xsl:value-of select="/db:book/db:info/db:title"/></i>
-          <xsl:text> (Version </xsl:text>
-          <a href="ch00-online.html">
-            <xsl:value-of select="/db:book/db:info/db:releaseinfo[not(@role)]"/>
-          </a>
-          <xsl:text>)</xsl:text>
-        </td>
-      </tr>
-    </table>
+    <xsl:choose>
+      <xsl:when test="count($next)>0">
+        <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
+          <i class="fas fa-arrow-alt-square-right"></i>
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="inactive">
+          <i class="fas fa-arrow-alt-square-right"></i>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
+  </div>
+  
+  <div class="title">
+    <i class="title"><xsl:value-of select="/db:book/db:info/db:title"/></i>
+    <span class="version">
+      <xsl:text>  (Version </xsl:text>
+      <a href="ch00-online.html">
+        <xsl:value-of select="/db:book/db:info/db:releaseinfo[not(@role)]"/>
+      </a>
+      <xsl:text>)</xsl:text>
+    </span>
   </div>
 </xsl:template>
 
@@ -91,95 +96,80 @@
   <xsl:param name="up" select="()"/>
   <xsl:variable name="home" select="root($node)/*"/>
 
-  <div class="footers">
-    <div class="navfooter">
-      <table width="100%" summary="Navigation table">
-        <tr>
-          <td width="40%" align="left">
-            <xsl:if test="count($prev)>0">
-              <a title="{f:title-content($prev, false())}" href="{f:href($node, $prev)}">
-                <img src="figs/web/nav/prev.png" alt="Prev" border="0"/>
-              </a>
-            </xsl:if>
-            <xsl:text>&#160;</xsl:text>
-          </td>
-          <td width="20%" align="center">
-            <xsl:choose>
-              <xsl:when test="exists($home)">
-                <a title="{f:title-content($home, false())}" href="{f:href($node, $home)}">
-                  <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}"
-                       alt="Home" border="0"/>
-                </a>
-              </xsl:when>
-              <xsl:otherwise>&#160;</xsl:otherwise>
-            </xsl:choose>
-          </td>
-          <td width="40%" align="right">
-            <xsl:text>&#160;</xsl:text>
-            <xsl:if test="count($next)>0">
-              <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-                <img src="figs/web/nav/next.png" alt="Next" border="0"/>
-              </a>
-            </xsl:if>
-          </td>
-        </tr>
-
-        <tr>
-          <td width="40%" align="left">
-            <xsl:value-of select="f:title-content($prev, false())"/>
-            <xsl:text>&#160;</xsl:text>
-          </td>
-          <td width="20%" align="center">
-            <xsl:choose>
-              <xsl:when test="count($up)>0">
-                <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-                  <img src="figs/web/nav/up.png" alt="Up" border="0"/>
-                </a>
-              </xsl:when>
-              <xsl:otherwise>&#160;</xsl:otherwise>
-            </xsl:choose>
-          </td>
-          <td width="40%" align="right">
-            <xsl:text>&#160;</xsl:text>
-            <xsl:value-of select="f:title-content($next, false())"/>
-          </td>
-        </tr>
-      </table>
+  <div class="navrow">
+    <div class="navleft">
+      <xsl:if test="count($prev)>0">
+        <a title="{f:title-content($prev, false())}" href="{f:href($node, $prev)}">
+          <i class="fas fa-arrow-alt-square-left"></i>
+        </a>
+      </xsl:if>
     </div>
-
-    <xsl:if test="$node/db:info/db:releaseinfo[@role='hash']">
-      <div class="infofooter">
-        <xsl:text>Last revised by </xsl:text>
-        <xsl:value-of select="substring-before($node/db:info/db:releaseinfo[@role='author'],
-                                               ' &lt;')"/>
-        <xsl:text> on </xsl:text>
-        <xsl:for-each select="$node/db:info/db:pubdate">
-          <!-- hack: there should be only one -->
-          <xsl:if test=". castable as xs:dateTime">
-            <xsl:value-of select="format-dateTime(. cast as xs:dateTime,
-                                                  '[D1] [MNn,*-3] [Y0001]')"/>
-          </xsl:if>
-        </xsl:for-each>
-        <xsl:text> </xsl:text>
-        <span class="githash">
-          <xsl:text>(git hash: </xsl:text>
-          <xsl:value-of select="$node/db:info/db:releaseinfo[@role='hash']"/>
-          <xsl:text>)</xsl:text>
-        </span>
-      </div>
-    </xsl:if>
-
-    <div class="copyrightfooter">
-      <p>
-        <a href="dbcpyright.html">Copyright</a>
-        <xsl:text> &#xA9; </xsl:text>
-        <xsl:for-each select="/db:book/db:info/db:copyright/db:year">
-          <xsl:if test="position() &gt; 1">, </xsl:if>
-          <xsl:value-of select="."/>
-        </xsl:for-each>
-        <xsl:text> Norman Walsh.</xsl:text>
-      </p>
+    <div class="navmiddle">
+      <xsl:if test="exists($home)">
+        <a title="{f:title-content($home, false())}" href="{f:href($node, $home)}">
+          <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}"
+               alt="Home" border="0"/>
+        </a>
+      </xsl:if>
     </div>
+    <div class="navright">
+      <xsl:if test="count($next)>0">
+        <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
+          <i class="fas fa-arrow-alt-square-right"></i>
+        </a>
+      </xsl:if>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <div class="navleft">
+      <xsl:value-of select="f:title-content($prev, false())"/>
+    </div>
+    <div class="navmiddle">
+      <xsl:if test="count($up)>0">
+        <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
+          <i class="fas fa-arrow-alt-square-up"></i>
+        </a>
+      </xsl:if>
+    </div>
+    <div class="navright">
+      <xsl:value-of select="f:title-content($next, false())"/>
+    </div>
+  </div>
+
+  <xsl:if test="$node/db:info/db:releaseinfo[@role='hash']">
+    <xsl:variable name="hash"
+                  select="$node/db:info/db:releaseinfo[@role='hash']"/>
+
+    <div class="infofooter">
+      <xsl:text>Last revised by </xsl:text>
+      <xsl:value-of
+          select="substring-before($node/db:info/db:releaseinfo[@role='author'],
+                                   ' &lt;')"/>
+      <xsl:text> on </xsl:text>
+      <xsl:for-each select="$node/db:info/db:pubdate">
+        <!-- hack: there should be only one -->
+        <xsl:if test=". castable as xs:dateTime">
+          <xsl:value-of select="format-dateTime(. cast as xs:dateTime,
+                                                '[D1] [MNn,*-3] [Y0001]')"/>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:text> </xsl:text>
+      <span class="githash" title="{$hash}">
+        <xsl:text>(git hash: </xsl:text>
+        <xsl:value-of select="concat(substring($hash, 1, 6), '…')"/>
+        <xsl:text>)</xsl:text>
+      </span>
+    </div>
+  </xsl:if>
+
+  <div class="copyrightfooter">
+    <a href="dbcpyright.html">Copyright</a>
+    <xsl:text> &#xA9; </xsl:text>
+    <xsl:value-of select="/db:book/db:info/db:copyright/db:year[1]"/>
+    <xsl:text>–</xsl:text>
+    <xsl:value-of select="/db:book/db:info/db:copyright/db:year[last()]"/>
+    <xsl:text> Norman Walsh.</xsl:text>
   </div>
 </xsl:template>
 
@@ -195,5 +185,63 @@
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>
+
+<xsl:template match="*" mode="m:chunk">
+  <xsl:variable name="chunkfn" select="f:chunk-filename(.)"/>
+  <xsl:variable name="pinav"
+                select="(f:pi(./processing-instruction('dbhtml'), 'navigation'),'true')[1]"/>
+
+  <xsl:variable name="chunk" select="key('id', generate-id(.), $chunk-tree)"/>
+  <xsl:variable name="nchunk" select="($chunk/following::h:chunk|$chunk/descendant::h:chunk)[1]"/>
+  <xsl:variable name="pchunk" select="($chunk/preceding::h:chunk|$chunk/parent::h:chunk)[last()]"/>
+  <xsl:variable name="uchunk" select="$chunk/ancestor::h:chunk[1]"/>
+
+  <xsl:result-document href="{$base.dir}{$chunkfn}" method="xhtml" indent="no">
+    <xsl:apply-templates select="." mode="m:pre-root"/>
+    <html>
+      <head>
+        <xsl:apply-templates select="." mode="mp:html-head"/>
+      </head>
+      <body>
+        <xsl:if test="self::db:book">
+          <xsl:attribute name="id" select="'bookhome'"/>
+        </xsl:if>
+        <xsl:call-template name="t:body-attributes"/>
+        <xsl:if test="@status">
+          <xsl:attribute name="class" select="@status"/>
+        </xsl:if>
+        <article>
+          <header>
+            <xsl:if test="$pinav = 'true'">
+              <xsl:apply-templates select="." mode="m:user-header-content">
+                <xsl:with-param name="node" select="."/>
+                <xsl:with-param name="next" select="key('genid', $nchunk/@xml:id)"/>
+                <xsl:with-param name="prev" select="key('genid', $pchunk/@xml:id)"/>
+                <xsl:with-param name="up" select="key('genid', $uchunk/@xml:id)"/>
+              </xsl:apply-templates>
+            </xsl:if>
+          </header>
+
+          <main>
+            <xsl:apply-templates select=".">
+              <xsl:with-param name="override-chunk" select="true()"/>
+            </xsl:apply-templates>
+          </main>
+
+          <footer>
+            <xsl:if test="$pinav = 'true'">
+              <xsl:apply-templates select="." mode="m:user-footer-content">
+                <xsl:with-param name="node" select="."/>
+                <xsl:with-param name="next" select="key('genid', $nchunk/@xml:id)"/>
+                <xsl:with-param name="prev" select="key('genid', $pchunk/@xml:id)"/>
+                <xsl:with-param name="up" select="key('genid', $uchunk/@xml:id)"/>
+              </xsl:apply-templates>
+            </xsl:if>
+          </footer>
+        </article>
+      </body>
+    </html>
+  </xsl:result-document>
+</xsl:template>
 
 </xsl:stylesheet>
