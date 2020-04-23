@@ -30,6 +30,8 @@
   <tocparam path="part" toc="1"/>
 </xsl:param>
 
+<xsl:param name="section.label.includes.component.label" select="true()"/>
+
 <xsl:param name="autolabel.elements">
   <db:appendix format="A"/>
   <db:chapter/>
@@ -73,6 +75,8 @@
 
 <xsl:template match="*" mode="m:javascript-head">
   <script type="text/javascript"
+          src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"/>
+  <script type="text/javascript"
           src="{concat($resource.root, 'js/prism.js')}"/>
   <script type="text/javascript"
           src="{concat($resource.root, 'js/jquery-1.6.4.min.js')}"/>
@@ -81,8 +85,14 @@
 </xsl:template>
 
 <xsl:template match="*" mode="m:head-content">
-  <link rel="icon" href="{/db:book/db:info/db:releaseinfo[@role='icon']}"
-        type="image/png" />
+  <link href="{/db:book/db:info/db:releaseinfo[@role='icon']}"
+        rel="icon" type="image/png" />
+  <link href="https://fonts.googleapis.com/css?family=EB%20Garamond"
+        rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat"
+        rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=PT%20Mono"
+        rel="stylesheet" type="text/css"/>
 </xsl:template>
 
 <xsl:template name="revision.graphic">
@@ -110,153 +120,48 @@
         </xsl:message>
       </xsl:when>
 
-      <xsl:when test="$revision='5.2' and empty($arch)">
-        <img src="figs/web/rev_5.2.png" alt="[5.2]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
+      <xsl:when test="empty($arch)">
+        <!-- 3.1 isn't interesting anymore -->
+        <xsl:if test="$revision != '3.1'">
+          <span class="sincerev">
+            <xsl:text>V</xsl:text>
+            <xsl:value-of select="$revision"/>
+          </span>
+        </xsl:if>
       </xsl:when>
-      <xsl:when test="$revision='5.1' and empty($arch)">
-        <img src="figs/web/rev_5.1.png" alt="[5.1]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
+
+      <xsl:when test="$arch = 'assembly'">
+        <span class="sincerev">
+          <xsl:text>V</xsl:text>
+          <xsl:value-of select="$revision"/>
+          <xsl:text> Assembly</xsl:text>
+        </span>
       </xsl:when>
-      <xsl:when test="$revision='5.1' and $arch='assembly'">
-        <img src="figs/web/rev_5.1_assembly.png" alt="[5.1 Assembly]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
+
+      <xsl:when test="$arch = 'publishers'">
+        <span class="sincerev">
+          <xsl:text>V</xsl:text>
+          <xsl:value-of select="$revision"/>
+          <xsl:text> Publishers</xsl:text>
+        </span>
       </xsl:when>
-      <xsl:when test="$revision='1.0' and $arch='publishers'">
-        <img src="figs/web/rev_1.0_pub.png" alt="[1.0 Publishers]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
+
+      <xsl:when test="$arch = 'slides'">
+        <span class="sincerev">
+          <xsl:text>V</xsl:text>
+          <xsl:value-of select="$revision"/>
+          <xsl:text> Slides</xsl:text>
+        </span>
       </xsl:when>
-      <xsl:when test="$revision='1.1' and $arch='publishers'">
-        <img src="figs/web/rev_1.1_pub.png" alt="[1.1 Publishers]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
+
+      <xsl:when test="$arch = 'website'">
+        <span class="sincerev">
+          <xsl:text>V</xsl:text>
+          <xsl:value-of select="$revision"/>
+          <xsl:text> Website</xsl:text>
+        </span>
       </xsl:when>
-      <xsl:when test="$revision='1.2' and $arch='publishers'">
-        <img src="figs/web/rev_1.2_pub.png" alt="[1.2 Publishers]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='5.0' and $arch='slides'">
-        <img src="figs/web/rev_5.0s.png" alt="[5.0 Slides]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='5.0' and $arch='website'">
-        <img src="figs/web/rev_5.0w.png" alt="[5.0 Website]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='5.0' and empty($arch)">
-        <img src="figs/web/rev_5.0.png" alt="[5.0]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='4.3' and empty($arch)">
-        <img src="figs/web/rev_4.3.png" alt="[4.3]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='4.2' and empty($arch)">
-        <img src="figs/web/rev_4.2.png" alt="[4.2]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='4.0' and empty($arch)">
-        <img src="figs/web/rev_4.0.png" alt="[4.0]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='3.1' and empty($arch)">
-        <!-- nop; 3.1 isn't interesting anymore -->
-      </xsl:when>
-      <xsl:when test="$revision='EBNF'">
-        <img src="figs/web/rev_ebnf.png" alt="[EBNF]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='SVG' and empty($arch)">
-        <img src="figs/web/rev_svg.png" alt="[SVG]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='MathML' and empty($arch)">
-        <img src="figs/web/rev_mathml.png" alt="[MathML]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
-      <xsl:when test="$revision='HTMLForms' and empty($arch)">
-        <img src="figs/web/rev_htmlforms.png" alt="[HTML Forms]">
-          <xsl:if test="$align != ''">
-            <xsl:attribute name="align">
-              <xsl:value-of select="$align"/>
-            </xsl:attribute>
-          </xsl:if>
-        </img>
-      </xsl:when>
+
       <xsl:otherwise>
         <xsl:message>
           <xsl:text>Unexpected revision/arch '</xsl:text>
@@ -272,7 +177,7 @@
 </xsl:template>
 
 <xsl:template match="db:book">
-  <article>
+  <article id="defguide">
     <xsl:sequence select="f:html-attributes(.,f:node-id(.))"/>
 
     <xsl:call-template name="titlepage-block"/>
@@ -361,36 +266,34 @@
   </div>
 
   <xsl:result-document href="{$base.dir}dbcpyright.html" method="xhtml" indent="no">
+    <!-- irrelevant, as long as it's in a different chunk from us! -->
+    <xsl:variable name="link-context" select="(/db:book/db:part/db:chapter)[1]"/>
     <html>
       <head>
         <xsl:apply-templates select="/*" mode="mp:html-head"/>
       </head>
       <body>
-        <div class="page">
-          <xsl:call-template name="t:body-attributes"/>
-          <xsl:if test="@status">
-            <xsl:attribute name="class" select="@status"/>
-          </xsl:if>
-
-          <!-- irrelevant, as long as it's in a different chunk from us! -->
-          <xsl:variable name="link-context" select="(/db:book/db:part/db:chapter)[1]"/>
-
-          <div class="content">
+        <xsl:call-template name="t:body-attributes"/>
+        <xsl:if test="@status">
+          <xsl:attribute name="class" select="@status"/>
+        </xsl:if>
+        <article>
+          <header>
             <xsl:apply-templates select="." mode="m:user-header-content">
               <xsl:with-param name="node" select="$link-context"/>
               <xsl:with-param name="up" select="root(.)/*"/>
             </xsl:apply-templates>
-
-            <div class="body">
-              <xsl:apply-templates select="db:info/db:legalnotice/*"/>
-            </div>
-          </div>
-
-          <xsl:apply-templates select="." mode="m:user-footer-content">
-            <xsl:with-param name="node" select="$link-context"/>
-            <xsl:with-param name="up" select="root(.)/*"/>
-          </xsl:apply-templates>
-        </div>
+          </header>
+          <main>
+            <xsl:apply-templates select="db:info/db:legalnotice/*"/>
+          </main>
+          <footer>
+            <xsl:apply-templates select="." mode="m:user-footer-content">
+              <xsl:with-param name="node" select="$link-context"/>
+              <xsl:with-param name="up" select="root(.)/*"/>
+            </xsl:apply-templates>
+          </footer>
+        </article>
       </body>
     </html>
   </xsl:result-document>
@@ -478,6 +381,38 @@
       <xsl:with-param name="align" select="''"/>
     </xsl:call-template>
   </li>
+</xsl:template>
+
+<xsl:template match="db:refnamediv">
+  <div>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <xsl:choose>
+      <xsl:when test="$refentry.generate.name">
+        <h1>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'RefName'"/>
+          </xsl:call-template>
+        </h1>
+      </xsl:when>
+
+      <xsl:when test="$refentry.generate.title">
+        <h1>
+          <xsl:choose>
+            <xsl:when test="../db:refmeta/db:refentrytitle">
+              <xsl:apply-templates select="../db:refmeta/db:refentrytitle"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="db:refname[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </h1>
+      </xsl:when>
+    </xsl:choose>
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </div>
 </xsl:template>
 
 <!-- ============================================================ -->

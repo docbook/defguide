@@ -26,11 +26,9 @@
 <p:for-each name="loop">
   <p:iteration-source select="/list/item"/>
 
-  <!--
   <cx:message>
     <p:with-option name="message" select="concat('Processing ', /*)"/>
   </cx:message>
-  -->
 
   <p:load>
     <p:with-option name="href"

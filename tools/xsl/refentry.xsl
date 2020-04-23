@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns='http://docbook.org/ns/docbook'
-                xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                 xmlns:db='http://docbook.org/ns/docbook'
                 xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
-                xmlns:rng='http://relaxng.org/ns/structure/1.0'
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns:xi="http://www.w3.org/2001/XInclude"
                 xmlns:doc='http://nwalsh.com/xmlns/schema-doc/'
-                xmlns:html="http://www.w3.org/1999/xhtml"
-                xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:f="http://nwalsh.com/ns/xsl/functions"
                 xmlns:git="http://nwalsh.com/ns/git-repo-info"
-                exclude-result-prefixes="db rng xlink f doc s dbx html a xs git"
+                xmlns:html="http://www.w3.org/1999/xhtml"
+                xmlns:rng='http://relaxng.org/ns/structure/1.0'
+                xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                exclude-result-prefixes="a db dbx doc f git html rng s xi xlink xs"
                 version="2.0">
 
 <xsl:include href="inline-synop.xsl"/>
@@ -123,6 +123,12 @@
       <secondary><xsl:value-of select="$element"/></secondary>
     </indexterm>
 
+    <xsl:if test="not(db:info)">
+      <info>
+        <xsl:call-template name="git-info"/>
+      </info>
+    </xsl:if>
+
     <xsl:apply-templates/>
 
     <xsl:if test="$include.changelog != 0 and (db:info/db:releaseinfo or db:info/db:pubdate)">
@@ -144,26 +150,30 @@
 </xsl:template>
 
 <xsl:template match="db:refentry/db:info">
-  <xsl:variable name="path" select="substring-after(base-uri(.), 'defguide/')"/>
-  <xsl:variable name="commit" select="$git//git:commit[git:file=$path]"/>
-
   <xsl:copy>
     <xsl:copy-of select="@*"/>
     <xsl:apply-templates/>
-    <xsl:choose>
-      <xsl:when test="empty($commit)">
-        <xsl:message>Failed to find GIT commit for <xsl:value-of select="$path"/></xsl:message>
-      </xsl:when>
-      <xsl:otherwise>
-        <pubdate><xsl:value-of select="$commit/git:date"/></pubdate>
-        <xsl:text>&#10;</xsl:text>
-        <releaseinfo role='hash'><xsl:value-of select="$commit/git:hash"/></releaseinfo>
-        <xsl:text>&#10;</xsl:text>
-        <releaseinfo role='author'><xsl:value-of select="$commit/git:committer"/></releaseinfo>
-        <xsl:text>&#10;</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="git-info"/>
   </xsl:copy>
+</xsl:template>
+
+<xsl:template name="git-info">
+  <xsl:variable name="path" select="substring-after(base-uri(.), 'defguide/')"/>
+  <xsl:variable name="commit" select="$git//git:commit[git:file=$path]"/>
+
+  <xsl:choose>
+    <xsl:when test="empty($commit)">
+      <xsl:message>Failed to find GIT commit for <xsl:value-of select="$path"/></xsl:message>
+    </xsl:when>
+    <xsl:otherwise>
+      <pubdate><xsl:value-of select="$commit/git:date"/></pubdate>
+      <xsl:text>&#10;</xsl:text>
+      <releaseinfo role='hash'><xsl:value-of select="$commit/git:hash"/></releaseinfo>
+      <xsl:text>&#10;</xsl:text>
+      <releaseinfo role='author'><xsl:value-of select="$commit/git:committer"/></releaseinfo>
+      <xsl:text>&#10;</xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="db:refmeta">
