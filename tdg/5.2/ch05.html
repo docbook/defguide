@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;5.&nbsp;Customizing DocBook</title><meta charset="utf-8"><link rel="icon" href="https://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.4.3"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch04.html" title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Chapter&nbsp; 6 .&nbsp; DocBook Assemblies" href="ch06.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">5.2.3 for DocBook 5.2b07</a>)</td></tr></table></div><div class="body"><article id="app-customizing" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;5.&nbsp;Customizing DocBook</h2></header><div class="content"><p><a class="indexterm" name="idx.customize-1"></a><a class="indexterm" name="app-customizing.2.2"></a><a class="indexterm" name="app-customizing.2.3"></a><a class="indexterm" name="app-customizing.2.4"></a>For some applications, DocBook “<span class="quote">out of the box</span>”
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;5.&nbsp;Customizing DocBook</title><meta charset="utf-8"><link href="https://docbook.org/graphics/defguide-icon16.png" rel="icon" type="image/png"><link href="https://fonts.googleapis.com/css?family=EB%20Garamond" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=PT%20Mono" rel="stylesheet" type="text/css"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.5.0"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><article><header><div class="navigation"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a>&nbsp;<a href="ch04.html" title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents"><i class="fas fa-arrow-left"></i></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a>&nbsp;<a title="Chapter&nbsp; 6 .&nbsp; DocBook Assemblies" href="ch06.html"><i class="fas fa-arrow-right"></i></a></div><div class="title"><i class="title">DocBook 5.2: The Definitive Guide</i><span class="version">&nbsp;&nbsp;(Version <a href="ch00-online.html">5.2.4 for DocBook 5.2b08</a>)</span></div></header><main><article id="app-customizing" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;5.&nbsp;Customizing DocBook</h2></header><div class="content"><p><a class="indexterm" name="idx.customize-1"></a><a class="indexterm" name="app-customizing.2.2"></a><a class="indexterm" name="app-customizing.2.3"></a><a class="indexterm" name="app-customizing.2.4"></a>For some applications, DocBook “<span class="quote">out of the box</span>”
   may not be exactly what you need. Perhaps you need additional inline
   elements or perhaps you want to remove elements that you never want your
   authors to use. By design, DocBook makes this sort of customization
@@ -22,7 +22,7 @@
   can be very useful, but might have a great impact on your
   environment.</p><p>Customization layers can be as small as restricting an attribute value
   or as large as adding an entirely different hierarchy on top of the inline
-  elements.</p><section id="ch05-shouldi" class="section"><div class="section-titlepage"><h2>1.&nbsp;Should You Do This?</h2></div><div class="content"><p><a class="indexterm" name="ch05-shouldi.2.1"></a>Changing a schema can have a wide-ranging impact on the
+  elements.</p><section id="ch05-shouldi" class="section"><div class="section-titlepage"><h2>5.1.&nbsp;Should You Do This?</h2></div><div class="content"><p><a class="indexterm" name="ch05-shouldi.2.1"></a>Changing a schema can have a wide-ranging impact on the
     tools and stylesheets that you use. It can have an impact on your authors
     and on your legacy documents. This is especially true if you make an
     extension. If you rely on your support staff to install and maintain your
@@ -31,10 +31,10 @@
     your immediate control. Proceed with caution.</p><p>That said, DocBook is designed to be easy to modify. This chapter
     assumes that you are comfortable with <span class="acronym">XML</span> and RELAX NG
     grammar syntax, but the examples presented should be a good springboard to
-    learning the syntax if it’s not already familiar to you.</p></div></section><section id="s-notdocbook" class="section"><div class="section-titlepage"><h2>2.&nbsp;If You Change DocBook, It’s Not DocBook Anymore!</h2></div><div class="content"><p>The license agreement under which DocBook is distributed gives you
+    learning the syntax if it’s not already familiar to you.</p></div></section><section id="s-notdocbook" class="section"><div class="section-titlepage"><h2>5.2.&nbsp;If You Change DocBook, It’s Not DocBook Anymore!</h2></div><div class="content"><p>The license agreement under which DocBook is distributed gives you
     complete freedom to change, modify, reuse, and generally hack the schema
     in any way you want, except that you must not call your alterations
-    “<span class="quote">DocBook.</span>”</p><section id="s-dbversion" class="section"><div class="section-titlepage"><h3>2.1.&nbsp;Namespace and Version</h3></div><div class="content"><p>Starting with DocBook <span class="acronym">V5.0</span>, DocBook is
+    “<span class="quote">DocBook.</span>”</p><section id="s-dbversion" class="section"><div class="section-titlepage"><h3>5.2.1.&nbsp;Namespace and Version</h3></div><div class="content"><p>Starting with DocBook <span class="acronym">V5.0</span>, DocBook is
       identified by its namespace,<a class="indexterm" name="s-dbversion.2.2"></a><a class="indexterm" name="s-dbversion.2.3"></a> <code class="uri">http://docbook.org/ns/docbook</code>. The particular
       version of DocBook to which an element conforms is identified by its
       <code class="tag-attribute">version</code> attribute. If the element
@@ -57,7 +57,7 @@
       <code class="literal">subset</code> keyword in the version. If your schema extends
       the markup model, use the <code class="literal">extension</code> keyword. If you’d
       rather not characterize your variant specifically as a subset or an
-      extension, use the <code class="literal">variant</code> <span class="keep-together">keyword</span>.</p></div></section><section id="pubid" class="section"><div class="section-titlepage"><h3>2.2.&nbsp;Public Identifiers</h3></div><div class="content"><p><a class="indexterm" name="pubid.2.1"></a>Although not directly supported by RELAX NG, in some cases
+      extension, use the <code class="literal">variant</code> <span class="keep-together">keyword</span>.</p></div></section><section id="pubid" class="section"><div class="section-titlepage"><h3>5.2.2.&nbsp;Public Identifiers</h3></div><div class="content"><p><a class="indexterm" name="pubid.2.1"></a>Although not directly supported by RELAX NG, in some cases
       it may still be valuable to identify a DocBook <span class="acronym">V5.0</span>
       customization layer with a public identifier. A public identifier for
       DocBook <span class="acronym">V5.0</span> is:<a class="indexterm" name="pubid.2.4"></a></p><pre class="screen language-none"><code>-//OASIS//DTD DocBook V5.0//EN</code></pre><p>If you make any changes to the structure of the schema, you must
@@ -71,16 +71,16 @@
       <code class="literal">Subset</code> keyword in the description. If your schema
       extends the markup model, use the <code class="literal">Extension</code> keyword.
       If you’d rather not characterize your variant specifically as a subset
-      or an extension, use the <code class="literal">Variant</code> <span class="keep-together">keyword</span>.</p></div></section></div></section><section id="ch05-layers" class="section"><div class="section-titlepage"><h2>3.&nbsp;Customization Layers</h2></div><div class="content"><p>A RELAX NG grammar is a collection of patterns. These patterns can
+      or an extension, use the <code class="literal">Variant</code> <span class="keep-together">keyword</span>.</p></div></section></div></section><section id="ch05-layers" class="section"><div class="section-titlepage"><h2>5.3.&nbsp;Customization Layers</h2></div><div class="content"><p>A RELAX NG grammar is a collection of patterns. These patterns can
     be stored in a single file or in a collection of files that import each
     other. Patterns can augment each other in a variety of ways. A complete
     grammar is the union of the specified patterns.</p><p>For convenience, the DocBook grammar is distributed in a single
-    file.</p><section id="ch05-syntax" class="section"><div class="section-titlepage"><h3>3.1.&nbsp;RELAX NG Syntax</h3></div><div class="content"><p>There are two standard syntaxes for RELAX NG, an
+    file.</p><section id="ch05-syntax" class="section"><div class="section-titlepage"><h3>5.3.1.&nbsp;RELAX NG Syntax</h3></div><div class="content"><p>There are two standard syntaxes for RELAX NG, an
       <span class="acronym">XML</span> syntax and a “<span class="quote">compact</span>” text syntax.
       The two forms have the same expressive power; it is possible to
       transform between them with no loss of information.</p><p>Many users find the relative terseness of the compact syntax makes
       it a convenient form for reading and writing RELAX NG. We will use
-      compact syntax in our examples.</p></div></section><section id="ch05-patnames" class="section"><div class="section-titlepage"><h3>3.2.&nbsp;DocBook Schema Structure</h3></div><div class="content"><p><a class="indexterm" name="idx.schema-structure"></a>The DocBook RELAX NG schema is highly modular, using named
+      compact syntax in our examples.</p></div></section><section id="ch05-patnames" class="section"><div class="section-titlepage"><h3>5.3.2.&nbsp;DocBook Schema Structure</h3></div><div class="content"><p><a class="indexterm" name="idx.schema-structure"></a>The DocBook RELAX NG schema is highly modular, using named
       patterns extensively. Every element, attribute, attribute list, and
       enumeration has its own named pattern. In addition, there are named
       patterns for logical combinations of elements and attributes. These
@@ -127,7 +127,7 @@
             <code class="literal">db.indexterm.endofrange</code>. Each of these patterns
             matches <a href="indexterm.singular.html"><code class="tag-element">indexterm</code></a> with varying
             attributes.</p></dd></dl></div><p>These are conventions, not hard and fast rules. There are patterns
-      that don’t follow these conventions.<a class="indexterm" name="ch05-patnames.5.1"></a></p></div></section><section id="ch05-genstruct" class="section"><div class="section-titlepage"><h3>3.3.&nbsp;The General Structure of Customization Layers</h3></div><div class="content"><p><a class="indexterm" name="ch05-genstruct.2.1"></a><a class="indexterm" name="ch05-genstruct.2.2"></a>Creating a customized schema is similar to creating a
+      that don’t follow these conventions.<a class="indexterm" name="ch05-patnames.5.1"></a></p></div></section><section id="ch05-genstruct" class="section"><div class="section-titlepage"><h3>5.3.3.&nbsp;The General Structure of Customization Layers</h3></div><div class="content"><p><a class="indexterm" name="ch05-genstruct.2.1"></a><a class="indexterm" name="ch05-genstruct.2.2"></a>Creating a customized schema is similar to creating a
       customization layer for <span class="acronym">XSL</span>. The schema customization
       layer is a new RELAX NG schema that defines your changes and includes
       the standard DocBook schema. You then validate using the schema
@@ -156,16 +156,16 @@ include "docbook.rnc" {
           These patterns completely replace any that appear in the imported
           schema.</p></dd><dt id="list_gs2-n1" class="callout"><span class="coline">8</span></dt><dd><p>As before, patterns outside the include statement can augment
           existing patterns (even redefined ones).</p></dd></dl></div><p>There are other possibilities as well; these examples are
-      illustrative, not exhaustive.</p></div></section></div></section><section id="ch05-write" class="section"><div class="section-titlepage"><h2>4.&nbsp;Writing, Testing, and Using a Customization Layer</h2></div><div class="content"><p><a class="indexterm" name="idx.wtu-layer-1"></a><a class="indexterm" name="idx.wtu-layer-2"></a>The procedure for writing, testing, and using a
+      illustrative, not exhaustive.</p></div></section></div></section><section id="ch05-write" class="section"><div class="section-titlepage"><h2>5.4.&nbsp;Writing, Testing, and Using a Customization Layer</h2></div><div class="content"><p><a class="indexterm" name="idx.wtu-layer-1"></a><a class="indexterm" name="idx.wtu-layer-2"></a>The procedure for writing, testing, and using a
     customization layer is always about the same. In this section, we’ll go
     through the process in some detail. The rest of the sections in this
-    chapter describe a range of useful customization layers.</p><section id="ch05-write.3" class="section"><div class="section-titlepage"><h3>4.1.&nbsp;Deciding What to Change</h3></div><div class="content"><p>If you’re considering writing a customization layer, there must be
+    chapter describe a range of useful customization layers.</p><section id="ch05-write.3" class="section"><div class="section-titlepage"><h3>5.4.1.&nbsp;Deciding What to Change</h3></div><div class="content"><p>If you’re considering writing a customization layer, there must be
       something that you want to change. Perhaps you want to add an element or
       attribute, remove one, or change some other aspect of the schema.</p><p><a class="indexterm" name="ch05-write.3.3.1"></a>Adding an element, particularly an inline element, is one
       possibility. For example, if you’re writing about cryptography, you
       might want to add a “<span class="quote"><code class="literal">cleartext</code></span>” element.
       The next section describes how to create a customization layer to do
-      this.</p></div></section><section id="ch05-write.4" class="section"><div class="section-titlepage"><h3>4.2.&nbsp;Deciding How to Change a Customization Layer</h3></div><div class="content"><p><a class="indexterm" name="ch05-write.4.2.1"></a>Figuring out what to change may be the hardest part of the
+      this.</p></div></section><section id="ch05-write.4" class="section"><div class="section-titlepage"><h3>5.4.2.&nbsp;Deciding How to Change a Customization Layer</h3></div><div class="content"><p><a class="indexterm" name="ch05-write.4.2.1"></a>Figuring out what to change may be the hardest part of the
       process. For the cleartext
       example, there are several patterns that you could possibly change. The
       choice will depend on the exact focus of your document. Here are several
@@ -209,10 +209,10 @@ db.cleartext =
             pattern includes the pattern we just created for the <code class="tag-attribute">role</code> attribute.</p></dd><dt id="list_gs3-d4" class="callout"><span class="coline">16</span></dt><dd><p>The pattern for the element pulls it all together. The
             pattern <code class="literal">db._text</code> matches text plus a number of
             ubiquitous or nearly ubiquitous inlines. Use this pattern unless
-            you <em>really</em> want only text.</p></dd></dl></div></div></figure></div></section><section id="ch05-write.5" class="section"><div class="section-titlepage"><h3>4.3.&nbsp;Using Your Customization Layer</h3></div><div class="content"><p>Using a customization layer is simple. Just put the customization
+            you <em>really</em> want only text.</p></dd></dl></div></div></figure></div></section><section id="ch05-write.5" class="section"><div class="section-titlepage"><h3>5.4.3.&nbsp;Using Your Customization Layer</h3></div><div class="content"><p>Using a customization layer is simple. Just put the customization
       into a file—for example, <code class="filename">mycustomization.rnc</code>—and
       then refer to that file instead of the DocBook schema when your tools
-      offer the option.</p></div></section><section id="cust.test" class="section"><div class="section-titlepage"><h3>4.4.&nbsp;Testing Your Work</h3></div><div class="content"><p><a class="indexterm" name="cust.test.2.1"></a><a class="indexterm" name="cust.test.2.2"></a><a class="indexterm" name="cust.test.2.3"></a>Schemas, by their nature, contain many complex,
+      offer the option.</p></div></section><section id="cust.test" class="section"><div class="section-titlepage"><h3>5.4.4.&nbsp;Testing Your Work</h3></div><div class="content"><p><a class="indexterm" name="cust.test.2.1"></a><a class="indexterm" name="cust.test.2.2"></a><a class="indexterm" name="cust.test.2.3"></a>Schemas, by their nature, contain many complex,
       interrelated patterns. Whenever you make a change to the schema, it’s
       always wise to use a validator to check your work.</p><p>Start by validating a document that’s plain, vanilla DocBook, one
       that you know is valid according to the DocBook standard schema. This
@@ -220,9 +220,9 @@ db.cleartext =
       Once you are confident the schema is correct, begin testing with
       instances that you expect (and don’t expect) to be valid against
       it.</p><p>The following sections contain examples for several common
-      customizations.<a class="indexterm" name="cust.test.4.1"></a><a class="indexterm" name="cust.test.4.2"></a></p></div></section></div></section><section id="ch05-remvelem" class="section"><div class="section-titlepage"><h2>5.&nbsp;Removing Elements</h2></div><div class="content"><p><a class="indexterm" name="idx.remove.elements-1"></a><a class="indexterm" name="idx.remove.elements-2"></a>DocBook has a large number of elements. In some authoring
+      customizations.<a class="indexterm" name="cust.test.4.1"></a><a class="indexterm" name="cust.test.4.2"></a></p></div></section></div></section><section id="ch05-remvelem" class="section"><div class="section-titlepage"><h2>5.5.&nbsp;Removing Elements</h2></div><div class="content"><p><a class="indexterm" name="idx.remove.elements-1"></a><a class="indexterm" name="idx.remove.elements-2"></a>DocBook has a large number of elements. In some authoring
     environments, it may be useful or necessary to remove unneeded
-    elements.</p><section id="ch05-remvelem.3" class="section"><div class="section-titlepage"><h3>5.1.&nbsp;Removing msgset</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.3.2.1"></a>The <a href="msgset.html"><code class="tag-element">msgset</code></a> element is a favorite
+    elements.</p><section id="ch05-remvelem.3" class="section"><div class="section-titlepage"><h3>5.5.1.&nbsp;Removing msgset</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.3.2.1"></a>The <a href="msgset.html"><code class="tag-element">msgset</code></a> element is a favorite
       target. It has a complex internal structure designed for describing
       interrelated error messages, especially on systems that may exhibit
       messages from several different components. Many technical documents can
@@ -246,7 +246,7 @@ include "docbook.rnc" {
 </code></pre></div></figure><p>Closer examination of the <a href="msgentry.html"><code class="tag-element">msgentry</code></a> content
       model will reveal that it contains a number of descendants. It isn’t
       necessary, but it wouldn’t be wrong, to define their patterns as
-      <code class="literal">notAllowed</code> as well.</p></div></section><section id="ch05-remvelem.4" class="section"><div class="section-titlepage"><h3>5.2.&nbsp;Removing Computer Inlines</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.4.2.1"></a>DocBook contains a large number of computer inlines. The
+      <code class="literal">notAllowed</code> as well.</p></div></section><section id="ch05-remvelem.4" class="section"><div class="section-titlepage"><h3>5.5.2.&nbsp;Removing Computer Inlines</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.4.2.1"></a>DocBook contains a large number of computer inlines. The
       DocBook inlines define a domain-specific vocabulary. If you’re working
       in another domain, many of them may be unnecessary.</p><p>They’re defined in a set of patterns that ultimately roll up to
       the <code class="literal">db.domain.inlines</code> pattern. If you make that
@@ -267,7 +267,7 @@ include "docbook.rnc" {
           inlines</p></li><li><p><code class="literal">db.programming.inlines</code>: programming-related
           inlines</p></li></ul></div><div class="caution admonition"><h3>Caution</h3><div class="admonition-body"><p>Be aware that a customization layer that removed this many
         technical inlines would also remove some larger technical structures
-        or make them unusable.</p></div></div></div></section><section id="ch05-remvelem.5" class="section"><div class="section-titlepage"><h3>5.3.&nbsp;Removing Synopsis Elements</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.5.2.1"></a><a class="indexterm" name="ch05-remvelem.5.2.2"></a><a class="indexterm" name="ch05-remvelem.5.2.3"></a>Another possibility is removing the complex synopsis
+        or make them unusable.</p></div></div></div></section><section id="ch05-remvelem.5" class="section"><div class="section-titlepage"><h3>5.5.3.&nbsp;Removing Synopsis Elements</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.5.2.1"></a><a class="indexterm" name="ch05-remvelem.5.2.2"></a><a class="indexterm" name="ch05-remvelem.5.2.3"></a>Another possibility is removing the complex synopsis
       elements. The customization layer in <a href="ch05.html#ex.remvcmdsyn" title="Removing cmdsynopsis and funcsynopsis">Example&nbsp;5.5, “Removing cmdsynopsis and funcsynopsis”</a>
       removes <a href="cmdsynopsis.html"><code class="tag-element">cmdsynopsis</code></a> and
       <a href="funcsynopsis.html"><code class="tag-element">funcsynopsis</code></a>.</p><figure id="ex.remvcmdsyn" class="example-wrapper"><div class="title">Example&nbsp;5.5.&nbsp;Removing cmdsynopsis and funcsynopsis</div><div class="example"><pre class="programlisting language-none line-numbers"><code>namespace db = "http://docbook.org/ns/docbook"
@@ -276,7 +276,7 @@ include "docbook.rnc" {
    db.funcsynopsis = notAllowed
    db.cmdsynopsis = notAllowed
 }
-</code></pre></div></figure></div></section><section id="ch05-remvelem.6" class="section"><div class="section-titlepage"><h3>5.4.&nbsp;Removing Sectioning Elements</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.6.2.1"></a>Perhaps you want to restrict your authors to only three
+</code></pre></div></figure></div></section><section id="ch05-remvelem.6" class="section"><div class="section-titlepage"><h3>5.5.4.&nbsp;Removing Sectioning Elements</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvelem.6.2.1"></a>Perhaps you want to restrict your authors to only three
       levels of sectioning. To do that, you could remove the
       <a href="sect4.html"><code class="tag-element">sect4</code></a> and <a href="sect5.html"><code class="tag-element">sect5</code></a> elements, as shown
       in <a href="ch05.html#ex.remvsect4" title="Removing the sect4 and sect5 elements">Example&nbsp;5.6, “Removing the sect4 and sect5 elements”</a>.</p><figure id="ex.remvsect4" class="example-wrapper"><div class="title">Example&nbsp;5.6.&nbsp;Removing the sect4 and sect5 elements</div><div class="example"><pre class="programlisting language-none line-numbers"><code>namespace db = "http://docbook.org/ns/docbook"
@@ -363,7 +363,7 @@ include "docbook.rnc" {
 </code></pre></div></figure><p>In this example, we’ve put the Schematron pattern inline in the
       RELAX NG grammar. If your validation strategy requires that they be in a
       separate document, it may be more convenient to simply create them
-      separately.</p></div></section><section id="s2-remvadmon" class="section"><div class="section-titlepage"><h3>5.5.&nbsp;Removing Admonitions from Table Entries</h3></div><div class="content"><p><a class="indexterm" name="s2-remvadmon.2.1"></a> <a class="indexterm" name="s2-remvadmon.2.2"></a>Sometimes what you want to do is not as simple as entirely
+      separately.</p></div></section><section id="s2-remvadmon" class="section"><div class="section-titlepage"><h3>5.5.5.&nbsp;Removing Admonitions from Table Entries</h3></div><div class="content"><p><a class="indexterm" name="s2-remvadmon.2.1"></a> <a class="indexterm" name="s2-remvadmon.2.2"></a>Sometimes what you want to do is not as simple as entirely
       removing an element. Instead, you may want to remove it only from some
       contexts. The way to do this is to redefine the patterns used to
       calculate the elements allowed in those contexts.</p><p>Standard DocBook allows any inline element or any block element to
@@ -402,7 +402,7 @@ db.somenopara.blocks =
       in part on how many patterns need to be changed. The DocBook Technical
       Committee is generally open to the idea of adding more patterns if it
       improves the readability of customization layers. If you think some
-      refactoring would make your job easier, feel free to ask.<a class="indexterm" name="s2-remvadmon.6.1"></a><a class="indexterm" name="s2-remvadmon.6.2"></a></p></div></section></div></section><section id="ch05-remvattr" class="section"><div class="section-titlepage"><h2>6.&nbsp;Removing Attributes</h2></div><div class="content"><p><a class="indexterm" name="idx.remove.attr-1"></a><a class="indexterm" name="idx.remove.attr-2"></a>Just as there may be more elements than you need, there may
+      refactoring would make your job easier, feel free to ask.<a class="indexterm" name="s2-remvadmon.6.1"></a><a class="indexterm" name="s2-remvadmon.6.2"></a></p></div></section></div></section><section id="ch05-remvattr" class="section"><div class="section-titlepage"><h2>5.6.&nbsp;Removing Attributes</h2></div><div class="content"><p><a class="indexterm" name="idx.remove.attr-1"></a><a class="indexterm" name="idx.remove.attr-2"></a>Just as there may be more elements than you need, there may
     be more attributes.</p><p>Suppose your processing system doesn’t support
     “<span class="quote">continued</span>” lists. You want to remove the <code class="tag-attribute">continuation</code> attribute from the
     <a href="orderedlist.html"><code class="tag-element">orderedlist</code></a> element. There are two ways you could
@@ -417,7 +417,7 @@ db.somenopara.blocks =
 include "docbook.rnc" {
    db.orderedlist.continuation.attribute = empty
 }
-</code></pre></div></figure><section id="ch05-remvattr.5" class="section"><div class="section-titlepage"><h3>6.1.&nbsp;Subsetting the Common Attributes</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvattr.5.2.1"></a> <a class="indexterm" name="ch05-remvattr.5.2.2"></a>DocBook defines a set of “<span class="quote">common attributes,</span>”
+</code></pre></div></figure><section id="ch05-remvattr.5" class="section"><div class="section-titlepage"><h3>5.6.1.&nbsp;Subsetting the Common Attributes</h3></div><div class="content"><p><a class="indexterm" name="ch05-remvattr.5.2.1"></a> <a class="indexterm" name="ch05-remvattr.5.2.2"></a>DocBook defines a set of “<span class="quote">common attributes,</span>”
       which appear on <em>every</em> element. Depending on how you
       process your documents, removing some of them can both simplify the
       authoring task and improve processing speed.</p><p>Some obvious candidates are:</p><div class="variablelist"><dl><dt><span class="term">Effectivity attributes (<code class="tag-attribute">arch</code>, <code class="tag-attribute">os</code>, <code class="tag-attribute">condition</code>...)</span></dt><dd><p><a class="indexterm" name="ch05-remvattr.5.4.1.2.1.1"></a>If you’re not using all of the effectivity
@@ -437,7 +437,7 @@ include "docbook.rnc" {
       db.version.attribute?
     &amp; db.xml.lang.attribute?
 }
-</code></pre></div></figure></div></section></div></section><section id="ch05-addelem" class="section"><div class="section-titlepage"><h2>7.&nbsp;Adding Elements</h2></div><div class="content"><p><a class="indexterm" name="idx.add.elements-1"></a><a class="indexterm" name="idx.add.elements-2"></a>Adding a new inline or block element is generally a
+</code></pre></div></figure></div></section></div></section><section id="ch05-addelem" class="section"><div class="section-titlepage"><h2>5.7.&nbsp;Adding Elements</h2></div><div class="content"><p><a class="indexterm" name="idx.add.elements-1"></a><a class="indexterm" name="idx.add.elements-2"></a>Adding a new inline or block element is generally a
     straightforward matter of creating a pattern for the new element and using
     <code class="literal">|=</code> to add it to the right pattern, as we did in <a href="ch05.html#ex-addcleartext" title="Adding cleartext with a customization layer">Example&nbsp;5.1, “Adding cleartext with a customization layer”</a>. But if your new element is more intimately
     related to the existing structure of the document, it may require more
@@ -472,7 +472,7 @@ db.sect6 =
    }
 </code></pre></div></figure><p>Here we’ve redefined <a href="sect5.html"><code class="tag-element">sect5</code></a> to include
     <code class="literal">sect6</code> and provided a pattern for
-    <code class="literal">sect6</code>.<a class="indexterm" name="ch05-addelem.5.4"></a><a class="indexterm" name="ch05-addelem.5.5"></a></p></div></section><section id="ch05-addattribute" class="section"><div class="section-titlepage"><h2>8.&nbsp;Adding Attributes</h2></div><div class="content"><p><a class="indexterm" name="idx.add.attr-1"></a><a class="indexterm" name="idx.add.attr-2"></a>The simplest way to add an attribute to a single element is
+    <code class="literal">sect6</code>.<a class="indexterm" name="ch05-addelem.5.4"></a><a class="indexterm" name="ch05-addelem.5.5"></a></p></div></section><section id="ch05-addattribute" class="section"><div class="section-titlepage"><h2>5.8.&nbsp;Adding Attributes</h2></div><div class="content"><p><a class="indexterm" name="idx.add.attr-1"></a><a class="indexterm" name="idx.add.attr-2"></a>The simplest way to add an attribute to a single element is
     to add it to the attlist pattern for that element. <a href="ch05.html#ex.addattribute" title="Adding born and died attributes">Example&nbsp;5.13, “Adding born and died attributes”</a> adds the optional attributes <code class="tag-attribute">born</code> and <code class="tag-attribute">died</code> to the attribute list for
     <a href="author.html"><code class="tag-element">author</code></a>. The <code class="literal">db.author.attlist</code>
     pattern is redefined to interleave the two new optional attributes with
@@ -486,7 +486,7 @@ db.author.attlist &amp;=
   &amp; attribute died { db.date.contentmodel }?
 </code></pre><div class="calloutlist"><dl><dt id="list_exarea-a1" class="callout"><span class="coline">6</span></dt><dd><p><code class="literal">&amp;=</code> interleaves the two new optional
           attributes with the existing attributes on the list.</p></dd><dt id="list_exarea-a2" class="callout"><span class="coline">7</span></dt><dd><p><code class="literal">db.date.contentmodel</code> is a pattern used for
-          any attribute or element that represents a date.<a class="indexterm" name="list_exarea-a2.1.2"></a><a class="indexterm" name="list_exarea-a2.1.3"></a></p></dd></dl></div></div></figure></div></section><section id="ch05-classrole" class="section"><div class="section-titlepage"><h2>9.&nbsp;Other Modifications</h2></div><div class="content"><section id="ch05-classrole.2" class="section"><div class="section-titlepage"><h3>9.1.&nbsp;Changing the Contents of the role Attribute</h3></div><div class="content"><p><a class="indexterm" name="ch05-classrole.2.2.1"></a>The <code class="tag-attribute">role</code> attribute,
+          any attribute or element that represents a date.<a class="indexterm" name="list_exarea-a2.1.2"></a><a class="indexterm" name="list_exarea-a2.1.3"></a></p></dd></dl></div></div></figure></div></section><section id="ch05-classrole" class="section"><div class="section-titlepage"><h2>5.9.&nbsp;Other Modifications</h2></div><div class="content"><section id="ch05-classrole.2" class="section"><div class="section-titlepage"><h3>5.9.1.&nbsp;Changing the Contents of the role Attribute</h3></div><div class="content"><p><a class="indexterm" name="ch05-classrole.2.2.1"></a>The <code class="tag-attribute">role</code> attribute,
       found on almost all of the elements in DocBook, is a text attribute that
       can be used to subclass an element. In some applications, it may be
       useful to modify the definition of <code class="tag-attribute">role</code> so that authors must choose one of a
@@ -497,7 +497,7 @@ db.author.attlist &amp;=
 include "docbook.rnc" {
    db.procedure.role.attribute = attribute role { "required" | "optional" }
 }
-</code></pre></div></figure></div></section><section id="ch05-classrole.3" class="section"><div class="section-titlepage"><h3>9.2.&nbsp;Adding a Value to an Enumerated Attribute</h3></div><div class="content"><p><a class="indexterm" name="ch05-classrole.3.2.1"></a><a href="ch05.html#ex.addenumeration" title="Adding a value to an enumeration">Example&nbsp;5.15, “Adding a value to an enumeration”</a> adds the value
+</code></pre></div></figure></div></section><section id="ch05-classrole.3" class="section"><div class="section-titlepage"><h3>5.9.2.&nbsp;Adding a Value to an Enumerated Attribute</h3></div><div class="content"><p><a class="indexterm" name="ch05-classrole.3.2.1"></a><a href="ch05.html#ex.addenumeration" title="Adding a value to an enumeration">Example&nbsp;5.15, “Adding a value to an enumeration”</a> adds the value
       “<span class="quote"><code class="tag-attvalue">large</code></span>” to the
       <code class="varname">db.spacing.enumeration</code> pattern. Any attribute that is
       defined using <code class="varname">db.spacing.enumeration</code> will now have
@@ -511,4 +511,4 @@ include "docbook.rnc"
 
 # add a value to an enumeration
 db.spacing.enumeration |= "large"
-</code></pre></div></figure></div></section></div></section></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents" href="ch04.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Chapter&nbsp; 6 .&nbsp; DocBook Assemblies" href="ch06.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Chapter&nbsp; 6 .&nbsp; DocBook Assemblies</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Norman Walsh.</p></div></div></div></body></html>
+</code></pre></div></figure></div></section></div></section></div></article></main><footer><div class="navrow"><div class="navleft"><a title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents" href="ch04.html"><i class="fas fa-arrow-left"></i></a></div><div class="navmiddle"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a></div><div class="navright"><a title="Chapter&nbsp; 6 .&nbsp; DocBook Assemblies" href="ch06.html"><i class="fas fa-arrow-right"></i></a></div></div><div class="navrow"><div class="navleft">Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents</div><div class="navmiddle"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a></div><div class="navright">Chapter&nbsp; 6 .&nbsp; DocBook Assemblies</div></div><div class="copyrightfooter"><a href="dbcpyright.html">Copyright</a> © 2010–2020 Norman Walsh.</div></footer></article></body></html>

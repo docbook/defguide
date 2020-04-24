@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;6.&nbsp;DocBook Assemblies</title><meta charset="utf-8"><link rel="icon" href="https://docbook.org/graphics/defguide-icon16.png" type="image/png"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.4.3"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><div class="page"><div class="content"><div class="navheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table"><tr><td align="left">&nbsp;<a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a>&nbsp;<a href="ch05.html" title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a>&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1046e12794.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td><td align="right"><i>DocBook 5.2: The Definitive Guide</i> (Version <a href="ch00-online.html">5.2.3 for DocBook 5.2b07</a>)</td></tr></table></div><div class="body"><article id="assemblies" class="chapter rf-5.1"><header class="chapter-titlepage"><h2>Chapter&nbsp;6.&nbsp;DocBook Assemblies</h2></header><div class="content"><p>One modern school of thought on technical documentation stresses
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;6.&nbsp;DocBook Assemblies</title><meta charset="utf-8"><link href="https://docbook.org/graphics/defguide-icon16.png" rel="icon" type="image/png"><link href="https://fonts.googleapis.com/css?family=EB%20Garamond" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=PT%20Mono" rel="stylesheet" type="text/css"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.5.0"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><article><header><div class="navigation"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a>&nbsp;<a href="ch05.html" title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook"><i class="fas fa-arrow-left"></i></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a>&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1062e12828.html"><i class="fas fa-arrow-right"></i></a></div><div class="title"><i class="title">DocBook 5.2: The Definitive Guide</i><span class="version">&nbsp;&nbsp;(Version <a href="ch00-online.html">5.2.4 for DocBook 5.2b08</a>)</span></div></header><main><article id="assemblies" class="chapter rf-5.1"><header class="chapter-titlepage"><h2>Chapter&nbsp;6.&nbsp;DocBook Assemblies</h2></header><div class="content"><p>One modern school of thought on technical documentation stresses
 the development of independent units of documentation, often called
 topics, rather than a single narrative. Instead of writing something
 that DocBook users would easily recognize as a book consisting of a
@@ -38,7 +38,7 @@ specific system.</p><p>In order to make such a documentation platform functional
 need not only the individual topics, but also some sort of “map” or
 “assembly” file that describes which topics from the library are used,
 what relationships exist between them and, at least for print
-presentation, what linear order should be imposed upon them.</p><p>DocBook uses an <a href="assembly.html"><code class="tag-element">assembly</code></a> for this purpose.</p><section id="physical" class="section"><div class="section-titlepage"><h2>1.&nbsp;Physical structure</h2></div><div class="content"><p>The notion of a DocBook <a href="assembly.html"><code class="tag-element">assembly</code></a> is predicated on a few
+presentation, what linear order should be imposed upon them.</p><p>DocBook uses an <a href="assembly.html"><code class="tag-element">assembly</code></a> for this purpose.</p><section id="physical" class="section"><div class="section-titlepage"><h2>6.1.&nbsp;Physical structure</h2></div><div class="content"><p>The notion of a DocBook <a href="assembly.html"><code class="tag-element">assembly</code></a> is predicated on a few
 assumptions about the physical layout of the topics that are to be combined
 together into units of documentation. We call the units of documentation
 “structures” and the topics from which they are composed “resources”.</p><p>For the most part, we assume that resources exist as stand alone
@@ -47,7 +47,7 @@ the resources together may be a single file (as in a single PDF book) or
 a collection of files (as in a web site or help system).</p><p>Other arrangements are possible, but for simplicity, we assume
 that the resources are accessible via URIs and the resulting
 structures can be written to the local filesystem as one or more
-files.</p></div></section><section id="logical" class="section"><div class="section-titlepage"><h2>2.&nbsp;Logical structure</h2></div><div class="content"><p>Many features of an assembly allow the assembly process to
+files.</p></div></section><section id="logical" class="section"><div class="section-titlepage"><h2>6.2.&nbsp;Logical structure</h2></div><div class="content"><p>Many features of an assembly allow the assembly process to
 update metadata associated with a document, for example changing the
 title or removing the metadata altogether. Throughout the description
 of assemblies, we assume that all metadata always occurs inside an
@@ -77,14 +77,14 @@ perfectly legal:</p><pre class="programlisting language-none line-numbers"><code
 in order to use assemblies. Processing systems are to behave <em>as
 if</em> they had.</p><p>The assumption that all metadata is always present in a single,
 explicit <a href="info.html"><code class="tag-element">info</code></a> wrapper <em>greatly</em> simplifies
-the exposition of assemblies without introducing any actual limitations.</p></div></section><section id="assemblies.14" class="section"><div class="section-titlepage"><h2>3.&nbsp;Assembly Files</h2></div><div class="content"><p>An <a href="assembly.html"><code class="tag-element">assembly</code></a> has four major parts:</p><div class="variablelist"><dl><dt><span class="term"><a href="resources.html"><code class="tag-element">resources</code></a></span></dt><dd><p>Identifies a collection of topics. An assembly may have any number of
+the exposition of assemblies without introducing any actual limitations.</p></div></section><section id="assemblies.14" class="section"><div class="section-titlepage"><h2>6.3.&nbsp;Assembly Files</h2></div><div class="content"><p>An <a href="assembly.html"><code class="tag-element">assembly</code></a> has four major parts:</p><div class="variablelist"><dl><dt><span class="term"><a href="resources.html"><code class="tag-element">resources</code></a></span></dt><dd><p>Identifies a collection of topics. An assembly may have any number of
 <a href="resources.html"><code class="tag-element">resources</code></a> elements each identifying a collection of resources.</p></dd><dt><span class="term"><a href="structure.html"><code class="tag-element">structure</code></a></span></dt><dd><p>Identifies a single artifact to be assembled. Such an artifact is a particular
 collection of topics. An assembly may have any number of <a href="structure.html"><code class="tag-element">structure</code></a> elements,
 each identifying a single artifact.</p></dd><dt><span class="term"><a href="relationships.html"><code class="tag-element">relationships</code></a></span></dt><dd><p>Identifies relationships between resources. These relationships
 may be manifested in any number of structures during assembly. An assembly
 may have any number of <a href="relationships.html"><code class="tag-element">relationships</code></a> elements.</p></dd><dt><span class="term"><a href="transforms.html"><code class="tag-element">transforms</code></a></span></dt><dd><p>Identifies transformations that can be applied during assembly.
 An assembly my have at most one <a href="transforms.html"><code class="tag-element">transforms</code></a> element, but it may contain
-any number of <a href="transform.html"><code class="tag-element">transform</code></a> elements.</p></dd></dl></div><section id="resources" class="section"><div class="section-titlepage"><h3>3.1.&nbsp;Resources</h3></div><div class="content"><p>Individual resources are identified through a <a href="resource.html"><code class="tag-element">resource</code></a>
+any number of <a href="transform.html"><code class="tag-element">transform</code></a> elements.</p></dd></dl></div><section id="resources" class="section"><div class="section-titlepage"><h3>6.3.1.&nbsp;Resources</h3></div><div class="content"><p>Individual resources are identified through a <a href="resource.html"><code class="tag-element">resource</code></a>
 element:</p><pre class="programlisting language-none"><code>&lt;resource xml:id="topicA" href="uri/for/topicA.xml"/&gt;</code></pre><p>Here the resource “<code class="literal">topicA</code>” is associated with
 the URI <code class="uri">uri/for/topicA.xml</code>. Relative URIs are made absolute
 with respect to the element on which they appear. An optional <code class="tag-attribute">description</code> attribute may also be used to
@@ -97,7 +97,7 @@ physically and logically colocated resources together. The
 <a href="resources.html"><code class="tag-element">resources</code></a> wrapper is a convenient place, for example, to specify
 a common <code class="tag-attribute">xml:base</code> or
 <code class="tag-attribute">xml:lang</code> and
-<code class="tag-attribute">description</code>.</p></div></section><section id="structures" class="section"><div class="section-titlepage"><h3>3.2.&nbsp;Structures</h3></div><div class="content"><p>Structures are where the real work is performed. There is considerable
+<code class="tag-attribute">description</code>.</p></div></section><section id="structures" class="section"><div class="section-titlepage"><h3>6.3.2.&nbsp;Structures</h3></div><div class="content"><p>Structures are where the real work is performed. There is considerable
 tension between the goal of providing <a href="structure.html"><code class="tag-element">structure</code></a> elements that are
 simple for the simple cases and simultaneously allowing them to be complex
 enough to describe the full richness of possibility.</p><p>This inherent tension is compounded by the fact that the nature of
@@ -117,7 +117,7 @@ what is defined is a help system, then the realized structure may be a
 collection of nested <a href="topic.html"><code class="tag-element">topic</code></a> elements. Even though authors
 are not allowed to nest topics (per the DocBook 5.1 <a href="topic.html"><code class="tag-element">topic</code></a>
 element), the assembly process may be allowed to nest them.</p><p>A <a href="structure.html"><code class="tag-element">structure</code></a> consists mostly of <a href="module.html"><code class="tag-element">module</code></a> elements.
-</p></div></section><section id="modules" class="section"><div class="section-titlepage"><h3>3.3.&nbsp;Modules</h3></div><div class="content"><p>The <a href="module.html"><code class="tag-element">module</code></a> element identifies a unit of structure.
+</p></div></section><section id="modules" class="section"><div class="section-titlepage"><h3>6.3.3.&nbsp;Modules</h3></div><div class="content"><p>The <a href="module.html"><code class="tag-element">module</code></a> element identifies a unit of structure.
 The attributes and children of a module provide facilities for
 selecting the content of the module and controlling its presentation.</p><p>A <a href="module.html"><code class="tag-element">module</code></a> with a <code class="tag-attribute">resourceref</code>
 attribute will pull in the content of that resource at that point in
@@ -137,7 +137,7 @@ module children could render as sections within the chapter, with
 further nested modules becoming subsections.</p><p>Keep in mind that nesting of content would normally be done in a
 way that results in valid DocBook in the assembled document. However,
 the output is not validated, so you can create invalid or custom
-content with assemblies for any specific application.</p></div></section><section id="relationships" class="section"><div class="section-titlepage"><h3>3.4.&nbsp;Relationships</h3></div><div class="content"><p>A relationship, in the context of an assembly, is an assertion
+content with assemblies for any specific application.</p></div></section><section id="relationships" class="section"><div class="section-titlepage"><h3>6.3.4.&nbsp;Relationships</h3></div><div class="content"><p>A relationship, in the context of an assembly, is an assertion
 that a particular collection of resources are related. The nature of
 the relationship is specified with a <code class="tag-attribute">type</code>
 attribute. For example:</p><pre class="programlisting language-none line-numbers"><code>&lt;relationship type="seealso"&gt;
@@ -156,7 +156,7 @@ relationship establishes a path through a set of resources:</p><pre class="progr
   &lt;instance linkend="task3"/&gt;
   &lt;instance linkend="cleanup"/&gt;
 &lt;/relationship&gt;</code></pre><p>A sophisticated help system could use this path to guide a new
-user through a sequence of resources.</p></div></section><section id="transformations" class="section"><div class="section-titlepage"><h3>3.5.&nbsp;Transformations</h3></div><div class="content"><p>An assembly can identify a collection of transformations that can
+user through a sequence of resources.</p></div></section><section id="transformations" class="section"><div class="section-titlepage"><h3>6.3.5.&nbsp;Transformations</h3></div><div class="content"><p>An assembly can identify a collection of transformations that can
 be used during the assembly process. This is intended primarily to enable
 transforming sources that are not DocBook into DocBook so that they can
 be merged into the assembly. Other uses are application dependent.</p><p>A transformation can be associated with a resource (for example,
@@ -186,7 +186,7 @@ format to another, it can name a transform as well:</p><pre class="programlistin
 &lt;/module&gt;</code></pre><p>This will transform the module into a tutorial using the
 <code class="uri">db2tutorial.xsl</code> transform specified in the matching
 <a href="transform.html"><code class="tag-element">transform</code></a> element.</p><p>If the <a href="output.html"><code class="tag-element">output</code></a> specifies a <code class="tag-attribute">renderas</code>, it is applied to the result of the
-last transformation.</p></div></section></div></section><section id="assemblies.15" class="section"><div class="section-titlepage"><h2>4.&nbsp;Describing Structural Relationships With Assemblies</h2></div><div class="content"><p>In addition to providing a mechanism for describing the
+last transformation.</p></div></section></div></section><section id="assemblies.15" class="section"><div class="section-titlepage"><h2>6.4.&nbsp;Describing Structural Relationships With Assemblies</h2></div><div class="content"><p>In addition to providing a mechanism for describing the
 structure of the classical DocBook products such as books and
 articles, the <a href="assembly.html"><code class="tag-element">assembly</code></a> element can be used
 to describe the relationships among non-linear collections of topics
@@ -206,12 +206,12 @@ navigational hierarchy of the HTML delivery of a help system, while it
 traditionally would be at the back of a printed version of a help
 system). The ability to specify specific outputs for elements and
 suppress them in other output formats supports this
-requirement.</p><p>At this point, working through an example may be helpful.</p><section id="assemblies.15.6" class="section"><div class="section-titlepage"><h3>4.1.&nbsp;Describing a Help System with an Assembly</h3></div><div class="content"><p>This section describes the use of an assembly to describe the
+requirement.</p><p>At this point, working through an example may be helpful.</p><section id="assemblies.15.6" class="section"><div class="section-titlepage"><h3>6.4.1.&nbsp;Describing a Help System with an Assembly</h3></div><div class="content"><p>This section describes the use of an assembly to describe the
 hierarchical relationship among pages in a help system, and the use of
 the <code class="tag-attribute">type</code> attribute on assemblies to carry
 information beyond the simple structure of a document. While there may
 be other specific considerations applying the <a href="assembly.html"><code class="tag-element">assembly</code></a> element to the description of a Web site, similar
-considerations are likely to apply.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p>This is a simplified example, but based on a real system.</p></div></div><section id="assemblies.15.6.4" class="section"><div class="section-titlepage"><h4>4.1.1.&nbsp;Background</h4></div><div class="content"><p>This is the help system for a simple documentation build system
+considerations are likely to apply.</p><div class="note admonition"><h3>Note</h3><div class="admonition-body"><p>This is a simplified example, but based on a real system.</p></div></div><section id="assemblies.15.6.4" class="section"><div class="section-titlepage"><h4>6.4.1.1.&nbsp;Background</h4></div><div class="content"><p>This is the help system for a simple documentation build system
 that has two Web-based screens that allow the user to build documents
 (books rendered into PDF and chunked HTML and help systems that are
 delivered with products using a Webhelp type system).</p><p>There are four tasks supported by the system. Two screens of
@@ -240,7 +240,7 @@ product help buttons. Some of the HTML files are expected to have
 standard names.</p><p>The following example assumes that the Webhelp transform has
 been extended to support non-chunked generation of the system by
 passing in a topic for each page to be rendered. The navigational
-structure will be derived from the assembly.</p></div></section><section id="assemblies.15.6.5" class="section"><div class="section-titlepage"><h4>4.1.2.&nbsp;The Resources</h4></div><div class="content"><p>A very simple set of resources is specified for the help system.
+structure will be derived from the assembly.</p></div></section><section id="assemblies.15.6.5" class="section"><div class="section-titlepage"><h4>6.4.1.2.&nbsp;The Resources</h4></div><div class="content"><p>A very simple set of resources is specified for the help system.
 The file names are immaterial, and all the referenced file resources
 are presumed to be topics except the glossary, which is simply a
 glossary element (and usually derived from a glossary
@@ -281,7 +281,7 @@ database).</p><figure id="assemblies.15.6.5.3" class="example-wrapper"><div clas
     &lt;resource xml:id="help.on.help" href="help-on-help.xml"&gt;
       &lt;description&gt;How to use the help system.&lt;/description&gt;
     &lt;/resource&gt;
-  &lt;/resources&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.6" class="section"><div class="section-titlepage"><h4>4.1.3.&nbsp;Setting Up the Structure</h4></div><div class="content"><p>The first few lines of the structure set up general things about
+  &lt;/resources&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.6" class="section"><div class="section-titlepage"><h4>6.4.1.3.&nbsp;Setting Up the Structure</h4></div><div class="content"><p>The first few lines of the structure set up general things about
 the help system:</p><figure id="assemblies.15.6.6.3" class="example-wrapper"><div class="title">Example&nbsp;6.2.&nbsp;Defining the Basics of the Help System</div><div class="example"><pre class="programlisting language-none line-numbers"><code>  &lt;structure type="help.system"&gt;
     &lt;info&gt;
       &lt;title&gt;XIDI Build System Help&lt;/title&gt;
@@ -301,7 +301,7 @@ merging and integration are built in addition to the Webhelp system.</p><p>The <
 and tells the render system to render a book as the printable
 version of the help system.</p><p>The <a href="output.html"><code class="tag-element">output</code></a> element for <code class="tag-attvalue">webhelp</code> suppresses chunking and sets the
 default value for the webhelp output statements that do not have a
-renderas attribute.</p></div></figure></div></section><section id="assemblies.15.6.7" class="section"><div class="section-titlepage"><h4>4.1.4.&nbsp;Standard Front End</h4></div><div class="content"><p>By convention, the first two pages in the help system are the
+renderas attribute.</p></div></figure></div></section><section id="assemblies.15.6.7" class="section"><div class="section-titlepage"><h4>6.4.1.4.&nbsp;Standard Front End</h4></div><div class="content"><p>By convention, the first two pages in the help system are the
 table of contents and the index. However, in the book, the index goes
 in the back.</p><figure id="assemblies.15.6.7.3" class="example-wrapper"><div class="title">Example&nbsp;6.3.&nbsp;The Front End</div><div class="example"><pre class="programlisting language-none line-numbers"><code>    &lt;module&gt;
       &lt;output outputformat="webhelp" file="sys-toc.html" renderas="toc"/&gt;
@@ -309,7 +309,7 @@ in the back.</p><figure id="assemblies.15.6.7.3" class="example-wrapper"><div cl
     &lt;module&gt;
       &lt;output outputformat="webhelp" file="sys-index.html" renderas="index"/&gt;
       &lt;output outputformat="pdf" suppress="true"/&gt;
-    &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.8" class="section"><div class="section-titlepage"><h4>4.1.5.&nbsp;Main Body of the Help System</h4></div><div class="content"><p>The main content of the help system is broken into an overview
+    &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.8" class="section"><div class="section-titlepage"><h4>6.4.1.5.&nbsp;Main Body of the Help System</h4></div><div class="content"><p>The main content of the help system is broken into an overview
 (Which can have lower-level topics below the main overview topic),
 task descriptions, which may be grouped together or appear at the top
 level if they are considered important enough to the user, and a set
@@ -363,7 +363,7 @@ deal with things like Wizards and related screens and dialogs.</p><figure id="as
         &lt;output outputformat="webhelp" file="scr-package.html"/&gt;
         &lt;output outputformat="pdf" renderas="section"/&gt;
       &lt;/module&gt;
-    &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.9" class="section"><div class="section-titlepage"><h4>4.1.6.&nbsp;Standard Back End for the Help System</h4></div><div class="content"><p>Once the main body of the help system is built, the standard
+    &lt;/module&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.9" class="section"><div class="section-titlepage"><h4>6.4.1.6.&nbsp;Standard Back End for the Help System</h4></div><div class="content"><p>Once the main body of the help system is built, the standard
 back end components are added.</p><figure id="assemblies.15.6.9.3" class="example-wrapper"><div class="title">Example&nbsp;6.5.&nbsp;Back End of Help System</div><div class="example"><pre class="programlisting language-none line-numbers"><code>    &lt;module&gt;
       &lt;output outputformat="webhelp"/&gt; 
       &lt;!-- No file, just want the link in the navigation. --&gt;
@@ -388,13 +388,13 @@ back end components are added.</p><figure id="assemblies.15.6.9.3" class="exampl
            the printable version of the help system and is stock, pulled from a
            library. --&gt;
     &lt;/module&gt;
-  &lt;/structure&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.10" class="section"><div class="section-titlepage"><h4>4.1.7.&nbsp;What Happens</h4></div><div class="content"><p>Presuming an Ant (or other target based) build system for this
+  &lt;/structure&gt;</code></pre></div></figure></div></section><section id="assemblies.15.6.10" class="section"><div class="section-titlepage"><h4>6.4.1.7.&nbsp;What Happens</h4></div><div class="content"><p>Presuming an Ant (or other target based) build system for this
 help system document, the following targets are meaningful for
 building the document described by this structure.</p><div class="variablelist"><div class="title">Targets for Building the Help System</div><dl><dt><span class="term">build.help</span></dt><dd><p>Builds a help system with the following:</p><table border="0" summary="Simple list" class="simplelist"><tr><td><span class="member">Webhelp files, including the full test search inverse
         index files</span></td></tr><tr><td><span class="member">XML files for merging with other help systems</span></td></tr><tr><td><span class="member">Properties files for integrating into product</span></td></tr></table></dd><dt><span class="term">build.pdf</span></dt><dd><p>Build the PDF printable version</p></dd><dt><span class="term">build.all</span></dt><dd><p>Build the help system and the printable version, packaged
       into the same directory structure used to deliver the help
       system with the product, so that it can be zipped up for
-      delivery into the product source control system.</p></dd></dl></div></div></section></div></section></div></section><section id="ex-book" class="section"><div class="section-titlepage"><h2>5.&nbsp;Example: Assembling a Printed Book</h2></div><div class="content"><p>For the purposes of this section, let's
+      delivery into the product source control system.</p></dd></dl></div></div></section></div></section></div></section><section id="ex-book" class="section"><div class="section-titlepage"><h2>6.5.&nbsp;Example: Assembling a Printed Book</h2></div><div class="content"><p>For the purposes of this section, let's
 assume that we have the following resources available:</p><pre class="programlisting language-none line-numbers"><code>&lt;resources xml:base="tutorial/"&gt;
   &lt;resource xml:id="tut1" href="tut1.xml"/&gt;
   &lt;resource xml:id="tut2" href="tut2.xml"/&gt;
@@ -688,7 +688,7 @@ resource.)</p><p>The second approach uses this convention:</p><pre class="progra
     &lt;module resourceref="task3"/&gt;
   &lt;/module&gt;</code></pre><p>In the realized structure for this example, the appendix
 metadata includes everything in tutorial 3's metadata, with the title
-changed as indicated.</p></div></section><section id="ex-html" class="section"><div class="section-titlepage"><h2>6.&nbsp;Example: Assembling an Online Book</h2></div><div class="content"><p>This example extends the book example, see <a href="ch06.html#ex-book" title="Example: Assembling a Printed Book">Section&nbsp;5, “Example: Assembling a Printed Book”</a>. In addition to the printed user guide, we want to
+changed as indicated.</p></div></section><section id="ex-html" class="section"><div class="section-titlepage"><h2>6.6.&nbsp;Example: Assembling an Online Book</h2></div><div class="content"><p>This example extends the book example, see <a href="ch06.html#ex-book" title="Example: Assembling a Printed Book">Section&nbsp;6.5, “Example: Assembling a Printed Book”</a>. In addition to the printed user guide, we want to
 produce an online user guide. The online guide is, by design, a
 straightforward, linear rendering of the book. We'll look at a more
 intricately structured example later.</p><p>We could create a separate assembly for the online guide, but it
@@ -803,10 +803,10 @@ apply only to that module.</p><p>With filters, our <a href="structure.html"><cod
 &lt;/structure&gt;</code></pre><p>This <a href="structure.html"><code class="tag-element">structure</code></a> applies the following filters when rendering
 for the web: print only content is excluded globally; in tutorial 2,
 print only content <em>is</em> included, but advanced material
-is excluded; and the entire index is excluded.</p></div></section><section id="ex-ref" class="section"><div class="section-titlepage"><h2>7.&nbsp;Example: Assembling an Online Reference</h2></div><div class="content"><p>The online reference differs from the preceding book-based examples
+is excluded; and the entire index is excluded.</p></div></section><section id="ex-ref" class="section"><div class="section-titlepage"><h2>6.7.&nbsp;Example: Assembling an Online Reference</h2></div><div class="content"><p>The online reference differs from the preceding book-based examples
 in that no total, linear order is imposed on the content. Instead, navigation
 is performed either by search (which is outside the scope of assemblies)
-or through related links.</p><p>Using the resources defined in <a href="ch06.html#ex-book" title="Example: Assembling a Printed Book">Section&nbsp;5, “Example: Assembling a Printed Book”</a>, here's
+or through related links.</p><p>Using the resources defined in <a href="ch06.html#ex-book" title="Example: Assembling a Printed Book">Section&nbsp;6.5, “Example: Assembling a Printed Book”</a>, here's
 a plausible <a href="structure.html"><code class="tag-element">structure</code></a> for our online reference.</p><pre class="programlisting language-none line-numbers"><code>&lt;structure xml:id="user-guide"&gt;
   &lt;output renderas="topic"/&gt;
   &lt;filterout outputformat="web" condition="print"/&gt;
@@ -833,4 +833,4 @@ in DocBook 5.1), so this isn't a valid DocBook document.
 However, the nested topics provide a navigational structure for the
 online presentation. The rendering system is, we assume, smart enough
 to render each of the topics separately, as if they were all top-level
-siblings.</p></div></section></div></article></div></div><div class="footers"><div class="navfooter"><table width="100%" summary="Navigation table"><tr><td width="40%" align="left"><a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><img src="figs/web/nav/prev.png" alt="Prev" border="0"></a>&nbsp;</td><td width="20%" align="center"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><img src="figs/web/nav/home-defguide.png" alt="Home" border="0"></a></td><td width="40%" align="right">&nbsp;<a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1046e12794.html"><img src="figs/web/nav/next.png" alt="Next" border="0"></a></td></tr><tr><td width="40%" align="left">Chapter&nbsp; 5 .&nbsp; Customizing DocBook&nbsp;</td><td width="20%" align="center"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><img src="figs/web/nav/up.png" alt="Up" border="0"></a></td><td width="40%" align="right">&nbsp;Part&nbsp; II .&nbsp; Reference</td></tr></table></div><div class="copyrightfooter"><p><a href="dbcpyright.html">Copyright</a> © 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Norman Walsh.</p></div></div></div></body></html>
+siblings.</p></div></section></div></article></main><footer><div class="navrow"><div class="navleft"><a title="Chapter&nbsp; 5 .&nbsp; Customizing DocBook" href="ch05.html"><i class="fas fa-arrow-left"></i></a></div><div class="navmiddle"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a></div><div class="navright"><a title="Part&nbsp; II .&nbsp; Reference" href="chunk-part-d1062e12828.html"><i class="fas fa-arrow-right"></i></a></div></div><div class="navrow"><div class="navleft">Chapter&nbsp; 5 .&nbsp; Customizing DocBook</div><div class="navmiddle"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a></div><div class="navright">Part&nbsp; II .&nbsp; Reference</div></div><div class="copyrightfooter"><a href="dbcpyright.html">Copyright</a> © 2010–2020 Norman Walsh.</div></footer></article></body></html>
