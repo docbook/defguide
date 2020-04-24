@@ -13,14 +13,103 @@
                 exclude-result-prefixes="ch db f fn h m mp t xs"
                 version="2.0">
 
-<!--
 <xsl:import href="https://cdn.docbook.org/release/xsl20/current/xslt/base/html/chunk.xsl"/>
--->
+<!--
 <xsl:import href="../../../xslt20/build/xslt/base/html/chunk.xsl"/>
+-->
 
 <xsl:include href="custom.xsl"/>
-
 <xsl:param name="chunk.section.depth" select="0"/>
+
+<!-- DELETE THESE TEMPLATES WHEN 2.5.1+ LANDS IN MAVEN -->
+<!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+
+<xsl:template match="db:refentry">
+  <article>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <xsl:if test="$refentry.separator and preceding-sibling::db:refentry">
+      <div class="refentry-separator">
+        <hr/>
+      </div>
+    </xsl:if>
+
+    <xsl:call-template name="t:titlepage"/>
+
+    <div class="content">
+      <xsl:apply-templates/>
+    </div>
+
+    <xsl:call-template name="t:process-footnotes"/>
+  </article>
+</xsl:template>
+
+<xsl:template match="db:refnamediv">
+  <div>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <xsl:choose>
+      <xsl:when test="$refentry.generate.name">
+        <h2>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'RefName'"/>
+          </xsl:call-template>
+        </h2>
+      </xsl:when>
+
+      <xsl:when test="$refentry.generate.title">
+        <h2>
+          <xsl:choose>
+            <xsl:when test="../db:refmeta/db:refentrytitle">
+              <xsl:apply-templates select="../db:refmeta/db:refentrytitle"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="db:refname[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </h2>
+      </xsl:when>
+    </xsl:choose>
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </div>
+</xsl:template>
+
+<xsl:template match="db:refsynopsisdiv">
+  <div>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <h2>
+      <xsl:choose>
+        <xsl:when test="db:info/db:title">
+          <xsl:apply-templates select="db:info/db:title"
+                               mode="m:titlepage-mode"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'RefSynopsisDiv'"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </h2>
+    <xsl:apply-templates/>
+  </div>
+</xsl:template>
+
+<xsl:template match="db:refsection|db:refsect1|db:refsect2|db:refsect3">
+  <div>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <xsl:call-template name="t:titlepage"/>
+
+    <div class="content">
+      <xsl:apply-templates/>
+    </div>
+  </div>
+</xsl:template>
+
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
 <xsl:template match="*" mode="m:user-header-content">
   <xsl:param name="node" select="."/>
