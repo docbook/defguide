@@ -97,18 +97,6 @@
   </div>
 </xsl:template>
 
-<xsl:template match="db:refsection|db:refsect1|db:refsect2|db:refsect3">
-  <div>
-    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
-
-    <xsl:call-template name="t:titlepage"/>
-
-    <div class="content">
-      <xsl:apply-templates/>
-    </div>
-  </div>
-</xsl:template>
-
 <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
 <xsl:template match="*" mode="m:user-header-content">
