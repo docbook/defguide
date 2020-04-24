@@ -383,38 +383,6 @@
   </li>
 </xsl:template>
 
-<xsl:template match="db:refnamediv">
-  <div>
-    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
-
-    <xsl:choose>
-      <xsl:when test="$refentry.generate.name">
-        <h1>
-          <xsl:call-template name="gentext">
-            <xsl:with-param name="key" select="'RefName'"/>
-          </xsl:call-template>
-        </h1>
-      </xsl:when>
-
-      <xsl:when test="$refentry.generate.title">
-        <h1>
-          <xsl:choose>
-            <xsl:when test="../db:refmeta/db:refentrytitle">
-              <xsl:apply-templates select="../db:refmeta/db:refentrytitle"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:apply-templates select="db:refname[1]"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </h1>
-      </xsl:when>
-    </xsl:choose>
-    <p>
-      <xsl:apply-templates/>
-    </p>
-  </div>
-</xsl:template>
-
 <!-- ============================================================ -->
 
 <xsl:template match="db:refentrytitle">

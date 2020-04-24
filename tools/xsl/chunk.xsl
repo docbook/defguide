@@ -108,19 +108,19 @@
 
   <div class="navigation">
     <a title="{/db:book/db:info/db:title}" href="{f:href($node, $home)}">
-      <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}" alt="Home" border="0"/>
+      <i class="fas fa-home"></i>
     </a>
     <xsl:text>&#160;</xsl:text>
 
     <xsl:choose>
       <xsl:when test="count($prev)>0">
         <a href="{f:href($node, $prev)}" title="{f:title-content($prev, false())}">
-          <i class="fas fa-arrow-alt-square-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </a>
       </xsl:when>
       <xsl:otherwise>
         <span class="inactive">
-          <i class="fas fa-arrow-alt-square-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </span>
       </xsl:otherwise>
     </xsl:choose>
@@ -129,12 +129,12 @@
     <xsl:choose>
       <xsl:when test="count($up)>0">
         <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-          <i class="fas fa-arrow-alt-square-up"></i>
+          <i class="fas fa-arrow-up"></i>
         </a>
       </xsl:when>
       <xsl:otherwise>
         <span class="inactive">
-          <i class="fas fa-arrow-alt-square-up"></i>
+          <i class="fas fa-arrow-up"></i>
         </span>
       </xsl:otherwise>
     </xsl:choose>
@@ -143,12 +143,12 @@
     <xsl:choose>
       <xsl:when test="count($next)>0">
         <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-          <i class="fas fa-arrow-alt-square-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </a>
       </xsl:when>
       <xsl:otherwise>
         <span class="inactive">
-          <i class="fas fa-arrow-alt-square-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </span>
       </xsl:otherwise>
     </xsl:choose>
@@ -177,22 +177,21 @@
     <div class="navleft">
       <xsl:if test="count($prev)>0">
         <a title="{f:title-content($prev, false())}" href="{f:href($node, $prev)}">
-          <i class="fas fa-arrow-alt-square-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </a>
       </xsl:if>
     </div>
     <div class="navmiddle">
       <xsl:if test="exists($home)">
         <a title="{f:title-content($home, false())}" href="{f:href($node, $home)}">
-          <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}"
-               alt="Home" border="0"/>
+          <i class="fas fa-home"></i>
         </a>
       </xsl:if>
     </div>
     <div class="navright">
       <xsl:if test="count($next)>0">
         <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-          <i class="fas fa-arrow-alt-square-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </a>
       </xsl:if>
     </div>
@@ -205,7 +204,7 @@
     <div class="navmiddle">
       <xsl:if test="count($up)>0">
         <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-          <i class="fas fa-arrow-alt-square-up"></i>
+          <i class="fas fa-arrow-up"></i>
         </a>
       </xsl:if>
     </div>
