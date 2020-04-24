@@ -13,14 +13,91 @@
                 exclude-result-prefixes="ch db f fn h m mp t xs"
                 version="2.0">
 
-<!--
 <xsl:import href="https://cdn.docbook.org/release/xsl20/current/xslt/base/html/chunk.xsl"/>
--->
+<!--
 <xsl:import href="../../../xslt20/build/xslt/base/html/chunk.xsl"/>
+-->
 
 <xsl:include href="custom.xsl"/>
-
 <xsl:param name="chunk.section.depth" select="0"/>
+
+<!-- DELETE THESE TEMPLATES WHEN 2.5.1+ LANDS IN MAVEN -->
+<!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+
+<xsl:template match="db:refentry">
+  <article>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <xsl:if test="$refentry.separator and preceding-sibling::db:refentry">
+      <div class="refentry-separator">
+        <hr/>
+      </div>
+    </xsl:if>
+
+    <xsl:call-template name="t:titlepage"/>
+
+    <div class="content">
+      <xsl:apply-templates/>
+    </div>
+
+    <xsl:call-template name="t:process-footnotes"/>
+  </article>
+</xsl:template>
+
+<xsl:template match="db:refnamediv">
+  <div>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <xsl:choose>
+      <xsl:when test="$refentry.generate.name">
+        <h2>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'RefName'"/>
+          </xsl:call-template>
+        </h2>
+      </xsl:when>
+
+      <xsl:when test="$refentry.generate.title">
+        <h2>
+          <xsl:choose>
+            <xsl:when test="../db:refmeta/db:refentrytitle">
+              <xsl:apply-templates select="../db:refmeta/db:refentrytitle"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="db:refname[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </h2>
+      </xsl:when>
+    </xsl:choose>
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </div>
+</xsl:template>
+
+<xsl:template match="db:refsynopsisdiv">
+  <div>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
+
+    <h2>
+      <xsl:choose>
+        <xsl:when test="db:info/db:title">
+          <xsl:apply-templates select="db:info/db:title"
+                               mode="m:titlepage-mode"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'RefSynopsisDiv'"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </h2>
+    <xsl:apply-templates/>
+  </div>
+</xsl:template>
+
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
 <xsl:template match="*" mode="m:user-header-content">
   <xsl:param name="node" select="."/>
@@ -31,19 +108,19 @@
 
   <div class="navigation">
     <a title="{/db:book/db:info/db:title}" href="{f:href($node, $home)}">
-      <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}" alt="Home" border="0"/>
+      <i class="fas fa-home"></i>
     </a>
     <xsl:text>&#160;</xsl:text>
 
     <xsl:choose>
       <xsl:when test="count($prev)>0">
         <a href="{f:href($node, $prev)}" title="{f:title-content($prev, false())}">
-          <i class="fas fa-arrow-alt-square-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </a>
       </xsl:when>
       <xsl:otherwise>
         <span class="inactive">
-          <i class="fas fa-arrow-alt-square-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </span>
       </xsl:otherwise>
     </xsl:choose>
@@ -52,12 +129,12 @@
     <xsl:choose>
       <xsl:when test="count($up)>0">
         <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-          <i class="fas fa-arrow-alt-square-up"></i>
+          <i class="fas fa-arrow-up"></i>
         </a>
       </xsl:when>
       <xsl:otherwise>
         <span class="inactive">
-          <i class="fas fa-arrow-alt-square-up"></i>
+          <i class="fas fa-arrow-up"></i>
         </span>
       </xsl:otherwise>
     </xsl:choose>
@@ -66,12 +143,12 @@
     <xsl:choose>
       <xsl:when test="count($next)>0">
         <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-          <i class="fas fa-arrow-alt-square-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </a>
       </xsl:when>
       <xsl:otherwise>
         <span class="inactive">
-          <i class="fas fa-arrow-alt-square-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </span>
       </xsl:otherwise>
     </xsl:choose>
@@ -100,22 +177,21 @@
     <div class="navleft">
       <xsl:if test="count($prev)>0">
         <a title="{f:title-content($prev, false())}" href="{f:href($node, $prev)}">
-          <i class="fas fa-arrow-alt-square-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </a>
       </xsl:if>
     </div>
     <div class="navmiddle">
       <xsl:if test="exists($home)">
         <a title="{f:title-content($home, false())}" href="{f:href($node, $home)}">
-          <img src="{/db:book/db:info/db:releaseinfo[@role='nav-home']}"
-               alt="Home" border="0"/>
+          <i class="fas fa-home"></i>
         </a>
       </xsl:if>
     </div>
     <div class="navright">
       <xsl:if test="count($next)>0">
         <a title="{f:title-content($next, false())}" href="{f:href($node, $next)}">
-          <i class="fas fa-arrow-alt-square-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </a>
       </xsl:if>
     </div>
@@ -128,7 +204,7 @@
     <div class="navmiddle">
       <xsl:if test="count($up)>0">
         <a title="{f:title-content($up, false())}" href="{f:href($node, $up)}">
-          <i class="fas fa-arrow-alt-square-up"></i>
+          <i class="fas fa-arrow-up"></i>
         </a>
       </xsl:if>
     </div>
