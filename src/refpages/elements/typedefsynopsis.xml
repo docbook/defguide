@@ -19,7 +19,12 @@
 <refsection condition="ref.description">
 <title>Description</title>
 
-<para>A <tag>typedefsynopsis</tag> … FIXME:</para>
+<para>A <tag>typedefsynopsis</tag> contains the syntax summary of a
+type definition (generally speaking, in the programming language sense).</para>
+
+<para>This is one of the few places where DocBook attempts to model as
+well as describe. The content model of <tag>union</tag> was designed
+to capture a wide range of semantics.</para>
 
 <refsection>
 <info>
@@ -41,7 +46,11 @@
 <refsection condition="ref.examples">
 <title>Examples</title>
 
-<para>FIXME: …</para>
+<programlisting><xi:include href="../examples/typedefsynopsis.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.typedefsynopsis.1" role="HACK-ex.out.start"/>
+<xi:include href="../examples/typedefsynopsis.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.typedefsynopsis.1" role="HACK-ex.out.end"/>
 
 </refsection>
 
