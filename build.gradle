@@ -13,7 +13,7 @@ buildscript {
   }
 
   dependencies {
-    classpath group: 'org.docbook', name: 'docbook-xslt2', version: docbookXsltVersion
+    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.5.0'
     classpath group: 'org.docbook', name: 'docbook-schemas', version: '5.1-1'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.5'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.4.0'
@@ -26,6 +26,7 @@ buildscript {
 plugins {
   id "groovy"
   id "com.dorongold.task-tree" version "1.4"
+  id "de.undercouch.download" version "4.0.4"
 }
 
 repositories {
@@ -63,6 +64,7 @@ apply plugin: 'com.dorongold.task-tree'
 
 import org.docbook.DocBookTask
 import com.xmlcalabash.XMLCalabashTask
+import de.undercouch.gradle.tasks.download.Download
 
 // ======================================================================
 
@@ -97,6 +99,34 @@ task hello() {
     println("Hello, world.")
   }
 }
+
+// ======================================================================
+// Maven is broken. Or something. Anyway, the last couple of releases
+// of the DocBook XSLT 2.0 Stylesheets that I've published have failed
+// to turn up in Maven :-(
+//
+// Impatiently, I'm just getting a local copy
+
+def docbookXsltZip = "docbook-xslt2-" + docbookXsltVersion + ".zip"
+task downloadDocBookXslt(type: Download) {
+  src "https://github.com/docbook/xslt20-stylesheets/releases/download/" + docbookXsltVersion + "/" + docbookXsltZip
+  dest new File(buildDir, docbookXsltZip)
+}
+downloadDocBookXslt.onlyIf { !file("$buildDir/$docbookXsltZip").exists() }
+
+task unzipDocBookXslt(dependsOn: downloadDocBookXslt, type: Copy) {
+  from zipTree(downloadDocBookXslt.dest)
+  into { "build" }
+}
+unzipDocBookXslt.onlyIf { !file("$buildDir/docbook-xslt2-$docbookXsltVersion").exists() }
+
+task getDocBookXslt(dependsOn: unzipDocBookXslt, type: Copy) {
+  from { "build/docbook-xslt2-" + docbookXsltVersion }
+  into { "build/docbook" }
+}
+getDocBookXslt.onlyIf { !file("$buildDir/docbook").exists() }
+
+// ======================================================================
 
 task gitLogSummary(type: Exec) {
   inputs.file "tools/bin/git-log-summary"
@@ -223,12 +253,12 @@ books.each { vocab ->
     pipeline "tools/xpl/refpages.xpl"
   }
 
-  task "${vocab}"(dependsOn: ["${vocab}_xml", "${vocab}_copyresources" ],
+  task "${vocab}"(dependsOn: ["${vocab}_xml", "${vocab}_copyresources",
+                              "getDocBookXslt"],
                   type: DocBookTask) {
-    inputs.file "tools/xsl/chunk.xsl"
     inputs.file "tools/xsl/custom.xsl"
     input("source", "build/${vocab}/book.xml")
-    option("style", "tools/xsl/chunk.xsl")
+    option("style", "tools/xsl/custom.xsl")
     param("output.dir", System.getProperty('user.dir') + "/build/dist/")
     param("base.dir", "build/dist/${vocab}/")
     param("html.ext", ".html")
@@ -264,7 +294,7 @@ task defguide_refpageListAssembly(type: XMLCalabashTask) {
   }
 }
 
-task defguide_xml(dependsOn: ['defguide_tdgxml'], type: XMLCalabashTask) {
+task defguide_xml(dependsOn: ['defguide_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -283,7 +313,7 @@ task defguide_xml(dependsOn: ['defguide_tdgxml'], type: XMLCalabashTask) {
 
 // ======================================================================
 
-task publishers_xml(dependsOn: ['publishers_tdgxml'], type: XMLCalabashTask) {
+task publishers_xml(dependsOn: ['publishers_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -302,7 +332,7 @@ task publishers_xml(dependsOn: ['publishers_tdgxml'], type: XMLCalabashTask) {
 
 // ======================================================================
 
-task sdocbook_xml(dependsOn: ['sdocbook_tdgxml'], type: XMLCalabashTask) {
+task sdocbook_xml(dependsOn: ['sdocbook_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -321,7 +351,7 @@ task sdocbook_xml(dependsOn: ['sdocbook_tdgxml'], type: XMLCalabashTask) {
 
 // ======================================================================
 
-task slides_xml(dependsOn: ['slides_tdgxml'], type: XMLCalabashTask) {
+task slides_xml(dependsOn: ['slides_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -340,7 +370,7 @@ task slides_xml(dependsOn: ['slides_tdgxml'], type: XMLCalabashTask) {
 
 // ======================================================================
 
-task website_xml(dependsOn: ['website_tdgxml'], type: XMLCalabashTask) {
+task website_xml(dependsOn: ['website_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
