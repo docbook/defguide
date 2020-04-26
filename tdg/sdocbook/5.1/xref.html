@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>xref</title><meta charset="utf-8"><link href="figs/web/sdocbook-icon.png" rel="icon" type="image/png"><link href="https://fonts.googleapis.com/css?family=EB%20Garamond" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=PT%20Mono" rel="stylesheet" type="text/css"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.6.0"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><article><header><div class="navigation"><a title="Simplified DocBook: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a>&nbsp;<a href="volumenum.html" title="volumenum"><i class="fas fa-arrow-left"></i></a>&nbsp;<a title="DocBook Element Reference" href="ref-elements.html"><i class="fas fa-arrow-up"></i></a>&nbsp;<a title="year" href="year.html"><i class="fas fa-arrow-right"></i></a></div><div class="title"><i class="title">Simplified DocBook: The Definitive Guide</i><span class="version">&nbsp;&nbsp;(Version <a href="ch00-online.html">0.9.1 for Simplified DocBook 5.1</a>)</span></div></header><main><article id="element.db.xref" class="refentry"><div class="content"><a class="indexterm" name="element.db.xref.1"></a><div id="element.db.xref.4" class="refnamediv"><h2>xref</h2><p><span class="refname">xref</span><span class="refpurpose"><span class="refpurpose-sep">&nbsp;—&nbsp;</span><span class="refpurpose-text">A cross reference to another part of the document</span><span class="refpurpose-punc">.</span></span></p></div><div id="element.db.xref.5" class="refsynopsisdiv"><h2><div class="title">Synopsis</div></h2><p>xref&nbsp;<span class="cceq">::=</span></p><div class="itemizedlist element-synopsis"><ul><li><em>empty</em></li></ul></div><div id="element.db.xref.5.4" class="refsection"><div class="refsection-titlepage"><h2>Attributes</h2></div><div class="content"><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p><p>Additional attributes:</p><div class="itemizedlist element-synopsis"><ul><li>endterm (IDREF)</li><li>xrefstyle</li></ul></div><p>Required attributes are shown in <strong class="emphasis">bold</strong>.</p></div></div></div><div id="element.db.xref.6" class="refsection"><div class="refsection-titlepage"><h2>Description</h2></div><div class="content">
+<p>The <a href="xref.html"><code class="tag-element">xref</code></a> element forms a cross-reference from
+      the location of the <a href="xref.html"><code class="tag-element">xref</code></a> to the element to which it
+      points. Unlike <a href="link.html"><code class="tag-element">link</code></a> and the other cross-referencing
+      elements, <a href="xref.html"><code class="tag-element">xref</code></a> is empty. The processing system has to
+      generate appropriate cross-reference text for the reader.</p>
+
+      <div id="dbreproc.xref" class="refsection"><div class="refsection-titlepage"><h3>Processing expectations</h3></div><div class="content">
+        
+
+        <p>Under ordinary circumstances, the <a href="xref.html"><code class="tag-element">xref</code></a> points
+        to some element with its <code class="tag-attribute">linkend</code>
+        attribute and the processing system generates appropriate
+        cross-reference text. There are three ways for the author to influence
+        the generated text:</p>
+
+        <div class="orderedlist"><ol style="list-style: decimal;"><li><p>If the <code class="tag-attribute">endterm</code>
+            attribute is specified on <a href="xref.html"><code class="tag-element">xref</code></a>, the content of
+            the element pointed to by <code class="tag-attribute">endterm</code> will be used as the text of
+            the cross-reference.</p></li><li><p>Otherwise, if the object <em>pointed to</em> has
+            a specified <code class="tag-attribute">xreflabel</code>, the
+            content of that attribute will be used as the cross-reference
+            text.</p></li><li><p>Finally, the author may specify a keyword (or other
+            information) in the <code class="tag-attribute">xrefstyle</code>
+            attribute. Unlike <code class="tag-attribute">endterm</code> and
+            <code class="tag-attribute">xreflabel</code> which have rigid
+            semantics, the content of the <code class="tag-attribute">xrefstyle</code> attribute is simply
+            additional information for the processing system. What effect it
+            has, if any, is dependent on the processing system.</p></li></ol></div>
+</div></div>
+
+<div id="element.db.xref.6.4" class="refsection"><div class="refsection-titlepage"><h3>Attributes</h3></div><div class="content"><p><a href="ref-elements.html#common.attributes">Common attributes</a> and <a href="ref-elements.html#common.linking.attributes">common linking attributes</a>.</p><div class="variablelist"><dl><dt><span class="term attname">endterm</span></dt><dd><p>Points to the element whose content is to be used as the text of the link</p></dd><dt><span class="term attname">xrefstyle</span></dt><dd><p>Specifies a keyword or keywords identifying additional style information</p></dd></dl></div></div></div>
+<div id="element.db.xref.6.5" class="refsection"><div class="refsection-titlepage"><h3>Parents</h3></div><div class="content"><p>These elements contain <a href="xref.html"><code class="tag-element">xref</code></a>: <span class="simplelist"><span class="member"><a href="html.caption.html"><code class="tag-element">caption</code></a>&nbsp;<span class="pattern">(db.html.caption)</span></span>, <span class="member"><a href="citetitle.html"><code class="tag-element">citetitle</code></a></span>, <span class="member"><a href="emphasis.html"><code class="tag-element">emphasis</code></a></span>, <span class="member"><a href="entry.html"><code class="tag-element">entry</code></a></span>, <span class="member"><a href="link.html"><code class="tag-element">link</code></a></span>, <span class="member"><a href="literallayout.html"><code class="tag-element">literallayout</code></a></span>, <span class="member"><a href="orgdiv.html"><code class="tag-element">orgdiv</code></a></span>, <span class="member"><a href="para.html"><code class="tag-element">para</code></a></span>, <span class="member"><a href="phrase.html"><code class="tag-element">phrase</code></a>&nbsp;<span class="pattern">(db.phrase)</span></span>, <span class="member"><a href="programlisting.html"><code class="tag-element">programlisting</code></a></span>, <span class="member"><a href="quote.html"><code class="tag-element">quote</code></a></span>, <span class="member"><a href="subtitle.html"><code class="tag-element">subtitle</code></a></span>, <span class="member"><a href="html.td.html"><code class="tag-element">td</code></a></span>, <span class="member"><a href="term.html"><code class="tag-element">term</code></a></span>, <span class="member"><a href="html.th.html"><code class="tag-element">th</code></a></span>, <span class="member"><a href="title.html"><code class="tag-element">title</code></a></span>, <span class="member"><a href="titleabbrev.html"><code class="tag-element">titleabbrev</code></a></span></span>.</p></div></div>
+
+
+</div></div><div id="element.db.xref.7" class="refsection"><div class="refsection-titlepage"><h2>See Also</h2></div><div class="content"><p><span class="simplelist"><span class="member"><a href="link.html"><code class="tag-element">link</code></a></span></span></p></div></div><div id="element.db.xref.8" class="refsection"><div class="refsection-titlepage"><h2>Examples</h2></div><div class="content">
+
+
+<pre class="programlisting language-none line-numbers"><code>&lt;book xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;An Example Book&lt;/title&gt;
+
+&lt;chapter xml:id="ch01"&gt;&lt;title&gt;XRef Samples&lt;/title&gt;
+&lt;para&gt;This paragraph demonstrates several features of &lt;tag&gt;XRef&lt;/tag&gt;.
+&lt;/para&gt;
+
+&lt;itemizedlist&gt;
+  &lt;listitem&gt;&lt;para&gt;A straight link generates the cross-reference text:
+    &lt;xref linkend="ch02"/&gt;.
+  &lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;A link to an element with an 
+    &lt;tag class="attribute"&gt;XRefLabel&lt;/tag&gt;:
+  &lt;xref linkend="ch03"/&gt;.
+  &lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;A link with an &lt;tag class="attribute"&gt;EndTerm&lt;/tag&gt;:
+    &lt;xref linkend="ch04" endterm="ch04short"/&gt;.
+  &lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+&lt;/chapter&gt;
+
+&lt;chapter xml:id="ch02"&gt;
+  &lt;title&gt;The Second Chapter&lt;/title&gt;
+  &lt;para&gt;Some content here&lt;/para&gt;
+&lt;/chapter&gt;
+
+&lt;chapter xml:id="ch03" xreflabel="Chapter the Third"&gt;
+  &lt;title&gt;The Third Chapter&lt;/title&gt;
+  &lt;para&gt;Some content here&lt;/para&gt;
+&lt;/chapter&gt;
+
+&lt;chapter xml:id="ch04"&gt;
+  &lt;title&gt;The Fourth Chapter&lt;/title&gt;
+  &lt;titleabbrev xml:id="ch04short"&gt;Chapter 4&lt;/titleabbrev&gt;
+  &lt;para&gt;Some content here&lt;/para&gt;
+&lt;/chapter&gt;
+&lt;/book&gt;
+</code></pre>
+
+</div></div></div></article></main><footer><div class="navrow"><div class="navleft"><a title="volumenum" href="volumenum.html"><i class="fas fa-arrow-left"></i></a></div><div class="navmiddle"><a title="Simplified DocBook: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a></div><div class="navright"><a title="year" href="year.html"><i class="fas fa-arrow-right"></i></a></div></div><div class="navrow"><div class="navleft">volumenum</div><div class="navmiddle"><a title="DocBook Element Reference" href="ref-elements.html"><i class="fas fa-arrow-up"></i></a></div><div class="navright">year</div></div><div class="infofooter">Last revised by Norman Walsh on 23 Apr 2020 <span class="githash" title="7b6d2f82e40ff2dc44e8c9623c3da1a8676f0812">(git hash: 7b6d2f…)</span></div><div class="copyrightfooter"><a href="dbcpyright.html">Copyright</a> © 2010–2019 Norman Walsh.</div></footer></article></body></html>
