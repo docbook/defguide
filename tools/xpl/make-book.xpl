@@ -7,10 +7,6 @@
 <p:option name="arch" select="'defguide5'"/>
 <p:option name="revision" required="true"/>
 
-<!--
-<p:import href="../defguide5/build/docbook/xslt/base/pipelines/docbook.xpl"/>
--->
-
 <p:variable name="srcbase" select="base-uri(/)"/>
 
 <p:xslt name="tdg2db">
@@ -21,7 +17,7 @@
 
 <p:xslt name="profiled">
   <p:input port="stylesheet">
-    <p:document href="https://cdn.docbook.org/release/xsl20/current/xslt/base/preprocess/30-profile.xsl"/>
+    <p:document href="../../build/docbook/xslt/base/preprocess/30-profile.xsl"/>
   </p:input>
   <p:with-param name="profile.separator" select="' '"/>
   <p:with-param name="profile.condition" select="$condition"/>

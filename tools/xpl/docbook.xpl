@@ -34,7 +34,7 @@ This is just a copy of the base pipeline wrapped around a call to the base pipel
 <p:option name="pdf" select="'/tmp/docbook.pdf'"/>
 <p:option name="css" select="''"/>
 
-<p:import href="https://cdn.docbook.org/release/xsl20/current/xslt/base/pipelines/docbook.xpl"/>
+<p:import href="../../build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
 <dbp:docbook name="process">
   <p:input port="source">

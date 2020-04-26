@@ -520,57 +520,66 @@ different.</para>
       would import the DocBook schema, extend the domain inlines, and then
       provide a pattern that matches the new element.</para>
 
- <example xml:id="ex-addcleartext"><info><title>Adding cleartext with a customization layer</title></info>
+<example xml:id="ex-addcleartext">
+<title>Adding cleartext with a customization layer</title>
+<programlisting>namespace db = "http://docbook.org/ns/docbook"
+default namespace = "http://docbook.org/ns/docbook"
 
-<programlistingco>
-<areaspec>
-<area xml:id="gs3-d1" coords="6 50" units="linecolumn"/>
-<area xml:id="gs3-d1b" coords="8 50" units="linecolumn"/>
-<area xml:id="gs3-d2" coords="10 57" units="linecolumn"/>
-<area xml:id="gs3-d3" coords="11 50" units="linecolumn"/>
-<area xml:id="gs3-d4" coords="16 50" units="linecolumn"/>
-</areaspec>
-<programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="examples/addcleartext.rnc"/></programlisting>
+include "docbook.rnc"
 
-        <calloutlist>
-          <callout arearefs="gs3-d1" xml:id="list_gs3-d1">
-            <para>The <literal>|=</literal> operator adds a new choice to a
-            pattern. So this line makes the <literal>db.cleartext</literal>
-            pattern a valid option anywhere that
-            <literal>db.domain.inlines</literal> appears.</para>
-          </callout>
+db.domain.inlines |= db.cleartext                 <co xml:id="gs3-d1"/>
 
-          <callout arearefs="gs3-d1b" xml:id="list_gs3-d1b">
-            <para>Next, we create a pattern for the
-            <literal>cleartext</literal> element. The convention in the
-            DocBook schema is to create three patterns, one for the <tag class="attribute">role</tag> attribute, one for all the
-            attributes, and one for the element. By following this convention,
-            we make it easier for someone to customize our
-            customization.</para>
-          </callout>
+# Define a new cleartext element:                 <co xml:id="gs3-d1b"/>
 
-          <callout arearefs="gs3-d2" xml:id="list_gs3-d2">
-            <para>Defining a separate pattern for the <tag class="attribute">role</tag>
-            attribute makes it easy for customizers to change it on a
-            per-element basis.</para>
-          </callout>
+db.cleartext.role.attribute = attribute role { text }    <co xml:id="gs3-d2"/>
+db.cleartext.attlist =                            <co xml:id="gs3-d3"/>
+   db.cleartext.role.attribute?
+ &amp; db.common.attributes
+ &amp; db.common.linking.attributes
 
-          <callout arearefs="gs3-d3" xml:id="list_gs3-d3">
-            <para>Defining a separate pattern for the attributes makes it easy
-            for customizers to change them on a per-element basis. This
-            pattern includes the pattern we just created for the <tag class="attribute">role</tag> attribute.</para>
-          </callout>
+db.cleartext =                                    <co xml:id="gs3-d4"/>
+   element cleartext {
+      db.cleartext.attlist,
+      db._text
+   }</programlisting>
 
-          <callout arearefs="gs3-d4" xml:id="list_gs3-d4">
-            <para>The pattern for the element pulls it all together. The
-            pattern <literal>db._text</literal> matches text plus a number of
-            ubiquitous or nearly ubiquitous inlines. Use this pattern unless
-            you <emphasis>really</emphasis> want only text.</para>
-          </callout>
-        </calloutlist>
+<calloutlist>
+  <callout arearefs="gs3-d1" xml:id="list_gs3-d1">
+    <para>The <literal>|=</literal> operator adds a new choice to a
+    pattern. So this line makes the <literal>db.cleartext</literal>
+    pattern a valid option anywhere that
+    <literal>db.domain.inlines</literal> appears.</para>
+  </callout>
 
-</programlistingco>
-      </example>
+  <callout arearefs="gs3-d1b" xml:id="list_gs3-d1b">
+    <para>Next, we create a pattern for the
+    <literal>cleartext</literal> element. The convention in the
+    DocBook schema is to create three patterns, one for the <tag class="attribute">role</tag> attribute, one for all the
+    attributes, and one for the element. By following this convention,
+    we make it easier for someone to customize our
+    customization.</para>
+  </callout>
+
+  <callout arearefs="gs3-d2" xml:id="list_gs3-d2">
+    <para>Defining a separate pattern for the <tag class="attribute">role</tag>
+    attribute makes it easy for customizers to change it on a
+    per-element basis.</para>
+  </callout>
+
+  <callout arearefs="gs3-d3" xml:id="list_gs3-d3">
+    <para>Defining a separate pattern for the attributes makes it easy
+    for customizers to change them on a per-element basis. This
+    pattern includes the pattern we just created for the <tag class="attribute">role</tag> attribute.</para>
+  </callout>
+
+  <callout arearefs="gs3-d4" xml:id="list_gs3-d4">
+    <para>The pattern for the element pulls it all together. The
+    pattern <literal>db._text</literal> matches text plus a number of
+    ubiquitous or nearly ubiquitous inlines. Use this pattern unless
+    you <emphasis>really</emphasis> want only text.</para>
+  </callout>
+</calloutlist>
+</example>
     </section>
 
     <section><info><title>Using Your Customization Layer</title></info>
