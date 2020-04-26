@@ -10,7 +10,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://docbook.org/ns/docbook"
-         buildhash="9da0440782a6b7db0778ebd46d0196d7075eb9b1">
+         buildhash="d5a761a4a9b5ebed0ae5d373d41bd5cfea6f4908">
    <define name="db.status.attribute">
       <attribute name="status">
          <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
@@ -42076,9 +42076,12 @@
       </define>
       <define name="ws.webpage.navto.attribute">
          <attribute name="navto">
+            <db:refpurpose>Indicates if the page is part of the navigation hierarchy</db:refpurpose>
             <choice>
                <value>yes</value>
+               <a:documentation>Include this page in the navigation hierarchy</a:documentation>
                <value>no</value>
+               <a:documentation>Exclude this page from the navigation hierarchy</a:documentation>
             </choice>
          </attribute>
       </define>
@@ -42099,9 +42102,12 @@
             </optional>
             <optional>
                <attribute name="navto">
+                  <db:refpurpose>Indicates if the page is part of the navigation hierarchy</db:refpurpose>
                   <choice>
                      <value>yes</value>
+                     <a:documentation>Include this page in the navigation hierarchy</a:documentation>
                      <value>no</value>
+                     <a:documentation>Exclude this page from the navigation hierarchy</a:documentation>
                   </choice>
                </attribute>
             </optional>
@@ -42140,9 +42146,12 @@
                   </optional>
                   <optional>
                      <attribute name="navto">
+                        <db:refpurpose>Indicates if the page is part of the navigation hierarchy</db:refpurpose>
                         <choice>
                            <value>yes</value>
+                           <a:documentation>Include this page in the navigation hierarchy</a:documentation>
                            <value>no</value>
+                           <a:documentation>Exclude this page from the navigation hierarchy</a:documentation>
                         </choice>
                      </attribute>
                   </optional>
@@ -42359,13 +42368,19 @@
          <attribute name="role"/>
       </define>
       <define name="ws.meta.http-equiv.attribute">
-         <attribute name="http-equiv"/>
+         <attribute name="http-equiv">
+            <db:refpurpose>Indicates an equivalent HTTP header</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.meta.name.attribute">
-         <attribute name="name"/>
+         <attribute name="name">
+            <db:refpurpose>The name of the meta property</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.meta.content.attribute">
-         <attribute name="content"/>
+         <attribute name="content">
+            <db:refpurpose>The content of the meta property</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.meta.attlist">
          <interleave>
@@ -42373,10 +42388,16 @@
                <attribute name="role"/>
             </optional>
             <choice>
-               <attribute name="http-equiv"/>
-               <attribute name="name"/>
+               <attribute name="http-equiv">
+                  <db:refpurpose>Indicates an equivalent HTTP header</db:refpurpose>
+               </attribute>
+               <attribute name="name">
+                  <db:refpurpose>The name of the meta property</db:refpurpose>
+               </attribute>
             </choice>
-            <attribute name="content"/>
+            <attribute name="content">
+               <db:refpurpose>The content of the meta property</db:refpurpose>
+            </attribute>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
                   <attribute name="xml:id">
@@ -42413,10 +42434,16 @@
                      <attribute name="role"/>
                   </optional>
                   <choice>
-                     <attribute name="http-equiv"/>
-                     <attribute name="name"/>
+                     <attribute name="http-equiv">
+                        <db:refpurpose>Indicates an equivalent HTTP header</db:refpurpose>
+                     </attribute>
+                     <attribute name="name">
+                        <db:refpurpose>The name of the meta property</db:refpurpose>
+                     </attribute>
                   </choice>
-                  <attribute name="content"/>
+                  <attribute name="content">
+                     <db:refpurpose>The content of the meta property</db:refpurpose>
+                  </attribute>
                   <optional>
                      <attribute name="xml:id">
                         <data type="ID"/>
@@ -42456,28 +42483,44 @@
          <attribute name="role"/>
       </define>
       <define name="ws.headlink.href.attribute">
-         <attribute name="href"/>
+         <attribute name="href">
+            <db:refpurpose>The link href</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.media.attribute">
-         <attribute name="media"/>
+         <attribute name="media">
+            <db:refpurpose>The link media type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.name.attribute">
-         <attribute name="name"/>
+         <attribute name="name">
+            <db:refpurpose>The link name</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.rel.attribute">
-         <attribute name="rel"/>
+         <attribute name="rel">
+            <db:refpurpose>The link relationship</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.rev.attribute">
-         <attribute name="rev"/>
+         <attribute name="rev">
+            <db:refpurpose>The inverse of the link relationship</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.src.attribute">
-         <attribute name="src"/>
+         <attribute name="src">
+            <db:refpurpose>The link source</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.title.attribute">
-         <attribute name="title"/>
+         <attribute name="title">
+            <db:refpurpose>The link title</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.type.attribute">
-         <attribute name="type"/>
+         <attribute name="type">
+            <db:refpurpose>The link type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.headlink.attlist">
          <interleave>
@@ -42485,28 +42528,44 @@
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="href"/>
+               <attribute name="href">
+                  <db:refpurpose>The link href</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="media"/>
+               <attribute name="media">
+                  <db:refpurpose>The link media type</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="name"/>
+               <attribute name="name">
+                  <db:refpurpose>The link name</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="rel"/>
+               <attribute name="rel">
+                  <db:refpurpose>The link relationship</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="rev"/>
+               <attribute name="rev">
+                  <db:refpurpose>The inverse of the link relationship</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="src"/>
+               <attribute name="src">
+                  <db:refpurpose>The link source</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="title"/>
+               <attribute name="title">
+                  <db:refpurpose>The link title</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="type"/>
+               <attribute name="type">
+                  <db:refpurpose>The link type</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42544,28 +42603,44 @@
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="href"/>
+                     <attribute name="href">
+                        <db:refpurpose>The link href</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="media"/>
+                     <attribute name="media">
+                        <db:refpurpose>The link media type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="name"/>
+                     <attribute name="name">
+                        <db:refpurpose>The link name</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="rel"/>
+                     <attribute name="rel">
+                        <db:refpurpose>The link relationship</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="rev"/>
+                     <attribute name="rev">
+                        <db:refpurpose>The inverse of the link relationship</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="src"/>
+                     <attribute name="src">
+                        <db:refpurpose>The link source</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="title"/>
+                     <attribute name="title">
+                        <db:refpurpose>The link title</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="type"/>
+                     <attribute name="type">
+                        <db:refpurpose>The link type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -42606,13 +42681,19 @@
          <attribute name="role"/>
       </define>
       <define name="ws.script.src.attribute">
-         <attribute name="src"/>
+         <attribute name="src">
+            <db:refpurpose>The script source (instead of inline)</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.script.language.attribute">
-         <attribute name="language"/>
+         <attribute name="language">
+            <db:refpurpose>The scripting language</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.script.type.attribute">
-         <attribute name="type"/>
+         <attribute name="type">
+            <db:refpurpose>The script type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.script.attlist">
          <interleave>
@@ -42620,10 +42701,14 @@
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="language"/>
+               <attribute name="language">
+                  <db:refpurpose>The scripting language</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="type"/>
+               <attribute name="type">
+                  <db:refpurpose>The script type</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42666,10 +42751,14 @@
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="language"/>
+                     <attribute name="language">
+                        <db:refpurpose>The scripting language</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="type"/>
+                     <attribute name="type">
+                        <db:refpurpose>The script type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -42697,7 +42786,9 @@
                   </optional>
                </interleave>
                <optional>
-                  <attribute name="src"/>
+                  <attribute name="src">
+                     <db:refpurpose>The script source (instead of inline)</db:refpurpose>
+                  </attribute>
                </optional>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -42713,10 +42804,14 @@
          <attribute name="role"/>
       </define>
       <define name="ws.style.src.attribute">
-         <attribute name="src"/>
+         <attribute name="src">
+            <db:refpurpose>The style source</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.style.type.attribute">
-         <attribute name="type"/>
+         <attribute name="type">
+            <db:refpurpose>The style type</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.style.attlist">
          <interleave>
@@ -42724,7 +42819,9 @@
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="type"/>
+               <attribute name="type">
+                  <db:refpurpose>The style type</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42767,7 +42864,9 @@
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="type"/>
+                     <attribute name="type">
+                        <db:refpurpose>The style type</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -42795,7 +42894,9 @@
                   </optional>
                </interleave>
                <optional>
-                  <attribute name="src"/>
+                  <attribute name="src">
+                     <db:refpurpose>The style source</db:refpurpose>
+                  </attribute>
                </optional>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -42805,19 +42906,25 @@
       </define>
    </div>
    <div>
-      <db:refname>style</db:refname>
-      <db:refpurpose>A style section in the head of a webpage</db:refpurpose>
+      <db:refname>config</db:refname>
+      <db:refpurpose>A website configuration parameter</db:refpurpose>
       <define name="ws.config.role.attribute">
          <attribute name="role"/>
       </define>
       <define name="ws.config.param.attribute">
-         <attribute name="param"/>
+         <attribute name="param">
+            <db:refpurpose>The configuration parameter name</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.config.value.attribute">
-         <attribute name="value"/>
+         <attribute name="value">
+            <db:refpurpose>The configuration parameter value</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.config.altvalue.attribute">
-         <attribute name="altvalue"/>
+         <attribute name="altvalue">
+            <db:refpurpose>An alternate configuration parameter value</db:refpurpose>
+         </attribute>
       </define>
       <define name="ws.config.attlist">
          <interleave>
@@ -42825,13 +42932,19 @@
                <attribute name="role"/>
             </optional>
             <optional>
-               <attribute name="param"/>
+               <attribute name="param">
+                  <db:refpurpose>The configuration parameter name</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="value"/>
+               <attribute name="value">
+                  <db:refpurpose>The configuration parameter value</db:refpurpose>
+               </attribute>
             </optional>
             <optional>
-               <attribute name="altvalue"/>
+               <attribute name="altvalue">
+                  <db:refpurpose>An alternate configuration parameter value</db:refpurpose>
+               </attribute>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -42869,13 +42982,19 @@
                      <attribute name="role"/>
                   </optional>
                   <optional>
-                     <attribute name="param"/>
+                     <attribute name="param">
+                        <db:refpurpose>The configuration parameter name</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="value"/>
+                     <attribute name="value">
+                        <db:refpurpose>The configuration parameter value</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
-                     <attribute name="altvalue"/>
+                     <attribute name="altvalue">
+                        <db:refpurpose>An alternate configuration parameter value</db:refpurpose>
+                     </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
