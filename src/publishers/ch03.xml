@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 version="5.0" xml:id="ch-changes">
+<?dbhtml filename="ch03.html"?>
+<info>
+  <title>Changes to Core DocBook</title>
+</info>
+
+            <para>The following content models from core DocBook have been customized to better
+                support the needs of Publishers:</para>
+            <variablelist>
+                <varlistentry>
+                    <term>
+                        <tag>sidebar</tag>
+                    </term>
+                    <listitem>
+                        <para>Several publishers demonstrated a need to have nested sections within
+                            a <tag>sidebar</tag>. As a result, the <tag>sidebar</tag> model was
+                            modified to allow recursive <tag>section</tag> elements.</para>
+                        <para>Sidebar was also modified to allow <tag>subtitle</tag> as well as
+                                <tag>title</tag>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>
+                        <tag>person</tag>
+                    </term>
+                    <listitem>
+                        <para>While not appropriate in technical documentation, several publishers
+                            requested that media objects (such as photos) be allowed within a
+                                <tag>person</tag> element. As a result, the <tag>person</tag> model
+                            was modified to include <tag>mediaobject</tag>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>
+                        <tag>org</tag>
+                    </term>
+                    <listitem>
+                        <para>While not appropriate in technical documentation, several publishers
+                            requested that media objects (such as logos) be allowed within an
+                                <tag>org</tag> element. The <tag>org</tag> element was modified to
+                            include <tag>mediaobject</tag>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>
+                        <tag>info</tag>
+                    </term>
+                    <listitem>
+                        <para>The various patterns defining <tag>info</tag> have been modified to
+                            allow either DocBook metadata OR Dublin Core metadata elements.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>block-level patterns</term>
+                    <listitem>
+                        <para>The block-level patterns in the schema have been modified to allow the
+                            newly created elements: <tag>dialogue</tag>, <tag>poetry</tag>,
+                                <tag>drama</tag>.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+
+</chapter>
+
