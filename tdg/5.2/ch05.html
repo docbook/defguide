@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter&nbsp;5.&nbsp;Customizing DocBook</title><meta charset="utf-8"><link href="https://docbook.org/graphics/defguide-icon16.png" rel="icon" type="image/png"><link href="https://fonts.googleapis.com/css?family=EB%20Garamond" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=PT%20Mono" rel="stylesheet" type="text/css"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.5.0"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><article><header><div class="navigation"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a>&nbsp;<a href="ch04.html" title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents"><i class="fas fa-arrow-left"></i></a>&nbsp;<a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a>&nbsp;<a title="Chapter&nbsp; 6 .&nbsp; DocBook Assemblies" href="ch06.html"><i class="fas fa-arrow-right"></i></a></div><div class="title"><i class="title">DocBook 5.2: The Definitive Guide</i><span class="version">&nbsp;&nbsp;(Version <a href="ch00-online.html">5.2.4 for DocBook 5.2b08</a>)</span></div></header><main><article id="app-customizing" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;5.&nbsp;Customizing DocBook</h2></header><div class="content"><p><a class="indexterm" name="idx.customize-1"></a><a class="indexterm" name="app-customizing.2.2"></a><a class="indexterm" name="app-customizing.2.3"></a><a class="indexterm" name="app-customizing.2.4"></a>For some applications, DocBook “<span class="quote">out of the box</span>”
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Customizing DocBook</title><meta charset="utf-8"><link href="https://docbook.org/graphics/defguide-icon16.png" rel="icon" type="image/png"><link href="https://fonts.googleapis.com/css?family=EB%20Garamond" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=PT%20Mono" rel="stylesheet" type="text/css"><meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.6.0"><link href="css/default.css" rel="stylesheet" type="text/css"><link href="css/db-prism.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="css/defguide.css"><script type="text/javascript" src="js/dbmodnizr.js"></script><script type="text/javascript" src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"></script><script type="text/javascript" src="js/prism.js"></script><script type="text/javascript" src="js/jquery-1.6.4.min.js"></script><script type="text/javascript" src="js/refentry.js"></script></head><body><article><header><div class="navigation"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a>&nbsp;<a href="ch04.html" title="Publishing DocBook Documents"><i class="fas fa-arrow-left"></i></a>&nbsp;<a title="Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a>&nbsp;<a title="DocBook Assemblies" href="ch06.html"><i class="fas fa-arrow-right"></i></a></div><div class="title"><i class="title">DocBook 5.2: The Definitive Guide</i><span class="version">&nbsp;&nbsp;(Version <a href="ch00-online.html">5.2.5 for DocBook 5.2b08</a>)</span></div></header><main><article id="app-customizing" class="chapter"><header class="chapter-titlepage"><h2>Chapter&nbsp;5.&nbsp;Customizing DocBook</h2></header><div class="content"><p><a class="indexterm" name="idx.customize-1"></a><a class="indexterm" name="app-customizing.2.2"></a><a class="indexterm" name="app-customizing.2.3"></a><a class="indexterm" name="app-customizing.2.4"></a>For some applications, DocBook “<span class="quote">out of the box</span>”
   may not be exactly what you need. Perhaps you need additional inline
   elements or perhaps you want to remove elements that you never want your
   authors to use. By design, DocBook makes this sort of customization
@@ -173,43 +173,41 @@ include "docbook.rnc" {
       inlines, and domain inlines. Let’s suppose you chose the domain
       inlines.</p><p>As shown in <a href="ch05.html#ex-addcleartext" title="Adding cleartext with a customization layer">Example&nbsp;5.1, “Adding cleartext with a customization layer”</a>, your customization
       would import the DocBook schema, extend the domain inlines, and then
-      provide a pattern that matches the new element.</p><figure id="ex-addcleartext" class="example-wrapper"><div class="title">Example&nbsp;5.1.&nbsp;Adding cleartext with a customization layer</div><div class="example"><pre data-line="6,8,10,11,16" class="programlisting language-none"><code>namespace db = "http://docbook.org/ns/docbook"
+      provide a pattern that matches the new element.</p><figure id="ex-addcleartext" class="example-wrapper"><div class="title">Example&nbsp;5.1.&nbsp;Adding cleartext with a customization layer</div><div class="example"><pre class="programlisting language-none line-numbers"><code>namespace db = "http://docbook.org/ns/docbook"
 default namespace = "http://docbook.org/ns/docbook"
 
 include "docbook.rnc"
 
-db.domain.inlines |= db.cleartext
+db.domain.inlines |= db.cleartext                 <a name="gs3-d1" id="gs3-d1"></a><span data-number="1" class="callout-bug callout-bug-unicode">❶</span>
 
-# Define a new cleartext element:
+# Define a new cleartext element:                 <a name="gs3-d1b" id="gs3-d1b"></a><span data-number="2" class="callout-bug callout-bug-unicode">❷</span>
 
-db.cleartext.role.attribute = attribute role { text }
-db.cleartext.attlist =
+db.cleartext.role.attribute = attribute role { text }    <a name="gs3-d2" id="gs3-d2"></a><span data-number="3" class="callout-bug callout-bug-unicode">❸</span>
+db.cleartext.attlist =                            <a name="gs3-d3" id="gs3-d3"></a><span data-number="4" class="callout-bug callout-bug-unicode">❹</span>
    db.cleartext.role.attribute?
  &amp; db.common.attributes
  &amp; db.common.linking.attributes
 
-db.cleartext =
+db.cleartext =                                    <a name="gs3-d4" id="gs3-d4"></a><span data-number="5" class="callout-bug callout-bug-unicode">❺</span>
    element cleartext {
       db.cleartext.attlist,
       db._text
-   }
-
-</code></pre><div class="calloutlist"><dl><dt id="list_gs3-d1" class="callout"><span class="coline">6</span></dt><dd><p>The <code class="literal">|=</code> operator adds a new choice to a
-            pattern. So this line makes the <code class="literal">db.cleartext</code>
-            pattern a valid option anywhere that
-            <code class="literal">db.domain.inlines</code> appears.</p></dd><dt id="list_gs3-d1b" class="callout"><span class="coline">8</span></dt><dd><p>Next, we create a pattern for the
-            <code class="literal">cleartext</code> element. The convention in the
-            DocBook schema is to create three patterns, one for the <code class="tag-attribute">role</code> attribute, one for all the
-            attributes, and one for the element. By following this convention,
-            we make it easier for someone to customize our
-            customization.</p></dd><dt id="list_gs3-d2" class="callout"><span class="coline">10</span></dt><dd><p>Defining a separate pattern for the <code class="tag-attribute">role</code>
-            attribute makes it easy for customizers to change it on a
-            per-element basis.</p></dd><dt id="list_gs3-d3" class="callout"><span class="coline">11</span></dt><dd><p>Defining a separate pattern for the attributes makes it easy
-            for customizers to change them on a per-element basis. This
-            pattern includes the pattern we just created for the <code class="tag-attribute">role</code> attribute.</p></dd><dt id="list_gs3-d4" class="callout"><span class="coline">16</span></dt><dd><p>The pattern for the element pulls it all together. The
-            pattern <code class="literal">db._text</code> matches text plus a number of
-            ubiquitous or nearly ubiquitous inlines. Use this pattern unless
-            you <em>really</em> want only text.</p></dd></dl></div></div></figure></div></section><section id="ch05-write.5" class="section"><div class="section-titlepage"><h3>5.4.3.&nbsp;Using Your Customization Layer</h3></div><div class="content"><p>Using a customization layer is simple. Just put the customization
+   }</code></pre><div class="calloutlist"><dl><dt id="list_gs3-d1" class="callout"><a href="ch05.html#gs3-d1" class="callout-link"><span data-number="1" class="callout-bug callout-bug-unicode">❶</span></a>&nbsp;</dt><dd><p>The <code class="literal">|=</code> operator adds a new choice to a
+    pattern. So this line makes the <code class="literal">db.cleartext</code>
+    pattern a valid option anywhere that
+    <code class="literal">db.domain.inlines</code> appears.</p></dd><dt id="list_gs3-d1b" class="callout"><a href="ch05.html#gs3-d1b" class="callout-link"><span data-number="2" class="callout-bug callout-bug-unicode">❷</span></a>&nbsp;</dt><dd><p>Next, we create a pattern for the
+    <code class="literal">cleartext</code> element. The convention in the
+    DocBook schema is to create three patterns, one for the <code class="tag-attribute">role</code> attribute, one for all the
+    attributes, and one for the element. By following this convention,
+    we make it easier for someone to customize our
+    customization.</p></dd><dt id="list_gs3-d2" class="callout"><a href="ch05.html#gs3-d2" class="callout-link"><span data-number="3" class="callout-bug callout-bug-unicode">❸</span></a>&nbsp;</dt><dd><p>Defining a separate pattern for the <code class="tag-attribute">role</code>
+    attribute makes it easy for customizers to change it on a
+    per-element basis.</p></dd><dt id="list_gs3-d3" class="callout"><a href="ch05.html#gs3-d3" class="callout-link"><span data-number="4" class="callout-bug callout-bug-unicode">❹</span></a>&nbsp;</dt><dd><p>Defining a separate pattern for the attributes makes it easy
+    for customizers to change them on a per-element basis. This
+    pattern includes the pattern we just created for the <code class="tag-attribute">role</code> attribute.</p></dd><dt id="list_gs3-d4" class="callout"><a href="ch05.html#gs3-d4" class="callout-link"><span data-number="5" class="callout-bug callout-bug-unicode">❺</span></a>&nbsp;</dt><dd><p>The pattern for the element pulls it all together. The
+    pattern <code class="literal">db._text</code> matches text plus a number of
+    ubiquitous or nearly ubiquitous inlines. Use this pattern unless
+    you <em>really</em> want only text.</p></dd></dl></div></div></figure></div></section><section id="ch05-write.5" class="section"><div class="section-titlepage"><h3>5.4.3.&nbsp;Using Your Customization Layer</h3></div><div class="content"><p>Using a customization layer is simple. Just put the customization
       into a file—for example, <code class="filename">mycustomization.rnc</code>—and
       then refer to that file instead of the DocBook schema when your tools
       offer the option.</p></div></section><section id="cust.test" class="section"><div class="section-titlepage"><h3>5.4.4.&nbsp;Testing Your Work</h3></div><div class="content"><p><a class="indexterm" name="cust.test.2.1"></a><a class="indexterm" name="cust.test.2.2"></a><a class="indexterm" name="cust.test.2.3"></a>Schemas, by their nature, contain many complex,
@@ -511,4 +509,4 @@ include "docbook.rnc"
 
 # add a value to an enumeration
 db.spacing.enumeration |= "large"
-</code></pre></div></figure></div></section></div></section></div></article></main><footer><div class="navrow"><div class="navleft"><a title="Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents" href="ch04.html"><i class="fas fa-arrow-left"></i></a></div><div class="navmiddle"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a></div><div class="navright"><a title="Chapter&nbsp; 6 .&nbsp; DocBook Assemblies" href="ch06.html"><i class="fas fa-arrow-right"></i></a></div></div><div class="navrow"><div class="navleft">Chapter&nbsp; 4 .&nbsp; Publishing DocBook Documents</div><div class="navmiddle"><a title="Part&nbsp; I .&nbsp; Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a></div><div class="navright">Chapter&nbsp; 6 .&nbsp; DocBook Assemblies</div></div><div class="copyrightfooter"><a href="dbcpyright.html">Copyright</a> © 2010–2020 Norman Walsh.</div></footer></article></body></html>
+</code></pre></div></figure></div></section></div></section></div></article></main><footer><div class="navrow"><div class="navleft"><a title="Publishing DocBook Documents" href="ch04.html"><i class="fas fa-arrow-left"></i></a></div><div class="navmiddle"><a title="DocBook 5.2: The Definitive Guide" href="index.html"><i class="fas fa-home"></i></a></div><div class="navright"><a title="DocBook Assemblies" href="ch06.html"><i class="fas fa-arrow-right"></i></a></div></div><div class="navrow"><div class="navleft">Publishing DocBook Documents</div><div class="navmiddle"><a title="Introduction" href="part1.html"><i class="fas fa-arrow-up"></i></a></div><div class="navright">DocBook Assemblies</div></div><div class="copyrightfooter"><a href="dbcpyright.html">Copyright</a> © 2010–2020 Norman Walsh.</div></footer></article></body></html>
