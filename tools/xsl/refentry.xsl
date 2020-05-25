@@ -103,7 +103,7 @@
   <xsl:element name="{name(.)}">
     <xsl:copy-of select="@*"/>
     <xsl:attribute name="xml:id" select="translate(concat('element.', $pattern),':','-')"/>
-    <xsl:processing-instruction name="dbhtml">
+    <xsl:processing-instruction name="db">
       <xsl:text>filename="</xsl:text>
       <xsl:choose>
         <xsl:when test="$pattern = 'db.index'">
