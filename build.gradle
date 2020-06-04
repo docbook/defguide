@@ -127,6 +127,28 @@ task getDocBookXslt(dependsOn: unzipDocBookXslt, type: Copy) {
 getDocBookXslt.onlyIf { !file("$buildDir/docbook").exists() }
 
 // ======================================================================
+// There's no public distribution of the DocBook xslTNG stylesheets
+
+def docbookXslTNGZip = "docbook-xsltng-0.1.0.zip"
+task downloadDocBookXslTNG(type: Download) {
+  src "https://nwalsh.com/scratch/docbook/" + docbookXslTNGZip
+  dest new File(buildDir, docbookXslTNGZip)
+}
+downloadDocBookXslTNG.onlyIf { !file("$buildDir/$docbookXslTNGZip").exists() }
+
+task unzipDocBookXslTNG(dependsOn: downloadDocBookXslTNG, type: Copy) {
+  from zipTree(downloadDocBookXslTNG.dest)
+  into { "build" }
+}
+unzipDocBookXslTNG.onlyIf { !file("$buildDir/docbook-xsltng-0.1.0").exists() }
+
+task getDocBookXslTNG(dependsOn: unzipDocBookXslTNG, type: Copy) {
+  from { "build/docbook-xsltng-0.1.0" }
+  into { "build/docbook-xsltng" }
+}
+getDocBookXslTNG.onlyIf { !file("$buildDir/docbook-xsltng").exists() }
+
+// ======================================================================
 
 task gitLogSummary(type: Exec) {
   inputs.file "tools/bin/git-log-summary"
