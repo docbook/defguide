@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glossary xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="5.0" xml:id="glossary">
+<?db filename="dbgloss.html"??>
+<title>Glossary</title>
+
+<glossentry xml:id="gloss-viewport-area">
+<glossterm>viewport area</glossterm>
+<glossdef>
+<para>Images in DocBook are defined by two bounding boxes: a bounding box for
+the overall image, the viewport area, and the bounding box for the image itself,
+the content area, which may be aligned within the viewport area.
+</para>
+</glossdef>
+</glossentry>
+
+<glossentry xml:id="gloss-content-area">
+<glossterm>content area</glossterm>
+<glosssee>viewport area</glosssee>
+</glossentry>
+
+<glossentry xml:id="gloss-intrinsic-size">
+<glossterm>intrinsic size</glossterm>
+<glossdef>
+<para>The intrinsic size of an image is it’s actual size, measured in
+pixels or other appropriate units, before any scaling or
+transformations have been applied.
+</para>
+</glossdef>
+</glossentry>
+<glossentry xml:id="gloss-cdata-section">
+<glossterm>CDATA section</glossterm>
+<glossdef>
+<para>A CDATA section is a region of text in an XML document delimited by
+<code>&lt;![[</code> at the beginning and <code>]]&gt;</code> at the end.
+All of the characters in a CDATA section are taken literally as part of the document.
+In other words, literal “&lt;” characters, “&amp;” characters, and other markup
+characters are not interpreted as markup. The delimiters are not rendered.
+</para>
+<para>CDATA sections are a convenience for authoring, they are not part of the
+XML data model. After the document has been parsed, it is not possible to determine
+where CDATA sections where used (as opposed to other forms of escaping, such
+as character entities).
+</para>
+</glossdef>
+</glossentry>
+</glossary>

@@ -39,7 +39,7 @@
       <reference xml:id='ref-element'
                  xmlns='http://docbook.org/ns/docbook'>
         <title>DocBook Element Reference</title>
-        <xsl:processing-instruction name="dbhtml">
+        <xsl:processing-instruction name="db">
           <xsl:text> filename='ref-elements.html'</xsl:text>
         </xsl:processing-instruction>
         <xi:include href='intro-elements.xml'/>
@@ -50,7 +50,7 @@
       <reference xml:id='ref-assembly'
                  xmlns='http://docbook.org/ns/docbook'>
         <title>DocBook Assembly Element Reference</title>
-        <xsl:processing-instruction name="dbhtml">
+        <xsl:processing-instruction name="db">
           <xsl:text> filename='ref-assembly.html'</xsl:text>
         </xsl:processing-instruction>
         <xi:include href='intro-assembly.xml'/>

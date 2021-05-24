@@ -1,16 +1,18 @@
-<grammar xmlns:rng="http://relaxng.org/ns/structure/1.0"
-         xmlns:s="http://purl.oclc.org/dsdl/schematron"
-         xmlns:db="http://docbook.org/ns/docbook"
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/"
+         xmlns:db="http://docbook.org/ns/docbook"
          xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup"
          xmlns:html="http://www.w3.org/1999/xhtml"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:rddl="http://www.rddl.org/"
-         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:rng="http://relaxng.org/ns/structure/1.0"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron"
+         xmlns:trans="http://docbook.org/ns/transclusion"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://docbook.org/ns/docbook"
-         buildhash="9a36eb27813877aaaadbe74b1fa8d753cdbd7ddf">
+         buildhash="079e33f">
    <define name="db.status.attribute">
       <attribute name="status">
          <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
@@ -716,6 +718,63 @@
             <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
          </attribute>
       </define>
+      <ctrl:other-attribute name="db.section.class.attribute"
+                            enum-name="db.section.class-enum.attribute"
+                            other-name="db.section.class-other.attributes"/>
+      <define name="db.section.class.enumeration">
+         <value>legal</value>
+         <a:documentation>A section of legal obligations or requirements</a:documentation>
+      </define>
+      <define name="db.section.class-enum.attribute">
+         <attribute name="class">
+            <db:refpurpose>Identifies the nature of the section</db:refpurpose>
+            <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <value>legal</value>
+               <a:documentation>A section of legal obligations or requirements</a:documentation>
+            </rng:group>
+         </attribute>
+      </define>
+      <define name="db.section.class-other.attribute">
+         <attribute name="otherclass">
+            <db:refpurpose>Identifies a non-standard section class</db:refpurpose>
+            <data type="NMTOKEN"/>
+         </attribute>
+      </define>
+      <define name="db.section.class-other.attributes">
+         <interleave>
+            <attribute name="class">
+               <db:refpurpose>Indicates that a non-standard section class is applied</db:refpurpose>
+               <value>other</value>
+               <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+            </attribute>
+            <attribute name="otherclass">
+               <db:refpurpose>Identifies a non-standard section class</db:refpurpose>
+               <data type="NMTOKEN"/>
+            </attribute>
+         </interleave>
+      </define>
+      <define name="db.section.class.attribute">
+         <choice>
+            <attribute name="class">
+               <db:refpurpose>Identifies the nature of the section</db:refpurpose>
+               <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+                  <value>legal</value>
+                  <a:documentation>A section of legal obligations or requirements</a:documentation>
+               </rng:group>
+            </attribute>
+            <interleave>
+               <attribute name="class">
+                  <db:refpurpose>Indicates that a non-standard section class is applied</db:refpurpose>
+                  <value>other</value>
+                  <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+               </attribute>
+               <attribute name="otherclass">
+                  <db:refpurpose>Identifies a non-standard section class</db:refpurpose>
+                  <data type="NMTOKEN"/>
+               </attribute>
+            </interleave>
+         </choice>
+      </define>
       <define name="db.section.role.attribute">
          <attribute name="role"/>
       </define>
@@ -838,6 +897,28 @@
                <attribute name="status">
                   <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
                </attribute>
+            </optional>
+            <optional>
+               <choice>
+                  <attribute name="class">
+                     <db:refpurpose>Identifies the nature of the section</db:refpurpose>
+                     <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+                        <value>legal</value>
+                        <a:documentation>A section of legal obligations or requirements</a:documentation>
+                     </rng:group>
+                  </attribute>
+                  <interleave>
+                     <attribute name="class">
+                        <db:refpurpose>Indicates that a non-standard section class is applied</db:refpurpose>
+                        <value>other</value>
+                        <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+                     </attribute>
+                     <attribute name="otherclass">
+                        <db:refpurpose>Identifies a non-standard section class</db:refpurpose>
+                        <data type="NMTOKEN"/>
+                     </attribute>
+                  </interleave>
+               </choice>
             </optional>
          </interleave>
       </define>
@@ -980,6 +1061,28 @@
                         <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
                      </attribute>
                   </optional>
+                  <optional>
+                     <choice>
+                        <attribute name="class">
+                           <db:refpurpose>Identifies the nature of the section</db:refpurpose>
+                           <rng:group>
+                              <value>legal</value>
+                              <a:documentation>A section of legal obligations or requirements</a:documentation>
+                           </rng:group>
+                        </attribute>
+                        <interleave>
+                           <attribute name="class">
+                              <db:refpurpose>Indicates that a non-standard section class is applied</db:refpurpose>
+                              <value>other</value>
+                              <a:documentation>Indicates that the identifier is some 'other' kind.</a:documentation>
+                           </attribute>
+                           <attribute name="otherclass">
+                              <db:refpurpose>Identifies a non-standard section class</db:refpurpose>
+                              <data type="NMTOKEN"/>
+                           </attribute>
+                        </interleave>
+                     </choice>
+                  </optional>
                </interleave>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -1076,10 +1179,130 @@
       <define name="db.bibliomixed.role.attribute">
          <attribute name="role"/>
       </define>
+      <define name="db.bibliomixed.pubwork.attribute">
+         <choice>
+            <optional>
+               <attribute name="pubwork">
+                  <db:refpurpose>Identifies the nature of the published work</db:refpurpose>
+                  <choice>
+                     <value>article</value>
+                     <a:documentation>An article</a:documentation>
+                     <value>bbs</value>
+                     <a:documentation>A bulletin board system</a:documentation>
+                     <value>book</value>
+                     <a:documentation>A book</a:documentation>
+                     <value>cdrom</value>
+                     <a:documentation>A CD-ROM</a:documentation>
+                     <value>chapter</value>
+                     <a:documentation>A chapter (as of a book)</a:documentation>
+                     <value>dvd</value>
+                     <a:documentation>A DVD</a:documentation>
+                     <value>emailmessage</value>
+                     <a:documentation>An email message</a:documentation>
+                     <value>gopher</value>
+                     <a:documentation>A gopher page</a:documentation>
+                     <value>journal</value>
+                     <a:documentation>A journal</a:documentation>
+                     <value>manuscript</value>
+                     <a:documentation>A manuscript</a:documentation>
+                     <value>newsposting</value>
+                     <a:documentation>A posting to a newsgroup</a:documentation>
+                     <value>part</value>
+                     <a:documentation>A part (as of a book)</a:documentation>
+                     <value>refentry</value>
+                     <a:documentation>A reference entry</a:documentation>
+                     <value>section</value>
+                     <a:documentation>A section (as of a book or article)</a:documentation>
+                     <value>series</value>
+                     <a:documentation>A series</a:documentation>
+                     <value>set</value>
+                     <a:documentation>A set (as of books)</a:documentation>
+                     <value>webpage</value>
+                     <a:documentation>A web page</a:documentation>
+                     <value>wiki</value>
+                     <a:documentation>A wiki page</a:documentation>
+                     <value>other</value>
+                     <a:documentation>Some other kind of work</a:documentation>
+                  </choice>
+               </attribute>
+            </optional>
+            <interleave>
+               <attribute name="pubwork">
+                  <db:refpurpose>Identifies that this is some other kind of published work</db:refpurpose>
+                  <value>other</value>
+                  <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+               </attribute>
+               <attribute name="otherpubwork">
+                  <db:refpurpose>Identifies the nature of some other kind of published work</db:refpurpose>
+                  <data type="NMTOKEN"/>
+               </attribute>
+            </interleave>
+         </choice>
+      </define>
       <define name="db.bibliomixed.attlist">
          <interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <choice>
+                  <optional>
+                     <attribute name="pubwork">
+                        <db:refpurpose>Identifies the nature of the published work</db:refpurpose>
+                        <choice>
+                           <value>article</value>
+                           <a:documentation>An article</a:documentation>
+                           <value>bbs</value>
+                           <a:documentation>A bulletin board system</a:documentation>
+                           <value>book</value>
+                           <a:documentation>A book</a:documentation>
+                           <value>cdrom</value>
+                           <a:documentation>A CD-ROM</a:documentation>
+                           <value>chapter</value>
+                           <a:documentation>A chapter (as of a book)</a:documentation>
+                           <value>dvd</value>
+                           <a:documentation>A DVD</a:documentation>
+                           <value>emailmessage</value>
+                           <a:documentation>An email message</a:documentation>
+                           <value>gopher</value>
+                           <a:documentation>A gopher page</a:documentation>
+                           <value>journal</value>
+                           <a:documentation>A journal</a:documentation>
+                           <value>manuscript</value>
+                           <a:documentation>A manuscript</a:documentation>
+                           <value>newsposting</value>
+                           <a:documentation>A posting to a newsgroup</a:documentation>
+                           <value>part</value>
+                           <a:documentation>A part (as of a book)</a:documentation>
+                           <value>refentry</value>
+                           <a:documentation>A reference entry</a:documentation>
+                           <value>section</value>
+                           <a:documentation>A section (as of a book or article)</a:documentation>
+                           <value>series</value>
+                           <a:documentation>A series</a:documentation>
+                           <value>set</value>
+                           <a:documentation>A set (as of books)</a:documentation>
+                           <value>webpage</value>
+                           <a:documentation>A web page</a:documentation>
+                           <value>wiki</value>
+                           <a:documentation>A wiki page</a:documentation>
+                           <value>other</value>
+                           <a:documentation>Some other kind of work</a:documentation>
+                        </choice>
+                     </attribute>
+                  </optional>
+                  <interleave>
+                     <attribute name="pubwork">
+                        <db:refpurpose>Identifies that this is some other kind of published work</db:refpurpose>
+                        <value>other</value>
+                        <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+                     </attribute>
+                     <attribute name="otherpubwork">
+                        <db:refpurpose>Identifies the nature of some other kind of published work</db:refpurpose>
+                        <data type="NMTOKEN"/>
+                     </attribute>
+                  </interleave>
+               </choice>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -1194,6 +1417,66 @@
                <interleave>
                   <optional>
                      <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <choice>
+                        <optional>
+                           <attribute name="pubwork">
+                              <db:refpurpose>Identifies the nature of the published work</db:refpurpose>
+                              <choice>
+                                 <value>article</value>
+                                 <a:documentation>An article</a:documentation>
+                                 <value>bbs</value>
+                                 <a:documentation>A bulletin board system</a:documentation>
+                                 <value>book</value>
+                                 <a:documentation>A book</a:documentation>
+                                 <value>cdrom</value>
+                                 <a:documentation>A CD-ROM</a:documentation>
+                                 <value>chapter</value>
+                                 <a:documentation>A chapter (as of a book)</a:documentation>
+                                 <value>dvd</value>
+                                 <a:documentation>A DVD</a:documentation>
+                                 <value>emailmessage</value>
+                                 <a:documentation>An email message</a:documentation>
+                                 <value>gopher</value>
+                                 <a:documentation>A gopher page</a:documentation>
+                                 <value>journal</value>
+                                 <a:documentation>A journal</a:documentation>
+                                 <value>manuscript</value>
+                                 <a:documentation>A manuscript</a:documentation>
+                                 <value>newsposting</value>
+                                 <a:documentation>A posting to a newsgroup</a:documentation>
+                                 <value>part</value>
+                                 <a:documentation>A part (as of a book)</a:documentation>
+                                 <value>refentry</value>
+                                 <a:documentation>A reference entry</a:documentation>
+                                 <value>section</value>
+                                 <a:documentation>A section (as of a book or article)</a:documentation>
+                                 <value>series</value>
+                                 <a:documentation>A series</a:documentation>
+                                 <value>set</value>
+                                 <a:documentation>A set (as of books)</a:documentation>
+                                 <value>webpage</value>
+                                 <a:documentation>A web page</a:documentation>
+                                 <value>wiki</value>
+                                 <a:documentation>A wiki page</a:documentation>
+                                 <value>other</value>
+                                 <a:documentation>Some other kind of work</a:documentation>
+                              </choice>
+                           </attribute>
+                        </optional>
+                        <interleave>
+                           <attribute name="pubwork">
+                              <db:refpurpose>Identifies that this is some other kind of published work</db:refpurpose>
+                              <value>other</value>
+                              <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+                           </attribute>
+                           <attribute name="otherpubwork">
+                              <db:refpurpose>Identifies the nature of some other kind of published work</db:refpurpose>
+                              <data type="NMTOKEN"/>
+                           </attribute>
+                        </interleave>
+                     </choice>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -2122,6 +2405,163 @@
             </optional>
          </choice>
       </define>
+   </div>
+   <div>
+      <db:refname>bibliodiv</db:refname>
+      <db:refpurpose>A section of a bibliography</db:refpurpose>
+      <define name="db.bibliodiv.status.attrib">
+         <attribute name="status">
+            <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
+         </attribute>
+      </define>
+      <define name="db.bibliodiv.role.attribute">
+         <attribute name="role"/>
+      </define>
+      <define name="db.bibliodiv.attlist">
+         <interleave>
+            <optional>
+               <attribute name="role"/>
+            </optional>
+            <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <optional>
+                  <attribute name="xml:id">
+                     <data type="ID"/>
+                  </attribute>
+               </optional>
+               <optional>
+                  <attribute name="version"/>
+               </optional>
+               <optional>
+                  <attribute name="xml:lang"/>
+               </optional>
+               <optional>
+                  <attribute name="xml:base"/>
+               </optional>
+               <optional>
+                  <attribute name="revisionflag">
+                     <choice>
+                        <value>changed</value>
+                        <value>added</value>
+                        <value>deleted</value>
+                        <value>off</value>
+                     </choice>
+                  </attribute>
+               </optional>
+            </rng:group>
+            <optional>
+               <choice>
+                  <attribute name="linkend">
+                     <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
+                     <data type="IDREF"/>
+                  </attribute>
+                  <interleave>
+                     <optional>
+                        <attribute name="xlink:type">
+                           <db:refpurpose>Identifies the XLink link type</db:refpurpose>
+                           <value>simple</value>
+                           <a:documentation>An XLink simple link type</a:documentation>
+                        </attribute>
+                     </optional>
+                     <optional>
+                        <attribute name="xlink:href">
+                           <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
+                           <data type="anyURI"/>
+                        </attribute>
+                     </optional>
+                     <optional>
+                        <attribute name="xlink:role">
+                           <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
+                           <dbx:description>
+                              <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
+ to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
+ before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
+ attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
+ attribute value.</db:para>
+                           </dbx:description>
+                           <data type="anyURI"/>
+                        </attribute>
+                     </optional>
+                     <optional>
+                        <attribute name="xlink:arcrole">
+                           <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
+                           <data type="anyURI"/>
+                        </attribute>
+                     </optional>
+                     <optional>
+                        <attribute name="xlink:title">
+                           <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
+                        </attribute>
+                     </optional>
+                     <optional>
+                        <attribute name="xlink:show">
+                           <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
+                           <choice>
+                              <value>new</value>
+                              <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
+                              <value>replace</value>
+                              <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
+                              <value>embed</value>
+                              <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
+                              <value>other</value>
+                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                              <value>none</value>
+                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                           </choice>
+                        </attribute>
+                     </optional>
+                     <optional>
+                        <attribute name="xlink:actuate">
+                           <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
+                           <choice>
+                              <value>onLoad</value>
+                              <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
+                              <value>onRequest</value>
+                              <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
+                              <value>other</value>
+                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                              <value>none</value>
+                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                           </choice>
+                        </attribute>
+                     </optional>
+                  </interleave>
+               </choice>
+            </optional>
+            <optional>
+               <attribute name="label">
+                  <db:refpurpose>Specifies an identifying string for presentation purposes</db:refpurpose>
+               </attribute>
+            </optional>
+            <optional>
+               <attribute name="status">
+                  <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
+               </attribute>
+            </optional>
+         </interleave>
+      </define>
+      <define name="db.bibliodiv.info">
+         <choice>
+            <group>
+               <interleave>
+                  <ref name="db.title"/>
+                  <optional>
+                     <ref name="db.titleabbrev"/>
+                  </optional>
+                  <optional>
+                     <ref name="db.subtitle"/>
+                  </optional>
+               </interleave>
+               <optional>
+                  <ref name="db.titleforbidden.info"/>
+               </optional>
+            </group>
+            <ref name="db.titlereq.info"/>
+         </choice>
+      </define>
+   </div>
+   <div>
+      <db:refname>bibliography</db:refname>
+      <db:refpurpose>A bibliography</db:refpurpose>
       <define name="db.bibliography">
          <element name="bibliography">
             <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -2312,155 +2752,6 @@
    <div>
       <db:refname>bibliodiv</db:refname>
       <db:refpurpose>A section of a bibliography</db:refpurpose>
-      <define name="db.bibliodiv.status.attrib">
-         <attribute name="status">
-            <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
-         </attribute>
-      </define>
-      <define name="db.bibliodiv.role.attribute">
-         <attribute name="role"/>
-      </define>
-      <define name="db.bibliodiv.attlist">
-         <interleave>
-            <optional>
-               <attribute name="role"/>
-            </optional>
-            <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <attribute name="xml:id">
-                     <data type="ID"/>
-                  </attribute>
-               </optional>
-               <optional>
-                  <attribute name="version"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:lang"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:base"/>
-               </optional>
-               <optional>
-                  <attribute name="revisionflag">
-                     <choice>
-                        <value>changed</value>
-                        <value>added</value>
-                        <value>deleted</value>
-                        <value>off</value>
-                     </choice>
-                  </attribute>
-               </optional>
-            </rng:group>
-            <optional>
-               <choice>
-                  <attribute name="linkend">
-                     <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                     <data type="IDREF"/>
-                  </attribute>
-                  <interleave>
-                     <optional>
-                        <attribute name="xlink:type">
-                           <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                           <value>simple</value>
-                           <a:documentation>An XLink simple link type</a:documentation>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:href">
-                           <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:role">
-                           <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                           <dbx:description>
-                              <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                           </dbx:description>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:arcrole">
-                           <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:title">
-                           <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:show">
-                           <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>new</value>
-                              <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                              <value>replace</value>
-                              <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                              <value>embed</value>
-                              <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:actuate">
-                           <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>onLoad</value>
-                              <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                              <value>onRequest</value>
-                              <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                  </interleave>
-               </choice>
-            </optional>
-            <optional>
-               <attribute name="label">
-                  <db:refpurpose>Specifies an identifying string for presentation purposes</db:refpurpose>
-               </attribute>
-            </optional>
-            <optional>
-               <attribute name="status">
-                  <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
-               </attribute>
-            </optional>
-         </interleave>
-      </define>
-      <define name="db.bibliodiv.info">
-         <choice>
-            <group>
-               <interleave>
-                  <ref name="db.title"/>
-                  <optional>
-                     <ref name="db.titleabbrev"/>
-                  </optional>
-                  <optional>
-                     <ref name="db.subtitle"/>
-                  </optional>
-               </interleave>
-               <optional>
-                  <ref name="db.titleforbidden.info"/>
-               </optional>
-            </group>
-            <ref name="db.titlereq.info"/>
-         </choice>
-      </define>
       <define name="db.bibliodiv">
          <element name="bibliodiv">
             <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -7162,10 +7453,24 @@
             <db:refpurpose>Specifies an identifying string for presentation purposes</db:refpurpose>
          </attribute>
       </define>
+      <define name="db.cals.table.type.attribute">
+         <optional>
+            <attribute name="type">
+               <db:refpurpose>Identifies the type of table</db:refpurpose>
+            </attribute>
+         </optional>
+      </define>
       <define name="db.cals.table.attlist">
          <interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <optional>
+                  <attribute name="type">
+                     <db:refpurpose>Identifies the type of table</db:refpurpose>
+                  </attribute>
+               </optional>
             </optional>
             <optional>
                <attribute name="label">
@@ -7425,6 +7730,13 @@
                <interleave>
                   <optional>
                      <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <optional>
+                        <attribute name="type">
+                           <db:refpurpose>Identifies the type of table</db:refpurpose>
+                        </attribute>
+                     </optional>
                   </optional>
                   <optional>
                      <attribute name="label">
@@ -7720,10 +8032,24 @@
       <define name="db.cals.informaltable.role.attribute">
          <attribute name="role"/>
       </define>
+      <define name="db.cals.informaltable.type.attribute">
+         <optional>
+            <attribute name="type">
+               <db:refpurpose>Identifies the type of table</db:refpurpose>
+            </attribute>
+         </optional>
+      </define>
       <define name="db.cals.informaltable.attlist">
          <interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <optional>
+                  <attribute name="type">
+                     <db:refpurpose>Identifies the type of table</db:refpurpose>
+                  </attribute>
+               </optional>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -7945,6 +8271,13 @@
                <interleave>
                   <optional>
                      <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <optional>
+                        <attribute name="type">
+                           <db:refpurpose>Identifies the type of table</db:refpurpose>
+                        </attribute>
+                     </optional>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -8656,6 +8989,13 @@
             <db:refpurpose>Specifies an identifying string for presentation purposes</db:refpurpose>
          </attribute>
       </define>
+      <define name="db.html.table.type.attribute">
+         <optional>
+            <attribute name="type">
+               <db:refpurpose>Identifies the type of table</db:refpurpose>
+            </attribute>
+         </optional>
+      </define>
       <define name="db.html.table.attlist">
          <interleave>
             <interleave>
@@ -8856,6 +9196,13 @@
             </interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <optional>
+                  <attribute name="type">
+                     <db:refpurpose>Identifies the type of table</db:refpurpose>
+                  </attribute>
+               </optional>
             </optional>
             <optional>
                <attribute name="label">
@@ -9102,6 +9449,13 @@
                      <attribute name="role"/>
                   </optional>
                   <optional>
+                     <optional>
+                        <attribute name="type">
+                           <db:refpurpose>Identifies the type of table</db:refpurpose>
+                        </attribute>
+                     </optional>
+                  </optional>
+                  <optional>
                      <attribute name="label">
                         <db:refpurpose>Specifies an identifying string for presentation purposes</db:refpurpose>
                      </attribute>
@@ -9203,6 +9557,13 @@
          <attribute name="label">
             <db:refpurpose>Specifies an identifying string for presentation purposes</db:refpurpose>
          </attribute>
+      </define>
+      <define name="db.html.informaltable.type.attribute">
+         <optional>
+            <attribute name="type">
+               <db:refpurpose>Identifies the type of table</db:refpurpose>
+            </attribute>
+         </optional>
       </define>
       <define name="db.html.informaltable.attlist">
          <interleave>
@@ -9404,6 +9765,13 @@
             </interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <optional>
+                  <attribute name="type">
+                     <db:refpurpose>Identifies the type of table</db:refpurpose>
+                  </attribute>
+               </optional>
             </optional>
             <optional>
                <attribute name="label">
@@ -9648,6 +10016,13 @@
                   </interleave>
                   <optional>
                      <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <optional>
+                        <attribute name="type">
+                           <db:refpurpose>Identifies the type of table</db:refpurpose>
+                        </attribute>
+                     </optional>
                   </optional>
                   <optional>
                      <attribute name="label">
@@ -16873,6 +17248,219 @@
    <ctrl:other-attribute name="db.biblio.class.attribute"
                          enum-name="db.biblio.class-enum.attribute"
                          other-name="db.biblio.class-other.attributes"/>
+   <define name="db.pubwork.enumeration">
+      <choice>
+         <value>article</value>
+         <a:documentation>An article</a:documentation>
+         <value>bbs</value>
+         <a:documentation>A bulletin board system</a:documentation>
+         <value>book</value>
+         <a:documentation>A book</a:documentation>
+         <value>cdrom</value>
+         <a:documentation>A CD-ROM</a:documentation>
+         <value>chapter</value>
+         <a:documentation>A chapter (as of a book)</a:documentation>
+         <value>dvd</value>
+         <a:documentation>A DVD</a:documentation>
+         <value>emailmessage</value>
+         <a:documentation>An email message</a:documentation>
+         <value>gopher</value>
+         <a:documentation>A gopher page</a:documentation>
+         <value>journal</value>
+         <a:documentation>A journal</a:documentation>
+         <value>manuscript</value>
+         <a:documentation>A manuscript</a:documentation>
+         <value>newsposting</value>
+         <a:documentation>A posting to a newsgroup</a:documentation>
+         <value>part</value>
+         <a:documentation>A part (as of a book)</a:documentation>
+         <value>refentry</value>
+         <a:documentation>A reference entry</a:documentation>
+         <value>section</value>
+         <a:documentation>A section (as of a book or article)</a:documentation>
+         <value>series</value>
+         <a:documentation>A series</a:documentation>
+         <value>set</value>
+         <a:documentation>A set (as of books)</a:documentation>
+         <value>webpage</value>
+         <a:documentation>A web page</a:documentation>
+         <value>wiki</value>
+         <a:documentation>A wiki page</a:documentation>
+         <value>other</value>
+         <a:documentation>Some other kind of work</a:documentation>
+      </choice>
+   </define>
+   <ctrl:other-attribute name="db.biblio.pubwork.attribute"
+                         enum-name="db.biblio.pubwork-enum.attribute"
+                         other-name="db.biblio.pubwork-other.attributes"/>
+   <define name="db.biblio.pubwork.enumeration">
+      <choice>
+         <value>article</value>
+         <a:documentation>An article</a:documentation>
+         <value>bbs</value>
+         <a:documentation>A bulletin board system</a:documentation>
+         <value>book</value>
+         <a:documentation>A book</a:documentation>
+         <value>cdrom</value>
+         <a:documentation>A CD-ROM</a:documentation>
+         <value>chapter</value>
+         <a:documentation>A chapter (as of a book)</a:documentation>
+         <value>dvd</value>
+         <a:documentation>A DVD</a:documentation>
+         <value>emailmessage</value>
+         <a:documentation>An email message</a:documentation>
+         <value>gopher</value>
+         <a:documentation>A gopher page</a:documentation>
+         <value>journal</value>
+         <a:documentation>A journal</a:documentation>
+         <value>manuscript</value>
+         <a:documentation>A manuscript</a:documentation>
+         <value>newsposting</value>
+         <a:documentation>A posting to a newsgroup</a:documentation>
+         <value>part</value>
+         <a:documentation>A part (as of a book)</a:documentation>
+         <value>refentry</value>
+         <a:documentation>A reference entry</a:documentation>
+         <value>section</value>
+         <a:documentation>A section (as of a book or article)</a:documentation>
+         <value>series</value>
+         <a:documentation>A series</a:documentation>
+         <value>set</value>
+         <a:documentation>A set (as of books)</a:documentation>
+         <value>webpage</value>
+         <a:documentation>A web page</a:documentation>
+         <value>wiki</value>
+         <a:documentation>A wiki page</a:documentation>
+         <value>other</value>
+         <a:documentation>Some other kind of work</a:documentation>
+      </choice>
+   </define>
+   <define name="db.biblio.pubwork-enum.attribute">
+      <optional>
+         <attribute name="pubwork">
+            <db:refpurpose>Identifies the nature of the published work</db:refpurpose>
+            <choice>
+               <value>article</value>
+               <a:documentation>An article</a:documentation>
+               <value>bbs</value>
+               <a:documentation>A bulletin board system</a:documentation>
+               <value>book</value>
+               <a:documentation>A book</a:documentation>
+               <value>cdrom</value>
+               <a:documentation>A CD-ROM</a:documentation>
+               <value>chapter</value>
+               <a:documentation>A chapter (as of a book)</a:documentation>
+               <value>dvd</value>
+               <a:documentation>A DVD</a:documentation>
+               <value>emailmessage</value>
+               <a:documentation>An email message</a:documentation>
+               <value>gopher</value>
+               <a:documentation>A gopher page</a:documentation>
+               <value>journal</value>
+               <a:documentation>A journal</a:documentation>
+               <value>manuscript</value>
+               <a:documentation>A manuscript</a:documentation>
+               <value>newsposting</value>
+               <a:documentation>A posting to a newsgroup</a:documentation>
+               <value>part</value>
+               <a:documentation>A part (as of a book)</a:documentation>
+               <value>refentry</value>
+               <a:documentation>A reference entry</a:documentation>
+               <value>section</value>
+               <a:documentation>A section (as of a book or article)</a:documentation>
+               <value>series</value>
+               <a:documentation>A series</a:documentation>
+               <value>set</value>
+               <a:documentation>A set (as of books)</a:documentation>
+               <value>webpage</value>
+               <a:documentation>A web page</a:documentation>
+               <value>wiki</value>
+               <a:documentation>A wiki page</a:documentation>
+               <value>other</value>
+               <a:documentation>Some other kind of work</a:documentation>
+            </choice>
+         </attribute>
+      </optional>
+   </define>
+   <define name="db.biblio.pubwork-other.attribute">
+      <attribute name="otherpubwork">
+         <db:refpurpose>Identifies the nature of some other kind of published work</db:refpurpose>
+         <data type="NMTOKEN"/>
+      </attribute>
+   </define>
+   <define name="db.biblio.pubwork-other.attributes">
+      <interleave>
+         <attribute name="pubwork">
+            <db:refpurpose>Identifies that this is some other kind of published work</db:refpurpose>
+            <value>other</value>
+            <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+         </attribute>
+         <attribute name="otherpubwork">
+            <db:refpurpose>Identifies the nature of some other kind of published work</db:refpurpose>
+            <data type="NMTOKEN"/>
+         </attribute>
+      </interleave>
+   </define>
+   <define name="db.biblio.pubwork.attribute">
+      <choice>
+         <optional>
+            <attribute name="pubwork">
+               <db:refpurpose>Identifies the nature of the published work</db:refpurpose>
+               <choice>
+                  <value>article</value>
+                  <a:documentation>An article</a:documentation>
+                  <value>bbs</value>
+                  <a:documentation>A bulletin board system</a:documentation>
+                  <value>book</value>
+                  <a:documentation>A book</a:documentation>
+                  <value>cdrom</value>
+                  <a:documentation>A CD-ROM</a:documentation>
+                  <value>chapter</value>
+                  <a:documentation>A chapter (as of a book)</a:documentation>
+                  <value>dvd</value>
+                  <a:documentation>A DVD</a:documentation>
+                  <value>emailmessage</value>
+                  <a:documentation>An email message</a:documentation>
+                  <value>gopher</value>
+                  <a:documentation>A gopher page</a:documentation>
+                  <value>journal</value>
+                  <a:documentation>A journal</a:documentation>
+                  <value>manuscript</value>
+                  <a:documentation>A manuscript</a:documentation>
+                  <value>newsposting</value>
+                  <a:documentation>A posting to a newsgroup</a:documentation>
+                  <value>part</value>
+                  <a:documentation>A part (as of a book)</a:documentation>
+                  <value>refentry</value>
+                  <a:documentation>A reference entry</a:documentation>
+                  <value>section</value>
+                  <a:documentation>A section (as of a book or article)</a:documentation>
+                  <value>series</value>
+                  <a:documentation>A series</a:documentation>
+                  <value>set</value>
+                  <a:documentation>A set (as of books)</a:documentation>
+                  <value>webpage</value>
+                  <a:documentation>A web page</a:documentation>
+                  <value>wiki</value>
+                  <a:documentation>A wiki page</a:documentation>
+                  <value>other</value>
+                  <a:documentation>Some other kind of work</a:documentation>
+               </choice>
+            </attribute>
+         </optional>
+         <interleave>
+            <attribute name="pubwork">
+               <db:refpurpose>Identifies that this is some other kind of published work</db:refpurpose>
+               <value>other</value>
+               <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+            </attribute>
+            <attribute name="otherpubwork">
+               <db:refpurpose>Identifies the nature of some other kind of published work</db:refpurpose>
+               <data type="NMTOKEN"/>
+            </attribute>
+         </interleave>
+      </choice>
+   </define>
    <define name="db._text">
       <zeroOrMore>
          <choice>
@@ -21214,132 +21802,6 @@
             </optional>
          </interleave>
       </define>
-      <define name="db.attribution">
-         <element name="attribution">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <zeroOrMore>
-                  <text/>
-                  <ref name="db.inlinemediaobject"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db._phrase"/>
-                  <ref name="db.replaceable"/>
-                  <ref name="db.personname"/>
-                  <ref name="db.citetitle"/>
-               </zeroOrMore>
-            </doc:content-model>
-         </element>
-      </define>
    </div>
    <div>
       <db:refname>epigraph</db:refname>
@@ -22046,206 +22508,6 @@
          <optional>
             <ref name="db.titleforbidden.info"/>
          </optional>
-      </define>
-      <define name="db.para">
-         <element name="para">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <rng:group>
-                  <optional>
-                     <ref name="db.titleforbidden.info"/>
-                  </optional>
-                  <zeroOrMore>
-                     <text/>
-                     <ref name="db.inlinemediaobject"/>
-                     <ref name="db.superscript"/>
-                     <ref name="db.subscript"/>
-                     <ref name="db.abbrev"/>
-                     <ref name="db.acronym"/>
-                     <ref name="db.emphasis"/>
-                     <ref name="db.footnote"/>
-                     <ref name="db.footnoteref"/>
-                     <ref name="db.phrase"/>
-                     <ref name="db.quote"/>
-                     <ref name="db.trademark"/>
-                     <ref name="db.citetitle"/>
-                     <ref name="db.author"/>
-                     <ref name="db.personname"/>
-                     <ref name="db.orgname"/>
-                     <ref name="db.editor"/>
-                     <ref name="db.xref"/>
-                     <ref name="db.link"/>
-                     <ref name="db.replaceable"/>
-                     <ref name="db.systemitem"/>
-                     <ref name="db.option"/>
-                     <ref name="rddl.resource"/>
-                     <rng:group>
-                        <choice>
-                           <ref name="db.filename"/>
-                           <ref name="db.command"/>
-                           <ref name="db.computeroutput"/>
-                           <ref name="db.userinput"/>
-                        </choice>
-                        <choice>
-                           <ref name="db.filename"/>
-                           <ref name="db.command"/>
-                           <ref name="db.computeroutput"/>
-                           <ref name="db.userinput"/>
-                        </choice>
-                     </rng:group>
-                     <rng:group>
-                        <choice>
-                           <ref name="db.literal"/>
-                           <ref name="db.email"/>
-                        </choice>
-                        <choice>
-                           <ref name="db.literal"/>
-                           <ref name="db.email"/>
-                        </choice>
-                     </rng:group>
-                     <ref name="db.html.input"/>
-                     <ref name="db.html.button"/>
-                     <ref name="db.html.label"/>
-                     <ref name="db.html.select"/>
-                     <ref name="db.html.textarea"/>
-                     <ref name="db.html.fieldset"/>
-                     <ref name="db.itemizedlist"/>
-                     <ref name="db.orderedlist"/>
-                     <ref name="db.variablelist"/>
-                     <rng:group>
-                        <ref name="db.note"/>
-                     </rng:group>
-                     <ref name="db.example"/>
-                     <ref name="db.figure"/>
-                     <ref name="db.cals.table"/>
-                     <ref name="db.html.table"/>
-                     <ref name="db.cals.informaltable"/>
-                     <ref name="db.html.informaltable"/>
-                     <ref name="db.blockquote"/>
-                     <ref name="db.sidebar"/>
-                     <ref name="db.epigraph"/>
-                     <ref name="db.mediaobject"/>
-                     <ref name="db.literallayout"/>
-                     <ref name="db.programlisting"/>
-                     <empty/>
-                     <ref name="db.revhistory"/>
-                     <empty/>
-                     <rng:group>
-                        <ref name="db.note"/>
-                     </rng:group>
-                  </zeroOrMore>
-               </rng:group>
-            </doc:content-model>
-         </element>
       </define>
    </div>
    <div>
@@ -23213,6 +23475,11 @@
             </optional>
          </interleave>
       </define>
+      <define name="db.listitem.info">
+         <optional>
+            <ref name="db.titleforbidden.info"/>
+         </optional>
+      </define>
       <define name="db.listitem">
          <element name="listitem">
             <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -23333,35 +23600,40 @@
                </interleave>
             </doc:attributes>
             <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <oneOrMore>
-                  <ref name="db.itemizedlist"/>
-                  <ref name="db.orderedlist"/>
-                  <ref name="db.variablelist"/>
-                  <rng:group>
-                     <ref name="db.note"/>
-                  </rng:group>
-                  <ref name="db.example"/>
-                  <ref name="db.figure"/>
-                  <ref name="db.cals.table"/>
-                  <ref name="db.html.table"/>
-                  <ref name="db.cals.informaltable"/>
-                  <ref name="db.html.informaltable"/>
-                  <ref name="db.blockquote"/>
-                  <ref name="db.sidebar"/>
-                  <ref name="db.epigraph"/>
-                  <ref name="db.mediaobject"/>
-                  <ref name="db.literallayout"/>
-                  <ref name="db.programlisting"/>
-                  <empty/>
-                  <ref name="db.revhistory"/>
-                  <empty/>
-                  <rng:group>
-                     <ref name="db.note"/>
-                  </rng:group>
-                  <ref name="db.para"/>
-                  <ref name="db.html.form"/>
-                  <ref name="ws.webtoc"/>
-               </oneOrMore>
+               <rng:group>
+                  <optional>
+                     <ref name="db.titleforbidden.info"/>
+                  </optional>
+                  <oneOrMore>
+                     <ref name="db.itemizedlist"/>
+                     <ref name="db.orderedlist"/>
+                     <ref name="db.variablelist"/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
+                     <ref name="db.example"/>
+                     <ref name="db.figure"/>
+                     <ref name="db.cals.table"/>
+                     <ref name="db.html.table"/>
+                     <ref name="db.cals.informaltable"/>
+                     <ref name="db.html.informaltable"/>
+                     <ref name="db.blockquote"/>
+                     <ref name="db.sidebar"/>
+                     <ref name="db.epigraph"/>
+                     <ref name="db.mediaobject"/>
+                     <ref name="db.literallayout"/>
+                     <ref name="db.programlisting"/>
+                     <empty/>
+                     <ref name="db.revhistory"/>
+                     <empty/>
+                     <rng:group>
+                        <ref name="db.note"/>
+                     </rng:group>
+                     <ref name="db.para"/>
+                     <ref name="db.html.form"/>
+                     <ref name="ws.webtoc"/>
+                  </oneOrMore>
+               </rng:group>
             </doc:content-model>
          </element>
       </define>
@@ -24270,10 +24542,24 @@
             <db:refpurpose>Specifies style information to be used when rendering the float</db:refpurpose>
          </attribute>
       </define>
+      <define name="db.example.type.attribute">
+         <optional>
+            <attribute name="type">
+               <db:refpurpose>Identifies the type of example</db:refpurpose>
+            </attribute>
+         </optional>
+      </define>
       <define name="db.example.attlist">
          <interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <optional>
+                  <attribute name="type">
+                     <db:refpurpose>Identifies the type of example</db:refpurpose>
+                  </attribute>
+               </optional>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -24431,6 +24717,13 @@
                <interleave>
                   <optional>
                      <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <optional>
+                        <attribute name="type">
+                           <db:refpurpose>Identifies the type of example</db:refpurpose>
+                        </attribute>
+                     </optional>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -25268,10 +25561,24 @@
             <db:refpurpose>Specifies style information to be used when rendering the float</db:refpurpose>
          </attribute>
       </define>
+      <define name="db.figure.type.attribute">
+         <optional>
+            <attribute name="type">
+               <db:refpurpose>Identifies the type of figure</db:refpurpose>
+            </attribute>
+         </optional>
+      </define>
       <define name="db.figure.attlist">
          <interleave>
             <optional>
                <attribute name="role"/>
+            </optional>
+            <optional>
+               <optional>
+                  <attribute name="type">
+                     <db:refpurpose>Identifies the type of figure</db:refpurpose>
+                  </attribute>
+               </optional>
             </optional>
             <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
                <optional>
@@ -25423,6 +25730,13 @@
                <interleave>
                   <optional>
                      <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <optional>
+                        <attribute name="type">
+                           <db:refpurpose>Identifies the type of figure</db:refpurpose>
+                        </attribute>
+                     </optional>
                   </optional>
                   <optional>
                      <attribute name="xml:id">
@@ -28976,383 +29290,6 @@
             </optional>
          </interleave>
       </define>
-      <define name="db.affiliation">
-         <element name="affiliation">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <rng:group>
-                  <zeroOrMore>
-                     <ref name="db.jobtitle"/>
-                  </zeroOrMore>
-                  <choice>
-                     <optional>
-                        <ref name="db.org"/>
-                     </optional>
-                     <group>
-                        <optional>
-                           <ref name="db.orgname"/>
-                        </optional>
-                        <zeroOrMore>
-                           <ref name="db.orgdiv"/>
-                        </zeroOrMore>
-                     </group>
-                  </choice>
-               </rng:group>
-            </doc:content-model>
-         </element>
-      </define>
-   </div>
-   <div>
-      <db:refname>jobtitle</db:refname>
-      <db:refpurpose>The title of an individual in an organization</db:refpurpose>
-      <define name="db.jobtitle.role.attribute">
-         <attribute name="role"/>
-      </define>
-      <define name="db.jobtitle.attlist">
-         <interleave>
-            <optional>
-               <attribute name="role"/>
-            </optional>
-            <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <attribute name="xml:id">
-                     <data type="ID"/>
-                  </attribute>
-               </optional>
-               <optional>
-                  <attribute name="version"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:lang"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:base"/>
-               </optional>
-               <optional>
-                  <attribute name="revisionflag">
-                     <choice>
-                        <value>changed</value>
-                        <value>added</value>
-                        <value>deleted</value>
-                        <value>off</value>
-                     </choice>
-                  </attribute>
-               </optional>
-            </rng:group>
-            <optional>
-               <choice>
-                  <attribute name="linkend">
-                     <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                     <data type="IDREF"/>
-                  </attribute>
-                  <interleave>
-                     <optional>
-                        <attribute name="xlink:type">
-                           <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                           <value>simple</value>
-                           <a:documentation>An XLink simple link type</a:documentation>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:href">
-                           <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:role">
-                           <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                           <dbx:description>
-                              <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                           </dbx:description>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:arcrole">
-                           <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:title">
-                           <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:show">
-                           <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>new</value>
-                              <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                              <value>replace</value>
-                              <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                              <value>embed</value>
-                              <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:actuate">
-                           <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>onLoad</value>
-                              <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                              <value>onRequest</value>
-                              <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                  </interleave>
-               </choice>
-            </optional>
-         </interleave>
-      </define>
-      <define name="db.jobtitle">
-         <element name="jobtitle">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <zeroOrMore>
-                  <text/>
-                  <ref name="db.inlinemediaobject"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db._phrase"/>
-                  <ref name="db.replaceable"/>
-               </zeroOrMore>
-            </doc:content-model>
-         </element>
-      </define>
    </div>
    <div>
       <db:refname>orgname</db:refname>
@@ -29715,296 +29652,6 @@
                   <ref name="db.subscript"/>
                   <ref name="db._phrase"/>
                   <ref name="db.replaceable"/>
-               </zeroOrMore>
-            </doc:content-model>
-         </element>
-      </define>
-   </div>
-   <div>
-      <db:refname>orgdiv</db:refname>
-      <db:refpurpose>A division of an organization</db:refpurpose>
-      <define name="db.orgdiv.role.attribute">
-         <attribute name="role"/>
-      </define>
-      <define name="db.orgdiv.attlist">
-         <interleave>
-            <optional>
-               <attribute name="role"/>
-            </optional>
-            <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <attribute name="xml:id">
-                     <data type="ID"/>
-                  </attribute>
-               </optional>
-               <optional>
-                  <attribute name="version"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:lang"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:base"/>
-               </optional>
-               <optional>
-                  <attribute name="revisionflag">
-                     <choice>
-                        <value>changed</value>
-                        <value>added</value>
-                        <value>deleted</value>
-                        <value>off</value>
-                     </choice>
-                  </attribute>
-               </optional>
-            </rng:group>
-            <optional>
-               <choice>
-                  <attribute name="linkend">
-                     <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                     <data type="IDREF"/>
-                  </attribute>
-                  <interleave>
-                     <optional>
-                        <attribute name="xlink:type">
-                           <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                           <value>simple</value>
-                           <a:documentation>An XLink simple link type</a:documentation>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:href">
-                           <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:role">
-                           <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                           <dbx:description>
-                              <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                           </dbx:description>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:arcrole">
-                           <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:title">
-                           <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:show">
-                           <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>new</value>
-                              <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                              <value>replace</value>
-                              <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                              <value>embed</value>
-                              <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:actuate">
-                           <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>onLoad</value>
-                              <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                              <value>onRequest</value>
-                              <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                  </interleave>
-               </choice>
-            </optional>
-         </interleave>
-      </define>
-      <define name="db.orgdiv">
-         <element name="orgdiv">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <zeroOrMore>
-                  <text/>
-                  <ref name="db.inlinemediaobject"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db.abbrev"/>
-                  <ref name="db.acronym"/>
-                  <ref name="db.emphasis"/>
-                  <ref name="db.footnote"/>
-                  <ref name="db.footnoteref"/>
-                  <ref name="db.phrase"/>
-                  <ref name="db.quote"/>
-                  <ref name="db.trademark"/>
-                  <ref name="db.citetitle"/>
-                  <ref name="db.author"/>
-                  <ref name="db.personname"/>
-                  <ref name="db.orgname"/>
-                  <ref name="db.editor"/>
-                  <ref name="db.xref"/>
-                  <ref name="db.link"/>
-                  <ref name="db.replaceable"/>
-                  <ref name="db.systemitem"/>
-                  <ref name="db.option"/>
-                  <ref name="rddl.resource"/>
-                  <rng:group>
-                     <choice>
-                        <ref name="db.filename"/>
-                        <ref name="db.command"/>
-                        <ref name="db.computeroutput"/>
-                        <ref name="db.userinput"/>
-                     </choice>
-                     <choice>
-                        <ref name="db.filename"/>
-                        <ref name="db.command"/>
-                        <ref name="db.computeroutput"/>
-                        <ref name="db.userinput"/>
-                     </choice>
-                  </rng:group>
-                  <rng:group>
-                     <choice>
-                        <ref name="db.literal"/>
-                        <ref name="db.email"/>
-                     </choice>
-                     <choice>
-                        <ref name="db.literal"/>
-                        <ref name="db.email"/>
-                     </choice>
-                  </rng:group>
-                  <ref name="db.html.input"/>
-                  <ref name="db.html.button"/>
-                  <ref name="db.html.label"/>
-                  <ref name="db.html.select"/>
-                  <ref name="db.html.textarea"/>
-                  <ref name="db.html.fieldset"/>
                </zeroOrMore>
             </doc:content-model>
          </element>
@@ -31023,249 +30670,6 @@
                   <ref name="db._phrase"/>
                   <ref name="db.replaceable"/>
                </zeroOrMore>
-            </doc:content-model>
-         </element>
-      </define>
-   </div>
-   <div>
-      <db:refname>org</db:refname>
-      <db:refpurpose>An organization and associated metadata</db:refpurpose>
-      <define name="db.org.role.attribute">
-         <attribute name="role"/>
-      </define>
-      <define name="db.org.attlist">
-         <interleave>
-            <optional>
-               <attribute name="role"/>
-            </optional>
-            <rng:group xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <optional>
-                  <attribute name="xml:id">
-                     <data type="ID"/>
-                  </attribute>
-               </optional>
-               <optional>
-                  <attribute name="version"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:lang"/>
-               </optional>
-               <optional>
-                  <attribute name="xml:base"/>
-               </optional>
-               <optional>
-                  <attribute name="revisionflag">
-                     <choice>
-                        <value>changed</value>
-                        <value>added</value>
-                        <value>deleted</value>
-                        <value>off</value>
-                     </choice>
-                  </attribute>
-               </optional>
-            </rng:group>
-            <optional>
-               <choice>
-                  <attribute name="linkend">
-                     <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                     <data type="IDREF"/>
-                  </attribute>
-                  <interleave>
-                     <optional>
-                        <attribute name="xlink:type">
-                           <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                           <value>simple</value>
-                           <a:documentation>An XLink simple link type</a:documentation>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:href">
-                           <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:role">
-                           <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                           <dbx:description>
-                              <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                           </dbx:description>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:arcrole">
-                           <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                           <data type="anyURI"/>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:title">
-                           <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:show">
-                           <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>new</value>
-                              <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                              <value>replace</value>
-                              <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                              <value>embed</value>
-                              <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                     <optional>
-                        <attribute name="xlink:actuate">
-                           <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                           <choice>
-                              <value>onLoad</value>
-                              <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                              <value>onRequest</value>
-                              <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                              <value>other</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                              <value>none</value>
-                              <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                           </choice>
-                        </attribute>
-                     </optional>
-                  </interleave>
-               </choice>
-            </optional>
-         </interleave>
-      </define>
-      <define name="db.org">
-         <element name="org">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <rng:group>
-                  <ref name="db.orgname"/>
-                  <zeroOrMore>
-                     <ref name="db.affiliation"/>
-                     <ref name="db.email"/>
-                     <ref name="db.orgdiv"/>
-                  </zeroOrMore>
-               </rng:group>
             </doc:content-model>
          </element>
       </define>
@@ -38389,133 +37793,6 @@
             </optional>
          </interleave>
       </define>
-      <define name="db.abbrev">
-         <element name="abbrev">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <zeroOrMore>
-                  <text/>
-                  <ref name="db.inlinemediaobject"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db._phrase"/>
-                  <ref name="db.replaceable"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db.trademark"/>
-               </zeroOrMore>
-            </doc:content-model>
-         </element>
-      </define>
    </div>
    <div>
       <db:refname>acronym</db:refname>
@@ -38635,133 +37912,6 @@
             </optional>
          </interleave>
       </define>
-      <define name="db.acronym">
-         <element name="acronym">
-            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <interleave>
-                  <optional>
-                     <attribute name="role"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:id">
-                        <data type="ID"/>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <attribute name="version"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:lang"/>
-                  </optional>
-                  <optional>
-                     <attribute name="xml:base"/>
-                  </optional>
-                  <optional>
-                     <attribute name="revisionflag">
-                        <choice>
-                           <value>changed</value>
-                           <value>added</value>
-                           <value>deleted</value>
-                           <value>off</value>
-                        </choice>
-                     </attribute>
-                  </optional>
-                  <optional>
-                     <choice>
-                        <attribute name="linkend">
-                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
-                           <data type="IDREF"/>
-                        </attribute>
-                        <interleave>
-                           <optional>
-                              <attribute name="xlink:type">
-                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
-                                 <value>simple</value>
-                                 <a:documentation>An XLink simple link type</a:documentation>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:href">
-                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:role">
-                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
-                                 <dbx:description>
-                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
- to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
- before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
- attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
- attribute value.</db:para>
-                                 </dbx:description>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:arcrole">
-                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
-                                 <data type="anyURI"/>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:title">
-                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:show">
-                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>new</value>
-                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
-                                    <value>replace</value>
-                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
-                                    <value>embed</value>
-                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                           <optional>
-                              <attribute name="xlink:actuate">
-                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
-                                 <choice>
-                                    <value>onLoad</value>
-                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
-                                    <value>onRequest</value>
-                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
-                                    <value>other</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
-                                    <value>none</value>
-                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
-                                 </choice>
-                              </attribute>
-                           </optional>
-                        </interleave>
-                     </choice>
-                  </optional>
-               </interleave>
-            </doc:attributes>
-            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
-               <zeroOrMore>
-                  <text/>
-                  <ref name="db.inlinemediaobject"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db._phrase"/>
-                  <ref name="db.replaceable"/>
-                  <ref name="db.superscript"/>
-                  <ref name="db.subscript"/>
-                  <ref name="db.trademark"/>
-               </zeroOrMore>
-            </doc:content-model>
-         </element>
-      </define>
    </div>
    <div>
       <db:refname>citetitle</db:refname>
@@ -38804,6 +37954,8 @@
             <a:documentation>A web page</a:documentation>
             <value>wiki</value>
             <a:documentation>A wiki page</a:documentation>
+            <value>other</value>
+            <a:documentation>Some other kind of work</a:documentation>
          </choice>
       </define>
       <define name="db.citetitle.pubwork.attribute">
@@ -38846,6 +37998,8 @@
                <a:documentation>A web page</a:documentation>
                <value>wiki</value>
                <a:documentation>A wiki page</a:documentation>
+               <value>other</value>
+               <a:documentation>Some other kind of work</a:documentation>
             </choice>
          </attribute>
       </define>
@@ -39002,6 +38156,8 @@
                      <a:documentation>A web page</a:documentation>
                      <value>wiki</value>
                      <a:documentation>A wiki page</a:documentation>
+                     <value>other</value>
+                     <a:documentation>Some other kind of work</a:documentation>
                   </choice>
                </attribute>
             </optional>
@@ -39157,6 +38313,8 @@
                            <a:documentation>A web page</a:documentation>
                            <value>wiki</value>
                            <a:documentation>A wiki page</a:documentation>
+                           <value>other</value>
+                           <a:documentation>Some other kind of work</a:documentation>
                         </choice>
                      </attribute>
                   </optional>
@@ -42103,6 +41261,697 @@
          </zeroOrMore>
       </rng:group>
    </define>
+   <div>
+      <db:refname>abbrev</db:refname>
+      <db:refpurpose>An abbreviation, especially one followed by a period</db:refpurpose>
+      <define name="db.abbrev">
+         <element name="abbrev">
+            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <interleave>
+                  <optional>
+                     <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:id">
+                        <data type="ID"/>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <attribute name="version"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:lang"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:base"/>
+                  </optional>
+                  <optional>
+                     <attribute name="revisionflag">
+                        <choice>
+                           <value>changed</value>
+                           <value>added</value>
+                           <value>deleted</value>
+                           <value>off</value>
+                        </choice>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <choice>
+                        <attribute name="linkend">
+                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
+                           <data type="IDREF"/>
+                        </attribute>
+                        <interleave>
+                           <optional>
+                              <attribute name="xlink:type">
+                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
+                                 <value>simple</value>
+                                 <a:documentation>An XLink simple link type</a:documentation>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:href">
+                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:role">
+                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
+                                 <dbx:description>
+                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
+ to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
+ before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
+ attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
+ attribute value.</db:para>
+                                 </dbx:description>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:arcrole">
+                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:title">
+                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:show">
+                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>new</value>
+                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
+                                    <value>replace</value>
+                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
+                                    <value>embed</value>
+                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:actuate">
+                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>onLoad</value>
+                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
+                                    <value>onRequest</value>
+                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                        </interleave>
+                     </choice>
+                  </optional>
+               </interleave>
+            </doc:attributes>
+            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <zeroOrMore>
+                  <text/>
+                  <ref name="db.inlinemediaobject"/>
+                  <ref name="db.superscript"/>
+                  <ref name="db.subscript"/>
+                  <ref name="db._phrase"/>
+                  <ref name="db.replaceable"/>
+                  <ref name="db.trademark"/>
+               </zeroOrMore>
+            </doc:content-model>
+         </element>
+      </define>
+   </div>
+   <div>
+      <db:refname>acronym</db:refname>
+      <db:refpurpose>An often pronounceable word made from the initial (or selected) letters of a name or phrase</db:refpurpose>
+      <define name="db.acronym">
+         <element name="acronym">
+            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <interleave>
+                  <optional>
+                     <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:id">
+                        <data type="ID"/>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <attribute name="version"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:lang"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:base"/>
+                  </optional>
+                  <optional>
+                     <attribute name="revisionflag">
+                        <choice>
+                           <value>changed</value>
+                           <value>added</value>
+                           <value>deleted</value>
+                           <value>off</value>
+                        </choice>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <choice>
+                        <attribute name="linkend">
+                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
+                           <data type="IDREF"/>
+                        </attribute>
+                        <interleave>
+                           <optional>
+                              <attribute name="xlink:type">
+                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
+                                 <value>simple</value>
+                                 <a:documentation>An XLink simple link type</a:documentation>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:href">
+                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:role">
+                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
+                                 <dbx:description>
+                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
+ to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
+ before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
+ attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
+ attribute value.</db:para>
+                                 </dbx:description>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:arcrole">
+                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:title">
+                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:show">
+                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>new</value>
+                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
+                                    <value>replace</value>
+                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
+                                    <value>embed</value>
+                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:actuate">
+                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>onLoad</value>
+                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
+                                    <value>onRequest</value>
+                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                        </interleave>
+                     </choice>
+                  </optional>
+               </interleave>
+            </doc:attributes>
+            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <zeroOrMore>
+                  <text/>
+                  <ref name="db.inlinemediaobject"/>
+                  <ref name="db.superscript"/>
+                  <ref name="db.subscript"/>
+                  <ref name="db._phrase"/>
+                  <ref name="db.replaceable"/>
+                  <ref name="db.trademark"/>
+               </zeroOrMore>
+            </doc:content-model>
+         </element>
+      </define>
+   </div>
+   <div>
+      <db:refname>attribution</db:refname>
+      <db:refpurpose>The source of a block quote or epigraph</db:refpurpose>
+      <define name="db.attribution">
+         <element name="attribution">
+            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <interleave>
+                  <optional>
+                     <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:id">
+                        <data type="ID"/>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <attribute name="version"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:lang"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:base"/>
+                  </optional>
+                  <optional>
+                     <attribute name="revisionflag">
+                        <choice>
+                           <value>changed</value>
+                           <value>added</value>
+                           <value>deleted</value>
+                           <value>off</value>
+                        </choice>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <choice>
+                        <attribute name="linkend">
+                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
+                           <data type="IDREF"/>
+                        </attribute>
+                        <interleave>
+                           <optional>
+                              <attribute name="xlink:type">
+                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
+                                 <value>simple</value>
+                                 <a:documentation>An XLink simple link type</a:documentation>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:href">
+                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:role">
+                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
+                                 <dbx:description>
+                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
+ to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
+ before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
+ attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
+ attribute value.</db:para>
+                                 </dbx:description>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:arcrole">
+                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:title">
+                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:show">
+                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>new</value>
+                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
+                                    <value>replace</value>
+                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
+                                    <value>embed</value>
+                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:actuate">
+                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>onLoad</value>
+                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
+                                    <value>onRequest</value>
+                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                        </interleave>
+                     </choice>
+                  </optional>
+               </interleave>
+            </doc:attributes>
+            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <zeroOrMore>
+                  <text/>
+                  <ref name="db.inlinemediaobject"/>
+                  <ref name="db.superscript"/>
+                  <ref name="db.subscript"/>
+                  <ref name="db._phrase"/>
+                  <ref name="db.replaceable"/>
+                  <ref name="db.personname"/>
+                  <ref name="db.citetitle"/>
+               </zeroOrMore>
+            </doc:content-model>
+         </element>
+      </define>
+   </div>
+   <div>
+      <db:refname>affiliation</db:refname>
+      <db:refpurpose>The institutional affiliation of an individual</db:refpurpose>
+      <define name="db.affiliation">
+         <element name="affiliation">
+            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <interleave>
+                  <optional>
+                     <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:id">
+                        <data type="ID"/>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <attribute name="version"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:lang"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:base"/>
+                  </optional>
+                  <optional>
+                     <attribute name="revisionflag">
+                        <choice>
+                           <value>changed</value>
+                           <value>added</value>
+                           <value>deleted</value>
+                           <value>off</value>
+                        </choice>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <choice>
+                        <attribute name="linkend">
+                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
+                           <data type="IDREF"/>
+                        </attribute>
+                        <interleave>
+                           <optional>
+                              <attribute name="xlink:type">
+                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
+                                 <value>simple</value>
+                                 <a:documentation>An XLink simple link type</a:documentation>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:href">
+                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:role">
+                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
+                                 <dbx:description>
+                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
+ to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
+ before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
+ attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
+ attribute value.</db:para>
+                                 </dbx:description>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:arcrole">
+                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:title">
+                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:show">
+                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>new</value>
+                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
+                                    <value>replace</value>
+                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
+                                    <value>embed</value>
+                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:actuate">
+                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>onLoad</value>
+                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
+                                    <value>onRequest</value>
+                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                        </interleave>
+                     </choice>
+                  </optional>
+               </interleave>
+            </doc:attributes>
+            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <optional>
+                  <ref name="db.orgname"/>
+               </optional>
+            </doc:content-model>
+         </element>
+      </define>
+   </div>
+   <div>
+      <db:refname>para</db:refname>
+      <db:refpurpose>A paragraph</db:refpurpose>
+      <define name="db.para">
+         <element name="para">
+            <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <interleave>
+                  <optional>
+                     <attribute name="role"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:id">
+                        <data type="ID"/>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <attribute name="version"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:lang"/>
+                  </optional>
+                  <optional>
+                     <attribute name="xml:base"/>
+                  </optional>
+                  <optional>
+                     <attribute name="revisionflag">
+                        <choice>
+                           <value>changed</value>
+                           <value>added</value>
+                           <value>deleted</value>
+                           <value>off</value>
+                        </choice>
+                     </attribute>
+                  </optional>
+                  <optional>
+                     <choice>
+                        <attribute name="linkend">
+                           <db:refpurpose>Points to an internal link target by identifying the value of its xml:id attribute</db:refpurpose>
+                           <data type="IDREF"/>
+                        </attribute>
+                        <interleave>
+                           <optional>
+                              <attribute name="xlink:type">
+                                 <db:refpurpose>Identifies the XLink link type</db:refpurpose>
+                                 <value>simple</value>
+                                 <a:documentation>An XLink simple link type</a:documentation>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:href">
+                                 <db:refpurpose>Identifies a link target with a URI</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:role">
+                                 <db:refpurpose>Identifies the XLink role of the link</db:refpurpose>
+                                 <dbx:description>
+                                    <db:para>DocBook uses the XLink role value <db:uri>http://docbook.org/xlink/role/olink</db:uri>
+ to identify linking elements with OLink semantics. That means the part of <db:tag class="attribute">xlink:href</db:tag>
+ before the number sign (#) is to be interpreted as equivalent to the olink <db:tag class="attribute">targetdoc</db:tag>
+ attribute value, and the part after the number sign as the olink <db:tag class="attribute">targetptr</db:tag>
+ attribute value.</db:para>
+                                 </dbx:description>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:arcrole">
+                                 <db:refpurpose>Identifies the XLink arcrole of the link</db:refpurpose>
+                                 <data type="anyURI"/>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:title">
+                                 <db:refpurpose>Identifies the XLink title of the link</db:refpurpose>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:show">
+                                 <db:refpurpose>Identifies the XLink show behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>new</value>
+                                    <a:documentation>An application traversing to the ending resource should load it in a new window, frame, pane, or other relevant presentation context.</a:documentation>
+                                    <value>replace</value>
+                                    <a:documentation>An application traversing to the ending resource should load the resource in the same window, frame, pane, or other relevant presentation context in which the starting resource was loaded.</a:documentation>
+                                    <value>embed</value>
+                                    <a:documentation>An application traversing to the ending resource should load its presentation in place of the presentation of the starting resource.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by XLink. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                           <optional>
+                              <attribute name="xlink:actuate">
+                                 <db:refpurpose>Identifies the XLink actuate behavior of the link</db:refpurpose>
+                                 <choice>
+                                    <value>onLoad</value>
+                                    <a:documentation>An application should traverse to the ending resource immediately on loading the starting resource.</a:documentation>
+                                    <value>onRequest</value>
+                                    <a:documentation>An application should traverse from the starting resource to the ending resource only on a post-loading event triggered for the purpose of traversal.</a:documentation>
+                                    <value>other</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. The application should look for other markup present in the link to determine the appropriate behavior.</a:documentation>
+                                    <value>none</value>
+                                    <a:documentation>The behavior of an application traversing to the ending resource is unconstrained by this specification. No other markup is present to help the application determine the appropriate behavior.</a:documentation>
+                                 </choice>
+                              </attribute>
+                           </optional>
+                        </interleave>
+                     </choice>
+                  </optional>
+               </interleave>
+            </doc:attributes>
+            <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
+               <rng:group>
+                  <optional>
+                     <ref name="db.titleforbidden.info"/>
+                  </optional>
+                  <zeroOrMore>
+                     <text/>
+                     <ref name="db.inlinemediaobject"/>
+                     <ref name="db.superscript"/>
+                     <ref name="db.subscript"/>
+                     <ref name="db.abbrev"/>
+                     <ref name="db.acronym"/>
+                     <ref name="db.emphasis"/>
+                     <ref name="db.footnote"/>
+                     <ref name="db.footnoteref"/>
+                     <ref name="db.phrase"/>
+                     <ref name="db.quote"/>
+                     <ref name="db.trademark"/>
+                     <ref name="db.citetitle"/>
+                     <ref name="db.author"/>
+                     <ref name="db.personname"/>
+                     <ref name="db.orgname"/>
+                     <ref name="db.editor"/>
+                     <ref name="db.xref"/>
+                     <ref name="db.link"/>
+                     <ref name="db.replaceable"/>
+                     <ref name="db.systemitem"/>
+                     <ref name="db.option"/>
+                     <ref name="rddl.resource"/>
+                     <rng:group>
+                        <choice>
+                           <ref name="db.filename"/>
+                           <ref name="db.command"/>
+                           <ref name="db.computeroutput"/>
+                           <ref name="db.userinput"/>
+                        </choice>
+                        <choice>
+                           <ref name="db.filename"/>
+                           <ref name="db.command"/>
+                           <ref name="db.computeroutput"/>
+                           <ref name="db.userinput"/>
+                        </choice>
+                     </rng:group>
+                     <rng:group>
+                        <choice>
+                           <ref name="db.literal"/>
+                           <ref name="db.email"/>
+                        </choice>
+                        <choice>
+                           <ref name="db.literal"/>
+                           <ref name="db.email"/>
+                        </choice>
+                     </rng:group>
+                     <ref name="db.html.input"/>
+                     <ref name="db.html.button"/>
+                     <ref name="db.html.label"/>
+                     <ref name="db.html.select"/>
+                     <ref name="db.html.textarea"/>
+                     <ref name="db.html.fieldset"/>
+                  </zeroOrMore>
+               </rng:group>
+            </doc:content-model>
+         </element>
+      </define>
+   </div>
    <start>
       <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/"/>
       <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">

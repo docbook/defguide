@@ -1,0 +1,49 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.2" revision="5.2">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">templatename</refmiscinfo>
+  <refmiscinfo role="pattern">db.templatename</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>The <tag>templatename</tag> tag is used to identify the name of
+a template. This is likely to occur only in documentation about
+programming systems.</para>
+
+<refsection>
+<title>Processing expectations</title>
+<para>Formatted inline.</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<programlisting><xi:include href="../examples/templatename.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.templatename.1" role="HACK-ex.out.start"/>
+<xi:include href="../examples/templatename.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.templatename.1" role="HACK-ex.out.end"/>
+
+</refsection>
+
+</refentry>

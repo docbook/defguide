@@ -2,7 +2,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          version="5.0" xml:id="ch-publish">
-<?dbhtml filename="ch04.html"?>
+<?db filename="ch04.html"?>
 <info>
 <title>Publishing DocBook Documents</title>
 </info>
@@ -158,7 +158,7 @@ be supported.&lt;/emphasis&gt;
 
           
 
-          <programlisting>@namespace "http://docbook.org/ns/docbook"
+          <programlisting language="css">@namespace "http://docbook.org/ns/docbook"
 
 para              { display: block }
 emphasis          { display: inline;
@@ -192,7 +192,7 @@ emphasis emphasis { display: inline;
 
           
 
-          <programlisting>&lt;?xml version='1.0'?&gt;
+          <programlisting language="xml">&lt;?xml version='1.0'?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
                 xmlns:db="http://docbook.org/ns/docbook"
@@ -241,7 +241,7 @@ emphasis emphasis { display: inline;
 
           
 
-          <programlisting>xquery version "1.0";
+          <programlisting language="xquery">xquery version "1.0";
 
 declare default function namespace "http://www.w3.org/2005/xpath-functions";
 

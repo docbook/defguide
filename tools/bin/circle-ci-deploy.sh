@@ -1,9 +1,6 @@
 #!/bin/bash
 
-DBVERSION=`cat gradle.properties | grep "^docbookVersion" | cut -f2 -d=`
-DBVERSION=`echo $DBVERSION | cut -f1 -db` # ignore b1, b2, ... suffixes
-DBVERSION=`echo $DBVERSION | cut -f1 -dC` # ignore CR1, CR2, ... suffixes
-DBVERSION=`echo $DBVERSION | cut -f2 -dV` # ignore the leading V
+DBVERSION=`cat gradle.properties | grep "^docbookBaseVersion" | cut -f2 -d=`
 
 BUILD=`pwd`/build
 REPO="git@github.com:${CIRCLE_PROJECT_USERNAME}/defguide.git"
@@ -26,11 +23,11 @@ if [ "$GITHUB_CNAME" != "" ]; then
 fi;
 
 mkdir -p ./tdg/${DBVERSION}
-rsync -ar --delete $BUILD/dist/defguide/ ./tdg/${DBVERSION}/
+rsync -ar --delete $BUILD/dist/${DBVERSION}/ ./tdg/${DBVERSION}/
 
 for book in publishers sdocbook slides website; do
     mkdir -p ./tdg/${book}/${DBVERSION}
-    rsync -ar --delete $BUILD/dist/$book/ ./tdg/$book/${DBVERSION}/
+    rsync -ar --delete $BUILD/dist/$book/${DBVERSION}/ ./tdg/$book/${DBVERSION}/
 done
 
 git add --all .

@@ -2,7 +2,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xlink="http://www.w3.org/1999/xlink"
 	 version="5.0" xml:id="ch-create">
-<?dbhtml filename="ch02.html"?>
+<?db filename="ch02.html"?>
 <info>
   <title>Creating DocBook Documents</title>
 </info>
@@ -388,9 +388,6 @@
         <secondary>XInclude</secondary>
       </indexterm></para>
 
-    <?dbfo-need height=”1in”
-?>
-
     <para>The essential trade-offs between external parsed entities and
     XInclude are:</para>
 
@@ -648,35 +645,26 @@
       <tag>refentry</tag>s.</para>
     </section>
 
-    <section xml:id="s.sections"><info><title>Sections</title></info>
+<section xml:id="s.sections"><info><title>Sections</title></info>
+<para><indexterm>
+  <primary>nesting</primary>
+  <secondary>section elements</secondary>
+  </indexterm><indexterm>
+  <primary>numbered sections, levels</primary>
+  </indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>sections</secondary>
+  </indexterm>There are several flavors of sectioning elements in
+DocBook:</para>
 
-
-      <para><indexterm>
-          <primary>nesting</primary>
-
-          <secondary>section elements</secondary>
-        </indexterm><indexterm>
-          <primary>numbered sections, levels</primary>
-        </indexterm><indexterm>
-          <primary>elements</primary>
-
-          <secondary>sections</secondary>
-        </indexterm>There are several flavors of sectioning elements in
-      DocBook:</para>
-
-      <variablelist>
-        <varlistentry>
-          <term><tag>sect1</tag></term>
-
-          <term><tag>sect2</tag></term>
-
-          <term><tag>sect3</tag></term>
-
-          <term><tag>sect4</tag></term>
-
-          <term><tag>sect5</tag></term>
-
-          <listitem>
+<variablelist>
+  <varlistentry>
+    <term><tag>sect1</tag></term>
+    <term><tag>sect2</tag></term>
+    <term><tag>sect3</tag></term>
+    <term><tag>sect4</tag></term>
+    <term><tag>sect5</tag></term>
+    <listitem>
             <para>The <tag>sect1</tag>…<tag>sect5</tag>
             elements are sectioning elements. They can occur in most <phrase role="keep-together">component-level</phrase> elements. These
             numbered section elements must be properly nested
@@ -689,14 +677,12 @@
 
         <varlistentry>
           <term><tag>section</tag></term>
-
           <listitem>
             <para><indexterm>
-                <primary>section element</primary>
-              </indexterm>The <tag>section</tag> element is an
-            alternative to numbered sections. The <tag>section</tag>
-            element is recursive, meaning that you can nest it to any depth
-            desired.</para>
+                <primary>section element</primary></indexterm>The <tag>section</tag>
+            element is an alternative to
+            numbered sections. It is recursive, meaning that you
+            can nest them to any depth desired.</para>
           </listitem>
         </varlistentry>
 
@@ -816,9 +802,6 @@
       <tag>title</tag>, <tag>publisher</tag>, and so on) as
       well as other meta-information such as revision histories, keyword sets,
       and index terms.</para>
-
-      <?dbfo-need height=”1in”
-?>
 
       <para>An <tag>info</tag> can contain:</para>
 
@@ -1753,9 +1736,6 @@
         can be divided into sections with <tag role="keep-together">qandadiv</tag>.</para>
       </section>
 
-      <?dbfo-need height=”1in”
-?>
-
       <section xml:id="s.tasks"><info><title>Procedures and tasks</title></info>
 
 
@@ -2090,18 +2070,68 @@ cross-references and links (e.g., <tag>link</tag> and <tag>xref</tag>)
 and implicit cross-references (e.g., <tag>citation</tag> and <tag>glossterm</tag>).
 </para>
 
-<element-summary-list>
-  <tag>anchor</tag>
-  <tag>biblioref</tag>
-  <tag>citation</tag>
-  <tag>citerefentry</tag>
-  <tag>citetitle</tag>
-  <tag>firstterm</tag>
-  <tag>glossterm</tag>
-  <tag>link</tag>
-  <tag>olink</tag>
-  <tag>xref</tag>
-</element-summary-list>
+<variablelist>
+<varlistentry>
+<term><tag>anchor</tag></term>
+<listitem>
+  <para>A spot in the document.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>biblioref</tag></term>
+<listitem>
+  <para>A cross-reference to a bibliographic entry.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>citation</tag></term>
+<listitem>
+  <para>An inline bibliographic reference to another published work.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>citerefentry</tag></term>
+<listitem>
+  <para>A citation to a reference page.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>citetitle</tag></term>
+<listitem>
+  <para>The title of a cited work.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>firstterm</tag></term>
+<listitem>
+  <para>The first occurrence of a term.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>glossterm</tag></term>
+<listitem>
+  <para>A glossary term.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>link</tag></term>
+<listitem>
+  <para>A hypertext link.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>olink</tag></term>
+<listitem>
+  <para>A link that addresses its target indirectly.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag>xref</tag></term>
+<listitem>
+  <para>A cross reference to another part of the document.</para>
+</listitem>
+</varlistentry>
+</variablelist>
 
 <para>DocBook provides a number of common attributes to facilitate
 cross-references and hypertext linking. Broadly speaking, these facilities
@@ -2117,18 +2147,18 @@ a link (the thing being linked <emphasis>to</emphasis>) is with an
 specific point in text where there isn't a convenient wrapper element
 on which to hang the ID.</para>
 
-<para>XML ID/IDREF linking is accomplished with the <att>linkend</att> attribute,
+<para>XML ID/IDREF linking is accomplished with the <tag class="attribute">linkend</tag> attribute,
 most frequently on the <tag>link</tag> or <tag>xref</tag> elements. On a
-<tag>link</tag>, the <att>linkend</att> attribute establishes a hypertext
-link from the text of the <tag>link</tag> to the element with the <att>xml:id</att>
-attribute specified in the <att>linkend</att> attribute. The semantics of
+<tag>link</tag>, the <tag class="attribute">linkend</tag> attribute establishes a hypertext
+link from the text of the <tag>link</tag> to the element with the <tag class="attribute">xml:id</tag>
+attribute specified in the <tag class="attribute">linkend</tag> attribute. The semantics of
 <tag>xref</tag> are analogous, but the link text is generated automatically.
-For example, an <tag>xref</tag> to an <att>xml:id</att> on a <tag>figure</tag>
+For example, an <tag>xref</tag> to an <tag class="attribute">xml:id</tag> on a <tag>figure</tag>
 element might generate link text like “Figure 3.1, Title of Figure”.
 The exact nature of the generated text is controlled by the tool processing
 DocBook.</para>
 
-<para>The <att>xml:id</att> for this section is “<literal>s.inline.xref</literal>”.
+<para>The <tag class="attribute">xml:id</tag> for this section is “<literal>s.inline.xref</literal>”.
 The following table demonstrates how <tag>link</tag> and <tag>xref</tag>
 work:</para>
 
@@ -2154,9 +2184,9 @@ work:</para>
 </tgroup>
 </informaltable>
 
-<para>The <att>linkend</att> attribute can be used on most inline
-elements, not just on <att>link</att> and <att>xref</att>. Used in
-this way, the element on which the <att>linkend</att> attribute
+<para>The <tag class="attribute">linkend</tag> attribute can be used on most inline
+elements, not just on <tag class="attribute">link</tag> and <tag class="attribute">xref</tag>. Used in
+this way, the element on which the <tag class="attribute">linkend</tag> attribute
 appears behaves like a <tag>link</tag>. (This is a convenient alternative
 that avoids having to place the other inline element inside a <tag>link</tag>
 or place a <tag>link</tag> inside it.)</para>
@@ -2175,7 +2205,7 @@ specific formatting; having specific elements for this purpose simplifies
 some processing.</para>
 
 <para>For cross-references to a glossary entry, <tag>firstterm</tag>
-or <tag>glossterm</tag> are used. You can use <att>linkend</att> on
+or <tag>glossterm</tag> are used. You can use <tag class="attribute">linkend</tag> on
 those elements, but sometimes the links can be constructed implicitly
 by the processor.</para>
 
@@ -2194,8 +2224,8 @@ of linking scenarios. DocBook V5.1 has complete support for XLink and
 allows the XLink attributes on most elements.</para>
 
 <para>The simplest and most common use of XLink in DocBook is simply
-to place the <att>xlink:href</att> attribute on an inline element. The value
-of the <att>xlink:href</att> attribute is technically an
+to place the <tag class="attribute">xlink:href</tag> attribute on an inline element. The value
+of the <tag class="attribute">xlink:href</tag> attribute is technically an
 XPointer (see
 <biblioref linkend="XPointer"/>), though this is often simply a URI.
 DocBook places no constraints on the kinds of XPointers that can be used,
@@ -2204,14 +2234,14 @@ sure you are satisfied that you can process the ones you use.
 </para>
 
 <para>Where
-<att>linkend</att> on an element forms an <emphasis>intra</emphasis>-document
-link (exclusively), <att>xlink:href</att> usually forms an
+<tag class="attribute">linkend</tag> on an element forms an <emphasis>intra</emphasis>-document
+link (exclusively), <tag class="attribute">xlink:href</tag> usually forms an
 <emphasis>inter</emphasis>-document link.</para>
 
 <para>There's nothing that prevents an XLink from being an intra-document
 link, using the bare fragment identifier form. The salient difference between
-using an ID/IDREF link (<att>linkend</att>) and a bare fragment identifier
-(<att>xlink:href</att>) is that the former is always checked by the validator
+using an ID/IDREF link (<tag class="attribute">linkend</tag>) and a bare fragment identifier
+(<tag class="attribute">xlink:href</tag>) is that the former is always checked by the validator
 and the latter never is. This means that errors in the latter form are less
 likely to be detected by the processor.</para>
 
@@ -2283,11 +2313,11 @@ either inline or standoff markup.</para>
 variable. Check to make sure your processor can handle the forms you use.</para>
 
 <para>One final note on XLink. The XLink specification uses an attribute,
-<att>xlink:title</att>, to contain the human-readable titles of locators,
+<tag class="attribute">xlink:title</tag>, to contain the human-readable titles of locators,
 arcs, etc. DocBook assiduously avoids placing human-readable content in
 attribute values because they cannot contain inline graphics for non-Unicode
 characters and they complicate translation efforts. Nevertheless, for
-compatibility, the <att>xlink:title</att> attribute is used in XLink support.
+compatibility, the <tag class="attribute">xlink:title</tag> attribute is used in XLink support.
 Consider the implications of placing human-readable titles in that attribute
 carefully.</para>
 </section>
@@ -2926,9 +2956,6 @@ carefully.</para>
           </varlistentry>
         </variablelist>
       </section>
-
-      <?dbfo-need height=”1in”
-?>
 
       <section xml:id="s.inline.general"><info><title>General purpose</title></info>
 
@@ -3842,9 +3869,6 @@ Let's talk about leopards.
       <para>For instance, if you have this markup in your document:</para>
 
       <programlisting>&lt;glossterm linkend="xml"&gt;Extensible Markup Language&lt;/glossterm&gt; is a new standard… </programlisting>
-
-      <?dbfo-need height=”1in”
-?>
 
       <para><indexterm>
           <primary>glossaries</primary>

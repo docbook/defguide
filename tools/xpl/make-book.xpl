@@ -15,6 +15,8 @@
   </p:input>
 </p:xslt>
 
+<p:identity name="profiled"/>
+<!--
 <p:xslt name="profiled">
   <p:input port="stylesheet">
     <p:document href="../../build/docbook/xslt/base/preprocess/30-profile.xsl"/>
@@ -23,8 +25,8 @@
   <p:with-param name="profile.condition" select="$condition"/>
   <p:with-param name="profile.arch"      select="$arch"/>
   <p:with-param name="profile.revision"  select="$revision"/>
-  <!-- <p:log port="result" href="/tmp/tdg-profile.xml"/> -->
 </p:xslt>
+-->
 
 <p:load name="purpose.xsl">
   <p:with-option name="href"

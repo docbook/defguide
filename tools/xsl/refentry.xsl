@@ -43,14 +43,15 @@
 <xsl:variable name="seealso" select="document(resolve-uri($seealsofile,base-uri(/)))"/>
 
 <xsl:variable name="CMN_COUNT" as="xs:integer">
-  <xsl:sequence select="count($rng/key('define', 'db.common.attributes')
-                              //rng:attribute) + 1"/>
+  <xsl:sequence
+      select="count($rng/key('define', 'db.common.attributes')//rng:attribute)
+              + 1"/>
   <!-- +1 because there's always a role attribute even though it isn't "common" -->
 </xsl:variable>
 
 <xsl:variable name="CMNIDR_COUNT" as="xs:integer">
-  <xsl:sequence select="count($rng/key('define', 'db.common.idreq.attributes')
-                              //rng:attribute) + 1"/>
+  <xsl:sequence select="count($rng/key('define', 'db.common.idreq.attributes')//rng:attribute)
+                        + 1"/>
   <!-- +1 because there's always a role attribute even though it isn't "common" -->
 </xsl:variable>
 
@@ -103,7 +104,7 @@
   <xsl:element name="{name(.)}">
     <xsl:copy-of select="@*"/>
     <xsl:attribute name="xml:id" select="translate(concat('element.', $pattern),':','-')"/>
-    <xsl:processing-instruction name="dbhtml">
+    <xsl:processing-instruction name="db">
       <xsl:text>filename="</xsl:text>
       <xsl:choose>
         <xsl:when test="$pattern = 'db.index'">
@@ -163,9 +164,20 @@
 
   <xsl:choose>
     <xsl:when test="empty($commit)">
-      <xsl:message>Failed to find GIT commit for <xsl:value-of select="$path"/></xsl:message>
+      <xsl:message>
+        <xsl:text>Failed to find GIT commit for </xsl:text>
+        <xsl:value-of select="$path"/>
+      </xsl:message>
     </xsl:when>
     <xsl:otherwise>
+      <xsl:variable name="ordered" as="element()*">
+        <xsl:for-each select="$commit">
+          <xsl:sort select="git:date" order="descending"/>
+          <xsl:sequence select="."/>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="commit" select="subsequence($ordered, 1, 1)"/>
+
       <pubdate><xsl:value-of select="$commit/git:date"/></pubdate>
       <xsl:text>&#10;</xsl:text>
       <releaseinfo role='hash'><xsl:value-of select="$commit/git:hash"/></releaseinfo>
@@ -328,7 +340,9 @@
       <title>Children</title>
       <para>
         <xsl:text>The following elements occur in </xsl:text>
-        <xsl:value-of select="$element"/>
+        <tag>
+          <xsl:value-of select="$element"/>
+        </tag>
         <xsl:text>: </xsl:text>
         <simplelist type='inline'>
           <xsl:if test="$elem/doc:content-model//rng:text">
@@ -416,81 +430,21 @@
                 select="$elem/doc:attributes//rng:attribute"/>
 
   <xsl:variable name="cmnAttr"
-                select="$attributes[@name='xml:id' and parent::rng:optional]
-                        |$attributes[@name='xml:lang']
-                        |$attributes[@name='xml:base']
-                        |$attributes[@name='remap']
-                        |$attributes[@name='xreflabel']
-                        |$attributes[@name='revisionflag']
-                        |$attributes[@name='arch']
-                        |$attributes[@name='audience']
-                        |$attributes[@name='condition']
-                        |$attributes[@name='conformance']
-                        |$attributes[@name='os']
-                        |$attributes[@name='revision']
-                        |$attributes[@name='security']
-                        |$attributes[@name='userlevel']
-                        |$attributes[@name='vendor']
-                        |$attributes[@name='wordsize']
-                        |$attributes[@name='outputformat']
-                        |$attributes[@name='role']
-                        |$attributes[@name='version']
-                        |$attributes[@name='dir']
-                        |$attributes[@name='annotations']
-                        |$attributes[@name='vocab']
-                        |$attributes[@name='property']
-                        |$attributes[@name='typeof']
-                        |$attributes[@name='resource']
-                        |$attributes[@name='prefix']"/>
-
+                select="f:common-attributes-idopt($attributes)"/>
   <xsl:variable name="cmnAttrIdReq"
-                select="$attributes[@name='xml:id' and not(parent::rng:optional)]
-                        |$attributes[@name='xml:lang']
-                        |$attributes[@name='xml:base']
-                        |$attributes[@name='remap']
-                        |$attributes[@name='xreflabel']
-                        |$attributes[@name='revisionflag']
-                        |$attributes[@name='arch']
-                        |$attributes[@name='audience']
-                        |$attributes[@name='condition']
-                        |$attributes[@name='conformance']
-                        |$attributes[@name='os']
-                        |$attributes[@name='revision']
-                        |$attributes[@name='security']
-                        |$attributes[@name='userlevel']
-                        |$attributes[@name='vendor']
-                        |$attributes[@name='wordsize']
-                        |$attributes[@name='outputformat']
-                        |$attributes[@name='role']
-                        |$attributes[@name='version']
-                        |$attributes[@name='dir']
-                        |$attributes[@name='annotations']
-                        |$attributes[@name='vocab']
-                        |$attributes[@name='property']
-                        |$attributes[@name='typeof']
-                        |$attributes[@name='resource']
-                        |$attributes[@name='prefix']"/>
-
-  <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
-
+                select="f:common-attributes-idreq($attributes)"/>
+  <xsl:variable name="cmnAttrEither"
+                select="f:common-attributes($attributes)"/>
   <xsl:variable name="cmnLinkAttr"
-                select="$attributes[@name='linkend']
-                        |$attributes[@name='linkends']
-                        |$attributes[@name='xlink:actuate']
-                        |$attributes[@name='xlink:arcrole']
-                        |$attributes[@name='xlink:from']
-                        |$attributes[@name='xlink:href']
-                        |$attributes[@name='xlink:label']
-                        |$attributes[@name='xlink:role']
-                        |$attributes[@name='xlink:show']
-                        |$attributes[@name='xlink:title']
-                        |$attributes[@name='xlink:to']
-                        |$attributes[@name='xlink:type']"/>
-
+                select="f:common-link-attributes($attributes)"/>
   <xsl:variable name="otherAttr"
-                select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+                select="f:other-attributes($attributes)"/>
 
 <!--
+  <xsl:message>
+    <xsl:sequence select="$attributes/@name/string()"/>
+  </xsl:message>
+
   <xsl:message>
     <xsl:text>1: </xsl:text>
     <xsl:value-of select="count($cmnAttr)"/>
@@ -500,6 +454,33 @@
     <xsl:value-of select="count($cmnLinkAttr)"/>
     <xsl:text>, </xsl:text>
     <xsl:value-of select="count($otherAttr)"/>
+  </xsl:message>
+
+  <xsl:message>
+    <xsl:text>2: </xsl:text>
+    <xsl:value-of select="$CMN_COUNT"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="$LINK_COUNT"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="$CMNIDR_COUNT"/>
+  </xsl:message>
+
+  <xsl:message>
+    <xsl:sequence select="count($cmnAttrEither)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:sequence select="$CMN_COUNT"/>
+    <xsl:text>, </xsl:text>
+    <xsl:sequence select="count($otherAttr)"/>
+    <xsl:text> : </xsl:text>
+    <xsl:sequence select="count($cmnAttr)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:sequence select="count($cmnLinkAttr)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:sequence select="$LINK_COUNT"/>
+    <xsl:text>, </xsl:text>
+    <xsl:sequence select="count($cmnAttrIdReq)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:sequence select="$CMNIDR_COUNT"/>
   </xsl:message>
 -->
 
@@ -744,25 +725,27 @@
     <refsection condition="ref.desc.seealso">
       <title>See Also</title>
       <para>
-      <simplelist type="inline">
-        <!-- use f-e-g to remove duplicates -->
-        <xsl:for-each-group select="$seealsolist/*" group-by="@name">
-          <xsl:sort select="current-grouping-key()" data-type="text"/>
-          <member>
-            <tag>
-              <xsl:value-of select="current-grouping-key()"/>
-            </tag>
-            <xsl:if test="@pattern">
-              <xsl:text>&#160;</xsl:text>
-              <phrase role="pattern">
-                <xsl:text>(</xsl:text>
-                <xsl:value-of select="@pattern"/>
-                <xsl:text>)</xsl:text>
-              </phrase>
-            </xsl:if>
-          </member>
-        </xsl:for-each-group>
-      </simplelist>
+        <xsl:text>Related elements: </xsl:text>
+        <simplelist type="inline">
+          <!-- use f-e-g to remove duplicates -->
+          <xsl:for-each-group select="$seealsolist/*" group-by="@name">
+            <xsl:sort select="current-grouping-key()" data-type="text"/>
+            <member>
+              <tag>
+                <xsl:value-of select="current-grouping-key()"/>
+              </tag>
+              <xsl:if test="@pattern">
+                <xsl:text>&#160;</xsl:text>
+                <phrase role="pattern">
+                  <xsl:text>(</xsl:text>
+                  <xsl:value-of select="@pattern"/>
+                  <xsl:text>)</xsl:text>
+                </phrase>
+              </xsl:if>
+            </member>
+          </xsl:for-each-group>
+        </simplelist>
+        <xsl:text>.</xsl:text>
       </para>
     </refsection>
   </xsl:if>
@@ -910,7 +893,6 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       <xsl:text>Synopsis</xsl:text>
     </title>
     <xsl:apply-templates/>
-
     <xsl:if test="$schema != 'docbook' and not(contains($refentry/@revision, 'publishers'))">
       <xsl:variable name="pattern"
                     select="$refentry/db:refmeta/db:refmiscinfo[@role='pattern']"/>
@@ -1054,79 +1036,15 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:variable name="attributes" select=".//rng:attribute"/>
 
   <xsl:variable name="cmnAttr"
-                select="$attributes[@name='xml:id' and parent::rng:optional]
-                        |$attributes[@name='xml:lang']
-                        |$attributes[@name='xml:base']
-                        |$attributes[@name='remap']
-                        |$attributes[@name='xreflabel']
-                        |$attributes[@name='revisionflag']
-                        |$attributes[@name='arch']
-                        |$attributes[@name='audience']
-                        |$attributes[@name='condition']
-                        |$attributes[@name='conformance']
-                        |$attributes[@name='os']
-                        |$attributes[@name='revision']
-                        |$attributes[@name='security']
-                        |$attributes[@name='userlevel']
-                        |$attributes[@name='vendor']
-                        |$attributes[@name='wordsize']
-                        |$attributes[@name='outputformat']
-                        |$attributes[@name='role']
-                        |$attributes[@name='version']
-                        |$attributes[@name='dir']
-                        |$attributes[@name='annotations']
-                        |$attributes[@name='vocab']
-                        |$attributes[@name='property']
-                        |$attributes[@name='typeof']
-                        |$attributes[@name='resource']
-                        |$attributes[@name='prefix']"/>
-
+                select="f:common-attributes-idopt($attributes)"/>
   <xsl:variable name="cmnAttrIdReq"
-                select="$attributes[@name='xml:id' and not(parent::rng:optional)]
-                        |$attributes[@name='xml:lang']
-                        |$attributes[@name='xml:base']
-                        |$attributes[@name='remap']
-                        |$attributes[@name='xreflabel']
-                        |$attributes[@name='revisionflag']
-                        |$attributes[@name='arch']
-                        |$attributes[@name='audience']
-                        |$attributes[@name='condition']
-                        |$attributes[@name='conformance']
-                        |$attributes[@name='os']
-                        |$attributes[@name='revision']
-                        |$attributes[@name='security']
-                        |$attributes[@name='userlevel']
-                        |$attributes[@name='vendor']
-                        |$attributes[@name='wordsize']
-                        |$attributes[@name='outputformat']
-                        |$attributes[@name='role']
-                        |$attributes[@name='version']
-                        |$attributes[@name='dir']
-                        |$attributes[@name='annotations']
-                        |$attributes[@name='vocab']
-                        |$attributes[@name='property']
-                        |$attributes[@name='typeof']
-                        |$attributes[@name='resource']
-                        |$attributes[@name='prefix']"/>
-
-  <xsl:variable name="cmnAttrEither" select="$cmnAttr|$cmnAttrIdReq"/>
-
+                select="f:common-attributes-idreq($attributes)"/>
+  <xsl:variable name="cmnAttrEither"
+                select="f:common-attributes($attributes)"/>
   <xsl:variable name="cmnLinkAttr"
-                select="$attributes[@name='linkend']
-                        |$attributes[@name='linkends']
-                        |$attributes[@name='xlink:actuate']
-                        |$attributes[@name='xlink:arcrole']
-                        |$attributes[@name='xlink:from']
-                        |$attributes[@name='xlink:href']
-                        |$attributes[@name='xlink:label']
-                        |$attributes[@name='xlink:role']
-                        |$attributes[@name='xlink:show']
-                        |$attributes[@name='xlink:title']
-                        |$attributes[@name='xlink:to']
-                        |$attributes[@name='xlink:type']"/>
-
+                select="f:common-link-attributes($attributes)"/>
   <xsl:variable name="otherAttr"
-                select="$attributes except ($cmnAttr|$cmnAttrIdReq|$cmnLinkAttr)"/>
+                select="f:other-attributes($attributes)"/>
 
 <!--
   <xsl:message>
@@ -1799,5 +1717,105 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
     </itemizedlist>
   </listitem>
 </xsl:template>
+
+<!-- ============================================================ -->
+
+<xsl:function name="f:common-attributes-idopt" as="element(rng:attribute)*">
+  <xsl:param name="attributes" as="element(rng:attribute)*"/>
+
+  <xsl:sequence select="$attributes[@name='xml:id' and parent::rng:optional]
+                        |$attributes[@name='xml:lang']
+                        |$attributes[@name='xml:base']
+                        |$attributes[@name='remap']
+                        |$attributes[@name='xreflabel']
+                        |$attributes[@name='revisionflag']
+                        |$attributes[@name='arch']
+                        |$attributes[@name='audience']
+                        |$attributes[@name='condition']
+                        |$attributes[@name='conformance']
+                        |$attributes[@name='os']
+                        |$attributes[@name='revision']
+                        |$attributes[@name='security']
+                        |$attributes[@name='userlevel']
+                        |$attributes[@name='vendor']
+                        |$attributes[@name='wordsize']
+                        |$attributes[@name='outputformat']
+                        |$attributes[@name='role']
+                        |$attributes[@name='version']
+                        |$attributes[@name='dir']
+                        |$attributes[@name='annotations']
+                        |$attributes[@name='vocab']
+                        |$attributes[@name='property']
+                        |$attributes[@name='typeof']
+                        |$attributes[@name='resource']
+                        |$attributes[@name='prefix']
+                        |$attributes[@name='trans:idfixup']
+                        |$attributes[@name='trans:suffix']
+                        |$attributes[@name='trans:linkscope']"/>
+</xsl:function>
+
+<xsl:function name="f:common-attributes-idreq" as="element(rng:attribute)*">
+  <xsl:param name="attributes" as="element(rng:attribute)*"/>
+
+  <xsl:sequence select="$attributes[@name='xml:id' and not(parent::rng:optional)]
+                        |$attributes[@name='xml:lang']
+                        |$attributes[@name='xml:base']
+                        |$attributes[@name='remap']
+                        |$attributes[@name='xreflabel']
+                        |$attributes[@name='revisionflag']
+                        |$attributes[@name='arch']
+                        |$attributes[@name='audience']
+                        |$attributes[@name='condition']
+                        |$attributes[@name='conformance']
+                        |$attributes[@name='os']
+                        |$attributes[@name='revision']
+                        |$attributes[@name='security']
+                        |$attributes[@name='userlevel']
+                        |$attributes[@name='vendor']
+                        |$attributes[@name='wordsize']
+                        |$attributes[@name='outputformat']
+                        |$attributes[@name='role']
+                        |$attributes[@name='version']
+                        |$attributes[@name='dir']
+                        |$attributes[@name='annotations']
+                        |$attributes[@name='vocab']
+                        |$attributes[@name='property']
+                        |$attributes[@name='typeof']
+                        |$attributes[@name='resource']
+                        |$attributes[@name='prefix']
+                        |$attributes[@name='trans:idfixup']
+                        |$attributes[@name='trans:suffix']
+                        |$attributes[@name='trans:linkscope']"/>
+</xsl:function>
+
+<xsl:function name="f:common-attributes" as="element(rng:attribute)*">
+  <xsl:param name="attributes" as="element(rng:attribute)*"/>
+  <xsl:sequence select="f:common-attributes-idopt($attributes)
+                        |f:common-attributes-idreq($attributes)"/>
+</xsl:function>
+
+<xsl:function name="f:common-link-attributes" as="element(rng:attribute)*">
+  <xsl:param name="attributes" as="element(rng:attribute)*"/>
+
+  <xsl:sequence select="$attributes[@name='linkend']
+                        |$attributes[@name='linkends']
+                        |$attributes[@name='xlink:actuate']
+                        |$attributes[@name='xlink:arcrole']
+                        |$attributes[@name='xlink:from']
+                        |$attributes[@name='xlink:href']
+                        |$attributes[@name='xlink:label']
+                        |$attributes[@name='xlink:role']
+                        |$attributes[@name='xlink:show']
+                        |$attributes[@name='xlink:title']
+                        |$attributes[@name='xlink:to']
+                        |$attributes[@name='xlink:type']"/>
+</xsl:function>
+
+<xsl:function name="f:other-attributes" as="element(rng:attribute)*">
+  <xsl:param name="attributes" as="element(rng:attribute)*"/>
+  <xsl:sequence select="$attributes
+                        except (f:common-attributes($attributes)
+                                |f:common-link-attributes($attributes))"/>
+</xsl:function>
 
 </xsl:stylesheet>

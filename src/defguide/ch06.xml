@@ -2,7 +2,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          version="5.0" xml:id="assemblies"
          revision="5.1">
-<?dbhtml filename="ch06.html"?>
+<?db filename="ch06.html"?>
 <info>
 <title>DocBook Assemblies</title>
 </info>
@@ -95,7 +95,7 @@ of assemblies, we assume that all metadata always occurs inside an
 <tag>info</tag> wrapper. In other words, although the following is
 perfectly legal:</para>
 
-<programlisting><![CDATA[<chapter>
+<programlisting language="xml"><![CDATA[<chapter>
   <title>Chapter Title</title>
   <info>
     <pubdate>2009-11-23</pubdate>
@@ -106,7 +106,7 @@ perfectly legal:</para>
 <para>we always assume that this is instead represented with a single
 <tag>info</tag> element:</para>
 
-<programlisting><![CDATA[<chapter>
+<programlisting language="xml"><![CDATA[<chapter>
   <info>
     <title>Chapter Title</title>
     <pubdate>2009-11-23</pubdate>
@@ -116,14 +116,14 @@ perfectly legal:</para>
 
 <para>Even in cases where there is no <tag>info</tag> element:</para>
 
-<programlisting><![CDATA[<section>
+<programlisting language="xml"><![CDATA[<section>
   <title>Section Title</title>
   <para>Some section content.</para>
 </section>]]></programlisting>
 
 <para>we assume one is present:</para>
 
-<programlisting><![CDATA[<section>
+<programlisting language="xml"><![CDATA[<section>
   <info>
     <title>Section Title</title>
   </info>
@@ -185,7 +185,7 @@ any number of <tag>transform</tag> elements.</para>
 <para>Individual resources are identified through a <tag>resource</tag>
 element:</para>
 
-<programlisting>&lt;resource xml:id="topicA" href="uri/for/topicA.xml"/&gt;</programlisting>
+<programlisting language="xml">&lt;resource xml:id="topicA" href="uri/for/topicA.xml"/&gt;</programlisting>
 
 <para>Here the resource “<literal>topicA</literal>” is associated with
 the URI <uri>uri/for/topicA.xml</uri>. Relative URIs are made absolute
@@ -289,7 +289,7 @@ that a particular collection of resources are related. The nature of
 the relationship is specified with a <tag class="attribute">type</tag>
 attribute. For example:</para>
 
-<programlisting><![CDATA[<relationship type="seealso">
+<programlisting language="xml"><![CDATA[<relationship type="seealso">
   <instance linkend="tut1"/>
   <instance linkend="tut2"/>
   <instance linkend="task1"/>
@@ -302,7 +302,7 @@ a “See Also” section at the end of any of these topics.</para>
 <para>Relationships are often, but not necessarily, unordered. This
 relationship establishes a path through a set of resources:</para>
 
-<programlisting><![CDATA[<relationship type="path">
+<programlisting language="xml"><![CDATA[<relationship type="path">
   <info>
     <title>New User Introduction</title>
   </info>
@@ -330,7 +330,7 @@ to translate from some other format into DocBook), or with a module
 (to address requirements beyond the limited transformation
 capabilities of the assembly).</para>
 
-<programlisting><![CDATA[<transforms>
+<programlisting language="xml"><![CDATA[<transforms>
   <transform grammar="dita" href="dita2db.xsl"/>
   <transform name="tutorial" href="db2tutorial.xsl"/>
   <transform name="art2pi" href="art2pi.xsl"/>
@@ -357,7 +357,7 @@ as possible, ideally none.</para>
 <para>Given the transformations above, a DITA resource might be
 included in the assembly:</para>
 
-<programlisting>&lt;resource xml:id="overview" href="dita/over.xml"
+<programlisting language="xml">&lt;resource xml:id="overview" href="dita/over.xml"
           grammar="dita"/></programlisting>
 
 <para>Whenever a module refers to this resource, it will receive the transformed,
@@ -366,7 +366,7 @@ DocBook result.</para>
 <para>If a module needs to perform a transformation to get from one DocBook
 format to another, it can name a transform as well:</para>
 
-<programlisting><![CDATA[<module resourceref="article">
+<programlisting language="xml"><![CDATA[<module resourceref="article">
   <output transform="tutorial"/>
 </module>]]></programlisting>
 
@@ -541,7 +541,7 @@ database).</para>
 
 <example>
 <title>Resources for a Help System</title>
-<programlisting><![CDATA[  <resources xml:base="some/path">
+<programlisting language="xml"><![CDATA[  <resources xml:base="some/path">
     <description>Resources for help system.</description>
     <resource xml:id="overview" href="overview.xml">
       <description>Overview of help system.</description>
@@ -590,7 +590,7 @@ the help system:</para>
 
 <example>
 <title>Defining the Basics of the Help System</title>
-<programlisting linenumbering="numbered"><![CDATA[  <structure type="help.system">
+<programlisting linenumbering="numbered" language="xml"><![CDATA[  <structure type="help.system">
     <info>
       <title>XIDI Build System Help</title>
       <titleabbrev>XIDI Help</titleabbrev>
@@ -626,7 +626,7 @@ in the back.</para>
 
 <example>
 <title>The Front End</title>
-<programlisting><![CDATA[    <module>
+<programlisting language="xml"><![CDATA[    <module>
       <output outputformat="webhelp" file="sys-toc.html" renderas="toc"/>
     </module>
     <module>
@@ -654,7 +654,7 @@ deal with things like Wizards and related screens and dialogs.</para>
 
 <example>
 <title>Middles Section of Help System</title>
-<programlisting><![CDATA[    <module resourceref="overview">
+<programlisting language="xml"><![CDATA[    <module resourceref="overview">
       <output outputformat="webhelp" file="overview.html"/>
       <output outputformat="pdf" renderas="chapter"/>
     </module>
@@ -711,7 +711,7 @@ back end components are added.</para>
 
 <example>
 <title>Back End of Help System</title>
-<programlisting><![CDATA[    <module>
+<programlisting language="xml"><![CDATA[    <module>
       <output outputformat="webhelp"/> 
       <!-- No file, just want the link in the navigation. -->
       <output outputformat="pdf" suppress="true"/>
@@ -787,7 +787,7 @@ building the document described by this structure.</para>
 <para>For the purposes of this section, let's
 assume that we have the following resources available:</para>
 
-<programlisting><![CDATA[<resources xml:base="tutorial/">
+<programlisting language="xml"><![CDATA[<resources xml:base="tutorial/">
   <resource xml:id="tut1" href="tut1.xml"/>
   <resource xml:id="tut2" href="tut2.xml"/>
   <resource xml:id="tut3" href="tut3.xml"/>
@@ -812,7 +812,7 @@ task 4, and an index.</para>
 
 <para>Our first attempt at a structure might look like this:</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output renderas="book"/>
   <module resourceref="tut1"/>
   <module resourceref="tut2"/>
@@ -833,7 +833,7 @@ create a realized structure that is a <tag>book</tag> (because that's what
 the <tag class="attribute">renderas</tag> on the <tag>output</tag> tells
 us) consisting of the tables of contents and the correct six topics:</para>
 
-<programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
+<programlisting language="xml"><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
   <toc role="figures"/>
   <toc role="tables"/>
   <toc role="procedures"/>
@@ -889,7 +889,7 @@ model as <tag>info</tag>. Metadata elements that you include in the
 
 <para>With these amendments, here's our new structure:</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output renderas="book"/>
   <merge>
     <title>Widget User Guide</title>
@@ -911,7 +911,7 @@ model as <tag>info</tag>. Metadata elements that you include in the
 
 <para>The realized structure that this produces is:</para>
 
-<programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
+<programlisting language="xml"><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
   <info>
     <title>Widget User Guide</title>
   </info>
@@ -954,7 +954,7 @@ appendix called “Troubleshooting”.</para>
 separate top-level modules for the tutorial and task, we'll make them
 subordinate modules in a new top-level module:</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output renderas="book"/>
   <merge>
     <title>Widget User Guide</title>
@@ -990,7 +990,7 @@ simply generates that element.</para>
 
 <para>The realized document is now:</para>
 
-<programlisting><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
+<programlisting language="xml"><![CDATA[<book xmlns="http://docbook.org/ns/docbook">
   <info>
     <title>Widget User Guide</title>
   </info>
@@ -1033,7 +1033,7 @@ of that appendix.</para>
 
 <para>We can achieve that by nesting the modules differently:</para>
 
-<programlisting><![CDATA[  <module resourceref="tut3">
+<programlisting language="xml"><![CDATA[  <module resourceref="tut3">
     <output renderas="appendix"/>
     <module resourceref="task4">
       <output renderas="section"/>
@@ -1043,7 +1043,7 @@ of that appendix.</para>
 <para>Now the <tag>appendix</tag> in the realized structure has the form
 that we want:</para>
 
-<programlisting><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
+<programlisting language="xml"><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
     <title>Troubleshooting</title>
     ...
     <section xml:base="tasks/task4.xml">
@@ -1064,7 +1064,7 @@ Task 3 is about diagnosing bearing issues.</para>
 
 <para>It's easy to combine them the new content into the appendix:</para>
 
-<programlisting><![CDATA[  <module resourceref="tut3">
+<programlisting language="xml"><![CDATA[  <module resourceref="tut3">
     <output renderas="appendix"/>
     <module resourceref="tut5">
       <output renderas="section"/>
@@ -1075,7 +1075,7 @@ Task 3 is about diagnosing bearing issues.</para>
 
 <para>but that doesn't produce a pleasing result:</para>
 
-<programlisting><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
+<programlisting language="xml"><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
     <title>Troubleshooting</title>
     ...
     <section xml:base="tutorial/tut5.xml">
@@ -1101,7 +1101,7 @@ what it's really about.</para>
 <tag class="attribute">contentonly</tag> attribute on <tag>module</tag>:
 </para>
 
-<programlisting><![CDATA[  <module resourceref="tut3">
+<programlisting language="xml"><![CDATA[  <module resourceref="tut3">
     <output renderas="appendix"/>
     <module resourceref="tut5" contentonly="true"/>
     <module resourceref="task4">
@@ -1117,7 +1117,7 @@ itself, is included.</para>
 
 <para>The realized structure for this appendix is now:</para>
 
-<programlisting><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
+<programlisting language="xml"><![CDATA[  <appendix xml:base="tutorial/tut3.xml">
     <title>Troubleshooting</title>
     ...
     ...content (only) of tutorial 5...
@@ -1134,7 +1134,7 @@ itself, is included.</para>
 <para>There are two ways that we can change the title. The first uses only
 semantics we've already encountered:</para>
 
-<programlisting><![CDATA[  <module>
+<programlisting language="xml"><![CDATA[  <module>
     <output renderas="appendix"/>
     <merge>
       <title>Troubleshooting spindle and bearing problems</title>
@@ -1158,7 +1158,7 @@ resource.)</para>
 
 <para>The second approach uses this convention:</para>
 
-<programlisting><![CDATA[  <module resourceref="tut3">
+<programlisting language="xml"><![CDATA[  <module resourceref="tut3">
     <output renderas="appendix"/>
     <merge>
       <title>Troubleshooting spindle and bearing problems</title>
@@ -1190,7 +1190,7 @@ guide in one place.</para>
 
 <para>The first step is to create a new output type:</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output outputformat="book" renderas="book"/>
   <output outputformat="web" renderas="book"/>
   <merge>
@@ -1236,7 +1236,7 @@ online site:</para>
 <para>The first two of these we can address with <tag>output</tag>
 elements:</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output outputformat="book" renderas="book"/>
   <output outputformat="web" renderas="book" file="user-guide.html"/>
   <merge>
@@ -1296,7 +1296,7 @@ apply only to that module.</para>
 
 <para>With filters, our <tag>structure</tag> might look like this:</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output outputformat="book" renderas="book"/>
   <output outputformat="web" renderas="book" file="user-guide.html"/>
   <filterout outputformat="web" condition="print"/>
@@ -1349,7 +1349,7 @@ or through related links.</para>
 <para>Using the resources defined in <xref linkend="ex-book"/>, here's
 a plausible <tag>structure</tag> for our online reference.</para>
 
-<programlisting><![CDATA[<structure xml:id="user-guide">
+<programlisting language="xml"><![CDATA[<structure xml:id="user-guide">
   <output renderas="topic"/>
   <filterout outputformat="web" condition="print"/>
   <merge>

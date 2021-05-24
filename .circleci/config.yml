@@ -18,6 +18,8 @@ jobs:
           fingerprints:
             - "8d:a0:f7:aa:e8:d5:41:7e:85:eb:10:71:49:16:33:c1"
             - "79:a8:2b:3d:12:40:1e:45:24:41:18:30:47:81:d9:61"
+            - "4d:e5:fc:a1:4e:bb:ce:1d:ee:e7:9f:a1:ba:68:02:5a"
+
       - checkout
 
       # Download and cache dependencies
@@ -33,10 +35,8 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       - run:
-          working_directory: ~/defguide
-          command: ./gradlew --no-daemon
+          command: ./gradlew dist
           no_output_timeout: 60m
 
       - run:
-          working_directory: ~/defguide
           command: tools/bin/circle-ci-deploy.sh
