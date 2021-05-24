@@ -15,13 +15,22 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>A <tag>subtitle</tag> identifies the subtitle of a
-      document, or portion of a document.</para>
+<title>Description</title>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>A <tag>subtitle</tag> identifies the subtitle of a document, or
+portion of a document.</para>
 
-        <para>Formatted as a displayed block.</para>
+<para>Titles are so common, and so often the only “info” elements
+associated with their parent, that they (<tag>title</tag>,
+<tag>subtitle</tag>, and <tag>titleabbrev</tag>) are allowed outside
+the <tag>info</tag> element. This is a tradeoff favoring author
+convenience over a small amount of additional complexity in
+processing. However, the title elements must either all be outside of
+the <tag>info</tag> wrapper or all inside, you cannot have some
+outside and some inside.</para>
+
+<refsection><info><title>Processing expectations</title></info>
+<para>Formatted as a displayed block.</para>
 </refsection>
 
 <?tdg-attributes?>

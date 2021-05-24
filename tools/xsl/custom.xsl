@@ -900,6 +900,14 @@
 
 <!-- ============================================================ -->
 
+<xsl:template match="db:templatename">
+  <xsl:call-template name="t:inline">
+    <xsl:with-param name="namemap" select="'code'"/>
+  </xsl:call-template>
+</xsl:template>
+
+<!-- ============================================================ -->
+
 <xsl:template match="db:refsection">
   <xsl:variable name="html" as="element(html:div)">
     <xsl:next-match/>

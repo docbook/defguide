@@ -1,9 +1,6 @@
 #!/bin/bash
 
-DBVERSION=`cat gradle.properties | grep "^docbookVersion" | cut -f2 -d=`
-DBVERSION=`echo $DBVERSION | cut -f1 -db` # ignore b1, b2, ... suffixes
-DBVERSION=`echo $DBVERSION | cut -f1 -dC` # ignore CR1, CR2, ... suffixes
-DBVERSION=`echo $DBVERSION | cut -f2 -dV` # ignore the leading V
+DBVERSION=`cat gradle.properties | grep "^docbookBaseVersion" | cut -f2 -d=`
 
 BUILD=`pwd`/build
 REPO="git@github.com:${CIRCLE_PROJECT_USERNAME}/defguide.git"

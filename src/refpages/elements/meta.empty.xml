@@ -1,0 +1,55 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.2" revision="5.2">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">meta</refmiscinfo>
+  <refmiscinfo role="pattern">db.meta.empty</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>The <tag>meta</tag> element can be used to add arbitrary metadata
+to the <tag>info</tag> section of an element. DocBook makes no assertions about
+the semantics of these elements.</para>
+
+<para>If the <tag>meta</tag> tag has a <tag class="attribute">content</tag>
+attribute, then the content of that attribute is taken to be the metadata value.
+In this case, the element must be empty.</para>
+
+<refsection>
+<title>Processing expectations</title>
+<para>Suppressed. The <tag>meta</tag> information may be used
+in presentation, but it is not generally formatted directly.
+</para>
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<programlisting><xi:include href="../examples/meta.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.meta.empty.1" role="HACK-ex.out.start"/>
+<xi:include href="../examples/meta.1.xml" xpointer="/1/2"/>
+<anchor xml:id="ex.oe.meta.empty.1" role="HACK-ex.out.end"/>
+
+</refsection>
+
+</refentry>

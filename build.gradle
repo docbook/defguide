@@ -2,7 +2,7 @@ buildscript {
   repositories {
     mavenLocal()
     mavenCentral()
-    maven { url "https://maven.restlet.org" }
+    maven { url "https://maven.restlet.talend.com" }
   }
 
   // Get rid of that [expletive deleted] warning about xml-apis 2.0.2/1.0.b2
@@ -43,6 +43,7 @@ configurations.all {
 }
 
 configurations {
+  saxonee
   tools {
     description = "Run tools"
     transitive = true
@@ -50,6 +51,11 @@ configurations {
 }
 
 dependencies {
+  saxonee fileTree(dir: "lib/${saxonVersion}").include("*.jar")
+  implementation (
+    [group: 'net.sf.saxon', name: 'Saxon-HE', version: saxonVersion],
+    [group: 'org.relaxng', name: 'jing', version: '20181204']
+  )
   tools (
     [group: 'org.relaxng', name: 'jing', version: '20181204'],
     [group: 'org.relaxng', name: 'trang', version: '20181204']
@@ -65,6 +71,20 @@ apply plugin: 'com.dorongold.task-tree'
 import org.docbook.DocBookTask
 import com.xmlcalabash.XMLCalabashTask
 import de.undercouch.gradle.tasks.download.Download
+
+// This is all a complete hack that I worked out by trial and error
+def eeAvailable = false
+def peAvailable = false
+def EXCP="${buildDir}/docbook/libs/docbook-xslTNG-${docbookXsltVersion}.jar"
+if (saxonEE != "false" && (eeAvailable || peAvailable)) {
+  configurations.saxonee.each { it ->
+    EXCP += ":" + it
+  }
+} else {
+  configurations.compileClasspath.each { it ->
+    EXCP += ":" + it
+  }
+}
 
 // ======================================================================
 
@@ -92,6 +112,26 @@ def bookVersion = ["defguide": defguideBookVersion,
                    "slides": slidesBookVersion,
                    "website": websiteBookVersion ]
 
+def profileCondition = "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web"
+
+def bookCondition = ["defguide": profileCondition,
+                     "publishers": profileCondition,
+                     "sdocbook": profileCondition,
+                     "slides": profileCondition,
+                     "website": profileCondition]
+
+def bookArch = ["defguide": "assembly defguide",
+                "publishers": "publishers",
+                "sdocbook": "sdocbook",
+                "slides": "sdocbook slides",
+                "website": "slides website"]
+
+def bookRevision = ["defguide": "5.0 5.1 5.2",
+                    "publishers": "5.0 5.1 5.2 1.0 1.1 1.2",
+                    "sdocbook": "5.0 5.1 5.2",
+                    "slides": "5.0 5.1 5.2",
+                    "website": "5.0 5.1 5.2"]
+
 // ======================================================================
 
 task hello() {
@@ -107,10 +147,14 @@ task hello() {
 //
 // Impatiently, I'm just getting a local copy
 
-def docbookXsltZip = "docbook-xslt2-" + docbookXsltVersion + ".zip"
+def docbookXsltZip = "docbook-xslTNG-${docbookXsltVersion}.zip"
 task downloadDocBookXslt(type: Download) {
-  src "https://github.com/docbook/xslt20-stylesheets/releases/download/" + docbookXsltVersion + "/" + docbookXsltZip
+  src "${docbookXsltBaseUri}/${docbookXsltVersion}/${docbookXsltZip}"
   dest new File(buildDir, docbookXsltZip)
+  // If we're going to d/l a new one, delete the old one
+  doFirst {
+    delete "build/docbook"
+  }
 }
 downloadDocBookXslt.onlyIf { !file("$buildDir/$docbookXsltZip").exists() }
 
@@ -121,32 +165,10 @@ task unzipDocBookXslt(dependsOn: downloadDocBookXslt, type: Copy) {
 unzipDocBookXslt.onlyIf { !file("$buildDir/docbook-xslt2-$docbookXsltVersion").exists() }
 
 task getDocBookXslt(dependsOn: unzipDocBookXslt, type: Copy) {
-  from { "build/docbook-xslt2-" + docbookXsltVersion }
+  from { "build/docbook-xslTNG-" + docbookXsltVersion }
   into { "build/docbook" }
 }
 getDocBookXslt.onlyIf { !file("$buildDir/docbook").exists() }
-
-// ======================================================================
-// There's no public distribution of the DocBook xslTNG stylesheets
-
-def docbookXslTNGZip = "docbook-xsltng-0.1.0.zip"
-task downloadDocBookXslTNG(type: Download) {
-  src "https://nwalsh.com/scratch/docbook/" + docbookXslTNGZip
-  dest new File(buildDir, docbookXslTNGZip)
-}
-downloadDocBookXslTNG.onlyIf { !file("$buildDir/$docbookXslTNGZip").exists() }
-
-task unzipDocBookXslTNG(dependsOn: downloadDocBookXslTNG, type: Copy) {
-  from zipTree(downloadDocBookXslTNG.dest)
-  into { "build" }
-}
-unzipDocBookXslTNG.onlyIf { !file("$buildDir/docbook-xsltng-0.1.0").exists() }
-
-task getDocBookXslTNG(dependsOn: unzipDocBookXslTNG, type: Copy) {
-  from { "build/docbook-xsltng-0.1.0" }
-  into { "build/docbook-xsltng" }
-}
-getDocBookXslTNG.onlyIf { !file("$buildDir/docbook-xsltng").exists() }
 
 // ======================================================================
 
@@ -160,6 +182,10 @@ task gitLogSummary(type: Exec) {
 }
 
 task allBooks() {
+  // just a dependency
+}
+
+task dist() {
   // just a dependency
 }
 
@@ -228,29 +254,47 @@ books.each { vocab ->
   }
 
   task "${vocab}_copyresources"(dependsOn: ["${vocab}_copyresources_src",
-                                            "${vocab}_copyresources_dist"]) {
+                                            "${vocab}_copyresources_docbook"]) {
     // Once so the stylesheet can read the dimensions
     // Once so it's in the actual published output
   }
 
-  task "${vocab}_copyresources_src"(type: Copy) {
+  task "${vocab}_copyresources_src"(type: Copy,
+                                    dependsOn: ["${vocab}_copyresources_src_html"]) {
     from "src/resources"
     into "build/${vocab}"
-    include "**/*"
-  }
-
-  task "${vocab}_copyresources_dist"(type: Copy) {
-    from "src/resources"
-    into "build/dist/${vocab}"
     include "**/*"
     exclude "figs/src"
     exclude "figs/print"
   }
 
+  task "${vocab}_copyresources_src_html"(type: Copy) {
+    from "src/resources"
+    into "build/${vocab}/html"
+    include "**/*"
+    exclude "figs/src"
+    exclude "figs/print"
+    doFirst {
+      mkdir "build/${vocab}/html"
+    }
+  }
+
+  task "${vocab}_copyresources_docbook"(type: Copy, dependsOn: ['getDocBookXslt']) {
+    from "build/docbook/resources"
+    into "build/${vocab}/html"
+    include "**/*"
+    doFirst {
+      mkdir "build/${vocab}/html"
+    }
+  }
+
   task "${vocab}_tdgxml"(dependsOn: ["${vocab}_copysrc",
                                      "${vocab}_bookmeta",
                                      "${vocab}_patterns",
-                                     "${vocab}_refpages"],
+                                     "${vocab}_refpages",
+                                     "${vocab}_copyresources_src",
+                                     "${vocab}_copyresources_src_html",
+                                     "${vocab}_copyresources_docbook"],
                          type: XMLCalabashTask) {
     inputs.dir "build/${vocab}"
     input("source", "build/${vocab}/book5.xml")
@@ -275,26 +319,44 @@ books.each { vocab ->
     pipeline "tools/xpl/refpages.xpl"
   }
 
-  task "${vocab}"(dependsOn: ["${vocab}_xml", "${vocab}_copyresources",
-                              "getDocBookXslt"],
-                  type: DocBookTask) {
-    inputs.file "tools/xsl/custom.xsl"
-    input("source", "build/${vocab}/book.xml")
-    option("style", "tools/xsl/custom.xsl")
-    param("output.dir", System.getProperty('user.dir') + "/build/dist/")
-    param("base.dir", "build/dist/${vocab}/")
-    param("html.ext", ".html")
-    param("rngfile", rndFile)
-    param("bookVersion", bookVersion[vocab])
-    param("docbookXsltVersion", docbookXsltVersion)
-    param("resource.root", "")
-    pipeline "tools/xpl/docbook.xpl"
+  task "${vocab}"(type: Exec,
+                  dependsOn: ["${vocab}_xml",
+                              "${vocab}_copyresources", "getDocBookXslt"]) {
+    inputs.file("${buildDir}/${vocab}/book.xml")
+    inputs.file("tools/xsl/book.xsl")
+    outputs.file("${buildDir}/${vocab}/html/index.html")
+    commandLine "java", "-cp", EXCP, "net.sf.saxon.Transform",
+                "-init:org.docbook.xsltng.extensions.Register",
+                "${buildDir}/${vocab}/book.xml",
+                "-xsl:tools/xsl/book.xsl",
+                "-o:${buildDir}/${vocab}/html/index.html",
+                "rngfile=${rndFile}",
+                "docbookXsltVersion=${docbookXsltVersion}",
+                "bookVersion=${bookVersion[vocab]}",
+                "mediaobject-input-base-uri=file:${projectDir}/build/${vocab}/",
+                "mediaobject-output-base-uri=./",
+                "chunk=index.html",
+                "chunk-output-base-uri=${buildDir}/${vocab}/html/",
+                "profile-condition=${bookCondition[vocab]}",
+                "profile-arch=${bookArch[vocab]}",
+                'persistent-toc=true',
+                "profile-revision=${bookRevision[vocab]}"
     doFirst {
-      mkdir("build/dist/${vocab}")
+      mkdir("${buildDir}/${vocab}/html")
     }
   }
-
   allBooks.dependsOn "${vocab}"
+
+  task "${vocab}_dist"(type: Copy,
+                       dependsOn: ["${vocab}"]) {
+    def distTarget = "${buildDir}/dist/${vocab}/${docbookBaseVersion}"
+    if (vocab == "defguide") {
+      distTarget = "${buildDir}/dist/${docbookBaseVersion}"
+    }
+    into distTarget
+    from "${buildDir}/${vocab}/html"
+  }
+  dist.dependsOn "${vocab}_dist"
 }
 
 // ======================================================================
@@ -319,7 +381,6 @@ task defguide_refpageListAssembly(type: XMLCalabashTask) {
 task defguide_xml(dependsOn: ['defguide_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("tools/xsl/profile.xsl")
   inputs.file file("build/defguide/style/purpose.xsl")
 
   input("source", "build/defguide/tdg.xml")

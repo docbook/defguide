@@ -645,35 +645,26 @@
       <tag>refentry</tag>s.</para>
     </section>
 
-    <section xml:id="s.sections"><info><title>Sections</title></info>
+<section xml:id="s.sections"><info><title>Sections</title></info>
+<para><indexterm>
+  <primary>nesting</primary>
+  <secondary>section elements</secondary>
+  </indexterm><indexterm>
+  <primary>numbered sections, levels</primary>
+  </indexterm><indexterm>
+  <primary>elements</primary>
+  <secondary>sections</secondary>
+  </indexterm>There are several flavors of sectioning elements in
+DocBook:</para>
 
-
-      <para><indexterm>
-          <primary>nesting</primary>
-
-          <secondary>section elements</secondary>
-        </indexterm><indexterm>
-          <primary>numbered sections, levels</primary>
-        </indexterm><indexterm>
-          <primary>elements</primary>
-
-          <secondary>sections</secondary>
-        </indexterm>There are several flavors of sectioning elements in
-      DocBook:</para>
-
-      <variablelist>
-        <varlistentry>
-          <term><tag>sect1</tag></term>
-
-          <term><tag>sect2</tag></term>
-
-          <term><tag>sect3</tag></term>
-
-          <term><tag>sect4</tag></term>
-
-          <term><tag>sect5</tag></term>
-
-          <listitem>
+<variablelist>
+  <varlistentry>
+    <term><tag>sect1</tag></term>
+    <term><tag>sect2</tag></term>
+    <term><tag>sect3</tag></term>
+    <term><tag>sect4</tag></term>
+    <term><tag>sect5</tag></term>
+    <listitem>
             <para>The <tag>sect1</tag>…<tag>sect5</tag>
             elements are sectioning elements. They can occur in most <phrase role="keep-together">component-level</phrase> elements. These
             numbered section elements must be properly nested
@@ -686,14 +677,12 @@
 
         <varlistentry>
           <term><tag>section</tag></term>
-
           <listitem>
             <para><indexterm>
-                <primary>section element</primary>
-              </indexterm>The <tag>section</tag> element is an
-            alternative to numbered sections. The <tag>section</tag>
-            element is recursive, meaning that you can nest it to any depth
-            desired.</para>
+                <primary>section element</primary></indexterm>The <tag>section</tag>
+            element is an alternative to
+            numbered sections. It is recursive, meaning that you
+            can nest them to any depth desired.</para>
           </listitem>
         </varlistentry>
 

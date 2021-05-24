@@ -15,19 +15,28 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>A <tag>titleabbrev</tag> holds an abbreviated version of a
-      <tag>title</tag>. One common use of
-      <tag>titleabbrev</tag> is for the text used in running headers
-      or footers, when the proper title is too long to be used
-      conveniently.</para>
+<title>Description</title>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>A <tag>titleabbrev</tag> holds an abbreviated version of a
+<tag>title</tag>. One common use of <tag>titleabbrev</tag> is for the
+text used in running headers or footers, when the proper title is too
+long to be used conveniently.</para>
 
-        <para>May be formatted inline or as a displayed block, depending on
-        context. Abbreviated titles are usually used only in specific
-        contexts, such as headers and footers, and are suppressed everywhere
-        else.</para>
+<para>Titles are so common, and so often the only “info” elements
+associated with their parent, that they (<tag>title</tag>,
+<tag>subtitle</tag>, and <tag>titleabbrev</tag>) are allowed outside
+the <tag>info</tag> element. This is a tradeoff favoring author
+convenience over a small amount of additional complexity in
+processing. However, the title elements must either all be outside of
+the <tag>info</tag> wrapper or all inside, you cannot have some
+outside and some inside.</para>
+
+<refsection>
+<title>Processing expectations</title>
+<para>May be formatted inline or as a displayed block, depending on
+context. Abbreviated titles are usually used only in specific
+contexts, such as headers and footers, and are suppressed everywhere
+else.</para>
 </refsection>
 
 <?tdg-attributes?>
