@@ -23,11 +23,11 @@ if [ "$GITHUB_CNAME" != "" ]; then
 fi;
 
 mkdir -p ./tdg/${DBVERSION}
-rsync -ar --delete $BUILD/dist/defguide/ ./tdg/${DBVERSION}/
+rsync -ar --delete $BUILD/dist/${DBVERSION}/ ./tdg/${DBVERSION}/
 
 for book in publishers sdocbook slides website; do
     mkdir -p ./tdg/${book}/${DBVERSION}
-    rsync -ar --delete $BUILD/dist/$book/ ./tdg/$book/${DBVERSION}/
+    rsync -ar --delete $BUILD/dist/$book/${DBVERSION}/ ./tdg/$book/${DBVERSION}/
 done
 
 git add --all .
