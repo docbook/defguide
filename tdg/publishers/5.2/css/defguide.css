@@ -4,335 +4,119 @@
  * Copyright © 2010, 2011, 2020 Norman Walsh.
  */
 
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Mono&display=swap");
+
 :root {
-    --body-family: "EB Garamond";
-    --title-family: "Montserrat";
-    --mono-family: "PT Mono";
+    --body-family: "EB Garamond", serif;
+    --verbatim-odd-background-color: #fafafa;
+    --verbatim-even-background-color: #fafafa;
+    --docbook-green: #00706b;
     -moz-osx-font-smoothing: grayscale;
+    max-width: inherit;
 }
 
-div.covergraphic div.mediaobject img {
-  margin-right: 20px;
-  border: solid black 1px; }
+html {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
+body {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+main {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+main > div,
+main > article {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.book > header {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.book > header h1 {
+    text-align: left;
+}
+
+.book .covergraphic * {
+    float: left;
+}
+
+.book .covergraphic img {
+    float: left;
+    margin-right: 20px;
+    border: solid black 1px;
+}
+
+header .authorgroup {
+    margin-bottom: 0;
+}
 
 #backcover {
-  position: relative;
-  top: -40px;
-  height: 0px;
-  left: 380px; }
-
-div.example-output {
-  padding-left: 15px;
-  border-style: solid;
-  border-width: 0px;
-  border-left-width: 2px;
-  border-color: #073642; }
-
-pre {
-    font-family: var(--mono-family), monospace;
+    position: relative;
+    top: -60px;
+    height: 0px;
+    left: 380px;
 }
-
-code {
-    font-family: var(--mono-family), monospace;
-}
-
-.screen pre {
-  background-color: #eee8d5;
-  border: 1px #93a1a1 solid;
-  border-radius: 3px; }
-
-.programlisting pre {
-  background-color: #eee8d5;
-  border: 1px #93a1a1 solid;
-  border-radius: 3px; }
-
-.example-source pre {
-  background-color: #eee8d5;
-  border: 1px #93a1a1 solid;
-  border-radius: 3px; }
-
-.literallayout {
-    background-color: inherit;
-}
-
-p.publisher {
-  text-align: center; }
-
-ul.toc {
-  list-style-type: none;
-  padding-left: 0px;
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-}
-
-ul.toc
-ul.toc {
-  padding-left: 1.5em; }
-
-a,
-a:visited {
-  color: #00706b; }
-
-a.callout-link, a:visited.callout-link {
-  text-decoration: none; }
-
-ul.toc a,
-ul.toc a:visited {
-  text-decoration: none; }
-
-div.component-title {
-  text-align: right; }
 
 /* html.css (in Firefox?) fiddles with heading sizes when
    the parent is a article, aside, nav, or section. WTF? */
+
 h1 {
-    margin-top: 0;
-    margin-bottom: 1rem;
     font-size: 2em;
 }
+
 h2 {
     font-size: 1.5em;
 }
+
 h3 {
     font-size: 1.25em;
 }
+
 h4 {
     font-size: 1.1em;
 }
+
 h5 {
     font-size: 1.0em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--title-family), sans-serif;
-  font-weight: 600;
-  font-style: normal;
+code {
+    font-size: 75%;
 }
 
-h1.label {
-  font-size: 150pt;
-  font-weight: normal;
-  font-family: var(--title-family), sans-serif;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  margin-top: 0px;
-  padding-top: 0px; }
-
-div.component-title h1.title {
- font-family: var(--title-family), sans-serif;
-  margin-top: 0px;
-  padding-top: 0px;
-  margin-right: 20px;
-  font-size: 36pt; }
-
-p.alpha-version {
-  margin-top: 0px;
-  padding-top: 0px; }
-
-hr.component-separator {
-  height: 1px; }
-
-div.refentry div.titlepage {
-  margin-left: 20px; }
-
-div.refentry div.titlepage h1.title {
-  margin-left: -20px;
-  margin-bottom: 0px;
-  font-size: 36pt; }
-
-html {
-    font-size: 1.3rem;
-    font-family: var(--body-family), serif;
-    width: 100%;
-    height: 100%;
-    widows: 2;
-    orphans: 2;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    margin: 0;
-    background-color: #fffff8;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
+.pre-wrap {
+    overflow: scroll;
+    background-color: var(--verbatim-odd-background-color);
 }
 
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+pre.programlisting,
+pre.screen {
+    line-height: 1.0em;
 }
 
-body > article {
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%;
+pre.numbered span.ln {
+    font-size: 75%;
+    width: 2rem;
 }
 
-header {
-  padding-top: 2px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  background-color: #00706b;
-  color: white;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  font-size: 12pt;
-  display: grid;
-  grid-template-columns: auto 2fr;
-}
-
-header .navigation {
-    grid-column: 1;
-    text-align: left;
-    padding-left: 0;
-}
-
-header .title {
-    grid-column: 2;
-    text-align: right;
-    font-size: 11pt;
-}
-
-header .version {
-    display: none;
-}
-
-header a,
-header a:visited,
-footer a,
-footer a:visited {
-  color: #eee8d5;
-}
-
-header .inactive {
-    color: #7f7f7f;
-}
-
-header i.fas {
-  font-size: 1.1rem;
-}
-
-header img {
-    vertical-align: text-bottom;
-}
-
-#bookhome header {
-    display: none;
-}
-
-main article header {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  background-color: #fffff8;
-  color: black;
-  border-bottom-style: none;
-  font-size: 1.3rem;
-  display: block;
-}
-
-footer {
-  background-color: #00706b;
-  color: white;
-  margin-bottom: 0px;
-  padding-top: 2px;
-  padding-bottom: 10px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-top-style: solid;
-  border-top-width: 1px;
-  display: grid;
-  font-size: 1.0rem;
-}
-
-.navrow {
-    display: grid;
-    grid-template-columns: 33% 34% 33%;
-}
-
-.navleft {
-    text-align: left;
-    grid-column: 1;
-}
-
-.navmiddle {
-    text-align: center;
-    grid-column: 2;
-}
-
-.navright {
-    text-align: right;
-    grid-column: 3;
-}
-
-.infofooter {
-    margin-top: 0.5rem;
-    border-top: solid 1px #aaaaaa;
-    padding-top: 0.5rem;
-    font-size: 12px;
-    display: none;
-}
-
-footer img {
-    vertical-align: text-bottom;
-}
-
-span.githash {
-  font-size: 90%; }
-
-div.copyrightfooter {
-  margin-top: 0px;
-  padding-top: 5px;
-  padding-bottom: 1rem;
-  font-size: 12px;
-}
-
-#bookhome footer {
-    display: none;
-}
-
-#bookhome main {
-    padding-bottom: 4em;
-}
-
-article {
-  margin-left: 10px;
-  margin-right: 10px; }
-
-div.legalnotice {
-  margin-left: 10px;
-  margin-right: 10px; }
-
-div.book {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 5px; }
-
-thead {
-  background-color: #073642;
-  color: #93a1a1; }
-
-th {
-  font-weight: normal;
-  text-align: left; }
-
-table {
-  border: 1px #93a1a1 solid;
-  border-collapse: collapse; }
-
-th, td {
-  border-right: 1px #93a1a1 solid;
-  border-bottom: 1px #93a1a1 solid; }
-
-div.informaltable {
-  padding-bottom: 1em; }
-
-.pattern {
-  font-size: small;
+a,
+a:visited {
+    color: var(--docbook-green);
+    text-decoration: none;
 }
 
 .sincerev {
@@ -356,161 +140,320 @@ h2 .sincerev {
 }  
 
 li .sincerev {
-    margin-left: 0.5em;
-    display: inline-block;
+    margin-left: 0.5rem;
     font-size: 50%;
     font-weight: bold;
+    line-height: 1.25em;
 }
 
-/* ======================================================================
-   Annotations
-*/
-div.annotation-list {
-  visibility: hidden; }
+/* ============================================================ */
 
-div.annotation-nocss {
-  position: absolute;
-  visibility: hidden; }
-
-div.annotation-popup {
-  position: absolute;
-  z-index: 4;
-  background-color: #fffff8;
-  visibility: hidden;
-  padding: 0px;
-  margin: 2px;
-  border: solid black 1px;
-  width: 200px; }
-
-div.annotation-title {
-  padding: 1px;
-  background-color: #93a1a1;
-  font-weight: bold;
-  border-bottom-color: #073642;
-  border-bottom-style: solid;
-  border-bottom-width: 1px; }
-
-div.annotation-body {
-  padding: 2px; }
-
-div.annotation-body p {
-  margin-top: 0px;
-  padding-top: 0px; }
-
-div.annotation-close {
-  position: absolute;
-  top: 2px;
-  right: 2px; }
-
-div.caution {
-  background: url(../figs/web/caution.gif) no-repeat;
-  min-height: 80px;
-  padding-left: 100px; }
-
-div.caution h3 {
-  display: none; }
-
-div.tip {
-  background: url(../figs/web/tip.gif) no-repeat;
-  min-height: 80px;
-  padding-left: 100px; }
-
-div.tip h3 {
-  display: none; }
-
-div.note {
-  background: url(../figs/web/note.gif) no-repeat;
-  min-height: 80px;
-  padding-left: 100px; }
-
-div.note h3 {
-  display: none; }
-
-div.fu {
-  border: 1px #dc322f solid;
-  border-radius: 0.5em;
-  min-height: 80px;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding-top: 0.5em;
-  padding-left: 0.5em;
-  background-color: #eee8d5; }
-
-div.fu h3 {
-  padding-top: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  color: #dc322f;
-  font-style: italic;
-  text-decoration: underline; }
-
-main {
-  margin-left: 4rem;
-  margin-right: auto;
-  max-width: 50rem;
-  overflow: auto;
-  padding-right: 1em;
-  padding-left: 1em;
-  padding-top: 1em;
+.cmjs {
+    color: #bfbfbf;
+    cursor: pointer;
 }
 
-/* Improve the formatting of the copyright page */
-.body > p {
-  margin-left: 1em;
-  margin-right: 1em;
+.cmdelete {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 110%;
 }
 
-.body > pre {
-  margin-left: 1em;
-  margin-right: 1em;
+.cmsidebar {
+    display: none;
+    float: right;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    padding: 0;
 }
 
-.footers {
-  position: relative;
-  background-color: #93a1a1;
-  margin-top: -110px;
-  /* negative value of footer height */
-  height: 110px;
-  bottom: 0px;
-  clear: both; }
-
-figure {
-    margin-left: 0;
-    border: 2px solid #7f7f7f;
-    border-radius: 0.5em;
-    background-color: rgb(0,164,107,0.15);
+.cmsidebar .cmx {
+    float: right;
+    cursor: pointer;
+    font-size: 32px;
+    padding-right: 0.25rem;
 }
 
-figure.informaltable-wrapper,
-figure.example-output {
+.cmsidebar .title {
+    font-size: 18px;
+    margin-bottom: 0;
+    padding-left: 0.5rem;
+    background-color: rgb(124,189,179);
+}
+
+.cmsidebar .body {
+    width: 8rem;
+    height: 12rem;
+    overflow: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
+    overflow: scrool;
+}    
+
+.cmsidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* ============================================================ */
+
+nav.top {
+    width: 100%;
+    background-color: var(--docbook-green);
+    color: #fffff8;
+}
+
+nav.top .nav {
+    float: left;
+    margin-left: 0.25rem;
+}
+
+nav.top .text {
+    float: right;
+    font-size: 18px;
+    margin-right: 0.25rem;
+}
+
+nav.bottom {
+    background-color: var(--docbook-green);
+    min-height: 1.0rem;
+    color: white;
+    margin-bottom: 0px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top-style: solid;
+    border-top-width: 1px;
+    display: grid;
+    font-size: 1.0rem;
+}
+
+.navrow {
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+.navleft {
+    text-align: left;
+    grid-column: 1;
+}
+
+.navmiddle {
+    text-align: center;
+    grid-column: 2;
+}
+
+.navright {
+    text-align: right;
+    grid-column: 3;
+}
+
+.navrow .navtitle {
+    font-size: 18px;
+}
+
+nav .version {
+    display: none;
+}
+
+nav a,
+nav a:visited {
+    color: #fffff8;
+}
+
+nav .title {
+    color: inherit;
     background-color: inherit;
-    border: none;
 }
 
-figure .title {
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-    border-bottom: 2px solid #7f7f7f;
+.infofooter {
+    padding-top: 0.5rem;
+    font-size: 14px;
 }
 
-figure div {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+.infofooter > .revision {
+    float: right;
+    display: none;
 }
 
-@media screen and (min-width: 800px)
+.infofooter > .copyrightfooter {
+    float: left;
+}
+
+nav.bottom img {
+    vertical-align: text-bottom;
+}
+
+span.githash {
+  font-size: 90%; }
+
+div.copyrightfooter {
+  margin-top: 0px;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+#bookhome footer {
+    display: none;
+}
+
+#bookhome main {
+    padding-bottom: 4em;
+}
+
+.colophon {
+    margin: inherit;
+    border: inherit;
+    border-radius: inherit;
+    padding: inherit;
+}
+
+.calloutlist dl dt { float: left; width: 1.75rem; }
+.calloutlist dl dd { margin-left: 1.75rem; }
+.calloutlist .callout {
+    font-size: 80%;
+}
+
+/* ============================================================ */
+
+.revadded {
+    background-color: inherit;
+}
+
+.revadded::before {
+    content: none;
+}
+
+.revadded::after {
+    content: none;
+}
+
+.revchanged {
+    background-color: inherit;
+}
+
+.revchanged::before {
+    content: none;
+}
+
+.revchanged::after {
+    content: none;
+}
+
+.revdeleted {
+    background-color: inherit;
+}
+
+.revdeleted::before {
+    content: none;
+}
+
+.revdeleted::after {
+    content: none;
+}
+
+.revoff .revadded,
+.revoff .revchanged,
+.revoff .revdeleted {
+    background-color: inherit;
+}
+
+.revoff .revadded::before,
+.revoff .revchanged::before,
+.revoff .revdeleted::before,
+.revoff .revadded::after,
+.revoff .revchanged::after,
+.revoff .revdeleted::after {
+    content: "";
+}
+
+nav.tocopen span {
+    display: none;
+}
+
+nav.tocopen:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  content: "\f0cb";
+}
+
+/* ============================================================ */
+
+@media screen and (min-width: 480px)
 {
-    header .version {
+    main > div,
+    main > article {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    nav.top .nav {
+        padding-left: 1rem;
+    }
+
+    nav.top .text {
+        padding-right: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px)
+{
+    main {
+        width: 50rem;
+    }
+
+    main > div,
+    main > article {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    nav .version {
         display: inline;
     }
 
-    .infofooter {
+    nav.top .nav {
+        padding-left: 2rem;
+    }
+
+    nav.top .text {
+        padding-right: 2rem;
+    }
+
+    h1 .sincerev,
+    h2 .sincerev {
         display: block;
+        font-weight: bold;;
+    }
+
+    .cmdelete {
+        float: left;
+        margin-left: -1.25rem;
+        width: 1.25rem;
+    }
+
+    .infofooter {
+        margin-top: 0.5rem;
+        border-top: solid 1px #aaaaaa;
+    }
+
+    .infofooter > .revision {
+        display: inline;
     }
 
     header {
         padding-right: 2rem;
+    }
+
+    nav.slide header {
+        padding-right: 0;
     }
 
     footer {
@@ -519,10 +462,8 @@ figure div {
     }
 }
 
-@media screen and (min-width: 600px)
-{
-    h1 .sincerev,
-    h2 .sincerev {
-        display: inline-block;
-    }  
+@media screen and (min-width: 1023px) {
+    .cmsidebar {
+        display: block;
+    }
 }
