@@ -11,7 +11,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://docbook.org/ns/docbook"
-         buildhash="079e33f">
+         buildhash="1831dac">
    <start>
       <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/"/>
       <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -18211,6 +18211,9 @@
    <define name="db.graphic.inlines">
       <ref name="db.inlinemediaobject"/>
    </define>
+   <define name="db.extension.inlines">
+      <notAllowed/>
+   </define>
    <define name="db.all.blocks">
       <choice>
          <choice>
@@ -18271,6 +18274,9 @@
       </choice>
    </define>
    <ctrl:exclude from="db.formal.blocks" exclude="db.formal.blocks"/>
+   <define name="db.extension.blocks">
+      <notAllowed/>
+   </define>
    <div>
       <db:refname>title</db:refname>
       <db:refpurpose>The text of the title of a section of a document or of a formal block-level element</db:refpurpose>
