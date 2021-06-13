@@ -1254,12 +1254,13 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       </xsl:choose>
 
       <xsl:choose>
-        <xsl:when test="rng:choice|rng:value">
+        <xsl:when test="rng:choice|rng:value|rng:group/rng:value">
           <xsl:text> (enumeration)</xsl:text>
           <phrase condition="compact">
             <xsl:text> = </xsl:text>
             <xsl:for-each
-                select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
+                select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data
+                        |rng:group/rng:value">
               <xsl:if test="position() &gt; 1"> | </xsl:if>
               <xsl:apply-templates select="." mode="value-enum"/>
             </xsl:for-each>
@@ -1279,10 +1280,11 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
       </xsl:if>
     </para>
 
-    <xsl:if test="rng:choice|rng:value">
+    <xsl:if test="rng:choice|rng:value|rng:group/rng:value">
       <itemizedlist spacing='compact' role="element-synopsis" condition="expanded">
         <xsl:for-each
-            select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data">
+            select="rng:choice/rng:value|rng:value|rng:choice/rng:data|rng:data
+                    |rng:group/rng:value">
           <listitem>
             <para>
               <xsl:apply-templates select="." mode="value-enum"/>
