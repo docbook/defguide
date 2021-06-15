@@ -12,7 +12,7 @@
                 exclude-result-prefixes="db f h m rng t tp xs"
                 version="3.0">
 
-<xsl:import href="../../build/docbook/xslt/docbook.xsl"/>
+<xsl:import href="https://cdn.docbook.org/release/xsltng/current/xslt/docbook.xsl"/>
 
 <!-- ============================================================ -->
 

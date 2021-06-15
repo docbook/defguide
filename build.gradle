@@ -2,6 +2,7 @@ buildscript {
   repositories {
     mavenLocal()
     mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     maven { url "https://maven.restlet.talend.com" }
   }
 
@@ -9,6 +10,7 @@ buildscript {
   configurations.all {
     resolutionStrategy {
       force 'xml-apis:xml-apis:1.4.01'
+      force "com.xmlcalabash:xmlcalabash:${xmlCalabashVersion}"
     }
   }
 
@@ -17,33 +19,36 @@ buildscript {
     classpath group: 'org.docbook', name: 'docbook-schemas', version: '5.1-1'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-print', version: '1.1.5'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.4.0'
-    classpath group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.30-99'
-    classpath group: 'org.xmlresolver', name: 'xmlresolver', version: '1.0.6'
-    classpath group: 'gradle.plugin.com.dorongold.plugins', name: 'task-tree', version: '1.4'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash', version: xmlCalabashVersion
+    classpath group: 'org.xmlresolver', name: 'xmlresolver', version: xmlresolverVersion
+    classpath group: 'org.docbook', name: 'docbook-xslTNG', version: docbookXsltVersion
   }
 }
 
 plugins {
   id "groovy"
-  id "com.dorongold.task-tree" version "1.4"
   id "de.undercouch.download" version "4.0.4"
+  id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.9.3'
 }
 
 repositories {
   mavenLocal()
   mavenCentral()
+  maven { url "https://dev.saxonica.com/maven" }
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 // Get rid of that [expletive deleted] warning about xml-apis 2.0.2/1.0.b2
 configurations.all {
   resolutionStrategy {
     force 'xml-apis:xml-apis:1.4.01'
-    force 'org.xmlresolver:xmlresolver:1.0.1'
+    force "com.xmlcalabash:xmlcalabash:${xmlCalabashVersion}"
+    force "org.xmlresolver:xmlresolver:${xmlresolverVersion}"
   }
 }
 
 configurations {
-  saxonee
+  saxonee.extendsFrom(implementation)
   tools {
     description = "Run tools"
     transitive = true
@@ -51,10 +56,11 @@ configurations {
 }
 
 dependencies {
-  saxonee fileTree(dir: "lib/${saxonVersion}").include("*.jar")
   implementation (
-    [group: 'net.sf.saxon', name: 'Saxon-HE', version: saxonVersion],
-    [group: 'org.relaxng', name: 'jing', version: '20181204']
+    [group: 'com.saxonica', name: 'Saxon-EE', version: saxonVersion],
+    [group: 'org.relaxng', name: 'jing', version: '20181204'],
+    [group: 'org.docbook', name: 'docbook-xslTNG', version: docbookXsltVersion],
+    [group: 'org.xmlresolver', name: 'xmlresolver', version: xmlresolverVersion]
   )
   tools (
     [group: 'org.relaxng', name: 'jing', version: '20181204'],
@@ -66,25 +72,11 @@ defaultTasks "dist"
 
 apply plugin: 'org.docbook.task'
 apply plugin: 'com.xmlcalabash.task'
-apply plugin: 'com.dorongold.task-tree'
 
 import org.docbook.DocBookTask
 import com.xmlcalabash.XMLCalabashTask
+import com.nwalsh.gradle.saxon.SaxonXsltTask
 import de.undercouch.gradle.tasks.download.Download
-
-// This is all a complete hack that I worked out by trial and error
-def eeAvailable = false
-def peAvailable = false
-def EXCP="${buildDir}/docbook/libs/docbook-xslTNG-${docbookXsltVersion}.jar"
-if (saxonEE != "false" && (eeAvailable || peAvailable)) {
-  configurations.saxonee.each { it ->
-    EXCP += ":" + it
-  }
-} else {
-  configurations.compileClasspath.each { it ->
-    EXCP += ":" + it
-  }
-}
 
 // ======================================================================
 
@@ -134,41 +126,14 @@ def bookRevision = ["defguide": "5.0 5.1 5.2",
 
 // ======================================================================
 
-task hello() {
+task helloWorld() {
   doFirst {
     println("Hello, world.")
+    configurations.saxonee.resolve().each { path ->
+      println(path)
+    }
   }
 }
-
-// ======================================================================
-// Maven is broken. Or something. Anyway, the last couple of releases
-// of the DocBook XSLT 2.0 Stylesheets that I've published have failed
-// to turn up in Maven :-(
-//
-// Impatiently, I'm just getting a local copy
-
-def docbookXsltZip = "docbook-xslTNG-${docbookXsltVersion}.zip"
-task downloadDocBookXslt(type: Download) {
-  src "${docbookXsltBaseUri}/${docbookXsltVersion}/${docbookXsltZip}"
-  dest new File(buildDir, docbookXsltZip)
-  // If we're going to d/l a new one, delete the old one
-  doFirst {
-    delete "build/docbook"
-  }
-}
-downloadDocBookXslt.onlyIf { !file("$buildDir/$docbookXsltZip").exists() }
-
-task unzipDocBookXslt(dependsOn: downloadDocBookXslt, type: Copy) {
-  from zipTree(downloadDocBookXslt.dest)
-  into { "build" }
-}
-unzipDocBookXslt.onlyIf { !file("$buildDir/docbook-xslt2-$docbookXsltVersion").exists() }
-
-task getDocBookXslt(dependsOn: unzipDocBookXslt, type: Copy) {
-  from { "build/docbook-xslTNG-" + docbookXsltVersion }
-  into { "build/docbook" }
-}
-getDocBookXslt.onlyIf { !file("$buildDir/docbook").exists() }
 
 // ======================================================================
 
@@ -279,12 +244,32 @@ books.each { vocab ->
     }
   }
 
-  task "${vocab}_copyresources_docbook"(type: Copy, dependsOn: ['getDocBookXslt']) {
-    from "build/docbook/resources"
-    into "build/${vocab}/html"
-    include "**/*"
-    doFirst {
-      mkdir "build/${vocab}/html"
+  task "${vocab}_copyresources_docbook"() {
+    def dbjar = null
+    configurations.saxonee.each { path ->
+      if (path.toString().contains("docbook-xslTNG")) {
+        dbjar = path
+      }
+    }
+
+    doLast {
+      if (dbjar == null) {
+        throw new GradleException("Failed to locate DocBook xslTNG jar file")
+      }
+      copy {
+        into "${buildDir}/${vocab}/html"
+        from ({ zipTree(dbjar.toString()) }) {
+          include "org/docbook/xsltng/resources/**"
+        }
+        eachFile { fileCopyDetails ->
+          def originalPath = fileCopyDetails.path
+          fileCopyDetails.path = originalPath.replace('org/docbook/xsltng/resources/', '')
+        }
+      }
+    }
+
+    doLast {
+      delete "${buildDir}/${vocab}/html/org"
     }
   }
 
@@ -319,28 +304,29 @@ books.each { vocab ->
     pipeline "tools/xpl/refpages.xpl"
   }
 
-  task "${vocab}"(type: Exec,
+  task "${vocab}"(type: SaxonXsltTask,
                   dependsOn: ["${vocab}_xml",
-                              "${vocab}_copyresources", "getDocBookXslt"]) {
-    inputs.file("${buildDir}/${vocab}/book.xml")
-    inputs.file("tools/xsl/book.xsl")
-    outputs.file("${buildDir}/${vocab}/html/index.html")
-    commandLine "java", "-cp", EXCP, "net.sf.saxon.Transform",
-                "-init:org.docbook.xsltng.extensions.Register",
-                "${buildDir}/${vocab}/book.xml",
-                "-xsl:tools/xsl/book.xsl",
-                "-o:${buildDir}/${vocab}/html/index.html",
-                "rngfile=${rndFile}",
-                "docbookXsltVersion=${docbookXsltVersion}",
-                "bookVersion=${bookVersion[vocab]}",
-                "mediaobject-input-base-uri=file:${projectDir}/build/${vocab}/",
-                "mediaobject-output-base-uri=./",
-                "chunk=index.html",
-                "chunk-output-base-uri=${buildDir}/${vocab}/html/",
-                "profile-condition=${bookCondition[vocab]}",
-                "profile-arch=${bookArch[vocab]}",
-                'persistent-toc=true',
-                "profile-revision=${bookRevision[vocab]}"
+                              "${vocab}_copyresources"]) {
+    input "${buildDir}/${vocab}/book.xml"
+    stylesheet "tools/xsl/book.xsl"
+    output "${buildDir}/${vocab}/html/index.html"
+    initializer "org.docbook.xsltng.extensions.Register"
+    entityResolverClass "org.xmlresolver.Resolver"
+    sourceParserClass "org.xmlresolver.tools.ResolvingXMLReader"
+    styleParserClass "org.xmlresolver.tools.ResolvingXMLReader"
+    parameters (
+      'rngfile': rndFile,
+      'docbookXsltVersion': docbookXsltVersion,
+      'bookVersion': bookVersion[vocab],
+      'mediaobject-input-base-uri': "file:${projectDir}/build/${vocab}/",
+      'mediaobject-output-base-uri': "./",
+      'chunk': "index.html",
+      'chunk-output-base-uri': "${buildDir}/${vocab}/html/",
+      'profile-condition': bookCondition[vocab],
+      'profile-arch': bookArch[vocab],
+      'persistent-toc': true,
+      'profile-revision': bookRevision[vocab]
+    )
     doFirst {
       mkdir("${buildDir}/${vocab}/html")
     }
@@ -378,7 +364,7 @@ task defguide_refpageListAssembly(type: XMLCalabashTask) {
   }
 }
 
-task defguide_xml(dependsOn: ['defguide_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
+task defguide_xml(dependsOn: ['defguide_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("build/defguide/style/purpose.xsl")
@@ -396,7 +382,7 @@ task defguide_xml(dependsOn: ['defguide_tdgxml', 'getDocBookXslt'], type: XMLCal
 
 // ======================================================================
 
-task publishers_xml(dependsOn: ['publishers_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
+task publishers_xml(dependsOn: ['publishers_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -415,7 +401,7 @@ task publishers_xml(dependsOn: ['publishers_tdgxml', 'getDocBookXslt'], type: XM
 
 // ======================================================================
 
-task sdocbook_xml(dependsOn: ['sdocbook_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
+task sdocbook_xml(dependsOn: ['sdocbook_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -434,7 +420,7 @@ task sdocbook_xml(dependsOn: ['sdocbook_tdgxml', 'getDocBookXslt'], type: XMLCal
 
 // ======================================================================
 
-task slides_xml(dependsOn: ['slides_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
+task slides_xml(dependsOn: ['slides_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
@@ -453,7 +439,7 @@ task slides_xml(dependsOn: ['slides_tdgxml', 'getDocBookXslt'], type: XMLCalabas
 
 // ======================================================================
 
-task website_xml(dependsOn: ['website_tdgxml', 'getDocBookXslt'], type: XMLCalabashTask) {
+task website_xml(dependsOn: ['website_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
