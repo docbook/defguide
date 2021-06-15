@@ -244,7 +244,7 @@ books.each { vocab ->
     }
   }
 
-  task "${vocab}_copyresources_docbook"() {
+  task "${vocab}_copyresources_docbook"(dependsOn: ["${vocab}_copyresources_src_html"]) {
     def dbjar = null
     configurations.saxonee.each { path ->
       if (path.toString().contains("docbook-xslTNG")) {
