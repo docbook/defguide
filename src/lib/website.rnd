@@ -12,7 +12,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://docbook.org/ns/docbook"
-         buildhash="23c3a84">
+         buildhash="d0e071c">
    <define name="db.status.attribute">
       <attribute name="status">
          <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
@@ -37446,6 +37446,9 @@
    <div>
       <db:refname>citetitle</db:refname>
       <db:refpurpose>The title of a cited work</db:refpurpose>
+      <ctrl:other-attribute name="db.citetitle.pubwork.attribute"
+                            enum-name="db.citetitle.pubwork-enum.attribute"
+                            other-name="db.citetitle.pubwork-other.attributes"/>
       <define name="db.citetitle.pubwork.enumeration">
          <choice>
             <value>article</value>
@@ -37488,7 +37491,7 @@
             <a:documentation>Some other kind of work</a:documentation>
          </choice>
       </define>
-      <define name="db.citetitle.pubwork.attribute">
+      <define name="db.citetitle.pubwork-enum.attribute">
          <attribute name="pubwork">
             <db:refpurpose>Identifies the nature of the publication being cited</db:refpurpose>
             <choice>
@@ -37532,6 +37535,83 @@
                <a:documentation>Some other kind of work</a:documentation>
             </choice>
          </attribute>
+      </define>
+      <define name="db.citetitle.pubwork-other.attribute">
+         <attribute name="otherpubwork">
+            <db:refpurpose>Identifies the nature of some other kind of publication being cited</db:refpurpose>
+            <data type="NMTOKEN"/>
+         </attribute>
+      </define>
+      <define name="db.citetitle.pubwork-other.attributes">
+         <interleave>
+            <attribute name="pubwork">
+               <db:refpurpose>Identifies that this is some other kind of publication being cited</db:refpurpose>
+               <value>other</value>
+               <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+            </attribute>
+            <attribute name="otherpubwork">
+               <db:refpurpose>Identifies the nature of some other kind of publication being cited</db:refpurpose>
+               <data type="NMTOKEN"/>
+            </attribute>
+         </interleave>
+      </define>
+      <define name="db.citetitle.pubwork.attribute">
+         <choice>
+            <attribute name="pubwork">
+               <db:refpurpose>Identifies the nature of the publication being cited</db:refpurpose>
+               <choice>
+                  <value>article</value>
+                  <a:documentation>An article</a:documentation>
+                  <value>bbs</value>
+                  <a:documentation>A bulletin board system</a:documentation>
+                  <value>book</value>
+                  <a:documentation>A book</a:documentation>
+                  <value>cdrom</value>
+                  <a:documentation>A CD-ROM</a:documentation>
+                  <value>chapter</value>
+                  <a:documentation>A chapter (as of a book)</a:documentation>
+                  <value>dvd</value>
+                  <a:documentation>A DVD</a:documentation>
+                  <value>emailmessage</value>
+                  <a:documentation>An email message</a:documentation>
+                  <value>gopher</value>
+                  <a:documentation>A gopher page</a:documentation>
+                  <value>journal</value>
+                  <a:documentation>A journal</a:documentation>
+                  <value>manuscript</value>
+                  <a:documentation>A manuscript</a:documentation>
+                  <value>newsposting</value>
+                  <a:documentation>A posting to a newsgroup</a:documentation>
+                  <value>part</value>
+                  <a:documentation>A part (as of a book)</a:documentation>
+                  <value>refentry</value>
+                  <a:documentation>A reference entry</a:documentation>
+                  <value>section</value>
+                  <a:documentation>A section (as of a book or article)</a:documentation>
+                  <value>series</value>
+                  <a:documentation>A series</a:documentation>
+                  <value>set</value>
+                  <a:documentation>A set (as of books)</a:documentation>
+                  <value>webpage</value>
+                  <a:documentation>A web page</a:documentation>
+                  <value>wiki</value>
+                  <a:documentation>A wiki page</a:documentation>
+                  <value>other</value>
+                  <a:documentation>Some other kind of work</a:documentation>
+               </choice>
+            </attribute>
+            <interleave>
+               <attribute name="pubwork">
+                  <db:refpurpose>Identifies that this is some other kind of publication being cited</db:refpurpose>
+                  <value>other</value>
+                  <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+               </attribute>
+               <attribute name="otherpubwork">
+                  <db:refpurpose>Identifies the nature of some other kind of publication being cited</db:refpurpose>
+                  <data type="NMTOKEN"/>
+               </attribute>
+            </interleave>
+         </choice>
       </define>
       <define name="db.citetitle.role.attribute">
          <attribute name="role"/>
@@ -37647,49 +37727,62 @@
                </choice>
             </optional>
             <optional>
-               <attribute name="pubwork">
-                  <db:refpurpose>Identifies the nature of the publication being cited</db:refpurpose>
-                  <choice>
-                     <value>article</value>
-                     <a:documentation>An article</a:documentation>
-                     <value>bbs</value>
-                     <a:documentation>A bulletin board system</a:documentation>
-                     <value>book</value>
-                     <a:documentation>A book</a:documentation>
-                     <value>cdrom</value>
-                     <a:documentation>A CD-ROM</a:documentation>
-                     <value>chapter</value>
-                     <a:documentation>A chapter (as of a book)</a:documentation>
-                     <value>dvd</value>
-                     <a:documentation>A DVD</a:documentation>
-                     <value>emailmessage</value>
-                     <a:documentation>An email message</a:documentation>
-                     <value>gopher</value>
-                     <a:documentation>A gopher page</a:documentation>
-                     <value>journal</value>
-                     <a:documentation>A journal</a:documentation>
-                     <value>manuscript</value>
-                     <a:documentation>A manuscript</a:documentation>
-                     <value>newsposting</value>
-                     <a:documentation>A posting to a newsgroup</a:documentation>
-                     <value>part</value>
-                     <a:documentation>A part (as of a book)</a:documentation>
-                     <value>refentry</value>
-                     <a:documentation>A reference entry</a:documentation>
-                     <value>section</value>
-                     <a:documentation>A section (as of a book or article)</a:documentation>
-                     <value>series</value>
-                     <a:documentation>A series</a:documentation>
-                     <value>set</value>
-                     <a:documentation>A set (as of books)</a:documentation>
-                     <value>webpage</value>
-                     <a:documentation>A web page</a:documentation>
-                     <value>wiki</value>
-                     <a:documentation>A wiki page</a:documentation>
-                     <value>other</value>
-                     <a:documentation>Some other kind of work</a:documentation>
-                  </choice>
-               </attribute>
+               <choice>
+                  <attribute name="pubwork">
+                     <db:refpurpose>Identifies the nature of the publication being cited</db:refpurpose>
+                     <choice>
+                        <value>article</value>
+                        <a:documentation>An article</a:documentation>
+                        <value>bbs</value>
+                        <a:documentation>A bulletin board system</a:documentation>
+                        <value>book</value>
+                        <a:documentation>A book</a:documentation>
+                        <value>cdrom</value>
+                        <a:documentation>A CD-ROM</a:documentation>
+                        <value>chapter</value>
+                        <a:documentation>A chapter (as of a book)</a:documentation>
+                        <value>dvd</value>
+                        <a:documentation>A DVD</a:documentation>
+                        <value>emailmessage</value>
+                        <a:documentation>An email message</a:documentation>
+                        <value>gopher</value>
+                        <a:documentation>A gopher page</a:documentation>
+                        <value>journal</value>
+                        <a:documentation>A journal</a:documentation>
+                        <value>manuscript</value>
+                        <a:documentation>A manuscript</a:documentation>
+                        <value>newsposting</value>
+                        <a:documentation>A posting to a newsgroup</a:documentation>
+                        <value>part</value>
+                        <a:documentation>A part (as of a book)</a:documentation>
+                        <value>refentry</value>
+                        <a:documentation>A reference entry</a:documentation>
+                        <value>section</value>
+                        <a:documentation>A section (as of a book or article)</a:documentation>
+                        <value>series</value>
+                        <a:documentation>A series</a:documentation>
+                        <value>set</value>
+                        <a:documentation>A set (as of books)</a:documentation>
+                        <value>webpage</value>
+                        <a:documentation>A web page</a:documentation>
+                        <value>wiki</value>
+                        <a:documentation>A wiki page</a:documentation>
+                        <value>other</value>
+                        <a:documentation>Some other kind of work</a:documentation>
+                     </choice>
+                  </attribute>
+                  <interleave>
+                     <attribute name="pubwork">
+                        <db:refpurpose>Identifies that this is some other kind of publication being cited</db:refpurpose>
+                        <value>other</value>
+                        <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+                     </attribute>
+                     <attribute name="otherpubwork">
+                        <db:refpurpose>Identifies the nature of some other kind of publication being cited</db:refpurpose>
+                        <data type="NMTOKEN"/>
+                     </attribute>
+                  </interleave>
+               </choice>
             </optional>
          </interleave>
       </define>
@@ -37804,49 +37897,62 @@
                      </choice>
                   </optional>
                   <optional>
-                     <attribute name="pubwork">
-                        <db:refpurpose>Identifies the nature of the publication being cited</db:refpurpose>
-                        <choice>
-                           <value>article</value>
-                           <a:documentation>An article</a:documentation>
-                           <value>bbs</value>
-                           <a:documentation>A bulletin board system</a:documentation>
-                           <value>book</value>
-                           <a:documentation>A book</a:documentation>
-                           <value>cdrom</value>
-                           <a:documentation>A CD-ROM</a:documentation>
-                           <value>chapter</value>
-                           <a:documentation>A chapter (as of a book)</a:documentation>
-                           <value>dvd</value>
-                           <a:documentation>A DVD</a:documentation>
-                           <value>emailmessage</value>
-                           <a:documentation>An email message</a:documentation>
-                           <value>gopher</value>
-                           <a:documentation>A gopher page</a:documentation>
-                           <value>journal</value>
-                           <a:documentation>A journal</a:documentation>
-                           <value>manuscript</value>
-                           <a:documentation>A manuscript</a:documentation>
-                           <value>newsposting</value>
-                           <a:documentation>A posting to a newsgroup</a:documentation>
-                           <value>part</value>
-                           <a:documentation>A part (as of a book)</a:documentation>
-                           <value>refentry</value>
-                           <a:documentation>A reference entry</a:documentation>
-                           <value>section</value>
-                           <a:documentation>A section (as of a book or article)</a:documentation>
-                           <value>series</value>
-                           <a:documentation>A series</a:documentation>
-                           <value>set</value>
-                           <a:documentation>A set (as of books)</a:documentation>
-                           <value>webpage</value>
-                           <a:documentation>A web page</a:documentation>
-                           <value>wiki</value>
-                           <a:documentation>A wiki page</a:documentation>
-                           <value>other</value>
-                           <a:documentation>Some other kind of work</a:documentation>
-                        </choice>
-                     </attribute>
+                     <choice>
+                        <attribute name="pubwork">
+                           <db:refpurpose>Identifies the nature of the publication being cited</db:refpurpose>
+                           <choice>
+                              <value>article</value>
+                              <a:documentation>An article</a:documentation>
+                              <value>bbs</value>
+                              <a:documentation>A bulletin board system</a:documentation>
+                              <value>book</value>
+                              <a:documentation>A book</a:documentation>
+                              <value>cdrom</value>
+                              <a:documentation>A CD-ROM</a:documentation>
+                              <value>chapter</value>
+                              <a:documentation>A chapter (as of a book)</a:documentation>
+                              <value>dvd</value>
+                              <a:documentation>A DVD</a:documentation>
+                              <value>emailmessage</value>
+                              <a:documentation>An email message</a:documentation>
+                              <value>gopher</value>
+                              <a:documentation>A gopher page</a:documentation>
+                              <value>journal</value>
+                              <a:documentation>A journal</a:documentation>
+                              <value>manuscript</value>
+                              <a:documentation>A manuscript</a:documentation>
+                              <value>newsposting</value>
+                              <a:documentation>A posting to a newsgroup</a:documentation>
+                              <value>part</value>
+                              <a:documentation>A part (as of a book)</a:documentation>
+                              <value>refentry</value>
+                              <a:documentation>A reference entry</a:documentation>
+                              <value>section</value>
+                              <a:documentation>A section (as of a book or article)</a:documentation>
+                              <value>series</value>
+                              <a:documentation>A series</a:documentation>
+                              <value>set</value>
+                              <a:documentation>A set (as of books)</a:documentation>
+                              <value>webpage</value>
+                              <a:documentation>A web page</a:documentation>
+                              <value>wiki</value>
+                              <a:documentation>A wiki page</a:documentation>
+                              <value>other</value>
+                              <a:documentation>Some other kind of work</a:documentation>
+                           </choice>
+                        </attribute>
+                        <interleave>
+                           <attribute name="pubwork">
+                              <db:refpurpose>Identifies that this is some other kind of publication being cited</db:refpurpose>
+                              <value>other</value>
+                              <a:documentation>Indicates that the published work is some 'other' kind.</a:documentation>
+                           </attribute>
+                           <attribute name="otherpubwork">
+                              <db:refpurpose>Identifies the nature of some other kind of publication being cited</db:refpurpose>
+                              <data type="NMTOKEN"/>
+                           </attribute>
+                        </interleave>
+                     </choice>
                   </optional>
                </interleave>
             </doc:attributes>
