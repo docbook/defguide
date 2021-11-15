@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          version="5.2" revision="5.2">
+<refmeta>
+  <refentrytitle><?tdg-refentrytitle?></refentrytitle>
+  <refmiscinfo role="element">packagesynopsis</refmiscinfo>
+  <refmiscinfo role="pattern">db.packagesynopsis</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname><?tdg-refname?></refname>
+  <refpurpose><?tdg-refpurpose?></refpurpose>
+</refnamediv>
+
+<?tdg-refsynopsisdiv?>
+
+<refsection condition="ref.description">
+<title>Description</title>
+
+<para>A <tag>packagesynopsis</tag> contains the syntax summary of a
+programming language “package”. In some languages (e.g., C#), what
+DocBook chooses to identify with the <tag>packagesynopsis</tag> tag is
+referred to as a namespace. This is to avoid confusion with the XML
+concept of “namespace”, and because other languages (e.g., Java) call
+these things packages.</para>
+
+<para>Packages, in this sense, are generally wrappers (either
+explicitly or implicitly) for a collection of classes, methods,
+functions, etc.</para>
+
+<refsection>
+<info>
+  <title>Processing expectations</title>
+</info>
+
+<para>For the most part, the processing application is expected to
+generate all of the parentheses, semicolons, commas, and so on
+required in the rendered synopsis.</para>
+
+</refsection>
+
+<?tdg-attributes?>
+<?tdg-parents?>
+<?tdg-children?>
+
+</refsection>
+
+<?tdg-seealso?>
+
+<refsection condition="ref.examples">
+<title>Examples</title>
+
+<para>A Java package containing a single class.</para>
+
+<programlisting><xi:include href="../examples/packagesynopsis.1.xml" parse="text"/></programlisting>
+
+<anchor xml:id="ex.os.packagesynopsis.1" role="HACK-ex.out.start"/>
+<xi:include href="../examples/packagesynopsis.1.xml"/>
+<anchor xml:id="ex.oe.packagesynopsis.1" role="HACK-ex.out.end"/>
+
+</refsection>
+
+</refentry>
