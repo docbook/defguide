@@ -139,8 +139,8 @@ task helloWorld() {
 
 task gitLogSummary(type: Exec) {
   inputs.file "tools/bin/git-log-summary"
-  outputs.file "build/gitlog.xml"
-  commandLine "tools/bin/git-log-summary", "-o", "build/gitlog.xml"
+  outputs.file "${buildDir}/gitlog.xml"
+  commandLine "tools/bin/git-log-summary", "-o", "${buildDir}/gitlog.xml"
   doFirst {
     mkdir("build")
   }
@@ -173,27 +173,27 @@ books.each { vocab ->
     param("rngfile", rndFile)
     pipeline "tools/xpl/style.xpl"
     doFirst {
-      mkdir("build/${vocab}")
+      mkdir("${buildDir}/${vocab}")
     }
   }
 
   task "${vocab}_refpageExamples"(type: Copy) {
-    from "src/refpages/examples"
-    into "build/${vocab}/refpages/examples"
+    from "${projectDir}/src/refpages/examples"
+    into "${buildDir}/${vocab}/refpages/examples"
     include "*"
     doFirst {
-      mkdir("build/${vocab}/refpages/examples")
+      mkdir("${buildDir}/${vocab}/refpages/examples")
     }
   }
 
   task "${vocab}_bookmeta"(type: XMLCalabashTask) {
-    input("source", "src/${vocab}/bookinfo.xml")
-    output("result", "build/${vocab}/bookinfo.xml")
+    input("source", "${projectDir}/src/${vocab}/bookinfo.xml")
+    output("result", "${buildDir}/${vocab}/bookinfo.xml")
     param("bookVersion", bookVersion[vocab])
     param("docbookVersion", docbookVersion)
     pipeline "tools/xpl/bookmeta.xpl"
     doFirst {
-      mkdir("build/${vocab}")
+      mkdir("${buildDir}/${vocab}")
     }
   }
 
@@ -201,16 +201,16 @@ books.each { vocab ->
     inputs.file "tools/xsl/elem-xi.xsl"
     inputs.file "tools/xpl/element-list.xpl"
     input("source", rndFile)
-    output("result", "build/${vocab}/list-elements.xml")
+    output("result", "${buildDir}/${vocab}/list-elements.xml")
     pipeline "tools/xpl/element-list.xpl"
     doFirst {
-      mkdir("build/${vocab}")
+      mkdir("${buildDir}/${vocab}")
     }
   }
 
   task "${vocab}_copysrc"(type: Copy) {
-    from "src/${vocab}"
-    into "build/${vocab}"
+    from "${projectDir}/src/${vocab}"
+    into "${buildDir}/${vocab}"
     include "**/*"
     exclude "bookinfo.xml"
     exclude "patterns.xml"
@@ -226,21 +226,21 @@ books.each { vocab ->
 
   task "${vocab}_copyresources_src"(type: Copy,
                                     dependsOn: ["${vocab}_copyresources_src_html"]) {
-    from "src/resources"
-    into "build/${vocab}"
+    from "${projectDir}/src/resources"
+    into "${buildDir}/${vocab}"
     include "**/*"
     exclude "figs/src"
     exclude "figs/print"
   }
 
   task "${vocab}_copyresources_src_html"(type: Copy) {
-    from "src/resources"
-    into "build/${vocab}/html"
+    from "${projectDir}/src/resources"
+    into "${buildDir}/${vocab}/html"
     include "**/*"
     exclude "figs/src"
     exclude "figs/print"
     doFirst {
-      mkdir "build/${vocab}/html"
+      mkdir "${buildDir}/${vocab}/html"
     }
   }
 
@@ -281,9 +281,9 @@ books.each { vocab ->
                                      "${vocab}_copyresources_src_html",
                                      "${vocab}_copyresources_docbook"],
                          type: XMLCalabashTask) {
-    inputs.dir "build/${vocab}"
-    input("source", "build/${vocab}/book5.xml")
-    output("result", "build/${vocab}/tdg.xml")
+    inputs.dir "${buildDir}/${vocab}"
+    input("source", "${buildDir}/${vocab}/book5.xml")
+    output("result", "${buildDir}/${vocab}/tdg.xml")
     pipeline "tools/xpl/xinclude.xpl"
   }
 
@@ -291,15 +291,15 @@ books.each { vocab ->
                                        "${vocab}_refpageExamples",
                                        "gitLogSummary"],
                            type: XMLCalabashTask) {
-    inputs.dir "src/refpages/elements"
+    inputs.dir "${projectDir}/src/refpages/elements"
     inputs.file "tools/xsl/refentry.xsl"
     inputs.file "tools/xpl/refpages.xpl"
-    inputs.file "src/${vocab}/seealso.xml"
-    outputs.dir "build/${vocab}/refpages"
+    inputs.file "${projectDir}/src/${vocab}/seealso.xml"
+    outputs.dir "${buildDir}/${vocab}/refpages"
     option("rnd", rndFile)
-    option("src", absuri("src/${vocab}/"))
-    option("dst", absuri("build/${vocab}/refpages/"))
-    outputs.dir "build/${vocab}/refpages"
+    option("src", absuri("${projectDir}/src/${vocab}/"))
+    option("dst", absuri("${buildDir}/${vocab}/refpages/"))
+    outputs.dir "${buildDir}/${vocab}/refpages"
     input("source", rndFile)
     pipeline "tools/xpl/refpages.xpl"
   }
@@ -354,7 +354,7 @@ task defguide_refpageListAssembly(type: XMLCalabashTask) {
   inputs.file "tools/xpl/element-list.xpl"
 
   input("source", new File(defguideRnd).getCanonicalPath())
-  output("result", "build/defguide/list-assembly.xml")
+  output("result", "${buildDir}/defguide/list-assembly.xml")
   pipeline "tools/xpl/element-list.xpl"
 
   option("manual","assembly")
@@ -367,10 +367,10 @@ task defguide_refpageListAssembly(type: XMLCalabashTask) {
 task defguide_xml(dependsOn: ['defguide_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("build/defguide/style/purpose.xsl")
+  inputs.file file("${buildDir}/defguide/style/purpose.xsl")
 
-  input("source", "build/defguide/tdg.xml")
-  output("result", "build/defguide/book.xml")
+  input("source", "${buildDir}/defguide/tdg.xml")
+  output("result", "${buildDir}/defguide/book.xml")
   option("arch", "assembly defguide")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
@@ -386,10 +386,10 @@ task publishers_xml(dependsOn: ['publishers_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/publishers/style/purpose.xsl")
+  inputs.file file("${buildDir}/publishers/style/purpose.xsl")
 
-  input("source", "build/publishers/tdg.xml")
-  output("result", "build/publishers/book.xml")
+  input("source", "${buildDir}/publishers/tdg.xml")
+  output("result", "${buildDir}/publishers/book.xml")
   option("arch", "publishers")
   option("revision", "5.0 5.1 5.2 1.0 1.1 1.2")
   // This crazy list of conditions is a side effect of the fact that
@@ -405,10 +405,10 @@ task sdocbook_xml(dependsOn: ['sdocbook_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/sdocbook/style/purpose.xsl")
+  inputs.file file("${buildDir}/sdocbook/style/purpose.xsl")
 
-  input("source", "build/sdocbook/tdg.xml")
-  output("result", "build/sdocbook/book.xml")
+  input("source", "${buildDir}/sdocbook/tdg.xml")
+  output("result", "${buildDir}/sdocbook/book.xml")
   option("arch", "sdocbook")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
@@ -424,10 +424,10 @@ task slides_xml(dependsOn: ['slides_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/slides/style/purpose.xsl")
+  inputs.file file("${buildDir}/slides/style/purpose.xsl")
 
-  input("source", "build/slides/tdg.xml")
-  output("result", "build/slides/book.xml")
+  input("source", "${buildDir}/slides/tdg.xml")
+  output("result", "${buildDir}/slides/book.xml")
   option("arch", "sdocbook slides")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
@@ -443,10 +443,10 @@ task website_xml(dependsOn: ['website_tdgxml'], type: XMLCalabashTask) {
   inputs.file file("tools/xsl/purpose.xsl")
   inputs.file file("tools/xsl/tdg2db.xsl")
   inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/website/style/purpose.xsl")
+  inputs.file file("${buildDir}/website/style/purpose.xsl")
 
-  input("source", "build/website/tdg.xml")
-  output("result", "build/website/book.xml")
+  input("source", "${buildDir}/website/tdg.xml")
+  output("result", "${buildDir}/website/book.xml")
   option("arch", "slides website")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
