@@ -164,12 +164,12 @@ clean {
 // Generate tasks parameterized by vocabulary
 
 books.each { vocab ->
-  def rndFile = new File("src/lib/${vocab}.rnd").getCanonicalPath()
+  def rndFile = new File("${projectDir}/src/lib/${vocab}.rnd").getCanonicalPath()
 
   task "${vocab}_patterns"(type: XMLCalabashTask) {
-    input("source", "src/${vocab}/patterns.xml")
-    input("stylesheet", "tools/xsl/patterns.xsl")
-    output("result", "build/${vocab}/patterns.xml")
+    input("source", "${projectDir}/src/${vocab}/patterns.xml")
+    input("stylesheet", "${projectDir}/tools/xsl/patterns.xsl")
+    output("result", "${buildDir}/${vocab}/patterns.xml")
     param("rngfile", rndFile)
     pipeline "tools/xpl/style.xpl"
     doFirst {
