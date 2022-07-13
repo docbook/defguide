@@ -5,7 +5,8 @@
 version: 2
 jobs:
   build:
-    machine: true
+    machine:
+      image: ubuntu-2004:202111-02
     working_directory: ~/defguide
 
     environment:
@@ -26,7 +27,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-
+            - v1-dependencies-{{ checksum "build.gradle" }}
 
       - run: ./gradlew dependencies
 

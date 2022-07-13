@@ -138,9 +138,9 @@ task helloWorld() {
 // ======================================================================
 
 task gitLogSummary(type: Exec) {
-  inputs.file "tools/bin/git-log-summary"
-  outputs.file "build/gitlog.xml"
-  commandLine "tools/bin/git-log-summary", "-o", "build/gitlog.xml"
+  inputs.file "${projectDir}/tools/bin/git-log-summary"
+  outputs.file "${buildDir}/gitlog.xml"
+  commandLine "${projectDir}/tools/bin/git-log-summary", "-o", "${buildDir}/gitlog.xml"
   doFirst {
     mkdir("build")
   }
@@ -164,53 +164,53 @@ clean {
 // Generate tasks parameterized by vocabulary
 
 books.each { vocab ->
-  def rndFile = new File("src/lib/${vocab}.rnd").getCanonicalPath()
+  def rndFile = new File("${projectDir}/src/lib/${vocab}.rnd").getCanonicalPath()
 
   task "${vocab}_patterns"(type: XMLCalabashTask) {
-    input("source", "src/${vocab}/patterns.xml")
-    input("stylesheet", "tools/xsl/patterns.xsl")
-    output("result", "build/${vocab}/patterns.xml")
+    input("source", "${projectDir}/src/${vocab}/patterns.xml")
+    input("stylesheet", "${projectDir}/tools/xsl/patterns.xsl")
+    output("result", "${buildDir}/${vocab}/patterns.xml")
     param("rngfile", rndFile)
-    pipeline "tools/xpl/style.xpl"
+    pipeline "${projectDir}/tools/xpl/style.xpl"
     doFirst {
-      mkdir("build/${vocab}")
+      mkdir("${buildDir}/${vocab}")
     }
   }
 
   task "${vocab}_refpageExamples"(type: Copy) {
-    from "src/refpages/examples"
-    into "build/${vocab}/refpages/examples"
+    from "${projectDir}/src/refpages/examples"
+    into "${buildDir}/${vocab}/refpages/examples"
     include "*"
     doFirst {
-      mkdir("build/${vocab}/refpages/examples")
+      mkdir("${buildDir}/${vocab}/refpages/examples")
     }
   }
 
   task "${vocab}_bookmeta"(type: XMLCalabashTask) {
-    input("source", "src/${vocab}/bookinfo.xml")
-    output("result", "build/${vocab}/bookinfo.xml")
+    input("source", "${projectDir}/src/${vocab}/bookinfo.xml")
+    output("result", "${buildDir}/${vocab}/bookinfo.xml")
     param("bookVersion", bookVersion[vocab])
     param("docbookVersion", docbookVersion)
-    pipeline "tools/xpl/bookmeta.xpl"
+    pipeline "${projectDir}/tools/xpl/bookmeta.xpl"
     doFirst {
-      mkdir("build/${vocab}")
+      mkdir("${buildDir}/${vocab}")
     }
   }
 
   task "${vocab}_refpageListElements"(type: XMLCalabashTask) {
-    inputs.file "tools/xsl/elem-xi.xsl"
-    inputs.file "tools/xpl/element-list.xpl"
+    inputs.file "${projectDir}/tools/xsl/elem-xi.xsl"
+    inputs.file "${projectDir}/tools/xpl/element-list.xpl"
     input("source", rndFile)
-    output("result", "build/${vocab}/list-elements.xml")
-    pipeline "tools/xpl/element-list.xpl"
+    output("result", "${buildDir}/${vocab}/list-elements.xml")
+    pipeline "${projectDir}/tools/xpl/element-list.xpl"
     doFirst {
-      mkdir("build/${vocab}")
+      mkdir("${buildDir}/${vocab}")
     }
   }
 
   task "${vocab}_copysrc"(type: Copy) {
-    from "src/${vocab}"
-    into "build/${vocab}"
+    from "${projectDir}/src/${vocab}"
+    into "${buildDir}/${vocab}"
     include "**/*"
     exclude "bookinfo.xml"
     exclude "patterns.xml"
@@ -226,21 +226,21 @@ books.each { vocab ->
 
   task "${vocab}_copyresources_src"(type: Copy,
                                     dependsOn: ["${vocab}_copyresources_src_html"]) {
-    from "src/resources"
-    into "build/${vocab}"
+    from "${projectDir}/src/resources"
+    into "${buildDir}/${vocab}"
     include "**/*"
     exclude "figs/src"
     exclude "figs/print"
   }
 
   task "${vocab}_copyresources_src_html"(type: Copy) {
-    from "src/resources"
-    into "build/${vocab}/html"
+    from "${projectDir}/src/resources"
+    into "${buildDir}/${vocab}/html"
     include "**/*"
     exclude "figs/src"
     exclude "figs/print"
     doFirst {
-      mkdir "build/${vocab}/html"
+      mkdir "${buildDir}/${vocab}/html"
     }
   }
 
@@ -281,34 +281,34 @@ books.each { vocab ->
                                      "${vocab}_copyresources_src_html",
                                      "${vocab}_copyresources_docbook"],
                          type: XMLCalabashTask) {
-    inputs.dir "build/${vocab}"
-    input("source", "build/${vocab}/book5.xml")
-    output("result", "build/${vocab}/tdg.xml")
-    pipeline "tools/xpl/xinclude.xpl"
+    inputs.dir "${buildDir}/${vocab}"
+    input("source", "${buildDir}/${vocab}/book5.xml")
+    output("result", "${buildDir}/${vocab}/tdg.xml")
+    pipeline "${projectDir}/tools/xpl/xinclude.xpl"
   }
 
   task "${vocab}_refpages"(dependsOn: ["${vocab}_refpageListElements",
                                        "${vocab}_refpageExamples",
                                        "gitLogSummary"],
                            type: XMLCalabashTask) {
-    inputs.dir "src/refpages/elements"
-    inputs.file "tools/xsl/refentry.xsl"
-    inputs.file "tools/xpl/refpages.xpl"
-    inputs.file "src/${vocab}/seealso.xml"
-    outputs.dir "build/${vocab}/refpages"
+    inputs.dir "${projectDir}/src/refpages/elements"
+    inputs.file "${projectDir}/tools/xsl/refentry.xsl"
+    inputs.file "${projectDir}/tools/xpl/refpages.xpl"
+    inputs.file "${projectDir}/src/${vocab}/seealso.xml"
+    outputs.dir "${buildDir}/${vocab}/refpages"
     option("rnd", rndFile)
-    option("src", absuri("src/${vocab}/"))
-    option("dst", absuri("build/${vocab}/refpages/"))
-    outputs.dir "build/${vocab}/refpages"
+    option("src", absuri("${projectDir}/src/${vocab}/"))
+    option("dst", absuri("${buildDir}/${vocab}/refpages/"))
+    outputs.dir "${buildDir}/${vocab}/refpages"
     input("source", rndFile)
-    pipeline "tools/xpl/refpages.xpl"
+    pipeline "${projectDir}/tools/xpl/refpages.xpl"
   }
 
   task "${vocab}"(type: SaxonXsltTask,
                   dependsOn: ["${vocab}_xml",
                               "${vocab}_copyresources"]) {
     input "${buildDir}/${vocab}/book.xml"
-    stylesheet "tools/xsl/book.xsl"
+    stylesheet "${projectDir}/tools/xsl/book.xsl"
     output "${buildDir}/${vocab}/html/index.html"
     initializer "org.docbook.xsltng.extensions.Register"
     entityResolverClass "org.xmlresolver.Resolver"
@@ -350,12 +350,12 @@ books.each { vocab ->
 defguide_refpages.dependsOn "defguide_refpageListAssembly"
 
 task defguide_refpageListAssembly(type: XMLCalabashTask) {
-  inputs.file "tools/xsl/elem-xi.xsl"
-  inputs.file "tools/xpl/element-list.xpl"
+  inputs.file "${projectDir}/tools/xsl/elem-xi.xsl"
+  inputs.file "${projectDir}/tools/xpl/element-list.xpl"
 
-  input("source", new File(defguideRnd).getCanonicalPath())
-  output("result", "build/defguide/list-assembly.xml")
-  pipeline "tools/xpl/element-list.xpl"
+  input("source", new File("${projectDir}/${defguideRnd}").getCanonicalPath())
+  output("result", "${buildDir}/defguide/list-assembly.xml")
+  pipeline "${projectDir}/tools/xpl/element-list.xpl"
 
   option("manual","assembly")
 
@@ -365,93 +365,93 @@ task defguide_refpageListAssembly(type: XMLCalabashTask) {
 }
 
 task defguide_xml(dependsOn: ['defguide_tdgxml'], type: XMLCalabashTask) {
-  inputs.file file("tools/xsl/purpose.xsl")
-  inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("build/defguide/style/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/tdg2db.xsl")
+  inputs.file file("${buildDir}/defguide/style/purpose.xsl")
 
-  input("source", "build/defguide/tdg.xml")
-  output("result", "build/defguide/book.xml")
+  input("source", "${buildDir}/defguide/tdg.xml")
+  output("result", "${buildDir}/defguide/book.xml")
   option("arch", "assembly defguide")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
   // something else in the reference pages. :-(
   option("condition", "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web")
-  pipeline "tools/xpl/make-book.xpl"
+  pipeline "${projectDir}/tools/xpl/make-book.xpl"
 }
 
 // ======================================================================
 
 task publishers_xml(dependsOn: ['publishers_tdgxml'], type: XMLCalabashTask) {
-  inputs.file file("tools/xsl/purpose.xsl")
-  inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/publishers/style/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/tdg2db.xsl")
+  inputs.file file("${projectDir}/tools/xsl/profile.xsl")
+  inputs.file file("${buildDir}/publishers/style/purpose.xsl")
 
-  input("source", "build/publishers/tdg.xml")
-  output("result", "build/publishers/book.xml")
+  input("source", "${buildDir}/publishers/tdg.xml")
+  output("result", "${buildDir}/publishers/book.xml")
   option("arch", "publishers")
   option("revision", "5.0 5.1 5.2 1.0 1.1 1.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
   // something else in the reference pages. :-(
   option("condition", "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web")
-  pipeline "tools/xpl/make-book.xpl"
+  pipeline "${projectDir}/tools/xpl/make-book.xpl"
 }
 
 // ======================================================================
 
 task sdocbook_xml(dependsOn: ['sdocbook_tdgxml'], type: XMLCalabashTask) {
-  inputs.file file("tools/xsl/purpose.xsl")
-  inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/sdocbook/style/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/tdg2db.xsl")
+  inputs.file file("${projectDir}/tools/xsl/profile.xsl")
+  inputs.file file("${buildDir}/sdocbook/style/purpose.xsl")
 
-  input("source", "build/sdocbook/tdg.xml")
-  output("result", "build/sdocbook/book.xml")
+  input("source", "${buildDir}/sdocbook/tdg.xml")
+  output("result", "${buildDir}/sdocbook/book.xml")
   option("arch", "sdocbook")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
   // something else in the reference pages. :-(
   option("condition", "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web")
-  pipeline "tools/xpl/make-book.xpl"
+  pipeline "${projectDir}/tools/xpl/make-book.xpl"
 }
 
 // ======================================================================
 
 task slides_xml(dependsOn: ['slides_tdgxml'], type: XMLCalabashTask) {
-  inputs.file file("tools/xsl/purpose.xsl")
-  inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/slides/style/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/tdg2db.xsl")
+  inputs.file file("${projectDir}/tools/xsl/profile.xsl")
+  inputs.file file("${buildDir}/slides/style/purpose.xsl")
 
-  input("source", "build/slides/tdg.xml")
-  output("result", "build/slides/book.xml")
+  input("source", "${buildDir}/slides/tdg.xml")
+  output("result", "${buildDir}/slides/book.xml")
   option("arch", "sdocbook slides")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
   // something else in the reference pages. :-(
   option("condition", "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web")
-  pipeline "tools/xpl/make-book.xpl"
+  pipeline "${projectDir}/tools/xpl/make-book.xpl"
 }
 
 // ======================================================================
 
 task website_xml(dependsOn: ['website_tdgxml'], type: XMLCalabashTask) {
-  inputs.file file("tools/xsl/purpose.xsl")
-  inputs.file file("tools/xsl/tdg2db.xsl")
-  inputs.file file("tools/xsl/profile.xsl")
-  inputs.file file("build/website/style/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/purpose.xsl")
+  inputs.file file("${projectDir}/tools/xsl/tdg2db.xsl")
+  inputs.file file("${projectDir}/tools/xsl/profile.xsl")
+  inputs.file file("${buildDir}/website/style/purpose.xsl")
 
-  input("source", "build/website/tdg.xml")
-  output("result", "build/website/book.xml")
+  input("source", "${buildDir}/website/tdg.xml")
+  output("result", "${buildDir}/website/book.xml")
   option("arch", "slides website")
   option("revision", "5.0 5.1 5.2")
   // This crazy list of conditions is a side effect of the fact that
   // I carelessly decided to override the condition attribute for
   // something else in the reference pages. :-(
   option("condition", "expanded ref.desc.attribute-descriptions ref.desc.attributes ref.desc.children ref.desc.parents ref.description ref.desc.rules ref.desc.seealso ref.examples refpages web")
-  pipeline "tools/xpl/make-book.xpl"
+  pipeline "${projectDir}/tools/xpl/make-book.xpl"
 }
