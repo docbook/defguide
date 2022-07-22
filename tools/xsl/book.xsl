@@ -18,6 +18,7 @@
 
 <xsl:param name="docbookXsltVersion" required="yes"/>
 <xsl:param name="bookVersion" required="yes"/>
+<xsl:param name="docbookVersion" required="yes"/>
 
 <!-- ============================================================ -->
 
@@ -855,8 +856,12 @@
   <br/>
 </xsl:template>
 
-<xsl:template match="processing-instruction('docbookVersion')" mode="m:docbook">
+<xsl:template match="processing-instruction('bookVersion')" mode="m:docbook">
   <xsl:value-of select="$bookVersion"/>
+</xsl:template>
+
+<xsl:template match="processing-instruction('docbookVersion')" mode="m:docbook">
+  <xsl:value-of select="$docbookVersion"/>
 </xsl:template>
 
 <xsl:template match="processing-instruction('docbookXsltVersion')" mode="m:docbook">
