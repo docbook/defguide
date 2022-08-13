@@ -185,16 +185,17 @@
 	    <xsl:choose>
 	      <xsl:when test="@name = 'linkend'">
 		<db:code>
-		    <xsl:value-of select="@name"/>
+		  <xsl:value-of select="@name"/>
 		</db:code>
 		<xsl:text>/</xsl:text>
-		<db:code>
-		  linkends
-		</db:code>
+		<db:code>linkends</db:code>
 	      </xsl:when>
+              <xsl:when test="empty(@name)">
+                <db:code>*:*</db:code>
+              </xsl:when>
 	      <xsl:otherwise>
 		<db:code>
-		    <xsl:value-of select="@name"/>
+		  <xsl:value-of select="@name"/>
 		</db:code>
 	      </xsl:otherwise>
 	    </xsl:choose>
@@ -242,9 +243,10 @@
               <xsl:value-of select="@name"/>
             </db:code>
             <xsl:text>/</xsl:text>
-            <db:code>
-              linkends
-            </db:code>
+            <db:code>linkends</db:code>
+          </xsl:when>
+          <xsl:when test="empty(@name)">
+            <db:code>*:*</db:code>
           </xsl:when>
           <xsl:otherwise>
             <db:code>
@@ -256,7 +258,15 @@
       <db:listitem>
         <db:para>
           <xsl:value-of select="db:refpurpose"/>
-          <xsl:text>.</xsl:text>
+          <xsl:if test="not(ends-with(db:refpurpose, '.'))">
+            <xsl:text>.</xsl:text>
+          </xsl:if>
+
+          <xsl:if test="empty(@name)">
+            <xsl:text> Any number of attributes that are in an explicit namespace
+other than the DocBook, XML, XLink, or transclusion namespaces are allowed.
+            </xsl:text>
+          </xsl:if>
         </db:para>
 
         <xsl:if test="dbx:description">
