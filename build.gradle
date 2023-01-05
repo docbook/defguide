@@ -322,7 +322,7 @@ books.each { vocab ->
       'mediaobject-input-base-uri': "file:${projectDir}/build/${vocab}/",
       'mediaobject-output-base-uri': "./",
       'chunk': "index.html",
-      'chunk-output-base-uri': "${buildDir}/${vocab}/html/",
+      'chunk-output-base-uri': "file:${buildDir}/${vocab}/html/",
       'profile-condition': bookCondition[vocab],
       'profile-arch': bookArch[vocab],
       'persistent-toc': true,
