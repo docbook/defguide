@@ -10,6 +10,7 @@
 <p:option name="rnd" required="true"/>
 <p:option name="src" required="true"/>
 <p:option name="dst" required="true"/>
+<p:option name="projectDir" required="true"/>
 
 <p:declare-step type="cx:message">
   <p:input port="source" sequence="true"/>
@@ -51,6 +52,8 @@
                   select="resolve-uri('../../gitlog.xml', $dst)"/>
     <p:with-param name="schema"
                   select="'docbook'"/>
+    <p:with-param name="projectDir"
+                  select="$projectDir"/>
     <!-- <p:log port="result" href="/tmp/refentry.xml"/> -->
   </p:xslt>
 

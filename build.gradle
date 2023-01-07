@@ -299,6 +299,7 @@ books.each { vocab ->
     option("rnd", rndFile)
     option("src", absuri("${projectDir}/src/${vocab}/"))
     option("dst", absuri("${buildDir}/${vocab}/refpages/"))
+    option('projectDir', "${projectDir}")
     outputs.dir "${buildDir}/${vocab}/refpages"
     input("source", rndFile)
     pipeline "${projectDir}/tools/xpl/refpages.xpl"
