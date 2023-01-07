@@ -20,6 +20,7 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
+<xsl:param name="projectDir"   required="yes"/> <!-- root of the build directory -->
 <xsl:param name="rngfile"      required="yes"/> <!-- path to .rnd (yes 'd') file -->
 <xsl:param name="gitfile"      required="yes"/> <!-- path to xml git log file -->
 <xsl:param name="seealsofile"  required="yes"/> <!-- path to seealso.xml -->
@@ -64,6 +65,13 @@
        contain a mixture of both -->
   <!-- ndw: that's a lie. What about para? But apparently it's ok anyway... -->
 <xsl:variable name="test.patterns" select="$choice-patterns/patterns/pattern/@name"/>
+
+<!-- Root path for matching in the git-log-summary;
+     NOTE: this won't work on Windows... -->
+<xsl:variable name="rootPath"
+              select="if (ends-with($projectDir, '/'))
+                      then $projectDir
+                      else $projectDir || '/'"/>
 
 <!-- The $SOURCES trick allows us to process a whole list of refentry pages without
      restarting the JVM each time. It's roughly a zillion times faster that way. -->
@@ -159,7 +167,7 @@
 </xsl:template>
 
 <xsl:template name="git-info">
-  <xsl:variable name="path" select="substring-after(base-uri(.), 'defguide/')"/>
+  <xsl:variable name="path" select="substring-after(base-uri(.), $rootPath)"/>
   <xsl:variable name="commit" select="$git//git:commit[git:file=$path]"/>
 
   <xsl:choose>

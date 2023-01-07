@@ -1,0 +1,33 @@
+name: build-pr
+on:
+  pull_request_target:
+    types: [assigned, opened, edited, synchronize, reopened]
+jobs:
+  build-pr:
+    runs-on: ubuntu-latest
+    env:
+      HAVE_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN != '' }}
+      PR_NUMBER: ${{ github.event.number }}
+    steps:
+      - name: Install dependencies
+        run: sudo apt-get install rsync
+
+      - name: Get the pull request
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Save XML
+        run: |
+          mkdir -p /tmp/pr-sources/src
+          rsync -ar ./src/ /tmp/pr-sources/src/
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update XML
+        run: rsync -var /tmp/pr-sources/ ./
+
+      - name: Build specifications
+        run: |
+          ./gradlew dist
