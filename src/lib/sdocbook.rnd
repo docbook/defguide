@@ -11,7 +11,7 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
           ns="http://docbook.org/ns/docbook"
-          buildhash="3281aba">
+          buildhash="7f7d93f">
    <start>
       <doc:attributes xmlns:doc="http://nwalsh.com/xmlns/schema-doc/"/>
       <doc:content-model xmlns:doc="http://nwalsh.com/xmlns/schema-doc/">
@@ -6708,12 +6708,10 @@
                   <db:refpurpose>Additional style information for downstream processing; typically the name of a style.</db:refpurpose>
                </attribute>
             </optional>
-            <optional>
-               <attribute name="cols">
-                  <db:refpurpose>The number of columns in the entry table. Must be an integer greater than zero.</db:refpurpose>
-                  <data type="positiveInteger"/>
-               </attribute>
-            </optional>
+            <attribute name="cols">
+               <db:refpurpose>The number of columns in the entry table. Must be an integer greater than zero.</db:refpurpose>
+               <data type="positiveInteger"/>
+            </attribute>
             <optional>
                <attribute name="colsep">
                   <db:refpurpose>Specifies the presence or absence of the column separator</db:refpurpose>
@@ -6922,12 +6920,10 @@
                         <db:refpurpose>Additional style information for downstream processing; typically the name of a style.</db:refpurpose>
                      </attribute>
                   </optional>
-                  <optional>
-                     <attribute name="cols">
-                        <db:refpurpose>The number of columns in the entry table. Must be an integer greater than zero.</db:refpurpose>
-                        <data type="positiveInteger"/>
-                     </attribute>
-                  </optional>
+                  <attribute name="cols">
+                     <db:refpurpose>The number of columns in the entry table. Must be an integer greater than zero.</db:refpurpose>
+                     <data type="positiveInteger"/>
+                  </attribute>
                   <optional>
                      <attribute name="colsep">
                         <db:refpurpose>Specifies the presence or absence of the column separator</db:refpurpose>
@@ -15037,7 +15033,7 @@
                <interleave>
                   <optional>
                      <attribute name="continuation">
-                        <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+                        <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
                         <choice>
                            <value>continues</value>
                            <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -15048,7 +15044,7 @@
                   </optional>
                   <optional>
                      <attribute name="linenumbering">
-                        <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+                        <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
                         <choice>
                            <value>numbered</value>
                            <a:documentation>Lines are numbered.</a:documentation>
@@ -15059,13 +15055,13 @@
                   </optional>
                   <optional>
                      <attribute name="startinglinenumber">
-                        <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                        <db:refpurpose>Specifies the initial line number</db:refpurpose>
                         <data type="integer"/>
                      </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:space">
-                        <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+                        <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
                         <value>preserve</value>
                         <a:documentation>Whitespace must be preserved.</a:documentation>
                      </attribute>
@@ -15073,7 +15069,7 @@
                </interleave>
                <optional>
                   <attribute name="language">
-                     <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content.</db:refpurpose>
+                     <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content</db:refpurpose>
                   </attribute>
                </optional>
             </interleave>
@@ -15199,7 +15195,7 @@
                      <interleave>
                         <optional>
                            <attribute name="continuation">
-                              <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+                              <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
                               <choice>
                                  <value>continues</value>
                                  <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -15210,7 +15206,7 @@
                         </optional>
                         <optional>
                            <attribute name="linenumbering">
-                              <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+                              <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
                               <choice>
                                  <value>numbered</value>
                                  <a:documentation>Lines are numbered.</a:documentation>
@@ -15221,13 +15217,13 @@
                         </optional>
                         <optional>
                            <attribute name="startinglinenumber">
-                              <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                              <db:refpurpose>Specifies the initial line number</db:refpurpose>
                               <data type="integer"/>
                            </attribute>
                         </optional>
                         <optional>
                            <attribute name="xml:space">
-                              <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+                              <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
                               <value>preserve</value>
                               <a:documentation>Whitespace must be preserved.</a:documentation>
                            </attribute>
@@ -15235,7 +15231,7 @@
                      </interleave>
                      <optional>
                         <attribute name="language">
-                           <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content.</db:refpurpose>
+                           <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content</db:refpurpose>
                         </attribute>
                      </optional>
                   </interleave>
@@ -17174,7 +17170,7 @@
    </define>
    <define name="db.verbatim.continuation.attribute">
       <attribute name="continuation">
-         <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+         <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
          <choice>
             <value>continues</value>
             <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -17193,7 +17189,7 @@
    </define>
    <define name="db.verbatim.linenumbering.attribute">
       <attribute name="linenumbering">
-         <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+         <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
          <choice>
             <value>numbered</value>
             <a:documentation>Lines are numbered.</a:documentation>
@@ -17204,18 +17200,18 @@
    </define>
    <define name="db.verbatim.startinglinenumber.attribute">
       <attribute name="startinglinenumber">
-         <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+         <db:refpurpose>Specifies the initial line number</db:refpurpose>
          <data type="integer"/>
       </attribute>
    </define>
    <define name="db.verbatim.language.attribute">
       <attribute name="language">
-         <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content.</db:refpurpose>
+         <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content</db:refpurpose>
       </attribute>
    </define>
    <define name="db.verbatim.xml.space.attribute">
       <attribute name="xml:space">
-         <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+         <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
          <value>preserve</value>
          <a:documentation>Whitespace must be preserved.</a:documentation>
       </attribute>
@@ -17224,7 +17220,7 @@
       <interleave>
          <optional>
             <attribute name="continuation">
-               <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+               <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
                <choice>
                   <value>continues</value>
                   <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -17235,7 +17231,7 @@
          </optional>
          <optional>
             <attribute name="linenumbering">
-               <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+               <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
                <choice>
                   <value>numbered</value>
                   <a:documentation>Lines are numbered.</a:documentation>
@@ -17246,13 +17242,13 @@
          </optional>
          <optional>
             <attribute name="startinglinenumber">
-               <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+               <db:refpurpose>Specifies the initial line number</db:refpurpose>
                <data type="integer"/>
             </attribute>
          </optional>
          <optional>
             <attribute name="xml:space">
-               <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+               <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
                <value>preserve</value>
                <a:documentation>Whitespace must be preserved.</a:documentation>
             </attribute>
@@ -17264,7 +17260,7 @@
          <interleave>
             <optional>
                <attribute name="continuation">
-                  <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+                  <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
                   <choice>
                      <value>continues</value>
                      <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -17275,7 +17271,7 @@
             </optional>
             <optional>
                <attribute name="linenumbering">
-                  <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+                  <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
                   <choice>
                      <value>numbered</value>
                      <a:documentation>Lines are numbered.</a:documentation>
@@ -17286,13 +17282,13 @@
             </optional>
             <optional>
                <attribute name="startinglinenumber">
-                  <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                  <db:refpurpose>Specifies the initial line number</db:refpurpose>
                   <data type="integer"/>
                </attribute>
             </optional>
             <optional>
                <attribute name="xml:space">
-                  <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+                  <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
                   <value>preserve</value>
                   <a:documentation>Whitespace must be preserved.</a:documentation>
                </attribute>
@@ -17300,7 +17296,7 @@
          </interleave>
          <optional>
             <attribute name="language">
-               <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content.</db:refpurpose>
+               <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content</db:refpurpose>
             </attribute>
          </optional>
       </interleave>
@@ -22885,7 +22881,7 @@
       </define>
       <define name="db.orderedlist.startingnumber.attribute">
          <attribute name="startingnumber">
-            <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+            <db:refpurpose>Specifies the initial line number</db:refpurpose>
             <data type="integer"/>
          </attribute>
       </define>
@@ -23072,7 +23068,7 @@
                      </choice>
                   </attribute>
                   <attribute name="startingnumber">
-                     <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                     <db:refpurpose>Specifies the initial line number</db:refpurpose>
                      <data type="integer"/>
                   </attribute>
                </choice>
@@ -23258,7 +23254,7 @@
                            </choice>
                         </attribute>
                         <attribute name="startingnumber">
-                           <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                           <db:refpurpose>Specifies the initial line number</db:refpurpose>
                            <data type="integer"/>
                         </attribute>
                      </choice>
@@ -25147,7 +25143,7 @@
                <interleave>
                   <optional>
                      <attribute name="continuation">
-                        <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+                        <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
                         <choice>
                            <value>continues</value>
                            <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -25158,7 +25154,7 @@
                   </optional>
                   <optional>
                      <attribute name="linenumbering">
-                        <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+                        <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
                         <choice>
                            <value>numbered</value>
                            <a:documentation>Lines are numbered.</a:documentation>
@@ -25169,13 +25165,13 @@
                   </optional>
                   <optional>
                      <attribute name="startinglinenumber">
-                        <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                        <db:refpurpose>Specifies the initial line number</db:refpurpose>
                         <data type="integer"/>
                      </attribute>
                   </optional>
                   <optional>
                      <attribute name="xml:space">
-                        <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+                        <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
                         <value>preserve</value>
                         <a:documentation>Whitespace must be preserved.</a:documentation>
                      </attribute>
@@ -25183,7 +25179,7 @@
                </interleave>
                <optional>
                   <attribute name="language">
-                     <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content.</db:refpurpose>
+                     <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content</db:refpurpose>
                   </attribute>
                </optional>
             </interleave>
@@ -25314,7 +25310,7 @@
                      <interleave>
                         <optional>
                            <attribute name="continuation">
-                              <db:refpurpose>Determines whether line numbering continues from the previous element or restarts.</db:refpurpose>
+                              <db:refpurpose>Determines whether line numbering continues from the previous element or restarts</db:refpurpose>
                               <choice>
                                  <value>continues</value>
                                  <a:documentation>Line numbering continues from the immediately preceding element with the same name.</a:documentation>
@@ -25325,7 +25321,7 @@
                         </optional>
                         <optional>
                            <attribute name="linenumbering">
-                              <db:refpurpose>Determines whether lines are numbered.</db:refpurpose>
+                              <db:refpurpose>Determines whether lines are numbered</db:refpurpose>
                               <choice>
                                  <value>numbered</value>
                                  <a:documentation>Lines are numbered.</a:documentation>
@@ -25336,13 +25332,13 @@
                         </optional>
                         <optional>
                            <attribute name="startinglinenumber">
-                              <db:refpurpose>Specifies the initial line number.</db:refpurpose>
+                              <db:refpurpose>Specifies the initial line number</db:refpurpose>
                               <data type="integer"/>
                            </attribute>
                         </optional>
                         <optional>
                            <attribute name="xml:space">
-                              <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not.</db:refpurpose>
+                              <db:refpurpose>Can be used to indicate explicitly that whitespace in the verbatim environment is preserved. Whitespace must always be preserved in verbatim environments whether this attribute is specified or not</db:refpurpose>
                               <value>preserve</value>
                               <a:documentation>Whitespace must be preserved.</a:documentation>
                            </attribute>
@@ -25350,7 +25346,7 @@
                      </interleave>
                      <optional>
                         <attribute name="language">
-                           <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content.</db:refpurpose>
+                           <db:refpurpose>Identifies the language (i.e. programming language) of the verbatim content</db:refpurpose>
                         </attribute>
                      </optional>
                   </interleave>
