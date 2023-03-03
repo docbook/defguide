@@ -1,4 +1,4 @@
-/* DocBook xslTNG version 2.0.2, https://xsltng.docbook.org */
+/* DocBook xslTNG version 2.0.10, https://xsltng.docbook.org */
 /* No embedded fonts by default. */
 :root {
   --symbol-fonts: "Arial Unicode", "Apple Symbols", "Symbol", "Symbola_hint";
@@ -254,6 +254,10 @@ span.remark {
   margin: 0;
   font-size: 85%;
   box-shadow: var(--keycap-box-shadow);
+}
+
+.keycombo .keycap + .keycap {
+  margin-left: 0.4em;
 }
 
 code {
@@ -1607,7 +1611,7 @@ footer {
    strange things happen when the screen is narrow. */
 @media screen and (min-width: 58rem) {
   main,
-footer {
+  footer {
     width: 50rem;
     margin-left: auto;
     margin-right: auto;
@@ -1731,6 +1735,7 @@ nav.bottom {
 nav.bottom table {
   border-top: 2px solid var(--border-color);
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 nav.bottom table .previous {

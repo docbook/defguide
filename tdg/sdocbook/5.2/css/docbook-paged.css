@@ -1,4 +1,4 @@
-/* DocBook xslTNG version 2.0.2, https://xsltng.docbook.org */
+/* DocBook xslTNG version 2.0.10, https://xsltng.docbook.org */
 /* No embedded fonts by default. */
 :root {
   --symbol-fonts: "Arial Unicode", "Apple Symbols", "Symbol", "Symbola_hint";
@@ -254,6 +254,10 @@ span.remark {
   margin: 0;
   font-size: 85%;
   box-shadow: var(--keycap-box-shadow);
+}
+
+.keycombo .keycap + .keycap {
+  margin-left: 0.4em;
 }
 
 code {
@@ -1964,7 +1968,7 @@ html.book-style.Letter {
   size: A5;
   margin-left: var(--margin-outer);
   margin-right: var(--margin-outer);
-  background-image: url("draft.svg");
+  background-image: url("draft-left.svg");
   background-position: 0.5cm 0.5cm;
   background-repeat: no-repeat;
   background-size: 2.5cm;
@@ -2096,7 +2100,7 @@ html.book-style.Letter {
   size: Letter;
   margin-left: var(--margin-outer);
   margin-right: var(--margin-outer);
-  background-image: url("draft.svg");
+  background-image: url("draft-left.svg");
   background-position: 0.5cm 0.5cm;
   background-repeat: no-repeat;
   background-size: 2.5cm;
@@ -2105,7 +2109,7 @@ html.book-style.Letter {
 }
 @page Letter-book-flow-draft {
   size: Letter;
-  background-image: url("draft.svg");
+  background-image: url("draft-left.svg");
   background-position: 0.5cm 0.5cm;
   background-repeat: no-repeat;
   background-size: 2.5cm;
