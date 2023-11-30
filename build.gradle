@@ -27,8 +27,8 @@ buildscript {
 
 plugins {
   id "groovy"
-  id "de.undercouch.download" version "4.0.4"
-  id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.9.3'
+  id "de.undercouch.download" version "5.3.1"
+  id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.10.0'
 }
 
 repositories {
@@ -133,6 +133,14 @@ task helloWorld() {
       println(path)
     }
   }
+}
+
+// ======================================================================
+
+task downloadXslTNG(type: Download) {
+  src "https://github.com/docbook/xslTNG/releases/download/${docbookXsltVersion}/docbook-xslTNG-${docbookXsltVersion}.zip"
+  dest file("${buildDir}/docbook-xslTNG-${docbookXsltVersion}.zip")
+  onlyIf { !file("${buildDir}/docbook-xslTNG-${docbookXsltVersion}.zip").exists() }
 }
 
 // ======================================================================
@@ -306,15 +314,15 @@ books.each { vocab ->
   }
 
   task "${vocab}"(type: SaxonXsltTask,
-                  dependsOn: ["${vocab}_xml",
+                  dependsOn: ["downloadXslTNG",
+                              "${vocab}_xml",
                               "${vocab}_copyresources"]) {
-    input "${buildDir}/${vocab}/book.xml"
-    stylesheet "${projectDir}/tools/xsl/book.xsl"
-    output "${buildDir}/${vocab}/html/index.html"
-    initializer "org.docbook.xsltng.extensions.Register"
-    entityResolverClass "org.xmlresolver.Resolver"
-    sourceParserClass "org.xmlresolver.tools.ResolvingXMLReader"
-    styleParserClass "org.xmlresolver.tools.ResolvingXMLReader"
+    input "file://${buildDir}/${vocab}/book.xml"
+    stylesheet "file://${projectDir}/tools/xsl/book.xsl"
+    output "file://${buildDir}/${vocab}/html/index.html"
+    arg '-init:org.docbook.xsltng.extensions.Register'
+    arg '-u'
+    arg "-catalog:jar:file:${buildDir}/docbook-xslTNG-${docbookXsltVersion}.zip!/docbook-xslTNG-${docbookXsltVersion}/xslt/catalog.xml"
     parameters (
       'rngfile': rndFile,
       'docbookXsltVersion': docbookXsltVersion,
