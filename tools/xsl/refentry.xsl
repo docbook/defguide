@@ -45,7 +45,7 @@
 
 <xsl:variable name="CMN_COUNT" as="xs:integer">
   <xsl:sequence
-      select="count($rng/key('define', 'db.common.attributes')//rng:attribute)
+      select="count($rng/key('define', 'db.common.attributes')//rng:attribute[@name])
               + 1"/>
   <!-- +1 because there's always a role attribute even though it isn't "common" -->
 </xsl:variable>
@@ -496,6 +496,11 @@
                 or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attribute-descriptions">
       <title>Attributes</title>
+<!--
+      <para>COUNT: <xsl:sequence select="count($cmnAttr)"/>, <xsl:sequence select="$CMN_COUNT"/></para>
+      <para>VALUES: <xsl:for-each select="$cmnAttr"><xsl:sequence select="node-name(.)"/></xsl:for-each></para>
+-->
+
       <xsl:choose>
         <xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
           <para>
@@ -1070,7 +1075,15 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
   <xsl:if test="count($cmnAttrEither) &gt; 0 or count($otherAttr) &gt; 0">
     <refsection condition="ref.desc.attributes">
       <title>Attributes</title>
-
+<!--
+      <para>COUNT: 2: <xsl:sequence select="count($cmnAttr)"/>, <xsl:sequence select="$CMN_COUNT"/></para>
+      <para>VALUES: 2: <xsl:for-each select="$cmnAttr">
+<xsl:sort select="@name"/>
+<xsl:sequence select="position(), string(@name)"/></xsl:for-each></para>
+      <para>CMN: 2: <xsl:for-each select="$rng/key('define', 'db.common.attributes')//rng:attribute">
+<xsl:sort select="@name"/>
+<xsl:sequence select="position(), serialize(., map{'method':'xml'})"/></xsl:for-each></para>
+-->
       <xsl:choose>
         <xsl:when test="count($cmnAttr) = $CMN_COUNT and count($cmnLinkAttr) = $LINK_COUNT">
           <para>
@@ -1153,7 +1166,7 @@ as specified in <citetitle><acronym>XHTML</acronym> 1.0</citetitle><biblioref li
             </xsl:if>
           </xsl:when>
           <xsl:otherwise>
-            <para>None.</para>
+            <para>No additional attributes.</para>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>

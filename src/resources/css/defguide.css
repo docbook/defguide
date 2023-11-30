@@ -146,6 +146,10 @@ li .sincerev {
     line-height: 1.25em;
 }
 
+.pagetoc .sincerev {
+    display: none;
+}
+
 /* ============================================================ */
 
 .cmjs {
@@ -267,6 +271,25 @@ nav a:visited {
 nav .title {
     color: inherit;
     background-color: inherit;
+}
+
+html.js .pagetoc {
+    font-family: var(--title-family), sans-serif;
+}
+
+html.js .pagebody .tocwrapper {
+    font-size: 80%;
+    overflow: scroll;
+    margin-bottom: 6rem;
+}
+
+html.js .pagebody .pagetoc .ctrl {
+    top: 2rem;
+}
+
+.pagetoc a,
+.pagetoc a:visited {
+    color: black;
 }
 
 .infofooter {

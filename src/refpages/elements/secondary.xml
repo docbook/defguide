@@ -15,23 +15,33 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>A <tag>secondary</tag> contains a secondary word or phrase
-      in an <tag>indexterm</tag>. The text of a <tag role="keep-together">secondary</tag> term is less significant than
-      the <tag>primary</tag> term, but more significant than the
-      <tag role="keep-together">tertiary</tag> term for sorting and
-      display purposes.</para>
+<title>Description</title>
 
-      <para>In <tag>indexterm</tag>s, you can only have one primary,
-      secondary, and tertiary term. If you want to index multiple secondary
-      terms for the same primary, you must repeat the primary in another
-      <tag>indexterm</tag>. You cannot place several
-      <tag>secondary</tag>s in the same primary.</para>
+<para>A <tag>secondary</tag> contains a secondary word or phrase in an
+<tag>indexterm</tag>. The text of a <tag
+role="keep-together">secondary</tag> term is less significant than the
+<tag>primary</tag> term, but more significant than the <tag
+role="keep-together">tertiary</tag> term for sorting and display
+purposes.</para>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>In <tag>indexterm</tag>s, you can only have one primary,
+secondary, and tertiary term. If you want to index multiple secondary
+terms for the same primary, you must repeat the primary in another
+<tag>indexterm</tag>. You cannot place several
+<tag>secondary</tag>s in the same primary.</para>
 
-        <para>Suppressed. This element provides data for processing but is not
-        rendered in the primary flow of text.</para>
+<important>
+<para>In DocBook 5.x, a <tag>secondary</tag> may contain nested
+<tag>indexterm</tag> elements. This is unsupported and will be removed
+in DocBook V6.0.</para>
+</important>
+
+<refsection>
+<title>Processing expectations</title>        
+
+<para>Suppressed. This element provides data for processing but is not
+rendered in the primary flow of text.</para>
+
 </refsection>
 
 <?tdg-attributes?>

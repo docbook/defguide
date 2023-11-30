@@ -15,16 +15,24 @@
 <?tdg-refsynopsisdiv?>
 
 <refsection condition="ref.description">
-<title>Description</title><para>In an <tag>indexterm</tag>, <tag>primary</tag>
-      identifies the most significant word or words in the entry. All
-      <tag>indexterm</tag>s must have a
-      <tag>primary</tag>.</para>
+<title>Description</title>
 
-      <refsection><info><title>Processing expectations</title></info>
-        
+<para>In an <tag>indexterm</tag>, <tag>primary</tag> identifies the
+most significant word or words in the entry. All <tag>indexterm</tag>s
+must have a <tag>primary</tag>.</para>
 
-        <para>Suppressed. This element provides data for processing but it is
-        not rendered in the primary flow of text.</para>
+<important>
+<para>In DocBook 5.x, a <tag>primary</tag> may contain nested
+<tag>indexterm</tag> elements. This is unsupported and will be removed
+in DocBook V6.0.</para>
+</important>
+
+<refsection>
+<title>Processing expectations</title>
+
+<para>Suppressed. This element provides data for processing but it is
+not rendered in the primary flow of text.</para>
+
 </refsection>
 
 <?tdg-attributes?>
