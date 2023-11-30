@@ -48,6 +48,8 @@
 
 <xsl:param name="section-toc-depth" select="1"/>
 
+<xsl:param name='pagetoc-elements' select="'preface chapter appendix refentry'"/>
+
 <!-- ============================================================ -->
 
 <xsl:param name="rngfile" required="yes"/>
@@ -60,7 +62,6 @@
   <link href="{/db:book/db:info/db:releaseinfo[@role='icon']}"
         rel="icon" type="image/png" />
   <link rel="stylesheet" href="css/defguide.css"/>
-  <link rel="stylesheet" href="css/pygments.css"/>
   <script type="text/javascript"
           src="https://kit.fontawesome.com/c94d537c36.js" crossorigin="anonymous"/>
 </xsl:template>
