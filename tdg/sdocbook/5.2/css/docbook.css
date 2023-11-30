@@ -1,4 +1,4 @@
-/* DocBook xslTNG version 2.0.10, https://xsltng.docbook.org */
+/* DocBook xslTNG version 2.0.16, https://xsltng.docbook.org */
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
@@ -495,7 +495,7 @@ header .authorgroup {
 }
 
 /* ============================================================ */
-.toc {
+.lot {
   margin-top: 1em;
 }
 
@@ -551,22 +551,37 @@ ul.toc,
 }
 
 /* ============================================================ */
-.formalgroup {
-  margin-top: 1em;
+.pgwide,
+.pgwide .fgbody {
+  width: 100%;
 }
 
-.formalgroup.pgwide div {
+.formalgroup {
+  margin-top: 1rem;
+}
+
+.fgbody > div {
   display: inline-block;
+}
+
+.pgwide .fgbody > div {
+  width: calc(50% - 0.5rem);
+}
+
+.fgbody > div:nth-child(even) {
+  margin-left: 0.5rem;
+}
+
+.fgbody > .figure,
+.fgbody > .example,
+.fgbody > .equation {
+  padding-top: inherit;
 }
 
 table {
   table-layout: fixed;
   border-spacing: 0;
   border-collapse: collapse;
-}
-
-figure.pgwide table {
-  width: 100%;
 }
 
 .inlinemediaobject,
@@ -1205,12 +1220,19 @@ blockquote p + .attribution {
 .example,
 .equation {
   page-break-inside: avoid;
-  padding: 1em;
+  padding-top: 1em;
 }
 
 .figure,
 .example {
   border: 1px solid var(--border-color);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.figure details p,
+.example details p {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .figure .title {
@@ -1588,8 +1610,6 @@ html {
 body {
   height: 100%;
   min-height: 100%;
-  padding-left: 0;
-  padding-right: 0;
   margin-left: 0;
   margin-right: 0;
   display: grid;
@@ -1605,21 +1625,21 @@ body.draft {
   background-attachment: fixed;
 }
 
-main,
-footer {
+main {
   max-width: 50rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* If the screen is wide, center. If you do this unconditionally,
-   strange things happen when the screen is narrow. */
-@media screen and (min-width: 58rem) {
-  main,
-  footer {
-    width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
+@media screen and (max-width: 60rem) {
+  main {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+@media screen and (min-width: 70rem) {
+  main {
+    min-width: 50rem;
   }
 }
 main {
@@ -1911,6 +1931,14 @@ nav.top div {
 }
 
 /* ============================================================ */
+/* Audio/video fallback. */
+.fallback {
+  border: solid 2px var(--error-color);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+/* ============================================================ */
 /* For progressive reveals in chunked content. */
 .reveal {
   display: none;
@@ -2065,4 +2093,79 @@ ol.reveal {
 
 .oxy_delete::after {
   content: var(--revdeleted-after);
+}
+
+/* This provides CSS support for the in-page ToC */
+html.js .pagetoc {
+  position: fixed;
+  top: 3rem;
+  right: 1em;
+  width: 18rem;
+  font-size: 95%;
+  height: calc(100% - 5em);
+  overflow: hidden;
+}
+html.js .pagetoc .toggle {
+  cursor: pointer;
+}
+html.js .pagetoc a {
+  text-decoration: none;
+}
+html.js .tocwrapper {
+  border-left: 1px solid #aaaaaa;
+  padding-left: 0.25rem;
+  line-height: 1.5;
+}
+html.js .pagetoc .ctrl {
+  position: fixed;
+  right: 1em;
+  z-index: 2;
+  opacity: 1;
+  height: 0;
+}
+html.js .tocwrapper .li::before {
+  display: inline-block;
+  content: " ";
+  width: 0.75rem;
+  text-indent: 0;
+}
+html.js .tocwrapper .li.active::before {
+  content: "•";
+  text-indent: 0;
+}
+html.js .tocwrapper .li {
+  color: var(--primary-variant-color);
+  margin-left: 1.5rem;
+  text-indent: -1.5rem;
+  margin-top: 0.25rem;
+}
+html.js .tocwrapper .li.active {
+  color: var(--on-secondary-color);
+}
+html.js .tocwrapper .depth1 {
+  padding-left: 1.5rem;
+}
+html.js .tocwrapper .depth2 {
+  padding-left: 2.5rem;
+}
+html.js .tocwrapper .depth3 {
+  padding-left: 3.5rem;
+  font-size: 80%;
+}
+html.js .tocwrapper .depth4 {
+  padding-left: 4rem;
+  font-size: 80%;
+}
+html.js .tocwrapper .depth5 {
+  padding-left: 4.5rem;
+  font-size: 80%;
+}
+html.js .tocwrapper .depth6 {
+  padding-left: 5rem;
+  font-size: 80%;
+}
+@media screen and (max-width: 82rem) {
+  html.js .pagetoc {
+    display: none;
+  }
 }

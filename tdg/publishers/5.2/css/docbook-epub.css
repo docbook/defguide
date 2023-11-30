@@ -1,4 +1,4 @@
-/* DocBook xslTNG version 2.0.10, https://xsltng.docbook.org */
+/* DocBook xslTNG version 2.0.16, https://xsltng.docbook.org */
 /* No embedded fonts by default. */
 :root {
   --symbol-fonts: "Arial Unicode", "Apple Symbols", "Symbol", "Symbola_hint";
@@ -490,7 +490,7 @@ header .authorgroup {
 }
 
 /* ============================================================ */
-.toc {
+.lot {
   margin-top: 1em;
 }
 
@@ -546,22 +546,37 @@ ul.toc,
 }
 
 /* ============================================================ */
-.formalgroup {
-  margin-top: 1em;
+.pgwide,
+.pgwide .fgbody {
+  width: 100%;
 }
 
-.formalgroup.pgwide div {
+.formalgroup {
+  margin-top: 1rem;
+}
+
+.fgbody > div {
   display: inline-block;
+}
+
+.pgwide .fgbody > div {
+  width: calc(50% - 0.5rem);
+}
+
+.fgbody > div:nth-child(even) {
+  margin-left: 0.5rem;
+}
+
+.fgbody > .figure,
+.fgbody > .example,
+.fgbody > .equation {
+  padding-top: inherit;
 }
 
 table {
   table-layout: fixed;
   border-spacing: 0;
   border-collapse: collapse;
-}
-
-figure.pgwide table {
-  width: 100%;
 }
 
 .inlinemediaobject,
@@ -1200,12 +1215,19 @@ blockquote p + .attribution {
 .example,
 .equation {
   page-break-inside: avoid;
-  padding: 1em;
+  padding-top: 1em;
 }
 
 .figure,
 .example {
   border: 1px solid var(--border-color);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.figure details p,
+.example details p {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .figure .title {
@@ -1583,8 +1605,6 @@ html {
 body {
   height: 100%;
   min-height: 100%;
-  padding-left: 0;
-  padding-right: 0;
   margin-left: 0;
   margin-right: 0;
   display: grid;
@@ -1600,21 +1620,21 @@ body.draft {
   background-attachment: fixed;
 }
 
-main,
-footer {
+main {
   max-width: 50rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* If the screen is wide, center. If you do this unconditionally,
-   strange things happen when the screen is narrow. */
-@media screen and (min-width: 58rem) {
-  main,
-  footer {
-    width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
+@media screen and (max-width: 60rem) {
+  main {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+@media screen and (min-width: 70rem) {
+  main {
+    min-width: 50rem;
   }
 }
 main {
@@ -1903,6 +1923,14 @@ nav.top div {
   text-align: center;
   background-color: var(--error-color);
   color: var(--on-error-color);
+}
+
+/* ============================================================ */
+/* Audio/video fallback. */
+.fallback {
+  border: solid 2px var(--error-color);
+  padding: 1rem;
+  border-radius: 4px;
 }
 
 /* ============================================================ */
