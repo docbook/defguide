@@ -1,8 +1,8 @@
 # DocBook: The Definitive Guide
 
-This repository contains the sources for DocBook: The Definitive Guide.
+This project has moved to [Codeberg](https://codeberg.org/DocBook/defguide).
 
-# TODO
+Please [open issues](https://codeberg.org/DocBook/defguide/issues) there.
 
-Norm is in the process of a significant reorganization of the material in
-this repository
+I’ll be migrating the current issues over as time permits. There will be no more
+releases from here.
